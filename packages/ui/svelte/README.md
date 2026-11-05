@@ -60,8 +60,11 @@ slot is `children`.
 ## Install
 
 ```bash
-npm install @soldy-ui/svelte @soldy-ui/theme-oren @soldy-ui/icons-material
+npm install @soldy-ui/svelte @soldy-ui/setup @soldy-ui/theme-oren @soldy-ui/icons-material
 ```
+
+Install `@soldy-ui/setup` as a direct dependency for the `useIcons` and `useTheme` imports below.
+Keep it on the same version as `@soldy-ui/svelte`.
 
 Svelte `^5.55.10` is a peer dependency. The package ships its `.svelte` components uncompiled, so
 your app's bundler compiles them with its Svelte plugin (for Vite, `@sveltejs/vite-plugin-svelte`).

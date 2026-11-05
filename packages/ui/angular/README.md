@@ -50,8 +50,11 @@ render on the server (`@angular/platform-server`) and hydrate in the browser
 ## Install
 
 ```bash
-npm install @soldy-ui/angular @soldy-ui/theme-oren @soldy-ui/icons-material
+npm install @soldy-ui/angular @soldy-ui/setup @soldy-ui/theme-oren @soldy-ui/icons-material
 ```
+
+Install `@soldy-ui/setup` as a direct dependency for the `useIcons` and `useTheme` imports below.
+Keep it on the same version as `@soldy-ui/angular`.
 
 `@angular/core`, `@angular/common` and `@angular/platform-browser` (Angular 22.2+) are peer
 dependencies. A theme and an icon pack are separate packages — pick the ones you want.

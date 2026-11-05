@@ -13,8 +13,11 @@ component descriptor, so they match the other five adapters; only the spelling i
 ## Install
 
 ```bash
-npm install @soldy-ui/vue @soldy-ui/theme-oren @soldy-ui/icons-material
+npm install @soldy-ui/vue @soldy-ui/setup @soldy-ui/theme-oren @soldy-ui/icons-material
 ```
+
+Install `@soldy-ui/setup` as a direct dependency for the `useIcons` and `useTheme` imports below.
+Keep it on the same version as `@soldy-ui/vue`.
 
 Vue `^3.5` is a peer dependency. A theme and an icon pack are separate packages — pick the ones you
 want.

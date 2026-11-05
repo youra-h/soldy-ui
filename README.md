@@ -57,17 +57,19 @@ Web Components connect that model to a framework and render the markup: BEM clas
 
 ## Installation
 
-Install the adapter for your framework, a theme and an icon pack. The adapter brings the core
-(`@soldy-ui/core`, `@soldy-ui/plugins`, `@soldy-ui/setup`) with it.
+Install the adapter for your framework, `@soldy-ui/setup`, a theme and an icon pack. The adapter
+depends on the core packages (`@soldy-ui/core`, `@soldy-ui/plugins`, `@soldy-ui/setup`), but packages
+you import directly must also be direct dependencies of your application. The entry point below
+imports `useIcons` and `useTheme` from `@soldy-ui/setup`, so install it explicitly.
 
-| Framework      | Install                         | Requires        |
-| -------------- | ------------------------------- | --------------- |
-| Vue            | `npm install @soldy-ui/vue`     | Vue 3.5.21+     |
-| React          | `npm install @soldy-ui/react`   | React 19.3+     |
-| Angular        | `npm install @soldy-ui/angular` | Angular 22.2+   |
-| Svelte         | `npm install @soldy-ui/svelte`  | Svelte 5.55.10+ |
-| Solid          | `npm install @soldy-ui/solid`   | Solid 1.9.13+   |
-| Web Components | `npm install @soldy-ui/webc`    | —               |
+| Framework      | Install                                         | Requires        |
+| -------------- | ----------------------------------------------- | --------------- |
+| Vue            | `npm install @soldy-ui/vue @soldy-ui/setup`     | Vue 3.5.21+     |
+| React          | `npm install @soldy-ui/react @soldy-ui/setup`   | React 19.3+     |
+| Angular        | `npm install @soldy-ui/angular @soldy-ui/setup` | Angular 22.2+   |
+| Svelte         | `npm install @soldy-ui/svelte @soldy-ui/setup`  | Svelte 5.55.10+ |
+| Solid          | `npm install @soldy-ui/solid @soldy-ui/setup`   | Solid 1.9.13+   |
+| Web Components | `npm install @soldy-ui/webc @soldy-ui/setup`    | —               |
 
 The theme and the icon pack are the same for every adapter.
 
@@ -85,10 +87,10 @@ The theme and the icon pack are the same for every adapter.
 | `@soldy-ui/icons-material` | [Material Symbols](https://fonts.google.com/icons) by Google | package MIT, icons Apache-2.0 | `npm install @soldy-ui/icons-material` |
 | `@soldy-ui/icons-lucide`   | [Lucide](https://lucide.dev)                                 | package MIT, icons ISC        | `npm install @soldy-ui/icons-lucide`   |
 
-The adapter and the core packages it brings share one version; keep them on the same one. A theme
-and an icon pack have versions of their own and declare the range of library versions they work
-with, which npm checks on install. Then plug in the theme and the icons at the application entry
-point, as shown below.
+The adapter and the core packages it brings share one version; keep your direct `@soldy-ui/setup`
+dependency on that same version. A theme and an icon pack have versions of their own and declare
+the range of library versions they work with, which npm checks on install. Then plug in the theme
+and the icons at the application entry point, as shown below.
 
 ## What it looks like
 

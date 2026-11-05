@@ -70,8 +70,11 @@ Button's `default` slot) cannot be passed into it — slot content reads it from
 ## Install
 
 ```bash
-npm install @soldy-ui/webc @soldy-ui/theme-oren @soldy-ui/icons-material
+npm install @soldy-ui/webc @soldy-ui/setup @soldy-ui/theme-oren @soldy-ui/icons-material
 ```
+
+Install `@soldy-ui/setup` as a direct dependency for the `useIcons` and `useTheme` imports below.
+Keep it on the same version as `@soldy-ui/webc`.
 
 A theme and an icon pack are separate packages — pick the ones you want.
 

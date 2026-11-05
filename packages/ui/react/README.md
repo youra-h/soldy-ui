@@ -50,8 +50,11 @@ arrive as callback props (`element:ready` → `onElementReady`), and the default
 ## Install
 
 ```bash
-npm install @soldy-ui/react @soldy-ui/theme-oren @soldy-ui/icons-material
+npm install @soldy-ui/react @soldy-ui/setup @soldy-ui/theme-oren @soldy-ui/icons-material
 ```
+
+Install `@soldy-ui/setup` as a direct dependency for the `useIcons` and `useTheme` imports below.
+Keep it on the same version as `@soldy-ui/react`.
 
 React and React DOM `^19.3` are peer dependencies. A theme and an icon pack are separate packages —
 pick the ones you want.
