@@ -280,7 +280,7 @@ tools/
   vite/             shared Vite library build config for the packages
   published-imports/  check that built packages declare every package they import
   install-smoke/    built packages installed into a clean project of every framework, run in Chromium
-  agent-flow/       ClickUp ↔ Claude Code task pipeline
+  agent-flow/       provider-independent ClickUp task workflow
 docs/               architecture overview
 ```
 
