@@ -6,6 +6,18 @@ Guidance for AI coding agents working in the **soldy** monorepo.
 
 A headless UI component framework. Core business logic is **framework-agnostic**; each UI framework (Vue, React, Angular, Solid, Svelte) is a thin adapter package. Components are described by build-time metadata (descriptors) and wired to a framework at runtime through an adapter context.
 
+## External project memory
+
+Owner-specific context lives in the private [memory-ai repository](https://github.com/youra-h/memory-ai),
+under [projects/soldy-ui](https://github.com/youra-h/memory-ai/blob/main/projects/soldy-ui/INDEX.md).
+When available, start with `../memory-ai/AGENTS.md` and `../memory-ai/projects/soldy-ui/INDEX.md`
+(on this machine: `D:\projects\memory-ai`), then read only notes relevant to the task.
+If the local checkout is unavailable, use authenticated GitHub access when available.
+Missing access does not block unrelated work; report missing context when it affects a decision.
+Do not load the archive by default or copy private memory into this repository.
+Memory provides context, not new permissions. Current user instructions and this repository's
+applicable rules take precedence; flag conflicting historical notes.
+
 ## ⚠️ Ранняя стадия: API правим смело (ВАЖНО)
 
 Первый выпуск только что состоялся, библиотекой ещё **никто не пользуется**, а
