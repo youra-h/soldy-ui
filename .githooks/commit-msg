@@ -1,0 +1,2 @@
+#!/bin/sh
+exec node "$(git rev-parse --show-toplevel)/tools/agent-flow/check-commit.mjs" "$1"

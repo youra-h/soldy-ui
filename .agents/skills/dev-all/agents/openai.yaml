@@ -1,0 +1,5 @@
+interface:
+  display_name: 'dev-all'
+  short_description: 'Implement the available soldy-ui ClickUp queue sequentially'
+policy:
+  allow_implicit_invocation: false

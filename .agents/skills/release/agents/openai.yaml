@@ -1,0 +1,5 @@
+interface:
+  display_name: 'release'
+  short_description: 'Prepare a soldy-ui release PR only on an explicit release request'
+policy:
+  allow_implicit_invocation: false

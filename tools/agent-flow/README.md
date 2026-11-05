@@ -1,364 +1,64 @@
-# agent-flow
+# Agent flow
 
-Связка ClickUp ↔ Claude Code: задача идёт по статусам, на каждом её подхватывает
-своя роль. В каком порядке задачи берут в работу, решает менеджер.
+Provider-independent ClickUp workflows for soldy-ui. MCP and the CLI run on Node.js with no extra runtime dependencies. Shared role instructions are plain English Markdown; Agent Skills provide portable entry points. No model or provider is selected by the workflow.
 
-## Поток
+## Start here
 
-```
-ANALYSIS    → analyst   → исследование, #ANALYSIS → PLANNING  (исследование готово, решает тимлид)
-                                              → OVERVIEW  (нужен выбор владельца)
-PLANNING    → techlead  → #PLANNING → IN PROGRESS  (план готов, вопросов нет)
-                                    → DESIGN       (компоненту нужен дизайн)
-                                    → OVERVIEW     (нужен владелец)
-                                    → APPROVED     (владелец вернул после программиста: работа принята, находки вынесены задачами)
-DESIGN      → designer  → ветка, тема, иконки, #DESIGN → APPROVED  (только тема и иконки, PR открыт)
-                                                       → PLANNING  (нужен код — разметку планирует тимлид)
-IN PROGRESS → developer → ветка, тесты, PR, #DEV → APPROVED  (сделано; остаток и находки вынесены задачами)
-                                                 → OVERVIEW  (критическое расхождение, задача не сделана)
-APPROVED    → владелец: ревью кода, мерж PR, закрытие задачи — руками
+1. Store a personal ClickUp token in the process environment as `CLICKUP_TOKEN`, or in the private user file `~/.config/soldy-agent-flow/credentials.json` as `{"CLICKUP_TOKEN":"pk_..."}`. Never commit it. `CLICKUP_CREDENTIALS_FILE` can select a different file. The environment wins. No runtime reads from provider settings.
+2. `config.json` contains this project's Space/team/owner IDs and exact status names. `CLICKUP_CONFIG` may select another file. Space-wide queries include new lists; an empty spaceId selects listId instead. Never change Space statuses as part of client setup.
+3. Run `npm run agent:setup` in the code checkout. It generates ignored `.codex/config.toml` with absolute local paths and installs `.githooks/commit-msg` through repository-local core.hooksPath. It refuses unrelated existing configuration instead of overwriting it. The commit hook enforces English messages and rejects Claude/Anthropic attribution for all Git clients. It does not claim to intercept arbitrary worktree commands.
+4. Run `npm run agent -- doctor`: validates credentials with read-only requests and checks the planning queue and local pool. It prints counts, not task contents or the token.
+5. Reload/restart the AI host to load a new MCP connection. Existing sessions may retain their old tool catalog. Use the CLI fallback until a fresh connection is available.
 
-IN PROGRESS, PLANNING, OVERVIEW → manager → приоритеты, зависимости, перестановка между этими тремя (#MANAGE)
-```
+## Using commands
 
-`ANALYSIS` — исследование, а не обязательный этап. Туда владелец отправляет
-задачу, когда до планирования нужно найти лучшее решение: как задачу уже решили
-другие проекты (headless-библиотеки, спецификации, WAI-ARIA) и что из этого
-ложится на архитектуру soldy. Обычная задача идёт сразу в `PLANNING`.
+Codex: explicitly invoke `$plan <id>`, `$dev <id>`, `$drive <id>`, `$manage`, `$pool`, etc. `$plan` is the project skill, not the host's built-in `/plan`. Skills are in `.agents/skills/`; each reads the same provider-neutral [command reference](commands.md), [shared workflow](workflow.md) and relevant [role](roles/). Skills load only on explicit invocation.
 
-`DESIGN` — редкий этап для крупных задач: задизайнить компонент, решить, из
-каких он частей, какие у него состояния, иконки и цвета. Отправляет туда тимлид
-или владелец руками. Мелкие правки стиля и классов программист делает сам, без
-дизайнера. Дизайн идёт **до кода**: дизайнер правит тему и SVG иконок в ветке
-задачи и пишет спецификацию, тимлид планирует по ней разметку, программист
-продолжает ту же ветку.
+Other agents: ask them to run the named command using commands.md, or print its entry instructions with `npm run agent -- prompt dev <id>`. The CLI prints instructions, not an LLM invocation. Tool names have no provider prefix in shared instructions; clients may namespace the connected MCP tools.
 
-Допустимые переходы для каждой роли зашиты в сервер (`TRANSITIONS` в
-`clickup-mcp.mjs`): `clickup_handoff` принимает роль и исход, а не статус,
-и отказывает на недопустимой паре.
+The root `.mcp.json` describes the standard stdio launch for clients that support that format, from the repository root:
 
-`OVERVIEW` — возврат владельцу: в него отдают аналитик, тимлид и программист.
-Программист работает на той же модели, что и тимлид, поэтому расхождения с
-планом решает сам и тимлиду задачу не возвращает. К владельцу он идёт только с
-критическим расхождением — тем, что меняет API или архитектуру, требует новой
-механики адаптера или противоречит слову владельца. Дизайнер с вопросами идёт
-к тимлиду.
-
-`APPROVED` — не «можно мержить», а «готово к ревью». Автоматического мержа нет
-намеренно: код каждой задачи смотрит владелец, мержит и закрывает её сам.
-
-## Менеджер: порядок задач
-
-Над проектом работают несколько программистов одновременно, на разных машинах.
-Две задачи в `IN PROGRESS`, которые правят одни и те же места, столкнутся в PR,
-а задача, начатая раньше родительской, будет сделана на старом коде. Разводит
-их менеджер (`/manage`). Он смотрит все задачи в `IN PROGRESS`, `PLANNING` и
-`OVERVIEW` и:
-
-- расставляет приоритеты — по ним роли берут задачи (см. «Очередь»);
-- связывает задачи зависимостями ClickUp — и родительские, и те, что
-  столкнутся в коде (по путям файлов в `#PLANNING`);
-- переставляет задачи между этими тремя статусами, оставляя в ленте `#MANAGE`
-  с причиной: в работе остаётся то, что не пересекается, остальное
-  откладывается.
-
-Задачу не берёт (`clickup_take` у него нет) и этап не завершает — работает
-сразу по всей доске. **Задачи с тегом `on` не трогает**: ни приоритет, ни
-статус, ни зависимость с их стороны. `ANALYSIS`, `DESIGN` и `APPROVED` — тоже:
-это этапы ролей и ревью владельца.
-
-### Отложенные задачи: тег `hold`
-
-`OVERVIEW` для менеджера — две очереди:
-
-- **отложенные** (тег `hold`) — задача ждёт незакрытые задачи или уступает
-  той, с которой столкнётся в коде. Менеджер убрал её сам и сам вернёт в
-  `PLANNING`, когда всё, чего она ждала, закроется;
-- **ждущие владельца** — всё остальное: вопросы тимлида, исследование
-  аналитика, задачи, заведённые тимлидом. Их выпускает только ответ владельца.
-
-Типичный цикл: две задачи в работе пересекаются → менеджер связывает младшую
-`waits_on` со старшей и откладывает её → программист заканчивает старшую,
-владелец мержит и закрывает → `/manage` возвращает отложенную в `PLANNING` →
-тимлид сверяет план со свежим `main` → `IN PROGRESS`.
-
-Перестановки и проверки сервера (`MANAGER_MOVES` и `clickup_move` в
-`clickup-mcp.mjs`):
-
-| Откуда                | Куда                | Сервер пропускает, если                                      |
-| --------------------- | ------------------- | ------------------------------------------------------------ |
-| IN PROGRESS, PLANNING | OVERVIEW + `hold`   | задача ждёт хотя бы одну незакрытую задачу                   |
-| IN PROGRESS, PLANNING | OVERVIEW без `hold` | — (вопрос владельцу)                                         |
-| OVERVIEW, `hold`      | PLANNING            | все задачи, которых она ждала, закрыты; тег снимается        |
-| OVERVIEW без `hold`   | PLANNING            | владелец ответил после последнего комментария роли           |
-| OVERVIEW без `hold`   | IN PROGRESS         | то же, плюс в ленте есть `#PLANNING` и открытых блокеров нет |
-| IN PROGRESS           | PLANNING            | —                                                            |
-
-Отложить задачу без зависимости нельзя: по ней сервер понимает, когда задачу
-пора вернуть. Отложенную — только в `PLANNING`, не сразу в работу: пока она
-ждала, `main` ушёл вперёд. Из `PLANNING` в работу менеджер не отправляет
-никогда — план пишет и отдаёт в работу тимлид.
-
-Ответ владельца сервер узнаёт так же, как роли: последний комментарий, не
-начинающийся с хештега роли. Свою заметку `#MANAGE` менеджер оставляет перед
-перестановкой, и сервер её при этой проверке пропускает.
-
-`hold` снимает и `clickup_take`: если владелец руками вытащил отложенную задачу
-и её взяла роль, забытый тег не выпустит её потом из `OVERVIEW` мимо ответа
-владельца.
-
-Менеджер и роли, запущенные одновременно, могут столкнуться на одной задаче:
-тег `on` — не блокировка (см. ниже). Надёжнее запускать `/manage`, пока роли не
-работают.
-
-## Очередь: приоритеты и зависимости
-
-Слэш-команды без ID берут **первую свободную** задачу из очереди статуса.
-Очередь сортирует сервер (`queueOrder` в `clickup-api.mjs`):
-
-1. по приоритету ClickUp: `urgent` → `high` → `normal` → `low`; задача без
-   приоритета стоит как `normal` — так же, как задача без тега размера;
-2. внутри одного приоритета — от старых к новым.
-
-Свободная — это `busy: false` (нет тега `on`) и `blocked: false` (не ждёт
-незакрытых задач). ID указан в команде явно — приоритет и блокеры не
-проверяются: задачу выбрал владелец. Тег `on` проверит `clickup_take`.
-
-Приоритет ставит только менеджер (`clickup_set_priority`).
-
-Зависимость ClickUp «waiting on» останавливает задачу, пока блокер не
-**закрыт**. `APPROVED` не в счёт: PR ещё не в `main`, и ветка зависимой задачи
-его изменений не увидит. `clickup_list_by_status` и `clickup_get_task` отдают у
-задачи:
-
-| Поле        | Что это                                                             |
-| ----------- | ------------------------------------------------------------------- |
-| `priority`  | `urgent` / `high` / `normal` / `low` или `null`, если не проставлен |
-| `hold`      | задачу отложил менеджер (тег `hold`)                                |
-| `waitingOn` | задачи, которых эта ждёт: `id`, `name`, `status`, `closed`          |
-| `blocked`   | среди `waitingOn` есть незакрытая                                   |
-| `blocking`  | id задач, которые ждут эту                                          |
-| `linked`    | id задач, связанных без зависимости                                 |
-
-Статус блокера ClickUp в ответе не отдаёт, поэтому сервер дочитывает каждый
-блокер отдельным запросом. Блокер, который прочитать не удалось, считается
-открытым.
-
-Связи ставит `clickup_link_tasks`:
-
-| `relation` | Смысл                                                      |
-| ---------- | ---------------------------------------------------------- |
-| `waits_on` | `task_id` нельзя начинать, пока не закрыта `other_task_id` |
-| `related`  | просто связь, ничего не блокирует                          |
-
-Инструмент есть у менеджера и у тимлида. Тимлид связывает задачи, которые
-заводит сам, и текущую — с задачами, от которых она зависит. Менеджеру задача
-`task_id` с тегом `on` недоступна; тимлиду доступна — свою задачу он сам держит
-под `on`. Прямой цикл (A ждёт B, B ждёт A) сервер отклоняет, длинный — нет.
-Удалять связи инструмент не умеет — только владелец, руками.
-
-Если ClickUp отвечает ошибкой на приоритет или зависимость, проверь, что они
-включены в ClickApps Space.
-
-## Занятость задачи: теги `on` / `off`
-
-Чтобы роли, запущенные параллельно, не брали одну задачу, занятость отмечается
-тегом:
-
-| Тег    | Значение                                                   | Кто ставит                                                                          |
-| ------ | ---------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| `on`   | задача в работе у роли                                     | `clickup_take` — первым шагом роли                                                  |
-| `off`  | задача свободна                                            | `clickup_handoff`; новая задача от `clickup_create_task`                            |
-| `hold` | задача отложена менеджером до закрытия задач, которых ждёт | `clickup_move` с `hold: true`; снимают `clickup_move` при возврате и `clickup_take` |
-
-Тега нет вовсе — задача свободна. `clickup_take` на задаче с `on` отказывает,
-и роль останавливается. `clickup_list_by_status` отдаёт у каждой задачи поле
-`busy`, слэш-команды без ID берут первую задачу с `busy: false` и
-`blocked: false`.
-
-Ограничения, о которых нужно помнить:
-
-- **Это не блокировка.** Проверка и установка тега — два запроса: две роли,
-  стартовавшие в одну секунду, могут взять задачу обе. Запускай параллельные
-  роли с небольшим разносом.
-- **Упавшая роль оставляет `on`.** Тег снимает только `clickup_handoff`. Если
-  роль оборвалась или остановилась без него, снять `on` нужно руками.
-- **Параллельные программисты требуют отдельных рабочих копий.** Теги делят
-  задачи, но не рабочее дерево: два `developer` в одном checkout переключают
-  ветки друг у друга. Дизайнер тоже пишет в репозиторий — с программистом его
-  не параллелить. Аналитика и тимлида параллелить можно уже сейчас.
-
-Теги `on`, `off` и `hold` должны существовать в Space — создай их в ClickUp один раз.
-
-## Размер задачи
-
-Владелец вешает на задачу тег `simple`, `normal` или `hard`. Тега нет — задача
-считается `normal`. Сервер отдаёт роли готовое поле `size`, разбирать теги ей
-не нужно, и поле `sizeTagged` — стоит ли тег на самом деле.
-
-Если владелец тег не поставил, размер оценивает тимлид и проставляет его
-`clickup_set_size`. Тег владельца инструмент не перезаписывает — отказывает.
-Аналитик работает до тимлида, поэтому на задаче без тега идёт как `normal`.
-
-От размера зависит, сколько роль читает и сколько пишет:
-
-| `size`   | Читает        | Пишет комментарий |
-| -------- | ------------- | ----------------- |
-| `simple` | до 10 файлов  | до 1000 символов  |
-| `normal` | до 24 файлов  | до 5000           |
-| `hard`   | сколько нужно | до 8000           |
-
-Аналитик вдобавок к файлам изучает другие проекты: `simple` — 2–3 проекта,
-`normal` — до 5, `hard` — сколько нужно.
-
-**Тег можно менять между этапами** — в этом весь смысл: анализ бывает `hard`,
-а планирование по готовой карте — уже `simple`. Роль смотрит на то, что стоит
-в момент запуска.
-
-Размер не влияет на обязательные шаги: программист пишет тесты и открывает PR
-на любом размере.
-
-Исключение — отчёт программиста: до 800 / 1500 / 3000 символов. Его объём
-работы размер не ограничивает, а подробности изменений лежат в диффе PR.
-
-## Модели ролей
-
-Задаются в frontmatter каждой роли. Там же у всех ролей `effort: max`: он
-перекрывает уровень сессии (`/effort`, `effortLevel` в настройках), но не
-переменную `CLAUDE_CODE_EFFORT_LEVEL`.
-
-| Роль        | Модель | Почему                                                                           |
-| ----------- | ------ | -------------------------------------------------------------------------------- |
-| аналитик    | `opus` | исследование: отделить зрелое решение от костыля, примерить его на границы слоёв |
-| тимлид      | `opus` | проектирование, выбор подхода                                                    |
-| дизайнер    | `opus` | крупные задачи: структура компонента, вкус, современный CSS                      |
-| программист | `opus` | мелкие решения по ходу плана — где держать границы слоёв                         |
-| менеджер    | `opus` | граф зависимостей по всей доске, решения о статусах                              |
-
-Программист — самая дорогая роль по токенам (у него больше всего вызовов
-инструментов). Раньше он работал на `sonnet` ради экономии. После перехода на
-план Max узким местом стало ревью владельца, а не токены: каждая ошибка
-программиста — лишний круг ревью. Поэтому он снова на `opus`.
-
-Если лимит начнёт упираться — механические задачи (документация,
-переименования, тесты по шаблону) можно отдавать `sonnet`.
-
-## Хештеги в ленте
-
-| Хештег      | Кто         | Как ставится                               |
-| ----------- | ----------- | ------------------------------------------ |
-| `#ANALYSIS` | аналитик    | сервером, по параметру `role`              |
-| `#PLANNING` | тимлид      | сервером                                   |
-| `#DESIGN`   | дизайнер    | сервером                                   |
-| `#DEV`      | программист | сервером                                   |
-| `#MANAGE`   | менеджер    | сервером; пишется только при смене статуса |
-| `#overview` | владелец    | руками                                     |
-
-Комментарий владельца — последнее слово: он важнее и постановки, и плана. Роли
-это знают. Если владелец забыл хештег, они всё равно опознают его комментарий:
-всё, что не начинается с `#ANALYSIS`/`#PLANNING`/`#DESIGN`/`#DEV`/`#MANAGE`,
-написано владельцем. Поэтому новая роль обязана попасть в этот список во всех
-промптах — иначе её комментарий прочитают как слово владельца.
-
-`#MANAGE` — заметка о том, почему задачу переставили, а не постановка и не
-слово владельца.
-
-Спецификация `#DESIGN` для программиста — справочник к плану, а не его
-замена: где тимлид переименовал класс дизайнера, делают по плану.
-
-## Побочные находки
-
-Новую задачу заводят тимлид и программист — `clickup_create_task`. Тимлид
-выносит побочные находки и то, что не влезает в один заход. Программист
-заводит задачу на каждую побочную находку (упоминание в отчёте теряется вместе
-с закрытой задачей) и на остаток текущей задачи — когда тот упёрся в
-критическое расхождение или объём оказался больше ожидаемого. Тогда он
-доделывает цельную часть, открывает PR, декомпозирует остаток на одну или
-несколько задач и отдаёт текущую в `APPROVED`. Если задача не сделана вовсе,
-новую он не заводит, а отдаёт текущую в `OVERVIEW`.
-
-Новая задача создаётся в том же списке, что и исходная, попадает сразу в
-`OVERVIEW` и назначается на владельца — **в очередь ролей она сама не уходит**.
-Описание и план разделены. Описание (`description`) — для владельца: о чём
-задача и почему, простым текстом, без путей к файлам. ClickUp не рендерит
-Markdown в описании задачи, а владелец разбирает `OVERVIEW` по нему. План
-(`plan`) — Markdown для исполнителя: сервер публикует его первым комментарием
-с хештегом роли. У задачи тимлида это `#PLANNING`, поэтому её можно сразу
-отдать в работу, не прогоняя через тимлида второй раз. В описание дописывается
-ссылка на задачу-источник и этап, на котором её завели.
-Размер роль может предложить тегом, но последнее слово за владельцем.
-Приоритета у новой задачи нет — до захода менеджера она стоит как `normal`.
-Если её нельзя делать, пока не закрыта исходная, тимлид связывает их `waits_on`.
-
-Аналитику, дизайнеру и менеджеру инструмент не выдан.
-
-## Настройка
-
-1. Токен ClickUp (Settings → Apps → API Token) — в `.claude/settings.local.json`,
-   который лежит в gitignore:
-
-   ```json
-   { "env": { "CLICKUP_TOKEN": "pk_..." } }
-   ```
-
-   MCP-сервер наследует окружение Claude Code, поэтому в `.mcp.json` токен
-   упоминать не нужно. Подстановка `${CLICKUP_TOKEN}` там **не работает**:
-   серверу уходит literal-строка, и ClickUp отвечает 401.
-
-2. Создать статусы в ClickUp **руками через UI** — публичного API для этого нет.
-   Набор: `ANALYSIS`, `PLANNING`, `DESIGN`, `IN PROGRESS`, `OVERVIEW`,
-   `APPROVED`, `CLOSED`. Статусы задаются на уровне Space и наследуются всеми списками
-   внутри, поэтому для проекта нужен отдельный Space — иначе набор протечёт в
-   соседние проекты.
-
-3. Заполнить `config.json`. `teamId` и `ownerId` уже проставлены. Дальше одно
-   из двух:
-   - `spaceId` — предпочтительно: задачи ищутся по всему Space, новые списки
-     внутри проекта подхватываются без правки конфига;
-   - `listId` — запасной вариант, работает по одному списку. Используется,
-     только если `spaceId` пуст.
-
-   `statuses` должны совпадать с ClickUp побуквенно.
-
-4. Аналитику нужен интернет: `WebSearch` и `WebFetch` разрешены в
-   `.claude/settings.json`. При `defaultMode: dontAsk` без этого разрешения
-   инструменты молча запрещены.
-
-5. Перезапустить Claude Code, проверить `/mcp` — сервер `clickup` должен быть
-   в списке.
-
-## Запуск ролей
-
-Пока вручную. Несколько ролей можно запускать параллельно — задачи делятся
-тегами `on`/`off` (см. выше):
-
-```
-/analyze <task_id>
-/plan    <task_id>
-/design  <task_id>
-/dev     <task_id>
-/manage  [указание владельца]
-/analyze-all
-/plan-all
-/design-all
-/dev-all
+```json
+{ "mcpServers": { "clickup": { "command": "node", "args": ["tools/agent-flow/clickup-mcp.mjs"] } } }
 ```
 
-`/analyze-all`, `/plan-all`, `/design-all` и `/dev-all` проходят всю очередь
-своего статуса **по одной задаче**: на каждую — отдельный запуск роли со своим
-контекстом, очередь перечитывается перед каждой задачей. Тег `on` роль ставит
-только на задачу, которую делает сейчас: взять всю очередь заранее нельзя —
-`clickup_take` на задаче с `on` падает, а зависший прогон оставил бы `on` на
-всех задачах.
+For other clients configure command `node`, the absolute path to clickup-mcp.mjs, and the repository working directory. No credentials belong in that manifest. Codex's generated project configuration is a local adapter; the workflow, server, credentials and roles do not depend on it.
 
-`/design-all` и `/dev-all` работают в одном рабочем дереве: после каждой задачи
-проверяют, что дерево чистое и `on` снят, возвращаются на `main` и берут
-следующую. Любая поломка (грязное дерево, роль не дошла до `handoff`, не вышел
-`pull`) останавливает прогон; уход задачи в `OVERVIEW` у программиста и в
-`PLANNING` у дизайнера — нет. Задачи, правящие одни
-файлы без связи `waits_on`, прогон не разводит — перед `/dev-all` запусти
-`/manage`.
+CLI fallback for a missing MCP connection:
 
-Автоматический диспетчер (поллинг статусов) сознательно не сделан: сначала
-нужно обкатать промпты ролей, иначе отлаживать придётся одновременно и роли,
-и оркестрацию.
+```sh
+npm run agent -- tools
+npm run agent -- call clickup_get_task --input task.json
+```
+
+`task.json` contains `{"task_id":"<id>"}`. The same validation and tool implementation serve MCP and CLI. Call write tools only as part of the invoked workflow; merely printing a prompt or inspecting the pool does not claim a task.
+
+## Workflow and preserved behavior
+
+| Role      | Entry status                      | Outcomes                                                                        |
+| --------- | --------------------------------- | ------------------------------------------------------------------------------- |
+| analyst   | analysis                          | done -> planning; questions -> overview                                         |
+| techlead  | planning                          | ready -> in progress; design -> design; questions -> overview; done -> approved |
+| designer  | design                            | done -> approved; questions -> planning                                         |
+| developer | in progress                       | done -> approved; questions -> overview                                         |
+| manager   | planning / in progress / overview | guarded priority, dependency and status moves; never takes a task               |
+
+Queues are urgent/high/normal/low, unset as normal, oldest first. Automatic selection skips busy and blocked tasks. Explicit IDs do not bypass the busy check. Owner simple/normal/hard tags govern report sizes, not permission to leave work unfinished. Only techlead can set a missing size. APPROVED is ready for owner review; only closed/done resolves blockers. Owner merge and closure remain manual.
+
+Read comments before deciding; report before handoff. The server tags every comment part and retrieves all pages. Manager moves preserve the owner-reply, hold and dependency guards. Follow-up descriptions stay plain and owner-facing; plans are separate role comments, and new tasks enter overview. Full rules and report formats are in the role files.
+
+## Existing worktree pool and leases
+
+The pool remains sibling `soldy-*` Git worktrees, excluding soldy-conflicts. Its absence during restoration is temporary; the owner will restore the same names. No command creates worktrees, replacement clones or switches the main folder.
+
+`pool` is read-only. `acquire <id> --write` atomically reserves the task and an existing suitable folder; no folder means failure before any ClickUp mutation. It prefers the existing task branch and preserves its unfinished work. Reader roles use `acquire <id>`. `drive` upgrades the same lease with `lease-workspace <token>` before its first writer stage. `release <token>` removes only recorded locks owned by that token. `unlock <id>` is for explicit owner-authorized recovery after a stopped run; it never changes task status or clears ClickUp on.
+
+Local mkdir locks coordinate runs sharing this Git directory, not separate machines. The remote on tag still uses separate read/write API requests and is not globally atomic. Missing/unreadable blockers remain blocked. Unknown lock contents are never recursively deleted. Commands do not merge, rebase, force-push, publish packages or reset worktrees.
+
+## Validation and migration
+
+`npm run test:agent-flow` runs isolated REST/transport/workflow checks with mocked ClickUp writes and temporary repositories. `doctor` is the optional real read-only integration check. No live task transitions are needed to validate setup.
+
+Previous provider commands, roles and hooks are replaced by the shared files, not kept as parallel aliases. Session-title customization was provider UI behavior and is not part of the portable workflow. The local migration backup is inside `.git`, never committed. Imported historical memory remains in the separate private memory-ai repository.
+
+Release instructions are retained in [release.md](release.md) but require a separate owner request. This migration neither versions nor releases any package.

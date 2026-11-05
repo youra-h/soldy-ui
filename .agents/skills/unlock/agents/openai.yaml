@@ -1,0 +1,5 @@
+interface:
+  display_name: 'unlock'
+  short_description: 'Recover a stopped soldy-ui role run when explicitly requested'
+policy:
+  allow_implicit_invocation: false

@@ -1,0 +1,5 @@
+interface:
+  display_name: 'design'
+  short_description: 'Design a soldy-ui ClickUp task in an existing pool worktree'
+policy:
+  allow_implicit_invocation: false

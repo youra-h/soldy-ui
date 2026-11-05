@@ -1,0 +1,5 @@
+interface:
+  display_name: 'drive'
+  short_description: 'Route one soldy-ui ClickUp task through roles until owner review'
+policy:
+  allow_implicit_invocation: false

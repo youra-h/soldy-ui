@@ -1,5 +1,5 @@
 {
-  "_comment": "Статусы должны совпадать с ClickUp побуквенно. Задачи ищутся по spaceId, если он задан; иначе по listId.",
+  "_comment": "Status names must match ClickUp exactly. Query the configured Space, otherwise the List.",
 
   "teamId": "90122045601",
   "spaceId": "901210134422",

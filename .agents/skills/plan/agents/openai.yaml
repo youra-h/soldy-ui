@@ -1,0 +1,5 @@
+interface:
+  display_name: 'plan'
+  short_description: 'Plan a soldy-ui ClickUp task'
+policy:
+  allow_implicit_invocation: false

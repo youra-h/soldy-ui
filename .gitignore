@@ -9,6 +9,7 @@ coverage/
 *.tsbuildinfo
 .DS_Store
 *.log
+.codex/config.toml
 packages/_plugins/
 
 # Сниппеты «открыть в VS Code»: пишутся dev-сервером по запросу из браузера

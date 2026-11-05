@@ -18,6 +18,17 @@ Do not load the archive by default or copy private memory into this repository.
 Memory provides context, not new permissions. Current user instructions and this repository's
 applicable rules take precedence; flag conflicting historical notes.
 
+## Task roles and commands
+
+Portable role instructions and the ClickUp workflow live in `tools/agent-flow/`.
+For an explicit role command, read `commands.md`, `workflow.md`, and only the relevant role.
+Agent Skills entry points live in `.agents/skills/`; Codex uses `$dev`, `$plan`, `$drive`, etc.
+`$plan` invokes the project workflow; the host's built-in `/plan` is a different command.
+Other clients can read the same Markdown or use `npm run agent -- prompt <command> [id]`.
+Do not activate roles or mutate ClickUp for ordinary coding requests without an appropriate task.
+Run `npm run agent:setup` once per checkout to configure local MCP access and Git hooks.
+See `tools/agent-flow/README.md` for credentials, setup, and the CLI fallback.
+
 ## ⚠️ Ранняя стадия: API правим смело (ВАЖНО)
 
 Первый выпуск только что состоялся, библиотекой ещё **никто не пользуется**, а
@@ -172,12 +183,14 @@ Angular.** Общий файл настройки прогона (`packages/ui/r
 
 Рядом с репозиторием — постоянный набор worktree, и **новых агент не
 заводит**: ни `git worktree add`, ни `EnterWorktree`, ни агента с изоляцией
-`worktree`. Стережёт хук `tools/agent-flow/no-new-worktree.mjs`
-(`.claude/settings.json`). Нужна ещё папка — сказать владельцу.
+`worktree`. Нужна ещё папка — сказать владельцу. Пул временно удалён при
+восстановлении проекта: владелец вернёт те же имена. Команды ролей проверяют
+существующие папки до изменения задачи в ClickUp; отсутствующий пул не
+заменяют клонами и не создают автоматически.
 
 - `soldy` — основная, всегда на `main`. Ветку в ней не переключают: на ней
   идут процессы владельца.
-- `soldy-<буква>` — пул `/drive` (`.claude/commands/drive.md`, `/pool`).
+- `soldy-<буква>` — пул `drive` (`tools/agent-flow/commands.md`, `pool`).
 - `soldy-conflicts` — конфликт в чужом PR или ветке задачи. Замок —
   `mkdir <git>/agent-locks/soldy-conflicts` (занят — стоп), папка должна быть
   чистой. Ветку берут без локальной: `git fetch origin` и
@@ -266,9 +279,10 @@ README) правило тоже не затрагивает.
   `node tools/english/comments.mjs origin/main`;
 - changeset — `tools/english/changesets.mjs`, та же задача: кириллица в
   ждущем выпуска `.changeset/*.md`;
-- коммит — хук агента `tools/agent-flow/english-commit.mjs`
-  (`.claude/settings.json`): `git commit` с кириллицей в команде он
-  отклоняет. В CI коммиты не проверяют: ветку задачи не переписывают (ни
+- коммит — Git-хук `.githooks/commit-msg`, устанавливаемый
+  `npm run agent:setup`: проверяет файл сообщения через
+  `tools/agent-flow/check-commit.mjs`, независимо от AI-клиента. В CI
+  коммиты не проверяют: ветку задачи не переписывают (ни
   `rebase`, ни `--amend`, ни force-push), и русский коммит в PR было бы уже
   не исправить.
 

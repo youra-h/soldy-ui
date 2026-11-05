@@ -1,86 +1,68 @@
-/**
- * Состояние пула worktree для `/drive`: какие папки заняты, какие свободны.
- * Правила те же, что у `/drive` (`.claude/commands/drive.md`, «Замки» и
- * «Папка пула»): пул — worktree `soldy-*` рядом с основным репозиторием,
- * кроме `soldy-conflicts` (папка конфликтов в PR, AGENTS.md, «Рабочие папки»),
- * замок папки — `<git>/agent-locks/<папка>` с файлом `task`.
- *
- * Только читает: замков не берёт и не снимает.
- */
-
+/** Read the owner's existing worktree pool; never create or switch worktrees. */
 import { execFileSync } from 'node:child_process'
 import { existsSync, readFileSync, readdirSync } from 'node:fs'
 import { basename, dirname, join, resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
 
-const git = (...args) => execFileSync('git', args, { encoding: 'utf8' }).trim()
+export const git = (cwd, ...args) =>
+	execFileSync('git', args, { cwd, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] }).trim()
 
-const locks = join(resolve(git('rev-parse', '--git-common-dir')), 'agent-locks')
-
-const worktrees = git('worktree', 'list', '--porcelain')
-	.split(/\r?\n\r?\n/)
-	.filter(Boolean)
-	.map((block) => {
-		const path = /^worktree (.+)$/m.exec(block)[1]
-		const branch = /^branch refs\/heads\/(.+)$/m.exec(block)?.[1] ?? '(detached)'
-
-		return { path, branch }
-	})
-
-const [main] = worktrees
-const prefix = `${basename(main.path)}-`
-const conflicts = `${prefix}conflicts`
-const pool = worktrees
-	.slice(1)
-	.filter(
-		(w) =>
-			dirname(w.path) === dirname(main.path) &&
-			basename(w.path).startsWith(prefix) &&
-			basename(w.path) !== conflicts,
-	)
-
-const rows = pool.map(({ path, branch }) => {
-	const name = basename(path)
-	const lock = join(locks, name)
-	const task = existsSync(join(lock, 'task'))
-		? readFileSync(join(lock, 'task'), 'utf8').trim()
-		: null
-	const dirty = git('-C', path, 'status', '--porcelain') !== ''
-
-	let state
-
-	if (existsSync(lock)) {
-		state = `занята ${task ?? '(замок без task)'}`
-	} else if (dirty) {
-		state = 'грязная — /drive её не возьмёт, разобрать руками'
-	} else {
-		state = 'свободна'
+export function poolSnapshot(cwd = process.cwd()) {
+	const common = git(cwd, 'rev-parse', '--path-format=absolute', '--git-common-dir')
+	const locks = join(common, 'agent-locks')
+	const trees = git(cwd, 'worktree', 'list', '--porcelain')
+		.split(/\r?\n\r?\n/)
+		.filter(Boolean)
+		.map((block) => ({
+			path: /^worktree (.+)$/m.exec(block)?.[1],
+			branch: /^branch refs\/heads\/(.+)$/m.exec(block)?.[1] ?? '(detached)',
+		}))
+	const main = trees[0]
+	if (!main?.path) throw new Error('Cannot identify the main worktree')
+	const prefix = `${basename(main.path)}-`
+	const rows = trees
+		.slice(1)
+		.filter(
+			(tree) =>
+				tree.path &&
+				dirname(tree.path) === dirname(main.path) &&
+				basename(tree.path).startsWith(prefix) &&
+				basename(tree.path) !== `${prefix}conflicts`,
+		)
+		.map((tree) => {
+			const name = basename(tree.path)
+			const lock = join(locks, name)
+			const missing = !existsSync(tree.path)
+			const dirty = !missing && git(tree.path, 'status', '--porcelain') !== ''
+			const task = existsSync(join(lock, 'task'))
+				? readFileSync(join(lock, 'task'), 'utf8').trim()
+				: null
+			return {
+				...tree,
+				name,
+				missing,
+				dirty,
+				locked: existsSync(lock),
+				task,
+				free: !missing && !dirty && !existsSync(lock),
+			}
+		})
+	const inFolders = new Set(rows.map((row) => row.task))
+	const taskLocks = existsSync(locks)
+		? readdirSync(locks)
+				.filter((name) => name.startsWith('task-'))
+				.map((name) => name.slice(5))
+		: []
+	return {
+		main: main.path,
+		common,
+		locks,
+		rows,
+		free: rows.filter((row) => row.free).length,
+		tasksWithoutFolder: taskLocks.filter((id) => !inFolders.has(id)),
 	}
-
-	return { name, state, branch, task, free: !existsSync(lock) && !dirty }
-})
-
-const inFolders = new Set(rows.map((r) => r.task))
-const tasks = existsSync(locks)
-	? readdirSync(locks)
-			.filter((entry) => entry.startsWith('task-'))
-			.map((entry) => entry.slice('task-'.length))
-	: []
-const withoutFolder = tasks.filter((id) => !inFolders.has(id))
-
-const width = Math.max(...rows.map((r) => r.name.length))
-const stateWidth = Math.max(...rows.map((r) => r.state.length))
-
-for (const r of rows) {
-	console.log(`${r.name.padEnd(width)}  ${r.state.padEnd(stateWidth)}  ${r.branch}`)
 }
 
-const free = rows.filter((r) => r.free).length
-
-console.log('')
-console.log(`Свободно ${free} из ${rows.length}.`)
-
-if (withoutFolder.length) {
-	console.log(
-		`Задачи /drive без папки (анализ, планирование, ревью): ${withoutFolder.join(', ')}.`,
-	)
+if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+	console.log(JSON.stringify(poolSnapshot(), null, 2))
 }
