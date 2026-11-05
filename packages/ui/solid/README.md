@@ -65,8 +65,11 @@ arrive as callback props (`element:ready` → `onElementReady`), and the default
 ## Install
 
 ```bash
-npm install @soldy-ui/solid @soldy-ui/theme-oren @soldy-ui/icons-material
+npm install @soldy-ui/solid @soldy-ui/setup @soldy-ui/theme-oren @soldy-ui/icons-material
 ```
+
+Install `@soldy-ui/setup` as a direct dependency for the `useIcons` and `useTheme` imports below.
+Keep it on the same version as `@soldy-ui/solid`.
 
 Solid `^1.9.13` is a peer dependency. The package ships its components as source with JSX under the
 `solid` export condition, so your app's bundler compiles them with its Solid plugin (for Vite,
