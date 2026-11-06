@@ -311,7 +311,7 @@ describe('отметка элемента: selected и onChangeSelected', () => 
 				value={value}
 				text={value.toUpperCase()}
 				selected={selected}
-				onChangeSelected={(next) => {
+				onChangeSelected={({ newValue: next }) => {
 					log.push(`${value}: ${next}`)
 					set(next)
 				}}
@@ -363,7 +363,7 @@ describe('отметка элемента: selected и onChangeSelected', () => 
 	it('колбэк получает отметку: boolean', () => {
 		expectTypeOf<NonNullable<ListBoxItemProps['onChangeSelected']>>()
 			.parameter(0)
-			.toEqualTypeOf<boolean>()
+			.toEqualTypeOf<import('@soldy-ui/core').TValuePayload<boolean>>()
 	})
 })
 

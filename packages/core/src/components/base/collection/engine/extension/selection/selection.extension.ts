@@ -39,6 +39,8 @@ export class TSelectionExtension<TItem extends object = any>
 	}
 
 	set mode(value: TSelectionMode) {
+		const oldMode = this.mode
+
 		if (this._mode === value) return
 
 		const wasMultiple = this._mode === 'multiple'
@@ -56,7 +58,7 @@ export class TSelectionExtension<TItem extends object = any>
 		// `single` -> `multiple` выбор не трогает
 		if (value === 'single' && wasMultiple) this.resetSelection()
 
-		this.events.emit('change:mode', value)
+		this.events.emit('change:mode', { newValue: value, oldValue: oldMode })
 	}
 
 	get multiple(): boolean {

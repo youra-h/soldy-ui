@@ -1,8 +1,9 @@
+import type { TValuePayload } from '../../../common'
 import type { IValueControl, IValueControlProps, TValueControlEvents } from '../value-control'
 
 export type TInputControlEvents<T = string> = TValueControlEvents<T> & {
-	'change:readonly': (value: boolean) => void
-	'change:required': (value: boolean) => void
+	'change:readonly': (payload: TValuePayload<boolean>) => void
+	'change:required': (payload: TValuePayload<boolean>) => void
 }
 
 export interface IInputControlProps<T = string> extends IValueControlProps<T> {

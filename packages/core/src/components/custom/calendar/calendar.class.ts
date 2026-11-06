@@ -83,13 +83,13 @@ export default class TCalendar
 		this._months = props.months ?? ctor.defaultValues.months
 
 		this._prevAria = new TAria()
-		this._prevAria.subscribe(() =>
-			this.events.emit('change:prevAria', this._prevAria.toObject()),
+		this._prevAria.subscribe((_set, oldValue) =>
+			this.events.emit('change:prevAria', { newValue: this._prevAria.toObject(), oldValue }),
 		)
 
 		this._nextAria = new TAria()
-		this._nextAria.subscribe(() =>
-			this.events.emit('change:nextAria', this._nextAria.toObject()),
+		this._nextAria.subscribe((_set, oldValue) =>
+			this.events.emit('change:nextAria', { newValue: this._nextAria.toObject(), oldValue }),
 		)
 	}
 
@@ -99,10 +99,12 @@ export default class TCalendar
 	}
 
 	set min(value: TCalendarDate | undefined) {
+		const oldMin = this.min
+
 		if (this._min === value) return
 
 		this._min = value
-		this.events.emit('change:min', value)
+		this.events.emit('change:min', { newValue: value, oldValue: oldMin })
 	}
 
 	/** Раньше `min` — граница схлопывается в `min`. */
@@ -111,10 +113,12 @@ export default class TCalendar
 	}
 
 	set max(value: TCalendarDate | undefined) {
+		const oldMax = this.max
+
 		if (this._max === value) return
 
 		this._max = value
-		this.events.emit('change:max', value)
+		this.events.emit('change:max', { newValue: value, oldValue: oldMax })
 	}
 
 	/** Функция сверяется по ссылке: заданная заново — смена. */
@@ -123,10 +127,12 @@ export default class TCalendar
 	}
 
 	set unavailable(value: TCalendarUnavailable | undefined) {
+		const oldUnavailable = this.unavailable
+
 		if (this._unavailable === value) return
 
 		this._unavailable = value
-		this.events.emit('change:unavailable', value)
+		this.events.emit('change:unavailable', { newValue: value, oldValue: oldUnavailable })
 	}
 
 	/** Не целое от 0 до 6 — как не задан: первый день даёт локаль. */
@@ -135,10 +141,12 @@ export default class TCalendar
 	}
 
 	set weekStart(value: TWeekday | undefined) {
+		const oldWeekStart = this.weekStart
+
 		if (this._weekStart === value) return
 
 		this._weekStart = value
-		this.events.emit('change:weekStart', value)
+		this.events.emit('change:weekStart', { newValue: value, oldValue: oldWeekStart })
 	}
 
 	get locale(): string {
@@ -146,10 +154,12 @@ export default class TCalendar
 	}
 
 	set locale(value: string) {
+		const oldLocale = this.locale
+
 		if (this._locale === value) return
 
 		this._locale = value
-		this.events.emit('change:locale', value)
+		this.events.emit('change:locale', { newValue: value, oldValue: oldLocale })
 	}
 
 	get timeZone(): string | undefined {
@@ -157,10 +167,12 @@ export default class TCalendar
 	}
 
 	set timeZone(value: string | undefined) {
+		const oldTimeZone = this.timeZone
+
 		if (this._timeZone === value) return
 
 		this._timeZone = value
-		this.events.emit('change:timeZone', value)
+		this.events.emit('change:timeZone', { newValue: value, oldValue: oldTimeZone })
 	}
 
 	/**
@@ -174,10 +186,12 @@ export default class TCalendar
 
 	/** Список сверяется поэлементно: эхо модели тем же списком — не смена. */
 	set months(value: TCalendarDate[] | undefined) {
+		const oldMonths = this.months
+
 		if (sameValue(this._months, value)) return
 
 		this._months = value
-		this.events.emit('change:months', value)
+		this.events.emit('change:months', { newValue: value, oldValue: oldMonths })
 	}
 
 	/**

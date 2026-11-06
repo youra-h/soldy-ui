@@ -48,7 +48,7 @@ describe('relayAll — фасад отдаёт карту источника ц�
 		const facade = new TestBatchFacade({}, { engine })
 		const changeItems = vi.fn()
 
-		facade.events.on('change:items', changeItems)
+		facade.events.on('change:items', ({ newValue }) => changeItems(newValue))
 
 		facade.extensions.plain.insert({ id: 1, name: 'a' })
 

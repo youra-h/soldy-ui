@@ -374,7 +374,9 @@ describe('что нажатием не считается', () => {
 describe('владелец — любой ISlidable', () => {
 	class TProbe implements ISlidable {
 		readonly classes = new TClasses('so-probe')
-		readonly events = new TEvented<{ 'change:snap': (value: TSlideSnap) => void }>()
+		readonly events = new TEvented<{
+			'change:snap': (payload: import('@soldy-ui/core').TValuePayload<TSlideSnap>) => void
+		}>()
 		readonly orientation: TSlideOrientation = 'horizontal'
 		readonly inverted = false
 		readonly largeStep = 10
@@ -448,7 +450,7 @@ describe('владелец — любой ISlidable', () => {
 		const { owner, track, root, pointer } = await mount(new TProbe())
 
 		owner.snap = 'settle'
-		owner.events.emit('change:snap', 'settle')
+		owner.events.emit('change:snap', { newValue: 'settle', oldValue: 'none' })
 
 		pointer('pointerdown', track, 196)
 		pointer('pointerup', root, 196)
@@ -573,7 +575,7 @@ describe('щелчок', () => {
 		pointer('pointermove', root, 196)
 		expect(owner.value).toBe(48)
 
-		owner.events.on('change:dragging', (value) => order.push(`dragging:${value}`))
+		owner.events.on('change:dragging', ({ newValue: value }) => order.push(`dragging:${value}`))
 		owner.events.on('change:value', ({ newValue }) => order.push(`value:${newValue}`))
 
 		pointer('pointerup', root, 196)

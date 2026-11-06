@@ -51,7 +51,7 @@ class TProbeNavigationPlugin extends TListNavigationPlugin<TProbeEvents, IListBo
 	constructor(private readonly _shown: readonly IListBoxItem[]) {
 		super()
 
-		this.events.on('change:highlight', (payload) => this.payloads.push(payload))
+		this.events.on('change:highlight', ({ newValue: payload }) => this.payloads.push(payload))
 	}
 
 	protected override shown(): readonly IListBoxItem[] {

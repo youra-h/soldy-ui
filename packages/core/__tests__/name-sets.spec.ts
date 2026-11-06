@@ -28,7 +28,12 @@ import type { TAria } from '../src'
 /** Набор кнопки и событие, которым он сообщает о записи. */
 type TNameSet = {
 	readonly set: TAria
-	readonly events: { on(event: string, handler: (value: unknown) => void): void }
+	readonly events: {
+		on(
+			event: string,
+			handler: (payload: import('@soldy-ui/core').TValuePayload<unknown>) => void,
+		): void
+	}
 	readonly event: string
 }
 
@@ -86,7 +91,7 @@ describe('ядро имён кнопок не строит', () => {
 			for (const { set, events, event } of sets) {
 				const handler = vi.fn()
 
-				events.on(event, handler)
+				events.on(event, ({ newValue }) => handler(newValue))
 				set.add('aria-label', 'Имя')
 
 				expect(handler).toHaveBeenCalledExactlyOnceWith(set.toObject())

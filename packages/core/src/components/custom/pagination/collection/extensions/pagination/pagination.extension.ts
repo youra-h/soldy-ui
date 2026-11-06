@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../../../../common'
 import { TBaseExtension, activationOf, batchOf } from '../../../../../base/collection'
 import type { IActivationExtension, IExtensionContext } from '../../../../../base/collection'
 import { pageCount, pageKey, pageNumber, pagePosition, pageWindow } from '../../../window'
@@ -134,11 +135,15 @@ export class TPaginationExtension
 
 			// Смена у пагинации — всем страницам: `disabled` распространяется на
 			// них, как у `<fieldset>`, `size` и `variant` диктует она
-			scope.on(owner.events, 'change:disabled', (value: boolean) => {
-				ctx.driver.valueOf().forEach((item) => {
-					item.disabled = value
-				})
-			})
+			scope.on(
+				owner.events,
+				'change:disabled',
+				({ newValue: value }: TValuePayload<boolean>) => {
+					ctx.driver.valueOf().forEach((item) => {
+						item.disabled = value
+					})
+				},
+			)
 			scope.on(owner.events, 'change:size', () =>
 				ctx.driver.valueOf().forEach((item) => this._applyStyle(item, owner)),
 			)
@@ -311,10 +316,12 @@ export class TPaginationExtension
 
 	/** Записать окно; событие — только на смену. */
 	private _setCells(cells: ReadonlyArray<TPaginationCell>): void {
+		const oldCells = this.cells
+
 		if (sameCells(this._cells, cells)) return
 
 		this._cells = cells
-		this.events.emit('change:cells', cells)
+		this.events.emit('change:cells', { newValue: cells, oldValue: oldCells })
 	}
 
 	/**

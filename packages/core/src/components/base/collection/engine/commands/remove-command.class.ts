@@ -1,4 +1,5 @@
 import type { ICommand, ICommandContext } from './types'
+import type { TValuePayload } from '../../../../../common'
 import { TRemoveEvent } from '../types'
 
 /**
@@ -21,6 +22,7 @@ import { TRemoveEvent } from '../types'
 export class TRemoveCommand<TItem> implements ICommand<TItem> {
 	private _event?: TRemoveEvent<TItem>
 	private _removed = false
+	private _count?: TValuePayload<number>
 
 	constructor(public item: TItem) {}
 
@@ -40,13 +42,15 @@ export class TRemoveCommand<TItem> implements ICommand<TItem> {
 
 		this._removed = true
 
+		const oldValue = ctx.storage.items.length
 		ctx.storage.remove(this.item)
+		this._count = { newValue: ctx.storage.items.length, oldValue }
 	}
 
 	emitEvents(ctx: ICommandContext<TItem>): void {
 		if (!this._removed) return
 
 		ctx.events.emit('item:removed', this._event as TRemoveEvent<TItem>)
-		ctx.events.emit('change:count', ctx.storage.items.length)
+		if (this._count) ctx.events.emit('change:count', this._count)
 	}
 }

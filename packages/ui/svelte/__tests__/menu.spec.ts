@@ -328,7 +328,7 @@ describe('открытие', () => {
 		const props = reactiveProps<MenuProps>({
 			items: ITEMS,
 			open: false,
-			onChangeOpen: (value) => {
+			onChangeOpen: ({ newValue: value }) => {
 				props.open = value
 			},
 			trigger,
@@ -442,7 +442,7 @@ describe('нажатие пунктов', () => {
 		const ruler: boolean[] = []
 		const grid = reactiveProps<MenuCheckboxItemProps>({
 			selected: false,
-			onChangeSelected: (selected) => {
+			onChangeSelected: ({ newValue: selected }) => {
 				grid.selected = selected
 			},
 		})
@@ -451,7 +451,10 @@ describe('нажатие пунктов', () => {
 			case: 'items',
 			menu: { onChoose: (item) => chosen.push(item.value) },
 			grid,
-			ruler: { selected: true, onChangeSelected: (selected) => ruler.push(selected) },
+			ruler: {
+				selected: true,
+				onChangeSelected: ({ newValue: selected }) => ruler.push(selected),
+			},
 		})
 		await open()
 		ruler.length = 0
@@ -629,13 +632,13 @@ describe('переключатели', () => {
 		const group = radioGroup('name')
 		const name = reactiveProps<MenuRadioItemProps>({
 			selected: true,
-			onChangeSelected: (selected) => {
+			onChangeSelected: ({ newValue: selected }) => {
 				name.selected = selected
 			},
 		})
 		const date = reactiveProps<MenuRadioItemProps>({
 			selected: false,
-			onChangeSelected: (selected) => {
+			onChangeSelected: ({ newValue: selected }) => {
 				date.selected = selected
 			},
 		})
@@ -1341,7 +1344,7 @@ describe('подменю', () => {
 	it('open пропом и onChangeOpen — в обе стороны', async () => {
 		const share = reactiveProps<MenuSubmenuProps>({
 			open: false,
-			onChangeOpen: (value) => {
+			onChangeOpen: ({ newValue: value }) => {
 				share.open = value
 			},
 		})
@@ -2111,7 +2114,7 @@ describe('пункт с панелью', () => {
 	it('open пропом и onChangeOpen — в обе стороны', async () => {
 		const due = reactiveProps<MenuPopoverItemProps>({
 			open: false,
-			onChangeOpen: (value) => {
+			onChangeOpen: ({ newValue: value }) => {
 				due.open = value
 			},
 		})

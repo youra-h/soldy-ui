@@ -84,7 +84,7 @@ export class TTabsViewPlugin extends TBasePlugin<ITabs> {
 			this._engine = engine as TTabsCollection
 		})
 
-		ctx.get(TTabsActiveTabPlugin)?.events.on('change:active-tab', (offset) => {
+		ctx.get(TTabsActiveTabPlugin)?.events.on('change:active-tab', ({ newValue: offset }) => {
 			this._updateActiveTab(offset)
 			this._updateGap(offset)
 		})

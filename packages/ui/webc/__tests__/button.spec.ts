@@ -1,3 +1,4 @@
+import { propertyDetail } from './property-detail'
 /**
  * `<button is="so-button">` — нативная `<button>`, расширенная классом soldy
  * (customized built-in). Классы, наборы ядра и скрытие лежат на самой кнопке,
@@ -79,7 +80,7 @@ function collect(el: Element, name: string): unknown[] {
 	const seen: unknown[] = []
 
 	el.addEventListener(name, (event) => {
-		if (event instanceof CustomEvent) seen.push(event.detail)
+		if (event instanceof CustomEvent) seen.push(propertyDetail(event))
 	})
 
 	return seen

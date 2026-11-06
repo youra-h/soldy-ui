@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../../../../common'
 import type { IAccordion } from '../../../types'
 import type { TAccordionView } from '../../../types'
 import type { IExtension, IExtensionItems } from '../../../../../base/collection'
@@ -25,5 +26,5 @@ export type TAccordionEngineOptions<TOwner extends IAccordion = IAccordion> = {
  * События расширения TAccordionExtension.
  */
 export type TAccordionExtensionEvents = {
-	'change:view': (value: TAccordionView | undefined) => void
+	'change:view': (payload: TValuePayload<TAccordionView | undefined>) => void
 }

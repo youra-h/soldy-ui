@@ -87,7 +87,7 @@ describe('driver.query', () => {
 
 		const changeItems = vi.fn()
 
-		col.getCore().driver.events.on('change:items', changeItems)
+		col.getCore().driver.events.on('change:items', ({ newValue }) => changeItems(newValue))
 		col.getCore().driver.query(new TQueryCommand<Item>())
 		col.getCore().driver.query(new TQueryCommand<Item>())
 

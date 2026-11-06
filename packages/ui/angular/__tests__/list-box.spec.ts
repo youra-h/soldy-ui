@@ -1135,12 +1135,12 @@ describe('типы', () => {
 
 	it('выходы фасада — выходы компонента', () => {
 		expectTypeOf<TListBoxComponent['soChangeMode']>().toEqualTypeOf<
-			EventEmitter<TSelectionMode>
+			EventEmitter<import('@soldy-ui/core').TValuePayload<TSelectionMode>>
 		>()
 		expectTypeOf<TListBoxComponent>().toHaveProperty('soEngineCreate')
 		// An item's selection is a value: the output comes to the item whose selection changed
 		expectTypeOf<TListBoxItemComponent['soChangeSelected']>().toEqualTypeOf<
-			EventEmitter<boolean>
+			EventEmitter<import('@soldy-ui/core').TValuePayload<boolean>>
 		>()
 		expectTypeOf<TListBoxItemComponent['soChangeOrder']>().toEqualTypeOf<
 			EventEmitter<undefined>

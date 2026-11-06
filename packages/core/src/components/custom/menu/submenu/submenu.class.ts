@@ -67,8 +67,11 @@ export default class TMenuSubmenu
 
 		// Блок — панели меню: панель подменю выглядит так же, как его
 		this._panelClasses = new TClasses(`${TMenu.baseClass}__panel`)
-		this._panelClasses.subscribe(() =>
-			this.events.emit('change:panelClasses', this._panelClasses.toArray()),
+		this._panelClasses.subscribe((_set, oldValue) =>
+			this.events.emit('change:panelClasses', {
+				newValue: this._panelClasses.toArray(),
+				oldValue,
+			}),
 		)
 
 		this._applyPanelSize(this.size)
@@ -132,10 +135,15 @@ export default class TMenuSubmenu
 	}
 
 	set groupSeparators(value: boolean) {
+		const oldGroupSeparators = this.groupSeparators
+
 		if (this._groupSeparators === value) return
 
 		this._groupSeparators = value
-		this.events.emit('change:groupSeparators', value)
+		this.events.emit('change:groupSeparators', {
+			newValue: value,
+			oldValue: oldGroupSeparators,
+		})
 	}
 
 	/**

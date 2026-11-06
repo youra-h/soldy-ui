@@ -98,9 +98,9 @@ async function render({ props = {}, content = inside }: TPageOptions = {}) {
 					title="Фильтры"
 					{...rest}
 					visible={visible}
-					onChangeVisible={(value) => {
-						onChangeVisible?.(value)
-						setVisible(value)
+					onChangeVisible={(payload) => {
+						onChangeVisible?.(payload)
+						setVisible(payload.newValue)
 					}}
 				>
 					{content}
@@ -363,7 +363,7 @@ describe('закрытие пользователем', () => {
 			props: {
 				swipe: 'handle',
 				onCloseBefore,
-				onChangeVisible: (value) => changes.push(value),
+				onChangeVisible: ({ newValue: value }) => changes.push(value),
 			},
 		})
 
@@ -478,9 +478,16 @@ describe('внутри модального окна', () => {
 			drawer.set = setDrawer
 
 			return (
-				<Dialog visible={dialogVisible} onChangeVisible={setDialog}>
+				<Dialog
+					visible={dialogVisible}
+					onChangeVisible={({ newValue }) => setDialog(newValue)}
+				>
 					<button className="so-test-in-dialog">В окне</button>
-					<Drawer contained visible={drawerVisible} onChangeVisible={setDrawer}>
+					<Drawer
+						contained
+						visible={drawerVisible}
+						onChangeVisible={({ newValue }) => setDrawer(newValue)}
+					>
 						<button className="so-test-in-drawer">В панели</button>
 					</Drawer>
 				</Dialog>
@@ -548,7 +555,10 @@ describe('React', () => {
 			return (
 				<div>
 					<button className="so-test-opener">Открыть</button>
-					<Drawer visible={visible} onChangeVisible={setVisible}>
+					<Drawer
+						visible={visible}
+						onChangeVisible={({ newValue }) => setVisible(newValue)}
+					>
 						{inside}
 					</Drawer>
 				</div>
@@ -608,7 +618,11 @@ describe('React', () => {
 
 			return (
 				<div className="so-test-host">
-					<Drawer contained visible={visible} onChangeVisible={setVisible}>
+					<Drawer
+						contained
+						visible={visible}
+						onChangeVisible={({ newValue }) => setVisible(newValue)}
+					>
 						{inside}
 					</Drawer>
 				</div>

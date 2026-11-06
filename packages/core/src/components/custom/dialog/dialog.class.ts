@@ -54,13 +54,16 @@ export default class TDialog extends TModalLayer<IDialogProps, TDialogEvents> im
 		const ctor = new.target as typeof TDialog
 
 		this._bodyAria = new TAria()
-		this._bodyAria.subscribe(() =>
-			this.events.emit('change:bodyAria', this._bodyAria.toObject()),
+		this._bodyAria.subscribe((_set, oldValue) =>
+			this.events.emit('change:bodyAria', { newValue: this._bodyAria.toObject(), oldValue }),
 		)
 
 		this._maximizeAria = new TAria()
-		this._maximizeAria.subscribe(() =>
-			this.events.emit('change:maximizeAria', this._maximizeAria.toObject()),
+		this._maximizeAria.subscribe((_set, oldValue) =>
+			this.events.emit('change:maximizeAria', {
+				newValue: this._maximizeAria.toObject(),
+				oldValue,
+			}),
 		)
 
 		this._offset = props.offset ?? ctor.defaultValues.offset
@@ -82,10 +85,12 @@ export default class TDialog extends TModalLayer<IDialogProps, TDialogEvents> im
 	}
 
 	set placement(value: TDialogPlacement) {
+		const oldPlacement = this.placement
+
 		if (this._placement === value) return
 
 		this._applyPlacement(value, this._placement)
-		this.events.emit('change:placement', value)
+		this.events.emit('change:placement', { newValue: value, oldValue: oldPlacement })
 	}
 
 	/**
@@ -100,10 +105,12 @@ export default class TDialog extends TModalLayer<IDialogProps, TDialogEvents> im
 	}
 
 	set offset(value: number | string | undefined) {
+		const oldOffset = this.offset
+
 		if (this._offset === value) return
 
 		this._offset = value
-		this.events.emit('change:offset', value)
+		this.events.emit('change:offset', { newValue: value, oldValue: oldOffset })
 	}
 
 	/**
@@ -115,10 +122,12 @@ export default class TDialog extends TModalLayer<IDialogProps, TDialogEvents> im
 	}
 
 	set maximized(value: boolean) {
+		const oldMaximized = this.maximized
+
 		if (this._maximized === value) return
 
 		this._applyMaximized(value)
-		this.events.emit('change:maximized', value)
+		this.events.emit('change:maximized', { newValue: value, oldValue: oldMaximized })
 	}
 
 	/** Показывать ли кнопку разворота. Развернуть окно можно и без неё — `maximized`. */
@@ -127,10 +136,12 @@ export default class TDialog extends TModalLayer<IDialogProps, TDialogEvents> im
 	}
 
 	set maximizable(value: boolean) {
+		const oldMaximizable = this.maximizable
+
 		if (this._maximizable === value) return
 
 		this._maximizable = value
-		this.events.emit('change:maximizable', value)
+		this.events.emit('change:maximizable', { newValue: value, oldValue: oldMaximizable })
 	}
 
 	/** Окно — предупреждение: `role="alertdialog"`, описание — тело окна. */
@@ -139,10 +150,12 @@ export default class TDialog extends TModalLayer<IDialogProps, TDialogEvents> im
 	}
 
 	set alert(value: boolean) {
+		const oldAlert = this.alert
+
 		if (this._alert === value) return
 
 		this._applyAlert(value)
-		this.events.emit('change:alert', value)
+		this.events.emit('change:alert', { newValue: value, oldValue: oldAlert })
 	}
 
 	/**

@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../../common'
 import type { TAria, TAriaAttributes } from '../../../../common'
 import type { IMenuItem, IMenuItemProps, TMenuItemEvents } from '../item/types'
 
@@ -10,9 +11,9 @@ export type TMenuPopup = 'menu' | 'dialog'
 
 export type TMenuPopupItemEvents = TMenuItemEvents & {
 	/** change:open */
-	'change:open': (value: boolean) => void
+	'change:open': (payload: TValuePayload<boolean>) => void
 	/** change:panelAria — набор атрибутов панели пункта изменился */
-	'change:panelAria': (value: TAriaAttributes) => void
+	'change:panelAria': (payload: TValuePayload<TAriaAttributes>) => void
 }
 
 /** Пропсы пункта со своей панелью. */

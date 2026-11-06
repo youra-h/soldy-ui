@@ -327,7 +327,7 @@ describe('отметка элемента: selected и onChangeSelected', () => 
 							value={value}
 							text={value.toUpperCase()}
 							selected={selected()}
-							onChangeSelected={(next) => {
+							onChangeSelected={({ newValue: next }) => {
 								log.push(`${value}: ${next}`)
 								setSelected(next)
 							}}
@@ -370,7 +370,7 @@ describe('отметка элемента: selected и onChangeSelected', () => 
 	it('колбэк получает отметку: boolean', () => {
 		expectTypeOf<NonNullable<ListBoxItemProps['onChangeSelected']>>()
 			.parameter(0)
-			.toEqualTypeOf<boolean>()
+			.toEqualTypeOf<import('@soldy-ui/core').TValuePayload<boolean>>()
 	})
 })
 
@@ -1142,7 +1142,7 @@ describe('события снятия', () => {
 		mount(() => (
 			<Show when={shown()}>
 				<ListBox
-					onChangeItems={(items) => setCount(items.length)}
+					onChangeItems={({ newValue: items }) => setCount(items.length)}
 					onItemRemoved={() => heard.push('item:removed')}
 					onElementRemoved={() => heard.push('element:removed')}
 				>
@@ -1164,7 +1164,7 @@ describe('события снятия', () => {
 		const heard: string[] = []
 		const { destroy } = mount(() => (
 			<ListBox
-				onChangeItems={(items) => heard.push(`items ${items.length}`)}
+				onChangeItems={({ newValue: items }) => heard.push(`items ${items.length}`)}
 				onElementRemoved={() => heard.push('element:removed')}
 			>
 				<ListBoxItem value="a" text="A" />

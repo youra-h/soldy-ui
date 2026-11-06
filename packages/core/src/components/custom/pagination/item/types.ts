@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../../common'
 import type {
 	IValueControl,
 	IValueControlProps,
@@ -7,7 +8,7 @@ import type { TPaginationValue } from '../types'
 
 export type TPaginationItemEvents = TValueControlEvents<TPaginationValue> & {
 	/** change:text */
-	'change:text': (value: string) => void
+	'change:text': (payload: TValuePayload<string>) => void
 }
 
 /**

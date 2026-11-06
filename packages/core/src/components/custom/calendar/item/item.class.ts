@@ -72,10 +72,12 @@ export default class TCalendarItem<
 	}
 
 	set date(value: TCalendarDate) {
+		const oldDate = this.date
+
 		if (this._date === value) return
 
 		this._date = value
-		this._sink.emit('change:date', value)
+		this._sink.emit('change:date', { newValue: value, oldValue: oldDate })
 	}
 
 	get text(): string {
@@ -83,10 +85,12 @@ export default class TCalendarItem<
 	}
 
 	set text(value: string) {
+		const oldText = this.text
+
 		if (this._text === value) return
 
 		this._text = value
-		this._sink.emit('change:text', value)
+		this._sink.emit('change:text', { newValue: value, oldValue: oldText })
 	}
 
 	get unavailable(): boolean {
@@ -94,6 +98,8 @@ export default class TCalendarItem<
 	}
 
 	set unavailable(value: boolean) {
+		const oldUnavailable = this.unavailable
+
 		if (value === this._unavailable) return
 
 		const e = new TChangeEvent(value, this._unavailable)
@@ -103,7 +109,7 @@ export default class TCalendarItem<
 		if (e.defaultPrevented || e.value === this._unavailable) return
 
 		this._unavailable = e.value
-		this._sink.emit('change:unavailable', e.value)
+		this._sink.emit('change:unavailable', { newValue: e.value, oldValue: oldUnavailable })
 	}
 
 	/**

@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../../../../common'
 import type {
 	IExtension,
 	IExtensionItems,
@@ -23,11 +24,11 @@ export interface ICalendarSelectionCollectionProps {
 
 export type TCalendarSelectionEvents = {
 	/** change:mode */
-	'change:mode': (value: TCalendarMode) => void
+	'change:mode': (payload: TValuePayload<TCalendarMode>) => void
 	/** Диапазон начат (дата — якорь) или закончен и отменён (`undefined`) */
-	'change:anchor': (value: TCalendarDate | undefined) => void
+	'change:anchor': (payload: TValuePayload<TCalendarDate | undefined>) => void
 	/** Указатель перешёл на другой день или ушёл с сетки (`undefined`) */
-	'change:hovered': (value: TCalendarDate | undefined) => void
+	'change:hovered': (payload: TValuePayload<TCalendarDate | undefined>) => void
 	/** Сменились отметки дней: выбор, диапазон или предпросмотр */
 	'change:marks': () => void
 	/**

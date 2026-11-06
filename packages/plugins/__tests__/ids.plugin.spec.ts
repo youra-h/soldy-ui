@@ -511,7 +511,7 @@ describe('поле формы', () => {
 		const { owner, ids } = field({ helper: 'Подсказка' })
 		const seen: unknown[] = []
 
-		ids.events.on('change:links', (links) => seen.push(links))
+		ids.events.on('change:links', ({ newValue: links }) => seen.push(links))
 
 		owner.helper = 'Другая подсказка'
 		owner.label = 'Почта'
@@ -542,7 +542,7 @@ describe('поле формы', () => {
 		const { owner, ids } = field()
 		const seen: unknown[] = []
 
-		ids.events.on('change:links', (links) => seen.push(links))
+		ids.events.on('change:links', ({ newValue: links }) => seen.push(links))
 		ids.destroy()
 
 		owner.label = 'Почта'

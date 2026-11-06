@@ -31,9 +31,11 @@ export class TAccordion extends TControl<IAccordionProps, TAccordionEvents> impl
 	}
 
 	set view(value: TAccordionView | undefined) {
+		const oldView = this.view
+
 		if (this._view !== value) {
 			this._applyView(value, this._view)
-			this.events.emit('change:view', value)
+			this.events.emit('change:view', { newValue: value, oldValue: oldView })
 		}
 	}
 

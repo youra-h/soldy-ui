@@ -16,7 +16,7 @@ import { defineComponent, h, nextTick, ref, type VNode } from 'vue'
 import { Calendar, LocaleProvider } from '@soldy-ui/vue'
 import { TCalendar, createEngineCalendar } from '@soldy-ui/core'
 import { ruRU } from '@soldy-ui/plugins'
-import type { ICalendarItem, TCalendarValue } from '@soldy-ui/core'
+import type { ICalendarItem, TCalendarValue, TCalendarDate, TValuePayload } from '@soldy-ui/core'
 
 const nextFrame = () => new Promise((resolve) => requestAnimationFrame(resolve))
 
@@ -293,7 +293,11 @@ describe('кнопки листания', () => {
 		const onUpdateMonths = vi.fn()
 
 		await render(() =>
-			h(Calendar, { 'onChange:months': onChangeMonths, 'onUpdate:months': onUpdateMonths }),
+			h(Calendar, {
+				'onChange:months': ({ newValue }: TValuePayload<TCalendarDate[] | undefined>) =>
+					onChangeMonths(newValue),
+				'onUpdate:months': onUpdateMonths,
+			}),
 		)
 
 		expect(onChangeMonths).not.toHaveBeenCalled()

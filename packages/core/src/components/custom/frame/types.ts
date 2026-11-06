@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../common'
 import type { ILayer, ILayerProps, TLayerEvents } from '../../base/layer'
 
 export type TFramePosition = 'fixed' | 'absolute'
@@ -26,17 +27,17 @@ export interface IFrameProps extends ILayerProps {
 
 export type TFrameEvents = TLayerEvents & {
 	/** change:x */
-	'change:x': (value: number) => void
+	'change:x': (payload: TValuePayload<number>) => void
 	/** change:y */
-	'change:y': (value: number) => void
+	'change:y': (payload: TValuePayload<number>) => void
 	/** change:width */
-	'change:width': (value: number | string) => void
+	'change:width': (payload: TValuePayload<number | string>) => void
 	/** change:height */
-	'change:height': (value: number | string) => void
+	'change:height': (payload: TValuePayload<number | string>) => void
 	/** change:position */
-	'change:position': (value: TFramePosition) => void
+	'change:position': (payload: TValuePayload<TFramePosition>) => void
 	/** change:contained */
-	'change:contained': (value: boolean) => void
+	'change:contained': (payload: TValuePayload<boolean>) => void
 }
 
 export interface IFrame extends ILayer<IFrameProps, TFrameEvents> {

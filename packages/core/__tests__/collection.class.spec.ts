@@ -70,7 +70,7 @@ describe('TCollectionEngine', () => {
 
 		const changeItems = vi.fn()
 
-		col.getCore().driver.events.on('change:items', changeItems)
+		col.getCore().driver.events.on('change:items', ({ newValue }) => changeItems(newValue))
 
 		col.batch(() => {
 			plain.insert({ id: 1, name: 'a' })

@@ -822,7 +822,7 @@ describe('TToastsCascadePlugin — листание стопки', () => {
 
 		if (!first) throw new Error('тостов нет')
 
-		engine.extensions.plain.events.on('change:items', onItems)
+		engine.extensions.plain.events.on('change:items', ({ newValue }) => onItems(newValue))
 		// Задний вперёд от заднего под фокусом — две перестановки
 		nodeOf(first).focus()
 		press(nodeOf(first), 'ArrowUp')
@@ -882,7 +882,7 @@ describe('TToastsLayoutPlugin — слой в стилях', () => {
 		expect(owner.zIndex).toBeGreaterThan(0)
 		expect(before).toEqual({ 'z-index': owner.zIndex })
 
-		layout.events.on('change:styles', onStyles)
+		layout.events.on('change:styles', ({ newValue }) => onStyles(newValue))
 		owner.raise()
 
 		expect(layout.styles).not.toBe(before)

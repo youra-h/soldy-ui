@@ -138,12 +138,14 @@ export class TTableGridExtension<TOwner extends ITable = ITable, TRow extends IT
 	}
 
 	set grid(value: boolean) {
+		const oldGrid = this.grid
+
 		if (this._grid === value) return
 
 		this._grid = value
 		this._syncActive()
 		this._applySelectedAll()
-		this.events.emit('change:grid', value)
+		this.events.emit('change:grid', { newValue: value, oldValue: oldGrid })
 	}
 
 	get focusedCell(): TTableGridCell | undefined {
@@ -264,19 +266,23 @@ export class TTableGridExtension<TOwner extends ITable = ITable, TRow extends IT
 	}
 
 	private _emitCell(cell: TTableGridCell | undefined): void {
+		const oldFocusedCell = this.focusedCell
+
 		if (this._cell === cell) return
 
 		this._cell = cell
-		this.events.emit('change:focusedCell', cell)
+		this.events.emit('change:focusedCell', { newValue: cell, oldValue: oldFocusedCell })
 	}
 
 	/** Сетка заработала или перестала — наборы таблицы, колонок и ячеек. */
 	private _syncActive(): void {
+		const oldCellAria = this.cellAria
+
 		const active = this._grid && !this._ctx?.options.get('owner')?.disabled
 
 		if (this._active !== active) {
 			this._active = active
-			this.events.emit('change:cellAria', this.cellAria)
+			this.events.emit('change:cellAria', { newValue: this.cellAria, oldValue: oldCellAria })
 		}
 
 		this._applyOwner()

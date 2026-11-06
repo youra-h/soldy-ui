@@ -194,7 +194,7 @@ async function openOnce(): Promise<void> {
 		[swipe]="swipe()"
 		[rendered]="rendered()"
 		(soChangeValue)="change($event)"
-		(soChangeOpen)="opened.set($event)"
+		(soChangeOpen)="opened.set($event.newValue)"
 		(click)="clicks.push($event)"
 	></div>`,
 })

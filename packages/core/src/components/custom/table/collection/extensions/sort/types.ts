@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../../../../common'
 import type { IExtension } from '../../../../../base/collection'
 import type { ITableRow } from '../../../row/types'
 
@@ -27,11 +28,11 @@ export type TTableSortMode = 'single' | 'multiple'
 
 export type TTableSortEvents = {
 	/** Сменилось состояние сортировки — колонки, направления или приоритет */
-	'change:sort': (value: TTableColumnSort[]) => void
+	'change:sort': (payload: TValuePayload<TTableColumnSort[]>) => void
 	/** change:sortMode */
-	'change:sortMode': (value: TTableSortMode) => void
+	'change:sortMode': (payload: TValuePayload<TTableSortMode>) => void
 	/** change:presorted */
-	'change:presorted': (value: boolean) => void
+	'change:presorted': (payload: TValuePayload<boolean>) => void
 }
 
 /**

@@ -162,9 +162,9 @@ function model(el: TDatePickerElementProps, initial: TDatePickerValue = undefine
 		el.value = state.value
 	})
 	el.addEventListener('so:change:open', (event) => {
-		if (!(event instanceof CustomEvent) || typeof event.detail !== 'boolean') return
+		if (!(event instanceof CustomEvent) || typeof event.detail.newValue !== 'boolean') return
 
-		state.open = event.detail
+		state.open = event.detail.newValue
 		el.open = state.open
 	})
 

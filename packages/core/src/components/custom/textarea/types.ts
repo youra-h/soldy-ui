@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../common'
 import type {
 	IInputControl,
 	IInputControlProps,
@@ -14,19 +15,19 @@ export type TTextareaLimit = 'reached' | 'exceeded'
 
 export type TTextareaEvents = TInputControlEvents<string> & {
 	/** change:placeholder */
-	'change:placeholder': (value: string) => void
+	'change:placeholder': (payload: TValuePayload<string>) => void
 	/** change:rows */
-	'change:rows': (value: number) => void
+	'change:rows': (payload: TValuePayload<number>) => void
 	/** change:maxRows */
-	'change:maxRows': (value: number) => void
+	'change:maxRows': (payload: TValuePayload<number>) => void
 	/** change:maxlength — предел сменился; `undefined` — предела нет */
-	'change:maxlength': (value: number | undefined) => void
+	'change:maxlength': (payload: TValuePayload<number | undefined>) => void
 	/** change:autoresize */
-	'change:autoresize': (value: boolean) => void
+	'change:autoresize': (payload: TValuePayload<boolean>) => void
 	/** change:counter */
-	'change:counter': (value: boolean) => void
+	'change:counter': (payload: TValuePayload<boolean>) => void
 	/** change:counterAria — набор атрибутов счётчика изменился */
-	'change:counterAria': (value: TAriaAttributes) => void
+	'change:counterAria': (payload: TValuePayload<TAriaAttributes>) => void
 }
 
 export interface ITextareaProps extends IInputControlProps<string> {

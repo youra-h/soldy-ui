@@ -1,3 +1,4 @@
+import { propertyDetail } from './property-detail'
 /**
  * `<span is="so-menu">` — Menu в Web Components, проводка целиком, на
  * настоящей разметке.
@@ -267,7 +268,7 @@ function collect(el: Element, name: string): unknown[] {
 	const seen: unknown[] = []
 
 	el.addEventListener(name, (event) => {
-		if (event instanceof CustomEvent && event.target === el) seen.push(event.detail)
+		if (event instanceof CustomEvent && event.target === el) seen.push(propertyDetail(event))
 	})
 
 	return seen

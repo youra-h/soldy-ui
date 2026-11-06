@@ -107,12 +107,14 @@ export default class TRating
 	}
 
 	set max(value: number) {
+		const oldMax = this.max
+
 		if (this._max === value) return
 
 		this._rescale(() => {
 			this._max = value
 		})
-		this.events.emit('change:max', value)
+		this.events.emit('change:max', { newValue: value, oldValue: oldMax })
 	}
 
 	get step(): number {
@@ -120,12 +122,14 @@ export default class TRating
 	}
 
 	set step(value: number) {
+		const oldStep = this.step
+
 		if (this._step === value) return
 
 		this._rescale(() => {
 			this._step = value
 		})
-		this.events.emit('change:step', value)
+		this.events.emit('change:step', { newValue: value, oldValue: oldStep })
 	}
 
 	get preview(): number | undefined {
@@ -328,10 +332,12 @@ export default class TRating
 	}
 
 	protected _setPreview(value: number | undefined): void {
+		const oldPreview = this.preview
+
 		if (this._preview === value) return
 
 		this._preview = value
-		this.events.emit('change:preview', value)
+		this.events.emit('change:preview', { newValue: value, oldValue: oldPreview })
 	}
 
 	protected _resetPreview(): void {

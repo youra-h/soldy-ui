@@ -58,8 +58,8 @@ export default class TItemGroup<
 		this._aria.add('role', 'group')
 
 		this._labelAria = new TAria()
-		this._labelAria.subscribe(() =>
-			this._sink.emit('change:labelAria', this._labelAria.toObject()),
+		this._labelAria.subscribe((_set, oldValue) =>
+			this._sink.emit('change:labelAria', { newValue: this._labelAria.toObject(), oldValue }),
 		)
 	}
 
@@ -76,10 +76,12 @@ export default class TItemGroup<
 	}
 
 	set label(value: string) {
+		const oldLabel = this.label
+
 		if (this._label === value) return
 
 		this._label = value
-		this._sink.emit('change:label', value)
+		this._sink.emit('change:label', { newValue: value, oldValue: oldLabel })
 	}
 
 	/**

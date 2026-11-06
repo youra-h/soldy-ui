@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../common'
 import type {
 	IValueControl,
 	IValueControlProps,
@@ -35,19 +36,19 @@ export type TPaginationPage = {
 
 export type TPaginationEvents = TValueControlEvents<TPaginationValue> & {
 	/** change:total */
-	'change:total': (value: number) => void
+	'change:total': (payload: TValuePayload<number>) => void
 	/** change:pageSize */
-	'change:pageSize': (value: number) => void
+	'change:pageSize': (payload: TValuePayload<number>) => void
 	/** change:pages */
-	'change:pages': (value: TPaginationPage[] | undefined) => void
+	'change:pages': (payload: TValuePayload<TPaginationPage[] | undefined>) => void
 	/** change:middleCount */
-	'change:middleCount': (value: number) => void
+	'change:middleCount': (payload: TValuePayload<number>) => void
 	/** change:locale */
-	'change:locale': (value: string) => void
+	'change:locale': (payload: TValuePayload<string>) => void
 	/** change:prevAria — набор атрибутов стрелки «назад» изменился */
-	'change:prevAria': (value: TAriaAttributes) => void
+	'change:prevAria': (payload: TValuePayload<TAriaAttributes>) => void
 	/** change:nextAria — набор атрибутов стрелки «вперёд» изменился */
-	'change:nextAria': (value: TAriaAttributes) => void
+	'change:nextAria': (payload: TValuePayload<TAriaAttributes>) => void
 }
 
 /** Пропсы самой пагинации (без коллекционной части). */

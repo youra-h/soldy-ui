@@ -136,7 +136,7 @@ async function withMonths(): Promise<() => TCalendarDate[] | undefined> {
 	// changes after it
 	const props = reactiveProps<CalendarProps>({})
 
-	props.onChangeMonths = (months) => {
+	props.onChangeMonths = ({ newValue: months }) => {
 		props.months = months
 	}
 
@@ -367,7 +367,10 @@ describe('Calendar · кнопки листания', () => {
 		next().click()
 		await nextFrame()
 
-		expect(onChangeMonths).toHaveBeenCalledExactlyOnceWith(['2026-10-01'])
+		expect(onChangeMonths).toHaveBeenCalledExactlyOnceWith({
+			newValue: ['2026-10-01'],
+			oldValue: ['2026-09-01'],
+		})
 	})
 
 	it('листание пишет months — onChangeMonths', async () => {

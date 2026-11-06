@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../../../../common'
 import { TBaseExtension } from '../../../../../base/collection'
 import type { IExtensionContext } from '../../../../../base/collection'
 import {
@@ -124,9 +125,13 @@ export class TCalendarPickerExtension
 
 			// Выключенный календарь выбирать не даёт: заголовок выключен, а
 			// открытая панель закрывается
-			scope.on(owner.events, 'change:disabled', (off: boolean) => {
-				if (off) this._places.forEach((place) => (place.popover.open = false))
-			})
+			scope.on(
+				owner.events,
+				'change:disabled',
+				({ newValue: off }: TValuePayload<boolean>) => {
+					if (off) this._places.forEach((place) => (place.popover.open = false))
+				},
+			)
 		})
 	}
 
@@ -225,7 +230,7 @@ export class TCalendarPickerExtension
 
 		// The place's instances are its own and live with the extension: the
 		// subscriptions are direct
-		popover.events.on('change:open', (open: boolean) => {
+		popover.events.on('change:open', ({ newValue: open }: TValuePayload<boolean>) => {
 			if (open) this._open(place, index)
 		})
 

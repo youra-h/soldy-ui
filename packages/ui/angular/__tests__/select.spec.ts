@@ -253,7 +253,7 @@ const ITEMS = [
 		[open]="opened()"
 		[rendered]="rendered()"
 		(soChangeValue)="values.push($event.newValue)"
-		(soChangeOpen)="opens.push($event); opened.set($event)"
+		(soChangeOpen)="opens.push($event.newValue); opened.set($event.newValue)"
 		(soEngineCreate)="engines.push($event)"
 	>
 		@for (option of options(); track $index) {
@@ -2389,12 +2389,14 @@ describe('типы', () => {
 	})
 
 	it('выходы — выходы компонента', () => {
-		expectTypeOf<TSelectComponent['soChangeOpen']>().toEqualTypeOf<EventEmitter<boolean>>()
+		expectTypeOf<TSelectComponent['soChangeOpen']>().toEqualTypeOf<
+			EventEmitter<import('@soldy-ui/core').TValuePayload<boolean>>
+		>()
 		expectTypeOf<TSelectComponent>().toHaveProperty('soOpen')
 		expectTypeOf<TSelectComponent>().toHaveProperty('soClose')
 		expectTypeOf<TSelectComponent>().toHaveProperty('soEngineCreate')
 		expectTypeOf<TSelectItemComponent['soChangeSelected']>().toEqualTypeOf<
-			EventEmitter<boolean>
+			EventEmitter<import('@soldy-ui/core').TValuePayload<boolean>>
 		>()
 		expectTypeOf<TSelectItemComponent>().toHaveProperty('soChangeOrder')
 	})

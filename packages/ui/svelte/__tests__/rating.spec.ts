@@ -46,7 +46,7 @@ async function render(initial: RatingProps = {}): Promise<{ props: RatingProps; 
 		onCommit: (payload) => {
 			log.commits.push(payload)
 		},
-		onChangePreview: (value) => {
+		onChangePreview: ({ newValue: value }) => {
 			log.previews.push(value)
 		},
 	})

@@ -1,3 +1,4 @@
+import { propertyDetail } from './property-detail'
 /**
  * `<span is="so-rating">` — проводка целиком, на настоящей разметке.
  *
@@ -150,7 +151,7 @@ function collect(el: Element, name: string): unknown[] {
 	const seen: unknown[] = []
 
 	el.addEventListener(name, (event) => {
-		if (event instanceof CustomEvent) seen.push(event.detail)
+		if (event instanceof CustomEvent) seen.push(propertyDetail(event))
 	})
 
 	return seen

@@ -127,7 +127,7 @@ export class TMenuSubmenusExtension
 		// команды и пачки
 		ctx.driver.events.on('change:items', () => this._announce())
 
-		batchOf(ctx)?.events.on('change:trackBy', (trackBy) => {
+		batchOf(ctx)?.events.on('change:trackBy', ({ newValue: trackBy }) => {
 			for (const { engine } of this._entries.values()) {
 				engine.extensions.batch.trackBy = trackBy
 			}
@@ -212,7 +212,8 @@ export class TMenuSubmenusExtension
 
 		if (sameEntries(entries, this._announced)) return
 
+		const oldValue = this._announced
 		this._announced = entries
-		this.events.emit('change:submenus', entries)
+		this.events.emit('change:submenus', { newValue: entries, oldValue })
 	}
 }

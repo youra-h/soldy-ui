@@ -19,8 +19,8 @@ export type TIconEvents = TComponentViewEvents & {
 	'change:size': (payload: TValuePayload<TComponentSize>) => void
 	/** Запись своего `size` — подправить или отменить (`TChangeEvent`) */
 	'change:size:before': (e: TChangeEvent<TComponentSize>) => void
-	'change:width': (value: number | string | undefined) => void
-	'change:height': (value: number | string | undefined) => void
+	'change:width': (payload: TValuePayload<number | string | undefined>) => void
+	'change:height': (payload: TValuePayload<number | string | undefined>) => void
 }
 
 export interface IIcon extends IComponentView<IIconProps, TIconEvents> {

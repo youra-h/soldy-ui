@@ -65,8 +65,8 @@ import { find, nextFrame } from './mount'
 			[maximizable]="maximizable()"
 			[rendered]="rendered()"
 			[target]="target()"
-			(soChangeVisible)="visibility($event)"
-			(soChangeMaximized)="maximized.push($event)"
+			(soChangeVisible)="visibility($event.newValue)"
+			(soChangeMaximized)="maximized.push($event.newValue)"
 			(soCloseBefore)="closing($event)"
 			(soLayoutOffsetBefore)="offsetting($event)"
 		>
@@ -190,14 +190,14 @@ class IconsPage {
 			so-dialog
 			class="so-test-lower"
 			[visible]="lower()"
-			(soChangeVisible)="lower.set($event)"
+			(soChangeVisible)="lower.set($event.newValue)"
 		>
 			<button class="so-test-lower-first">Внизу</button>
 			<div
 				so-dialog
 				class="so-test-upper"
 				[visible]="upper()"
-				(soChangeVisible)="upper.set($event)"
+				(soChangeVisible)="upper.set($event.newValue)"
 			>
 				<button class="so-test-upper-first">Наверху</button>
 			</div>
@@ -222,7 +222,7 @@ class NestedPage {
 	],
 	template: `<div>
 		<button class="so-test-opener">Открыть</button>
-		<div so-dialog [visible]="shown()" (soChangeVisible)="shown.set($event)">
+		<div so-dialog [visible]="shown()" (soChangeVisible)="shown.set($event.newValue)">
 			<span so-popover class="so-test-popover">
 				<ng-template
 					slot="trigger"

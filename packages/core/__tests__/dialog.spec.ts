@@ -96,7 +96,7 @@ describe('ARIA окна', () => {
 		const dialog = new TDialog()
 		const changes: boolean[] = []
 
-		dialog.events.on('change:alert', (value) => changes.push(value))
+		dialog.events.on('change:alert', ({ newValue: value }) => changes.push(value))
 
 		dialog.alert = true
 		dialog.alert = true
@@ -124,7 +124,7 @@ describe('кнопки', () => {
 
 		expect(dialog.maximizeAria.get('aria-pressed')).toBe('false')
 
-		dialog.events.on('change:maximizeAria', changes)
+		dialog.events.on('change:maximizeAria', ({ newValue }) => changes(newValue))
 		dialog.toggleMaximized()
 
 		expect(dialog.maximizeAria.get('aria-pressed')).toBe('true')
@@ -139,7 +139,7 @@ describe('кнопки', () => {
 		const dialog = new TDialog()
 		const changes = vi.fn()
 
-		dialog.events.on('change:closeAria', changes)
+		dialog.events.on('change:closeAria', ({ newValue }) => changes(newValue))
 		dialog.closeAria.add('aria-label', 'Закрыть')
 
 		expect(changes).toHaveBeenCalledWith({ 'aria-label': 'Закрыть' })
@@ -164,7 +164,7 @@ describe('место', () => {
 		const dialog = new TDialog()
 		const changes: string[] = []
 
-		dialog.events.on('change:placement', (value) => changes.push(value))
+		dialog.events.on('change:placement', ({ newValue: value }) => changes.push(value))
 
 		dialog.placement = 'start'
 		dialog.placement = 'start'
@@ -181,7 +181,7 @@ describe('отступ', () => {
 		const dialog = new TDialog()
 		const offsets: (number | string | undefined)[] = []
 
-		dialog.events.on('change:offset', (value) => offsets.push(value))
+		dialog.events.on('change:offset', ({ newValue: value }) => offsets.push(value))
 
 		dialog.offset = 24
 		dialog.offset = 24
@@ -224,7 +224,7 @@ describe('разворот', () => {
 		const dialog = new TDialog()
 		const changes: boolean[] = []
 
-		dialog.events.on('change:maximized', (value) => changes.push(value))
+		dialog.events.on('change:maximized', ({ newValue: value }) => changes.push(value))
 
 		dialog.toggleMaximized()
 		dialog.toggleMaximized()
@@ -237,9 +237,9 @@ describe('разворот', () => {
 		const dialog = new TDialog()
 		const handler = vi.fn()
 
-		dialog.events.on('change:maximized', handler)
-		dialog.events.on('change:maximizable', handler)
-		dialog.events.on('change:width', handler)
+		dialog.events.on('change:maximized', ({ newValue }) => handler(newValue))
+		dialog.events.on('change:maximizable', ({ newValue }) => handler(newValue))
+		dialog.events.on('change:width', ({ newValue }) => handler(newValue))
 
 		dialog.maximized = false
 		dialog.maximizable = false
@@ -254,7 +254,7 @@ describe('размер', () => {
 		const dialog = new TDialog()
 		const widths: (number | string | undefined)[] = []
 
-		dialog.events.on('change:width', (value) => widths.push(value))
+		dialog.events.on('change:width', ({ newValue: value }) => widths.push(value))
 
 		dialog.width = 640
 		dialog.width = '40rem'
@@ -358,7 +358,7 @@ describe('слой', () => {
 		const dialog = shown()
 		const seen: [number, string | null | undefined][] = []
 
-		dialog.events.on('change:zIndex', (value) =>
+		dialog.events.on('change:zIndex', ({ newValue: value }) =>
 			seen.push([value, dialog.backdropDataset[FRAME_LAYER_ATTRIBUTE]]),
 		)
 		dialog.ready = true

@@ -125,11 +125,13 @@ export class TGroupExtension<TItem extends object = any>
 	}
 
 	set groupBy(value: TGroupBy<TItem> | undefined) {
+		const oldGroupBy = this.groupBy
+
 		if (this._groupBy === value) return
 
 		this._groupBy = value
 
-		this.events.emit('change:groupBy', value)
+		this.events.emit('change:groupBy', { newValue: value, oldValue: oldGroupBy })
 
 		this._ctx?.driver.invalidateQuery()
 	}
@@ -139,6 +141,8 @@ export class TGroupExtension<TItem extends object = any>
 	}
 
 	set groups(value: readonly TGroup[] | undefined) {
+		const oldGroups = this.groups
+
 		const next = normalizeGroups(value ?? [])
 
 		if (sameGroups(next, this._groups)) return
@@ -148,7 +152,7 @@ export class TGroupExtension<TItem extends object = any>
 
 		this._groups = next
 
-		this.events.emit('change:groups', this.groups)
+		this.events.emit('change:groups', { newValue: this.groups, oldValue: oldGroups })
 
 		if (reordered) this._ctx?.driver.invalidateQuery()
 		else this._update()
@@ -238,12 +242,14 @@ export class TGroupExtension<TItem extends object = any>
 
 	/** Секции — заново по показанному. Событие — только на смену. */
 	private _update(): void {
+		const oldSections = this.sections
+
 		const next = this._sectionsOf(batchOf(this._ctx)?.shown ?? [])
 
 		if (sameSections(next, this._sections)) return
 
 		this._sections = next
-		this.events.emit('change:sections', next)
+		this.events.emit('change:sections', { newValue: next, oldValue: oldSections })
 	}
 
 	/**

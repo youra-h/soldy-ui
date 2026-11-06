@@ -20,7 +20,11 @@ export class TSelectionItemExtension<TItem extends object = any>
 		// тех, чья отметка сменилась: их называет набор сменившихся. Своему
 		// элементу — его новая отметка, остальным — ничего
 		this.events.follow(parent.events, 'change:selection', (_selected, changed) => {
-			if (changed.has(this._item)) this.events.emit('change:selected', this.selected)
+			if (changed.has(this._item))
+				this.events.emit('change:selected', {
+					newValue: this.selected,
+					oldValue: !this.selected,
+				})
 		})
 	}
 

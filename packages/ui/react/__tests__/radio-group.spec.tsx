@@ -341,7 +341,7 @@ describe('отметка радио: active и onChangeActive', () => {
 			<RadioGroup.Item
 				value={value}
 				active={active}
-				onChangeActive={(next) => {
+				onChangeActive={({ newValue: next }) => {
 					log.push(`${value}: ${next}`)
 					set(next)
 				}}
@@ -380,7 +380,7 @@ describe('отметка радио: active и onChangeActive', () => {
 	it('колбэк получает отметку: boolean', () => {
 		expectTypeOf<NonNullable<RadioGroupItemProps['onChangeActive']>>()
 			.parameter(0)
-			.toEqualTypeOf<boolean>()
+			.toEqualTypeOf<import('@soldy-ui/core').TValuePayload<boolean>>()
 	})
 })
 

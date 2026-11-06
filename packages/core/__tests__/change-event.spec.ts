@@ -28,8 +28,8 @@ describe('change:<x>:before', () => {
 		const control = new TControl()
 		const changes = vi.fn()
 
-		control.events.on('change:disabled', changes)
-		control.events.on('change:focused', changes)
+		control.events.on('change:disabled', ({ newValue }) => changes(newValue))
+		control.events.on('change:focused', ({ newValue }) => changes(newValue))
 		control.events.on('change:disabled:before', (e) => e.preventDefault())
 		control.events.on('change:focused:before', (e) => {
 			e.value = e.oldValue

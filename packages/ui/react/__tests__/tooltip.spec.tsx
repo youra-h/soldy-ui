@@ -260,7 +260,7 @@ describe('показ и скрытие', () => {
 		const ctrl = new TTooltip({ openDelay: 0, closeDelay: 0 })
 		const changes: boolean[] = []
 
-		await render(tooltip({ ctrl, onChangeOpen: (value) => changes.push(value) }))
+		await render(tooltip({ ctrl, onChangeOpen: ({ newValue: value }) => changes.push(value) }))
 
 		act(() => {
 			ctrl.open = true

@@ -85,7 +85,9 @@ export class TDateInputKeyboardPlugin extends TBasePlugin<
 		elementPlugin?.events.on('ready', (element) => this._bind(element))
 		elementPlugin?.events.on('removed', () => this._bind(null))
 
-		this._listenTo(this._owner?.events, 'change:focusedSegment', this._onFocusedSegment)
+		this._listenTo(this._owner?.events, 'change:focusedSegment', ({ newValue }) =>
+			this._onFocusedSegment(newValue),
+		)
 	}
 
 	override destroy(): void {

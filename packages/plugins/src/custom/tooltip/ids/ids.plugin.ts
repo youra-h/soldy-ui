@@ -40,7 +40,9 @@ export class TTooltipIdsPlugin extends TBasePlugin {
 		tooltip.aria.add('id', this._panelId)
 
 		this._link(tooltip, tooltip.type)
-		this._listenTo(tooltip.events, 'change:type', (type) => this._link(tooltip, type))
+		this._listenTo(tooltip.events, 'change:type', ({ newValue: type }) =>
+			this._link(tooltip, type),
+		)
 	}
 
 	/** Ссылка триггера по режиму: ровно одна из двух. */

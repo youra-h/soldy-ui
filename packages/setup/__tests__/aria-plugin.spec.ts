@@ -227,7 +227,7 @@ describe('ссылки поля формы', () => {
 		const handler = vi.fn()
 
 		plugin.parts = { describedBy: 'm1-counter' }
-		textarea.events.on('change:aria', handler)
+		textarea.events.on('change:aria', ({ newValue }) => handler(newValue))
 		plugin.parts = { describedBy: 'm1-counter' }
 
 		expect(handler).not.toHaveBeenCalled()
@@ -308,7 +308,7 @@ describe('две поверхности управления', () => {
 		const plugin = install(new TButton())
 		const seen: (string | undefined)[] = []
 
-		plugin.events.on('change:label', (value) => seen.push(value))
+		plugin.events.on('change:label', ({ newValue: value }) => seen.push(value))
 
 		plugin.label = 'Меню'
 		plugin.label = 'Меню'

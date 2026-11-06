@@ -124,33 +124,33 @@ export type TSliderGesture = {
 
 export type TSliderEvents = TValueControlEvents<TSliderValue> & {
 	/** change:min */
-	'change:min': (value: number) => void
+	'change:min': (payload: TValuePayload<number>) => void
 	/** change:max */
-	'change:max': (value: number) => void
+	'change:max': (payload: TValuePayload<number>) => void
 	/** change:step */
-	'change:step': (value: TSliderStep) => void
+	'change:step': (payload: TValuePayload<TSliderStep>) => void
 	/** change:largeStep */
-	'change:largeStep': (value: number) => void
+	'change:largeStep': (payload: TValuePayload<number>) => void
 	/** change:orientation */
-	'change:orientation': (value: TSlideOrientation) => void
+	'change:orientation': (payload: TValuePayload<TSlideOrientation>) => void
 	/** change:inverted */
-	'change:inverted': (value: boolean) => void
+	'change:inverted': (payload: TValuePayload<boolean>) => void
 	/** change:origin */
-	'change:origin': (value: number | undefined) => void
+	'change:origin': (payload: TValuePayload<number | undefined>) => void
 	/** change:marks */
-	'change:marks': (value: TSliderMarks) => void
+	'change:marks': (payload: TValuePayload<TSliderMarks>) => void
 	/** change:minStepsBetweenThumbs */
-	'change:minStepsBetweenThumbs': (value: number) => void
+	'change:minStepsBetweenThumbs': (payload: TValuePayload<number>) => void
 	/** change:thumbLabels */
-	'change:thumbLabels': (value: string[] | undefined) => void
+	'change:thumbLabels': (payload: TValuePayload<string[] | undefined>) => void
 	/** change:snap */
-	'change:snap': (value: TSlideSnap) => void
+	'change:snap': (payload: TValuePayload<TSlideSnap>) => void
 	/** change:snapRadius */
-	'change:snapRadius': (value: number) => void
+	'change:snapRadius': (payload: TValuePayload<number>) => void
 	/** change:tooltip */
-	'change:tooltip': (value: TSliderTooltip) => void
+	'change:tooltip': (payload: TValuePayload<TSliderTooltip>) => void
 	/** Идёт перетаскивание: с первого движения после нажатия до отпускания */
-	'change:dragging': (value: boolean) => void
+	'change:dragging': (payload: TValuePayload<boolean>) => void
 	/**
 	 * Пользователь закончил менять значение: отпустил ручку, если за жест
 	 * значение сменилось, или сдвинул его клавишей. `change:value` приходит на

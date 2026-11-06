@@ -188,10 +188,11 @@ function useShown(bind: Readonly<Record<string, unknown>>) {
 	return {
 		shown,
 		setShown,
-		onChangeVisible: (value: boolean) => {
+		onChangeVisible: (payload: import('@soldy-ui/core').TValuePayload<boolean>) => {
+			const value = payload.newValue
 			setShown(value)
 
-			if (typeof journal === 'function') journal(value)
+			if (typeof journal === 'function') journal(payload)
 		},
 	}
 }

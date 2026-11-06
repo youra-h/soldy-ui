@@ -209,7 +209,7 @@ describe('Button · события через колбэк-пропы', () => {
 		const ctrl = new TButton({ view: 'solid' })
 		const seen: (string | undefined)[] = []
 
-		render({ ctrl, onChangeView: (v) => seen.push(v) })
+		render({ ctrl, onChangeView: ({ newValue: v }) => seen.push(v) })
 
 		ctrl.view = 'ghost'
 		flushSync()
@@ -221,7 +221,11 @@ describe('Button · события через колбэк-пропы', () => {
 		const ctrl = new TButton()
 		const seen: boolean[] = []
 
-		render({ ctrl, onChangeVisible: (v: boolean) => seen.push(v) })
+		render({
+			ctrl,
+			onChangeVisible: ({ newValue: v }: import('@soldy-ui/core').TValuePayload<boolean>) =>
+				seen.push(v),
+		})
 
 		ctrl.hide()
 		flushSync()

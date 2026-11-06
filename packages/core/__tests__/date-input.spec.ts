@@ -423,7 +423,7 @@ describe('набор', () => {
 		const input = field({ locale: 'ru-RU' }, 'day')
 		const changed = vi.fn()
 
-		input.events.on('change:validate', changed)
+		input.events.on('change:validate', ({ newValue }) => changed(newValue))
 		input.validate = true
 		input.validate = true
 		expect(changed).toHaveBeenCalledTimes(1)
@@ -1122,7 +1122,7 @@ describe('недоступный день', () => {
 		const input = field({ locale: 'ru-RU', value: '2026-05-12' })
 		const changes = vi.fn()
 
-		input.events.on('change:unavailable', changes)
+		input.events.on('change:unavailable', ({ newValue }) => changes(newValue))
 
 		expect(input.invalid).toBe(false)
 
@@ -1145,7 +1145,7 @@ describe('недоступный день', () => {
 		const input = field({ unavailable: rule })
 		const changes = vi.fn()
 
-		input.events.on('change:unavailable', changes)
+		input.events.on('change:unavailable', ({ newValue }) => changes(newValue))
 		input.unavailable = rule
 
 		expect(changes).not.toHaveBeenCalled()
@@ -1229,7 +1229,7 @@ describe('фокус части', () => {
 		const input = field({ locale: 'en-US' }, 'month')
 		const moves = vi.fn()
 
-		input.events.on('change:focusedSegment', moves)
+		input.events.on('change:focusedSegment', ({ newValue }) => moves(newValue))
 
 		input.shiftFocus(1)
 		expect(input.focusedSegment).toBe('day')
@@ -2219,7 +2219,7 @@ describe('точность времени', () => {
 		const input = field({ locale: 'ru-RU', kind: 'datetime' })
 		const changes = vi.fn()
 
-		input.events.on('change:timePrecision', changes)
+		input.events.on('change:timePrecision', ({ newValue }) => changes(newValue))
 
 		input.timePrecision = 'minute'
 		expect(changes).not.toHaveBeenCalled()

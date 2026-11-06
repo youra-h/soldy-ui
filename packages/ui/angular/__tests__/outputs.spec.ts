@@ -93,7 +93,11 @@ class ButtonHost {
 @Component({
 	standalone: true,
 	imports: [TComponentViewComponent],
-	template: `<div so-component-view [ctrl]="ctrl" (soChangeVisible)="onVisible($event)"></div>`,
+	template: `<div
+		so-component-view
+		[ctrl]="ctrl"
+		(soChangeVisible)="onVisible($event.newValue)"
+	></div>`,
 })
 class ComponentViewHost {
 	readonly ctrl = new TComponentView()
@@ -175,7 +179,7 @@ describe('тип выхода · эмиттер первого аргумент�
 	it('у события с аргументом — его тип', () => {
 		expectTypeOf<TButtonComponent['soActionPress']>().toEqualTypeOf<EventEmitter<MouseEvent>>()
 		expectTypeOf<TComponentViewComponent['soChangeVisible']>().toEqualTypeOf<
-			EventEmitter<boolean>
+			EventEmitter<import('@soldy-ui/core').TValuePayload<boolean>>
 		>()
 		expectTypeOf<TComponentComponent['soPluginEvent']>().toEqualTypeOf<
 			EventEmitter<TPluginEvent>
@@ -225,7 +229,11 @@ class BareComponentHost {
 @Component({
 	standalone: true,
 	imports: [TButtonComponent],
-	template: `<button so-button [ctrl]="ctrl" (soChangeVisible)="onVisible($event)"></button>`,
+	template: `<button
+		so-button
+		[ctrl]="ctrl"
+		(soChangeVisible)="onVisible($event.newValue)"
+	></button>`,
 })
 class BoundButtonHost {
 	readonly ctrl = new TButton({ text: 'Save' })
@@ -361,7 +369,7 @@ describe('эмиттер выхода · заводит первое чтени�
 
 		fixture.detectChanges()
 
-		fixture.componentInstance.view().soChangeVisible.subscribe((visible) => {
+		fixture.componentInstance.view().soChangeVisible.subscribe(({ newValue: visible }) => {
 			changes.push(visible)
 		})
 		fixture.componentInstance.ctrl.visible = false

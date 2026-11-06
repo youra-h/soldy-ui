@@ -16,7 +16,7 @@ export type TLabelEvents = TStylableEvents & {
 	/** Запись своего `text` — подправить или отменить (`TChangeEvent`) */
 	'change:text:before': (e: TChangeEvent<string>) => void
 	/** change:position */
-	'change:position': (value: TLabelPosition) => void
+	'change:position': (payload: TValuePayload<TLabelPosition>) => void
 }
 
 export interface ILabelProps extends IStylableProps {

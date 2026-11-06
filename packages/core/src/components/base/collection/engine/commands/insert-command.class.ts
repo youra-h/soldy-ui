@@ -1,4 +1,5 @@
 import type { ICommand, ICommandContext } from './types'
+import type { TValuePayload } from '../../../../../common'
 import { TInsertEvent } from '../types'
 
 /**
@@ -11,6 +12,7 @@ import { TInsertEvent } from '../types'
  */
 export class TInsertCommand<TItem> implements ICommand<TItem> {
 	private _event: TInsertEvent<TItem>
+	private _count?: TValuePayload<number>
 
 	constructor(
 		public item: Partial<TItem>,
@@ -30,13 +32,15 @@ export class TInsertCommand<TItem> implements ICommand<TItem> {
 
 		this.item = this._event.item
 
-		ctx.storage.insert(this.item as TItem, this.index ?? ctx.storage.items.length)
+		const oldValue = ctx.storage.items.length
+		ctx.storage.insert(this.item as TItem, this.index ?? oldValue)
+		this._count = { newValue: ctx.storage.items.length, oldValue }
 	}
 
 	emitEvents(ctx: ICommandContext<TItem>): void {
 		if (this._event.defaultPrevented) return
 
 		ctx.events.emit('item:added', this._event)
-		ctx.events.emit('change:count', ctx.storage.items.length)
+		if (this._count) ctx.events.emit('change:count', this._count)
 	}
 }

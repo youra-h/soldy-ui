@@ -111,7 +111,7 @@ describe('край', () => {
 		const drawer = new TDrawer()
 		const changes: string[] = []
 
-		drawer.events.on('change:placement', (value) => changes.push(value))
+		drawer.events.on('change:placement', ({ newValue: value }) => changes.push(value))
 
 		expect(drawer.classes.toArray()).toContain('so-drawer--placement-end')
 
@@ -195,7 +195,7 @@ describe('внутри контейнера', () => {
 		const drawer = new TDrawer()
 		const changes: boolean[] = []
 
-		drawer.events.on('change:contained', (value) => changes.push(value))
+		drawer.events.on('change:contained', ({ newValue: value }) => changes.push(value))
 
 		expect(drawer.dataset.get('contained')).toBe('false')
 
@@ -228,7 +228,7 @@ describe('внутри контейнера', () => {
 		const drawer = new TDrawer({ contained: true })
 		const changes: boolean[] = []
 
-		drawer.events.on('change:locksScroll', (value) => changes.push(value))
+		drawer.events.on('change:locksScroll', ({ newValue: value }) => changes.push(value))
 
 		// Внутри контейнера открытие замка не меняет
 		drawer.show()
@@ -251,7 +251,7 @@ describe('жест', () => {
 		const drawer = new TDrawer()
 		const sides: unknown[] = []
 
-		drawer.events.on('change:swipeSide', (side) => sides.push(side))
+		drawer.events.on('change:swipeSide', ({ newValue: side }) => sides.push(side))
 
 		expect(isSwipeable(drawer)).toBe(true)
 		expect(drawer.swipeSide).toBe('end')
@@ -281,7 +281,7 @@ describe('жест', () => {
 		const drawer = new TDrawer()
 		const changes: string[] = []
 
-		drawer.events.on('change:swipe', (value) => changes.push(value))
+		drawer.events.on('change:swipe', ({ newValue: value }) => changes.push(value))
 
 		drawer.swipe = 'panel'
 		drawer.swipe = 'panel'
@@ -293,7 +293,7 @@ describe('жест', () => {
 		const drawer = shown({ swipe: 'handle' })
 		const changes: boolean[] = []
 
-		drawer.events.on('change:swiping', (value) => changes.push(value))
+		drawer.events.on('change:swiping', ({ newValue: value }) => changes.push(value))
 
 		expect(drawer.dataset.get('swiping')).toBe('false')
 		expect(drawer.beginSwipe()).toBe(true)

@@ -77,7 +77,7 @@ function Bound({
 				setValue(payload.newValue)
 			}}
 			open={open}
-			onChangeOpen={(next) => {
+			onChangeOpen={({ newValue: next }) => {
 				seen.open = next
 				setOpen(next)
 			}}

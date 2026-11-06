@@ -171,7 +171,9 @@ export class TLeavingFocus<TItem extends object, TPlace> {
 	 * на запись, после всех её `item:*`, когда расширения коллекции на них уже
 	 * ответили.
 	 */
-	private readonly _onItems = (items: readonly TItem[]): void => {
+	private readonly _onItems = ({
+		newValue: items,
+	}: import('@soldy-ui/core').TValuePayload<readonly TItem[]>): void => {
 		const leaving = this._leaving
 
 		if (!leaving || items.includes(leaving.item)) return

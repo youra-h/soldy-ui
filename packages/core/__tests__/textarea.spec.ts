@@ -90,7 +90,10 @@ describe('сеттеры', () => {
 		const textarea = new TTextarea()
 		const handler = vi.fn()
 
-		textarea.events.on(`change:${name}`, handler)
+		textarea.events.on(
+			`change:${name}`,
+			({ newValue }: import('@soldy-ui/core').TValuePayload<unknown>) => handler(newValue),
+		)
 
 		Reflect.set(textarea, name, value)
 		Reflect.set(textarea, name, value)
@@ -103,7 +106,7 @@ describe('сеттеры', () => {
 		const textarea = new TTextarea({ maxlength: 10 })
 		const handler = vi.fn()
 
-		textarea.events.on('change:maxlength', handler)
+		textarea.events.on('change:maxlength', ({ newValue }) => handler(newValue))
 		textarea.maxlength = undefined
 
 		expect(textarea.maxlength).toBeUndefined()
@@ -179,7 +182,7 @@ describe('набор счётчика', () => {
 		const textarea = new TTextarea()
 		const handler = vi.fn()
 
-		textarea.events.on('change:counterAria', handler)
+		textarea.events.on('change:counterAria', ({ newValue }) => handler(newValue))
 
 		textarea.counterAria.add('id', 'm1-counter')
 		textarea.counterAria.add('id', 'm1-counter')

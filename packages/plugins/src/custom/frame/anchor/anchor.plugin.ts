@@ -323,19 +323,23 @@ export class TAnchorPlugin extends TBasePlugin<any, TAnchorPluginEvents> {
 	 * посчитает показ.
 	 */
 	setAnchor(element: Element): void {
+		const oldAnchor = this.anchor
+
 		if (this._anchor === element) return
 
 		this._anchor = element
 		this._onPlaceChange()
-		this.events.emit('change:anchor', element)
+		this.events.emit('change:anchor', { newValue: element, oldValue: oldAnchor })
 	}
 
 	removeAnchor(): void {
+		const oldAnchor = this.anchor
+
 		if (!this._anchor) return
 
 		this._anchor = null
 		this._onPlaceChange()
-		this.events.emit('change:anchor', null)
+		this.events.emit('change:anchor', { newValue: null, oldValue: oldAnchor })
 	}
 
 	get anchor(): Element | null {
@@ -353,11 +357,13 @@ export class TAnchorPlugin extends TBasePlugin<any, TAnchorPluginEvents> {
 	}
 
 	set point(value: TPoint | null) {
+		const oldPoint = this.point
+
 		if (samePoint(this._point, value)) return
 
 		this._point = value === null ? null : { x: value.x, y: value.y }
 		this._onPlaceChange()
-		this.events.emit('change:point', this._point)
+		this.events.emit('change:point', { newValue: this._point, oldValue: oldPoint })
 	}
 
 	get placement(): TFramePlacement {
@@ -365,12 +371,14 @@ export class TAnchorPlugin extends TBasePlugin<any, TAnchorPluginEvents> {
 	}
 
 	set placement(value: TFramePlacement) {
+		const oldPlacement = this.placement
+
 		if (this._placement === value) return
 
 		this._placement = value
 		this._heldSide = null
 		this._update()
-		this.events.emit('change:placement', value)
+		this.events.emit('change:placement', { newValue: value, oldValue: oldPlacement })
 	}
 
 	get matchWidth(): boolean {
@@ -378,11 +386,13 @@ export class TAnchorPlugin extends TBasePlugin<any, TAnchorPluginEvents> {
 	}
 
 	set matchWidth(value: boolean) {
+		const oldMatchWidth = this.matchWidth
+
 		if (this._matchWidth === value) return
 
 		this._matchWidth = value
 		this._update()
-		this.events.emit('change:matchWidth', value)
+		this.events.emit('change:matchWidth', { newValue: value, oldValue: oldMatchWidth })
 	}
 
 	get flip(): boolean {
@@ -390,12 +400,14 @@ export class TAnchorPlugin extends TBasePlugin<any, TAnchorPluginEvents> {
 	}
 
 	set flip(value: boolean) {
+		const oldFlip = this.flip
+
 		if (this._flip === value) return
 
 		this._flip = value
 		this._heldSide = null
 		this._update()
-		this.events.emit('change:flip', value)
+		this.events.emit('change:flip', { newValue: value, oldValue: oldFlip })
 	}
 
 	get offset(): number {
@@ -403,11 +415,13 @@ export class TAnchorPlugin extends TBasePlugin<any, TAnchorPluginEvents> {
 	}
 
 	set offset(value: number) {
+		const oldOffset = this.offset
+
 		if (this._offset === value) return
 
 		this._offset = value
 		this._update()
-		this.events.emit('change:offset', value)
+		this.events.emit('change:offset', { newValue: value, oldValue: oldOffset })
 	}
 
 	override destroy(): void {

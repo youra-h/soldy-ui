@@ -55,6 +55,8 @@ export default class TControl<
 		return this._disabled
 	}
 	set disabled(value: boolean) {
+		const oldDisabled = this.disabled
+
 		if (value === this._disabled) return
 
 		const e = new TChangeEvent(value, this._disabled)
@@ -73,7 +75,7 @@ export default class TControl<
 		// along with the attribute. The boolean goes as is: `TDataset` adds the
 		// prefix and the string, `false` stays `"false"`.
 		this._dataset.add('disabled', e.value)
-		this._sink.emit('change:disabled', e.value)
+		this._sink.emit('change:disabled', { newValue: e.value, oldValue: oldDisabled })
 	}
 
 	/**
@@ -99,6 +101,8 @@ export default class TControl<
 		return this._focused
 	}
 	set focused(value: boolean) {
+		const oldFocused = this.focused
+
 		if (value === this._focused) return
 
 		const e = new TChangeEvent(value, this._focused)
@@ -108,7 +112,7 @@ export default class TControl<
 		if (e.defaultPrevented || e.value === this._focused) return
 
 		this._focused = e.value
-		this._sink.emit('change:focused', e.value)
+		this._sink.emit('change:focused', { newValue: e.value, oldValue: oldFocused })
 	}
 
 	/**
@@ -155,7 +159,7 @@ export default class TControl<
 
 		if (labelable === before) return
 
-		this._sink.emit('change:labelable', labelable)
+		this._sink.emit('change:labelable', { newValue: labelable, oldValue: before })
 	}
 
 	/**

@@ -138,7 +138,7 @@ describe('TComponentView · набор на компоненте', () => {
 		const view = new TComponentView()
 		const seen: Record<string, string | null>[] = []
 
-		view.events.on('change:dataset', (value) => seen.push(value))
+		view.events.on('change:dataset', ({ newValue: value }) => seen.push(value))
 
 		view.dataset.add('selected', true)
 

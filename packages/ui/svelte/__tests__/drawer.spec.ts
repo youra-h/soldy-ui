@@ -67,7 +67,7 @@ async function render(drawer: DrawerProps = {}) {
 	const props = reactiveProps<DrawerProps>({
 		...drawer,
 		visible: false,
-		onChangeVisible: (value) => {
+		onChangeVisible: ({ newValue: value }) => {
 			visibles.push(value)
 			props.visible = value
 		},
@@ -416,14 +416,14 @@ describe('внутри модального окна', () => {
 	it('Escape в панели закрывает только панель, второй — окно', async () => {
 		const dialog = reactiveProps<DialogProps>({
 			visible: false,
-			onChangeVisible: (value) => {
+			onChangeVisible: ({ newValue: value }) => {
 				dialog.visible = value
 			},
 		})
 		const drawer = reactiveProps<DrawerProps>({
 			contained: true,
 			visible: false,
-			onChangeVisible: (value) => {
+			onChangeVisible: ({ newValue: value }) => {
 				drawer.visible = value
 			},
 		})

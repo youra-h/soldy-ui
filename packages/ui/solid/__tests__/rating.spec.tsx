@@ -354,7 +354,7 @@ describe('указатель', () => {
 		pointer('pointermove', 250)
 
 		expect(fractions()).toEqual(['1', '1', '1', '1', '0'])
-		expect(onChangePreview.mock.calls).toEqual([[4]])
+		expect(onChangePreview.mock.calls).toEqual([[{ newValue: 4, oldValue: undefined }]])
 		expect(changes).toEqual([])
 
 		root().dispatchEvent(new PointerEvent('pointerleave', { pointerType: 'mouse' }))

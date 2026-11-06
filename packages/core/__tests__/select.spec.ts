@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../src/common'
 /**
  * Select — поле выбора из списка.
  *
@@ -124,7 +125,7 @@ describe('TSelect — собственные props', () => {
 
 		select.events.on('open', () => seen.push('open'))
 		select.events.on('close', () => seen.push('close'))
-		select.events.on('change:open', (value) => seen.push(`change:${value}`))
+		select.events.on('change:open', ({ newValue: value }) => seen.push(`change:${value}`))
 
 		select.toggleOpen()
 		select.toggleOpen()
@@ -136,7 +137,7 @@ describe('TSelect — собственные props', () => {
 		const select = new TSelect({ open: true })
 		const handler = vi.fn()
 
-		select.events.on('change:open', handler)
+		select.events.on('change:open', ({ newValue }) => handler(newValue))
 		select.open = true
 
 		expect(handler).not.toHaveBeenCalled()
@@ -464,7 +465,7 @@ describe('ARIA поля, списка и опций', () => {
 		const { owner, facade } = createSelect(['a'])
 		const changes = vi.fn()
 
-		owner.events.on('change:listAria', changes)
+		owner.events.on('change:listAria', ({ newValue }) => changes(newValue))
 		facade.mode = 'multiple'
 
 		expect(changes).toHaveBeenCalledWith({ role: 'listbox', 'aria-multiselectable': 'true' })
@@ -651,7 +652,7 @@ describe('переименование опции', () => {
 			const engine = tagsEngine(facade)
 			const changed = vi.fn()
 
-			engine.extensions.plain.events.on('change:items', changed)
+			engine.extensions.plain.events.on('change:items', ({ newValue }) => changed(newValue))
 			items[0].text = 'Другое'
 
 			expect(listeners()).toBe(0)
@@ -1130,7 +1131,9 @@ describe('indicator пробрасывается с поля на опцию', (
 		const facade = facadeFor(0)
 		const seen: unknown[] = []
 
-		facade.events.on('change:indicator', (value: unknown) => seen.push(value))
+		facade.events.on('change:indicator', ({ newValue: value }: TValuePayload<unknown>) =>
+			seen.push(value),
+		)
 
 		owner.indicator = 'end'
 
@@ -1230,7 +1233,7 @@ describe('теги в multiple', () => {
 		const engine = tagsEngine(facade)
 		const changed = vi.fn()
 
-		engine.extensions.plain.events.on('change:items', changed)
+		engine.extensions.plain.events.on('change:items', ({ newValue }) => changed(newValue))
 		items[1].text = 'Другое'
 
 		expect(engine.extensions.batch.items.map((item) => item.text)).toEqual(['A'])
@@ -1362,7 +1365,7 @@ describe('editable — ввод текста в поле', () => {
 		const select = new TSelect()
 		const handler = vi.fn()
 
-		select.events.on('change:editable', handler)
+		select.events.on('change:editable', ({ newValue }) => handler(newValue))
 		select.editable = true
 
 		expect(select.editable).toBe(true)
@@ -1373,7 +1376,7 @@ describe('editable — ввод текста в поле', () => {
 		const select = new TSelect({ editable: true })
 		const handler = vi.fn()
 
-		select.events.on('change:editable', handler)
+		select.events.on('change:editable', ({ newValue }) => handler(newValue))
 		select.editable = true
 
 		expect(handler).not.toHaveBeenCalled()
@@ -1442,7 +1445,7 @@ describe('editable — ввод текста в поле', () => {
 			const select = new TSelect()
 			const handler = vi.fn()
 
-			select.events.on('change:readonly', handler)
+			select.events.on('change:readonly', ({ newValue }) => handler(newValue))
 			select.editable = true
 
 			expect(handler).toHaveBeenCalledWith(false)
@@ -1519,7 +1522,7 @@ describe('editableMode — что делает ввод текста', () => {
 		const select = new TSelect({ editable: true, editableMode: 'none' })
 		const handler = vi.fn()
 
-		select.events.on('change:editableMode', handler)
+		select.events.on('change:editableMode', ({ newValue }) => handler(newValue))
 		select.editableMode = 'search'
 		select.editableMode = 'search'
 
@@ -1608,7 +1611,7 @@ describe('placement — сторона панели', () => {
 		const select = new TSelect()
 		const handler = vi.fn()
 
-		select.events.on('change:placement', handler)
+		select.events.on('change:placement', ({ newValue }) => handler(newValue))
 		select.placement = 'top'
 		select.placement = 'top'
 
@@ -1726,7 +1729,7 @@ describe('removeOnBackspace — удаление тегов по Backspace', () 
 		const select = new TSelect()
 		const handler = vi.fn()
 
-		select.events.on('change:removeOnBackspace', handler)
+		select.events.on('change:removeOnBackspace', ({ newValue }) => handler(newValue))
 		select.removeOnBackspace = true
 		select.removeOnBackspace = true
 
@@ -1769,7 +1772,7 @@ describe('жест — смахнуть панель, чтобы закрыть'
 		const select = new TSelect()
 		const handler = vi.fn()
 
-		select.events.on('change:swipe', handler)
+		select.events.on('change:swipe', ({ newValue }) => handler(newValue))
 		select.swipe = 'panel'
 		select.swipe = 'panel'
 
@@ -1795,7 +1798,7 @@ describe('жест — смахнуть панель, чтобы закрыть'
 		const select = shown({ swipe: 'handle' })
 		const changes: boolean[] = []
 
-		select.events.on('change:swiping', (value) => changes.push(value))
+		select.events.on('change:swiping', ({ newValue: value }) => changes.push(value))
 
 		expect(select.panelDataset).toEqual({ 'data-swiping': 'false' })
 		expect(select.beginSwipe()).toBe(true)

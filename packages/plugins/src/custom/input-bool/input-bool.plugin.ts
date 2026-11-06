@@ -56,9 +56,10 @@ export class TInputBoolPlugin extends TBasePlugin<any, TInputBoolPluginEvents> {
 	private _handleChange(): void {
 		if (this._instance?.readonly || this._input?.disabled) return
 
+		const oldValue = this._instance?.value
 		this._instance?.toggle()
 		this._syncInput()
-		this.events.emit('change:value', { value: this._instance?.value })
+		this.events.emit('change:value', { newValue: this._instance?.value, oldValue })
 	}
 
 	/**

@@ -1,3 +1,4 @@
+import type { TValuePayload } from '@soldy-ui/core'
 /**
  * Popover под Angular — проводка целиком, на настоящей разметке.
  *
@@ -66,7 +67,7 @@ import { find, nextFrame } from './mount'
 			[swipe]="swipe()"
 			[rendered]="rendered()"
 			[aria_label]="label()"
-			(soChangeOpen)="changes.push($event)"
+			(soChangeOpen)="changes.push($event.newValue)"
 		>
 			<ng-template
 				slot="trigger"
@@ -253,7 +254,7 @@ class NestedPage {}
 			</ng-template>
 			<button class="so-test-inner-first">Внутри</button>
 		</span>
-		<div so-dialog [visible]="dialog()" (soChangeVisible)="dialog.set($event)">
+		<div so-dialog [visible]="dialog()" (soChangeVisible)="dialog.set($event.newValue)">
 			<button class="so-test-dialog-first">В окне</button>
 		</div>
 	</span>`,
@@ -549,8 +550,9 @@ describe('открытие и закрытие', () => {
 		const fixture = await render(Page)
 		const changes: boolean[] = []
 
-		fixture.componentInstance.ctrl.events.on('change:open', (value: boolean) =>
-			changes.push(value),
+		fixture.componentInstance.ctrl.events.on(
+			'change:open',
+			({ newValue: value }: TValuePayload<boolean>) => changes.push(value),
 		)
 
 		await open()

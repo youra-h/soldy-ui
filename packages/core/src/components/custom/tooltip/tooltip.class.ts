@@ -85,8 +85,11 @@ export default class TTooltip
 		this._aria.add('role', 'tooltip')
 
 		this._triggerAria = new TAria()
-		this._triggerAria.subscribe(() =>
-			this.events.emit('change:triggerAria', this._triggerAria.toObject()),
+		this._triggerAria.subscribe((_set, oldValue) =>
+			this.events.emit('change:triggerAria', {
+				newValue: this._triggerAria.toObject(),
+				oldValue,
+			}),
 		)
 	}
 
@@ -95,10 +98,12 @@ export default class TTooltip
 	}
 
 	set open(value: boolean) {
+		const oldOpen = this.open
+
 		if (this._open === value) return
 
 		this._open = value
-		this.events.emit('change:open', value)
+		this.events.emit('change:open', { newValue: value, oldValue: oldOpen })
 	}
 
 	/**
@@ -110,10 +115,12 @@ export default class TTooltip
 	}
 
 	set placement(value: TTooltipPlacement) {
+		const oldPlacement = this.placement
+
 		if (this._placement === value) return
 
 		this._placement = value
-		this.events.emit('change:placement', value)
+		this.events.emit('change:placement', { newValue: value, oldValue: oldPlacement })
 	}
 
 	/**
@@ -127,10 +134,12 @@ export default class TTooltip
 	}
 
 	set openDelay(value: number) {
+		const oldOpenDelay = this.openDelay
+
 		if (this._openDelay === value) return
 
 		this._openDelay = value
-		this.events.emit('change:openDelay', value)
+		this.events.emit('change:openDelay', { newValue: value, oldValue: oldOpenDelay })
 	}
 
 	/**
@@ -143,10 +152,12 @@ export default class TTooltip
 	}
 
 	set closeDelay(value: number) {
+		const oldCloseDelay = this.closeDelay
+
 		if (this._closeDelay === value) return
 
 		this._closeDelay = value
-		this.events.emit('change:closeDelay', value)
+		this.events.emit('change:closeDelay', { newValue: value, oldValue: oldCloseDelay })
 	}
 
 	/**
@@ -159,10 +170,12 @@ export default class TTooltip
 	}
 
 	set type(value: TTooltipType) {
+		const oldType = this.type
+
 		if (this._type === value) return
 
 		this._type = value
-		this.events.emit('change:type', value)
+		this.events.emit('change:type', { newValue: value, oldValue: oldType })
 	}
 
 	/**

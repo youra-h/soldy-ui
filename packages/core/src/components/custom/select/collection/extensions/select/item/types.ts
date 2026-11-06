@@ -1,9 +1,10 @@
+import type { TValuePayload } from '../../../../../../../common'
 import type { IItemExtension, TBaseItemEventsExtension } from '../../../../../../base/collection'
 import type { ISelectItem } from '../../../../item/types'
 import type { TListIndicator } from '../../../../../list'
 
 export type TSelectItemEventsExtension = TBaseItemEventsExtension & {
-	'change:indicator': (value: TListIndicator) => void
+	'change:indicator': (payload: TValuePayload<TListIndicator>) => void
 }
 
 /**

@@ -189,7 +189,7 @@ describe('Button · события через колбэк-пропы', () => {
 		const ctrl = new TButton({ view: 'solid' })
 		const seen: (string | undefined)[] = []
 
-		mount({ ctrl, onChangeView: (v) => seen.push(v) })
+		mount({ ctrl, onChangeView: ({ newValue: v }) => seen.push(v) })
 
 		ctrl.view = 'ghost'
 
@@ -200,7 +200,11 @@ describe('Button · события через колбэк-пропы', () => {
 		const ctrl = new TButton()
 		const seen: boolean[] = []
 
-		mount({ ctrl, onChangeVisible: (v: boolean) => seen.push(v) })
+		mount({
+			ctrl,
+			onChangeVisible: ({ newValue: v }: import('@soldy-ui/core').TValuePayload<boolean>) =>
+				seen.push(v),
+		})
 
 		ctrl.hide()
 

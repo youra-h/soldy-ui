@@ -325,8 +325,8 @@ describe('вид у границ', () => {
 		const earlyChanges = vi.fn()
 		const lateChanges = vi.fn()
 
-		early.events.on('change:disabled', earlyChanges)
-		late.events.on('change:disabled', lateChanges)
+		early.events.on('change:disabled', ({ newValue }) => earlyChanges(newValue))
+		late.events.on('change:disabled', ({ newValue }) => lateChanges(newValue))
 
 		setup.owner.min = '2026-09-10'
 		expect(early.disabled).toBe(true)
@@ -363,8 +363,8 @@ describe('кнопки листания', () => {
 		const prev = vi.fn()
 		const next = vi.fn()
 
-		owner.events.on('change:prevAria', prev)
-		owner.events.on('change:nextAria', next)
+		owner.events.on('change:prevAria', ({ newValue }) => prev(newValue))
+		owner.events.on('change:nextAria', ({ newValue }) => next(newValue))
 		owner.prevAria.add('aria-label', 'Назад')
 		owner.nextAria.add('aria-label', 'Вперёд')
 
@@ -798,7 +798,7 @@ describe('запомненное не отстаёт от данных', () => {
 		const tenth = day(setup, '2026-09-10')
 		const changes = vi.fn()
 
-		tenth.events.on('change:unavailable', changes)
+		tenth.events.on('change:unavailable', ({ newValue }) => changes(newValue))
 		setup.owner.unavailable = (date) => date === '2026-09-10'
 
 		expect(tenth.unavailable).toBe(true)

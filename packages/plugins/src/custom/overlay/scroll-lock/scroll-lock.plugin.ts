@@ -101,6 +101,8 @@ export class TScrollLockPlugin extends TBasePlugin<any, TScrollLockPluginEvents>
 	}
 
 	set enabled(value: boolean) {
+		const oldEnabled = this.enabled
+
 		if (this._enabled === value) return
 
 		this._enabled = value
@@ -111,7 +113,7 @@ export class TScrollLockPlugin extends TBasePlugin<any, TScrollLockPluginEvents>
 			this._releaseAfterTransitions()
 		}
 
-		this.events.emit('change:enabled', value)
+		this.events.emit('change:enabled', { newValue: value, oldValue: oldEnabled })
 	}
 
 	override destroy(): void {

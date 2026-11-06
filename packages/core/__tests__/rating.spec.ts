@@ -24,7 +24,7 @@ function record(instance: TRating) {
 
 	instance.events.on('change:value', ({ newValue }) => values.push(newValue))
 	instance.events.on('commit', (payload) => commits.push(payload))
-	instance.events.on('change:preview', (value) => previews.push(value))
+	instance.events.on('change:preview', ({ newValue: value }) => previews.push(value))
 
 	return { values, commits, previews }
 }
@@ -133,8 +133,8 @@ describe('итог значения — шкала звёзд', () => {
 		const instance = rating()
 		const events: string[] = []
 
-		instance.events.on('change:max', (value) => events.push(`max ${value}`))
-		instance.events.on('change:step', (value) => events.push(`step ${value}`))
+		instance.events.on('change:max', ({ newValue: value }) => events.push(`max ${value}`))
+		instance.events.on('change:step', ({ newValue: value }) => events.push(`step ${value}`))
 
 		instance.max = 5
 		instance.step = 1

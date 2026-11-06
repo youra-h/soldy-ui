@@ -51,10 +51,10 @@ describe('TTabs (чистый класс)', () => {
 		const onView = vi.fn()
 		const onAlignment = vi.fn()
 
-		tabs.events.on('change:orientation', onOrientation)
-		tabs.events.on('change:closable', onClosable)
-		tabs.events.on('change:view', onView)
-		tabs.events.on('change:alignment', onAlignment)
+		tabs.events.on('change:orientation', ({ newValue }) => onOrientation(newValue))
+		tabs.events.on('change:closable', ({ newValue }) => onClosable(newValue))
+		tabs.events.on('change:view', ({ newValue }) => onView(newValue))
+		tabs.events.on('change:alignment', ({ newValue }) => onAlignment(newValue))
 
 		tabs.orientation = 'vertical'
 		tabs.closable = true
@@ -71,7 +71,7 @@ describe('TTabs (чистый класс)', () => {
 		const tabs = new TTabs({ orientation: 'horizontal' })
 		const onOrientation = vi.fn()
 
-		tabs.events.on('change:orientation', onOrientation)
+		tabs.events.on('change:orientation', ({ newValue }) => onOrientation(newValue))
 		tabs.orientation = 'horizontal'
 
 		expect(onOrientation).not.toHaveBeenCalled()

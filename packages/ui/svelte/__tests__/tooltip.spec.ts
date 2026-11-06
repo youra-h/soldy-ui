@@ -207,7 +207,7 @@ describe('показ и скрытие', () => {
 		const opens: boolean[] = []
 		const props = reactiveProps<TooltipProps>({
 			ctrl,
-			onChangeOpen: (value) => {
+			onChangeOpen: ({ newValue: value }) => {
 				opens.push(value)
 				props.open = value
 			},

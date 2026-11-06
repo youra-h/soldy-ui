@@ -97,7 +97,7 @@ async function bound(
 			props.value = payload.newValue
 		},
 		open: false,
-		onChangeOpen: (next) => {
+		onChangeOpen: ({ newValue: next }) => {
 			props.open = next
 		},
 	})

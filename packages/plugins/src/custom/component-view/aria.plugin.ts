@@ -92,11 +92,13 @@ export class TAriaPlugin extends TBasePlugin<any, TAriaPluginEvents> {
 	}
 
 	set label(value: string | undefined) {
+		const oldLabel = this.label
+
 		if (this._label === value) return
 
 		this._label = value
 		this._apply()
-		this.events.emit('change:label', value)
+		this.events.emit('change:label', { newValue: value, oldValue: oldLabel })
 	}
 
 	/**
@@ -108,11 +110,13 @@ export class TAriaPlugin extends TBasePlugin<any, TAriaPluginEvents> {
 	}
 
 	set labelledBy(value: string | undefined) {
+		const oldLabelledBy = this.labelledBy
+
 		if (this._labelledBy === value) return
 
 		this._labelledBy = value
 		this._apply()
-		this.events.emit('change:labelledBy', value)
+		this.events.emit('change:labelledBy', { newValue: value, oldValue: oldLabelledBy })
 	}
 
 	/** `id` элемента с пояснением: подсказка под полем, текст ошибки. */
@@ -121,11 +125,13 @@ export class TAriaPlugin extends TBasePlugin<any, TAriaPluginEvents> {
 	}
 
 	set describedBy(value: string | undefined) {
+		const oldDescribedBy = this.describedBy
+
 		if (this._describedBy === value) return
 
 		this._describedBy = value
 		this._apply()
-		this.events.emit('change:describedBy', value)
+		this.events.emit('change:describedBy', { newValue: value, oldValue: oldDescribedBy })
 	}
 
 	/**

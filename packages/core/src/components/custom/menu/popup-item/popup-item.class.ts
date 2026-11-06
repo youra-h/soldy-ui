@@ -53,8 +53,8 @@ export default abstract class TMenuPopupItem<
 		// Сторона панели связки. Роль пишет наследник, `id` и `aria-labelledby`
 		// на строку — плагин связок
 		this._panelAria = new TAria()
-		this._panelAria.subscribe(() =>
-			this._sink.emit('change:panelAria', this._panelAria.toObject()),
+		this._panelAria.subscribe((_set, oldValue) =>
+			this._sink.emit('change:panelAria', { newValue: this._panelAria.toObject(), oldValue }),
 		)
 
 		this._applyOpen(own.open ?? ctor.defaultValues.open)
@@ -74,10 +74,12 @@ export default abstract class TMenuPopupItem<
 	}
 
 	set open(value: boolean) {
+		const oldOpen = this.open
+
 		if (this._open === value) return
 
 		this._applyOpen(value)
-		this._sink.emit('change:open', value)
+		this._sink.emit('change:open', { newValue: value, oldValue: oldOpen })
 	}
 
 	/**

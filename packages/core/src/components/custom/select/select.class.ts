@@ -199,8 +199,8 @@ export class TSelect<
 		this._field.aria.add('aria-haspopup', 'listbox')
 
 		this._listAria = new TAria()
-		this._listAria.subscribe(() =>
-			this._sink.emit('change:listAria', this._listAria.toObject()),
+		this._listAria.subscribe((_set, oldValue) =>
+			this._sink.emit('change:listAria', { newValue: this._listAria.toObject(), oldValue }),
 		)
 
 		this._listAria.add('role', 'listbox')
@@ -209,7 +209,10 @@ export class TSelect<
 
 		this._syncOpenable()
 
-		this.events.on('change:disabled', (value: boolean) => (this._field.disabled = value))
+		this.events.on(
+			'change:disabled',
+			({ newValue: value }: TValuePayload<boolean>) => (this._field.disabled = value),
+		)
 		this.events.on('change:size', (payload: TValuePayload<TComponentSize>) => {
 			this._field.size = payload.newValue
 		})
@@ -219,13 +222,28 @@ export class TSelect<
 				this._field.variant = payload.newValue
 			},
 		)
-		this.events.on('change:readonly', (value: boolean) => (this._field.readonly = value))
-		this.events.on('change:required', (value: boolean) => (this._field.required = value))
-		this.events.on('change:name', (value: string) => (this._field.name = value))
-		this.events.on('change:clearable', (value: boolean) => (this._field.clearable = value))
+		this.events.on(
+			'change:readonly',
+			({ newValue: value }: TValuePayload<boolean>) => (this._field.readonly = value),
+		)
+		this.events.on(
+			'change:required',
+			({ newValue: value }: TValuePayload<boolean>) => (this._field.required = value),
+		)
+		this.events.on(
+			'change:name',
+			({ newValue: value }: TValuePayload<string>) => (this._field.name = value),
+		)
+		this.events.on(
+			'change:clearable',
+			({ newValue: value }: TValuePayload<boolean>) => (this._field.clearable = value),
+		)
 		// Ошибка — и полю, как `required`: его рамку красит тема Input, и
 		// `aria-invalid` стоит на том же `<input>`, что и набор Select
-		this.events.on('change:invalid', (value: boolean) => (this._field.invalid = value))
+		this.events.on(
+			'change:invalid',
+			({ newValue: value }: TValuePayload<boolean>) => (this._field.invalid = value),
+		)
 	}
 
 	/**
@@ -285,11 +303,13 @@ export class TSelect<
 	}
 
 	set open(value: boolean) {
+		const oldOpen = this.open
+
 		if (this._open === value) return
 		if (value && !this.openable) return
 
 		this._applyOpen(value)
-		this._sink.emit('change:open', value)
+		this._sink.emit('change:open', { newValue: value, oldValue: oldOpen })
 		this._sink.emit(value ? 'open' : 'close')
 	}
 
@@ -325,10 +345,12 @@ export class TSelect<
 	}
 
 	set placeholder(value: string) {
+		const oldPlaceholder = this.placeholder
+
 		if (this._placeholder === value) return
 
 		this._placeholder = value
-		this._sink.emit('change:placeholder', value)
+		this._sink.emit('change:placeholder', { newValue: value, oldValue: oldPlaceholder })
 	}
 
 	get closeOnSelect(): boolean {
@@ -336,10 +358,12 @@ export class TSelect<
 	}
 
 	set closeOnSelect(value: boolean) {
+		const oldCloseOnSelect = this.closeOnSelect
+
 		if (this._closeOnSelect === value) return
 
 		this._closeOnSelect = value
-		this._sink.emit('change:closeOnSelect', value)
+		this._sink.emit('change:closeOnSelect', { newValue: value, oldValue: oldCloseOnSelect })
 	}
 
 	/** Показывать ли кнопку очистки. Рисует её поле: значение уходит ему. */
@@ -348,10 +372,12 @@ export class TSelect<
 	}
 
 	set clearable(value: boolean) {
+		const oldClearable = this.clearable
+
 		if (this._clearable === value) return
 
 		this._clearable = value
-		this._sink.emit('change:clearable', value)
+		this._sink.emit('change:clearable', { newValue: value, oldValue: oldClearable })
 	}
 
 	/**
@@ -367,10 +393,12 @@ export class TSelect<
 	}
 
 	set editable(value: boolean) {
+		const oldEditable = this.editable
+
 		if (this._editable === value) return
 
 		this._applyEditable(value)
-		this._sink.emit('change:editable', value)
+		this._sink.emit('change:editable', { newValue: value, oldValue: oldEditable })
 
 		this.readonly = !value
 	}
@@ -390,10 +418,12 @@ export class TSelect<
 	}
 
 	set editableMode(value: TSelectEditableMode) {
+		const oldEditableMode = this.editableMode
+
 		if (this._editableMode === value) return
 
 		this._applyEditableMode(value)
-		this._sink.emit('change:editableMode', value)
+		this._sink.emit('change:editableMode', { newValue: value, oldValue: oldEditableMode })
 	}
 
 	/**
@@ -407,10 +437,15 @@ export class TSelect<
 	}
 
 	set removeOnBackspace(value: boolean) {
+		const oldRemoveOnBackspace = this.removeOnBackspace
+
 		if (this._removeOnBackspace === value) return
 
 		this._removeOnBackspace = value
-		this._sink.emit('change:removeOnBackspace', value)
+		this._sink.emit('change:removeOnBackspace', {
+			newValue: value,
+			oldValue: oldRemoveOnBackspace,
+		})
 	}
 
 	/**
@@ -426,10 +461,12 @@ export class TSelect<
 	}
 
 	set placement(value: TSelectPlacement) {
+		const oldPlacement = this.placement
+
 		if (this._placement === value) return
 
 		this._placement = value
-		this._sink.emit('change:placement', value)
+		this._sink.emit('change:placement', { newValue: value, oldValue: oldPlacement })
 	}
 
 	/**
@@ -442,6 +479,8 @@ export class TSelect<
 	}
 
 	set swipe(value: TSwipe) {
+		const oldSwipe = this.swipe
+
 		if (this._swipe === value) return
 
 		this._swipe = value
@@ -449,7 +488,7 @@ export class TSelect<
 		// Жест выключили посреди жеста — тянуть больше нечего
 		if (value === 'none') this._setSwiping(false)
 
-		this._sink.emit('change:swipe', value)
+		this._sink.emit('change:swipe', { newValue: value, oldValue: oldSwipe })
 	}
 
 	/**
@@ -499,10 +538,12 @@ export class TSelect<
 	}
 
 	set maxRows(value: number) {
+		const oldMaxRows = this.maxRows
+
 		if (this._maxRows === value) return
 
 		this._maxRows = value
-		this._sink.emit('change:maxRows', value)
+		this._sink.emit('change:maxRows', { newValue: value, oldValue: oldMaxRows })
 	}
 
 	/** Что делать с не помещающимся текстом. */
@@ -511,10 +552,12 @@ export class TSelect<
 	}
 
 	set contentFit(value: TListContentFit) {
+		const oldContentFit = this.contentFit
+
 		if (this._contentFit === value) return
 
 		this._applyContentFit(value)
-		this._sink.emit('change:contentFit', value)
+		this._sink.emit('change:contentFit', { newValue: value, oldValue: oldContentFit })
 	}
 
 	/** Как прокручивать к опции при навигации. */
@@ -523,10 +566,12 @@ export class TSelect<
 	}
 
 	set scrollBehavior(value: TScrollBehavior) {
+		const oldScrollBehavior = this.scrollBehavior
+
 		if (this._scrollBehavior === value) return
 
 		this._scrollBehavior = value
-		this._sink.emit('change:scrollBehavior', value)
+		this._sink.emit('change:scrollBehavior', { newValue: value, oldValue: oldScrollBehavior })
 	}
 
 	/** Где показывать отметку выбранной опции. */
@@ -535,10 +580,12 @@ export class TSelect<
 	}
 
 	set indicator(value: TListIndicator) {
+		const oldIndicator = this.indicator
+
 		if (this._indicator === value) return
 
 		this._applyIndicator(value)
-		this._sink.emit('change:indicator', value)
+		this._sink.emit('change:indicator', { newValue: value, oldValue: oldIndicator })
 	}
 
 	/**
@@ -551,10 +598,12 @@ export class TSelect<
 	}
 
 	set groupSeparators(value: boolean) {
+		const oldGroupSeparators = this.groupSeparators
+
 		if (this._groupSeparators === value) return
 
 		this._groupSeparators = value
-		this._sink.emit('change:groupSeparators', value)
+		this._sink.emit('change:groupSeparators', { newValue: value, oldValue: oldGroupSeparators })
 	}
 
 	/**
@@ -630,10 +679,12 @@ export class TSelect<
 	}
 
 	protected _setSwiping(value: boolean): void {
+		const oldSwiping = this.swiping
+
 		if (this._swiping === value) return
 
 		this._swiping = value
-		this._sink.emit('change:swiping', value)
+		this._sink.emit('change:swiping', { newValue: value, oldValue: oldSwiping })
 	}
 
 	protected _applyEditable(value: boolean): void {

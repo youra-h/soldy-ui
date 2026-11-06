@@ -55,6 +55,12 @@ export const COMPONENT_SIZES = ['sm', 'normal', 'lg', 'xl', '2xl'] as const
 
 export type TComponentSize = (typeof COMPONENT_SIZES)[number]
 
+/**
+ * A completed property change. Values keep their object identities: no deep
+ * cloning or freezing is performed. Mutable values are not historical copies.
+ * Collections and markup sets supply shallow boundary snapshots of their
+ * containers; the objects stored inside them keep their original references.
+ */
 export type TValuePayload<TValue> = {
 	newValue: TValue
 	oldValue: TValue

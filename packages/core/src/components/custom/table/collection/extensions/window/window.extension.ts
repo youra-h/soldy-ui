@@ -58,10 +58,11 @@ export class TTableWindowExtension<
 		draw?.events.on('change:drawn', () => this._number())
 
 		// Окно поставили или сняли — номера, число строк и набор шапки
-		draw?.events.on('change:virtual', () => {
+		draw?.events.on('change:virtual', ({ oldValue: wasVirtual }) => {
+			const oldValue = wasVirtual ? { ...HEAD_ROW_ARIA } : {}
 			this._number()
 			this._applyOwner()
-			this.events.emit('change:headRowAria', this.headRowAria)
+			this.events.emit('change:headRowAria', { newValue: this.headRowAria, oldValue })
 		})
 
 		// Показанные строки сменились — их число

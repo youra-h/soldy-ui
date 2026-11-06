@@ -45,10 +45,12 @@ export default class TValueControl<
 		return this._name
 	}
 	set name(value: string) {
+		const oldName = this.name
+
 		if (this._name === value) return
 
 		this._name = value
-		this._sink.emit('change:name', value)
+		this._sink.emit('change:name', { newValue: value, oldValue: oldName })
 	}
 
 	get value(): TValue {
@@ -121,7 +123,7 @@ export default class TValueControl<
 		if (invalid === before) return
 
 		this._syncInvalid()
-		this._sink.emit('change:invalid', invalid)
+		this._sink.emit('change:invalid', { newValue: invalid, oldValue: before })
 	}
 
 	/** Атрибуты ошибки по итогу: только при `true`, `null` их снимает. */

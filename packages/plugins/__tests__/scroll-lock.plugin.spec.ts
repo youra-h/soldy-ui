@@ -585,7 +585,7 @@ describe('ручной замок', () => {
 		const { owner, plugin } = await layer()
 		const seen: boolean[] = []
 
-		plugin.events.on('change:enabled', (value) => seen.push(value))
+		plugin.events.on('change:enabled', ({ newValue: value }) => seen.push(value))
 
 		owner.open = true
 		owner.open = false
@@ -606,7 +606,7 @@ describe('уничтожение', () => {
 		const { owner, bundle, plugin } = await layer()
 		const seen: boolean[] = []
 
-		plugin.events.on('change:enabled', (value) => seen.push(value))
+		plugin.events.on('change:enabled', ({ newValue: value }) => seen.push(value))
 
 		owner.open = true
 		bundle.destroy()

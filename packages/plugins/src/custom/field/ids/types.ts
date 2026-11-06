@@ -1,3 +1,4 @@
+import type { TValuePayload } from '@soldy-ui/core'
 import type { TPluginEvents } from '../../../base'
 
 /**
@@ -26,5 +27,5 @@ export interface IFieldControlInfo {
 
 export type TFieldIdsPluginEvents = TPluginEvents & {
 	/** change:links — ссылки контрола на части сменились: появилась, пропала или сменилась часть */
-	'change:links': (links: IFieldLinks) => void
+	'change:links': (payload: TValuePayload<IFieldLinks>) => void
 }

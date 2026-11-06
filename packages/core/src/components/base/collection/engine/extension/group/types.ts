@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../../../../common'
 import type { IExtension } from '../types'
 
 /**
@@ -39,11 +40,11 @@ export type TGroupSection<TItem> = {
 
 export type TGroupEvents<TItem> = {
 	/** change:groupBy */
-	'change:groupBy': (value: TGroupBy<TItem> | undefined) => void
+	'change:groupBy': (payload: TValuePayload<TGroupBy<TItem> | undefined>) => void
 	/** Сменились группы — состав, порядок или подписи */
-	'change:groups': (value: TGroup[]) => void
+	'change:groups': (payload: TValuePayload<TGroup[]>) => void
 	/** Сменились секции — ключ, группа с подписью или состав секции */
-	'change:sections': (value: ReadonlyArray<TGroupSection<TItem>>) => void
+	'change:sections': (payload: TValuePayload<ReadonlyArray<TGroupSection<TItem>>>) => void
 }
 
 /**

@@ -1,10 +1,11 @@
+import type { TValuePayload } from '../../../../../../../common'
 import type { IItemExtension, TBaseItemEventsExtension } from '../../../../../../base/collection'
 import type { TListBoxView } from '../../../../types'
 import type { TListIndicator } from '../../../../../list'
 
 export type TListBoxItemEventsExtension = TBaseItemEventsExtension & {
-	'change:view': (value: TListBoxView | undefined) => void
-	'change:indicator': (value: TListIndicator) => void
+	'change:view': (payload: TValuePayload<TListBoxView | undefined>) => void
+	'change:indicator': (payload: TValuePayload<TListIndicator>) => void
 }
 
 /**

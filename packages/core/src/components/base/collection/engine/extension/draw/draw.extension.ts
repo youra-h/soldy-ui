@@ -154,6 +154,10 @@ export class TDrawExtension<TItem extends TDrawable = any>
 	 * События — только на смену.
 	 */
 	private _update(): void {
+		const oldDrawn = this.drawn
+		const oldDrawnSections = this.drawnSections
+		const oldVirtual = this.virtual
+
 		const shown = batchOf(this._ctx)?.shown ?? []
 		const sections = groupOf(this._ctx)?.sections ?? []
 		const grouped = sections.some((section) => section.group !== null)
@@ -178,9 +182,15 @@ export class TDrawExtension<TItem extends TDrawable = any>
 
 		this._virtual = virtual
 
-		if (drawnChanged) this.events.emit('change:drawn', this._drawn)
-		if (sectionsChanged) this.events.emit('change:drawnSections', this._drawnSections)
-		if (virtualChanged) this.events.emit('change:virtual', virtual)
+		if (drawnChanged)
+			this.events.emit('change:drawn', { newValue: this._drawn, oldValue: oldDrawn })
+		if (sectionsChanged)
+			this.events.emit('change:drawnSections', {
+				newValue: this._drawnSections,
+				oldValue: oldDrawnSections,
+			})
+		if (virtualChanged)
+			this.events.emit('change:virtual', { newValue: virtual, oldValue: oldVirtual })
 	}
 
 	/**

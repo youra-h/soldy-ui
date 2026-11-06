@@ -50,6 +50,11 @@ export class TDatePickerNamesPlugin extends TClearableNamesPlugin<
 	}
 
 	protected override _name(owner: IDatePicker, translations: TTranslations): void {
+		const oldStart = this.start
+		const oldEnd = this.end
+		const oldConfirm = this.confirm
+		const oldCancel = this.cancel
+
 		super._name(owner, translations)
 
 		const { trigger, start, end, confirm, cancel } = translations.datePicker
@@ -59,22 +64,22 @@ export class TDatePickerNamesPlugin extends TClearableNamesPlugin<
 
 		if (this._start !== start) {
 			this._start = start
-			this._sink.emit('change:start', start)
+			this._sink.emit('change:start', { newValue: start, oldValue: oldStart })
 		}
 
 		if (this._end !== end) {
 			this._end = end
-			this._sink.emit('change:end', end)
+			this._sink.emit('change:end', { newValue: end, oldValue: oldEnd })
 		}
 
 		if (this._confirm !== confirm) {
 			this._confirm = confirm
-			this._sink.emit('change:confirm', confirm)
+			this._sink.emit('change:confirm', { newValue: confirm, oldValue: oldConfirm })
 		}
 
 		if (this._cancel !== cancel) {
 			this._cancel = cancel
-			this._sink.emit('change:cancel', cancel)
+			this._sink.emit('change:cancel', { newValue: cancel, oldValue: oldCancel })
 		}
 	}
 }

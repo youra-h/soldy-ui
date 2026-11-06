@@ -1,3 +1,4 @@
+import { propertyDetail } from './property-detail'
 /**
  * Строка элемента коллекции — `<div is="so-item-row-div">` и
  * `<span is="so-item-row-span">`: кнопка с шаблоном Button под своим именем
@@ -55,7 +56,7 @@ function collect(el: Element, name: string): unknown[] {
 	const seen: unknown[] = []
 
 	el.addEventListener(name, (event) => {
-		if (event instanceof CustomEvent) seen.push(event.detail)
+		if (event instanceof CustomEvent) seen.push(propertyDetail(event))
 	})
 
 	return seen

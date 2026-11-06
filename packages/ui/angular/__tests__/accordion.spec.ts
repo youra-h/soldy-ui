@@ -505,13 +505,13 @@ describe('проброс слотов секций из items', () => {
 describe('типы', () => {
 	it('выходы фасадов — выходы компонентов', () => {
 		expectTypeOf<TAccordionComponent['soChangeMode']>().toEqualTypeOf<
-			EventEmitter<TSelectionMode>
+			EventEmitter<import('@soldy-ui/core').TValuePayload<TSelectionMode>>
 		>()
 		expectTypeOf<TAccordionComponent>().toHaveProperty('soChangeSelection')
 		expectTypeOf<TAccordionComponent>().toHaveProperty('soEngineCreate')
 		// Отметка секции — значением: выход приходит секции, чья отметка сменилась
 		expectTypeOf<TAccordionItemComponent['soChangeSelected']>().toEqualTypeOf<
-			EventEmitter<boolean>
+			EventEmitter<import('@soldy-ui/core').TValuePayload<boolean>>
 		>()
 		expectTypeOf<TAccordionItemComponent['soChangeOrder']>().toEqualTypeOf<
 			EventEmitter<undefined>

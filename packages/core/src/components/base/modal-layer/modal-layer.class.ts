@@ -89,13 +89,13 @@ export default class TModalLayer<
 		this._aria.add('aria-modal', 'true')
 
 		this._titleAria = new TAria()
-		this._titleAria.subscribe(() =>
-			this._sink.emit('change:titleAria', this._titleAria.toObject()),
+		this._titleAria.subscribe((_set, oldValue) =>
+			this._sink.emit('change:titleAria', { newValue: this._titleAria.toObject(), oldValue }),
 		)
 
 		this._closeAria = new TAria()
-		this._closeAria.subscribe(() =>
-			this._sink.emit('change:closeAria', this._closeAria.toObject()),
+		this._closeAria.subscribe((_set, oldValue) =>
+			this._sink.emit('change:closeAria', { newValue: this._closeAria.toObject(), oldValue }),
 		)
 	}
 
@@ -142,10 +142,12 @@ export default class TModalLayer<
 	}
 
 	set width(value: number | string | undefined) {
+		const oldWidth = this.width
+
 		if (this._width === value) return
 
 		this._width = value
-		this._sink.emit('change:width', value)
+		this._sink.emit('change:width', { newValue: value, oldValue: oldWidth })
 	}
 
 	/** Высота панели: число — px, строка — CSS-значение. Не задана — высоту даёт тема. */
@@ -154,10 +156,12 @@ export default class TModalLayer<
 	}
 
 	set height(value: number | string | undefined) {
+		const oldHeight = this.height
+
 		if (this._height === value) return
 
 		this._height = value
-		this._sink.emit('change:height', value)
+		this._sink.emit('change:height', { newValue: value, oldValue: oldHeight })
 	}
 
 	/**
@@ -169,10 +173,12 @@ export default class TModalLayer<
 	}
 
 	set closable(value: boolean) {
+		const oldClosable = this.closable
+
 		if (this._closable === value) return
 
 		this._closable = value
-		this._sink.emit('change:closable', value)
+		this._sink.emit('change:closable', { newValue: value, oldValue: oldClosable })
 	}
 
 	/**
@@ -185,10 +191,12 @@ export default class TModalLayer<
 	}
 
 	set dismissible(value: boolean) {
+		const oldDismissible = this.dismissible
+
 		if (this._dismissible === value) return
 
 		this._dismissible = value
-		this._sink.emit('change:dismissible', value)
+		this._sink.emit('change:dismissible', { newValue: value, oldValue: oldDismissible })
 	}
 
 	/**

@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../common'
 import type { IControl, IControlProps, TControlEvents } from '../../base/control'
 import type { TCollectionStorageDriverEvents } from '../../base/collection'
 import type { TButtonView } from '../button/types'
@@ -14,7 +15,7 @@ export type TAccordionView = TButtonView
 export type TAccordionEvents = TControlEvents &
 	TCollectionStorageDriverEvents<IAccordionItem> & {
 		/** change:view */
-		'change:view': (value: TAccordionView | undefined) => void
+		'change:view': (payload: TValuePayload<TAccordionView | undefined>) => void
 	}
 
 /** Пропсы самого компонента Accordion (без коллекционной части). */

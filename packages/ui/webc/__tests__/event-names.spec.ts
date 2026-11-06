@@ -223,8 +223,8 @@ describe('кнопка · события приходят под so:', () => {
 			'so:show',
 		])
 		expect(seen.filter(([name]) => name === 'so:change:visible')).toEqual([
-			['so:change:visible', false],
-			['so:change:visible', true],
+			['so:change:visible', { newValue: false, oldValue: true }],
+			['so:change:visible', { newValue: true, oldValue: false }],
 		])
 	})
 
@@ -240,7 +240,7 @@ describe('кнопка · события приходят под so:', () => {
 		ctrl.text = 'Сохранить'
 
 		expect(seen).toEqual([
-			['so:change:disabled', true],
+			['so:change:disabled', { newValue: true, oldValue: false }],
 			['so:change:text', { newValue: 'Сохранить', oldValue: '' }],
 		])
 	})

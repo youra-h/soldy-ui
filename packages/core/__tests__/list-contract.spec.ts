@@ -93,7 +93,9 @@ describe.each(IMPLEMENTATIONS)('%s несёт контракт IList', (_name, C
 		const instance = create()
 		const seen: unknown[] = []
 
-		instance.events.on(event, (v: unknown) => seen.push(v))
+		instance.events.on(event, ({ newValue }: import('@soldy-ui/core').TValuePayload<unknown>) =>
+			seen.push(newValue),
+		)
 		writeListProp(instance, prop, value)
 
 		expect(seen).toEqual([value])
@@ -108,7 +110,11 @@ describe.each(IMPLEMENTATIONS)('%s несёт контракт IList', (_name, C
 
 			const seen: unknown[] = []
 
-			instance.events.on(event, (v: unknown) => seen.push(v))
+			instance.events.on(
+				event,
+				({ newValue }: import('@soldy-ui/core').TValuePayload<unknown>) =>
+					seen.push(newValue),
+			)
 			writeListProp(instance, prop, value)
 
 			expect(seen).toEqual([])

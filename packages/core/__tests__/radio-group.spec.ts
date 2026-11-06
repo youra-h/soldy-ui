@@ -60,7 +60,7 @@ describe('TRadioGroup (чистый класс)', () => {
 		const owner = new TRadioGroup({ view: 'pip' })
 		const onView = vi.fn()
 
-		owner.events.on('change:view', onView)
+		owner.events.on('change:view', ({ newValue }) => onView(newValue))
 		owner.view = 'halo'
 
 		expect(owner.classes.toArray()).toContain('so-radio-group--view-halo')
@@ -187,7 +187,7 @@ describe('value ↔ отмеченное радио', () => {
 		const facade = facadeFor(1)
 		const onActive = vi.fn()
 
-		facade.events.on('change:active', onActive)
+		facade.events.on('change:active', ({ newValue }) => onActive(newValue))
 		facade.active = true
 
 		expect(owner.value).toBe('b')

@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../common'
 import type { TScrollBehavior } from '../../../common'
 
 /**
@@ -65,15 +66,15 @@ export type TListIndicator = 'none' | 'start' | 'end'
 /** События списочных свойств. */
 export type TListEvents = {
 	/** change:maxRows */
-	'change:maxRows': (value: number) => void
+	'change:maxRows': (payload: TValuePayload<number>) => void
 	/** change:contentFit */
-	'change:contentFit': (value: TListContentFit) => void
+	'change:contentFit': (payload: TValuePayload<TListContentFit>) => void
 	/** change:scrollBehavior */
-	'change:scrollBehavior': (value: TScrollBehavior) => void
+	'change:scrollBehavior': (payload: TValuePayload<TScrollBehavior>) => void
 	/** change:indicator */
-	'change:indicator': (value: TListIndicator) => void
+	'change:indicator': (payload: TValuePayload<TListIndicator>) => void
 	/** change:groupSeparators */
-	'change:groupSeparators': (value: boolean) => void
+	'change:groupSeparators': (payload: TValuePayload<boolean>) => void
 }
 
 /** Props списочных свойств. */

@@ -52,7 +52,7 @@ function indexOfName(entries: readonly string[], name: string): number {
  * — exceptions like `role` and `tabindex` that belong to the set without
  * starting with `aria-`.
  */
-export class TAttributes extends TSubscribable {
+export class TAttributes extends TSubscribable<TAttributesMap> {
 	/**
 	 * Entries — a name in an even slot, its value in the next one; from the
 	 * first entry, one per canonical name, in the order the names were added.
@@ -126,7 +126,11 @@ export class TAttributes extends TSubscribable {
 	add(name: string, value: string | null | undefined): this {
 		if (value === null || value === undefined) return this.remove(name)
 
-		if (this._write(this.resolve(name), value)) this._notify()
+		const key = this.resolve(name)
+		if (this.get(name) === value) return this
+
+		const oldValue = this.toObject()
+		if (this._write(key, value)) this._notify(oldValue)
 
 		return this
 	}
@@ -146,11 +150,13 @@ export class TAttributes extends TSubscribable {
 
 		if (index === -1) return this
 
+		const oldValue = this.toObject()
+
 		this._entries =
 			entries.length === 2
 				? undefined
 				: entries.slice(0, index).concat(entries.slice(index + 2))
-		this._notify()
+		this._notify(oldValue)
 
 		return this
 	}

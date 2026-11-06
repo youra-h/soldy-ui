@@ -79,10 +79,12 @@ export default class TToasts extends TLayer<IToastsProps, TToastsEvents> impleme
 	}
 
 	set placement(value: TToastsPlacement) {
+		const oldPlacement = this.placement
+
 		if (this._placement === value) return
 
 		this._applyPlacement(value, this._placement)
-		this.events.emit('change:placement', value)
+		this.events.emit('change:placement', { newValue: value, oldValue: oldPlacement })
 	}
 
 	/** Как тосты стоят в регионе: столбцом (`list`) или стопкой (`cascade`). */
@@ -91,10 +93,12 @@ export default class TToasts extends TLayer<IToastsProps, TToastsEvents> impleme
 	}
 
 	set layout(value: TToastsLayout) {
+		const oldLayout = this.layout
+
 		if (this._layout === value) return
 
 		this._applyLayout(value, this._layout)
-		this.events.emit('change:layout', value)
+		this.events.emit('change:layout', { newValue: value, oldValue: oldLayout })
 	}
 
 	/** Сколько тостов видно разом; остальные ждут, пока место освободится. */
@@ -103,10 +107,12 @@ export default class TToasts extends TLayer<IToastsProps, TToastsEvents> impleme
 	}
 
 	set max(value: number) {
+		const oldMax = this.max
+
 		if (this._max === value) return
 
 		this._max = value
-		this.events.emit('change:max', value)
+		this.events.emit('change:max', { newValue: value, oldValue: oldMax })
 	}
 
 	/** Длительность тоста без своей, мс; `0` — держится, пока не закроют. */
@@ -115,10 +121,12 @@ export default class TToasts extends TLayer<IToastsProps, TToastsEvents> impleme
 	}
 
 	set duration(value: number) {
+		const oldDuration = this.duration
+
 		if (this._duration === value) return
 
 		this._duration = value
-		this.events.emit('change:duration', value)
+		this.events.emit('change:duration', { newValue: value, oldValue: oldDuration })
 	}
 
 	protected _applyPlacement(newValue: TToastsPlacement, oldValue?: TToastsPlacement): void {

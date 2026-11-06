@@ -1137,7 +1137,7 @@ describe('жест', () => {
 		const opened: unknown[] = []
 
 		el.addEventListener('so:change:open', (event) => {
-			if (event instanceof CustomEvent) opened.push(event.detail)
+			if (event instanceof CustomEvent) opened.push(event.detail.newValue)
 		})
 
 		await click(fieldOf(el))

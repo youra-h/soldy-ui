@@ -110,7 +110,9 @@ async function controlled(initial: TCalendarValue, props: CalendarProps = {}) {
 async function withMonths() {
 	const [months, setMonths] = createSignal<TCalendarDate[] | undefined>()
 
-	mount(() => <Calendar months={months()} onChangeMonths={(value) => setMonths(value)} />)
+	mount(() => (
+		<Calendar months={months()} onChangeMonths={({ newValue: value }) => setMonths(value)} />
+	))
 	await nextFrame()
 
 	return months
@@ -326,7 +328,10 @@ describe('Calendar · кнопки листания', () => {
 		next().click()
 		await nextFrame()
 
-		expect(onChangeMonths).toHaveBeenCalledExactlyOnceWith(['2026-10-01'])
+		expect(onChangeMonths).toHaveBeenCalledExactlyOnceWith({
+			newValue: ['2026-10-01'],
+			oldValue: ['2026-09-01'],
+		})
 	})
 
 	it('листание пишет months — onChangeMonths', async () => {

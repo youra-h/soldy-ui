@@ -440,7 +440,7 @@ export class MenuItemsPreview extends TMenuPreviewInputs {}
 				[dismiss_enabled]="dismiss_enabled()"
 				[hideOutside_enabled]="hideOutside_enabled()"
 				[scrollLock_enabled]="scrollLock_enabled()"
-				(soChangeVisible)="shown.set($event)"
+				(soChangeVisible)="shown.set($event.newValue)"
 			>
 				<span slot="title">Настройки</span>
 				<p style="margin: 0 0 8px">Произвольное содержимое: текст, поля, кнопки</p>
@@ -518,7 +518,7 @@ export class DialogPreview implements TFixture {
 					[dismiss_enabled]="dismiss_enabled()"
 					[hideOutside_enabled]="hideOutside_enabled()"
 					[scrollLock_enabled]="scrollLock_enabled()"
-					(soChangeVisible)="shown.set($event)"
+					(soChangeVisible)="shown.set($event.newValue)"
 				>
 					<span slot="title">Фильтры</span>
 					<p style="margin: 0 0 8px">Произвольное содержимое: текст, поля, кнопки</p>

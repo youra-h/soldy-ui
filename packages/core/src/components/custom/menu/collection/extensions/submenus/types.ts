@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../../../../common'
 import type { IExtension } from '../../../../../base/collection'
 import type { IMenuItem } from '../../../item/types'
 import type { IMenuSubmenu } from '../../../submenu/types'
@@ -26,7 +27,7 @@ export type TMenuSubmenusExtensionEvents = {
 	 * Пришло или ушло подменю из данных. Раз на запись — в её конце, следом за
 	 * `change:items`; патч, который подменю не добавил и не убрал, молчит
 	 */
-	'change:submenus': (entries: TMenuSubmenuEntries) => void
+	'change:submenus': (payload: TValuePayload<TMenuSubmenuEntries>) => void
 }
 
 /** Опции расширения подменю из данных. */

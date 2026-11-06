@@ -66,8 +66,8 @@ export default class TTagsItem<
 		this._closable = customProps.closable ?? ctor.defaultValues.closable
 
 		this._closeAria = new TAria()
-		this._closeAria.subscribe(() =>
-			this._sink.emit('change:closeAria', this._closeAria.toObject()),
+		this._closeAria.subscribe((_set, oldValue) =>
+			this._sink.emit('change:closeAria', { newValue: this._closeAria.toObject(), oldValue }),
 		)
 
 		this._classes.toggle(`--closable`, !!this._closable)
@@ -127,6 +127,8 @@ export default class TTagsItem<
 	}
 
 	set closable(value: boolean | undefined) {
+		const oldClosable = this.closable
+
 		if (value === this._closable) return
 
 		const e = new TChangeEvent(value, this._closable)
@@ -137,7 +139,7 @@ export default class TTagsItem<
 
 		this._closable = e.value
 		this._classes.toggle(`--closable`, !!e.value)
-		this._sink.emit('change:closable', e.value)
+		this._sink.emit('change:closable', { newValue: e.value, oldValue: oldClosable })
 	}
 
 	/**

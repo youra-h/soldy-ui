@@ -1,3 +1,4 @@
+import { propertyDetail } from './property-detail'
 import { TPluginBundle } from '@soldy-ui/plugins'
 /**
  * `<div is="so-frame">` — слой поверх страницы.
@@ -206,7 +207,7 @@ function collect(el: Element, name: string): unknown[] {
 	const seen: unknown[] = []
 
 	el.addEventListener(name, (event) => {
-		if (event instanceof CustomEvent) seen.push(event.detail)
+		if (event instanceof CustomEvent) seen.push(propertyDetail(event))
 	})
 
 	return seen

@@ -35,9 +35,11 @@ export class TIdPlugin extends TBasePlugin<any, TIdPluginEvents> {
 	}
 
 	set id(value: string | undefined) {
+		const oldId = this.id
+
 		if (this._id === value) return
 
 		this._id = value
-		this.events.emit('change:id', value)
+		this.events.emit('change:id', { newValue: value, oldValue: oldId })
 	}
 }

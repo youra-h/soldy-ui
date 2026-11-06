@@ -27,10 +27,21 @@ import { TButton } from '@soldy-ui/core'
 
 const button = new TButton({ text: 'Save' })
 
-button.events.on('change:text', ({ value }) => console.log(value))
+button.events.on('change:text', ({ newValue, oldValue }) => console.log(newValue, oldValue))
 button.text = 'Saved'
 button.disabled = true
 ```
+
+Property change notifications carry `TValuePayload<T>`: `{ newValue, oldValue }`. Read `newValue`
+when returning a changed value to a component prop. Object values retain their references; events
+do not deep-clone or freeze them. Collection lists and markup attribute sets use shallow container
+snapshots, keeping the identities of the objects inside them. A mutable object reference is not a
+historical copy.
+
+Cancelable `change:*:before` events keep their `TChangeEvent` contract (`value`, `oldValue`,
+`preventDefault()`). Model updates such as Vue's `update:value` still carry the value itself.
+Collection operations with multiple arguments and invalidation signals without arguments retain
+their own contracts.
 
 A collection is an engine with extensions, not an array:
 

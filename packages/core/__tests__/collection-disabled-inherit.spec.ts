@@ -38,7 +38,10 @@ type TItemProbe = {
 	disabled: boolean
 	readonly dataset: TDataset
 	readonly events: {
-		on(event: 'change:disabled', handler: (value: boolean) => void): void
+		on(
+			event: 'change:disabled',
+			handler: (payload: import('@soldy-ui/core').TValuePayload<boolean>) => void,
+		): void
 	}
 }
 
@@ -283,8 +286,8 @@ describe.each(cases)('$name · disabled владельца распростра�
 		const own = vi.fn()
 		const inherited = vi.fn()
 
-		item('a').events.on('change:disabled', own)
-		item('b').events.on('change:disabled', inherited)
+		item('a').events.on('change:disabled', ({ newValue }) => own(newValue))
+		item('b').events.on('change:disabled', ({ newValue }) => inherited(newValue))
 
 		owner.disabled = true
 

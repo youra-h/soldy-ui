@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../common'
 import type { IProgress, IProgressProps, TProgressEvents } from '../../base/progress'
 
 /**
@@ -20,7 +21,7 @@ export interface IProgressLinearProps extends IProgressProps {
 
 export type TProgressLinearEvents = TProgressEvents & {
 	/** change:orientation */
-	'change:orientation': (value: TProgressLinearOrientation) => void
+	'change:orientation': (payload: TValuePayload<TProgressLinearOrientation>) => void
 }
 
 export interface IProgressLinear extends IProgress<IProgressLinearProps, TProgressLinearEvents> {

@@ -69,10 +69,12 @@ export class TTags extends TValueControl<TTagsValue, ITagsProps, TTagsEvents> im
 	}
 
 	set closable(value: boolean) {
+		const oldClosable = this.closable
+
 		if (this._closable === value) return
 
 		this._closable = value
-		this.events.emit('change:closable', value)
+		this.events.emit('change:closable', { newValue: value, oldValue: oldClosable })
 	}
 
 	get view(): TTagsView | undefined {
@@ -80,10 +82,12 @@ export class TTags extends TValueControl<TTagsValue, ITagsProps, TTagsEvents> im
 	}
 
 	set view(value: TTagsView | undefined) {
+		const oldView = this.view
+
 		if (this._view === value) return
 
 		this._applyView(value, this._view)
-		this.events.emit('change:view', value)
+		this.events.emit('change:view', { newValue: value, oldValue: oldView })
 	}
 
 	get overflow(): TTagsOverflow {
@@ -91,10 +95,12 @@ export class TTags extends TValueControl<TTagsValue, ITagsProps, TTagsEvents> im
 	}
 
 	set overflow(value: TTagsOverflow) {
+		const oldOverflow = this.overflow
+
 		if (this._overflow === value) return
 
 		this._applyOverflow(value)
-		this.events.emit('change:overflow', value)
+		this.events.emit('change:overflow', { newValue: value, oldValue: oldOverflow })
 	}
 
 	/** Модификатор вида — с префиксом `--view-`; `swap` пропускает пустое значение. */

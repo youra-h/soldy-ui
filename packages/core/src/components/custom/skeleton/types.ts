@@ -34,10 +34,10 @@ export type TSkeletonEvents = TComponentViewEvents & {
 	'change:variant': (payload: TValuePayload<TComponentVariant | undefined>) => void
 	/** Запись своего `variant` — подправить или отменить (`TChangeEvent`) */
 	'change:variant:before': (e: TChangeEvent<TComponentVariant | undefined>) => void
-	'change:shape': (value: TSkeletonShape | undefined) => void
-	'change:animation': (value: TSkeletonAnimation | undefined) => void
-	'change:width': (value: number | string) => void
-	'change:height': (value: number | string) => void
+	'change:shape': (payload: TValuePayload<TSkeletonShape | undefined>) => void
+	'change:animation': (payload: TValuePayload<TSkeletonAnimation | undefined>) => void
+	'change:width': (payload: TValuePayload<number | string>) => void
+	'change:height': (payload: TValuePayload<number | string>) => void
 }
 
 export interface ISkeleton extends IComponentView<ISkeletonProps, TSkeletonEvents> {

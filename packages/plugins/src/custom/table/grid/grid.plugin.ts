@@ -96,7 +96,9 @@ export class TTableGridPlugin extends TBasePlugin<ITable, TTableGridPluginEvents
 		// `destroy()`
 		ctx.get(TCollectionBundlesPlugin)?.events.on('engine:bound', (engine: TTableCollection) => {
 			this._engine = engine
-			this._listenTo(engine.extensions.grid.events, 'change:focusedCell', this._follow)
+			this._listenTo(engine.extensions.grid.events, 'change:focusedCell', ({ newValue }) =>
+				this._follow(newValue),
+			)
 		})
 	}
 

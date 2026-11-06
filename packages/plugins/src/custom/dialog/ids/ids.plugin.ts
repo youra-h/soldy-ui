@@ -28,6 +28,6 @@ export class TDialogIdsPlugin extends TModalIdsPlugin {
 		dialog.bodyAria.add('id', bodyId)
 
 		describe(dialog.alert)
-		this._listenTo(dialog.events, 'change:alert', describe)
+		this._listenTo(dialog.events, 'change:alert', ({ newValue }) => describe(newValue))
 	}
 }

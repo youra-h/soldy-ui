@@ -331,7 +331,7 @@ describe('отложенный жест (deferred)', () => {
 		const { column, root, resizer, commit, pointer } = await mountDeferred()
 		const width = vi.fn()
 
-		column.events.on('change:width', width)
+		column.events.on('change:width', ({ newValue }) => width(newValue))
 
 		pointer('pointerdown', resizer, 260)
 

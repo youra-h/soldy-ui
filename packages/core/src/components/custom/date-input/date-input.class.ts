@@ -183,13 +183,15 @@ export class TDateInput
 	}
 
 	set min(value: TDateInputBound) {
+		const oldMin = this.min
+
 		if (this._min === value) return
 
 		const invalid = this.invalid
 
 		this._min = value
 		this._invalidChanged(invalid)
-		this.events.emit('change:min', value)
+		this.events.emit('change:min', { newValue: value, oldValue: oldMin })
 	}
 
 	/** Раньше `min` — граница схлопывается в `min`, как у календаря. */
@@ -198,13 +200,15 @@ export class TDateInput
 	}
 
 	set max(value: TDateInputBound) {
+		const oldMax = this.max
+
 		if (this._max === value) return
 
 		const invalid = this.invalid
 
 		this._max = value
 		this._invalidChanged(invalid)
-		this.events.emit('change:max', value)
+		this.events.emit('change:max', { newValue: value, oldValue: oldMax })
 	}
 
 	/** Функция сверяется по ссылке: заданная заново — смена, как у календаря. */
@@ -213,13 +217,15 @@ export class TDateInput
 	}
 
 	set unavailable(value: TCalendarUnavailable | undefined) {
+		const oldUnavailable = this.unavailable
+
 		if (this._unavailable === value) return
 
 		const invalid = this.invalid
 
 		this._unavailable = value
 		this._invalidChanged(invalid)
-		this.events.emit('change:unavailable', value)
+		this.events.emit('change:unavailable', { newValue: value, oldValue: oldUnavailable })
 	}
 
 	get locale(): string {
@@ -228,12 +234,14 @@ export class TDateInput
 
 	/** Части те же; значение — только если цикл часов сменил, нужен ли период суток. */
 	set locale(value: string) {
+		const oldLocale = this.locale
+
 		if (this._locale === value) return
 
 		const before = fieldValueOf(this._parts, this._format)
 
 		this._locale = value
-		this.events.emit('change:locale', value)
+		this.events.emit('change:locale', { newValue: value, oldValue: oldLocale })
 		this._formatChanged(before)
 	}
 
@@ -247,12 +255,14 @@ export class TDateInput
 	 * дата без набранного времени значения не даёт.
 	 */
 	set kind(value: TDateInputKind) {
+		const oldKind = this.kind
+
 		if (this._kind === value) return
 
 		const before = fieldValueOf(this._parts, this._format)
 
 		this._kind = value
-		this.events.emit('change:kind', value)
+		this.events.emit('change:kind', { newValue: value, oldValue: oldKind })
 		this._formatChanged(before)
 	}
 
@@ -267,12 +277,14 @@ export class TDateInput
 	 * значение то же.
 	 */
 	set timePrecision(value: TTimePrecision) {
+		const oldTimePrecision = this.timePrecision
+
 		if (this._timePrecision === value) return
 
 		const before = fieldValueOf(this._parts, this._format)
 
 		this._timePrecision = value
-		this.events.emit('change:timePrecision', value)
+		this.events.emit('change:timePrecision', { newValue: value, oldValue: oldTimePrecision })
 		this._formatChanged(before)
 	}
 
@@ -287,10 +299,12 @@ export class TDateInput
 	}
 
 	set validate(value: boolean) {
+		const oldValidate = this.validate
+
 		if (this._validate === value) return
 
 		this._validate = value
-		this.events.emit('change:validate', value)
+		this.events.emit('change:validate', { newValue: value, oldValue: oldValidate })
 	}
 
 	/**
@@ -383,12 +397,14 @@ export class TDateInput
 	/* ------------------------------------------------------------------ */
 
 	focusSegment(part: TDateFieldPart | undefined): void {
+		const oldFocusedSegment = this.focusedSegment
+
 		if (this._focusedSegment === part) return
 
 		// Набранное — части под фокусом и уходит с ней: её нули сменяет подсказка
 		this._write(this._parts, '')
 		this._focusedSegment = part
-		this.events.emit('change:focusedSegment', part)
+		this.events.emit('change:focusedSegment', { newValue: part, oldValue: oldFocusedSegment })
 	}
 
 	shiftFocus(count: number): void {

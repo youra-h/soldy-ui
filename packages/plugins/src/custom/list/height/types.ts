@@ -1,3 +1,4 @@
+import type { TValuePayload } from '@soldy-ui/core'
 import type { TPluginEvents } from '../../../base'
 
 export type TListHeightPluginEvents = TPluginEvents & {
@@ -6,5 +7,5 @@ export type TListHeightPluginEvents = TPluginEvents & {
 	 * Нужно соседу по набору (`TListScrollPlugin`), а не потребителю: в
 	 * дескриптор событие не публикуется.
 	 */
-	'change:measured': (measured: boolean) => void
+	'change:measured': (payload: TValuePayload<boolean>) => void
 }

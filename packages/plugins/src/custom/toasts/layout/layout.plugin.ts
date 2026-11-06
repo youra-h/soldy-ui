@@ -36,9 +36,11 @@ export class TToastsLayoutPlugin extends TBasePlugin<IToasts, TToastsLayoutPlugi
 	}
 
 	private _update(owner: IToasts): void {
+		const oldStyles = this.styles
+
 		if (this._styles['z-index'] === owner.zIndex) return
 
 		this._styles = { 'z-index': owner.zIndex }
-		this.events.emit('change:styles', this._styles)
+		this.events.emit('change:styles', { newValue: this._styles, oldValue: oldStyles })
 	}
 }

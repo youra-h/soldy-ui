@@ -93,15 +93,21 @@ export class TMenu extends TStylable<IMenuProps, TMenuEvents> implements IMenu {
 		this._aria.add('role', 'menu')
 
 		this._triggerAria = new TAria()
-		this._triggerAria.subscribe(() =>
-			this.events.emit('change:triggerAria', this._triggerAria.toObject()),
+		this._triggerAria.subscribe((_set, oldValue) =>
+			this.events.emit('change:triggerAria', {
+				newValue: this._triggerAria.toObject(),
+				oldValue,
+			}),
 		)
 
 		// Блок панели — свой: модификаторы ставят его методы, как модификаторы
 		// корня ставит `TStylable`
 		this._panelClasses = new TClasses(`${ctor.baseClass}__panel`)
-		this._panelClasses.subscribe(() =>
-			this.events.emit('change:panelClasses', this._panelClasses.toArray()),
+		this._panelClasses.subscribe((_set, oldValue) =>
+			this.events.emit('change:panelClasses', {
+				newValue: this._panelClasses.toArray(),
+				oldValue,
+			}),
 		)
 
 		this._applyPanelSize(this.size)
@@ -124,10 +130,12 @@ export class TMenu extends TStylable<IMenuProps, TMenuEvents> implements IMenu {
 	}
 
 	set open(value: boolean) {
+		const oldOpen = this.open
+
 		if (this._open === value) return
 
 		this._applyOpen(value)
-		this.events.emit('change:open', value)
+		this.events.emit('change:open', { newValue: value, oldValue: oldOpen })
 	}
 
 	/**
@@ -149,10 +157,12 @@ export class TMenu extends TStylable<IMenuProps, TMenuEvents> implements IMenu {
 	}
 
 	set placement(value: TMenuPlacement) {
+		const oldPlacement = this.placement
+
 		if (this._placement === value) return
 
 		this._placement = value
-		this.events.emit('change:placement', value)
+		this.events.emit('change:placement', { newValue: value, oldValue: oldPlacement })
 	}
 
 	/**
@@ -170,12 +180,14 @@ export class TMenu extends TStylable<IMenuProps, TMenuEvents> implements IMenu {
 	}
 
 	set openOn(value: TMenuOpenOn) {
+		const oldOpenOn = this.openOn
+
 		if (this._openOn === value) return
 
 		this._openOn = value
 		this.point = null
 		this._syncTriggerAria()
-		this.events.emit('change:openOn', value)
+		this.events.emit('change:openOn', { newValue: value, oldValue: oldOpenOn })
 	}
 
 	/**
@@ -188,10 +200,15 @@ export class TMenu extends TStylable<IMenuProps, TMenuEvents> implements IMenu {
 	}
 
 	set groupSeparators(value: boolean) {
+		const oldGroupSeparators = this.groupSeparators
+
 		if (this._groupSeparators === value) return
 
 		this._groupSeparators = value
-		this.events.emit('change:groupSeparators', value)
+		this.events.emit('change:groupSeparators', {
+			newValue: value,
+			oldValue: oldGroupSeparators,
+		})
 	}
 
 	/**
@@ -210,10 +227,12 @@ export class TMenu extends TStylable<IMenuProps, TMenuEvents> implements IMenu {
 	}
 
 	set point(value: TMenuPoint | null) {
+		const oldPoint = this.point
+
 		if (samePoint(this._point, value)) return
 
 		this._point = value === null ? null : { x: value.x, y: value.y }
-		this.events.emit('change:point', this._point)
+		this.events.emit('change:point', { newValue: this._point, oldValue: oldPoint })
 	}
 
 	/**

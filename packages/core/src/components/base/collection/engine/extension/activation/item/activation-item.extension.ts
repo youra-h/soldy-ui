@@ -21,7 +21,10 @@ export class TActivationItemExtension<TItem extends object = any>
 		// новая активность, остальным — ничего
 		this.events.follow(parent.events, 'change:activation', (active, previous) => {
 			if (active === this._item || previous === this._item) {
-				this.events.emit('change:active', this.active)
+				this.events.emit('change:active', {
+					newValue: this.active,
+					oldValue: previous === this._item,
+				})
 			}
 		})
 	}

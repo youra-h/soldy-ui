@@ -164,7 +164,7 @@ function WithMonths({
 	return (
 		<Calendar
 			months={months}
-			onChangeMonths={(value) => {
+			onChangeMonths={({ newValue: value }) => {
 				setMonths(value)
 				onMonths(value)
 			}}

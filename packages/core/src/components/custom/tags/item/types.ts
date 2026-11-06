@@ -12,11 +12,11 @@ export type TTagsItemEvents = TValueControlEvents<string | number> & {
 	/** Запись своего `text` — подправить или отменить (`TChangeEvent`) */
 	'change:text:before': (e: TChangeEvent<string>) => void
 	/** change:closable */
-	'change:closable': (value: boolean | undefined) => void
+	'change:closable': (payload: TValuePayload<boolean | undefined>) => void
 	/** Запись своего `closable` — подправить или отменить (`TChangeEvent`) */
 	'change:closable:before': (e: TChangeEvent<boolean | undefined>) => void
 	/** change:closeAria — набор атрибутов кнопки закрытия изменился */
-	'change:closeAria': (value: TAriaAttributes) => void
+	'change:closeAria': (payload: TValuePayload<TAriaAttributes>) => void
 }
 
 export interface ITagsItemProps

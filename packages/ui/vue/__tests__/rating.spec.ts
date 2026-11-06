@@ -304,7 +304,7 @@ describe('указатель', () => {
 		await pointer('pointermove', 250)
 
 		expect(fractions()).toEqual(['1', '1', '1', '1', '0'])
-		expect(mounted.emitted('change:preview')).toEqual([[4]])
+		expect(mounted.emitted('change:preview')).toEqual([[{ newValue: 4, oldValue: undefined }]])
 		expect(mounted.emitted('update:value')).toBeUndefined()
 
 		find('.so-rating').dispatchEvent(new PointerEvent('pointerleave', { pointerType: 'mouse' }))

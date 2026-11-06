@@ -828,7 +828,7 @@ async function mountPopover(
 	const handle = nodeOf(`.${popover.classes.resolve('__handle')}`, panel)
 	const changes: boolean[] = []
 
-	popover.events.on('change:open', (value) => changes.push(value))
+	popover.events.on('change:open', ({ newValue: value }) => changes.push(value))
 
 	/** Сдвиг панели во время жеста: переменная темы на панели. */
 	const offset = () => panel.style.getPropertyValue(SWIPE_VARIABLE)
@@ -1054,7 +1054,11 @@ describe('поповер', () => {
  */
 interface IFieldOwner extends ISwipeOwner {
 	open: boolean
-	readonly events: IListenable<TSwipeableEvents & { 'change:open': (value: boolean) => void }>
+	readonly events: IListenable<
+		TSwipeableEvents & {
+			'change:open': (payload: import('@soldy-ui/core').TValuePayload<boolean>) => void
+		}
+	>
 }
 
 /**
@@ -1101,7 +1105,7 @@ async function mountField(
 	const handle = nodeOf(`.${owner.classes.resolve('__handle')}`, panel)
 	const changes: boolean[] = []
 
-	owner.events.on('change:open', (value) => changes.push(value))
+	owner.events.on('change:open', ({ newValue: value }) => changes.push(value))
 
 	return { owner, root, panel, handle, changes, swipe: swipeOn(panel) }
 }

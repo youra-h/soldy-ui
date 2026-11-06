@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../common'
 import type { ITextable, ITextableProps, TTextableEvents } from '../../base/textable'
 import type { TComponentVariant, TThemeRegistry } from '../../../common'
 
@@ -19,7 +20,7 @@ export interface IButtonProps extends ITextableProps {
 }
 
 export type TButtonEvents = TTextableEvents & {
-	'change:view': (value: TButtonView | undefined) => void
+	'change:view': (payload: TValuePayload<TButtonView | undefined>) => void
 }
 
 export interface IButton extends ITextable<IButtonProps, TButtonEvents> {

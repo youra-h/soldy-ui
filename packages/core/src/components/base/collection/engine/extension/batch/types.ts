@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../../../../common'
 import type { IExtension } from '../types'
 import type { TCollectionEngineItemSource } from '../../types'
 
@@ -21,7 +22,11 @@ export type TBatchEvents<TItem> = {
 	'items:added': (items: ReadonlyArray<TCollectionEngineItemSource<TItem>>) => void
 	/** Уходит вход `remove` — тот же массив, только для чтения; у `clear` — пустой. */
 	'items:removed': (items: ReadonlyArray<TItem>) => void
-	'change:trackBy': (fn?: (item: TCollectionEngineItemSource<TItem> | TItem) => unknown) => void
+	'change:trackBy': (
+		payload: TValuePayload<
+			((item: TCollectionEngineItemSource<TItem> | TItem) => unknown) | undefined
+		>,
+	) => void
 
 	/**
 	 * Показанное изменилось — из-за состава или из-за условий отбора.

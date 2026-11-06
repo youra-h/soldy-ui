@@ -70,7 +70,7 @@ type TProps = {
 		[size]="props().size"
 		(soChangeValue)="change($event.newValue)"
 		(soCommit)="commits.push($event)"
-		(soChangePreview)="previews.push($event)"
+		(soChangePreview)="previews.push($event.newValue)"
 	></span>`,
 })
 class RatingHost {

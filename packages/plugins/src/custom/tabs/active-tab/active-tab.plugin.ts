@@ -32,6 +32,7 @@ export class TTabsActiveTabPlugin extends TBasePlugin<ITabs, TTabsActiveTabPlugi
 	private _tabs: ITabs | null = null
 	private _collectionElements: TCollectionElements | null = null
 	private _engine: TTabsCollection | null = null
+	private _offset: TActiveTabOffset | null = null
 
 	override install(ctx: IPluginContext): void {
 		super.install(ctx)
@@ -46,6 +47,7 @@ export class TTabsActiveTabPlugin extends TBasePlugin<ITabs, TTabsActiveTabPlugi
 
 		ctx.get(TElementPlugin)?.events.on('removed', () => {
 			this._element = null
+			this._offset = null
 		})
 
 		ctx.get(TTabsLayoutPlugin)?.events.on('change:layout', () => this._emitOffset())
@@ -70,6 +72,7 @@ export class TTabsActiveTabPlugin extends TBasePlugin<ITabs, TTabsActiveTabPlugi
 
 	override destroy(): void {
 		this._element = null
+		this._offset = null
 		this._tabs = null
 		this._collectionElements = null
 		this._engine = null
@@ -78,11 +81,13 @@ export class TTabsActiveTabPlugin extends TBasePlugin<ITabs, TTabsActiveTabPlugi
 	}
 
 	getOffset(): TActiveTabOffset | null {
-		return this._computeOffset()
+		return this._offset
 	}
 
 	private _emitOffset(): void {
-		this.events.emit('change:active-tab', this._computeOffset())
+		const oldValue = this._offset
+		this._offset = this._computeOffset()
+		this.events.emit('change:active-tab', { newValue: this._offset, oldValue })
 	}
 
 	/**

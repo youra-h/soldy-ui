@@ -135,8 +135,8 @@ describe('итог значения — шкала', () => {
 		const instance = slider({ step: [1, 2, 5], thumbLabels: ['От', 'До'] })
 		const changes = vi.fn()
 
-		instance.events.on('change:step', changes)
-		instance.events.on('change:thumbLabels', changes)
+		instance.events.on('change:step', ({ newValue }) => changes(newValue))
+		instance.events.on('change:thumbLabels', ({ newValue }) => changes(newValue))
 
 		instance.step = [1, 2, 5]
 		instance.thumbLabels = ['От', 'До']
@@ -250,7 +250,7 @@ describe('жест указателя', () => {
 		const instance = slider({ value: 50 })
 		const changes = vi.fn()
 
-		instance.events.on('change:dragging', changes)
+		instance.events.on('change:dragging', ({ newValue }) => changes(newValue))
 
 		instance.press(0.2)
 		expect(instance.dragging).toBe(false)
@@ -465,7 +465,9 @@ describe('наборы корня и полей: одна ручка — пол�
 
 		instance.aria.add('aria-label', 'Цена')
 		instance.events.on('change:value', () => seen.push('value'))
-		instance.events.on('change:labelable', (value) => seen.push(`labelable: ${value}`))
+		instance.events.on('change:labelable', ({ newValue: value }) =>
+			seen.push(`labelable: ${value}`),
+		)
 
 		instance.value = [20, 80]
 
@@ -491,7 +493,7 @@ describe('наборы корня и полей: одна ручка — пол�
 		const instance = slider({ value: [20, 80] })
 		const changed = vi.fn()
 
-		instance.events.on('change:labelable', changed)
+		instance.events.on('change:labelable', ({ newValue }) => changed(newValue))
 
 		instance.shift(0, 1)
 		instance.press(0.5)
@@ -682,8 +684,8 @@ describe('щелчок', () => {
 		const snaps = vi.fn()
 		const radii = vi.fn()
 
-		instance.events.on('change:snap', snaps)
-		instance.events.on('change:snapRadius', radii)
+		instance.events.on('change:snap', ({ newValue }) => snaps(newValue))
+		instance.events.on('change:snapRadius', ({ newValue }) => radii(newValue))
 
 		expect(instance.snap).toBe('none')
 		expect(instance.snapRadius).toBe(8)
@@ -741,7 +743,9 @@ describe('settle — жест закончен доводкой', () => {
 		instance.grab(0, 0.5)
 		instance.drag(0.57)
 
-		instance.events.on('change:dragging', (value) => order.push(`dragging:${value}`))
+		instance.events.on('change:dragging', ({ newValue: value }) =>
+			order.push(`dragging:${value}`),
+		)
 		instance.events.on('change:value', ({ newValue }) => order.push(`value:${newValue}`))
 
 		instance.settle(0.6)
@@ -826,7 +830,7 @@ describe('подсказка', () => {
 		const instance = slider()
 		const changes = vi.fn()
 
-		instance.events.on('change:tooltip', changes)
+		instance.events.on('change:tooltip', ({ newValue }) => changes(newValue))
 
 		instance.tooltip = 'auto'
 		instance.tooltip = 'auto'

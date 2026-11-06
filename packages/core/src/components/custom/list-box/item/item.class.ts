@@ -99,10 +99,12 @@ export default class TListBoxItem<
 	}
 
 	set contentFit(value: TListItemContentFit | undefined) {
+		const oldContentFit = this.contentFit
+
 		if (this._contentFit === value) return
 
 		this._contentFit = value
-		this._sink.emit('change:contentFit', value)
+		this._sink.emit('change:contentFit', { newValue: value, oldValue: oldContentFit })
 	}
 
 	override getProps(): TProps {

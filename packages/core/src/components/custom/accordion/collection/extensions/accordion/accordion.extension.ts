@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../../../../common'
 import type {
 	IBaseOwnerItemExtensionOptions,
 	IExtension,
@@ -86,8 +87,9 @@ export class TAccordionExtension<
 			// `view` item-адаптеры читают из расширения — сообщить, если он
 			// сменился вместе с владельцем
 			if (view !== this.view) {
+				const oldValue = view
 				view = this.view
-				this.events.emit('change:view', view)
+				this.events.emit('change:view', { newValue: view, oldValue })
 			}
 
 			if (!owner) return
@@ -97,11 +99,15 @@ export class TAccordionExtension<
 
 			// Смена у владельца — всем элементам: `disabled` распространяется на
 			// них, как у `<fieldset>`, `size` и `variant` диктует он
-			scope.on(owner.events, 'change:disabled', (value: boolean) => {
-				ctx.driver.valueOf().forEach((item) => {
-					item.disabled = value
-				})
-			})
+			scope.on(
+				owner.events,
+				'change:disabled',
+				({ newValue: value }: TValuePayload<boolean>) => {
+					ctx.driver.valueOf().forEach((item) => {
+						item.disabled = value
+					})
+				},
+			)
 			scope.on(owner.events, 'change:size', () =>
 				ctx.driver.valueOf().forEach((item) => this._applyStyle(item, owner)),
 			)
@@ -111,10 +117,15 @@ export class TAccordionExtension<
 
 			// Внешний вид — в item-адаптеры (TAccordionItemExtension резолвит view
 			// из расширения)
-			scope.on(owner.events, 'change:view', (value: TAccordionView | undefined) => {
-				view = value
-				this.events.emit('change:view', value)
-			})
+			scope.on(
+				owner.events,
+				'change:view',
+				({ newValue: value }: TValuePayload<TAccordionView | undefined>) => {
+					const oldValue = view
+					view = value
+					this.events.emit('change:view', { newValue: value, oldValue })
+				},
+			)
 		})
 	}
 

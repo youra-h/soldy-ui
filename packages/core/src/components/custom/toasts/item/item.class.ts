@@ -106,8 +106,8 @@ export default class TToastsItem<
 		this._render = own.render ?? ctor.defaultValues.render
 
 		this._closeAria = new TAria()
-		this._closeAria.subscribe(() =>
-			this._sink.emit('change:closeAria', this._closeAria.toObject()),
+		this._closeAria.subscribe((_set, oldValue) =>
+			this._sink.emit('change:closeAria', { newValue: this._closeAria.toObject(), oldValue }),
 		)
 
 		this._classes.swap({ prefix: '--type-', newValue: this._type })
@@ -149,10 +149,12 @@ export default class TToastsItem<
 	}
 
 	set description(value: string) {
+		const oldDescription = this.description
+
 		if (value === this._description) return
 
 		this._description = value
-		this._sink.emit('change:description', value)
+		this._sink.emit('change:description', { newValue: value, oldValue: oldDescription })
 	}
 
 	/** Вид сообщения; `undefined` — обычное сообщение. */
@@ -165,11 +167,13 @@ export default class TToastsItem<
 	 * шаблон дал бы `--type-undefined`.
 	 */
 	set type(value: TToastsItemType | undefined) {
+		const oldType = this.type
+
 		if (value === this._type) return
 
 		this._classes.swap({ prefix: '--type-', oldValue: this._type, newValue: value })
 		this._type = value
-		this._sink.emit('change:type', value)
+		this._sink.emit('change:type', { newValue: value, oldValue: oldType })
 	}
 
 	/** Тост ждёт: на месте значка кольцо, и сам тост не закрывается. */
@@ -178,10 +182,12 @@ export default class TToastsItem<
 	}
 
 	set loading(value: boolean) {
+		const oldLoading = this.loading
+
 		if (value === this._loading) return
 
 		this._loading = value
-		this._sink.emit('change:loading', value)
+		this._sink.emit('change:loading', { newValue: value, oldValue: oldLoading })
 	}
 
 	/** Есть ли у тоста кнопка закрытия. */
@@ -190,6 +196,8 @@ export default class TToastsItem<
 	}
 
 	set closable(value: boolean) {
+		const oldClosable = this.closable
+
 		if (value === this._closable) return
 
 		const e = new TChangeEvent(value, this._closable)
@@ -199,7 +207,7 @@ export default class TToastsItem<
 		if (e.defaultPrevented || e.value === this._closable) return
 
 		this._closable = e.value
-		this._sink.emit('change:closable', e.value)
+		this._sink.emit('change:closable', { newValue: e.value, oldValue: oldClosable })
 	}
 
 	/**
@@ -212,10 +220,12 @@ export default class TToastsItem<
 	}
 
 	set duration(value: number | undefined) {
+		const oldDuration = this.duration
+
 		if (value === this._duration) return
 
 		this._duration = value
-		this._sink.emit('change:duration', value)
+		this._sink.emit('change:duration', { newValue: value, oldValue: oldDuration })
 	}
 
 	/** Срочное сообщение: `role="alert"` вместо `role="status"`. */
@@ -224,11 +234,13 @@ export default class TToastsItem<
 	}
 
 	set alert(value: boolean) {
+		const oldAlert = this.alert
+
 		if (value === this._alert) return
 
 		this._alert = value
 		this._syncRole()
-		this._sink.emit('change:alert', value)
+		this._sink.emit('change:alert', { newValue: value, oldValue: oldAlert })
 	}
 
 	/** Своё содержимое: рисует адаптер, ядро значение не читает. */
@@ -237,10 +249,12 @@ export default class TToastsItem<
 	}
 
 	set render(value: unknown) {
+		const oldRender = this.render
+
 		if (value === this._render) return
 
 		this._render = value
-		this._sink.emit('change:render', value)
+		this._sink.emit('change:render', { newValue: value, oldValue: oldRender })
 	}
 
 	/** Открыт ли тост. Закрытие окончательное: закрывает `close()`. */
@@ -255,13 +269,15 @@ export default class TToastsItem<
 	 * ничего не делает.
 	 */
 	close(): void {
+		const oldOpen = this.open
+
 		if (!this._open) return
 
 		this._open = false
 		this._setSwiping(false)
 		this._dataset.add('open', false)
 		this._aria.add('tabindex', '-1')
-		this._sink.emit('change:open', false)
+		this._sink.emit('change:open', { newValue: false, oldValue: oldOpen })
 	}
 
 	/**
@@ -283,10 +299,12 @@ export default class TToastsItem<
 	}
 
 	set swipeSide(value: TSwipeSide) {
+		const oldSwipeSide = this.swipeSide
+
 		if (value === this._swipeSide) return
 
 		this._swipeSide = value
-		this._sink.emit('change:swipeSide', value)
+		this._sink.emit('change:swipeSide', { newValue: value, oldValue: oldSwipeSide })
 	}
 
 	/** Идёт жест: с `beginSwipe` до `endSwipe` или до закрытия. */
@@ -324,11 +342,13 @@ export default class TToastsItem<
 	}
 
 	protected _setSwiping(value: boolean): void {
+		const oldSwiping = this.swiping
+
 		if (this._swiping === value) return
 
 		this._swiping = value
 		this._dataset.add('swiping', value)
-		this._sink.emit('change:swiping', value)
+		this._sink.emit('change:swiping', { newValue: value, oldValue: oldSwiping })
 	}
 
 	override getProps(): TProps {

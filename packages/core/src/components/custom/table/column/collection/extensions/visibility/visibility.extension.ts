@@ -36,7 +36,7 @@ export class TTableColumnsVisibilityExtension
 
 		// Кого слушать, решает состав: на каждую его смену подписки сверяются с
 		// ним. Очистка и патч приходят сюда одним событием на операцию
-		ctx.driver.events.on('change:items', (columns) => this._watch(columns))
+		ctx.driver.events.on('change:items', ({ newValue: columns }) => this._watch(columns))
 
 		// Догон: движок могли наполнить до установки расширения
 		this._watch(ctx.driver.valueOf())

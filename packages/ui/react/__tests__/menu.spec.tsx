@@ -385,7 +385,7 @@ describe('открытие', () => {
 				<Menu
 					items={ITEMS}
 					open={opened.use()}
-					onChangeOpen={opened.write}
+					onChangeOpen={({ newValue }) => opened.write(newValue)}
 					trigger={trigger}
 				/>
 			)
@@ -511,13 +511,13 @@ describe('нажатие пунктов', () => {
 						value="grid"
 						text="Сетка"
 						selected={checked.use()}
-						onChangeSelected={checked.write}
+						onChangeSelected={({ newValue }) => checked.write(newValue)}
 					/>
 					<Menu.CheckboxItem
 						value="ruler"
 						text="Линейка"
 						selected
-						onChangeSelected={(selected) => ruler.push(selected)}
+						onChangeSelected={({ newValue: selected }) => ruler.push(selected)}
 					/>
 				</Menu>
 			)
@@ -722,13 +722,13 @@ describe('переключатели', () => {
 							value="name"
 							text="name"
 							selected={nameChecked.use()}
-							onChangeSelected={nameChecked.write}
+							onChangeSelected={({ newValue }) => nameChecked.write(newValue)}
 						/>
 						<Menu.RadioItem
 							value="date"
 							text="date"
 							selected={dateChecked.use()}
-							onChangeSelected={dateChecked.write}
+							onChangeSelected={({ newValue }) => dateChecked.write(newValue)}
 						/>
 					</Menu.RadioGroup>
 				</Menu>
@@ -1461,7 +1461,10 @@ describe('подменю', () => {
 		const opened = appValue(false)
 
 		function App(): ReactNode {
-			return markup({}, { open: opened.use(), onChangeOpen: opened.write })
+			return markup(
+				{},
+				{ open: opened.use(), onChangeOpen: ({ newValue }) => opened.write(newValue) },
+			)
 		}
 
 		await render(<App />)
@@ -2315,7 +2318,10 @@ describe('пункт с панелью', () => {
 		const opened = appValue(false)
 
 		function App(): ReactNode {
-			return markup({}, { open: opened.use(), onChangeOpen: opened.write })
+			return markup(
+				{},
+				{ open: opened.use(), onChangeOpen: ({ newValue }) => opened.write(newValue) },
+			)
 		}
 
 		await render(<App />)

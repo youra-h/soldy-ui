@@ -98,7 +98,9 @@ async function render({ props = {}, content = inside }: TPageOptions = {}): Prom
 				title="Настройки"
 				{...props}
 				visible={visible()}
-				onChangeVisible={(value: boolean) => {
+				onChangeVisible={({
+					newValue: value,
+				}: import('@soldy-ui/core').TValuePayload<boolean>) => {
 					changes.push(value)
 					setVisible(value)
 				}}
@@ -474,7 +476,9 @@ describe('кнопки шапки', () => {
 		const page = await render({
 			props: {
 				maximizable: true,
-				onChangeMaximized: (value: boolean) => changes.push(value),
+				onChangeMaximized: ({
+					newValue: value,
+				}: import('@soldy-ui/core').TValuePayload<boolean>) => changes.push(value),
 			},
 		})
 
@@ -650,13 +654,17 @@ describe('окно поверх окна', () => {
 				<Dialog
 					class="so-test-lower"
 					visible={lower()}
-					onChangeVisible={(value: boolean) => setLower(value)}
+					onChangeVisible={({
+						newValue: value,
+					}: import('@soldy-ui/core').TValuePayload<boolean>) => setLower(value)}
 				>
 					<button class="so-test-lower-first">Внизу</button>
 					<Dialog
 						class="so-test-upper"
 						visible={upper()}
-						onChangeVisible={(value: boolean) => setUpper(value)}
+						onChangeVisible={({
+							newValue: value,
+						}: import('@soldy-ui/core').TValuePayload<boolean>) => setUpper(value)}
 					>
 						<button class="so-test-upper-first">Наверху</button>
 					</Dialog>

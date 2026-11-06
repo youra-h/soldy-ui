@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../common'
 import type { ILayer, ILayerProps, TLayerEvents } from '../../base/layer'
 import type { TCollectionStorageDriverEvents } from '../../base/collection'
 import type { IToastsCollectionProps } from './collection/types'
@@ -28,13 +29,13 @@ export type TToastsLayout = 'list' | 'cascade'
 export type TToastsEvents = TLayerEvents &
 	TCollectionStorageDriverEvents<IToastsItem> & {
 		/** change:placement */
-		'change:placement': (value: TToastsPlacement) => void
+		'change:placement': (payload: TValuePayload<TToastsPlacement>) => void
 		/** change:layout */
-		'change:layout': (value: TToastsLayout) => void
+		'change:layout': (payload: TValuePayload<TToastsLayout>) => void
 		/** change:max */
-		'change:max': (value: number) => void
+		'change:max': (payload: TValuePayload<number>) => void
 		/** change:duration */
-		'change:duration': (value: number) => void
+		'change:duration': (payload: TValuePayload<number>) => void
 	}
 
 /** Пропсы самого компонента (без коллекционной части). */

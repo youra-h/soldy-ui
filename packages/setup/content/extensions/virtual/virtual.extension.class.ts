@@ -70,6 +70,8 @@ function connectWindow(
 
 	const strategy = new TWindowStrategy()
 	const apply = (enabled: boolean): void => draw.useStrategy(enabled ? strategy : null)
+	const changed = ({ newValue }: import('@soldy-ui/core').TValuePayload<boolean>): void =>
+		apply(newValue)
 	/** Коллекцию приняли: на выключатель обёртки подписаны. */
 	let listening = false
 
@@ -78,13 +80,13 @@ function connectWindow(
 	return {
 		attach: () => {
 			listening = true
-			virtual.events.on('change:enabled', apply)
+			virtual.events.on('change:enabled', changed)
 
 			// Выключатель мог смениться между сборкой и приёмом
 			apply(virtual.enabled)
 		},
 		destroy: () => {
-			if (listening) virtual.events.off('change:enabled', apply)
+			if (listening) virtual.events.off('change:enabled', changed)
 
 			listening = false
 			draw.useStrategy(null)

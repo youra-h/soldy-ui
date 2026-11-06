@@ -113,10 +113,12 @@ describe('признак переезда', () => {
 		tabs.events.on('bundle:create', (bundle: unknown) => {
 			if (!(bundle instanceof TPluginBundle)) return
 
-			bundle.get(TTabsActiveTabPlugin)?.events.on('change:active-tab', (offset) => {
-				if (offset)
-					writes.push(offset.barEl.style.getPropertyValue('--so-tabs-active-moving'))
-			})
+			bundle
+				.get(TTabsActiveTabPlugin)
+				?.events.on('change:active-tab', ({ newValue: offset }) => {
+					if (offset)
+						writes.push(offset.barEl.style.getPropertyValue('--so-tabs-active-moving'))
+				})
 		})
 
 		await render(':ctrl="tabs"', () => ({ tabs }))

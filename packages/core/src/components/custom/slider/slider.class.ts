@@ -218,12 +218,14 @@ export default class TSlider
 	}
 
 	set min(value: number) {
+		const oldMin = this.min
+
 		if (this._min === value) return
 
 		this._rescale(() => {
 			this._min = value
 		})
-		this.events.emit('change:min', value)
+		this.events.emit('change:min', { newValue: value, oldValue: oldMin })
 	}
 
 	get max(): number {
@@ -231,12 +233,14 @@ export default class TSlider
 	}
 
 	set max(value: number) {
+		const oldMax = this.max
+
 		if (this._max === value) return
 
 		this._rescale(() => {
 			this._max = value
 		})
-		this.events.emit('change:max', value)
+		this.events.emit('change:max', { newValue: value, oldValue: oldMax })
 	}
 
 	get step(): TSliderStep {
@@ -244,12 +248,14 @@ export default class TSlider
 	}
 
 	set step(value: TSliderStep) {
+		const oldStep = this.step
+
 		if (sameValue(this._step, value)) return
 
 		this._rescale(() => {
 			this._step = value
 		})
-		this.events.emit('change:step', value)
+		this.events.emit('change:step', { newValue: value, oldValue: oldStep })
 	}
 
 	get largeStep(): number {
@@ -257,10 +263,12 @@ export default class TSlider
 	}
 
 	set largeStep(value: number) {
+		const oldLargeStep = this.largeStep
+
 		if (this._largeStep === value) return
 
 		this._largeStep = value
-		this.events.emit('change:largeStep', value)
+		this.events.emit('change:largeStep', { newValue: value, oldValue: oldLargeStep })
 	}
 
 	get orientation(): TSlideOrientation {
@@ -268,10 +276,12 @@ export default class TSlider
 	}
 
 	set orientation(value: TSlideOrientation) {
+		const oldOrientation = this.orientation
+
 		if (this._orientation === value) return
 
 		this._applyOrientation(value, this._orientation)
-		this.events.emit('change:orientation', value)
+		this.events.emit('change:orientation', { newValue: value, oldValue: oldOrientation })
 	}
 
 	get inverted(): boolean {
@@ -279,10 +289,12 @@ export default class TSlider
 	}
 
 	set inverted(value: boolean) {
+		const oldInverted = this.inverted
+
 		if (this._inverted === value) return
 
 		this._inverted = value
-		this.events.emit('change:inverted', value)
+		this.events.emit('change:inverted', { newValue: value, oldValue: oldInverted })
 	}
 
 	get origin(): number | undefined {
@@ -290,10 +302,12 @@ export default class TSlider
 	}
 
 	set origin(value: number | undefined) {
+		const oldOrigin = this.origin
+
 		if (this._origin === value) return
 
 		this._origin = value
-		this.events.emit('change:origin', value)
+		this.events.emit('change:origin', { newValue: value, oldValue: oldOrigin })
 	}
 
 	/**
@@ -305,10 +319,12 @@ export default class TSlider
 	}
 
 	set marks(value: TSliderMarks) {
+		const oldMarks = this.marks
+
 		if (this._marks === value) return
 
 		this._marks = value
-		this.events.emit('change:marks', value)
+		this.events.emit('change:marks', { newValue: value, oldValue: oldMarks })
 	}
 
 	get minStepsBetweenThumbs(): number {
@@ -316,10 +332,15 @@ export default class TSlider
 	}
 
 	set minStepsBetweenThumbs(value: number) {
+		const oldMinStepsBetweenThumbs = this.minStepsBetweenThumbs
+
 		if (this._minStepsBetweenThumbs === value) return
 
 		this._minStepsBetweenThumbs = value
-		this.events.emit('change:minStepsBetweenThumbs', value)
+		this.events.emit('change:minStepsBetweenThumbs', {
+			newValue: value,
+			oldValue: oldMinStepsBetweenThumbs,
+		})
 	}
 
 	get thumbLabels(): string[] | undefined {
@@ -327,10 +348,12 @@ export default class TSlider
 	}
 
 	set thumbLabels(value: string[] | undefined) {
+		const oldThumbLabels = this.thumbLabels
+
 		if (sameValue(this._thumbLabels, value)) return
 
 		this._thumbLabels = value
-		this.events.emit('change:thumbLabels', value)
+		this.events.emit('change:thumbLabels', { newValue: value, oldValue: oldThumbLabels })
 	}
 
 	get snap(): TSlideSnap {
@@ -338,10 +361,12 @@ export default class TSlider
 	}
 
 	set snap(value: TSlideSnap) {
+		const oldSnap = this.snap
+
 		if (this._snap === value) return
 
 		this._snap = value
-		this.events.emit('change:snap', value)
+		this.events.emit('change:snap', { newValue: value, oldValue: oldSnap })
 	}
 
 	get snapRadius(): number {
@@ -349,10 +374,12 @@ export default class TSlider
 	}
 
 	set snapRadius(value: number) {
+		const oldSnapRadius = this.snapRadius
+
 		if (this._snapRadius === value) return
 
 		this._snapRadius = value
-		this.events.emit('change:snapRadius', value)
+		this.events.emit('change:snapRadius', { newValue: value, oldValue: oldSnapRadius })
 	}
 
 	get tooltip(): TSliderTooltip {
@@ -360,10 +387,12 @@ export default class TSlider
 	}
 
 	set tooltip(value: TSliderTooltip) {
+		const oldTooltip = this.tooltip
+
 		if (this._tooltip === value) return
 
 		this._applyTooltip(value, this._tooltip)
-		this.events.emit('change:tooltip', value)
+		this.events.emit('change:tooltip', { newValue: value, oldValue: oldTooltip })
 	}
 
 	/**
@@ -636,11 +665,13 @@ export default class TSlider
 	}
 
 	protected _setDragging(value: boolean): void {
+		const oldDragging = this.dragging
+
 		if (this._dragging === value) return
 
 		this._dragging = value
 		this._dataset.add('dragging', value)
-		this.events.emit('change:dragging', value)
+		this.events.emit('change:dragging', { newValue: value, oldValue: oldDragging })
 	}
 
 	protected _begin(from: number, offset: number, index: number, lo: number, hi: number): void {

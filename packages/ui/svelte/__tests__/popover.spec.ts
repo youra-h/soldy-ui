@@ -1,3 +1,4 @@
+import type { TValuePayload } from '@soldy-ui/core'
 /**
  * Popover в Svelte — проводка целиком, на настоящей разметке.
  *
@@ -52,7 +53,7 @@ async function renderModel(popover: PopoverProps = {}) {
 	const opens: boolean[] = []
 	const props = reactiveProps<PopoverProps>({
 		...popover,
-		onChangeOpen: (value) => {
+		onChangeOpen: ({ newValue: value }) => {
 			opens.push(value)
 			props.open = value
 		},
@@ -238,7 +239,9 @@ describe('открытие и закрытие', () => {
 		const popover = new TPopover()
 		const changes: boolean[] = []
 
-		popover.events.on('change:open', (value: boolean) => changes.push(value))
+		popover.events.on('change:open', ({ newValue: value }: TValuePayload<boolean>) =>
+			changes.push(value),
+		)
 
 		await render({ ctrl: popover })
 		await open()

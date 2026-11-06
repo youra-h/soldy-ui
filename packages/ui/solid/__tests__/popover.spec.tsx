@@ -1,3 +1,4 @@
+import type { TValuePayload } from '@soldy-ui/core'
 /**
  * Popover в Solid — проводка целиком, на настоящей разметке.
  *
@@ -253,7 +254,9 @@ describe('открытие и закрытие', () => {
 		const popover = new TPopover()
 		const changes: boolean[] = []
 
-		popover.events.on('change:open', (value: boolean) => changes.push(value))
+		popover.events.on('change:open', ({ newValue: value }: TValuePayload<boolean>) =>
+			changes.push(value),
+		)
 
 		await page({ ctrl: popover })
 		await open()
@@ -290,7 +293,10 @@ describe('открытие и закрытие', () => {
 		click(trigger())
 
 		expect(popover.open).toBe(false)
-		expect(onChangeOpen.mock.calls).toEqual([[true], [false]])
+		expect(onChangeOpen.mock.calls).toEqual([
+			[{ newValue: true, oldValue: false }],
+			[{ newValue: false, oldValue: true }],
+		])
 	})
 
 	it('open из разметки открывает и закрывает', async () => {
@@ -718,7 +724,10 @@ describe('жест', () => {
 
 		expect(isOpen()).toBe(false)
 		expect(panel().dataset.swiping).toBe('false')
-		expect(onChangeOpen.mock.calls).toEqual([[true], [false]])
+		expect(onChangeOpen.mock.calls).toEqual([
+			[{ newValue: true, oldValue: false }],
+			[{ newValue: false, oldValue: true }],
+		])
 		expect(document.activeElement).toBe(trigger())
 	})
 })

@@ -238,7 +238,7 @@ describe('выбор', () => {
 
 			item.addEventListener('so:change:selected', (event) => {
 				if (event instanceof CustomEvent && event.target === item) {
-					marks.push(`${text}: ${String(event.detail)}`)
+					marks.push(`${text}: ${String(event.detail.newValue)}`)
 				}
 			})
 		}

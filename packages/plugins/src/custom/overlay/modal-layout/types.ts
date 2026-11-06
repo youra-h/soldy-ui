@@ -1,8 +1,9 @@
+import type { TValuePayload } from '@soldy-ui/core'
 import type { TPluginEvents } from '../../../base'
 
 export type TModalLayoutPluginEvents = TPluginEvents & {
-	'change:styles': (styles: Record<string, string | number>) => void
-	'change:backdropStyles': (styles: Record<string, string | number>) => void
+	'change:styles': (payload: TValuePayload<Record<string, string | number>>) => void
+	'change:backdropStyles': (payload: TValuePayload<Record<string, string | number>>) => void
 }
 
 /** Имена переменных размера панели: их читает CSS блока компонента. */

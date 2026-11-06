@@ -57,9 +57,11 @@ export class TTabs extends TControl<ITabsProps, TTabsEvents> implements ITabs {
 	}
 
 	set orientation(value: TTabsOrientation) {
+		const oldOrientation = this.orientation
+
 		if (this._orientation !== value) {
 			this._applyOrientation(value, this._orientation)
-			this.events.emit('change:orientation', value)
+			this.events.emit('change:orientation', { newValue: value, oldValue: oldOrientation })
 		}
 	}
 
@@ -90,9 +92,11 @@ export class TTabs extends TControl<ITabsProps, TTabsEvents> implements ITabs {
 	}
 
 	set alignment(value: TTabsAlignment) {
+		const oldAlignment = this.alignment
+
 		if (this._alignment !== value) {
 			this._applyAlignment(value, this._alignment)
-			this.events.emit('change:alignment', value)
+			this.events.emit('change:alignment', { newValue: value, oldValue: oldAlignment })
 		}
 	}
 
@@ -109,9 +113,11 @@ export class TTabs extends TControl<ITabsProps, TTabsEvents> implements ITabs {
 	}
 
 	set position(value: TTabsPosition) {
+		const oldPosition = this.position
+
 		if (this._position !== value) {
 			this._applyPosition(value)
-			this.events.emit('change:position', value)
+			this.events.emit('change:position', { newValue: value, oldValue: oldPosition })
 		}
 	}
 
@@ -138,9 +144,11 @@ export class TTabs extends TControl<ITabsProps, TTabsEvents> implements ITabs {
 	}
 
 	set view(value: TTabsView | undefined) {
+		const oldView = this.view
+
 		if (this._view !== value) {
 			this._applyView(value, this._view)
-			this.events.emit('change:view', value)
+			this.events.emit('change:view', { newValue: value, oldValue: oldView })
 		}
 	}
 
@@ -162,9 +170,11 @@ export class TTabs extends TControl<ITabsProps, TTabsEvents> implements ITabs {
 	}
 
 	set closable(value: boolean) {
+		const oldClosable = this.closable
+
 		if (this._closable !== value) {
 			this._closable = value
-			this.events.emit('change:closable', value)
+			this.events.emit('change:closable', { newValue: value, oldValue: oldClosable })
 		}
 	}
 

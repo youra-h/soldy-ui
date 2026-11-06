@@ -51,6 +51,23 @@ describe('TCollectionStorageDriver', () => {
 	})
 
 	// --- execute + события ---
+	it('change:items preserves both containers without cloning their item objects', () => {
+		const first = { id: 1 }
+		const second = { id: 2 }
+		const driver = createEngine([first])
+		const changes = vi.fn()
+		driver.events.on('change:items', changes)
+
+		driver.batch(() => {
+			driver.execute(new TRemoveCommand(first))
+			driver.execute(new TInsertCommand(second))
+		})
+		driver.execute(new TInsertCommand({ id: 3 }))
+
+		expect(changes.mock.calls[0][0]).toEqual({ newValue: [second], oldValue: [first] })
+		expect(changes.mock.calls[0][0].oldValue[0]).toBe(first)
+		expect(changes.mock.calls[0][0].newValue[0]).toBe(second)
+	})
 
 	it('execute: выполняет команду и эмитит события', () => {
 		const driver = createEngine()
@@ -58,7 +75,7 @@ describe('TCollectionStorageDriver', () => {
 		const count = vi.fn()
 
 		driver.events.on('item:added', added)
-		driver.events.on('change:count', count)
+		driver.events.on('change:count', ({ newValue }) => count(newValue))
 
 		const item: Item = { id: 1 }
 
@@ -74,7 +91,7 @@ describe('TCollectionStorageDriver', () => {
 		const driver = createEngine()
 		const items = vi.fn()
 
-		driver.events.on('change:items', items)
+		driver.events.on('change:items', ({ newValue }) => items(newValue))
 
 		driver.execute(new TInsertCommand({ id: 1 }, 0))
 
@@ -85,7 +102,7 @@ describe('TCollectionStorageDriver', () => {
 		const driver = createEngine()
 		const items = vi.fn()
 
-		driver.events.on('change:items', items)
+		driver.events.on('change:items', ({ newValue }) => items(newValue))
 
 		// удалять нечего — состав не менялся
 		driver.execute(new TRemoveCommand<Item>({ id: 1 }))
@@ -101,7 +118,7 @@ describe('TCollectionStorageDriver', () => {
 		const changeItems = vi.fn()
 
 		driver.events.on('item:added', added)
-		driver.events.on('change:items', changeItems)
+		driver.events.on('change:items', ({ newValue }) => changeItems(newValue))
 
 		driver.batch(() => {
 			driver.execute(new TInsertCommand({ id: 1 }, 0))
@@ -122,7 +139,7 @@ describe('TCollectionStorageDriver', () => {
 		const driver = createEngine()
 		const changeItems = vi.fn()
 
-		driver.events.on('change:items', changeItems)
+		driver.events.on('change:items', ({ newValue }) => changeItems(newValue))
 
 		driver.batch(() => {
 			driver.execute(new TInsertCommand({ id: 1 }, 0))
@@ -138,7 +155,7 @@ describe('TCollectionStorageDriver', () => {
 		const driver = createEngine()
 		const changeItems = vi.fn()
 
-		driver.events.on('change:items', changeItems)
+		driver.events.on('change:items', ({ newValue }) => changeItems(newValue))
 
 		driver.batch(() => {
 			driver.execute(new TRemoveCommand<Item>({ id: 1 }))
@@ -152,7 +169,7 @@ describe('TCollectionStorageDriver', () => {
 		const driver = createEngine()
 		const changeItems = vi.fn()
 
-		driver.events.on('change:items', changeItems)
+		driver.events.on('change:items', ({ newValue }) => changeItems(newValue))
 
 		driver.batch(() => {
 			driver.execute(new TRemoveCommand<Item>({ id: 1 })) // no-op
@@ -169,7 +186,7 @@ describe('TCollectionStorageDriver', () => {
 		const driver = createEngine([first])
 		const heard: (readonly Item[])[] = []
 
-		driver.events.on('change:items', (items) => heard.push(items))
+		driver.events.on('change:items', ({ newValue: items }) => heard.push(items))
 
 		driver.execute(new TInsertCommand({ id: 2 }, 1))
 		driver.batch(() => {

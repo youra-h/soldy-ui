@@ -1,8 +1,9 @@
+import type { TValuePayload } from '../../../../common'
 import type { IMenuPopupItem, IMenuPopupItemProps, TMenuPopupItemEvents } from '../popup-item/types'
 
 export type TMenuPopoverItemEvents = TMenuPopupItemEvents & {
 	/** change:lazyMount */
-	'change:lazyMount': (value: boolean) => void
+	'change:lazyMount': (payload: TValuePayload<boolean>) => void
 }
 
 /** Пропсы пункта с панелью: открытость панели и её содержимого. */

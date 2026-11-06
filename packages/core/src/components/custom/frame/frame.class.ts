@@ -56,45 +56,55 @@ export default class TFrame extends TLayer<IFrameProps, TFrameEvents> implements
 		return this._x
 	}
 	set x(value: number) {
+		const oldX = this.x
+
 		if (this._x === value) return
 		this._x = value
-		this.events.emit('change:x', value)
+		this.events.emit('change:x', { newValue: value, oldValue: oldX })
 	}
 
 	get y(): number {
 		return this._y
 	}
 	set y(value: number) {
+		const oldY = this.y
+
 		if (this._y === value) return
 		this._y = value
-		this.events.emit('change:y', value)
+		this.events.emit('change:y', { newValue: value, oldValue: oldY })
 	}
 
 	get width(): number | string {
 		return this._width
 	}
 	set width(value: number | string) {
+		const oldWidth = this.width
+
 		if (this._width === value) return
 		this._width = value
-		this.events.emit('change:width', value)
+		this.events.emit('change:width', { newValue: value, oldValue: oldWidth })
 	}
 
 	get height(): number | string {
 		return this._height
 	}
 	set height(value: number | string) {
+		const oldHeight = this.height
+
 		if (this._height === value) return
 		this._height = value
-		this.events.emit('change:height', value)
+		this.events.emit('change:height', { newValue: value, oldValue: oldHeight })
 	}
 
 	get position(): TFramePosition {
 		return this._position
 	}
 	set position(value: TFramePosition) {
+		const oldPosition = this.position
+
 		if (this._position === value) return
 		this._position = value
-		this.events.emit('change:position', value)
+		this.events.emit('change:position', { newValue: value, oldValue: oldPosition })
 	}
 
 	/**
@@ -109,10 +119,12 @@ export default class TFrame extends TLayer<IFrameProps, TFrameEvents> implements
 	}
 
 	set contained(value: boolean) {
+		const oldContained = this.contained
+
 		if (this._contained === value) return
 
 		this._applyContained(value)
-		this.events.emit('change:contained', value)
+		this.events.emit('change:contained', { newValue: value, oldValue: oldContained })
 	}
 
 	getProps(): IFrameProps {

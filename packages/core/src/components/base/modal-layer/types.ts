@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../common'
 import type { ICloseRequestable, ILayer, ILayerProps, TCloseEvent, TLayerEvents } from '../layer'
 import type { TAria, TAriaAttributes, TDatasetAttributes } from '../../../common'
 
@@ -29,17 +30,17 @@ export type TModalLayerEvents = TLayerEvents & {
 	 */
 	'close:before': (e: TCloseEvent) => void
 	/** change:width */
-	'change:width': (value: number | string | undefined) => void
+	'change:width': (payload: TValuePayload<number | string | undefined>) => void
 	/** change:height */
-	'change:height': (value: number | string | undefined) => void
+	'change:height': (payload: TValuePayload<number | string | undefined>) => void
 	/** change:closable */
-	'change:closable': (value: boolean) => void
+	'change:closable': (payload: TValuePayload<boolean>) => void
 	/** change:dismissible */
-	'change:dismissible': (value: boolean) => void
+	'change:dismissible': (payload: TValuePayload<boolean>) => void
 	/** change:titleAria — набор атрибутов заголовка изменился */
-	'change:titleAria': (value: TAriaAttributes) => void
+	'change:titleAria': (payload: TValuePayload<TAriaAttributes>) => void
 	/** change:closeAria — набор атрибутов кнопки закрытия изменился */
-	'change:closeAria': (value: TAriaAttributes) => void
+	'change:closeAria': (payload: TValuePayload<TAriaAttributes>) => void
 }
 
 export interface IModalLayer<

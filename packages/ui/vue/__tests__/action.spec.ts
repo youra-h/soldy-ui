@@ -1,3 +1,4 @@
+import type { TValuePayload } from '@soldy-ui/core'
 /**
  * TActionPlugin — взаимодействие контрола с пользователем.
  *
@@ -276,7 +277,9 @@ describe('focused · связь с настоящим фокусом', () => {
 		const ctrl = new TButton()
 		const changes: boolean[] = []
 
-		ctrl.events.on('change:focused', (value: boolean) => changes.push(value))
+		ctrl.events.on('change:focused', ({ newValue: value }: TValuePayload<boolean>) =>
+			changes.push(value),
+		)
 
 		const wrapper = mount(Button, { props: { ctrl }, attachTo: document.body })
 

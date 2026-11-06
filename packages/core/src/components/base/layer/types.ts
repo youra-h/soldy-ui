@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../common'
 import type { IComponentView, IComponentViewProps, TComponentViewEvents } from '../component-view'
 
 /**
@@ -29,9 +30,9 @@ export type TLayerEvents = TComponentViewEvents & {
 	 * change:zIndex — номер слоя сменился: слой с узлом поднят над всеми, кого
 	 * показали раньше, узел подключён (номер места открыт) или снят (`0`)
 	 */
-	'change:zIndex': (value: number) => void
+	'change:zIndex': (payload: TValuePayload<number>) => void
 	/** change:target */
-	'change:target': (value: string) => void
+	'change:target': (payload: TValuePayload<string>) => void
 }
 
 export interface ILayer<
@@ -95,11 +96,11 @@ export type TSwipeSide = 'start' | 'end' | 'top' | 'bottom'
 /** События смахиваемого слоя: его карта событий их включает. */
 export type TSwipeableEvents = {
 	/** change:swipe */
-	'change:swipe': (value: TSwipe) => void
+	'change:swipe': (payload: TValuePayload<TSwipe>) => void
 	/** change:swipeSide — слой стал уходить жестом к другой стороне */
-	'change:swipeSide': (value: TSwipeSide | null) => void
+	'change:swipeSide': (payload: TValuePayload<TSwipeSide | null>) => void
 	/** change:swiping — жест начался или кончился */
-	'change:swiping': (value: boolean) => void
+	'change:swiping': (payload: TValuePayload<boolean>) => void
 }
 
 /**

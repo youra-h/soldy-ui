@@ -109,7 +109,9 @@ export class TSlidePointerPlugin extends TBasePlugin<ISlidable, TSlidePointerPlu
 		super.destroy()
 	}
 
-	private readonly _onSnapChange = (snap: TSlideSnap): void => {
+	private readonly _onSnapChange = ({
+		newValue: snap,
+	}: import('@soldy-ui/core').TValuePayload<TSlideSnap>): void => {
 		this._snapStrategy = SNAP_STRATEGIES[snap]
 	}
 

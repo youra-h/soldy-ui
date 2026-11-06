@@ -97,6 +97,8 @@ export class TCalendarSelectionExtension
 	}
 
 	set mode(value: TCalendarMode) {
+		const oldMode = this.mode
+
 		if (this._mode === value) return
 
 		this._mode = value
@@ -106,7 +108,7 @@ export class TCalendarSelectionExtension
 		// Значение — в форму нового режима
 		this._write(this.value)
 
-		this.events.emit('change:mode', value)
+		this.events.emit('change:mode', { newValue: value, oldValue: oldMode })
 		this._paintAll()
 	}
 
@@ -208,12 +210,14 @@ export class TCalendarSelectionExtension
 	 * Не дата — как `undefined`.
 	 */
 	notifyHover(date: TCalendarDate | undefined): void {
+		const oldHovered = this.hovered
+
 		const hovered = parseDate(date)
 
 		if (this._hovered === hovered) return
 
 		this._hovered = hovered
-		this.events.emit('change:hovered', hovered)
+		this.events.emit('change:hovered', { newValue: hovered, oldValue: oldHovered })
 
 		if (this._anchor !== undefined) this._paintAll()
 	}
@@ -255,10 +259,12 @@ export class TCalendarSelectionExtension
 	}
 
 	private _setAnchor(value: TCalendarDate | undefined): void {
+		const oldAnchor = this.anchor
+
 		if (this._anchor === value) return
 
 		this._anchor = value
-		this.events.emit('change:anchor', value)
+		this.events.emit('change:anchor', { newValue: value, oldValue: oldAnchor })
 
 		// «Недоступен» зависит от якоря: функция потребителя его получает
 		this._bindStale()

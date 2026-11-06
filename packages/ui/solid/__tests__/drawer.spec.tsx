@@ -95,7 +95,9 @@ async function render({ props = {}, content = inside }: TPageOptions = {}): Prom
 				title="Фильтры"
 				{...props}
 				visible={visible()}
-				onChangeVisible={(value: boolean) => {
+				onChangeVisible={({
+					newValue: value,
+				}: import('@soldy-ui/core').TValuePayload<boolean>) => {
 					changes.push(value)
 					setVisible(value)
 				}}
@@ -465,12 +467,19 @@ describe('внутри модального окна', () => {
 		const [drawer, setDrawer] = createSignal(false)
 
 		mount(() => (
-			<Dialog visible={dialog()} onChangeVisible={(value: boolean) => setDialog(value)}>
+			<Dialog
+				visible={dialog()}
+				onChangeVisible={({
+					newValue: value,
+				}: import('@soldy-ui/core').TValuePayload<boolean>) => setDialog(value)}
+			>
 				<button class="so-test-in-dialog">В окне</button>
 				<Drawer
 					contained
 					visible={drawer()}
-					onChangeVisible={(value: boolean) => setDrawer(value)}
+					onChangeVisible={({
+						newValue: value,
+					}: import('@soldy-ui/core').TValuePayload<boolean>) => setDrawer(value)}
 				>
 					<button class="so-test-in-drawer">В панели</button>
 				</Drawer>

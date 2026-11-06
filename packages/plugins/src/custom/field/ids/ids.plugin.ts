@@ -122,6 +122,8 @@ export class TFieldIdsPlugin extends TBasePlugin<IField, TFieldIdsPluginEvents> 
 	}
 
 	private _relink(field: IField): void {
+		const oldLinks = this.links
+
 		const links = this._linksOf(field)
 		const current = this._links
 
@@ -130,7 +132,7 @@ export class TFieldIdsPlugin extends TBasePlugin<IField, TFieldIdsPluginEvents> 
 		}
 
 		this._links = links
-		this.events.emit('change:links', links)
+		this.events.emit('change:links', { newValue: links, oldValue: oldLinks })
 	}
 
 	/** Ссылки — на части, которые рисуются: подпись с текстом и видимую справку. */

@@ -65,6 +65,8 @@ export class TFrameLayoutPlugin extends TBasePlugin<any, TFrameLayoutPluginEvent
 	}
 
 	private _update(): void {
+		const oldStyles = this.styles
+
 		if (!this._frame) return
 
 		const frame = this._frame
@@ -79,6 +81,6 @@ export class TFrameLayoutPlugin extends TBasePlugin<any, TFrameLayoutPluginEvent
 		styles['z-index'] = frame.zIndex
 
 		this._styles = styles
-		this.events.emit('change:styles', this._styles)
+		this.events.emit('change:styles', { newValue: this._styles, oldValue: oldStyles })
 	}
 }

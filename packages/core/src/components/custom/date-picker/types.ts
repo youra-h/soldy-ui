@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../common'
 import type { IClearable, IClearableProps, TClearableEvents } from '../../base/clearable'
 import type { ISwipeable, TSwipe, TSwipeableEvents } from '../../base/layer'
 import type {
@@ -40,44 +41,44 @@ export type TDatePickerSide = 'calendar' | 'fields'
 export type TDatePickerEvents = TClearableEvents<TDatePickerValue> &
 	TSwipeableEvents & {
 		/** change:mode */
-		'change:mode': (value: TDatePickerMode) => void
+		'change:mode': (payload: TValuePayload<TDatePickerMode>) => void
 		/** change:open */
-		'change:open': (value: boolean) => void
+		'change:open': (payload: TValuePayload<boolean>) => void
 		/** open — панель открылась */
 		open: () => void
 		/** close — панель закрылась */
 		close: () => void
 		/** change:closeOnSelect */
-		'change:closeOnSelect': (value: boolean) => void
+		'change:closeOnSelect': (payload: TValuePayload<boolean>) => void
 		/** change:confirmable */
-		'change:confirmable': (value: boolean) => void
+		'change:confirmable': (payload: TValuePayload<boolean>) => void
 		/**
 		 * change:confirmDisabled — «OK» выключилась (диапазон начат) или снова
 		 * включилась (выбран второй день или начатое сняли)
 		 */
-		'change:confirmDisabled': (value: boolean) => void
+		'change:confirmDisabled': (payload: TValuePayload<boolean>) => void
 		/** change:min */
-		'change:min': (value: TCalendarDate | undefined) => void
+		'change:min': (payload: TValuePayload<TCalendarDate | undefined>) => void
 		/** change:max */
-		'change:max': (value: TCalendarDate | undefined) => void
+		'change:max': (payload: TValuePayload<TCalendarDate | undefined>) => void
 		/** change:unavailable */
-		'change:unavailable': (value: TCalendarUnavailable | undefined) => void
+		'change:unavailable': (payload: TValuePayload<TCalendarUnavailable | undefined>) => void
 		/** change:validate */
-		'change:validate': (value: boolean) => void
+		'change:validate': (payload: TValuePayload<boolean>) => void
 		/** change:weekStart */
-		'change:weekStart': (value: TWeekday | undefined) => void
+		'change:weekStart': (payload: TValuePayload<TWeekday | undefined>) => void
 		/** change:locale */
-		'change:locale': (value: string) => void
+		'change:locale': (payload: TValuePayload<string>) => void
 		/** change:timeZone */
-		'change:timeZone': (value: string | undefined) => void
+		'change:timeZone': (payload: TValuePayload<string | undefined>) => void
 		/** change:startName */
-		'change:startName': (value: string) => void
+		'change:startName': (payload: TValuePayload<string>) => void
 		/** change:endName */
-		'change:endName': (value: string) => void
+		'change:endName': (payload: TValuePayload<string>) => void
 		/** change:triggerAria — набор кнопки календаря изменился */
-		'change:triggerAria': (value: TAriaAttributes) => void
+		'change:triggerAria': (payload: TValuePayload<TAriaAttributes>) => void
 		/** change:panelAria — набор панели изменился */
-		'change:panelAria': (value: TAriaAttributes) => void
+		'change:panelAria': (payload: TValuePayload<TAriaAttributes>) => void
 	}
 
 /**

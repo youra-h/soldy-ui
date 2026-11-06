@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../common'
 import type { IControl, IControlProps, TControlEvents } from '../../base/control'
 import type { ITableCollectionProps } from './collection/types'
 import type { TTableResizePreview } from './column/types'
@@ -48,19 +49,19 @@ export type TTableReorderPreview = 'none' | 'head' | 'column'
 
 export type TTableEvents = TControlEvents & {
 	/** change:locale */
-	'change:locale': (value: string) => void
+	'change:locale': (payload: TValuePayload<string>) => void
 	/** change:stickyHead */
-	'change:stickyHead': (value: boolean) => void
+	'change:stickyHead': (payload: TValuePayload<boolean>) => void
 	/** change:columnFit */
-	'change:columnFit': (value: TTableColumnFit) => void
+	'change:columnFit': (payload: TValuePayload<TTableColumnFit>) => void
 	/** change:reorderPreview */
-	'change:reorderPreview': (value: TTableReorderPreview) => void
+	'change:reorderPreview': (payload: TValuePayload<TTableReorderPreview>) => void
 	/** change:resizePreview */
-	'change:resizePreview': (value: TTableResizePreview) => void
+	'change:resizePreview': (payload: TValuePayload<TTableResizePreview>) => void
 	/** change:resizable */
-	'change:resizable': (value: boolean) => void
+	'change:resizable': (payload: TValuePayload<boolean>) => void
 	/** change:reorderable */
-	'change:reorderable': (value: boolean) => void
+	'change:reorderable': (payload: TValuePayload<boolean>) => void
 }
 
 /** Полный набор пропсов таблицы: свои и коллекции строк (`ITableCollectionProps`). */

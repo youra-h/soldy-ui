@@ -208,12 +208,13 @@ function useShown(bind: Accessor<TPreviewProps>) {
 	return {
 		shown,
 		setShown: (value: boolean) => setShown(value),
-		onChangeVisible: (value: boolean) => {
+		onChangeVisible: (payload: import('@soldy-ui/core').TValuePayload<boolean>) => {
+			const value = payload.newValue
 			setShown(value)
 
 			const journal = bind().onChangeVisible
 
-			if (typeof journal === 'function') journal(value)
+			if (typeof journal === 'function') journal(payload)
 		},
 	}
 }

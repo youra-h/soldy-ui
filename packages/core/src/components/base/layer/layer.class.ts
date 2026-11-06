@@ -155,7 +155,7 @@ export default class TLayer<
 		if (after === before) return
 
 		this._dataset.add(FRAME_LAYER_ATTRIBUTE, after === 0 ? null : after)
-		this._sink.emit('change:zIndex', after)
+		this._sink.emit('change:zIndex', { newValue: after, oldValue: before })
 	}
 
 	/**
@@ -179,9 +179,11 @@ export default class TLayer<
 		return this._target
 	}
 	set target(value: string) {
+		const oldTarget = this.target
+
 		if (this._target === value) return
 		this._target = value
-		this._sink.emit('change:target', value)
+		this._sink.emit('change:target', { newValue: value, oldValue: oldTarget })
 	}
 
 	getProps(): TProps {

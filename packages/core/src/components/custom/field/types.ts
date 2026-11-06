@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../common'
 import type { TAria, TAriaAttributes } from '../../../common'
 import type { IStylable, IStylableProps, TStylableEvents } from '../../base/stylable'
 
@@ -12,21 +13,21 @@ export type TFieldPosition = 'top' | 'start' | 'end'
 
 export type TFieldEvents = TStylableEvents & {
 	/** change:label */
-	'change:label': (value: string) => void
+	'change:label': (payload: TValuePayload<string>) => void
 	/** change:helper */
-	'change:helper': (value: string) => void
+	'change:helper': (payload: TValuePayload<string>) => void
 	/** change:error */
-	'change:error': (value: string) => void
+	'change:error': (payload: TValuePayload<string>) => void
 	/** change:invalid */
-	'change:invalid': (value: boolean) => void
+	'change:invalid': (payload: TValuePayload<boolean>) => void
 	/** change:position */
-	'change:position': (value: TFieldPosition) => void
+	'change:position': (payload: TValuePayload<TFieldPosition>) => void
 	/** change:labelAria — набор атрибутов подписи изменился */
-	'change:labelAria': (value: TAriaAttributes) => void
+	'change:labelAria': (payload: TValuePayload<TAriaAttributes>) => void
 	/** change:helperAria — набор атрибутов подсказки изменился */
-	'change:helperAria': (value: TAriaAttributes) => void
+	'change:helperAria': (payload: TValuePayload<TAriaAttributes>) => void
 	/** change:errorAria — набор атрибутов ошибки изменился */
-	'change:errorAria': (value: TAriaAttributes) => void
+	'change:errorAria': (payload: TValuePayload<TAriaAttributes>) => void
 }
 
 export interface IFieldProps extends IStylableProps {

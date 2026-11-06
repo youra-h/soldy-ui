@@ -98,10 +98,12 @@ export default class TProgress<
 	}
 
 	set value(value: number) {
+		const oldValue = this.value
+
 		if (this._value === value) return
 
 		this._value = value
-		this._sink.emit('change:value', value)
+		this._sink.emit('change:value', { newValue: value, oldValue: oldValue })
 	}
 
 	get min(): number {
@@ -109,10 +111,12 @@ export default class TProgress<
 	}
 
 	set min(value: number) {
+		const oldMin = this.min
+
 		if (this._min === value) return
 
 		this._min = value
-		this._sink.emit('change:min', value)
+		this._sink.emit('change:min', { newValue: value, oldValue: oldMin })
 	}
 
 	get max(): number {
@@ -120,10 +124,12 @@ export default class TProgress<
 	}
 
 	set max(value: number) {
+		const oldMax = this.max
+
 		if (this._max === value) return
 
 		this._max = value
-		this._sink.emit('change:max', value)
+		this._sink.emit('change:max', { newValue: value, oldValue: oldMax })
 	}
 
 	get indeterminate(): boolean {
@@ -131,10 +137,12 @@ export default class TProgress<
 	}
 
 	set indeterminate(value: boolean) {
+		const oldIndeterminate = this.indeterminate
+
 		if (this._indeterminate === value) return
 
 		this._indeterminate = value
-		this._sink.emit('change:indeterminate', value)
+		this._sink.emit('change:indeterminate', { newValue: value, oldValue: oldIndeterminate })
 	}
 
 	/* ------------------------------------------------------------------ */

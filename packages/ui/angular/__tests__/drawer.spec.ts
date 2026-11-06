@@ -65,7 +65,7 @@ import { find, nextFrame } from './mount'
 			[dismissible]="dismissible()"
 			[rendered]="rendered()"
 			[target]="target()"
-			(soChangeVisible)="visibility($event)"
+			(soChangeVisible)="visibility($event.newValue)"
 			(soCloseBefore)="closing($event)"
 		>
 			<span slot="title">Фильтры</span>
@@ -142,9 +142,14 @@ class IconsPage {
 	selector: 'probe-drawer-dialog',
 	standalone: true,
 	imports: [TDialogComponent, TDrawerComponent],
-	template: `<div so-dialog [visible]="dialog()" (soChangeVisible)="dialog.set($event)">
+	template: `<div so-dialog [visible]="dialog()" (soChangeVisible)="dialog.set($event.newValue)">
 		<button class="so-test-in-dialog">В окне</button>
-		<div so-drawer contained [visible]="drawer()" (soChangeVisible)="drawer.set($event)">
+		<div
+			so-drawer
+			contained
+			[visible]="drawer()"
+			(soChangeVisible)="drawer.set($event.newValue)"
+		>
 			<button class="so-test-in-drawer">В панели</button>
 		</div>
 	</div>`,

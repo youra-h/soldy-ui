@@ -329,7 +329,7 @@ describe('панель внутри корня (contained)', () => {
 		})
 		const changes: boolean[] = []
 
-		owner.events.on('change:open', (open) => changes.push(open))
+		owner.events.on('change:open', ({ newValue: open }) => changes.push(open))
 		nodeOf('.first').dispatchEvent(
 			new KeyboardEvent('keydown', { key: 'Escape', bubbles: true, cancelable: true }),
 		)

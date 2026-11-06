@@ -25,12 +25,12 @@
 	}
 
 	/** Своё состояние, затем обработчик страницы (журнал событий): он не затирается. */
-	function onChangeVisible(value: boolean): void {
-		setShown(value)
+	function onChangeVisible(payload: import('@soldy-ui/core').TValuePayload<boolean>): void {
+		setShown(payload.newValue)
 
 		const listener = bind.onChangeVisible
 
-		if (typeof listener === 'function') listener(value)
+		if (typeof listener === 'function') listener(payload)
 	}
 </script>
 

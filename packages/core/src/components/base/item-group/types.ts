@@ -1,11 +1,12 @@
+import type { TValuePayload } from '../../../common'
 import type { IComponentView, IComponentViewProps, TComponentViewEvents } from '../component-view'
 import type { TAria, TAriaAttributes } from '../../../common'
 
 export type TItemGroupEvents = TComponentViewEvents & {
 	/** change:label */
-	'change:label': (value: string) => void
+	'change:label': (payload: TValuePayload<string>) => void
 	/** change:labelAria — набор атрибутов подписи изменился */
-	'change:labelAria': (value: TAriaAttributes) => void
+	'change:labelAria': (payload: TValuePayload<TAriaAttributes>) => void
 }
 
 export interface IItemGroupProps extends IComponentViewProps {

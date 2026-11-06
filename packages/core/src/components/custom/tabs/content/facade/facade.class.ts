@@ -64,6 +64,7 @@ export class TTabsContentCollectionFacade extends TCollectionItemComponent<
 	private _emitActiveIfChanged(wasActive: boolean): void {
 		const active = this.active
 
-		if (active !== wasActive) this.events.emit('change:active', active)
+		if (active !== wasActive)
+			this.events.emit('change:active', { newValue: active, oldValue: wasActive })
 	}
 }

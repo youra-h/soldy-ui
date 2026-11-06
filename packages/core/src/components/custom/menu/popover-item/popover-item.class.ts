@@ -57,10 +57,12 @@ export default class TMenuPopoverItem
 	}
 
 	set lazyMount(value: boolean) {
+		const oldLazyMount = this.lazyMount
+
 		if (this._lazyMount === value) return
 
 		this._lazyMount = value
-		this.events.emit('change:lazyMount', value)
+		this.events.emit('change:lazyMount', { newValue: value, oldValue: oldLazyMount })
 	}
 
 	/**

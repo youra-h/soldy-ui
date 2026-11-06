@@ -17,8 +17,8 @@ describe('TSubscribable', () => {
 		probe.change()
 
 		expect(subscriber).toHaveBeenCalledTimes(2)
-		expect(subscriber).toHaveBeenNthCalledWith(1, probe)
-		expect(subscriber).toHaveBeenNthCalledWith(2, probe)
+		expect(subscriber).toHaveBeenNthCalledWith(1, probe, undefined)
+		expect(subscriber).toHaveBeenNthCalledWith(2, probe, undefined)
 		expect(subscriber.mock.calls[0][0]).toBe(probe)
 	})
 
@@ -30,8 +30,8 @@ describe('TSubscribable', () => {
 	it('один подписчик на несколько объектов узнаёт источник по аргументу', () => {
 		const first = new TProbe()
 		const second = new TProbe()
-		const sources: TSubscribable[] = []
-		const subscriber = (source: TSubscribable): void => {
+		const sources: object[] = []
+		const subscriber = (source: object): void => {
 			sources.push(source)
 		}
 

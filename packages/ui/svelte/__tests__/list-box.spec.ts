@@ -25,6 +25,7 @@ import {
 	type IListBoxItem,
 	type TListBoxCollection,
 	type TListBoxValue,
+	type TValuePayload,
 } from '@soldy-ui/core'
 import {
 	ListBox,
@@ -351,7 +352,7 @@ describe('отметка элемента: selected и onChangeSelected', () => 
 			value,
 			text: value.toUpperCase(),
 			selected,
-			onChangeSelected: (next) => {
+			onChangeSelected: ({ newValue: next }) => {
 				log.push(`${value}: ${next}`)
 
 				const own = props.items?.find((candidate) => candidate.value === value)
@@ -396,7 +397,7 @@ describe('отметка элемента: selected и onChangeSelected', () => 
 	it('колбэк получает отметку: boolean', () => {
 		expectTypeOf<NonNullable<ListBoxItemProps['onChangeSelected']>>()
 			.parameter(0)
-			.toEqualTypeOf<boolean>()
+			.toEqualTypeOf<TValuePayload<boolean>>()
 	})
 })
 
@@ -979,7 +980,7 @@ describe('события снятия', () => {
 
 		const { destroy } = mount(Harness, {
 			list: {
-				onChangeItems: (items) => heard.push(`items ${items.length}`),
+				onChangeItems: ({ newValue: items }) => heard.push(`items ${items.length}`),
 				onItemRemoved: () => heard.push('item:removed'),
 				onElementRemoved: () => heard.push('element:removed'),
 			},

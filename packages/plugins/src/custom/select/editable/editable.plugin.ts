@@ -196,7 +196,7 @@ export class TEditablePlugin extends TBasePlugin<any, TEditablePluginEvents> {
 
 		// Панель открыли, пока плагин ждал её исчезания, — отбор снимается
 		// сразу: ждать больше нечего
-		this._listenTo(this._owner?.events, 'change:open', (open) => {
+		this._listenTo(this._owner?.events, 'change:open', ({ newValue: open }) => {
 			if (open) this._flushFilterReset()
 		})
 
@@ -312,10 +312,12 @@ export class TEditablePlugin extends TBasePlugin<any, TEditablePluginEvents> {
 	}
 
 	private _setQuery(value: string): void {
+		const oldQuery = this.query
+
 		if (this._query === value) return
 
 		this._query = value
-		this.events.emit('change:query', value)
+		this.events.emit('change:query', { newValue: value, oldValue: oldQuery })
 	}
 
 	/**

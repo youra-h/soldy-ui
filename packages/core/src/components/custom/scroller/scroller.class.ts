@@ -71,13 +71,13 @@ export default class TScroller
 		this._dataset.add('can-next', this._canNext)
 
 		this._prevAria = new TAria()
-		this._prevAria.subscribe(() =>
-			this.events.emit('change:prevAria', this._prevAria.toObject()),
+		this._prevAria.subscribe((_set, oldValue) =>
+			this.events.emit('change:prevAria', { newValue: this._prevAria.toObject(), oldValue }),
 		)
 
 		this._nextAria = new TAria()
-		this._nextAria.subscribe(() =>
-			this.events.emit('change:nextAria', this._nextAria.toObject()),
+		this._nextAria.subscribe((_set, oldValue) =>
+			this.events.emit('change:nextAria', { newValue: this._nextAria.toObject(), oldValue }),
 		)
 	}
 
@@ -93,10 +93,12 @@ export default class TScroller
 	}
 
 	set viewportAria(value: TAriaAttributes | undefined) {
+		const oldViewportAria = this.viewportAria
+
 		if (this._viewportAria === value) return
 
 		this._viewportAria = value
-		this.events.emit('change:viewportAria', value)
+		this.events.emit('change:viewportAria', { newValue: value, oldValue: oldViewportAria })
 	}
 
 	/** Есть ли куда листать к началу строки. */
@@ -168,21 +170,28 @@ export default class TScroller
 	 * эмитится при реальном изменении.
 	 */
 	notifyViewport({ canPrev, canNext, hasTabStops }: TScrollerViewport): void {
+		const oldCanPrev = this.canPrev
+		const oldCanNext = this.canNext
+		const oldHasTabStops = this.hasTabStops
+
 		if (this._canPrev !== canPrev) {
 			this._canPrev = canPrev
 			this._dataset.add('can-prev', canPrev)
-			this.events.emit('change:canPrev', canPrev)
+			this.events.emit('change:canPrev', { newValue: canPrev, oldValue: oldCanPrev })
 		}
 
 		if (this._canNext !== canNext) {
 			this._canNext = canNext
 			this._dataset.add('can-next', canNext)
-			this.events.emit('change:canNext', canNext)
+			this.events.emit('change:canNext', { newValue: canNext, oldValue: oldCanNext })
 		}
 
 		if (this._hasTabStops !== hasTabStops) {
 			this._hasTabStops = hasTabStops
-			this.events.emit('change:hasTabStops', hasTabStops)
+			this.events.emit('change:hasTabStops', {
+				newValue: hasTabStops,
+				oldValue: oldHasTabStops,
+			})
 		}
 	}
 

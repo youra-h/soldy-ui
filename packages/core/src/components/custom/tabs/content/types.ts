@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../../common'
 import type {
 	IComponentView,
 	IComponentViewProps,
@@ -6,7 +7,7 @@ import type {
 
 export type TTabsContentEvents = TComponentViewEvents & {
 	/** change:value — панель переключилась на другой таб */
-	'change:value': (value: string | number) => void
+	'change:value': (payload: TValuePayload<string | number>) => void
 }
 
 export interface ITabsContentProps extends IComponentViewProps {

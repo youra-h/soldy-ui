@@ -1,3 +1,4 @@
+import type { TValuePayload } from '@soldy-ui/core'
 import type { IControl } from '@soldy-ui/core'
 import type { TPluginEvents } from '../../../base'
 
@@ -20,7 +21,7 @@ export type THighlightPayload = {
 }
 
 export type TListNavigationPluginEvents = TPluginEvents & {
-	'change:highlight': (payload: THighlightPayload) => void
+	'change:highlight': (payload: TValuePayload<THighlightPayload>) => void
 }
 
 /** Край списка для `highlightEdge`. */

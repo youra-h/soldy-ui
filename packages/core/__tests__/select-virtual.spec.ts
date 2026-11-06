@@ -129,7 +129,7 @@ describe('что рисует список панели', () => {
 		const { facade, draw } = select(200)
 		const changed = vi.fn()
 
-		facade.events.on('change:drawn', changed)
+		facade.events.on('change:drawn', ({ newValue }) => changed(newValue))
 		draw.useStrategy(new TWindowStrategy())
 
 		expect(changed).toHaveBeenCalledTimes(1)

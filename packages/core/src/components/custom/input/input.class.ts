@@ -31,10 +31,12 @@ export class TInput extends TClearable<string, IInputProps, TInputEvents> implem
 	}
 
 	set placeholder(value: string) {
+		const oldPlaceholder = this.placeholder
+
 		if (this._placeholder === value) return
 
 		this._applyPlaceholder(value)
-		this.events.emit('change:placeholder', value)
+		this.events.emit('change:placeholder', { newValue: value, oldValue: oldPlaceholder })
 	}
 
 	/**

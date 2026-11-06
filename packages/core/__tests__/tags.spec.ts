@@ -342,7 +342,7 @@ describe('view — модификатор набора', () => {
 		const { owner } = createTags(['a'], { view: 'ghost' })
 		const seen: unknown[] = []
 
-		owner.events.on('change:view', (value) => seen.push(value))
+		owner.events.on('change:view', ({ newValue: value }) => seen.push(value))
 
 		owner.view = 'solid'
 
@@ -354,7 +354,7 @@ describe('view — модификатор набора', () => {
 		const { owner } = createTags(['a'], { view: 'ghost' })
 		const seen: unknown[] = []
 
-		owner.events.on('change:view', (value) => seen.push(value))
+		owner.events.on('change:view', ({ newValue: value }) => seen.push(value))
 
 		owner.view = undefined
 
@@ -379,7 +379,7 @@ describe('closeAria', () => {
 		const tag = new TTagsItem({ text: 'Настройки' })
 		const seen: unknown[] = []
 
-		tag.events.on('change:closeAria', (value) => seen.push(value))
+		tag.events.on('change:closeAria', ({ newValue: value }) => seen.push(value))
 		tag.closeAria.add('aria-label', 'Close Настройки')
 
 		expect(seen).toEqual([{ 'aria-label': 'Close Настройки' }])
@@ -413,7 +413,7 @@ describe('closeAria', () => {
 			const seen: unknown[] = []
 
 			facade.mode = 'multiple'
-			items[0].events.on('change:closeAria', (value) => seen.push(value))
+			items[0].events.on('change:closeAria', ({ newValue: value }) => seen.push(value))
 			facade.mode = 'none'
 
 			expect(tabindexes(items)).toEqual([undefined])
@@ -733,7 +733,7 @@ describe('остановка Tab — один тег с tabindex="0"', () => {
 		const seen: unknown[] = []
 
 		selection.mode = 'single'
-		a.events.on('change:aria', (value) => seen.push(value))
+		a.events.on('change:aria', ({ newValue: value }) => seen.push(value))
 		selection.mode = 'none'
 
 		expect(seen.at(-1)).toEqual({ role: 'listitem' })

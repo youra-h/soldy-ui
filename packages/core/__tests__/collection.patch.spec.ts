@@ -78,7 +78,7 @@ describe('TPatchCommand — базовое поведение', () => {
 
 		const changeItems = vi.fn()
 
-		col.getCore().driver.events.on('change:items', changeItems)
+		col.getCore().driver.events.on('change:items', ({ newValue }) => changeItems(newValue))
 		col.extensions.batch.patch([
 			{ id: 1, name: 'alpha-2' },
 			{ id: 4, name: 'delta' },

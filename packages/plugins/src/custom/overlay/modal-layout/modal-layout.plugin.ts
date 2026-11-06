@@ -117,6 +117,8 @@ export abstract class TModalLayoutPlugin<
 	 * которых строит `_panelVariables`.
 	 */
 	protected _updateStyles(): void {
+		const oldStyles = this.styles
+
 		const owner = this._owner
 
 		if (!owner) return
@@ -131,15 +133,20 @@ export abstract class TModalLayoutPlugin<
 		if (sameStyles(styles, this._styles)) return
 
 		this._styles = styles
-		this._sink.emit('change:styles', this._styles)
+		this._sink.emit('change:styles', { newValue: this._styles, oldValue: oldStyles })
 	}
 
 	private _updateBackdropStyles(): void {
+		const oldBackdropStyles = this.backdropStyles
+
 		const owner = this._owner
 
 		if (!owner) return
 
 		this._backdropStyles = { 'z-index': owner.zIndex }
-		this._sink.emit('change:backdropStyles', this._backdropStyles)
+		this._sink.emit('change:backdropStyles', {
+			newValue: this._backdropStyles,
+			oldValue: oldBackdropStyles,
+		})
 	}
 }

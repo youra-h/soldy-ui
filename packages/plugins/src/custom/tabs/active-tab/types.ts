@@ -1,3 +1,4 @@
+import type { TValuePayload } from '@soldy-ui/core'
 import type { TPluginEvents } from '../../../base'
 
 /**
@@ -14,5 +15,5 @@ export type TActiveTabOffset = {
 }
 
 export type TTabsActiveTabPluginEvents = TPluginEvents & {
-	'change:active-tab': (offset: TActiveTabOffset | null) => void
+	'change:active-tab': (payload: TValuePayload<TActiveTabOffset | null>) => void
 }

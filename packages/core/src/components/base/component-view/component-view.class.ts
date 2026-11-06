@@ -2,7 +2,7 @@ import { TComponent } from '../component'
 import type { TDefaultValues } from '../component'
 import type { IComponentView, IComponentViewProps, TComponentViewEvents, TDirection } from './types'
 import { TClasses, TAria, TDataset, TAttributes, TActionEvent, TChangeEvent } from '../../../common'
-import type { TEventSink, TSubscribable } from '../../../common'
+import type { TEventSink, TAttributesMap } from '../../../common'
 
 /**
  * Визуальный слой: всё, что связано с отображением.
@@ -61,15 +61,20 @@ export default class TComponentView<
 		// emitters. The subscriber is one for the four sets and picks the event
 		// by the set it receives: a function per set cost every collection item
 		// three closures more
-		const changed = (set: TSubscribable): void => {
-			if (set === this._classes) {
-				this._sink.emit('change:classes', this._classes.toArray())
-			} else if (set === this._aria) {
-				this._sink.emit('change:aria', this._aria.toObject())
-			} else if (set === this._dataset) {
-				this._sink.emit('change:dataset', this._dataset.toObject())
-			} else if (set === this._attrs) {
-				this._sink.emit('change:attrs', this._attrs.toObject())
+		const changed = (set: object, oldValue: string[] | TAttributesMap): void => {
+			if (set === this._classes && Array.isArray(oldValue)) {
+				this._sink.emit('change:classes', { newValue: this._classes.toArray(), oldValue })
+			} else if (!Array.isArray(oldValue)) {
+				if (set === this._aria) {
+					this._sink.emit('change:aria', { newValue: this._aria.toObject(), oldValue })
+				} else if (set === this._dataset) {
+					this._sink.emit('change:dataset', {
+						newValue: this._dataset.toObject(),
+						oldValue,
+					})
+				} else if (set === this._attrs) {
+					this._sink.emit('change:attrs', { newValue: this._attrs.toObject(), oldValue })
+				}
 			}
 		}
 
@@ -97,14 +102,16 @@ export default class TComponentView<
 		return this.rendered && this.visible
 	}
 
-	private _emitPresent(): void {
-		this._sink.emit('change:present', this.present)
+	private _emitPresent(oldValue: boolean): void {
+		this._sink.emit('change:present', { newValue: this.present, oldValue })
 	}
 
 	get rendered(): boolean {
 		return this._rendered
 	}
 	set rendered(value: boolean) {
+		const oldRendered = this.rendered
+
 		if (value === this._rendered) return
 
 		const e = new TChangeEvent(value, this._rendered)
@@ -113,9 +120,10 @@ export default class TComponentView<
 
 		if (e.defaultPrevented || e.value === this._rendered) return
 
+		const oldPresent = this.present
 		this._rendered = e.value
-		this._sink.emit('change:rendered', e.value)
-		this._emitPresent()
+		this._sink.emit('change:rendered', { newValue: e.value, oldValue: oldRendered })
+		this._emitPresent(oldPresent)
 	}
 
 	get visible(): boolean {
@@ -162,9 +170,12 @@ export default class TComponentView<
 	 * `change:visible:before` у видимости нет, это был бы второй путь.
 	 */
 	private _setVisible(value: boolean): void {
+		const oldVisible = this.visible
+		const oldPresent = this.present
+
 		this._visible = value
-		this._sink.emit('change:visible', value)
-		this._emitPresent()
+		this._sink.emit('change:visible', { newValue: value, oldValue: oldVisible })
+		this._emitPresent(oldPresent)
 	}
 
 	protected beforeShow(): boolean {
@@ -235,11 +246,13 @@ export default class TComponentView<
 		return this._tag
 	}
 	set tag(value: string | object) {
+		const oldTag = this.tag
+
 		if (this._tag === value) return
 
 		this._tag = value
 		this._syncTag()
-		this._sink.emit('change:tag', value)
+		this._sink.emit('change:tag', { newValue: value, oldValue: oldTag })
 	}
 
 	/**
@@ -260,11 +273,13 @@ export default class TComponentView<
 		return this._direction
 	}
 	set direction(value: TDirection) {
+		const oldDirection = this.direction
+
 		if (this._direction === value) return
 
 		this._direction = value
 		this._syncDir()
-		this._sink.emit('change:direction', value)
+		this._sink.emit('change:direction', { newValue: value, oldValue: oldDirection })
 	}
 
 	/**

@@ -88,7 +88,7 @@ function watch(engine: TTableCollection) {
 	const sort = vi.fn<(value: TTableColumnSort[]) => void>()
 	const shown = vi.fn<() => void>()
 
-	engine.extensions.sort.events.on('change:sort', sort)
+	engine.extensions.sort.events.on('change:sort', ({ newValue }) => sort(newValue))
 	engine.extensions.batch.events.on('change:shown', shown)
 
 	return { sort, shown }
@@ -126,8 +126,8 @@ describe('колонка и таблица', () => {
 		const sortable = vi.fn()
 		const changed = vi.fn()
 
-		column.events.on('change:sortable', sortable)
-		column.events.on('change:compare', changed)
+		column.events.on('change:sortable', ({ newValue }) => sortable(newValue))
+		column.events.on('change:compare', ({ newValue }) => changed(newValue))
 
 		column.sortable = true
 		column.sortable = true
@@ -143,7 +143,7 @@ describe('колонка и таблица', () => {
 		const owner = new TTable()
 		const changed = vi.fn()
 
-		owner.events.on('change:locale', changed)
+		owner.events.on('change:locale', ({ newValue }) => changed(newValue))
 
 		expect(owner.locale).toBe('en-US')
 
@@ -748,7 +748,7 @@ describe('режим', () => {
 			{ field: 'name', direction: 'desc' },
 		]
 		sort.events.on('change:sort', () => seen.push('sort'))
-		sort.events.on('change:sortMode', (mode) => seen.push(mode))
+		sort.events.on('change:sortMode', ({ newValue: mode }) => seen.push(mode))
 		sort.sortMode = 'single'
 
 		expect(sort.sort).toEqual([{ field: 'age', direction: 'asc' }])
@@ -790,7 +790,7 @@ describe('строки, упорядоченные снаружи', () => {
 		const { sort, batch } = engine.extensions
 		const presorted = vi.fn()
 
-		sort.events.on('change:presorted', presorted)
+		sort.events.on('change:presorted', ({ newValue }) => presorted(newValue))
 		sort.presorted = true
 
 		const { shown } = watch(engine)
@@ -945,9 +945,9 @@ describe('фасад коллекции строк', () => {
 		const mode = vi.fn()
 		const presorted = vi.fn()
 
-		facade.events.on('change:sort', sort)
-		facade.events.on('change:sortMode', mode)
-		facade.events.on('change:presorted', presorted)
+		facade.events.on('change:sort', ({ newValue }) => sort(newValue))
+		facade.events.on('change:sortMode', ({ newValue }) => mode(newValue))
+		facade.events.on('change:presorted', ({ newValue }) => presorted(newValue))
 
 		facade.toggleSort('age')
 		facade.sortMode = 'multiple'

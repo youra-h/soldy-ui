@@ -110,10 +110,12 @@ export class TTable extends TControl<ITableProps, TTableEvents> implements ITabl
 	}
 
 	set locale(value: string) {
+		const oldLocale = this.locale
+
 		if (this._locale === value) return
 
 		this._locale = value
-		this.events.emit('change:locale', value)
+		this.events.emit('change:locale', { newValue: value, oldValue: oldLocale })
 	}
 
 	/**
@@ -125,10 +127,12 @@ export class TTable extends TControl<ITableProps, TTableEvents> implements ITabl
 	}
 
 	set stickyHead(value: boolean) {
+		const oldStickyHead = this.stickyHead
+
 		if (this._stickyHead === value) return
 
 		this._applyStickyHead(value)
-		this.events.emit('change:stickyHead', value)
+		this.events.emit('change:stickyHead', { newValue: value, oldValue: oldStickyHead })
 	}
 
 	/**
@@ -142,10 +146,12 @@ export class TTable extends TControl<ITableProps, TTableEvents> implements ITabl
 	}
 
 	set columnFit(value: TTableColumnFit) {
+		const oldColumnFit = this.columnFit
+
 		if (this._columnFit === value) return
 
 		this._columnFit = value
-		this.events.emit('change:columnFit', value)
+		this.events.emit('change:columnFit', { newValue: value, oldValue: oldColumnFit })
 	}
 
 	/**
@@ -161,10 +167,12 @@ export class TTable extends TControl<ITableProps, TTableEvents> implements ITabl
 	}
 
 	set reorderPreview(value: TTableReorderPreview) {
+		const oldReorderPreview = this.reorderPreview
+
 		if (this._reorderPreview === value) return
 
 		this._reorderPreview = value
-		this.events.emit('change:reorderPreview', value)
+		this.events.emit('change:reorderPreview', { newValue: value, oldValue: oldReorderPreview })
 	}
 
 	/**
@@ -178,10 +186,12 @@ export class TTable extends TControl<ITableProps, TTableEvents> implements ITabl
 	}
 
 	set resizePreview(value: TTableResizePreview) {
+		const oldResizePreview = this.resizePreview
+
 		if (this._resizePreview === value) return
 
 		this._resizePreview = value
-		this.events.emit('change:resizePreview', value)
+		this.events.emit('change:resizePreview', { newValue: value, oldValue: oldResizePreview })
 	}
 
 	/**
@@ -193,10 +203,12 @@ export class TTable extends TControl<ITableProps, TTableEvents> implements ITabl
 	}
 
 	set resizable(value: boolean) {
+		const oldResizable = this.resizable
+
 		if (this._resizable === value) return
 
 		this._resizable = value
-		this.events.emit('change:resizable', value)
+		this.events.emit('change:resizable', { newValue: value, oldValue: oldResizable })
 	}
 
 	/**
@@ -208,10 +220,12 @@ export class TTable extends TControl<ITableProps, TTableEvents> implements ITabl
 	}
 
 	set reorderable(value: boolean) {
+		const oldReorderable = this.reorderable
+
 		if (this._reorderable === value) return
 
 		this._reorderable = value
-		this.events.emit('change:reorderable', value)
+		this.events.emit('change:reorderable', { newValue: value, oldValue: oldReorderable })
 	}
 
 	override getProps(): ITableProps {

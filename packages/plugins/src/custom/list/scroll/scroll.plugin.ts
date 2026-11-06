@@ -205,17 +205,20 @@ export class TListScrollPlugin extends TBasePlugin<any, TListScrollPluginEvents>
 		// Строки измерились — ждущая цель сразу: предел строк уже записан. Цели
 		// нет — её место занимает первый выбранный: и когда список спрятали, и
 		// когда его показали, а цель, ждавшую показа, сняли
-		this._height?.events.on('change:measured', (measured) => {
+		this._height?.events.on('change:measured', ({ newValue: measured }) => {
 			if (!this._target) this._revealSelected()
 			else if (measured) this._attempt()
 		})
 
 		const navigation = options?.navigation ? ctx.get(options.navigation) : undefined
 
-		navigation?.events.on('change:highlight', ({ item }: THighlightPayload) => {
-			if (item) this._follow(item, 'highlight')
-			else if (this._target?.fact === 'highlight') this._drop()
-		})
+		navigation?.events.on(
+			'change:highlight',
+			({ newValue: { item } }: import('@soldy-ui/core').TValuePayload<THighlightPayload>) => {
+				if (item) this._follow(item, 'highlight')
+				else if (this._target?.fact === 'highlight') this._drop()
+			},
+		)
 	}
 
 	override destroy(): void {

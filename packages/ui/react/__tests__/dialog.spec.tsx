@@ -97,7 +97,12 @@ async function render({ props = {}, content = inside }: TPageOptions = {}) {
 		return (
 			<div>
 				<button className="so-test-opener">Открыть</button>
-				<Dialog title="Настройки" {...props} visible={visible} onChangeVisible={setVisible}>
+				<Dialog
+					title="Настройки"
+					{...props}
+					visible={visible}
+					onChangeVisible={({ newValue }) => setVisible(newValue)}
+				>
 					{content}
 				</Dialog>
 			</div>
@@ -399,7 +404,10 @@ describe('кнопки шапки', () => {
 	it('разворот виден onChangeMaximized: по вызову на клик', async () => {
 		const changes: boolean[] = []
 		const shown = await render({
-			props: { maximizable: true, onChangeMaximized: (value) => changes.push(value) },
+			props: {
+				maximizable: true,
+				onChangeMaximized: ({ newValue: value }) => changes.push(value),
+			},
 		})
 
 		await open(shown)
@@ -548,7 +556,7 @@ describe('открытость — visible и onChangeVisible', () => {
 			return (
 				<Dialog
 					visible={visible}
-					onChangeVisible={(value) => {
+					onChangeVisible={({ newValue: value }) => {
 						changes.push(value)
 						setVisible(value)
 					}}
@@ -607,13 +615,13 @@ describe('окно поверх окна', () => {
 					<Dialog
 						className="so-test-lower"
 						visible={lowerVisible}
-						onChangeVisible={setLower}
+						onChangeVisible={({ newValue }) => setLower(newValue)}
 					>
 						<button className="so-test-lower-first">Внизу</button>
 						<Dialog
 							className="so-test-upper"
 							visible={upperVisible}
-							onChangeVisible={setUpper}
+							onChangeVisible={({ newValue }) => setUpper(newValue)}
 						>
 							<button className="so-test-upper-first">Наверху</button>
 						</Dialog>
@@ -964,7 +972,10 @@ describe('React', () => {
 			return (
 				<div>
 					<button className="so-test-opener">Открыть</button>
-					<Dialog visible={visible} onChangeVisible={setVisible}>
+					<Dialog
+						visible={visible}
+						onChangeVisible={({ newValue }) => setVisible(newValue)}
+					>
 						{inside}
 					</Dialog>
 				</div>

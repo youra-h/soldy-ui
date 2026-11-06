@@ -55,10 +55,12 @@ export default class TMenuRadioItem
 	}
 
 	set group(value: IMenuRadioGroup | null) {
+		const oldGroup = this.group
+
 		if (this._group === value) return
 
 		this._group = value
-		this.events.emit('change:group', value)
+		this.events.emit('change:group', { newValue: value, oldValue: oldGroup })
 	}
 
 	override getProps(): IMenuRadioItemProps {

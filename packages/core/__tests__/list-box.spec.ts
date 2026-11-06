@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../src/common'
 /**
  * ListBox: проброс `view` со списка на элементы.
  *
@@ -76,7 +77,9 @@ describe('view пробрасывается со списка на элемен�
 		const facade = facadeFor(0)
 		const seen: unknown[] = []
 
-		facade.events.on('change:view', (value: unknown) => seen.push(value))
+		facade.events.on('change:view', ({ newValue: value }: TValuePayload<unknown>) =>
+			seen.push(value),
+		)
 
 		owner.view = 'solid'
 
@@ -304,7 +307,9 @@ describe('indicator пробрасывается со списка на элем
 		const facade = facadeFor(0)
 		const seen: unknown[] = []
 
-		facade.events.on('change:indicator', (value: unknown) => seen.push(value))
+		facade.events.on('change:indicator', ({ newValue: value }: TValuePayload<unknown>) =>
+			seen.push(value),
+		)
 
 		owner.indicator = 'start'
 

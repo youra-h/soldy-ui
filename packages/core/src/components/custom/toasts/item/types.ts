@@ -27,25 +27,25 @@ export type TToastsItemEvents = TComponentViewEvents &
 		/** Запись своего `text` — подправить или отменить (`TChangeEvent`) */
 		'change:text:before': (e: TChangeEvent<string>) => void
 		/** change:description */
-		'change:description': (value: string) => void
+		'change:description': (payload: TValuePayload<string>) => void
 		/** change:type — вид сообщения; `undefined` — обычное */
-		'change:type': (value: TToastsItemType | undefined) => void
+		'change:type': (payload: TValuePayload<TToastsItemType | undefined>) => void
 		/** change:loading — тост ждёт или ожидание снято */
-		'change:loading': (value: boolean) => void
+		'change:loading': (payload: TValuePayload<boolean>) => void
 		/** change:closable */
-		'change:closable': (value: boolean) => void
+		'change:closable': (payload: TValuePayload<boolean>) => void
 		/** Запись своего `closable` — подправить или отменить (`TChangeEvent`) */
 		'change:closable:before': (e: TChangeEvent<boolean>) => void
 		/** change:duration — своя длительность тоста; `undefined` — как у владельца */
-		'change:duration': (value: number | undefined) => void
+		'change:duration': (payload: TValuePayload<number | undefined>) => void
 		/** change:alert */
-		'change:alert': (value: boolean) => void
+		'change:alert': (payload: TValuePayload<boolean>) => void
 		/** change:render */
-		'change:render': (value: unknown) => void
+		'change:render': (payload: TValuePayload<unknown>) => void
 		/** change:open — тост закрыли. Закрытие окончательное: открытым тост больше не станет */
-		'change:open': (value: boolean) => void
+		'change:open': (payload: TValuePayload<boolean>) => void
 		/** change:closeAria — набор атрибутов кнопки закрытия изменился */
-		'change:closeAria': (value: TAriaAttributes) => void
+		'change:closeAria': (payload: TValuePayload<TAriaAttributes>) => void
 	}
 
 export interface IToastsItemProps extends IComponentViewProps {

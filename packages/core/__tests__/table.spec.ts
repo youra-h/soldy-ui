@@ -146,7 +146,7 @@ describe('таблица и строка', () => {
 		const row = new TTableRow({ data: ANNA })
 		const changed = vi.fn()
 
-		row.events.on('change:data', changed)
+		row.events.on('change:data', ({ newValue }) => changed(newValue))
 
 		row.data = ANNA
 
@@ -194,8 +194,8 @@ describe('закреплённая шапка', () => {
 		const changed = vi.fn()
 		const dataset = vi.fn()
 
-		owner.events.on('change:stickyHead', changed)
-		owner.events.on('change:dataset', dataset)
+		owner.events.on('change:stickyHead', ({ newValue }) => changed(newValue))
+		owner.events.on('change:dataset', ({ newValue }) => dataset(newValue))
 
 		owner.stickyHead = false
 
@@ -251,8 +251,8 @@ describe('что идёт за жестом перестановки', () => {
 		const changed = vi.fn()
 		const dataset = vi.fn()
 
-		owner.events.on('change:reorderPreview', changed)
-		owner.events.on('change:dataset', dataset)
+		owner.events.on('change:reorderPreview', ({ newValue }) => changed(newValue))
+		owner.events.on('change:dataset', ({ newValue }) => dataset(newValue))
 
 		owner.reorderPreview = 'head'
 
@@ -291,7 +291,7 @@ describe('строки из данных', () => {
 		const before = [...batch.items]
 		const changed = vi.fn()
 
-		before.forEach((row) => row.events.on('change:data', changed))
+		before.forEach((row) => row.events.on('change:data', ({ newValue }) => changed(newValue)))
 
 		batch.items = [ANNA, BORIS].map(source)
 
@@ -750,7 +750,7 @@ describe('выбор строк', () => {
 		const row = facadeOf(facade.engine, boris)
 		const selected = vi.fn()
 
-		row.events.on('change:selected', selected)
+		row.events.on('change:selected', ({ newValue }) => selected(newValue))
 		row.selected = true
 
 		expect(facade.selected).toEqual([boris])
@@ -777,7 +777,7 @@ describe('выбраны все показанные', () => {
 		const { selection } = facade.extensions
 		const changed = vi.fn()
 
-		facade.events.on('change:shownSelection', changed)
+		facade.events.on('change:shownSelection', ({ newValue }) => changed(newValue))
 
 		expect(facade.shownSelection).toBe('none')
 
@@ -801,7 +801,7 @@ describe('выбраны все показанные', () => {
 		const facade = table('multiple')
 		const changed = vi.fn()
 
-		facade.events.on('change:shownSelection', changed)
+		facade.events.on('change:shownSelection', ({ newValue }) => changed(newValue))
 		facade.selectShown()
 
 		expect(facade.selected).toEqual([...facade.items])
@@ -814,7 +814,7 @@ describe('выбраны все показанные', () => {
 		const changed = vi.fn()
 
 		facade.selectShown()
-		facade.events.on('change:shownSelection', changed)
+		facade.events.on('change:shownSelection', ({ newValue }) => changed(newValue))
 		facade.deselectShown()
 
 		expect(facade.selected).toEqual([])
@@ -847,7 +847,7 @@ describe('выбраны все показанные', () => {
 
 		facade.extensions.selection.select(anna)
 		facade.extensions.selection.select(boris)
-		facade.events.on('change:shownSelection', changed)
+		facade.events.on('change:shownSelection', ({ newValue }) => changed(newValue))
 
 		vera.disabled = true
 
@@ -863,7 +863,7 @@ describe('выбраны все показанные', () => {
 		const facade = table('multiple')
 		const changed = vi.fn()
 
-		facade.events.on('change:shownSelection', changed)
+		facade.events.on('change:shownSelection', ({ newValue }) => changed(newValue))
 		facade.items.forEach((row) => (row.disabled = true))
 		facade.selectShown()
 
@@ -910,7 +910,7 @@ describe('выбраны все показанные', () => {
 		const changed = vi.fn()
 
 		facade.engine.use(filter)
-		facade.events.on('change:shownSelection', changed)
+		facade.events.on('change:shownSelection', ({ newValue }) => changed(newValue))
 		facade.extensions.selection.select(boris)
 
 		filter.predicate = (row) => row !== boris
@@ -994,7 +994,7 @@ describe('выбраны все показанные', () => {
 		const shownSelection = vi.fn()
 
 		facade.extensions.selection.events.on('change:selection', selection)
-		facade.events.on('change:shownSelection', shownSelection)
+		facade.events.on('change:shownSelection', ({ newValue }) => shownSelection(newValue))
 
 		facade.selectShown()
 
@@ -1098,7 +1098,7 @@ describe('фасад коллекции строк', () => {
 
 		facade.events.on('change:shownColumns', shown)
 		facade.events.on('change:cells', cells)
-		facade.events.on('change:shownSelection', selection)
+		facade.events.on('change:shownSelection', ({ newValue }) => selection(newValue))
 
 		facade.columns = [NAME]
 		facade.selectShown()
@@ -1257,7 +1257,7 @@ describe('выбор строк включён — колонка выбора',
 		const facade = table('none')
 		const selecting = vi.fn()
 
-		facade.events.on('change:selecting', selecting)
+		facade.events.on('change:selecting', ({ newValue }) => selecting(newValue))
 
 		expect(facade.extensions.table.selecting).toBe(false)
 
@@ -1672,7 +1672,7 @@ describe('заголовок строки', () => {
 		const row = new TTableRow({ data: ANNA })
 		const changed = vi.fn()
 
-		row.events.on('change:headerAria', changed)
+		row.events.on('change:headerAria', ({ newValue }) => changed(newValue))
 		row.headerAria.add('id', 'x')
 		row.headerAria.add('id', 'x')
 

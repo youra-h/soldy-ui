@@ -55,9 +55,14 @@ export default class TCheckBox
 	}
 
 	set indeterminate(value: boolean) {
+		const oldIndeterminate = this.indeterminate
+
 		if (this._indeterminate !== value) {
 			this._applyIndeterminate(value)
-			this.events.emit('change:indeterminate', value)
+			this.events.emit('change:indeterminate', {
+				newValue: value,
+				oldValue: oldIndeterminate,
+			})
 		}
 	}
 
@@ -77,10 +82,12 @@ export default class TCheckBox
 	}
 
 	set view(value: TCheckBoxView | undefined) {
+		const oldView = this.view
+
 		if (this._view === value) return
 
 		this._applyView(value, this._view)
-		this.events.emit('change:view', value)
+		this.events.emit('change:view', { newValue: value, oldValue: oldView })
 	}
 
 	/**

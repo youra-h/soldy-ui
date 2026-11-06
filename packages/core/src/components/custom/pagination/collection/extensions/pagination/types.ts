@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../../../../common'
 import type { IExtension } from '../../../../../base/collection'
 import type { IPaginationItem } from '../../../item/types'
 import type { IPagination } from '../../../types'
@@ -28,7 +29,7 @@ export type TPaginationCell = TPaginationItemCell | TPaginationEllipsisCell
 
 export type TPaginationExtensionEvents = {
 	/** Сменилось окно: страницы или пропуски между ними */
-	'change:cells': (cells: ReadonlyArray<TPaginationCell>) => void
+	'change:cells': (payload: TValuePayload<ReadonlyArray<TPaginationCell>>) => void
 }
 
 /** Контракт расширения пагинации. */

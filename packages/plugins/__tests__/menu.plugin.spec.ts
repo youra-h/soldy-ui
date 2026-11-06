@@ -887,7 +887,7 @@ describe('контекстное меню', () => {
 		const { owner, root } = await area()
 		const opened = vi.fn()
 
-		owner.events.on('change:open', opened)
+		owner.events.on('change:open', ({ newValue }) => opened(newValue))
 		rightClick(root, 10, 10)
 		rightClick(root, 300, 200)
 
@@ -1095,8 +1095,8 @@ describe('контекстное меню', () => {
 			const opened = vi.fn()
 			const moved = vi.fn()
 
-			owner.events.on('change:open', opened)
-			owner.events.on('change:point', moved)
+			owner.events.on('change:open', ({ newValue }) => opened(newValue))
+			owner.events.on('change:point', ({ newValue }) => moved(newValue))
 			pointer(trigger, 'pointerdown', touch)
 			contextMenu(trigger, 30, 40)
 			vi.advanceTimersByTime(1000)

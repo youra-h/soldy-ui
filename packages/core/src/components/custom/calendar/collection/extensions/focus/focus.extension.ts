@@ -222,10 +222,12 @@ export class TCalendarFocusExtension
 	}
 
 	private _set(focus: TCalendarDate): void {
+		const oldFocusedDate = this.focusedDate
+
 		if (this._focusedDate === focus) return
 
 		this._focusedDate = focus
-		this.events.emit('change:focusedDate', focus)
+		this.events.emit('change:focusedDate', { newValue: focus, oldValue: oldFocusedDate })
 		this._paintAll()
 	}
 

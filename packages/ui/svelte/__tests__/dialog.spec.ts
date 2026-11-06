@@ -80,7 +80,7 @@ async function render(dialog: DialogProps = {}, kind: TDialogCase = 'page') {
 	const props = reactiveProps<DialogProps>({
 		...dialog,
 		visible: dialog.visible ?? false,
-		onChangeVisible: (value) => {
+		onChangeVisible: ({ newValue: value }) => {
 			visibles.push(value)
 			props.visible = value
 		},
@@ -381,7 +381,7 @@ describe('кнопки шапки', () => {
 		const maximized: boolean[] = []
 		const { props } = await render({
 			maximizable: true,
-			onChangeMaximized: (value) => {
+			onChangeMaximized: ({ newValue: value }) => {
 				maximized.push(value)
 			},
 		})
@@ -550,13 +550,13 @@ describe('окно поверх окна', () => {
 	async function renderNested() {
 		const lower = reactiveProps<DialogProps>({
 			visible: false,
-			onChangeVisible: (value) => {
+			onChangeVisible: ({ newValue: value }) => {
 				lower.visible = value
 			},
 		})
 		const upper = reactiveProps<DialogProps>({
 			visible: false,
-			onChangeVisible: (value) => {
+			onChangeVisible: ({ newValue: value }) => {
 				upper.visible = value
 			},
 		})

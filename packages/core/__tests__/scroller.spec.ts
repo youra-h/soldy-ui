@@ -72,9 +72,9 @@ describe('приём замера', () => {
 		const next = vi.fn()
 		const stops = vi.fn()
 
-		scroller.events.on('change:canPrev', prev)
-		scroller.events.on('change:canNext', next)
-		scroller.events.on('change:hasTabStops', stops)
+		scroller.events.on('change:canPrev', ({ newValue }) => prev(newValue))
+		scroller.events.on('change:canNext', ({ newValue }) => next(newValue))
+		scroller.events.on('change:hasTabStops', ({ newValue }) => stops(newValue))
 
 		scroller.notifyViewport(viewport({ canNext: true, hasTabStops: true }))
 
@@ -94,9 +94,9 @@ describe('приём замера', () => {
 
 		scroller.notifyViewport(viewport({ canNext: true }))
 
-		scroller.events.on('change:canPrev', changed)
-		scroller.events.on('change:canNext', changed)
-		scroller.events.on('change:hasTabStops', changed)
+		scroller.events.on('change:canPrev', ({ newValue }) => changed(newValue))
+		scroller.events.on('change:canNext', ({ newValue }) => changed(newValue))
+		scroller.events.on('change:hasTabStops', ({ newValue }) => changed(newValue))
 
 		scroller.notifyViewport(viewport({ canNext: true }))
 
@@ -200,7 +200,7 @@ describe('наборы кнопок', () => {
 		const scroller = new TScroller()
 		const changed = vi.fn()
 
-		scroller.events.on('change:prevAria', changed)
+		scroller.events.on('change:prevAria', ({ newValue }) => changed(newValue))
 
 		scroller.prevAria.add('aria-label', 'Назад')
 		scroller.prevAria.add('aria-label', 'Назад')
@@ -215,7 +215,7 @@ describe('атрибуты вьюпорта от потребителя', () => 
 		const changed = vi.fn()
 		const role = { role: 'listbox' }
 
-		scroller.events.on('change:viewportAria', changed)
+		scroller.events.on('change:viewportAria', ({ newValue }) => changed(newValue))
 
 		scroller.viewportAria = role
 

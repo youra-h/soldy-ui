@@ -1526,10 +1526,12 @@ describe('типы', () => {
 		expectTypeOf<TTabsComponent>().toHaveProperty('soItemClose')
 		expectTypeOf<TTabsComponent>().toHaveProperty('soEngineCreate')
 		// Активность таба и панели — значением: выход приходит тому, чья сменилась
-		expectTypeOf<TTabsItemComponent['soChangeActive']>().toEqualTypeOf<EventEmitter<boolean>>()
+		expectTypeOf<TTabsItemComponent['soChangeActive']>().toEqualTypeOf<
+			EventEmitter<import('@soldy-ui/core').TValuePayload<boolean>>
+		>()
 		expectTypeOf<TTabsItemComponent['soChangeOrder']>().toEqualTypeOf<EventEmitter<undefined>>()
 		expectTypeOf<TTabsContentComponent['soChangeActive']>().toEqualTypeOf<
-			EventEmitter<boolean>
+			EventEmitter<import('@soldy-ui/core').TValuePayload<boolean>>
 		>()
 	})
 
@@ -1539,7 +1541,7 @@ describe('типы', () => {
 	 */
 	it('одноимённый выход таба и фасада — один, по дескриптору таба', () => {
 		expectTypeOf<TTabsItemComponent['soChangeClosable']>().toEqualTypeOf<
-			EventEmitter<boolean | undefined>
+			EventEmitter<import('@soldy-ui/core').TValuePayload<boolean | undefined>>
 		>()
 	})
 
