@@ -44,7 +44,7 @@ export const SelectCollectionDescriptor = defineDescriptor(() =>
 				 * своему `TTags` так же, как `size` и `variant`; по умолчанию
 				 * `wrap` — поведение поля не меняется, пока режим не задали.
 				 */
-				tags_overflow: { type: String, triggers: ['change:overflow'] },
+				tagsOverflow: { type: String, triggers: ['change:overflow'] },
 				/**
 				 * Что рисует список панели, по секциям: группа с подписью или опции
 				 * без группы, а в секции — опции на своих местах и, в окне обёртки

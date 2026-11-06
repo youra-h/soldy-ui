@@ -201,7 +201,7 @@ const OWN: Record<string, Record<string, string>> = {
 		placement:
 			'С какой стороны открывается панель: auto — снизу, у края окна сверху; top и bottom — всегда там',
 		swipe: 'За что панель можно смахнуть, чтобы закрыть: ни за что, за полосу или за любое место, кроме опций и прокручиваемого списка. Смахивают от поля: под ним — вниз, над ним — вверх',
-		tags_overflow:
+		tagsOverflow:
 			'Что делать с тегами в поле, когда они не помещаются в строку: переносить или прокручивать. Нужен множественный выбор',
 	},
 	pagination: {
@@ -450,7 +450,7 @@ const OPTIONS: Record<string, Record<string, readonly string[]>> = {
 		editableMode: SELECT_EDITABLE_MODES,
 		placement: SELECT_PLACEMENTS,
 		swipe: SWIPES,
-		tags_overflow: TAGS_OVERFLOWS,
+		tagsOverflow: TAGS_OVERFLOWS,
 	},
 	popover: { placement: POPOVER_PLACEMENTS, edge: POPOVER_EDGES, swipe: SWIPES },
 	menu: { placement: MENU_PLACEMENTS, openOn: MENU_OPEN_ONS },
@@ -625,7 +625,7 @@ export const PRESETS: Record<string, Record<string, Record<string, unknown>>> = 
 		// Теги в поле бывают только во множественном выборе, и переполняться
 		// им нечем, пока ничего не выбрано: выбор строка делает сама, всем
 		// составом сразу
-		tags_overflow: { mode: 'multiple', value: COLLECTION_VALUES },
+		tagsOverflow: { mode: 'multiple', value: COLLECTION_VALUES },
 		// Линия стоит между секциями групп, а у опций превью групп нет
 		groupSeparators: GROUPED,
 	},

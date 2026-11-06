@@ -35,9 +35,9 @@ export class TSelectCollectionFacade extends TGroupCollectionFacade<
 	 * разметки проп связка возвращает к нему. Остальные ключи приходят от баз.
 	 */
 	static override defaultValues: typeof TGroupCollectionFacade.defaultValues &
-		TDefaultValues<ISelectCollectionProps, 'tags_overflow'> = {
+		TDefaultValues<ISelectCollectionProps, 'tagsOverflow'> = {
 		...TGroupCollectionFacade.defaultValues,
-		tags_overflow: 'wrap',
+		tagsOverflow: 'wrap',
 	}
 
 	constructor(
@@ -69,10 +69,10 @@ export class TSelectCollectionFacade extends TGroupCollectionFacade<
 	 * теряет.
 	 */
 	protected override applyProps(props: TSelectCollectionFacadeProps): void {
-		const overflow = props.tags_overflow
+		const overflow = props.tagsOverflow
 
-		if (overflow && overflow !== TSelectCollectionFacade.defaultValues.tags_overflow) {
-			this.tags_overflow = overflow
+		if (overflow && overflow !== TSelectCollectionFacade.defaultValues.tagsOverflow) {
+			this.tagsOverflow = overflow
 		}
 
 		super.applyProps(props)
@@ -96,11 +96,11 @@ export class TSelectCollectionFacade extends TGroupCollectionFacade<
 	 * прокручивать или убирать хвост в панель. Хранит значение расширение —
 	 * инстанс тегов живёт только в `multiple`, а выбор потребителя остаётся.
 	 */
-	get tags_overflow(): TTagsOverflow {
+	get tagsOverflow(): TTagsOverflow {
 		return this._tags.overflow
 	}
 
-	set tags_overflow(value: TTagsOverflow) {
+	set tagsOverflow(value: TTagsOverflow) {
 		this._tags.overflow = value
 	}
 

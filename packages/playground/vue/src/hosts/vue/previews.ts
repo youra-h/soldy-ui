@@ -105,7 +105,7 @@ type TMenuTriggerScope = DescriptorSlots<typeof MenuDescriptor>['trigger']
 
 /**
  * Collection content comes from the shared manifest: the items are needed not
- * only here. Row presets use it too (Select's `tags_overflow` selects all).
+ * only here. Row presets use it too (Select's `tagsOverflow` selects all).
  */
 const ITEMS = COLLECTION_ITEMS
 

@@ -576,9 +576,27 @@ describe('множественный выбор', () => {
 		expect(document.querySelectorAll('.so-tags-item')).toHaveLength(1)
 	})
 
+	it('tagsOverflow updates the tag row and resets to wrap when removed', async () => {
+		wrapper = mount(Select, {
+			props: { mode: 'multiple', tagsOverflow: 'scroll' },
+			attachTo: document.body,
+		})
+
+		expect(wrapper.find('.so-select__tags').attributes('data-overflow')).toBe('scroll')
+
+		await wrapper.setProps({ tagsOverflow: 'wrap' })
+
+		expect(wrapper.find('.so-select__tags').attributes('data-overflow')).toBe('wrap')
+
+		await wrapper.setProps({ tagsOverflow: 'scroll' })
+		await wrapper.setProps({ tagsOverflow: undefined })
+
+		expect(wrapper.find('.so-select__tags').attributes('data-overflow')).toBe('wrap')
+	})
+
 	/**
-	 * Незаданному `tags_overflow` Vue ставит умолчание декларации — `wrap`.
-	 * Чужому движку фасад его не пишет: режим переполнения остаётся движка.
+	 * Vue supplies the declaration default, wrap, when tagsOverflow is omitted.
+	 * The facade preserves the overflow mode of an external engine.
 	 */
 	it('движок снаружи сохраняет режим переполнения тегов', async () => {
 		const engine = createEngineSelect()
