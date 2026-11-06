@@ -256,7 +256,7 @@ abstract class TSelectPreviewInputs implements TFixture {
 	readonly mode = input<TSelectComponent['mode']>()
 	readonly groupBy = input<TSelectComponent['groupBy']>()
 	readonly groups = input<TSelectComponent['groups']>()
-	readonly tags_overflow = input<TSelectComponent['tags_overflow']>()
+	readonly tagsOverflow = input<TSelectComponent['tagsOverflow']>()
 	readonly copy = viewChild.required(CopyDirective)
 	readonly subjects = viewChildren(TSelectComponent)
 }
@@ -298,7 +298,7 @@ const SELECT_BINDINGS = `
 	[mode]="mode()"
 	[groupBy]="groupBy()"
 	[groups]="groups()"
-	[tags_overflow]="tags_overflow()"
+	[tagsOverflow]="tagsOverflow()"
 `
 
 /**

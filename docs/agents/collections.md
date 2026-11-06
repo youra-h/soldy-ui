@@ -1053,10 +1053,14 @@ get closable() { return !this._item.disabled && (this._item.closable ?? this._pa
 
 ### Имена props фасада префиксуются
 
-`tab_closable`, `tags_engine`, `tags_overflow`. Причина: в шаблоне значения
-двух adapter-контекстов (собственного и коллекционного) сливаются в один
-объект, и одноимённые затирают друг друга. У таба уже есть свой `closable`: он
-и вынудил префикс.
+Protected facade properties use prefixes: `tab_closable`, `tag_closable`,
+`tags_engine`. The component and collection adapter contexts are merged for
+rendering, so identical names would overwrite each other. Tabs.Item already
+has its own `closable`, which requires the facade prefix.
+
+Public input props use camelCase, including Select's `tagsOverflow`. An
+underscore in a plugin prop separates its namespace from the property name;
+`tagsOverflow` is a component prop, not a plugin namespace.
 
 ### `disabled` владельца распространяется на элементы
 

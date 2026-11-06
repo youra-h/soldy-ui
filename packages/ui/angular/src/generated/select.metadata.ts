@@ -57,7 +57,7 @@ export const SelectInputNames = [
 	'mode',
 	'groupBy',
 	'groups',
-	'tags_overflow',
+	'tagsOverflow',
 ] as const
 export const SelectOutputNames = [
 	'soChangeSize',
@@ -160,7 +160,7 @@ export const SelectOutputNames = [
 		'mode',
 		'groupBy',
 		'groups',
-		'tags_overflow',
+		'tagsOverflow',
 	],
 	outputs: [...SelectOutputNames],
 })
@@ -228,7 +228,7 @@ export abstract class TSelectSurface<TInstance extends IEntity> extends TViewSur
 	declare mode: TInputValue<typeof descriptor, 'mode'>
 	declare groupBy: TInputValue<typeof descriptor, 'groupBy'>
 	declare groups: TInputValue<typeof descriptor, 'groups'>
-	declare tags_overflow: TInputValue<typeof descriptor, 'tags_overflow'>
+	declare tagsOverflow: TInputValue<typeof descriptor, 'tagsOverflow'>
 	declare readonly soBundleCreate: TOutputEmitter<typeof descriptor, 'bundle:create'>
 	declare readonly soPluginEvent: TOutputEmitter<typeof descriptor, 'plugin:event'>
 	declare readonly soShow: TOutputEmitter<typeof descriptor, 'show'>

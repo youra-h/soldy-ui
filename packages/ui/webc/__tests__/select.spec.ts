@@ -692,8 +692,8 @@ describe('множественный выбор', () => {
 	})
 
 	/**
-	 * Незаданного `tags_overflow` элемент ядру не пишет: режим переполнения
-	 * остаётся движка снаружи.
+	 * An omitted tagsOverflow is not written to the core, preserving the
+	 * overflow mode of an external engine.
 	 */
 	it('движок снаружи сохраняет режим переполнения тегов', async () => {
 		const engine = createEngineSelect()
