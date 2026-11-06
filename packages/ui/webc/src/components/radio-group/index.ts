@@ -1,4 +1,5 @@
-export { setupRadioGroup } from './setup.component'
-export { TRadioGroupElement, type TRadioGroupElementProps } from './RadioGroup.element'
-export { radioGroupTemplate, RADIO_GROUP_ITEM_SLOTS } from './radio-group.template'
-export * from './item'
+/** Application API for this element entry. */
+export { TRadioGroupElement } from './RadioGroup.element'
+export type { TRadioGroupElementProps } from './RadioGroup.element'
+export { TRadioGroupItemElement } from './item/RadioGroupItem.element'
+export type { TRadioGroupItemElementProps } from './item/RadioGroupItem.element'

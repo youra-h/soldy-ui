@@ -28,12 +28,8 @@ import {
 	type IPluginContext,
 } from '@soldy-ui/plugins'
 import { ButtonDescriptor, usePlugins } from '@soldy-ui/setup'
-import {
-	TButtonElement,
-	TLocaleProviderElement,
-	createWebcAdapterContext,
-	type TButtonElementProps,
-} from '@soldy-ui/webc'
+import { TButtonElement, TLocaleProviderElement, type TButtonElementProps } from '@soldy-ui/webc'
+import { createWebcAdapterContext } from '../src/adapter/common/createWebcAdapterContext'
 
 /** Набор объявляется на микрозадаче — см. `TOwnBundle._announce`. */
 const announced = () => new Promise<void>((resolve) => queueMicrotask(() => resolve()))

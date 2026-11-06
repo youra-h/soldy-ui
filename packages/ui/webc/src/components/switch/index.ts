@@ -1,3 +1,3 @@
-export { setupSwitch } from './setup.component'
-export { TSwitchElement, type TSwitchElementProps } from './Switch.element'
-export { switchTemplate } from './switch.template'
+/** Application API for this element entry. */
+export { TSwitchElement } from './Switch.element'
+export type { TSwitchElementProps } from './Switch.element'

@@ -1,3 +1,74 @@
-// @soldy-ui/angular
-export * from './adapter'
-export * from './components'
+/** Application API. Assembly helpers stay inside the adapter. */
+
+export {
+	TComponentComponent,
+	TComponentViewComponent,
+	TButtonComponent,
+	TItemRowComponent,
+	TIconComponent,
+	TLabelComponent,
+	TFieldComponent,
+	TProgressSpinnerComponent,
+	TProgressLinearComponent,
+	TSkeletonComponent,
+	TFrameComponent,
+	TPopoverComponent,
+	TTooltipComponent,
+	TMenuComponent,
+	TMenuItemComponent,
+	TMenuCheckboxItemComponent,
+	TMenuRadioItemComponent,
+	TMenuRadioGroupComponent,
+	TMenuGroupComponent,
+	TMenuSeparatorComponent,
+	TMenuSubmenuComponent,
+	TMenuPopoverItemComponent,
+	TDialogComponent,
+	TDrawerComponent,
+	TToastsComponent,
+	TInputComponent,
+	TNumberInputComponent,
+	TTextareaComponent,
+	TDateInputComponent,
+	TCheckBoxComponent,
+	TSwitchComponent,
+	TSliderComponent,
+	TRatingComponent,
+	TListBoxComponent,
+	TListBoxItemComponent,
+	TListBoxGroupComponent,
+	TTagsComponent,
+	TTagsItemComponent,
+	TSelectComponent,
+	TSelectItemComponent,
+	TSelectGroupComponent,
+	TRadioGroupComponent,
+	TRadioGroupItemComponent,
+	TTabsComponent,
+	TTabsItemComponent,
+	TTabsContentComponent,
+	TAccordionComponent,
+	TAccordionItemComponent,
+	TPaginationComponent,
+	TCalendarComponent,
+	TCalendarItemComponent,
+	TDatePickerComponent,
+	TScrollerComponent,
+	TTableComponent,
+	TTableColumnComponent,
+	TTableRowComponent,
+	TVirtualComponent,
+	TDragAndDropComponent,
+} from './components'
+
+export { AttributesDirective, TextPipe, SlotDirective, ɵSubtreeDirective } from './adapter/runtime'
+
+export { LocaleProviderDirective } from './adapter/locale'
+
+export { provideAttrs } from './adapter/attrs'
+
+export { useToasts } from './adapter/toasts'
+
+export { RoleIconDirective } from './adapter/common'
+
+export type { TToastRender } from './adapter/toasts'

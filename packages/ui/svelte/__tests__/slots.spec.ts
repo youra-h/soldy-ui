@@ -33,8 +33,8 @@ import {
 	type InputProps,
 	type LabelProps,
 	type SwitchProps,
-	type UseDomProps,
 } from '@soldy-ui/svelte'
+import { type UseDomProps } from '../src/types'
 import Harness from './Slots.test.svelte'
 import { mount as mountComponent } from './mount'
 

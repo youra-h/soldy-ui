@@ -1,5 +1,5 @@
 import { TSurface, type IComponentDescriptor } from '@soldy-ui/setup'
-import { WebcProfile } from '@soldy-ui/webc'
+import { WebcProfile } from '../../../../../ui/webc/src/adapter/common/profile'
 import type { TPreviewEventSink } from '@soldy-ui/playground-shared'
 
 /** A listener of an element's event: the DOM event's name and the handler. */

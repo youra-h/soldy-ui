@@ -10,7 +10,7 @@
  */
 
 import { flushSync } from 'svelte'
-import type { TRootStyleLayers } from '@soldy-ui/svelte'
+import type { TRootStyleLayers } from '../src/adapter/common/root'
 import { rootStyle } from '../src/adapter/runtime/root-style.svelte'
 
 export type TAttachedStyle = {

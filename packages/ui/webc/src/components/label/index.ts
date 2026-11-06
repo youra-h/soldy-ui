@@ -1,3 +1,3 @@
-export { setupLabel } from './setup.component'
-export { TLabelElement, type TLabelElementProps } from './Label.element'
-export { labelTemplate } from './label.template'
+/** Application API for this element entry. */
+export { TLabelElement } from './Label.element'
+export type { TLabelElementProps } from './Label.element'

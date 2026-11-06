@@ -23,7 +23,7 @@
 	 * на шаг, как у расширений сборки. Прочитанное уходит в `onUp` с именем
 	 * уровня; следующий уровень — вложенный компонент, своя сборка.
 	 */
-	import { useElevator } from '@soldy-ui/svelte'
+	import { useElevator } from '../src/adapter/elevator/useElevator'
 	import Self from './ElevatorLayer.test.svelte'
 
 	type THarnessProps = {

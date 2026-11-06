@@ -1,3 +1,3 @@
-export { setupSlider } from './setup.component'
-export { TSliderElement, type TSliderElementProps } from './Slider.element'
-export { sliderTemplate } from './slider.template'
+/** Application API for this element entry. */
+export { TSliderElement } from './Slider.element'
+export type { TSliderElementProps } from './Slider.element'

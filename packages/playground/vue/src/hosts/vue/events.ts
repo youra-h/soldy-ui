@@ -1,6 +1,6 @@
 import type { IComponentDescriptor } from '@soldy-ui/setup'
 import type { TPreviewEventSink } from '@soldy-ui/playground-shared'
-import { useEmits } from '@soldy-ui/vue'
+import { useEmits } from '../../../../../ui/vue/src/adapter/static/useEmits'
 
 /** Listeners of a component in Vue: props `onChange:visible` by name. */
 export type TListeners = Record<string, (...args: unknown[]) => void>

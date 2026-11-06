@@ -124,11 +124,13 @@ import {
 	type TagsProps,
 	type ToastsProps,
 	type TooltipProps,
+} from '@soldy-ui/react'
+import {
 	toControlAttrs,
 	toRootForward,
 	toRootLayout,
 	toWrappedRootProps,
-} from '@soldy-ui/react'
+} from '../src/adapter/common/root'
 import { find, mount, nextFrame, track } from './mount'
 
 /** Общие пропсы строки таблицы: направление и колбэк готовности есть у всех. */

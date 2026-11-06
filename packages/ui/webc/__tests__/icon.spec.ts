@@ -16,18 +16,14 @@
 import { describe, it, expect, afterEach, beforeAll } from 'vitest'
 import { TIcon } from '@soldy-ui/core'
 import { IconDescriptor, useIcons, type TIconSource } from '@soldy-ui/setup'
-import {
-	ElementBase,
-	TIconElement,
-	bind,
-	defineElement,
-	drawRoleIcon,
-	roleIcon,
-	setupIcon,
-	toAttributeName,
-	type ITemplate,
-	type TIconElementProps,
-} from '@soldy-ui/webc'
+import { TIconElement, roleIcon, type TIconElementProps } from '@soldy-ui/webc'
+import { ElementBase } from '../src/adapter/runtime/element.base'
+import { bind } from '../src/adapter/template/types'
+import { defineElement } from '../src/adapter/runtime/defineElement'
+import { drawRoleIcon } from '../src/adapter/common/icon'
+import { setupIcon } from '../src/components/icon/setup.component'
+import { toAttributeName } from '../src/adapter/common/attributes'
+import { type ITemplate } from '../src/adapter/template/types'
 import type { IIcon } from '@soldy-ui/core'
 import { iconTemplate } from '../src/components/icon/icon.template'
 import { bareContext } from './template-context'

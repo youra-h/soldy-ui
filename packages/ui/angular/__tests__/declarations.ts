@@ -13,7 +13,7 @@
 
 import { reflectComponentType, ɵgetDirectiveDef, type Type } from '@angular/core'
 import * as angular from '@soldy-ui/angular'
-import { TComponentBase } from '@soldy-ui/angular'
+import { TComponentBase } from '../src/adapter/runtime/component.base'
 
 /** Вход объявления — как его видит шаблон потребителя. */
 export type TDeclaredInput = {

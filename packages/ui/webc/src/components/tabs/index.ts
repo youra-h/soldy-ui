@@ -1,5 +1,7 @@
-export { setupTabs } from './setup.component'
-export { TTabsElement, type TTabsElementProps } from './Tabs.element'
-export { tabsTemplate, TABS_ITEM_SLOTS } from './tabs.template'
-export * from './item'
-export * from './content'
+/** Application API for this element entry. */
+export { TTabsElement } from './Tabs.element'
+export type { TTabsElementProps } from './Tabs.element'
+export { TTabsItemElement } from './item/TabsItem.element'
+export type { TTabsItemElementProps } from './item/TabsItem.element'
+export { TTabsContentElement } from './content/TabsContent.element'
+export type { TTabsContentElementProps } from './content/TabsContent.element'

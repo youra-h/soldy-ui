@@ -22,7 +22,8 @@ import { TButton } from '@soldy-ui/core'
 import { TElementPlugin, TPluginBundle } from '@soldy-ui/plugins'
 import { ButtonDescriptor, createAdapterContext } from '@soldy-ui/setup'
 import type { IAdapterContext } from '@soldy-ui/setup'
-import { useAdapterContext, Button, type ButtonProps } from '@soldy-ui/react'
+import { Button, type ButtonProps } from '@soldy-ui/react'
+import { useAdapterContext } from '../src/adapter/runtime/useAdapterContext'
 
 const roots: Root[] = []
 

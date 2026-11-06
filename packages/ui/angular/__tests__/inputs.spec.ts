@@ -56,13 +56,8 @@ import {
 	ValueControlDescriptor,
 	type TExternalPluginProps,
 } from '@soldy-ui/setup'
-import {
-	TButtonComponent,
-	TComponentComponent,
-	TComponentViewComponent,
-	useBooleanInputs,
-	useInputs,
-} from '@soldy-ui/angular'
+import { TButtonComponent, TComponentComponent, TComponentViewComponent } from '@soldy-ui/angular'
+import { useBooleanInputs, useInputs } from '../src/adapter/common/useInputs'
 import { exportedDeclarations, type TDeclaration } from './declarations'
 
 @Component({

@@ -4,7 +4,7 @@ import {
 	isHostProp,
 	toAttributeName,
 	type IAttributeBinding,
-} from '@soldy-ui/webc'
+} from '../../../../../ui/webc/src/adapter/common/attributes'
 import {
 	isEmptyField,
 	snippetLiteral,

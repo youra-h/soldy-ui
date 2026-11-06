@@ -1,5 +1,5 @@
 import { TSurface, type IComponentDescriptor } from '@soldy-ui/setup'
-import { ReactProfile } from '@soldy-ui/react'
+import { ReactProfile } from '../../../../../ui/react/src/adapter/common/profile'
 import type { TPreviewEventSink } from '@soldy-ui/playground-shared'
 
 /** Listeners of a component in React: callback props by name (`onChangeText`). */

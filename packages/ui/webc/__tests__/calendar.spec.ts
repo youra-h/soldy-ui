@@ -33,7 +33,6 @@ import {
 import { ruRU, type TLocale } from '@soldy-ui/plugins'
 import { CalendarDescriptor } from '@soldy-ui/setup'
 import {
-	CALENDAR_ITEM_SLOTS,
 	TButtonElement,
 	TCalendarElement,
 	TCalendarItemElement,
@@ -44,7 +43,7 @@ import {
 	type TCalendarElementProps,
 	type TCalendarItemElementProps,
 } from '@soldy-ui/webc'
-import { calendarTemplate } from '../src/components/calendar/calendar.template'
+import { CALENDAR_ITEM_SLOTS, calendarTemplate } from '../src/components/calendar/calendar.template'
 import { bareContext } from './template-context'
 
 /** Рендер коалесцируется в микротаске — ждём её перед проверкой. */

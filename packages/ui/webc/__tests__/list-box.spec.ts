@@ -32,14 +32,14 @@ import {
 	TListBoxElement,
 	TListBoxGroupElement,
 	TListBoxItemElement,
-	defineElement,
 	registerItemRowTag,
-	type ITemplate,
 	type TButtonElementProps,
 	type TItemRowElementProps,
 	type TListBoxElementProps,
 	type TListBoxItemElementProps,
 } from '@soldy-ui/webc'
+import { defineElement } from '../src/adapter/runtime/defineElement'
+import { type ITemplate } from '../src/adapter/template/types'
 import { listBoxTemplate } from '../src/components/list-box/list-box.template'
 import { listBoxItemTemplate } from '../src/components/list-box/item/list-box-item.template'
 import { listBoxGroupTemplate } from '../src/components/list-box/group/list-box-group.template'

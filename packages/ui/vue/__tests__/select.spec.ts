@@ -16,7 +16,8 @@ import { defineComponent, nextTick, h, ref } from 'vue'
  * плагины, которым нужен DOM-узел, включаются кадром позже. Ждём кадр.
  */
 const nextFrame = () => new Promise((resolve) => requestAnimationFrame(resolve))
-import { Frame, LocaleProvider, Select, SelectItem, Input, propsSelect } from '@soldy-ui/vue'
+import { Frame, LocaleProvider, Select, SelectItem, Input } from '@soldy-ui/vue'
+import { propsSelect } from '../src/components/select/base.component'
 import { TAnchorPlugin, ruRU } from '@soldy-ui/plugins'
 import { TSelect, createEngineSelect } from '@soldy-ui/core'
 import type { IInput, TSelectPlacement } from '@soldy-ui/core'

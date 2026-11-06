@@ -1,4 +1,5 @@
-export { setupTags } from './setup.component'
-export { TTagsElement, type TTagsElementProps } from './Tags.element'
-export { tagsTemplate, TAGS_ITEM_SLOTS } from './tags.template'
-export * from './item'
+/** Application API for this element entry. */
+export { TTagsElement } from './Tags.element'
+export type { TTagsElementProps } from './Tags.element'
+export { TTagsItemElement } from './item/TagsItem.element'
+export type { TTagsItemElementProps } from './item/TagsItem.element'

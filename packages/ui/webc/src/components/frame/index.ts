@@ -1,3 +1,3 @@
-export { setupFrame } from './setup.component'
-export { TFrameElement, type TFrameElementProps } from './Frame.element'
-export { frameTemplate } from './frame.template'
+/** Application API for this element entry. */
+export { TFrameElement } from './Frame.element'
+export type { TFrameElementProps } from './Frame.element'
