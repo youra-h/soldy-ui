@@ -222,10 +222,8 @@ describe('секция из разметки', () => {
 	})
 
 	/**
-	 * Стрелка — по краю заголовка со стороны `arrowPlacement`; слоты
-	 * `leading-icon` и `trailing-icon` её подменяют. Подменённая стоит в той же
-	 * обёртке `.so-accordion-item__arrow`: по ней тема поворачивает стрелку
-	 * раскрытой секции, и подменённая поворачивается так же.
+	 * The arrow follows `arrowPlacement`; `arrow-icon` replaces its icon in the
+	 * same `.so-accordion-item__arrow` wrapper, which the theme rotates.
 	 */
 	it('стрелка стоит со стороны arrowPlacement, слот её подменяет', () => {
 		const { render } = mount(
@@ -258,7 +256,7 @@ describe('секция из разметки', () => {
 					text="A"
 					value="a"
 					arrowPlacement="end"
-					trailing-icon={<b className="custom">›</b>}
+					arrow-icon={<b className="custom">›</b>}
 				/>
 			</Accordion>,
 		)
@@ -268,14 +266,14 @@ describe('секция из разметки', () => {
 		expect(document.querySelector('.so-accordion-item__arrow .custom')).not.toBeNull()
 		expect(document.querySelector('.so-accordion-item__arrow svg')).toBeNull()
 
-		// Слот на стороне без стрелки по умолчанию — своя обёртка, стрелка остаётся
+		// The same slot follows the arrow when its placement changes.
 		render(
 			<Accordion>
 				<Accordion.Item
 					text="A"
 					value="a"
-					arrowPlacement="end"
-					leading-icon={<b className="custom">•</b>}
+					arrowPlacement="start"
+					arrow-icon={<b className="custom">•</b>}
 				/>
 			</Accordion>,
 		)
@@ -288,7 +286,7 @@ describe('секция из разметки', () => {
 						? 'icon'
 						: 'empty',
 			),
-		).toEqual(['slot', 'icon'])
+		).toEqual(['slot'])
 	})
 
 	it('слоты секций из items получают элемент через scope', () => {
@@ -366,11 +364,11 @@ describe('проброс слотов секций из items', () => {
 		])
 	})
 
-	it('item-leading-icon подменяет стрелку одной секции, в той же обёртке', () => {
+	it('item-arrow-icon подменяет стрелку одной секции, в той же обёртке', () => {
 		mount(
 			<Accordion
 				items={ITEMS}
-				item-leading-icon={({ item }) =>
+				item-arrow-icon={({ item }) =>
 					item.value === 'a' ? <b className="probe">›</b> : null
 				}
 			/>,
@@ -380,21 +378,19 @@ describe('проброс слотов секций из items', () => {
 	})
 
 	/**
-	 * Стрелка по умолчанию — в начале, поэтому секции, которой слот в конце
-	 * ничего не нарисовал, второй обёртки не достаётся: пустое содержимое
-	 * React слотом не считает.
+	 * A slot returning null leaves the default arrow visible in that section.
 	 */
-	it('item-trailing-icon: у секции без подмены — только стрелка по умолчанию', () => {
+	it('item-arrow-icon: у секции без подмены — только стрелка по умолчанию', () => {
 		mount(
 			<Accordion
 				items={ITEMS}
-				item-trailing-icon={({ item }) =>
+				item-arrow-icon={({ item }) =>
 					item.value === 'b' ? <b className="probe">›</b> : null
 				}
 			/>,
 		)
 
-		expect(arrows()).toEqual([['icon'], ['icon', 'slot']])
+		expect(arrows()).toEqual([['icon'], ['slot']])
 	})
 })
 
@@ -409,10 +405,7 @@ describe('типы', () => {
 		>().toExtend<TItemSlot>()
 		expectTypeOf<(scope: { item: IAccordionItem }) => ReactNode>().toExtend<TItemContent>()
 		expectTypeOf<(scope: { item: IAccordionItem }) => ReactNode>().toExtend<
-			NonNullable<AccordionProps['item-leading-icon']>
-		>()
-		expectTypeOf<(scope: { item: IAccordionItem }) => ReactNode>().toExtend<
-			NonNullable<AccordionProps['item-trailing-icon']>
+			NonNullable<AccordionProps['item-arrow-icon']>
 		>()
 		// AccordionItem's own slots carry `item` too — the section already knows
 		// itself (`ctrl`) and hands it to the slot itself, the way a table row's

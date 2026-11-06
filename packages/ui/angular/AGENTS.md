@@ -827,7 +827,7 @@
   `trailing`) элемент проецирует, и проброс — `ng-container` с
   `ngProjectAs`: корень ветки `@if` Angular проецирует по его атрибутам. Слот
   со scope и слот, по которому элемент решает, рисовать ли своё (`close-icon`
-  таба, `leading-icon` и `trailing-icon` секции, `indicator-icon` элемента
+  таба, `arrow-icon` секции, `indicator-icon` элемента
   списка), элемент берёт шаблоном (`<ng-template slot>`): есть ли что-то в
   `<ng-content>`, Angular не сообщает. Такой проброс — шаблон с
   `ngProjectAs="ng-template[slot]"`: запрос слотов элемента видит корень

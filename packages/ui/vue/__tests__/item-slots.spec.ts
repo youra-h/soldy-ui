@@ -292,11 +292,11 @@ describe('Accordion', () => {
 	 * поворачивает её так же, как стрелку по умолчанию. Сам поворот видно
 	 * только в браузере (`playground/vue/browser/accordion.spec.ts`).
 	 */
-	it('item-leading-icon подменяет стрелку одной секции, в той же обёртке', async () => {
+	it('item-arrow-icon подменяет стрелку одной секции, в той же обёртке', async () => {
 		wrapper = mount(Accordion, {
 			props: { items: ITEMS },
 			slots: {
-				'item-leading-icon': `<template #item-leading-icon="{ item }"><b v-if="item.value === 'a'" class="probe">›</b></template>`,
+				'item-arrow-icon': `<template #item-arrow-icon="{ item }"><b v-if="item.value === 'a'" class="probe">›</b></template>`,
 			},
 			attachTo: document.body,
 		})
@@ -306,34 +306,25 @@ describe('Accordion', () => {
 	})
 
 	/**
-	 * Стрелка по умолчанию — в начале (`arrowPlacement="start"`), поэтому у
-	 * секции, которой слот в конце ничего не нарисовал, обёртка в конце пуста:
-	 * слот задан. Пустую обёртку прячет тема по `:empty`, поэтому в ней нет ни
-	 * узла, ни текста. Сам селектор проверяет браузер
-	 * (`playground/vue/browser/accordion.spec.ts`): jsdom считает содержимым и
-	 * текстовые узлы нулевой длины — якоря фрагментов Vue, — а по спецификации
-	 * и в браузере они пустоте не мешают.
+	 * A section whose conditional slot renders nothing keeps its default arrow.
 	 */
-	it('item-trailing-icon: у секции без подмены обёртка в конце пуста', async () => {
+	it('item-arrow-icon: у секции без подмены остаётся стандартная стрелка', async () => {
 		wrapper = mount(Accordion, {
 			props: { items: ITEMS },
 			slots: {
-				'item-trailing-icon': `<template #item-trailing-icon="{ item }"><b v-if="item.value === 'b'" class="probe">›</b></template>`,
+				'item-arrow-icon': `<template #item-arrow-icon="{ item }"><b v-if="item.value === 'b'" class="probe">›</b></template>`,
 			},
 			attachTo: document.body,
 		})
 		await nextTick()
 
-		expect(arrows()).toEqual([
-			['start:icon', 'end:empty'],
-			['start:icon', 'end:slot'],
-		])
+		expect(arrows()).toEqual([['start:icon'], ['start:slot']])
 
 		const empty = [...document.querySelectorAll('.so-accordion-item__arrow')].filter(
 			(arrow) => !arrow.querySelector('.probe, svg'),
 		)
 
-		expect(empty.map((arrow) => [arrow.children.length, arrow.textContent])).toEqual([[0, '']])
+		expect(empty).toHaveLength(0)
 	})
 
 	it('без слотов стрелок обёртка одна — со стороны arrowPlacement', async () => {

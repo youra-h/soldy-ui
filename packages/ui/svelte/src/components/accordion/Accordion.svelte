@@ -21,25 +21,21 @@
 		{@render props.children()}
 	{:else}
 		{#each state.shown ?? [] as section (section.uid)}
-			{#snippet leadingIcon()}
-				{@render props['item-leading-icon']?.({ item: section })}
+			{#snippet arrowIcon()}
+				{@render props['item-arrow-icon']?.({ item: section })}
 			{/snippet}
 			{#snippet leading()}{@render props['item-leading']?.({ item: section })}{/snippet}
 			{#snippet header(scope: { text: string; selected: boolean })}
 				{@render props.item?.({ ...scope, item: section })}
 			{/snippet}
 			{#snippet trailing()}{@render props['item-trailing']?.({ item: section })}{/snippet}
-			{#snippet trailingIcon()}
-				{@render props['item-trailing-icon']?.({ item: section })}
-			{/snippet}
 			{#snippet content()}{@render props['item-content']?.({ item: section })}{/snippet}
 			<AccordionItem
 				ctrl={section}
-				leading-icon={props['item-leading-icon'] ? leadingIcon : undefined}
+				arrow-icon={props['item-arrow-icon'] ? arrowIcon : undefined}
 				leading={props['item-leading'] ? leading : undefined}
 				header={props.item ? header : undefined}
 				trailing={props['item-trailing'] ? trailing : undefined}
-				trailing-icon={props['item-trailing-icon'] ? trailingIcon : undefined}
 				children={props['item-content'] ? content : undefined}
 			/>
 		{/each}

@@ -6,15 +6,7 @@
 
 import type { IAccordionItem, TAccordionItemCollectionFacade } from '@soldy-ui/core'
 import { DEFAULT_SLOT } from '@soldy-ui/setup'
-import {
-	bind,
-	createDetail,
-	lend,
-	ownerAttributes,
-	type ITemplate,
-	type TLendAt,
-	patch,
-} from '../../../adapter'
+import { bind, createDetail, lend, ownerAttributes, type ITemplate, patch } from '../../../adapter'
 import { TButtonElement, type TButtonElementProps } from '../../button'
 import { TIconElement, type TIconElementProps } from '../../icon'
 
@@ -29,8 +21,7 @@ type TArrow = {
 
 type TSectionParts = {
 	readonly header: TButtonElementProps
-	readonly start: TArrow
-	readonly end: TArrow
+	readonly arrow: TArrow
 	readonly content: HTMLElement
 }
 
@@ -51,23 +42,6 @@ function arrowOf(owner: Document, slotted: boolean): TArrow {
 	return { wrapper, icon }
 }
 
-/** `lend`: до сборки заголовка — в его слот, после — его краем, то есть туда же. */
-function edge(
-	header: TButtonElementProps,
-	arrow: TArrow,
-	shown: boolean,
-	slot: string,
-	at: TLendAt,
-): void {
-	if (!shown) {
-		arrow.wrapper.remove()
-
-		return
-	}
-
-	if (arrow.wrapper.parentNode !== header) lend(header, slot, arrow.wrapper, at)
-}
-
 export const accordionItemTemplate: ITemplate<IAccordionItem, TAccordionItemCollectionFacade> = {
 	create: (root, ctx) => {
 		const { hasSlot } = ctx
@@ -77,8 +51,7 @@ export const accordionItemTemplate: ITemplate<IAccordionItem, TAccordionItemColl
 			embedded: 'accordion.header',
 			attributes: { type: 'button' },
 		})
-		const start = arrowOf(ownerDocument, hasSlot('leading-icon'))
-		const end = arrowOf(ownerDocument, hasSlot('trailing-icon'))
+		const arrow = arrowOf(ownerDocument, hasSlot('arrow-icon'))
 		const body = ownerDocument.createElement('div')
 		const content = ownerDocument.createElement('div')
 
@@ -92,15 +65,14 @@ export const accordionItemTemplate: ITemplate<IAccordionItem, TAccordionItemColl
 		})
 
 		root.append(header, body)
-		parts.set(root, { header, start, end, content })
+		parts.set(root, { header, arrow, content })
 
 		return {
 			slots: {
-				'leading-icon': { mode: 'append', node: start.wrapper },
+				'arrow-icon': { mode: 'append', node: arrow.wrapper },
 				leading: { mode: 'append', node: header, slot: 'leading' },
 				header: { mode: 'append', node: header, slot: DEFAULT_SLOT },
 				trailing: { mode: 'append', node: header, slot: 'trailing' },
-				'trailing-icon': { mode: 'append', node: end.wrapper },
 				default: { mode: 'append', node: content },
 			},
 			control: header,
@@ -114,14 +86,12 @@ export const accordionItemTemplate: ITemplate<IAccordionItem, TAccordionItemColl
 
 			if (!own) return
 
-			const { header, start, end } = own
+			const { header, arrow } = own
 			const disabled = state.disabled === true
 
 			patch(header, { view: state.view, disabled, size: state.size, variant: state.variant })
 
-			for (const { icon } of [start, end]) {
-				if (icon && icon.size !== state.size) icon.size = state.size
-			}
+			if (arrow.icon && arrow.icon.size !== state.size) arrow.icon.size = state.size
 		}),
 
 		bind('aria', ({ root, state }) => {
@@ -143,22 +113,20 @@ export const accordionItemTemplate: ITemplate<IAccordionItem, TAccordionItemColl
 			if (header && !hasSlot('header') && header.text !== text) header.text = text
 		}),
 
-		bind('arrowPlacement', ({ root, state, hasSlot }) => {
+		bind('arrowPlacement', ({ root, state }) => {
 			const own = parts.get(root)
 
 			if (!own) return
 
-			const { header, start, end } = own
+			const { header, arrow } = own
 			const placement = state.arrowPlacement
 
-			edge(
+			lend(
 				header,
-				start,
-				hasSlot('leading-icon') || placement === 'start',
-				'leading',
-				'start',
+				placement === 'start' ? 'leading' : 'trailing',
+				arrow.wrapper,
+				placement === 'start' ? 'start' : 'end',
 			)
-			edge(header, end, hasSlot('trailing-icon') || placement === 'end', 'trailing', 'end')
 		}),
 	],
 }

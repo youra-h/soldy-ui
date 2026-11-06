@@ -37,12 +37,8 @@ export function AccordionItem(props: AccordionItemProps): JSX.Element {
 		() => props.header,
 		() => ({ item: binding.ctrl, text: state.text ?? '', selected: state.selected ?? false }),
 	)
-	const leadingIcon = resolveSlot(
-		() => props['leading-icon'],
-		() => ({ item: binding.ctrl }),
-	)
-	const trailingIcon = resolveSlot(
-		() => props['trailing-icon'],
+	const arrowIcon = resolveSlot(
+		() => props['arrow-icon'],
 		() => ({ item: binding.ctrl }),
 	)
 
@@ -52,7 +48,7 @@ export function AccordionItem(props: AccordionItemProps): JSX.Element {
 
 	/** Стрелка стороны: слот, а без него — иконка, если стрелка на этой стороне. */
 	const arrow = (side: 'start' | 'end', icon: Accessor<JSX.Element | undefined>) => (
-		<Show when={icon() !== undefined || state.arrowPlacement === side}>
+		<Show when={state.arrowPlacement === side}>
 			<span class="so-accordion-item__arrow">
 				{icon() ?? <Icon embedded="accordion.arrow" tag={ARROW} size={state.size} />}
 			</span>
@@ -75,14 +71,14 @@ export function AccordionItem(props: AccordionItemProps): JSX.Element {
 					ref={toggle}
 					leading={
 						<>
-							{arrow('start', leadingIcon)}
+							{arrow('start', arrowIcon)}
 							{renderSlot(props.leading, { item: binding.ctrl })}
 						</>
 					}
 					trailing={
 						<>
 							{renderSlot(props.trailing, { item: binding.ctrl })}
-							{arrow('end', trailingIcon)}
+							{arrow('end', arrowIcon)}
 						</>
 					}
 				>

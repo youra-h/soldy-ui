@@ -51,10 +51,9 @@ export const AccordionDescriptor = defineDescriptor(() =>
 					},
 					description: 'Заголовок элемента при работе через проп items',
 				},
-				'item-leading-icon': {
+				'item-arrow-icon': {
 					scope: { item: defineType<IAccordionItem>(Object) },
-					description:
-						'Стрелка перед заголовком элемента. По умолчанию — при arrowPlacement="start"',
+					description: 'Стрелка заголовка элемента на стороне arrowPlacement',
 				},
 				'item-leading': {
 					scope: { item: defineType<IAccordionItem>(Object) },
@@ -63,11 +62,6 @@ export const AccordionDescriptor = defineDescriptor(() =>
 				'item-trailing': {
 					scope: { item: defineType<IAccordionItem>(Object) },
 					description: 'После заголовка элемента',
-				},
-				'item-trailing-icon': {
-					scope: { item: defineType<IAccordionItem>(Object) },
-					description:
-						'Стрелка после заголовка элемента. По умолчанию — при arrowPlacement="end"',
 				},
 				'item-content': {
 					scope: { item: defineType<IAccordionItem>(Object) },

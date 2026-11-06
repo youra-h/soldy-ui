@@ -359,10 +359,8 @@ describe('секция из разметки', () => {
 	})
 
 	/**
-	 * Стрелка — по краю заголовка со стороны `arrowPlacement`; слоты
-	 * `leading-icon` и `trailing-icon` её подменяют. Подменённая стоит в той же
-	 * обёртке `.so-accordion-item__arrow`: по ней тема поворачивает стрелку
-	 * раскрытой секции, — и обёртка — ребёнок заголовка.
+	 * The arrow follows `arrowPlacement`; `arrow-icon` replaces its icon in the
+	 * same `.so-accordion-item__arrow` wrapper inside the header.
 	 */
 	it('стрелка стоит со стороны arrowPlacement и переезжает за ним', async () => {
 		const host = await mount(`<div is="so-accordion">
@@ -401,7 +399,7 @@ describe('секция из разметки', () => {
 	it('слот на стороне стрелки подменяет её в той же обёртке', async () => {
 		await mount(`<div is="so-accordion">
 			<div is="so-accordion-item" text="A" value="a" arrow-placement="end">
-				<b slot="trailing-icon" class="custom">›</b>
+				<b slot="arrow-icon" class="custom">›</b>
 			</div>
 		</div>`)
 
@@ -410,11 +408,11 @@ describe('секция из разметки', () => {
 		expect(document.querySelector('.so-accordion-item__arrow .so-icon')).toBeNull()
 	})
 
-	/** Слот на стороне без стрелки по умолчанию — своя обёртка, стрелка остаётся. */
-	it('слот на другой стороне — своя обёртка, стрелка по умолчанию на месте', async () => {
+	/** The same slot follows the arrow when its placement changes. */
+	it('слот стрелки занимает единственную обёртку', async () => {
 		await mount(`<div is="so-accordion">
-			<div is="so-accordion-item" text="A" value="a" arrow-placement="end">
-				<b slot="leading-icon" class="custom">•</b>
+			<div is="so-accordion-item" text="A" value="a" arrow-placement="start">
+				<b slot="arrow-icon" class="custom">•</b>
 			</div>
 		</div>`)
 
@@ -426,7 +424,7 @@ describe('секция из разметки', () => {
 						? 'icon'
 						: 'empty',
 			),
-		).toEqual(['slot', 'icon'])
+		).toEqual(['slot'])
 	})
 
 	it('стрелка по умолчанию — деталь с именем места, роли arrowRight и размера секции', async () => {
@@ -477,10 +475,10 @@ describe('образцы item-* аккордеона', () => {
 	})
 
 	/** Образец стрелки задан — у каждой секции он вместо стрелки по умолчанию. */
-	it('item-leading-icon — у каждой секции вместо стрелки по умолчанию', async () => {
+	it('item-arrow-icon — у каждой секции вместо стрелки по умолчанию', async () => {
 		await mountAccordion(
 			{ items: ITEMS },
-			'<template slot="item-leading-icon"><b class="probe">›</b></template>',
+			'<template slot="item-arrow-icon"><b class="probe">›</b></template>',
 		)
 
 		const arrows = sections().map((node) =>
@@ -498,7 +496,7 @@ describe('образцы item-* аккордеона', () => {
 
 	/** Пустой образец ничего не кладёт: слот секции не задан, и стрелка — своя. */
 	it('пустой образец — у секции своя стрелка', async () => {
-		await mountAccordion({ items: ITEMS }, '<template slot="item-leading-icon"> </template>')
+		await mountAccordion({ items: ITEMS }, '<template slot="item-arrow-icon"> </template>')
 
 		expect(
 			sections().map(

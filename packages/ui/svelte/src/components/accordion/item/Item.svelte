@@ -23,7 +23,7 @@
 	стоит, пока на её стороне стрелка по умолчанию или задан слот.
 -->
 {#snippet arrow(side: 'start' | 'end', slot: Snippet<[{ item: typeof binding.ctrl }]> | undefined)}
-	{#if slot || state.arrowPlacement === side}
+	{#if state.arrowPlacement === side}
 		<span class="so-accordion-item__arrow">
 			{#if slot}
 				{@render slot({ item: binding.ctrl })}
@@ -57,7 +57,7 @@
 		{@attach toggle}
 	>
 		{#snippet leading()}
-			{@render arrow('start', props['leading-icon'])}{@render props.leading?.({
+			{@render arrow('start', props['arrow-icon'])}{@render props.leading?.({
 				item: binding.ctrl,
 			})}
 		{/snippet}
@@ -73,7 +73,7 @@
 		{#snippet trailing()}
 			{@render props.trailing?.({ item: binding.ctrl })}{@render arrow(
 				'end',
-				props['trailing-icon'],
+				props['arrow-icon'],
 			)}
 		{/snippet}
 	</Button><div class="so-accordion-item__body">

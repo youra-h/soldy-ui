@@ -1,18 +1,14 @@
 <script lang="ts">
 	/**
-	 * Тестовая обёртка: аккордеон из данных со стрелкой-пробросом, которая
-	 * рисуется только у одной секции, — по условию внутри сниппета. Такой
-	 * сниппет объявляется только в `.svelte`; имя слота с дефисом — не имя
-	 * сниппета, поэтому сниппет передаётся атрибутом.
-	 *
-	 * - `leading-icon` — стрелка в начале, только у секции `a`;
-	 * - `trailing-icon` — стрелка в конце, только у секции `b`.
+	 * Test harness for an accordion built from data. The arrow snippet renders
+	 * content for one section at a time. A snippet with a hyphenated slot name
+	 * must be passed as an attribute in Svelte.
 	 */
 	import type { IAccordionItem } from '@soldy-ui/core'
 	import { Accordion } from '@soldy-ui/svelte'
 
 	type THarnessProps = {
-		case: 'leading-icon' | 'trailing-icon'
+		case: 'first' | 'second'
 	}
 
 	const props: THarnessProps = $props()
@@ -31,8 +27,8 @@
 	{#if item.value === 'b'}<b class="probe">›</b>{/if}
 {/snippet}
 
-{#if props.case === 'leading-icon'}
-	<Accordion items={ITEMS} item-leading-icon={leadingIcon} />
+{#if props.case === 'first'}
+	<Accordion items={ITEMS} item-arrow-icon={leadingIcon} />
 {:else}
-	<Accordion items={ITEMS} item-trailing-icon={trailingIcon} />
+	<Accordion items={ITEMS} item-arrow-icon={trailingIcon} />
 {/if}

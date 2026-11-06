@@ -6,8 +6,8 @@
 <ng-content>
 	@for (item of state()['shown'] ?? []; track item.uid) {
 		<div so-accordion-item [ctrl]="item">
-			@if (slot('item-leading-icon'); as icon) {
-				<ng-template slot="leading-icon" ngProjectAs="ng-template[slot]">
+			@if (slot('item-arrow-icon'); as icon) {
+				<ng-template slot="arrow-icon" ngProjectAs="ng-template[slot]">
 					<ng-container [ngTemplateOutlet]="icon" [ngTemplateOutletContext]="{ item }" />
 				</ng-template>
 			}
@@ -39,11 +39,6 @@
 						[ngTemplateOutletContext]="{ item }"
 					/>
 				</ng-container>
-			}
-			@if (slot('item-trailing-icon'); as icon) {
-				<ng-template slot="trailing-icon" ngProjectAs="ng-template[slot]">
-					<ng-container [ngTemplateOutlet]="icon" [ngTemplateOutletContext]="{ item }" />
-				</ng-template>
 			}
 			@if (slot('item-content'); as content) {
 				<ng-container [ngTemplateOutlet]="content" [ngTemplateOutletContext]="{ item }" />
