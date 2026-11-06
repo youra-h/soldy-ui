@@ -11,7 +11,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TAriaPlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TAriaPlugin } from '@soldy-ui/plugins'
 
 /**
  * Опция `role` (`AriaPluginDescriptor.with({ role: 'img' })`) — роль, которую
@@ -31,7 +31,6 @@ export const AriaPluginDescriptor = definePlugin({
 	 * этого и уходили.
 	 */
 	contribution: {
-		events: [...PLUGIN_EVENTS],
 		props: {
 			label: { type: String, triggers: ['change:label'] },
 			labelledBy: { type: String, triggers: ['change:labelledBy'] },

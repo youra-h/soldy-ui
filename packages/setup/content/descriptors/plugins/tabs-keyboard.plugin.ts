@@ -6,10 +6,9 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TTabsKeyboardPlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TTabsKeyboardPlugin } from '@soldy-ui/plugins'
 
 export const TabsKeyboardPluginDescriptor = definePlugin({
 	ctor: TTabsKeyboardPlugin,
 	namespace: 'keyboard',
-	contribution: { events: [...PLUGIN_EVENTS] },
 })

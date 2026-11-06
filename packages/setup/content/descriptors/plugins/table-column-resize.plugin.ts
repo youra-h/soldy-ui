@@ -10,10 +10,9 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TTableColumnResizePlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TTableColumnResizePlugin } from '@soldy-ui/plugins'
 
 export const TableColumnResizePluginDescriptor = definePlugin({
 	ctor: TTableColumnResizePlugin,
 	namespace: 'resize',
-	contribution: { events: [...PLUGIN_EVENTS] },
 })

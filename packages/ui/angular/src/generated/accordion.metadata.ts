@@ -37,15 +37,10 @@ export const AccordionInputNames = [
 	'mode',
 ] as const
 export const AccordionOutputNames = [
-	'soActionCreate',
 	'soActionPress',
 	'soActionClick',
 	'soActionFocus',
 	'soActionBlur',
-	'soAriaCreate',
-	'soBundlesCreate',
-	'soElementsCreate',
-	'soDragCreate',
 	'soChangeSize',
 	'soChangeVariant',
 	'soChangeDisabled',
@@ -142,19 +137,12 @@ export abstract class TAccordionSurface<TInstance extends IEntity> extends TView
 	declare readonly soHideBefore: TOutputEmitter<typeof descriptor, 'hide:before'>
 	declare readonly soHideAfter: TOutputEmitter<typeof descriptor, 'hide:after'>
 	declare readonly soReady: TOutputEmitter<typeof descriptor, 'ready'>
-	declare readonly soElementCreate: TOutputEmitter<typeof descriptor, 'element:create'>
 	declare readonly soElementReady: TOutputEmitter<typeof descriptor, 'element:ready'>
 	declare readonly soElementRemoved: TOutputEmitter<typeof descriptor, 'element:removed'>
-	declare readonly soReadyCreate: TOutputEmitter<typeof descriptor, 'ready:create'>
-	declare readonly soActionCreate: TOutputEmitter<typeof descriptor, 'action:create'>
 	declare readonly soActionPress: TOutputEmitter<typeof descriptor, 'action:press'>
 	declare readonly soActionClick: TOutputEmitter<typeof descriptor, 'action:click'>
 	declare readonly soActionFocus: TOutputEmitter<typeof descriptor, 'action:focus'>
 	declare readonly soActionBlur: TOutputEmitter<typeof descriptor, 'action:blur'>
-	declare readonly soAriaCreate: TOutputEmitter<typeof descriptor, 'aria:create'>
-	declare readonly soBundlesCreate: TOutputEmitter<typeof descriptor, 'bundles:create'>
-	declare readonly soElementsCreate: TOutputEmitter<typeof descriptor, 'elements:create'>
-	declare readonly soDragCreate: TOutputEmitter<typeof descriptor, 'drag:create'>
 	declare readonly soChangeRendered: TOutputEmitter<typeof descriptor, 'change:rendered'>
 	declare readonly soChangeVisible: TOutputEmitter<typeof descriptor, 'change:visible'>
 	declare readonly soChangeTag: TOutputEmitter<typeof descriptor, 'change:tag'>

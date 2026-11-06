@@ -7,13 +7,12 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TToastsLayoutPlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TToastsLayoutPlugin } from '@soldy-ui/plugins'
 
 export const ToastsLayoutPluginDescriptor = definePlugin({
 	ctor: TToastsLayoutPlugin,
 	namespace: 'layout',
 	contribution: {
-		events: [...PLUGIN_EVENTS],
 		props: {
 			styles: {
 				protected: true,

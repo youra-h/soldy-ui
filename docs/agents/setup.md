@@ -593,7 +593,6 @@ btn.events.on('change:text', ...)
 ```ts
 btn.events.on('bundle:create', (b) => b.get(TActionPlugin).events.on('press', h))
 <Button :ctrl="btn" @bundle:create="onBundleCreate" />
-<Button @action:create="$event.events.on('press', onPress)" />   // сахар
 ```
 
 Свойством (`btn.plugins`) это выразить нельзя: до монтирования bundle не
@@ -778,7 +777,7 @@ Partial<IXProps>` вместо аннотации не годится: он ос
 
 Инвариант зафиксирован в коде: набор собирает только сборка
 (`protected/adapter/context/own-bundle.class.ts`), и наружу отдаётся доступ к **уже созданному** —
-через `bundle:create` и `<ns>:create`. То же самое с `engine` у коллекций.
+через `bundle:create`. То же самое с `engine` у коллекций.
 
 Цена решения: `bundle:create` идёт по шине core, хотя плагины — слой над core.
 Это осознанное исключение, а не протечка. Шина используется как транспорт, не
@@ -800,14 +799,11 @@ TPluginBundle`). В список событий дескриптора имя в
 получил bundle из `createAdapterContext`. Синхронный эмит проверен — ломает
 8 тестов в setup/vue/svelte/solid.
 
-`create` объявлен в слое плагинов (`PLUGIN_EVENTS` в
-`packages/plugins/src/base/events.ts`) и подмешивается в contribution каждого
-плагина **явно**. Не добавляйте его автоматически внутри `definePlugin`.
-Этот же список задаёт и рантайм-проброс, и типы дескриптора: остальные события
-базы (`TPluginInternalEvents` — `install` и `destroy`) вывод контракта
-плагина (`TPluginContractFrom`) снимает с карты плагина, второго списка имён в
-setup нет. Сторожит
-`packages/setup/__tests__/plugin-events.spec.ts`.
+События жизненного цикла плагина (`install`, `create`, `destroy`) внутренние
+и не публикуются на компоненте. Доступ к плагину — через `bundle:create` и
+`bundle.get(PluginClass)`. Внутренний `created()` сохраняется и вызывается
+после объявления набора. Вывод типов исключает `TPluginInternalEvents`.
+Сторожит `packages/setup/__tests__/plugin-events.spec.ts`.
 
 ## Плагины и расширения снаружи (критично)
 

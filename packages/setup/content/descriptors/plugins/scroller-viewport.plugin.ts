@@ -7,10 +7,9 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TScrollerViewportPlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TScrollerViewportPlugin } from '@soldy-ui/plugins'
 
 export const ScrollerViewportPluginDescriptor = definePlugin({
 	ctor: TScrollerViewportPlugin,
 	namespace: 'viewport',
-	contribution: { events: [...PLUGIN_EVENTS] },
 })

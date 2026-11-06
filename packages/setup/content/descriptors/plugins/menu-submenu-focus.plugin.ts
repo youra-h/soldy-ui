@@ -10,7 +10,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TMenuSubmenuFocusPlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TMenuSubmenuFocusPlugin } from '@soldy-ui/plugins'
 
 export const MenuSubmenuFocusPluginDescriptor = definePlugin({
 	ctor: TMenuSubmenuFocusPlugin,
@@ -19,5 +19,4 @@ export const MenuSubmenuFocusPluginDescriptor = definePlugin({
 	 * Наружу — только `create`: фокус — операция над DOM, а не значение, а
 	 * `tab` слушает меню над подменю у его набора, а не потребитель.
 	 */
-	contribution: { events: [...PLUGIN_EVENTS] },
 })

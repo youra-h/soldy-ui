@@ -19,13 +19,7 @@ export abstract class TBasePlugin<
 		this._sink.emit('install', ctx, options)
 	}
 
-	/**
-	 * Объявляет плагин доступным снаружи и передаёт подписчику сам плагин.
-	 *
-	 * Вызывает adapter-слой в тот момент, когда фреймворк уже привязал
-	 * обработчики событий. В install это делать нельзя: bundle собирается
-	 * раньше, и эмит ушёл бы в пустоту.
-	 */
+	/** Run the internal creation announcement after the bundle becomes available. */
 	created(): void {
 		this._sink.emit('create', this)
 	}

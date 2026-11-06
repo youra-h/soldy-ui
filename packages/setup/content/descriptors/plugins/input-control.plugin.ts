@@ -5,10 +5,9 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TInputControlPlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TInputControlPlugin } from '@soldy-ui/plugins'
 
 export const InputControlPluginDescriptor = definePlugin({
 	ctor: TInputControlPlugin,
 	namespace: 'input-control',
-	contribution: { events: [...PLUGIN_EVENTS] },
 })

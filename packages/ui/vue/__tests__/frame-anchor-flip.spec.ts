@@ -1,3 +1,4 @@
+import { TPluginBundle } from '@soldy-ui/plugins'
 /**
  * `anchor_flip` у Frame, который объявлен разметкой.
  *
@@ -29,7 +30,8 @@ describe('anchor_flip', () => {
 
 		await nextFrame()
 
-		const [plugin] = wrapper.emitted('anchor:create')?.[0] ?? []
+		const [bundle] = wrapper.emitted('bundle:create')?.[0] ?? []
+		const plugin = bundle instanceof TPluginBundle ? bundle.get(TAnchorPlugin) : undefined
 
 		expect(plugin).toBeInstanceOf(TAnchorPlugin)
 		expect(plugin instanceof TAnchorPlugin && plugin.flip).toBe(true)

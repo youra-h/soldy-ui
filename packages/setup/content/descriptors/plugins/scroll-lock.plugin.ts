@@ -8,7 +8,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TScrollLockPlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TScrollLockPlugin } from '@soldy-ui/plugins'
 
 export const ScrollLockPluginDescriptor = definePlugin({
 	ctor: TScrollLockPlugin,
@@ -19,7 +19,6 @@ export const ScrollLockPluginDescriptor = definePlugin({
 	 * — и выключить замок там, где прокрутка фона допустима.
 	 */
 	contribution: {
-		events: [...PLUGIN_EVENTS],
 		props: {
 			enabled: { type: Boolean, triggers: ['change:enabled'] },
 		},

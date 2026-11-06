@@ -8,13 +8,12 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TTextareaNamesPlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TTextareaNamesPlugin } from '@soldy-ui/plugins'
 
 export const TextareaNamesPluginDescriptor = definePlugin({
 	ctor: TTextareaNamesPlugin,
 	namespace: 'names',
 	contribution: {
-		events: [...PLUGIN_EVENTS],
 		props: {
 			counter: { protected: true, triggers: ['change:counter'] },
 		},

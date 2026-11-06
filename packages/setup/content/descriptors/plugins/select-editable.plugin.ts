@@ -8,7 +8,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TEditablePlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TEditablePlugin } from '@soldy-ui/plugins'
 
 export const SelectEditablePluginDescriptor = definePlugin({
 	ctor: TEditablePlugin,
@@ -21,7 +21,7 @@ export const SelectEditablePluginDescriptor = definePlugin({
 	 * собственный `highlightedUid`, повторять её здесь незачем.
 	 */
 	contribution: {
-		events: [...PLUGIN_EVENTS, 'change:query'],
+		events: ['change:query'],
 		props: {
 			query: { protected: true, triggers: ['change:query'] },
 		},

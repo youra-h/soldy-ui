@@ -8,10 +8,9 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TToastsCascadePlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TToastsCascadePlugin } from '@soldy-ui/plugins'
 
 export const ToastsCascadePluginDescriptor = definePlugin({
 	ctor: TToastsCascadePlugin,
 	namespace: 'cascade',
-	contribution: { events: [...PLUGIN_EVENTS] },
 })

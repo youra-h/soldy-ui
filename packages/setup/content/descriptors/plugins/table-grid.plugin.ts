@@ -13,10 +13,9 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TTableGridPlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TTableGridPlugin } from '@soldy-ui/plugins'
 
 export const TableGridPluginDescriptor = definePlugin({
 	ctor: TTableGridPlugin,
 	namespace: 'grid',
-	contribution: { events: [...PLUGIN_EVENTS] },
 })

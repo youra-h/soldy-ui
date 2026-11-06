@@ -6,10 +6,9 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TTabsItemIdsPlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TTabsItemIdsPlugin } from '@soldy-ui/plugins'
 
 export const TabsItemIdsPluginDescriptor = definePlugin({
 	ctor: TTabsItemIdsPlugin,
 	namespace: 'ids',
-	contribution: { events: [...PLUGIN_EVENTS] },
 })

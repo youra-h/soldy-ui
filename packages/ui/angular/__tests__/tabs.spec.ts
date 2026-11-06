@@ -1,3 +1,4 @@
+import { TPluginBundle } from '@soldy-ui/plugins'
 /**
  * Tabs под Angular — набор вкладок на движке коллекций.
  *
@@ -139,7 +140,7 @@ function press(fixture: ComponentFixture<unknown>, target: Element, key: string)
 })
 class Harness {}
 
-/** Те же табы и панели; плагины узла панелей хост берёт из их `(soElementCreate)`. */
+/** The host retrieves the node plugin through the public soBundleCreate output. */
 @Component({
 	selector: 'probe-tabs-element',
 	standalone: true,
@@ -147,10 +148,10 @@ class Harness {}
 	template: `<div so-tabs>
 		<div so-tabs-item value="a" text="First" active></div>
 		<div so-tabs-item value="b" text="Second"></div>
-		<div so-tabs-content slot="content" value="a" (soElementCreate)="created('a', $event)">
+		<div so-tabs-content slot="content" value="a" (soBundleCreate)="created('a', $event)">
 			Панель A
 		</div>
-		<div so-tabs-content slot="content" value="b" (soElementCreate)="created('b', $event)">
+		<div so-tabs-content slot="content" value="b" (soBundleCreate)="created('b', $event)">
 			Панель B
 		</div>
 	</div>`,
@@ -159,8 +160,9 @@ class ElementHost {
 	/** Плагин узла панели по её `value`. */
 	readonly plugins = new Map<string, TElementPlugin>()
 
-	created(value: string, plugin: unknown): void {
-		if (plugin instanceof TElementPlugin) this.plugins.set(value, plugin)
+	created(value: string, bundle: unknown): void {
+		const plugin = bundle instanceof TPluginBundle ? bundle.get(TElementPlugin) : undefined
+		if (plugin) this.plugins.set(value, plugin)
 	}
 }
 

@@ -10,10 +10,9 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TTableLayoutPlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TTableLayoutPlugin } from '@soldy-ui/plugins'
 
 export const TableLayoutPluginDescriptor = definePlugin({
 	ctor: TTableLayoutPlugin,
 	namespace: 'layout',
-	contribution: { events: [...PLUGIN_EVENTS] },
 })

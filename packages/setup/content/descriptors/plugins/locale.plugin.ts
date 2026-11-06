@@ -11,10 +11,9 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TLocalePlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TLocalePlugin } from '@soldy-ui/plugins'
 
 export const LocalePluginDescriptor = definePlugin({
 	ctor: TLocalePlugin,
 	namespace: 'locale',
-	contribution: { events: [...PLUGIN_EVENTS] },
 })

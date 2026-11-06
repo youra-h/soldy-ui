@@ -8,7 +8,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TSelectBackspacePlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TSelectBackspacePlugin } from '@soldy-ui/plugins'
 
 export const SelectBackspacePluginDescriptor = definePlugin({
 	ctor: TSelectBackspacePlugin,
@@ -20,7 +20,5 @@ export const SelectBackspacePluginDescriptor = definePlugin({
 	 * через `owner.removeOnBackspace`. Контрибуция нужна лишь для того, чтобы
 	 * `create` попал в события, как и у любого плагина.
 	 */
-	contribution: {
-		events: [...PLUGIN_EVENTS],
-	},
+	contribution: {},
 })

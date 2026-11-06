@@ -1,3 +1,4 @@
+import { TPluginBundle } from '@soldy-ui/plugins'
 /**
  * Select в разметке — проверка проводки целиком.
  *
@@ -800,10 +801,11 @@ describe('списочные свойства', () => {
 		const matchWidth = async (contentFit?: string) => {
 			const select = render(contentFit ? { contentFit } : {})
 
-			// `anchor:create` отложен на микрозадачу
+			// The bundle is announced on a microtask.
 			await nextTick()
 
-			const [plugin] = select.findComponent(Frame).emitted('anchor:create')?.[0] ?? []
+			const [bundle] = select.findComponent(Frame).emitted('bundle:create')?.[0] ?? []
+			const plugin = bundle instanceof TPluginBundle ? bundle.get(TAnchorPlugin) : undefined
 
 			if (!(plugin instanceof TAnchorPlugin)) throw new Error('плагина якоря нет')
 
@@ -878,10 +880,11 @@ describe('сторона панели', () => {
 		const select = mount(Select, { props, attachTo: document.body })
 
 		wrapper = select
-		// `anchor:create` отложен на микрозадачу
+		// The bundle is announced on a microtask.
 		await nextTick()
 
-		const [plugin] = select.findComponent(Frame).emitted('anchor:create')?.[0] ?? []
+		const [bundle] = select.findComponent(Frame).emitted('bundle:create')?.[0] ?? []
+		const plugin = bundle instanceof TPluginBundle ? bundle.get(TAnchorPlugin) : undefined
 
 		expect(plugin).toBeInstanceOf(TAnchorPlugin)
 

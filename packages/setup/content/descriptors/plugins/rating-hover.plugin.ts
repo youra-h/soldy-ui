@@ -8,10 +8,9 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TRatingHoverPlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TRatingHoverPlugin } from '@soldy-ui/plugins'
 
 export const RatingHoverPluginDescriptor = definePlugin({
 	ctor: TRatingHoverPlugin,
 	namespace: 'hover',
-	contribution: { events: [...PLUGIN_EVENTS] },
 })

@@ -11,7 +11,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TMenuPointerPlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TMenuPointerPlugin } from '@soldy-ui/plugins'
 
 export const MenuPointerPluginDescriptor = definePlugin({
 	ctor: TMenuPointerPlugin,
@@ -20,5 +20,4 @@ export const MenuPointerPluginDescriptor = definePlugin({
 	 * Ничего не отдаёт наружу: открытость (`open`) и точка вызова (`point`)
 	 * читаются как пропсы владельца, подсветка — `data-highlighted` пункта.
 	 */
-	contribution: { events: [...PLUGIN_EVENTS] },
 })

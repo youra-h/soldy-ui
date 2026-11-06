@@ -24,7 +24,6 @@ export const LabelInputNames = [
 	'position',
 ] as const
 export const LabelOutputNames = [
-	'soNestedWarnCreate',
 	'soChangeSize',
 	'soChangeVariant',
 	'soChangeText',
@@ -78,11 +77,8 @@ export abstract class TLabelSurface<TInstance extends IEntity> extends TViewSurf
 	declare readonly soHideBefore: TOutputEmitter<typeof descriptor, 'hide:before'>
 	declare readonly soHideAfter: TOutputEmitter<typeof descriptor, 'hide:after'>
 	declare readonly soReady: TOutputEmitter<typeof descriptor, 'ready'>
-	declare readonly soElementCreate: TOutputEmitter<typeof descriptor, 'element:create'>
 	declare readonly soElementReady: TOutputEmitter<typeof descriptor, 'element:ready'>
 	declare readonly soElementRemoved: TOutputEmitter<typeof descriptor, 'element:removed'>
-	declare readonly soReadyCreate: TOutputEmitter<typeof descriptor, 'ready:create'>
-	declare readonly soNestedWarnCreate: TOutputEmitter<typeof descriptor, 'nestedWarn:create'>
 	declare readonly soChangeRendered: TOutputEmitter<typeof descriptor, 'change:rendered'>
 	declare readonly soChangeVisible: TOutputEmitter<typeof descriptor, 'change:visible'>
 	declare readonly soChangeTag: TOutputEmitter<typeof descriptor, 'change:tag'>

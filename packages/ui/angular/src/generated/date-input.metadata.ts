@@ -42,19 +42,10 @@ export const DateInputInputNames = [
 export const DateInputOutputNames = [
 	'soInput',
 	'soInputValue',
-	'soActionCreate',
 	'soActionPress',
 	'soActionClick',
 	'soActionFocus',
 	'soActionBlur',
-	'soAriaCreate',
-	'soNamesCreate',
-	'soLocaleCreate',
-	'soKeyboardCreate',
-	'soPointerCreate',
-	'soClipboardCreate',
-	'soTouchCreate',
-	'soIdsCreate',
 	'soChangeSize',
 	'soChangeVariant',
 	'soChangeDisabled',
@@ -162,23 +153,12 @@ export abstract class TDateInputSurface<TInstance extends IEntity> extends TView
 	declare readonly soReady: TOutputEmitter<typeof descriptor, 'ready'>
 	declare readonly soInput: TOutputEmitter<typeof descriptor, 'input'>
 	declare readonly soInputValue: TOutputEmitter<typeof descriptor, 'input:value'>
-	declare readonly soElementCreate: TOutputEmitter<typeof descriptor, 'element:create'>
 	declare readonly soElementReady: TOutputEmitter<typeof descriptor, 'element:ready'>
 	declare readonly soElementRemoved: TOutputEmitter<typeof descriptor, 'element:removed'>
-	declare readonly soReadyCreate: TOutputEmitter<typeof descriptor, 'ready:create'>
-	declare readonly soActionCreate: TOutputEmitter<typeof descriptor, 'action:create'>
 	declare readonly soActionPress: TOutputEmitter<typeof descriptor, 'action:press'>
 	declare readonly soActionClick: TOutputEmitter<typeof descriptor, 'action:click'>
 	declare readonly soActionFocus: TOutputEmitter<typeof descriptor, 'action:focus'>
 	declare readonly soActionBlur: TOutputEmitter<typeof descriptor, 'action:blur'>
-	declare readonly soAriaCreate: TOutputEmitter<typeof descriptor, 'aria:create'>
-	declare readonly soNamesCreate: TOutputEmitter<typeof descriptor, 'names:create'>
-	declare readonly soLocaleCreate: TOutputEmitter<typeof descriptor, 'locale:create'>
-	declare readonly soKeyboardCreate: TOutputEmitter<typeof descriptor, 'keyboard:create'>
-	declare readonly soPointerCreate: TOutputEmitter<typeof descriptor, 'pointer:create'>
-	declare readonly soClipboardCreate: TOutputEmitter<typeof descriptor, 'clipboard:create'>
-	declare readonly soTouchCreate: TOutputEmitter<typeof descriptor, 'touch:create'>
-	declare readonly soIdsCreate: TOutputEmitter<typeof descriptor, 'ids:create'>
 	declare readonly soChangeRendered: TOutputEmitter<typeof descriptor, 'change:rendered'>
 	declare readonly soChangeVisible: TOutputEmitter<typeof descriptor, 'change:visible'>
 	declare readonly soChangeTag: TOutputEmitter<typeof descriptor, 'change:tag'>

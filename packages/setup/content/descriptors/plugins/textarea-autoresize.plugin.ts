@@ -8,10 +8,9 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TTextareaAutoresizePlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TTextareaAutoresizePlugin } from '@soldy-ui/plugins'
 
 export const TextareaAutoresizePluginDescriptor = definePlugin({
 	ctor: TTextareaAutoresizePlugin,
 	namespace: 'autoresize',
-	contribution: { events: [...PLUGIN_EVENTS] },
 })

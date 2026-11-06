@@ -1,3 +1,4 @@
+import { TPluginBundle } from '@soldy-ui/plugins'
 /**
  * ComponentView — стратегия `'host'` из `TComponentBase`, как у Button.
  *
@@ -39,16 +40,13 @@ class BoundRoleHost {
 	readonly role = signal<string | null>(null)
 }
 
-/**
- * Кнопка в поддереве ComponentView: `rendered` предка — сигналом, плагин узла
- * кнопки хост берёт из её `(soElementCreate)`.
- */
+/** The host retrieves the node plugin through the public soBundleCreate output. */
 @Component({
 	selector: 'probe-component-view-subtree',
 	standalone: true,
 	imports: [TComponentViewComponent, TButtonComponent],
 	template: `<div so-component-view [rendered]="rendered()">
-		<button so-button text="Внутри" (soElementCreate)="created($event)"></button>
+		<button so-button text="Внутри" (soBundleCreate)="created($event)"></button>
 	</div>`,
 })
 class SubtreeHost {
@@ -56,8 +54,8 @@ class SubtreeHost {
 	/** Плагин узла кнопки; до объявления набора его нет. */
 	plugin: TElementPlugin | null = null
 
-	created(plugin: unknown): void {
-		if (plugin instanceof TElementPlugin) this.plugin = plugin
+	created(bundle: unknown): void {
+		if (bundle instanceof TPluginBundle) this.plugin = bundle.get(TElementPlugin) ?? null
 	}
 }
 

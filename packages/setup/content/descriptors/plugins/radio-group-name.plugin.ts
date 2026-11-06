@@ -7,10 +7,9 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TRadioGroupNamePlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TRadioGroupNamePlugin } from '@soldy-ui/plugins'
 
 export const RadioGroupNamePluginDescriptor = definePlugin({
 	ctor: TRadioGroupNamePlugin,
 	namespace: 'name',
-	contribution: { events: [...PLUGIN_EVENTS] },
 })

@@ -46,22 +46,11 @@ export const MenuSubmenuInputNames = [
 export const MenuSubmenuOutputNames = [
 	'soInput',
 	'soInputValue',
-	'soActionCreate',
 	'soActionPress',
 	'soActionClick',
 	'soActionFocus',
 	'soActionBlur',
-	'soAriaCreate',
-	'soListItemCreate',
-	'soBundlesCreate',
-	'soElementsCreate',
-	'soDismissCreate',
 	'soDismissDismiss',
-	'soKeyboardCreate',
-	'soScrollCreate',
-	'soHoverCreate',
-	'soFocusCreate',
-	'soIdsCreate',
 	'soChangeSize',
 	'soChangeVariant',
 	'soChangeDisabled',
@@ -193,26 +182,13 @@ export abstract class TMenuSubmenuSurface<TInstance extends IEntity> extends TVi
 	declare readonly soReady: TOutputEmitter<typeof descriptor, 'ready'>
 	declare readonly soInput: TOutputEmitter<typeof descriptor, 'input'>
 	declare readonly soInputValue: TOutputEmitter<typeof descriptor, 'input:value'>
-	declare readonly soElementCreate: TOutputEmitter<typeof descriptor, 'element:create'>
 	declare readonly soElementReady: TOutputEmitter<typeof descriptor, 'element:ready'>
 	declare readonly soElementRemoved: TOutputEmitter<typeof descriptor, 'element:removed'>
-	declare readonly soReadyCreate: TOutputEmitter<typeof descriptor, 'ready:create'>
-	declare readonly soActionCreate: TOutputEmitter<typeof descriptor, 'action:create'>
 	declare readonly soActionPress: TOutputEmitter<typeof descriptor, 'action:press'>
 	declare readonly soActionClick: TOutputEmitter<typeof descriptor, 'action:click'>
 	declare readonly soActionFocus: TOutputEmitter<typeof descriptor, 'action:focus'>
 	declare readonly soActionBlur: TOutputEmitter<typeof descriptor, 'action:blur'>
-	declare readonly soAriaCreate: TOutputEmitter<typeof descriptor, 'aria:create'>
-	declare readonly soListItemCreate: TOutputEmitter<typeof descriptor, 'listItem:create'>
-	declare readonly soBundlesCreate: TOutputEmitter<typeof descriptor, 'bundles:create'>
-	declare readonly soElementsCreate: TOutputEmitter<typeof descriptor, 'elements:create'>
-	declare readonly soDismissCreate: TOutputEmitter<typeof descriptor, 'dismiss:create'>
 	declare readonly soDismissDismiss: TOutputEmitter<typeof descriptor, 'dismiss:dismiss'>
-	declare readonly soKeyboardCreate: TOutputEmitter<typeof descriptor, 'keyboard:create'>
-	declare readonly soScrollCreate: TOutputEmitter<typeof descriptor, 'scroll:create'>
-	declare readonly soHoverCreate: TOutputEmitter<typeof descriptor, 'hover:create'>
-	declare readonly soFocusCreate: TOutputEmitter<typeof descriptor, 'focus:create'>
-	declare readonly soIdsCreate: TOutputEmitter<typeof descriptor, 'ids:create'>
 	declare readonly soChangeRendered: TOutputEmitter<typeof descriptor, 'change:rendered'>
 	declare readonly soChangeVisible: TOutputEmitter<typeof descriptor, 'change:visible'>
 	declare readonly soChangeTag: TOutputEmitter<typeof descriptor, 'change:tag'>

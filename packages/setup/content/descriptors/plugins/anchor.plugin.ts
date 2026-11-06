@@ -10,7 +10,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TAnchorPlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TAnchorPlugin } from '@soldy-ui/plugins'
 
 export const AnchorPluginDescriptor = definePlugin({
 	ctor: TAnchorPlugin,
@@ -24,7 +24,6 @@ export const AnchorPluginDescriptor = definePlugin({
 	 * `removeAnchor()` — две операции вместо одного поля.
 	 */
 	contribution: {
-		events: [...PLUGIN_EVENTS],
 		props: {
 			anchor: {
 				type: Object,

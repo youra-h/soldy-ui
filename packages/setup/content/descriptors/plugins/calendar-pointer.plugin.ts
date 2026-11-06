@@ -9,10 +9,9 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TCalendarPointerPlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TCalendarPointerPlugin } from '@soldy-ui/plugins'
 
 export const CalendarPointerPluginDescriptor = definePlugin({
 	ctor: TCalendarPointerPlugin,
 	namespace: 'pointer',
-	contribution: { events: [...PLUGIN_EVENTS] },
 })

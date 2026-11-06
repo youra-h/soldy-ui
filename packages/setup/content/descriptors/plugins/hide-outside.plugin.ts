@@ -9,7 +9,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { THideOutsidePlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { THideOutsidePlugin } from '@soldy-ui/plugins'
 
 export const HideOutsidePluginDescriptor = definePlugin({
 	ctor: THideOutsidePlugin,
@@ -19,7 +19,6 @@ export const HideOutsidePluginDescriptor = definePlugin({
 	 * сам плагин по открытости владельца, но потребителю нужен и ручной путь.
 	 */
 	contribution: {
-		events: [...PLUGIN_EVENTS],
 		props: {
 			enabled: { type: Boolean, triggers: ['change:enabled'] },
 		},

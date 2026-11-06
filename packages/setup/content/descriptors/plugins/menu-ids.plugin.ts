@@ -8,10 +8,9 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TMenuIdsPlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TMenuIdsPlugin } from '@soldy-ui/plugins'
 
 export const MenuIdsPluginDescriptor = definePlugin({
 	ctor: TMenuIdsPlugin,
 	namespace: 'ids',
-	contribution: { events: [...PLUGIN_EVENTS] },
 })

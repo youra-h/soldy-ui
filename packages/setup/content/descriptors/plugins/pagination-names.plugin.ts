@@ -8,10 +8,9 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TPaginationNamesPlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TPaginationNamesPlugin } from '@soldy-ui/plugins'
 
 export const PaginationNamesPluginDescriptor = definePlugin({
 	ctor: TPaginationNamesPlugin,
 	namespace: 'names',
-	contribution: { events: [...PLUGIN_EVENTS] },
 })

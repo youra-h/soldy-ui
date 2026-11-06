@@ -265,29 +265,23 @@ describe('Button · доступ к плагинам', () => {
 		)
 	})
 
-	it('@element:create отдаёт сам плагин, минуя bundle', async () => {
-		const seen: unknown[] = []
-
-		mount(Button, { props: { 'onElement:create': (p: unknown) => seen.push(p) } })
-
-		await created()
-
-		expect(seen).toHaveLength(1)
-		expect(seen[0]).toBeInstanceOf(TElementPlugin)
-	})
-
-	it('плагин из create — тот же, что связан с DOM-узлом компонента', async () => {
+	it('the plugin from the bundle owns the component DOM node', async () => {
 		const received: { plugin?: unknown } = {}
 
 		const wrapper = mount(Button, {
-			props: { 'onElement:create': (p: unknown) => (received.plugin = p) },
+			props: {
+				'onBundle:create': (bundle: unknown) => {
+					if (bundle instanceof TPluginBundle)
+						received.plugin = bundle.get(TElementPlugin)
+				},
+			},
 		})
 
 		await nextTick()
 
 		const { plugin } = received
 
-		// Доказательство, что это рабочий плагин, а не отдельный экземпляр
+		// Bundle access returns the plugin attached to the rendered node.
 		expect(plugin instanceof TElementPlugin && plugin.element).toBe(wrapper.element)
 	})
 })

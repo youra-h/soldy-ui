@@ -1,3 +1,4 @@
+import { TPluginBundle } from '@soldy-ui/plugins'
 /**
  * Skeleton под Angular: заглушка поверх содержимого.
  *
@@ -37,7 +38,7 @@ class VariantHost {
 		so-skeleton
 		[visible]="visible()"
 		[rendered]="rendered()"
-		(soElementCreate)="created($event)"
+		(soBundleCreate)="created($event)"
 	>
 		<b>Данные</b>
 	</div>`,
@@ -45,11 +46,11 @@ class VariantHost {
 class ContentHost {
 	readonly visible = signal<boolean | undefined>(undefined)
 	readonly rendered = signal<boolean | undefined>(undefined)
-	/** Плагин узла корня — из `(soElementCreate)`; до объявления набора его нет. */
+	/** The host retrieves the node plugin through the public soBundleCreate output. */
 	plugin: TElementPlugin | null = null
 
-	created(plugin: unknown): void {
-		if (plugin instanceof TElementPlugin) this.plugin = plugin
+	created(bundle: unknown): void {
+		if (bundle instanceof TPluginBundle) this.plugin = bundle.get(TElementPlugin) ?? null
 	}
 }
 

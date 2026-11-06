@@ -11,13 +11,12 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TDatePickerNamesPlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TDatePickerNamesPlugin } from '@soldy-ui/plugins'
 
 export const DatePickerNamesPluginDescriptor = definePlugin({
 	ctor: TDatePickerNamesPlugin,
 	namespace: 'names',
 	contribution: {
-		events: [...PLUGIN_EVENTS],
 		props: {
 			start: { protected: true, triggers: ['change:start'] },
 			end: { protected: true, triggers: ['change:end'] },

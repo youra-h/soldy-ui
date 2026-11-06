@@ -14,10 +14,9 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TListScrollPlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TListScrollPlugin } from '@soldy-ui/plugins'
 
 export const ListScrollPluginDescriptor = definePlugin({
 	ctor: TListScrollPlugin,
 	namespace: 'scroll',
-	contribution: { events: [...PLUGIN_EVENTS] },
 })

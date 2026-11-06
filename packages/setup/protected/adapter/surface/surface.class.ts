@@ -78,7 +78,10 @@ export class TSurface {
 
 		for (const name of [
 			...source.getEvents(),
-			...this.props.flatMap((prop) => prop.spec.triggers),
+			// Plugin creation can refresh a protected prop without becoming a public event.
+			...this.props.flatMap((prop) =>
+				prop.spec.triggers.filter((trigger) => trigger.name !== 'create'),
+			),
 		]) {
 			if (!published.has(name.getName())) published.set(name.getName(), name)
 		}

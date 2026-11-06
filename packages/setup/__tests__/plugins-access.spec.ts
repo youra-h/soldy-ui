@@ -185,33 +185,16 @@ describe('плагин, поставленный снаружи', () => {
 	})
 })
 
-describe('<ns>:create — сторона шаблона', () => {
-	it('каждый плагин объявляет своё create с namespace', () => {
-		const descriptor = ButtonDescriptor()
-		const names = descriptor.getEvents().map((name) => name.getName())
-
-		expect(names).toContain('element:create')
-		expect(names).toContain('ready:create')
-		expect(names).toContain('action:create')
-	})
-
-	it('create доходит до потребителя как обычное событие плагина', async () => {
+describe('plugin lifecycle stays internal', () => {
+	it('does not publish plugin create events', async () => {
 		const context = createAdapterContext(ButtonDescriptor(), {})
-		const emitted: Array<[string, unknown]> = []
-
-		// Подписка после createAdapterContext — как в настоящем адаптере
-		context
-			.connect(CallbackProfile)
-			.events.listen((exportName, args) => emitted.push([exportName, args[0]]))
-
+		const emitted: string[] = []
+		context.connect(CallbackProfile).events.listen((name) => emitted.push(name))
 		await created()
-
-		const elementCreate = emitted.find(([name]) => name === 'onElementCreate')
-		const bundleCreate = emitted.find(([name]) => name === 'onBundleCreate')
-
-		// Плагин отдаёт сам себя — как engine:create отдаёт сам движок
-		expect(elementCreate?.[1]).toBe(context.bundle?.get(TElementPlugin))
-		expect(bundleCreate?.[1]).toBe(context.bundle)
+		expect(emitted).toContain('onBundleCreate')
+		expect(emitted).not.toContain('onElementCreate')
+		expect(emitted).not.toContain('onReadyCreate')
+		context.destroy()
 	})
 
 	it('bundle:create приходит раньше плагинных create', async () => {

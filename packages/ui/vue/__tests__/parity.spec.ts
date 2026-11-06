@@ -1,3 +1,4 @@
+import { TPluginBundle } from '@soldy-ui/plugins'
 /**
  * What the platform parity run found in the Vue adapter
  * (benchmarks/parity/README.md).
@@ -39,7 +40,9 @@ describe('Icon с глифом в tag', () => {
 		wrapper = mount(Icon, {
 			props: { tag: Glyph },
 			attrs: {
-				'onElement:create': (plugin: unknown) => {
+				'onBundle:create': (bundle: unknown) => {
+					const plugin =
+						bundle instanceof TPluginBundle ? bundle.get(TElementPlugin) : undefined
 					if (plugin instanceof TElementPlugin) plugin.events.on('ready', ready)
 				},
 			},

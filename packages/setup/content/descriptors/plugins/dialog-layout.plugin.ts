@@ -12,13 +12,13 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TDialogLayoutPlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TDialogLayoutPlugin } from '@soldy-ui/plugins'
 
 export const DialogLayoutPluginDescriptor = definePlugin({
 	ctor: TDialogLayoutPlugin,
 	namespace: 'layout',
 	contribution: {
-		events: [...PLUGIN_EVENTS, 'offset:before'],
+		events: ['offset:before'],
 		props: {
 			styles: {
 				protected: true,

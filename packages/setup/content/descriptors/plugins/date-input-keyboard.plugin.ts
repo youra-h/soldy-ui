@@ -9,10 +9,9 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TDateInputKeyboardPlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TDateInputKeyboardPlugin } from '@soldy-ui/plugins'
 
 export const DateInputKeyboardPluginDescriptor = definePlugin({
 	ctor: TDateInputKeyboardPlugin,
 	namespace: 'keyboard',
-	contribution: { events: [...PLUGIN_EVENTS] },
 })

@@ -11,10 +11,9 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TSwipePlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TSwipePlugin } from '@soldy-ui/plugins'
 
 export const SwipePluginDescriptor = definePlugin({
 	ctor: TSwipePlugin,
 	namespace: 'swipe',
-	contribution: { events: [...PLUGIN_EVENTS] },
 })

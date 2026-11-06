@@ -7,10 +7,9 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TTableColumnNamesPlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TTableColumnNamesPlugin } from '@soldy-ui/plugins'
 
 export const TableColumnNamesPluginDescriptor = definePlugin({
 	ctor: TTableColumnNamesPlugin,
 	namespace: 'names',
-	contribution: { events: [...PLUGIN_EVENTS] },
 })

@@ -9,10 +9,9 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TNumberInputTypingPlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TNumberInputTypingPlugin } from '@soldy-ui/plugins'
 
 export const NumberInputTypingPluginDescriptor = definePlugin({
 	ctor: TNumberInputTypingPlugin,
 	namespace: 'typing',
-	contribution: { events: [...PLUGIN_EVENTS] },
 })

@@ -8,10 +8,9 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TTagsScrollPlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TTagsScrollPlugin } from '@soldy-ui/plugins'
 
 export const TagsScrollPluginDescriptor = definePlugin({
 	ctor: TTagsScrollPlugin,
 	namespace: 'scroll',
-	contribution: { events: [...PLUGIN_EVENTS] },
 })

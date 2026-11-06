@@ -8,10 +8,9 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TPaginationFocusPlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TPaginationFocusPlugin } from '@soldy-ui/plugins'
 
 export const PaginationFocusPluginDescriptor = definePlugin({
 	ctor: TPaginationFocusPlugin,
 	namespace: 'focus',
-	contribution: { events: [...PLUGIN_EVENTS] },
 })

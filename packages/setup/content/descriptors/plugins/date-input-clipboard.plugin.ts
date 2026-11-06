@@ -7,10 +7,9 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TDateInputClipboardPlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TDateInputClipboardPlugin } from '@soldy-ui/plugins'
 
 export const DateInputClipboardPluginDescriptor = definePlugin({
 	ctor: TDateInputClipboardPlugin,
 	namespace: 'clipboard',
-	contribution: { events: [...PLUGIN_EVENTS] },
 })

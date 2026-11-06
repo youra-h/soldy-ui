@@ -20,11 +20,7 @@ export const ListBoxGroupInputNames = [
 	'direction',
 	'label',
 ] as const
-export const ListBoxGroupOutputNames = [
-	'soIdsCreate',
-	'soChangeLabel',
-	'soChangeLabelAria',
-] as const
+export const ListBoxGroupOutputNames = ['soChangeLabel', 'soChangeLabelAria'] as const
 
 @Directive({
 	inputs: [
@@ -67,11 +63,8 @@ export abstract class TListBoxGroupSurface<TInstance extends IEntity> extends TV
 	declare readonly soHideBefore: TOutputEmitter<typeof descriptor, 'hide:before'>
 	declare readonly soHideAfter: TOutputEmitter<typeof descriptor, 'hide:after'>
 	declare readonly soReady: TOutputEmitter<typeof descriptor, 'ready'>
-	declare readonly soElementCreate: TOutputEmitter<typeof descriptor, 'element:create'>
 	declare readonly soElementReady: TOutputEmitter<typeof descriptor, 'element:ready'>
 	declare readonly soElementRemoved: TOutputEmitter<typeof descriptor, 'element:removed'>
-	declare readonly soReadyCreate: TOutputEmitter<typeof descriptor, 'ready:create'>
-	declare readonly soIdsCreate: TOutputEmitter<typeof descriptor, 'ids:create'>
 	declare readonly soChangeRendered: TOutputEmitter<typeof descriptor, 'change:rendered'>
 	declare readonly soChangeVisible: TOutputEmitter<typeof descriptor, 'change:visible'>
 	declare readonly soChangeTag: TOutputEmitter<typeof descriptor, 'change:tag'>

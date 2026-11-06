@@ -1,3 +1,4 @@
+import { TPluginBundle } from '@soldy-ui/plugins'
 /**
  * `<div is="so-frame">` — слой поверх страницы.
  *
@@ -722,9 +723,9 @@ describe('Frame · якорь', () => {
 		const el = create()
 		let plugin: TAnchorPlugin | undefined
 
-		el.addEventListener('so:anchor:create', (event) => {
-			if (event instanceof CustomEvent && event.detail instanceof TAnchorPlugin) {
-				plugin = event.detail
+		el.addEventListener('so:bundle:create', (event) => {
+			if (event instanceof CustomEvent && event.detail instanceof TPluginBundle) {
+				plugin = event.detail.get(TAnchorPlugin)
 			}
 		})
 		el.anchor_anchor = anchor

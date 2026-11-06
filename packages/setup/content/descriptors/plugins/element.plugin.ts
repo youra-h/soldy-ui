@@ -5,12 +5,12 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TElementPlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TElementPlugin } from '@soldy-ui/plugins'
 
 export const ElementPluginDescriptor = definePlugin({
 	ctor: TElementPlugin,
 	namespace: 'element',
 	contribution: {
-		events: [...PLUGIN_EVENTS, 'ready', 'removed'],
+		events: ['ready', 'removed'],
 	},
 })

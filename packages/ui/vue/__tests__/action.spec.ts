@@ -288,12 +288,14 @@ describe('focused · связь с настоящим фокусом', () => {
 })
 
 describe('доступ к плагину', () => {
-	it('@action:create отдаёт плагин, через него — подписка на press', async () => {
+	it('bundle:create provides the plugin for a press subscription', async () => {
 		const press = vi.fn()
 
 		const wrapper = mount(Button, {
 			props: {
-				'onAction:create': (plugin: unknown) => {
+				'onBundle:create': (bundle: unknown) => {
+					const plugin =
+						bundle instanceof TPluginBundle ? bundle.get(TActionPlugin) : undefined
 					if (plugin instanceof TActionPlugin) plugin.events.on('press', press)
 				},
 			},

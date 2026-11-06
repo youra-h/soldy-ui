@@ -7,10 +7,9 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TInputPlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TInputPlugin } from '@soldy-ui/plugins'
 
 export const InputPluginDescriptor = definePlugin({
 	ctor: TInputPlugin,
 	namespace: 'input',
-	contribution: { events: [...PLUGIN_EVENTS] },
 })
