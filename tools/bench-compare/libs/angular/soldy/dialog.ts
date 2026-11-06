@@ -9,7 +9,7 @@ import { TButtonComponent, TDialogComponent, TInputComponent } from '@soldy-ui/a
 	host: { style: 'display: contents' },
 	template: `
 		<button so-button text="Открыть окно" (click)="shown.set(true)"></button>
-		<div so-dialog [visible]="shown()" (soChangeVisible)="shown.set($event)">
+		<div so-dialog [visible]="shown()" (soChangeVisible)="shown.set($event.newValue)">
 			<span slot="title">Настройки</span>
 			<p style="margin: 0 0 8px">Произвольное содержимое: текст, поля, кнопки</p>
 			<div so-input placeholder="Имя"></div>

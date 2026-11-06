@@ -19,7 +19,12 @@
 
 import { describe, it, expect, expectTypeOf, vi, afterEach } from 'vitest'
 import { createRenderEffect, createSignal, Show, splitProps, type JSX } from 'solid-js'
-import { TRadioGroup, createEngineRadioGroup, type TRadioGroupValue } from '@soldy-ui/core'
+import {
+	TRadioGroup,
+	createEngineRadioGroup,
+	type TRadioGroupValue,
+	type TValuePayload,
+} from '@soldy-ui/core'
 import {
 	RadioGroup,
 	RadioGroupItem,
@@ -350,7 +355,7 @@ describe('отметка радио: active и onChangeActive', () => {
 	it('колбэк получает отметку: boolean', () => {
 		expectTypeOf<NonNullable<RadioGroupItemProps['onChangeActive']>>()
 			.parameter(0)
-			.toEqualTypeOf<import('@soldy-ui/core').TValuePayload<boolean>>()
+			.toEqualTypeOf<TValuePayload<boolean>>()
 	})
 })
 

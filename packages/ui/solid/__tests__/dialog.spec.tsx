@@ -28,7 +28,7 @@
 import { describe, it, expect, vi } from 'vitest'
 import { createSignal, type JSX } from 'solid-js'
 import { TDialog } from '@soldy-ui/core'
-import type { TCloseEvent, TCloseReason } from '@soldy-ui/core'
+import type { TCloseEvent, TCloseReason, TValuePayload } from '@soldy-ui/core'
 import { TPluginBundle, ruRU, type TDialogOffsetEvent } from '@soldy-ui/plugins'
 import type { DescriptorSlots, PopoverDescriptor } from '@soldy-ui/setup'
 import * as material from '@soldy-ui/icons-material'
@@ -98,9 +98,7 @@ async function render({ props = {}, content = inside }: TPageOptions = {}): Prom
 				title="Настройки"
 				{...props}
 				visible={visible()}
-				onChangeVisible={({
-					newValue: value,
-				}: import('@soldy-ui/core').TValuePayload<boolean>) => {
+				onChangeVisible={({ newValue: value }: TValuePayload<boolean>) => {
 					changes.push(value)
 					setVisible(value)
 				}}
@@ -476,9 +474,8 @@ describe('кнопки шапки', () => {
 		const page = await render({
 			props: {
 				maximizable: true,
-				onChangeMaximized: ({
-					newValue: value,
-				}: import('@soldy-ui/core').TValuePayload<boolean>) => changes.push(value),
+				onChangeMaximized: ({ newValue: value }: TValuePayload<boolean>) =>
+					changes.push(value),
 			},
 		})
 
@@ -654,17 +651,17 @@ describe('окно поверх окна', () => {
 				<Dialog
 					class="so-test-lower"
 					visible={lower()}
-					onChangeVisible={({
-						newValue: value,
-					}: import('@soldy-ui/core').TValuePayload<boolean>) => setLower(value)}
+					onChangeVisible={({ newValue: value }: TValuePayload<boolean>) =>
+						setLower(value)
+					}
 				>
 					<button class="so-test-lower-first">Внизу</button>
 					<Dialog
 						class="so-test-upper"
 						visible={upper()}
-						onChangeVisible={({
-							newValue: value,
-						}: import('@soldy-ui/core').TValuePayload<boolean>) => setUpper(value)}
+						onChangeVisible={({ newValue: value }: TValuePayload<boolean>) =>
+							setUpper(value)
+						}
 					>
 						<button class="so-test-upper-first">Наверху</button>
 					</Dialog>

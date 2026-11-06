@@ -1,4 +1,5 @@
 <script lang="ts">
+	import type { TValuePayload } from '@soldy-ui/core'
 	import { Button, Drawer, Input } from '@soldy-ui/svelte'
 	import type { TPreviewProps } from './previews'
 
@@ -16,7 +17,7 @@
 	}
 
 	/** Своё состояние, затем обработчик страницы (журнал событий): он не затирается. */
-	function onChangeVisible(payload: import('@soldy-ui/core').TValuePayload<boolean>): void {
+	function onChangeVisible(payload: TValuePayload<boolean>): void {
 		setShown(payload.newValue)
 
 		const listener = bind.onChangeVisible

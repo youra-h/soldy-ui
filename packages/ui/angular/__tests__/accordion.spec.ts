@@ -16,7 +16,7 @@
 import { describe, it, expect, expectTypeOf } from 'vitest'
 import { Component, signal, type EventEmitter } from '@angular/core'
 import type { ComponentFixture } from '@angular/core/testing'
-import type { TAccordionArrowPlacement, TSelectionMode } from '@soldy-ui/core'
+import type { TAccordionArrowPlacement, TSelectionMode, TValuePayload } from '@soldy-ui/core'
 import { SlotDirective, TAccordionComponent, TAccordionItemComponent } from '@soldy-ui/angular'
 import { find, mountHost } from './mount'
 
@@ -505,13 +505,13 @@ describe('проброс слотов секций из items', () => {
 describe('типы', () => {
 	it('выходы фасадов — выходы компонентов', () => {
 		expectTypeOf<TAccordionComponent['soChangeMode']>().toEqualTypeOf<
-			EventEmitter<import('@soldy-ui/core').TValuePayload<TSelectionMode>>
+			EventEmitter<TValuePayload<TSelectionMode>>
 		>()
 		expectTypeOf<TAccordionComponent>().toHaveProperty('soChangeSelection')
 		expectTypeOf<TAccordionComponent>().toHaveProperty('soEngineCreate')
 		// Отметка секции — значением: выход приходит секции, чья отметка сменилась
 		expectTypeOf<TAccordionItemComponent['soChangeSelected']>().toEqualTypeOf<
-			EventEmitter<import('@soldy-ui/core').TValuePayload<boolean>>
+			EventEmitter<TValuePayload<boolean>>
 		>()
 		expectTypeOf<TAccordionItemComponent['soChangeOrder']>().toEqualTypeOf<
 			EventEmitter<undefined>

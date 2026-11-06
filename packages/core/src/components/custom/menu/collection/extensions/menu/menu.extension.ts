@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../../../../common'
 import type {
 	IBaseOwnerItemExtensionOptions,
 	IExtension,
@@ -197,13 +198,9 @@ export class TMenuExtension<
 
 			// Закрытое меню не держит открытых панелей пунктов: они стоят у
 			// строк, которых больше не видно
-			scope.on(
-				owner.events,
-				'change:open',
-				({ newValue: open }: import('../../../../../../common').TValuePayload<boolean>) => {
-					if (!open) this._closePanels(null)
-				},
-			)
+			scope.on(owner.events, 'change:open', ({ newValue: open }: TValuePayload<boolean>) => {
+				if (!open) this._closePanels(null)
+			})
 		})
 	}
 
@@ -315,9 +312,7 @@ export class TMenuExtension<
 	private _watch(item: TItem): void {
 		if (!isMenuPopupItem(item) || this._watched.has(item)) return
 
-		const onOpen = ({
-			newValue: open,
-		}: import('../../../../../../common').TValuePayload<boolean>): void => {
+		const onOpen = ({ newValue: open }: TValuePayload<boolean>): void => {
 			if (open) this._closePanels(item)
 		}
 		const offs = [(): void => item.events.off('change:open', onOpen)]

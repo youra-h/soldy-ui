@@ -24,15 +24,13 @@ import {
 	TTagsItem,
 } from '../src'
 import type { TAria } from '../src'
+import type { TValuePayload } from '@soldy-ui/core'
 
 /** Набор кнопки и событие, которым он сообщает о записи. */
 type TNameSet = {
 	readonly set: TAria
 	readonly events: {
-		on(
-			event: string,
-			handler: (payload: import('@soldy-ui/core').TValuePayload<unknown>) => void,
-		): void
+		on(event: string, handler: (payload: TValuePayload<unknown>) => void): void
 	}
 	readonly event: string
 }

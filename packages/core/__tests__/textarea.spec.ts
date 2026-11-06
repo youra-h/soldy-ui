@@ -9,7 +9,7 @@
  */
 
 import { describe, it, expect, vi } from 'vitest'
-import { TTextarea } from '@soldy-ui/core'
+import { TTextarea, type TValuePayload } from '@soldy-ui/core'
 
 describe('умолчания', () => {
 	it('две строки, без потолка, без предела; авторост и счётчик выключены', () => {
@@ -90,9 +90,8 @@ describe('сеттеры', () => {
 		const textarea = new TTextarea()
 		const handler = vi.fn()
 
-		textarea.events.on(
-			`change:${name}`,
-			({ newValue }: import('@soldy-ui/core').TValuePayload<unknown>) => handler(newValue),
+		textarea.events.on(`change:${name}`, ({ newValue }: TValuePayload<unknown>) =>
+			handler(newValue),
 		)
 
 		Reflect.set(textarea, name, value)

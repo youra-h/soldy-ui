@@ -21,7 +21,7 @@ import {
 	template: `
 		<main>
 			<button so-button text="Open dialog" variant="accent" (click)="open.set(true)"></button>
-			<div so-dialog [visible]="open()" (soChangeVisible)="open.set($event)">
+			<div so-dialog [visible]="open()" (soChangeVisible)="open.set($event.newValue)">
 				<span slot="title">Settings</span>
 				<p>Dialog content</p>
 			</div>

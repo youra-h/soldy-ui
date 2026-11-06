@@ -8,7 +8,7 @@ import {
 	type Accessor,
 	type JSX,
 } from 'solid-js'
-import type { TToastsItemType } from '@soldy-ui/core'
+import type { TToastsItemType, TValuePayload } from '@soldy-ui/core'
 import {
 	COLLECTION_ITEMS,
 	COLLECTION_MANY_ITEMS,
@@ -208,7 +208,7 @@ function useShown(bind: Accessor<TPreviewProps>) {
 	return {
 		shown,
 		setShown: (value: boolean) => setShown(value),
-		onChangeVisible: (payload: import('@soldy-ui/core').TValuePayload<boolean>) => {
+		onChangeVisible: (payload: TValuePayload<boolean>) => {
 			const value = payload.newValue
 			setShown(value)
 

@@ -30,7 +30,7 @@
  */
 
 import { TWindowStrategy, drawOf } from '@soldy-ui/core'
-import type { IVirtual, TCollectionEngine, TDrawable } from '@soldy-ui/core'
+import type { IVirtual, TCollectionEngine, TDrawable, TValuePayload } from '@soldy-ui/core'
 import { TVirtualPlugin } from '@soldy-ui/plugins'
 import type { IPluginBundle } from '@soldy-ui/plugins'
 import type { TInstanceContext } from '../../../protected/adapter/context'
@@ -70,8 +70,7 @@ function connectWindow(
 
 	const strategy = new TWindowStrategy()
 	const apply = (enabled: boolean): void => draw.useStrategy(enabled ? strategy : null)
-	const changed = ({ newValue }: import('@soldy-ui/core').TValuePayload<boolean>): void =>
-		apply(newValue)
+	const changed = ({ newValue }: TValuePayload<boolean>): void => apply(newValue)
 	/** Коллекцию приняли: на выключатель обёртки подписаны. */
 	let listening = false
 

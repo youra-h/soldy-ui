@@ -25,7 +25,12 @@ import { TPluginBundle } from '@soldy-ui/plugins'
 import { describe, it, expect, expectTypeOf, vi, afterEach, beforeEach } from 'vitest'
 import { Component, signal, type EventEmitter } from '@angular/core'
 import type { ComponentFixture } from '@angular/core/testing'
-import { TCheckBox, type ITabsItem, type TTabsOrientation } from '@soldy-ui/core'
+import {
+	TCheckBox,
+	type ITabsItem,
+	type TTabsOrientation,
+	type TValuePayload,
+} from '@soldy-ui/core'
 import { TElementPlugin } from '@soldy-ui/plugins'
 import {
 	SlotDirective,
@@ -1527,11 +1532,11 @@ describe('типы', () => {
 		expectTypeOf<TTabsComponent>().toHaveProperty('soEngineCreate')
 		// Активность таба и панели — значением: выход приходит тому, чья сменилась
 		expectTypeOf<TTabsItemComponent['soChangeActive']>().toEqualTypeOf<
-			EventEmitter<import('@soldy-ui/core').TValuePayload<boolean>>
+			EventEmitter<TValuePayload<boolean>>
 		>()
 		expectTypeOf<TTabsItemComponent['soChangeOrder']>().toEqualTypeOf<EventEmitter<undefined>>()
 		expectTypeOf<TTabsContentComponent['soChangeActive']>().toEqualTypeOf<
-			EventEmitter<import('@soldy-ui/core').TValuePayload<boolean>>
+			EventEmitter<TValuePayload<boolean>>
 		>()
 	})
 
@@ -1541,7 +1546,7 @@ describe('типы', () => {
 	 */
 	it('одноимённый выход таба и фасада — один, по дескриптору таба', () => {
 		expectTypeOf<TTabsItemComponent['soChangeClosable']>().toEqualTypeOf<
-			EventEmitter<import('@soldy-ui/core').TValuePayload<boolean | undefined>>
+			EventEmitter<TValuePayload<boolean | undefined>>
 		>()
 	})
 

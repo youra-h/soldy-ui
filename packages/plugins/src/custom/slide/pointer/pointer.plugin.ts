@@ -1,4 +1,4 @@
-import type { ISlidable, TSlideSnap } from '@soldy-ui/core'
+import type { ISlidable, TSlideSnap, TValuePayload } from '@soldy-ui/core'
 import { TBasePlugin } from '../../../base'
 import type { IPluginContext } from '../../../base'
 import { TElementPlugin } from '../../element'
@@ -109,9 +109,7 @@ export class TSlidePointerPlugin extends TBasePlugin<ISlidable, TSlidePointerPlu
 		super.destroy()
 	}
 
-	private readonly _onSnapChange = ({
-		newValue: snap,
-	}: import('@soldy-ui/core').TValuePayload<TSlideSnap>): void => {
+	private readonly _onSnapChange = ({ newValue: snap }: TValuePayload<TSlideSnap>): void => {
 		this._snapStrategy = SNAP_STRATEGIES[snap]
 	}
 

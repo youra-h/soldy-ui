@@ -27,6 +27,7 @@ import {
 	type TListBoxValue,
 	type TListBoxView,
 	type TListIndicator,
+	type TValuePayload,
 } from '@soldy-ui/core'
 import {
 	ListBox,
@@ -370,7 +371,7 @@ describe('отметка элемента: selected и onChangeSelected', () => 
 	it('колбэк получает отметку: boolean', () => {
 		expectTypeOf<NonNullable<ListBoxItemProps['onChangeSelected']>>()
 			.parameter(0)
-			.toEqualTypeOf<import('@soldy-ui/core').TValuePayload<boolean>>()
+			.toEqualTypeOf<TValuePayload<boolean>>()
 	})
 })
 

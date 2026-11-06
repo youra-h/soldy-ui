@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../../../../common'
 import type { IExtension, IExtensionContext } from '../../../../../base/collection'
 import { TBaseExtension, TInsertCommand } from '../../../../../base/collection'
 import type { TSwipeSide } from '../../../../../base/layer'
@@ -171,9 +172,7 @@ export class TToastsExtension<TOwner extends IToasts = IToasts>
 	private _watch(toast: IToastsItem): void {
 		if (this._watched.has(toast)) return
 
-		const onOpen = ({
-			newValue,
-		}: import('../../../../../../common').TValuePayload<boolean>): void => {
+		const onOpen = ({ newValue }: TValuePayload<boolean>): void => {
 			if (!newValue) this.events.emit('item:close', toast)
 		}
 		// Своя длительность и ожидание — оба входа итога `durationOf`

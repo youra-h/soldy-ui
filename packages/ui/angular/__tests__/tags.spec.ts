@@ -1360,11 +1360,11 @@ describe('типы', () => {
 
 	it('выходы фасада — выходы компонента', () => {
 		expectTypeOf<TTagsComponent['soChangeMode']>().toEqualTypeOf<
-			EventEmitter<import('@soldy-ui/core').TValuePayload<TSelectionMode>>
+			EventEmitter<TValuePayload<TSelectionMode>>
 		>()
 		expectTypeOf<TTagsComponent>().toHaveProperty('soEngineCreate')
 		expectTypeOf<TTagsItemComponent['soChangeSelected']>().toEqualTypeOf<
-			EventEmitter<import('@soldy-ui/core').TValuePayload<boolean>>
+			EventEmitter<TValuePayload<boolean>>
 		>()
 		expectTypeOf<TTagsItemComponent>().toHaveProperty('soChangeClosable')
 		expectTypeOf<TTagsItemComponent>().toHaveProperty('soChangeOrder')

@@ -1,7 +1,7 @@
 import { TPluginBundle } from '@soldy-ui/plugins'
 import { describe, it, expect, afterEach, vi } from 'vitest'
 import { mount, unmount, flushSync, type ComponentProps } from 'svelte'
-import { TButton } from '@soldy-ui/core'
+import { TButton, type TValuePayload } from '@soldy-ui/core'
 import { TActionPlugin } from '@soldy-ui/plugins'
 import { Button } from '@soldy-ui/svelte'
 import { reactiveProps } from './reactive-props.svelte'
@@ -223,8 +223,7 @@ describe('Button · события через колбэк-пропы', () => {
 
 		render({
 			ctrl,
-			onChangeVisible: ({ newValue: v }: import('@soldy-ui/core').TValuePayload<boolean>) =>
-				seen.push(v),
+			onChangeVisible: ({ newValue: v }: TValuePayload<boolean>) => seen.push(v),
 		})
 
 		ctrl.hide()

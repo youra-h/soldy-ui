@@ -17,6 +17,7 @@ import type {
 	TSlideEdge,
 	TSlideOrientation,
 	TSlideSnap,
+	TValuePayload,
 } from '@soldy-ui/core'
 import { TElementPlugin, TPluginBundle, TSlidePointerPlugin } from '../src'
 import type { IPlugin, IPluginConstructor, ISlidePointerPluginOptions } from '../src'
@@ -375,7 +376,7 @@ describe('владелец — любой ISlidable', () => {
 	class TProbe implements ISlidable {
 		readonly classes = new TClasses('so-probe')
 		readonly events = new TEvented<{
-			'change:snap': (payload: import('@soldy-ui/core').TValuePayload<TSlideSnap>) => void
+			'change:snap': (payload: TValuePayload<TSlideSnap>) => void
 		}>()
 		readonly orientation: TSlideOrientation = 'horizontal'
 		readonly inverted = false

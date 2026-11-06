@@ -17,6 +17,7 @@ import type {
 	TActivationItemEventsExtension,
 	TSelectionItemEventsExtension,
 	TSelectionMode,
+	TValuePayload,
 } from '@soldy-ui/core'
 
 type Item = { id: number; name: string }
@@ -143,10 +144,10 @@ describe('Item-адаптеры: проброс событий из расшир
 
 	it('событие элемента несёт значение: отметку и активность', () => {
 		expectTypeOf<Parameters<TSelectionItemEventsExtension['change:selected']>>().toEqualTypeOf<
-			[payload: import('@soldy-ui/core').TValuePayload<boolean>]
+			[payload: TValuePayload<boolean>]
 		>()
 		expectTypeOf<Parameters<TActivationItemEventsExtension['change:active']>>().toEqualTypeOf<
-			[payload: import('@soldy-ui/core').TValuePayload<boolean>]
+			[payload: TValuePayload<boolean>]
 		>()
 	})
 })

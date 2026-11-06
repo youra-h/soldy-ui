@@ -1,5 +1,11 @@
 import { LIST_DEFAULTS, drawOf, selectionOf } from '@soldy-ui/core'
-import type { IControl, IDrawExtension, TCollectionEngine, TScrollBehavior } from '@soldy-ui/core'
+import type {
+	IControl,
+	IDrawExtension,
+	TCollectionEngine,
+	TScrollBehavior,
+	TValuePayload,
+} from '@soldy-ui/core'
 import { TBasePlugin } from '../../../base'
 import type { IPluginContext } from '../../../base'
 import { smoothScrollBehavior } from '../../../motion'
@@ -214,7 +220,7 @@ export class TListScrollPlugin extends TBasePlugin<any, TListScrollPluginEvents>
 
 		navigation?.events.on(
 			'change:highlight',
-			({ newValue: { item } }: import('@soldy-ui/core').TValuePayload<THighlightPayload>) => {
+			({ newValue: { item } }: TValuePayload<THighlightPayload>) => {
 				if (item) this._follow(item, 'highlight')
 				else if (this._target?.fact === 'highlight') this._drop()
 			},

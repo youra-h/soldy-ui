@@ -2,7 +2,7 @@ import { TPluginBundle } from '@soldy-ui/plugins'
 import { describe, it, expect, afterEach, vi } from 'vitest'
 import { createSignal, type ComponentProps } from 'solid-js'
 import { render } from 'solid-js/web'
-import { TButton } from '@soldy-ui/core'
+import { TButton, type TValuePayload } from '@soldy-ui/core'
 import { TActionPlugin } from '@soldy-ui/plugins'
 import { Button } from '@soldy-ui/solid'
 
@@ -202,8 +202,7 @@ describe('Button · события через колбэк-пропы', () => {
 
 		mount({
 			ctrl,
-			onChangeVisible: ({ newValue: v }: import('@soldy-ui/core').TValuePayload<boolean>) =>
-				seen.push(v),
+			onChangeVisible: ({ newValue: v }: TValuePayload<boolean>) => seen.push(v),
 		})
 
 		ctrl.hide()

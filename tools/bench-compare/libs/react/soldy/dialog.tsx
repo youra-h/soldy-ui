@@ -9,7 +9,7 @@ export default function Page() {
 			<Button text="Открыть окно" onClick={() => setShown(true)} />
 			<Dialog
 				visible={shown}
-				onChangeVisible={setShown}
+				onChangeVisible={({ newValue }) => setShown(newValue)}
 				title="Настройки"
 				footer={
 					<>

@@ -28,7 +28,7 @@ import {
 	TTabs,
 	TTags,
 } from '@soldy-ui/core'
-import type { ITableRow, TDataset, TTableRecord } from '@soldy-ui/core'
+import type { ITableRow, TDataset, TTableRecord, TValuePayload } from '@soldy-ui/core'
 
 /** Источник элемента — то, что приходит в `items`. */
 type TSource = { value: string; disabled?: boolean }
@@ -38,10 +38,7 @@ type TItemProbe = {
 	disabled: boolean
 	readonly dataset: TDataset
 	readonly events: {
-		on(
-			event: 'change:disabled',
-			handler: (payload: import('@soldy-ui/core').TValuePayload<boolean>) => void,
-		): void
+		on(event: 'change:disabled', handler: (payload: TValuePayload<boolean>) => void): void
 	}
 }
 

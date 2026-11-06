@@ -35,6 +35,7 @@ import type {
 	TDrawerPlacement,
 	TSwipeableEvents,
 	TSwipeSide,
+	TValuePayload,
 } from '@soldy-ui/core'
 import { TDismissPlugin, TElementPlugin, TPluginBundle, TReadyPlugin, TSwipePlugin } from '../src'
 import type { IListenable, IPlugin, IPluginConstructor, ISwipeOwner } from '../src'
@@ -1056,7 +1057,7 @@ interface IFieldOwner extends ISwipeOwner {
 	open: boolean
 	readonly events: IListenable<
 		TSwipeableEvents & {
-			'change:open': (payload: import('@soldy-ui/core').TValuePayload<boolean>) => void
+			'change:open': (payload: TValuePayload<boolean>) => void
 		}
 	>
 }

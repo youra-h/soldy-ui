@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest'
-import { TTooltip } from '@soldy-ui/core'
+import { TTooltip, type TValuePayload } from '@soldy-ui/core'
 
 /**
  * Модель Tooltip: состояние подсказки и то, что из него следует для разметки.
@@ -117,9 +117,7 @@ describe('события', () => {
 		const tooltip = new TTooltip()
 		const handler = vi.fn()
 
-		tooltip.events.on(event, ({ newValue }: import('@soldy-ui/core').TValuePayload<unknown>) =>
-			handler(newValue),
-		)
+		tooltip.events.on(event, ({ newValue }: TValuePayload<unknown>) => handler(newValue))
 
 		Reflect.set(tooltip, prop, value)
 		Reflect.set(tooltip, prop, value)

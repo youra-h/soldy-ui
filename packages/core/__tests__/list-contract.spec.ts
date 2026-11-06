@@ -19,6 +19,7 @@ import { describe, it, expect } from 'vitest'
 import { TListBox, TSelect, LIST_DEFAULTS } from '../src'
 import type { IList, TDataset } from '../src'
 import type { TListEvents, IListProps } from '../src/components/custom/list/types'
+import type { TValuePayload } from '@soldy-ui/core'
 
 /**
  * Контракт инстанса для параметризованных проверок ниже: собственно `IList`
@@ -93,9 +94,7 @@ describe.each(IMPLEMENTATIONS)('%s несёт контракт IList', (_name, C
 		const instance = create()
 		const seen: unknown[] = []
 
-		instance.events.on(event, ({ newValue }: import('@soldy-ui/core').TValuePayload<unknown>) =>
-			seen.push(newValue),
-		)
+		instance.events.on(event, ({ newValue }: TValuePayload<unknown>) => seen.push(newValue))
 		writeListProp(instance, prop, value)
 
 		expect(seen).toEqual([value])
@@ -110,11 +109,7 @@ describe.each(IMPLEMENTATIONS)('%s несёт контракт IList', (_name, C
 
 			const seen: unknown[] = []
 
-			instance.events.on(
-				event,
-				({ newValue }: import('@soldy-ui/core').TValuePayload<unknown>) =>
-					seen.push(newValue),
-			)
+			instance.events.on(event, ({ newValue }: TValuePayload<unknown>) => seen.push(newValue))
 			writeListProp(instance, prop, value)
 
 			expect(seen).toEqual([])

@@ -44,7 +44,13 @@ import { DomElementSchemaRegistry } from '@angular/compiler'
 import { Component, EventEmitter, reflectComponentType, viewChild, type Type } from '@angular/core'
 import { outputToObservable } from '@angular/core/rxjs-interop'
 import { TestBed } from '@angular/core/testing'
-import { TButton, TComponent, TComponentView, type TPluginEvent } from '@soldy-ui/core'
+import {
+	TButton,
+	TComponent,
+	TComponentView,
+	type TPluginEvent,
+	type TValuePayload,
+} from '@soldy-ui/core'
 import * as setup from '@soldy-ui/setup'
 import {
 	ButtonDescriptor,
@@ -178,7 +184,7 @@ describe('тип выхода · эмиттер первого аргумент�
 	it('у события с аргументом — его тип', () => {
 		expectTypeOf<TButtonComponent['soActionPress']>().toEqualTypeOf<EventEmitter<MouseEvent>>()
 		expectTypeOf<TComponentViewComponent['soChangeVisible']>().toEqualTypeOf<
-			EventEmitter<import('@soldy-ui/core').TValuePayload<boolean>>
+			EventEmitter<TValuePayload<boolean>>
 		>()
 		expectTypeOf<TComponentComponent['soPluginEvent']>().toEqualTypeOf<
 			EventEmitter<TPluginEvent>

@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest'
-import { TPopover, isSwipeable } from '@soldy-ui/core'
+import { TPopover, isSwipeable, type TValuePayload } from '@soldy-ui/core'
 
 /**
  * Модель Popover: состояние панели и то, что из него следует для разметки.
@@ -210,9 +210,7 @@ describe('события', () => {
 		const popover = new TPopover()
 		const handler = vi.fn()
 
-		popover.events.on(event, ({ newValue }: import('@soldy-ui/core').TValuePayload<unknown>) =>
-			handler(newValue),
-		)
+		popover.events.on(event, ({ newValue }: TValuePayload<unknown>) => handler(newValue))
 
 		Reflect.set(popover, prop, value)
 		Reflect.set(popover, prop, value)

@@ -42,6 +42,7 @@ import {
 	type TSelectValue,
 	type TSelectionMode,
 	type TSwipe,
+	type TValuePayload,
 } from '@soldy-ui/core'
 import { TAnchorPlugin, ruRU } from '@soldy-ui/plugins'
 import {
@@ -2390,13 +2391,13 @@ describe('типы', () => {
 
 	it('выходы — выходы компонента', () => {
 		expectTypeOf<TSelectComponent['soChangeOpen']>().toEqualTypeOf<
-			EventEmitter<import('@soldy-ui/core').TValuePayload<boolean>>
+			EventEmitter<TValuePayload<boolean>>
 		>()
 		expectTypeOf<TSelectComponent>().toHaveProperty('soOpen')
 		expectTypeOf<TSelectComponent>().toHaveProperty('soClose')
 		expectTypeOf<TSelectComponent>().toHaveProperty('soEngineCreate')
 		expectTypeOf<TSelectItemComponent['soChangeSelected']>().toEqualTypeOf<
-			EventEmitter<import('@soldy-ui/core').TValuePayload<boolean>>
+			EventEmitter<TValuePayload<boolean>>
 		>()
 		expectTypeOf<TSelectItemComponent>().toHaveProperty('soChangeOrder')
 	})

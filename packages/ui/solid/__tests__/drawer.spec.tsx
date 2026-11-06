@@ -28,7 +28,7 @@
 import { describe, it, expect, vi } from 'vitest'
 import { createSignal, type JSX } from 'solid-js'
 import { TDrawer } from '@soldy-ui/core'
-import type { TCloseEvent, TCloseReason } from '@soldy-ui/core'
+import type { TCloseEvent, TCloseReason, TValuePayload } from '@soldy-ui/core'
 import { ruRU } from '@soldy-ui/plugins'
 import { Dialog, Drawer, LocaleProvider, type DrawerProps } from '@soldy-ui/solid'
 import { find, mount, nextFrame, type TMounted } from './mount'
@@ -95,9 +95,7 @@ async function render({ props = {}, content = inside }: TPageOptions = {}): Prom
 				title="Фильтры"
 				{...props}
 				visible={visible()}
-				onChangeVisible={({
-					newValue: value,
-				}: import('@soldy-ui/core').TValuePayload<boolean>) => {
+				onChangeVisible={({ newValue: value }: TValuePayload<boolean>) => {
 					changes.push(value)
 					setVisible(value)
 				}}
@@ -469,17 +467,15 @@ describe('внутри модального окна', () => {
 		mount(() => (
 			<Dialog
 				visible={dialog()}
-				onChangeVisible={({
-					newValue: value,
-				}: import('@soldy-ui/core').TValuePayload<boolean>) => setDialog(value)}
+				onChangeVisible={({ newValue: value }: TValuePayload<boolean>) => setDialog(value)}
 			>
 				<button class="so-test-in-dialog">В окне</button>
 				<Drawer
 					contained
 					visible={drawer()}
-					onChangeVisible={({
-						newValue: value,
-					}: import('@soldy-ui/core').TValuePayload<boolean>) => setDrawer(value)}
+					onChangeVisible={({ newValue: value }: TValuePayload<boolean>) =>
+						setDrawer(value)
+					}
 				>
 					<button class="so-test-in-drawer">В панели</button>
 				</Drawer>

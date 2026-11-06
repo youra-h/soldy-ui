@@ -29,6 +29,7 @@ import type {
 	TMenuSubmenuEntries,
 	TMenuSubmenuEntry,
 	TUpdateEvent,
+	TValuePayload,
 } from '@soldy-ui/core'
 
 /**
@@ -110,7 +111,7 @@ describe.each([
 
 /** Событие свойства, которое проверяют сторожа владельцев ниже. */
 type TGroupSeparatorsEvents = {
-	'change:groupSeparators': (payload: import('@soldy-ui/core').TValuePayload<boolean>) => void
+	'change:groupSeparators': (payload: TValuePayload<boolean>) => void
 }
 
 /**

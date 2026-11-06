@@ -30,7 +30,11 @@ export default function App() {
 	return (
 		<main>
 			<Button text="Open dialog" variant="accent" onClick={() => setOpen(true)} />
-			<Dialog visible={open()} onChangeVisible={setOpen} title="Settings">
+			<Dialog
+				visible={open()}
+				onChangeVisible={({ newValue }) => setOpen(newValue)}
+				title="Settings"
+			>
 				<p>Dialog content</p>
 			</Dialog>
 			<Input placeholder="Name" aria_label="Name" />
