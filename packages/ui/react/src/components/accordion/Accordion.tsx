@@ -31,11 +31,10 @@ export function Accordion(props: AccordionProps): ReactElement | null {
 							<AccordionItem
 								key={item.uid}
 								ctrl={item}
-								leading-icon={props['item-leading-icon']}
+								arrow-icon={props['item-arrow-icon']}
 								leading={props['item-leading']}
 								header={props.item}
 								trailing={props['item-trailing']}
-								trailing-icon={props['item-trailing-icon']}
 							>
 								{props['item-content']}
 							</AccordionItem>

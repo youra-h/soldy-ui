@@ -121,11 +121,9 @@ describe('Accordion в раскрытой секции: правила раск�
 })
 
 /**
- * Стрелку, подменённую слотом, тема поворачивает так же, как стрелку по
- * умолчанию: класс стрелки стоит на обёртке слота, а не на иконке. Пока он
- * стоял на `Icon`, иконка из `leading-icon` у раскрытой секции оставалась
- * неповёрнутой. Обёртка — `inline-flex`: к строчной коробке поворот не
- * применяется.
+ * The theme rotates a slotted arrow like the default arrow because the class
+ * belongs to the wrapper. With the class on `Icon`, a custom `arrow-icon`
+ * remained unrotated. The wrapper uses `inline-flex` so transforms apply.
  */
 describe('подменённая стрелка', () => {
 	/** Своя стрелка секции — та же метка, что у секции, с приставкой. */
@@ -134,7 +132,7 @@ describe('подменённая стрелка', () => {
 			AccordionItem,
 			{ key: mark, value: mark, text: mark, selected, class: `so-test-${mark}` },
 			{
-				'leading-icon': () => h('span', { class: 'so-test-icon' }, '›'),
+				'arrow-icon': () => h('span', { class: 'so-test-icon' }, '›'),
 				default: () => 'Содержимое',
 			},
 		)
@@ -161,12 +159,10 @@ describe('подменённая стрелка', () => {
 	})
 
 	/**
-	 * Аккордеон подменяет стрелку одной секции условием по `item.value`, а
-	 * стрелка по умолчанию — на другой стороне. У остальных секций слот задан,
-	 * но пуст, и пустая обёртка места в ряду заголовка не занимает: отступ
-	 * ряда сдвинул бы текст. Сверка — с такой же секцией без слота.
+	 * The owner replaces one section's arrow using `item.value`. Other sections
+	 * keep their default arrow at the edge selected by `arrowPlacement`.
 	 */
-	it('пустая обёртка слота не сдвигает текст заголовка', async () => {
+	it('условный слот не сдвигает текст остальных заголовков', async () => {
 		const items = [
 			{ value: 'a', text: 'Первый', arrowPlacement: 'end' as const },
 			{ value: 'b', text: 'Второй', arrowPlacement: 'end' as const },
@@ -180,7 +176,7 @@ describe('подменённая стрелка', () => {
 							Accordion,
 							{ class: 'so-test-relayed', items },
 							{
-								'item-leading-icon': ({ item }: { item: { value: unknown } }) =>
+								'item-arrow-icon': ({ item }: { item: { value: unknown } }) =>
 									item.value === 'b'
 										? h('span', { class: 'so-test-icon' }, '›')
 										: null,
@@ -206,7 +202,7 @@ describe('подменённая стрелка', () => {
 				`${arrow.querySelector('svg') ? 'icon' : 'empty'}:${getComputedStyle(arrow).display}`,
 		)
 
-		expect(arrows).toEqual(['empty:none', 'icon:flex'])
+		expect(arrows).toEqual(['icon:flex'])
 		expect(textOf('relayed')).toBe(textOf('plain'))
 	})
 })

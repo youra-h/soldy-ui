@@ -26,17 +26,13 @@ export const AccordionItemDescriptor = defineDescriptor(() =>
 
 		contribution: {
 			/**
-			 * Слот по умолчанию — панель: она лежит внутри секции и отдельно от
-			 * неё не существует. Текст заголовка поэтому не `default`, но и не
-			 * `content` — содержимым у аккордеона называется панель
-			 * (`item-content` у владельца), — а `header`. С пропом `text` имя
-			 * слота не совпадает (AGENTS.md, «Слоты — третья категория
-			 * контракта»).
+			 * The default slot is the panel inside the section. Its header uses
+			 * `header`, since `content` names the panel at the owner level
+			 * (`item-content`). The slot name differs from the `text` prop.
 			 *
-			 * Стрелка — по краю заголовка, со стороны `arrowPlacement`; слоты
-			 * `leading-icon` и `trailing-icon` подменяют её в одном месте, по
-			 * умолчанию она берётся из пакета иконок по роли `arrowRight`
-			 * (см. `ICON_ROLES`).
+			 * The arrow sits at the header edge selected by `arrowPlacement`.
+			 * `arrow-icon` replaces it there; the default uses the `arrowRight`
+			 * role from the icon package.
 			 *
 			 * Each slot carries its own section (`item`) in scope — the section
 			 * hands itself to the slot, like a table row's `row`
@@ -49,10 +45,9 @@ export const AccordionItemDescriptor = defineDescriptor(() =>
 					scope: { item: defineType<IAccordionItem>(Object) },
 					description: 'Содержимое раскрывающейся панели',
 				},
-				'leading-icon': {
+				'arrow-icon': {
 					scope: { item: defineType<IAccordionItem>(Object) },
-					description:
-						'Стрелка перед заголовком. По умолчанию — при arrowPlacement="start"',
+					description: 'Стрелка заголовка на стороне arrowPlacement',
 				},
 				leading: {
 					scope: { item: defineType<IAccordionItem>(Object) },
@@ -69,10 +64,6 @@ export const AccordionItemDescriptor = defineDescriptor(() =>
 				trailing: {
 					scope: { item: defineType<IAccordionItem>(Object) },
 					description: 'После текста заголовка',
-				},
-				'trailing-icon': {
-					scope: { item: defineType<IAccordionItem>(Object) },
-					description: 'Стрелка после заголовка. По умолчанию — при arrowPlacement="end"',
 				},
 			},
 			props: {

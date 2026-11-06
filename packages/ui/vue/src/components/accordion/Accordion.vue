@@ -40,16 +40,15 @@ export default { ...SetupAccordion, components: { AccordionItem } }
 							$slots.item ||
 							$slots['item-leading'] ||
 							$slots['item-trailing'] ||
-							$slots['item-leading-icon'] ||
-							$slots['item-trailing-icon'] ||
+							$slots['item-arrow-icon'] ||
 							$slots['item-content']
 						)
 					"
 					:ctrl="entry"
 				/>
 				<AccordionItem v-else :ctrl="entry">
-					<template v-if="$slots['item-leading-icon']" #leading-icon="{ item }">
-						<slot name="item-leading-icon" :item="item" />
+					<template v-if="$slots['item-arrow-icon']" #arrow-icon="{ item }">
+						<slot name="item-arrow-icon" :item="item" />
 					</template>
 					<template #leading="{ item }">
 						<slot name="item-leading" :item="item" />
@@ -59,9 +58,6 @@ export default { ...SetupAccordion, components: { AccordionItem } }
 					</template>
 					<template #trailing="{ item }">
 						<slot name="item-trailing" :item="item" />
-					</template>
-					<template v-if="$slots['item-trailing-icon']" #trailing-icon="{ item }">
-						<slot name="item-trailing-icon" :item="item" />
 					</template>
 					<template #default="{ item }">
 						<slot name="item-content" :item="item" />

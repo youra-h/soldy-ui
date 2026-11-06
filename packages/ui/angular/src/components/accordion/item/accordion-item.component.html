@@ -12,9 +12,9 @@
 	(click)="facade()?.context?.adapters.selection.toggle()"
 >
 	<ng-container ngProjectAs="[slot=leading]">
-		@if (state()['arrowPlacement'] === 'start' || slot('leading-icon')) {
+		@if (state()['arrowPlacement'] === 'start') {
 			<span class="so-accordion-item__arrow">
-				@if (slot('leading-icon'); as icon) {
+				@if (slot('arrow-icon'); as icon) {
 					<ng-container [ngTemplateOutlet]="icon" />
 				} @else {
 					<svg
@@ -41,9 +41,9 @@
 	}
 	<ng-container ngProjectAs="[slot=trailing]">
 		<ng-content select="[slot=trailing]" />
-		@if (state()['arrowPlacement'] === 'end' || slot('trailing-icon')) {
+		@if (state()['arrowPlacement'] === 'end') {
 			<span class="so-accordion-item__arrow">
-				@if (slot('trailing-icon'); as icon) {
+				@if (slot('arrow-icon'); as icon) {
 					<ng-container [ngTemplateOutlet]="icon" />
 				} @else {
 					<svg

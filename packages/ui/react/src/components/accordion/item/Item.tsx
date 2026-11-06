@@ -53,6 +53,7 @@ export const AccordionItem = withRenderBoundary(function AccordionItem(
 		side: 'start' | 'end',
 		slot: TSlotContent<{ item: typeof item }> | undefined,
 	) => {
+		if (arrowPlacement !== side) return null
 		const rendered = renderSlot(slot, { item })
 
 		return hasSlot(rendered) || arrowPlacement === side ? (
@@ -81,14 +82,14 @@ export const AccordionItem = withRenderBoundary(function AccordionItem(
 				ref={toggle}
 				leading={
 					<>
-						{arrowAt('start', props['leading-icon'])}
+						{arrowAt('start', props['arrow-icon'])}
 						{renderSlot(props.leading, { item })}
 					</>
 				}
 				trailing={
 					<>
 						{renderSlot(props.trailing, { item })}
-						{arrowAt('end', props['trailing-icon'])}
+						{arrowAt('end', props['arrow-icon'])}
 					</>
 				}
 			>

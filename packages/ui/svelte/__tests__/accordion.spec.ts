@@ -222,10 +222,8 @@ describe('секция из разметки', () => {
 	})
 
 	/**
-	 * Стрелка — по краю заголовка со стороны `arrowPlacement`; слоты
-	 * `leading-icon` и `trailing-icon` её подменяют. Подменённая стоит в той же
-	 * обёртке `.so-accordion-item__arrow`: по ней тема поворачивает стрелку
-	 * раскрытой секции, и подменённая поворачивается так же.
+	 * The arrow follows `arrowPlacement`; `arrow-icon` replaces its icon in the
+	 * same `.so-accordion-item__arrow` wrapper, which the theme rotates.
 	 */
 	it('стрелка стоит со стороны arrowPlacement, слот её подменяет', () => {
 		const props = reactiveProps<THarnessProps>({ items: [{ text: 'A', value: 'a' }] })
@@ -252,7 +250,7 @@ describe('секция из разметки', () => {
 				text: 'A',
 				value: 'a',
 				arrowPlacement: 'end',
-				'trailing-icon': markup('<b class="custom">›</b>'),
+				'arrow-icon': markup('<b class="custom">›</b>'),
 			},
 		]
 		flushSync()
@@ -262,13 +260,13 @@ describe('секция из разметки', () => {
 		expect(document.querySelector('.so-accordion-item__arrow .custom')).not.toBeNull()
 		expect(document.querySelector('.so-accordion-item__arrow svg')).toBeNull()
 
-		// Слот на стороне без стрелки по умолчанию — своя обёртка, стрелка остаётся
+		// The same slot follows the arrow when its placement changes.
 		props.items = [
 			{
 				text: 'A',
 				value: 'a',
-				arrowPlacement: 'end',
-				'leading-icon': markup('<b class="custom">•</b>'),
+				arrowPlacement: 'start',
+				'arrow-icon': markup('<b class="custom">•</b>'),
 			},
 		]
 		flushSync()
@@ -281,7 +279,7 @@ describe('секция из разметки', () => {
 						? 'icon'
 						: 'empty',
 			),
-		).toEqual(['slot', 'icon'])
+		).toEqual(['slot'])
 	})
 
 	it('слоты секций из items получают элемент через scope', () => {
@@ -365,24 +363,20 @@ describe('проброс слотов секций из items', () => {
 		])
 	})
 
-	it('item-leading-icon задан — у каждой секции вместо стрелки по умолчанию', () => {
-		mount(Slots, { case: 'leading-icon' })
+	it('item-arrow-icon задан — у каждой секции вместо стрелки по умолчанию', () => {
+		mount(Slots, { case: 'first' })
 
 		expect(arrows()).toEqual([['slot'], ['empty']])
 	})
 
 	/**
-	 * Стрелка по умолчанию — в начале, поэтому у секции, которой слот в конце
-	 * ничего не нарисовал, обёртка в конце пуста: слот задан. Пустую обёртку
-	 * прячет тема по `:empty`, поэтому в ней нет ни узла, ни текста.
+	 * Svelte treats an assigned snippet as present even when it renders no
+	 * content. That section has one empty arrow wrapper at its selected edge.
 	 */
-	it('item-trailing-icon: у секции без подмены обёртка в конце пуста', () => {
-		mount(Slots, { case: 'trailing-icon' })
+	it('item-arrow-icon: у секции без содержимого обёртка пуста', () => {
+		mount(Slots, { case: 'second' })
 
-		expect(arrows()).toEqual([
-			['icon', 'empty'],
-			['icon', 'slot'],
-		])
+		expect(arrows()).toEqual([['empty'], ['slot']])
 
 		const empty = [...document.querySelectorAll('.so-accordion-item__arrow')].filter(
 			(arrow) => !arrow.querySelector('.probe, svg'),
@@ -400,10 +394,10 @@ describe('типы', () => {
 			NonNullable<AccordionProps['item-content']>
 		>()
 		expectTypeOf<Snippet<[TItemScope]>>().toExtend<
-			NonNullable<AccordionProps['item-leading-icon']>
+			NonNullable<AccordionProps['item-arrow-icon']>
 		>()
 		expectTypeOf<Snippet<[TItemScope]>>().toExtend<
-			NonNullable<AccordionProps['item-trailing-icon']>
+			NonNullable<AccordionProps['item-arrow-icon']>
 		>()
 		// The section carries itself (`ctrl`) into its own slots' scope
 		expectTypeOf<Snippet<[TItemHeaderScope]>>().toExtend<

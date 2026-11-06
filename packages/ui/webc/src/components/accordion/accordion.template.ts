@@ -18,11 +18,10 @@ import { TAccordionItemElement, type TAccordionItemElementProps } from './item'
 
 /** Слот аккордеона → слот секции; сверяет `setup/__tests__/item-slots.spec.ts`. */
 export const ACCORDION_ITEM_SLOTS: TItemSlots = {
-	'item-leading-icon': 'leading-icon',
+	'item-arrow-icon': 'arrow-icon',
 	'item-leading': 'leading',
 	item: 'header',
 	'item-trailing': 'trailing',
-	'item-trailing-icon': 'trailing-icon',
 	'item-content': 'default',
 }
 
@@ -51,10 +50,9 @@ export const accordionTemplate: ITemplate<IAccordion, TAccordionCollectionFacade
 			slots: {
 				default: { mode: 'append', node: root },
 				item: { mode: 'sample' },
-				'item-leading-icon': { mode: 'sample' },
+				'item-arrow-icon': { mode: 'sample' },
 				'item-leading': { mode: 'sample' },
 				'item-trailing': { mode: 'sample' },
-				'item-trailing-icon': { mode: 'sample' },
 				'item-content': { mode: 'sample' },
 			},
 		}

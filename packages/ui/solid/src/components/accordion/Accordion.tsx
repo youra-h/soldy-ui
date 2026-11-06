@@ -26,15 +26,12 @@ export function Accordion(props: AccordionProps): JSX.Element {
 								{(item) => (
 									<AccordionItem
 										ctrl={item}
-										leading-icon={renderSlot(props['item-leading-icon'], {
+										arrow-icon={renderSlot(props['item-arrow-icon'], {
 											item,
 										})}
 										leading={renderSlot(props['item-leading'], { item })}
 										header={relaySlot(props.item, { item })}
 										trailing={renderSlot(props['item-trailing'], { item })}
-										trailing-icon={renderSlot(props['item-trailing-icon'], {
-											item,
-										})}
 									>
 										{renderSlot(props['item-content'], { item })}
 									</AccordionItem>

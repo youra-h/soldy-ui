@@ -1,16 +1,11 @@
 /**
- * Accordion под Angular — раскрывающиеся секции на движке коллекций.
+ * Angular Accordion uses the collection engine to expand sections. Its tests
+ * cover the header and panel linkage, aria-expanded, and multiple selection.
+ * The header is a native button, so it needs no custom keyboard handling.
  *
- * Сценарии — те же, что у React (`accordion.spec.tsx`) и Vue (`accordion`,
- * `accordion-mode`): связка «заголовок ↔ панель», `aria-expanded` на
- * заголовке, режим нескольких раскрытых секций. Клавиатуры у аккордеона своей
- * нет: заголовок — нативная кнопка.
- *
- * Своё у Angular — разметка. Секция — `<div so-accordion-item>`, атрибуты
- * потребителя у неё делятся между корнем и заголовком. Слоты, по которым
- * секция решает, рисовать ли обёртку стрелки (`leading-icon`,
- * `trailing-icon`), — шаблоны, и шаблон, заданный аккордеону, рисуется у
- * каждой секции, как сниппет у Svelte.
+ * A section uses `<div so-accordion-item>` and splits consumer attributes
+ * between the root and header. Its `arrow-icon` slot is a template; a template
+ * on Accordion renders for each section, as a Svelte snippet does.
  */
 
 import { describe, it, expect, expectTypeOf } from 'vitest'
@@ -268,10 +263,8 @@ describe('секция из разметки', () => {
 	})
 
 	/**
-	 * Стрелка — по краю заголовка со стороны `arrowPlacement`; слоты
-	 * `leading-icon` и `trailing-icon` её подменяют. Подменённая стоит в той же
-	 * обёртке `.so-accordion-item__arrow`: по ней тема поворачивает стрелку
-	 * раскрытой секции, и подменённая поворачивается так же.
+	 * The arrow follows `arrowPlacement`; `arrow-icon` replaces its icon in the
+	 * same `.so-accordion-item__arrow` wrapper, which the theme rotates.
 	 */
 	it('стрелка стоит со стороны arrowPlacement, шаблон её подменяет', () => {
 		@Component({
@@ -279,14 +272,14 @@ describe('секция из разметки', () => {
 			imports: [TAccordionComponent, TAccordionItemComponent, SlotDirective],
 			template: `<div so-accordion>
 				@switch (variant()) {
-					@case ('trailing-icon') {
+					@case ('custom-end') {
 						<div so-accordion-item text="A" value="a" arrowPlacement="end">
-							<ng-template slot="trailing-icon"><b class="custom">›</b></ng-template>
+							<ng-template slot="arrow-icon"><b class="custom">›</b></ng-template>
 						</div>
 					}
-					@case ('leading-icon') {
-						<div so-accordion-item text="A" value="a" arrowPlacement="end">
-							<ng-template slot="leading-icon"><b class="custom">•</b></ng-template>
+					@case ('custom-start') {
+						<div so-accordion-item text="A" value="a" arrowPlacement="start">
+							<ng-template slot="arrow-icon"><b class="custom">•</b></ng-template>
 						</div>
 					}
 					@default {
@@ -302,7 +295,7 @@ describe('секция из разметки', () => {
 		})
 		class ArrowHost {
 			readonly placement = signal<TAccordionArrowPlacement>('start')
-			readonly variant = signal<'plain' | 'trailing-icon' | 'leading-icon'>('plain')
+			readonly variant = signal<'plain' | 'custom-end' | 'custom-start'>('plain')
 		}
 
 		const fixture = mountHost(ArrowHost)
@@ -322,7 +315,7 @@ describe('секция из разметки', () => {
 
 		expect(arrowSide()).toBe('end')
 
-		fixture.componentInstance.variant.set('trailing-icon')
+		fixture.componentInstance.variant.set('custom-end')
 		fixture.detectChanges()
 
 		expect(arrowSide()).toBe('end')
@@ -330,8 +323,8 @@ describe('секция из разметки', () => {
 		expect(document.querySelector('.so-accordion-item__arrow .custom')).not.toBeNull()
 		expect(document.querySelector('.so-accordion-item__arrow svg')).toBeNull()
 
-		// Слот на стороне без стрелки по умолчанию — своя обёртка, стрелка остаётся
-		fixture.componentInstance.variant.set('leading-icon')
+		// The same slot follows the arrow when its placement changes.
+		fixture.componentInstance.variant.set('custom-start')
 		fixture.detectChanges()
 
 		expect(
@@ -342,7 +335,7 @@ describe('секция из разметки', () => {
 						? 'icon'
 						: 'empty',
 			),
-		).toEqual(['slot', 'icon'])
+		).toEqual(['slot'])
 	})
 
 	it('слоты секций из items получают элемент через scope', () => {
@@ -443,12 +436,12 @@ describe('проброс слотов секций из items', () => {
 	 * заданный аккордеону, рисуется у каждой секции вместо стрелки по
 	 * умолчанию, как сниппет у Svelte.
 	 */
-	it('item-leading-icon задан — у каждой секции вместо стрелки по умолчанию', () => {
+	it('item-arrow-icon задан — у каждой секции вместо стрелки по умолчанию', () => {
 		@Component({
 			standalone: true,
 			imports: [TAccordionComponent, SlotDirective],
 			template: `<div so-accordion [items]="items">
-				<ng-template slot="item-leading-icon" let-item="item">
+				<ng-template slot="item-arrow-icon" let-item="item">
 					@if (item.value === 'a') {
 						<b class="probe">›</b>
 					}
@@ -465,16 +458,15 @@ describe('проброс слотов секций из items', () => {
 	})
 
 	/**
-	 * Стрелка по умолчанию — в начале, поэтому у секции, которой шаблон в конце
-	 * ничего не нарисовал, обёртка в конце пуста: слот задан. Пустую обёртку
-	 * прячет тема по `:empty`, поэтому в ней нет ни элемента, ни текста.
+	 * Angular treats an assigned template as present even when it renders no
+	 * content. That section has one empty arrow wrapper at its selected edge.
 	 */
-	it('item-trailing-icon: у секции без подмены обёртка в конце пуста', () => {
+	it('item-arrow-icon: у секции без содержимого обёртка пуста', () => {
 		@Component({
 			standalone: true,
 			imports: [TAccordionComponent, SlotDirective],
 			template: `<div so-accordion [items]="items">
-				<ng-template slot="item-trailing-icon" let-item="item">
+				<ng-template slot="item-arrow-icon" let-item="item">
 					@if (item.value === 'b') {
 						<b class="probe">›</b>
 					}
@@ -487,10 +479,7 @@ describe('проброс слотов секций из items', () => {
 
 		mountHost(TrailingHost)
 
-		expect(arrows()).toEqual([
-			['icon', 'empty'],
-			['icon', 'slot'],
-		])
+		expect(arrows()).toEqual([['empty'], ['slot']])
 
 		const empty = [...document.querySelectorAll('.so-accordion-item__arrow')].filter(
 			(arrow) => !arrow.querySelector('.probe, svg'),
