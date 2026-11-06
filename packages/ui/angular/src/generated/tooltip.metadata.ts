@@ -27,10 +27,7 @@ export const TooltipInputNames = [
 	'dismiss_enabled',
 ] as const
 export const TooltipOutputNames = [
-	'soDismissCreate',
 	'soDismissDismiss',
-	'soTriggerCreate',
-	'soIdsCreate',
 	'soChangeOpen',
 	'soChangePlacement',
 	'soChangeOpenDelay',
@@ -95,14 +92,9 @@ export abstract class TTooltipSurface<TInstance extends IEntity> extends TViewSu
 	declare readonly soHideBefore: TOutputEmitter<typeof descriptor, 'hide:before'>
 	declare readonly soHideAfter: TOutputEmitter<typeof descriptor, 'hide:after'>
 	declare readonly soReady: TOutputEmitter<typeof descriptor, 'ready'>
-	declare readonly soElementCreate: TOutputEmitter<typeof descriptor, 'element:create'>
 	declare readonly soElementReady: TOutputEmitter<typeof descriptor, 'element:ready'>
 	declare readonly soElementRemoved: TOutputEmitter<typeof descriptor, 'element:removed'>
-	declare readonly soReadyCreate: TOutputEmitter<typeof descriptor, 'ready:create'>
-	declare readonly soDismissCreate: TOutputEmitter<typeof descriptor, 'dismiss:create'>
 	declare readonly soDismissDismiss: TOutputEmitter<typeof descriptor, 'dismiss:dismiss'>
-	declare readonly soTriggerCreate: TOutputEmitter<typeof descriptor, 'trigger:create'>
-	declare readonly soIdsCreate: TOutputEmitter<typeof descriptor, 'ids:create'>
 	declare readonly soChangeRendered: TOutputEmitter<typeof descriptor, 'change:rendered'>
 	declare readonly soChangeVisible: TOutputEmitter<typeof descriptor, 'change:visible'>
 	declare readonly soChangeTag: TOutputEmitter<typeof descriptor, 'change:tag'>

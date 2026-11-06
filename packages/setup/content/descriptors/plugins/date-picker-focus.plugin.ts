@@ -10,7 +10,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TDatePickerFocusPlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TDatePickerFocusPlugin } from '@soldy-ui/plugins'
 
 export const DatePickerFocusPluginDescriptor = definePlugin({
 	ctor: TDatePickerFocusPlugin,
@@ -20,7 +20,5 @@ export const DatePickerFocusPluginDescriptor = definePlugin({
 	 * Контрибуция нужна лишь для того, чтобы `create` попал в события, как у
 	 * любого плагина.
 	 */
-	contribution: {
-		events: [...PLUGIN_EVENTS],
-	},
+	contribution: {},
 })

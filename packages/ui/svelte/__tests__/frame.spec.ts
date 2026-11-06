@@ -530,13 +530,13 @@ describe('Frame · якорь', () => {
 
 		const props = reactiveProps<FrameProps>({
 			anchor_anchor: element,
-			onAnchorCreate: (plugin: unknown) => {
-				if (plugin instanceof TAnchorPlugin) created.anchor = plugin
+			onBundleCreate: (bundle: unknown) => {
+				if (bundle instanceof TPluginBundle) created.anchor = bundle.get(TAnchorPlugin)
 			},
 		})
 
 		mount(Frame, props)
-		// `anchor:create` отложен на микрозадачу
+		// The bundle is announced on a microtask.
 		await Promise.resolve()
 
 		expect(created.anchor?.anchor).toBe(element)
@@ -558,8 +558,8 @@ describe('Frame · якорь', () => {
 		mount(Frame, {
 			visible: true,
 			position: 'fixed',
-			onAnchorCreate: (plugin: unknown) => {
-				if (plugin instanceof TAnchorPlugin) created.anchor = plugin
+			onBundleCreate: (bundle: unknown) => {
+				if (bundle instanceof TPluginBundle) created.anchor = bundle.get(TAnchorPlugin)
 			},
 		})
 		await nextFrame()

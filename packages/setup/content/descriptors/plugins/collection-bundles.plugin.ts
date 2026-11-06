@@ -5,10 +5,9 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TCollectionBundlesPlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TCollectionBundlesPlugin } from '@soldy-ui/plugins'
 
 export const CollectionBundlesPluginDescriptor = definePlugin({
 	ctor: TCollectionBundlesPlugin,
 	namespace: 'bundles',
-	contribution: { events: [...PLUGIN_EVENTS] },
 })

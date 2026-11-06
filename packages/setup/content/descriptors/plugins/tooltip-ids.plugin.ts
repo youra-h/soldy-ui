@@ -7,10 +7,9 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TTooltipIdsPlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TTooltipIdsPlugin } from '@soldy-ui/plugins'
 
 export const TooltipIdsPluginDescriptor = definePlugin({
 	ctor: TTooltipIdsPlugin,
 	namespace: 'ids',
-	contribution: { events: [...PLUGIN_EVENTS] },
 })

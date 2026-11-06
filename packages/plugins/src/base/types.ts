@@ -1,6 +1,5 @@
 import type { TEvented } from '@soldy-ui/core'
 import type { ILocaleSource } from '../locale/types'
-import type { PLUGIN_EVENTS } from './events'
 
 /**
  * Контекст, передаваемый плагину при установке.
@@ -24,30 +23,12 @@ export type TPluginEvents = {
 	 * при уничтожении у плагина нет.
 	 */
 	destroy: () => void
-	/**
-	 * Плагин создан и доступен снаружи. Эмитится adapter-слоем — не в install,
-	 * потому что на момент установки подписчиков ещё нет: bundle собирается
-	 * раньше, чем фреймворк привязывает обработчики событий.
-	 */
+	/** Internal announcement after bundle:create, once adapters can subscribe. */
 	create: (plugin: IPlugin<any, any>) => void
 }
 
-/**
- * Имена событий базы, которые плагин публикует наружу, — `create`.
- *
- * Выведены из `PLUGIN_EVENTS`, а не перечислены второй раз: один и тот же
- * список contribution плагина подмешивает в свои события (рантайм-проброс), и
- * из него же строятся типы дескриптора в `@soldy-ui/setup`.
- */
-export type TPluginPublicEventName = (typeof PLUGIN_EVENTS)[number]
-
-/**
- * Внутренние события базы — `TPluginEvents` без опубликованных: `install` и
- * `destroy`. Эмиттер плагина их шлёт, это рабочая механика bundle, но наружу
- * они не уходят, поэтому вывод контракта плагина в `@soldy-ui/setup`
- * (`TPluginContractFrom`) снимает их с карты плагина.
- */
-export type TPluginInternalEvents = Omit<TPluginEvents, TPluginPublicEventName>
+/** Base lifecycle events stay internal to the plugin bundle. */
+export type TPluginInternalEvents = TPluginEvents
 
 /**
  * Плагин — независимая единица логики, устанавливаемая на компонент.

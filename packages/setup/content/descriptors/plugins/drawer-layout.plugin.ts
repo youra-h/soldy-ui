@@ -9,13 +9,12 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TDrawerLayoutPlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TDrawerLayoutPlugin } from '@soldy-ui/plugins'
 
 export const DrawerLayoutPluginDescriptor = definePlugin({
 	ctor: TDrawerLayoutPlugin,
 	namespace: 'layout',
 	contribution: {
-		events: [...PLUGIN_EVENTS],
 		props: {
 			styles: {
 				protected: true,

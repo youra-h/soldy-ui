@@ -9,10 +9,9 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TTextareaIdsPlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TTextareaIdsPlugin } from '@soldy-ui/plugins'
 
 export const TextareaIdsPluginDescriptor = definePlugin({
 	ctor: TTextareaIdsPlugin,
 	namespace: 'ids',
-	contribution: { events: [...PLUGIN_EVENTS] },
 })

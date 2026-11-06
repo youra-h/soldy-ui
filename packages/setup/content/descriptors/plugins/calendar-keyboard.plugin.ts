@@ -9,10 +9,9 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TCalendarKeyboardPlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TCalendarKeyboardPlugin } from '@soldy-ui/plugins'
 
 export const CalendarKeyboardPluginDescriptor = definePlugin({
 	ctor: TCalendarKeyboardPlugin,
 	namespace: 'keyboard',
-	contribution: { events: [...PLUGIN_EVENTS] },
 })

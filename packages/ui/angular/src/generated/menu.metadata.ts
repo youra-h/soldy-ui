@@ -37,16 +37,7 @@ export const MenuInputNames = [
 	'groups',
 ] as const
 export const MenuOutputNames = [
-	'soBundlesCreate',
-	'soElementsCreate',
-	'soDismissCreate',
 	'soDismissDismiss',
-	'soKeyboardCreate',
-	'soScrollCreate',
-	'soPointerCreate',
-	'soHoverCreate',
-	'soFocusCreate',
-	'soIdsCreate',
 	'soChangeSize',
 	'soChangeVariant',
 	'soChangeOpen',
@@ -148,20 +139,9 @@ export abstract class TMenuSurface<TInstance extends IEntity> extends TViewSurfa
 	declare readonly soHideBefore: TOutputEmitter<typeof descriptor, 'hide:before'>
 	declare readonly soHideAfter: TOutputEmitter<typeof descriptor, 'hide:after'>
 	declare readonly soReady: TOutputEmitter<typeof descriptor, 'ready'>
-	declare readonly soElementCreate: TOutputEmitter<typeof descriptor, 'element:create'>
 	declare readonly soElementReady: TOutputEmitter<typeof descriptor, 'element:ready'>
 	declare readonly soElementRemoved: TOutputEmitter<typeof descriptor, 'element:removed'>
-	declare readonly soReadyCreate: TOutputEmitter<typeof descriptor, 'ready:create'>
-	declare readonly soBundlesCreate: TOutputEmitter<typeof descriptor, 'bundles:create'>
-	declare readonly soElementsCreate: TOutputEmitter<typeof descriptor, 'elements:create'>
-	declare readonly soDismissCreate: TOutputEmitter<typeof descriptor, 'dismiss:create'>
 	declare readonly soDismissDismiss: TOutputEmitter<typeof descriptor, 'dismiss:dismiss'>
-	declare readonly soKeyboardCreate: TOutputEmitter<typeof descriptor, 'keyboard:create'>
-	declare readonly soScrollCreate: TOutputEmitter<typeof descriptor, 'scroll:create'>
-	declare readonly soPointerCreate: TOutputEmitter<typeof descriptor, 'pointer:create'>
-	declare readonly soHoverCreate: TOutputEmitter<typeof descriptor, 'hover:create'>
-	declare readonly soFocusCreate: TOutputEmitter<typeof descriptor, 'focus:create'>
-	declare readonly soIdsCreate: TOutputEmitter<typeof descriptor, 'ids:create'>
 	declare readonly soChangeRendered: TOutputEmitter<typeof descriptor, 'change:rendered'>
 	declare readonly soChangeVisible: TOutputEmitter<typeof descriptor, 'change:visible'>
 	declare readonly soChangeTag: TOutputEmitter<typeof descriptor, 'change:tag'>

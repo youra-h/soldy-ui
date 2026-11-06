@@ -1,3 +1,4 @@
+import { TPluginBundle } from '@soldy-ui/plugins'
 /**
  * Frame в React: слой поверх страницы.
  *
@@ -555,19 +556,17 @@ describe('Frame · серверный рендер', () => {
 	})
 })
 
-/**
- * Плагин якоря — у каждого Frame: без якоря он ничего не делает. Его
- * экземпляр приходит в `onAnchorCreate` — на микрозадаче, её дожидается кадр.
- */
+/** Retrieve the anchor plugin from the bundle announced on a microtask. */
 describe('Frame · якорь', () => {
-	/** Колбэк `onAnchorCreate` и плагин, который он получил. */
+	/** Retrieve the anchor plugin from the bundle announced on a microtask. */
 	function anchorProbe() {
 		const created: { plugin: TAnchorPlugin | null } = { plugin: null }
 
 		return {
 			created,
-			onAnchorCreate: (plugin: unknown) => {
-				if (plugin instanceof TAnchorPlugin) created.plugin = plugin
+			onBundleCreate: (bundle: unknown) => {
+				if (bundle instanceof TPluginBundle)
+					created.plugin = bundle.get(TAnchorPlugin) ?? null
 			},
 		}
 	}
@@ -579,25 +578,25 @@ describe('Frame · якорь', () => {
 	 */
 	it('снятый из разметки якорь отвязывает панель', async () => {
 		const element = document.createElement('button')
-		const { created, onAnchorCreate } = anchorProbe()
+		const { created, onBundleCreate } = anchorProbe()
 
 		document.body.appendChild(element)
 
-		const { render } = mount(<Frame onAnchorCreate={onAnchorCreate} anchor_anchor={element} />)
+		const { render } = mount(<Frame onBundleCreate={onBundleCreate} anchor_anchor={element} />)
 
 		await nextFrame()
 
 		expect(created.plugin?.anchor).toBe(element)
 
-		render(<Frame onAnchorCreate={onAnchorCreate} />)
+		render(<Frame onBundleCreate={onBundleCreate} />)
 
 		expect(created.plugin?.anchor).toBeNull()
 	})
 
 	it('Frame без anchor_flip оставляет flip включённым', async () => {
-		const { created, onAnchorCreate } = anchorProbe()
+		const { created, onBundleCreate } = anchorProbe()
 
-		mount(<Frame visible position="fixed" onAnchorCreate={onAnchorCreate} />)
+		mount(<Frame visible position="fixed" onBundleCreate={onBundleCreate} />)
 
 		await nextFrame()
 

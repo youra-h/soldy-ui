@@ -8,10 +8,9 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TClearableNamesPlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TClearableNamesPlugin } from '@soldy-ui/plugins'
 
 export const ClearableNamesPluginDescriptor = definePlugin({
 	ctor: TClearableNamesPlugin,
 	namespace: 'names',
-	contribution: { events: [...PLUGIN_EVENTS] },
 })

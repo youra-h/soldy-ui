@@ -13,10 +13,9 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TMenuKeyboardPlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TMenuKeyboardPlugin } from '@soldy-ui/plugins'
 
 export const MenuKeyboardPluginDescriptor = definePlugin({
 	ctor: TMenuKeyboardPlugin,
 	namespace: 'keyboard',
-	contribution: { events: [...PLUGIN_EVENTS] },
 })

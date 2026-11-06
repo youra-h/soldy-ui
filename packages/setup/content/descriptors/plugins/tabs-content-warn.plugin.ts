@@ -6,10 +6,9 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TTabsContentWarnPlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TTabsContentWarnPlugin } from '@soldy-ui/plugins'
 
 export const TabsContentWarnPluginDescriptor = definePlugin({
 	ctor: TTabsContentWarnPlugin,
 	namespace: 'contentWarn',
-	contribution: { events: [...PLUGIN_EVENTS] },
 })

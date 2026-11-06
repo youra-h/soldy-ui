@@ -8,7 +8,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TPopoverFocusPlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TPopoverFocusPlugin } from '@soldy-ui/plugins'
 
 export const PopoverFocusPluginDescriptor = definePlugin({
 	ctor: TPopoverFocusPlugin,
@@ -18,7 +18,5 @@ export const PopoverFocusPluginDescriptor = definePlugin({
 	 * Контрибуция нужна лишь для того, чтобы `create` попал в события, как у
 	 * любого плагина.
 	 */
-	contribution: {
-		events: [...PLUGIN_EVENTS],
-	},
+	contribution: {},
 })

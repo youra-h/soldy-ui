@@ -257,18 +257,18 @@ class DetachHost {
 	readonly outlet = viewChild.required('outlet', { read: ViewContainerRef })
 }
 
-/** Frame с якорем из разметки: плагин якоря хост берёт из `(soAnchorCreate)`. */
+/** The host retrieves the node plugin through the public soBundleCreate output. */
 @Component({
 	standalone: true,
 	imports: [TFrameComponent],
-	template: `<div so-frame [anchor_anchor]="anchor()" (soAnchorCreate)="collect($event)"></div>`,
+	template: `<div so-frame [anchor_anchor]="anchor()" (soBundleCreate)="collect($event)"></div>`,
 })
 class AnchorHost {
 	readonly anchor = signal<Element | null | undefined>(undefined)
 	plugin: TAnchorPlugin | null = null
 
-	collect(plugin: unknown): void {
-		if (plugin instanceof TAnchorPlugin) this.plugin = plugin
+	collect(bundle: unknown): void {
+		if (bundle instanceof TPluginBundle) this.plugin = bundle.get(TAnchorPlugin) ?? null
 	}
 }
 

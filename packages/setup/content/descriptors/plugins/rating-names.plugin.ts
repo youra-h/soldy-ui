@@ -7,10 +7,9 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TRatingNamesPlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TRatingNamesPlugin } from '@soldy-ui/plugins'
 
 export const RatingNamesPluginDescriptor = definePlugin({
 	ctor: TRatingNamesPlugin,
 	namespace: 'names',
-	contribution: { events: [...PLUGIN_EVENTS] },
 })

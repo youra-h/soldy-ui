@@ -8,10 +8,9 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TRatingValidityPlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TRatingValidityPlugin } from '@soldy-ui/plugins'
 
 export const RatingValidityPluginDescriptor = definePlugin({
 	ctor: TRatingValidityPlugin,
 	namespace: 'validity',
-	contribution: { events: [...PLUGIN_EVENTS] },
 })

@@ -9,7 +9,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TMenuFocusPlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TMenuFocusPlugin } from '@soldy-ui/plugins'
 
 export const MenuFocusPluginDescriptor = definePlugin({
 	ctor: TMenuFocusPlugin,
@@ -19,5 +19,4 @@ export const MenuFocusPluginDescriptor = definePlugin({
 	 * Контрибуция нужна лишь для того, чтобы `create` попал в события, как у
 	 * любого плагина.
 	 */
-	contribution: { events: [...PLUGIN_EVENTS] },
 })

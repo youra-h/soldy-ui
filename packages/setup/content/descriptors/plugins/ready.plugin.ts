@@ -5,10 +5,9 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TReadyPlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TReadyPlugin } from '@soldy-ui/plugins'
 
 export const ReadyPluginDescriptor = definePlugin({
 	ctor: TReadyPlugin,
 	namespace: 'ready',
-	contribution: { events: [...PLUGIN_EVENTS] },
 })

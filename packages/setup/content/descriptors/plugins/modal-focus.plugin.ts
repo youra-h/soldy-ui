@@ -9,7 +9,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TModalFocusPlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TModalFocusPlugin } from '@soldy-ui/plugins'
 
 export const ModalFocusPluginDescriptor = definePlugin({
 	ctor: TModalFocusPlugin,
@@ -19,7 +19,5 @@ export const ModalFocusPluginDescriptor = definePlugin({
 	 * Контрибуция нужна лишь для того, чтобы `create` попал в события, как у
 	 * любого плагина.
 	 */
-	contribution: {
-		events: [...PLUGIN_EVENTS],
-	},
+	contribution: {},
 })

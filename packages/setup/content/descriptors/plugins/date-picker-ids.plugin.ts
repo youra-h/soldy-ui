@@ -8,10 +8,9 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TDatePickerIdsPlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TDatePickerIdsPlugin } from '@soldy-ui/plugins'
 
 export const DatePickerIdsPluginDescriptor = definePlugin({
 	ctor: TDatePickerIdsPlugin,
 	namespace: 'ids',
-	contribution: { events: [...PLUGIN_EVENTS] },
 })

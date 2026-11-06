@@ -1,3 +1,4 @@
+import { TPluginBundle } from '@soldy-ui/plugins'
 /**
  * `anchor_anchor` у Frame, который объявлен разметкой.
  *
@@ -33,7 +34,11 @@ describe('anchor_anchor', () => {
 			{
 				render: () =>
 					h(Frame, {
-						'onAnchor:create': (plugin: unknown) => {
+						'onBundle:create': (bundle: unknown) => {
+							const plugin =
+								bundle instanceof TPluginBundle
+									? bundle.get(TAnchorPlugin)
+									: undefined
 							if (plugin instanceof TAnchorPlugin) created.anchor = plugin
 						},
 						...(bound.value ? { anchor_anchor: element } : {}),
@@ -42,7 +47,7 @@ describe('anchor_anchor', () => {
 			{ attachTo: document.body },
 		)
 
-		// `anchor:create` отложен на микрозадачу
+		// The bundle is announced on a microtask.
 		await nextTick()
 
 		expect(created.anchor?.anchor).toBe(element)

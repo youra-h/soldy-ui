@@ -7,10 +7,9 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TToastsItemNamesPlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TToastsItemNamesPlugin } from '@soldy-ui/plugins'
 
 export const ToastsItemNamesPluginDescriptor = definePlugin({
 	ctor: TToastsItemNamesPlugin,
 	namespace: 'names',
-	contribution: { events: [...PLUGIN_EVENTS] },
 })

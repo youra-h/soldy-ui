@@ -7,10 +7,9 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TOptionIdsPlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TOptionIdsPlugin } from '@soldy-ui/plugins'
 
 export const OptionIdsPluginDescriptor = definePlugin({
 	ctor: TOptionIdsPlugin,
 	namespace: 'ids',
-	contribution: { events: [...PLUGIN_EVENTS] },
 })

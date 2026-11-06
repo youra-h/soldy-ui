@@ -136,14 +136,7 @@ type TNamespacedEvents<T, N extends string | undefined> = {
 	[K in keyof T as K extends string ? (N extends string ? `${N}:${K}` : K) : never]: T[K]
 }
 
-/**
- * Карта плагина без внутренних событий базы (`install`, `destroy`).
- *
- * Наружу адаптер пробрасывает только события contribution плагина, а базовые
- * среди них задаёт `PLUGIN_EVENTS`. Внутренние выведены из того же списка
- * (`TPluginInternalEvents`), поэтому плагинные события в типах дескриптора не
- * обещают того, что не придёт: `action:install` нет ни в них, ни в рантайме.
- */
+/** Plugin lifecycle events stay internal when inferring the public contract. */
 type TPublicPluginEvents<TInstance> = Omit<TInstanceEvents<TInstance>, keyof TPluginInternalEvents>
 
 /** Опции установки — второй параметр `install()` класса; не объявлен — любой объект. */

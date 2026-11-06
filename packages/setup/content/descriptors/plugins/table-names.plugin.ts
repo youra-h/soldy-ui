@@ -7,13 +7,12 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TTableNamesPlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TTableNamesPlugin } from '@soldy-ui/plugins'
 
 export const TableNamesPluginDescriptor = definePlugin({
 	ctor: TTableNamesPlugin,
 	namespace: 'names',
 	contribution: {
-		events: [...PLUGIN_EVENTS],
 		props: {
 			selectAll: { protected: true, triggers: ['change:selectAll'] },
 		},

@@ -1,3 +1,4 @@
+import { TPluginBundle } from '@soldy-ui/plugins'
 import { describe, it, expect, afterEach, vi } from 'vitest'
 import { mount, unmount, flushSync, type ComponentProps } from 'svelte'
 import { TButton } from '@soldy-ui/core'
@@ -298,18 +299,20 @@ describe('Button · aria и доступ к плагинам', () => {
 		expect(el.getAttribute('tabindex')).toBe('0')
 	})
 
-	it('onBundleCreate отдаёт bundle, onActionCreate — сам плагин', async () => {
+	it('onBundleCreate provides access to the action plugin', async () => {
 		const seen: Array<[string, unknown]> = []
 
 		render({
-			onBundleCreate: (b: unknown) => seen.push(['bundle', b]),
-			onActionCreate: (p: unknown) => seen.push(['action', p]),
+			onBundleCreate: (bundle: unknown) => {
+				if (bundle instanceof TPluginBundle)
+					seen.push(['action', bundle.get(TActionPlugin)])
+			},
 		})
 
-		// assembleBundle откладывает эмит на микрозадачу — см. setup/assemble/bundle.ts
+		// The bundle is announced on a microtask.
 		await Promise.resolve()
 
-		expect(seen.map(([kind]) => kind)).toEqual(['bundle', 'action'])
-		expect(seen[1][1]).toBeInstanceOf(TActionPlugin)
+		expect(seen.map(([kind]) => kind)).toEqual(['action'])
+		expect(seen[0][1]).toBeInstanceOf(TActionPlugin)
 	})
 })

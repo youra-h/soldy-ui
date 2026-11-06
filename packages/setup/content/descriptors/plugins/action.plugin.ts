@@ -7,7 +7,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TActionPlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TActionPlugin } from '@soldy-ui/plugins'
 
 export const ActionPluginDescriptor = definePlugin({
 	ctor: TActionPlugin,
@@ -18,6 +18,6 @@ export const ActionPluginDescriptor = definePlugin({
 	 * работает на любом теге, второе даёт правду для стороны инстанса.
 	 */
 	contribution: {
-		events: [...PLUGIN_EVENTS, 'press', 'click', 'focus', 'blur'],
+		events: ['press', 'click', 'focus', 'blur'],
 	},
 })

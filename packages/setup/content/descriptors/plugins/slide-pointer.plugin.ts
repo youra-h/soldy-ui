@@ -10,10 +10,9 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TSlidePointerPlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TSlidePointerPlugin } from '@soldy-ui/plugins'
 
 export const SlidePointerPluginDescriptor = definePlugin({
 	ctor: TSlidePointerPlugin,
 	namespace: 'pointer',
-	contribution: { events: [...PLUGIN_EVENTS] },
 })

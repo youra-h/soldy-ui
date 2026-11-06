@@ -1,22 +1,8 @@
-/**
- * События плагинов в типах дескриптора совпадают с тем, что адаптер
- * пробрасывает в рантайме.
- *
- * Пробрасываются события contribution плагина (`events.listen` связки), а
- * типы (контракт плагина в составе `DescriptorAllEvents`) — карта событий
- * класса плагина, суженная до имён того же contribution
- * (`TPluginContractFrom`). Раньше тип брал карту целиком, и два объявления
- * одного набора расходились молча: `action:install` был в типах, но не
- * приходил ни разу. Базовые события наружу отбирает `PLUGIN_EVENTS`,
- * собственные — `events` и триггеры пропсов contribution.
- *
- * Обе стороны проверяются здесь на одних и тех же именах. Типовые проверки
- * стоят под `@ts-expect-error`: файл проверяет шаг CI «Типы — Setup», и
- * неиспользованная директива роняет его так же, как настоящая ошибка.
- */
+/** Runtime declarations and inferred types expose domain events, not plugin lifecycle events. */
 
 import { describe, it, expect } from 'vitest'
-import { ControlDescriptor, SelectDescriptor } from '@soldy-ui/setup'
+import { exportedDescriptors, CallbackProfile } from './helpers'
+import { TSurface, ControlDescriptor, SelectDescriptor } from '@soldy-ui/setup'
 import type { DescriptorAllEvents, IComponentDescriptor } from '@soldy-ui/setup'
 
 /**
@@ -34,20 +20,23 @@ function eventNames(descriptor: Pick<IComponentDescriptor, 'getEvents'>): string
 }
 
 describe('TActionPlugin у ControlDescriptor', () => {
-	it('create и press есть и в типах, и в рантайме', () => {
-		const published: TControlEventName[] = ['action:create', 'action:press']
+	it('press is public in types and runtime', () => {
+		const published: TControlEventName[] = ['action:press']
 
 		expect(eventNames(ControlDescriptor())).toEqual(expect.arrayContaining(published))
 	})
 
 	it('install и destroy нет ни в типах, ни в рантайме: это механика bundle', () => {
-		// @ts-expect-error — `install` наружу не публикуется, его нет в PLUGIN_EVENTS
+		// @ts-expect-error Plugin installation is internal.
 		const install: TControlEventName = 'action:install'
-		// @ts-expect-error — `destroy` наружу не публикуется, его нет в PLUGIN_EVENTS
+		// @ts-expect-error Plugin creation is internal.
+		const create: TControlEventName = 'action:create'
+		// @ts-expect-error Plugin destruction is internal.
 		const destroy: TControlEventName = 'action:destroy'
 
 		const names = eventNames(ControlDescriptor())
 
+		expect(names).not.toContain(create)
 		expect(names).not.toContain(install)
 		expect(names).not.toContain(destroy)
 	})
@@ -67,3 +56,19 @@ describe('TSelectKeyboardPlugin у SelectDescriptor', () => {
 		expect(eventNames(SelectDescriptor())).not.toContain(escape)
 	})
 })
+
+for (const [name, descriptor] of exportedDescriptors()) {
+	it(name + ' does not publish plugin creation', () => {
+		const names = TSurface.of(descriptor, CallbackProfile).events.map((event) =>
+			event.name.getName(),
+		)
+		expect(
+			names.filter(
+				(event) =>
+					event.endsWith(':create') &&
+					event !== 'bundle:create' &&
+					event !== 'engine:create',
+			),
+		).toEqual([])
+	})
+}

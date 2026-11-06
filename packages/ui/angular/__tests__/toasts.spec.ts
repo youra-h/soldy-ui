@@ -1,3 +1,4 @@
+import { TPluginBundle } from '@soldy-ui/plugins'
 /**
  * Toasts под Angular — проводка целиком, на настоящей разметке.
  *
@@ -307,10 +308,7 @@ class PopoverPage {
 	readonly rendered = signal<boolean | undefined>(undefined)
 }
 
-/**
- * Поповер с триггером в приложении под менеджером; `rendered` менеджера —
- * сигналом, плагин узла региона хост берёт из `(soElementCreate)` менеджера.
- */
+/** The host retrieves the node plugin through the public soBundleCreate output. */
 @Component({
 	selector: 'probe-toasts-trigger',
 	standalone: true,
@@ -321,7 +319,7 @@ class PopoverPage {
 		SlotDirective,
 		AttributesDirective,
 	],
-	template: `<div so-toasts [rendered]="rendered()" (soElementCreate)="created($event)">
+	template: `<div so-toasts [rendered]="rendered()" (soBundleCreate)="created($event)">
 		<button class="so-test-outside">Мимо</button>
 		<span so-popover>
 			<ng-template
@@ -345,8 +343,8 @@ class TriggerPage {
 	/** Плагин узла региона; до объявления набора его нет. */
 	region: TElementPlugin | null = null
 
-	created(plugin: unknown): void {
-		if (plugin instanceof TElementPlugin) this.region = plugin
+	created(bundle: unknown): void {
+		if (bundle instanceof TPluginBundle) this.region = bundle.get(TElementPlugin) ?? null
 	}
 }
 

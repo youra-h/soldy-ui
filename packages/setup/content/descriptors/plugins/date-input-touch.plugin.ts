@@ -10,10 +10,9 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TDateInputTouchPlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TDateInputTouchPlugin } from '@soldy-ui/plugins'
 
 export const DateInputTouchPluginDescriptor = definePlugin({
 	ctor: TDateInputTouchPlugin,
 	namespace: 'touch',
-	contribution: { events: [...PLUGIN_EVENTS] },
 })

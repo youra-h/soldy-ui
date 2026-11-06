@@ -7,10 +7,9 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TCalendarIdsPlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TCalendarIdsPlugin } from '@soldy-ui/plugins'
 
 export const CalendarIdsPluginDescriptor = definePlugin({
 	ctor: TCalendarIdsPlugin,
 	namespace: 'ids',
-	contribution: { events: [...PLUGIN_EVENTS] },
 })

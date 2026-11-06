@@ -6,10 +6,9 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TListHeightPlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TListHeightPlugin } from '@soldy-ui/plugins'
 
 export const ListHeightPluginDescriptor = definePlugin({
 	ctor: TListHeightPlugin,
 	namespace: 'height',
-	contribution: { events: [...PLUGIN_EVENTS] },
 })

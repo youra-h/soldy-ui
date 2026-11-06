@@ -37,9 +37,6 @@ export const FrameInputNames = [
 ] as const
 export const FrameOutputNames = [
 	'soChangeZIndex',
-	'soLayoutCreate',
-	'soAnchorCreate',
-	'soAriaCreate',
 	'soChangeTarget',
 	'soChangeX',
 	'soChangeY',
@@ -131,13 +128,8 @@ export abstract class TFrameSurface<TInstance extends IEntity> extends TViewSurf
 	declare readonly soHideAfter: TOutputEmitter<typeof descriptor, 'hide:after'>
 	declare readonly soReady: TOutputEmitter<typeof descriptor, 'ready'>
 	declare readonly soChangeZIndex: TOutputEmitter<typeof descriptor, 'change:zIndex'>
-	declare readonly soElementCreate: TOutputEmitter<typeof descriptor, 'element:create'>
 	declare readonly soElementReady: TOutputEmitter<typeof descriptor, 'element:ready'>
 	declare readonly soElementRemoved: TOutputEmitter<typeof descriptor, 'element:removed'>
-	declare readonly soReadyCreate: TOutputEmitter<typeof descriptor, 'ready:create'>
-	declare readonly soLayoutCreate: TOutputEmitter<typeof descriptor, 'layout:create'>
-	declare readonly soAnchorCreate: TOutputEmitter<typeof descriptor, 'anchor:create'>
-	declare readonly soAriaCreate: TOutputEmitter<typeof descriptor, 'aria:create'>
 	declare readonly soChangeRendered: TOutputEmitter<typeof descriptor, 'change:rendered'>
 	declare readonly soChangeVisible: TOutputEmitter<typeof descriptor, 'change:visible'>
 	declare readonly soChangeTag: TOutputEmitter<typeof descriptor, 'change:tag'>

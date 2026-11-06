@@ -35,14 +35,6 @@ export const ToastsInputNames = [
 ] as const
 export const ToastsOutputNames = [
 	'soChangeZIndex',
-	'soBundlesCreate',
-	'soElementsCreate',
-	'soTimerCreate',
-	'soRemovalCreate',
-	'soKeyboardCreate',
-	'soCascadeCreate',
-	'soLayoutCreate',
-	'soNamesCreate',
 	'soChangeTarget',
 	'soChangePlacement',
 	'soChangeLayout',
@@ -136,18 +128,8 @@ export abstract class TToastsSurface<TInstance extends IEntity> extends TViewSur
 	declare readonly soHideAfter: TOutputEmitter<typeof descriptor, 'hide:after'>
 	declare readonly soReady: TOutputEmitter<typeof descriptor, 'ready'>
 	declare readonly soChangeZIndex: TOutputEmitter<typeof descriptor, 'change:zIndex'>
-	declare readonly soElementCreate: TOutputEmitter<typeof descriptor, 'element:create'>
 	declare readonly soElementReady: TOutputEmitter<typeof descriptor, 'element:ready'>
 	declare readonly soElementRemoved: TOutputEmitter<typeof descriptor, 'element:removed'>
-	declare readonly soReadyCreate: TOutputEmitter<typeof descriptor, 'ready:create'>
-	declare readonly soBundlesCreate: TOutputEmitter<typeof descriptor, 'bundles:create'>
-	declare readonly soElementsCreate: TOutputEmitter<typeof descriptor, 'elements:create'>
-	declare readonly soTimerCreate: TOutputEmitter<typeof descriptor, 'timer:create'>
-	declare readonly soRemovalCreate: TOutputEmitter<typeof descriptor, 'removal:create'>
-	declare readonly soKeyboardCreate: TOutputEmitter<typeof descriptor, 'keyboard:create'>
-	declare readonly soCascadeCreate: TOutputEmitter<typeof descriptor, 'cascade:create'>
-	declare readonly soLayoutCreate: TOutputEmitter<typeof descriptor, 'layout:create'>
-	declare readonly soNamesCreate: TOutputEmitter<typeof descriptor, 'names:create'>
 	declare readonly soChangeRendered: TOutputEmitter<typeof descriptor, 'change:rendered'>
 	declare readonly soChangeVisible: TOutputEmitter<typeof descriptor, 'change:visible'>
 	declare readonly soChangeTag: TOutputEmitter<typeof descriptor, 'change:tag'>

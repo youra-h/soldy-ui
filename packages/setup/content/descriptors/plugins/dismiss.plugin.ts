@@ -13,7 +13,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TDismissPlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TDismissPlugin } from '@soldy-ui/plugins'
 
 export const DismissPluginDescriptor = definePlugin({
 	ctor: TDismissPlugin,
@@ -28,7 +28,7 @@ export const DismissPluginDescriptor = definePlugin({
 	 * плагин только сообщает.
 	 */
 	contribution: {
-		events: [...PLUGIN_EVENTS, 'dismiss'],
+		events: ['dismiss'],
 		props: {
 			enabled: { type: Boolean, triggers: ['change:enabled'] },
 			/**

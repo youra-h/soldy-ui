@@ -7,10 +7,9 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TAccordionItemIdsPlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TAccordionItemIdsPlugin } from '@soldy-ui/plugins'
 
 export const AccordionItemIdsPluginDescriptor = definePlugin({
 	ctor: TAccordionItemIdsPlugin,
 	namespace: 'ids',
-	contribution: { events: [...PLUGIN_EVENTS] },
 })

@@ -11,7 +11,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TSelectKeyboardPlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TSelectKeyboardPlugin } from '@soldy-ui/plugins'
 
 export const SelectKeyboardPluginDescriptor = definePlugin({
 	ctor: TSelectKeyboardPlugin,
@@ -23,7 +23,7 @@ export const SelectKeyboardPluginDescriptor = definePlugin({
 	 * опцию под навигацией от выбранной. Всё остальное плагин делает сам.
 	 */
 	contribution: {
-		events: [...PLUGIN_EVENTS, 'change:highlight'],
+		events: ['change:highlight'],
 		props: {
 			highlightedUid: { protected: true, triggers: ['change:highlight'] },
 		},

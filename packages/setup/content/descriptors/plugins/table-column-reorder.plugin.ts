@@ -11,10 +11,9 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TTableColumnReorderPlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TTableColumnReorderPlugin } from '@soldy-ui/plugins'
 
 export const TableColumnReorderPluginDescriptor = definePlugin({
 	ctor: TTableColumnReorderPlugin,
 	namespace: 'reorder',
-	contribution: { events: [...PLUGIN_EVENTS] },
 })

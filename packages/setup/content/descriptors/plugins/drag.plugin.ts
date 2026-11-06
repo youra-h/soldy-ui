@@ -3,10 +3,9 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TDragPlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TDragPlugin } from '@soldy-ui/plugins'
 
 export const DragPluginDescriptor = definePlugin({
 	ctor: TDragPlugin,
 	namespace: 'drag',
-	contribution: { events: [...PLUGIN_EVENTS] },
 })

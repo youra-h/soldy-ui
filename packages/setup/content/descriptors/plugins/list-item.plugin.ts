@@ -6,13 +6,12 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TListItemPlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TListItemPlugin } from '@soldy-ui/plugins'
 
 export const ListItemPluginDescriptor = definePlugin({
 	ctor: TListItemPlugin,
 	namespace: 'listItem',
 	contribution: {
-		events: [...PLUGIN_EVENTS],
 		props: {
 			highlighted: {
 				protected: true,

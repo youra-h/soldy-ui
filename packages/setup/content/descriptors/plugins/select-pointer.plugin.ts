@@ -7,7 +7,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TSelectPointerPlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TSelectPointerPlugin } from '@soldy-ui/plugins'
 
 export const SelectPointerPluginDescriptor = definePlugin({
 	ctor: TSelectPointerPlugin,
@@ -19,7 +19,5 @@ export const SelectPointerPluginDescriptor = definePlugin({
 	 * читаются как пропы владельца. Контрибуция нужна лишь для того, чтобы
 	 * `create` попал в события, как и у любого плагина.
 	 */
-	contribution: {
-		events: [...PLUGIN_EVENTS],
-	},
+	contribution: {},
 })

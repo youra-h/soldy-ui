@@ -10,7 +10,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TMenuHoverPlugin, PLUGIN_EVENTS } from '@soldy-ui/plugins'
+import { TMenuHoverPlugin } from '@soldy-ui/plugins'
 
 export const MenuHoverPluginDescriptor = definePlugin({
 	ctor: TMenuHoverPlugin,
@@ -20,5 +20,4 @@ export const MenuHoverPluginDescriptor = definePlugin({
 	 * открытость панели — проп `open` пункта. Контрибуция нужна лишь для того,
 	 * чтобы `create` попал в события, как у любого плагина.
 	 */
-	contribution: { events: [...PLUGIN_EVENTS] },
 })
