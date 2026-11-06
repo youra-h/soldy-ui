@@ -211,7 +211,7 @@ describe('хост Web Components · коллекции', () => {
 
 		const root = find(node, '.so-tabs')
 		const rows = node.querySelectorAll('.so-tabs__list > .so-tabs-item [role="tab"]')
-		const shown = [...root.querySelectorAll(':scope > .so-tabs__panel')].filter(
+		const shown = [...root.querySelectorAll(':scope > .so-tabs-content')].filter(
 			(panel) => panel instanceof HTMLElement && panel.style.display !== 'none',
 		)
 

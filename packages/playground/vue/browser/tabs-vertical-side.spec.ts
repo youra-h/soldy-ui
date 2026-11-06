@@ -68,7 +68,7 @@ const root = () => find('.so-tabs')
 /** Ряд набора — список и слоты по его краям: линию и полосу вид рисует на нём. */
 const bar = () => find('.so-tabs__bar')
 const list = () => find('.so-tabs__list')
-const panel = () => find('.so-tabs__panel')
+const panel = () => find('.so-tabs-content')
 const items = () => [...list().querySelectorAll<HTMLElement>(':scope > .so-tabs-item')]
 
 /** Середина коробки по горизонтали. */

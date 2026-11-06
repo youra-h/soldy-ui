@@ -1,44 +1,37 @@
-/* ─── Tabs ────────────────────────────────────────────────────
- * Набор табов: ряд со списком и панель активного таба — дети корня.
+/* Tabs structure: the bar and active content panel are children of the root.
  *
- *   .so-tabs                   корень
- *     .so-tabs__bar            ряд — список и слоты по его краям
- *       .so-tabs__leading      слот у начала ряда
- *       .so-tabs__list         список табов, `[role=tablist]`
- *         .so-tabs-item        таб — строка (Button) и крестик рядом
- *       .so-tabs__trailing     слот у конца ряда
- *     .so-tabs__panel          панель активного таба
+ *   .so-tabs                   root
+ *     .so-tabs__bar            tab list and slots at its edges
+ *       .so-tabs__leading      leading slot
+ *       .so-tabs__list         tab list, [role=tablist]
+ *         .so-tabs-item        tab row (Button) and sibling close button
+ *       .so-tabs__trailing     trailing slot
+ *     .so-tabs-content        active tab panel
  *
- * Слоты стоят рядом со списком, а не в нём: в `tablist` ARIA пускает только
- * `tab`, и кнопка в слоте была бы недопустимым потомком. Список забирает всё
- * место ряда между слотами, и табы выравниваются внутри него: `center` —
- * посередине между слотами, `end` — у `trailing` или у конца ряда,
- * `stretch` растягивает табы между слотами, а слоты остаются своей ширины.
+ * Slots sit beside the list: ARIA only allows tabs inside a tablist. The list
+ * fills the space between slots and aligns tabs within it: center centers them,
+ * end places them at the trailing edge, and stretch expands tabs without
+ * changing slot widths.
  *
- * От ядра приходят у корня модификаторы ориентации (`--horizontal`,
- * `--vertical`), выравнивания (`--center`, `--end`, `--stretch`; у `start`
- * модификатора нет) и стороны (`--position-end` — только у вертикальных).
- * Горизонтальный ряд стоит над панелью, слоты, список и табы в нём — в
- * строку; вертикальный — у начала строки от панели, а с `--position-end` — у
- * её конца, всё в нём — столбцом. Сторона логическая: в RTL вертикальный ряд
- * у начала стоит справа.
+ * Core sets root modifiers for orientation (--horizontal, --vertical), alignment
+ * (--center, --end, --stretch; start has no modifier), and vertical bar position
+ * (--position-end). A horizontal bar sits above the panel; a vertical bar sits
+ * at its inline start or end. Positions are logical, so inline start is right
+ * in RTL. Horizontal bar children form a row; vertical bar children form a column.
  *
- * Всё, что зависит от модификаторов корня, написано от своего корня
- * дочерними комбинаторами на всю глубину: свой ряд (`> .so-tabs__bar`), его
- * список (`> .so-tabs__bar > .so-tabs__list`) и своя панель
- * (`> .so-tabs__panel`). Табы бывают вложены — Tabs в слоте или панели
- * других, — и правило для потомков досталось бы вложенным: горизонтальные под
- * вертикальными выстраивались бы столбиком. Опора — разметка адаптеров: ряд и
- * панели — дети корня, слоты и список — дети ряда, табы — дети списка.
+ * Root-dependent rules use child combinators throughout: > .so-tabs__bar,
+ * > .so-tabs__bar > .so-tabs__list, and > .so-tabs-content. Descendant selectors
+ * would leak outer orientation and alignment into nested Tabs. Adapters keep
+ * bars and panels directly under the root, slots and lists under the bar, and
+ * tabs under the list.
  *
- * Зазоры — переменные корня документа: между табами, он же между слотом и
- * списком; между вертикальным рядом и панелью; над горизонтальной панелью и
- * под ней. Умолчания — числа темы oren; тема задаёт свои на корне документа.
+ * Document-root variables control gaps between tabs and slots, between a
+ * vertical bar and its panel, and margins above and below a horizontal panel.
+ * Defaults match oren; themes set their own values on the document root.
  *
- * Облик — виды (полоса `line`, карточка `contained`, папочные вкладки
- * `outline`) и их варианты, цвет текста, тише ли неактивный таб, кольцо
- * фокуса таба и вид его частей — рисует тема; линию, полосу и контейнер вида
- * — на ряду, от которого меряется место таба (ниже). */
+ * Themes provide views (line, contained, outline), variants, text colors,
+ * inactive-tab dimming, focus rings, and part appearance. View lines, indicators,
+ * and containers belong to the bar, which anchors tab measurements. */
 
 :root {
 	--so-tabs-gap: 1rem;
@@ -75,7 +68,7 @@
 
 /* Вертикальная панель — остаток строки рядом с рядом, без полей над и под
  * собой: от ряда её отделяет зазор корня. */
-.so-tabs--vertical > .so-tabs__panel {
+.so-tabs--vertical > .so-tabs-content {
 	flex: 1;
 	margin-block: 0;
 }
@@ -112,7 +105,7 @@
 	padding-inline: var(--so-tabs-slot-padding);
 }
 
-.so-tabs__panel {
+.so-tabs-content {
 	margin-block: var(--so-tabs-panel-margin);
 }
 

@@ -188,7 +188,7 @@ const COMPONENTS: ReadonlyArray<
 	['Drawer', Drawer, '.so-drawer', {}],
 	['Toasts', Toasts, '.so-toasts', {}],
 	['Menu', Menu, '.so-menu', {}],
-	['Tabs.Content', TabsContentProbe, '.so-tabs__panel', {}],
+	['Tabs.Content', TabsContentProbe, '.so-tabs-content', {}],
 	['Accordion', Accordion, '.so-accordion', {}],
 	['RadioGroup', RadioGroup, '.so-radio-group', {}],
 	['Tags', Tags, '.so-tags', {}],
@@ -987,8 +987,8 @@ const ROOTS: ReadonlyArray<
 	[
 		'Tabs.Content',
 		(props) => <TabsContentProbe {...props} />,
-		'.so-tabs__panel',
-		'.so-tabs__panel',
+		'.so-tabs-content',
+		'.so-tabs-content',
 	],
 	['Accordion', (props) => <Accordion {...props} />, '.so-accordion', '.so-accordion'],
 	[

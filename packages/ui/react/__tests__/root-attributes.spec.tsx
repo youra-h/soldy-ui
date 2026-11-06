@@ -196,7 +196,7 @@ const COMPONENTS: ReadonlyArray<
 	['ProgressLinear', ProgressLinear, '.so-progress-linear', {}],
 	['ProgressSpinner', ProgressSpinner, '.so-progress-spinner', {}],
 	['Skeleton', Skeleton, '.so-skeleton', {}],
-	['Tabs.Content', TabsContentProbe, '.so-tabs__panel', {}],
+	['Tabs.Content', TabsContentProbe, '.so-tabs-content', {}],
 	['Accordion', Accordion, '.so-accordion', {}],
 	['RadioGroup', RadioGroup, '.so-radio-group', {}],
 	['Slider', Slider, '.so-slider', {}],
@@ -703,8 +703,8 @@ const ROOTS: ReadonlyArray<
 	[
 		'Tabs.Content',
 		(props) => <TabsContentProbe {...props} />,
-		'.so-tabs__panel',
-		'.so-tabs__panel',
+		'.so-tabs-content',
+		'.so-tabs-content',
 	],
 	['Accordion', (props) => <Accordion {...props} />, '.so-accordion', '.so-accordion'],
 	[

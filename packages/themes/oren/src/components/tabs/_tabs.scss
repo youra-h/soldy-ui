@@ -7,33 +7,23 @@
 // `@soldy-ui/theme-base`). Здесь — облик: виды и их варианты, цвет текста,
 // тише ли неактивный таб, кольцо фокуса таба и вид его частей.
 
-// Внешний вид.
+// Appearance.
 //
-// Вид блока без модификатора — `line` с нейтралью; модификатору `line` своё
-// правило не нужно, он совпадает с базой. Виды табов не перекрывают друг
-// друга, а исключают: у `contained` и `outline` нет ни рамки ряда, ни полосы
-// под активным табом, и гасить их пришлось бы по свойству. Поэтому базовый вид
-// не действует, когда задан другой вид из `index.d.ts`. Нулевая специфичность —
-// как у базового вида Button.
+// The default view is neutral line. Other views exclude it rather than undoing
+// its borders and indicator property by property. Match the zero specificity
+// of the default Button view; no separate line modifier rule is needed.
 //
-// Линию, полосу и контейнер вида рисует ряд (`__bar` — список табов и слоты по
-// его краям), а не список: место активного таба плагин раскладки меряет от
-// ряда и пишет на него (`TTabsViewPlugin`), а слоты стоят в ряду рядом со
-// списком, и линия идёт под ними так же, как под табами. Позиционирует ряд
-// общий слой тем.
+// The bar (__bar) draws the view lines, indicator, and container, including the
+// slots beside the list. TTabsViewPlugin measures the active tab from the bar
+// and writes its geometry there. The shared theme base positions the bar.
 //
-// Всё, что зависит от модификаторов корня, — вид, его вариант, ориентация и
-// выравнивание (у ориентации и выравнивания — общий слой тем), — пишется от
-// своего корня дочерними комбинаторами:
-// свой ряд (`> .so-tabs__bar`), его табы
-// (`> .so-tabs__bar > .so-tabs__list > .so-tabs-item`) и своя панель
-// (`> .so-tabs__panel`). Табы бывают вложены — Tabs в слоте или панели
-// других, — и правило для потомков досталось бы и вложенным: горизонтальные
-// под вертикальными выстраивались столбиком, `contained` под `line` получали
-// линию и полосу, `line` под `outline` — рамки папочных вкладок, а цвета
-// брались от варианта внешних. Сбрасывать у вложенных чужие стили — то же
-// гашение по свойству, что и между видами. Опора — разметка адаптеров:
-// ряд и панели — дети корня, список — ребёнок ряда, табы — дети списка.
+// Root-dependent rules use child combinators throughout: > .so-tabs__bar,
+// > .so-tabs__bar > .so-tabs__list > .so-tabs-item, and > .so-tabs-content.
+// Descendant rules would leak orientation, alignment, view borders, indicators,
+// and variant colors into nested Tabs. Resetting those styles in nested Tabs
+// would require the same property-by-property overrides as between views.
+// Adapters keep the bar and panels directly under the root, the list under
+// the bar, and tabs under the list. Orientation and alignment live in the base.
 $line: ':where(.so-tabs:not(.so-tabs--view-contained, .so-tabs--view-outline))';
 
 // Полоса под активным табом — `::after` ряда по `--so-tabs-active-*`. К новому

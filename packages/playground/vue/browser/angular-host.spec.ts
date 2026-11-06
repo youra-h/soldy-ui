@@ -182,7 +182,7 @@ describe('хост Angular', () => {
 			'select',
 			'.so-select, .so-select__field, .so-input__leading, .so-select__field input, .so-input__trailing, .so-select__arrow, .so-select__arrow svg',
 		],
-		['tabs', '.so-tabs, .so-tabs-item, .so-tabs__panel'],
+		['tabs', '.so-tabs, .so-tabs-item, .so-tabs-content'],
 		['accordion', '.so-accordion, .so-accordion-item'],
 		// Arrows, pages and gaps — in one line
 		[

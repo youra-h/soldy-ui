@@ -219,8 +219,8 @@ const ROOTS: ReadonlyArray<readonly [string, (props: TProbeProps) => VNode, stri
 				default: () => h(TabsItem, { value: 'a', text: 'A', active: true }),
 				content: () => h(TabsContent, { value: 'a', ...props }),
 			}),
-		'.so-tabs__panel',
-		'.so-tabs__panel',
+		'.so-tabs-content',
+		'.so-tabs-content',
 	],
 	['Accordion', (props) => h(Accordion, props), '.so-accordion', '.so-accordion'],
 	[

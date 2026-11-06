@@ -208,7 +208,7 @@ const CASES: readonly TCase[] = [
 				content: () => h(TabsContent, { value: 'a' }, () => h('p', 'Панель')),
 			}),
 		box: '.so-tabs',
-		parts: ['.so-tabs-item[data-selected="true"] > .so-button', '.so-tabs__panel p'],
+		parts: ['.so-tabs-item[data-selected="true"] > .so-button', '.so-tabs-content p'],
 	},
 	{
 		name: 'Tags',

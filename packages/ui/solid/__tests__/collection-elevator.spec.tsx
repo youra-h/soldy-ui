@@ -220,7 +220,7 @@ describe('элементы разметки в движке владельца',
 	it('табы: в движке ровно табы разметки; клик активирует таб и его панель', async () => {
 		const probe = engineProbe()
 		const panels = () =>
-			[...document.querySelectorAll('.so-tabs__panel')].map((panel) => panel.textContent)
+			[...document.querySelectorAll('.so-tabs-content')].map((panel) => panel.textContent)
 
 		mount(() => (
 			<Tabs

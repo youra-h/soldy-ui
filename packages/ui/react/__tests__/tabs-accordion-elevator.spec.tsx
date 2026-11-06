@@ -65,7 +65,7 @@ function tab(text: string): HTMLElement {
 const selection = () => tabs().map((row) => row.getAttribute('aria-selected'))
 
 const panels = () =>
-	[...document.querySelectorAll('.so-tabs__panel')].map((panel) => panel.textContent)
+	[...document.querySelectorAll('.so-tabs-content')].map((panel) => panel.textContent)
 
 const headers = () => [...document.querySelectorAll('.so-accordion-item__header')]
 
@@ -284,7 +284,7 @@ describe('сервер', () => {
 			/>,
 		)
 		const rows = [...container.querySelectorAll('[role="tab"]')]
-		const shown = [...container.querySelectorAll('.so-tabs__panel')]
+		const shown = [...container.querySelectorAll('.so-tabs-content')]
 
 		expect(rows.map((row) => row.getAttribute('aria-selected'))).toEqual(['false', 'true'])
 		expect(shown.map((panel) => panel.textContent)).toEqual(['Панель B'])
@@ -315,7 +315,7 @@ describe('сервер', () => {
 		)
 		const server = serverMarkup(element)
 
-		expect(server.querySelector('.so-tabs__panel')?.id).toBe('general')
+		expect(server.querySelector('.so-tabs-content')?.id).toBe('general')
 		expect(server.querySelector('[role="tab"]')?.getAttribute('aria-controls')).not.toBe(
 			'general',
 		)
@@ -359,7 +359,7 @@ describe('сервер', () => {
 		)
 
 		// Табы разметки входят в коллекцию при коммите: сервер панели не рисует
-		expect(serverMarkup(element).querySelector('.so-tabs__panel')).toBeNull()
+		expect(serverMarkup(element).querySelector('.so-tabs-content')).toBeNull()
 
 		const { onRecoverableError } = hydrate(element)
 

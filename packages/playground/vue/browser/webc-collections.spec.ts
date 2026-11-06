@@ -344,7 +344,9 @@ describe('клавиатура', () => {
 		expect(rows[1]?.getAttribute('aria-selected')).toBe('true')
 		expect(rows.map((row) => row.getAttribute('tabindex'))).toEqual(['-1', '0', '-1'])
 
-		const shown = all(root, '.so-tabs__panel').filter((panel) => panel.style.display !== 'none')
+		const shown = all(root, '.so-tabs-content').filter(
+			(panel) => panel.style.display !== 'none',
+		)
 
 		expect(shown.map((panel) => panel.textContent)).toEqual(['Панель B'])
 	})

@@ -188,7 +188,11 @@ const COMPONENTS: ReadonlyArray<readonly [string, (props: TProbeProps) => TMount
 	['ProgressLinear', (props) => mount(ProgressLinear, props), '.so-progress-linear'],
 	['Skeleton', (props) => mount(Skeleton, props), '.so-skeleton'],
 	// Вид обёртки — последним: `kind` есть и среди пропсов строки (у поля даты)
-	['Tabs.Content', (props) => mount(ItemProbe, { ...props, kind: 'content' }), '.so-tabs__panel'],
+	[
+		'Tabs.Content',
+		(props) => mount(ItemProbe, { ...props, kind: 'content' }),
+		'.so-tabs-content',
+	],
 	['Accordion', (props) => mount(Accordion, props), '.so-accordion'],
 	['Tags', (props) => mount(Tags, props), '.so-tags'],
 	['RadioGroup', (props) => mount(RadioGroup, props), '.so-radio-group'],
@@ -849,7 +853,7 @@ const ROOTS: ReadonlyArray<readonly [TRootKind, string, string]> = [
 	['Rating', '.so-rating', '.so-rating'],
 	['Tabs', '.so-tabs', '.so-tabs'],
 	['Tabs.Item', '.so-tabs-item', '.so-tabs-item'],
-	['Tabs.Content', '.so-tabs__panel', '.so-tabs__panel'],
+	['Tabs.Content', '.so-tabs-content', '.so-tabs-content'],
 	['Accordion', '.so-accordion', '.so-accordion'],
 	['Accordion.Item', '.so-accordion-item', '.so-accordion-item'],
 	['RadioGroup', '.so-radio-group', '.so-radio-group'],

@@ -334,7 +334,7 @@ describe('элементы разметки в движке владельца',
 
 	/** Тексты показанных панелей: неактивная панель скрыта и пуста. */
 	const panels = () =>
-		[...document.querySelectorAll('.so-tabs__panel')]
+		[...document.querySelectorAll('.so-tabs-content')]
 			.filter((panel) => panel instanceof HTMLElement && panel.style.display !== 'none')
 			.map((panel) => panel.textContent?.trim())
 

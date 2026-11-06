@@ -404,7 +404,7 @@ const COMPONENTS: ReadonlyArray<
 	['Textarea', 'div', 'so-textarea', isTextarea, 'so-textarea', 'textarea'],
 	['Tabs', 'div', 'so-tabs', isTabs, 'so-tabs', '[role="tablist"]'],
 	['Tabs.Item', 'div', 'so-tabs-item', isTabsItem, 'so-tabs-item', '[embedded="tabs.row"]'],
-	['Tabs.Content', 'div', 'so-tabs-content', isTabsContent, 'so-tabs__panel', null],
+	['Tabs.Content', 'div', 'so-tabs-content', isTabsContent, 'so-tabs-content', null],
 	['Accordion', 'div', 'so-accordion', isAccordion, 'so-accordion', null],
 	[
 		'Accordion.Item',
