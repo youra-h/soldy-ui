@@ -40,15 +40,15 @@ import {
 	TSelectGroupElement,
 	TSelectItemElement,
 	TTagsElement,
-	defineElement,
 	registerItemRowTag,
-	type ITemplate,
 	type TItemRowElementProps,
 	type TFrameElementProps,
 	type TSelectElementProps,
 	type TSelectItemElementProps,
 	type TTagsElementProps,
 } from '@soldy-ui/webc'
+import { defineElement } from '../src/adapter/runtime/defineElement'
+import { type ITemplate } from '../src/adapter/template/types'
 import { selectTemplate } from '../src/components/select/select.template'
 import { selectItemTemplate } from '../src/components/select/item/select-item.template'
 import { selectGroupTemplate } from '../src/components/select/group/select-group.template'
@@ -692,8 +692,8 @@ describe('множественный выбор', () => {
 	})
 
 	/**
-	 * Незаданного `tags_overflow` элемент ядру не пишет: режим переполнения
-	 * остаётся движка снаружи.
+	 * An omitted tagsOverflow is not written to the core, preserving the
+	 * overflow mode of an external engine.
 	 */
 	it('движок снаружи сохраняет режим переполнения тегов', async () => {
 		const engine = createEngineSelect()

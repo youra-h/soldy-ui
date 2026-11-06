@@ -1,3 +1,3 @@
-export { setupSkeleton } from './setup.component'
-export { TSkeletonElement, type TSkeletonElementProps } from './Skeleton.element'
-export { skeletonTemplate } from './skeleton.template'
+/** Application API for this element entry. */
+export { TSkeletonElement } from './Skeleton.element'
+export type { TSkeletonElementProps } from './Skeleton.element'

@@ -74,14 +74,14 @@ describe('Select передаёт режим своим тегам', () => {
 	it('по умолчанию wrap — поле ведёт себя как прежде', () => {
 		const { facade } = createSelect()
 
-		expect(facade.tags_overflow).toBe('wrap')
+		expect(facade.tagsOverflow).toBe('wrap')
 		expect(facade.tags?.overflow).toBe('wrap')
 	})
 
 	it('заданный режим доезжает до инстанса тегов', () => {
 		const { facade } = createSelect()
 
-		facade.tags_overflow = 'scroll'
+		facade.tagsOverflow = 'scroll'
 
 		expect(facade.tags?.overflow).toBe('scroll')
 	})
@@ -89,7 +89,7 @@ describe('Select передаёт режим своим тегам', () => {
 	it('режим переживает пересоздание тегов при смене mode', () => {
 		const { facade } = createSelect()
 
-		facade.tags_overflow = 'scroll'
+		facade.tagsOverflow = 'scroll'
 		facade.mode = 'single'
 		facade.mode = 'multiple'
 
@@ -99,7 +99,7 @@ describe('Select передаёт режим своим тегам', () => {
 	it('задан пропом — доезжает и до свежего инстанса', () => {
 		const owner = new TSelect()
 		const facade = new TSelectCollectionFacade(
-			{ mode: 'multiple', tags_overflow: 'scroll' },
+			{ mode: 'multiple', tagsOverflow: 'scroll' },
 			{ owner },
 		)
 
@@ -122,7 +122,7 @@ describe('Select передаёт режим своим тегам', () => {
 			{ engine },
 		)
 
-		expect(facade.tags_overflow).toBe('scroll')
+		expect(facade.tagsOverflow).toBe('scroll')
 		expect(facade.tags?.overflow).toBe('scroll')
 	})
 })

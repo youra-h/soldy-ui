@@ -1,6 +1,5 @@
-export { setupToasts } from './setup.component'
-export { TToastsElement, type TToastsElementProps } from './Toasts.element'
-export { toastsTemplate, TOASTS_ITEM_SLOTS } from './toasts.template'
-// The API of the manager comes with its entry: taken from the package root, it
-// would bring every element along
-export { toastsOf, type TToastRender } from '../../adapter'
+/** Application API for this element entry. */
+export { TToastsElement } from './Toasts.element'
+export type { TToastsElementProps } from './Toasts.element'
+export { toastsOf } from '../../adapter/toasts/toastsOf'
+export type { TToastRender } from '../../adapter/toasts/toastsOf'

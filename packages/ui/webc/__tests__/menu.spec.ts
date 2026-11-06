@@ -55,8 +55,6 @@ import {
 	TMenuRadioGroupElement,
 	TMenuRadioItemElement,
 	TMenuSubmenuElement,
-	defineElement,
-	type ITemplate,
 	type TMenuCheckboxItemElementProps,
 	type TMenuElementProps,
 	type TMenuGroupElementProps,
@@ -66,6 +64,8 @@ import {
 	type TMenuRadioItemElementProps,
 	type TMenuSubmenuElementProps,
 } from '@soldy-ui/webc'
+import { defineElement } from '../src/adapter/runtime/defineElement'
+import { type ITemplate } from '../src/adapter/template/types'
 import { menuTemplate } from '../src/components/menu/menu.template'
 import { menuItemTemplate } from '../src/components/menu/item/menu-item.template'
 import { menuCheckboxItemTemplate } from '../src/components/menu/checkbox-item/menu-checkbox-item.template'

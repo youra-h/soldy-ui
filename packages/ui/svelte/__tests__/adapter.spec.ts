@@ -15,12 +15,9 @@ import { describe, it, expect, expectTypeOf } from 'vitest'
 import { flushSync } from 'svelte'
 import { TButton } from '@soldy-ui/core'
 import { TPluginBundle } from '@soldy-ui/plugins'
-import {
-	Button,
-	isTagComponent,
-	roleIcon,
-	type TSvelteAdapterContextOptions,
-} from '@soldy-ui/svelte'
+import { Button, roleIcon } from '@soldy-ui/svelte'
+import { isTagComponent } from '../src/adapter/runtime/tag'
+import { type TSvelteAdapterContextOptions } from '../src/adapter/common/createSvelteAdapterContext'
 import Link from './Link.test.svelte'
 import RenderEvent from './RenderEvent.test.svelte'
 import { find, mount, nextFrame, readyProbe } from './mount'

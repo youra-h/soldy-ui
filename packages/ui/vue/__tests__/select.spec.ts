@@ -16,7 +16,8 @@ import { defineComponent, nextTick, h, ref } from 'vue'
  * плагины, которым нужен DOM-узел, включаются кадром позже. Ждём кадр.
  */
 const nextFrame = () => new Promise((resolve) => requestAnimationFrame(resolve))
-import { Frame, LocaleProvider, Select, SelectItem, Input, propsSelect } from '@soldy-ui/vue'
+import { Frame, LocaleProvider, Select, SelectItem, Input } from '@soldy-ui/vue'
+import { propsSelect } from '../src/components/select/base.component'
 import { TAnchorPlugin, ruRU } from '@soldy-ui/plugins'
 import { TSelect, createEngineSelect } from '@soldy-ui/core'
 import type { IInput, TSelectPlacement } from '@soldy-ui/core'
@@ -575,9 +576,27 @@ describe('множественный выбор', () => {
 		expect(document.querySelectorAll('.so-tags-item')).toHaveLength(1)
 	})
 
+	it('tagsOverflow updates the tag row and resets to wrap when removed', async () => {
+		wrapper = mount(Select, {
+			props: { mode: 'multiple', tagsOverflow: 'scroll' },
+			attachTo: document.body,
+		})
+
+		expect(wrapper.find('.so-select__tags').attributes('data-overflow')).toBe('scroll')
+
+		await wrapper.setProps({ tagsOverflow: 'wrap' })
+
+		expect(wrapper.find('.so-select__tags').attributes('data-overflow')).toBe('wrap')
+
+		await wrapper.setProps({ tagsOverflow: 'scroll' })
+		await wrapper.setProps({ tagsOverflow: undefined })
+
+		expect(wrapper.find('.so-select__tags').attributes('data-overflow')).toBe('wrap')
+	})
+
 	/**
-	 * Незаданному `tags_overflow` Vue ставит умолчание декларации — `wrap`.
-	 * Чужому движку фасад его не пишет: режим переполнения остаётся движка.
+	 * Vue supplies the declaration default, wrap, when tagsOverflow is omitted.
+	 * The facade preserves the overflow mode of an external engine.
 	 */
 	it('движок снаружи сохраняет режим переполнения тегов', async () => {
 		const engine = createEngineSelect()

@@ -68,11 +68,6 @@ import {
 	Textarea,
 	Toasts,
 	Tooltip,
-	toControlAttrs,
-	toRootForward,
-	toRootLayout,
-	toRootProps,
-	toWrappedRootProps,
 	type AccordionItemProps,
 	type AccordionProps,
 	type ButtonProps,
@@ -121,6 +116,13 @@ import {
 	type ToastsProps,
 	type TooltipProps,
 } from '@soldy-ui/solid'
+import {
+	toControlAttrs,
+	toRootForward,
+	toRootLayout,
+	toRootProps,
+	toWrappedRootProps,
+} from '../src/adapter/common/root'
 import { find, mount, nextFrame } from './mount'
 
 /** Общие пропсы строки таблицы: направление, атрибуты и колбэк готовности есть у всех. */

@@ -33,7 +33,6 @@ import {
 	Accordion,
 	Dialog,
 	Field,
-	KeyedFor,
 	ListBox,
 	Input,
 	RadioGroup,
@@ -41,11 +40,11 @@ import {
 	Tabs,
 	Tags,
 	Toasts,
-	createPartNodes,
-	createPartProps,
-	createRootProps,
 	useToasts,
 } from '@soldy-ui/solid'
+import { KeyedFor } from '../../src/adapter/runtime/KeyedFor'
+import { createPartNodes } from '../../src/adapter/runtime/part-node'
+import { createPartProps, createRootProps } from '../../src/adapter/common/root'
 import * as flow from '../../src/adapter/runtime/flow'
 
 /** Движок табов страницы — только у гидратации. */

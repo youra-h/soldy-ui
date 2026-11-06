@@ -133,7 +133,7 @@ const pairHarness = (options: {
 							editable: true,
 							clearable: true,
 							size: options.size,
-							tags_overflow: options.overflow,
+							tagsOverflow: options.overflow,
 							direction: options.direction,
 							value,
 						},
@@ -451,7 +451,7 @@ const crowded = (root: ParentNode) => scrolls(find('.so-select__field .so-tags',
  * что его растит сам факт тегов, а не перенос. Это сторож условия
  * `data-overflow='wrap'` в правиле роста (`themes/base/src/components/select.css`).
  */
-describe('tags_overflow: scroll', () => {
+describe('tagsOverflow: scroll', () => {
 	const overflow = 'scroll'
 
 	it('ряд — одна строка, а поле не выше поля без выбора', async () => {
@@ -606,7 +606,7 @@ describe('tags_overflow: scroll', () => {
  * прокрутка ряда, поэтому проверяется вычисленная маска. Меняется она кадром
  * позже прокрутки — отсюда ожидание, а не чтение сразу.
  */
-describe('tags_overflow: scroll — подсказка у края вместо полосы', () => {
+describe('tagsOverflow: scroll — подсказка у края вместо полосы', () => {
 	/** Ряд первого поля — того, где выбор есть. */
 	const row = () => find('.so-select__field .so-tags')
 
@@ -832,7 +832,7 @@ describe('tags_overflow: scroll — подсказка у края вместо 
  * выйти. Правило поля запас по строке снимает, и теги стоят вплотную к краю
  * ряда, как в `wrap`.
  */
-describe('tags_overflow: scroll — кольцо фокуса крестика', () => {
+describe('tagsOverflow: scroll — кольцо фокуса крестика', () => {
 	it('ряд не срезает кольцо сверху и снизу', async () => {
 		render(pairHarness({ value: ALL_VALUES, texts: OPTIONS, overflow: 'scroll' }))
 

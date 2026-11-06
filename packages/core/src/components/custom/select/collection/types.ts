@@ -110,7 +110,7 @@ export interface ISelectCollectionProps<TItemProps = ISelectItemProps, TItem = I
 	 * своему `TTags` так же, как `size` и `variant`; по умолчанию `wrap` —
 	 * поведение поля не меняется, пока режим не задали.
 	 */
-	tags_overflow?: TTagsOverflow
+	tagsOverflow?: TTagsOverflow
 }
 
 /** Item-level props опции. */
@@ -126,7 +126,7 @@ export type TSelectCollectionFacadeOptions = TCollectionFacadeOptions<
  * плюс своё — режим переполнения ряда тегов.
  */
 export type TSelectCollectionFacadeProps = TGroupFacadeProps<ISelectItem> &
-	Pick<ISelectCollectionProps, 'tags_overflow'>
+	Pick<ISelectCollectionProps, 'tagsOverflow'>
 
 /** Item-адаптеры коллекции Select — типизированный доступ к `context.adapters`. */
 export type TSelectAdapters = {

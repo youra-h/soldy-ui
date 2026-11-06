@@ -17,7 +17,8 @@ import { ReactiveEffect, createApp, h, nextTick, ref, type Component } from 'vue
 import { queryObjects } from 'node:v8'
 import { TButton } from '@soldy-ui/core'
 import { ButtonDescriptor } from '@soldy-ui/setup'
-import { BaseButton, Button, ListBox, ListBoxItem } from '@soldy-ui/vue'
+import { Button, ListBox, ListBoxItem } from '@soldy-ui/vue'
+import BaseButton from '../src/components/button/base.component'
 import {
 	createVueAdapterContext,
 	extendBinding,

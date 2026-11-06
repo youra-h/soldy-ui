@@ -31,12 +31,12 @@ import {
 	TRadioGroupElement,
 	TTabsElement,
 	TTabsItemElement,
-	defineElement,
 	type TAccordionElementProps,
 	type TRadioGroupElementProps,
 	type TTabsElementProps,
 	type TTabsItemElementProps,
 } from '@soldy-ui/webc'
+import { defineElement } from '../src/adapter/runtime/defineElement'
 import { createWebcElevator } from '../src/adapter/elevator'
 import { TPlaceContext } from '../src/adapter/context'
 

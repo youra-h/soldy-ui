@@ -1,6 +1,3 @@
-export { setupProgressSpinner } from './setup.component'
-export {
-	TProgressSpinnerElement,
-	type TProgressSpinnerElementProps,
-} from './ProgressSpinner.element'
-export { progressSpinnerTemplate } from './progress-spinner.template'
+/** Application API for this element entry. */
+export { TProgressSpinnerElement } from './ProgressSpinner.element'
+export type { TProgressSpinnerElementProps } from './ProgressSpinner.element'

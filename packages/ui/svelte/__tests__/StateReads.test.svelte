@@ -8,7 +8,8 @@
 	 */
 	import type { TButton } from '@soldy-ui/core'
 	import { ButtonDescriptor } from '@soldy-ui/setup'
-	import { createSvelteAdapterContext, useAdapter } from '@soldy-ui/svelte'
+	import { createSvelteAdapterContext } from '../src/adapter/common/createSvelteAdapterContext'
+	import { useAdapter } from '../src/adapter/runtime/useAdapter.svelte'
 
 	type THarnessProps = {
 		ctrl: TButton

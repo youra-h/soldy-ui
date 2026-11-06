@@ -26,24 +26,23 @@
  */
 
 import { describe, it, expect } from 'vitest'
+import { ACCORDION_ITEM_SLOTS } from '../src/components/accordion/accordion.template'
+import { CALENDAR_ITEM_SLOTS } from '../src/components/calendar/calendar.template'
+import { DATE_PICKER_CALENDAR_SLOTS } from '../src/components/date-picker/date-picker.template'
+import { LIST_BOX_ITEM_SLOTS } from '../src/components/list-box/list-box.template'
 import {
-	ACCORDION_ITEM_SLOTS,
-	CALENDAR_ITEM_SLOTS,
-	DATE_PICKER_CALENDAR_SLOTS,
-	LIST_BOX_ITEM_SLOTS,
 	MENU_ITEM_SLOTS,
 	MENU_SUBMENU_SLOTS,
 	MENU_SUBMENU_TEMPLATES,
-	PAGINATION_ITEM_SLOTS,
-	RADIO_GROUP_ITEM_SLOTS,
-	SELECT_ITEM_SLOTS,
-	TABLE_COLUMN_SLOTS,
-	TABLE_ROW_SLOTS,
-	TABS_ITEM_SLOTS,
-	TAGS_ITEM_SLOTS,
-	TOASTS_ITEM_SLOTS,
-	type TItemSlots,
-} from '@soldy-ui/webc'
+} from '../src/components/menu/items'
+import { PAGINATION_ITEM_SLOTS } from '../src/components/pagination/pagination.template'
+import { RADIO_GROUP_ITEM_SLOTS } from '../src/components/radio-group/radio-group.template'
+import { SELECT_ITEM_SLOTS } from '../src/components/select/select.template'
+import { TABLE_COLUMN_SLOTS, TABLE_ROW_SLOTS } from '../src/components/table/table.template'
+import { TABS_ITEM_SLOTS } from '../src/components/tabs/tabs.template'
+import { TAGS_ITEM_SLOTS } from '../src/components/tags/tags.template'
+import { TOASTS_ITEM_SLOTS } from '../src/components/toasts/toasts.template'
+import { type TItemSlots } from '../src/adapter/template/parts'
 // Таблица пробросов сторожа setup — строки «владелец, слот ← источник, слот, ключ»
 import RELAYS_SOURCE from '../../../setup/__tests__/item-slots.spec.ts?raw'
 

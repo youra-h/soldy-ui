@@ -25,7 +25,8 @@ import {
 	TSurface,
 	type IComponentDescriptor,
 } from '@soldy-ui/setup'
-import { TButtonElement, WebcProfile, type TButtonElementProps } from '@soldy-ui/webc'
+import { TButtonElement, type TButtonElementProps } from '@soldy-ui/webc'
+import { WebcProfile } from '../src/adapter/common/profile'
 
 /** `TElementPlugin` объявляет узел через кадр — после него ядро шлёт `ready`. */
 const nextFrame = () => new Promise<void>((resolve) => requestAnimationFrame(() => resolve()))

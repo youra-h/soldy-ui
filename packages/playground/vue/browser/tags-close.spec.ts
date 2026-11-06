@@ -61,7 +61,7 @@ const selectHarness = (size: (typeof COMPONENT_SIZES)[number], overflow?: TTagsO
 						editable: true,
 						value: ['0'],
 						size,
-						tags_overflow: overflow,
+						tagsOverflow: overflow,
 					},
 					{ default: () => [h(SelectItem, { key: '0', value: '0', text: 'Москва' })] },
 				),

@@ -55,19 +55,18 @@ import {
 	type IComponentDescriptor,
 } from '@soldy-ui/setup'
 import {
-	ButtonOutputNames,
-	ComponentOutputNames,
-	ComponentViewOutputNames,
-	ListBoxOutputNames,
 	TButtonComponent,
-	TComponentBase,
 	TComponentComponent,
 	TComponentViewComponent,
 	TListBoxComponent,
-	TViewSurface,
-	ViewOutputNames,
-	useOutputs,
 } from '@soldy-ui/angular'
+import { ButtonOutputNames } from '../src/generated/button.metadata'
+import { ComponentOutputNames } from '../src/generated/component.metadata'
+import { ComponentViewOutputNames } from '../src/generated/component-view.metadata'
+import { ListBoxOutputNames } from '../src/generated/list-box.metadata'
+import { TComponentBase } from '../src/adapter/runtime/component.base'
+import { TViewSurface, ViewOutputNames } from '../src/generated/view.metadata'
+import { useOutputs } from '../src/adapter/common/useOutputs'
 import { exportedDeclarations, type TDeclaration } from './declarations'
 
 /** All outputs of a visual component: those of `TViewSurface` and its own. */

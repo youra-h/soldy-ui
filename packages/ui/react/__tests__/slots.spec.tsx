@@ -27,8 +27,8 @@ import {
 	type SliderProps,
 	type ToastsProps,
 	type TooltipProps,
-	type UseDomProps,
 } from '@soldy-ui/react'
+import { type UseDomProps } from '../src/types'
 
 const roots: Root[] = []
 

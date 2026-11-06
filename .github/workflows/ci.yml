@@ -197,6 +197,9 @@ jobs:
       - name: Импорты пакетов объявлены
         run: npm run check:published-imports
 
+      - name: Public adapter API
+        run: npm run check:public-api
+
       # After the build as well: React Server Components (the Next.js App
       # Router) run every module a Server Component imports on the server,
       # where React has no state, effects or context, and only a module that

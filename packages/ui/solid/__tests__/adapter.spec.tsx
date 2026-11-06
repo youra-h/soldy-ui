@@ -21,16 +21,12 @@ import { $PROXY, Show, createRenderEffect, createRoot, type Accessor, type JSX }
 import { Dynamic } from 'solid-js/web'
 import { TComponentView } from '@soldy-ui/core'
 import { TPluginBundle } from '@soldy-ui/plugins'
-import {
-	Button,
-	createShallowState,
-	isTagComponent,
-	joinState,
-	roleIcon,
-	rootTag,
-	setupComponentView,
-	type ComponentViewProps,
-} from '@soldy-ui/solid'
+import { Button, roleIcon, type ComponentViewProps } from '@soldy-ui/solid'
+import { createShallowState } from '../src/adapter/runtime/state'
+import { isTagComponent } from '../src/adapter/runtime/tag'
+import { joinState } from '../src/adapter/runtime/state'
+import { rootTag } from '../src/adapter/runtime/tag'
+import { setupComponentView } from '../src/components/component-view/setup.component'
 import { find, mount, nextFrame } from './mount'
 
 /** Набор кнопки — из `onBundleCreate`, на микрозадаче после сборки. */

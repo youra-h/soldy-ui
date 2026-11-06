@@ -1,13 +1,11 @@
 /**
- * Содержимое коллекций стенда — один состав на все адаптеры.
+ * Shared playground collection data for every adapter.
  *
- * Содержимое не свойство, из метаданных его не достать, и рисует его превью
- * (см. `previews` в адаптере). Но состав при этом общий: строкам страницы он
- * нужен и вне превью — пресету `tags_overflow` у Select, например, нужно
- * выбрать всё, а значения выбора он берёт отсюда, а не переписывает своими.
+ * Previews render collection content because it is not a descriptor prop.
+ * Property presets also use these values: Select's tagsOverflow preset selects
+ * every item without duplicating the selection values.
  *
- * Пять строк, а не три: на трёх нечем проверить свойства, которые начинаются
- * с переполнения — `overflow` у Tags, предел строк у списка, перенос вкладок.
+ * Five rows exercise overflow, row limits and tab wrapping.
  */
 export const COLLECTION_ITEMS = [
 	{ value: 'a', text: 'Первый' },

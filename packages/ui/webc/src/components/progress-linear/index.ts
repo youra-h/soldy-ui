@@ -1,3 +1,3 @@
-export { setupProgressLinear } from './setup.component'
-export { TProgressLinearElement, type TProgressLinearElementProps } from './ProgressLinear.element'
-export { progressLinearTemplate } from './progress-linear.template'
+/** Application API for this element entry. */
+export { TProgressLinearElement } from './ProgressLinear.element'
+export type { TProgressLinearElementProps } from './ProgressLinear.element'

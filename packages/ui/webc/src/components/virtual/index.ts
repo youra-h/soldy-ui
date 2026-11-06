@@ -1,3 +1,3 @@
-export { setupVirtual } from './setup.component'
-export { TVirtualElement, type TVirtualElementProps } from './Virtual.element'
-export { virtualTemplate } from './virtual.template'
+/** Application API for this element entry. */
+export { TVirtualElement } from './Virtual.element'
+export type { TVirtualElementProps } from './Virtual.element'

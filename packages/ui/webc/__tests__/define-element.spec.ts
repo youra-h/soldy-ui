@@ -34,11 +34,11 @@ import {
 	TComponentViewElement,
 	TRadioGroupElement,
 	TRadioGroupItemElement,
-	defineElement,
 	type TButtonElementProps,
 	type TRadioGroupElementProps,
 	type TRadioGroupItemElementProps,
 } from '@soldy-ui/webc'
+import { defineElement } from '../src/adapter/runtime/defineElement'
 
 /** Инстансы, на которые встал плагин приложения, — по одному на сборку. */
 const installed: unknown[] = []

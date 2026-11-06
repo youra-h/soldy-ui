@@ -14,10 +14,6 @@ import {
 import { TButton } from '@soldy-ui/core'
 import {
 	Button,
-	ResolvedSlot,
-	liveScope,
-	relaySlot,
-	renderSlot,
 	type ButtonProps,
 	type CalendarItemProps,
 	type CalendarProps,
@@ -35,9 +31,10 @@ import {
 	type SliderProps,
 	type SwitchProps,
 	type TooltipProps,
-	type TSlotContent,
-	type UseDomProps,
 } from '@soldy-ui/solid'
+import { ResolvedSlot } from '../src/adapter/common/ResolvedSlot'
+import { liveScope, relaySlot, renderSlot, type TSlotContent } from '../src/adapter/common/slots'
+import { type UseDomProps } from '../src/types'
 import { mount } from './mount'
 
 /** Корень кнопки с пропсами `props`. */

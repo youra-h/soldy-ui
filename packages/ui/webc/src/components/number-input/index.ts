@@ -1,3 +1,3 @@
-export { setupNumberInput } from './setup.component'
-export { TNumberInputElement, type TNumberInputElementProps } from './NumberInput.element'
-export { numberInputTemplate } from './number-input.template'
+/** Application API for this element entry. */
+export { TNumberInputElement } from './NumberInput.element'
+export type { TNumberInputElementProps } from './NumberInput.element'

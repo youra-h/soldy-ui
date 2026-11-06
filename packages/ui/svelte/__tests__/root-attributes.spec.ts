@@ -78,12 +78,6 @@ import {
 	Toasts,
 	Tooltip,
 	roleIcon,
-	toControlAttrs,
-	toRootForward,
-	toRootLayout,
-	toRootProps,
-	toShownStyleText,
-	toWrappedRootProps,
 	type AccordionProps,
 	type ButtonProps,
 	type CalendarItemProps,
@@ -121,6 +115,14 @@ import {
 	type ToastsProps,
 	type TooltipProps,
 } from '@soldy-ui/svelte'
+import {
+	toControlAttrs,
+	toRootForward,
+	toRootLayout,
+	toRootProps,
+	toShownStyleText,
+	toWrappedRootProps,
+} from '../src/adapter/common/root'
 import Attach from './Attach.test.svelte'
 import BindRef from './BindRef.test.svelte'
 import ItemProbe from './ItemProbe.test.svelte'

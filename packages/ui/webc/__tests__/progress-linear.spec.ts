@@ -12,11 +12,8 @@
 import { describe, it, expect, afterEach } from 'vitest'
 import { TProgressLinear } from '@soldy-ui/core'
 import { ProgressLinearDescriptor } from '@soldy-ui/setup'
-import {
-	TProgressLinearElement,
-	toAttributeName,
-	type TProgressLinearElementProps,
-} from '@soldy-ui/webc'
+import { TProgressLinearElement, type TProgressLinearElementProps } from '@soldy-ui/webc'
+import { toAttributeName } from '../src/adapter/common/attributes'
 import { progressLinearTemplate } from '../src/components/progress-linear/progress-linear.template'
 import { bareContext } from './template-context'
 

@@ -10,7 +10,7 @@ import {
 	defineComponent,
 	type IComponentDescriptor,
 } from '@soldy-ui/setup'
-import { buildAttributeMap, coerceAttribute } from '@soldy-ui/webc'
+import { buildAttributeMap, coerceAttribute } from '../src/adapter/common/attributes'
 
 /**
  * Значение пропа из строки атрибута — тем же путём, что у элемента: карта

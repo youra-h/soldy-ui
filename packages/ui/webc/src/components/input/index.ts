@@ -1,3 +1,3 @@
-export { setupInput } from './setup.component'
-export { TInputElement, type TInputElementProps } from './Input.element'
-export { inputTemplate } from './input.template'
+/** Application API for this element entry. */
+export { TInputElement } from './Input.element'
+export type { TInputElementProps } from './Input.element'

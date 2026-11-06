@@ -1,3 +1,3 @@
-export { setupTooltip } from './setup.component'
-export { TTooltipElement, type TTooltipElementProps } from './Tooltip.element'
-export { tooltipTemplate } from './tooltip.template'
+/** Application API for this element entry. */
+export { TTooltipElement } from './Tooltip.element'
+export type { TTooltipElementProps } from './Tooltip.element'

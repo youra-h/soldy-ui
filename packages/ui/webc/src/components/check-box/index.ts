@@ -1,3 +1,3 @@
-export { setupCheckBox } from './setup.component'
-export { TCheckBoxElement, type TCheckBoxElementProps } from './CheckBox.element'
-export { checkBoxTemplate } from './check-box.template'
+/** Application API for this element entry. */
+export { TCheckBoxElement } from './CheckBox.element'
+export type { TCheckBoxElementProps } from './CheckBox.element'

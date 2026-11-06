@@ -8,7 +8,7 @@
  * инстанса, ни фасада.
  */
 
-import type { ITemplateContext } from '@soldy-ui/webc'
+import type { ITemplateContext } from '../src/adapter/template/types'
 
 export function bareContext<TInstance, TFacade>(
 	root: HTMLElement,

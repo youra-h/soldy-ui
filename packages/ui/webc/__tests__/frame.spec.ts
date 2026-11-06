@@ -39,11 +39,11 @@ import {
 	TComponentViewElement,
 	TFrameElement,
 	TLocaleProviderElement,
-	defineElement,
 	type TButtonElementProps,
 	type TComponentViewElementProps,
 	type TFrameElementProps,
 } from '@soldy-ui/webc'
+import { defineElement } from '../src/adapter/runtime/defineElement'
 import { frameTemplate } from '../src/components/frame/frame.template'
 import { TELEPORT_ANCHOR } from '../src/adapter/runtime/teleport'
 import { bareContext } from './template-context'
