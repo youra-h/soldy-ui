@@ -114,6 +114,13 @@ export const PaginationDescriptor = defineDescriptor(() =>
 					],
 				},
 			},
+			events: [
+				'change:total',
+				'change:pageSize',
+				'change:pages',
+				'change:middleCount',
+				'change:locale',
+			],
 		},
 
 		plugins: [

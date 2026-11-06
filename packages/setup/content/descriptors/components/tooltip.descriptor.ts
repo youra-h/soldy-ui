@@ -52,6 +52,13 @@ export const TooltipDescriptor = defineDescriptor(() =>
 				 */
 				triggerAria: { type: Object, protected: true, triggers: ['change:triggerAria'] },
 			},
+			events: [
+				'change:open',
+				'change:placement',
+				'change:openDelay',
+				'change:closeDelay',
+				'change:type',
+			],
 		},
 
 		plugins: [

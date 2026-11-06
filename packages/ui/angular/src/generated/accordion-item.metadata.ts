@@ -37,28 +37,26 @@ export const AccordionItemInputNames = [
 	'selected',
 ] as const
 export const AccordionItemOutputNames = [
-	'soInput',
-	'soInputValue',
-	'soActionPress',
-	'soActionClick',
-	'soActionFocus',
-	'soActionBlur',
 	'soChangeSize',
 	'soChangeVariant',
 	'soChangeDisabled',
 	'soChangeFocused',
+	'soInput',
+	'soInputValue',
 	'soChangeValue',
 	'soChangeName',
 	'soChangeText',
 	'soChangeArrowPlacement',
-	'soChangeContentAria',
+	'soActionPress',
+	'soActionClick',
+	'soActionFocus',
+	'soActionBlur',
 	'soAriaChangeLabel',
 	'soAriaChangeLabelledBy',
 	'soAriaChangeDescribedBy',
 	'soChangeId',
 	'soChangeSelected',
 	'soChangeOrder',
-	'soChangeView',
 ] as const
 
 @Directive({
@@ -133,26 +131,16 @@ export abstract class TAccordionItemSurface<TInstance extends IEntity> extends T
 	declare readonly soHideBefore: TOutputEmitter<typeof descriptor, 'hide:before'>
 	declare readonly soHideAfter: TOutputEmitter<typeof descriptor, 'hide:after'>
 	declare readonly soReady: TOutputEmitter<typeof descriptor, 'ready'>
-	declare readonly soInput: TOutputEmitter<typeof descriptor, 'input'>
-	declare readonly soInputValue: TOutputEmitter<typeof descriptor, 'input:value'>
-	declare readonly soElementReady: TOutputEmitter<typeof descriptor, 'element:ready'>
-	declare readonly soElementRemoved: TOutputEmitter<typeof descriptor, 'element:removed'>
-	declare readonly soActionPress: TOutputEmitter<typeof descriptor, 'action:press'>
-	declare readonly soActionClick: TOutputEmitter<typeof descriptor, 'action:click'>
-	declare readonly soActionFocus: TOutputEmitter<typeof descriptor, 'action:focus'>
-	declare readonly soActionBlur: TOutputEmitter<typeof descriptor, 'action:blur'>
 	declare readonly soChangeRendered: TOutputEmitter<typeof descriptor, 'change:rendered'>
 	declare readonly soChangeVisible: TOutputEmitter<typeof descriptor, 'change:visible'>
 	declare readonly soChangeTag: TOutputEmitter<typeof descriptor, 'change:tag'>
 	declare readonly soChangeDirection: TOutputEmitter<typeof descriptor, 'change:direction'>
-	declare readonly soChangeClasses: TOutputEmitter<typeof descriptor, 'change:classes'>
-	declare readonly soChangeAria: TOutputEmitter<typeof descriptor, 'change:aria'>
-	declare readonly soChangeDataset: TOutputEmitter<typeof descriptor, 'change:dataset'>
-	declare readonly soChangeAttrs: TOutputEmitter<typeof descriptor, 'change:attrs'>
 	declare readonly soChangeSize: TOutputEmitter<typeof descriptor, 'change:size'>
 	declare readonly soChangeVariant: TOutputEmitter<typeof descriptor, 'change:variant'>
 	declare readonly soChangeDisabled: TOutputEmitter<typeof descriptor, 'change:disabled'>
 	declare readonly soChangeFocused: TOutputEmitter<typeof descriptor, 'change:focused'>
+	declare readonly soInput: TOutputEmitter<typeof descriptor, 'input'>
+	declare readonly soInputValue: TOutputEmitter<typeof descriptor, 'input:value'>
 	declare readonly soChangeValue: TOutputEmitter<typeof descriptor, 'change:value'>
 	declare readonly soChangeName: TOutputEmitter<typeof descriptor, 'change:name'>
 	declare readonly soChangeText: TOutputEmitter<typeof descriptor, 'change:text'>
@@ -160,7 +148,12 @@ export abstract class TAccordionItemSurface<TInstance extends IEntity> extends T
 		typeof descriptor,
 		'change:arrowPlacement'
 	>
-	declare readonly soChangeContentAria: TOutputEmitter<typeof descriptor, 'change:contentAria'>
+	declare readonly soElementReady: TOutputEmitter<typeof descriptor, 'element:ready'>
+	declare readonly soElementRemoved: TOutputEmitter<typeof descriptor, 'element:removed'>
+	declare readonly soActionPress: TOutputEmitter<typeof descriptor, 'action:press'>
+	declare readonly soActionClick: TOutputEmitter<typeof descriptor, 'action:click'>
+	declare readonly soActionFocus: TOutputEmitter<typeof descriptor, 'action:focus'>
+	declare readonly soActionBlur: TOutputEmitter<typeof descriptor, 'action:blur'>
 	declare readonly soAriaChangeLabel: TOutputEmitter<typeof descriptor, 'aria:change:label'>
 	declare readonly soAriaChangeLabelledBy: TOutputEmitter<
 		typeof descriptor,
@@ -173,5 +166,4 @@ export abstract class TAccordionItemSurface<TInstance extends IEntity> extends T
 	declare readonly soChangeId: TOutputEmitter<typeof descriptor, 'change:id'>
 	declare readonly soChangeSelected: TOutputEmitter<typeof facade, 'change:selected'>
 	declare readonly soChangeOrder: TOutputEmitter<typeof facade, 'change:order'>
-	declare readonly soChangeView: TOutputEmitter<typeof facade, 'change:view'>
 }

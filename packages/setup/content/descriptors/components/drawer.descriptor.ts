@@ -58,6 +58,7 @@ export const DrawerDescriptor = defineDescriptor(() =>
 					triggers: ['change:zIndex', 'change:visible', 'change:contained'],
 				},
 			},
+			events: ['change:placement', 'change:swipe', 'change:contained'],
 		},
 
 		plugins: [

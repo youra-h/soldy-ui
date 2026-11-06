@@ -25,6 +25,7 @@ export const TabsContentDescriptor = defineDescriptor(() =>
 			slots: {
 				default: { description: 'Содержимое панели' },
 			},
+			events: ['change:value'],
 		},
 
 		plugins: [
@@ -56,6 +57,7 @@ export const TabsCollectionContentDescriptor = defineDescriptor(() =>
 			props: {
 				active: { type: Boolean, protected: true, triggers: ['change:active'] },
 			},
+			events: ['change:active'],
 		},
 	}),
 )

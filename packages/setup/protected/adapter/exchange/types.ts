@@ -31,7 +31,7 @@ export interface IUpdateListener {
  */
 export interface IMemberSpec {
 	readonly props: readonly TPropSpec[]
-	/** Явные события владельца. Триггеры пропсов публикуются и без объявления здесь. */
+	/** Explicit public events of this participant; property triggers stay internal. */
 	readonly events: readonly TName[]
 }
 
@@ -49,7 +49,7 @@ export interface IRoute {
 	readonly cells: readonly number[]
 	/** Имя события во фреймворке — если участник его публикует. */
 	readonly event?: string
-	/** Модели, которые уходят следом за событием: только у опубликованного. */
+	/** Model updates driven by property triggers, even when the source event is internal. */
 	readonly models: readonly IModelRoute[]
 }
 

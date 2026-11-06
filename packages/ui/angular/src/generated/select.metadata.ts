@@ -60,25 +60,18 @@ export const SelectInputNames = [
 	'tags_overflow',
 ] as const
 export const SelectOutputNames = [
-	'soInput',
-	'soInputValue',
-	'soOpen',
-	'soClose',
-	'soActionPress',
-	'soActionClick',
-	'soActionFocus',
-	'soActionBlur',
-	'soDismissDismiss',
-	'soKeyboardChangeHighlight',
-	'soEditableChangeQuery',
 	'soChangeSize',
 	'soChangeVariant',
 	'soChangeDisabled',
 	'soChangeFocused',
+	'soInput',
+	'soInputValue',
 	'soChangeValue',
 	'soChangeName',
 	'soChangeReadonly',
 	'soChangeRequired',
+	'soOpen',
+	'soClose',
 	'soChangeOpen',
 	'soChangePlaceholder',
 	'soChangeCloseOnSelect',
@@ -88,18 +81,23 @@ export const SelectOutputNames = [
 	'soChangeRemoveOnBackspace',
 	'soChangePlacement',
 	'soChangeSwipe',
-	'soChangeListAria',
-	'soChangeContentFit',
-	'soChangeSwiping',
 	'soChangeMaxRows',
+	'soChangeContentFit',
 	'soChangeScrollBehavior',
 	'soChangeIndicator',
 	'soChangeGroupSeparators',
+	'soActionPress',
+	'soActionClick',
+	'soActionFocus',
+	'soActionBlur',
 	'soAriaChangeLabel',
 	'soAriaChangeLabelledBy',
 	'soAriaChangeDescribedBy',
 	'soChangeId',
+	'soDismissDismiss',
 	'soDismissChangeEnabled',
+	'soKeyboardChangeHighlight',
+	'soEditableChangeQuery',
 	'soEngineCreate',
 	'soItemAddBefore',
 	'soItemAdded',
@@ -121,9 +119,7 @@ export const SelectOutputNames = [
 	'soChangeSelection',
 	'soChangeGroupBy',
 	'soChangeGroups',
-	'soChangeTags',
 	'soChangeOverflow',
-	'soChangeDrawnSections',
 ] as const
 
 @Directive({
@@ -244,41 +240,22 @@ export abstract class TSelectSurface<TInstance extends IEntity> extends TViewSur
 	declare readonly soHideBefore: TOutputEmitter<typeof descriptor, 'hide:before'>
 	declare readonly soHideAfter: TOutputEmitter<typeof descriptor, 'hide:after'>
 	declare readonly soReady: TOutputEmitter<typeof descriptor, 'ready'>
-	declare readonly soInput: TOutputEmitter<typeof descriptor, 'input'>
-	declare readonly soInputValue: TOutputEmitter<typeof descriptor, 'input:value'>
-	declare readonly soOpen: TOutputEmitter<typeof descriptor, 'open'>
-	declare readonly soClose: TOutputEmitter<typeof descriptor, 'close'>
-	declare readonly soElementReady: TOutputEmitter<typeof descriptor, 'element:ready'>
-	declare readonly soElementRemoved: TOutputEmitter<typeof descriptor, 'element:removed'>
-	declare readonly soActionPress: TOutputEmitter<typeof descriptor, 'action:press'>
-	declare readonly soActionClick: TOutputEmitter<typeof descriptor, 'action:click'>
-	declare readonly soActionFocus: TOutputEmitter<typeof descriptor, 'action:focus'>
-	declare readonly soActionBlur: TOutputEmitter<typeof descriptor, 'action:blur'>
-	declare readonly soDismissDismiss: TOutputEmitter<typeof descriptor, 'dismiss:dismiss'>
-	declare readonly soKeyboardChangeHighlight: TOutputEmitter<
-		typeof descriptor,
-		'keyboard:change:highlight'
-	>
-	declare readonly soEditableChangeQuery: TOutputEmitter<
-		typeof descriptor,
-		'editable:change:query'
-	>
 	declare readonly soChangeRendered: TOutputEmitter<typeof descriptor, 'change:rendered'>
 	declare readonly soChangeVisible: TOutputEmitter<typeof descriptor, 'change:visible'>
 	declare readonly soChangeTag: TOutputEmitter<typeof descriptor, 'change:tag'>
 	declare readonly soChangeDirection: TOutputEmitter<typeof descriptor, 'change:direction'>
-	declare readonly soChangeClasses: TOutputEmitter<typeof descriptor, 'change:classes'>
-	declare readonly soChangeAria: TOutputEmitter<typeof descriptor, 'change:aria'>
-	declare readonly soChangeDataset: TOutputEmitter<typeof descriptor, 'change:dataset'>
-	declare readonly soChangeAttrs: TOutputEmitter<typeof descriptor, 'change:attrs'>
 	declare readonly soChangeSize: TOutputEmitter<typeof descriptor, 'change:size'>
 	declare readonly soChangeVariant: TOutputEmitter<typeof descriptor, 'change:variant'>
 	declare readonly soChangeDisabled: TOutputEmitter<typeof descriptor, 'change:disabled'>
 	declare readonly soChangeFocused: TOutputEmitter<typeof descriptor, 'change:focused'>
+	declare readonly soInput: TOutputEmitter<typeof descriptor, 'input'>
+	declare readonly soInputValue: TOutputEmitter<typeof descriptor, 'input:value'>
 	declare readonly soChangeValue: TOutputEmitter<typeof descriptor, 'change:value'>
 	declare readonly soChangeName: TOutputEmitter<typeof descriptor, 'change:name'>
 	declare readonly soChangeReadonly: TOutputEmitter<typeof descriptor, 'change:readonly'>
 	declare readonly soChangeRequired: TOutputEmitter<typeof descriptor, 'change:required'>
+	declare readonly soOpen: TOutputEmitter<typeof descriptor, 'open'>
+	declare readonly soClose: TOutputEmitter<typeof descriptor, 'close'>
 	declare readonly soChangeOpen: TOutputEmitter<typeof descriptor, 'change:open'>
 	declare readonly soChangePlaceholder: TOutputEmitter<typeof descriptor, 'change:placeholder'>
 	declare readonly soChangeCloseOnSelect: TOutputEmitter<
@@ -294,10 +271,8 @@ export abstract class TSelectSurface<TInstance extends IEntity> extends TViewSur
 	>
 	declare readonly soChangePlacement: TOutputEmitter<typeof descriptor, 'change:placement'>
 	declare readonly soChangeSwipe: TOutputEmitter<typeof descriptor, 'change:swipe'>
-	declare readonly soChangeListAria: TOutputEmitter<typeof descriptor, 'change:listAria'>
-	declare readonly soChangeContentFit: TOutputEmitter<typeof descriptor, 'change:contentFit'>
-	declare readonly soChangeSwiping: TOutputEmitter<typeof descriptor, 'change:swiping'>
 	declare readonly soChangeMaxRows: TOutputEmitter<typeof descriptor, 'change:maxRows'>
+	declare readonly soChangeContentFit: TOutputEmitter<typeof descriptor, 'change:contentFit'>
 	declare readonly soChangeScrollBehavior: TOutputEmitter<
 		typeof descriptor,
 		'change:scrollBehavior'
@@ -307,6 +282,12 @@ export abstract class TSelectSurface<TInstance extends IEntity> extends TViewSur
 		typeof descriptor,
 		'change:groupSeparators'
 	>
+	declare readonly soElementReady: TOutputEmitter<typeof descriptor, 'element:ready'>
+	declare readonly soElementRemoved: TOutputEmitter<typeof descriptor, 'element:removed'>
+	declare readonly soActionPress: TOutputEmitter<typeof descriptor, 'action:press'>
+	declare readonly soActionClick: TOutputEmitter<typeof descriptor, 'action:click'>
+	declare readonly soActionFocus: TOutputEmitter<typeof descriptor, 'action:focus'>
+	declare readonly soActionBlur: TOutputEmitter<typeof descriptor, 'action:blur'>
 	declare readonly soAriaChangeLabel: TOutputEmitter<typeof descriptor, 'aria:change:label'>
 	declare readonly soAriaChangeLabelledBy: TOutputEmitter<
 		typeof descriptor,
@@ -317,9 +298,18 @@ export abstract class TSelectSurface<TInstance extends IEntity> extends TViewSur
 		'aria:change:describedBy'
 	>
 	declare readonly soChangeId: TOutputEmitter<typeof descriptor, 'change:id'>
+	declare readonly soDismissDismiss: TOutputEmitter<typeof descriptor, 'dismiss:dismiss'>
 	declare readonly soDismissChangeEnabled: TOutputEmitter<
 		typeof descriptor,
 		'dismiss:change:enabled'
+	>
+	declare readonly soKeyboardChangeHighlight: TOutputEmitter<
+		typeof descriptor,
+		'keyboard:change:highlight'
+	>
+	declare readonly soEditableChangeQuery: TOutputEmitter<
+		typeof descriptor,
+		'editable:change:query'
 	>
 	declare readonly soEngineCreate: TOutputEmitter<typeof facade, 'engine:create'>
 	declare readonly soItemAddBefore: TOutputEmitter<typeof facade, 'item:add:before'>
@@ -342,7 +332,5 @@ export abstract class TSelectSurface<TInstance extends IEntity> extends TViewSur
 	declare readonly soChangeSelection: TOutputEmitter<typeof facade, 'change:selection'>
 	declare readonly soChangeGroupBy: TOutputEmitter<typeof facade, 'change:groupBy'>
 	declare readonly soChangeGroups: TOutputEmitter<typeof facade, 'change:groups'>
-	declare readonly soChangeTags: TOutputEmitter<typeof facade, 'change:tags'>
 	declare readonly soChangeOverflow: TOutputEmitter<typeof facade, 'change:overflow'>
-	declare readonly soChangeDrawnSections: TOutputEmitter<typeof facade, 'change:drawnSections'>
 }

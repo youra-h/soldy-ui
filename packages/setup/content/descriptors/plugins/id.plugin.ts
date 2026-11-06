@@ -24,5 +24,6 @@ export const IdPluginDescriptor = definePlugin({
 		props: {
 			id: { type: String, triggers: ['change:id'] },
 		},
+		events: ['change:id'],
 	},
 })

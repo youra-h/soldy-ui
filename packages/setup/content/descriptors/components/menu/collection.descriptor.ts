@@ -42,7 +42,7 @@ export const MenuCollectionDescriptor = defineDescriptor(() =>
 				 */
 				submenus: { type: Map, protected: true, triggers: ['change:submenus'] },
 			},
-			events: ['choose'],
+			events: ['choose', 'change:groupBy', 'change:groups'],
 		},
 	}),
 )
@@ -86,6 +86,7 @@ export const MenuCollectionCheckboxItemDescriptor = defineDescriptor(() =>
 			props: {
 				selected: { type: Boolean, triggers: ['change:selected'] },
 			},
+			events: ['change:selected'],
 		},
 	}),
 )

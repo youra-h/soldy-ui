@@ -53,6 +53,7 @@ export const TabsItemDescriptor = defineDescriptor(() =>
 				 */
 				closeAria: { type: Object, protected: true, triggers: ['change:closeAria'] },
 			},
+			events: ['change:text', 'change:closable'],
 		},
 
 		plugins: [

@@ -1,29 +1,7 @@
 /**
- * Общие фрагменты списочных дескрипторов.
- *
- * `LIST_PROPS` — списочные props, общие для ListBox и Select. Объявлены один
- * раз и подмешиваются в contribution обоих компонентов. Это зеркало контракта
- * `IList` из ядра: там типы, здесь декларация для обмена. Общего предка у
- * компонентов нет и быть не может (`TValueControl` против `TInputControl`),
- * поэтому наследовать нечего — но повторять пять деклараций в двух файлах
- * тоже незачем. Что копии не разойдутся с ядром, проверяет
- * `core/__tests__/list-contract.spec.ts`.
- *
- * `GROUP_PROPS` — группировка коллекции, общая для коллекционных дескрипторов
- * Menu, ListBox и Select: ключ группы элемента и группы с подписями. Фасады
- * всех троих наследуют одну базу (`TGroupCollectionFacade`), а дескрипторы
- * фасадов — `CollectionDescriptor`, у которого группировки нет, поэтому
- * фрагмент. Что разметка рисует по секциям, объявляет каждый сам: меню —
- * секции показанного (`sections`), списки — секции нарисованного
- * (`drawnSections`). Рисовать ли разделитель между секциями — не группировка,
- * а разметка владельца, поэтому `groupSeparators` здесь нет: у списков он в
- * `LIST_PROPS`, у Menu и `Menu.Submenu` — в их дескрипторах.
- *
- * `satisfies`, а не аннотация словарём: с аннотацией `Record<string, …>` спред
- * в `props` терял свои ключи в типах, и `defineComponent` не видел триггеров
- * фрагмента — события `change:maxRows` и соседей выпали бы из событий ListBox
- * и Select. Триггеры сверяются с общими картами `TListEvents` и
- * `TGroupEvents`: карты компонентов их содержат.
+ * Shared list and grouping property declarations.
+ * Literal keys are preserved with `satisfies` so descriptor types retain each property.
+ * Public events are declared separately in each consuming descriptor.
  */
 
 import type { TGroupEvents, TListEvents } from '@soldy-ui/core'

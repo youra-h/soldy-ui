@@ -28,6 +28,7 @@ export const RadioGroupItemDescriptor = defineDescriptor(() =>
 		extends: ValueControlDescriptor(),
 
 		contribution: {
+			events: ['change:view'],
 			// Слот один — подпись: она лежит внутри корня-`label`, поэтому клик по
 			// ней выбирает радио, а текст становится его доступным именем. Scope —
 			// отметка радио, как `active` у содержимого таба

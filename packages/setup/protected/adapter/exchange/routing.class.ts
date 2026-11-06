@@ -1,44 +1,8 @@
 /**
- * TRouting — таблица маршрутов обмена: одна на поверхность и состав участников, а не на монтирование.
- *
- * Всё, что обмен делает с событием участника, известно до монтирования: какие
- * свойства перечитать в состоянии, какое событие поверхности отдать наружу и
- * какие модели (`update:<проп>`) послать следом. Это знание типа — описаний
- * участников (`IMemberSpec`) и поверхности, — поэтому таблица строится один
- * раз и её делят все монтирования. Линии (`TLine`) — тоже её строки: свойство
- * участника в составе знает тип, а владельца линия берёт из списка
- * монтирования по месту участника. На монтирование остаются владельцы
- * участников, значения состояния и входов и по слушателю на шину участника
- * (`TTap`); объекта на свойство, а на событие — объекта, массива и замыкания у
- * монтирования нет. Раньше маршрут события — объект, обработчик, отписка и
- * подписка на шину — строился на каждое событие поверхности каждого
- * монтирования, слушают его или нет: у строки таблицы с чекбоксом их было около
- * восьмидесяти.
- *
- * Состав — описания участников по порядку: у своего набора он один на
- * дескриптор, у чужого — плагины, которые в наборе нашлись. Таблица ищется по
- * поверхности и описаниям, как `TSurface.of` — по описанию и профилю, и живёт,
- * пока живут они.
- *
- * Строки таблицы:
- *
- * - **линии** — свойства участников, у которых есть запись поверхности, по
- *   порядку участников и их пропсов. Свойство без записи линии не получает:
- *   описание плагина, которого нет в чужом наборе, молча пропускается;
- * - **состояние** — линии с триггерами, **входы** — записываемые линии;
- * - **маршруты** участника — по сырому имени события на его шине: значения
- *   состояния, для чьих свойств событие — триггер (у `change:visible` это и
- *   `visible`, и `present`: синхронизацию состояния не дедуплицируют), и
- *   событие поверхности с моделями, если участник его публикует.
- *
- * Повторов наружу нет по построению: поверхность держит события без повторов
- * по полному имени (`TSurface.events`), и у события один публикатор — первый
- * участник, который его объявил. Полное имя одно в составе компонента; если
- * его всё же публикуют двое, остаётся первый — порядок участников задаёт
- * сборка.
+ * TRouting shares property lines and event routes across mounts of the same participant descriptions.
+ * Internal triggers refresh state and models independently of explicitly published events.
  */
 
-import type { TName } from '../../define'
 import type { TSurface } from '../surface'
 import { TLine } from './line.class'
 import type { TMember } from './member.class'
@@ -58,13 +22,6 @@ interface INode {
 }
 
 const roots = new WeakMap<TSurface, INode>()
-
-/** Имена событий, которые участник публикует: явные, затем триггеры пропсов. */
-function* publishedBy(spec: IMemberSpec): Generator<TName> {
-	yield* spec.events
-
-	for (const prop of spec.props) yield* prop.triggers
-}
 
 export class TRouting {
 	/** Линии состава: свойства участников в поверхности. */
@@ -112,7 +69,6 @@ export class TRouting {
 		const lines: TLine[] = []
 		const readable: TLine[] = []
 		const writable: TLine[] = []
-		const lineOf = new Map<TName, TLine>()
 		const drafts = specs.map(() => new Map<string, IRouteDraft>())
 
 		const draftOf = (member: number, raw: string): IRouteDraft => {
@@ -136,7 +92,6 @@ export class TRouting {
 				const line = new TLine(prop, member, entry.exportName)
 
 				lines.push(line)
-				lineOf.set(prop.name, line)
 
 				if (!prop.protected) writable.push(line)
 				if (prop.triggers.length === 0) continue
@@ -146,9 +101,17 @@ export class TRouting {
 				readable.push(line)
 
 				for (const trigger of prop.triggers) {
-					const { cells } = draftOf(member, trigger.name)
+					const draft = draftOf(member, trigger.name)
+					const { cells } = draft
 
 					if (!cells.includes(cell)) cells.push(cell)
+
+					if (
+						entry.model !== undefined &&
+						!draft.models.some((model) => model.name === entry.model)
+					) {
+						draft.models = [...draft.models, { line, name: entry.model }]
+					}
 				}
 			}
 		})
@@ -156,7 +119,7 @@ export class TRouting {
 		const publishers = new Map<string, number>()
 
 		specs.forEach((spec, member) => {
-			for (const name of publishedBy(spec)) {
+			for (const name of spec.events) {
 				if (!publishers.has(name.getName())) publishers.set(name.getName(), member)
 			}
 		})
@@ -170,13 +133,6 @@ export class TRouting {
 			const draft = draftOf(member, event.name.name)
 
 			draft.event = event.exportName
-			draft.models = event.models.flatMap((prop): IModelRoute[] => {
-				const line = lineOf.get(prop.spec.name)
-
-				return line !== undefined && prop.model !== undefined
-					? [{ line, name: prop.model }]
-					: []
-			})
 		}
 
 		this.lines = Object.freeze(lines)

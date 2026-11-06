@@ -56,6 +56,7 @@ export const TableRowDescriptor = defineDescriptor(() =>
 				 */
 				headerAria: { type: Object, protected: true, triggers: ['change:headerAria'] },
 			},
+			events: ['change:disabled', 'change:focused'],
 		},
 
 		plugins: [

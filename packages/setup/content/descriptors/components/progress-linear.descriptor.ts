@@ -31,6 +31,7 @@ export const ProgressLinearDescriptor = defineDescriptor(() =>
 					triggers: ['change:value', 'change:min', 'change:max', 'change:indeterminate'],
 				},
 			},
+			events: ['change:orientation'],
 		},
 	}),
 )

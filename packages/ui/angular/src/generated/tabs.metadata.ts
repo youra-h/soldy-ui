@@ -41,10 +41,6 @@ export const TabsInputNames = [
 	'trackBy',
 ] as const
 export const TabsOutputNames = [
-	'soActionPress',
-	'soActionClick',
-	'soActionFocus',
-	'soActionBlur',
 	'soChangeSize',
 	'soChangeVariant',
 	'soChangeDisabled',
@@ -54,6 +50,10 @@ export const TabsOutputNames = [
 	'soChangePosition',
 	'soChangeView',
 	'soChangeClosable',
+	'soActionPress',
+	'soActionClick',
+	'soActionFocus',
+	'soActionBlur',
 	'soAriaChangeLabel',
 	'soAriaChangeLabelledBy',
 	'soAriaChangeDescribedBy',
@@ -72,11 +72,11 @@ export const TabsOutputNames = [
 	'soItemsAdded',
 	'soItemsRemoved',
 	'soChangeShown',
+	'soChangeItems',
+	'soChangeTrackBy',
 	'soItemActivated',
 	'soItemDeactivated',
 	'soItemClose',
-	'soChangeItems',
-	'soChangeTrackBy',
 	'soChangeActivation',
 ] as const
 
@@ -160,20 +160,10 @@ export abstract class TTabsSurface<TInstance extends IEntity> extends TViewSurfa
 	declare readonly soHideBefore: TOutputEmitter<typeof descriptor, 'hide:before'>
 	declare readonly soHideAfter: TOutputEmitter<typeof descriptor, 'hide:after'>
 	declare readonly soReady: TOutputEmitter<typeof descriptor, 'ready'>
-	declare readonly soElementReady: TOutputEmitter<typeof descriptor, 'element:ready'>
-	declare readonly soElementRemoved: TOutputEmitter<typeof descriptor, 'element:removed'>
-	declare readonly soActionPress: TOutputEmitter<typeof descriptor, 'action:press'>
-	declare readonly soActionClick: TOutputEmitter<typeof descriptor, 'action:click'>
-	declare readonly soActionFocus: TOutputEmitter<typeof descriptor, 'action:focus'>
-	declare readonly soActionBlur: TOutputEmitter<typeof descriptor, 'action:blur'>
 	declare readonly soChangeRendered: TOutputEmitter<typeof descriptor, 'change:rendered'>
 	declare readonly soChangeVisible: TOutputEmitter<typeof descriptor, 'change:visible'>
 	declare readonly soChangeTag: TOutputEmitter<typeof descriptor, 'change:tag'>
 	declare readonly soChangeDirection: TOutputEmitter<typeof descriptor, 'change:direction'>
-	declare readonly soChangeClasses: TOutputEmitter<typeof descriptor, 'change:classes'>
-	declare readonly soChangeAria: TOutputEmitter<typeof descriptor, 'change:aria'>
-	declare readonly soChangeDataset: TOutputEmitter<typeof descriptor, 'change:dataset'>
-	declare readonly soChangeAttrs: TOutputEmitter<typeof descriptor, 'change:attrs'>
 	declare readonly soChangeSize: TOutputEmitter<typeof descriptor, 'change:size'>
 	declare readonly soChangeVariant: TOutputEmitter<typeof descriptor, 'change:variant'>
 	declare readonly soChangeDisabled: TOutputEmitter<typeof descriptor, 'change:disabled'>
@@ -183,6 +173,12 @@ export abstract class TTabsSurface<TInstance extends IEntity> extends TViewSurfa
 	declare readonly soChangePosition: TOutputEmitter<typeof descriptor, 'change:position'>
 	declare readonly soChangeView: TOutputEmitter<typeof descriptor, 'change:view'>
 	declare readonly soChangeClosable: TOutputEmitter<typeof descriptor, 'change:closable'>
+	declare readonly soElementReady: TOutputEmitter<typeof descriptor, 'element:ready'>
+	declare readonly soElementRemoved: TOutputEmitter<typeof descriptor, 'element:removed'>
+	declare readonly soActionPress: TOutputEmitter<typeof descriptor, 'action:press'>
+	declare readonly soActionClick: TOutputEmitter<typeof descriptor, 'action:click'>
+	declare readonly soActionFocus: TOutputEmitter<typeof descriptor, 'action:focus'>
+	declare readonly soActionBlur: TOutputEmitter<typeof descriptor, 'action:blur'>
 	declare readonly soAriaChangeLabel: TOutputEmitter<typeof descriptor, 'aria:change:label'>
 	declare readonly soAriaChangeLabelledBy: TOutputEmitter<
 		typeof descriptor,
@@ -207,10 +203,10 @@ export abstract class TTabsSurface<TInstance extends IEntity> extends TViewSurfa
 	declare readonly soItemsAdded: TOutputEmitter<typeof facade, 'items:added'>
 	declare readonly soItemsRemoved: TOutputEmitter<typeof facade, 'items:removed'>
 	declare readonly soChangeShown: TOutputEmitter<typeof facade, 'change:shown'>
+	declare readonly soChangeItems: TOutputEmitter<typeof facade, 'change:items'>
+	declare readonly soChangeTrackBy: TOutputEmitter<typeof facade, 'change:trackBy'>
 	declare readonly soItemActivated: TOutputEmitter<typeof facade, 'item:activated'>
 	declare readonly soItemDeactivated: TOutputEmitter<typeof facade, 'item:deactivated'>
 	declare readonly soItemClose: TOutputEmitter<typeof facade, 'item:close'>
-	declare readonly soChangeItems: TOutputEmitter<typeof facade, 'change:items'>
-	declare readonly soChangeTrackBy: TOutputEmitter<typeof facade, 'change:trackBy'>
 	declare readonly soChangeActivation: TOutputEmitter<typeof facade, 'change:activation'>
 }

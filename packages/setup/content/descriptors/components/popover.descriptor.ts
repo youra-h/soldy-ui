@@ -97,6 +97,15 @@ export const PopoverDescriptor = defineDescriptor(() =>
 				 */
 				handleRendered: { type: Boolean, protected: true, triggers: ['change:swipe'] },
 			},
+			events: [
+				'change:open',
+				'change:closable',
+				'change:lazyMount',
+				'change:placement',
+				'change:contained',
+				'change:edge',
+				'change:swipe',
+			],
 		},
 
 		plugins: [

@@ -52,6 +52,7 @@ export const ListBoxItemDescriptor = defineDescriptor(() =>
 				text: { type: String, triggers: ['change:text'] },
 				contentFit: { type: String, triggers: ['change:contentFit'] },
 			},
+			events: ['change:text', 'change:contentFit'],
 		},
 
 		plugins: [

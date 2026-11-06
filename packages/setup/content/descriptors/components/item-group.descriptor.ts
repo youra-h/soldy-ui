@@ -32,6 +32,7 @@ export const ItemGroupDescriptor = defineDescriptor(() =>
 				 */
 				labelAria: { type: Object, protected: true, triggers: ['change:labelAria'] },
 			},
+			events: ['change:label'],
 		},
 
 		plugins: [ItemGroupIdsPluginDescriptor],

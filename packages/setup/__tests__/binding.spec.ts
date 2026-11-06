@@ -93,7 +93,7 @@ describe('поверхность · умолчание пропа из декл�
 		expect(surface.props).toHaveLength(1)
 	})
 
-	it('события — явные и триггеры свойств, без повторов', () => {
+	it('explicit events remain deduplicated when also used as property triggers', () => {
 		const descriptor = defineComponent({
 			ctor: class {},
 			contribution: {
@@ -101,7 +101,7 @@ describe('поверхность · умолчание пропа из декл�
 					rendered: { triggers: ['change:rendered'] },
 					present: { protected: true, triggers: ['change:rendered'] },
 				},
-				events: ['show'],
+				events: ['show', 'change:rendered'],
 			},
 		})
 

@@ -49,25 +49,19 @@ export const DatePickerInputNames = [
 	'hideOutside_enabled',
 ] as const
 export const DatePickerOutputNames = [
-	'soInput',
-	'soInputValue',
-	'soOpen',
-	'soClose',
-	'soActionPress',
-	'soActionClick',
-	'soActionFocus',
-	'soActionBlur',
-	'soDismissDismiss',
 	'soChangeSize',
 	'soChangeVariant',
 	'soChangeDisabled',
 	'soChangeFocused',
+	'soInput',
+	'soInputValue',
 	'soChangeValue',
 	'soChangeName',
 	'soChangeReadonly',
 	'soChangeRequired',
 	'soChangeClearable',
-	'soChangeClearAria',
+	'soOpen',
+	'soClose',
 	'soChangeMode',
 	'soChangeOpen',
 	'soChangeCloseOnSelect',
@@ -82,20 +76,17 @@ export const DatePickerOutputNames = [
 	'soChangeStartName',
 	'soChangeEndName',
 	'soChangeSwipe',
-	'soChangeTriggerAria',
-	'soChangePanelAria',
-	'soChangeSwiping',
-	'soChangeConfirmDisabled',
+	'soActionPress',
+	'soActionClick',
+	'soActionFocus',
+	'soActionBlur',
 	'soAriaChangeLabel',
 	'soAriaChangeLabelledBy',
 	'soAriaChangeDescribedBy',
 	'soChangeId',
+	'soDismissDismiss',
 	'soDismissChangeEnabled',
 	'soHideOutsideChangeEnabled',
-	'soNamesChangeStart',
-	'soNamesChangeEnd',
-	'soNamesChangeConfirm',
-	'soNamesChangeCancel',
 ] as const
 
 @Directive({
@@ -197,35 +188,23 @@ export abstract class TDatePickerSurface<TInstance extends IEntity> extends TVie
 	declare readonly soHideBefore: TOutputEmitter<typeof descriptor, 'hide:before'>
 	declare readonly soHideAfter: TOutputEmitter<typeof descriptor, 'hide:after'>
 	declare readonly soReady: TOutputEmitter<typeof descriptor, 'ready'>
-	declare readonly soInput: TOutputEmitter<typeof descriptor, 'input'>
-	declare readonly soInputValue: TOutputEmitter<typeof descriptor, 'input:value'>
-	declare readonly soOpen: TOutputEmitter<typeof descriptor, 'open'>
-	declare readonly soClose: TOutputEmitter<typeof descriptor, 'close'>
-	declare readonly soElementReady: TOutputEmitter<typeof descriptor, 'element:ready'>
-	declare readonly soElementRemoved: TOutputEmitter<typeof descriptor, 'element:removed'>
-	declare readonly soActionPress: TOutputEmitter<typeof descriptor, 'action:press'>
-	declare readonly soActionClick: TOutputEmitter<typeof descriptor, 'action:click'>
-	declare readonly soActionFocus: TOutputEmitter<typeof descriptor, 'action:focus'>
-	declare readonly soActionBlur: TOutputEmitter<typeof descriptor, 'action:blur'>
-	declare readonly soDismissDismiss: TOutputEmitter<typeof descriptor, 'dismiss:dismiss'>
 	declare readonly soChangeRendered: TOutputEmitter<typeof descriptor, 'change:rendered'>
 	declare readonly soChangeVisible: TOutputEmitter<typeof descriptor, 'change:visible'>
 	declare readonly soChangeTag: TOutputEmitter<typeof descriptor, 'change:tag'>
 	declare readonly soChangeDirection: TOutputEmitter<typeof descriptor, 'change:direction'>
-	declare readonly soChangeClasses: TOutputEmitter<typeof descriptor, 'change:classes'>
-	declare readonly soChangeAria: TOutputEmitter<typeof descriptor, 'change:aria'>
-	declare readonly soChangeDataset: TOutputEmitter<typeof descriptor, 'change:dataset'>
-	declare readonly soChangeAttrs: TOutputEmitter<typeof descriptor, 'change:attrs'>
 	declare readonly soChangeSize: TOutputEmitter<typeof descriptor, 'change:size'>
 	declare readonly soChangeVariant: TOutputEmitter<typeof descriptor, 'change:variant'>
 	declare readonly soChangeDisabled: TOutputEmitter<typeof descriptor, 'change:disabled'>
 	declare readonly soChangeFocused: TOutputEmitter<typeof descriptor, 'change:focused'>
+	declare readonly soInput: TOutputEmitter<typeof descriptor, 'input'>
+	declare readonly soInputValue: TOutputEmitter<typeof descriptor, 'input:value'>
 	declare readonly soChangeValue: TOutputEmitter<typeof descriptor, 'change:value'>
 	declare readonly soChangeName: TOutputEmitter<typeof descriptor, 'change:name'>
 	declare readonly soChangeReadonly: TOutputEmitter<typeof descriptor, 'change:readonly'>
 	declare readonly soChangeRequired: TOutputEmitter<typeof descriptor, 'change:required'>
 	declare readonly soChangeClearable: TOutputEmitter<typeof descriptor, 'change:clearable'>
-	declare readonly soChangeClearAria: TOutputEmitter<typeof descriptor, 'change:clearAria'>
+	declare readonly soOpen: TOutputEmitter<typeof descriptor, 'open'>
+	declare readonly soClose: TOutputEmitter<typeof descriptor, 'close'>
 	declare readonly soChangeMode: TOutputEmitter<typeof descriptor, 'change:mode'>
 	declare readonly soChangeOpen: TOutputEmitter<typeof descriptor, 'change:open'>
 	declare readonly soChangeCloseOnSelect: TOutputEmitter<
@@ -243,13 +222,12 @@ export abstract class TDatePickerSurface<TInstance extends IEntity> extends TVie
 	declare readonly soChangeStartName: TOutputEmitter<typeof descriptor, 'change:startName'>
 	declare readonly soChangeEndName: TOutputEmitter<typeof descriptor, 'change:endName'>
 	declare readonly soChangeSwipe: TOutputEmitter<typeof descriptor, 'change:swipe'>
-	declare readonly soChangeTriggerAria: TOutputEmitter<typeof descriptor, 'change:triggerAria'>
-	declare readonly soChangePanelAria: TOutputEmitter<typeof descriptor, 'change:panelAria'>
-	declare readonly soChangeSwiping: TOutputEmitter<typeof descriptor, 'change:swiping'>
-	declare readonly soChangeConfirmDisabled: TOutputEmitter<
-		typeof descriptor,
-		'change:confirmDisabled'
-	>
+	declare readonly soElementReady: TOutputEmitter<typeof descriptor, 'element:ready'>
+	declare readonly soElementRemoved: TOutputEmitter<typeof descriptor, 'element:removed'>
+	declare readonly soActionPress: TOutputEmitter<typeof descriptor, 'action:press'>
+	declare readonly soActionClick: TOutputEmitter<typeof descriptor, 'action:click'>
+	declare readonly soActionFocus: TOutputEmitter<typeof descriptor, 'action:focus'>
+	declare readonly soActionBlur: TOutputEmitter<typeof descriptor, 'action:blur'>
 	declare readonly soAriaChangeLabel: TOutputEmitter<typeof descriptor, 'aria:change:label'>
 	declare readonly soAriaChangeLabelledBy: TOutputEmitter<
 		typeof descriptor,
@@ -260,6 +238,7 @@ export abstract class TDatePickerSurface<TInstance extends IEntity> extends TVie
 		'aria:change:describedBy'
 	>
 	declare readonly soChangeId: TOutputEmitter<typeof descriptor, 'change:id'>
+	declare readonly soDismissDismiss: TOutputEmitter<typeof descriptor, 'dismiss:dismiss'>
 	declare readonly soDismissChangeEnabled: TOutputEmitter<
 		typeof descriptor,
 		'dismiss:change:enabled'
@@ -268,8 +247,4 @@ export abstract class TDatePickerSurface<TInstance extends IEntity> extends TVie
 		typeof descriptor,
 		'hideOutside:change:enabled'
 	>
-	declare readonly soNamesChangeStart: TOutputEmitter<typeof descriptor, 'names:change:start'>
-	declare readonly soNamesChangeEnd: TOutputEmitter<typeof descriptor, 'names:change:end'>
-	declare readonly soNamesChangeConfirm: TOutputEmitter<typeof descriptor, 'names:change:confirm'>
-	declare readonly soNamesChangeCancel: TOutputEmitter<typeof descriptor, 'names:change:cancel'>
 }

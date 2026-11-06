@@ -123,6 +123,15 @@ export const TableDescriptor = defineDescriptor(() =>
 				 */
 				reorderable: { type: Boolean, triggers: ['change:reorderable'] },
 			},
+			events: [
+				'change:locale',
+				'change:stickyHead',
+				'change:columnFit',
+				'change:reorderPreview',
+				'change:resizePreview',
+				'change:resizable',
+				'change:reorderable',
+			],
 		},
 
 		plugins: [

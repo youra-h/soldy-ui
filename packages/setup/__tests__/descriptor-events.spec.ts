@@ -1,17 +1,6 @@
 /**
- * События компонента в типах дескриптора — только те, что адаптер пробрасывает.
- *
- * Наружу уходят имена из `events` и триггеров пропсов дескриптора и его
- * `extends` (`exportEvents` поверхности). Тип событий — карта класса ядра,
- * суженная до этих же имён (`TPublishedEvents`), второй записи у него нет.
- * Раньше тип брал карту целиком и обещал колбэки, которых адаптер не вызовет:
- * `change:present` ядро шлёт, но `present` объявлен с триггерами
- * `change:rendered` и `change:visible`, и `onChangePresent` у кнопки не
- * срабатывал никогда.
- *
- * Типовые проверки — `expectTypeOf` и `@ts-expect-error`: файл проверяет шаг CI
- * «Типы — Setup», и неиспользованная директива роняет его так же, как
- * настоящая ошибка.
+ * Descriptor event types and runtime surfaces expose only explicitly published names.
+ * Both event and trigger declarations are checked against the instance event map.
  */
 
 import { describe, it, expect, expectTypeOf } from 'vitest'

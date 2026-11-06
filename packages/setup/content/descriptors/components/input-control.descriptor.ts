@@ -21,6 +21,7 @@ export const InputControlDescriptor = defineDescriptor(() =>
 				readonly: { type: Boolean, triggers: ['change:readonly'] },
 				required: { type: Boolean, triggers: ['change:required'] },
 			},
+			events: ['change:readonly', 'change:required'],
 		},
 
 		plugins: [

@@ -54,15 +54,7 @@ type TInstanceEventName<TInstance> = TInstance extends {
 	? Extract<keyof E, string>
 	: string
 
-/**
- * События, которые дескриптор публикует: карта инстанса, суженная до имён из
- * `events` и триггеров пропсов — своих и `extends`.
- *
- * Наружу адаптер пробрасывает только эти имена (`exportEvents` поверхности), а
- * карта класса шире: `change:present` у ComponentView ядро шлёт, но ни в
- * `events`, ни в триггерах его нет. Тип, выведенный из всей карты, обещал бы
- * колбэк, который адаптер не вызовет никогда. Шины нет — событий нет.
- */
+/** The instance event map narrowed to explicit declarations, including inherited events. */
 type TPublishedEvents<TInstance, TName extends string> = TInstance extends {
 	readonly events: TEvented<infer E>
 }
@@ -80,16 +72,12 @@ type TDeclaredProps<TContribution> = TContribution extends {
 	? P
 	: object
 
-/** Имена событий объявления: `events` и триггеры пропсов. */
-type TDeclaredEventName<TContribution> =
-	| (TContribution extends { readonly events: readonly (infer E extends string)[] } ? E : never)
-	| {
-			[K in keyof TDeclaredProps<TContribution>]: TDeclaredProps<TContribution>[K] extends {
-				readonly triggers: readonly (infer T extends string)[]
-			}
-				? T
-				: never
-	  }[keyof TDeclaredProps<TContribution>]
+/** Only the explicit event list contributes to the public event contract. */
+type TDeclaredEventName<TContribution> = TContribution extends {
+	readonly events: readonly (infer E extends string)[]
+}
+	? E
+	: never
 
 /**
  * Имена, объявленные защищёнными: у плагина это его выходы, у компонента —
@@ -340,11 +328,7 @@ export type DescriptorProps<T> = TOmitProtected<
 	TContractOf<T>['protectedName']
 >
 
-/**
- * Собственные события компонента (БЕЗ плагинных) — только опубликованные:
- * DescriptorEvents<typeof ButtonDescriptor> → Pick<TButtonEvents, 'change:text' | 'show' | …>.
- * Событие класса, которого нет ни в `events`, ни в триггерах (`change:present`), сюда не входит.
- */
+/** Own component events declared in `events`, excluding namespaced plugin events. */
 export type DescriptorEvents<T> = TPublishedEvents<
 	DescriptorInstance<T>,
 	TContractOf<T>['eventName']

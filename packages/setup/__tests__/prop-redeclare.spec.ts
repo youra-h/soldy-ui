@@ -93,6 +93,7 @@ const OwnerDescriptor = defineComponent({
 			size: { type: String, triggers: ['change:size'] },
 			text: { type: String, triggers: ['change:text'] },
 		},
+		events: ['change:size', 'change:text'],
 	},
 })
 

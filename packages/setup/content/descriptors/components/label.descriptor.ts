@@ -34,6 +34,7 @@ export const LabelDescriptor = defineDescriptor(() =>
 				text: { type: String, triggers: ['change:text'] },
 				position: { type: String, triggers: ['change:position'] },
 			},
+			events: ['change:text', 'change:position'],
 		},
 
 		// `label` в `label` HTML запрещает, а корень радио — `label`

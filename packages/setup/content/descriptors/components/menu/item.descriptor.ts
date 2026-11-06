@@ -37,6 +37,7 @@ export const MenuItemDescriptor = defineDescriptor(() =>
 				size: { protected: true },
 				text: { type: String, triggers: ['change:text'] },
 			},
+			events: ['change:text'],
 		},
 
 		plugins: [

@@ -163,7 +163,17 @@ export const NumberInputDescriptor = defineDescriptor(() =>
 					triggers: ['change:inputSets', 'change:locale', 'change:formatOptions'],
 				},
 			},
-			events: ['commit'],
+			events: [
+				'commit',
+				'change:min',
+				'change:max',
+				'change:step',
+				'change:largeStep',
+				'change:formatOptions',
+				'change:placeholder',
+				'change:locale',
+				'change:text',
+			],
 		},
 
 		plugins: [

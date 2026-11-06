@@ -40,7 +40,6 @@ export const ToastsOutputNames = [
 	'soChangeLayout',
 	'soChangeMax',
 	'soChangeDuration',
-	'soLayoutChangeStyles',
 	'soEngineCreate',
 	'soItemAddBefore',
 	'soItemAdded',
@@ -56,9 +55,9 @@ export const ToastsOutputNames = [
 	'soItemsAdded',
 	'soItemsRemoved',
 	'soChangeShown',
-	'soItemClose',
 	'soChangeItems',
 	'soChangeTrackBy',
+	'soItemClose',
 ] as const
 
 @Directive({
@@ -127,23 +126,18 @@ export abstract class TToastsSurface<TInstance extends IEntity> extends TViewSur
 	declare readonly soHideBefore: TOutputEmitter<typeof descriptor, 'hide:before'>
 	declare readonly soHideAfter: TOutputEmitter<typeof descriptor, 'hide:after'>
 	declare readonly soReady: TOutputEmitter<typeof descriptor, 'ready'>
-	declare readonly soChangeZIndex: TOutputEmitter<typeof descriptor, 'change:zIndex'>
-	declare readonly soElementReady: TOutputEmitter<typeof descriptor, 'element:ready'>
-	declare readonly soElementRemoved: TOutputEmitter<typeof descriptor, 'element:removed'>
 	declare readonly soChangeRendered: TOutputEmitter<typeof descriptor, 'change:rendered'>
 	declare readonly soChangeVisible: TOutputEmitter<typeof descriptor, 'change:visible'>
 	declare readonly soChangeTag: TOutputEmitter<typeof descriptor, 'change:tag'>
 	declare readonly soChangeDirection: TOutputEmitter<typeof descriptor, 'change:direction'>
-	declare readonly soChangeClasses: TOutputEmitter<typeof descriptor, 'change:classes'>
-	declare readonly soChangeAria: TOutputEmitter<typeof descriptor, 'change:aria'>
-	declare readonly soChangeDataset: TOutputEmitter<typeof descriptor, 'change:dataset'>
-	declare readonly soChangeAttrs: TOutputEmitter<typeof descriptor, 'change:attrs'>
+	declare readonly soChangeZIndex: TOutputEmitter<typeof descriptor, 'change:zIndex'>
 	declare readonly soChangeTarget: TOutputEmitter<typeof descriptor, 'change:target'>
 	declare readonly soChangePlacement: TOutputEmitter<typeof descriptor, 'change:placement'>
 	declare readonly soChangeLayout: TOutputEmitter<typeof descriptor, 'change:layout'>
 	declare readonly soChangeMax: TOutputEmitter<typeof descriptor, 'change:max'>
 	declare readonly soChangeDuration: TOutputEmitter<typeof descriptor, 'change:duration'>
-	declare readonly soLayoutChangeStyles: TOutputEmitter<typeof descriptor, 'layout:change:styles'>
+	declare readonly soElementReady: TOutputEmitter<typeof descriptor, 'element:ready'>
+	declare readonly soElementRemoved: TOutputEmitter<typeof descriptor, 'element:removed'>
 	declare readonly soEngineCreate: TOutputEmitter<typeof facade, 'engine:create'>
 	declare readonly soItemAddBefore: TOutputEmitter<typeof facade, 'item:add:before'>
 	declare readonly soItemAdded: TOutputEmitter<typeof facade, 'item:added'>
@@ -159,7 +153,7 @@ export abstract class TToastsSurface<TInstance extends IEntity> extends TViewSur
 	declare readonly soItemsAdded: TOutputEmitter<typeof facade, 'items:added'>
 	declare readonly soItemsRemoved: TOutputEmitter<typeof facade, 'items:removed'>
 	declare readonly soChangeShown: TOutputEmitter<typeof facade, 'change:shown'>
-	declare readonly soItemClose: TOutputEmitter<typeof facade, 'item:close'>
 	declare readonly soChangeItems: TOutputEmitter<typeof facade, 'change:items'>
 	declare readonly soChangeTrackBy: TOutputEmitter<typeof facade, 'change:trackBy'>
+	declare readonly soItemClose: TOutputEmitter<typeof facade, 'item:close'>
 }

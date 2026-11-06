@@ -1014,7 +1014,6 @@ describe('события снятия элементов', () => {
 			text: value,
 			onChangeOrder: () => heard.push(`${value} order`),
 			onChangeSelected: () => heard.push(`${value} selected`),
-			onChangeAria: () => heard.push(`${value} aria`),
 		})
 
 		const { destroy } = mount(Harness, { items: [item('a'), item('b'), item('c')] })

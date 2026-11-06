@@ -36,5 +36,6 @@ export const AriaPluginDescriptor = definePlugin({
 			labelledBy: { type: String, triggers: ['change:labelledBy'] },
 			describedBy: { type: String, triggers: ['change:describedBy'] },
 		},
+		events: ['change:label', 'change:labelledBy', 'change:describedBy'],
 	},
 })

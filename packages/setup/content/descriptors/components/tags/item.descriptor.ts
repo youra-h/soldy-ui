@@ -64,6 +64,7 @@ export const TagsItemDescriptor = defineDescriptor(() =>
 					triggers: ['change:closeAria'],
 				},
 			},
+			events: ['change:text', 'change:closable'],
 		},
 
 		plugins: [

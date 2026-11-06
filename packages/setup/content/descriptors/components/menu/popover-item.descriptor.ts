@@ -67,6 +67,7 @@ export const MenuPopoverItemDescriptor = defineDescriptor(() =>
 					triggers: ['change:open', 'change:lazyMount'],
 				},
 			},
+			events: ['change:open', 'change:lazyMount'],
 		},
 
 		plugins: [

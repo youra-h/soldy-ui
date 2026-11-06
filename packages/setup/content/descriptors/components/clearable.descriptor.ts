@@ -40,6 +40,7 @@ export const ClearableDescriptor = defineDescriptor(() =>
 				 */
 				clearAria: { type: Object, protected: true, triggers: ['change:clearAria'] },
 			},
+			events: ['change:clearable'],
 		},
 	}),
 )

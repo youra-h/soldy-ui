@@ -41,7 +41,6 @@ export const ToastsItemOutputNames = [
 	'soChangeDuration',
 	'soChangeAlert',
 	'soChangeRender',
-	'soChangeCloseAria',
 	'soChangeOrder',
 ] as const
 
@@ -104,16 +103,10 @@ export abstract class TToastsItemSurface<TInstance extends IEntity> extends TVie
 	declare readonly soHideBefore: TOutputEmitter<typeof descriptor, 'hide:before'>
 	declare readonly soHideAfter: TOutputEmitter<typeof descriptor, 'hide:after'>
 	declare readonly soReady: TOutputEmitter<typeof descriptor, 'ready'>
-	declare readonly soElementReady: TOutputEmitter<typeof descriptor, 'element:ready'>
-	declare readonly soElementRemoved: TOutputEmitter<typeof descriptor, 'element:removed'>
 	declare readonly soChangeRendered: TOutputEmitter<typeof descriptor, 'change:rendered'>
 	declare readonly soChangeVisible: TOutputEmitter<typeof descriptor, 'change:visible'>
 	declare readonly soChangeTag: TOutputEmitter<typeof descriptor, 'change:tag'>
 	declare readonly soChangeDirection: TOutputEmitter<typeof descriptor, 'change:direction'>
-	declare readonly soChangeClasses: TOutputEmitter<typeof descriptor, 'change:classes'>
-	declare readonly soChangeAria: TOutputEmitter<typeof descriptor, 'change:aria'>
-	declare readonly soChangeDataset: TOutputEmitter<typeof descriptor, 'change:dataset'>
-	declare readonly soChangeAttrs: TOutputEmitter<typeof descriptor, 'change:attrs'>
 	declare readonly soChangeText: TOutputEmitter<typeof descriptor, 'change:text'>
 	declare readonly soChangeDescription: TOutputEmitter<typeof descriptor, 'change:description'>
 	declare readonly soChangeType: TOutputEmitter<typeof descriptor, 'change:type'>
@@ -122,6 +115,7 @@ export abstract class TToastsItemSurface<TInstance extends IEntity> extends TVie
 	declare readonly soChangeDuration: TOutputEmitter<typeof descriptor, 'change:duration'>
 	declare readonly soChangeAlert: TOutputEmitter<typeof descriptor, 'change:alert'>
 	declare readonly soChangeRender: TOutputEmitter<typeof descriptor, 'change:render'>
-	declare readonly soChangeCloseAria: TOutputEmitter<typeof descriptor, 'change:closeAria'>
+	declare readonly soElementReady: TOutputEmitter<typeof descriptor, 'element:ready'>
+	declare readonly soElementRemoved: TOutputEmitter<typeof descriptor, 'element:removed'>
 	declare readonly soChangeOrder: TOutputEmitter<typeof facade, 'change:order'>
 }

@@ -78,7 +78,18 @@ export const TableCollectionDescriptor = defineDescriptor(() =>
 			 * действие, с колонкой и новым порядком полей. По ним приложение
 			 * сохраняет настройку.
 			 */
-			events: ['column:resize', 'column:move'],
+			events: [
+				'column:resize',
+				'column:move',
+				'change:mode',
+				'change:shownColumns',
+				'change:sort',
+				'change:sortMode',
+				'change:presorted',
+				'change:grid',
+				'change:selection',
+				'change:shownSelection',
+			],
 		},
 	}),
 )
@@ -110,6 +121,7 @@ export const TableCollectionRowDescriptor = defineDescriptor(() =>
 				 */
 				cellAria: { type: Object, protected: true, triggers: ['change:cellAria'] },
 			},
+			events: ['change:selected'],
 		},
 	}),
 )

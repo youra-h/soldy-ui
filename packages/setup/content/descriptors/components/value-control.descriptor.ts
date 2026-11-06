@@ -23,7 +23,7 @@ export const ValueControlDescriptor = defineDescriptor(() =>
 				},
 				name: { type: String, triggers: ['change:name'] },
 			},
-			events: ['input', 'input:value'],
+			events: ['input', 'input:value', 'change:value', 'change:name'],
 		},
 	}),
 )

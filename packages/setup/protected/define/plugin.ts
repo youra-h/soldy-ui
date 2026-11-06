@@ -1,31 +1,6 @@
 /**
- * definePlugin — объявляет плагин: его контракт, один раз на класс.
- *
- *   export const DismissPluginDescriptor = definePlugin({
- *     ctor: TDismissPlugin,
- *     namespace: 'dismiss',
- *     contribution: { … },
- *   })
- *
- *   plugins: [AriaPluginDescriptor, DismissPluginDescriptor.with({ focusOutside: true })]
- *
- * props/events нормализуются в TName с namespace. Опций у объявления нет: они —
- * свойство места, где плагин поставили, и задаёт их `with()` (`TPluginDefinition`).
- *
- * Типы руками не пишутся: `definePlugin` выводит контракт плагина из его класса
- * и contribution (`TPluginContractFrom`). Входы — незащищённые пропсы, выходы —
- * защищённые, тип значения — у одноимённого свойства класса или у `get`;
- * события — карта класса, суженная до `events` и триггеров пропсов; опции —
- * второй параметр `install()`.
- *
- * Контракт плагина — свойство его класса, а не места, где его поставили.
- * Плагин дескриптора объявляет пропсы и события через дескриптор. Плагин,
- * поставленный снаружи (`usePlugins` при сборке или `bundle.use` в любой
- * момент жизни компонента), своих пропсов в поверхности компонента не имеет:
- * их значения приходят в `pluginProps`, а события уходят конвертом
- * `plugin:event`. Какие у него пропсы и события, сборка узнаёт здесь —
- * `pluginContractOf(ctor)`. Записывает контракт только `definePlugin`:
- * `with()` его не трогает, опции одного дескриптора чужому не видны.
+ * definePlugin infers and registers a plugin contract from its class and contribution.
+ * Public events come only from explicit `events`; property triggers refresh state and models.
  */
 
 import type { IContribution } from './contribution.types'

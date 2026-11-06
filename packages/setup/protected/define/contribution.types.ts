@@ -19,9 +19,8 @@ export interface IPropDefinition {
 	/** Свойство вычисляет владелец, снаружи его только читают. */
 	protected?: boolean
 	/**
-	 * События владельца, после которых значение надо перечитать. Только для
-	 * чтения: объявление — литерал, и из него выводятся имена событий дескриптора
-	 * (`const`-параметр даёт `readonly`-кортеж).
+	 * Owner events that refresh this property and its model binding.
+	 * Triggers do not publish public component or plugin events.
 	 */
 	triggers?: readonly string[]
 	/** Нетривиальное чтение: вместо `owner[name]`. */

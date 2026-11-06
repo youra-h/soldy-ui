@@ -43,6 +43,14 @@ export const FrameDescriptor = defineDescriptor(() =>
 				 */
 				contained: { type: Boolean, triggers: ['change:contained'] },
 			},
+			events: [
+				'change:x',
+				'change:y',
+				'change:width',
+				'change:height',
+				'change:position',
+				'change:contained',
+			],
 		},
 
 		plugins: [FrameLayoutPluginDescriptor, AnchorPluginDescriptor, AriaPluginDescriptor],

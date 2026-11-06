@@ -33,6 +33,7 @@ export const VirtualDescriptor = defineDescriptor(() =>
 			slots: {
 				default: { description: 'Коллекции, которые рисуют только видимые элементы' },
 			},
+			events: ['change:enabled'],
 		},
 	}),
 )

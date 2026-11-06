@@ -67,7 +67,13 @@ export const ModalLayerDescriptor = defineDescriptor(() =>
 			 * Пользователь закрывает панель: кнопкой, нажатием мимо, Escape или
 			 * жестом. `preventDefault()` оставляет её открытой.
 			 */
-			events: ['close:before'],
+			events: [
+				'close:before',
+				'change:width',
+				'change:height',
+				'change:closable',
+				'change:dismissible',
+			],
 		},
 
 		plugins: [

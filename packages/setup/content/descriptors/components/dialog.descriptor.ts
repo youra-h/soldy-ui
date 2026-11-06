@@ -63,6 +63,13 @@ export const DialogDescriptor = defineDescriptor(() =>
 				 */
 				maximizeAria: { type: Object, protected: true, triggers: ['change:maximizeAria'] },
 			},
+			events: [
+				'change:placement',
+				'change:offset',
+				'change:maximized',
+				'change:maximizable',
+				'change:alert',
+			],
 		},
 
 		plugins: [

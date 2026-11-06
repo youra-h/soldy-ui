@@ -86,6 +86,7 @@ export const AccordionItemDescriptor = defineDescriptor(() =>
 				 */
 				contentAria: { type: Object, protected: true, triggers: ['change:contentAria'] },
 			},
+			events: ['change:text', 'change:arrowPlacement'],
 		},
 
 		plugins: [

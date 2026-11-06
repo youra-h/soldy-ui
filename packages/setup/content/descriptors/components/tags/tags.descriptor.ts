@@ -87,6 +87,7 @@ export const TagsDescriptor = defineDescriptor(() =>
 				 */
 				overflow: { type: String, triggers: ['change:overflow'] },
 			},
+			events: ['change:closable', 'change:view', 'change:overflow'],
 		},
 
 		plugins: [

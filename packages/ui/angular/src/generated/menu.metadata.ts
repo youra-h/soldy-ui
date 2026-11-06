@@ -37,16 +37,13 @@ export const MenuInputNames = [
 	'groups',
 ] as const
 export const MenuOutputNames = [
-	'soDismissDismiss',
 	'soChangeSize',
 	'soChangeVariant',
 	'soChangeOpen',
 	'soChangePlacement',
 	'soChangeOpenOn',
 	'soChangeGroupSeparators',
-	'soChangePoint',
-	'soChangeTriggerAria',
-	'soChangePanelClasses',
+	'soDismissDismiss',
 	'soDismissChangeEnabled',
 	'soEngineCreate',
 	'soItemAddBefore',
@@ -63,13 +60,11 @@ export const MenuOutputNames = [
 	'soItemsAdded',
 	'soItemsRemoved',
 	'soChangeShown',
-	'soChoose',
 	'soChangeItems',
 	'soChangeTrackBy',
+	'soChoose',
 	'soChangeGroupBy',
 	'soChangeGroups',
-	'soChangeSections',
-	'soChangeSubmenus',
 ] as const
 
 @Directive({
@@ -139,17 +134,10 @@ export abstract class TMenuSurface<TInstance extends IEntity> extends TViewSurfa
 	declare readonly soHideBefore: TOutputEmitter<typeof descriptor, 'hide:before'>
 	declare readonly soHideAfter: TOutputEmitter<typeof descriptor, 'hide:after'>
 	declare readonly soReady: TOutputEmitter<typeof descriptor, 'ready'>
-	declare readonly soElementReady: TOutputEmitter<typeof descriptor, 'element:ready'>
-	declare readonly soElementRemoved: TOutputEmitter<typeof descriptor, 'element:removed'>
-	declare readonly soDismissDismiss: TOutputEmitter<typeof descriptor, 'dismiss:dismiss'>
 	declare readonly soChangeRendered: TOutputEmitter<typeof descriptor, 'change:rendered'>
 	declare readonly soChangeVisible: TOutputEmitter<typeof descriptor, 'change:visible'>
 	declare readonly soChangeTag: TOutputEmitter<typeof descriptor, 'change:tag'>
 	declare readonly soChangeDirection: TOutputEmitter<typeof descriptor, 'change:direction'>
-	declare readonly soChangeClasses: TOutputEmitter<typeof descriptor, 'change:classes'>
-	declare readonly soChangeAria: TOutputEmitter<typeof descriptor, 'change:aria'>
-	declare readonly soChangeDataset: TOutputEmitter<typeof descriptor, 'change:dataset'>
-	declare readonly soChangeAttrs: TOutputEmitter<typeof descriptor, 'change:attrs'>
 	declare readonly soChangeSize: TOutputEmitter<typeof descriptor, 'change:size'>
 	declare readonly soChangeVariant: TOutputEmitter<typeof descriptor, 'change:variant'>
 	declare readonly soChangeOpen: TOutputEmitter<typeof descriptor, 'change:open'>
@@ -159,9 +147,9 @@ export abstract class TMenuSurface<TInstance extends IEntity> extends TViewSurfa
 		typeof descriptor,
 		'change:groupSeparators'
 	>
-	declare readonly soChangePoint: TOutputEmitter<typeof descriptor, 'change:point'>
-	declare readonly soChangeTriggerAria: TOutputEmitter<typeof descriptor, 'change:triggerAria'>
-	declare readonly soChangePanelClasses: TOutputEmitter<typeof descriptor, 'change:panelClasses'>
+	declare readonly soElementReady: TOutputEmitter<typeof descriptor, 'element:ready'>
+	declare readonly soElementRemoved: TOutputEmitter<typeof descriptor, 'element:removed'>
+	declare readonly soDismissDismiss: TOutputEmitter<typeof descriptor, 'dismiss:dismiss'>
 	declare readonly soDismissChangeEnabled: TOutputEmitter<
 		typeof descriptor,
 		'dismiss:change:enabled'
@@ -181,11 +169,9 @@ export abstract class TMenuSurface<TInstance extends IEntity> extends TViewSurfa
 	declare readonly soItemsAdded: TOutputEmitter<typeof facade, 'items:added'>
 	declare readonly soItemsRemoved: TOutputEmitter<typeof facade, 'items:removed'>
 	declare readonly soChangeShown: TOutputEmitter<typeof facade, 'change:shown'>
-	declare readonly soChoose: TOutputEmitter<typeof facade, 'choose'>
 	declare readonly soChangeItems: TOutputEmitter<typeof facade, 'change:items'>
 	declare readonly soChangeTrackBy: TOutputEmitter<typeof facade, 'change:trackBy'>
+	declare readonly soChoose: TOutputEmitter<typeof facade, 'choose'>
 	declare readonly soChangeGroupBy: TOutputEmitter<typeof facade, 'change:groupBy'>
 	declare readonly soChangeGroups: TOutputEmitter<typeof facade, 'change:groups'>
-	declare readonly soChangeSections: TOutputEmitter<typeof facade, 'change:sections'>
-	declare readonly soChangeSubmenus: TOutputEmitter<typeof facade, 'change:submenus'>
 }

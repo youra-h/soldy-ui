@@ -1,17 +1,6 @@
 /**
- * defineComponent — дескриптор компонента из его объявления.
- *
- * Дескриптор — описание типа и только оно: что компонент объявляет наружу и из
- * каких плагинов состоит (`TComponentDescriptor`). Собирает по нему компонент
- * сборка (`assemble/`), дескриптор о ней не знает.
- *
- * Типы дескриптора руками не пишутся — `defineComponent` выводит их из опций
- * (`TContractFrom`). Пропсы — у класса ядра: его инстанс и есть схема для типов,
- * без своего `ctor` — у родительского. События — карта того же класса, суженная
- * до имён, которые дескриптор публикует: `events` и триггеры пропсов, свои и
- * `extends`. Слоты — только из своего объявления `slots`: они описывают
- * разметку, и слоты `extends` наследнику не переходят. Плагины — из `plugins`.
- * Второй записи пропсов, событий или слотов рядом с объявлением нет.
+ * defineComponent infers a component contract from its class and declarations.
+ * Public events come only from explicit `events`, including inherited declarations.
  */
 
 import { TComponentDescriptor } from './component-descriptor.class'

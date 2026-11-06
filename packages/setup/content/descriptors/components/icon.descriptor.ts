@@ -22,6 +22,7 @@ export const IconDescriptor = defineDescriptor(() =>
 				width: { type: [String, Number], triggers: ['change:width'] },
 				height: { type: [String, Number], triggers: ['change:height'] },
 			},
+			events: ['change:size', 'change:width', 'change:height'],
 		},
 
 		// Иконка декоративна, пока ей не дали имя; с именем она обязана стать

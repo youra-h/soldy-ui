@@ -193,7 +193,24 @@ export const SelectDescriptor = defineDescriptor(() =>
 				// Общие с ListBox — объявлены один раз в `components/list.ts`
 				...LIST_PROPS,
 			},
-			events: ['open', 'close'],
+			events: [
+				'open',
+				'close',
+				'change:open',
+				'change:placeholder',
+				'change:closeOnSelect',
+				'change:clearable',
+				'change:editable',
+				'change:editableMode',
+				'change:removeOnBackspace',
+				'change:placement',
+				'change:swipe',
+				'change:maxRows',
+				'change:contentFit',
+				'change:scrollBehavior',
+				'change:indicator',
+				'change:groupSeparators',
+			],
 		},
 
 		plugins: [

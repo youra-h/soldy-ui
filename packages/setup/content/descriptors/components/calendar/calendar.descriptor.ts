@@ -94,6 +94,15 @@ export const CalendarDescriptor = defineDescriptor(() =>
 				prevAria: { type: Object, protected: true, triggers: ['change:prevAria'] },
 				nextAria: { type: Object, protected: true, triggers: ['change:nextAria'] },
 			},
+			events: [
+				'change:min',
+				'change:max',
+				'change:unavailable',
+				'change:weekStart',
+				'change:locale',
+				'change:timeZone',
+				'change:months',
+			],
 		},
 
 		plugins: [

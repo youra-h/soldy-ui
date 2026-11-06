@@ -56,6 +56,7 @@ export const RadioGroupDescriptor = defineDescriptor(() =>
 			props: {
 				view: { type: String, triggers: ['change:view'] },
 			},
+			events: ['change:view'],
 		},
 
 		plugins: [

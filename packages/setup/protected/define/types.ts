@@ -67,7 +67,9 @@ export interface IDeclaration<T> {
 export interface IPluginsContract {
 	/** Входы — незащищённые пропсы, их пишет потребитель. */
 	props: object
-	/** События, которые плагин публикует: `events` и триггеры пропсов. */
+	/**
+	 * Explicitly declared public plugin events.
+	 */
 	events: object
 	/** Выходы — защищённые пропсы: их вычисляет плагин, разметка только читает. */
 	outputs: object
@@ -132,14 +134,8 @@ export interface IComponentSlotDefinition extends ISlotDefinition {
 export type TSlotDefinitions = Readonly<Record<string, IComponentSlotDefinition>>
 
 /**
- * Проп в contribution компонента: то же, что `IPropDefinition`, но триггер —
- * имя события, которое дескриптор публикует.
- *
- * Триггеры адаптер пробрасывает наружу — и у protected-пропа тоже, — поэтому
- * их имена вместе с `events` и составляют события компонента в типах
- * (`DescriptorEvents`). Сверяет их `defineComponent`: у дескриптора с классом
- * ядра имя вне его карты событий не компилируется. Параметр нужен общим
- * наборам пропсов (`LIST_PROPS`): они сверяют триггеры со своей картой сами.
+ * Property triggers refresh state and models; they do not publish component events.
+ * Each trigger must name an event from the instance event map.
  */
 export interface IComponentPropDefinition<
 	TEventName extends string = string,
@@ -154,13 +150,8 @@ export interface IComponentContribution extends IContribution {
 }
 
 /**
- * Опции для defineComponent().
- *
- * Тип опций `defineComponent` запоминает целиком, литералом, и выводит из него
- * контракт дескриптора (`TContractFrom`): инстанс — из `ctor`, а без него из
- * `extends`; имена событий — из `events` и триггеров пропсов; слоты — только
- * из своего объявления; плагины — из `plugins`; родительские пропсы, события
- * и плагины — из `extends`.
+ * Component options infer the instance from `ctor` or `extends`, public event names
+ * from explicit `events`, own slots from `slots`, and plugin contracts from `plugins`.
  */
 export interface IComponentOptions {
 	/** Конструктор core-компонента. Без него инстанс наследуется от `extends`. */
@@ -190,11 +181,8 @@ export interface IComponentContract {
 	/** Инстанс, который строит `ctor`. */
 	instance: object
 	/**
-	 * Опубликованные имена событий — `events` и триггеры пропсов, свои и
-	 * `extends`. До них сужается карта событий инстанса. Нужны отдельно от
-	 * карты: у дескриптора без класса ядра (`EntityDescriptor`,
-	 * `CollectionDescriptor`) карты нет, а имена есть, и карту к ним
-	 * прикладывает наследник. `string` — имена неизвестны, то есть любые.
+	 * Explicit event names declared here or inherited through `extends`.
+	 * They narrow the instance event map, including declarations without their own class.
 	 */
 	eventName: string
 	/**

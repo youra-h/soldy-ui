@@ -27,13 +27,12 @@ export const TooltipInputNames = [
 	'dismiss_enabled',
 ] as const
 export const TooltipOutputNames = [
-	'soDismissDismiss',
 	'soChangeOpen',
 	'soChangePlacement',
 	'soChangeOpenDelay',
 	'soChangeCloseDelay',
 	'soChangeType',
-	'soChangeTriggerAria',
+	'soDismissDismiss',
 	'soDismissChangeEnabled',
 ] as const
 
@@ -92,23 +91,18 @@ export abstract class TTooltipSurface<TInstance extends IEntity> extends TViewSu
 	declare readonly soHideBefore: TOutputEmitter<typeof descriptor, 'hide:before'>
 	declare readonly soHideAfter: TOutputEmitter<typeof descriptor, 'hide:after'>
 	declare readonly soReady: TOutputEmitter<typeof descriptor, 'ready'>
-	declare readonly soElementReady: TOutputEmitter<typeof descriptor, 'element:ready'>
-	declare readonly soElementRemoved: TOutputEmitter<typeof descriptor, 'element:removed'>
-	declare readonly soDismissDismiss: TOutputEmitter<typeof descriptor, 'dismiss:dismiss'>
 	declare readonly soChangeRendered: TOutputEmitter<typeof descriptor, 'change:rendered'>
 	declare readonly soChangeVisible: TOutputEmitter<typeof descriptor, 'change:visible'>
 	declare readonly soChangeTag: TOutputEmitter<typeof descriptor, 'change:tag'>
 	declare readonly soChangeDirection: TOutputEmitter<typeof descriptor, 'change:direction'>
-	declare readonly soChangeClasses: TOutputEmitter<typeof descriptor, 'change:classes'>
-	declare readonly soChangeAria: TOutputEmitter<typeof descriptor, 'change:aria'>
-	declare readonly soChangeDataset: TOutputEmitter<typeof descriptor, 'change:dataset'>
-	declare readonly soChangeAttrs: TOutputEmitter<typeof descriptor, 'change:attrs'>
 	declare readonly soChangeOpen: TOutputEmitter<typeof descriptor, 'change:open'>
 	declare readonly soChangePlacement: TOutputEmitter<typeof descriptor, 'change:placement'>
 	declare readonly soChangeOpenDelay: TOutputEmitter<typeof descriptor, 'change:openDelay'>
 	declare readonly soChangeCloseDelay: TOutputEmitter<typeof descriptor, 'change:closeDelay'>
 	declare readonly soChangeType: TOutputEmitter<typeof descriptor, 'change:type'>
-	declare readonly soChangeTriggerAria: TOutputEmitter<typeof descriptor, 'change:triggerAria'>
+	declare readonly soElementReady: TOutputEmitter<typeof descriptor, 'element:ready'>
+	declare readonly soElementRemoved: TOutputEmitter<typeof descriptor, 'element:removed'>
+	declare readonly soDismissDismiss: TOutputEmitter<typeof descriptor, 'dismiss:dismiss'>
 	declare readonly soDismissChangeEnabled: TOutputEmitter<
 		typeof descriptor,
 		'dismiss:change:enabled'

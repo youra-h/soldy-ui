@@ -41,7 +41,7 @@ export const ListBoxCollectionDescriptor = defineDescriptor(() =>
 					triggers: ['change:drawnSections'],
 				},
 			},
-			events: [],
+			events: ['change:mode', 'change:selection', 'change:groupBy', 'change:groups'],
 		},
 	}),
 )
@@ -77,6 +77,7 @@ export const ListBoxCollectionItemDescriptor = defineDescriptor(() =>
 					triggers: ['change:indicator'],
 				},
 			},
+			events: ['change:selected', 'change:order'],
 		},
 	}),
 )

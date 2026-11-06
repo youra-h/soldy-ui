@@ -39,6 +39,7 @@ export const ToastsCollectionItemDescriptor = defineDescriptor(() =>
 			props: {
 				order: { type: Number, protected: true, triggers: ['change:order'] },
 			},
+			events: ['change:order'],
 		},
 	}),
 )

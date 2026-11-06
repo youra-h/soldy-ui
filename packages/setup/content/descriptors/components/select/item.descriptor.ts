@@ -49,6 +49,7 @@ export const SelectItemDescriptor = defineDescriptor(() =>
 				...OWNER_STYLE_PROPS,
 				text: { type: String, triggers: ['change:text'] },
 			},
+			events: ['change:text'],
 		},
 
 		plugins: [

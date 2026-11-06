@@ -20,6 +20,7 @@ export const InteractiveDescriptor = defineDescriptor(() =>
 				disabled: { type: Boolean, triggers: ['change:disabled'] },
 				focused: { type: Boolean, triggers: ['change:focused'] },
 			},
+			events: ['change:disabled', 'change:focused'],
 		},
 	}),
 )

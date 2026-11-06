@@ -27,6 +27,7 @@ export const MenuRadioGroupDescriptor = defineDescriptor(() =>
 			slots: {
 				default: { description: 'Переключатели группы' },
 			},
+			events: ['change:value'],
 		},
 	}),
 )
