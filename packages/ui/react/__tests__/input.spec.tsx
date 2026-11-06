@@ -495,15 +495,13 @@ describe('Input · кнопка очистки', () => {
 })
 
 describe('Input · типы', () => {
-	/**
-	 * Событие `input` дескриптора даёт колбэк `onInput` — то же имя, что у
-	 * обработчика DOM. Пересечение с атрибутом свело бы их в функцию, которой
-	 * не написать; `UseDomProps` вычитает имена событий из атрибутов, как
-	 * пропсы и слоты. Проверяет не vitest, а шаг CI «Типы — React».
-	 */
-	it('onInput — колбэк события input дескриптора, а не обработчик DOM', () => {
-		expectTypeOf<NonNullable<InputProps['onInput']>>().toEqualTypeOf<
+	/** Value notifications and native DOM input retain separate callback types. */
+	it('onChangeValue carries the value payload; onInput remains a DOM handler', () => {
+		expectTypeOf<NonNullable<InputProps['onChangeValue']>>().toEqualTypeOf<
 			(payload: TValuePayload<string>) => void
+		>()
+		expectTypeOf<InputProps['onInput']>().toEqualTypeOf<
+			import('react').ComponentProps<'input'>['onInput']
 		>()
 	})
 })
