@@ -1,6 +1,7 @@
 import { enUS, type TLocale } from '@soldy-ui/plugins'
 import { DEFAULT_SLOT } from '@soldy-ui/setup'
-import { TLocaleProviderElement, isHostProp, toAttributeName } from '@soldy-ui/webc'
+import { TLocaleProviderElement } from '@soldy-ui/webc'
+import { isHostProp, toAttributeName } from '../../../../../ui/webc/src/adapter/common/attributes'
 import {
 	componentDescriptors,
 	findComponent,

@@ -1,4 +1,5 @@
-export { setupAccordion } from './setup.component'
-export { TAccordionElement, type TAccordionElementProps } from './Accordion.element'
-export { accordionTemplate, ACCORDION_ITEM_SLOTS } from './accordion.template'
-export * from './item'
+/** Application API for this element entry. */
+export { TAccordionElement } from './Accordion.element'
+export type { TAccordionElementProps } from './Accordion.element'
+export { TAccordionItemElement } from './item/AccordionItem.element'
+export type { TAccordionItemElementProps } from './item/AccordionItem.element'

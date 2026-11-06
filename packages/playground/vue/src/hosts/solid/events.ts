@@ -1,5 +1,5 @@
 import { TSurface, type IComponentDescriptor } from '@soldy-ui/setup'
-import { SolidProfile } from '@soldy-ui/solid'
+import { SolidProfile } from '../../../../../ui/solid/src/adapter/common/profile'
 import type { TPreviewEventSink } from '@soldy-ui/playground-shared'
 
 /** Listeners of a component in Solid: callback props by name (`onChangeText`). */

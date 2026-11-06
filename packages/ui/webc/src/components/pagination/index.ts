@@ -1,3 +1,3 @@
-export { setupPagination } from './setup.component'
-export { TPaginationElement, type TPaginationElementProps } from './Pagination.element'
-export { paginationTemplate, PAGINATION_ITEM_SLOTS } from './pagination.template'
+/** Application API for this element entry. */
+export { TPaginationElement } from './Pagination.element'
+export type { TPaginationElementProps } from './Pagination.element'

@@ -100,6 +100,21 @@ app.config.idPrefix = 'cart'
 - [Architecture overview](https://github.com/youra-h/soldy-ui/blob/main/docs/architecture.md) —
   layers, descriptors, plugins, collections, adapters.
 
+## Public API
+
+The package entry exports application components, their consumer types, the locale provider,
+and the supported icon and toast helpers. Component props, slots, events, refs and core models
+passed through `ctrl` remain the supported ways to customize the UI. Models come from
+`@soldy-ui/core`; theme, icon and external-plugin registration comes from `@soldy-ui/setup`.
+
+Assembly functions, adapter profiles, bindings, generated metadata and rendering templates
+are private implementation details. They are no longer exported from the package entry, and
+there is no public `/internal` entry. Code that imported them must use the component contract
+instead. Building a new adapter component from Soldy's assembly helpers is not a supported
+public SDK.
+
+Component props types, including `ButtonProps`, are available from the package entry.
+
 ## License
 
 [MIT](https://github.com/youra-h/soldy-ui/blob/main/LICENSE)

@@ -46,8 +46,8 @@ import {
 	SlotDirective,
 	TTableComponent,
 	TVirtualComponent,
-	TextPipe,
 } from '@soldy-ui/angular'
+import { TextPipe } from '../src/adapter/runtime/text.pipe'
 import { mountHost, nextFrame } from './mount'
 
 /** Узел по селектору; нет его — тест падает здесь, а не на чтении свойства. */

@@ -12,11 +12,11 @@ import { describe, it, expect } from 'vitest'
 import { ɵgetComponentDef, ɵgetDirectiveDef } from '@angular/core'
 import {
 	TButtonComponent,
-	TComponentBase,
 	TIconComponent,
 	TItemRowComponent,
 	TListBoxItemComponent,
 } from '@soldy-ui/angular'
+import { TComponentBase } from '../src/adapter/runtime/component.base'
 import { exportedDeclarations } from './declarations'
 
 /** Content queries of a component or directive — a function of its Angular definition, none — `null`. */

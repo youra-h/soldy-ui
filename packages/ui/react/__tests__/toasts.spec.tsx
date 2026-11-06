@@ -48,11 +48,11 @@ import {
 	ListBox,
 	LocaleProvider,
 	Toasts,
-	isToastRender,
 	useToasts,
 	type TToastRender,
 	type ToastsProps,
 } from '@soldy-ui/react'
+import { isToastRender } from '../src/adapter/toasts/render'
 import { find, mount, nextFrame, track, type TMounted } from './mount'
 
 /** Узел по селектору; нет его — тест падает здесь, а не на чтении свойства. */

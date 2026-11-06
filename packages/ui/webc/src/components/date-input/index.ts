@@ -1,3 +1,3 @@
-export { setupDateInput } from './setup.component'
-export { TDateInputElement, type TDateInputElementProps } from './DateInput.element'
-export { dateInputTemplate } from './date-input.template'
+/** Application API for this element entry. */
+export { TDateInputElement } from './DateInput.element'
+export type { TDateInputElementProps } from './DateInput.element'

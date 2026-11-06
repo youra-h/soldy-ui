@@ -13,10 +13,10 @@ import { ɵgetComponentDef } from '@angular/core'
 import {
 	TButtonComponent,
 	TCheckBoxComponent,
-	TComponentBase,
 	TTableComponent,
 	TTableRowComponent,
 } from '@soldy-ui/angular'
+import { TComponentBase } from '../src/adapter/runtime/component.base'
 import { exportedDeclarations } from './declarations'
 
 /** Запросы представления компонента — функция из описания Angular, без них `null`. */

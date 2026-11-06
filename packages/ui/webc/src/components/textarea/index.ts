@@ -1,3 +1,3 @@
-export { setupTextarea } from './setup.component'
-export { TTextareaElement, type TTextareaElementProps } from './Textarea.element'
-export { textareaTemplate } from './textarea.template'
+/** Application API for this element entry. */
+export { TTextareaElement } from './Textarea.element'
+export type { TTextareaElementProps } from './Textarea.element'

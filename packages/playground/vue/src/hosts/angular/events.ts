@@ -1,6 +1,6 @@
 import { EventEmitter, InjectionToken } from '@angular/core'
 import { TSurface, type IComponentDescriptor } from '@soldy-ui/setup'
-import { AngularProfile } from '@soldy-ui/angular'
+import { AngularProfile } from '../../../../../ui/angular/src/adapter/common/profile'
 import type { TPreviewEventSink } from '@soldy-ui/playground-shared'
 
 /** A listener of a component's output: the output's name and the handler. */

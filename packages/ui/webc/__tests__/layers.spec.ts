@@ -12,7 +12,9 @@
 
 import { describe, it, expect } from 'vitest'
 import { TInputControl, TInteractive, TValueControl } from '@soldy-ui/core'
-import { setupInputControl, setupInteractive, setupValueControl } from '@soldy-ui/webc'
+import { setupInputControl } from '../src/components/input-control/setup.component'
+import { setupInteractive } from '../src/components/interactive/setup.component'
+import { setupValueControl } from '../src/components/value-control/setup.component'
 
 /** Колбэк связки, который запоминает, о каких пропах она сообщила. */
 function recorder(): { readonly names: string[]; onUpdate: (name: string) => void } {

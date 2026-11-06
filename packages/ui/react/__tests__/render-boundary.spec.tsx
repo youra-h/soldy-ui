@@ -15,7 +15,8 @@
 import { describe, it, expect, expectTypeOf, vi } from 'vitest'
 import { act, type ComponentProps, type CSSProperties } from 'react'
 import { TButton } from '@soldy-ui/core'
-import { Button, withRenderBoundary, type ButtonProps } from '@soldy-ui/react'
+import { Button, type ButtonProps } from '@soldy-ui/react'
+import { withRenderBoundary } from '../src/adapter/runtime/withRenderBoundary'
 import { mount, nextFrame } from './mount'
 
 /** Button under the boundary. */

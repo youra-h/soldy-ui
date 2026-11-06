@@ -1,3 +1,3 @@
-export { setupField } from './setup.component'
-export { TFieldElement, type TFieldElementProps } from './Field.element'
-export { fieldTemplate } from './field.template'
+/** Application API for this element entry. */
+export { TFieldElement } from './Field.element'
+export type { TFieldElementProps } from './Field.element'

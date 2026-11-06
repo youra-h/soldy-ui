@@ -1,3 +1,3 @@
-export { setupComponentView } from './setup.component'
-export { TComponentViewElement, type TComponentViewElementProps } from './ComponentView.element'
-export { componentViewTemplate } from './component-view.template'
+/** Application API for this element entry. */
+export { TComponentViewElement } from './ComponentView.element'
+export type { TComponentViewElementProps } from './ComponentView.element'

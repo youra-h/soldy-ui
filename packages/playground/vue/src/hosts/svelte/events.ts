@@ -1,6 +1,6 @@
 import { createContext } from 'svelte'
 import { TSurface, type IComponentDescriptor } from '@soldy-ui/setup'
-import { SvelteProfile } from '@soldy-ui/svelte'
+import { SvelteProfile } from '../../../../../ui/svelte/src/adapter/common/profile'
 import type { TPreviewEventSink } from '@soldy-ui/playground-shared'
 
 /** Listeners of a component in Svelte: callback props by name (`onChangeText`). */

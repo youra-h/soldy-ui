@@ -34,13 +34,13 @@ import { TagsDescriptor, TagsItemDescriptor } from '@soldy-ui/setup'
 import {
 	TTagsElement,
 	TTagsItemElement,
-	defineElement,
 	registerItemRowTag,
-	type ITemplate,
 	type TItemRowElementProps,
 	type TTagsElementProps,
 	type TTagsItemElementProps,
 } from '@soldy-ui/webc'
+import { defineElement } from '../src/adapter/runtime/defineElement'
+import { type ITemplate } from '../src/adapter/template/types'
 import { tagsTemplate } from '../src/components/tags/tags.template'
 import { tagsItemTemplate } from '../src/components/tags/item/tags-item.template'
 import { bareContext } from './template-context'

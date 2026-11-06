@@ -23,11 +23,11 @@ import {
 	TButtonElement,
 	TDialogElement,
 	TFrameElement,
-	defineElement,
 	type TButtonElementProps,
 	type TDialogElementProps,
-	type TElementType,
 } from '@soldy-ui/webc'
+import { defineElement } from '../src/adapter/runtime/defineElement'
+import { type TElementType } from '../src/adapter/runtime/element.base'
 
 /** A subclass of an element class: `instanceof` answers for the class on its right. */
 class TSubmitButtonElement extends TButtonElement {}

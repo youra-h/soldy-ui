@@ -26,7 +26,6 @@ import { TDatePicker, type TDatePickerValue } from '@soldy-ui/core'
 import { ruRU, type TLocale } from '@soldy-ui/plugins'
 import { DatePickerDescriptor } from '@soldy-ui/setup'
 import {
-	DATE_PICKER_CALENDAR_SLOTS,
 	TButtonElement,
 	TCalendarElement,
 	TCalendarItemElement,
@@ -39,7 +38,10 @@ import {
 	type TCalendarItemElementProps,
 	type TDatePickerElementProps,
 } from '@soldy-ui/webc'
-import { datePickerTemplate } from '../src/components/date-picker/date-picker.template'
+import {
+	DATE_PICKER_CALENDAR_SLOTS,
+	datePickerTemplate,
+} from '../src/components/date-picker/date-picker.template'
 import { bareContext } from './template-context'
 
 /** Рендер коалесцируется в микротаске — ждём её перед проверкой. */

@@ -46,11 +46,11 @@ import {
 	TTableElement,
 	TTableRowElement,
 	TVirtualElement,
-	type ITemplate,
 	type TTableColumnElementProps,
 	type TTableElementProps,
 	type TTableRowElementProps,
 } from '@soldy-ui/webc'
+import { type ITemplate } from '../src/adapter/template/types'
 import { tableTemplate } from '../src/components/table/table.template'
 import { tableColumnTemplate } from '../src/components/table/column/table-column.template'
 import { tableRowTemplate } from '../src/components/table/row/table-row.template'

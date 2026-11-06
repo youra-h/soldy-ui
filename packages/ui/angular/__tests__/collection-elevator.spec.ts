@@ -21,7 +21,6 @@ import { Component, signal } from '@angular/core'
 import { TestBed, type ComponentFixture } from '@angular/core/testing'
 import type { IElevatorKey } from '@soldy-ui/setup'
 import {
-	AngularElevatorFactory,
 	TAccordionComponent,
 	TAccordionItemComponent,
 	TListBoxComponent,
@@ -29,8 +28,9 @@ import {
 	TTabsComponent,
 	TTabsContentComponent,
 	TTabsItemComponent,
-	provideElevator,
 } from '@soldy-ui/angular'
+import { AngularElevatorFactory } from '../src/adapter/elevator/factory'
+import { provideElevator } from '../src/adapter/elevator/layer'
 import { mountHost } from './mount'
 
 /** Движок так, как его видит тест: состав элементов по значениям. */
