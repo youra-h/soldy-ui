@@ -125,8 +125,8 @@ async function holds(check: () => Promise<boolean>): Promise<boolean> {
 
 /**
  * What the user does on the page and what goes wrong: the list opens and
- * chooses, the dialog opens. The problems of the steps go to `problems`; a
- * step that throws stops the rest.
+ * chooses, the dialog opens, closes and opens again. The problems of the steps
+ * go to `problems`; a step that throws stops the rest.
  */
 async function use(page: Page, url: string, problems: string[]): Promise<void> {
 	const response = await page.goto(url)
@@ -158,10 +158,35 @@ async function use(page: Page, url: string, problems: string[]): Promise<void> {
 		problems.push(`выбор в Select не дошёл до поля: «${await field.inputValue()}»`)
 	}
 
-	await page.getByRole('button', { name: 'Open dialog' }).click()
+	const openDialog = page.getByRole('button', { name: 'Open dialog' })
+	const dialog = page.getByRole('dialog', { name: 'Settings' })
+	await openDialog.click()
 
-	if (!(await holds(() => page.getByRole('dialog', { name: 'Settings' }).isVisible()))) {
+	if (!(await holds(() => dialog.isVisible()))) {
 		problems.push('кнопка не открыла Dialog')
+	} else {
+		if (
+			!(await holds(() =>
+				dialog.evaluate((node) => node.contains(node.ownerDocument.activeElement)),
+			))
+		) {
+			problems.push('Dialog не получил фокус после открытия')
+			return
+		}
+
+		// Closing changes visibility inside the component. The owning prop must
+		// receive the new boolean value so the dialog can close and open again.
+		await page.keyboard.press('Escape')
+
+		if (!(await holds(async () => !(await dialog.isVisible())))) {
+			problems.push('Escape не закрыл Dialog')
+		} else {
+			await openDialog.click()
+
+			if (!(await holds(() => dialog.isVisible()))) {
+				problems.push('кнопка не открыла Dialog повторно после закрытия')
+			}
+		}
 	}
 
 	// What the last step logs comes a little later than the step
