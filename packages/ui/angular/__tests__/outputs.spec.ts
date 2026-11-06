@@ -628,13 +628,13 @@ describe('имя выхода · so и имя ядра в camelCase', () => {
 	const events = domEvents()
 	const descriptors = exportedDescriptors()
 
-	it('сверка не впустую: input в схеме, дескрипторы найдены, у Input выход soInput', () => {
+	it('сверка не впустую: input в схеме, дескрипторы найдены, у Input выход soChangeValue', () => {
 		expect(events.has('input')).toBe(true)
 		expect(descriptors.map(([name]) => name)).toEqual(
 			expect.arrayContaining(['InputDescriptor', 'SelectDescriptor', 'ListBoxDescriptor']),
 		)
 		expect(useOutputs(InputDescriptor()).map(([output]) => output)).toEqual(
-			expect.arrayContaining(['soInput', 'soInputValue', 'soChangeValue']),
+			expect.arrayContaining(['soChangeValue']),
 		)
 	})
 

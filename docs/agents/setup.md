@@ -467,7 +467,7 @@ Builder добавил бы изменяемое состояние, pipeline �
   Там, где события делят канал с DOM, префикс `so` получает **каждое** событие
   адаптера, с разделителем его схемы имён: Web Components — `so:` и имя ядра
   (`so:show`, `so:show:before`, `so:element:ready`): событие всплывает с
-  элемента потребителя; Angular — `so` и имя ядра в camelCase (`soInput`,
+  элемента потребителя; Angular — `so` и имя ядра в camelCase (`soChangeValue`,
   `soShowBefore`, `soElementReady`): на `(input)` у элемента Angular слушает и
   выход, и событие DOM (см. «Angular-специфика»). Префикс — признак библиотеки,
   а не метка совпавших с DOM имён (AGENTS.md, «Префикс — только в глобальном

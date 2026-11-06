@@ -291,16 +291,16 @@ describe('Textarea · ввод', () => {
 	})
 })
 
-/**
- * Событие ядра `input` — выход `soInput`, а `(input)` на поле — событие
- * браузера, как на нативной `<textarea>`. Обработчики точного типа, их сверяет
- * «Типы — Angular».
- */
+/** Native input and component value changes use separate event channels. */
 @Component({
 	selector: 'probe-textarea-events',
 	standalone: true,
 	imports: [TTextareaComponent],
-	template: `<div so-textarea (input)="onDomInput($event)" (soInput)="onInput($event)"></div>`,
+	template: `<div
+		so-textarea
+		(input)="onDomInput($event)"
+		(soChangeValue)="onInput($event)"
+	></div>`,
 })
 class InputEventsHost {
 	readonly domInputs: Event[] = []
@@ -316,7 +316,7 @@ class InputEventsHost {
 }
 
 describe('Textarea · события', () => {
-	it('(input) — событие браузера, (soInput) — событие ядра: по одному на нажатие', async () => {
+	it('(input) — событие браузера, (soChangeValue) — событие ядра: по одному на нажатие', async () => {
 		const fixture = mountHost(InputEventsHost)
 		const textarea = field(findIn(fixture, '[so-textarea]', HTMLElement))
 

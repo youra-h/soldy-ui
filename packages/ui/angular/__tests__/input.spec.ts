@@ -372,19 +372,11 @@ describe('Input · значение', () => {
 	})
 })
 
-/**
- * Событие ядра `input` — выход `soInput`, а `(input)` на поле — событие
- * браузера, как на нативном `<input>`. На `(x)` у элемента Angular ставит и
- * подписку на выход `x`, и слушатель события DOM `x`: пока выход назывался
- * `input`, обработчик получал на каждое нажатие два вызова — событие ядра и
- * всплывшее от `<input>` событие браузера, хотя строгий шаблон обещал ему
- * только первое. Обработчики здесь точного типа, их сверяет «Типы — Angular»:
- * с выходом `input` у `(input)` был бы `$event` события ядра, а не `Event`.
- */
+/** Native input and component value changes use separate event channels. */
 @Component({
 	standalone: true,
 	imports: [TInputComponent],
-	template: `<div so-input (input)="onDomInput($event)" (soInput)="onInput($event)"></div>`,
+	template: `<div so-input (input)="onDomInput($event)" (soChangeValue)="onInput($event)"></div>`,
 })
 class InputEventsHost {
 	readonly domInputs: Event[] = []
@@ -400,7 +392,7 @@ class InputEventsHost {
 }
 
 describe('Input · события', () => {
-	it('(input) — событие браузера, (soInput) — событие ядра: по одному на нажатие', async () => {
+	it('(input) — событие браузера, (soChangeValue) — событие ядра: по одному на нажатие', async () => {
 		const fixture = mountHost(InputEventsHost)
 		const input = field(findIn(fixture, '[so-input]', HTMLElement))
 

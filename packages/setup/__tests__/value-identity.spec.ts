@@ -166,7 +166,6 @@ describe('События эмитятся только при реальном �
 
 		component.events.on('show:before', () => seen.push('show:before'))
 		component.events.on('show', () => seen.push('show'))
-		component.events.on('show:after', () => seen.push('show:after'))
 
 		component.show()
 
@@ -182,11 +181,30 @@ describe('События эмитятся только при реальном �
 
 		component.events.on('show:before', () => seen.push('show:before'))
 		component.events.on('show', () => seen.push('show'))
-		component.events.on('show:after', () => seen.push('show:after'))
 
 		component.show()
 
-		expect(seen).toEqual(['show:before', 'show', 'show:after'])
+		expect(seen).toEqual(['show:before', 'show'])
 		expect(component.visible).toBe(true)
+	})
+})
+
+describe('Visibility completion events', () => {
+	it('emits show and hide after their lifecycle hooks', () => {
+		const seen: string[] = []
+		class View extends TComponentView {
+			protected override afterShow(): void {
+				seen.push('afterShow')
+			}
+			protected override afterHide(): void {
+				seen.push('afterHide')
+			}
+		}
+		const view = new View({ visible: false })
+		view.events.on('show', () => seen.push('show'))
+		view.events.on('hide', () => seen.push('hide'))
+		view.show()
+		view.hide()
+		expect(seen).toEqual(['afterShow', 'show', 'afterHide', 'hide'])
 	})
 })

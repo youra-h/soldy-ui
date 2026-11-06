@@ -36,8 +36,6 @@ export const InputControlOutputNames = [
 	'soChangeVariant',
 	'soChangeDisabled',
 	'soChangeFocused',
-	'soInput',
-	'soInputValue',
 	'soChangeValue',
 	'soChangeName',
 	'soChangeReadonly',
@@ -111,9 +109,7 @@ export abstract class TInputControlSurface<TInstance extends IEntity> extends TV
 	declare readonly soShow: TOutputEmitter<typeof descriptor, 'show'>
 	declare readonly soHide: TOutputEmitter<typeof descriptor, 'hide'>
 	declare readonly soShowBefore: TOutputEmitter<typeof descriptor, 'show:before'>
-	declare readonly soShowAfter: TOutputEmitter<typeof descriptor, 'show:after'>
 	declare readonly soHideBefore: TOutputEmitter<typeof descriptor, 'hide:before'>
-	declare readonly soHideAfter: TOutputEmitter<typeof descriptor, 'hide:after'>
 	declare readonly soReady: TOutputEmitter<typeof descriptor, 'ready'>
 	declare readonly soChangeRendered: TOutputEmitter<typeof descriptor, 'change:rendered'>
 	declare readonly soChangeVisible: TOutputEmitter<typeof descriptor, 'change:visible'>
@@ -123,8 +119,6 @@ export abstract class TInputControlSurface<TInstance extends IEntity> extends TV
 	declare readonly soChangeVariant: TOutputEmitter<typeof descriptor, 'change:variant'>
 	declare readonly soChangeDisabled: TOutputEmitter<typeof descriptor, 'change:disabled'>
 	declare readonly soChangeFocused: TOutputEmitter<typeof descriptor, 'change:focused'>
-	declare readonly soInput: TOutputEmitter<typeof descriptor, 'input'>
-	declare readonly soInputValue: TOutputEmitter<typeof descriptor, 'input:value'>
 	declare readonly soChangeValue: TOutputEmitter<typeof descriptor, 'change:value'>
 	declare readonly soChangeName: TOutputEmitter<typeof descriptor, 'change:name'>
 	declare readonly soChangeReadonly: TOutputEmitter<typeof descriptor, 'change:readonly'>

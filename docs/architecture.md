@@ -1699,7 +1699,7 @@ There is no `adapter/static/`: React takes prop names from the descriptor types,
 
 - `adapter/common/` — `AngularProfile` (`naming: AngularNaming`), `AngularNaming`
   (событие → `so` и полное имя ядра в camelCase, у каждого события:
-  `input` → `soInput`, `element:ready` → `soElementReady`; camelCase — т.к.
+  `change:value` → `soChangeValue`, `element:ready` → `soElementReady`; camelCase — т.к.
   имя `@Output` обязано быть валидным TS-идентификатором, `on`-префикса нет —
   его запрещает руководство Angular; префикс — т.к. на `(x)` у элемента
   Angular слушает и выход `x`, и событие DOM `x`, и он говорит, чьё событие, у

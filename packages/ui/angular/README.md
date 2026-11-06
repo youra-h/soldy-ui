@@ -18,7 +18,7 @@ named `so` + the core name in camelCase (`show` → `soShow`, `show:before` → 
 `element:ready` → `soElementReady`), and slots are filled through the `slot` attribute. Every
 output has the prefix: Angular binds `(x)` both to an output and to the DOM event of that name, so
 `(input)` on a field is the browser's event, as on a native `<input>`, and the component's own is
-`(soInput)`.
+`(soChangeValue)`.
 
 The components are standalone and zoneless — state is a signal, so Zone.js is not required. They
 render on the server (`@angular/platform-server`) and hydrate in the browser

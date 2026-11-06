@@ -146,9 +146,7 @@ describe('имя события · so: и полное имя ядра', () => {
 				'ListBoxCollectionDescriptor',
 			]),
 		)
-		expect(eventNames(InputDescriptor())).toEqual(
-			expect.arrayContaining(['so:input', 'so:input:value', 'so:change:value']),
-		)
+		expect(eventNames(InputDescriptor())).toEqual(expect.arrayContaining(['so:change:value']))
 		expect(eventNames(SelectDescriptor())).toEqual(
 			expect.arrayContaining(['so:open', 'so:close']),
 		)

@@ -156,9 +156,7 @@ export abstract class TTabsSurface<TInstance extends IEntity> extends TViewSurfa
 	declare readonly soShow: TOutputEmitter<typeof descriptor, 'show'>
 	declare readonly soHide: TOutputEmitter<typeof descriptor, 'hide'>
 	declare readonly soShowBefore: TOutputEmitter<typeof descriptor, 'show:before'>
-	declare readonly soShowAfter: TOutputEmitter<typeof descriptor, 'show:after'>
 	declare readonly soHideBefore: TOutputEmitter<typeof descriptor, 'hide:before'>
-	declare readonly soHideAfter: TOutputEmitter<typeof descriptor, 'hide:after'>
 	declare readonly soReady: TOutputEmitter<typeof descriptor, 'ready'>
 	declare readonly soChangeRendered: TOutputEmitter<typeof descriptor, 'change:rendered'>
 	declare readonly soChangeVisible: TOutputEmitter<typeof descriptor, 'change:visible'>

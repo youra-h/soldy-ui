@@ -28,12 +28,8 @@ export type TComponentViewEvents = TComponentEvents & {
 	hide: () => void
 	/** show:before — вызов e.preventDefault() отменяет показ */
 	'show:before': (e: TActionEvent) => void
-	/** show:after */
-	'show:after': () => void
 	/** hide:before — вызов e.preventDefault() отменяет скрытие */
 	'hide:before': (e: TActionEvent) => void
-	/** hide:after */
-	'hide:after': () => void
 
 	/** change:visible */
 	'change:visible': (value: boolean) => void
