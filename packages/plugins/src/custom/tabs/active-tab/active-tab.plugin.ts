@@ -32,6 +32,7 @@ export class TTabsActiveTabPlugin extends TBasePlugin<ITabs, TTabsActiveTabPlugi
 	private _tabs: ITabs | null = null
 	private _collectionElements: TCollectionElements | null = null
 	private _engine: TTabsCollection | null = null
+	/** Last published measurement, retained by reference for the next notification. */
 	private _offset: TActiveTabOffset | null = null
 
 	override install(ctx: IPluginContext): void {
@@ -81,7 +82,7 @@ export class TTabsActiveTabPlugin extends TBasePlugin<ITabs, TTabsActiveTabPlugi
 	}
 
 	getOffset(): TActiveTabOffset | null {
-		return this._offset
+		return this._computeOffset()
 	}
 
 	private _emitOffset(): void {
