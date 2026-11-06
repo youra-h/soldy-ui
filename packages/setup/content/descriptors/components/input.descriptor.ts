@@ -53,6 +53,7 @@ export const InputDescriptor = defineDescriptor(() =>
 			props: {
 				placeholder: { type: String, triggers: ['change:placeholder'] },
 			},
+			events: ['change:placeholder'],
 		},
 
 		plugins: [

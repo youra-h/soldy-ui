@@ -52,7 +52,11 @@ describe('TAssembling: сборка над инстансом атомарна �
 		const first = mountOver(ctrl, 'a')
 		const before = first.exchange.state.getSnapshot()
 
-		createAdapterContext(PopoverDescriptor(), { ctrl, mountId: 'b' })
+		createAdapterContext(PopoverDescriptor(), {
+			ctrl,
+			mountId: 'b',
+			props: { placement: 'top' },
+		})
 
 		// Сборка записала id нового монтирования — прежнее ещё ничего не слышало
 		expect(first.heard).toEqual([])
@@ -66,7 +70,7 @@ describe('TAssembling: сборка над инстансом атомарна �
 			-1,
 		)
 
-		expect(first.heard).toContain('event:change:aria')
+		expect(first.heard).toContain('event:change:placement')
 		expect(lastState).toBeGreaterThanOrEqual(0)
 		expect(lastState).toBeLessThan(firstEvent)
 		expect(JSON.stringify(first.exchange.state.getSnapshot())).toContain('b')
@@ -92,10 +96,10 @@ describe('TAssembling: сборка над инстансом атомарна �
 		const ctrl = new TPopover()
 		const mounted = mountOver(ctrl, 'a')
 
-		ctrl.triggerAria.add('aria-label', 'Меню')
+		ctrl.closable = false
 
 		expect(mounted.heard.some((entry) => entry.startsWith('state:'))).toBe(true)
-		expect(mounted.heard).toContain('event:change:triggerAria')
+		expect(mounted.heard).toContain('event:change:closable')
 		mounted.off()
 	})
 
@@ -114,7 +118,11 @@ describe('TAssembling: сборка над инстансом атомарна �
 		const ctrl = new TPopover()
 		const first = mountOver(ctrl, 'a')
 
-		createAdapterContext(PopoverDescriptor(), { ctrl, mountId: 'b' })
+		createAdapterContext(PopoverDescriptor(), {
+			ctrl,
+			mountId: 'b',
+			props: { placement: 'top' },
+		})
 
 		// Прежнее монтирование снято тем же проходом, что собрал новое
 		first.off()
@@ -124,8 +132,8 @@ describe('TAssembling: сборка над инстансом атомарна �
 
 		await Promise.resolve()
 
-		expect(first.heard.filter((entry) => entry === 'event:change:aria')).toHaveLength(1)
-		expect(late).not.toContain('change:aria')
+		expect(first.heard.filter((entry) => entry === 'event:change:placement')).toHaveLength(1)
+		expect(late).not.toContain('change:placement')
 		offLate()
 	})
 
@@ -133,8 +141,12 @@ describe('TAssembling: сборка над инстансом атомарна �
 		const ctrl = new TPopover()
 		const first = mountOver(ctrl, 'a')
 
-		createAdapterContext(PopoverDescriptor(), { ctrl, mountId: 'b' })
-		ctrl.triggerAria.add('aria-label', 'Меню')
+		createAdapterContext(PopoverDescriptor(), {
+			ctrl,
+			mountId: 'b',
+			props: { placement: 'top' },
+		})
+		ctrl.closable = false
 
 		expect(first.heard).toEqual([])
 
@@ -142,9 +154,9 @@ describe('TAssembling: сборка над инстансом атомарна �
 
 		const events = first.heard.filter((entry) => entry.startsWith('event:'))
 
-		expect(events.indexOf('event:change:aria')).toBeGreaterThanOrEqual(0)
-		expect(events.indexOf('event:change:triggerAria')).toBeGreaterThan(
-			events.indexOf('event:change:aria'),
+		expect(events.indexOf('event:change:placement')).toBeGreaterThanOrEqual(0)
+		expect(events.indexOf('event:change:closable')).toBeGreaterThan(
+			events.indexOf('event:change:placement'),
 		)
 		first.off()
 	})
@@ -162,7 +174,11 @@ describe('TAssembling: сборка над инстансом атомарна �
 			begin: () => first.heard.push('begin'),
 			end: () => first.heard.push('end'),
 		})
-		createAdapterContext(PopoverDescriptor(), { ctrl, mountId: 'b' })
+		createAdapterContext(PopoverDescriptor(), {
+			ctrl,
+			mountId: 'b',
+			props: { placement: 'top' },
+		})
 		first.heard.length = 0
 
 		await Promise.resolve()
@@ -185,7 +201,7 @@ describe('TAssembling: сборка над инстансом атомарна �
 		expect(depth).toBe(0)
 		expect(outside).toEqual([])
 		expect(released).toHaveLength(1)
-		expect(released[0]).toContain('event:change:aria')
+		expect(released[0]).toContain('event:change:placement')
 		first.off()
 	})
 })

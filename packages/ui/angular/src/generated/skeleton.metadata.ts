@@ -30,7 +30,6 @@ export const SkeletonOutputNames = [
 	'soChangeAnimation',
 	'soChangeWidth',
 	'soChangeHeight',
-	'soLayoutChangeStyles',
 ] as const
 
 @Directive({
@@ -82,20 +81,15 @@ export abstract class TSkeletonSurface<TInstance extends IEntity> extends TViewS
 	declare readonly soHideBefore: TOutputEmitter<typeof descriptor, 'hide:before'>
 	declare readonly soHideAfter: TOutputEmitter<typeof descriptor, 'hide:after'>
 	declare readonly soReady: TOutputEmitter<typeof descriptor, 'ready'>
-	declare readonly soElementReady: TOutputEmitter<typeof descriptor, 'element:ready'>
-	declare readonly soElementRemoved: TOutputEmitter<typeof descriptor, 'element:removed'>
 	declare readonly soChangeRendered: TOutputEmitter<typeof descriptor, 'change:rendered'>
 	declare readonly soChangeVisible: TOutputEmitter<typeof descriptor, 'change:visible'>
 	declare readonly soChangeTag: TOutputEmitter<typeof descriptor, 'change:tag'>
 	declare readonly soChangeDirection: TOutputEmitter<typeof descriptor, 'change:direction'>
-	declare readonly soChangeClasses: TOutputEmitter<typeof descriptor, 'change:classes'>
-	declare readonly soChangeAria: TOutputEmitter<typeof descriptor, 'change:aria'>
-	declare readonly soChangeDataset: TOutputEmitter<typeof descriptor, 'change:dataset'>
-	declare readonly soChangeAttrs: TOutputEmitter<typeof descriptor, 'change:attrs'>
 	declare readonly soChangeVariant: TOutputEmitter<typeof descriptor, 'change:variant'>
 	declare readonly soChangeShape: TOutputEmitter<typeof descriptor, 'change:shape'>
 	declare readonly soChangeAnimation: TOutputEmitter<typeof descriptor, 'change:animation'>
 	declare readonly soChangeWidth: TOutputEmitter<typeof descriptor, 'change:width'>
 	declare readonly soChangeHeight: TOutputEmitter<typeof descriptor, 'change:height'>
-	declare readonly soLayoutChangeStyles: TOutputEmitter<typeof descriptor, 'layout:change:styles'>
+	declare readonly soElementReady: TOutputEmitter<typeof descriptor, 'element:ready'>
+	declare readonly soElementRemoved: TOutputEmitter<typeof descriptor, 'element:removed'>
 }

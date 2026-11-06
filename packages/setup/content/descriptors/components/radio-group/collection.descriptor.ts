@@ -25,7 +25,7 @@ export const RadioGroupCollectionDescriptor = defineDescriptor(() =>
 			props: {
 				activeItem: { type: Object, protected: true, triggers: ['change:activation'] },
 			},
-			events: ['item:activated', 'item:deactivated'],
+			events: ['item:activated', 'item:deactivated', 'change:activation'],
 		},
 	}),
 )
@@ -43,6 +43,7 @@ export const RadioGroupCollectionItemDescriptor = defineDescriptor(() =>
 				active: { type: Boolean, triggers: ['change:active'] },
 				order: { type: Number, protected: true, triggers: ['change:order'] },
 			},
+			events: ['change:active', 'change:order'],
 		},
 	}),
 )

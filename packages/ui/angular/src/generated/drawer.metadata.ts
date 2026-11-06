@@ -34,23 +34,19 @@ export const DrawerInputNames = [
 ] as const
 export const DrawerOutputNames = [
 	'soChangeZIndex',
-	'soCloseBefore',
-	'soDismissDismiss',
 	'soChangeTarget',
+	'soCloseBefore',
 	'soChangeWidth',
 	'soChangeHeight',
 	'soChangeClosable',
 	'soChangeDismissible',
-	'soChangeTitleAria',
-	'soChangeCloseAria',
-	'soChangeContained',
 	'soChangePlacement',
 	'soChangeSwipe',
+	'soChangeContained',
+	'soDismissDismiss',
 	'soDismissChangeEnabled',
 	'soHideOutsideChangeEnabled',
 	'soScrollLockChangeEnabled',
-	'soLayoutChangeStyles',
-	'soLayoutChangeBackdropStyles',
 ] as const
 
 @Directive({
@@ -125,29 +121,23 @@ export abstract class TDrawerSurface<TInstance extends IEntity> extends TViewSur
 	declare readonly soHideBefore: TOutputEmitter<typeof descriptor, 'hide:before'>
 	declare readonly soHideAfter: TOutputEmitter<typeof descriptor, 'hide:after'>
 	declare readonly soReady: TOutputEmitter<typeof descriptor, 'ready'>
-	declare readonly soChangeZIndex: TOutputEmitter<typeof descriptor, 'change:zIndex'>
-	declare readonly soCloseBefore: TOutputEmitter<typeof descriptor, 'close:before'>
-	declare readonly soElementReady: TOutputEmitter<typeof descriptor, 'element:ready'>
-	declare readonly soElementRemoved: TOutputEmitter<typeof descriptor, 'element:removed'>
-	declare readonly soDismissDismiss: TOutputEmitter<typeof descriptor, 'dismiss:dismiss'>
 	declare readonly soChangeRendered: TOutputEmitter<typeof descriptor, 'change:rendered'>
 	declare readonly soChangeVisible: TOutputEmitter<typeof descriptor, 'change:visible'>
 	declare readonly soChangeTag: TOutputEmitter<typeof descriptor, 'change:tag'>
 	declare readonly soChangeDirection: TOutputEmitter<typeof descriptor, 'change:direction'>
-	declare readonly soChangeClasses: TOutputEmitter<typeof descriptor, 'change:classes'>
-	declare readonly soChangeAria: TOutputEmitter<typeof descriptor, 'change:aria'>
-	declare readonly soChangeDataset: TOutputEmitter<typeof descriptor, 'change:dataset'>
-	declare readonly soChangeAttrs: TOutputEmitter<typeof descriptor, 'change:attrs'>
+	declare readonly soChangeZIndex: TOutputEmitter<typeof descriptor, 'change:zIndex'>
 	declare readonly soChangeTarget: TOutputEmitter<typeof descriptor, 'change:target'>
+	declare readonly soCloseBefore: TOutputEmitter<typeof descriptor, 'close:before'>
 	declare readonly soChangeWidth: TOutputEmitter<typeof descriptor, 'change:width'>
 	declare readonly soChangeHeight: TOutputEmitter<typeof descriptor, 'change:height'>
 	declare readonly soChangeClosable: TOutputEmitter<typeof descriptor, 'change:closable'>
 	declare readonly soChangeDismissible: TOutputEmitter<typeof descriptor, 'change:dismissible'>
-	declare readonly soChangeTitleAria: TOutputEmitter<typeof descriptor, 'change:titleAria'>
-	declare readonly soChangeCloseAria: TOutputEmitter<typeof descriptor, 'change:closeAria'>
-	declare readonly soChangeContained: TOutputEmitter<typeof descriptor, 'change:contained'>
 	declare readonly soChangePlacement: TOutputEmitter<typeof descriptor, 'change:placement'>
 	declare readonly soChangeSwipe: TOutputEmitter<typeof descriptor, 'change:swipe'>
+	declare readonly soChangeContained: TOutputEmitter<typeof descriptor, 'change:contained'>
+	declare readonly soElementReady: TOutputEmitter<typeof descriptor, 'element:ready'>
+	declare readonly soElementRemoved: TOutputEmitter<typeof descriptor, 'element:removed'>
+	declare readonly soDismissDismiss: TOutputEmitter<typeof descriptor, 'dismiss:dismiss'>
 	declare readonly soDismissChangeEnabled: TOutputEmitter<
 		typeof descriptor,
 		'dismiss:change:enabled'
@@ -159,10 +149,5 @@ export abstract class TDrawerSurface<TInstance extends IEntity> extends TViewSur
 	declare readonly soScrollLockChangeEnabled: TOutputEmitter<
 		typeof descriptor,
 		'scrollLock:change:enabled'
-	>
-	declare readonly soLayoutChangeStyles: TOutputEmitter<typeof descriptor, 'layout:change:styles'>
-	declare readonly soLayoutChangeBackdropStyles: TOutputEmitter<
-		typeof descriptor,
-		'layout:change:backdropStyles'
 	>
 }

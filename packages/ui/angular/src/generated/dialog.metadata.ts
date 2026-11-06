@@ -36,28 +36,22 @@ export const DialogInputNames = [
 ] as const
 export const DialogOutputNames = [
 	'soChangeZIndex',
-	'soCloseBefore',
-	'soDismissDismiss',
-	'soLayoutOffsetBefore',
 	'soChangeTarget',
+	'soCloseBefore',
 	'soChangeWidth',
 	'soChangeHeight',
 	'soChangeClosable',
 	'soChangeDismissible',
-	'soChangeTitleAria',
-	'soChangeCloseAria',
 	'soChangePlacement',
 	'soChangeOffset',
 	'soChangeMaximized',
 	'soChangeMaximizable',
 	'soChangeAlert',
-	'soChangeBodyAria',
-	'soChangeMaximizeAria',
+	'soDismissDismiss',
 	'soDismissChangeEnabled',
 	'soHideOutsideChangeEnabled',
 	'soScrollLockChangeEnabled',
-	'soLayoutChangeStyles',
-	'soLayoutChangeBackdropStyles',
+	'soLayoutOffsetBefore',
 ] as const
 
 @Directive({
@@ -136,34 +130,25 @@ export abstract class TDialogSurface<TInstance extends IEntity> extends TViewSur
 	declare readonly soHideBefore: TOutputEmitter<typeof descriptor, 'hide:before'>
 	declare readonly soHideAfter: TOutputEmitter<typeof descriptor, 'hide:after'>
 	declare readonly soReady: TOutputEmitter<typeof descriptor, 'ready'>
-	declare readonly soChangeZIndex: TOutputEmitter<typeof descriptor, 'change:zIndex'>
-	declare readonly soCloseBefore: TOutputEmitter<typeof descriptor, 'close:before'>
-	declare readonly soElementReady: TOutputEmitter<typeof descriptor, 'element:ready'>
-	declare readonly soElementRemoved: TOutputEmitter<typeof descriptor, 'element:removed'>
-	declare readonly soDismissDismiss: TOutputEmitter<typeof descriptor, 'dismiss:dismiss'>
-	declare readonly soLayoutOffsetBefore: TOutputEmitter<typeof descriptor, 'layout:offset:before'>
 	declare readonly soChangeRendered: TOutputEmitter<typeof descriptor, 'change:rendered'>
 	declare readonly soChangeVisible: TOutputEmitter<typeof descriptor, 'change:visible'>
 	declare readonly soChangeTag: TOutputEmitter<typeof descriptor, 'change:tag'>
 	declare readonly soChangeDirection: TOutputEmitter<typeof descriptor, 'change:direction'>
-	declare readonly soChangeClasses: TOutputEmitter<typeof descriptor, 'change:classes'>
-	declare readonly soChangeAria: TOutputEmitter<typeof descriptor, 'change:aria'>
-	declare readonly soChangeDataset: TOutputEmitter<typeof descriptor, 'change:dataset'>
-	declare readonly soChangeAttrs: TOutputEmitter<typeof descriptor, 'change:attrs'>
+	declare readonly soChangeZIndex: TOutputEmitter<typeof descriptor, 'change:zIndex'>
 	declare readonly soChangeTarget: TOutputEmitter<typeof descriptor, 'change:target'>
+	declare readonly soCloseBefore: TOutputEmitter<typeof descriptor, 'close:before'>
 	declare readonly soChangeWidth: TOutputEmitter<typeof descriptor, 'change:width'>
 	declare readonly soChangeHeight: TOutputEmitter<typeof descriptor, 'change:height'>
 	declare readonly soChangeClosable: TOutputEmitter<typeof descriptor, 'change:closable'>
 	declare readonly soChangeDismissible: TOutputEmitter<typeof descriptor, 'change:dismissible'>
-	declare readonly soChangeTitleAria: TOutputEmitter<typeof descriptor, 'change:titleAria'>
-	declare readonly soChangeCloseAria: TOutputEmitter<typeof descriptor, 'change:closeAria'>
 	declare readonly soChangePlacement: TOutputEmitter<typeof descriptor, 'change:placement'>
 	declare readonly soChangeOffset: TOutputEmitter<typeof descriptor, 'change:offset'>
 	declare readonly soChangeMaximized: TOutputEmitter<typeof descriptor, 'change:maximized'>
 	declare readonly soChangeMaximizable: TOutputEmitter<typeof descriptor, 'change:maximizable'>
 	declare readonly soChangeAlert: TOutputEmitter<typeof descriptor, 'change:alert'>
-	declare readonly soChangeBodyAria: TOutputEmitter<typeof descriptor, 'change:bodyAria'>
-	declare readonly soChangeMaximizeAria: TOutputEmitter<typeof descriptor, 'change:maximizeAria'>
+	declare readonly soElementReady: TOutputEmitter<typeof descriptor, 'element:ready'>
+	declare readonly soElementRemoved: TOutputEmitter<typeof descriptor, 'element:removed'>
+	declare readonly soDismissDismiss: TOutputEmitter<typeof descriptor, 'dismiss:dismiss'>
 	declare readonly soDismissChangeEnabled: TOutputEmitter<
 		typeof descriptor,
 		'dismiss:change:enabled'
@@ -176,9 +161,5 @@ export abstract class TDialogSurface<TInstance extends IEntity> extends TViewSur
 		typeof descriptor,
 		'scrollLock:change:enabled'
 	>
-	declare readonly soLayoutChangeStyles: TOutputEmitter<typeof descriptor, 'layout:change:styles'>
-	declare readonly soLayoutChangeBackdropStyles: TOutputEmitter<
-		typeof descriptor,
-		'layout:change:backdropStyles'
-	>
+	declare readonly soLayoutOffsetBefore: TOutputEmitter<typeof descriptor, 'layout:offset:before'>
 }

@@ -29,6 +29,13 @@ export const SkeletonDescriptor = defineDescriptor(() =>
 				width: { type: [Number, String], triggers: ['change:width'] },
 				height: { type: [Number, String], triggers: ['change:height'] },
 			},
+			events: [
+				'change:variant',
+				'change:shape',
+				'change:animation',
+				'change:width',
+				'change:height',
+			],
 		},
 
 		plugins: [SkeletonLayoutPluginDescriptor],

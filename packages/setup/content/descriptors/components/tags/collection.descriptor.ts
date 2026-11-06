@@ -26,7 +26,7 @@ export const TagsCollectionDescriptor = defineDescriptor(() =>
 				mode: { type: String, triggers: ['change:mode'] },
 				selected: { type: Array, protected: true, triggers: ['change:selection'] },
 			},
-			events: [],
+			events: ['change:mode', 'change:selection'],
 		},
 	}),
 )
@@ -45,6 +45,7 @@ export const TagsCollectionItemDescriptor = defineDescriptor(() =>
 				order: { type: Number, protected: true, triggers: ['change:order'] },
 				tag_closable: { type: Boolean, protected: true, triggers: ['change:closable'] },
 			},
+			events: ['change:selected', 'change:order'],
 		},
 	}),
 )

@@ -476,8 +476,6 @@ describe('события страниц', () => {
 	const PAGE_EVENTS = [
 		'so:bundle:create',
 		'so:element:ready',
-		'so:change:dataset',
-		'so:change:aria',
 		'so:change:disabled',
 		'so:change:size',
 		'so:change:text',

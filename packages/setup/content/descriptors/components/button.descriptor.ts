@@ -36,6 +36,7 @@ export const ButtonDescriptor = defineDescriptor(() =>
 				view: { type: String, triggers: ['change:view'] },
 			},
 			slots: BUTTON_SLOTS,
+			events: ['change:view'],
 		},
 	}),
 )

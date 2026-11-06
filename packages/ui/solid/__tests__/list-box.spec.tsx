@@ -1193,7 +1193,6 @@ describe('события снятия элементов', () => {
 				value={value}
 				text={value}
 				onChangeOrder={() => heard.push(`${value} order`)}
-				onChangeAria={() => heard.push(`${value} aria`)}
 			/>
 		)
 

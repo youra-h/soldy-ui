@@ -119,6 +119,7 @@ export const MenuSubmenuDescriptor = defineDescriptor(() =>
 				/** Whether the panel's items are mounted: from the first opening on. */
 				contentRendered: { type: Boolean, protected: true, triggers: ['change:open'] },
 			},
+			events: ['change:open', 'change:groupSeparators'],
 		},
 
 		plugins: [

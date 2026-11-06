@@ -82,6 +82,13 @@ export const TabsDescriptor = defineDescriptor(() =>
 			// 	'item:visible',
 			// 	'item:present',
 			// ],
+			events: [
+				'change:orientation',
+				'change:alignment',
+				'change:position',
+				'change:view',
+				'change:closable',
+			],
 		},
 
 		plugins: [

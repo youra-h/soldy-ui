@@ -50,6 +50,8 @@ export const CollectionDescriptor = defineDescriptor(() =>
 				'items:added',
 				'items:removed',
 				'change:shown',
+				'change:items',
+				'change:trackBy',
 			],
 		},
 	}),

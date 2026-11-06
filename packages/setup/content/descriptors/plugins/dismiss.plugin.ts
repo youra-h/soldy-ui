@@ -28,7 +28,7 @@ export const DismissPluginDescriptor = definePlugin({
 	 * плагин только сообщает.
 	 */
 	contribution: {
-		events: ['dismiss'],
+		events: ['dismiss', 'change:enabled'],
 		props: {
 			enabled: { type: Boolean, triggers: ['change:enabled'] },
 			/**

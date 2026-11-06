@@ -40,6 +40,13 @@ export const PaginationItemDescriptor = defineDescriptor(() =>
 				name: { type: String, protected: true, triggers: ['change:name'] },
 				text: { type: String, protected: true, triggers: ['change:text'] },
 			},
+			events: [
+				'change:disabled',
+				'change:focused',
+				'change:value',
+				'change:name',
+				'change:text',
+			],
 		},
 	}),
 )

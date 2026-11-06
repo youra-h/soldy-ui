@@ -48,10 +48,6 @@ export const TableInputNames = [
 	'grid',
 ] as const
 export const TableOutputNames = [
-	'soActionPress',
-	'soActionClick',
-	'soActionFocus',
-	'soActionBlur',
 	'soChangeSize',
 	'soChangeVariant',
 	'soChangeDisabled',
@@ -63,10 +59,13 @@ export const TableOutputNames = [
 	'soChangeResizePreview',
 	'soChangeResizable',
 	'soChangeReorderable',
+	'soActionPress',
+	'soActionClick',
+	'soActionFocus',
+	'soActionBlur',
 	'soAriaChangeLabel',
 	'soAriaChangeLabelledBy',
 	'soAriaChangeDescribedBy',
-	'soNamesChangeSelectAll',
 	'soEngineCreate',
 	'soItemAddBefore',
 	'soItemAdded',
@@ -82,22 +81,18 @@ export const TableOutputNames = [
 	'soItemsAdded',
 	'soItemsRemoved',
 	'soChangeShown',
-	'soColumnResize',
-	'soColumnMove',
 	'soChangeItems',
 	'soChangeTrackBy',
+	'soColumnResize',
+	'soColumnMove',
 	'soChangeMode',
 	'soChangeShownColumns',
 	'soChangeSort',
 	'soChangeSortMode',
 	'soChangePresorted',
 	'soChangeGrid',
-	'soChangeDrawn',
-	'soChangeHeadRowAria',
-	'soChangeCellAria',
 	'soChangeSelection',
 	'soChangeShownSelection',
-	'soChangeSelecting',
 ] as const
 
 @Directive({
@@ -194,20 +189,10 @@ export abstract class TTableSurface<TInstance extends IEntity> extends TViewSurf
 	declare readonly soHideBefore: TOutputEmitter<typeof descriptor, 'hide:before'>
 	declare readonly soHideAfter: TOutputEmitter<typeof descriptor, 'hide:after'>
 	declare readonly soReady: TOutputEmitter<typeof descriptor, 'ready'>
-	declare readonly soElementReady: TOutputEmitter<typeof descriptor, 'element:ready'>
-	declare readonly soElementRemoved: TOutputEmitter<typeof descriptor, 'element:removed'>
-	declare readonly soActionPress: TOutputEmitter<typeof descriptor, 'action:press'>
-	declare readonly soActionClick: TOutputEmitter<typeof descriptor, 'action:click'>
-	declare readonly soActionFocus: TOutputEmitter<typeof descriptor, 'action:focus'>
-	declare readonly soActionBlur: TOutputEmitter<typeof descriptor, 'action:blur'>
 	declare readonly soChangeRendered: TOutputEmitter<typeof descriptor, 'change:rendered'>
 	declare readonly soChangeVisible: TOutputEmitter<typeof descriptor, 'change:visible'>
 	declare readonly soChangeTag: TOutputEmitter<typeof descriptor, 'change:tag'>
 	declare readonly soChangeDirection: TOutputEmitter<typeof descriptor, 'change:direction'>
-	declare readonly soChangeClasses: TOutputEmitter<typeof descriptor, 'change:classes'>
-	declare readonly soChangeAria: TOutputEmitter<typeof descriptor, 'change:aria'>
-	declare readonly soChangeDataset: TOutputEmitter<typeof descriptor, 'change:dataset'>
-	declare readonly soChangeAttrs: TOutputEmitter<typeof descriptor, 'change:attrs'>
 	declare readonly soChangeSize: TOutputEmitter<typeof descriptor, 'change:size'>
 	declare readonly soChangeVariant: TOutputEmitter<typeof descriptor, 'change:variant'>
 	declare readonly soChangeDisabled: TOutputEmitter<typeof descriptor, 'change:disabled'>
@@ -225,6 +210,12 @@ export abstract class TTableSurface<TInstance extends IEntity> extends TViewSurf
 	>
 	declare readonly soChangeResizable: TOutputEmitter<typeof descriptor, 'change:resizable'>
 	declare readonly soChangeReorderable: TOutputEmitter<typeof descriptor, 'change:reorderable'>
+	declare readonly soElementReady: TOutputEmitter<typeof descriptor, 'element:ready'>
+	declare readonly soElementRemoved: TOutputEmitter<typeof descriptor, 'element:removed'>
+	declare readonly soActionPress: TOutputEmitter<typeof descriptor, 'action:press'>
+	declare readonly soActionClick: TOutputEmitter<typeof descriptor, 'action:click'>
+	declare readonly soActionFocus: TOutputEmitter<typeof descriptor, 'action:focus'>
+	declare readonly soActionBlur: TOutputEmitter<typeof descriptor, 'action:blur'>
 	declare readonly soAriaChangeLabel: TOutputEmitter<typeof descriptor, 'aria:change:label'>
 	declare readonly soAriaChangeLabelledBy: TOutputEmitter<
 		typeof descriptor,
@@ -233,10 +224,6 @@ export abstract class TTableSurface<TInstance extends IEntity> extends TViewSurf
 	declare readonly soAriaChangeDescribedBy: TOutputEmitter<
 		typeof descriptor,
 		'aria:change:describedBy'
-	>
-	declare readonly soNamesChangeSelectAll: TOutputEmitter<
-		typeof descriptor,
-		'names:change:selectAll'
 	>
 	declare readonly soEngineCreate: TOutputEmitter<typeof facade, 'engine:create'>
 	declare readonly soItemAddBefore: TOutputEmitter<typeof facade, 'item:add:before'>
@@ -253,20 +240,16 @@ export abstract class TTableSurface<TInstance extends IEntity> extends TViewSurf
 	declare readonly soItemsAdded: TOutputEmitter<typeof facade, 'items:added'>
 	declare readonly soItemsRemoved: TOutputEmitter<typeof facade, 'items:removed'>
 	declare readonly soChangeShown: TOutputEmitter<typeof facade, 'change:shown'>
-	declare readonly soColumnResize: TOutputEmitter<typeof facade, 'column:resize'>
-	declare readonly soColumnMove: TOutputEmitter<typeof facade, 'column:move'>
 	declare readonly soChangeItems: TOutputEmitter<typeof facade, 'change:items'>
 	declare readonly soChangeTrackBy: TOutputEmitter<typeof facade, 'change:trackBy'>
+	declare readonly soColumnResize: TOutputEmitter<typeof facade, 'column:resize'>
+	declare readonly soColumnMove: TOutputEmitter<typeof facade, 'column:move'>
 	declare readonly soChangeMode: TOutputEmitter<typeof facade, 'change:mode'>
 	declare readonly soChangeShownColumns: TOutputEmitter<typeof facade, 'change:shownColumns'>
 	declare readonly soChangeSort: TOutputEmitter<typeof facade, 'change:sort'>
 	declare readonly soChangeSortMode: TOutputEmitter<typeof facade, 'change:sortMode'>
 	declare readonly soChangePresorted: TOutputEmitter<typeof facade, 'change:presorted'>
 	declare readonly soChangeGrid: TOutputEmitter<typeof facade, 'change:grid'>
-	declare readonly soChangeDrawn: TOutputEmitter<typeof facade, 'change:drawn'>
-	declare readonly soChangeHeadRowAria: TOutputEmitter<typeof facade, 'change:headRowAria'>
-	declare readonly soChangeCellAria: TOutputEmitter<typeof facade, 'change:cellAria'>
 	declare readonly soChangeSelection: TOutputEmitter<typeof facade, 'change:selection'>
 	declare readonly soChangeShownSelection: TOutputEmitter<typeof facade, 'change:shownSelection'>
-	declare readonly soChangeSelecting: TOutputEmitter<typeof facade, 'change:selecting'>
 }

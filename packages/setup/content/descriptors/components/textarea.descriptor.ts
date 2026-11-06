@@ -57,6 +57,14 @@ export const TextareaDescriptor = defineDescriptor(() =>
 				 */
 				counterAria: { type: Object, protected: true, triggers: ['change:counterAria'] },
 			},
+			events: [
+				'change:placeholder',
+				'change:rows',
+				'change:maxRows',
+				'change:maxlength',
+				'change:autoresize',
+				'change:counter',
+			],
 		},
 
 		plugins: [

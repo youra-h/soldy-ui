@@ -63,5 +63,13 @@ export const AnchorPluginDescriptor = definePlugin({
 				triggers: ['change:offset'],
 			},
 		},
+		events: [
+			'change:anchor',
+			'change:point',
+			'change:placement',
+			'change:matchWidth',
+			'change:flip',
+			'change:offset',
+		],
 	},
 })

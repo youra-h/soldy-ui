@@ -13,16 +13,12 @@ export const ViewOutputNames = [
 	'soHideBefore',
 	'soHideAfter',
 	'soReady',
-	'soElementReady',
-	'soElementRemoved',
 	'soChangeRendered',
 	'soChangeVisible',
 	'soChangeTag',
 	'soChangeDirection',
-	'soChangeClasses',
-	'soChangeAria',
-	'soChangeDataset',
-	'soChangeAttrs',
+	'soElementReady',
+	'soElementRemoved',
 ] as const
 
 @Directive({ outputs: [...ViewOutputNames] })

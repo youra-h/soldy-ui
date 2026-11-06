@@ -477,6 +477,10 @@ describe('типы пропсов и событий выводятся из кл
 		expectTypeOf<DescriptorEvents<typeof ButtonDescriptor>>().toEqualTypeOf<
 			Omit<
 				TButtonEvents,
+				| 'change:classes'
+				| 'change:aria'
+				| 'change:dataset'
+				| 'change:attrs'
 				| 'change:present'
 				| 'change:rendered:before'
 				| 'change:size:before'
@@ -494,7 +498,15 @@ describe('типы пропсов и событий выводятся из кл
 			DescriptorProps<typeof ComponentViewDescriptor>
 		>().toEqualTypeOf<IComponentViewProps>()
 		expectTypeOf<DescriptorEvents<typeof ComponentViewDescriptor>>().toEqualTypeOf<
-			Omit<TComponentViewEvents, 'change:present' | 'change:rendered:before'>
+			Omit<
+				TComponentViewEvents,
+				| 'change:present'
+				| 'change:rendered:before'
+				| 'change:classes'
+				| 'change:aria'
+				| 'change:dataset'
+				| 'change:attrs'
+			>
 		>()
 	})
 

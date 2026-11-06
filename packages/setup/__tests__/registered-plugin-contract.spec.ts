@@ -249,7 +249,7 @@ describe('внешний плагин · plugin:event', () => {
 		expect(envelopes(emit)).toEqual([{ name: 'interval:tick', args: [3] }])
 	})
 
-	it('триггер пропа плагина — тоже событие', () => {
+	it('an undeclared property trigger does not reach plugin:event', () => {
 		dispose = usePlugins(TButton, [TIntervalPlugin])
 
 		const context = createAdapterContext(ButtonDescriptor(), {})
@@ -258,7 +258,7 @@ describe('внешний плагин · plugin:event', () => {
 		context.connect(CallbackProfile).events.listen(emit)
 		plugin(context).value = 42
 
-		expect(envelopes(emit)).toEqual([{ name: 'interval:change:value', args: [42] }])
+		expect(envelopes(emit)).toEqual([])
 	})
 
 	it("конверт виден и с инстанса: `ctrl.events.on('plugin:event')`", () => {

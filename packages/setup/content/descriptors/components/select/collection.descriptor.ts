@@ -58,6 +58,13 @@ export const SelectCollectionDescriptor = defineDescriptor(() =>
 					triggers: ['change:drawnSections'],
 				},
 			},
+			events: [
+				'change:mode',
+				'change:selection',
+				'change:groupBy',
+				'change:groups',
+				'change:overflow',
+			],
 		},
 	}),
 )
@@ -86,6 +93,7 @@ export const SelectCollectionItemDescriptor = defineDescriptor(() =>
 					triggers: ['change:indicator'],
 				},
 			},
+			events: ['change:selected', 'change:order'],
 		},
 	}),
 )

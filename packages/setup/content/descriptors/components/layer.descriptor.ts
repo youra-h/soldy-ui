@@ -22,7 +22,7 @@ export const LayerDescriptor = defineDescriptor(() =>
 			props: {
 				target: { type: [Object, String], triggers: ['change:target'] },
 			},
-			events: ['change:zIndex'],
+			events: ['change:zIndex', 'change:target'],
 		},
 	}),
 )

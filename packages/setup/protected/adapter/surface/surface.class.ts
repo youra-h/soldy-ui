@@ -1,19 +1,7 @@
 /**
- * TSurface — публичная поверхность компонента в именах фреймворка: одна на пару «описание × профиль».
+ * TSurface describes the public component API for one descriptor and framework profile.
  *
- * Зависит только от типа и фреймворка, поэтому считается один раз и раньше
- * любого монтирования: из неё статический слой берёт `props`/`emits` Vue,
- * `observedAttributes` Web Components и метаданные Angular, а обмен — имена
- * для своих линий и маршрутов событий. Регистрации приложения в неё не
- * попадают: статический слой объявляет поверхность раньше них.
- *
- * Запись поверхности ссылается на описание (`TPropSpec`), а не копирует его:
- * второй записи о том же пропе, которую пришлось бы сшивать по строке, нет.
- *
- * События — без повторов по полному имени, то есть по паре «источник, сырое
- * имя»: `change:visible`, триггер и у `visible`, и у `present`, встречается
- * один раз. Порядок всех списков равен порядку объявления — от него зависят
- * закоммиченные метаданные Angular.
+ * Only explicit event declarations are public; property triggers drive state and models.
  */
 
 import type { TName, TPropSpec } from '../../define'
@@ -33,7 +21,7 @@ function exportConfig(spec: TPropSpec): TSurfacePropConfig {
 export class TSurface {
 	/** Все свойства, в порядке объявления: свои, затем плагинов. */
 	readonly props: readonly ISurfaceProp[]
-	/** Публикуемые события: явные, затем триггеры всех пропсов, `protected` включительно. */
+	/** Only explicitly declared component and plugin events are public. */
 	readonly events: readonly ISurfaceEvent[]
 	/** Статический слой: пропсы, записываемые снаружи, с типом и умолчанием. */
 	readonly exportProps: Readonly<Record<string, TSurfacePropConfig>>
@@ -76,24 +64,13 @@ export class TSurface {
 
 		const published = new Map<string, TName>()
 
-		for (const name of [
-			...source.getEvents(),
-			// Plugin creation can refresh a protected prop without becoming a public event.
-			...this.props.flatMap((prop) =>
-				prop.spec.triggers.filter((trigger) => trigger.name !== 'create'),
-			),
-		]) {
+		for (const name of source.getEvents()) {
 			if (!published.has(name.getName())) published.set(name.getName(), name)
 		}
 
 		this.events = [...published.values()].map((name) => ({
 			name,
 			exportName: naming.event(name),
-			models: this.props.filter(
-				(prop) =>
-					prop.model !== undefined &&
-					prop.spec.triggers.some((trigger) => trigger.getName() === name.getName()),
-			),
 		}))
 
 		this.exportProps = Object.fromEntries(

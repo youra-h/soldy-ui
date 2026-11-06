@@ -20,25 +20,7 @@ export const TableColumnInputNames = [
 	'visible',
 	'direction',
 ] as const
-export const TableColumnOutputNames = [
-	'soChangeField',
-	'soChangeText',
-	'soChangeWidth',
-	'soChangeMinWidth',
-	'soChangeMaxWidth',
-	'soChangeAlign',
-	'soChangeSortable',
-	'soChangeCompare',
-	'soChangeRowHeader',
-	'soChangeResizable',
-	'soChangeReorderable',
-	'soChangeDisabled',
-	'soChangeResizerRendered',
-	'soChangeResizer',
-	'soChangeResizerAria',
-	'soChangeTextAria',
-	'soChangeSortAria',
-] as const
+export const TableColumnOutputNames = ['soChangeText', 'soChangeDisabled'] as const
 
 @Directive({
 	inputs: [
@@ -83,34 +65,12 @@ export abstract class TTableColumnSurface<TInstance extends IEntity> extends TVi
 	declare readonly soHideBefore: TOutputEmitter<typeof descriptor, 'hide:before'>
 	declare readonly soHideAfter: TOutputEmitter<typeof descriptor, 'hide:after'>
 	declare readonly soReady: TOutputEmitter<typeof descriptor, 'ready'>
-	declare readonly soElementReady: TOutputEmitter<typeof descriptor, 'element:ready'>
-	declare readonly soElementRemoved: TOutputEmitter<typeof descriptor, 'element:removed'>
 	declare readonly soChangeRendered: TOutputEmitter<typeof descriptor, 'change:rendered'>
 	declare readonly soChangeVisible: TOutputEmitter<typeof descriptor, 'change:visible'>
 	declare readonly soChangeTag: TOutputEmitter<typeof descriptor, 'change:tag'>
 	declare readonly soChangeDirection: TOutputEmitter<typeof descriptor, 'change:direction'>
-	declare readonly soChangeClasses: TOutputEmitter<typeof descriptor, 'change:classes'>
-	declare readonly soChangeAria: TOutputEmitter<typeof descriptor, 'change:aria'>
-	declare readonly soChangeDataset: TOutputEmitter<typeof descriptor, 'change:dataset'>
-	declare readonly soChangeAttrs: TOutputEmitter<typeof descriptor, 'change:attrs'>
-	declare readonly soChangeField: TOutputEmitter<typeof descriptor, 'change:field'>
 	declare readonly soChangeText: TOutputEmitter<typeof descriptor, 'change:text'>
-	declare readonly soChangeWidth: TOutputEmitter<typeof descriptor, 'change:width'>
-	declare readonly soChangeMinWidth: TOutputEmitter<typeof descriptor, 'change:minWidth'>
-	declare readonly soChangeMaxWidth: TOutputEmitter<typeof descriptor, 'change:maxWidth'>
-	declare readonly soChangeAlign: TOutputEmitter<typeof descriptor, 'change:align'>
-	declare readonly soChangeSortable: TOutputEmitter<typeof descriptor, 'change:sortable'>
-	declare readonly soChangeCompare: TOutputEmitter<typeof descriptor, 'change:compare'>
-	declare readonly soChangeRowHeader: TOutputEmitter<typeof descriptor, 'change:rowHeader'>
-	declare readonly soChangeResizable: TOutputEmitter<typeof descriptor, 'change:resizable'>
-	declare readonly soChangeReorderable: TOutputEmitter<typeof descriptor, 'change:reorderable'>
 	declare readonly soChangeDisabled: TOutputEmitter<typeof descriptor, 'change:disabled'>
-	declare readonly soChangeResizerRendered: TOutputEmitter<
-		typeof descriptor,
-		'change:resizerRendered'
-	>
-	declare readonly soChangeResizer: TOutputEmitter<typeof descriptor, 'change:resizer'>
-	declare readonly soChangeResizerAria: TOutputEmitter<typeof descriptor, 'change:resizerAria'>
-	declare readonly soChangeTextAria: TOutputEmitter<typeof descriptor, 'change:textAria'>
-	declare readonly soChangeSortAria: TOutputEmitter<typeof descriptor, 'change:sortAria'>
+	declare readonly soElementReady: TOutputEmitter<typeof descriptor, 'element:ready'>
+	declare readonly soElementRemoved: TOutputEmitter<typeof descriptor, 'element:removed'>
 }

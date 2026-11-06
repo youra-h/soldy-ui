@@ -25,8 +25,6 @@ export interface ISurfaceEvent {
 	readonly name: TName
 	/** Имя события во фреймворке: `change:text`, `so:change:text`, `onChangeText`, `soChangeText`. */
 	readonly exportName: string
-	/** Пропсы с привязкой, для которых это событие — триггер: их `update:<проп>` уходит следом. */
-	readonly models: readonly ISurfaceProp[]
 }
 
 /** Объявление пропа для статического слоя: ключ `default` есть, только если умолчание объявлено. */

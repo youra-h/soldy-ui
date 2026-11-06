@@ -66,7 +66,7 @@ export const RatingDescriptor = defineDescriptor(() =>
 					triggers: ['change:value', 'change:max', 'change:preview'],
 				},
 			},
-			events: ['commit'],
+			events: ['commit', 'change:max', 'change:step', 'change:preview'],
 		},
 
 		plugins: [

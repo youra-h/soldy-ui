@@ -38,19 +38,19 @@ export const RadioGroupInputNames = [
 	'trackBy',
 ] as const
 export const RadioGroupOutputNames = [
-	'soInput',
-	'soInputValue',
-	'soActionPress',
-	'soActionClick',
-	'soActionFocus',
-	'soActionBlur',
 	'soChangeSize',
 	'soChangeVariant',
 	'soChangeDisabled',
 	'soChangeFocused',
+	'soInput',
+	'soInputValue',
 	'soChangeValue',
 	'soChangeName',
 	'soChangeView',
+	'soActionPress',
+	'soActionClick',
+	'soActionFocus',
+	'soActionBlur',
 	'soAriaChangeLabel',
 	'soAriaChangeLabelledBy',
 	'soAriaChangeDescribedBy',
@@ -69,10 +69,10 @@ export const RadioGroupOutputNames = [
 	'soItemsAdded',
 	'soItemsRemoved',
 	'soChangeShown',
-	'soItemActivated',
-	'soItemDeactivated',
 	'soChangeItems',
 	'soChangeTrackBy',
+	'soItemActivated',
+	'soItemDeactivated',
 	'soChangeActivation',
 ] as const
 
@@ -145,29 +145,25 @@ export abstract class TRadioGroupSurface<TInstance extends IEntity> extends TVie
 	declare readonly soHideBefore: TOutputEmitter<typeof descriptor, 'hide:before'>
 	declare readonly soHideAfter: TOutputEmitter<typeof descriptor, 'hide:after'>
 	declare readonly soReady: TOutputEmitter<typeof descriptor, 'ready'>
+	declare readonly soChangeRendered: TOutputEmitter<typeof descriptor, 'change:rendered'>
+	declare readonly soChangeVisible: TOutputEmitter<typeof descriptor, 'change:visible'>
+	declare readonly soChangeTag: TOutputEmitter<typeof descriptor, 'change:tag'>
+	declare readonly soChangeDirection: TOutputEmitter<typeof descriptor, 'change:direction'>
+	declare readonly soChangeSize: TOutputEmitter<typeof descriptor, 'change:size'>
+	declare readonly soChangeVariant: TOutputEmitter<typeof descriptor, 'change:variant'>
+	declare readonly soChangeDisabled: TOutputEmitter<typeof descriptor, 'change:disabled'>
+	declare readonly soChangeFocused: TOutputEmitter<typeof descriptor, 'change:focused'>
 	declare readonly soInput: TOutputEmitter<typeof descriptor, 'input'>
 	declare readonly soInputValue: TOutputEmitter<typeof descriptor, 'input:value'>
+	declare readonly soChangeValue: TOutputEmitter<typeof descriptor, 'change:value'>
+	declare readonly soChangeName: TOutputEmitter<typeof descriptor, 'change:name'>
+	declare readonly soChangeView: TOutputEmitter<typeof descriptor, 'change:view'>
 	declare readonly soElementReady: TOutputEmitter<typeof descriptor, 'element:ready'>
 	declare readonly soElementRemoved: TOutputEmitter<typeof descriptor, 'element:removed'>
 	declare readonly soActionPress: TOutputEmitter<typeof descriptor, 'action:press'>
 	declare readonly soActionClick: TOutputEmitter<typeof descriptor, 'action:click'>
 	declare readonly soActionFocus: TOutputEmitter<typeof descriptor, 'action:focus'>
 	declare readonly soActionBlur: TOutputEmitter<typeof descriptor, 'action:blur'>
-	declare readonly soChangeRendered: TOutputEmitter<typeof descriptor, 'change:rendered'>
-	declare readonly soChangeVisible: TOutputEmitter<typeof descriptor, 'change:visible'>
-	declare readonly soChangeTag: TOutputEmitter<typeof descriptor, 'change:tag'>
-	declare readonly soChangeDirection: TOutputEmitter<typeof descriptor, 'change:direction'>
-	declare readonly soChangeClasses: TOutputEmitter<typeof descriptor, 'change:classes'>
-	declare readonly soChangeAria: TOutputEmitter<typeof descriptor, 'change:aria'>
-	declare readonly soChangeDataset: TOutputEmitter<typeof descriptor, 'change:dataset'>
-	declare readonly soChangeAttrs: TOutputEmitter<typeof descriptor, 'change:attrs'>
-	declare readonly soChangeSize: TOutputEmitter<typeof descriptor, 'change:size'>
-	declare readonly soChangeVariant: TOutputEmitter<typeof descriptor, 'change:variant'>
-	declare readonly soChangeDisabled: TOutputEmitter<typeof descriptor, 'change:disabled'>
-	declare readonly soChangeFocused: TOutputEmitter<typeof descriptor, 'change:focused'>
-	declare readonly soChangeValue: TOutputEmitter<typeof descriptor, 'change:value'>
-	declare readonly soChangeName: TOutputEmitter<typeof descriptor, 'change:name'>
-	declare readonly soChangeView: TOutputEmitter<typeof descriptor, 'change:view'>
 	declare readonly soAriaChangeLabel: TOutputEmitter<typeof descriptor, 'aria:change:label'>
 	declare readonly soAriaChangeLabelledBy: TOutputEmitter<
 		typeof descriptor,
@@ -192,9 +188,9 @@ export abstract class TRadioGroupSurface<TInstance extends IEntity> extends TVie
 	declare readonly soItemsAdded: TOutputEmitter<typeof facade, 'items:added'>
 	declare readonly soItemsRemoved: TOutputEmitter<typeof facade, 'items:removed'>
 	declare readonly soChangeShown: TOutputEmitter<typeof facade, 'change:shown'>
-	declare readonly soItemActivated: TOutputEmitter<typeof facade, 'item:activated'>
-	declare readonly soItemDeactivated: TOutputEmitter<typeof facade, 'item:deactivated'>
 	declare readonly soChangeItems: TOutputEmitter<typeof facade, 'change:items'>
 	declare readonly soChangeTrackBy: TOutputEmitter<typeof facade, 'change:trackBy'>
+	declare readonly soItemActivated: TOutputEmitter<typeof facade, 'item:activated'>
+	declare readonly soItemDeactivated: TOutputEmitter<typeof facade, 'item:deactivated'>
 	declare readonly soChangeActivation: TOutputEmitter<typeof facade, 'change:activation'>
 }

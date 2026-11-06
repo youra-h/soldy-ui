@@ -125,6 +125,15 @@ export const DateInputDescriptor = defineDescriptor(() =>
 					triggers: ['change:locale', 'change:kind', 'change:timePrecision'],
 				},
 			},
+			events: [
+				'change:min',
+				'change:max',
+				'change:unavailable',
+				'change:locale',
+				'change:kind',
+				'change:timePrecision',
+				'change:validate',
+			],
 		},
 
 		plugins: [

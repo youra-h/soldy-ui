@@ -40,22 +40,17 @@ export const DateInputInputNames = [
 	'id',
 ] as const
 export const DateInputOutputNames = [
-	'soInput',
-	'soInputValue',
-	'soActionPress',
-	'soActionClick',
-	'soActionFocus',
-	'soActionBlur',
 	'soChangeSize',
 	'soChangeVariant',
 	'soChangeDisabled',
 	'soChangeFocused',
+	'soInput',
+	'soInputValue',
 	'soChangeValue',
 	'soChangeName',
 	'soChangeReadonly',
 	'soChangeRequired',
 	'soChangeClearable',
-	'soChangeClearAria',
 	'soChangeMin',
 	'soChangeMax',
 	'soChangeUnavailable',
@@ -63,7 +58,10 @@ export const DateInputOutputNames = [
 	'soChangeKind',
 	'soChangeTimePrecision',
 	'soChangeValidate',
-	'soChangeSegments',
+	'soActionPress',
+	'soActionClick',
+	'soActionFocus',
+	'soActionBlur',
 	'soAriaChangeLabel',
 	'soAriaChangeLabelledBy',
 	'soAriaChangeDescribedBy',
@@ -151,32 +149,21 @@ export abstract class TDateInputSurface<TInstance extends IEntity> extends TView
 	declare readonly soHideBefore: TOutputEmitter<typeof descriptor, 'hide:before'>
 	declare readonly soHideAfter: TOutputEmitter<typeof descriptor, 'hide:after'>
 	declare readonly soReady: TOutputEmitter<typeof descriptor, 'ready'>
-	declare readonly soInput: TOutputEmitter<typeof descriptor, 'input'>
-	declare readonly soInputValue: TOutputEmitter<typeof descriptor, 'input:value'>
-	declare readonly soElementReady: TOutputEmitter<typeof descriptor, 'element:ready'>
-	declare readonly soElementRemoved: TOutputEmitter<typeof descriptor, 'element:removed'>
-	declare readonly soActionPress: TOutputEmitter<typeof descriptor, 'action:press'>
-	declare readonly soActionClick: TOutputEmitter<typeof descriptor, 'action:click'>
-	declare readonly soActionFocus: TOutputEmitter<typeof descriptor, 'action:focus'>
-	declare readonly soActionBlur: TOutputEmitter<typeof descriptor, 'action:blur'>
 	declare readonly soChangeRendered: TOutputEmitter<typeof descriptor, 'change:rendered'>
 	declare readonly soChangeVisible: TOutputEmitter<typeof descriptor, 'change:visible'>
 	declare readonly soChangeTag: TOutputEmitter<typeof descriptor, 'change:tag'>
 	declare readonly soChangeDirection: TOutputEmitter<typeof descriptor, 'change:direction'>
-	declare readonly soChangeClasses: TOutputEmitter<typeof descriptor, 'change:classes'>
-	declare readonly soChangeAria: TOutputEmitter<typeof descriptor, 'change:aria'>
-	declare readonly soChangeDataset: TOutputEmitter<typeof descriptor, 'change:dataset'>
-	declare readonly soChangeAttrs: TOutputEmitter<typeof descriptor, 'change:attrs'>
 	declare readonly soChangeSize: TOutputEmitter<typeof descriptor, 'change:size'>
 	declare readonly soChangeVariant: TOutputEmitter<typeof descriptor, 'change:variant'>
 	declare readonly soChangeDisabled: TOutputEmitter<typeof descriptor, 'change:disabled'>
 	declare readonly soChangeFocused: TOutputEmitter<typeof descriptor, 'change:focused'>
+	declare readonly soInput: TOutputEmitter<typeof descriptor, 'input'>
+	declare readonly soInputValue: TOutputEmitter<typeof descriptor, 'input:value'>
 	declare readonly soChangeValue: TOutputEmitter<typeof descriptor, 'change:value'>
 	declare readonly soChangeName: TOutputEmitter<typeof descriptor, 'change:name'>
 	declare readonly soChangeReadonly: TOutputEmitter<typeof descriptor, 'change:readonly'>
 	declare readonly soChangeRequired: TOutputEmitter<typeof descriptor, 'change:required'>
 	declare readonly soChangeClearable: TOutputEmitter<typeof descriptor, 'change:clearable'>
-	declare readonly soChangeClearAria: TOutputEmitter<typeof descriptor, 'change:clearAria'>
 	declare readonly soChangeMin: TOutputEmitter<typeof descriptor, 'change:min'>
 	declare readonly soChangeMax: TOutputEmitter<typeof descriptor, 'change:max'>
 	declare readonly soChangeUnavailable: TOutputEmitter<typeof descriptor, 'change:unavailable'>
@@ -187,7 +174,12 @@ export abstract class TDateInputSurface<TInstance extends IEntity> extends TView
 		'change:timePrecision'
 	>
 	declare readonly soChangeValidate: TOutputEmitter<typeof descriptor, 'change:validate'>
-	declare readonly soChangeSegments: TOutputEmitter<typeof descriptor, 'change:segments'>
+	declare readonly soElementReady: TOutputEmitter<typeof descriptor, 'element:ready'>
+	declare readonly soElementRemoved: TOutputEmitter<typeof descriptor, 'element:removed'>
+	declare readonly soActionPress: TOutputEmitter<typeof descriptor, 'action:press'>
+	declare readonly soActionClick: TOutputEmitter<typeof descriptor, 'action:click'>
+	declare readonly soActionFocus: TOutputEmitter<typeof descriptor, 'action:focus'>
+	declare readonly soActionBlur: TOutputEmitter<typeof descriptor, 'action:blur'>
 	declare readonly soAriaChangeLabel: TOutputEmitter<typeof descriptor, 'aria:change:label'>
 	declare readonly soAriaChangeLabelledBy: TOutputEmitter<
 		typeof descriptor,

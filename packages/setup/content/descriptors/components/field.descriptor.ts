@@ -78,6 +78,13 @@ export const FieldDescriptor = defineDescriptor(() =>
 				helperAria: { type: Object, protected: true, triggers: ['change:helperAria'] },
 				errorAria: { type: Object, protected: true, triggers: ['change:errorAria'] },
 			},
+			events: [
+				'change:label',
+				'change:helper',
+				'change:error',
+				'change:invalid',
+				'change:position',
+			],
 		},
 
 		// `id` частей, `for` подписи и ссылки контрола на видимые части — от

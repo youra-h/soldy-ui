@@ -38,6 +38,7 @@ export const CalendarItemDescriptor = defineDescriptor(() =>
 				text: { type: String, protected: true, triggers: ['change:text'] },
 				unavailable: { type: Boolean, protected: true, triggers: ['change:unavailable'] },
 			},
+			events: ['change:disabled', 'change:focused', 'change:date', 'change:text'],
 		},
 	}),
 )

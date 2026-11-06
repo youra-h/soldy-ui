@@ -44,28 +44,25 @@ export const MenuSubmenuInputNames = [
 	'groups',
 ] as const
 export const MenuSubmenuOutputNames = [
-	'soInput',
-	'soInputValue',
-	'soActionPress',
-	'soActionClick',
-	'soActionFocus',
-	'soActionBlur',
-	'soDismissDismiss',
 	'soChangeSize',
 	'soChangeVariant',
 	'soChangeDisabled',
 	'soChangeFocused',
+	'soInput',
+	'soInputValue',
 	'soChangeValue',
 	'soChangeName',
 	'soChangeText',
 	'soChangeOpen',
 	'soChangeGroupSeparators',
-	'soChangePanelAria',
-	'soChangePanelClasses',
+	'soActionPress',
+	'soActionClick',
+	'soActionFocus',
+	'soActionBlur',
 	'soAriaChangeLabel',
 	'soAriaChangeLabelledBy',
 	'soAriaChangeDescribedBy',
-	'soListItemChangeHighlighted',
+	'soDismissDismiss',
 	'soDismissChangeEnabled',
 	'soChangeId',
 	'soEngineCreate',
@@ -83,13 +80,11 @@ export const MenuSubmenuOutputNames = [
 	'soItemsAdded',
 	'soItemsRemoved',
 	'soChangeShown',
-	'soChoose',
 	'soChangeItems',
 	'soChangeTrackBy',
+	'soChoose',
 	'soChangeGroupBy',
 	'soChangeGroups',
-	'soChangeSections',
-	'soChangeSubmenus',
 ] as const
 
 @Directive({
@@ -180,27 +175,16 @@ export abstract class TMenuSubmenuSurface<TInstance extends IEntity> extends TVi
 	declare readonly soHideBefore: TOutputEmitter<typeof descriptor, 'hide:before'>
 	declare readonly soHideAfter: TOutputEmitter<typeof descriptor, 'hide:after'>
 	declare readonly soReady: TOutputEmitter<typeof descriptor, 'ready'>
-	declare readonly soInput: TOutputEmitter<typeof descriptor, 'input'>
-	declare readonly soInputValue: TOutputEmitter<typeof descriptor, 'input:value'>
-	declare readonly soElementReady: TOutputEmitter<typeof descriptor, 'element:ready'>
-	declare readonly soElementRemoved: TOutputEmitter<typeof descriptor, 'element:removed'>
-	declare readonly soActionPress: TOutputEmitter<typeof descriptor, 'action:press'>
-	declare readonly soActionClick: TOutputEmitter<typeof descriptor, 'action:click'>
-	declare readonly soActionFocus: TOutputEmitter<typeof descriptor, 'action:focus'>
-	declare readonly soActionBlur: TOutputEmitter<typeof descriptor, 'action:blur'>
-	declare readonly soDismissDismiss: TOutputEmitter<typeof descriptor, 'dismiss:dismiss'>
 	declare readonly soChangeRendered: TOutputEmitter<typeof descriptor, 'change:rendered'>
 	declare readonly soChangeVisible: TOutputEmitter<typeof descriptor, 'change:visible'>
 	declare readonly soChangeTag: TOutputEmitter<typeof descriptor, 'change:tag'>
 	declare readonly soChangeDirection: TOutputEmitter<typeof descriptor, 'change:direction'>
-	declare readonly soChangeClasses: TOutputEmitter<typeof descriptor, 'change:classes'>
-	declare readonly soChangeAria: TOutputEmitter<typeof descriptor, 'change:aria'>
-	declare readonly soChangeDataset: TOutputEmitter<typeof descriptor, 'change:dataset'>
-	declare readonly soChangeAttrs: TOutputEmitter<typeof descriptor, 'change:attrs'>
 	declare readonly soChangeSize: TOutputEmitter<typeof descriptor, 'change:size'>
 	declare readonly soChangeVariant: TOutputEmitter<typeof descriptor, 'change:variant'>
 	declare readonly soChangeDisabled: TOutputEmitter<typeof descriptor, 'change:disabled'>
 	declare readonly soChangeFocused: TOutputEmitter<typeof descriptor, 'change:focused'>
+	declare readonly soInput: TOutputEmitter<typeof descriptor, 'input'>
+	declare readonly soInputValue: TOutputEmitter<typeof descriptor, 'input:value'>
 	declare readonly soChangeValue: TOutputEmitter<typeof descriptor, 'change:value'>
 	declare readonly soChangeName: TOutputEmitter<typeof descriptor, 'change:name'>
 	declare readonly soChangeText: TOutputEmitter<typeof descriptor, 'change:text'>
@@ -209,8 +193,12 @@ export abstract class TMenuSubmenuSurface<TInstance extends IEntity> extends TVi
 		typeof descriptor,
 		'change:groupSeparators'
 	>
-	declare readonly soChangePanelAria: TOutputEmitter<typeof descriptor, 'change:panelAria'>
-	declare readonly soChangePanelClasses: TOutputEmitter<typeof descriptor, 'change:panelClasses'>
+	declare readonly soElementReady: TOutputEmitter<typeof descriptor, 'element:ready'>
+	declare readonly soElementRemoved: TOutputEmitter<typeof descriptor, 'element:removed'>
+	declare readonly soActionPress: TOutputEmitter<typeof descriptor, 'action:press'>
+	declare readonly soActionClick: TOutputEmitter<typeof descriptor, 'action:click'>
+	declare readonly soActionFocus: TOutputEmitter<typeof descriptor, 'action:focus'>
+	declare readonly soActionBlur: TOutputEmitter<typeof descriptor, 'action:blur'>
 	declare readonly soAriaChangeLabel: TOutputEmitter<typeof descriptor, 'aria:change:label'>
 	declare readonly soAriaChangeLabelledBy: TOutputEmitter<
 		typeof descriptor,
@@ -220,10 +208,7 @@ export abstract class TMenuSubmenuSurface<TInstance extends IEntity> extends TVi
 		typeof descriptor,
 		'aria:change:describedBy'
 	>
-	declare readonly soListItemChangeHighlighted: TOutputEmitter<
-		typeof descriptor,
-		'listItem:change:highlighted'
-	>
+	declare readonly soDismissDismiss: TOutputEmitter<typeof descriptor, 'dismiss:dismiss'>
 	declare readonly soDismissChangeEnabled: TOutputEmitter<
 		typeof descriptor,
 		'dismiss:change:enabled'
@@ -244,11 +229,9 @@ export abstract class TMenuSubmenuSurface<TInstance extends IEntity> extends TVi
 	declare readonly soItemsAdded: TOutputEmitter<typeof ownerFacade, 'items:added'>
 	declare readonly soItemsRemoved: TOutputEmitter<typeof ownerFacade, 'items:removed'>
 	declare readonly soChangeShown: TOutputEmitter<typeof ownerFacade, 'change:shown'>
-	declare readonly soChoose: TOutputEmitter<typeof ownerFacade, 'choose'>
 	declare readonly soChangeItems: TOutputEmitter<typeof ownerFacade, 'change:items'>
 	declare readonly soChangeTrackBy: TOutputEmitter<typeof ownerFacade, 'change:trackBy'>
+	declare readonly soChoose: TOutputEmitter<typeof ownerFacade, 'choose'>
 	declare readonly soChangeGroupBy: TOutputEmitter<typeof ownerFacade, 'change:groupBy'>
 	declare readonly soChangeGroups: TOutputEmitter<typeof ownerFacade, 'change:groups'>
-	declare readonly soChangeSections: TOutputEmitter<typeof ownerFacade, 'change:sections'>
-	declare readonly soChangeSubmenus: TOutputEmitter<typeof ownerFacade, 'change:submenus'>
 }

@@ -22,5 +22,6 @@ export const ScrollLockPluginDescriptor = definePlugin({
 		props: {
 			enabled: { type: Boolean, triggers: ['change:enabled'] },
 		},
+		events: ['change:enabled'],
 	},
 })

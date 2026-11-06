@@ -21,6 +21,7 @@ export const StylableDescriptor = defineDescriptor(() =>
 				size: { type: String, triggers: ['change:size'] },
 				variant: { type: String, triggers: ['change:variant'] },
 			},
+			events: ['change:size', 'change:variant'],
 		},
 	}),
 )

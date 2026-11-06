@@ -31,6 +31,7 @@ export const ProgressDescriptor = defineDescriptor(() =>
 				 */
 				indeterminate: { type: Boolean, triggers: ['change:indeterminate'] },
 			},
+			events: ['change:value', 'change:min', 'change:max', 'change:indeterminate'],
 		},
 
 		// Имя — `aria_label` или `aria_labelledBy`. Опции `role` у плагина нет:

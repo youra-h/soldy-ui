@@ -68,6 +68,7 @@ export const ToastsDescriptor = defineDescriptor(() =>
 				max: { type: Number, triggers: ['change:max'] },
 				duration: { type: Number, triggers: ['change:duration'] },
 			},
+			events: ['change:placement', 'change:layout', 'change:max', 'change:duration'],
 		},
 
 		plugins: [

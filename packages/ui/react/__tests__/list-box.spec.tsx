@@ -966,8 +966,6 @@ describe('события приёма', () => {
 					text="A"
 					selected
 					onChangeSelected={() => heard.push('selected')}
-					onChangeAria={() => heard.push('aria')}
-					onChangeDataset={() => heard.push('dataset')}
 				/>
 			</ListBox>,
 		)

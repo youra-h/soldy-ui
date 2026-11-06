@@ -99,6 +99,7 @@ export const TableColumnDescriptor = defineDescriptor(() =>
 				textAria: { type: Object, protected: true, triggers: ['change:textAria'] },
 				sortAria: { type: Object, protected: true, triggers: ['change:sortAria'] },
 			},
+			events: ['change:text', 'change:disabled'],
 		},
 
 		plugins: [

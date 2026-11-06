@@ -32,7 +32,6 @@ export const PopoverInputNames = [
 	'dismiss_enabled',
 ] as const
 export const PopoverOutputNames = [
-	'soDismissDismiss',
 	'soChangeOpen',
 	'soChangeClosable',
 	'soChangeLazyMount',
@@ -40,12 +39,10 @@ export const PopoverOutputNames = [
 	'soChangeContained',
 	'soChangeEdge',
 	'soChangeSwipe',
-	'soChangeTriggerAria',
-	'soChangeSwiping',
-	'soChangeCloseAria',
 	'soAriaChangeLabel',
 	'soAriaChangeLabelledBy',
 	'soAriaChangeDescribedBy',
+	'soDismissDismiss',
 	'soDismissChangeEnabled',
 ] as const
 
@@ -114,17 +111,10 @@ export abstract class TPopoverSurface<TInstance extends IEntity> extends TViewSu
 	declare readonly soHideBefore: TOutputEmitter<typeof descriptor, 'hide:before'>
 	declare readonly soHideAfter: TOutputEmitter<typeof descriptor, 'hide:after'>
 	declare readonly soReady: TOutputEmitter<typeof descriptor, 'ready'>
-	declare readonly soElementReady: TOutputEmitter<typeof descriptor, 'element:ready'>
-	declare readonly soElementRemoved: TOutputEmitter<typeof descriptor, 'element:removed'>
-	declare readonly soDismissDismiss: TOutputEmitter<typeof descriptor, 'dismiss:dismiss'>
 	declare readonly soChangeRendered: TOutputEmitter<typeof descriptor, 'change:rendered'>
 	declare readonly soChangeVisible: TOutputEmitter<typeof descriptor, 'change:visible'>
 	declare readonly soChangeTag: TOutputEmitter<typeof descriptor, 'change:tag'>
 	declare readonly soChangeDirection: TOutputEmitter<typeof descriptor, 'change:direction'>
-	declare readonly soChangeClasses: TOutputEmitter<typeof descriptor, 'change:classes'>
-	declare readonly soChangeAria: TOutputEmitter<typeof descriptor, 'change:aria'>
-	declare readonly soChangeDataset: TOutputEmitter<typeof descriptor, 'change:dataset'>
-	declare readonly soChangeAttrs: TOutputEmitter<typeof descriptor, 'change:attrs'>
 	declare readonly soChangeOpen: TOutputEmitter<typeof descriptor, 'change:open'>
 	declare readonly soChangeClosable: TOutputEmitter<typeof descriptor, 'change:closable'>
 	declare readonly soChangeLazyMount: TOutputEmitter<typeof descriptor, 'change:lazyMount'>
@@ -132,9 +122,8 @@ export abstract class TPopoverSurface<TInstance extends IEntity> extends TViewSu
 	declare readonly soChangeContained: TOutputEmitter<typeof descriptor, 'change:contained'>
 	declare readonly soChangeEdge: TOutputEmitter<typeof descriptor, 'change:edge'>
 	declare readonly soChangeSwipe: TOutputEmitter<typeof descriptor, 'change:swipe'>
-	declare readonly soChangeTriggerAria: TOutputEmitter<typeof descriptor, 'change:triggerAria'>
-	declare readonly soChangeSwiping: TOutputEmitter<typeof descriptor, 'change:swiping'>
-	declare readonly soChangeCloseAria: TOutputEmitter<typeof descriptor, 'change:closeAria'>
+	declare readonly soElementReady: TOutputEmitter<typeof descriptor, 'element:ready'>
+	declare readonly soElementRemoved: TOutputEmitter<typeof descriptor, 'element:removed'>
 	declare readonly soAriaChangeLabel: TOutputEmitter<typeof descriptor, 'aria:change:label'>
 	declare readonly soAriaChangeLabelledBy: TOutputEmitter<
 		typeof descriptor,
@@ -144,6 +133,7 @@ export abstract class TPopoverSurface<TInstance extends IEntity> extends TViewSu
 		typeof descriptor,
 		'aria:change:describedBy'
 	>
+	declare readonly soDismissDismiss: TOutputEmitter<typeof descriptor, 'dismiss:dismiss'>
 	declare readonly soDismissChangeEnabled: TOutputEmitter<
 		typeof descriptor,
 		'dismiss:change:enabled'

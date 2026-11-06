@@ -1,20 +1,6 @@
 /**
- * TEventRelay — события наружу: событие поверхности и следом его модели — по маршруту из таблицы типа.
- *
- * Своих подписок на шины у порта нет. Шины участников слушает слушатель
- * участников обмена (`TTap`): порт держит его, пока у порта есть приёмники, а
- * слушатель отдаёт сюда маршрут сработавшего события из таблицы маршрутов
- * (`TRouting`) — уже после того, как состояние перечитано.
- *
- * Повторов нет по построению: у события поверхности один маршрут, а она
- * держит события без повторов (`TSurface.events`). `change:visible`, триггер
- * и у `visible`, и у `present`, уходит наружу один раз. Событие привязки
- * (`update:text`) уходит тем же вызовом сразу после события ядра, с новым
- * значением — порядок задан кодом, а не очерёдностью подписок на шине, и при
- * монтировании привязка не срабатывает: её вызывает только событие.
- *
- * Событие, у которого нет участника (плагина нет в чужом наборе), маршрута не
- * получает.
+ * TEventRelay delivers explicit public events and model updates after state refresh.
+ * Models are delivered even when their source trigger is internal.
  */
 
 import type { TTap } from './tap.class'
@@ -58,12 +44,7 @@ export class TEventRelay {
 		}
 	}
 
-	/**
-	 * Сработало событие участника: отдать приёмникам событие поверхности и
-	 * следом его модели. Зовёт слушатель участников (`TTap`), а не адаптер.
-	 * Маршрут без события поверхности наружу ничего не шлёт: им участник только
-	 * перечитывает состояние.
-	 */
+	/** Deliver an explicit public event and model updates independently, after refreshing state. */
 	publish(route: IRoute, args: readonly unknown[]): void {
 		this._deliver(route, args, this._sinks)
 	}
@@ -88,10 +69,10 @@ export class TEventRelay {
 	): void {
 		const { event, models } = route
 
-		if (event === undefined || sinks === undefined) return
+		if (sinks === undefined) return
 
 		for (const sink of sinks) {
-			sink(event, args)
+			if (event !== undefined) sink(event, args)
 
 			for (const model of models) sink(model.name, [model.line.read(this._owners)])
 		}

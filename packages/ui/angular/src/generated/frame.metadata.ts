@@ -44,7 +44,6 @@ export const FrameOutputNames = [
 	'soChangeHeight',
 	'soChangePosition',
 	'soChangeContained',
-	'soLayoutChangeStyles',
 	'soAnchorChangeAnchor',
 	'soAnchorChangePoint',
 	'soAnchorChangePlacement',
@@ -127,17 +126,11 @@ export abstract class TFrameSurface<TInstance extends IEntity> extends TViewSurf
 	declare readonly soHideBefore: TOutputEmitter<typeof descriptor, 'hide:before'>
 	declare readonly soHideAfter: TOutputEmitter<typeof descriptor, 'hide:after'>
 	declare readonly soReady: TOutputEmitter<typeof descriptor, 'ready'>
-	declare readonly soChangeZIndex: TOutputEmitter<typeof descriptor, 'change:zIndex'>
-	declare readonly soElementReady: TOutputEmitter<typeof descriptor, 'element:ready'>
-	declare readonly soElementRemoved: TOutputEmitter<typeof descriptor, 'element:removed'>
 	declare readonly soChangeRendered: TOutputEmitter<typeof descriptor, 'change:rendered'>
 	declare readonly soChangeVisible: TOutputEmitter<typeof descriptor, 'change:visible'>
 	declare readonly soChangeTag: TOutputEmitter<typeof descriptor, 'change:tag'>
 	declare readonly soChangeDirection: TOutputEmitter<typeof descriptor, 'change:direction'>
-	declare readonly soChangeClasses: TOutputEmitter<typeof descriptor, 'change:classes'>
-	declare readonly soChangeAria: TOutputEmitter<typeof descriptor, 'change:aria'>
-	declare readonly soChangeDataset: TOutputEmitter<typeof descriptor, 'change:dataset'>
-	declare readonly soChangeAttrs: TOutputEmitter<typeof descriptor, 'change:attrs'>
+	declare readonly soChangeZIndex: TOutputEmitter<typeof descriptor, 'change:zIndex'>
 	declare readonly soChangeTarget: TOutputEmitter<typeof descriptor, 'change:target'>
 	declare readonly soChangeX: TOutputEmitter<typeof descriptor, 'change:x'>
 	declare readonly soChangeY: TOutputEmitter<typeof descriptor, 'change:y'>
@@ -145,7 +138,8 @@ export abstract class TFrameSurface<TInstance extends IEntity> extends TViewSurf
 	declare readonly soChangeHeight: TOutputEmitter<typeof descriptor, 'change:height'>
 	declare readonly soChangePosition: TOutputEmitter<typeof descriptor, 'change:position'>
 	declare readonly soChangeContained: TOutputEmitter<typeof descriptor, 'change:contained'>
-	declare readonly soLayoutChangeStyles: TOutputEmitter<typeof descriptor, 'layout:change:styles'>
+	declare readonly soElementReady: TOutputEmitter<typeof descriptor, 'element:ready'>
+	declare readonly soElementRemoved: TOutputEmitter<typeof descriptor, 'element:removed'>
 	declare readonly soAnchorChangeAnchor: TOutputEmitter<typeof descriptor, 'anchor:change:anchor'>
 	declare readonly soAnchorChangePoint: TOutputEmitter<typeof descriptor, 'anchor:change:point'>
 	declare readonly soAnchorChangePlacement: TOutputEmitter<

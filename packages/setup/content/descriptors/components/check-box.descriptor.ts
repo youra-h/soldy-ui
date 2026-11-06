@@ -52,6 +52,7 @@ export const CheckBoxDescriptor = defineDescriptor(() =>
 				indeterminate: { type: Boolean, triggers: ['change:indeterminate'] },
 				view: { type: String, triggers: ['change:view'] },
 			},
+			events: ['change:indeterminate', 'change:view'],
 		},
 
 		plugins: [

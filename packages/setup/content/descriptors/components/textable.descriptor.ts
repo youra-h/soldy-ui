@@ -19,6 +19,7 @@ export const TextableDescriptor = defineDescriptor(() =>
 			props: {
 				text: { type: String, triggers: ['change:text'] },
 			},
+			events: ['change:text'],
 		},
 	}),
 )

@@ -86,6 +86,14 @@ export const ListBoxDescriptor = defineDescriptor(() =>
 				// Общие с Select — объявлены один раз в `components/list.ts`
 				...LIST_PROPS,
 			},
+			events: [
+				'change:view',
+				'change:maxRows',
+				'change:contentFit',
+				'change:scrollBehavior',
+				'change:indicator',
+				'change:groupSeparators',
+			],
 		},
 
 		plugins: [

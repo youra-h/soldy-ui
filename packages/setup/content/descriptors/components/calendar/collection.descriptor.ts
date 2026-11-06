@@ -55,6 +55,7 @@ export const CalendarCollectionDescriptor = defineDescriptor(() =>
 				 */
 				pickers: { type: Array, protected: true, triggers: ['change:pickers'] },
 			},
+			events: ['change:mode'],
 		},
 	}),
 )

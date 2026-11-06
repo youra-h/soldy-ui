@@ -75,6 +75,16 @@ export const ToastsItemDescriptor = defineDescriptor(() =>
 					triggers: ['change:closeAria'],
 				},
 			},
+			events: [
+				'change:text',
+				'change:description',
+				'change:type',
+				'change:loading',
+				'change:closable',
+				'change:duration',
+				'change:alert',
+				'change:render',
+			],
 		},
 
 		plugins: [

@@ -88,6 +88,10 @@ export const ComponentViewDescriptor = defineDescriptor(() =>
 				'hide:before',
 				'hide:after',
 				'ready',
+				'change:rendered',
+				'change:visible',
+				'change:tag',
+				'change:direction',
 			],
 		},
 

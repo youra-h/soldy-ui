@@ -23,7 +23,7 @@ export const TabsCollectionDescriptor = defineDescriptor(() =>
 			props: {
 				activeItem: { type: Object, protected: true, triggers: ['change:activation'] },
 			},
-			events: ['item:activated', 'item:deactivated', 'item:close'],
+			events: ['item:activated', 'item:deactivated', 'item:close', 'change:activation'],
 		},
 	}),
 )
@@ -40,6 +40,7 @@ export const TabsCollectionItemDescriptor = defineDescriptor(() =>
 				order: { type: Number, protected: true, triggers: ['change:order'] },
 				tab_closable: { type: Boolean, protected: true, triggers: ['change:closable'] },
 			},
+			events: ['change:active', 'change:order'],
 		},
 	}),
 )
