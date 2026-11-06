@@ -93,8 +93,7 @@ export abstract class TMenuNavigationPlugin<
 
 				if (open) return
 
-				// Закрытое меню подсветку не держит; фокус не трогается — его
-				// возвращает модель фокуса
+				// A closed menu clears its highlight; the focus model restores focus.
 				this._cancelEdgeFrame()
 				this._typeahead.reset()
 				this.clearHighlight()
