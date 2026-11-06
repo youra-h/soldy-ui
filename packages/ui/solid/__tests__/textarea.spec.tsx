@@ -366,16 +366,13 @@ describe('Textarea · в поле формы', () => {
 })
 
 describe('Textarea · типы', () => {
-	/**
-	 * Событие `input` дескриптора даёт колбэк `onInput` — как у Input. Предел и
-	 * «только чтение» — входы `maxlength` и `readonly`: их имена DOM
-	 * (`maxLength`, `readOnly`) и содержимое `<textarea>` (`textContent`) были
-	 * бы вторым путём к тому же состоянию. Проверяет не vitest, а шаг CI
-	 * «Типы — Solid».
-	 */
-	it('onInput — колбэк события input дескриптора; maxLength, readOnly и textContent — не атрибуты', () => {
-		expectTypeOf<NonNullable<TextareaProps['onInput']>>().toEqualTypeOf<
+	/** Component value notifications and native DOM input retain separate callback types. */
+	it('onChangeValue carries the value payload; native input and controlled attributes retain their types', () => {
+		expectTypeOf<NonNullable<TextareaProps['onChangeValue']>>().toEqualTypeOf<
 			(payload: TValuePayload<string>) => void
+		>()
+		expectTypeOf<TextareaProps['onInput']>().toEqualTypeOf<
+			import('solid-js').JSX.IntrinsicElements['textarea']['onInput']
 		>()
 		expectTypeOf<TextareaProps>().not.toHaveProperty('maxLength')
 		expectTypeOf<TextareaProps>().not.toHaveProperty('readOnly')

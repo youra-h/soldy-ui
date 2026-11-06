@@ -796,7 +796,8 @@ describe('поля — по режиму', () => {
  * counters are global to the worker, so the spec counts `2N` pickers against
  * `N`: that cancels whatever is created once, with the first instance.
  */
-describe('вес закрытого DatePicker', () => {
+// Each census forces four full garbage collections; allow for shared CI CPU contention.
+describe('вес закрытого DatePicker', { timeout: 15_000 }, () => {
 	const COUNT = 20
 
 	/** Live fields, days, lists and popovers right now. */

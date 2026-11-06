@@ -140,10 +140,8 @@ export default class TComponentView<
 		this._sink.emit('show:before', e)
 		if (e.defaultPrevented) return
 		this._setVisible(true)
-		this._sink.emit('show')
-
 		this.afterShow()
-		this._sink.emit('show:after')
+		this._sink.emit('show')
 	}
 
 	hide(): void {
@@ -155,10 +153,8 @@ export default class TComponentView<
 		this._sink.emit('hide:before', e)
 		if (e.defaultPrevented) return
 		this._setVisible(false)
-		this._sink.emit('hide')
-
 		this.afterHide()
-		this._sink.emit('hide:after')
+		this._sink.emit('hide')
 	}
 
 	/**

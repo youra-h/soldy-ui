@@ -431,13 +431,9 @@ describe('Input · кнопка очистки', () => {
 })
 
 describe('Input · типы', () => {
-	/**
-	 * Событие `input` дескриптора даёт колбэк `onInput`, а обработчик DOM у
-	 * Svelte — `oninput`: имена разные, и колбэк остаётся колбэком события.
-	 * Проверяет не vitest, а шаг CI «Типы — Svelte».
-	 */
-	it('onInput — колбэк события input дескриптора, а не обработчик DOM', () => {
-		expectTypeOf<NonNullable<InputProps['onInput']>>().toEqualTypeOf<
+	/** Component value notifications use onChangeValue; native input uses oninput. */
+	it('onChangeValue — колбэк события input дескриптора, а не обработчик DOM', () => {
+		expectTypeOf<NonNullable<InputProps['onChangeValue']>>().toEqualTypeOf<
 			(payload: TValuePayload<string>) => void
 		>()
 	})

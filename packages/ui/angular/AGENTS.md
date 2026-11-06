@@ -137,8 +137,7 @@
   прототипе его класса, — а второй Button и следом ComponentView геттеры
   первого не заменяют.
 - **Каждый выход — с префиксом `so`**: имя выхода — `so` и полное имя
-  события ядра в camelCase, у всех событий без исключений: `input` →
-  `soInput`, `show` → `soShow`, `show:before` → `soShowBefore`,
+  события ядра в camelCase, у всех событий без исключений: `show` → `soShow`, `show:before` → `soShowBefore`,
   `element:ready` → `soElementReady`, `change:value` → `soChangeValue`, а с
   портом Select — `soOpen` и `soClose`. На `(x)="…"` у элемента Angular
   ставит и подписку на выход `x` директивы, и слушатель события DOM `x`
@@ -154,12 +153,11 @@
   Angular запрещает его у выходов (`no-output-on-prefix`). Правило — в стратегии имён
   (`AngularNaming`, `src/adapter/common/naming.ts`), ветки под конкретное имя
   в ней нет. Поэтому `(input)` на поле — событие браузера, как на нативном
-  `<input>`, а событие ядра — `(soInput)` (или `(soInputValue)`,
-  `(soChangeValue)`). Сторожат `outputs.spec.ts` (каждый выход всех
+  `<input>`, а смена значения ядра — `(soChangeValue)`. Сторожат `outputs.spec.ts` (каждый выход всех
   дескрипторов экспорта setup, и непортированных тоже, — `so` и имя ядра в
   camelCase, и ни один не совпадает с событием схемы DOM компилятора Angular,
   `DomElementSchemaRegistry`) и `input.spec.ts` (на нажатие — одно событие
-  браузера в `(input)` и одно событие ядра в `(soInput)`, обработчики точного
+  браузера в `(input)` и одно событие ядра в `(soChangeValue)`, обработчики точного
   типа).
 - **Булев вход принимает атрибут без значения**, как в остальных адаптерах:
   `<button so-button disabled>` выключает кнопку. Атрибут без значения Angular

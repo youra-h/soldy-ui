@@ -32,20 +32,17 @@ describe('TInput', () => {
 		expect(input.classes.toArray()).toContain('so-input--required')
 	})
 
-	it('value setter эмитит change:value и input:value', () => {
+	it('value setter emits change:value', () => {
 		const input = new TInput({ value: 'a' })
 		const changeHandler = vi.fn()
-		const inputHandler = vi.fn()
 		input.events.on('change:value', changeHandler)
-		input.events.on('input:value', inputHandler)
 
 		input.value = 'b'
 		expect(changeHandler).toHaveBeenCalledWith({ newValue: 'b', oldValue: 'a' })
-		expect(inputHandler).toHaveBeenCalledWith({ newValue: 'b', oldValue: 'a' })
 		expect(input.value).toBe('b')
 
 		input.value = 'c'
-		expect(inputHandler).toHaveBeenNthCalledWith(2, { newValue: 'c', oldValue: 'b' })
+		expect(changeHandler).toHaveBeenNthCalledWith(2, { newValue: 'c', oldValue: 'b' })
 		expect(input.value).toBe('c')
 	})
 

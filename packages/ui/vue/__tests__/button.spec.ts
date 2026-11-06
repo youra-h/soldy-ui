@@ -222,7 +222,6 @@ describe('Button · события видимости и готовности', 
 
 		expect(wrapper.emitted('hide:before')).toBeTruthy()
 		expect(wrapper.emitted('hide')).toBeTruthy()
-		expect(wrapper.emitted('hide:after')).toBeTruthy()
 		expect(wrapper.emitted('change:visible')).toBeTruthy()
 		expect(wrapper.find('button').attributes('style')).toContain('display: none')
 
@@ -231,7 +230,6 @@ describe('Button · события видимости и готовности', 
 
 		expect(wrapper.emitted('show:before')).toBeTruthy()
 		expect(wrapper.emitted('show')).toBeTruthy()
-		expect(wrapper.emitted('show:after')).toBeTruthy()
 		expect(wrapper.find('button').attributes('style')).not.toContain('display: none')
 	})
 

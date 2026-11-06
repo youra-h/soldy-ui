@@ -5,16 +5,7 @@ import { TChangeEvent } from '../../../common'
 import { sameValue } from '../../../common/utility/same-value'
 import type { TValuePayload, TEventSink } from '../../../common'
 
-/**
- * База для контролов со значением.
- *
- * Содержит:
- * - `value` (commit) + `input(value)` (optional)
- * - `name` (form semantics)
- * - `invalid` — значение не прошло проверку
- *
- * Интерактивность (disabled/focused) и stylable (size/variant) наследуются из `TControl`.
- */
+/** Base for value controls with name and invalid state; inherits interaction and styling. */
 export default class TValueControl<
 	TValue,
 	TProps extends IValueControlProps<TValue> = IValueControlProps<TValue>,
@@ -82,11 +73,7 @@ export default class TValueControl<
 		this._valueChanged(before)
 	}
 
-	/**
-	 * Итог `value` мог смениться — `change:value`, `input:value` и `input`, если
-	 * сменился. Наследник, чей итог зависит не только от своего значения
-	 * (Slider прижимает его к шкале), зовёт это и при смене той зависимости.
-	 */
+	/** Emits effective value changes, including derived constraint changes. */
 	protected _valueChanged(oldValue: TValue): void {
 		const newValue = this.value
 		if (sameValue(newValue, oldValue)) return
@@ -94,8 +81,6 @@ export default class TValueControl<
 		const payload: TValuePayload<TValue> = { newValue, oldValue }
 
 		this._sink.emit('change:value', payload)
-		this._sink.emit('input:value', payload)
-		this._sink.emit('input', payload)
 	}
 
 	/**

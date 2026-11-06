@@ -372,13 +372,9 @@ describe('Textarea · в поле формы', () => {
 })
 
 describe('Textarea · типы', () => {
-	/**
-	 * Событие `input` дескриптора даёт колбэк `onInput` — как у Input. Умолчание
-	 * текста (`defaultValue`) было бы вторым путём к тексту поля. Проверяет не
-	 * vitest, а шаг CI «Типы — Svelte».
-	 */
-	it('onInput — колбэк события input дескриптора; defaultValue — не атрибут', () => {
-		expectTypeOf<NonNullable<TextareaProps['onInput']>>().toEqualTypeOf<
+	/** Component value notifications use onChangeValue; native input uses oninput. */
+	it('onChangeValue — колбэк события input дескриптора; defaultValue — не атрибут', () => {
+		expectTypeOf<NonNullable<TextareaProps['onChangeValue']>>().toEqualTypeOf<
 			(payload: TValuePayload<string>) => void
 		>()
 		expectTypeOf<TextareaProps>().not.toHaveProperty('defaultValue')

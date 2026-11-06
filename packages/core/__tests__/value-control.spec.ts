@@ -15,13 +15,11 @@ describe('TValueControl', () => {
 		expect(b.name).toBe('n2')
 	})
 
-	it('value setter эмитит change:value, input() эмитит input:value', () => {
+	it('value setter emits change:value', () => {
 		type P = IValueControlProps<string>
 		const c = new TValueControl<string, P>({ value: 'x', name: 'n' })
 		const changeHandler = vi.fn()
-		const inputHandler = vi.fn()
 		c.events.on('change:value', changeHandler)
-		c.events.on('input:value', inputHandler)
 
 		c.value = 'y'
 		expect(changeHandler).toHaveBeenCalledWith({ newValue: 'y', oldValue: 'x' })

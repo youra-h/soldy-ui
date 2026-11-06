@@ -408,16 +408,13 @@ describe('Textarea · серверный рендер', () => {
 })
 
 describe('Textarea · типы', () => {
-	/**
-	 * Событие `input` дескриптора даёт колбэк `onInput` — то же имя, что у
-	 * обработчика DOM; `UseDomProps` вычитает имена событий из атрибутов, как у
-	 * Input. Предел и «только чтение» — входы `maxlength` и `readonly`: их
-	 * имена DOM (`maxLength`, `readOnly`) были бы вторым путём к тому же
-	 * состоянию. Проверяет не vitest, а шаг CI «Типы — React».
-	 */
-	it('onInput — колбэк события input дескриптора; maxLength и readOnly — не атрибуты', () => {
-		expectTypeOf<NonNullable<TextareaProps['onInput']>>().toEqualTypeOf<
+	/** Value notifications and native DOM input retain separate callback types. */
+	it('onChangeValue carries the value payload; onInput remains a DOM handler', () => {
+		expectTypeOf<NonNullable<TextareaProps['onChangeValue']>>().toEqualTypeOf<
 			(payload: TValuePayload<string>) => void
+		>()
+		expectTypeOf<TextareaProps['onInput']>().toEqualTypeOf<
+			import('react').ComponentProps<'textarea'>['onInput']
 		>()
 		expectTypeOf<TextareaProps>().not.toHaveProperty('maxLength')
 		expectTypeOf<TextareaProps>().not.toHaveProperty('readOnly')
