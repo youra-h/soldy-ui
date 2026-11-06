@@ -146,7 +146,7 @@ const closeOf = (text: string) => find(item(text), '.so-tabs-item__close', HTMLB
 
 /** Показанные панели: неактивная панель — скрытый элемент потребителя. */
 const panels = () =>
-	[...document.querySelectorAll('.so-tabs__panel')].filter(
+	[...document.querySelectorAll('.so-tabs-content')].filter(
 		(node): node is HTMLElement => node instanceof HTMLElement && node.style.display !== 'none',
 	)
 
@@ -243,7 +243,7 @@ describe('показ панели по активному табу', () => {
 	it('скрытая панель — без содержимого', async () => {
 		await mount(HARNESS)
 
-		const hidden = [...document.querySelectorAll('.so-tabs__panel')].filter(
+		const hidden = [...document.querySelectorAll('.so-tabs-content')].filter(
 			(node) => node instanceof HTMLElement && node.style.display === 'none',
 		)
 
@@ -253,7 +253,7 @@ describe('показ панели по активному табу', () => {
 	it('панель лежит вне списка табов', async () => {
 		await mount(HARNESS)
 
-		expect(document.querySelector('[role="tablist"] .so-tabs__panel')).toBeNull()
+		expect(document.querySelector('[role="tablist"] .so-tabs-content')).toBeNull()
 		expect(panels()).toHaveLength(1)
 	})
 

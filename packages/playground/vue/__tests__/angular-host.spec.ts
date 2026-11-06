@@ -203,10 +203,10 @@ describe('хост Angular · обёртка и содержимое', () => {
 		const node = stage()
 		const handle = host.mount(node, { component: 'tabs', props: {} })
 		const list = node.querySelector('.so-tabs > .so-tabs__bar > .so-tabs__list')
-		const panels = all(node, '.so-tabs > .so-tabs__panel')
+		const panels = all(node, '.so-tabs > .so-tabs-content')
 
 		expect(list && textsOf(list, '.so-tabs-item')).toEqual(TEXTS)
-		expect(list?.querySelectorAll('.so-tabs__panel')).toHaveLength(0)
+		expect(list?.querySelectorAll('.so-tabs-content')).toHaveLength(0)
 		expect(panels.map((panel) => panel.style.display !== 'none')).toEqual([
 			true,
 			false,

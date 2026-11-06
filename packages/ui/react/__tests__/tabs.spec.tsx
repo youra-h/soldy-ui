@@ -68,7 +68,7 @@ function closeOf(text: string): HTMLElement {
 	return close
 }
 
-const panels = () => [...document.querySelectorAll('.so-tabs__panel')]
+const panels = () => [...document.querySelectorAll('.so-tabs-content')]
 
 /** Ряд набора — ребёнок корня: список табов и слоты по его краям. */
 const barIn = (root: HTMLElement) => find(root, ':scope > .so-tabs__bar', HTMLElement)
@@ -150,7 +150,7 @@ describe('показ панели по активному табу', () => {
 		mount(<Harness />)
 
 		// Попади она в `children`, оказалась бы внутри [role=tablist]
-		expect(document.querySelector('[role="tablist"] .so-tabs__panel')).toBeNull()
+		expect(document.querySelector('[role="tablist"] .so-tabs-content')).toBeNull()
 		expect(panels()).toHaveLength(1)
 	})
 

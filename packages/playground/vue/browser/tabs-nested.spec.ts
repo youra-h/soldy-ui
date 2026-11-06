@@ -1,28 +1,22 @@
 /**
- * Вложенные Tabs в настоящем браузере: табы в панели других выглядят так же,
- * как такие же табы вне них, — вид, ориентация, выравнивание и вариант
- * внешних табов им не достаются.
+ * Nested Tabs must look like identical standalone Tabs: outer view, orientation,
+ * alignment, and variant must not leak into them.
  *
- * Тема рисует набор от его корня дочерними комбинаторами: свой ряд
- * (`> .so-tabs__bar`), табы его списка
- * (`> .so-tabs__bar > .so-tabs__list > .so-tabs-item`) и свою панель
- * (`> .so-tabs__panel`) — `themes/oren/AGENTS.md`, «Tabs: вид — от своего
- * ряда». Пока правила вида были написаны для потомков, внутренние
- * табы получали стили внешних: горизонтальные под вертикальными
- * выстраивались столбиком, `contained` под `line` — с линией и полосой,
- * `line` под `outline` — папочными вкладками, а цвет текста и фон контейнера
- * брались от варианта внешних.
+ * Theme rules use child combinators for the bar (> .so-tabs__bar), list items
+ * (> .so-tabs__bar > .so-tabs__list > .so-tabs-item), and panel
+ * (> .so-tabs-content). See the Tabs section in themes/oren/AGENTS.md.
+ * Descendant rules previously made nested horizontal tabs vertical, added line
+ * indicators to contained tabs, gave line tabs outline borders, and inherited
+ * outer variant colors.
  *
- * Чисел темы тест не знает. Эталон — такие же внутренние табы в той же сцене,
- * но вне других: вычисленный стиль вложенных обязан совпасть с ним.
- * Расхождения собираются списком с именем свойства, и ждётся пустой список.
- * Виды, ориентации и выравнивания — списки стенда, сверенные с темой и ядром
- * (`@soldy-ui/playground-shared`): новое значение попадёт в матрицу само.
+ * Compare computed styles with matching standalone Tabs in the same scene,
+ * without hardcoding theme values. Collect differing properties and expect none.
+ * View, orientation, and alignment matrices come from playground-shared lists
+ * checked against the theme and core, so new values enter the matrix directly.
  *
- * В режиме принудительных цветов (высокий контраст Windows) у вида свои
- * правила — системные цвета полосы, линий и рамки активного таба, — и они
- * тоже пишутся от своего корня: потомковое правило `outline` красило полосу
- * вложенных `line` цветом текста, и она сливалась с линией под списком.
+ * Forced-color rules must also stay within their own root: an outer outline
+ * previously painted a nested line indicator in text color, hiding it against
+ * the list border.
  */
 
 import { describe, it, expect, beforeEach, afterEach } from 'vitest'
@@ -76,7 +70,7 @@ const scene = (outerLook: TTabsLook, innerLook: TTabsLook) =>
 /** Корни наборов на сцене: внешние, вложенные и эталон. */
 const roots = () => [...document.querySelectorAll('.so-tabs')]
 
-const nested = () => find('[data-place="nested"] .so-tabs__panel > .so-tabs')
+const nested = () => find('[data-place="nested"] .so-tabs-content > .so-tabs')
 const reference = () => find('[data-place="reference"] > .so-tabs')
 
 const SIDES = ['top', 'right', 'bottom', 'left'] as const
@@ -134,7 +128,7 @@ function stylesOf(root: HTMLElement): Map<string, string> {
 	const list = find(':scope > .so-tabs__list', bar)
 	const items = [...list.querySelectorAll(':scope > .so-tabs-item')]
 	const row = find(':scope > .so-tabs-item[data-selected="true"] > [role="tab"]', list)
-	const panel = find(':scope > .so-tabs__panel', root)
+	const panel = find(':scope > .so-tabs-content', root)
 
 	return new Map([
 		...read('ряд', bar, BAR),

@@ -17,7 +17,7 @@ const render = () => mount(Harness, { attachTo: document.body })
 describe('показ панели по активному табу', () => {
 	it('видна только панель активного таба', () => {
 		const wrapper = render()
-		const panels = wrapper.findAll('.so-tabs__panel')
+		const panels = wrapper.findAll('.so-tabs-content')
 
 		expect(panels).toHaveLength(1)
 		expect(panels[0].text()).toBe('Панель A')
@@ -29,7 +29,7 @@ describe('показ панели по активному табу', () => {
 		await wrapper.findAll('[role="tab"]')[1].trigger('click')
 		await nextTick()
 
-		const panels = wrapper.findAll('.so-tabs__panel')
+		const panels = wrapper.findAll('.so-tabs-content')
 
 		expect(panels).toHaveLength(1)
 		expect(panels[0].text()).toBe('Панель B')
@@ -39,8 +39,8 @@ describe('показ панели по активному табу', () => {
 		const wrapper = render()
 
 		// Попади она в default-слот, оказалась бы внутри [role=tablist]
-		expect(wrapper.find('[role="tablist"] .so-tabs__panel').exists()).toBe(false)
-		expect(wrapper.find('.so-tabs__panel').exists()).toBe(true)
+		expect(wrapper.find('[role="tablist"] .so-tabs-content').exists()).toBe(false)
+		expect(wrapper.find('.so-tabs-content').exists()).toBe(true)
 	})
 })
 
@@ -76,7 +76,7 @@ describe('разметка, на которую опирается тема', ()
 		const list = childOf(childOf(root, 'so-tabs__bar'), 'so-tabs__list')
 		const items = [...root.querySelectorAll('.so-tabs-item')]
 
-		expect(root.querySelector('.so-tabs__panel')?.parentElement).toBe(root)
+		expect(root.querySelector('.so-tabs-content')?.parentElement).toBe(root)
 		expect(items).toHaveLength(count)
 
 		for (const item of items) expect(item.parentElement).toBe(list)
@@ -193,18 +193,18 @@ describe('смена value у панели', () => {
 	it('к неактивному табу — панель прячется, его активация показывает её', async () => {
 		const mounted = renderPanel('a')
 
-		expect(mounted.find('.so-tabs__panel').exists()).toBe(true)
+		expect(mounted.find('.so-tabs-content').exists()).toBe(true)
 
 		await mounted.setProps({ panel: 'b' })
 
-		expect(mounted.find('.so-tabs__panel').exists()).toBe(false)
+		expect(mounted.find('.so-tabs-content').exists()).toBe(false)
 
 		const second = mounted.findAll('[role="tab"]')[1]
 
 		await second.trigger('click')
 		await nextTick()
 
-		const panel = mounted.find('.so-tabs__panel')
+		const panel = mounted.find('.so-tabs-content')
 
 		expect(panel.exists()).toBe(true)
 		expect(panel.attributes('aria-labelledby')).toBe(second.attributes('id'))
@@ -215,7 +215,7 @@ describe('смена value у панели', () => {
 
 		await mounted.setProps({ panel: 'z' })
 
-		expect(mounted.find('.so-tabs__panel').exists()).toBe(false)
+		expect(mounted.find('.so-tabs-content').exists()).toBe(false)
 
 		const [first, second] = mounted.findAll('[role="tab"]')
 
@@ -225,17 +225,17 @@ describe('смена value у панели', () => {
 		await nextTick()
 
 		expect(first.attributes('aria-selected')).toBe('true')
-		expect(mounted.find('.so-tabs__panel').exists()).toBe(false)
+		expect(mounted.find('.so-tabs-content').exists()).toBe(false)
 	})
 
 	it('из значения без таба к активному табу — панель видна и подписана им', async () => {
 		const mounted = renderPanel('z')
 
-		expect(mounted.find('.so-tabs__panel').exists()).toBe(false)
+		expect(mounted.find('.so-tabs-content').exists()).toBe(false)
 
 		await mounted.setProps({ panel: 'a' })
 
-		const panel = mounted.find('.so-tabs__panel')
+		const panel = mounted.find('.so-tabs-content')
 
 		expect(panel.exists()).toBe(true)
 		expect(panel.attributes('aria-labelledby')).toBe(
@@ -281,8 +281,8 @@ describe('элемент чужой коллекции в панели', () => {
 		expect(engine.extensions.batch.items.map((item) => item.value)).toEqual(['a', 'b'])
 		expect(wrapper.findAll('[role="tab"]')).toHaveLength(2)
 		// Свои элементы нарисованы в панели — сами по себе
-		expect(wrapper.find('.so-tabs__panel .so-tags-item').text()).toContain('Тег')
-		expect(wrapper.find('.so-tabs__panel input[type="radio"]').exists()).toBe(true)
+		expect(wrapper.find('.so-tabs-content .so-tags-item').text()).toContain('Тег')
+		expect(wrapper.find('.so-tabs-content input[type="radio"]').exists()).toBe(true)
 
 		wrapper.unmount()
 	})
@@ -293,7 +293,7 @@ describe('связка ARIA в разметке', () => {
 		const wrapper = render()
 
 		const tab = wrapper.findAll('[role="tab"]')[0]
-		const panel = wrapper.find('.so-tabs__panel')
+		const panel = wrapper.find('.so-tabs-content')
 
 		expect(tab.attributes('aria-controls')).toBe(panel.attributes('id'))
 	})
@@ -302,13 +302,13 @@ describe('связка ARIA в разметке', () => {
 		const wrapper = render()
 
 		const tab = wrapper.findAll('[role="tab"]')[0]
-		const panel = wrapper.find('.so-tabs__panel')
+		const panel = wrapper.find('.so-tabs-content')
 
 		expect(panel.attributes('aria-labelledby')).toBe(tab.attributes('id'))
 	})
 
 	it('панель объявлена как tabpanel', () => {
-		expect(render().find('.so-tabs__panel').attributes('role')).toBe('tabpanel')
+		expect(render().find('.so-tabs-content').attributes('role')).toBe('tabpanel')
 	})
 
 	/**
@@ -342,7 +342,7 @@ describe('связка ARIA в разметке', () => {
 			{ attachTo: document.body },
 		)
 		const tab = () => wrapper.findAll('[role="tab"]')[0]
-		const panel = () => wrapper.find('.so-tabs__panel')
+		const panel = () => wrapper.find('.so-tabs-content')
 
 		expect(tab().attributes('id')).toBe('settings')
 		expect(panel().attributes('aria-labelledby')).toBe('settings')
@@ -388,7 +388,7 @@ describe('связка ARIA в разметке', () => {
 			{ attachTo: document.body },
 		)
 		const tab = () => wrapper.findAll('[role="tab"]')[0]
-		const panel = () => wrapper.find('.so-tabs__panel')
+		const panel = () => wrapper.find('.so-tabs-content')
 
 		await nextTick()
 

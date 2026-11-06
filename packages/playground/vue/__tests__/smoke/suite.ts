@@ -345,8 +345,8 @@ export function describeSmoke(framework: string): void {
 				const list = stage.find('.so-tabs__list')
 
 				expect(list.exists()).toBe(true)
-				expect(list.findAll('.so-tabs__panel')).toHaveLength(0)
-				expect(stage.findAll('.so-tabs__panel').length).toBeGreaterThan(0)
+				expect(list.findAll('.so-tabs-content')).toHaveLength(0)
+				expect(stage.findAll('.so-tabs-content').length).toBeGreaterThan(0)
 			}
 		})
 	})

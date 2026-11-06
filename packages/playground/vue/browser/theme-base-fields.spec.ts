@@ -170,7 +170,7 @@ describe('Tabs — ряд с заданной стороны от панели',
 			)
 
 			const bar = box(find('.so-tabs__bar'))
-			const panel = box(find('.so-tabs__panel'))
+			const panel = box(find('.so-tabs-content'))
 
 			expect(SIDES[side](bar, panel), `ряд — ${side} от панели`).toBe(true)
 

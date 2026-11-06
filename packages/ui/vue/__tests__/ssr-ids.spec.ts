@@ -126,7 +126,7 @@ describe('id при гидратации', () => {
 		expect(warnings).toEqual([])
 		expect(attrs(client, '[role="tab"]', 'id')).toEqual(attrs(server, '[role="tab"]', 'id'))
 		expect(controls).toEqual(attrs(server, '[role="tab"]', 'aria-controls'))
-		expect(attrs(client, '.so-tabs__panel', 'id')).toEqual([controls[0]])
+		expect(attrs(client, '.so-tabs-content', 'id')).toEqual([controls[0]])
 	})
 
 	/**
@@ -150,8 +150,8 @@ describe('id при гидратации', () => {
 		)
 
 		expect(warnings).toEqual([])
-		expect(attrs(server, '.so-tabs__panel', 'id')).toEqual(['general'])
-		expect(attrs(client, '.so-tabs__panel', 'id')).toEqual(['general'])
+		expect(attrs(server, '.so-tabs-content', 'id')).toEqual(['general'])
+		expect(attrs(client, '.so-tabs-content', 'id')).toEqual(['general'])
 
 		await nextTick()
 
