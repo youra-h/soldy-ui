@@ -1,19 +1,19 @@
-import type { IExtension, IExtensionContext } from '../types'
-import type { TQueryEvent } from '../../types'
-import { TBaseExtension } from '../base-extension.class'
-import type { TMetaEntry } from '../meta'
-import { batchOf, metaOf } from '../neighbours'
+import type { IExtension, IExtensionContext } from "../types";
+import type { TQueryEvent } from "../../types";
+import { TBaseExtension } from "../base-extension.class";
+import type { TMetaEntry } from "../meta";
+import { batchOf, metaOf } from "../neighbours";
 import type {
-	IGroupExtension,
-	TGroup,
-	TGroupBy,
-	TGroupEvents,
-	TGroupKey,
-	TGroupSection,
-} from './types'
+  IGroupExtension,
+  TGroup,
+  TGroupBy,
+  TGroupEvents,
+  TGroupKey,
+  TGroupSection,
+} from "./types";
 
 /** Ключ секции элементов без группы. С ключами секций групп (`group:…`) не совпадает. */
-const FREE_SECTION = 'free'
+const FREE_SECTION = "free";
 
 /**
  * TGroupExtension — группировка элементов коллекции.
@@ -68,234 +68,242 @@ const FREE_SECTION = 'free'
  * (`order`), без разметки секций разошлись бы с показанным.
  */
 export class TGroupExtension<TItem extends object = any>
-	extends TBaseExtension<TItem, TGroupEvents<TItem>>
-	implements IExtension<TItem>, IGroupExtension<TItem>
+  extends TBaseExtension<TItem, TGroupEvents<TItem>>
+  implements IExtension<TItem>, IGroupExtension<TItem>
 {
-	readonly name = 'group' as const
+  readonly name = "group" as const;
 
-	private _groupBy: TGroupBy<TItem> | undefined = undefined
+  private _groupBy: TGroupBy<TItem> | undefined = undefined;
 
-	/** Группы в форме записи: свои копии, без повторов ключа */
-	private _groups: TGroup[] = []
+  /** Группы в форме записи: свои копии, без повторов ключа */
+  private _groups: TGroup[] = [];
 
-	/** Зарегистрированные группы по ключу — последняя регистрация ключа */
-	private readonly _registered = new Map<TGroupKey, TGroup>()
+  /** Зарегистрированные группы по ключу — последняя регистрация ключа */
+  private readonly _registered = new Map<TGroupKey, TGroup>();
 
-	private _sections: ReadonlyArray<TGroupSection<TItem>> = []
+  private _sections: ReadonlyArray<TGroupSection<TItem>> = [];
 
-	private readonly _onQuery = (e: TQueryEvent<TItem>): void => {
-		e.items = this._arrange(e.items)
-	}
+  private readonly _onQuery = (e: TQueryEvent<TItem>): void => {
+    e.items = this._arrange(e.items);
+  };
 
-	/**
-	 * Метка группы пришла с отметками элемента. Запись сама объявляет показанное
-	 * устаревшим, а `meta.apply` записью не является — и память выборки его не
-	 * видит: о смене условия сообщает расширение.
-	 */
-	private readonly _onMeta = (entries: readonly TMetaEntry<TItem>[]): void => {
-		if (entries.some(({ meta }) => 'group' in meta)) this._ctx.driver.invalidateQuery()
-	}
+  /**
+   * Метка группы пришла с отметками элемента. Запись сама объявляет показанное
+   * устаревшим, а `meta.apply` записью не является — и память выборки его не
+   * видит: о смене условия сообщает расширение.
+   */
+  private readonly _onMeta = (entries: readonly TMetaEntry<TItem>[]): void => {
+    if (entries.some(({ meta }) => "group" in meta))
+      this._ctx.driver.invalidateQuery();
+  };
 
-	override install(ctx: IExtensionContext<TItem>): void {
-		super.install(ctx)
+  override install(ctx: IExtensionContext<TItem>): void {
+    super.install(ctx);
 
-		ctx.driver.events.on('items:query:before', this._onQuery)
+    ctx.driver.events.on("items:query:before", this._onQuery);
 
-		const meta = metaOf(ctx)
+    const meta = metaOf(ctx);
 
-		meta?.events.on('meta:applied', this._onMeta)
-		meta?.events.on('meta:changed', this._onMeta)
+    meta?.events.on("meta:applied", this._onMeta);
+    meta?.events.on("meta:changed", this._onMeta);
 
-		// Показанное сменилось — состав, отбор или порядок
-		batchOf(ctx)?.events.on('change:shown', () => this._update())
+    // Показанное сменилось — состав, отбор или порядок
+    batchOf(ctx)?.events.on("change:shown", () => this._update());
 
-		// Догон: расширение приходит и в наполненный движок — собранный снаружи
-		// с метками в данных или с `groupBy`, заданным до установки
-		const keyOf = this._keyReader()
+    // Догон: расширение приходит и в наполненный движок — собранный снаружи
+    // с метками в данных или с `groupBy`, заданным до установки
+    const keyOf = this._keyReader();
 
-		if (ctx.driver.valueOf().some((item) => keyOf(item) !== undefined)) {
-			ctx.driver.invalidateQuery()
-		}
+    if (ctx.driver.valueOf().some((item) => keyOf(item) !== undefined)) {
+      ctx.driver.invalidateQuery();
+    }
 
-		this._update()
-	}
+    this._update();
+  }
 
-	get groupBy(): TGroupBy<TItem> | undefined {
-		return this._groupBy
-	}
+  get groupBy(): TGroupBy<TItem> | undefined {
+    return this._groupBy;
+  }
 
-	set groupBy(value: TGroupBy<TItem> | undefined) {
-		if (this._groupBy === value) return
+  set groupBy(value: TGroupBy<TItem> | undefined) {
+    if (this._groupBy === value) return;
 
-		this._groupBy = value
+    const oldValue = this._groupBy;
 
-		this.events.emit('change:groupBy', value)
+    this._groupBy = value;
 
-		this._ctx?.driver.invalidateQuery()
-	}
+    this.events.emit("change:groupBy", { newValue: value, oldValue: oldValue });
 
-	get groups(): TGroup[] {
-		return this._groups.map((group) => ({ ...group }))
-	}
+    this._ctx?.driver.invalidateQuery();
+  }
 
-	set groups(value: readonly TGroup[] | undefined) {
-		const next = normalizeGroups(value ?? [])
+  get groups(): TGroup[] {
+    return this._groups.map((group) => ({ ...group }));
+  }
 
-		if (sameGroups(next, this._groups)) return
+  set groups(value: readonly TGroup[] | undefined) {
+    const next = normalizeGroups(value ?? []);
 
-		// Порядок показанного решают ключи групп, подписи — только секции
-		const reordered = !sameKeys(next, this._groups)
+    if (sameGroups(next, this._groups)) return;
 
-		this._groups = next
+    // Порядок показанного решают ключи групп, подписи — только секции
+    const reordered = !sameKeys(next, this._groups);
 
-		this.events.emit('change:groups', this.groups)
+    this._groups = next;
 
-		if (reordered) this._ctx?.driver.invalidateQuery()
-		else this._update()
-	}
+    this.events.emit("change:groups", this.groups);
 
-	get sections(): ReadonlyArray<TGroupSection<TItem>> {
-		return this._sections
-	}
+    if (reordered) this._ctx?.driver.invalidateQuery();
+    else this._update();
+  }
 
-	/**
-	 * Зарегистрировать группу: её подпись получают секции, когда в `groups`
-	 * подписи нет. Порядка регистрация не задаёт — выборка прежняя, секции
-	 * пересчитываются. Повтор ключа заменяет прежнюю регистрацию: так группа
-	 * сообщает новую подпись. Снятие убирает регистрацию, только если она всё
-	 * ещё последняя у ключа, — заменённая уже ничего не держит.
-	 */
-	register(group: TGroup): () => void {
-		const entry = copyGroup(group)
+  get sections(): ReadonlyArray<TGroupSection<TItem>> {
+    return this._sections;
+  }
 
-		this._registered.set(entry.key, entry)
-		this._update()
+  /**
+   * Зарегистрировать группу: её подпись получают секции, когда в `groups`
+   * подписи нет. Порядка регистрация не задаёт — выборка прежняя, секции
+   * пересчитываются. Повтор ключа заменяет прежнюю регистрацию: так группа
+   * сообщает новую подпись. Снятие убирает регистрацию, только если она всё
+   * ещё последняя у ключа, — заменённая уже ничего не держит.
+   */
+  register(group: TGroup): () => void {
+    const entry = copyGroup(group);
 
-		return () => {
-			if (this._registered.get(entry.key) !== entry) return
+    this._registered.set(entry.key, entry);
+    this._update();
 
-			this._registered.delete(entry.key)
-			this._update()
-		}
-	}
+    return () => {
+      if (this._registered.get(entry.key) !== entry) return;
 
-	/* ------------------------------------------------------------------ */
-	/* Внутреннее                                                         */
-	/* ------------------------------------------------------------------ */
+      this._registered.delete(entry.key);
+      this._update();
+    };
+  }
 
-	/**
-	 * Ключ группы элемента — `groupBy` или метка `_.group` из отметок. Читатель
-	 * заводится на проход: соседа `meta` проход ищет один раз.
-	 */
-	private _keyReader(): (item: TItem) => TGroupKey | undefined {
-		const groupBy = this._groupBy
-		const meta = metaOf(this._ctx)
+  /* ------------------------------------------------------------------ */
+  /* Внутреннее                                                         */
+  /* ------------------------------------------------------------------ */
 
-		if (groupBy) return (item) => asGroupKey(groupBy(item))
+  /**
+   * Ключ группы элемента — `groupBy` или метка `_.group` из отметок. Читатель
+   * заводится на проход: соседа `meta` проход ищет один раз.
+   */
+  private _keyReader(): (item: TItem) => TGroupKey | undefined {
+    const groupBy = this._groupBy;
+    const meta = metaOf(this._ctx);
 
-		return (item) => asGroupKey(meta?.get(item)?.group)
-	}
+    if (groupBy) return (item) => asGroupKey(groupBy(item));
 
-	/**
-	 * Показанное по группам: группы из `groups` — первыми, в их порядке;
-	 * остальное — по месту: незаявленная группа — у своего первого элемента,
-	 * элемент без ключа — где стоял. Внутри группы — как пришли. Без единого
-	 * ключа — тот же список: порядок не трогается.
-	 */
-	private _arrange(items: readonly TItem[]): readonly TItem[] {
-		const keyOf = this._keyReader()
-		const declared = new Set(this._groups.map(({ key }) => key))
-		const grouped = new Map<TGroupKey, TItem[]>()
-		/** Остальное по месту: элемент без ключа — сам, незаявленная группа — целиком. */
-		const placed: TItem[][] = []
+    return (item) => asGroupKey(meta?.get(item)?.group);
+  }
 
-		for (const item of items) {
-			const key = keyOf(item)
+  /**
+   * Показанное по группам: группы из `groups` — первыми, в их порядке;
+   * остальное — по месту: незаявленная группа — у своего первого элемента,
+   * элемент без ключа — где стоял. Внутри группы — как пришли. Без единого
+   * ключа — тот же список: порядок не трогается.
+   */
+  private _arrange(items: readonly TItem[]): readonly TItem[] {
+    const keyOf = this._keyReader();
+    const declared = new Set(this._groups.map(({ key }) => key));
+    const grouped = new Map<TGroupKey, TItem[]>();
+    /** Остальное по месту: элемент без ключа — сам, незаявленная группа — целиком. */
+    const placed: TItem[][] = [];
 
-			if (key === undefined) {
-				placed.push([item])
-				continue
-			}
+    for (const item of items) {
+      const key = keyOf(item);
 
-			const group = grouped.get(key)
+      if (key === undefined) {
+        placed.push([item]);
+        continue;
+      }
 
-			if (group) {
-				group.push(item)
-				continue
-			}
+      const group = grouped.get(key);
 
-			const created = [item]
+      if (group) {
+        group.push(item);
+        continue;
+      }
 
-			grouped.set(key, created)
+      const created = [item];
 
-			if (!declared.has(key)) placed.push(created)
-		}
+      grouped.set(key, created);
 
-		if (grouped.size === 0) return items
+      if (!declared.has(key)) placed.push(created);
+    }
 
-		return [...this._groups.flatMap(({ key }) => grouped.get(key) ?? []), ...placed.flat()]
-	}
+    if (grouped.size === 0) return items;
 
-	/** Секции — заново по показанному. Событие — только на смену. */
-	private _update(): void {
-		const next = this._sectionsOf(batchOf(this._ctx)?.shown ?? [])
+    return [
+      ...this._groups.flatMap(({ key }) => grouped.get(key) ?? []),
+      ...placed.flat(),
+    ];
+  }
 
-		if (sameSections(next, this._sections)) return
+  /** Секции — заново по показанному. Событие — только на смену. */
+  private _update(): void {
+    const next = this._sectionsOf(batchOf(this._ctx)?.shown ?? []);
 
-		this._sections = next
-		this.events.emit('change:sections', next)
-	}
+    if (sameSections(next, this._sections)) return;
 
-	/**
-	 * Непрерывные куски показанного с одним ключом. Ключ секции — от ключа её
-	 * группы; повтор получает номер — ключи в снимке уникальны. Повторяются
-	 * элементы без группы, разделённые группами, и кусок одной группы,
-	 * разорванный тем, кто переставил показанное после группировки.
-	 */
-	private _sectionsOf(shown: ReadonlyArray<TItem>): TGroupSection<TItem>[] {
-		const keyOf = this._keyReader()
-		const runs: { key: TGroupKey | undefined; items: TItem[] }[] = []
+    this._sections = next;
+    this.events.emit("change:sections", next);
+  }
 
-		for (const item of shown) {
-			const key = keyOf(item)
-			const last = runs.at(-1)
+  /**
+   * Непрерывные куски показанного с одним ключом. Ключ секции — от ключа её
+   * группы; повтор получает номер — ключи в снимке уникальны. Повторяются
+   * элементы без группы, разделённые группами, и кусок одной группы,
+   * разорванный тем, кто переставил показанное после группировки.
+   */
+  private _sectionsOf(shown: ReadonlyArray<TItem>): TGroupSection<TItem>[] {
+    const keyOf = this._keyReader();
+    const runs: { key: TGroupKey | undefined; items: TItem[] }[] = [];
 
-			if (last && last.key === key) last.items.push(item)
-			else runs.push({ key, items: [item] })
-		}
+    for (const item of shown) {
+      const key = keyOf(item);
+      const last = runs.at(-1);
 
-		const taken = new Map<string, number>()
+      if (last && last.key === key) last.items.push(item);
+      else runs.push({ key, items: [item] });
+    }
 
-		return runs.map(({ key, items }) => {
-			const base = key === undefined ? FREE_SECTION : `group:${key}`
-			const repeat = taken.get(base) ?? 0
+    const taken = new Map<string, number>();
 
-			taken.set(base, repeat + 1)
+    return runs.map(({ key, items }) => {
+      const base = key === undefined ? FREE_SECTION : `group:${key}`;
+      const repeat = taken.get(base) ?? 0;
 
-			return {
-				key: repeat === 0 ? base : `${base}~${repeat}`,
-				group: key === undefined ? null : this._groupOf(key),
-				items,
-			}
-		})
-	}
+      taken.set(base, repeat + 1);
 
-	/**
-	 * Группа по ключу: подпись — из `groups`, а нет её там — из регистрации;
-	 * нет нигде — группа без подписи.
-	 */
-	private _groupOf(key: TGroupKey): TGroup {
-		const label =
-			this._groups.find((group) => group.key === key)?.label ??
-			this._registered.get(key)?.label
+      return {
+        key: repeat === 0 ? base : `${base}~${repeat}`,
+        group: key === undefined ? null : this._groupOf(key),
+        items,
+      };
+    });
+  }
 
-		return label === undefined ? { key } : { key, label }
-	}
+  /**
+   * Группа по ключу: подпись — из `groups`, а нет её там — из регистрации;
+   * нет нигде — группа без подписи.
+   */
+  private _groupOf(key: TGroupKey): TGroup {
+    const label =
+      this._groups.find((group) => group.key === key)?.label ??
+      this._registered.get(key)?.label;
+
+    return label === undefined ? { key } : { key, label };
+  }
 }
 
 /** Ключ группы, если значение им может быть: строка или число. */
 function asGroupKey(value: unknown): TGroupKey | undefined {
-	return typeof value === 'string' || typeof value === 'number' ? value : undefined
+  return typeof value === "string" || typeof value === "number"
+    ? value
+    : undefined;
 }
 
 /**
@@ -303,57 +311,62 @@ function asGroupKey(value: unknown): TGroupKey | undefined {
  * остаётся. Подписи нет — нет и ключа `label`.
  */
 function copyGroup({ key, label }: TGroup): TGroup {
-	return label === undefined ? { key } : { key, label }
+  return label === undefined ? { key } : { key, label };
 }
 
 /** Группы без повторов ключа: повтор — по первой записи. Записи — свои копии. */
 function normalizeGroups(groups: readonly TGroup[]): TGroup[] {
-	const keys = new Set<TGroupKey>()
-	const normalized: TGroup[] = []
+  const keys = new Set<TGroupKey>();
+  const normalized: TGroup[] = [];
 
-	for (const group of groups) {
-		if (keys.has(group.key)) continue
+  for (const group of groups) {
+    if (keys.has(group.key)) continue;
 
-		keys.add(group.key)
-		normalized.push(copyGroup(group))
-	}
+    keys.add(group.key);
+    normalized.push(copyGroup(group));
+  }
 
-	return normalized
+  return normalized;
 }
 
 /** Те же ключи тем же порядком — порядок показанного тот же. */
 function sameKeys(a: readonly TGroup[], b: readonly TGroup[]): boolean {
-	return a.length === b.length && a.every((group, index) => group.key === b[index].key)
+  return (
+    a.length === b.length &&
+    a.every((group, index) => group.key === b[index].key)
+  );
 }
 
 /** Те же группы: те же ключи с теми же подписями тем же порядком. */
 function sameGroups(a: readonly TGroup[], b: readonly TGroup[]): boolean {
-	return sameKeys(a, b) && a.every((group, index) => group.label === b[index].label)
+  return (
+    sameKeys(a, b) && a.every((group, index) => group.label === b[index].label)
+  );
 }
 
 /** Та же группа секции: обе без группы или тот же ключ с той же подписью. */
 function sameGroup(a: TGroup | null, b: TGroup | null): boolean {
-	if (a === null || b === null) return a === b
+  if (a === null || b === null) return a === b;
 
-	return a.key === b.key && a.label === b.label
+  return a.key === b.key && a.label === b.label;
 }
 
 /** Те же секции: те же ключи и группы с теми же элементами тем же порядком. */
 function sameSections<TItem>(
-	a: ReadonlyArray<TGroupSection<TItem>>,
-	b: ReadonlyArray<TGroupSection<TItem>>,
+  a: ReadonlyArray<TGroupSection<TItem>>,
+  b: ReadonlyArray<TGroupSection<TItem>>,
 ): boolean {
-	return (
-		a.length === b.length &&
-		a.every((section, index) => {
-			const other = b[index]
+  return (
+    a.length === b.length &&
+    a.every((section, index) => {
+      const other = b[index];
 
-			return (
-				section.key === other.key &&
-				sameGroup(section.group, other.group) &&
-				section.items.length === other.items.length &&
-				section.items.every((item, place) => item === other.items[place])
-			)
-		})
-	)
+      return (
+        section.key === other.key &&
+        sameGroup(section.group, other.group) &&
+        section.items.length === other.items.length &&
+        section.items.every((item, place) => item === other.items[place])
+      );
+    })
+  );
 }

@@ -1,8 +1,8 @@
-import { TStylable } from '../stylable'
-import type { TDefaultValues } from '../component'
-import type { TEventSink } from '../../../common'
-import { clamp, fractionOf } from '../../../common/scale/scale.class'
-import type { IProgress, IProgressProps, TProgressEvents } from './types'
+import { TStylable } from "../stylable";
+import type { TDefaultValues } from "../component";
+import type { TEventSink } from "../../../common";
+import { clamp, fractionOf } from "../../../common/scale/scale.class";
+import type { IProgress, IProgressProps, TProgressEvents } from "./types";
 
 /**
  * Индикатор выполнения — общая база линии (`TProgressLinear`) и кольца
@@ -38,154 +38,170 @@ import type { IProgress, IProgressProps, TProgressEvents } from './types'
  * `data-indeterminate` рисует сама тема: движение — её дело, а не ядра.
  */
 export default class TProgress<
-	TProps extends IProgressProps = IProgressProps,
-	TEvents extends TProgressEvents = TProgressEvents,
+  TProps extends IProgressProps = IProgressProps,
+  TEvents extends TProgressEvents = TProgressEvents,
 >
-	extends TStylable<TProps, TEvents>
-	implements IProgress<TProps, TEvents>
+  extends TStylable<TProps, TEvents>
+  implements IProgress<TProps, TEvents>
 {
-	static defaultValues: typeof TStylable.defaultValues &
-		TDefaultValues<IProgressProps, 'value' | 'min' | 'max' | 'indeterminate'> = {
-		...TStylable.defaultValues,
-		// Индикатор кладут в `Button` и `Label`, а внутри них HTML разрешает
-		// только строчную разметку
-		tag: 'span',
-		value: 0,
-		min: 0,
-		max: 100,
-		indeterminate: false,
-	}
+  static defaultValues: typeof TStylable.defaultValues &
+    TDefaultValues<IProgressProps, "value" | "min" | "max" | "indeterminate"> =
+    {
+      ...TStylable.defaultValues,
+      // Индикатор кладут в `Button` и `Label`, а внутри них HTML разрешает
+      // только строчную разметку
+      tag: "span",
+      value: 0,
+      min: 0,
+      max: 100,
+      indeterminate: false,
+    };
 
-	protected _value: number
-	protected _min: number
-	protected _max: number
-	protected _indeterminate: boolean
+  protected _value: number;
+  protected _min: number;
+  protected _max: number;
+  protected _indeterminate: boolean;
 
-	constructor(props: Partial<TProps> = {}) {
-		super(props)
+  constructor(props: Partial<TProps> = {}) {
+    super(props);
 
-		const ctor = new.target as typeof TProgress
+    const ctor = new.target as typeof TProgress;
 
-		this._value = props.value ?? ctor.defaultValues.value
-		this._min = props.min ?? ctor.defaultValues.min
-		this._max = props.max ?? ctor.defaultValues.max
-		this._indeterminate = props.indeterminate ?? ctor.defaultValues.indeterminate
+    this._value = props.value ?? ctor.defaultValues.value;
+    this._min = props.min ?? ctor.defaultValues.min;
+    this._max = props.max ?? ctor.defaultValues.max;
+    this._indeterminate =
+      props.indeterminate ?? ctor.defaultValues.indeterminate;
 
-		this._aria.add('role', 'progressbar')
+    this._aria.add("role", "progressbar");
 
-		this.events.on('change:value', () => this._syncValue())
-		this.events.on('change:min', () => this._syncValue())
-		this.events.on('change:max', () => this._syncValue())
-		this.events.on('change:indeterminate', () => this._syncValue())
+    this.events.on("change:value", () => this._syncValue());
+    this.events.on("change:min", () => this._syncValue());
+    this.events.on("change:max", () => this._syncValue());
+    this.events.on("change:indeterminate", () => this._syncValue());
 
-		this._syncValue()
-	}
+    this._syncValue();
+  }
 
-	/**
-	 * Эмит собственных событий класса — без приведения `this.events` к
-	 * конкретной карте (см. `TEventSink` в `common/event/types.ts`).
-	 */
-	protected override get _sink(): TEventSink<TProgressEvents> {
-		return this.events
-	}
+  /**
+   * Эмит собственных событий класса — без приведения `this.events` к
+   * конкретной карте (см. `TEventSink` в `common/event/types.ts`).
+   */
+  protected override get _sink(): TEventSink<TProgressEvents> {
+    return this.events;
+  }
 
-	/* ------------------------------------------------------------------ */
-	/* Свойства                                                           */
-	/* ------------------------------------------------------------------ */
+  /* ------------------------------------------------------------------ */
+  /* Свойства                                                           */
+  /* ------------------------------------------------------------------ */
 
-	get value(): number {
-		return this._value
-	}
+  get value(): number {
+    return this._value;
+  }
 
-	set value(value: number) {
-		if (this._value === value) return
+  set value(value: number) {
+    if (this._value === value) return;
 
-		this._value = value
-		this._sink.emit('change:value', value)
-	}
+    const oldValue = this.value;
 
-	get min(): number {
-		return this._min
-	}
+    this._value = value;
+    this._sink.emit("change:value", { newValue: value, oldValue: oldValue });
+  }
 
-	set min(value: number) {
-		if (this._min === value) return
+  get min(): number {
+    return this._min;
+  }
 
-		this._min = value
-		this._sink.emit('change:min', value)
-	}
+  set min(value: number) {
+    if (this._min === value) return;
 
-	get max(): number {
-		return this._max
-	}
+    const oldValue = this.min;
 
-	set max(value: number) {
-		if (this._max === value) return
+    this._min = value;
+    this._sink.emit("change:min", { newValue: value, oldValue: oldValue });
+  }
 
-		this._max = value
-		this._sink.emit('change:max', value)
-	}
+  get max(): number {
+    return this._max;
+  }
 
-	get indeterminate(): boolean {
-		return this._indeterminate
-	}
+  set max(value: number) {
+    if (this._max === value) return;
 
-	set indeterminate(value: boolean) {
-		if (this._indeterminate === value) return
+    const oldValue = this.max;
 
-		this._indeterminate = value
-		this._sink.emit('change:indeterminate', value)
-	}
+    this._max = value;
+    this._sink.emit("change:max", { newValue: value, oldValue: oldValue });
+  }
 
-	/* ------------------------------------------------------------------ */
-	/* Внутреннее                                                         */
-	/* ------------------------------------------------------------------ */
+  get indeterminate(): boolean {
+    return this._indeterminate;
+  }
 
-	/**
-	 * Доля готового от 0 до 1 — вне шкалы край, у пустой шкалы (`max` не
-	 * больше `min`) — 0. Пока индикатор бежит, доли нет (`null`): переменной
-	 * формы на корне тогда нет, и тема ведёт долю, вернувшуюся после бега, от
-	 * нуля, а не с того места, где её оставили.
-	 *
-	 * Одна точка на все формы: выход формы только записывает долю в своём виде
-	 * и сам ни шкалы, ни флага не читает.
-	 */
-	protected get _fraction(): number | null {
-		if (this._indeterminate) return null
+  set indeterminate(value: boolean) {
+    if (this._indeterminate === value) return;
 
-		return fractionOf(this._value, this._min, this._max)
-	}
+    const oldValue = this.indeterminate;
 
-	/**
-	 * Наборы, которые следуют из значения, шкалы и флага бега: `aria-value*` —
-	 * скринридеру, `data-indeterminate` — теме. `data-indeterminate` стоит с
-	 * первой отрисовки, и у известной доли — значением `"false"`: тема
-	 * отличает «доля известна» от «неприменимо».
-	 */
-	protected _syncValue(): void {
-		const running = this._indeterminate
+    this._indeterminate = value;
+    this._sink.emit("change:indeterminate", {
+      newValue: value,
+      oldValue: oldValue,
+    });
+  }
 
-		this._aria.add('aria-valuemin', String(this._min))
-		this._aria.add('aria-valuemax', String(this._max))
-		this._aria.add('aria-valuenow', running ? null : String(this._now(this._value)))
-		this._dataset.add('indeterminate', running)
-	}
+  /* ------------------------------------------------------------------ */
+  /* Внутреннее                                                         */
+  /* ------------------------------------------------------------------ */
 
-	/**
-	 * Значение для скринридера — на шкале, как и доля индикатора. У пустой
-	 * шкалы — `min`: индикатор там пуст.
-	 */
-	protected _now(value: number): number {
-		return clamp(value, this._min, Math.max(this._min, this._max))
-	}
+  /**
+   * Доля готового от 0 до 1 — вне шкалы край, у пустой шкалы (`max` не
+   * больше `min`) — 0. Пока индикатор бежит, доли нет (`null`): переменной
+   * формы на корне тогда нет, и тема ведёт долю, вернувшуюся после бега, от
+   * нуля, а не с того места, где её оставили.
+   *
+   * Одна точка на все формы: выход формы только записывает долю в своём виде
+   * и сам ни шкалы, ни флага не читает.
+   */
+  protected get _fraction(): number | null {
+    if (this._indeterminate) return null;
 
-	override getProps(): TProps {
-		return {
-			...super.getProps(),
-			value: this._value,
-			min: this._min,
-			max: this._max,
-			indeterminate: this._indeterminate,
-		}
-	}
+    return fractionOf(this._value, this._min, this._max);
+  }
+
+  /**
+   * Наборы, которые следуют из значения, шкалы и флага бега: `aria-value*` —
+   * скринридеру, `data-indeterminate` — теме. `data-indeterminate` стоит с
+   * первой отрисовки, и у известной доли — значением `"false"`: тема
+   * отличает «доля известна» от «неприменимо».
+   */
+  protected _syncValue(): void {
+    const running = this._indeterminate;
+
+    this._aria.add("aria-valuemin", String(this._min));
+    this._aria.add("aria-valuemax", String(this._max));
+    this._aria.add(
+      "aria-valuenow",
+      running ? null : String(this._now(this._value)),
+    );
+    this._dataset.add("indeterminate", running);
+  }
+
+  /**
+   * Значение для скринридера — на шкале, как и доля индикатора. У пустой
+   * шкалы — `min`: индикатор там пуст.
+   */
+  protected _now(value: number): number {
+    return clamp(value, this._min, Math.max(this._min, this._max));
+  }
+
+  override getProps(): TProps {
+    return {
+      ...super.getProps(),
+      value: this._value,
+      min: this._min,
+      max: this._max,
+      indeterminate: this._indeterminate,
+    };
+  }
 }

@@ -1,30 +1,31 @@
 import type {
-	IValueControl,
-	IValueControlProps,
-	TValueControlEvents,
-} from '../../../base/value-control'
-import type { IRadioGroupCollectionItemProps } from '../collection/types'
-import type { TRadioGroupView } from '../types'
+  IValueControl,
+  IValueControlProps,
+  TValueControlEvents,
+} from "../../../base/value-control";
+import type { IRadioGroupCollectionItemProps } from "../collection/types";
+import type { TRadioGroupView } from "../types";
+import type { TValuePayload } from "../../../../common";
 
 export type TRadioGroupItemEvents = TValueControlEvents<string | number> & {
-	/** change:view */
-	'change:view': (value: TRadioGroupView | undefined) => void
-}
+  /** change:view */
+  "change:view": (payload: TValuePayload<TRadioGroupView | undefined>) => void;
+};
 
 export interface IRadioGroupItemProps
-	extends IValueControlProps<string | number>, IRadioGroupCollectionItemProps {
-	/**
-	 * Вид радио. Раздаёт его группа: при добавлении радио и при смене вида
-	 * группы значение элемента перезаписывается, как `size` и `variant`.
-	 */
-	view?: TRadioGroupView
+  extends IValueControlProps<string | number>, IRadioGroupCollectionItemProps {
+  /**
+   * Вид радио. Раздаёт его группа: при добавлении радио и при смене вида
+   * группы значение элемента перезаписывается, как `size` и `variant`.
+   */
+  view?: TRadioGroupView;
 }
 
 export interface IRadioGroupItem extends IValueControl<
-	string | number,
-	IRadioGroupItemProps,
-	TRadioGroupItemEvents
+  string | number,
+  IRadioGroupItemProps,
+  TRadioGroupItemEvents
 > {
-	/** Вид радио */
-	view: TRadioGroupView | undefined
+  /** Вид радио */
+  view: TRadioGroupView | undefined;
 }

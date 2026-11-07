@@ -1,13 +1,14 @@
-import type { IExtension } from '../../../../../base/collection'
-import type { IPaginationItem } from '../../../item/types'
-import type { IPagination } from '../../../types'
+import type { IExtension } from "../../../../../base/collection";
+import type { IPaginationItem } from "../../../item/types";
+import type { IPagination } from "../../../types";
+import type { TValuePayload } from "../../../../../../common";
 
 /** Страница окна — элемент коллекции. Ключ — `uid` страницы. */
 export type TPaginationItemCell = {
-	readonly kind: 'item'
-	readonly key: number
-	readonly item: IPaginationItem
-}
+  readonly kind: "item";
+  readonly key: number;
+  readonly item: IPaginationItem;
+};
 
 /**
  * Пропуск — место пропущенных страниц, разметка владельца: на нём ничего не
@@ -19,31 +20,33 @@ export type TPaginationItemCell = {
  * всегда.
  */
 export type TPaginationEllipsisCell = {
-	readonly kind: 'ellipsis'
-	readonly key: number
-}
+  readonly kind: "ellipsis";
+  readonly key: number;
+};
 
 /** Место окна пагинации по порядку: страница или пропуск. */
-export type TPaginationCell = TPaginationItemCell | TPaginationEllipsisCell
+export type TPaginationCell = TPaginationItemCell | TPaginationEllipsisCell;
 
 export type TPaginationExtensionEvents = {
-	/** Сменилось окно: страницы или пропуски между ними */
-	'change:cells': (cells: ReadonlyArray<TPaginationCell>) => void
-}
+  /** Сменилось окно: страницы или пропуски между ними */
+  "change:cells": (
+    payload: TValuePayload<ReadonlyArray<TPaginationCell>>,
+  ) => void;
+};
 
 /** Контракт расширения пагинации. */
 export interface IPaginationExtension extends IExtension<
-	IPaginationItem,
-	TPaginationExtensionEvents
+  IPaginationItem,
+  TPaginationExtensionEvents
 > {
-	/**
-	 * Окно по порядку: первая страница, середина вокруг текущей, последняя и
-	 * пропуски на месте пропущенных. Пагинации нет — окна тоже
-	 */
-	readonly cells: ReadonlyArray<TPaginationCell>
+  /**
+   * Окно по порядку: первая страница, середина вокруг текущей, последняя и
+   * пропуски на месте пропущенных. Пагинации нет — окна тоже
+   */
+  readonly cells: ReadonlyArray<TPaginationCell>;
 }
 
 /** Опции движка пагинации: пагинация приходит и уходит после сборки. */
 export type TPaginationEngineOptions = {
-	owner: IPagination
-}
+  owner: IPagination;
+};

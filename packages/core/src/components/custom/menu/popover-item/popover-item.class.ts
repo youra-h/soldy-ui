@@ -1,6 +1,10 @@
-import TMenuPopupItem from '../popup-item/popup-item.class'
-import type { TDefaultValues } from '../../../base/component'
-import type { IMenuPopoverItem, IMenuPopoverItemProps, TMenuPopoverItemEvents } from './types'
+import TMenuPopupItem from "../popup-item/popup-item.class";
+import type { TDefaultValues } from "../../../base/component";
+import type {
+  IMenuPopoverItem,
+  IMenuPopoverItemProps,
+  TMenuPopoverItemEvents,
+} from "./types";
 
 /**
  * Пункт с панелью (`Menu.PopoverItem`): «Срок → календарь», «Цвет → палитра».
@@ -24,63 +28,68 @@ import type { IMenuPopoverItem, IMenuPopoverItemProps, TMenuPopoverItemEvents } 
  * модели фокуса пункта (плагин).
  */
 export default class TMenuPopoverItem
-	extends TMenuPopupItem<IMenuPopoverItemProps, TMenuPopoverItemEvents>
-	implements IMenuPopoverItem
+  extends TMenuPopupItem<IMenuPopoverItemProps, TMenuPopoverItemEvents>
+  implements IMenuPopoverItem
 {
-	static defaultValues: typeof TMenuPopupItem.defaultValues &
-		TDefaultValues<IMenuPopoverItemProps, 'lazyMount'> = {
-		...TMenuPopupItem.defaultValues,
-		lazyMount: false,
-	}
+  static defaultValues: typeof TMenuPopupItem.defaultValues &
+    TDefaultValues<IMenuPopoverItemProps, "lazyMount"> = {
+    ...TMenuPopupItem.defaultValues,
+    lazyMount: false,
+  };
 
-	protected _lazyMount: boolean
+  protected _lazyMount: boolean;
 
-	constructor(props: Partial<IMenuPopoverItemProps> = {}) {
-		super(props)
+  constructor(props: Partial<IMenuPopoverItemProps> = {}) {
+    super(props);
 
-		const ctor = new.target as typeof TMenuPopoverItem
+    const ctor = new.target as typeof TMenuPopoverItem;
 
-		// Панель пункта — диалог: строка объявляет его, у панели — роль `dialog`
-		this._declarePopup('dialog')
+    // Панель пункта — диалог: строка объявляет его, у панели — роль `dialog`
+    this._declarePopup("dialog");
 
-		this._lazyMount = props.lazyMount ?? ctor.defaultValues.lazyMount
-	}
+    this._lazyMount = props.lazyMount ?? ctor.defaultValues.lazyMount;
+  }
 
-	/**
-	 * Не монтировать содержимое, пока панель не открывали. Размонтировать при
-	 * закрытии нельзя: открытость — это `visible` панели, а не `rendered`,
-	 * иначе закрытие вычищало бы состояние содержимого. Поэтому после первого
-	 * открытия переключается только видимость.
-	 */
-	get lazyMount(): boolean {
-		return this._lazyMount
-	}
+  /**
+   * Не монтировать содержимое, пока панель не открывали. Размонтировать при
+   * закрытии нельзя: открытость — это `visible` панели, а не `rendered`,
+   * иначе закрытие вычищало бы состояние содержимого. Поэтому после первого
+   * открытия переключается только видимость.
+   */
+  get lazyMount(): boolean {
+    return this._lazyMount;
+  }
 
-	set lazyMount(value: boolean) {
-		if (this._lazyMount === value) return
+  set lazyMount(value: boolean) {
+    if (this._lazyMount === value) return;
 
-		this._lazyMount = value
-		this.events.emit('change:lazyMount', value)
-	}
+    const oldValue = this.lazyMount;
 
-	/**
-	 * Whether the panel's content is mounted: without `lazyMount` — always (the
-	 * item itself is mounted with the menu's first opening), with it — from the
-	 * panel's own first opening on.
-	 */
-	override get contentRendered(): boolean {
-		return !this._lazyMount || super.contentRendered
-	}
+    this._lazyMount = value;
+    this.events.emit("change:lazyMount", {
+      newValue: value,
+      oldValue: oldValue,
+    });
+  }
 
-	override getProps(): IMenuPopoverItemProps {
-		return {
-			...super.getProps(),
-			lazyMount: this._lazyMount,
-		}
-	}
+  /**
+   * Whether the panel's content is mounted: without `lazyMount` — always (the
+   * item itself is mounted with the menu's first opening), with it — from the
+   * panel's own first opening on.
+   */
+  override get contentRendered(): boolean {
+    return !this._lazyMount || super.contentRendered;
+  }
+
+  override getProps(): IMenuPopoverItemProps {
+    return {
+      ...super.getProps(),
+      lazyMount: this._lazyMount,
+    };
+  }
 }
 
 /** Пункт с панелью ли это: строка открывает сбоку панель с любым содержимым. */
 export function isMenuPopoverItem(value: unknown): value is IMenuPopoverItem {
-	return value instanceof TMenuPopoverItem
+  return value instanceof TMenuPopoverItem;
 }

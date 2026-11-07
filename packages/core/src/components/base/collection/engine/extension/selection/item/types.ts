@@ -1,28 +1,28 @@
-import type { IItemExtension, TBaseItemEventsExtension } from '../../types'
+import type { TValuePayload } from "../../../../../../../common";
+import type { IItemExtension, TBaseItemEventsExtension } from "../../types";
 
 /** События item-адаптера выборки. */
 export type TSelectionItemEventsExtension = TBaseItemEventsExtension & {
-	/**
-	 * Отметка этого элемента сменилась; `value` — новая, то же, что отдаёт
-	 * геттер `selected`. Приходит только элементу, чья отметка сменилась, а не
-	 * всем на любую смену выбора: значение у отметки одно — выбор коллекции.
-	 */
-	'change:selected': (value: boolean) => void
-}
+  /**
+   * Отметка этого элемента сменилась; `value` — новая, то же, что отдаёт
+   * геттер `selected`. Приходит только элементу, чья отметка сменилась, а не
+   * всем на любую смену выбора: значение у отметки одно — выбор коллекции.
+   */
+  "change:selected": (payload: TValuePayload<boolean>) => void;
+};
 
 /**
  * Контракт item-адаптера выборки.
  * Предоставляет геттер/сеттер selected и метод toggle.
  */
-export interface ISelectionItemExtension<TItem extends object = any> extends IItemExtension<
-	TItem,
-	TSelectionItemEventsExtension
-> {
-	/** Выбран ли элемент. При установке вызывает select/deselect на родителе. */
-	selected: boolean
+export interface ISelectionItemExtension<
+  TItem extends object = any,
+> extends IItemExtension<TItem, TSelectionItemEventsExtension> {
+  /** Выбран ли элемент. При установке вызывает select/deselect на родителе. */
+  selected: boolean;
 
-	/** Переключить выбор элемента. */
-	toggle(): void
+  /** Переключить выбор элемента. */
+  toggle(): void;
 }
 
 /**
@@ -30,4 +30,6 @@ export interface ISelectionItemExtension<TItem extends object = any> extends IIt
  * дескрипторах элементов коллекций с выбором (`ListBoxCollectionItemDescriptor` и соседи, setup).
  * Выводится из контракта адаптера — поля совпадают, но опциональны.
  */
-export type ISelectionCollectionItemProps = Partial<Pick<ISelectionItemExtension, 'selected'>>
+export type ISelectionCollectionItemProps = Partial<
+  Pick<ISelectionItemExtension, "selected">
+>;

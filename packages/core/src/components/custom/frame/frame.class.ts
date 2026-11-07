@@ -1,6 +1,11 @@
-import { TLayer } from '../../base/layer'
-import type { TDefaultValues } from '../../base/component'
-import type { IFrame, IFrameProps, TFrameEvents, TFramePosition } from './types'
+import { TLayer } from "../../base/layer";
+import type { TDefaultValues } from "../../base/component";
+import type {
+  IFrame,
+  IFrameProps,
+  TFrameEvents,
+  TFramePosition,
+} from "./types";
 
 /**
  * Headless-контейнер для всплывающего контента.
@@ -16,121 +21,140 @@ import type { IFrame, IFrameProps, TFrameEvents, TFramePosition } from './types'
  * frame.show() // получает z-index, становится visible
  * frame.hide() // скрывается
  */
-export default class TFrame extends TLayer<IFrameProps, TFrameEvents> implements IFrame {
-	static baseClass = 'so-frame'
+export default class TFrame
+  extends TLayer<IFrameProps, TFrameEvents>
+  implements IFrame
+{
+  static baseClass = "so-frame";
 
-	static defaultValues: typeof TLayer.defaultValues &
-		TDefaultValues<IFrameProps, 'x' | 'y' | 'width' | 'height' | 'position' | 'contained'> = {
-		...TLayer.defaultValues,
-		x: 0,
-		y: 0,
-		// Слой по умолчанию берёт размер по содержимому — число задаётся осознанно.
-		width: 'auto',
-		height: 'auto',
-		position: 'fixed',
-		contained: false,
-	}
+  static defaultValues: typeof TLayer.defaultValues &
+    TDefaultValues<
+      IFrameProps,
+      "x" | "y" | "width" | "height" | "position" | "contained"
+    > = {
+    ...TLayer.defaultValues,
+    x: 0,
+    y: 0,
+    // Слой по умолчанию берёт размер по содержимому — число задаётся осознанно.
+    width: "auto",
+    height: "auto",
+    position: "fixed",
+    contained: false,
+  };
 
-	private _position: TFramePosition
-	protected _x: number
-	protected _y: number
-	protected _width: number | string
-	protected _height: number | string
-	protected _contained!: boolean
+  private _position: TFramePosition;
+  protected _x: number;
+  protected _y: number;
+  protected _width: number | string;
+  protected _height: number | string;
+  protected _contained!: boolean;
 
-	constructor(props: Partial<IFrameProps> = {}) {
-		const ctor = new.target as typeof TFrame
+  constructor(props: Partial<IFrameProps> = {}) {
+    const ctor = new.target as typeof TFrame;
 
-		super(props)
+    super(props);
 
-		this._x = props.x ?? ctor.defaultValues.x
-		this._y = props.y ?? ctor.defaultValues.y
-		this._width = props.width ?? ctor.defaultValues.width
-		this._height = props.height ?? ctor.defaultValues.height
+    this._x = props.x ?? ctor.defaultValues.x;
+    this._y = props.y ?? ctor.defaultValues.y;
+    this._width = props.width ?? ctor.defaultValues.width;
+    this._height = props.height ?? ctor.defaultValues.height;
 
-		this._position = props.position ?? ctor.defaultValues.position
-		this._applyContained(props.contained ?? ctor.defaultValues.contained)
-	}
+    this._position = props.position ?? ctor.defaultValues.position;
+    this._applyContained(props.contained ?? ctor.defaultValues.contained);
+  }
 
-	get x(): number {
-		return this._x
-	}
-	set x(value: number) {
-		if (this._x === value) return
-		this._x = value
-		this.events.emit('change:x', value)
-	}
+  get x(): number {
+    return this._x;
+  }
+  set x(value: number) {
+    if (this._x === value) return;
+    const oldValue = this.x;
 
-	get y(): number {
-		return this._y
-	}
-	set y(value: number) {
-		if (this._y === value) return
-		this._y = value
-		this.events.emit('change:y', value)
-	}
+    this._x = value;
+    this.events.emit("change:x", { newValue: value, oldValue: oldValue });
+  }
 
-	get width(): number | string {
-		return this._width
-	}
-	set width(value: number | string) {
-		if (this._width === value) return
-		this._width = value
-		this.events.emit('change:width', value)
-	}
+  get y(): number {
+    return this._y;
+  }
+  set y(value: number) {
+    if (this._y === value) return;
+    const oldValue = this.y;
 
-	get height(): number | string {
-		return this._height
-	}
-	set height(value: number | string) {
-		if (this._height === value) return
-		this._height = value
-		this.events.emit('change:height', value)
-	}
+    this._y = value;
+    this.events.emit("change:y", { newValue: value, oldValue: oldValue });
+  }
 
-	get position(): TFramePosition {
-		return this._position
-	}
-	set position(value: TFramePosition) {
-		if (this._position === value) return
-		this._position = value
-		this.events.emit('change:position', value)
-	}
+  get width(): number | string {
+    return this._width;
+  }
+  set width(value: number | string) {
+    if (this._width === value) return;
+    const oldValue = this.width;
 
-	/**
-	 * Панель внутри своего контейнера, а не поверх страницы. Внутри контейнера
-	 * панель не телепортируется — разметка оставляет её на месте, — и
-	 * раскладка ставит её `absolute` от ближайшего позиционированного предка,
-	 * без координат: где в нём встать, решает тема по `data-contained`. Якорь
-	 * такую панель не двигает. Так же устроена выезжающая панель (Drawer).
-	 */
-	get contained(): boolean {
-		return this._contained
-	}
+    this._width = value;
+    this.events.emit("change:width", { newValue: value, oldValue: oldValue });
+  }
 
-	set contained(value: boolean) {
-		if (this._contained === value) return
+  get height(): number | string {
+    return this._height;
+  }
+  set height(value: number | string) {
+    if (this._height === value) return;
+    const oldValue = this.height;
 
-		this._applyContained(value)
-		this.events.emit('change:contained', value)
-	}
+    this._height = value;
+    this.events.emit("change:height", { newValue: value, oldValue: oldValue });
+  }
 
-	getProps(): IFrameProps {
-		return {
-			...super.getProps(),
-			x: this.x,
-			y: this.y,
-			width: this.width,
-			height: this.height,
-			position: this.position,
-			contained: this.contained,
-		}
-	}
+  get position(): TFramePosition {
+    return this._position;
+  }
+  set position(value: TFramePosition) {
+    if (this._position === value) return;
+    const oldValue = this._position;
 
-	protected _applyContained(value: boolean): void {
-		this._contained = value
+    this._position = value;
+    this.events.emit("change:position", {
+      newValue: value,
+      oldValue: oldValue,
+    });
+  }
 
-		// Тема по нему ставит панель в контейнер, а не на экран
-		this._dataset.add('contained', value)
-	}
+  /**
+   * Панель внутри своего контейнера, а не поверх страницы. Внутри контейнера
+   * панель не телепортируется — разметка оставляет её на месте, — и
+   * раскладка ставит её `absolute` от ближайшего позиционированного предка,
+   * без координат: где в нём встать, решает тема по `data-contained`. Якорь
+   * такую панель не двигает. Так же устроена выезжающая панель (Drawer).
+   */
+  get contained(): boolean {
+    return this._contained;
+  }
+
+  set contained(value: boolean) {
+    if (this._contained === value) return;
+
+    this._applyContained(value);
+    this.events.emit("change:contained", value);
+  }
+
+  getProps(): IFrameProps {
+    return {
+      ...super.getProps(),
+      x: this.x,
+      y: this.y,
+      width: this.width,
+      height: this.height,
+      position: this.position,
+      contained: this.contained,
+    };
+  }
+
+  protected _applyContained(value: boolean): void {
+    this._contained = value;
+
+    // Тема по нему ставит панель в контейнер, а не на экран
+    this._dataset.add("contained", value);
+  }
 }

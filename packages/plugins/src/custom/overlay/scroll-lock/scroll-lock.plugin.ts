@@ -1,11 +1,14 @@
-import { TBasePlugin } from '../../../base'
-import type { IPluginContext } from '../../../base'
-import { afterTransitions } from '../../../utils'
-import { TElementPlugin } from '../../element'
-import { bindOverlayOpen } from '../open-state'
-import type { IOverlayOpenState } from '../types'
-import { lockScroll, unlockScroll } from './lock'
-import type { IScrollLockPluginOptions, TScrollLockPluginEvents } from './types'
+import { TBasePlugin } from "../../../base";
+import type { IPluginContext } from "../../../base";
+import { afterTransitions } from "../../../utils";
+import { TElementPlugin } from "../../element";
+import { bindOverlayOpen } from "../open-state";
+import type { IOverlayOpenState } from "../types";
+import { lockScroll, unlockScroll } from "./lock";
+import type {
+  IScrollLockPluginOptions,
+  TScrollLockPluginEvents,
+} from "./types";
 
 /**
  * TScrollLockPlugin — пока владелец открыт, страница под ним не
@@ -48,114 +51,122 @@ import type { IScrollLockPluginOptions, TScrollLockPluginEvents } from './types'
  * идёт своим `overflow` в теме. Поведение iOS Safari, где `overflow: hidden`
  * прокрутку не держит, сюда пока не входит.
  */
-export class TScrollLockPlugin extends TBasePlugin<any, TScrollLockPluginEvents> {
-	/** Умолчания опций, объявленных пропами, — см. `TDismissPlugin.defaultValues`. */
-	static defaultValues: Required<Pick<IScrollLockPluginOptions, 'enabled'>> = {
-		enabled: false,
-	}
+export class TScrollLockPlugin extends TBasePlugin<
+  any,
+  TScrollLockPluginEvents
+> {
+  /** Умолчания опций, объявленных пропами, — см. `TDismissPlugin.defaultValues`. */
+  static defaultValues: Required<Pick<IScrollLockPluginOptions, "enabled">> = {
+    enabled: false,
+  };
 
-	private _open: IOverlayOpenState | null = null
-	private _element: Element | null = null
-	private _enabled = TScrollLockPlugin.defaultValues.enabled
-	/** Документ, у которого плагин держит замок; `null` — не держит. */
-	private _locked: Document | null = null
-	/** Отмена ожидания конца перехода закрытия; `null` — плагин не ждёт. */
-	private _stopWaiting: (() => void) | null = null
+  private _open: IOverlayOpenState | null = null;
+  private _element: Element | null = null;
+  private _enabled = TScrollLockPlugin.defaultValues.enabled;
+  /** Документ, у которого плагин держит замок; `null` — не держит. */
+  private _locked: Document | null = null;
+  /** Отмена ожидания конца перехода закрытия; `null` — плагин не ждёт. */
+  private _stopWaiting: (() => void) | null = null;
 
-	override install(ctx: IPluginContext, options?: IScrollLockPluginOptions): void {
-		super.install(ctx, options)
+  override install(
+    ctx: IPluginContext,
+    options?: IScrollLockPluginOptions,
+  ): void {
+    super.install(ctx, options);
 
-		const elementPlugin = ctx.get(TElementPlugin)
+    const elementPlugin = ctx.get(TElementPlugin);
 
-		elementPlugin?.events.on('ready', (element) => {
-			this._element = element
-			this._sync()
-		})
+    elementPlugin?.events.on("ready", (element) => {
+      this._element = element;
+      this._sync();
+    });
 
-		elementPlugin?.events.on('removed', () => {
-			this._element = null
-			this._sync()
-		})
+    elementPlugin?.events.on("removed", () => {
+      this._element = null;
+      this._sync();
+    });
 
-		this._enabled = options?.enabled ?? this._enabled
+    this._enabled = options?.enabled ?? this._enabled;
 
-		this._open = bindOverlayOpen(ctx, options, (open) => {
-			this.enabled = open
-		})
+    this._open = bindOverlayOpen(ctx, options, (open) => {
+      this.enabled = open;
+    });
 
-		if (this._open) this.enabled = this._open.read()
+    if (this._open) this.enabled = this._open.read();
 
-		this._sync()
-	}
+    this._sync();
+  }
 
-	/**
-	 * Запирать ли прокрутку. Владелец взводит это открытием; своё значение
-	 * плагин держит и без корня — замок ляжет, как только корень объявят.
-	 *
-	 * `true` запирает сразу, а `false` отпускает замок не сразу, а когда корень
-	 * доиграет переходы закрытия. `change:enabled` приходит сразу в обе
-	 * стороны: это нужное состояние, а не факт отпирания.
-	 */
-	get enabled(): boolean {
-		return this._enabled
-	}
+  /**
+   * Запирать ли прокрутку. Владелец взводит это открытием; своё значение
+   * плагин держит и без корня — замок ляжет, как только корень объявят.
+   *
+   * `true` запирает сразу, а `false` отпускает замок не сразу, а когда корень
+   * доиграет переходы закрытия. `change:enabled` приходит сразу в обе
+   * стороны: это нужное состояние, а не факт отпирания.
+   */
+  get enabled(): boolean {
+    return this._enabled;
+  }
 
-	set enabled(value: boolean) {
-		if (this._enabled === value) return
+  set enabled(value: boolean) {
+    if (this._enabled === value) return;
 
-		this._enabled = value
+    const oldValue = this.enabled;
 
-		if (value) {
-			this._sync()
-		} else {
-			this._releaseAfterTransitions()
-		}
+    this._enabled = value;
 
-		this.events.emit('change:enabled', value)
-	}
+    if (value) {
+      this._sync();
+    } else {
+      this._releaseAfterTransitions();
+    }
 
-	override destroy(): void {
-		this._enabled = false
-		this._sync()
+    this.events.emit("change:enabled", { newValue: value, oldValue: oldValue });
+  }
 
-		this._element = null
-		this._open?.unbind()
-		this._open = null
+  override destroy(): void {
+    this._enabled = false;
+    this._sync();
 
-		super.destroy()
-	}
+    this._element = null;
+    this._open?.unbind();
+    this._open = null;
 
-	/**
-	 * Замок сейчас — ровно по состоянию: лежит, когда владелец открыт и корень
-	 * объявлен. Ожидание перехода закрытия это отменяет: состояние решено
-	 * заново.
-	 */
-	private _sync(): void {
-		this._stopWaiting?.()
-		this._stopWaiting = null
+    super.destroy();
+  }
 
-		const doc = this._enabled ? (this._element?.ownerDocument ?? null) : null
+  /**
+   * Замок сейчас — ровно по состоянию: лежит, когда владелец открыт и корень
+   * объявлен. Ожидание перехода закрытия это отменяет: состояние решено
+   * заново.
+   */
+  private _sync(): void {
+    this._stopWaiting?.();
+    this._stopWaiting = null;
 
-		if (doc === this._locked) return
+    const doc = this._enabled ? (this._element?.ownerDocument ?? null) : null;
 
-		if (this._locked) unlockScroll(this._locked)
-		if (doc) lockScroll(doc)
+    if (doc === this._locked) return;
 
-		this._locked = doc
-	}
+    if (this._locked) unlockScroll(this._locked);
+    if (doc) lockScroll(doc);
 
-	/**
-	 * Выключили — замок остаётся, пока корень доигрывает переходы закрытия, и
-	 * только потом отпускается. Замка нет — отпускать нечего.
-	 */
-	private _releaseAfterTransitions(): void {
-		const element = this._element
+    this._locked = doc;
+  }
 
-		if (!this._locked || !element) return
+  /**
+   * Выключили — замок остаётся, пока корень доигрывает переходы закрытия, и
+   * только потом отпускается. Замка нет — отпускать нечего.
+   */
+  private _releaseAfterTransitions(): void {
+    const element = this._element;
 
-		this._stopWaiting = afterTransitions(element, () => {
-			this._stopWaiting = null
-			this._sync()
-		})
-	}
+    if (!this._locked || !element) return;
+
+    this._stopWaiting = afterTransitions(element, () => {
+      this._stopWaiting = null;
+      this._sync();
+    });
+  }
 }

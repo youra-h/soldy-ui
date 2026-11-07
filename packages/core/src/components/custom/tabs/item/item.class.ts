@@ -1,8 +1,8 @@
-import { TValueControl } from '../../../base/value-control'
-import type { TDefaultValues } from '../../../base/component'
-import { TAria, TChangeEvent } from '../../../../common'
-import type { TEventSink } from '../../../../common'
-import type { ITabsItem, ITabsItemProps, TTabsItemEvents } from './types'
+import { TValueControl } from "../../../base/value-control";
+import type { TDefaultValues } from "../../../base/component";
+import { TAria, TChangeEvent } from "../../../../common";
+import type { TEventSink } from "../../../../common";
+import type { ITabsItem, ITabsItemProps, TTabsItemEvents } from "./types";
 
 /**
  * Кастомная логика элемента таба (без коллекционной части).
@@ -10,147 +10,152 @@ import type { ITabsItem, ITabsItemProps, TTabsItemEvents } from './types'
  * Generic TProps позволяет передавать расширенные Props (например, ITabsItemProps с active).
  */
 export default class TTabsItem<
-	TProps extends ITabsItemProps = ITabsItemProps,
-	TEvents extends TTabsItemEvents<any> = TTabsItemEvents,
+  TProps extends ITabsItemProps = ITabsItemProps,
+  TEvents extends TTabsItemEvents<any> = TTabsItemEvents,
 >
-	extends TValueControl<string | number, TProps, TEvents>
-	implements ITabsItem<TProps, TEvents>
+  extends TValueControl<string | number, TProps, TEvents>
+  implements ITabsItem<TProps, TEvents>
 {
-	static override baseClass = 'so-tabs-item'
+  static override baseClass = "so-tabs-item";
 
-	static defaultValues: typeof TValueControl.defaultValues &
-		TDefaultValues<ITabsItemProps, 'text', 'closable'> = {
-		...TValueControl.defaultValues,
-		text: '',
-		value: '',
-		closable: undefined,
-		tag: 'div',
-	}
+  static defaultValues: typeof TValueControl.defaultValues &
+    TDefaultValues<ITabsItemProps, "text", "closable"> = {
+    ...TValueControl.defaultValues,
+    text: "",
+    value: "",
+    closable: undefined,
+    tag: "div",
+  };
 
-	protected _closeAria: TAria
+  protected _closeAria: TAria;
 
-	protected _text: string
-	protected _closable: boolean | undefined
+  protected _text: string;
+  protected _closable: boolean | undefined;
 
-	constructor(props: Partial<TProps> = {}) {
-		super(props)
+  constructor(props: Partial<TProps> = {}) {
+    super(props);
 
-		const ctor = new.target as typeof TTabsItem
+    const ctor = new.target as typeof TTabsItem;
 
-		// Type assertion: TProps extends ITabsItemProps, поэтому props содержит text и closable
-		const customProps = props as Partial<ITabsItemProps>
+    // Type assertion: TProps extends ITabsItemProps, поэтому props содержит text и closable
+    const customProps = props as Partial<ITabsItemProps>;
 
-		this._text = customProps.text ?? ctor.defaultValues.text
+    this._text = customProps.text ?? ctor.defaultValues.text;
 
-		this._closable = customProps.closable ?? ctor.defaultValues.closable
+    this._closable = customProps.closable ?? ctor.defaultValues.closable;
 
-		this._classes.toggle(`--closable`, !!this._closable)
+    this._classes.toggle(`--closable`, !!this._closable);
 
-		// Только то, что таб знает о себе сам: он — таб.
-		//
-		// Связки здесь нет намеренно: `id` и `aria-controls` нужны документу,
-		// их пишет в этот же набор плагин таба `TTabsItemIdsPlugin`.
-		// `aria-selected` — тоже не отсюда: его пишет TTabsExtension по
-		// событию активации.
-		this._aria.add('role', 'tab')
+    // Только то, что таб знает о себе сам: он — таб.
+    //
+    // Связки здесь нет намеренно: `id` и `aria-controls` нужны документу,
+    // их пишет в этот же набор плагин таба `TTabsItemIdsPlugin`.
+    // `aria-selected` — тоже не отсюда: его пишет TTabsExtension по
+    // событию активации.
+    this._aria.add("role", "tab");
 
-		this._closeAria = new TAria()
-		this._closeAria.subscribe(() =>
-			this._sink.emit('change:closeAria', this._closeAria.toObject()),
-		)
+    this._closeAria = new TAria();
+    this._closeAria.subscribe(() =>
+      this._sink.emit("change:closeAria", this._closeAria.toObject()),
+    );
 
-		// Кнопка закрытия — не остановка Tab: по паттерну APG Tabs весь список —
-		// одна остановка, а закрывает таб с клавиатуры `Delete` на самом табе
-		// (`TTabsKeyboardPlugin`). Мышью кнопка нажимается как раньше
-		this._closeAria.add('tabindex', '-1')
-	}
+    // Кнопка закрытия — не остановка Tab: по паттерну APG Tabs весь список —
+    // одна остановка, а закрывает таб с клавиатуры `Delete` на самом табе
+    // (`TTabsKeyboardPlugin`). Мышью кнопка нажимается как раньше
+    this._closeAria.add("tabindex", "-1");
+  }
 
-	/**
-	 * Эмит собственных событий класса — без приведения `this.events` к
-	 * конкретной карте (см. `TEventSink` в `common/event/types.ts`).
-	 */
-	protected get _sink(): TEventSink<TTabsItemEvents> {
-		return this.events
-	}
+  /**
+   * Эмит собственных событий класса — без приведения `this.events` к
+   * конкретной карте (см. `TEventSink` в `common/event/types.ts`).
+   */
+  protected get _sink(): TEventSink<TTabsItemEvents> {
+    return this.events;
+  }
 
-	/**
-	 * `aria` таба стоит на вложенном `<button>`: корень элемента — обёртка,
-	 * которая держит `data-*` для темы, а табом со своей ролью и связкой с
-	 * панелью является кнопка внутри.
-	 *
-	 * Поэтому ARIA-половину правила «нативный атрибут вместо ARIA-дубля»
-	 * решает тег этой кнопки, а не `tag` корня: нативный `disabled` она
-	 * получает от своего `TButton`, и `aria-disabled` рядом был бы дублем.
-	 */
-	protected override get _ariaTag(): string {
-		return 'button'
-	}
+  /**
+   * `aria` таба стоит на вложенном `<button>`: корень элемента — обёртка,
+   * которая держит `data-*` для темы, а табом со своей ролью и связкой с
+   * панелью является кнопка внутри.
+   *
+   * Поэтому ARIA-половину правила «нативный атрибут вместо ARIA-дубля»
+   * решает тег этой кнопки, а не `tag` корня: нативный `disabled` она
+   * получает от своего `TButton`, и `aria-disabled` рядом был бы дублем.
+   */
+  protected override get _ariaTag(): string {
+    return "button";
+  }
 
-	get text(): string {
-		return this._text
-	}
+  get text(): string {
+    return this._text;
+  }
 
-	set text(value: string) {
-		if (value === this._text) return
+  set text(value: string) {
+    if (value === this._text) return;
 
-		const e = new TChangeEvent(value, this._text)
+    const e = new TChangeEvent(value, this._text);
 
-		this._sink.emit('change:text:before', e)
+    this._sink.emit("change:text:before", e);
 
-		if (e.defaultPrevented || e.value === this._text) return
+    if (e.defaultPrevented || e.value === this._text) return;
 
-		this._text = e.value
-		this._sink.emit('change:text', { newValue: e.value, oldValue: e.oldValue })
-	}
+    this._text = e.value;
+    this._sink.emit("change:text", { newValue: e.value, oldValue: e.oldValue });
+  }
 
-	/**
-	 * Своё значение таба, `undefined` — наследовать от владельца.
-	 *
-	 * `disabled` его не трогает: правило «выключенный таб не закрывается»
-	 * выводит item-адаптер (`TTabsItemExtension.closable`). Раньше оно было
-	 * подпиской на `change:disabled`, которая переписывала это значение, — и
-	 * у таба, выключенного со старта, не срабатывала вовсе: события нет.
-	 */
-	get closable(): boolean | undefined {
-		return this._closable
-	}
+  /**
+   * Своё значение таба, `undefined` — наследовать от владельца.
+   *
+   * `disabled` его не трогает: правило «выключенный таб не закрывается»
+   * выводит item-адаптер (`TTabsItemExtension.closable`). Раньше оно было
+   * подпиской на `change:disabled`, которая переписывала это значение, — и
+   * у таба, выключенного со старта, не срабатывала вовсе: события нет.
+   */
+  get closable(): boolean | undefined {
+    return this._closable;
+  }
 
-	set closable(value: boolean | undefined) {
-		if (value === this._closable) return
+  set closable(value: boolean | undefined) {
+    if (value === this._closable) return;
 
-		const e = new TChangeEvent(value, this._closable)
+    const e = new TChangeEvent(value, this._closable);
 
-		this._sink.emit('change:closable:before', e)
+    this._sink.emit("change:closable:before", e);
 
-		if (e.defaultPrevented || e.value === this._closable) return
+    if (e.defaultPrevented || e.value === this._closable) return;
 
-		this._closable = e.value
-		this._classes.toggle(`--closable`, !!e.value)
-		this._sink.emit('change:closable', e.value)
-	}
+    const oldValue = this.closable;
 
-	/**
-	 * Набор кнопки закрытия. Имя в нём — вместе с текстом таба: «Close
-	 * Настройки».
-	 *
-	 * Без текста все кнопки закрытия в наборе называются одинаково, и по
-	 * списку элементов скринридера («Close, кнопка» пять раз подряд) выбрать
-	 * нужную невозможно. Имя пишет плагин имён (`TTabsItemNamesPlugin`) по
-	 * шаблону локали — и на смену текста: порядок слов у каждого языка свой.
-	 * `tabindex` пишет таб сам. Об изменении набор сообщает `change:closeAria`.
-	 *
-	 * Отдельный набор, а не часть `aria`: `aria` описывает сам таб, а это —
-	 * кнопка рядом с ним. Один элемент — один набор.
-	 */
-	get closeAria(): TAria {
-		return this._closeAria
-	}
+    this._closable = e.value;
+    this._classes.toggle(`--closable`, !!e.value);
+    this._sink.emit("change:closable", {
+      newValue: e.value,
+      oldValue: oldValue,
+    });
+  }
 
-	override getProps(): TProps {
-		return {
-			...super.getProps(),
-			text: this.text,
-			closable: this.closable,
-		} as TProps
-	}
+  /**
+   * Набор кнопки закрытия. Имя в нём — вместе с текстом таба: «Close
+   * Настройки».
+   *
+   * Без текста все кнопки закрытия в наборе называются одинаково, и по
+   * списку элементов скринридера («Close, кнопка» пять раз подряд) выбрать
+   * нужную невозможно. Имя пишет плагин имён (`TTabsItemNamesPlugin`) по
+   * шаблону локали — и на смену текста: порядок слов у каждого языка свой.
+   * `tabindex` пишет таб сам. Об изменении набор сообщает `change:closeAria`.
+   *
+   * Отдельный набор, а не часть `aria`: `aria` описывает сам таб, а это —
+   * кнопка рядом с ним. Один элемент — один набор.
+   */
+  get closeAria(): TAria {
+    return this._closeAria;
+  }
+
+  override getProps(): TProps {
+    return {
+      ...super.getProps(),
+      text: this.text,
+      closable: this.closable,
+    } as TProps;
+  }
 }

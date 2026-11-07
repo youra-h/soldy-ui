@@ -1,4 +1,5 @@
-import type { TPluginEvents } from '../../../base'
+import type { TPluginEvents } from "../../../base";
+import type { TValuePayload } from "@soldy-ui/core";
 
 /**
  * Место активного таба: `offset*` его узла — от ряда набора (`barEl`), его
@@ -6,13 +7,15 @@ import type { TPluginEvents } from '../../../base'
  * нули.
  */
 export type TActiveTabOffset = {
-	barEl: HTMLElement
-	offsetLeft: number
-	offsetWidth: number
-	offsetTop: number
-	offsetHeight: number
-}
+  barEl: HTMLElement;
+  offsetLeft: number;
+  offsetWidth: number;
+  offsetTop: number;
+  offsetHeight: number;
+};
 
 export type TTabsActiveTabPluginEvents = TPluginEvents & {
-	'change:active-tab': (offset: TActiveTabOffset | null) => void
-}
+  "change:active-tab": (
+    payload: TValuePayload<TActiveTabOffset | null>,
+  ) => void;
+};

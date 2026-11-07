@@ -1,4 +1,5 @@
-import type { TPluginEvents } from '../../../base'
+import type { TPluginEvents } from "../../../base";
+import type { TValuePayload } from "@soldy-ui/core";
 
 /**
  * Ссылки контрола на части поля — то, что поле даёт `aria` своего контрола.
@@ -7,10 +8,10 @@ import type { TPluginEvents } from '../../../base'
  * тоже — иначе контрол ссылался бы на `id`, которого в документе нет.
  */
 export interface IFieldLinks {
-	/** `id` подписи — пока она рисуется (задан её текст) */
-	readonly labelledBy?: string
-	/** `id` видимой справки: ошибки, а без неё — подсказки */
-	readonly describedBy?: string
+  /** `id` подписи — пока она рисуется (задан её текст) */
+  readonly labelledBy?: string;
+  /** `id` видимой справки: ошибки, а без неё — подсказки */
+  readonly describedBy?: string;
 }
 
 /**
@@ -18,13 +19,13 @@ export interface IFieldLinks {
  * `for` подписи.
  */
 export interface IFieldControlInfo {
-	/** `id` поля контрола — свой или заданный полем; у контрола без `id` — `undefined` */
-	readonly id: string | undefined
-	/** Labelable ли элемент с `aria`: группу `for` подписи не называет */
-	readonly labelable: boolean
+  /** `id` поля контрола — свой или заданный полем; у контрола без `id` — `undefined` */
+  readonly id: string | undefined;
+  /** Labelable ли элемент с `aria`: группу `for` подписи не называет */
+  readonly labelable: boolean;
 }
 
 export type TFieldIdsPluginEvents = TPluginEvents & {
-	/** change:links — ссылки контрола на части сменились: появилась, пропала или сменилась часть */
-	'change:links': (links: IFieldLinks) => void
-}
+  /** change:links — ссылки контрола на части сменились: появилась, пропала или сменилась часть */
+  "change:links": (payload: TValuePayload<IFieldLinks>) => void;
+};

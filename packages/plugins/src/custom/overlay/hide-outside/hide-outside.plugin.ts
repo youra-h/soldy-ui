@@ -1,13 +1,16 @@
-import { FRAME_LAYER_ATTRIBUTE } from '@soldy-ui/core'
-import { TBasePlugin } from '../../../base'
-import type { IPluginContext } from '../../../base'
-import { TElementPlugin } from '../../element'
-import { TDismissPlugin } from '../../dismiss'
-import { isAboveLayer } from '../../../utils'
-import { bindOverlayOpen } from '../open-state'
-import type { IOverlayOpenState } from '../types'
-import { markHidden, unmarkHidden } from './marks'
-import type { IHideOutsidePluginOptions, THideOutsidePluginEvents } from './types'
+import { FRAME_LAYER_ATTRIBUTE } from "@soldy-ui/core";
+import { TBasePlugin } from "../../../base";
+import type { IPluginContext } from "../../../base";
+import { TElementPlugin } from "../../element";
+import { TDismissPlugin } from "../../dismiss";
+import { isAboveLayer } from "../../../utils";
+import { bindOverlayOpen } from "../open-state";
+import type { IOverlayOpenState } from "../types";
+import { markHidden, unmarkHidden } from "./marks";
+import type {
+  IHideOutsidePluginOptions,
+  THideOutsidePluginEvents,
+} from "./types";
 
 /**
  * Поводы пересчитать набор: состав поддерева `body` и номера слоёв. Свой
@@ -15,11 +18,11 @@ import type { IHideOutsidePluginOptions, THideOutsidePluginEvents } from './type
  * будит.
  */
 const OBSERVED: MutationObserverInit = {
-	childList: true,
-	subtree: true,
-	attributes: true,
-	attributeFilter: [FRAME_LAYER_ATTRIBUTE],
-}
+  childList: true,
+  subtree: true,
+  attributes: true,
+  attributeFilter: [FRAME_LAYER_ATTRIBUTE],
+};
 
 /**
  * THideOutsidePlugin — пока владелец открыт, фон под ним спрятан от
@@ -75,131 +78,141 @@ const OBSERVED: MutationObserverInit = {
  * значение, а не операция; исключений для живых областей нет — фон
  * прячется целиком, как у нативного `<dialog>`.
  */
-export class THideOutsidePlugin extends TBasePlugin<any, THideOutsidePluginEvents> {
-	/** Умолчания опций, объявленных пропами, — см. `TDismissPlugin.defaultValues`. */
-	static defaultValues: Required<Pick<IHideOutsidePluginOptions, 'enabled'>> = {
-		enabled: false,
-	}
+export class THideOutsidePlugin extends TBasePlugin<
+  any,
+  THideOutsidePluginEvents
+> {
+  /** Умолчания опций, объявленных пропами, — см. `TDismissPlugin.defaultValues`. */
+  static defaultValues: Required<Pick<IHideOutsidePluginOptions, "enabled">> = {
+    enabled: false,
+  };
 
-	private _open: IOverlayOpenState | null = null
-	private _dismiss: TDismissPlugin | null = null
-	private _element: Element | null = null
-	private _enabled = THideOutsidePlugin.defaultValues.enabled
-	/** `body` под наблюдением; `null` — фон не спрятан. */
-	private _body: HTMLElement | null = null
-	private _observer: MutationObserver | null = null
-	/** Узлы, которые пометил этот плагин: снимает он ровно их. */
-	private readonly _hidden = new Set<Element>()
+  private _open: IOverlayOpenState | null = null;
+  private _dismiss: TDismissPlugin | null = null;
+  private _element: Element | null = null;
+  private _enabled = THideOutsidePlugin.defaultValues.enabled;
+  /** `body` под наблюдением; `null` — фон не спрятан. */
+  private _body: HTMLElement | null = null;
+  private _observer: MutationObserver | null = null;
+  /** Узлы, которые пометил этот плагин: снимает он ровно их. */
+  private readonly _hidden = new Set<Element>();
 
-	override install(ctx: IPluginContext, options?: IHideOutsidePluginOptions): void {
-		super.install(ctx, options)
+  override install(
+    ctx: IPluginContext,
+    options?: IHideOutsidePluginOptions,
+  ): void {
+    super.install(ctx, options);
 
-		this._dismiss = ctx.get(TDismissPlugin) ?? null
+    this._dismiss = ctx.get(TDismissPlugin) ?? null;
 
-		const elementPlugin = ctx.get(TElementPlugin)
+    const elementPlugin = ctx.get(TElementPlugin);
 
-		elementPlugin?.events.on('ready', (element) => {
-			this._element = element
-			this._sync()
-		})
+    elementPlugin?.events.on("ready", (element) => {
+      this._element = element;
+      this._sync();
+    });
 
-		elementPlugin?.events.on('removed', () => {
-			this._element = null
-			this._sync()
-		})
+    elementPlugin?.events.on("removed", () => {
+      this._element = null;
+      this._sync();
+    });
 
-		this._enabled = options?.enabled ?? this._enabled
+    this._enabled = options?.enabled ?? this._enabled;
 
-		this._open = bindOverlayOpen(ctx, options, (open) => {
-			this.enabled = open
-		})
+    this._open = bindOverlayOpen(ctx, options, (open) => {
+      this.enabled = open;
+    });
 
-		if (this._open) this.enabled = this._open.read()
+    if (this._open) this.enabled = this._open.read();
 
-		this._sync()
-	}
+    this._sync();
+  }
 
-	/**
-	 * Спрятан ли фон. Владелец взводит это открытием; своё значение плагин
-	 * держит и без корня — фон спрячется, как только корень объявят.
-	 */
-	get enabled(): boolean {
-		return this._enabled
-	}
+  /**
+   * Спрятан ли фон. Владелец взводит это открытием; своё значение плагин
+   * держит и без корня — фон спрячется, как только корень объявят.
+   */
+  get enabled(): boolean {
+    return this._enabled;
+  }
 
-	set enabled(value: boolean) {
-		if (this._enabled === value) return
+  set enabled(value: boolean) {
+    if (this._enabled === value) return;
 
-		this._enabled = value
-		this._sync()
-		this.events.emit('change:enabled', value)
-	}
+    const oldValue = this.enabled;
 
-	override destroy(): void {
-		this._enabled = false
-		this._sync()
+    this._enabled = value;
+    this._sync();
+    this.events.emit("change:enabled", { newValue: value, oldValue: oldValue });
+  }
 
-		this._observer = null
-		this._element = null
-		this._dismiss = null
-		this._open?.unbind()
-		this._open = null
+  override destroy(): void {
+    this._enabled = false;
+    this._sync();
 
-		super.destroy()
-	}
+    this._observer = null;
+    this._element = null;
+    this._dismiss = null;
+    this._open?.unbind();
+    this._open = null;
 
-	/** Фон спрятан ровно тогда, когда владелец открыт и корень объявлен. */
-	private _sync(): void {
-		const body = this._enabled ? (this._element?.ownerDocument.body ?? null) : null
+    super.destroy();
+  }
 
-		if (body !== this._body) {
-			this._observer?.disconnect()
-			this._body = body
+  /** Фон спрятан ровно тогда, когда владелец открыт и корень объявлен. */
+  private _sync(): void {
+    const body = this._enabled
+      ? (this._element?.ownerDocument.body ?? null)
+      : null;
 
-			if (body) {
-				this._observer ??= new MutationObserver(this._refresh)
-				this._observer.observe(body, OBSERVED)
-			}
-		}
+    if (body !== this._body) {
+      this._observer?.disconnect();
+      this._body = body;
 
-		this._refresh()
-	}
+      if (body) {
+        this._observer ??= new MutationObserver(this._refresh);
+        this._observer.observe(body, OBSERVED);
+      }
+    }
 
-	/** Пересчитать, что спрятать, и записать в DOM только разницу. */
-	private readonly _refresh = (): void => {
-		const next =
-			this._body && this._element
-				? this._outside(this._body, this._element)
-				: new Set<Element>()
+    this._refresh();
+  }
 
-		for (const node of this._hidden) {
-			if (next.has(node)) continue
+  /** Пересчитать, что спрятать, и записать в DOM только разницу. */
+  private readonly _refresh = (): void => {
+    const next =
+      this._body && this._element
+        ? this._outside(this._body, this._element)
+        : new Set<Element>();
 
-			unmarkHidden(node)
-			this._hidden.delete(node)
-		}
+    for (const node of this._hidden) {
+      if (next.has(node)) continue;
 
-		for (const node of next) {
-			if (this._hidden.has(node)) continue
+      unmarkHidden(node);
+      this._hidden.delete(node);
+    }
 
-			markHidden(node)
-			this._hidden.add(node)
-		}
-	}
+    for (const node of next) {
+      if (this._hidden.has(node)) continue;
 
-	/** Фон панели: всё в `body`, кроме неё и слоёв выше неё. */
-	private _outside(body: HTMLElement, root: Element): Set<Element> {
-		const panel = this._dismiss?.findPanel() ?? root
+      markHidden(node);
+      this._hidden.add(node);
+    }
+  };
 
-		// Панели в странице нет — и прятать не от чего
-		if (panel === body || !body.contains(panel)) return new Set()
+  /** Фон панели: всё в `body`, кроме неё и слоёв выше неё. */
+  private _outside(body: HTMLElement, root: Element): Set<Element> {
+    const panel = this._dismiss?.findPanel() ?? root;
 
-		const above = [...body.querySelectorAll(`[${FRAME_LAYER_ATTRIBUTE}]`)].filter((node) =>
-			isAboveLayer(node, panel),
-		)
+    // Панели в странице нет — и прятать не от чего
+    if (panel === body || !body.contains(panel)) return new Set();
 
-		return siblingsOutside(body, [panel, ...above])
-	}
+    const above = [
+      ...body.querySelectorAll(`[${FRAME_LAYER_ATTRIBUTE}]`),
+    ].filter((node) => isAboveLayer(node, panel));
+
+    return siblingsOutside(body, [panel, ...above]);
+  }
 }
 
 /**
@@ -210,32 +223,35 @@ export class THideOutsidePlugin extends TBasePlugin<any, THideOutsidePluginEvent
  * с ним, и соседей внутри своего не прячет. Иначе слой, телепортированный в
  * панель окна, спрятал бы её содержимое.
  */
-function siblingsOutside(body: Element, keep: readonly Element[]): Set<Element> {
-	const kept = keep.filter(
-		(node) => !keep.some((other) => other !== node && other.contains(node)),
-	)
-	/** Оставленные узлы и их предки ниже `body`: их самих не прячем. */
-	const path = new Set<Element>()
+function siblingsOutside(
+  body: Element,
+  keep: readonly Element[],
+): Set<Element> {
+  const kept = keep.filter(
+    (node) => !keep.some((other) => other !== node && other.contains(node)),
+  );
+  /** Оставленные узлы и их предки ниже `body`: их самих не прячем. */
+  const path = new Set<Element>();
 
-	for (const node of kept) {
-		for (
-			let current: Element | null = node;
-			current && current !== body;
-			current = current.parentElement
-		) {
-			path.add(current)
-		}
-	}
+  for (const node of kept) {
+    for (
+      let current: Element | null = node;
+      current && current !== body;
+      current = current.parentElement
+    ) {
+      path.add(current);
+    }
+  }
 
-	const hidden = new Set<Element>()
+  const hidden = new Set<Element>();
 
-	for (const parent of [body, ...path]) {
-		if (kept.includes(parent)) continue
+  for (const parent of [body, ...path]) {
+    if (kept.includes(parent)) continue;
 
-		for (const child of parent.children) {
-			if (!path.has(child)) hidden.add(child)
-		}
-	}
+    for (const child of parent.children) {
+      if (!path.has(child)) hidden.add(child);
+    }
+  }
 
-	return hidden
+  return hidden;
 }

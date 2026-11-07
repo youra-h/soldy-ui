@@ -1,13 +1,19 @@
+import type { TValuePayload } from "../../../common";
 import type {
-	IValueControl,
-	IValueControlProps,
-	TValueControlEvents,
-} from '../../base/value-control'
-import type { TAria, TAriaAttributes, TCalendarDate, TWeekday } from '../../../common'
-import type { ICalendarCollectionProps } from './collection/types'
+  IValueControl,
+  IValueControlProps,
+  TValueControlEvents,
+} from "../../base/value-control";
+import type {
+  TAria,
+  TAriaAttributes,
+  TCalendarDate,
+  TWeekday,
+} from "../../../common";
+import type { ICalendarCollectionProps } from "./collection/types";
 
 /** Диапазон дат: начало и конец по возрастанию; одна дата — однодневный диапазон. */
-export type TCalendarRange = [TCalendarDate, TCalendarDate]
+export type TCalendarRange = [TCalendarDate, TCalendarDate];
 
 /**
  * Значение календаря. Форма — по режиму выбора коллекции: `single` — дата или
@@ -18,7 +24,8 @@ export type TCalendarRange = [TCalendarDate, TCalendarDate]
  * выбора коллекции: строки не в формате даты выпадают, недоступные дни и дни
  * вне границ остаются — это данные потребителя.
  */
-export type TCalendarValue = TCalendarDate | TCalendarDate[] | TCalendarRange | undefined
+export type TCalendarValue =
+  TCalendarDate | TCalendarDate[] | TCalendarRange | undefined;
 
 /**
  * Недоступен ли день: `true` — фокус на день встаёт, но выбрать его нельзя, и
@@ -29,94 +36,103 @@ export type TCalendarValue = TCalendarDate | TCalendarDate[] | TCalendarRange | 
  * «не дольше N ночей» той же функцией, без отдельных флагов.
  */
 export type TCalendarUnavailable = (
-	date: TCalendarDate,
-	anchor: TCalendarDate | undefined,
-) => boolean
+  date: TCalendarDate,
+  anchor: TCalendarDate | undefined,
+) => boolean;
 
 /** Заголовок колонки — день недели. */
 export type TCalendarWeekday = {
-	/**
-	 * Подпись колонки — короткое имя или узкое, одной формой на всю неделю
-	 * локали (`Mon`, `пн`; у `ar-EG` — `ن`)
-	 */
-	label: string
-	/** Полное имя — для скринридера (`Monday`, `abbr` у `<th>`) */
-	long: string
-}
+  /**
+   * Подпись колонки — короткое имя или узкое, одной формой на всю неделю
+   * локали (`Mon`, `пн`; у `ar-EG` — `ن`)
+   */
+  label: string;
+  /** Полное имя — для скринридера (`Monday`, `abbr` у `<th>`) */
+  long: string;
+};
 
 export type TCalendarEvents = TValueControlEvents<TCalendarValue> & {
-	/** change:min */
-	'change:min': (value: TCalendarDate | undefined) => void
-	/** change:max */
-	'change:max': (value: TCalendarDate | undefined) => void
-	/** change:unavailable */
-	'change:unavailable': (value: TCalendarUnavailable | undefined) => void
-	/** change:weekStart */
-	'change:weekStart': (value: TWeekday | undefined) => void
-	/** change:locale */
-	'change:locale': (value: string) => void
-	/** change:timeZone */
-	'change:timeZone': (value: string | undefined) => void
-	/** Сменились показанные месяцы — записью, листанием или уходом фокуса */
-	'change:months': (value: TCalendarDate[] | undefined) => void
-	/** change:prevAria — набор атрибутов кнопки «предыдущий месяц» изменился */
-	'change:prevAria': (value: TAriaAttributes) => void
-	/** change:nextAria — набор атрибутов кнопки «следующий месяц» изменился */
-	'change:nextAria': (value: TAriaAttributes) => void
-}
+  /** change:min */
+  "change:min": (payload: TValuePayload<TCalendarDate | undefined>) => void;
+  /** change:max */
+  "change:max": (payload: TValuePayload<TCalendarDate | undefined>) => void;
+  /** change:unavailable */
+  "change:unavailable": (
+    payload: TValuePayload<TCalendarUnavailable | undefined>,
+  ) => void;
+  /** change:weekStart */
+  "change:weekStart": (payload: TValuePayload<TWeekday | undefined>) => void;
+  /** change:locale */
+  "change:locale": (payload: TValuePayload<string>) => void;
+  /** change:timeZone */
+  "change:timeZone": (payload: TValuePayload<string | undefined>) => void;
+  /** Сменились показанные месяцы — записью, листанием или уходом фокуса */
+  "change:months": (
+    payload: TValuePayload<TCalendarDate[] | undefined>,
+  ) => void;
+  /** change:prevAria — набор атрибутов кнопки «предыдущий месяц» изменился */
+  "change:prevAria": (payload: TValuePayload<TAriaAttributes>) => void;
+  /** change:nextAria — набор атрибутов кнопки «следующий месяц» изменился */
+  "change:nextAria": (payload: TValuePayload<TAriaAttributes>) => void;
+};
 
 /** Пропсы самого календаря (без коллекционной части). */
 export interface ICalendarComponentProps extends IValueControlProps<TCalendarValue> {
-	/** Первый день, который можно выбрать; раньше — ни фокуса, ни выбора */
-	min?: TCalendarDate
-	/** Последний день, который можно выбрать */
-	max?: TCalendarDate
-	/** Недоступные дни: фокус на них встаёт, выбор — нет */
-	unavailable?: TCalendarUnavailable
-	/** Первый день недели; не задан — по локали */
-	weekStart?: TWeekday
-	/**
-	 * Локаль подписей и первого дня недели (BCP 47). В разметке её нет: язык
-	 * задаёт приложение на всю библиотеку, и пишет его плагин языка
-	 */
-	locale?: string
-	/** Часовой пояс «сегодня» (IANA); не задан — пояс среды */
-	timeZone?: string
-	/**
-	 * Месяц каждой сетки — любая дата месяца, по сетке на элемент. Месяцы
-	 * независимы: рядом могут стоять январь и сентябрь. Не заданы — одна
-	 * сетка на месяце фокуса
-	 */
-	months?: TCalendarDate[]
+  /** Первый день, который можно выбрать; раньше — ни фокуса, ни выбора */
+  min?: TCalendarDate;
+  /** Последний день, который можно выбрать */
+  max?: TCalendarDate;
+  /** Недоступные дни: фокус на них встаёт, выбор — нет */
+  unavailable?: TCalendarUnavailable;
+  /** Первый день недели; не задан — по локали */
+  weekStart?: TWeekday;
+  /**
+   * Локаль подписей и первого дня недели (BCP 47). В разметке её нет: язык
+   * задаёт приложение на всю библиотеку, и пишет его плагин языка
+   */
+  locale?: string;
+  /** Часовой пояс «сегодня» (IANA); не задан — пояс среды */
+  timeZone?: string;
+  /**
+   * Месяц каждой сетки — любая дата месяца, по сетке на элемент. Месяцы
+   * независимы: рядом могут стоять январь и сентябрь. Не заданы — одна
+   * сетка на месяце фокуса
+   */
+  months?: TCalendarDate[];
 }
 
 /** Полный набор пропсов календаря: свои и коллекционные (`mode`). */
-export interface ICalendarProps extends ICalendarComponentProps, ICalendarCollectionProps {}
+export interface ICalendarProps
+  extends ICalendarComponentProps, ICalendarCollectionProps {}
 
-export interface ICalendar extends IValueControl<TCalendarValue, ICalendarProps, TCalendarEvents> {
-	/** Первый день, который можно выбрать */
-	min: TCalendarDate | undefined
-	/** Последний день, который можно выбрать */
-	max: TCalendarDate | undefined
-	/** Недоступные дни */
-	unavailable: TCalendarUnavailable | undefined
-	/** Первый день недели; `undefined` — по локали */
-	weekStart: TWeekday | undefined
-	/** Локаль */
-	locale: string
-	/** Часовой пояс «сегодня» */
-	timeZone: string | undefined
-	/** Месяцы сеток — как заданы или как их показала коллекция */
-	months: TCalendarDate[] | undefined
-	/** Первый день недели: `weekStart`, а без него — по локали */
-	readonly firstDay: TWeekday
-	/** Дни недели — заголовки колонок, от первого дня недели */
-	readonly weekdays: TCalendarWeekday[]
-	/**
-	 * Атрибуты кнопки «предыдущий месяц»: имя от локали пишет плагин имён.
-	 * Своего экземпляра у кнопки нет
-	 */
-	readonly prevAria: TAria
-	/** Атрибуты кнопки «следующий месяц» */
-	readonly nextAria: TAria
+export interface ICalendar extends IValueControl<
+  TCalendarValue,
+  ICalendarProps,
+  TCalendarEvents
+> {
+  /** Первый день, который можно выбрать */
+  min: TCalendarDate | undefined;
+  /** Последний день, который можно выбрать */
+  max: TCalendarDate | undefined;
+  /** Недоступные дни */
+  unavailable: TCalendarUnavailable | undefined;
+  /** Первый день недели; `undefined` — по локали */
+  weekStart: TWeekday | undefined;
+  /** Локаль */
+  locale: string;
+  /** Часовой пояс «сегодня» */
+  timeZone: string | undefined;
+  /** Месяцы сеток — как заданы или как их показала коллекция */
+  months: TCalendarDate[] | undefined;
+  /** Первый день недели: `weekStart`, а без него — по локали */
+  readonly firstDay: TWeekday;
+  /** Дни недели — заголовки колонок, от первого дня недели */
+  readonly weekdays: TCalendarWeekday[];
+  /**
+   * Атрибуты кнопки «предыдущий месяц»: имя от локали пишет плагин имён.
+   * Своего экземпляра у кнопки нет
+   */
+  readonly prevAria: TAria;
+  /** Атрибуты кнопки «следующий месяц» */
+  readonly nextAria: TAria;
 }

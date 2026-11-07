@@ -1,109 +1,110 @@
-import { TActionEvent } from '../../../../../../common/event/action-event'
-import type { IExtension, IExtensionItems } from '../types'
-import type { ISelectionItemExtension } from './item/types'
+import { TActionEvent } from "../../../../../../common/event/action-event";
+import type { IExtension, IExtensionItems } from "../types";
+import type { ISelectionItemExtension } from "./item/types";
+import type { TValuePayload } from "../../../../../../common";
 
 /**
  * Событие перед выбором: подписчик `item:select:before` отменяет его
  * `preventDefault()` — элемент не становится выбранным, выбор остаётся прежним.
  */
 export class TSelectEvent<TItem> extends TActionEvent {
-	constructor(public readonly item: TItem) {
-		super()
-	}
+  constructor(public readonly item: TItem) {
+    super();
+  }
 }
 
-export type TSelectionMode = 'none' | 'single' | 'multiple'
+export type TSelectionMode = "none" | "single" | "multiple";
 
 /**
  * Owner-level props коллекции от selection-расширения (input). Зеркало пропа `mode` в
  * дескрипторах коллекций с выбором (`ListBoxCollectionDescriptor` и соседи, setup).
  */
 export interface ISelectionCollectionProps {
-	/** Режим выделения. */
-	mode?: TSelectionMode
+  /** Режим выделения. */
+  mode?: TSelectionMode;
 }
 
 export type TSelectionEvents<TItem> = {
-	/** Элемент вот-вот станет выбранным; `preventDefault()` отменяет выбор */
-	'item:select:before': (e: TSelectEvent<TItem>) => void
-	/**
-	 * Выбор сменился. `items` — выбранные после смены, по порядку; `changed` —
-	 * элементы, чья отметка сменилась: ставшие выбранными и снятые, в том числе
-	 * удалённые из коллекции. Сменился только порядок выбранных
-	 * (`replaceSelection` перестановкой) — набор пуст.
-	 *
-	 * Набор, а не массив: item-адаптер каждого элемента спрашивает, есть ли в
-	 * нём его элемент, и «выбрать все» в таблице иначе стал бы квадратичным.
-	 */
-	'change:selection': (items: TItem[], changed: ReadonlySet<TItem>) => void
-	'change:mode': (value: TSelectionMode) => void
-}
+  /** Элемент вот-вот станет выбранным; `preventDefault()` отменяет выбор */
+  "item:select:before": (e: TSelectEvent<TItem>) => void;
+  /**
+   * Выбор сменился. `items` — выбранные после смены, по порядку; `changed` —
+   * элементы, чья отметка сменилась: ставшие выбранными и снятые, в том числе
+   * удалённые из коллекции. Сменился только порядок выбранных
+   * (`replaceSelection` перестановкой) — набор пуст.
+   *
+   * Набор, а не массив: item-адаптер каждого элемента спрашивает, есть ли в
+   * нём его элемент, и «выбрать все» в таблице иначе стал бы квадратичным.
+   */
+  "change:selection": (items: TItem[], changed: ReadonlySet<TItem>) => void;
+  "change:mode": (payload: TValuePayload<TSelectionMode>) => void;
+};
 
 /** Контракт расширения выборки. Реализуется TSelectionExtension. */
 export interface ISelectionExtension<TItem extends object = any>
-	extends
-		IExtension<TItem, TSelectionEvents<TItem>>,
-		IExtensionItems<TItem, ISelectionItemExtension<TItem>> {
-	/** Режим выделения: none, single, multiple. */
-	mode: TSelectionMode
+  extends
+    IExtension<TItem, TSelectionEvents<TItem>>,
+    IExtensionItems<TItem, ISelectionItemExtension<TItem>> {
+  /** Режим выделения: none, single, multiple. */
+  mode: TSelectionMode;
 
-	/** Удобный доступ: true если режим multiple. */
-	readonly multiple: boolean
+  /** Удобный доступ: true если режим multiple. */
+  readonly multiple: boolean;
 
-	/** Удобный доступ: true если режим single. */
-	readonly single: boolean
+  /** Удобный доступ: true если режим single. */
+  readonly single: boolean;
 
-	/** Получить массив выбранных элементов. */
-	readonly selected: TItem[]
+  /** Получить массив выбранных элементов. */
+  readonly selected: TItem[];
 
-	/** Количество выбранных элементов. */
-	readonly selectedCount: number
+  /** Количество выбранных элементов. */
+  readonly selectedCount: number;
 
-	/**
-	 * Выбрать элемент. В режиме single снимает выделение с предыдущего. Выбор
-	 * отменяет подписчик `item:select:before`.
-	 *
-	 * @returns выбран ли элемент после вызова
-	 */
-	select(item: TItem): boolean
+  /**
+   * Выбрать элемент. В режиме single снимает выделение с предыдущего. Выбор
+   * отменяет подписчик `item:select:before`.
+   *
+   * @returns выбран ли элемент после вызова
+   */
+  select(item: TItem): boolean;
 
-	/** Снять выделение с элемента. */
-	deselect(item: TItem): void
+  /** Снять выделение с элемента. */
+  deselect(item: TItem): void;
 
-	/**
-	 * Выбрать элементы пачкой — только в режиме `multiple`. Выбор каждого
-	 * отменяет подписчик `item:select:before`, отмена одного остальных не
-	 * отменяет. `change:selection` — одно на пачку, и только если выбор сменился.
-	 */
-	selectMany(items: readonly TItem[]): void
+  /**
+   * Выбрать элементы пачкой — только в режиме `multiple`. Выбор каждого
+   * отменяет подписчик `item:select:before`, отмена одного остальных не
+   * отменяет. `change:selection` — одно на пачку, и только если выбор сменился.
+   */
+  selectMany(items: readonly TItem[]): void;
 
-	/**
-	 * Снять выделение с элементов пачкой. `change:selection` — одно на пачку, и
-	 * только если выбор сменился.
-	 */
-	deselectMany(items: readonly TItem[]): void
+  /**
+   * Снять выделение с элементов пачкой. `change:selection` — одно на пачку, и
+   * только если выбор сменился.
+   */
+  deselectMany(items: readonly TItem[]): void;
 
-	/**
-	 * Заменить выбор: выбранными остаются эти элементы, в этом порядке. В
-	 * `single` — последний принятый. Хук `item:select:before` — только тем, кто
-	 * становится выбранным. `change:selection` — одно, и только если выбор
-	 * сменился по составу или порядку.
-	 */
-	replaceSelection(items: readonly TItem[]): void
+  /**
+   * Заменить выбор: выбранными остаются эти элементы, в этом порядке. В
+   * `single` — последний принятый. Хук `item:select:before` — только тем, кто
+   * становится выбранным. `change:selection` — одно, и только если выбор
+   * сменился по составу или порядку.
+   */
+  replaceSelection(items: readonly TItem[]): void;
 
-	/**
-	 * Переключить выделение элемента.
-	 *
-	 * @returns выбран ли элемент после вызова
-	 */
-	toggle(item: TItem): boolean
+  /**
+   * Переключить выделение элемента.
+   *
+   * @returns выбран ли элемент после вызова
+   */
+  toggle(item: TItem): boolean;
 
-	/** Проверить, выбран ли указанный элемент. */
-	isSelected(item: TItem): boolean
+  /** Проверить, выбран ли указанный элемент. */
+  isSelected(item: TItem): boolean;
 
-	/** Полностью очистить выделение. */
-	resetSelection(): void
+  /** Полностью очистить выделение. */
+  resetSelection(): void;
 
-	/** @inheritdoc IExtensionItems.createItem */
-	createItem(owner: TItem): ISelectionItemExtension<TItem>
+  /** @inheritdoc IExtensionItems.createItem */
+  createItem(owner: TItem): ISelectionItemExtension<TItem>;
 }

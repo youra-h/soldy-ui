@@ -1,9 +1,14 @@
-import { TComponentView } from '../../../base/component-view'
-import type { TDefaultValues } from '../../../base/component'
-import type { TCloseReason, TSwipe, TSwipeSide } from '../../../base/layer'
-import { TAria, TChangeEvent } from '../../../../common'
-import type { TEventSink } from '../../../../common'
-import type { IToastsItem, IToastsItemProps, TToastsItemEvents, TToastsItemType } from './types'
+import { TComponentView } from "../../../base/component-view";
+import type { TDefaultValues } from "../../../base/component";
+import type { TCloseReason, TSwipe, TSwipeSide } from "../../../base/layer";
+import { TAria, TChangeEvent } from "../../../../common";
+import type { TEventSink } from "../../../../common";
+import type {
+  IToastsItem,
+  IToastsItemProps,
+  TToastsItemEvents,
+  TToastsItemType,
+} from "./types";
 
 /**
  * Тост — элемент коллекции Toasts.
@@ -51,297 +56,326 @@ import type { IToastsItem, IToastsItemProps, TToastsItemEvents, TToastsItemType 
  * пропом `toast`, и кнопка внутри может его закрыть.
  */
 export default class TToastsItem<
-	TProps extends IToastsItemProps = IToastsItemProps,
-	TEvents extends TToastsItemEvents = TToastsItemEvents,
+  TProps extends IToastsItemProps = IToastsItemProps,
+  TEvents extends TToastsItemEvents = TToastsItemEvents,
 >
-	extends TComponentView<TProps, TEvents>
-	implements IToastsItem<TProps, TEvents>
+  extends TComponentView<TProps, TEvents>
+  implements IToastsItem<TProps, TEvents>
 {
-	static override baseClass = 'so-toasts-item'
+  static override baseClass = "so-toasts-item";
 
-	static defaultValues: typeof TComponentView.defaultValues &
-		TDefaultValues<
-			IToastsItemProps,
-			'text' | 'description' | 'loading' | 'closable' | 'alert',
-			'type' | 'duration' | 'render'
-		> = {
-		...TComponentView.defaultValues,
-		tag: 'li',
-		text: '',
-		description: '',
-		type: undefined,
-		loading: false,
-		closable: true,
-		duration: undefined,
-		alert: false,
-		render: undefined,
-	}
+  static defaultValues: typeof TComponentView.defaultValues &
+    TDefaultValues<
+      IToastsItemProps,
+      "text" | "description" | "loading" | "closable" | "alert",
+      "type" | "duration" | "render"
+    > = {
+    ...TComponentView.defaultValues,
+    tag: "li",
+    text: "",
+    description: "",
+    type: undefined,
+    loading: false,
+    closable: true,
+    duration: undefined,
+    alert: false,
+    render: undefined,
+  };
 
-	protected _text: string
-	protected _description: string
-	protected _type: TToastsItemType | undefined
-	protected _loading: boolean
-	protected _closable: boolean
-	protected _duration: number | undefined
-	protected _alert: boolean
-	protected _render: unknown
-	protected _open = true
-	protected _swipeSide: TSwipeSide = 'end'
-	protected _swiping = false
-	protected _closeAria: TAria
+  protected _text: string;
+  protected _description: string;
+  protected _type: TToastsItemType | undefined;
+  protected _loading: boolean;
+  protected _closable: boolean;
+  protected _duration: number | undefined;
+  protected _alert: boolean;
+  protected _render: unknown;
+  protected _open = true;
+  protected _swipeSide: TSwipeSide = "end";
+  protected _swiping = false;
+  protected _closeAria: TAria;
 
-	constructor(props: Partial<TProps> = {}) {
-		super(props)
+  constructor(props: Partial<TProps> = {}) {
+    super(props);
 
-		const ctor = new.target as typeof TToastsItem
-		const own = props as Partial<IToastsItemProps>
+    const ctor = new.target as typeof TToastsItem;
+    const own = props as Partial<IToastsItemProps>;
 
-		this._text = own.text ?? ctor.defaultValues.text
-		this._description = own.description ?? ctor.defaultValues.description
-		this._type = own.type ?? ctor.defaultValues.type
-		this._loading = own.loading ?? ctor.defaultValues.loading
-		this._closable = own.closable ?? ctor.defaultValues.closable
-		this._duration = own.duration ?? ctor.defaultValues.duration
-		this._alert = own.alert ?? ctor.defaultValues.alert
-		this._render = own.render ?? ctor.defaultValues.render
+    this._text = own.text ?? ctor.defaultValues.text;
+    this._description = own.description ?? ctor.defaultValues.description;
+    this._type = own.type ?? ctor.defaultValues.type;
+    this._loading = own.loading ?? ctor.defaultValues.loading;
+    this._closable = own.closable ?? ctor.defaultValues.closable;
+    this._duration = own.duration ?? ctor.defaultValues.duration;
+    this._alert = own.alert ?? ctor.defaultValues.alert;
+    this._render = own.render ?? ctor.defaultValues.render;
 
-		this._closeAria = new TAria()
-		this._closeAria.subscribe(() =>
-			this._sink.emit('change:closeAria', this._closeAria.toObject()),
-		)
+    this._closeAria = new TAria();
+    this._closeAria.subscribe(() =>
+      this._sink.emit("change:closeAria", this._closeAria.toObject()),
+    );
 
-		this._classes.swap({ prefix: '--type-', newValue: this._type })
-		this._syncRole()
-		this._aria.add('tabindex', '0')
-		this._dataset.add('open', true)
-		this._dataset.add('swiping', false)
-	}
+    this._classes.swap({ prefix: "--type-", newValue: this._type });
+    this._syncRole();
+    this._aria.add("tabindex", "0");
+    this._dataset.add("open", true);
+    this._dataset.add("swiping", false);
+  }
 
-	/**
-	 * Эмит собственных событий класса — без приведения `this.events` к
-	 * конкретной карте (см. `TEventSink` в `common/event/types.ts`).
-	 */
-	protected override get _sink(): TEventSink<TToastsItemEvents> {
-		return this.events
-	}
+  /**
+   * Эмит собственных событий класса — без приведения `this.events` к
+   * конкретной карте (см. `TEventSink` в `common/event/types.ts`).
+   */
+  protected override get _sink(): TEventSink<TToastsItemEvents> {
+    return this.events;
+  }
 
-	/** Текст тоста — его заголовок. */
-	get text(): string {
-		return this._text
-	}
+  /** Текст тоста — его заголовок. */
+  get text(): string {
+    return this._text;
+  }
 
-	set text(value: string) {
-		if (value === this._text) return
+  set text(value: string) {
+    if (value === this._text) return;
 
-		const e = new TChangeEvent(value, this._text)
+    const e = new TChangeEvent(value, this._text);
 
-		this._sink.emit('change:text:before', e)
+    this._sink.emit("change:text:before", e);
 
-		if (e.defaultPrevented || e.value === this._text) return
+    if (e.defaultPrevented || e.value === this._text) return;
 
-		this._text = e.value
-		this._sink.emit('change:text', { newValue: e.value, oldValue: e.oldValue })
-	}
+    this._text = e.value;
+    this._sink.emit("change:text", { newValue: e.value, oldValue: e.oldValue });
+  }
 
-	/** Описание под текстом. */
-	get description(): string {
-		return this._description
-	}
+  /** Описание под текстом. */
+  get description(): string {
+    return this._description;
+  }
 
-	set description(value: string) {
-		if (value === this._description) return
+  set description(value: string) {
+    if (value === this._description) return;
 
-		this._description = value
-		this._sink.emit('change:description', value)
-	}
+    const oldValue = this.description;
 
-	/** Вид сообщения; `undefined` — обычное сообщение. */
-	get type(): TToastsItemType | undefined {
-		return this._type
-	}
+    this._description = value;
+    this._sink.emit("change:description", {
+      newValue: value,
+      oldValue: oldValue,
+    });
+  }
 
-	/**
-	 * `swap`, а не `swapClass` с шаблонной строкой: вида может не быть, и
-	 * шаблон дал бы `--type-undefined`.
-	 */
-	set type(value: TToastsItemType | undefined) {
-		if (value === this._type) return
+  /** Вид сообщения; `undefined` — обычное сообщение. */
+  get type(): TToastsItemType | undefined {
+    return this._type;
+  }
 
-		this._classes.swap({ prefix: '--type-', oldValue: this._type, newValue: value })
-		this._type = value
-		this._sink.emit('change:type', value)
-	}
+  /**
+   * `swap`, а не `swapClass` с шаблонной строкой: вида может не быть, и
+   * шаблон дал бы `--type-undefined`.
+   */
+  set type(value: TToastsItemType | undefined) {
+    if (value === this._type) return;
 
-	/** Тост ждёт: на месте значка кольцо, и сам тост не закрывается. */
-	get loading(): boolean {
-		return this._loading
-	}
+    this._classes.swap({
+      prefix: "--type-",
+      oldValue: this._type,
+      newValue: value,
+    });
+    const oldValue1 = this._type;
 
-	set loading(value: boolean) {
-		if (value === this._loading) return
+    this._type = value;
+    this._sink.emit("change:type", { newValue: value, oldValue: oldValue1 });
+  }
 
-		this._loading = value
-		this._sink.emit('change:loading', value)
-	}
+  /** Тост ждёт: на месте значка кольцо, и сам тост не закрывается. */
+  get loading(): boolean {
+    return this._loading;
+  }
 
-	/** Есть ли у тоста кнопка закрытия. */
-	get closable(): boolean {
-		return this._closable
-	}
+  set loading(value: boolean) {
+    if (value === this._loading) return;
 
-	set closable(value: boolean) {
-		if (value === this._closable) return
+    const oldValue = this.loading;
 
-		const e = new TChangeEvent(value, this._closable)
+    this._loading = value;
+    this._sink.emit("change:loading", { newValue: value, oldValue: oldValue });
+  }
 
-		this._sink.emit('change:closable:before', e)
+  /** Есть ли у тоста кнопка закрытия. */
+  get closable(): boolean {
+    return this._closable;
+  }
 
-		if (e.defaultPrevented || e.value === this._closable) return
+  set closable(value: boolean) {
+    if (value === this._closable) return;
 
-		this._closable = e.value
-		this._sink.emit('change:closable', e.value)
-	}
+    const e = new TChangeEvent(value, this._closable);
 
-	/**
-	 * Своя длительность, мс. `undefined` — как у владельца, `0` — тост
-	 * держится, пока его не закроют. Итог — у коллекции (`durationOf`): своя
-	 * или владельца, а пока тост ждёт — `0`.
-	 */
-	get duration(): number | undefined {
-		return this._duration
-	}
+    this._sink.emit("change:closable:before", e);
 
-	set duration(value: number | undefined) {
-		if (value === this._duration) return
+    if (e.defaultPrevented || e.value === this._closable) return;
 
-		this._duration = value
-		this._sink.emit('change:duration', value)
-	}
+    const oldValue = this.closable;
 
-	/** Срочное сообщение: `role="alert"` вместо `role="status"`. */
-	get alert(): boolean {
-		return this._alert
-	}
+    this._closable = e.value;
+    this._sink.emit("change:closable", {
+      newValue: e.value,
+      oldValue: oldValue,
+    });
+  }
 
-	set alert(value: boolean) {
-		if (value === this._alert) return
+  /**
+   * Своя длительность, мс. `undefined` — как у владельца, `0` — тост
+   * держится, пока его не закроют. Итог — у коллекции (`durationOf`): своя
+   * или владельца, а пока тост ждёт — `0`.
+   */
+  get duration(): number | undefined {
+    return this._duration;
+  }
 
-		this._alert = value
-		this._syncRole()
-		this._sink.emit('change:alert', value)
-	}
+  set duration(value: number | undefined) {
+    if (value === this._duration) return;
 
-	/** Своё содержимое: рисует адаптер, ядро значение не читает. */
-	get render(): unknown {
-		return this._render
-	}
+    const oldValue = this.duration;
 
-	set render(value: unknown) {
-		if (value === this._render) return
+    this._duration = value;
+    this._sink.emit("change:duration", { newValue: value, oldValue: oldValue });
+  }
 
-		this._render = value
-		this._sink.emit('change:render', value)
-	}
+  /** Срочное сообщение: `role="alert"` вместо `role="status"`. */
+  get alert(): boolean {
+    return this._alert;
+  }
 
-	/** Открыт ли тост. Закрытие окончательное: закрывает `close()`. */
-	get open(): boolean {
-		return this._open
-	}
+  set alert(value: boolean) {
+    if (value === this._alert) return;
 
-	/**
-	 * Закрыть тост. Закрытый гаснет переходом темы (`data-open="false"`),
-	 * перестаёт быть остановкой фокуса и уходит из коллекции, когда доиграл
-	 * переходы, — убирает его плагин удаления владельца. Повторный вызов
-	 * ничего не делает.
-	 */
-	close(): void {
-		if (!this._open) return
+    const oldValue = this.alert;
 
-		this._open = false
-		this._setSwiping(false)
-		this._dataset.add('open', false)
-		this._aria.add('tabindex', '-1')
-		this._sink.emit('change:open', false)
-	}
+    this._alert = value;
+    this._syncRole();
+    this._sink.emit("change:alert", { newValue: value, oldValue: oldValue });
+  }
 
-	/**
-	 * Пользователь закрывает тост — крестиком, жестом, Escape. Тост соглашается
-	 * всегда: отменяемого закрытия у него нет.
-	 */
-	requestClose(_reason: TCloseReason): void {
-		this.close()
-	}
+  /** Своё содержимое: рисует адаптер, ядро значение не читает. */
+  get render(): unknown {
+    return this._render;
+  }
 
-	/** За что тост смахивают — за всю плашку, кроме контролов. */
-	get swipe(): TSwipe {
-		return 'panel'
-	}
+  set render(value: unknown) {
+    if (value === this._render) return;
 
-	/** Куда тост уходит жестом. Пишет коллекция по месту региона. */
-	get swipeSide(): TSwipeSide {
-		return this._swipeSide
-	}
+    const oldValue = this._render;
 
-	set swipeSide(value: TSwipeSide) {
-		if (value === this._swipeSide) return
+    this._render = value;
+    this._sink.emit("change:render", { newValue: value, oldValue: oldValue });
+  }
 
-		this._swipeSide = value
-		this._sink.emit('change:swipeSide', value)
-	}
+  /** Открыт ли тост. Закрытие окончательное: закрывает `close()`. */
+  get open(): boolean {
+    return this._open;
+  }
 
-	/** Идёт жест: с `beginSwipe` до `endSwipe` или до закрытия. */
-	get swiping(): boolean {
-		return this._swiping
-	}
+  /**
+   * Закрыть тост. Закрытый гаснет переходом темы (`data-open="false"`),
+   * перестаёт быть остановкой фокуса и уходит из коллекции, когда доиграл
+   * переходы, — убирает его плагин удаления владельца. Повторный вызов
+   * ничего не делает.
+   */
+  close(): void {
+    if (!this._open) return;
 
-	/** Жест начался: тост тянут. Закрытый тост не тянут — жест не начинается. */
-	beginSwipe(): boolean {
-		if (!this._open) return false
+    this._open = false;
+    this._setSwiping(false);
+    this._dataset.add("open", false);
+    this._aria.add("tabindex", "-1");
+    this._sink.emit("change:open", false);
+  }
 
-		this._setSwiping(true)
+  /**
+   * Пользователь закрывает тост — крестиком, жестом, Escape. Тост соглашается
+   * всегда: отменяемого закрытия у него нет.
+   */
+  requestClose(_reason: TCloseReason): void {
+    this.close();
+  }
 
-		return true
-	}
+  /** За что тост смахивают — за всю плашку, кроме контролов. */
+  get swipe(): TSwipe {
+    return "panel";
+  }
 
-	/** Жест кончился. Закрывать или нет, решил плагин жеста. */
-	endSwipe(): void {
-		this._setSwiping(false)
-	}
+  /** Куда тост уходит жестом. Пишет коллекция по месту региона. */
+  get swipeSide(): TSwipeSide {
+    return this._swipeSide;
+  }
 
-	/**
-	 * Атрибуты кнопки закрытия — отдельный набор, а не часть `aria`: `aria`
-	 * описывает тост, а это кнопка в нём. Имя с текстом тоста («Закрыть
-	 * Сохранено») пишет плагин имён, за границу core → ui уходит снимок
-	 * (`valueOf()`), об изменении набор сообщает `change:closeAria`.
-	 */
-	get closeAria(): TAria {
-		return this._closeAria
-	}
+  set swipeSide(value: TSwipeSide) {
+    if (value === this._swipeSide) return;
 
-	/** Роль живой области: срочное — `alert`, остальное — `status`. */
-	protected _syncRole(): void {
-		this._aria.add('role', this._alert ? 'alert' : 'status')
-	}
+    const oldValue = this._swipeSide;
 
-	protected _setSwiping(value: boolean): void {
-		if (this._swiping === value) return
+    this._swipeSide = value;
+    this._sink.emit("change:swipeSide", {
+      newValue: value,
+      oldValue: oldValue,
+    });
+  }
 
-		this._swiping = value
-		this._dataset.add('swiping', value)
-		this._sink.emit('change:swiping', value)
-	}
+  /** Идёт жест: с `beginSwipe` до `endSwipe` или до закрытия. */
+  get swiping(): boolean {
+    return this._swiping;
+  }
 
-	override getProps(): TProps {
-		return {
-			...super.getProps(),
-			text: this._text,
-			description: this._description,
-			type: this._type,
-			loading: this._loading,
-			closable: this._closable,
-			duration: this._duration,
-			alert: this._alert,
-			render: this._render,
-		} as TProps
-	}
+  /** Жест начался: тост тянут. Закрытый тост не тянут — жест не начинается. */
+  beginSwipe(): boolean {
+    if (!this._open) return false;
+
+    this._setSwiping(true);
+
+    return true;
+  }
+
+  /** Жест кончился. Закрывать или нет, решил плагин жеста. */
+  endSwipe(): void {
+    this._setSwiping(false);
+  }
+
+  /**
+   * Атрибуты кнопки закрытия — отдельный набор, а не часть `aria`: `aria`
+   * описывает тост, а это кнопка в нём. Имя с текстом тоста («Закрыть
+   * Сохранено») пишет плагин имён, за границу core → ui уходит снимок
+   * (`valueOf()`), об изменении набор сообщает `change:closeAria`.
+   */
+  get closeAria(): TAria {
+    return this._closeAria;
+  }
+
+  /** Роль живой области: срочное — `alert`, остальное — `status`. */
+  protected _syncRole(): void {
+    this._aria.add("role", this._alert ? "alert" : "status");
+  }
+
+  protected _setSwiping(value: boolean): void {
+    if (this._swiping === value) return;
+
+    this._swiping = value;
+    this._dataset.add("swiping", value);
+    this._sink.emit("change:swiping", value);
+  }
+
+  override getProps(): TProps {
+    return {
+      ...super.getProps(),
+      text: this._text,
+      description: this._description,
+      type: this._type,
+      loading: this._loading,
+      closable: this._closable,
+      duration: this._duration,
+      alert: this._alert,
+      render: this._render,
+    } as TProps;
+  }
 }

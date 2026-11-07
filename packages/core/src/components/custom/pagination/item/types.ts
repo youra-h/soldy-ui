@@ -1,14 +1,15 @@
+import type { TValuePayload } from "../../../../common";
 import type {
-	IValueControl,
-	IValueControlProps,
-	TValueControlEvents,
-} from '../../../base/value-control'
-import type { TPaginationValue } from '../types'
+  IValueControl,
+  IValueControlProps,
+  TValueControlEvents,
+} from "../../../base/value-control";
+import type { TPaginationValue } from "../types";
 
 export type TPaginationItemEvents = TValueControlEvents<TPaginationValue> & {
-	/** change:text */
-	'change:text': (value: string) => void
-}
+  /** change:text */
+  "change:text": (payload: TValuePayload<string>) => void;
+};
 
 /**
  * Пропсы страницы. Коллекционных (`active`) среди них нет, как у дня
@@ -16,15 +17,15 @@ export type TPaginationItemEvents = TValueControlEvents<TPaginationValue> & {
  * пагинации.
  */
 export interface IPaginationItemProps extends IValueControlProps<TPaginationValue> {
-	/** Текст страницы: номер в цифрах локали или текст страницы из `pages` */
-	text?: string
+  /** Текст страницы: номер в цифрах локали или текст страницы из `pages` */
+  text?: string;
 }
 
 export interface IPaginationItem extends IValueControl<
-	TPaginationValue,
-	IPaginationItemProps,
-	TPaginationItemEvents
+  TPaginationValue,
+  IPaginationItemProps,
+  TPaginationItemEvents
 > {
-	/** Текст страницы */
-	text: string
+  /** Текст страницы */
+  text: string;
 }

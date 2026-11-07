@@ -1,6 +1,12 @@
-import { TLayer } from '../../base/layer'
-import type { TDefaultValues } from '../../base/component'
-import type { IToasts, IToastsProps, TToastsEvents, TToastsLayout, TToastsPlacement } from './types'
+import { TLayer } from "../../base/layer";
+import type { TDefaultValues } from "../../base/component";
+import type {
+  IToasts,
+  IToastsProps,
+  TToastsEvents,
+  TToastsLayout,
+  TToastsPlacement,
+} from "./types";
 
 /**
  * Toasts — менеджер всплывающих уведомлений и их регион.
@@ -37,117 +43,134 @@ import type { IToasts, IToastsProps, TToastsEvents, TToastsLayout, TToastsPlacem
  * пока его не закроют. Отсчёт ведёт плагин таймера, а не ядро: время — дело
  * узла и вкладки браузера.
  */
-export default class TToasts extends TLayer<IToastsProps, TToastsEvents> implements IToasts {
-	static override baseClass = 'so-toasts'
+export default class TToasts
+  extends TLayer<IToastsProps, TToastsEvents>
+  implements IToasts
+{
+  static override baseClass = "so-toasts";
 
-	static defaultValues: typeof TLayer.defaultValues &
-		TDefaultValues<IToastsProps, 'placement' | 'layout' | 'max' | 'duration'> = {
-		...TLayer.defaultValues,
-		// Регион виден всегда: открыт или закрыт — у самого тоста
-		visible: true,
-		tag: 'section',
-		placement: 'bottom-end',
-		layout: 'list',
-		max: 3,
-		duration: 5000,
-	}
+  static defaultValues: typeof TLayer.defaultValues &
+    TDefaultValues<IToastsProps, "placement" | "layout" | "max" | "duration"> =
+    {
+      ...TLayer.defaultValues,
+      // Регион виден всегда: открыт или закрыт — у самого тоста
+      visible: true,
+      tag: "section",
+      placement: "bottom-end",
+      layout: "list",
+      max: 3,
+      duration: 5000,
+    };
 
-	protected _placement!: TToastsPlacement
-	protected _layout!: TToastsLayout
-	protected _max: number
-	protected _duration: number
+  protected _placement!: TToastsPlacement;
+  protected _layout!: TToastsLayout;
+  protected _max: number;
+  protected _duration: number;
 
-	constructor(props: Partial<IToastsProps> = {}) {
-		super(props)
+  constructor(props: Partial<IToastsProps> = {}) {
+    super(props);
 
-		const ctor = new.target as typeof TToasts
+    const ctor = new.target as typeof TToasts;
 
-		this._max = props.max ?? ctor.defaultValues.max
-		this._duration = props.duration ?? ctor.defaultValues.duration
+    this._max = props.max ?? ctor.defaultValues.max;
+    this._duration = props.duration ?? ctor.defaultValues.duration;
 
-		this._applyPlacement(props.placement ?? ctor.defaultValues.placement)
-		this._applyLayout(props.layout ?? ctor.defaultValues.layout)
+    this._applyPlacement(props.placement ?? ctor.defaultValues.placement);
+    this._applyLayout(props.layout ?? ctor.defaultValues.layout);
 
-		// Живая область — в документе до первого тоста
-		this._aria.add('role', 'region')
-		this._aria.add('aria-live', 'polite')
-	}
+    // Живая область — в документе до первого тоста
+    this._aria.add("role", "region");
+    this._aria.add("aria-live", "polite");
+  }
 
-	/** Где регион тостов. */
-	get placement(): TToastsPlacement {
-		return this._placement
-	}
+  /** Где регион тостов. */
+  get placement(): TToastsPlacement {
+    return this._placement;
+  }
 
-	set placement(value: TToastsPlacement) {
-		if (this._placement === value) return
+  set placement(value: TToastsPlacement) {
+    if (this._placement === value) return;
 
-		this._applyPlacement(value, this._placement)
-		this.events.emit('change:placement', value)
-	}
+    this._applyPlacement(value, this._placement);
+    this.events.emit("change:placement", value);
+  }
 
-	/** Как тосты стоят в регионе: столбцом (`list`) или стопкой (`cascade`). */
-	get layout(): TToastsLayout {
-		return this._layout
-	}
+  /** Как тосты стоят в регионе: столбцом (`list`) или стопкой (`cascade`). */
+  get layout(): TToastsLayout {
+    return this._layout;
+  }
 
-	set layout(value: TToastsLayout) {
-		if (this._layout === value) return
+  set layout(value: TToastsLayout) {
+    if (this._layout === value) return;
 
-		this._applyLayout(value, this._layout)
-		this.events.emit('change:layout', value)
-	}
+    this._applyLayout(value, this._layout);
+    this.events.emit("change:layout", value);
+  }
 
-	/** Сколько тостов видно разом; остальные ждут, пока место освободится. */
-	get max(): number {
-		return this._max
-	}
+  /** Сколько тостов видно разом; остальные ждут, пока место освободится. */
+  get max(): number {
+    return this._max;
+  }
 
-	set max(value: number) {
-		if (this._max === value) return
+  set max(value: number) {
+    if (this._max === value) return;
 
-		this._max = value
-		this.events.emit('change:max', value)
-	}
+    const oldValue = this.max;
 
-	/** Длительность тоста без своей, мс; `0` — держится, пока не закроют. */
-	get duration(): number {
-		return this._duration
-	}
+    this._max = value;
+    this.events.emit("change:max", { newValue: value, oldValue: oldValue });
+  }
 
-	set duration(value: number) {
-		if (this._duration === value) return
+  /** Длительность тоста без своей, мс; `0` — держится, пока не закроют. */
+  get duration(): number {
+    return this._duration;
+  }
 
-		this._duration = value
-		this.events.emit('change:duration', value)
-	}
+  set duration(value: number) {
+    if (this._duration === value) return;
 
-	protected _applyPlacement(newValue: TToastsPlacement, oldValue?: TToastsPlacement): void {
-		this._classes.swap({
-			prefix: '--placement-',
-			oldValue,
-			newValue,
-		})
+    const oldValue = this.duration;
 
-		this._placement = newValue
-	}
+    this._duration = value;
+    this.events.emit("change:duration", {
+      newValue: value,
+      oldValue: oldValue,
+    });
+  }
 
-	protected _applyLayout(newValue: TToastsLayout, oldValue?: TToastsLayout): void {
-		this._classes.swap({
-			prefix: '--layout-',
-			oldValue,
-			newValue,
-		})
+  protected _applyPlacement(
+    newValue: TToastsPlacement,
+    oldValue?: TToastsPlacement,
+  ): void {
+    this._classes.swap({
+      prefix: "--placement-",
+      oldValue,
+      newValue,
+    });
 
-		this._layout = newValue
-	}
+    this._placement = newValue;
+  }
 
-	override getProps(): IToastsProps {
-		return {
-			...super.getProps(),
-			placement: this._placement,
-			layout: this._layout,
-			max: this._max,
-			duration: this._duration,
-		}
-	}
+  protected _applyLayout(
+    newValue: TToastsLayout,
+    oldValue?: TToastsLayout,
+  ): void {
+    this._classes.swap({
+      prefix: "--layout-",
+      oldValue,
+      newValue,
+    });
+
+    this._layout = newValue;
+  }
+
+  override getProps(): IToastsProps {
+    return {
+      ...super.getProps(),
+      placement: this._placement,
+      layout: this._layout,
+      max: this._max,
+      duration: this._duration,
+    };
+  }
 }

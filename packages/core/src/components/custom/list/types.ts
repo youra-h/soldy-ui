@@ -1,4 +1,5 @@
-import type { TScrollBehavior } from '../../../common'
+import type { TValuePayload } from "../../../common";
+import type { TScrollBehavior } from "../../../common";
 
 /**
  * Общий контракт списочных компонентов — **только контракт**.
@@ -39,7 +40,7 @@ import type { TScrollBehavior } from '../../../common'
  * `clip` намеренно не используется как имя: в CSS `text-overflow: clip` — это
  * обрезка **без** многоточия, то есть противоположное тому, что делает тема.
  */
-export type TListContentFit = 'truncate' | 'wrap' | 'expand'
+export type TListContentFit = "truncate" | "wrap" | "expand";
 
 /**
  * То же для отдельного элемента — без `expand`.
@@ -48,7 +49,7 @@ export type TListContentFit = 'truncate' | 'wrap' | 'expand'
  * самый широкий элемент. «Раздвинься ради меня» — решение контейнера, и
  * отдельный элемент его принять не может.
  */
-export type TListItemContentFit = Exclude<TListContentFit, 'expand'>
+export type TListItemContentFit = Exclude<TListContentFit, "expand">;
 
 /**
  * Где стоит отметка выбранного элемента — и стоит ли вообще.
@@ -60,41 +61,41 @@ export type TListItemContentFit = Exclude<TListContentFit, 'expand'>
  * `none` вместо пары «булев + сторона»: два свойства дали бы состояние
  * «индикатора нет, но сторона задана», которого не бывает.
  */
-export type TListIndicator = 'none' | 'start' | 'end'
+export type TListIndicator = "none" | "start" | "end";
 
 /** События списочных свойств. */
 export type TListEvents = {
-	/** change:maxRows */
-	'change:maxRows': (value: number) => void
-	/** change:contentFit */
-	'change:contentFit': (value: TListContentFit) => void
-	/** change:scrollBehavior */
-	'change:scrollBehavior': (value: TScrollBehavior) => void
-	/** change:indicator */
-	'change:indicator': (value: TListIndicator) => void
-	/** change:groupSeparators */
-	'change:groupSeparators': (value: boolean) => void
-}
+  /** change:maxRows */
+  "change:maxRows": (payload: TValuePayload<number>) => void;
+  /** change:contentFit */
+  "change:contentFit": (payload: TValuePayload<TListContentFit>) => void;
+  /** change:scrollBehavior */
+  "change:scrollBehavior": (payload: TValuePayload<TScrollBehavior>) => void;
+  /** change:indicator */
+  "change:indicator": (payload: TValuePayload<TListIndicator>) => void;
+  /** change:groupSeparators */
+  "change:groupSeparators": (payload: TValuePayload<boolean>) => void;
+};
 
 /** Props списочных свойств. */
 export interface IListProps {
-	/** Сколько строк показывать до появления прокрутки. `0` — все */
-	maxRows?: number
-	/** Что делать с не помещающимся текстом */
-	contentFit?: TListContentFit
-	/**
-	 * Как прокручивать к элементу при навигации: `none` — не прокручивать,
-	 * `instant` — сразу, `smooth` — плавно, если режим движения библиотеки
-	 * движение не убрал, иначе сразу
-	 */
-	scrollBehavior?: TScrollBehavior
-	/** Где показывать отметку выбранного элемента */
-	indicator?: TListIndicator
-	/**
-	 * Рисовать ли разделитель между соседними секциями группировки — группами
-	 * из данных и элементами без группы. По умолчанию — нет
-	 */
-	groupSeparators?: boolean
+  /** Сколько строк показывать до появления прокрутки. `0` — все */
+  maxRows?: number;
+  /** Что делать с не помещающимся текстом */
+  contentFit?: TListContentFit;
+  /**
+   * Как прокручивать к элементу при навигации: `none` — не прокручивать,
+   * `instant` — сразу, `smooth` — плавно, если режим движения библиотеки
+   * движение не убрал, иначе сразу
+   */
+  scrollBehavior?: TScrollBehavior;
+  /** Где показывать отметку выбранного элемента */
+  indicator?: TListIndicator;
+  /**
+   * Рисовать ли разделитель между соседними секциями группировки — группами
+   * из данных и элементами без группы. По умолчанию — нет
+   */
+  groupSeparators?: boolean;
 }
 
 /**
@@ -104,33 +105,33 @@ export interface IListProps {
  * `maxRows`, плагину нужен контракт, а не конкретный класс.
  */
 export interface IList {
-	/** Сколько строк показывать до появления прокрутки. `0` — все */
-	maxRows: number
-	/** Что делать с не помещающимся текстом */
-	contentFit: TListContentFit
-	/**
-	 * Как прокручивать к элементу при навигации: `none` — не прокручивать,
-	 * `instant` — сразу, `smooth` — плавно, если режим движения библиотеки
-	 * движение не убрал, иначе сразу
-	 */
-	scrollBehavior: TScrollBehavior
-	/** Где показывать отметку выбранного элемента */
-	indicator: TListIndicator
-	/**
-	 * Рисовать ли разделитель между соседними секциями группировки. Рисует его
-	 * разметка списка: разделитель — не данные коллекции, а её рисунок
-	 */
-	groupSeparators: boolean
+  /** Сколько строк показывать до появления прокрутки. `0` — все */
+  maxRows: number;
+  /** Что делать с не помещающимся текстом */
+  contentFit: TListContentFit;
+  /**
+   * Как прокручивать к элементу при навигации: `none` — не прокручивать,
+   * `instant` — сразу, `smooth` — плавно, если режим движения библиотеки
+   * движение не убрал, иначе сразу
+   */
+  scrollBehavior: TScrollBehavior;
+  /** Где показывать отметку выбранного элемента */
+  indicator: TListIndicator;
+  /**
+   * Рисовать ли разделитель между соседними секциями группировки. Рисует его
+   * разметка списка: разделитель — не данные коллекции, а её рисунок
+   */
+  groupSeparators: boolean;
 }
 
 /** Значения по умолчанию — одни на обе реализации, чтобы копии не разошлись. */
 export const LIST_DEFAULTS: Required<IListProps> = {
-	maxRows: 0,
-	contentFit: 'truncate',
-	scrollBehavior: 'smooth',
-	indicator: 'none',
-	groupSeparators: false,
-}
+  maxRows: 0,
+  contentFit: "truncate",
+  scrollBehavior: "smooth",
+  indicator: "none",
+  groupSeparators: false,
+};
 
 /**
  * Имя `data-*`, которым `contentFit` уезжает в тему.
@@ -140,7 +141,7 @@ export const LIST_DEFAULTS: Required<IListProps> = {
  * «значение элемента поверх значения списка» делает расширение коллекции —
  * то есть один раз, а не в каждом из шести адаптеров.
  */
-export const LIST_CONTENT_FIT_ATTRIBUTE = 'content-fit'
+export const LIST_CONTENT_FIT_ATTRIBUTE = "content-fit";
 
 /**
  * Имя `data-*`, которым `indicator` уезжает в тему.
@@ -149,4 +150,4 @@ export const LIST_CONTENT_FIT_ATTRIBUTE = 'content-fit'
  * отметку, элементу — выравнивает её. Значение у элемента всегда списочное:
  * своей стороны у элемента нет, иначе отметки в одном списке разъехались бы.
  */
-export const LIST_INDICATOR_ATTRIBUTE = 'indicator'
+export const LIST_INDICATOR_ATTRIBUTE = "indicator";

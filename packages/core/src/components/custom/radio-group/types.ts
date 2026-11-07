@@ -1,12 +1,13 @@
 import type {
-	IValueControl,
-	IValueControlProps,
-	TValueControlEvents,
-} from '../../base/value-control'
-import type { TCollectionStorageDriverEvents } from '../../base/collection'
-import type { TThemeRegistry } from '../../../common'
-import type { IRadioGroupCollectionProps } from './collection/types'
-import type { IRadioGroupItem, IRadioGroupItemProps } from './item/types'
+  IValueControl,
+  IValueControlProps,
+  TValueControlEvents,
+} from "../../base/value-control";
+import type { TCollectionStorageDriverEvents } from "../../base/collection";
+import type { TThemeRegistry } from "../../../common";
+import type { IRadioGroupCollectionProps } from "./collection/types";
+import type { IRadioGroupItem, IRadioGroupItemProps } from "./item/types";
+import type { TValuePayload } from "../../../common";
 
 /**
  * Реестр видов радио. Значения объявляет тема (см. `TThemeRegistry`).
@@ -17,7 +18,7 @@ import type { IRadioGroupItem, IRadioGroupItemProps } from './item/types'
  */
 export interface IRadioGroupViews extends TThemeRegistry {}
 
-export type TRadioGroupView = Extract<keyof IRadioGroupViews, string>
+export type TRadioGroupView = Extract<keyof IRadioGroupViews, string>;
 
 /**
  * Значение группы — `value` отмеченного радио; `undefined` и `''` — не
@@ -26,34 +27,36 @@ export type TRadioGroupView = Extract<keyof IRadioGroupViews, string>
  * Не отдельное состояние, а проекция активного элемента коллекции: связь в
  * обе стороны держит `TRadioGroupExtension`.
  */
-export type TRadioGroupValue = string | number | undefined
+export type TRadioGroupValue = string | number | undefined;
 
 export type TRadioGroupEvents = TValueControlEvents<TRadioGroupValue> &
-	TCollectionStorageDriverEvents<IRadioGroupItem> & {
-		/** change:view */
-		'change:view': (value: TRadioGroupView | undefined) => void
-	}
+  TCollectionStorageDriverEvents<IRadioGroupItem> & {
+    /** change:view */
+    "change:view": (
+      payload: TValuePayload<TRadioGroupView | undefined>,
+    ) => void;
+  };
 
 /** Пропсы самого компонента (без коллекционной части). */
 export interface IRadioGroupComponentProps extends IValueControlProps<TRadioGroupValue> {
-	/**
-	 * Вид радио группы. Не задан — модификатора нет, и радио выглядят видом
-	 * темы по умолчанию. Каждому радио его раздаёт группа.
-	 */
-	view?: TRadioGroupView
+  /**
+   * Вид радио группы. Не задан — модификатора нет, и радио выглядят видом
+   * темы по умолчанию. Каждому радио его раздаёт группа.
+   */
+  view?: TRadioGroupView;
 }
 
 /** Полный набор пропсов RadioGroup: компонент + коллекция (engine, items, trackBy). */
 export interface IRadioGroupProps
-	extends
-		IRadioGroupComponentProps,
-		IRadioGroupCollectionProps<IRadioGroupItemProps, IRadioGroupItem> {}
+  extends
+    IRadioGroupComponentProps,
+    IRadioGroupCollectionProps<IRadioGroupItemProps, IRadioGroupItem> {}
 
 export interface IRadioGroup extends IValueControl<
-	TRadioGroupValue,
-	IRadioGroupProps,
-	TRadioGroupEvents
+  TRadioGroupValue,
+  IRadioGroupProps,
+  TRadioGroupEvents
 > {
-	/** Вид радио группы */
-	view: TRadioGroupView | undefined
+  /** Вид радио группы */
+  view: TRadioGroupView | undefined;
 }

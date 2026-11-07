@@ -1,10 +1,15 @@
-import { TInputControl } from '../../base/input-control'
-import type { TDefaultValues } from '../../base/component'
-import { TAria } from '../../../common'
-import type { ITextarea, ITextareaProps, TTextareaEvents, TTextareaLimit } from './types'
+import { TInputControl } from "../../base/input-control";
+import type { TDefaultValues } from "../../base/component";
+import { TAria } from "../../../common";
+import type {
+  ITextarea,
+  ITextareaProps,
+  TTextareaEvents,
+  TTextareaLimit,
+} from "./types";
 
 /** Перевод строки в любой записи: CR LF и одиночный CR браузер считает одним LF. */
-const LINE_BREAK = /\r\n?/g
+const LINE_BREAK = /\r\n?/g;
 
 /**
  * Многострочное поле — нативная `<textarea>` внутри корня, семья Input:
@@ -28,199 +33,223 @@ const LINE_BREAK = /\r\n?/g
  * Границы слоёв: **значение — здесь, операция — в плагине.**
  */
 export default class TTextarea
-	extends TInputControl<string, ITextareaProps, TTextareaEvents>
-	implements ITextarea
+  extends TInputControl<string, ITextareaProps, TTextareaEvents>
+  implements ITextarea
 {
-	static override baseClass = 'so-textarea'
+  static override baseClass = "so-textarea";
 
-	static defaultValues: typeof TInputControl.defaultValues &
-		TDefaultValues<
-			ITextareaProps,
-			'placeholder' | 'rows' | 'maxRows' | 'autoresize' | 'counter',
-			'maxlength'
-		> = {
-		...TInputControl.defaultValues,
-		// Текст поля — всегда строка: пустое поле — пустая строка, и набранное
-		// считается без проверки на «значения нет»
-		value: '',
-		placeholder: '',
-		// Как у браузера: `<textarea>` без `rows` — две строки
-		rows: 2,
-		maxRows: 0,
-		maxlength: undefined,
-		autoresize: false,
-		counter: false,
-	}
+  static defaultValues: typeof TInputControl.defaultValues &
+    TDefaultValues<
+      ITextareaProps,
+      "placeholder" | "rows" | "maxRows" | "autoresize" | "counter",
+      "maxlength"
+    > = {
+    ...TInputControl.defaultValues,
+    // Текст поля — всегда строка: пустое поле — пустая строка, и набранное
+    // считается без проверки на «значения нет»
+    value: "",
+    placeholder: "",
+    // Как у браузера: `<textarea>` без `rows` — две строки
+    rows: 2,
+    maxRows: 0,
+    maxlength: undefined,
+    autoresize: false,
+    counter: false,
+  };
 
-	protected _placeholder: string
-	protected _rows: number
-	protected _maxRows: number
-	protected _maxlength: number | undefined
-	protected _autoresize: boolean
-	protected _counter: boolean
-	protected readonly _counterAria: TAria
+  protected _placeholder: string;
+  protected _rows: number;
+  protected _maxRows: number;
+  protected _maxlength: number | undefined;
+  protected _autoresize: boolean;
+  protected _counter: boolean;
+  protected readonly _counterAria: TAria;
 
-	constructor(props: Partial<ITextareaProps> = {}) {
-		super(props)
+  constructor(props: Partial<ITextareaProps> = {}) {
+    super(props);
 
-		const ctor = new.target as typeof TTextarea
+    const ctor = new.target as typeof TTextarea;
 
-		this._placeholder = props.placeholder ?? ctor.defaultValues.placeholder
-		this._rows = props.rows ?? ctor.defaultValues.rows
-		this._maxRows = props.maxRows ?? ctor.defaultValues.maxRows
-		this._maxlength = props.maxlength ?? ctor.defaultValues.maxlength
-		this._autoresize = props.autoresize ?? ctor.defaultValues.autoresize
-		this._counter = props.counter ?? ctor.defaultValues.counter
+    this._placeholder = props.placeholder ?? ctor.defaultValues.placeholder;
+    this._rows = props.rows ?? ctor.defaultValues.rows;
+    this._maxRows = props.maxRows ?? ctor.defaultValues.maxRows;
+    this._maxlength = props.maxlength ?? ctor.defaultValues.maxlength;
+    this._autoresize = props.autoresize ?? ctor.defaultValues.autoresize;
+    this._counter = props.counter ?? ctor.defaultValues.counter;
 
-		this._counterAria = new TAria()
-		this._counterAria.subscribe(() =>
-			this.events.emit('change:counterAria', this._counterAria.toObject()),
-		)
+    this._counterAria = new TAria();
+    this._counterAria.subscribe(() =>
+      this.events.emit("change:counterAria", this._counterAria.toObject()),
+    );
 
-		this.events.on('change:value', () => this._syncLimit())
-		this.events.on('change:maxlength', () => this._syncLimit())
+    this.events.on("change:value", () => this._syncLimit());
+    this.events.on("change:maxlength", () => this._syncLimit());
 
-		this._syncLimit()
-	}
+    this._syncLimit();
+  }
 
-	get placeholder(): string {
-		return this._placeholder
-	}
+  get placeholder(): string {
+    return this._placeholder;
+  }
 
-	set placeholder(value: string) {
-		if (this._placeholder === value) return
+  set placeholder(value: string) {
+    if (this._placeholder === value) return;
 
-		this._placeholder = value
-		this.events.emit('change:placeholder', value)
-	}
+    const oldValue = this.placeholder;
 
-	get rows(): number {
-		return this._rows
-	}
+    this._placeholder = value;
+    this.events.emit("change:placeholder", {
+      newValue: value,
+      oldValue: oldValue,
+    });
+  }
 
-	set rows(value: number) {
-		if (this._rows === value) return
+  get rows(): number {
+    return this._rows;
+  }
 
-		this._rows = value
-		this.events.emit('change:rows', value)
-	}
+  set rows(value: number) {
+    if (this._rows === value) return;
 
-	get maxRows(): number {
-		return this._maxRows
-	}
+    const oldValue = this.rows;
 
-	set maxRows(value: number) {
-		if (this._maxRows === value) return
+    this._rows = value;
+    this.events.emit("change:rows", { newValue: value, oldValue: oldValue });
+  }
 
-		this._maxRows = value
-		this.events.emit('change:maxRows', value)
-	}
+  get maxRows(): number {
+    return this._maxRows;
+  }
 
-	get maxlength(): number | undefined {
-		return this._maxlength
-	}
+  set maxRows(value: number) {
+    if (this._maxRows === value) return;
 
-	set maxlength(value: number | undefined) {
-		if (this._maxlength === value) return
+    const oldValue = this.maxRows;
 
-		this._maxlength = value
-		this.events.emit('change:maxlength', value)
-	}
+    this._maxRows = value;
+    this.events.emit("change:maxRows", { newValue: value, oldValue: oldValue });
+  }
 
-	get autoresize(): boolean {
-		return this._autoresize
-	}
+  get maxlength(): number | undefined {
+    return this._maxlength;
+  }
 
-	set autoresize(value: boolean) {
-		if (this._autoresize === value) return
+  set maxlength(value: number | undefined) {
+    if (this._maxlength === value) return;
 
-		this._autoresize = value
-		this.events.emit('change:autoresize', value)
-	}
+    const oldValue = this.maxlength;
 
-	get counter(): boolean {
-		return this._counter
-	}
+    this._maxlength = value;
+    this.events.emit("change:maxlength", {
+      newValue: value,
+      oldValue: oldValue,
+    });
+  }
 
-	set counter(value: boolean) {
-		if (this._counter === value) return
+  get autoresize(): boolean {
+    return this._autoresize;
+  }
 
-		this._counter = value
-		this.events.emit('change:counter', value)
-	}
+  set autoresize(value: boolean) {
+    if (this._autoresize === value) return;
 
-	/**
-	 * Набор счётчика символов — разметки внутри поля без своего экземпляра,
-	 * поэтому набор поля (AGENTS.md, «Часть или слот»), как `listAria` у
-	 * Select. Живой, как `aria`: `id` счётчика, на который ссылается поле, в
-	 * него пишет плагин связок `TTextareaIdsPlugin`. Об изменении набор
-	 * сообщает `change:counterAria`.
-	 */
-	get counterAria(): TAria {
-		return this._counterAria
-	}
+    const oldValue = this.autoresize;
 
-	/**
-	 * Набрано символов — как их считает браузер для `maxlength`: длина текста
-	 * поля с переводами строк, приведёнными к одному LF. Из поля значение
-	 * приходит уже таким, а из кода — бывает с CR LF, и браузер его тоже
-	 * считает одним символом. Иначе «200 / 200» не совпало бы с моментом,
-	 * когда браузер перестаёт принимать ввод.
-	 */
-	get textLength(): number {
-		return this.value.replace(LINE_BREAK, '\n').length
-	}
+    this._autoresize = value;
+    this.events.emit("change:autoresize", {
+      newValue: value,
+      oldValue: oldValue,
+    });
+  }
 
-	/**
-	 * `aria` поля стоит на вложенной `<textarea>`, а не на корне: корень —
-	 * рамка поля со счётчиком, а тег поля внутри неё фиксирован.
-	 */
-	protected override get _ariaTag(): string {
-		return 'textarea'
-	}
+  get counter(): boolean {
+    return this._counter;
+  }
 
-	/**
-	 * У `<textarea>` `required` и `readonly` нативные — браузер сам сообщает о
-	 * них скринридеру, и ARIA-дублей ядро не пишет.
-	 *
-	 * Исключение — `required` у поля только для чтения: браузер такое поле не
-	 * проверяет, нативный `required` на нём ничего не значит, и без явного
-	 * `aria-required` обязательность осталась бы немой. Так же у Input.
-	 */
-	protected override _syncInputAccessibility(): void {
-		this._aria.add('aria-required', this.required && this.readonly ? 'true' : null)
-	}
+  set counter(value: boolean) {
+    if (this._counter === value) return;
 
-	/**
-	 * `data-limit` — набранное у предела: тема громче красит счётчик у предела
-	 * и цветом ошибки — сверх него. От `counter` не зависит: предел есть и у
-	 * поля без счётчика.
-	 */
-	protected _syncLimit(): void {
-		this._dataset.add('limit', this._limit())
-	}
+    const oldValue = this.counter;
 
-	private _limit(): TTextareaLimit | null {
-		const max = this._maxlength
+    this._counter = value;
+    this.events.emit("change:counter", { newValue: value, oldValue: oldValue });
+  }
 
-		if (max === undefined) return null
+  /**
+   * Набор счётчика символов — разметки внутри поля без своего экземпляра,
+   * поэтому набор поля (AGENTS.md, «Часть или слот»), как `listAria` у
+   * Select. Живой, как `aria`: `id` счётчика, на который ссылается поле, в
+   * него пишет плагин связок `TTextareaIdsPlugin`. Об изменении набор
+   * сообщает `change:counterAria`.
+   */
+  get counterAria(): TAria {
+    return this._counterAria;
+  }
 
-		const length = this.textLength
+  /**
+   * Набрано символов — как их считает браузер для `maxlength`: длина текста
+   * поля с переводами строк, приведёнными к одному LF. Из поля значение
+   * приходит уже таким, а из кода — бывает с CR LF, и браузер его тоже
+   * считает одним символом. Иначе «200 / 200» не совпало бы с моментом,
+   * когда браузер перестаёт принимать ввод.
+   */
+  get textLength(): number {
+    return this.value.replace(LINE_BREAK, "\n").length;
+  }
 
-		if (length > max) return 'exceeded'
+  /**
+   * `aria` поля стоит на вложенной `<textarea>`, а не на корне: корень —
+   * рамка поля со счётчиком, а тег поля внутри неё фиксирован.
+   */
+  protected override get _ariaTag(): string {
+    return "textarea";
+  }
 
-		return length === max ? 'reached' : null
-	}
+  /**
+   * У `<textarea>` `required` и `readonly` нативные — браузер сам сообщает о
+   * них скринридеру, и ARIA-дублей ядро не пишет.
+   *
+   * Исключение — `required` у поля только для чтения: браузер такое поле не
+   * проверяет, нативный `required` на нём ничего не значит, и без явного
+   * `aria-required` обязательность осталась бы немой. Так же у Input.
+   */
+  protected override _syncInputAccessibility(): void {
+    this._aria.add(
+      "aria-required",
+      this.required && this.readonly ? "true" : null,
+    );
+  }
 
-	override getProps(): ITextareaProps {
-		return {
-			...super.getProps(),
-			placeholder: this._placeholder,
-			rows: this._rows,
-			maxRows: this._maxRows,
-			maxlength: this._maxlength,
-			autoresize: this._autoresize,
-			counter: this._counter,
-		}
-	}
+  /**
+   * `data-limit` — набранное у предела: тема громче красит счётчик у предела
+   * и цветом ошибки — сверх него. От `counter` не зависит: предел есть и у
+   * поля без счётчика.
+   */
+  protected _syncLimit(): void {
+    this._dataset.add("limit", this._limit());
+  }
+
+  private _limit(): TTextareaLimit | null {
+    const max = this._maxlength;
+
+    if (max === undefined) return null;
+
+    const length = this.textLength;
+
+    if (length > max) return "exceeded";
+
+    return length === max ? "reached" : null;
+  }
+
+  override getProps(): ITextareaProps {
+    return {
+      ...super.getProps(),
+      placeholder: this._placeholder,
+      rows: this._rows,
+      maxRows: this._maxRows,
+      maxlength: this._maxlength,
+      autoresize: this._autoresize,
+      counter: this._counter,
+    };
+  }
 }

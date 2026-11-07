@@ -1,6 +1,6 @@
-import { TComponent } from '../../base/component'
-import type { TDefaultValues } from '../../base/component'
-import type { IVirtual, IVirtualProps, TVirtualEvents } from './types'
+import { TComponent } from "../../base/component";
+import type { TDefaultValues } from "../../base/component";
+import type { IVirtual, IVirtualProps, TVirtualEvents } from "./types";
 
 /**
  * Окно для длинных списков — невизуальная обёртка, как DragAndDrop.
@@ -14,33 +14,35 @@ import type { IVirtual, IVirtualProps, TVirtualEvents } from './types'
  * нужен.
  */
 export default class TVirtual
-	extends TComponent<IVirtualProps, TVirtualEvents>
-	implements IVirtual
+  extends TComponent<IVirtualProps, TVirtualEvents>
+  implements IVirtual
 {
-	static defaultValues: typeof TComponent.defaultValues &
-		TDefaultValues<IVirtualProps, 'enabled'> = {
-		...TComponent.defaultValues,
-		enabled: true,
-	}
+  static defaultValues: typeof TComponent.defaultValues &
+    TDefaultValues<IVirtualProps, "enabled"> = {
+    ...TComponent.defaultValues,
+    enabled: true,
+  };
 
-	private _enabled: boolean
+  private _enabled: boolean;
 
-	constructor(props: Partial<IVirtualProps> = {}) {
-		super(props)
+  constructor(props: Partial<IVirtualProps> = {}) {
+    super(props);
 
-		const ctor = new.target as typeof TVirtual
+    const ctor = new.target as typeof TVirtual;
 
-		this._enabled = props.enabled ?? ctor.defaultValues.enabled
-	}
+    this._enabled = props.enabled ?? ctor.defaultValues.enabled;
+  }
 
-	get enabled(): boolean {
-		return this._enabled
-	}
+  get enabled(): boolean {
+    return this._enabled;
+  }
 
-	set enabled(value: boolean) {
-		if (this._enabled === value) return
+  set enabled(value: boolean) {
+    if (this._enabled === value) return;
 
-		this._enabled = value
-		this.events.emit('change:enabled', value)
-	}
+    const oldValue = this.enabled;
+
+    this._enabled = value;
+    this.events.emit("change:enabled", { newValue: value, oldValue: oldValue });
+  }
 }

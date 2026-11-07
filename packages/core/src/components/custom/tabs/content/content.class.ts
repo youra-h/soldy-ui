@@ -1,7 +1,11 @@
-import { TComponentView } from '../../../base/component-view'
-import type { TDefaultValues } from '../../../base/component'
-import type { TEventSink } from '../../../../common'
-import type { ITabsContent, ITabsContentProps, TTabsContentEvents } from './types'
+import { TComponentView } from "../../../base/component-view";
+import type { TDefaultValues } from "../../../base/component";
+import type { TEventSink } from "../../../../common";
+import type {
+  ITabsContent,
+  ITabsContentProps,
+  TTabsContentEvents,
+} from "./types";
 
 /**
  * Панель таба (`TabsContent`) — собственные props и события, и ничего больше.
@@ -22,58 +26,60 @@ import type { ITabsContent, ITabsContentProps, TTabsContentEvents } from './type
  * критерий в AGENTS.md).
  */
 export class TTabsContent<
-	TProps extends ITabsContentProps = ITabsContentProps,
-	TEvents extends TTabsContentEvents = TTabsContentEvents,
+  TProps extends ITabsContentProps = ITabsContentProps,
+  TEvents extends TTabsContentEvents = TTabsContentEvents,
 >
-	extends TComponentView<TProps, TEvents>
-	implements ITabsContent<TProps, TEvents>
+  extends TComponentView<TProps, TEvents>
+  implements ITabsContent<TProps, TEvents>
 {
-	static override baseClass = 'so-tabs-content'
+  static override baseClass = "so-tabs-content";
 
-	static defaultValues: typeof TComponentView.defaultValues &
-		TDefaultValues<ITabsContentProps, 'value'> = {
-		...TComponentView.defaultValues,
-		value: '',
-	}
+  static defaultValues: typeof TComponentView.defaultValues &
+    TDefaultValues<ITabsContentProps, "value"> = {
+    ...TComponentView.defaultValues,
+    value: "",
+  };
 
-	protected _value: string | number
+  protected _value: string | number;
 
-	constructor(props: Partial<TProps> = {}) {
-		super(props)
+  constructor(props: Partial<TProps> = {}) {
+    super(props);
 
-		const ctor = new.target as typeof TTabsContent
+    const ctor = new.target as typeof TTabsContent;
 
-		this._value = props.value ?? ctor.defaultValues.value
+    this._value = props.value ?? ctor.defaultValues.value;
 
-		this._aria.add('role', 'tabpanel')
-		// Панель — остановка Tab сразу за списком табов (APG): в ней может не
-		// оказаться ни одного фокусируемого элемента
-		this._aria.add('tabindex', '0')
-	}
+    this._aria.add("role", "tabpanel");
+    // Панель — остановка Tab сразу за списком табов (APG): в ней может не
+    // оказаться ни одного фокусируемого элемента
+    this._aria.add("tabindex", "0");
+  }
 
-	get value(): string | number {
-		return this._value
-	}
+  get value(): string | number {
+    return this._value;
+  }
 
-	set value(value: string | number) {
-		if (this._value === value) return
+  set value(value: string | number) {
+    if (this._value === value) return;
 
-		this._value = value
-		this._sink.emit('change:value', value)
-	}
+    const oldValue = this.value;
 
-	/**
-	 * Эмит собственных событий класса — без приведения `this.events` к
-	 * конкретной карте (см. `TEventSink` в `common/event/types.ts`).
-	 */
-	protected get _sink(): TEventSink<TTabsContentEvents> {
-		return this.events
-	}
+    this._value = value;
+    this._sink.emit("change:value", { newValue: value, oldValue: oldValue });
+  }
 
-	override getProps(): TProps {
-		return {
-			...super.getProps(),
-			value: this._value,
-		} as TProps
-	}
+  /**
+   * Эмит собственных событий класса — без приведения `this.events` к
+   * конкретной карте (см. `TEventSink` в `common/event/types.ts`).
+   */
+  protected get _sink(): TEventSink<TTabsContentEvents> {
+    return this.events;
+  }
+
+  override getProps(): TProps {
+    return {
+      ...super.getProps(),
+      value: this._value,
+    } as TProps;
+  }
 }

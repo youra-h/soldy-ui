@@ -1,8 +1,8 @@
-import { TComponentView } from '../component-view'
-import type { TDefaultValues } from '../component'
-import type { IInteractiveProps, TInteractiveEvents } from './types'
-import { TChangeEvent } from '../../../common'
-import type { TEventSink } from '../../../common'
+import { TComponentView } from "../component-view";
+import type { TDefaultValues } from "../component";
+import type { IInteractiveProps, TInteractiveEvents } from "./types";
+import { TChangeEvent } from "../../../common";
+import type { TEventSink } from "../../../common";
 
 /**
  * База для интерактивных компонентов: disabled + focused.
@@ -11,73 +11,83 @@ import type { TEventSink } from '../../../common'
  * `change:disabled:before` и `change:focused:before`.
  */
 export default class TInteractive<
-	TProps extends IInteractiveProps = IInteractiveProps,
-	TEvents extends TInteractiveEvents = TInteractiveEvents,
+  TProps extends IInteractiveProps = IInteractiveProps,
+  TEvents extends TInteractiveEvents = TInteractiveEvents,
 > extends TComponentView<TProps, TEvents> {
-	static defaultValues: typeof TComponentView.defaultValues &
-		TDefaultValues<IInteractiveProps, 'disabled' | 'focused'> = {
-		...TComponentView.defaultValues,
-		disabled: false,
-		focused: false,
-	}
+  static defaultValues: typeof TComponentView.defaultValues &
+    TDefaultValues<IInteractiveProps, "disabled" | "focused"> = {
+    ...TComponentView.defaultValues,
+    disabled: false,
+    focused: false,
+  };
 
-	protected _disabled: boolean
-	protected _focused: boolean
+  protected _disabled: boolean;
+  protected _focused: boolean;
 
-	constructor(props: Partial<TProps> = {}) {
-		super(props)
+  constructor(props: Partial<TProps> = {}) {
+    super(props);
 
-		const ctor = new.target as typeof TInteractive
+    const ctor = new.target as typeof TInteractive;
 
-		this._disabled = props.disabled ?? ctor.defaultValues.disabled
-		this._focused = props.focused ?? ctor.defaultValues.focused
-	}
+    this._disabled = props.disabled ?? ctor.defaultValues.disabled;
+    this._focused = props.focused ?? ctor.defaultValues.focused;
+  }
 
-	/**
-	 * Эмит собственных событий класса — без приведения `this.events` к
-	 * конкретной карте (см. `TEventSink` в `common/event/types.ts`).
-	 */
-	protected get _sink(): TEventSink<TInteractiveEvents> {
-		return this.events
-	}
+  /**
+   * Эмит собственных событий класса — без приведения `this.events` к
+   * конкретной карте (см. `TEventSink` в `common/event/types.ts`).
+   */
+  protected get _sink(): TEventSink<TInteractiveEvents> {
+    return this.events;
+  }
 
-	get disabled(): boolean {
-		return this._disabled
-	}
-	set disabled(value: boolean) {
-		if (value === this._disabled) return
+  get disabled(): boolean {
+    return this._disabled;
+  }
+  set disabled(value: boolean) {
+    if (value === this._disabled) return;
 
-		const e = new TChangeEvent(value, this._disabled)
+    const e = new TChangeEvent(value, this._disabled);
 
-		this._sink.emit('change:disabled:before', e)
+    this._sink.emit("change:disabled:before", e);
 
-		if (e.defaultPrevented || e.value === this._disabled) return
+    if (e.defaultPrevented || e.value === this._disabled) return;
 
-		this._disabled = e.value
-		this._sink.emit('change:disabled', e.value)
-	}
+    const oldValue = this.disabled;
 
-	get focused(): boolean {
-		return this._focused
-	}
-	set focused(value: boolean) {
-		if (value === this._focused) return
+    this._disabled = e.value;
+    this._sink.emit("change:disabled", {
+      newValue: e.value,
+      oldValue: oldValue,
+    });
+  }
 
-		const e = new TChangeEvent(value, this._focused)
+  get focused(): boolean {
+    return this._focused;
+  }
+  set focused(value: boolean) {
+    if (value === this._focused) return;
 
-		this._sink.emit('change:focused:before', e)
+    const e = new TChangeEvent(value, this._focused);
 
-		if (e.defaultPrevented || e.value === this._focused) return
+    this._sink.emit("change:focused:before", e);
 
-		this._focused = e.value
-		this._sink.emit('change:focused', e.value)
-	}
+    if (e.defaultPrevented || e.value === this._focused) return;
 
-	getProps(): TProps {
-		return {
-			...super.getProps(),
-			disabled: this.disabled,
-			focused: this.focused,
-		} as TProps
-	}
+    const oldValue = this.focused;
+
+    this._focused = e.value;
+    this._sink.emit("change:focused", {
+      newValue: e.value,
+      oldValue: oldValue,
+    });
+  }
+
+  getProps(): TProps {
+    return {
+      ...super.getProps(),
+      disabled: this.disabled,
+      focused: this.focused,
+    } as TProps;
+  }
 }

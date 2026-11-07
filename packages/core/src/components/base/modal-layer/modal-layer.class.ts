@@ -1,9 +1,9 @@
-import { TLayer, TCloseEvent, FRAME_LAYER_ATTRIBUTE } from '../layer'
-import type { TCloseReason } from '../layer'
-import type { TDefaultValues } from '../component'
-import { TAria } from '../../../common'
-import type { TDatasetAttributes, TEventSink } from '../../../common'
-import type { IModalLayer, IModalLayerProps, TModalLayerEvents } from './types'
+import { TLayer, TCloseEvent, FRAME_LAYER_ATTRIBUTE } from "../layer";
+import type { TCloseReason } from "../layer";
+import type { TDefaultValues } from "../component";
+import { TAria } from "../../../common";
+import type { TDatasetAttributes, TEventSink } from "../../../common";
+import type { IModalLayer, IModalLayerProps, TModalLayerEvents } from "./types";
 
 /**
  * Модальный слой — общая база модального окна и выезжающей панели.
@@ -49,195 +49,211 @@ import type { IModalLayer, IModalLayerProps, TModalLayerEvents } from './types'
  * любой панели; подложке его отдаёт набор `backdropDataset`.
  */
 export default class TModalLayer<
-	TProps extends IModalLayerProps = IModalLayerProps,
-	TEvents extends TModalLayerEvents = TModalLayerEvents,
+  TProps extends IModalLayerProps = IModalLayerProps,
+  TEvents extends TModalLayerEvents = TModalLayerEvents,
 >
-	extends TLayer<TProps, TEvents>
-	implements IModalLayer<TProps, TEvents>
+  extends TLayer<TProps, TEvents>
+  implements IModalLayer<TProps, TEvents>
 {
-	static defaultValues: typeof TLayer.defaultValues &
-		TDefaultValues<IModalLayerProps, 'closable' | 'dismissible', 'width' | 'height'> = {
-		...TLayer.defaultValues,
-		// Не `'auto'`, как у Frame: размер по умолчанию выбирает тема, а
-		// `auto` растянул бы окно по экрану
-		width: undefined,
-		height: undefined,
-		closable: true,
-		dismissible: true,
-	}
+  static defaultValues: typeof TLayer.defaultValues &
+    TDefaultValues<
+      IModalLayerProps,
+      "closable" | "dismissible",
+      "width" | "height"
+    > = {
+    ...TLayer.defaultValues,
+    // Не `'auto'`, как у Frame: размер по умолчанию выбирает тема, а
+    // `auto` растянул бы окно по экрану
+    width: undefined,
+    height: undefined,
+    closable: true,
+    dismissible: true,
+  };
 
-	protected _width: number | string | undefined
-	protected _height: number | string | undefined
-	protected _closable: boolean
-	protected _dismissible: boolean
-	protected _titleAria: TAria
-	protected _closeAria: TAria
+  protected _width: number | string | undefined;
+  protected _height: number | string | undefined;
+  protected _closable: boolean;
+  protected _dismissible: boolean;
+  protected _titleAria: TAria;
+  protected _closeAria: TAria;
 
-	constructor(props: Partial<TProps> = {}) {
-		const ctor = new.target as typeof TModalLayer
+  constructor(props: Partial<TProps> = {}) {
+    const ctor = new.target as typeof TModalLayer;
 
-		super(props)
+    super(props);
 
-		this._width = props.width ?? ctor.defaultValues.width
-		this._height = props.height ?? ctor.defaultValues.height
-		this._closable = props.closable ?? ctor.defaultValues.closable
-		this._dismissible = props.dismissible ?? ctor.defaultValues.dismissible
+    this._width = props.width ?? ctor.defaultValues.width;
+    this._height = props.height ?? ctor.defaultValues.height;
+    this._closable = props.closable ?? ctor.defaultValues.closable;
+    this._dismissible = props.dismissible ?? ctor.defaultValues.dismissible;
 
-		this._aria.add('role', 'dialog')
-		// Слой модален: скринридер вне его не читает. Это значение, а не
-		// операция — фон на самих узлах прячет `THideOutsidePlugin`
-		this._aria.add('aria-modal', 'true')
+    this._aria.add("role", "dialog");
+    // Слой модален: скринридер вне его не читает. Это значение, а не
+    // операция — фон на самих узлах прячет `THideOutsidePlugin`
+    this._aria.add("aria-modal", "true");
 
-		this._titleAria = new TAria()
-		this._titleAria.subscribe(() =>
-			this._sink.emit('change:titleAria', this._titleAria.toObject()),
-		)
+    this._titleAria = new TAria();
+    this._titleAria.subscribe(() =>
+      this._sink.emit("change:titleAria", this._titleAria.toObject()),
+    );
 
-		this._closeAria = new TAria()
-		this._closeAria.subscribe(() =>
-			this._sink.emit('change:closeAria', this._closeAria.toObject()),
-		)
-	}
+    this._closeAria = new TAria();
+    this._closeAria.subscribe(() =>
+      this._sink.emit("change:closeAria", this._closeAria.toObject()),
+    );
+  }
 
-	/**
-	 * Эмит собственных событий класса — без приведения `this.events` к
-	 * конкретной карте (см. `TEventSink` в `common/event/types.ts`).
-	 */
-	protected override get _sink(): TEventSink<TModalLayerEvents> {
-		return this.events
-	}
+  /**
+   * Эмит собственных событий класса — без приведения `this.events` к
+   * конкретной карте (см. `TEventSink` в `common/event/types.ts`).
+   */
+  protected override get _sink(): TEventSink<TModalLayerEvents> {
+    return this.events;
+  }
 
-	/**
-	 * Пользователь закрывает панель: кнопкой закрытия, нажатием мимо, Escape
-	 * или жестом. Нажатие мимо и Escape при `dismissible: false` отклоняются
-	 * без события; остальное проходит через отменяемое `close:before`.
-	 *
-	 * Зовут его кнопка закрытия и плагины слоя. Код, которому нужно просто
-	 * закрыть панель, пишет `visible = false`: запросом это не считается.
-	 */
-	requestClose(reason: TCloseReason): void {
-		// Закрывать нечего
-		if (!this.visible) return
+  /**
+   * Пользователь закрывает панель: кнопкой закрытия, нажатием мимо, Escape
+   * или жестом. Нажатие мимо и Escape при `dismissible: false` отклоняются
+   * без события; остальное проходит через отменяемое `close:before`.
+   *
+   * Зовут его кнопка закрытия и плагины слоя. Код, которому нужно просто
+   * закрыть панель, пишет `visible = false`: запросом это не считается.
+   */
+  requestClose(reason: TCloseReason): void {
+    // Закрывать нечего
+    if (!this.visible) return;
 
-		// Нажатие мимо и Escape — не повод, если панель закрывается только
-		// кнопкой. Жест — повод: его потребитель включает сам
-		if (!this._dismissible && (reason === 'outside' || reason === 'escape')) return
+    // Нажатие мимо и Escape — не повод, если панель закрывается только
+    // кнопкой. Жест — повод: его потребитель включает сам
+    if (!this._dismissible && (reason === "outside" || reason === "escape"))
+      return;
 
-		const event = new TCloseEvent(reason)
+    const event = new TCloseEvent(reason);
 
-		this._sink.emit('close:before', event)
+    this._sink.emit("close:before", event);
 
-		if (event.defaultPrevented) return
+    if (event.defaultPrevented) return;
 
-		this.hide()
-	}
+    this.hide();
+  }
 
-	/**
-	 * Ширина панели: число — px, строка — CSS-значение. Не задана — ширину
-	 * даёт тема. Значение уходит теме переменной, а не инлайном: потолок по
-	 * экрану и развёрнутое окно тема держит сама.
-	 */
-	get width(): number | string | undefined {
-		return this._width
-	}
+  /**
+   * Ширина панели: число — px, строка — CSS-значение. Не задана — ширину
+   * даёт тема. Значение уходит теме переменной, а не инлайном: потолок по
+   * экрану и развёрнутое окно тема держит сама.
+   */
+  get width(): number | string | undefined {
+    return this._width;
+  }
 
-	set width(value: number | string | undefined) {
-		if (this._width === value) return
+  set width(value: number | string | undefined) {
+    if (this._width === value) return;
 
-		this._width = value
-		this._sink.emit('change:width', value)
-	}
+    const oldValue = this.width;
 
-	/** Высота панели: число — px, строка — CSS-значение. Не задана — высоту даёт тема. */
-	get height(): number | string | undefined {
-		return this._height
-	}
+    this._width = value;
+    this._sink.emit("change:width", { newValue: value, oldValue: oldValue });
+  }
 
-	set height(value: number | string | undefined) {
-		if (this._height === value) return
+  /** Высота панели: число — px, строка — CSS-значение. Не задана — высоту даёт тема. */
+  get height(): number | string | undefined {
+    return this._height;
+  }
 
-		this._height = value
-		this._sink.emit('change:height', value)
-	}
+  set height(value: number | string | undefined) {
+    if (this._height === value) return;
 
-	/**
-	 * Показывать ли кнопку закрытия. Без неё панель закрывают нажатие мимо,
-	 * Escape (пока `dismissible`), свой жест панели и код.
-	 */
-	get closable(): boolean {
-		return this._closable
-	}
+    const oldValue = this.height;
 
-	set closable(value: boolean) {
-		if (this._closable === value) return
+    this._height = value;
+    this._sink.emit("change:height", { newValue: value, oldValue: oldValue });
+  }
 
-		this._closable = value
-		this._sink.emit('change:closable', value)
-	}
+  /**
+   * Показывать ли кнопку закрытия. Без неё панель закрывают нажатие мимо,
+   * Escape (пока `dismissible`), свой жест панели и код.
+   */
+  get closable(): boolean {
+    return this._closable;
+  }
 
-	/**
-	 * Закрывают ли панель нажатие мимо и Escape. Выключено — панель
-	 * закрывается только кнопкой закрытия, своим жестом и кодом. Закрыть её
-	 * только Escape — отменить `close:before` с причиной `outside`.
-	 */
-	get dismissible(): boolean {
-		return this._dismissible
-	}
+  set closable(value: boolean) {
+    if (this._closable === value) return;
 
-	set dismissible(value: boolean) {
-		if (this._dismissible === value) return
+    const oldValue = this.closable;
 
-		this._dismissible = value
-		this._sink.emit('change:dismissible', value)
-	}
+    this._closable = value;
+    this._sink.emit("change:closable", { newValue: value, oldValue: oldValue });
+  }
 
-	/**
-	 * Сторона заголовка в связке с панелью. Отдельный набор, а не часть
-	 * `aria`: `aria` описывает панель, а это — вложенный элемент без
-	 * экземпляра (AGENTS.md, «Часть или слот»). Живой: `id` в него пишет
-	 * `TModalLayerIdsPlugin`, об изменении набор сообщает `change:titleAria`.
-	 */
-	get titleAria(): TAria {
-		return this._titleAria
-	}
+  /**
+   * Закрывают ли панель нажатие мимо и Escape. Выключено — панель
+   * закрывается только кнопкой закрытия, своим жестом и кодом. Закрыть её
+   * только Escape — отменить `close:before` с причиной `outside`.
+   */
+  get dismissible(): boolean {
+    return this._dismissible;
+  }
 
-	/**
-	 * Набор кнопки закрытия — соседней с содержимым, а не самой панели. Живой:
-	 * имя в него пишет плагин имён (`TModalNamesPlugin`) от локали, об
-	 * изменении набор сообщает `change:closeAria`.
-	 */
-	get closeAria(): TAria {
-		return this._closeAria
-	}
+  set dismissible(value: boolean) {
+    if (this._dismissible === value) return;
 
-	/**
-	 * `data-*` подложки — тот же номер слоя и та же открытость, что у панели.
-	 *
-	 * Подложка — сосед панели, и нажатие по ней для плагинов слоя — нажатие
-	 * мимо. Но слой бывает открыт поверх слоя, и для нижнего подложка верхнего
-	 * — нажатие в слой выше своего, то есть внутри: без номера нажатие по
-	 * подложке верхнего окна закрыло бы оба. Пометки владельцем (`data-owner`)
-	 * у подложки нет: для своего слоя она — мимо.
-	 *
-	 * Открытость — чтобы подложка гасла вместе с панелью: экземпляра у неё нет,
-	 * и `data-open` ей отдаёт этот набор.
-	 */
-	get backdropDataset(): TDatasetAttributes {
-		const layer = this._dataset.get(FRAME_LAYER_ATTRIBUTE)
+    const oldValue = this.dismissible;
 
-		return {
-			...(layer === undefined ? {} : { [FRAME_LAYER_ATTRIBUTE]: layer }),
-			'data-open': String(this.visible),
-		}
-	}
+    this._dismissible = value;
+    this._sink.emit("change:dismissible", {
+      newValue: value,
+      oldValue: oldValue,
+    });
+  }
 
-	override getProps(): TProps {
-		return {
-			...super.getProps(),
-			width: this._width,
-			height: this._height,
-			closable: this._closable,
-			dismissible: this._dismissible,
-		}
-	}
+  /**
+   * Сторона заголовка в связке с панелью. Отдельный набор, а не часть
+   * `aria`: `aria` описывает панель, а это — вложенный элемент без
+   * экземпляра (AGENTS.md, «Часть или слот»). Живой: `id` в него пишет
+   * `TModalLayerIdsPlugin`, об изменении набор сообщает `change:titleAria`.
+   */
+  get titleAria(): TAria {
+    return this._titleAria;
+  }
+
+  /**
+   * Набор кнопки закрытия — соседней с содержимым, а не самой панели. Живой:
+   * имя в него пишет плагин имён (`TModalNamesPlugin`) от локали, об
+   * изменении набор сообщает `change:closeAria`.
+   */
+  get closeAria(): TAria {
+    return this._closeAria;
+  }
+
+  /**
+   * `data-*` подложки — тот же номер слоя и та же открытость, что у панели.
+   *
+   * Подложка — сосед панели, и нажатие по ней для плагинов слоя — нажатие
+   * мимо. Но слой бывает открыт поверх слоя, и для нижнего подложка верхнего
+   * — нажатие в слой выше своего, то есть внутри: без номера нажатие по
+   * подложке верхнего окна закрыло бы оба. Пометки владельцем (`data-owner`)
+   * у подложки нет: для своего слоя она — мимо.
+   *
+   * Открытость — чтобы подложка гасла вместе с панелью: экземпляра у неё нет,
+   * и `data-open` ей отдаёт этот набор.
+   */
+  get backdropDataset(): TDatasetAttributes {
+    const layer = this._dataset.get(FRAME_LAYER_ATTRIBUTE);
+
+    return {
+      ...(layer === undefined ? {} : { [FRAME_LAYER_ATTRIBUTE]: layer }),
+      "data-open": String(this.visible),
+    };
+  }
+
+  override getProps(): TProps {
+    return {
+      ...super.getProps(),
+      width: this._width,
+      height: this._height,
+      closable: this._closable,
+      dismissible: this._dismissible,
+    };
+  }
 }

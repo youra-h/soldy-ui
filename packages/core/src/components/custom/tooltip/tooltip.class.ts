@@ -1,13 +1,13 @@
-import { TComponentView } from '../../base/component-view'
-import type { TDefaultValues } from '../../base/component'
-import { TAria } from '../../../common'
+import { TComponentView } from "../../base/component-view";
+import type { TDefaultValues } from "../../base/component";
+import { TAria } from "../../../common";
 import type {
-	ITooltip,
-	ITooltipProps,
-	TTooltipEvents,
-	TTooltipPlacement,
-	TTooltipType,
-} from './types'
+  ITooltip,
+  ITooltipProps,
+  TTooltipEvents,
+  TTooltipPlacement,
+  TTooltipType,
+} from "./types";
 
 /**
  * Подсказка: короткий неинтерактивный текст у триггера.
@@ -36,157 +36,178 @@ import type {
  * же — `lazyMount` у подсказки быть не может.
  */
 export default class TTooltip
-	extends TComponentView<ITooltipProps, TTooltipEvents>
-	implements ITooltip
+  extends TComponentView<ITooltipProps, TTooltipEvents>
+  implements ITooltip
 {
-	static override baseClass = 'so-tooltip'
+  static override baseClass = "so-tooltip";
 
-	static defaultValues: typeof TComponentView.defaultValues &
-		TDefaultValues<ITooltipProps, 'open' | 'placement' | 'openDelay' | 'closeDelay' | 'type'> =
-		{
-			...TComponentView.defaultValues,
-			// Строчный корень: триггер встаёт и в строку текста, и в ряд кнопок
-			tag: 'span',
-			open: false,
-			// Над триггером: стрелка курсора рисуется ниже своей точки и подсказку
-			// под триггером закрывала бы. По центру: подсказка поясняет триггер
-			// целиком, а не его начало, — так её ставят и Radix, и Zag. У края
-			// окна сторону переворачивает flip, а сдвиг держит плашку в окне
-			placement: 'top',
-			openDelay: 400,
-			// Курсор успевает пересечь зазор между триггером и панелью, а
-			// подсказка не висит после того, как с неё ушли
-			closeDelay: 150,
-			// Паттерн APG: подсказка — описание, имя у триггера своё
-			type: 'description',
-		}
+  static defaultValues: typeof TComponentView.defaultValues &
+    TDefaultValues<
+      ITooltipProps,
+      "open" | "placement" | "openDelay" | "closeDelay" | "type"
+    > = {
+    ...TComponentView.defaultValues,
+    // Строчный корень: триггер встаёт и в строку текста, и в ряд кнопок
+    tag: "span",
+    open: false,
+    // Над триггером: стрелка курсора рисуется ниже своей точки и подсказку
+    // под триггером закрывала бы. По центру: подсказка поясняет триггер
+    // целиком, а не его начало, — так её ставят и Radix, и Zag. У края
+    // окна сторону переворачивает flip, а сдвиг держит плашку в окне
+    placement: "top",
+    openDelay: 400,
+    // Курсор успевает пересечь зазор между триггером и панелью, а
+    // подсказка не висит после того, как с неё ушли
+    closeDelay: 150,
+    // Паттерн APG: подсказка — описание, имя у триггера своё
+    type: "description",
+  };
 
-	protected _open: boolean
-	protected _placement: TTooltipPlacement
-	protected _openDelay: number
-	protected _closeDelay: number
-	protected _type: TTooltipType
-	protected _triggerAria: TAria
+  protected _open: boolean;
+  protected _placement: TTooltipPlacement;
+  protected _openDelay: number;
+  protected _closeDelay: number;
+  protected _type: TTooltipType;
+  protected _triggerAria: TAria;
 
-	constructor(props: Partial<ITooltipProps> = {}) {
-		super(props)
+  constructor(props: Partial<ITooltipProps> = {}) {
+    super(props);
 
-		const ctor = new.target as typeof TTooltip
+    const ctor = new.target as typeof TTooltip;
 
-		this._open = props.open ?? ctor.defaultValues.open
-		this._placement = props.placement ?? ctor.defaultValues.placement
-		this._openDelay = props.openDelay ?? ctor.defaultValues.openDelay
-		this._closeDelay = props.closeDelay ?? ctor.defaultValues.closeDelay
-		this._type = props.type ?? ctor.defaultValues.type
+    this._open = props.open ?? ctor.defaultValues.open;
+    this._placement = props.placement ?? ctor.defaultValues.placement;
+    this._openDelay = props.openDelay ?? ctor.defaultValues.openDelay;
+    this._closeDelay = props.closeDelay ?? ctor.defaultValues.closeDelay;
+    this._type = props.type ?? ctor.defaultValues.type;
 
-		// Сторона панели связки: панель — подсказка. Имени у панели нет: её
-		// текст и есть описание триггера или, в режиме `label`, его имя. От
-		// режима панель не зависит
-		this._aria.add('role', 'tooltip')
+    // Сторона панели связки: панель — подсказка. Имени у панели нет: её
+    // текст и есть описание триггера или, в режиме `label`, его имя. От
+    // режима панель не зависит
+    this._aria.add("role", "tooltip");
 
-		this._triggerAria = new TAria()
-		this._triggerAria.subscribe(() =>
-			this.events.emit('change:triggerAria', this._triggerAria.toObject()),
-		)
-	}
+    this._triggerAria = new TAria();
+    this._triggerAria.subscribe(() =>
+      this.events.emit("change:triggerAria", this._triggerAria.toObject()),
+    );
+  }
 
-	get open(): boolean {
-		return this._open
-	}
+  get open(): boolean {
+    return this._open;
+  }
 
-	set open(value: boolean) {
-		if (this._open === value) return
+  set open(value: boolean) {
+    if (this._open === value) return;
 
-		this._open = value
-		this.events.emit('change:open', value)
-	}
+    const oldValue = this.open;
 
-	/**
-	 * Сторона и выравнивание панели у триггера. Сторону у края окна считает
-	 * плагин якоря Frame (flip и shift) — здесь только выбор потребителя.
-	 */
-	get placement(): TTooltipPlacement {
-		return this._placement
-	}
+    this._open = value;
+    this.events.emit("change:open", { newValue: value, oldValue: oldValue });
+  }
 
-	set placement(value: TTooltipPlacement) {
-		if (this._placement === value) return
+  /**
+   * Сторона и выравнивание панели у триггера. Сторону у края окна считает
+   * плагин якоря Frame (flip и shift) — здесь только выбор потребителя.
+   */
+  get placement(): TTooltipPlacement {
+    return this._placement;
+  }
 
-		this._placement = value
-		this.events.emit('change:placement', value)
-	}
+  set placement(value: TTooltipPlacement) {
+    if (this._placement === value) return;
 
-	/**
-	 * Сколько курсор держится на триггере, прежде чем подсказка покажется.
-	 * Фокуса с клавиатуры задержка не касается: он показывает подсказку
-	 * сразу. Плагин читает её, когда заводит таймер, — новое значение
-	 * действует со следующего наведения.
-	 */
-	get openDelay(): number {
-		return this._openDelay
-	}
+    const oldValue = this._placement;
 
-	set openDelay(value: number) {
-		if (this._openDelay === value) return
+    this._placement = value;
+    this.events.emit("change:placement", {
+      newValue: value,
+      oldValue: oldValue,
+    });
+  }
 
-		this._openDelay = value
-		this.events.emit('change:openDelay', value)
-	}
+  /**
+   * Сколько курсор держится на триггере, прежде чем подсказка покажется.
+   * Фокуса с клавиатуры задержка не касается: он показывает подсказку
+   * сразу. Плагин читает её, когда заводит таймер, — новое значение
+   * действует со следующего наведения.
+   */
+  get openDelay(): number {
+    return this._openDelay;
+  }
 
-	/**
-	 * Сколько подсказка ждёт после ухода курсора с триггера или панели. За
-	 * это время курсор пересекает зазор между ними, и панель под курсором
-	 * подсказку удерживает.
-	 */
-	get closeDelay(): number {
-		return this._closeDelay
-	}
+  set openDelay(value: number) {
+    if (this._openDelay === value) return;
 
-	set closeDelay(value: number) {
-		if (this._closeDelay === value) return
+    const oldValue = this.openDelay;
 
-		this._closeDelay = value
-		this.events.emit('change:closeDelay', value)
-	}
+    this._openDelay = value;
+    this.events.emit("change:openDelay", {
+      newValue: value,
+      oldValue: oldValue,
+    });
+  }
 
-	/**
-	 * Чем подсказка служит триггеру: описанием (`description`) или именем
-	 * (`label`). Режим меняет только ссылку триггера в `triggerAria` — её
-	 * пишет `TTooltipIdsPlugin`, — панель в обоих одна и та же.
-	 */
-	get type(): TTooltipType {
-		return this._type
-	}
+  /**
+   * Сколько подсказка ждёт после ухода курсора с триггера или панели. За
+   * это время курсор пересекает зазор между ними, и панель под курсором
+   * подсказку удерживает.
+   */
+  get closeDelay(): number {
+    return this._closeDelay;
+  }
 
-	set type(value: TTooltipType) {
-		if (this._type === value) return
+  set closeDelay(value: number) {
+    if (this._closeDelay === value) return;
 
-		this._type = value
-		this.events.emit('change:type', value)
-	}
+    const oldValue = this.closeDelay;
 
-	/**
-	 * Сторона триггера в связке с панелью: ссылка на неё по режиму —
-	 * `aria-describedby` или `aria-labelledby`.
-	 *
-	 * Отдельный набор, а не часть `aria`: `aria` описывает панель, а это —
-	 * чужой элемент, триггер потребителя в слоте `trigger`. Экземпляра у него
-	 * нет, поэтому набор — подсказки (AGENTS.md, «Часть или слот»). Живой:
-	 * ссылку пишет `TTooltipIdsPlugin`, а об изменении набор сообщает
-	 * `change:triggerAria`.
-	 */
-	get triggerAria(): TAria {
-		return this._triggerAria
-	}
+    this._closeDelay = value;
+    this.events.emit("change:closeDelay", {
+      newValue: value,
+      oldValue: oldValue,
+    });
+  }
 
-	override getProps(): ITooltipProps {
-		return {
-			...super.getProps(),
-			open: this._open,
-			placement: this._placement,
-			openDelay: this._openDelay,
-			closeDelay: this._closeDelay,
-			type: this._type,
-		}
-	}
+  /**
+   * Чем подсказка служит триггеру: описанием (`description`) или именем
+   * (`label`). Режим меняет только ссылку триггера в `triggerAria` — её
+   * пишет `TTooltipIdsPlugin`, — панель в обоих одна и та же.
+   */
+  get type(): TTooltipType {
+    return this._type;
+  }
+
+  set type(value: TTooltipType) {
+    if (this._type === value) return;
+
+    const oldValue = this._type;
+
+    this._type = value;
+    this.events.emit("change:type", { newValue: value, oldValue: oldValue });
+  }
+
+  /**
+   * Сторона триггера в связке с панелью: ссылка на неё по режиму —
+   * `aria-describedby` или `aria-labelledby`.
+   *
+   * Отдельный набор, а не часть `aria`: `aria` описывает панель, а это —
+   * чужой элемент, триггер потребителя в слоте `trigger`. Экземпляра у него
+   * нет, поэтому набор — подсказки (AGENTS.md, «Часть или слот»). Живой:
+   * ссылку пишет `TTooltipIdsPlugin`, а об изменении набор сообщает
+   * `change:triggerAria`.
+   */
+  get triggerAria(): TAria {
+    return this._triggerAria;
+  }
+
+  override getProps(): ITooltipProps {
+    return {
+      ...super.getProps(),
+      open: this._open,
+      placement: this._placement,
+      openDelay: this._openDelay,
+      closeDelay: this._closeDelay,
+      type: this._type,
+    };
+  }
 }

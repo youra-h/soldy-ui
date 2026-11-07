@@ -1,14 +1,19 @@
+import type { TValuePayload } from "../../../common";
 import type {
-	TAriaAttributes,
-	TAria,
-	TDatasetAttributes,
-	TDataset,
-	TAttributesMap,
-	TAttributes,
-	TClasses,
-} from './../../../common'
-import type { TActionEvent, TChangeEvent } from '../../../common'
-import type { IComponent, IComponentProps, TComponentEvents } from '../component'
+  TAriaAttributes,
+  TAria,
+  TDatasetAttributes,
+  TDataset,
+  TAttributesMap,
+  TAttributes,
+  TClasses,
+} from "./../../../common";
+import type { TActionEvent, TChangeEvent } from "../../../common";
+import type {
+  IComponent,
+  IComponentProps,
+  TComponentEvents,
+} from "../component";
 
 /**
  * Направление письма.
@@ -19,86 +24,86 @@ import type { IComponent, IComponentProps, TComponentEvents } from '../component
  * иначе его нельзя вернуть в исходное состояние через механизм синхронизации
  * (он везде трактует `undefined` как «не трогать»).
  */
-export type TDirection = 'ltr' | 'rtl' | 'inherit'
+export type TDirection = "ltr" | "rtl" | "inherit";
 
 export type TComponentViewEvents = TComponentEvents & {
-	/** show */
-	show: () => void
-	/** hide */
-	hide: () => void
-	/** show:before — вызов e.preventDefault() отменяет показ */
-	'show:before': (e: TActionEvent) => void
-	/** hide:before — вызов e.preventDefault() отменяет скрытие */
-	'hide:before': (e: TActionEvent) => void
+  /** show */
+  show: () => void;
+  /** hide */
+  hide: () => void;
+  /** show:before — вызов e.preventDefault() отменяет показ */
+  "show:before": (e: TActionEvent) => void;
+  /** hide:before — вызов e.preventDefault() отменяет скрытие */
+  "hide:before": (e: TActionEvent) => void;
 
-	/** change:visible */
-	'change:visible': (value: boolean) => void
-	/** change:rendered */
-	'change:rendered': (value: boolean) => void
-	/** Запись `rendered` — подправить или отменить (`TChangeEvent`). У `visible` то же делают `show:before` и `hide:before` */
-	'change:rendered:before': (e: TChangeEvent<boolean>) => void
-	/** change:present — rendered && visible */
-	'change:present': (value: boolean) => void
+  /** change:visible */
+  "change:visible": (payload: TValuePayload<boolean>) => void;
+  /** change:rendered */
+  "change:rendered": (payload: TValuePayload<boolean>) => void;
+  /** Запись `rendered` — подправить или отменить (`TChangeEvent`). У `visible` то же делают `show:before` и `hide:before` */
+  "change:rendered:before": (e: TChangeEvent<boolean>) => void;
+  /** change:present — rendered && visible */
+  "change:present": (payload: TValuePayload<boolean>) => void;
 
-	/** change:tag */
-	'change:tag': (value: string | object) => void
-	/** change:direction */
-	'change:direction': (value: TDirection) => void
-	/** change:classes (без baseClass) */
-	'change:classes': (value: string[]) => void
-	/** change:aria — набор атрибутов доступности изменился */
-	'change:aria': (value: TAriaAttributes) => void
-	/** change:dataset — набор `data-*` изменился */
-	'change:dataset': (value: TDatasetAttributes) => void
-	/** change:attrs — набор нативных атрибутов изменился */
-	'change:attrs': (value: TAttributesMap) => void
-	/** ready — срабатывает когда компонент монтируется/демонтируется из DOM */
-	ready: (value: boolean) => void
-}
+  /** change:tag */
+  "change:tag": (payload: TValuePayload<string | object>) => void;
+  /** change:direction */
+  "change:direction": (payload: TValuePayload<TDirection>) => void;
+  /** change:classes (без baseClass) */
+  "change:classes": (payload: TValuePayload<string[]>) => void;
+  /** change:aria — набор атрибутов доступности изменился */
+  "change:aria": (payload: TValuePayload<TAriaAttributes>) => void;
+  /** change:dataset — набор `data-*` изменился */
+  "change:dataset": (payload: TValuePayload<TDatasetAttributes>) => void;
+  /** change:attrs — набор нативных атрибутов изменился */
+  "change:attrs": (payload: TValuePayload<TAttributesMap>) => void;
+  /** ready — срабатывает когда компонент монтируется/демонтируется из DOM */
+  ready: (value: boolean) => void;
+};
 
 export interface IComponentViewProps extends IComponentProps {
-	/** Отрисован ли компонент (аналог v-if) */
-	rendered?: boolean
-	/** Виден ли компонент (логическая видимость) */
-	visible?: boolean
-	tag?: string | object
-	/** Направление письма; по умолчанию `'inherit'` — наследуется от предка */
-	direction?: TDirection
+  /** Отрисован ли компонент (аналог v-if) */
+  rendered?: boolean;
+  /** Виден ли компонент (логическая видимость) */
+  visible?: boolean;
+  tag?: string | object;
+  /** Направление письма; по умолчанию `'inherit'` — наследуется от предка */
+  direction?: TDirection;
 }
 
 export interface IComponentViewMethods {
-	/** Показать компонент */
-	show(): void
-	/** Скрыть компонент */
-	hide(): void
+  /** Показать компонент */
+  show(): void;
+  /** Скрыть компонент */
+  hide(): void;
 }
 
 export interface IComponentView<
-	TProps extends IComponentViewProps = IComponentViewProps,
-	TEvents extends Record<string, (...args: any) => any> = TComponentViewEvents,
+  TProps extends IComponentViewProps = IComponentViewProps,
+  TEvents extends Record<string, (...args: any) => any> = TComponentViewEvents,
 >
-	extends IComponent<TProps, TEvents>, IComponentViewMethods {
-	/** Отрисован в DOM */
-	rendered: boolean
-	/** Логическая видимость */
-	visible: boolean
-	/** Компонент на экране: rendered && visible */
-	readonly present: boolean
-	/** HTML-тег или компонент */
-	tag: string | object
-	/** Направление письма (`'inherit'` — наследуется от предка) */
-	direction: TDirection
-	/** CSS-классы (включая baseClass и динамические) */
-	readonly classes: TClasses
-	/** Атрибуты доступности — живой набор, как `classes` */
-	readonly aria: TAria
-	/** `data-*` для темы — такой же живой набор, но другой контракт */
-	readonly dataset: TDataset
-	/**
-	 * Нативные атрибуты, зависящие от тега корня (`disabled` у кнопки/поля) —
-	 * третий набор рядом с `aria`/`dataset`
-	 */
-	readonly attrs: TAttributes
-	/** Компонент смонтирован в DOM и готов (устанавливается плагин-слоем) */
-	ready: boolean
+  extends IComponent<TProps, TEvents>, IComponentViewMethods {
+  /** Отрисован в DOM */
+  rendered: boolean;
+  /** Логическая видимость */
+  visible: boolean;
+  /** Компонент на экране: rendered && visible */
+  readonly present: boolean;
+  /** HTML-тег или компонент */
+  tag: string | object;
+  /** Направление письма (`'inherit'` — наследуется от предка) */
+  direction: TDirection;
+  /** CSS-классы (включая baseClass и динамические) */
+  readonly classes: TClasses;
+  /** Атрибуты доступности — живой набор, как `classes` */
+  readonly aria: TAria;
+  /** `data-*` для темы — такой же живой набор, но другой контракт */
+  readonly dataset: TDataset;
+  /**
+   * Нативные атрибуты, зависящие от тега корня (`disabled` у кнопки/поля) —
+   * третий набор рядом с `aria`/`dataset`
+   */
+  readonly attrs: TAttributes;
+  /** Компонент смонтирован в DOM и готов (устанавливается плагин-слоем) */
+  ready: boolean;
 }

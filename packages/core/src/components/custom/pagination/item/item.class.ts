@@ -1,7 +1,11 @@
-import { TValueControl } from '../../../base/value-control'
-import type { TDefaultValues } from '../../../base/component'
-import type { TPaginationValue } from '../types'
-import type { IPaginationItem, IPaginationItemProps, TPaginationItemEvents } from './types'
+import { TValueControl } from "../../../base/value-control";
+import type { TDefaultValues } from "../../../base/component";
+import type { TPaginationValue } from "../types";
+import type {
+  IPaginationItem,
+  IPaginationItemProps,
+  TPaginationItemEvents,
+} from "./types";
 
 /**
  * Страница пагинации — элемент коллекции, без коллекционной части.
@@ -21,56 +25,62 @@ import type { IPaginationItem, IPaginationItemProps, TPaginationItemEvents } fro
  * и `aria` стоит на нём, как у таба.
  */
 export default class TPaginationItem
-	extends TValueControl<TPaginationValue, IPaginationItemProps, TPaginationItemEvents>
-	implements IPaginationItem
+  extends TValueControl<
+    TPaginationValue,
+    IPaginationItemProps,
+    TPaginationItemEvents
+  >
+  implements IPaginationItem
 {
-	static override baseClass = 'so-pagination-item'
+  static override baseClass = "so-pagination-item";
 
-	static defaultValues: typeof TValueControl.defaultValues &
-		TDefaultValues<IPaginationItemProps, 'text'> = {
-		...TValueControl.defaultValues,
-		value: '',
-		text: '',
-		tag: 'li',
-	}
+  static defaultValues: typeof TValueControl.defaultValues &
+    TDefaultValues<IPaginationItemProps, "text"> = {
+    ...TValueControl.defaultValues,
+    value: "",
+    text: "",
+    tag: "li",
+  };
 
-	protected _text: string
+  protected _text: string;
 
-	constructor(props: Partial<IPaginationItemProps> = {}) {
-		super(props)
+  constructor(props: Partial<IPaginationItemProps> = {}) {
+    super(props);
 
-		const ctor = new.target as typeof TPaginationItem
+    const ctor = new.target as typeof TPaginationItem;
 
-		this._text = props.text ?? ctor.defaultValues.text
-	}
+    this._text = props.text ?? ctor.defaultValues.text;
+  }
 
-	/**
-	 * `aria` страницы стоит на вложенном `<button>`: корень — место в списке,
-	 * которое держит `data-*` для темы, а кнопкой является строка внутри.
-	 *
-	 * Поэтому ARIA-половину правила «нативный атрибут вместо ARIA-дубля»
-	 * решает тег этой кнопки, а не `tag` корня: нативный `disabled` она
-	 * получает от своего `TButton`, и `aria-disabled` рядом был бы дублем.
-	 */
-	protected override get _ariaTag(): string {
-		return 'button'
-	}
+  /**
+   * `aria` страницы стоит на вложенном `<button>`: корень — место в списке,
+   * которое держит `data-*` для темы, а кнопкой является строка внутри.
+   *
+   * Поэтому ARIA-половину правила «нативный атрибут вместо ARIA-дубля»
+   * решает тег этой кнопки, а не `tag` корня: нативный `disabled` она
+   * получает от своего `TButton`, и `aria-disabled` рядом был бы дублем.
+   */
+  protected override get _ariaTag(): string {
+    return "button";
+  }
 
-	get text(): string {
-		return this._text
-	}
+  get text(): string {
+    return this._text;
+  }
 
-	set text(value: string) {
-		if (this._text === value) return
+  set text(value: string) {
+    if (this._text === value) return;
 
-		this._text = value
-		this.events.emit('change:text', value)
-	}
+    const oldValue = this.text;
 
-	override getProps(): IPaginationItemProps {
-		return {
-			...super.getProps(),
-			text: this._text,
-		}
-	}
+    this._text = value;
+    this.events.emit("change:text", { newValue: value, oldValue: oldValue });
+  }
+
+  override getProps(): IPaginationItemProps {
+    return {
+      ...super.getProps(),
+      text: this._text,
+    };
+  }
 }

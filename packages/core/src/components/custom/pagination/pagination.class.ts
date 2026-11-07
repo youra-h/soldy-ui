@@ -1,14 +1,14 @@
-import { TValueControl } from '../../base/value-control'
-import type { TDefaultValues } from '../../base/component'
-import { DEFAULT_LOCALE, TAria } from '../../../common'
-import { pageCount, pageKey, pagePosition, samePages } from './window'
+import { TValueControl } from "../../base/value-control";
+import type { TDefaultValues } from "../../base/component";
+import { DEFAULT_LOCALE, TAria } from "../../../common";
+import { pageCount, pageKey, pagePosition, samePages } from "./window";
 import type {
-	IPagination,
-	IPaginationProps,
-	TPaginationEvents,
-	TPaginationPage,
-	TPaginationValue,
-} from './types'
+  IPagination,
+  IPaginationProps,
+  TPaginationEvents,
+  TPaginationPage,
+  TPaginationValue,
+} from "./types";
 
 /**
  * Пагинация — постраничная навигация: стрелки по краям, между ними — окно
@@ -41,170 +41,189 @@ import type {
  * поиска, — знает только приложение.
  */
 export default class TPagination
-	extends TValueControl<TPaginationValue, IPaginationProps, TPaginationEvents>
-	implements IPagination
+  extends TValueControl<TPaginationValue, IPaginationProps, TPaginationEvents>
+  implements IPagination
 {
-	static override baseClass = 'so-pagination'
+  static override baseClass = "so-pagination";
 
-	static defaultValues: typeof TValueControl.defaultValues &
-		TDefaultValues<IPaginationProps, 'total' | 'pageSize' | 'middleCount' | 'locale', 'pages'> =
-		{
-			...TValueControl.defaultValues,
-			value: 1,
-			total: 0,
-			pageSize: 10,
-			pages: undefined,
-			middleCount: 3,
-			locale: DEFAULT_LOCALE,
-			tag: 'nav',
-		}
+  static defaultValues: typeof TValueControl.defaultValues &
+    TDefaultValues<
+      IPaginationProps,
+      "total" | "pageSize" | "middleCount" | "locale",
+      "pages"
+    > = {
+    ...TValueControl.defaultValues,
+    value: 1,
+    total: 0,
+    pageSize: 10,
+    pages: undefined,
+    middleCount: 3,
+    locale: DEFAULT_LOCALE,
+    tag: "nav",
+  };
 
-	protected _total: number
-	protected _pageSize: number
-	protected _pages: TPaginationPage[] | undefined
-	protected _middleCount: number
-	protected _locale: string
-	protected _prevAria: TAria
-	protected _nextAria: TAria
+  protected _total: number;
+  protected _pageSize: number;
+  protected _pages: TPaginationPage[] | undefined;
+  protected _middleCount: number;
+  protected _locale: string;
+  protected _prevAria: TAria;
+  protected _nextAria: TAria;
 
-	constructor(props: Partial<IPaginationProps> = {}) {
-		super(props)
+  constructor(props: Partial<IPaginationProps> = {}) {
+    super(props);
 
-		const ctor = new.target as typeof TPagination
+    const ctor = new.target as typeof TPagination;
 
-		this._total = props.total ?? ctor.defaultValues.total
-		this._pageSize = props.pageSize ?? ctor.defaultValues.pageSize
-		this._pages = props.pages ?? ctor.defaultValues.pages
-		this._middleCount = props.middleCount ?? ctor.defaultValues.middleCount
-		this._locale = props.locale ?? ctor.defaultValues.locale
+    this._total = props.total ?? ctor.defaultValues.total;
+    this._pageSize = props.pageSize ?? ctor.defaultValues.pageSize;
+    this._pages = props.pages ?? ctor.defaultValues.pages;
+    this._middleCount = props.middleCount ?? ctor.defaultValues.middleCount;
+    this._locale = props.locale ?? ctor.defaultValues.locale;
 
-		this._prevAria = new TAria()
-		this._prevAria.subscribe(() =>
-			this.events.emit('change:prevAria', this._prevAria.toObject()),
-		)
+    this._prevAria = new TAria();
+    this._prevAria.subscribe(() =>
+      this.events.emit("change:prevAria", this._prevAria.toObject()),
+    );
 
-		this._nextAria = new TAria()
-		this._nextAria.subscribe(() =>
-			this.events.emit('change:nextAria', this._nextAria.toObject()),
-		)
-	}
+    this._nextAria = new TAria();
+    this._nextAria.subscribe(() =>
+      this.events.emit("change:nextAria", this._nextAria.toObject()),
+    );
+  }
 
-	get total(): number {
-		return this._total
-	}
+  get total(): number {
+    return this._total;
+  }
 
-	set total(value: number) {
-		if (this._total === value) return
+  set total(value: number) {
+    if (this._total === value) return;
 
-		this._total = value
-		this.events.emit('change:total', value)
-	}
+    const oldValue = this.total;
 
-	get pageSize(): number {
-		return this._pageSize
-	}
+    this._total = value;
+    this.events.emit("change:total", { newValue: value, oldValue: oldValue });
+  }
 
-	set pageSize(value: number) {
-		if (this._pageSize === value) return
+  get pageSize(): number {
+    return this._pageSize;
+  }
 
-		this._pageSize = value
-		this.events.emit('change:pageSize', value)
-	}
+  set pageSize(value: number) {
+    if (this._pageSize === value) return;
 
-	get pages(): TPaginationPage[] | undefined {
-		return this._pages
-	}
+    const oldValue = this.pageSize;
 
-	/**
-	 * Список сверяется по тексту и ключу страниц, а не по ссылкам: эхо модели
-	 * и литерал в разметке, собранный заново тем же составом, — не смена.
-	 */
-	set pages(value: TPaginationPage[] | undefined) {
-		if (samePages(this._pages, value)) return
+    this._pageSize = value;
+    this.events.emit("change:pageSize", {
+      newValue: value,
+      oldValue: oldValue,
+    });
+  }
 
-		this._pages = value
-		this.events.emit('change:pages', value)
-	}
+  get pages(): TPaginationPage[] | undefined {
+    return this._pages;
+  }
 
-	/** Как задано: окно прижимает его к числу страниц само (`middleOf`). */
-	get middleCount(): number {
-		return this._middleCount
-	}
+  /**
+   * Список сверяется по тексту и ключу страниц, а не по ссылкам: эхо модели
+   * и литерал в разметке, собранный заново тем же составом, — не смена.
+   */
+  set pages(value: TPaginationPage[] | undefined) {
+    if (samePages(this._pages, value)) return;
 
-	set middleCount(value: number) {
-		if (this._middleCount === value) return
+    const oldValue = this._pages;
 
-		this._middleCount = value
-		this.events.emit('change:middleCount', value)
-	}
+    this._pages = value;
+    this.events.emit("change:pages", { newValue: value, oldValue: oldValue });
+  }
 
-	get locale(): string {
-		return this._locale
-	}
+  /** Как задано: окно прижимает его к числу страниц само (`middleOf`). */
+  get middleCount(): number {
+    return this._middleCount;
+  }
 
-	set locale(value: string) {
-		if (this._locale === value) return
+  set middleCount(value: number) {
+    if (this._middleCount === value) return;
 
-		this._locale = value
-		this.events.emit('change:locale', value)
-	}
+    const oldValue = this.middleCount;
 
-	/**
-	 * Набор стрелки «назад». Своего экземпляра у стрелки нет — набор держит
-	 * пагинация, как календарь — наборы кнопок листания. Живой: имя пишет
-	 * плагин имён от локали, об изменении набор сообщает `change:prevAria`.
-	 */
-	get prevAria(): TAria {
-		return this._prevAria
-	}
+    this._middleCount = value;
+    this.events.emit("change:middleCount", {
+      newValue: value,
+      oldValue: oldValue,
+    });
+  }
 
-	/** Набор стрелки «вперёд» — как у «назад». */
-	get nextAria(): TAria {
-		return this._nextAria
-	}
+  get locale(): string {
+    return this._locale;
+  }
 
-	get prevDisabled(): boolean {
-		return this.disabled || this._position <= 1
-	}
+  set locale(value: string) {
+    if (this._locale === value) return;
 
-	get nextDisabled(): boolean {
-		const position = this._position
+    const oldValue = this.locale;
 
-		return this.disabled || position === 0 || position >= pageCount(this)
-	}
+    this._locale = value;
+    this.events.emit("change:locale", { newValue: value, oldValue: oldValue });
+  }
 
-	prev(): void {
-		if (this.prevDisabled) return
+  /**
+   * Набор стрелки «назад». Своего экземпляра у стрелки нет — набор держит
+   * пагинация, как календарь — наборы кнопок листания. Живой: имя пишет
+   * плагин имён от локали, об изменении набор сообщает `change:prevAria`.
+   */
+  get prevAria(): TAria {
+    return this._prevAria;
+  }
 
-		this._goTo(this._position - 1)
-	}
+  /** Набор стрелки «вперёд» — как у «назад». */
+  get nextAria(): TAria {
+    return this._nextAria;
+  }
 
-	next(): void {
-		if (this.nextDisabled) return
+  get prevDisabled(): boolean {
+    return this.disabled || this._position <= 1;
+  }
 
-		this._goTo(this._position + 1)
-	}
+  get nextDisabled(): boolean {
+    const position = this._position;
 
-	/** Место текущей страницы, с единицы; страницы со значением нет — 0. */
-	protected get _position(): number {
-		return pagePosition(this, this.value)
-	}
+    return this.disabled || position === 0 || position >= pageCount(this);
+  }
 
-	/** Сделать текущей страницу на месте `position` — записью значения. */
-	protected _goTo(position: number): void {
-		const key = pageKey(this, position)
+  prev(): void {
+    if (this.prevDisabled) return;
 
-		if (key !== undefined) this.value = key
-	}
+    this._goTo(this._position - 1);
+  }
 
-	override getProps(): IPaginationProps {
-		return {
-			...super.getProps(),
-			total: this._total,
-			pageSize: this._pageSize,
-			pages: this._pages,
-			middleCount: this._middleCount,
-			locale: this._locale,
-		}
-	}
+  next(): void {
+    if (this.nextDisabled) return;
+
+    this._goTo(this._position + 1);
+  }
+
+  /** Место текущей страницы, с единицы; страницы со значением нет — 0. */
+  protected get _position(): number {
+    return pagePosition(this, this.value);
+  }
+
+  /** Сделать текущей страницу на месте `position` — записью значения. */
+  protected _goTo(position: number): void {
+    const key = pageKey(this, position);
+
+    if (key !== undefined) this.value = key;
+  }
+
+  override getProps(): IPaginationProps {
+    return {
+      ...super.getProps(),
+      total: this._total,
+      pageSize: this._pageSize,
+      pages: this._pages,
+      middleCount: this._middleCount,
+      locale: this._locale,
+    };
+  }
 }

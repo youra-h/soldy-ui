@@ -1,8 +1,12 @@
-import type { IListBox, TListBoxView } from '../../../types'
-import type { TListIndicator } from '../../../../list'
-import type { IExtension, IExtensionItems } from '../../../../../base/collection'
-import type { IListBoxItemExtension } from './item'
-import type { IListBoxItem } from '../../../item/types'
+import type { IListBox, TListBoxView } from "../../../types";
+import type { TListIndicator } from "../../../../list";
+import type {
+  IExtension,
+  IExtensionItems,
+} from "../../../../../base/collection";
+import type { IListBoxItemExtension } from "./item";
+import type { IListBoxItem } from "../../../item/types";
+import type { TValuePayload } from "../../../../../../common";
 
 /**
  * Контракт расширения списка.
@@ -12,36 +16,39 @@ import type { IListBoxItem } from '../../../item/types'
  * выбор своего элемента.
  */
 export interface IListBoxExtension<
-	TItem extends IListBoxItem = IListBoxItem,
-	// `any` в констрейнте намеренно: карта событий инвариантна, и требовать
-	// здесь точный набор значило бы запретить наследнику её расширить
-	TItemExt extends IListBoxItemExtension<TItem, any> = IListBoxItemExtension<TItem>,
+  TItem extends IListBoxItem = IListBoxItem,
+  // `any` в констрейнте намеренно: карта событий инвариантна, и требовать
+  // здесь точный набор значило бы запретить наследнику её расширить
+  TItemExt extends IListBoxItemExtension<TItem, any> =
+    IListBoxItemExtension<TItem>,
 >
-	extends IExtension<TItem, TListBoxExtensionEvents>, IExtensionItems<TItem, TItemExt> {
-	/** Внешний вид со списка. */
-	readonly view: TListBoxView | undefined
-	/** Где стоит отметка выбранного — свойство списка, не элемента. */
-	readonly indicator: TListIndicator
-	/**
-	 * Выбор пользователя: переключить выбор элемента.
-	 * Возвращает `false`, если элемент недоступен.
-	 */
-	chooseItem(item: TItem): boolean
+  extends
+    IExtension<TItem, TListBoxExtensionEvents>,
+    IExtensionItems<TItem, TItemExt> {
+  /** Внешний вид со списка. */
+  readonly view: TListBoxView | undefined;
+  /** Где стоит отметка выбранного — свойство списка, не элемента. */
+  readonly indicator: TListIndicator;
+  /**
+   * Выбор пользователя: переключить выбор элемента.
+   * Возвращает `false`, если элемент недоступен.
+   */
+  chooseItem(item: TItem): boolean;
 }
 
 /** Опции движка ListBox: владелец приходит и уходит после сборки. */
 export type TListBoxEngineOptions<TOwner extends IListBox = IListBox> = {
-	owner: TOwner
-}
+  owner: TOwner;
+};
 
 export type TListBoxExtensionEvents = {
-	'change:view': (value: TListBoxView | undefined) => void
-	'change:indicator': (value: TListIndicator) => void
-	/**
-	 * Пользователь выбрал элемент — кликом по строке или Enter и пробелом.
-	 * Приходит на каждый принятый выбор, и на повторный выбор выбранного
-	 * тоже: в `single` он снимает выбор, и по `change:selection` выбор
-	 * пользователя не отличить ни от снятия, ни от записи `value` из кода
-	 */
-	choose: (item: IListBoxItem) => void
-}
+  "change:view": (payload: TValuePayload<TListBoxView | undefined>) => void;
+  "change:indicator": (payload: TValuePayload<TListIndicator>) => void;
+  /**
+   * Пользователь выбрал элемент — кликом по строке или Enter и пробелом.
+   * Приходит на каждый принятый выбор, и на повторный выбор выбранного
+   * тоже: в `single` он снимает выбор, и по `change:selection` выбор
+   * пользователя не отличить ни от снятия, ни от записи `value` из кода
+   */
+  choose: (item: IListBoxItem) => void;
+};

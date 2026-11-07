@@ -1,6 +1,13 @@
-import { TValueControl } from '../../base/value-control'
-import type { TDefaultValues } from '../../base/component'
-import type { ITagsProps, TTagsEvents, ITags, TTagsValue, TTagsView, TTagsOverflow } from './types'
+import { TValueControl } from "../../base/value-control";
+import type { TDefaultValues } from "../../base/component";
+import type {
+  ITagsProps,
+  TTagsEvents,
+  ITags,
+  TTagsValue,
+  TTagsView,
+  TTagsOverflow,
+} from "./types";
 
 /**
  * Компонент Tags — коллекция тегов.
@@ -36,91 +43,102 @@ import type { ITagsProps, TTagsEvents, ITags, TTagsValue, TTagsView, TTagsOverfl
  * значение уезжает в тему через `data-overflow`: раскладка ряда — её дело, и
  * ядру тут знать нечего.
  */
-export class TTags extends TValueControl<TTagsValue, ITagsProps, TTagsEvents> implements ITags {
-	static override baseClass = 'so-tags'
+export class TTags
+  extends TValueControl<TTagsValue, ITagsProps, TTagsEvents>
+  implements ITags
+{
+  static override baseClass = "so-tags";
 
-	static defaultValues: typeof TValueControl.defaultValues &
-		TDefaultValues<ITagsProps, 'closable' | 'overflow', 'view'> = {
-		...TValueControl.defaultValues,
-		closable: false,
-		view: undefined,
-		overflow: 'wrap',
-	}
+  static defaultValues: typeof TValueControl.defaultValues &
+    TDefaultValues<ITagsProps, "closable" | "overflow", "view"> = {
+    ...TValueControl.defaultValues,
+    closable: false,
+    view: undefined,
+    overflow: "wrap",
+  };
 
-	protected _closable!: boolean
-	protected _view: TTagsView | undefined
-	protected _overflow!: TTagsOverflow
+  protected _closable!: boolean;
+  protected _view: TTagsView | undefined;
+  protected _overflow!: TTagsOverflow;
 
-	constructor(props: Partial<ITagsProps> = {}) {
-		super(props)
+  constructor(props: Partial<ITagsProps> = {}) {
+    super(props);
 
-		const ctor = new.target as typeof TTags
+    const ctor = new.target as typeof TTags;
 
-		this._closable = props.closable ?? ctor.defaultValues.closable
+    this._closable = props.closable ?? ctor.defaultValues.closable;
 
-		this._applyView(props.view ?? ctor.defaultValues.view)
-		this._applyOverflow(props.overflow ?? ctor.defaultValues.overflow)
+    this._applyView(props.view ?? ctor.defaultValues.view);
+    this._applyOverflow(props.overflow ?? ctor.defaultValues.overflow);
 
-		this._aria.add('role', 'list')
-	}
+    this._aria.add("role", "list");
+  }
 
-	get closable(): boolean {
-		return this._closable
-	}
+  get closable(): boolean {
+    return this._closable;
+  }
 
-	set closable(value: boolean) {
-		if (this._closable === value) return
+  set closable(value: boolean) {
+    if (this._closable === value) return;
 
-		this._closable = value
-		this.events.emit('change:closable', value)
-	}
+    const oldValue = this.closable;
 
-	get view(): TTagsView | undefined {
-		return this._view
-	}
+    this._closable = value;
+    this.events.emit("change:closable", {
+      newValue: value,
+      oldValue: oldValue,
+    });
+  }
 
-	set view(value: TTagsView | undefined) {
-		if (this._view === value) return
+  get view(): TTagsView | undefined {
+    return this._view;
+  }
 
-		this._applyView(value, this._view)
-		this.events.emit('change:view', value)
-	}
+  set view(value: TTagsView | undefined) {
+    if (this._view === value) return;
 
-	get overflow(): TTagsOverflow {
-		return this._overflow
-	}
+    this._applyView(value, this._view);
+    this.events.emit("change:view", value);
+  }
 
-	set overflow(value: TTagsOverflow) {
-		if (this._overflow === value) return
+  get overflow(): TTagsOverflow {
+    return this._overflow;
+  }
 
-		this._applyOverflow(value)
-		this.events.emit('change:overflow', value)
-	}
+  set overflow(value: TTagsOverflow) {
+    if (this._overflow === value) return;
 
-	/** Модификатор вида — с префиксом `--view-`; `swap` пропускает пустое значение. */
-	protected _applyView(newValue: TTagsView | undefined, oldValue?: TTagsView): void {
-		this._classes.swap({
-			prefix: '--view-',
-			oldValue,
-			newValue,
-		})
+    this._applyOverflow(value);
+    this.events.emit("change:overflow", value);
+  }
 
-		this._view = newValue
-	}
+  /** Модификатор вида — с префиксом `--view-`; `swap` пропускает пустое значение. */
+  protected _applyView(
+    newValue: TTagsView | undefined,
+    oldValue?: TTagsView,
+  ): void {
+    this._classes.swap({
+      prefix: "--view-",
+      oldValue,
+      newValue,
+    });
 
-	/** Режим переполнения — состояние для темы, поэтому `data-*`, а не класс. */
-	protected _applyOverflow(value: TTagsOverflow): void {
-		this._overflow = value
+    this._view = newValue;
+  }
 
-		this._dataset.add('overflow', value)
-	}
+  /** Режим переполнения — состояние для темы, поэтому `data-*`, а не класс. */
+  protected _applyOverflow(value: TTagsOverflow): void {
+    this._overflow = value;
 
-	override getProps(): ITagsProps {
-		return {
-			...super.getProps(),
-			closable: this._closable,
-			view: this._view,
-			overflow: this._overflow,
-		} as ITagsProps
-	}
+    this._dataset.add("overflow", value);
+  }
+
+  override getProps(): ITagsProps {
+    return {
+      ...super.getProps(),
+      closable: this._closable,
+      view: this._view,
+      overflow: this._overflow,
+    } as ITagsProps;
+  }
 }

@@ -1,229 +1,247 @@
-import type { IExtension, IExtensionContext } from '../types'
-import type { TCollectionEngineItemSource } from '../../types'
-import type { TBatchEvents, IBatchExtension } from './types'
+import type { IExtension, IExtensionContext } from "../types";
+import type { TCollectionEngineItemSource } from "../../types";
+import type { TBatchEvents, IBatchExtension } from "./types";
 import {
-	TInsertCommand,
-	TRemoveCommand,
-	TClearCommand,
-	TPatchCommand,
-	TQueryCommand,
-} from '../../commands'
-import { TBaseExtension } from '../base-extension.class'
+  TInsertCommand,
+  TRemoveCommand,
+  TClearCommand,
+  TPatchCommand,
+  TQueryCommand,
+} from "../../commands";
+import { TBaseExtension } from "../base-extension.class";
 
 /**
  * TBatchExtension — расширение для пакетных операций
  */
 export class TBatchExtension<TItem extends object>
-	extends TBaseExtension<TItem, TBatchEvents<TItem>>
-	implements IExtension<TItem>, IBatchExtension<TItem>
+  extends TBaseExtension<TItem, TBatchEvents<TItem>>
+  implements IExtension<TItem>, IBatchExtension<TItem>
 {
-	readonly name = 'batch' as const
+  readonly name = "batch" as const;
 
-	private _trackBy?: (item: TCollectionEngineItemSource<TItem> | TItem) => unknown
+  private _trackBy?: (
+    item: TCollectionEngineItemSource<TItem> | TItem,
+  ) => unknown;
 
-	/**
-	 * Удержанные от сверки элементы состава (`hold`): у каждого — знаки его
-	 * удержаний. Элемент удержан, пока знак есть хоть один.
-	 */
-	private readonly _held = new Map<TItem, Set<object>>()
+  /**
+   * Удержанные от сверки элементы состава (`hold`): у каждого — знаки его
+   * удержаний. Элемент удержан, пока знак есть хоть один.
+   */
+  private readonly _held = new Map<TItem, Set<object>>();
 
-	get trackBy(): ((item: TCollectionEngineItemSource<TItem> | TItem) => unknown) | undefined {
-		return this._trackBy
-	}
+  get trackBy():
+    | ((item: TCollectionEngineItemSource<TItem> | TItem) => unknown)
+    | undefined {
+    return this._trackBy;
+  }
 
-	override install(ctx: IExtensionContext<TItem>): void {
-		super.install(ctx)
+  override install(ctx: IExtensionContext<TItem>): void {
+    super.install(ctx);
 
-		// Показанное меняется по двум причинам: изменился состав хранилища или
-		// изменились условия отбора. Читателю экрана разница не важна — ему в
-		// обоих случаях надо перечитать `shown`.
-		ctx.driver.events.on('change:items', () => this.events.emit('change:shown'))
-		ctx.driver.events.on('items:query:invalidated', () => this.events.emit('change:shown'))
+    // Показанное меняется по двум причинам: изменился состав хранилища или
+    // изменились условия отбора. Читателю экрана разница не важна — ему в
+    // обоих случаях надо перечитать `shown`.
+    ctx.driver.events.on("change:items", () =>
+      this.events.emit("change:shown"),
+    );
+    ctx.driver.events.on("items:query:invalidated", () =>
+      this.events.emit("change:shown"),
+    );
 
-		// Ушедший из состава удержание теряет: вернувшийся не удержан, пока его
-		// не удержат снова. `clear` шлёт `item:removed` на каждый элемент
-		ctx.driver.events.on('item:removed', (e) => this._held.delete(e.item))
-	}
+    // Ушедший из состава удержание теряет: вернувшийся не удержан, пока его
+    // не удержат снова. `clear` шлёт `item:removed` на каждый элемент
+    ctx.driver.events.on("item:removed", (e) => this._held.delete(e.item));
+  }
 
-	set trackBy(fn: ((item: TCollectionEngineItemSource<TItem> | TItem) => unknown) | undefined) {
-		if (this._trackBy === fn) return
+  set trackBy(
+    fn:
+      | ((item: TCollectionEngineItemSource<TItem> | TItem) => unknown)
+      | undefined,
+  ) {
+    if (this._trackBy === fn) return;
 
-		this._trackBy = fn
+    const oldValue = this._trackBy;
 
-		this.events.emit('change:trackBy', fn)
-	}
+    this._trackBy = fn;
 
-	/**
-	 * Состав хранилища — реальные данные, как они лежат.
-	 *
-	 * Отбор сюда не вмешивается: скрытые фильтром элементы никуда не делись, и
-	 * всё, что пишет в коллекцию или следит за её целостностью, должно видеть
-	 * их. Что показано пользователю — это `shown`.
-	 */
-	get items(): ReadonlyArray<TItem> {
-		return this._ctx.driver.valueOf()
-	}
+    this.events.emit("change:trackBy", { newValue: fn, oldValue: oldValue });
+  }
 
-	/**
-	 * Заменить состав, если он другой. Те же экземпляры тем же порядком — не
-	 * смена: без `trackBy` замена — это `clear()` + `set()`, и состав,
-	 * вернувшийся тем же (эхо `update:items` у `v-model`), пересобрал бы
-	 * коллекцию и сбросил выбор. Сверяет сеттер, а не `update`: операция
-	 * перевставляет что дали — так `TFactoryExtension` догоняет сырые объекты
-	 * тем же составом.
-	 */
-	set items(items: ReadonlyArray<TCollectionEngineItemSource<TItem>>) {
-		const stored = this.items
+  /**
+   * Состав хранилища — реальные данные, как они лежат.
+   *
+   * Отбор сюда не вмешивается: скрытые фильтром элементы никуда не делись, и
+   * всё, что пишет в коллекцию или следит за её целостностью, должно видеть
+   * их. Что показано пользователю — это `shown`.
+   */
+  get items(): ReadonlyArray<TItem> {
+    return this._ctx.driver.valueOf();
+  }
 
-		if (
-			items.length === stored.length &&
-			items.every((item, index) => item === stored[index])
-		) {
-			return
-		}
+  /**
+   * Заменить состав, если он другой. Те же экземпляры тем же порядком — не
+   * смена: без `trackBy` замена — это `clear()` + `set()`, и состав,
+   * вернувшийся тем же (эхо `update:items` у `v-model`), пересобрал бы
+   * коллекцию и сбросил выбор. Сверяет сеттер, а не `update`: операция
+   * перевставляет что дали — так `TFactoryExtension` догоняет сырые объекты
+   * тем же составом.
+   */
+  set items(items: ReadonlyArray<TCollectionEngineItemSource<TItem>>) {
+    const stored = this.items;
 
-		this.update(items)
-	}
+    if (
+      items.length === stored.length &&
+      items.every((item, index) => item === stored[index])
+    ) {
+      return;
+    }
 
-	/**
-	 * Что показано пользователю — выборка после отбора.
-	 *
-	 * За геттером стоит `TQueryCommand`: подписчики `items:query:before`
-	 * (`filter`, сортировка таблицы, будущая группировка) успевают подменить
-	 * список до отдачи. Хранилище при этом не трогается, поэтому снятие
-	 * фильтра возвращает всё как было.
-	 *
-	 * Исполняется ли команда на каждое чтение, решает стратегия чтения
-	 * драйвера. По умолчанию — да; с памятью выборки (`memory`, у таблицы)
-	 * выборка исполняется один раз и отдаётся тем же массивом, пока запись не
-	 * изменит хранилище или условия не объявят недействительными
-	 * (`invalidateQuery()`). Путь чтения от этого не меняется: он один, здесь,
-	 * и команда без параметров — память держится на этом.
-	 *
-	 * Читать отсюда должно всё, что показывает: список на экране, навигация с
-	 * клавиатуры, пустое состояние. Счётчик «показано N» — `length`.
-	 */
-	get shown(): ReadonlyArray<TItem> {
-		return this._ctx.driver.query(new TQueryCommand<TItem>())
-	}
+    this.update(items);
+  }
 
-	/**
-	 * Сколько элементов в хранилище.
-	 *
-	 * Именно в хранилище, а не в выборке: при активном отборе это число не
-	 * совпадёт с `length`. Перенесено из `plain` как есть — `plain`
-	 * отвечает за операции над одной записью, счёт состава к ним не относится.
-	 */
-	get total(): number {
-		return this._ctx.driver.valueOf().length
-	}
+  /**
+   * Что показано пользователю — выборка после отбора.
+   *
+   * За геттером стоит `TQueryCommand`: подписчики `items:query:before`
+   * (`filter`, сортировка таблицы, будущая группировка) успевают подменить
+   * список до отдачи. Хранилище при этом не трогается, поэтому снятие
+   * фильтра возвращает всё как было.
+   *
+   * Исполняется ли команда на каждое чтение, решает стратегия чтения
+   * драйвера. По умолчанию — да; с памятью выборки (`memory`, у таблицы)
+   * выборка исполняется один раз и отдаётся тем же массивом, пока запись не
+   * изменит хранилище или условия не объявят недействительными
+   * (`invalidateQuery()`). Путь чтения от этого не меняется: он один, здесь,
+   * и команда без параметров — память держится на этом.
+   *
+   * Читать отсюда должно всё, что показывает: список на экране, навигация с
+   * клавиатуры, пустое состояние. Счётчик «показано N» — `length`.
+   */
+  get shown(): ReadonlyArray<TItem> {
+    return this._ctx.driver.query(new TQueryCommand<TItem>());
+  }
 
-	/**
-	 * Сколько элементов показано — длина выборки после отбора.
-	 *
-	 * Производное от `shown`: чтение идёт тем же путём — через `TQueryCommand`
-	 * и стратегию чтения драйвера, своего счётчика нет. Об изменении сообщает
-	 * `change:shown`. Сколько в хранилище — `total`.
-	 */
-	get length(): number {
-		return this.shown.length
-	}
+  /**
+   * Сколько элементов в хранилище.
+   *
+   * Именно в хранилище, а не в выборке: при активном отборе это число не
+   * совпадёт с `length`. Перенесено из `plain` как есть — `plain`
+   * отвечает за операции над одной записью, счёт состава к ним не относится.
+   */
+  get total(): number {
+    return this._ctx.driver.valueOf().length;
+  }
 
-	/**
-	 * Найти элемент в хранилище — по тому же составу, что отдаёт `items`.
-	 *
-	 * Скрытый отбором элемент здесь находится: он существует, просто не
-	 * показан. Нужен поиск среди показанного — `shown.find()`.
-	 */
-	find(predicate: (item: TItem) => boolean): TItem | undefined {
-		return this.items.find(predicate)
-	}
+  /**
+   * Сколько элементов показано — длина выборки после отбора.
+   *
+   * Производное от `shown`: чтение идёт тем же путём — через `TQueryCommand`
+   * и стратегию чтения драйвера, своего счётчика нет. Об изменении сообщает
+   * `change:shown`. Сколько в хранилище — `total`.
+   */
+  get length(): number {
+    return this.shown.length;
+  }
 
-	set(items: ReadonlyArray<TCollectionEngineItemSource<TItem>>): void {
-		if (!items.length) return
+  /**
+   * Найти элемент в хранилище — по тому же составу, что отдаёт `items`.
+   *
+   * Скрытый отбором элемент здесь находится: он существует, просто не
+   * показан. Нужен поиск среди показанного — `shown.find()`.
+   */
+  find(predicate: (item: TItem) => boolean): TItem | undefined {
+    return this.items.find(predicate);
+  }
 
-		this._ctx.batch(() => {
-			// В конец, чтобы сохранить порядок items. Позицию считает команда —
-			// снимок состава на каждый элемент копировал бы хранилище N раз
-			items.forEach((item) => this._ctx.execute(new TInsertCommand<TItem>(item)))
-		})
+  set(items: ReadonlyArray<TCollectionEngineItemSource<TItem>>): void {
+    if (!items.length) return;
 
-		this.events.emit('items:added', items)
-	}
+    this._ctx.batch(() => {
+      // В конец, чтобы сохранить порядок items. Позицию считает команда —
+      // снимок состава на каждый элемент копировал бы хранилище N раз
+      items.forEach((item) =>
+        this._ctx.execute(new TInsertCommand<TItem>(item)),
+      );
+    });
 
-	update(items: ReadonlyArray<TCollectionEngineItemSource<TItem>>): void {
-		if (this._trackBy) {
-			this.patch(items)
-		} else {
-			this.clear()
-			this.set(items)
-		}
-	}
+    this.events.emit("items:added", items);
+  }
 
-	/**
-	 * Сверить состав с входом по ключу `trackBy`.
-	 *
-	 * Пустой вход — тоже состав, а не «нечего делать»: сверка удаляет всё, чего
-	 * во входе нет, то есть всё, кроме удержанных. Иначе `items = []` с
-	 * `trackBy` оставлял бы коллекцию как была, а без `trackBy` (`clear()` +
-	 * `set()`) очищал бы её.
-	 *
-	 * Удержанных (`hold`) сверка не снимает: их состав задаёт не вход, а тот,
-	 * кто держит, — разметка. Совпадения команда ищет по всему составу, и
-	 * удержанный с ключом из входа обновляется на месте, без дубля.
-	 */
-	patch(items: ReadonlyArray<TCollectionEngineItemSource<TItem>>): void {
-		const trackBy = this._trackBy
+  update(items: ReadonlyArray<TCollectionEngineItemSource<TItem>>): void {
+    if (this._trackBy) {
+      this.patch(items);
+    } else {
+      this.clear();
+      this.set(items);
+    }
+  }
 
-		if (!trackBy) {
-			throw new Error('trackBy function is not set')
-		}
+  /**
+   * Сверить состав с входом по ключу `trackBy`.
+   *
+   * Пустой вход — тоже состав, а не «нечего делать»: сверка удаляет всё, чего
+   * во входе нет, то есть всё, кроме удержанных. Иначе `items = []` с
+   * `trackBy` оставлял бы коллекцию как была, а без `trackBy` (`clear()` +
+   * `set()`) очищал бы её.
+   *
+   * Удержанных (`hold`) сверка не снимает: их состав задаёт не вход, а тот,
+   * кто держит, — разметка. Совпадения команда ищет по всему составу, и
+   * удержанный с ключом из входа обновляется на месте, без дубля.
+   */
+  patch(items: ReadonlyArray<TCollectionEngineItemSource<TItem>>): void {
+    const trackBy = this._trackBy;
 
-		// Сверка живёт в команде: ей нужен сырой storage, а не выборка из `items`.
-		this._ctx.execute(new TPatchCommand<TItem>(items, trackBy, (item) => !this._held.has(item)))
+    if (!trackBy) {
+      throw new Error("trackBy function is not set");
+    }
 
-		// Пустой вход ничего не добавляет — сообщать не о чем.
-		if (items.length) this.events.emit('items:added', items)
-	}
+    // Сверка живёт в команде: ей нужен сырой storage, а не выборка из `items`.
+    this._ctx.execute(
+      new TPatchCommand<TItem>(items, trackBy, (item) => !this._held.has(item)),
+    );
 
-	/**
-	 * Удержать элемент состава от сверки по ключу. Вне состава — ничего не
-	 * держит. Удержание снимает «отпустить» или уход элемента из состава.
-	 *
-	 * Знак у каждого удержания свой: «отпустить» снимает только своё — и
-	 * повторный вызов, и вызов после ухода элемента ничего не делают, даже
-	 * если элемент вернулся и его удержали снова.
-	 */
-	hold(item: TItem): () => void {
-		if (!this.items.includes(item)) return () => {}
+    // Пустой вход ничего не добавляет — сообщать не о чем.
+    if (items.length) this.events.emit("items:added", items);
+  }
 
-		const sign = {}
-		const signs = this._held.get(item) ?? new Set<object>()
+  /**
+   * Удержать элемент состава от сверки по ключу. Вне состава — ничего не
+   * держит. Удержание снимает «отпустить» или уход элемента из состава.
+   *
+   * Знак у каждого удержания свой: «отпустить» снимает только своё — и
+   * повторный вызов, и вызов после ухода элемента ничего не делают, даже
+   * если элемент вернулся и его удержали снова.
+   */
+  hold(item: TItem): () => void {
+    if (!this.items.includes(item)) return () => {};
 
-		signs.add(sign)
-		this._held.set(item, signs)
+    const sign = {};
+    const signs = this._held.get(item) ?? new Set<object>();
 
-		return () => {
-			const current = this._held.get(item)
+    signs.add(sign);
+    this._held.set(item, signs);
 
-			if (!current?.delete(sign)) return
+    return () => {
+      const current = this._held.get(item);
 
-			if (current.size === 0) this._held.delete(item)
-		}
-	}
+      if (!current?.delete(sign)) return;
 
-	remove(items: ReadonlyArray<TItem>): void {
-		if (!items.length) return
+      if (current.size === 0) this._held.delete(item);
+    };
+  }
 
-		this._ctx.batch(() => {
-			items.forEach((item) => this._ctx.execute(new TRemoveCommand(item)))
-		})
+  remove(items: ReadonlyArray<TItem>): void {
+    if (!items.length) return;
 
-		this.events.emit('items:removed', items)
-	}
+    this._ctx.batch(() => {
+      items.forEach((item) => this._ctx.execute(new TRemoveCommand(item)));
+    });
 
-	clear(): void {
-		this._ctx.execute(new TClearCommand())
-		this.events.emit('items:removed', [])
-	}
+    this.events.emit("items:removed", items);
+  }
+
+  clear(): void {
+    this._ctx.execute(new TClearCommand());
+    this.events.emit("items:removed", []);
+  }
 }

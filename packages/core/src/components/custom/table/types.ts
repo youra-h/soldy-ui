@@ -1,6 +1,11 @@
-import type { IControl, IControlProps, TControlEvents } from '../../base/control'
-import type { ITableCollectionProps } from './collection/types'
-import type { TTableResizePreview } from './column/types'
+import type { TValuePayload } from "../../../common";
+import type {
+  IControl,
+  IControlProps,
+  TControlEvents,
+} from "../../base/control";
+import type { ITableCollectionProps } from "./collection/types";
+import type { TTableResizePreview } from "./column/types";
 
 /**
  * Как гибкие колонки — колонки без своей ширины — делят место таблицы.
@@ -15,7 +20,7 @@ import type { TTableResizePreview } from './column/types'
  * Места не хватает и в самой узкой раскладке — таблица шире места, и её окно
  * прокручивается. Значение библиотеки, а не темы: его читает ядро.
  */
-export type TTableColumnFit = 'none' | 'auto' | 'contain'
+export type TTableColumnFit = "none" | "auto" | "contain";
 
 /**
  * Что идёт за жестом перестановки колонки, пока её несут.
@@ -44,87 +49,89 @@ export type TTableColumnFit = 'none' | 'auto' | 'contain'
  * плагин жеста переставляет колонку на отпускании, не дожидаясь приземления.
  * Значение библиотеки, а не темы: смысл у него один в любой теме.
  */
-export type TTableReorderPreview = 'none' | 'head' | 'column'
+export type TTableReorderPreview = "none" | "head" | "column";
 
 export type TTableEvents = TControlEvents & {
-	/** change:locale */
-	'change:locale': (value: string) => void
-	/** change:stickyHead */
-	'change:stickyHead': (value: boolean) => void
-	/** change:columnFit */
-	'change:columnFit': (value: TTableColumnFit) => void
-	/** change:reorderPreview */
-	'change:reorderPreview': (value: TTableReorderPreview) => void
-	/** change:resizePreview */
-	'change:resizePreview': (value: TTableResizePreview) => void
-	/** change:resizable */
-	'change:resizable': (value: boolean) => void
-	/** change:reorderable */
-	'change:reorderable': (value: boolean) => void
-}
+  /** change:locale */
+  "change:locale": (payload: TValuePayload<string>) => void;
+  /** change:stickyHead */
+  "change:stickyHead": (payload: TValuePayload<boolean>) => void;
+  /** change:columnFit */
+  "change:columnFit": (payload: TValuePayload<TTableColumnFit>) => void;
+  /** change:reorderPreview */
+  "change:reorderPreview": (
+    payload: TValuePayload<TTableReorderPreview>,
+  ) => void;
+  /** change:resizePreview */
+  "change:resizePreview": (payload: TValuePayload<TTableResizePreview>) => void;
+  /** change:resizable */
+  "change:resizable": (payload: TValuePayload<boolean>) => void;
+  /** change:reorderable */
+  "change:reorderable": (payload: TValuePayload<boolean>) => void;
+};
 
 /** Полный набор пропсов таблицы: свои и коллекции строк (`ITableCollectionProps`). */
 export interface ITableProps extends IControlProps, ITableCollectionProps {
-	/**
-	 * Язык таблицы — тег BCP 47. По нему сортировка сравнивает строки:
-	 * алфавит языка и числа внутри строк. Невалидный — `en-US`. В разметке его
-	 * нет: с setup его пишет плагин языка — тег локали поддерева
-	 */
-	locale?: string
-	/**
-	 * Закреплённая шапка: шапка стоит у верхнего края прокрутки — контейнера
-	 * или страницы, — а строки уходят под неё. Без него шапка уезжает вместе
-	 * со строками
-	 */
-	stickyHead?: boolean
-	/**
-	 * Как колонки без своей ширины делят место таблицы: `none` — стоят в
-	 * ширине по умолчанию, `auto` — растут до `maxWidth` во всю ширину места,
-	 * `contain` — ровно заполняют место, сжимаясь до `minWidth`
-	 */
-	columnFit?: TTableColumnFit
-	/**
-	 * Что идёт за жестом перестановки колонки: `none` — только взятый
-	 * заголовок, соседи стоят, место — линия, колонка встаёт сразу; `head` —
-	 * шапка, тело стоит до отпускания; `column` — шапка и ячейки нарисованных
-	 * строк. Теме значение не уходит: в `column` расширение колонок ставит
-	 * таблице признак `data-reorder-preview` только на время жеста, в `none`
-	 * — взятой колонке `data-still`
-	 */
-	reorderPreview?: TTableReorderPreview
-	/**
-	 * Что идёт за протяжкой ручки ширины: `live` — сама колонка, ширина
-	 * пишется на каждый шаг указателя; `deferred` — призрак новой границы, а
-	 * ширина пишется на отпускании, и таблица в жесте не перекладывается.
-	 * Клавиши пишут сразу в обоих. Теме значение не уходит: призрак рисуется по
-	 * `data-resize-ghost` заголовка, только на время жеста
-	 */
-	resizePreview?: TTableResizePreview
-	/**
-	 * Пользователь меняет ширину колонок ручкой — у колонок без своего
-	 * `resizable`. Своё значение колонки сильнее
-	 */
-	resizable?: boolean
-	/**
-	 * Пользователь переставляет колонки — у колонок без своего `reorderable`.
-	 * Своё значение колонки сильнее
-	 */
-	reorderable?: boolean
+  /**
+   * Язык таблицы — тег BCP 47. По нему сортировка сравнивает строки:
+   * алфавит языка и числа внутри строк. Невалидный — `en-US`. В разметке его
+   * нет: с setup его пишет плагин языка — тег локали поддерева
+   */
+  locale?: string;
+  /**
+   * Закреплённая шапка: шапка стоит у верхнего края прокрутки — контейнера
+   * или страницы, — а строки уходят под неё. Без него шапка уезжает вместе
+   * со строками
+   */
+  stickyHead?: boolean;
+  /**
+   * Как колонки без своей ширины делят место таблицы: `none` — стоят в
+   * ширине по умолчанию, `auto` — растут до `maxWidth` во всю ширину места,
+   * `contain` — ровно заполняют место, сжимаясь до `minWidth`
+   */
+  columnFit?: TTableColumnFit;
+  /**
+   * Что идёт за жестом перестановки колонки: `none` — только взятый
+   * заголовок, соседи стоят, место — линия, колонка встаёт сразу; `head` —
+   * шапка, тело стоит до отпускания; `column` — шапка и ячейки нарисованных
+   * строк. Теме значение не уходит: в `column` расширение колонок ставит
+   * таблице признак `data-reorder-preview` только на время жеста, в `none`
+   * — взятой колонке `data-still`
+   */
+  reorderPreview?: TTableReorderPreview;
+  /**
+   * Что идёт за протяжкой ручки ширины: `live` — сама колонка, ширина
+   * пишется на каждый шаг указателя; `deferred` — призрак новой границы, а
+   * ширина пишется на отпускании, и таблица в жесте не перекладывается.
+   * Клавиши пишут сразу в обоих. Теме значение не уходит: призрак рисуется по
+   * `data-resize-ghost` заголовка, только на время жеста
+   */
+  resizePreview?: TTableResizePreview;
+  /**
+   * Пользователь меняет ширину колонок ручкой — у колонок без своего
+   * `resizable`. Своё значение колонки сильнее
+   */
+  resizable?: boolean;
+  /**
+   * Пользователь переставляет колонки — у колонок без своего `reorderable`.
+   * Своё значение колонки сильнее
+   */
+  reorderable?: boolean;
 }
 
 export interface ITable extends IControl<ITableProps, TTableEvents> {
-	/** Язык таблицы — тег BCP 47, как задан; невалидный сортировка читает как `en-US` */
-	locale: string
-	/** Шапка закреплена у верхнего края прокрутки */
-	stickyHead: boolean
-	/** Как колонки без своей ширины делят место таблицы */
-	columnFit: TTableColumnFit
-	/** Что идёт за жестом перестановки колонки: шапка или вся колонка */
-	reorderPreview: TTableReorderPreview
-	/** Что идёт за протяжкой ручки ширины: колонка или призрак */
-	resizePreview: TTableResizePreview
-	/** Ручка ширины у колонок без своего `resizable` */
-	resizable: boolean
-	/** Перестановка колонок без своего `reorderable` */
-	reorderable: boolean
+  /** Язык таблицы — тег BCP 47, как задан; невалидный сортировка читает как `en-US` */
+  locale: string;
+  /** Шапка закреплена у верхнего края прокрутки */
+  stickyHead: boolean;
+  /** Как колонки без своей ширины делят место таблицы */
+  columnFit: TTableColumnFit;
+  /** Что идёт за жестом перестановки колонки: шапка или вся колонка */
+  reorderPreview: TTableReorderPreview;
+  /** Что идёт за протяжкой ручки ширины: колонка или призрак */
+  resizePreview: TTableResizePreview;
+  /** Ручка ширины у колонок без своего `resizable` */
+  resizable: boolean;
+  /** Перестановка колонок без своего `reorderable` */
+  reorderable: boolean;
 }

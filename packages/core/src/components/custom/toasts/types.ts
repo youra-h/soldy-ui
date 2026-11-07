@@ -1,7 +1,8 @@
-import type { ILayer, ILayerProps, TLayerEvents } from '../../base/layer'
-import type { TCollectionStorageDriverEvents } from '../../base/collection'
-import type { IToastsCollectionProps } from './collection/types'
-import type { IToastsItem, IToastsItemProps } from './item/types'
+import type { TValuePayload } from "../../../common";
+import type { ILayer, ILayerProps, TLayerEvents } from "../../base/layer";
+import type { TCollectionStorageDriverEvents } from "../../base/collection";
+import type { IToastsCollectionProps } from "./collection/types";
+import type { IToastsItem, IToastsItemProps } from "./item/types";
 
 /**
  * Где регион тостов: у верхнего или нижнего края окна — у начала строки, по
@@ -12,7 +13,7 @@ import type { IToastsItem, IToastsItemProps } from './item/types'
  * и смысл у него один в любой теме, поэтому это union ядра, а не реестр темы.
  */
 export type TToastsPlacement =
-	'top-start' | 'top' | 'top-end' | 'bottom-start' | 'bottom' | 'bottom-end'
+  "top-start" | "top" | "top-end" | "bottom-start" | "bottom" | "bottom-end";
 
 /**
  * Как тосты стоят в регионе: `list` — столбцом, каждый на своём месте;
@@ -23,52 +24,54 @@ export type TToastsPlacement =
  * её только в `cascade`) и тема (раскладка), и смысл у него один в любой теме,
  * поэтому это union ядра, как `placement`.
  */
-export type TToastsLayout = 'list' | 'cascade'
+export type TToastsLayout = "list" | "cascade";
 
 export type TToastsEvents = TLayerEvents &
-	TCollectionStorageDriverEvents<IToastsItem> & {
-		/** change:placement */
-		'change:placement': (value: TToastsPlacement) => void
-		/** change:layout */
-		'change:layout': (value: TToastsLayout) => void
-		/** change:max */
-		'change:max': (value: number) => void
-		/** change:duration */
-		'change:duration': (value: number) => void
-	}
+  TCollectionStorageDriverEvents<IToastsItem> & {
+    /** change:placement */
+    "change:placement": (payload: TValuePayload<TToastsPlacement>) => void;
+    /** change:layout */
+    "change:layout": (payload: TValuePayload<TToastsLayout>) => void;
+    /** change:max */
+    "change:max": (payload: TValuePayload<number>) => void;
+    /** change:duration */
+    "change:duration": (payload: TValuePayload<number>) => void;
+  };
 
 /** Пропсы самого компонента (без коллекционной части). */
 export interface IToastsComponentProps extends ILayerProps {
-	/** Где регион тостов. По умолчанию `bottom-end` */
-	placement?: TToastsPlacement
-	/**
-	 * Как тосты стоят в регионе: столбцом (`list`) или стопкой (`cascade`),
-	 * которую листают колесом и стрелками. По умолчанию `list`
-	 */
-	layout?: TToastsLayout
-	/** Сколько тостов видно разом; остальные ждут места. По умолчанию 3 */
-	max?: number
-	/**
-	 * Сколько тост держится на экране, мс, — если своей длительности у тоста
-	 * нет. `0` — тосты держатся, пока их не закроют. По умолчанию 5000
-	 */
-	duration?: number
+  /** Где регион тостов. По умолчанию `bottom-end` */
+  placement?: TToastsPlacement;
+  /**
+   * Как тосты стоят в регионе: столбцом (`list`) или стопкой (`cascade`),
+   * которую листают колесом и стрелками. По умолчанию `list`
+   */
+  layout?: TToastsLayout;
+  /** Сколько тостов видно разом; остальные ждут места. По умолчанию 3 */
+  max?: number;
+  /**
+   * Сколько тост держится на экране, мс, — если своей длительности у тоста
+   * нет. `0` — тосты держатся, пока их не закроют. По умолчанию 5000
+   */
+  duration?: number;
 }
 
 /** Полный набор пропсов Toasts: компонентные + коллекция (engine, items). */
 export interface IToastsProps
-	extends IToastsComponentProps, IToastsCollectionProps<IToastsItemProps, IToastsItem> {}
+  extends
+    IToastsComponentProps,
+    IToastsCollectionProps<IToastsItemProps, IToastsItem> {}
 
 export interface IToasts<
-	TProps extends IToastsComponentProps = IToastsProps,
-	TEvents extends TToastsEvents = TToastsEvents,
+  TProps extends IToastsComponentProps = IToastsProps,
+  TEvents extends TToastsEvents = TToastsEvents,
 > extends ILayer<TProps, TEvents> {
-	/** Где регион тостов */
-	placement: TToastsPlacement
-	/** Как тосты стоят в регионе: столбцом или стопкой */
-	layout: TToastsLayout
-	/** Сколько тостов видно разом */
-	max: number
-	/** Длительность тоста без своей, мс; `0` — держится, пока не закроют */
-	duration: number
+  /** Где регион тостов */
+  placement: TToastsPlacement;
+  /** Как тосты стоят в регионе: столбцом или стопкой */
+  layout: TToastsLayout;
+  /** Сколько тостов видно разом */
+  max: number;
+  /** Длительность тоста без своей, мс; `0` — держится, пока не закроют */
+  duration: number;
 }

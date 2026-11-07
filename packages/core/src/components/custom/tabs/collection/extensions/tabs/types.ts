@@ -1,45 +1,49 @@
-import type { ITabs } from '../../../types'
-import type { IExtension, IExtensionItems } from '../../../../../base/collection'
-import type { ITabsItemExtension } from './item'
-import type { ITabsItem } from '../../../item/types'
+import type { TValuePayload } from "../../../../../../common";
+import type { ITabs } from "../../../types";
+import type {
+  IExtension,
+  IExtensionItems,
+} from "../../../../../base/collection";
+import type { ITabsItemExtension } from "./item";
+import type { ITabsItem } from "../../../item/types";
 
 /**
  * Контракт расширения табов.
  * Используется как тип TParent в TTabsItemExtension для типизированного доступа к _parent.
  */
 export interface ITabsExtension<TItem extends ITabsItem = ITabsItem>
-	extends
-		IExtension<TItem, TTabsExtensionEvents>,
-		IExtensionItems<TItem, ITabsItemExtension<TItem>> {
-	/** Глобальный closable с инстанса TTabs. */
-	readonly closable: boolean
+  extends
+    IExtension<TItem, TTabsExtensionEvents>,
+    IExtensionItems<TItem, ITabsItemExtension<TItem>> {
+  /** Глобальный closable с инстанса TTabs. */
+  readonly closable: boolean;
 
-	/**
-	 * Таб, который держит остановку Tab (`tabindex="0"`): активный, если на
-	 * него можно перейти, иначе первый такой по порядку.
-	 */
-	readonly tabStop: TItem | undefined
+  /**
+   * Таб, который держит остановку Tab (`tabindex="0"`): активный, если на
+   * него можно перейти, иначе первый такой по порядку.
+   */
+  readonly tabStop: TItem | undefined;
 
-	/** Проверить, есть ли в коллекции активные табы. */
-	hasEnabledTabs(): boolean
-	/**
-	 * Можно ли перейти на таб: не disabled, visible и rendered. Одно правило
-	 * для остановки Tab и навигации с клавиатуры.
-	 */
-	isEnabledTab(item: TItem): boolean
-	/** Закрыть таб (удалить элемент из коллекции). */
-	closeTab(item: TItem): boolean
+  /** Проверить, есть ли в коллекции активные табы. */
+  hasEnabledTabs(): boolean;
+  /**
+   * Можно ли перейти на таб: не disabled, visible и rendered. Одно правило
+   * для остановки Tab и навигации с клавиатуры.
+   */
+  isEnabledTab(item: TItem): boolean;
+  /** Закрыть таб (удалить элемент из коллекции). */
+  closeTab(item: TItem): boolean;
 }
 
 /** Опции движка Tabs: владелец приходит и уходит после сборки. */
 export type TTabsEngineOptions<TOwner extends ITabs = ITabs> = {
-	owner: TOwner
-}
+  owner: TOwner;
+};
 
 /**
  * События расширения TTabsExtension.
  */
 export type TTabsExtensionEvents = {
-	'item:close': (item: ITabsItem) => void
-	'change:closable': (value: boolean) => void
-}
+  "item:close": (item: ITabsItem) => void;
+  "change:closable": (payload: TValuePayload<boolean>) => void;
+};

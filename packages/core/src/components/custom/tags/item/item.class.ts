@@ -1,8 +1,8 @@
-import { TValueControl } from '../../../base/value-control'
-import type { TDefaultValues } from '../../../base/component'
-import { TAria, TChangeEvent } from '../../../../common'
-import type { TEventSink } from '../../../../common'
-import type { ITagsItem, ITagsItemProps, TTagsItemEvents } from './types'
+import { TValueControl } from "../../../base/value-control";
+import type { TDefaultValues } from "../../../base/component";
+import { TAria, TChangeEvent } from "../../../../common";
+import type { TEventSink } from "../../../../common";
+import type { ITagsItem, ITagsItemProps, TTagsItemEvents } from "./types";
 
 /**
  * Элемент Tags — тег.
@@ -33,131 +33,136 @@ import type { ITagsItem, ITagsItemProps, TTagsItemEvents } from './types'
  * строки роль пишет тег, а `aria-selected` — коллекция.
  */
 export default class TTagsItem<
-	TProps extends ITagsItemProps = ITagsItemProps,
-	TEvents extends TTagsItemEvents = TTagsItemEvents,
+  TProps extends ITagsItemProps = ITagsItemProps,
+  TEvents extends TTagsItemEvents = TTagsItemEvents,
 >
-	extends TValueControl<string | number, TProps, TEvents>
-	implements ITagsItem<TProps, TEvents>
+  extends TValueControl<string | number, TProps, TEvents>
+  implements ITagsItem<TProps, TEvents>
 {
-	static override baseClass = 'so-tags-item'
+  static override baseClass = "so-tags-item";
 
-	static defaultValues: typeof TValueControl.defaultValues &
-		TDefaultValues<ITagsItemProps, 'text', 'closable'> = {
-		...TValueControl.defaultValues,
-		text: '',
-		value: '',
-		closable: undefined,
-		tag: 'div',
-	}
+  static defaultValues: typeof TValueControl.defaultValues &
+    TDefaultValues<ITagsItemProps, "text", "closable"> = {
+    ...TValueControl.defaultValues,
+    text: "",
+    value: "",
+    closable: undefined,
+    tag: "div",
+  };
 
-	protected _closeAria: TAria
+  protected _closeAria: TAria;
 
-	protected _text: string
-	protected _closable: boolean | undefined
+  protected _text: string;
+  protected _closable: boolean | undefined;
 
-	constructor(props: Partial<TProps> = {}) {
-		super(props)
+  constructor(props: Partial<TProps> = {}) {
+    super(props);
 
-		const ctor = new.target as typeof TTagsItem
-		const customProps = props as Partial<ITagsItemProps>
+    const ctor = new.target as typeof TTagsItem;
+    const customProps = props as Partial<ITagsItemProps>;
 
-		this._text = customProps.text ?? ctor.defaultValues.text
+    this._text = customProps.text ?? ctor.defaultValues.text;
 
-		this._closable = customProps.closable ?? ctor.defaultValues.closable
+    this._closable = customProps.closable ?? ctor.defaultValues.closable;
 
-		this._closeAria = new TAria()
-		this._closeAria.subscribe(() =>
-			this._sink.emit('change:closeAria', this._closeAria.toObject()),
-		)
+    this._closeAria = new TAria();
+    this._closeAria.subscribe(() =>
+      this._sink.emit("change:closeAria", this._closeAria.toObject()),
+    );
 
-		this._classes.toggle(`--closable`, !!this._closable)
+    this._classes.toggle(`--closable`, !!this._closable);
 
-		// Только то, что тег знает о себе сам: он — элемент набора. Роль
-		// меняется на `option`, когда у коллекции включён выбор — об этом
-		// знает `TTagsExtension`, не элемент.
-		this._aria.add('role', 'listitem')
-	}
+    // Только то, что тег знает о себе сам: он — элемент набора. Роль
+    // меняется на `option`, когда у коллекции включён выбор — об этом
+    // знает `TTagsExtension`, не элемент.
+    this._aria.add("role", "listitem");
+  }
 
-	/**
-	 * Эмит собственных событий класса — без приведения `this.events` к
-	 * конкретной карте (см. `TEventSink` в `common/event/types.ts`).
-	 */
-	protected get _sink(): TEventSink<TTagsItemEvents> {
-		return this.events
-	}
+  /**
+   * Эмит собственных событий класса — без приведения `this.events` к
+   * конкретной карте (см. `TEventSink` в `common/event/types.ts`).
+   */
+  protected get _sink(): TEventSink<TTagsItemEvents> {
+    return this.events;
+  }
 
-	/**
-	 * `aria` тега стоит на вложенном `ItemRow` — строке тега. Тег у неё
-	 * фиксированный (`div`), разметка задаёт его сама, поэтому от `tag` корня
-	 * ARIA-половина правила «нативный атрибут вместо ARIA-дубля» не зависит:
-	 * у `div` своего `disabled` нет, и состояние остаётся `aria-disabled`,
-	 * каким бы ни был корень.
-	 */
-	protected override get _ariaTag(): string {
-		return 'div'
-	}
+  /**
+   * `aria` тега стоит на вложенном `ItemRow` — строке тега. Тег у неё
+   * фиксированный (`div`), разметка задаёт его сама, поэтому от `tag` корня
+   * ARIA-половина правила «нативный атрибут вместо ARIA-дубля» не зависит:
+   * у `div` своего `disabled` нет, и состояние остаётся `aria-disabled`,
+   * каким бы ни был корень.
+   */
+  protected override get _ariaTag(): string {
+    return "div";
+  }
 
-	get text(): string {
-		return this._text
-	}
+  get text(): string {
+    return this._text;
+  }
 
-	set text(value: string) {
-		if (value === this._text) return
+  set text(value: string) {
+    if (value === this._text) return;
 
-		const e = new TChangeEvent(value, this._text)
+    const e = new TChangeEvent(value, this._text);
 
-		this._sink.emit('change:text:before', e)
+    this._sink.emit("change:text:before", e);
 
-		if (e.defaultPrevented || e.value === this._text) return
+    if (e.defaultPrevented || e.value === this._text) return;
 
-		this._text = e.value
-		this._sink.emit('change:text', { newValue: e.value, oldValue: e.oldValue })
-	}
+    this._text = e.value;
+    this._sink.emit("change:text", { newValue: e.value, oldValue: e.oldValue });
+  }
 
-	/**
-	 * Своё значение тега, `undefined` — наследовать от владельца.
-	 *
-	 * `disabled` его не трогает: правило «выключенный тег не закрывается»
-	 * выводит item-адаптер (`TTagsItemExtension.closable`). Раньше оно было
-	 * подпиской на `change:disabled`, которая переписывала это значение, — и
-	 * у тега, выключенного со старта, не срабатывала вовсе: события нет.
-	 */
-	get closable(): boolean | undefined {
-		return this._closable
-	}
+  /**
+   * Своё значение тега, `undefined` — наследовать от владельца.
+   *
+   * `disabled` его не трогает: правило «выключенный тег не закрывается»
+   * выводит item-адаптер (`TTagsItemExtension.closable`). Раньше оно было
+   * подпиской на `change:disabled`, которая переписывала это значение, — и
+   * у тега, выключенного со старта, не срабатывала вовсе: события нет.
+   */
+  get closable(): boolean | undefined {
+    return this._closable;
+  }
 
-	set closable(value: boolean | undefined) {
-		if (value === this._closable) return
+  set closable(value: boolean | undefined) {
+    if (value === this._closable) return;
 
-		const e = new TChangeEvent(value, this._closable)
+    const e = new TChangeEvent(value, this._closable);
 
-		this._sink.emit('change:closable:before', e)
+    this._sink.emit("change:closable:before", e);
 
-		if (e.defaultPrevented || e.value === this._closable) return
+    if (e.defaultPrevented || e.value === this._closable) return;
 
-		this._closable = e.value
-		this._classes.toggle(`--closable`, !!e.value)
-		this._sink.emit('change:closable', e.value)
-	}
+    const oldValue = this.closable;
 
-	/**
-	 * Атрибуты кнопки закрытия — отдельный набор, а не часть `aria`: `aria`
-	 * описывает сам тег, а это кнопка рядом с ним. Один элемент — один набор.
-	 *
-	 * Живой, как `aria`, потому что пишут в него двое: имя с текстом тега
-	 * («Close Настройки») — плагин имён по шаблону локали, `tabindex` —
-	 * `TTagsExtension` по режиму выбора. За границу core → ui уходит снимок
-	 * (`valueOf()`), об изменении набор сообщает `change:closeAria`.
-	 */
-	get closeAria(): TAria {
-		return this._closeAria
-	}
+    this._closable = e.value;
+    this._classes.toggle(`--closable`, !!e.value);
+    this._sink.emit("change:closable", {
+      newValue: e.value,
+      oldValue: oldValue,
+    });
+  }
 
-	override getProps(): TProps {
-		return {
-			...super.getProps(),
-			text: this.text,
-			closable: this.closable,
-		} as TProps
-	}
+  /**
+   * Атрибуты кнопки закрытия — отдельный набор, а не часть `aria`: `aria`
+   * описывает сам тег, а это кнопка рядом с ним. Один элемент — один набор.
+   *
+   * Живой, как `aria`, потому что пишут в него двое: имя с текстом тега
+   * («Close Настройки») — плагин имён по шаблону локали, `tabindex` —
+   * `TTagsExtension` по режиму выбора. За границу core → ui уходит снимок
+   * (`valueOf()`), об изменении набор сообщает `change:closeAria`.
+   */
+  get closeAria(): TAria {
+    return this._closeAria;
+  }
+
+  override getProps(): TProps {
+    return {
+      ...super.getProps(),
+      text: this.text,
+      closable: this.closable,
+    } as TProps;
+  }
 }

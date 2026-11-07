@@ -1,7 +1,11 @@
-import TMenuItem from '../item/item.class'
-import type { TDefaultValues } from '../../../base/component'
-import type { IMenuRadioGroup } from '../radio-group/types'
-import type { IMenuRadioItem, IMenuRadioItemProps, TMenuRadioItemEvents } from './types'
+import TMenuItem from "../item/item.class";
+import type { TDefaultValues } from "../../../base/component";
+import type { IMenuRadioGroup } from "../radio-group/types";
+import type {
+  IMenuRadioItem,
+  IMenuRadioItemProps,
+  TMenuRadioItemEvents,
+} from "./types";
 
 /**
  * Переключатель меню (`Menu.RadioItem`): «по имени», «по дате» в группе
@@ -22,54 +26,56 @@ import type { IMenuRadioItem, IMenuRadioItemProps, TMenuRadioItemEvents } from '
  * кода её передают сами. Без группы переключатель отмечается сам по себе.
  */
 export default class TMenuRadioItem
-	extends TMenuItem<IMenuRadioItemProps, TMenuRadioItemEvents>
-	implements IMenuRadioItem
+  extends TMenuItem<IMenuRadioItemProps, TMenuRadioItemEvents>
+  implements IMenuRadioItem
 {
-	static defaultValues: typeof TMenuItem.defaultValues &
-		TDefaultValues<IMenuRadioItemProps, 'group'> = {
-		...TMenuItem.defaultValues,
-		group: null,
-	}
+  static defaultValues: typeof TMenuItem.defaultValues &
+    TDefaultValues<IMenuRadioItemProps, "group"> = {
+    ...TMenuItem.defaultValues,
+    group: null,
+  };
 
-	protected _group: IMenuRadioGroup | null
+  protected _group: IMenuRadioGroup | null;
 
-	constructor(props: Partial<IMenuRadioItemProps> = {}) {
-		super(props)
+  constructor(props: Partial<IMenuRadioItemProps> = {}) {
+    super(props);
 
-		const ctor = new.target as typeof TMenuRadioItem
+    const ctor = new.target as typeof TMenuRadioItem;
 
-		this._group = props.group ?? ctor.defaultValues.group
-	}
+    this._group = props.group ?? ctor.defaultValues.group;
+  }
 
-	protected override get _role(): string {
-		return 'menuitemradio'
-	}
+  protected override get _role(): string {
+    return "menuitemradio";
+  }
 
-	override get checkable(): boolean {
-		return true
-	}
+  override get checkable(): boolean {
+    return true;
+  }
 
-	/** Группа переключателя; `null` — вне группы. */
-	get group(): IMenuRadioGroup | null {
-		return this._group
-	}
+  /** Группа переключателя; `null` — вне группы. */
+  get group(): IMenuRadioGroup | null {
+    return this._group;
+  }
 
-	set group(value: IMenuRadioGroup | null) {
-		if (this._group === value) return
+  set group(value: IMenuRadioGroup | null) {
+    if (this._group === value) return;
 
-		this._group = value
-		this.events.emit('change:group', value)
-	}
+    const oldValue = this._group;
 
-	override getProps(): IMenuRadioItemProps {
-		return {
-			...super.getProps(),
-			group: this._group,
-		}
-	}
+    this._group = value;
+    this.events.emit("change:group", { newValue: value, oldValue: oldValue });
+  }
+
+  override getProps(): IMenuRadioItemProps {
+    return {
+      ...super.getProps(),
+      group: this._group,
+    };
+  }
 }
 
 /** Переключатель ли это меню. */
 export function isMenuRadioItem(value: unknown): value is IMenuRadioItem {
-	return value instanceof TMenuRadioItem
+  return value instanceof TMenuRadioItem;
 }

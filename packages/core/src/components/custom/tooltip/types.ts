@@ -1,9 +1,10 @@
+import type { TValuePayload } from "../../../common";
 import type {
-	IComponentView,
-	IComponentViewProps,
-	TComponentViewEvents,
-} from '../../base/component-view'
-import type { TAria, TAriaAttributes } from '../../../common'
+  IComponentView,
+  IComponentViewProps,
+  TComponentViewEvents,
+} from "../../base/component-view";
+import type { TAria, TAriaAttributes } from "../../../common";
 
 /**
  * Сторона и выравнивание подсказки у триггера.
@@ -15,7 +16,7 @@ import type { TAria, TAriaAttributes } from '../../../common'
  * выбора потребителя.
  */
 export type TTooltipPlacement =
-	'bottom-start' | 'bottom' | 'bottom-end' | 'top-start' | 'top' | 'top-end'
+  "bottom-start" | "bottom" | "bottom-end" | "top-start" | "top" | "top-end";
 
 /**
  * Чем подсказка служит триггеру — как `type` у Tooltip GitHub Primer.
@@ -30,51 +31,54 @@ export type TTooltipPlacement =
  * Значение читает плагин связки (`TTooltipIdsPlugin`) — от него зависит
  * ссылка в `triggerAria`, — поэтому это union ядра, а не реестр темы.
  */
-export type TTooltipType = 'description' | 'label'
+export type TTooltipType = "description" | "label";
 
 export type TTooltipEvents = TComponentViewEvents & {
-	/** change:open */
-	'change:open': (value: boolean) => void
-	/** change:placement */
-	'change:placement': (value: TTooltipPlacement) => void
-	/** change:openDelay */
-	'change:openDelay': (value: number) => void
-	/** change:closeDelay */
-	'change:closeDelay': (value: number) => void
-	/** change:type */
-	'change:type': (value: TTooltipType) => void
-	/** change:triggerAria — набор атрибутов триггера изменился */
-	'change:triggerAria': (value: TAriaAttributes) => void
-}
+  /** change:open */
+  "change:open": (payload: TValuePayload<boolean>) => void;
+  /** change:placement */
+  "change:placement": (payload: TValuePayload<TTooltipPlacement>) => void;
+  /** change:openDelay */
+  "change:openDelay": (payload: TValuePayload<number>) => void;
+  /** change:closeDelay */
+  "change:closeDelay": (payload: TValuePayload<number>) => void;
+  /** change:type */
+  "change:type": (payload: TValuePayload<TTooltipType>) => void;
+  /** change:triggerAria — набор атрибутов триггера изменился */
+  "change:triggerAria": (payload: TValuePayload<TAriaAttributes>) => void;
+};
 
 export interface ITooltipProps extends IComponentViewProps {
-	/** Показана ли подсказка */
-	open?: boolean
-	/** Сторона и выравнивание подсказки у триггера */
-	placement?: TTooltipPlacement
-	/** Через сколько миллисекунд наведения подсказка показывается */
-	openDelay?: number
-	/** Через сколько миллисекунд после ухода курсора подсказка прячется */
-	closeDelay?: number
-	/** Чем подсказка служит триггеру: описанием или именем */
-	type?: TTooltipType
+  /** Показана ли подсказка */
+  open?: boolean;
+  /** Сторона и выравнивание подсказки у триггера */
+  placement?: TTooltipPlacement;
+  /** Через сколько миллисекунд наведения подсказка показывается */
+  openDelay?: number;
+  /** Через сколько миллисекунд после ухода курсора подсказка прячется */
+  closeDelay?: number;
+  /** Чем подсказка служит триггеру: описанием или именем */
+  type?: TTooltipType;
 }
 
-export interface ITooltip extends IComponentView<ITooltipProps, TTooltipEvents> {
-	/** Показана ли подсказка */
-	open: boolean
-	/** Сторона и выравнивание подсказки у триггера */
-	placement: TTooltipPlacement
-	/** Задержка показа при наведении, мс */
-	openDelay: number
-	/** Задержка скрытия после ухода курсора, мс */
-	closeDelay: number
-	/** Чем подсказка служит триггеру: описанием или именем */
-	type: TTooltipType
-	/**
-	 * ARIA триггера — второй стороны связки: ссылка на панель,
-	 * `aria-describedby` или, в режиме `label`, `aria-labelledby`. Пишет её
-	 * плагин
-	 */
-	readonly triggerAria: TAria
+export interface ITooltip extends IComponentView<
+  ITooltipProps,
+  TTooltipEvents
+> {
+  /** Показана ли подсказка */
+  open: boolean;
+  /** Сторона и выравнивание подсказки у триггера */
+  placement: TTooltipPlacement;
+  /** Задержка показа при наведении, мс */
+  openDelay: number;
+  /** Задержка скрытия после ухода курсора, мс */
+  closeDelay: number;
+  /** Чем подсказка служит триггеру: описанием или именем */
+  type: TTooltipType;
+  /**
+   * ARIA триггера — второй стороны связки: ссылка на панель,
+   * `aria-describedby` или, в режиме `label`, `aria-labelledby`. Пишет её
+   * плагин
+   */
+  readonly triggerAria: TAria;
 }

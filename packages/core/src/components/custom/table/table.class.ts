@@ -1,14 +1,14 @@
-import { TControl } from '../../base/control'
-import type { TDefaultValues } from '../../base/component'
-import { DEFAULT_LOCALE } from '../../../common'
+import { TControl } from "../../base/control";
+import type { TDefaultValues } from "../../base/component";
+import { DEFAULT_LOCALE } from "../../../common";
 import type {
-	ITable,
-	ITableProps,
-	TTableColumnFit,
-	TTableEvents,
-	TTableReorderPreview,
-} from './types'
-import type { TTableResizePreview } from './column/types'
+  ITable,
+  ITableProps,
+  TTableColumnFit,
+  TTableEvents,
+  TTableReorderPreview,
+} from "./types";
+import type { TTableResizePreview } from "./column/types";
 
 /**
  * Таблица — владелец коллекции строк, как ListBox — владелец опций. Корень —
@@ -54,183 +54,215 @@ import type { TTableResizePreview } from './column/types'
  * расширение колонок пишет колонкам входом таблицы (`tableResizable`,
  * `tableReorderable`), а своё значение колонки сильнее.
  */
-export class TTable extends TControl<ITableProps, TTableEvents> implements ITable {
-	static override baseClass = 'so-table'
+export class TTable
+  extends TControl<ITableProps, TTableEvents>
+  implements ITable
+{
+  static override baseClass = "so-table";
 
-	static defaultValues: typeof TControl.defaultValues &
-		TDefaultValues<
-			ITableProps,
-			| 'locale'
-			| 'stickyHead'
-			| 'columnFit'
-			| 'reorderPreview'
-			| 'resizePreview'
-			| 'resizable'
-			| 'reorderable'
-		> = {
-		...TControl.defaultValues,
-		tag: 'table',
-		locale: DEFAULT_LOCALE,
-		stickyHead: false,
-		// Таблица во всю ширину места, как без раскладки ядра
-		columnFit: 'auto',
-		// Шапка: тело тысяч строк на каждую смену места не перерисовывается
-		reorderPreview: 'head',
-		// Колонка за указателем, как до отложенного жеста
-		resizePreview: 'live',
-		// Ручка ширины и перестановка колонок — решение потребителя
-		resizable: false,
-		reorderable: false,
-	}
+  static defaultValues: typeof TControl.defaultValues &
+    TDefaultValues<
+      ITableProps,
+      | "locale"
+      | "stickyHead"
+      | "columnFit"
+      | "reorderPreview"
+      | "resizePreview"
+      | "resizable"
+      | "reorderable"
+    > = {
+    ...TControl.defaultValues,
+    tag: "table",
+    locale: DEFAULT_LOCALE,
+    stickyHead: false,
+    // Таблица во всю ширину места, как без раскладки ядра
+    columnFit: "auto",
+    // Шапка: тело тысяч строк на каждую смену места не перерисовывается
+    reorderPreview: "head",
+    // Колонка за указателем, как до отложенного жеста
+    resizePreview: "live",
+    // Ручка ширины и перестановка колонок — решение потребителя
+    resizable: false,
+    reorderable: false,
+  };
 
-	protected _locale: string
-	protected _stickyHead!: boolean
-	protected _columnFit: TTableColumnFit
-	protected _reorderPreview: TTableReorderPreview
-	protected _resizePreview: TTableResizePreview
-	protected _resizable: boolean
-	protected _reorderable: boolean
+  protected _locale: string;
+  protected _stickyHead!: boolean;
+  protected _columnFit: TTableColumnFit;
+  protected _reorderPreview: TTableReorderPreview;
+  protected _resizePreview: TTableResizePreview;
+  protected _resizable: boolean;
+  protected _reorderable: boolean;
 
-	constructor(props: Partial<ITableProps> = {}) {
-		super(props)
+  constructor(props: Partial<ITableProps> = {}) {
+    super(props);
 
-		const ctor = new.target as typeof TTable
+    const ctor = new.target as typeof TTable;
 
-		this._locale = props.locale ?? ctor.defaultValues.locale
-		this._columnFit = props.columnFit ?? ctor.defaultValues.columnFit
-		this._reorderPreview = props.reorderPreview ?? ctor.defaultValues.reorderPreview
-		this._resizePreview = props.resizePreview ?? ctor.defaultValues.resizePreview
-		this._resizable = props.resizable ?? ctor.defaultValues.resizable
-		this._reorderable = props.reorderable ?? ctor.defaultValues.reorderable
-		this._applyStickyHead(props.stickyHead ?? ctor.defaultValues.stickyHead)
-	}
+    this._locale = props.locale ?? ctor.defaultValues.locale;
+    this._columnFit = props.columnFit ?? ctor.defaultValues.columnFit;
+    this._reorderPreview =
+      props.reorderPreview ?? ctor.defaultValues.reorderPreview;
+    this._resizePreview =
+      props.resizePreview ?? ctor.defaultValues.resizePreview;
+    this._resizable = props.resizable ?? ctor.defaultValues.resizable;
+    this._reorderable = props.reorderable ?? ctor.defaultValues.reorderable;
+    this._applyStickyHead(props.stickyHead ?? ctor.defaultValues.stickyHead);
+  }
 
-	get locale(): string {
-		return this._locale
-	}
+  get locale(): string {
+    return this._locale;
+  }
 
-	set locale(value: string) {
-		if (this._locale === value) return
+  set locale(value: string) {
+    if (this._locale === value) return;
 
-		this._locale = value
-		this.events.emit('change:locale', value)
-	}
+    const oldValue = this.locale;
 
-	/**
-	 * Шапка закреплена у верхнего края прокрутки — контейнера или страницы, — и
-	 * строки уходят под неё. Без него шапка уезжает вместе со строками.
-	 */
-	get stickyHead(): boolean {
-		return this._stickyHead
-	}
+    this._locale = value;
+    this.events.emit("change:locale", { newValue: value, oldValue: oldValue });
+  }
 
-	set stickyHead(value: boolean) {
-		if (this._stickyHead === value) return
+  /**
+   * Шапка закреплена у верхнего края прокрутки — контейнера или страницы, — и
+   * строки уходят под неё. Без него шапка уезжает вместе со строками.
+   */
+  get stickyHead(): boolean {
+    return this._stickyHead;
+  }
 
-		this._applyStickyHead(value)
-		this.events.emit('change:stickyHead', value)
-	}
+  set stickyHead(value: boolean) {
+    if (this._stickyHead === value) return;
 
-	/**
-	 * Как колонки без своей ширины делят место: `none` — стоят в ширине по
-	 * умолчанию, `auto` — растут до `maxWidth` во всю ширину места, `contain` —
-	 * ровно заполняют место, сжимаясь до `minWidth`. Колонки шире места даже
-	 * так — таблица прокручивается.
-	 */
-	get columnFit(): TTableColumnFit {
-		return this._columnFit
-	}
+    this._applyStickyHead(value);
+    this.events.emit("change:stickyHead", value);
+  }
 
-	set columnFit(value: TTableColumnFit) {
-		if (this._columnFit === value) return
+  /**
+   * Как колонки без своей ширины делят место: `none` — стоят в ширине по
+   * умолчанию, `auto` — растут до `maxWidth` во всю ширину места, `contain` —
+   * ровно заполняют место, сжимаясь до `minWidth`. Колонки шире места даже
+   * так — таблица прокручивается.
+   */
+  get columnFit(): TTableColumnFit {
+    return this._columnFit;
+  }
 
-		this._columnFit = value
-		this.events.emit('change:columnFit', value)
-	}
+  set columnFit(value: TTableColumnFit) {
+    if (this._columnFit === value) return;
 
-	/**
-	 * Что идёт за жестом перестановки колонки: `none` — только взятый
-	 * заголовок, соседи стоят, и колонка встаёт на отпускании; `head` — шапка,
-	 * а тело стоит до отпускания; `column` — шапка и ячейки нарисованных строк.
-	 * Колонка во всех встаёт на место одной перестановкой. Значение
-	 * расширение колонок читает, когда колонку берут: смена посреди жеста
-	 * действует со следующего.
-	 */
-	get reorderPreview(): TTableReorderPreview {
-		return this._reorderPreview
-	}
+    const oldValue = this._columnFit;
 
-	set reorderPreview(value: TTableReorderPreview) {
-		if (this._reorderPreview === value) return
+    this._columnFit = value;
+    this.events.emit("change:columnFit", {
+      newValue: value,
+      oldValue: oldValue,
+    });
+  }
 
-		this._reorderPreview = value
-		this.events.emit('change:reorderPreview', value)
-	}
+  /**
+   * Что идёт за жестом перестановки колонки: `none` — только взятый
+   * заголовок, соседи стоят, и колонка встаёт на отпускании; `head` — шапка,
+   * а тело стоит до отпускания; `column` — шапка и ячейки нарисованных строк.
+   * Колонка во всех встаёт на место одной перестановкой. Значение
+   * расширение колонок читает, когда колонку берут: смена посреди жеста
+   * действует со следующего.
+   */
+  get reorderPreview(): TTableReorderPreview {
+    return this._reorderPreview;
+  }
 
-	/**
-	 * Что идёт за протяжкой ручки ширины: `live` — сама колонка, `deferred` —
-	 * призрак новой границы, а ширина пишется на отпускании. Значение
-	 * расширение колонок отдаёт показанным колонкам, а колонка читает его на
-	 * нажатии: смена посреди жеста действует со следующего.
-	 */
-	get resizePreview(): TTableResizePreview {
-		return this._resizePreview
-	}
+  set reorderPreview(value: TTableReorderPreview) {
+    if (this._reorderPreview === value) return;
 
-	set resizePreview(value: TTableResizePreview) {
-		if (this._resizePreview === value) return
+    const oldValue = this._reorderPreview;
 
-		this._resizePreview = value
-		this.events.emit('change:resizePreview', value)
-	}
+    this._reorderPreview = value;
+    this.events.emit("change:reorderPreview", {
+      newValue: value,
+      oldValue: oldValue,
+    });
+  }
 
-	/**
-	 * Пользователь меняет ширину ручкой у колонок без своего `resizable`. Своё
-	 * значение колонки сильнее: и в таблице с ручками колонка бывает без неё.
-	 */
-	get resizable(): boolean {
-		return this._resizable
-	}
+  /**
+   * Что идёт за протяжкой ручки ширины: `live` — сама колонка, `deferred` —
+   * призрак новой границы, а ширина пишется на отпускании. Значение
+   * расширение колонок отдаёт показанным колонкам, а колонка читает его на
+   * нажатии: смена посреди жеста действует со следующего.
+   */
+  get resizePreview(): TTableResizePreview {
+    return this._resizePreview;
+  }
 
-	set resizable(value: boolean) {
-		if (this._resizable === value) return
+  set resizePreview(value: TTableResizePreview) {
+    if (this._resizePreview === value) return;
 
-		this._resizable = value
-		this.events.emit('change:resizable', value)
-	}
+    const oldValue = this._resizePreview;
 
-	/**
-	 * Пользователь переставляет колонки без своего `reorderable`. Своё значение
-	 * колонки сильнее.
-	 */
-	get reorderable(): boolean {
-		return this._reorderable
-	}
+    this._resizePreview = value;
+    this.events.emit("change:resizePreview", {
+      newValue: value,
+      oldValue: oldValue,
+    });
+  }
 
-	set reorderable(value: boolean) {
-		if (this._reorderable === value) return
+  /**
+   * Пользователь меняет ширину ручкой у колонок без своего `resizable`. Своё
+   * значение колонки сильнее: и в таблице с ручками колонка бывает без неё.
+   */
+  get resizable(): boolean {
+    return this._resizable;
+  }
 
-		this._reorderable = value
-		this.events.emit('change:reorderable', value)
-	}
+  set resizable(value: boolean) {
+    if (this._resizable === value) return;
 
-	override getProps(): ITableProps {
-		return {
-			...super.getProps(),
-			locale: this._locale,
-			stickyHead: this._stickyHead,
-			columnFit: this._columnFit,
-			reorderPreview: this._reorderPreview,
-			resizePreview: this._resizePreview,
-			resizable: this._resizable,
-			reorderable: this._reorderable,
-		}
-	}
+    const oldValue = this.resizable;
 
-	protected _applyStickyHead(value: boolean): void {
-		this._stickyHead = value
+    this._resizable = value;
+    this.events.emit("change:resizable", {
+      newValue: value,
+      oldValue: oldValue,
+    });
+  }
 
-		// Тема по нему закрепляет шапку
-		this._dataset.add('sticky-head', value)
-	}
+  /**
+   * Пользователь переставляет колонки без своего `reorderable`. Своё значение
+   * колонки сильнее.
+   */
+  get reorderable(): boolean {
+    return this._reorderable;
+  }
+
+  set reorderable(value: boolean) {
+    if (this._reorderable === value) return;
+
+    const oldValue = this.reorderable;
+
+    this._reorderable = value;
+    this.events.emit("change:reorderable", {
+      newValue: value,
+      oldValue: oldValue,
+    });
+  }
+
+  override getProps(): ITableProps {
+    return {
+      ...super.getProps(),
+      locale: this._locale,
+      stickyHead: this._stickyHead,
+      columnFit: this._columnFit,
+      reorderPreview: this._reorderPreview,
+      resizePreview: this._resizePreview,
+      resizable: this._resizable,
+      reorderable: this._reorderable,
+    };
+  }
+
+  protected _applyStickyHead(value: boolean): void {
+    this._stickyHead = value;
+
+    // Тема по нему закрепляет шапку
+    this._dataset.add("sticky-head", value);
+  }
 }

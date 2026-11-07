@@ -1,7 +1,7 @@
-import type { IComponentView } from '@soldy-ui/core'
-import { TBasePlugin } from '../../../base'
-import type { IPluginContext } from '../../../base'
-import type { TListItemPluginEvents } from './types'
+import type { IComponentView } from "@soldy-ui/core";
+import { TBasePlugin } from "../../../base";
+import type { IPluginContext } from "../../../base";
+import type { TListItemPluginEvents } from "./types";
 
 /**
  * TListItemPlugin — состояние подсветки элемента списка (клавиатурная навигация).
@@ -17,36 +17,41 @@ import type { TListItemPluginEvents } from './types'
  * В DOM плагин не ходит — пишет в набор, а раскладывает его шаблон, синхронно.
  */
 export class TListItemPlugin extends TBasePlugin<any, TListItemPluginEvents> {
-	private _instance: IComponentView | null = null
-	private _highlighted = false
+  private _instance: IComponentView | null = null;
+  private _highlighted = false;
 
-	override install(ctx: IPluginContext, options?: object): void {
-		super.install(ctx, options)
+  override install(ctx: IPluginContext, options?: object): void {
+    super.install(ctx, options);
 
-		this._instance = ctx.getInstance<IComponentView>()
-		this._apply()
-	}
+    this._instance = ctx.getInstance<IComponentView>();
+    this._apply();
+  }
 
-	get highlighted(): boolean {
-		return this._highlighted
-	}
+  get highlighted(): boolean {
+    return this._highlighted;
+  }
 
-	set highlighted(value: boolean) {
-		if (this._highlighted === value) return
+  set highlighted(value: boolean) {
+    if (this._highlighted === value) return;
 
-		this._highlighted = value
-		this._apply()
+    const oldValue = this.highlighted;
 
-		this.events.emit('change:highlighted', value)
-	}
+    this._highlighted = value;
+    this._apply();
 
-	private _apply(): void {
-		this._instance?.dataset.add('highlighted', this._highlighted)
-	}
+    this.events.emit("change:highlighted", {
+      newValue: value,
+      oldValue: oldValue,
+    });
+  }
 
-	override destroy(): void {
-		this._instance = null
+  private _apply(): void {
+    this._instance?.dataset.add("highlighted", this._highlighted);
+  }
 
-		super.destroy()
-	}
+  override destroy(): void {
+    this._instance = null;
+
+    super.destroy();
+  }
 }

@@ -1,8 +1,8 @@
-import { TComponentView } from '../component-view'
-import type { TDefaultValues } from '../component'
-import { TAria } from '../../../common'
-import type { TEventSink } from '../../../common'
-import type { IItemGroup, IItemGroupProps, TItemGroupEvents } from './types'
+import { TComponentView } from "../component-view";
+import type { TDefaultValues } from "../component";
+import { TAria } from "../../../common";
+import type { TEventSink } from "../../../common";
+import type { IItemGroup, IItemGroupProps, TItemGroupEvents } from "./types";
 
 /**
  * Группа элементов коллекции под общей подписью — общая база групп меню
@@ -33,67 +33,69 @@ import type { IItemGroup, IItemGroupProps, TItemGroupEvents } from './types'
  * (`TMenuRadioGroup`) — та же группа со своим значением.
  */
 export default class TItemGroup<
-	TProps extends IItemGroupProps = IItemGroupProps,
-	TEvents extends TItemGroupEvents = TItemGroupEvents,
+  TProps extends IItemGroupProps = IItemGroupProps,
+  TEvents extends TItemGroupEvents = TItemGroupEvents,
 >
-	extends TComponentView<TProps, TEvents>
-	implements IItemGroup<TProps, TEvents>
+  extends TComponentView<TProps, TEvents>
+  implements IItemGroup<TProps, TEvents>
 {
-	static defaultValues: typeof TComponentView.defaultValues &
-		TDefaultValues<IItemGroupProps, 'label'> = {
-		...TComponentView.defaultValues,
-		label: '',
-	}
+  static defaultValues: typeof TComponentView.defaultValues &
+    TDefaultValues<IItemGroupProps, "label"> = {
+    ...TComponentView.defaultValues,
+    label: "",
+  };
 
-	protected _label: string
-	protected _labelAria: TAria
+  protected _label: string;
+  protected _labelAria: TAria;
 
-	constructor(props: Partial<TProps> = {}) {
-		super(props)
+  constructor(props: Partial<TProps> = {}) {
+    super(props);
 
-		const ctor = new.target as typeof TItemGroup
+    const ctor = new.target as typeof TItemGroup;
 
-		this._label = props.label ?? ctor.defaultValues.label
+    this._label = props.label ?? ctor.defaultValues.label;
 
-		this._aria.add('role', 'group')
+    this._aria.add("role", "group");
 
-		this._labelAria = new TAria()
-		this._labelAria.subscribe(() =>
-			this._sink.emit('change:labelAria', this._labelAria.toObject()),
-		)
-	}
+    this._labelAria = new TAria();
+    this._labelAria.subscribe(() =>
+      this._sink.emit("change:labelAria", this._labelAria.toObject()),
+    );
+  }
 
-	/**
-	 * Эмит собственных событий группы — без приведения `this.events` к
-	 * конкретной карте (см. `TEventSink` в `common/event/types.ts`).
-	 */
-	protected override get _sink(): TEventSink<TItemGroupEvents> {
-		return this.events
-	}
+  /**
+   * Эмит собственных событий группы — без приведения `this.events` к
+   * конкретной карте (см. `TEventSink` в `common/event/types.ts`).
+   */
+  protected override get _sink(): TEventSink<TItemGroupEvents> {
+    return this.events;
+  }
 
-	get label(): string {
-		return this._label
-	}
+  get label(): string {
+    return this._label;
+  }
 
-	set label(value: string) {
-		if (this._label === value) return
+  set label(value: string) {
+    if (this._label === value) return;
 
-		this._label = value
-		this._sink.emit('change:label', value)
-	}
+    const oldValue = this.label;
 
-	/**
-	 * Набор подписи — разметки внутри группы. Живой, как `aria`: `id` в него
-	 * пишет плагин связок, об изменении набор сообщает `change:labelAria`.
-	 */
-	get labelAria(): TAria {
-		return this._labelAria
-	}
+    this._label = value;
+    this._sink.emit("change:label", { newValue: value, oldValue: oldValue });
+  }
 
-	override getProps(): TProps {
-		return {
-			...super.getProps(),
-			label: this._label,
-		}
-	}
+  /**
+   * Набор подписи — разметки внутри группы. Живой, как `aria`: `id` в него
+   * пишет плагин связок, об изменении набор сообщает `change:labelAria`.
+   */
+  get labelAria(): TAria {
+    return this._labelAria;
+  }
+
+  override getProps(): TProps {
+    return {
+      ...super.getProps(),
+      label: this._label,
+    };
+  }
 }

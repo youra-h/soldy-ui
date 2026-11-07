@@ -1,25 +1,30 @@
-import type { IClearable, IClearableProps, TClearableEvents } from '../../base/clearable'
-import type { ISwipeable, TSwipe, TSwipeableEvents } from '../../base/layer'
+import type { TValuePayload } from "../../../common";
 import type {
-	TAria,
-	TAriaAttributes,
-	TCalendarDate,
-	TDatasetAttributes,
-	TWeekday,
-} from '../../../common'
+  IClearable,
+  IClearableProps,
+  TClearableEvents,
+} from "../../base/clearable";
+import type { ISwipeable, TSwipe, TSwipeableEvents } from "../../base/layer";
 import type {
-	ICalendar,
-	TCalendarCollection,
-	TCalendarRange,
-	TCalendarUnavailable,
-} from '../calendar'
-import type { IDateInput } from '../date-input'
+  TAria,
+  TAriaAttributes,
+  TCalendarDate,
+  TDatasetAttributes,
+  TWeekday,
+} from "../../../common";
+import type {
+  ICalendar,
+  TCalendarCollection,
+  TCalendarRange,
+  TCalendarUnavailable,
+} from "../calendar";
+import type { IDateInput } from "../date-input";
 
 /**
  * Режим выбора: одна дата или диапазон «от и до». Несколько разных дат
  * DatePicker не выбирает — поле их не покажет.
  */
-export type TDatePickerMode = 'single' | 'range'
+export type TDatePickerMode = "single" | "range";
 
 /**
  * Значение DatePicker. `single` — дата `YYYY-MM-DD` или `undefined`, `range` —
@@ -28,116 +33,118 @@ export type TDatePickerMode = 'single' | 'range'
  * Значение хранится как задано: пару задом наперёд календарь показывает по
  * возрастанию, а поля — как есть.
  */
-export type TDatePickerValue = TCalendarDate | TCalendarRange | undefined
+export type TDatePickerValue = TCalendarDate | TCalendarRange | undefined;
 
 /**
  * Сторона значения: календарь в панели или поля режима. Своё значение
  * DatePicker раскладывает по обеим, а правка одной стороны доходит до другой
  * через него.
  */
-export type TDatePickerSide = 'calendar' | 'fields'
+export type TDatePickerSide = "calendar" | "fields";
 
 export type TDatePickerEvents = TClearableEvents<TDatePickerValue> &
-	TSwipeableEvents & {
-		/** change:mode */
-		'change:mode': (value: TDatePickerMode) => void
-		/** change:open */
-		'change:open': (value: boolean) => void
-		/** open — панель открылась */
-		open: () => void
-		/** close — панель закрылась */
-		close: () => void
-		/** change:closeOnSelect */
-		'change:closeOnSelect': (value: boolean) => void
-		/** change:confirmable */
-		'change:confirmable': (value: boolean) => void
-		/**
-		 * change:confirmDisabled — «OK» выключилась (диапазон начат) или снова
-		 * включилась (выбран второй день или начатое сняли)
-		 */
-		'change:confirmDisabled': (value: boolean) => void
-		/** change:min */
-		'change:min': (value: TCalendarDate | undefined) => void
-		/** change:max */
-		'change:max': (value: TCalendarDate | undefined) => void
-		/** change:unavailable */
-		'change:unavailable': (value: TCalendarUnavailable | undefined) => void
-		/** change:validate */
-		'change:validate': (value: boolean) => void
-		/** change:weekStart */
-		'change:weekStart': (value: TWeekday | undefined) => void
-		/** change:locale */
-		'change:locale': (value: string) => void
-		/** change:timeZone */
-		'change:timeZone': (value: string | undefined) => void
-		/** change:startName */
-		'change:startName': (value: string) => void
-		/** change:endName */
-		'change:endName': (value: string) => void
-		/** change:triggerAria — набор кнопки календаря изменился */
-		'change:triggerAria': (value: TAriaAttributes) => void
-		/** change:panelAria — набор панели изменился */
-		'change:panelAria': (value: TAriaAttributes) => void
-	}
+  TSwipeableEvents & {
+    /** change:mode */
+    "change:mode": (payload: TValuePayload<TDatePickerMode>) => void;
+    /** change:open */
+    "change:open": (payload: TValuePayload<boolean>) => void;
+    /** open — панель открылась */
+    open: () => void;
+    /** close — панель закрылась */
+    close: () => void;
+    /** change:closeOnSelect */
+    "change:closeOnSelect": (payload: TValuePayload<boolean>) => void;
+    /** change:confirmable */
+    "change:confirmable": (payload: TValuePayload<boolean>) => void;
+    /**
+     * change:confirmDisabled — «OK» выключилась (диапазон начат) или снова
+     * включилась (выбран второй день или начатое сняли)
+     */
+    "change:confirmDisabled": (payload: TValuePayload<boolean>) => void;
+    /** change:min */
+    "change:min": (payload: TValuePayload<TCalendarDate | undefined>) => void;
+    /** change:max */
+    "change:max": (payload: TValuePayload<TCalendarDate | undefined>) => void;
+    /** change:unavailable */
+    "change:unavailable": (
+      payload: TValuePayload<TCalendarUnavailable | undefined>,
+    ) => void;
+    /** change:validate */
+    "change:validate": (payload: TValuePayload<boolean>) => void;
+    /** change:weekStart */
+    "change:weekStart": (payload: TValuePayload<TWeekday | undefined>) => void;
+    /** change:locale */
+    "change:locale": (payload: TValuePayload<string>) => void;
+    /** change:timeZone */
+    "change:timeZone": (payload: TValuePayload<string | undefined>) => void;
+    /** change:startName */
+    "change:startName": (payload: TValuePayload<string>) => void;
+    /** change:endName */
+    "change:endName": (payload: TValuePayload<string>) => void;
+    /** change:triggerAria — набор кнопки календаря изменился */
+    "change:triggerAria": (payload: TValuePayload<TAriaAttributes>) => void;
+    /** change:panelAria — набор панели изменился */
+    "change:panelAria": (payload: TValuePayload<TAriaAttributes>) => void;
+  };
 
 /**
  * Пропсы DatePicker. Кнопка очистки — от базы поля (`clearable`): DatePicker
  * — поле, как Input и DateInput, и очищает он весь свой режим.
  */
 export interface IDatePickerProps extends IClearableProps<TDatePickerValue> {
-	/** Режим: одна дата или диапазон. По умолчанию `single` */
-	mode?: TDatePickerMode
-	/** Открыта ли панель с календарём */
-	open?: boolean
-	/**
-	 * Закрывать ли панель после выбора: в диапазоне — после второго дня. При
-	 * `confirmable` не действует: выбор там панель не закрывает
-	 */
-	closeOnSelect?: boolean
-	/**
-	 * Выбор подтверждают кнопкой: в подвале панели — «Отмена» и «OK». Выбор в
-	 * календаре — черновик: значение он меняет только по «OK», а любое другое
-	 * закрытие панели его сбрасывает. По умолчанию выбор становится значением
-	 * сразу
-	 */
-	confirmable?: boolean
-	/** Первый день, который можно выбрать; раньше — ни фокуса, ни выбора в календаре, ошибка в поле */
-	min?: TCalendarDate
-	/** Последний день, который можно выбрать */
-	max?: TCalendarDate
-	/**
-	 * Недоступные дни: в календаре фокус на них встаёт, выбор — нет, в поле —
-	 * ошибка. Конец диапазона проверяется с якорем — набранным началом
-	 */
-	unavailable?: TCalendarUnavailable
-	/**
-	 * Проверка набора: «00» у дня и месяца не записывается, часть ждёт
-	 * следующей цифры. DatePicker отдаёт её полю одной даты и обоим концам
-	 * диапазона. По умолчанию выключена — верна ли дата, решает приложение
-	 */
-	validate?: boolean
-	/** Первый день недели; не задан — по локали */
-	weekStart?: TWeekday
-	/**
-	 * Локаль поля и календаря (BCP 47). В разметке её нет: язык задаёт
-	 * приложение на всю библиотеку, и пишет его плагин языка
-	 */
-	locale?: string
-	/** Часовой пояс «сегодня» (IANA); не задан — пояс среды */
-	timeZone?: string
-	/**
-	 * Имя начала диапазона при отправке формы. `name` — у поля одной даты: у
-	 * диапазона значений два, и уходят они под своими именами
-	 */
-	startName?: string
-	/** Имя конца диапазона при отправке формы */
-	endName?: string
-	/**
-	 * За что панель можно смахнуть, чтобы закрыть: ни за что (по умолчанию), за
-	 * полосу или за любое место, кроме контролов календаря и прокручиваемого
-	 * содержимого. Панель уходит от поля: под ним — вниз, над ним — вверх
-	 */
-	swipe?: TSwipe
+  /** Режим: одна дата или диапазон. По умолчанию `single` */
+  mode?: TDatePickerMode;
+  /** Открыта ли панель с календарём */
+  open?: boolean;
+  /**
+   * Закрывать ли панель после выбора: в диапазоне — после второго дня. При
+   * `confirmable` не действует: выбор там панель не закрывает
+   */
+  closeOnSelect?: boolean;
+  /**
+   * Выбор подтверждают кнопкой: в подвале панели — «Отмена» и «OK». Выбор в
+   * календаре — черновик: значение он меняет только по «OK», а любое другое
+   * закрытие панели его сбрасывает. По умолчанию выбор становится значением
+   * сразу
+   */
+  confirmable?: boolean;
+  /** Первый день, который можно выбрать; раньше — ни фокуса, ни выбора в календаре, ошибка в поле */
+  min?: TCalendarDate;
+  /** Последний день, который можно выбрать */
+  max?: TCalendarDate;
+  /**
+   * Недоступные дни: в календаре фокус на них встаёт, выбор — нет, в поле —
+   * ошибка. Конец диапазона проверяется с якорем — набранным началом
+   */
+  unavailable?: TCalendarUnavailable;
+  /**
+   * Проверка набора: «00» у дня и месяца не записывается, часть ждёт
+   * следующей цифры. DatePicker отдаёт её полю одной даты и обоим концам
+   * диапазона. По умолчанию выключена — верна ли дата, решает приложение
+   */
+  validate?: boolean;
+  /** Первый день недели; не задан — по локали */
+  weekStart?: TWeekday;
+  /**
+   * Локаль поля и календаря (BCP 47). В разметке её нет: язык задаёт
+   * приложение на всю библиотеку, и пишет его плагин языка
+   */
+  locale?: string;
+  /** Часовой пояс «сегодня» (IANA); не задан — пояс среды */
+  timeZone?: string;
+  /**
+   * Имя начала диапазона при отправке формы. `name` — у поля одной даты: у
+   * диапазона значений два, и уходят они под своими именами
+   */
+  startName?: string;
+  /** Имя конца диапазона при отправке формы */
+  endName?: string;
+  /**
+   * За что панель можно смахнуть, чтобы закрыть: ни за что (по умолчанию), за
+   * полосу или за любое место, кроме контролов календаря и прокручиваемого
+   * содержимого. Панель уходит от поля: под ним — вниз, над ним — вверх
+   */
+  swipe?: TSwipe;
 }
 
 /**
@@ -148,89 +155,91 @@ export interface IDatePickerProps extends IClearableProps<TDatePickerValue> {
  * команда `clear`, которая очищает поля режима — у диапазона оба конца.
  */
 export interface IDatePicker
-	extends IClearable<TDatePickerValue, IDatePickerProps, TDatePickerEvents>, ISwipeable {
-	/** Режим: одна дата или диапазон */
-	mode: TDatePickerMode
-	/** Открыта ли панель с календарём */
-	open: boolean
-	/** Whether the panel's calendar is mounted: from the first opening on */
-	readonly contentRendered: boolean
-	/** Закрывать ли панель после выбора; при `confirmable` не действует */
-	closeOnSelect: boolean
-	/** Выбор подтверждают кнопкой «OK»: до неё он — черновик календаря */
-	confirmable: boolean
-	/**
-	 * Выключена ли «OK»: пока диапазон выбран наполовину — стоит якорь.
-	 * Нажатие молча оставило бы прежний диапазон
-	 */
-	readonly confirmDisabled: boolean
-	/** Первый день, который можно выбрать */
-	min: TCalendarDate | undefined
-	/** Последний день, который можно выбрать */
-	max: TCalendarDate | undefined
-	/** Недоступные дни — календарю и полям */
-	unavailable: TCalendarUnavailable | undefined
-	/** Проверка набора — полям: число ниже хода части не записывается */
-	validate: boolean
-	/** Первый день недели; `undefined` — по локали */
-	weekStart: TWeekday | undefined
-	/** Локаль поля и календаря */
-	locale: string
-	/** Часовой пояс «сегодня» */
-	timeZone: string | undefined
-	/** Имя начала диапазона при отправке формы */
-	startName: string
-	/** Имя конца диапазона при отправке формы */
-	endName: string
-	/** Можно ли сейчас открыть панель: не `disabled` и не `readonly` */
-	readonly openable: boolean
-	/**
-	 * The single date's field — a `TDateInput` the picker owns. Created with
-	 * the single mode or on first read, and kept
-	 */
-	readonly field: IDateInput
-	/** The range start's field — created with the range mode or on first read */
-	readonly start: IDateInput
-	/** The range end's field — created with the range mode or on first read */
-	readonly end: IDateInput
-	/** Календарь панели — экземпляр `TCalendar`, которым владеет DatePicker */
-	readonly calendar: ICalendar
-	/**
-	 * The engine of the calendar's collection: the picker calls the selection and
-	 * focus commands on it. The calendar becomes its owner on the first opening
-	 * or mode change; until then there are no days, and commands such as
-	 * `selection.chooseDate()` do nothing
-	 */
-	readonly engine: TCalendarCollection
-	/**
-	 * Набор кнопки календаря: `aria-haspopup="dialog"`, `aria-expanded` —
-	 * DatePicker, имя от локали — плагин имён, `aria-controls` — плагин связок
-	 */
-	readonly triggerAria: TAria
-	/** Вид кнопки календаря: `data-selected`, пока панель открыта */
-	readonly triggerDataset: TDatasetAttributes
-	/**
-	 * Набор панели: `role="dialog"`, `aria-modal` — DatePicker, имя от локали
-	 * — плагин имён, `id` — плагин связок
-	 */
-	readonly panelAria: TAria
-	/**
-	 * `data-*` панели для темы: тянут ли её (`data-swiping`). Открытость
-	 * панели (`data-open`) пишет её слой
-	 */
-	readonly panelDataset: TDatasetAttributes
-	/** Рисовать ли полосу, за которую панель тянут: жест включён */
-	readonly handleRendered: boolean
-	/**
-	 * Набор корня. У диапазона корень — группа полей: `role="group"` и `aria`
-	 * DatePicker с именем; у одной даты группа — само поле, и набор пуст
-	 */
-	readonly rootAria: TAriaAttributes
-	/** Переключить панель. Ничего не делает, если открывать нельзя */
-	toggleOpen(): void
-	/**
-	 * «OK»: значение календаря — в значение DatePicker, панель закрыта. Пока
-	 * «OK» выключена (`confirmDisabled`), не делает ничего
-	 */
-	confirm(): void
+  extends
+    IClearable<TDatePickerValue, IDatePickerProps, TDatePickerEvents>,
+    ISwipeable {
+  /** Режим: одна дата или диапазон */
+  mode: TDatePickerMode;
+  /** Открыта ли панель с календарём */
+  open: boolean;
+  /** Whether the panel's calendar is mounted: from the first opening on */
+  readonly contentRendered: boolean;
+  /** Закрывать ли панель после выбора; при `confirmable` не действует */
+  closeOnSelect: boolean;
+  /** Выбор подтверждают кнопкой «OK»: до неё он — черновик календаря */
+  confirmable: boolean;
+  /**
+   * Выключена ли «OK»: пока диапазон выбран наполовину — стоит якорь.
+   * Нажатие молча оставило бы прежний диапазон
+   */
+  readonly confirmDisabled: boolean;
+  /** Первый день, который можно выбрать */
+  min: TCalendarDate | undefined;
+  /** Последний день, который можно выбрать */
+  max: TCalendarDate | undefined;
+  /** Недоступные дни — календарю и полям */
+  unavailable: TCalendarUnavailable | undefined;
+  /** Проверка набора — полям: число ниже хода части не записывается */
+  validate: boolean;
+  /** Первый день недели; `undefined` — по локали */
+  weekStart: TWeekday | undefined;
+  /** Локаль поля и календаря */
+  locale: string;
+  /** Часовой пояс «сегодня» */
+  timeZone: string | undefined;
+  /** Имя начала диапазона при отправке формы */
+  startName: string;
+  /** Имя конца диапазона при отправке формы */
+  endName: string;
+  /** Можно ли сейчас открыть панель: не `disabled` и не `readonly` */
+  readonly openable: boolean;
+  /**
+   * The single date's field — a `TDateInput` the picker owns. Created with
+   * the single mode or on first read, and kept
+   */
+  readonly field: IDateInput;
+  /** The range start's field — created with the range mode or on first read */
+  readonly start: IDateInput;
+  /** The range end's field — created with the range mode or on first read */
+  readonly end: IDateInput;
+  /** Календарь панели — экземпляр `TCalendar`, которым владеет DatePicker */
+  readonly calendar: ICalendar;
+  /**
+   * The engine of the calendar's collection: the picker calls the selection and
+   * focus commands on it. The calendar becomes its owner on the first opening
+   * or mode change; until then there are no days, and commands such as
+   * `selection.chooseDate()` do nothing
+   */
+  readonly engine: TCalendarCollection;
+  /**
+   * Набор кнопки календаря: `aria-haspopup="dialog"`, `aria-expanded` —
+   * DatePicker, имя от локали — плагин имён, `aria-controls` — плагин связок
+   */
+  readonly triggerAria: TAria;
+  /** Вид кнопки календаря: `data-selected`, пока панель открыта */
+  readonly triggerDataset: TDatasetAttributes;
+  /**
+   * Набор панели: `role="dialog"`, `aria-modal` — DatePicker, имя от локали
+   * — плагин имён, `id` — плагин связок
+   */
+  readonly panelAria: TAria;
+  /**
+   * `data-*` панели для темы: тянут ли её (`data-swiping`). Открытость
+   * панели (`data-open`) пишет её слой
+   */
+  readonly panelDataset: TDatasetAttributes;
+  /** Рисовать ли полосу, за которую панель тянут: жест включён */
+  readonly handleRendered: boolean;
+  /**
+   * Набор корня. У диапазона корень — группа полей: `role="group"` и `aria`
+   * DatePicker с именем; у одной даты группа — само поле, и набор пуст
+   */
+  readonly rootAria: TAriaAttributes;
+  /** Переключить панель. Ничего не делает, если открывать нельзя */
+  toggleOpen(): void;
+  /**
+   * «OK»: значение календаря — в значение DatePicker, панель закрыта. Пока
+   * «OK» выключена (`confirmDisabled`), не делает ничего
+   */
+  confirm(): void;
 }

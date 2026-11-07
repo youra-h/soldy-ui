@@ -1,23 +1,24 @@
+import type { TValuePayload } from "../../../../common";
 import type {
-	IComponentView,
-	IComponentViewProps,
-	TComponentViewEvents,
-} from '../../../base/component-view'
+  IComponentView,
+  IComponentViewProps,
+  TComponentViewEvents,
+} from "../../../base/component-view";
 
 export type TTabsContentEvents = TComponentViewEvents & {
-	/** change:value — панель переключилась на другой таб */
-	'change:value': (value: string | number) => void
-}
+  /** change:value — панель переключилась на другой таб */
+  "change:value": (payload: TValuePayload<string | number>) => void;
+};
 
 export interface ITabsContentProps extends IComponentViewProps {
-	/** Значение таба, к которому привязана панель */
-	value?: string | number
+  /** Значение таба, к которому привязана панель */
+  value?: string | number;
 }
 
 export interface ITabsContent<
-	TProps extends ITabsContentProps = ITabsContentProps,
-	TEvents extends TTabsContentEvents = TTabsContentEvents,
+  TProps extends ITabsContentProps = ITabsContentProps,
+  TEvents extends TTabsContentEvents = TTabsContentEvents,
 > extends IComponentView<TProps, TEvents> {
-	/** Значение таба, к которому привязана панель */
-	value: string | number
+  /** Значение таба, к которому привязана панель */
+  value: string | number;
 }

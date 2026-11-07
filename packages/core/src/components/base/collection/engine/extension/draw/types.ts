@@ -1,21 +1,22 @@
-import type { IExtension } from '../types'
-import type { TGroup } from '../group/types'
+import type { TValuePayload } from "../../../../../../common";
+import type { IExtension } from "../types";
+import type { TGroup } from "../group/types";
 
 /**
  * Элемент, которого коллекция рисует: по `uid` у записи элемента и у распорки
  * перед ним свой ключ. Элементы коллекций компонентов — сущности (`IEntity`),
  * и `uid` у них числовой, от единицы.
  */
-export type TDrawable = { readonly uid: number }
+export type TDrawable = { readonly uid: number };
 
 /** Элемент, который рисуется: сам элемент и его место среди показанных. Ключ — `uid`. */
 export type TDrawnItem<TItem extends TDrawable = TDrawable> = {
-	readonly kind: 'item'
-	readonly key: number
-	readonly item: TItem
-	/** Место среди показанных (`batch.shown`), с нуля. */
-	readonly place: number
-}
+  readonly kind: "item";
+  readonly key: number;
+  readonly item: TItem;
+  /** Место среди показанных (`batch.shown`), с нуля. */
+  readonly place: number;
+};
 
 /**
  * Распорка — пропущенные элементы одной полосой высотой в них.
@@ -30,13 +31,14 @@ export type TDrawnItem<TItem extends TDrawable = TDrawable> = {
  * составе, и распорка встаёт перед тем, перед которым стоит в окне.
  */
 export type TDrawnFiller = {
-	readonly kind: 'filler'
-	readonly key: number
-	readonly style: Readonly<Record<string, string>>
-}
+  readonly kind: "filler";
+  readonly key: number;
+  readonly style: Readonly<Record<string, string>>;
+};
 
 /** Что коллекция рисует по порядку: элементы на своих местах и распорки между ними. */
-export type TDrawnEntry<TItem extends TDrawable = TDrawable> = TDrawnItem<TItem> | TDrawnFiller
+export type TDrawnEntry<TItem extends TDrawable = TDrawable> =
+  TDrawnItem<TItem> | TDrawnFiller;
 
 /**
  * Секция того, что рисует коллекция, — записи `drawn` одной группы (секция
@@ -49,11 +51,11 @@ export type TDrawnEntry<TItem extends TDrawable = TDrawable> = TDrawnItem<TItem>
  * `free`): ключ петли разметки, уникальный в снимке.
  */
 export type TDrawnSection<TItem extends TDrawable = TDrawable> = {
-	readonly key: string
-	/** Группа секции; `null` — записи без группы */
-	readonly group: TGroup | null
-	readonly entries: ReadonlyArray<TDrawnEntry<TItem>>
-}
+  readonly key: string;
+  /** Группа секции; `null` — записи без группы */
+  readonly group: TGroup | null;
+  readonly entries: ReadonlyArray<TDrawnEntry<TItem>>;
+};
 
 /**
  * Замер окна: видимая полоса в пикселях от верха первого показанного элемента
@@ -61,10 +63,10 @@ export type TDrawnSection<TItem extends TDrawable = TDrawable> = {
  * между верхами соседних элементов.
  */
 export type TDrawViewport = {
-	readonly top: number
-	readonly bottom: number
-	readonly step: number
-}
+  readonly top: number;
+  readonly bottom: number;
+  readonly step: number;
+};
 
 /**
  * Стратегия рисования — какие из показанных элементов рисовать.
@@ -74,60 +76,63 @@ export type TDrawViewport = {
  * видимые элементы, а на месте остальных — распорки.
  */
 export interface IDrawStrategy {
-	/**
-	 * Что рисовать по порядку. `pinned` — места элементов, которые рисуются
-	 * всегда, на своих местах; `viewport` — последний замер, до замера `null`.
-	 */
-	draw<TItem extends TDrawable>(
-		shown: ReadonlyArray<TItem>,
-		pinned: ReadonlySet<number>,
-		viewport: TDrawViewport | null,
-	): TDrawnEntry<TItem>[]
+  /**
+   * Что рисовать по порядку. `pinned` — места элементов, которые рисуются
+   * всегда, на своих местах; `viewport` — последний замер, до замера `null`.
+   */
+  draw<TItem extends TDrawable>(
+    shown: ReadonlyArray<TItem>,
+    pinned: ReadonlySet<number>,
+    viewport: TDrawViewport | null,
+  ): TDrawnEntry<TItem>[];
 }
 
 export type TDrawEvents<TItem extends TDrawable = TDrawable> = {
-	/** Сменилось, что рисовать: элементы или распорки */
-	'change:drawn': (value: ReadonlyArray<TDrawnEntry<TItem>>) => void
-	/** Сменились секции нарисованного: записи секции, её ключ или группа с подписью */
-	'change:drawnSections': (value: ReadonlyArray<TDrawnSection<TItem>>) => void
-	/** Окно поставили или сняли — само или тем, что показанное сгруппировали */
-	'change:virtual': (value: boolean) => void
-}
+  /** Сменилось, что рисовать: элементы или распорки */
+  "change:drawn": (
+    payload: TValuePayload<ReadonlyArray<TDrawnEntry<TItem>>>,
+  ) => void;
+  /** Сменились секции нарисованного: записи секции, её ключ или группа с подписью */
+  "change:drawnSections": (
+    payload: TValuePayload<ReadonlyArray<TDrawnSection<TItem>>>,
+  ) => void;
+  /** Окно поставили или сняли — само или тем, что показанное сгруппировали */
+  "change:virtual": (payload: TValuePayload<boolean>) => void;
+};
 
 /**
  * Контракт расширения рисования — что коллекция рисует из показанных
  * элементов.
  */
-export interface IDrawExtension<TItem extends TDrawable = TDrawable> extends IExtension<
-	TItem,
-	TDrawEvents<TItem>
-> {
-	/**
-	 * Что рисовать по порядку. Без окна — все показанные элементы; в окне —
-	 * видимые, закреплённые на своих местах и распорки между ними
-	 */
-	readonly drawn: ReadonlyArray<TDrawnEntry<TItem>>
-	/**
-	 * Записи `drawn` по секциям группировки (сосед `group`): что рисует
-	 * разметка, которая рисует группы. Без групп секция одна — все записи
-	 */
-	readonly drawnSections: ReadonlyArray<TDrawnSection<TItem>>
-	/**
-	 * Рисует ли окно: в документе, возможно, не все показанные элементы. Окно
-	 * поставили, а показанное не сгруппировано — сгруппированное окно не рисует
-	 */
-	readonly virtual: boolean
-	/** Поставить стратегию рисования; `null` — рисовать все показанные */
-	useStrategy(strategy: IDrawStrategy | null): void
-	/**
-	 * Закрепить элемент: окно рисует его на месте, даже когда он вне видимой
-	 * полосы. Закреплений несколько, по причине (`focus`, `highlight`), и
-	 * каждое снимается своим `undefined`
-	 */
-	pin(reason: string, item: TItem | undefined): void
-	/**
-	 * Замер от плагина окна. Нулевой шаг — не замер (список скрыт или элементов
-	 * в документе нет): окно остаётся прежним
-	 */
-	notifyViewport(viewport: TDrawViewport): void
+export interface IDrawExtension<
+  TItem extends TDrawable = TDrawable,
+> extends IExtension<TItem, TDrawEvents<TItem>> {
+  /**
+   * Что рисовать по порядку. Без окна — все показанные элементы; в окне —
+   * видимые, закреплённые на своих местах и распорки между ними
+   */
+  readonly drawn: ReadonlyArray<TDrawnEntry<TItem>>;
+  /**
+   * Записи `drawn` по секциям группировки (сосед `group`): что рисует
+   * разметка, которая рисует группы. Без групп секция одна — все записи
+   */
+  readonly drawnSections: ReadonlyArray<TDrawnSection<TItem>>;
+  /**
+   * Рисует ли окно: в документе, возможно, не все показанные элементы. Окно
+   * поставили, а показанное не сгруппировано — сгруппированное окно не рисует
+   */
+  readonly virtual: boolean;
+  /** Поставить стратегию рисования; `null` — рисовать все показанные */
+  useStrategy(strategy: IDrawStrategy | null): void;
+  /**
+   * Закрепить элемент: окно рисует его на месте, даже когда он вне видимой
+   * полосы. Закреплений несколько, по причине (`focus`, `highlight`), и
+   * каждое снимается своим `undefined`
+   */
+  pin(reason: string, item: TItem | undefined): void;
+  /**
+   * Замер от плагина окна. Нулевой шаг — не замер (список скрыт или элементов
+   * в документе нет): окно остаётся прежним
+   */
+  notifyViewport(viewport: TDrawViewport): void;
 }

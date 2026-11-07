@@ -1,27 +1,28 @@
-import type { TPluginEvents } from '../../base'
-import type { IOverlayOpenOptions } from '../overlay/types'
+import type { TValuePayload } from "@soldy-ui/core";
+import type { TPluginEvents } from "../../base";
+import type { IOverlayOpenOptions } from "../overlay/types";
 
 export interface IDismissPluginOptions extends IOverlayOpenOptions {
-	/**
-	 * Слушать ли документ сразу после установки.
-	 *
-	 * Обычно этого не задают: плагин сам следит за открытостью владельца
-	 * (`property`) — пока она `false`, глобального слушателя нет, а нажатие
-	 * мимо ставит её в `false`. Вручную слежение ведут через `enabled` при
-	 * `property: null`.
-	 */
-	enabled?: boolean
+  /**
+   * Слушать ли документ сразу после установки.
+   *
+   * Обычно этого не задают: плагин сам следит за открытостью владельца
+   * (`property`) — пока она `false`, глобального слушателя нет, а нажатие
+   * мимо ставит её в `false`. Вручную слежение ведут через `enabled` при
+   * `property: null`.
+   */
+  enabled?: boolean;
 
-	/**
-	 * Закрывать ли и уходом фокуса: `focusin` вне владельца, его панели и
-	 * слоёв выше неё даёт `dismiss`, как нажатие мимо. По умолчанию выключено.
-	 *
-	 * Нужно тому, в чью панель уходит фокус (Popover): фокус, ушедший из
-	 * панели на страницу — Tab, программный `focus()`, — иначе оставлял бы её
-	 * открытой над тем, с чем пользователь уже работает. Select не включает:
-	 * фокус у него не покидает поле, а уход с поля он обрабатывает сам.
-	 */
-	focusOutside?: boolean
+  /**
+   * Закрывать ли и уходом фокуса: `focusin` вне владельца, его панели и
+   * слоёв выше неё даёт `dismiss`, как нажатие мимо. По умолчанию выключено.
+   *
+   * Нужно тому, в чью панель уходит фокус (Popover): фокус, ушедший из
+   * панели на страницу — Tab, программный `focus()`, — иначе оставлял бы её
+   * открытой над тем, с чем пользователь уже работает. Select не включает:
+   * фокус у него не покидает поле, а уход с поля он обрабатывает сам.
+   */
+  focusOutside?: boolean;
 }
 
 /**
@@ -30,26 +31,26 @@ export interface IDismissPluginOptions extends IOverlayOpenOptions {
  * первым.
  */
 export type TDismissPendingPress = {
-	pointerId: number
-	pointerType: 'touch' | 'pen'
-}
+  pointerId: number;
+  pointerType: "touch" | "pen";
+};
 
 export type TDismissPluginEvents = TPluginEvents & {
-	/**
-	 * Нажатие пришлось мимо владельца и его панелей. Приходит событие, которое
-	 * это решило: у мыши — `pointerdown`; у касания — `pointerup`, прокрутка
-	 * пальцем не закрывает; у пера — то, что пришло первым: `pointerup`
-	 * (стилус на экране) или совместимый `mousedown` (перо графического
-	 * планшета). Отсюда `MouseEvent`: `PointerEvent` — его подтип. С
-	 * `focusOutside` — ещё и `focusin` фокуса, ушедшего мимо: `FocusEvent`.
-	 *
-	 * Приходит до закрытия владельца: подписчик застаёт его открытым и знает
-	 * причину закрытия (плагин фокуса Popover по ней не возвращает фокус).
-	 */
-	dismiss: (event: MouseEvent | FocusEvent) => void
-	/** change:enabled */
-	'change:enabled': (value: boolean) => void
-}
+  /**
+   * Нажатие пришлось мимо владельца и его панелей. Приходит событие, которое
+   * это решило: у мыши — `pointerdown`; у касания — `pointerup`, прокрутка
+   * пальцем не закрывает; у пера — то, что пришло первым: `pointerup`
+   * (стилус на экране) или совместимый `mousedown` (перо графического
+   * планшета). Отсюда `MouseEvent`: `PointerEvent` — его подтип. С
+   * `focusOutside` — ещё и `focusin` фокуса, ушедшего мимо: `FocusEvent`.
+   *
+   * Приходит до закрытия владельца: подписчик застаёт его открытым и знает
+   * причину закрытия (плагин фокуса Popover по ней не возвращает фокус).
+   */
+  dismiss: (event: MouseEvent | FocusEvent) => void;
+  /** change:enabled */
+  "change:enabled": (payload: TValuePayload<boolean>) => void;
+};
 
 /**
  * Пропсы плагина такими, какими их объявляет contribution — без неймспейса.
@@ -59,5 +60,5 @@ export type TDismissPluginEvents = TPluginEvents & {
  * Защищённого `ownerAttribute` здесь нет: это выход, в разметку его не пишут.
  */
 export interface IDismissPluginProps {
-	enabled?: boolean
+  enabled?: boolean;
 }

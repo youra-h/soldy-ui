@@ -1,5 +1,10 @@
-import type { IModalLayer, IModalLayerProps, TModalLayerEvents } from '../../base/modal-layer'
-import type { TAria, TAriaAttributes } from '../../../common'
+import type { TValuePayload } from "../../../common";
+import type {
+  IModalLayer,
+  IModalLayerProps,
+  TModalLayerEvents,
+} from "../../base/modal-layer";
+import type { TAria, TAriaAttributes } from "../../../common";
 
 /**
  * Где окно стоит на экране: по центру или у одной из сторон.
@@ -9,72 +14,74 @@ import type { TAria, TAriaAttributes } from '../../../common'
  * само встаёт у другого края. Раскладывает место тема, по модификатору
  * `--placement-<v>`; координат ядро не считает.
  */
-export type TDialogPlacement = 'center' | 'start' | 'end' | 'top' | 'bottom'
+export type TDialogPlacement = "center" | "start" | "end" | "top" | "bottom";
 
 export type TDialogEvents = TModalLayerEvents & {
-	/** change:placement */
-	'change:placement': (value: TDialogPlacement) => void
-	/** change:offset */
-	'change:offset': (value: number | string | undefined) => void
-	/** change:maximized */
-	'change:maximized': (value: boolean) => void
-	/** change:maximizable */
-	'change:maximizable': (value: boolean) => void
-	/** change:alert */
-	'change:alert': (value: boolean) => void
-	/** change:bodyAria — набор атрибутов тела изменился */
-	'change:bodyAria': (value: TAriaAttributes) => void
-	/** change:maximizeAria — набор атрибутов кнопки разворота изменился */
-	'change:maximizeAria': (value: TAriaAttributes) => void
-}
+  /** change:placement */
+  "change:placement": (payload: TValuePayload<TDialogPlacement>) => void;
+  /** change:offset */
+  "change:offset": (
+    payload: TValuePayload<number | string | undefined>,
+  ) => void;
+  /** change:maximized */
+  "change:maximized": (payload: TValuePayload<boolean>) => void;
+  /** change:maximizable */
+  "change:maximizable": (payload: TValuePayload<boolean>) => void;
+  /** change:alert */
+  "change:alert": (payload: TValuePayload<boolean>) => void;
+  /** change:bodyAria — набор атрибутов тела изменился */
+  "change:bodyAria": (payload: TValuePayload<TAriaAttributes>) => void;
+  /** change:maximizeAria — набор атрибутов кнопки разворота изменился */
+  "change:maximizeAria": (payload: TValuePayload<TAriaAttributes>) => void;
+};
 
 export interface IDialogProps extends IModalLayerProps {
-	/**
-	 * Ширина окна: число — px, строка — CSS-значение. Не задана — ширину даёт
-	 * тема. `auto` — по экрану с отступом, по содержимому — `fit-content`
-	 */
-	width?: number | string
-	/**
-	 * Высота окна: число — px, строка — CSS-значение. Не задана — по
-	 * содержимому. `auto` — по экрану с отступом
-	 */
-	height?: number | string
-	/** Где окно стоит на экране: по центру или у стороны */
-	placement?: TDialogPlacement
-	/**
-	 * Отступ окна от краёв экрана: число — px, строка — CSS-значение, проценты
-	 * — от экрана по своей оси. Не задан — отступ темы, `0` — вплотную. У
-	 * центра действует со всех сторон, у стороны — от её края, и со всех — как
-	 * потолок размера. Стороны по отдельности правит подписчик события
-	 * раскладки `layout:offset:before`
-	 */
-	offset?: number | string
-	/** Развёрнуто ли окно на весь экран */
-	maximized?: boolean
-	/** Показывать ли кнопку разворота */
-	maximizable?: boolean
-	/**
-	 * Окно — предупреждение (`role="alertdialog"`): прерывает работу и ждёт
-	 * ответа. Описание — тело окна
-	 */
-	alert?: boolean
+  /**
+   * Ширина окна: число — px, строка — CSS-значение. Не задана — ширину даёт
+   * тема. `auto` — по экрану с отступом, по содержимому — `fit-content`
+   */
+  width?: number | string;
+  /**
+   * Высота окна: число — px, строка — CSS-значение. Не задана — по
+   * содержимому. `auto` — по экрану с отступом
+   */
+  height?: number | string;
+  /** Где окно стоит на экране: по центру или у стороны */
+  placement?: TDialogPlacement;
+  /**
+   * Отступ окна от краёв экрана: число — px, строка — CSS-значение, проценты
+   * — от экрана по своей оси. Не задан — отступ темы, `0` — вплотную. У
+   * центра действует со всех сторон, у стороны — от её края, и со всех — как
+   * потолок размера. Стороны по отдельности правит подписчик события
+   * раскладки `layout:offset:before`
+   */
+  offset?: number | string;
+  /** Развёрнуто ли окно на весь экран */
+  maximized?: boolean;
+  /** Показывать ли кнопку разворота */
+  maximizable?: boolean;
+  /**
+   * Окно — предупреждение (`role="alertdialog"`): прерывает работу и ждёт
+   * ответа. Описание — тело окна
+   */
+  alert?: boolean;
 }
 
 export interface IDialog extends IModalLayer<IDialogProps, TDialogEvents> {
-	/** Где окно стоит на экране */
-	placement: TDialogPlacement
-	/** Отступ окна от краёв экрана; `undefined` — отступ темы, `0` — вплотную */
-	offset: number | string | undefined
-	/** Развёрнуто ли окно на весь экран */
-	maximized: boolean
-	/** Показывать ли кнопку разворота */
-	maximizable: boolean
-	/** Окно — предупреждение (`role="alertdialog"`) */
-	alert: boolean
-	/** Атрибуты тела: `id`, на который ссылается `aria-describedby` предупреждения, пишет плагин */
-	readonly bodyAria: TAria
-	/** Атрибуты кнопки разворота: `aria-pressed` пишет окно, имя от локали — плагин имён */
-	readonly maximizeAria: TAria
-	/** Развернуть окно или вернуть ему размер — действие кнопки разворота */
-	toggleMaximized(): void
+  /** Где окно стоит на экране */
+  placement: TDialogPlacement;
+  /** Отступ окна от краёв экрана; `undefined` — отступ темы, `0` — вплотную */
+  offset: number | string | undefined;
+  /** Развёрнуто ли окно на весь экран */
+  maximized: boolean;
+  /** Показывать ли кнопку разворота */
+  maximizable: boolean;
+  /** Окно — предупреждение (`role="alertdialog"`) */
+  alert: boolean;
+  /** Атрибуты тела: `id`, на который ссылается `aria-describedby` предупреждения, пишет плагин */
+  readonly bodyAria: TAria;
+  /** Атрибуты кнопки разворота: `aria-pressed` пишет окно, имя от локали — плагин имён */
+  readonly maximizeAria: TAria;
+  /** Развернуть окно или вернуть ему размер — действие кнопки разворота */
+  toggleMaximized(): void;
 }

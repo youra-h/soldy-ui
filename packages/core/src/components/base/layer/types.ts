@@ -1,4 +1,9 @@
-import type { IComponentView, IComponentViewProps, TComponentViewEvents } from '../component-view'
+import type { TValuePayload } from "../../../common";
+import type {
+  IComponentView,
+  IComponentViewProps,
+  TComponentViewEvents,
+} from "../component-view";
 
 /**
  * Атрибут слоя: слой пишет в `dataset` тот же номер, что в `zIndex`. Больше
@@ -17,39 +22,39 @@ import type { IComponentView, IComponentViewProps, TComponentViewEvents } from '
  * префиксом как есть. Имя константы осталось от Frame, первого слоя: номер
  * пишет любой слой (`TLayer`) — Frame, окно и выезжающая панель.
  */
-export const FRAME_LAYER_ATTRIBUTE = 'data-layer'
+export const FRAME_LAYER_ATTRIBUTE = "data-layer";
 
 export interface ILayerProps extends IComponentViewProps {
-	/** CSS-селектор для Teleport (по умолчанию body) */
-	target?: string
+  /** CSS-селектор для Teleport (по умолчанию body) */
+  target?: string;
 }
 
 export type TLayerEvents = TComponentViewEvents & {
-	/**
-	 * change:zIndex — номер слоя сменился: слой с узлом поднят над всеми, кого
-	 * показали раньше, узел подключён (номер места открыт) или снят (`0`)
-	 */
-	'change:zIndex': (value: number) => void
-	/** change:target */
-	'change:target': (value: string) => void
-}
+  /**
+   * change:zIndex — номер слоя сменился: слой с узлом поднят над всеми, кого
+   * показали раньше, узел подключён (номер места открыт) или снят (`0`)
+   */
+  "change:zIndex": (payload: TValuePayload<number>) => void;
+  /** change:target */
+  "change:target": (payload: TValuePayload<string>) => void;
+};
 
 export interface ILayer<
-	TProps extends ILayerProps = ILayerProps,
-	TEvents extends Record<string, (...args: any) => any> = TLayerEvents,
+  TProps extends ILayerProps = ILayerProps,
+  TEvents extends Record<string, (...args: any) => any> = TLayerEvents,
 > extends IComponentView<TProps, TEvents> {
-	/**
-	 * Номер слоя в общем стеке (readonly): место слоя, если у него есть узел
-	 * (`ready`), без узла — `0`
-	 */
-	readonly zIndex: number
-	/** Целевой элемент для Teleport */
-	target: string
-	/**
-	 * Поднять слой над всеми выданными: новое место в стеке. Номер в `zIndex` и
-	 * `data-layer` — сразу у слоя с узлом, у слоя без узла — с подключением
-	 */
-	raise(): void
+  /**
+   * Номер слоя в общем стеке (readonly): место слоя, если у него есть узел
+   * (`ready`), без узла — `0`
+   */
+  readonly zIndex: number;
+  /** Целевой элемент для Teleport */
+  target: string;
+  /**
+   * Поднять слой над всеми выданными: новое место в стеке. Номер в `zIndex` и
+   * `data-layer` — сразу у слоя с узлом, у слоя без узла — с подключением
+   */
+  raise(): void;
 }
 
 /**
@@ -60,7 +65,7 @@ export interface ILayer<
  * открытости (`visible = false` из кода, `v-model`) — решение того, кто её
  * пишет, и запросом не считается.
  */
-export type TCloseReason = 'button' | 'outside' | 'escape' | 'swipe'
+export type TCloseReason = "button" | "outside" | "escape" | "swipe";
 
 /**
  * Владелец, который закрывается запросом, а не записью открытости.
@@ -72,8 +77,8 @@ export type TCloseReason = 'button' | 'outside' | 'escape' | 'swipe'
  * отменяемое событие.
  */
 export interface ICloseRequestable {
-	/** Пользователь закрывает слой — закрыть, если владелец не против. */
-	requestClose(reason: TCloseReason): void
+  /** Пользователь закрывает слой — закрыть, если владелец не против. */
+  requestClose(reason: TCloseReason): void;
 }
 
 /**
@@ -84,23 +89,23 @@ export interface ICloseRequestable {
  * Не `draggable`: это имя занято HTML-перетаскиванием и `TDragPlugin`. Значение
  * читают плагин жеста и разметка — это union ядра, а не реестр темы.
  */
-export type TSwipe = 'none' | 'handle' | 'panel'
+export type TSwipe = "none" | "handle" | "panel";
 
 /**
  * Куда слой уходит жестом: к началу или концу строки, вверх или вниз. `start`
  * и `end` — логические: в RTL жест зеркалится вместе со слоем.
  */
-export type TSwipeSide = 'start' | 'end' | 'top' | 'bottom'
+export type TSwipeSide = "start" | "end" | "top" | "bottom";
 
 /** События смахиваемого слоя: его карта событий их включает. */
 export type TSwipeableEvents = {
-	/** change:swipe */
-	'change:swipe': (value: TSwipe) => void
-	/** change:swipeSide — слой стал уходить жестом к другой стороне */
-	'change:swipeSide': (value: TSwipeSide | null) => void
-	/** change:swiping — жест начался или кончился */
-	'change:swiping': (value: boolean) => void
-}
+  /** change:swipe */
+  "change:swipe": (payload: TValuePayload<TSwipe>) => void;
+  /** change:swipeSide — слой стал уходить жестом к другой стороне */
+  "change:swipeSide": (payload: TValuePayload<TSwipeSide | null>) => void;
+  /** change:swiping — жест начался или кончился */
+  "change:swiping": (payload: TValuePayload<boolean>) => void;
+};
 
 /**
  * Слой, который смахивают, чтобы закрыть: выезжающая панель, поповер, панели
@@ -117,23 +122,23 @@ export type TSwipeableEvents = {
  * требует.
  */
 export interface ISwipeable {
-	/** За что слой смахивают: ни за что, за полосу или за любое место */
-	swipe: TSwipe
-	/**
-	 * Куда слой уходит жестом. `null` — сторону решает якорь: панель у триггера
-	 * встаёт под ним или над ним, и после flip сторону знает только её узел.
-	 * Ось у такого слоя — вертикальная.
-	 */
-	readonly swipeSide: TSwipeSide | null
-	/** Идёт жест: слой тянут, и тема не анимирует его сдвиг */
-	readonly swiping: boolean
-	/**
-	 * Жест начался: слой тянут. Отказ — у закрытого слоя и при выключенном
-	 * жесте.
-	 *
-	 * @returns начался ли жест
-	 */
-	beginSwipe(): boolean
-	/** Жест кончился: слой отпустили или жест отменён. Закрывает его не он, а плагин */
-	endSwipe(): void
+  /** За что слой смахивают: ни за что, за полосу или за любое место */
+  swipe: TSwipe;
+  /**
+   * Куда слой уходит жестом. `null` — сторону решает якорь: панель у триггера
+   * встаёт под ним или над ним, и после flip сторону знает только её узел.
+   * Ось у такого слоя — вертикальная.
+   */
+  readonly swipeSide: TSwipeSide | null;
+  /** Идёт жест: слой тянут, и тема не анимирует его сдвиг */
+  readonly swiping: boolean;
+  /**
+   * Жест начался: слой тянут. Отказ — у закрытого слоя и при выключенном
+   * жесте.
+   *
+   * @returns начался ли жест
+   */
+  beginSwipe(): boolean;
+  /** Жест кончился: слой отпустили или жест отменён. Закрывает его не он, а плагин */
+  endSwipe(): void;
 }

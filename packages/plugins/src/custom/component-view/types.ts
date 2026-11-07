@@ -1,27 +1,28 @@
-import type { TPluginEvents } from '../../base'
+import type { TValuePayload } from "@soldy-ui/core";
+import type { TPluginEvents } from "../../base";
 
 /**
  * Настройки TAriaPlugin.
  */
 export interface IAriaPluginOptions {
-	/**
-	 * Роль, которую элемент принимает, как только у него появилось имя.
-	 *
-	 * Нужна там, где без имени элемент декоративен: `TIcon` по умолчанию
-	 * отдаёт `aria-hidden="true"`, а с именем обязан стать `role="img"`.
-	 * Компонентам, у которых роль не зависит от наличия имени, не нужна.
-	 */
-	role?: string
+  /**
+   * Роль, которую элемент принимает, как только у него появилось имя.
+   *
+   * Нужна там, где без имени элемент декоративен: `TIcon` по умолчанию
+   * отдаёт `aria-hidden="true"`, а с именем обязан стать `role="img"`.
+   * Компонентам, у которых роль не зависит от наличия имени, не нужна.
+   */
+  role?: string;
 }
 
 export type TAriaPluginEvents = TPluginEvents & {
-	/** change:label */
-	'change:label': (value: string | undefined) => void
-	/** change:labelledBy */
-	'change:labelledBy': (value: string | undefined) => void
-	/** change:describedBy */
-	'change:describedBy': (value: string | undefined) => void
-}
+  /** change:label */
+  "change:label": (payload: TValuePayload<string | undefined>) => void;
+  /** change:labelledBy */
+  "change:labelledBy": (payload: TValuePayload<string | undefined>) => void;
+  /** change:describedBy */
+  "change:describedBy": (payload: TValuePayload<string | undefined>) => void;
+};
 
 /**
  * Пропсы плагина такими, какими их объявляет contribution — без неймспейса.
@@ -30,9 +31,9 @@ export type TAriaPluginEvents = TPluginEvents & {
  * по `namespace` из `definePlugin`; здесь только собственные имена пропсов.
  */
 export interface IAriaPluginProps {
-	label?: string
-	labelledBy?: string
-	describedBy?: string
+  label?: string;
+  labelledBy?: string;
+  describedBy?: string;
 }
 
 /**
@@ -41,13 +42,13 @@ export interface IAriaPluginProps {
  * контролом, а не разметка компонента, поэтому в контракт они не входят.
  */
 export interface IAriaLinks {
-	/**
-	 * `id` подписи — имя, пока своего нет: своё имя (`label`, `labelledBy`)
-	 * главнее
-	 */
-	readonly labelledBy?: string
-	/** `id` пояснения — встаёт в `aria-describedby` перед своим */
-	readonly describedBy?: string
+  /**
+   * `id` подписи — имя, пока своего нет: своё имя (`label`, `labelledBy`)
+   * главнее
+   */
+  readonly labelledBy?: string;
+  /** `id` пояснения — встаёт в `aria-describedby` перед своим */
+  readonly describedBy?: string;
 }
 
 /**
@@ -58,9 +59,9 @@ export interface IAriaLinks {
  * даёт.
  */
 export interface IAriaParts {
-	/**
-	 * `id` части-пояснения — встаёт в `aria-describedby` после пояснения поля
-	 * формы и перед своим `describedBy`
-	 */
-	readonly describedBy?: string
+  /**
+   * `id` части-пояснения — встаёт в `aria-describedby` после пояснения поля
+   * формы и перед своим `describedBy`
+   */
+  readonly describedBy?: string;
 }

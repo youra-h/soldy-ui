@@ -1,8 +1,8 @@
-import { TComponentView } from '../component-view'
-import type { TDefaultValues } from '../component'
-import type { TEventSink } from '../../../common'
-import { FRAME_LAYER_ATTRIBUTE } from './types'
-import type { ILayer, ILayerProps, TLayerEvents } from './types'
+import { TComponentView } from "../component-view";
+import type { TDefaultValues } from "../component";
+import type { TEventSink } from "../../../common";
+import { FRAME_LAYER_ATTRIBUTE } from "./types";
+import type { ILayer, ILayerProps, TLayerEvents } from "./types";
 
 /**
  * Слой поверх страницы — общая база того, что телепортируется и встаёт над
@@ -52,142 +52,146 @@ import type { ILayer, ILayerProps, TLayerEvents } from './types'
  * layer.ready = false // узел снят: zIndex — 0, data-layer снят; место за слоем
  */
 export default class TLayer<
-	TProps extends ILayerProps = ILayerProps,
-	TEvents extends TLayerEvents = TLayerEvents,
+  TProps extends ILayerProps = ILayerProps,
+  TEvents extends TLayerEvents = TLayerEvents,
 >
-	extends TComponentView<TProps, TEvents>
-	implements ILayer<TProps, TEvents>
+  extends TComponentView<TProps, TEvents>
+  implements ILayer<TProps, TEvents>
 {
-	static defaultValues: typeof TComponentView.defaultValues &
-		TDefaultValues<ILayerProps, 'target'> = {
-		...TComponentView.defaultValues,
-		// Слой скрыт, пока его не открыли
-		visible: false,
-		target: 'body',
-	}
+  static defaultValues: typeof TComponentView.defaultValues &
+    TDefaultValues<ILayerProps, "target"> = {
+    ...TComponentView.defaultValues,
+    // Слой скрыт, пока его не открыли
+    visible: false,
+    target: "body",
+  };
 
-	/**
-	 * Базовый z-index всех слоёв. Можно переопределить статически — у
-	 * `TLayer`: стек один, и наследники своей базы не держат.
-	 */
-	static baseZIndex: number = 1000
+  /**
+   * Базовый z-index всех слоёв. Можно переопределить статически — у
+   * `TLayer`: стек один, и наследники своей базы не держат.
+   */
+  static baseZIndex: number = 1000;
 
-	/** Счётчик z-index (только инкремент), один на все слои. */
-	private static _zIndexCounter: number = 0
+  /** Счётчик z-index (только инкремент), один на все слои. */
+  private static _zIndexCounter: number = 0;
 
-	/**
-	 * Получить следующий z-index — выше всех выданных.
-	 * Вызывается автоматически при show(), но доступен и снаружи.
-	 */
-	static nextZIndex(): number {
-		return TLayer.baseZIndex + ++TLayer._zIndexCounter
-	}
+  /**
+   * Получить следующий z-index — выше всех выданных.
+   * Вызывается автоматически при show(), но доступен и снаружи.
+   */
+  static nextZIndex(): number {
+    return TLayer.baseZIndex + ++TLayer._zIndexCounter;
+  }
 
-	/** Сбросить счётчик (для тестов). */
-	static resetZIndexCounter(): void {
-		TLayer._zIndexCounter = 0
-	}
+  /** Сбросить счётчик (для тестов). */
+  static resetZIndexCounter(): void {
+    TLayer._zIndexCounter = 0;
+  }
 
-	/**
-	 * Место слоя в стеке — своё значение `zIndex`. `0` — места слой ещё не
-	 * брал. Наружу уходит итог: номер места только у слоя с узлом.
-	 */
-	protected _zIndex: number = 0
-	protected _target: string
+  /**
+   * Место слоя в стеке — своё значение `zIndex`. `0` — места слой ещё не
+   * брал. Наружу уходит итог: номер места только у слоя с узлом.
+   */
+  protected _zIndex: number = 0;
+  protected _target: string;
 
-	constructor(props: Partial<TProps> = {}) {
-		const ctor = new.target as typeof TLayer
+  constructor(props: Partial<TProps> = {}) {
+    const ctor = new.target as typeof TLayer;
 
-		super(props)
+    super(props);
 
-		this._target = props.target ?? ctor.defaultValues.target
+    this._target = props.target ?? ctor.defaultValues.target;
 
-		// Показ поднимает слой над всеми, кто показан раньше
-		this.events.on('show', () => this.raise())
+    // Показ поднимает слой над всеми, кто показан раньше
+    this.events.on("show", () => this.raise());
 
-		// Созданный видимым уже на экране, а `show` для него не придёт. Без места
-		// он и с узлом стоял бы с `z-index: 0` под всеми, и нажатие в панель,
-		// открытую поверх него, плагин оверлея счёл бы нажатием мимо
-		if (this.visible) this.raise()
+    // Созданный видимым уже на экране, а `show` для него не придёт. Без места
+    // он и с узлом стоял бы с `z-index: 0` под всеми, и нажатие в панель,
+    // открытую поверх него, плагин оверлея счёл бы нажатием мимо
+    if (this.visible) this.raise();
 
-		// Подключённый узел открывает номер места, снятый — прячет. `ready`
-		// приходит только со сменой, поэтому итог до неё известен: до
-		// подключения — `0`, до снятия — номер места
-		this.events.on('ready', (ready) => this._zIndexChanged(ready ? 0 : this._zIndex))
+    // Подключённый узел открывает номер места, снятый — прячет. `ready`
+    // приходит только со сменой, поэтому итог до неё известен: до
+    // подключения — `0`, до снятия — номер места
+    this.events.on("ready", (ready) =>
+      this._zIndexChanged(ready ? 0 : this._zIndex),
+    );
 
-		this._syncOpen()
-		this.events.on('change:visible', () => this._syncOpen())
-	}
+    this._syncOpen();
+    this.events.on("change:visible", () => this._syncOpen());
+  }
 
-	/**
-	 * Эмит собственных событий класса — без приведения `this.events` к
-	 * конкретной карте (см. `TEventSink` в `common/event/types.ts`).
-	 */
-	protected get _sink(): TEventSink<TLayerEvents> {
-		return this.events
-	}
+  /**
+   * Эмит собственных событий класса — без приведения `this.events` к
+   * конкретной карте (см. `TEventSink` в `common/event/types.ts`).
+   */
+  protected get _sink(): TEventSink<TLayerEvents> {
+    return this.events;
+  }
 
-	/**
-	 * Поднять слой над всеми выданными: новое место — выше всех. У слоя с
-	 * узлом новый номер сразу в `zIndex` и `data-layer`, у слоя без узла — с
-	 * его подключением.
-	 *
-	 * Показ зовёт его сам. Снаружи — тому, кто виден всегда и встаёт наверх
-	 * по своему поводу: регион тостов поднимается на каждый новый тост и на
-	 * F8, и «Сохранено» видно поверх окна, открытого раньше.
-	 */
-	raise(): void {
-		const before = this.zIndex
+  /**
+   * Поднять слой над всеми выданными: новое место — выше всех. У слоя с
+   * узлом новый номер сразу в `zIndex` и `data-layer`, у слоя без узла — с
+   * его подключением.
+   *
+   * Показ зовёт его сам. Снаружи — тому, кто виден всегда и встаёт наверх
+   * по своему поводу: регион тостов поднимается на каждый новый тост и на
+   * F8, и «Сохранено» видно поверх окна, открытого раньше.
+   */
+  raise(): void {
+    const before = this.zIndex;
 
-		this._zIndex = TLayer.nextZIndex()
-		this._zIndexChanged(before)
-	}
+    this._zIndex = TLayer.nextZIndex();
+    this._zIndexChanged(before);
+  }
 
-	/**
-	 * Итог `zIndex` мог смениться — номер в `data-layer` и `change:zIndex`,
-	 * если сменился. Номер — в набор раньше события: по `change:zIndex` разметка
-	 * перечитывает `backdropDataset` модального слоя, а тот берёт номер из
-	 * набора.
-	 */
-	private _zIndexChanged(before: number): void {
-		const after = this.zIndex
+  /**
+   * Итог `zIndex` мог смениться — номер в `data-layer` и `change:zIndex`,
+   * если сменился. Номер — в набор раньше события: по `change:zIndex` разметка
+   * перечитывает `backdropDataset` модального слоя, а тот берёт номер из
+   * набора.
+   */
+  private _zIndexChanged(before: number): void {
+    const after = this.zIndex;
 
-		if (after === before) return
+    if (after === before) return;
 
-		this._dataset.add(FRAME_LAYER_ATTRIBUTE, after === 0 ? null : after)
-		this._sink.emit('change:zIndex', after)
-	}
+    this._dataset.add(FRAME_LAYER_ATTRIBUTE, after === 0 ? null : after);
+    this._sink.emit("change:zIndex", after);
+  }
 
-	/**
-	 * Открытость — теме: по `data-open` она ведёт переход к закрытому виду, и
-	 * переходу до скрытия есть к чему идти.
-	 */
-	private _syncOpen(): void {
-		this._dataset.add('open', this.visible)
-	}
+  /**
+   * Открытость — теме: по `data-open` она ведёт переход к закрытому виду, и
+   * переходу до скрытия есть к чему идти.
+   */
+  private _syncOpen(): void {
+    this._dataset.add("open", this.visible);
+  }
 
-	/**
-	 * Номер слоя в общем стеке — место слоя, если у него есть узел (`ready`).
-	 * Без узла — `0`: на сервере узла нет, и номер, взятый у счётчика процесса,
-	 * не попадает в разметку, с которой браузер её сверяет.
-	 */
-	get zIndex(): number {
-		return this.ready ? this._zIndex : 0
-	}
+  /**
+   * Номер слоя в общем стеке — место слоя, если у него есть узел (`ready`).
+   * Без узла — `0`: на сервере узла нет, и номер, взятый у счётчика процесса,
+   * не попадает в разметку, с которой браузер её сверяет.
+   */
+  get zIndex(): number {
+    return this.ready ? this._zIndex : 0;
+  }
 
-	get target(): string {
-		return this._target
-	}
-	set target(value: string) {
-		if (this._target === value) return
-		this._target = value
-		this._sink.emit('change:target', value)
-	}
+  get target(): string {
+    return this._target;
+  }
+  set target(value: string) {
+    if (this._target === value) return;
+    const oldValue = this.target;
 
-	getProps(): TProps {
-		return {
-			...super.getProps(),
-			target: this._target,
-		}
-	}
+    this._target = value;
+    this._sink.emit("change:target", { newValue: value, oldValue: oldValue });
+  }
+
+  getProps(): TProps {
+    return {
+      ...super.getProps(),
+      target: this._target,
+    };
+  }
 }

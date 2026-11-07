@@ -1,10 +1,11 @@
-import type { TPluginEvents } from '../../../base'
+import type { TValuePayload } from "@soldy-ui/core";
+import type { TPluginEvents } from "../../../base";
 
 export type TListHeightPluginEvents = TPluginEvents & {
-	/**
-	 * Строки списка измерились или перестали мериться — `measured` сменился.
-	 * Нужно соседу по набору (`TListScrollPlugin`), а не потребителю: в
-	 * дескриптор событие не публикуется.
-	 */
-	'change:measured': (measured: boolean) => void
-}
+  /**
+   * Строки списка измерились или перестали мериться — `measured` сменился.
+   * Нужно соседу по набору (`TListScrollPlugin`), а не потребителю: в
+   * дескриптор событие не публикуется.
+   */
+  "change:measured": (payload: TValuePayload<boolean>) => void;
+};

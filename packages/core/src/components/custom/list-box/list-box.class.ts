@@ -1,9 +1,19 @@
-import { TValueControl } from '../../base/value-control'
-import type { TDefaultValues } from '../../base/component'
-import type { TScrollBehavior } from '../../../common'
-import { LIST_DEFAULTS, LIST_CONTENT_FIT_ATTRIBUTE, LIST_INDICATOR_ATTRIBUTE } from '../list'
-import type { IListProps, TListContentFit, TListIndicator } from '../list'
-import type { IListBoxProps, TListBoxView, TListBoxEvents, IListBox, TListBoxValue } from './types'
+import { TValueControl } from "../../base/value-control";
+import type { TDefaultValues } from "../../base/component";
+import type { TScrollBehavior } from "../../../common";
+import {
+  LIST_DEFAULTS,
+  LIST_CONTENT_FIT_ATTRIBUTE,
+  LIST_INDICATOR_ATTRIBUTE,
+} from "../list";
+import type { IListProps, TListContentFit, TListIndicator } from "../list";
+import type {
+  IListBoxProps,
+  TListBoxView,
+  TListBoxEvents,
+  IListBox,
+  TListBoxValue,
+} from "./types";
 
 /**
  * Компонент ListBox — список с выбором.
@@ -42,168 +52,185 @@ import type { IListBoxProps, TListBoxView, TListBoxEvents, IListBox, TListBoxVal
  * как у Tabs, чей набор лежит на списке табов.
  */
 export class TListBox
-	extends TValueControl<TListBoxValue, IListBoxProps, TListBoxEvents>
-	implements IListBox
+  extends TValueControl<TListBoxValue, IListBoxProps, TListBoxEvents>
+  implements IListBox
 {
-	static override baseClass = 'so-list-box'
+  static override baseClass = "so-list-box";
 
-	static defaultValues: typeof TValueControl.defaultValues &
-		TDefaultValues<IListBoxProps, keyof IListProps, 'view'> = {
-		...TValueControl.defaultValues,
-		...LIST_DEFAULTS,
-		view: undefined,
-	}
+  static defaultValues: typeof TValueControl.defaultValues &
+    TDefaultValues<IListBoxProps, keyof IListProps, "view"> = {
+    ...TValueControl.defaultValues,
+    ...LIST_DEFAULTS,
+    view: undefined,
+  };
 
-	protected _view: TListBoxView | undefined
-	protected _maxRows: number
-	protected _contentFit!: TListContentFit
-	protected _scrollBehavior: TScrollBehavior
-	protected _indicator!: TListIndicator
-	protected _groupSeparators: boolean
+  protected _view: TListBoxView | undefined;
+  protected _maxRows: number;
+  protected _contentFit!: TListContentFit;
+  protected _scrollBehavior: TScrollBehavior;
+  protected _indicator!: TListIndicator;
+  protected _groupSeparators: boolean;
 
-	constructor(props: Partial<IListBoxProps> = {}) {
-		super(props)
+  constructor(props: Partial<IListBoxProps> = {}) {
+    super(props);
 
-		const ctor = new.target as typeof TListBox
+    const ctor = new.target as typeof TListBox;
 
-		// Только то, что список знает о себе сам: он — listbox. Роль стоит на
-		// узле списка — там же фокус, клавиатура и имя от `TAriaPlugin`
-		this._aria.add('role', 'listbox')
+    // Только то, что список знает о себе сам: он — listbox. Роль стоит на
+    // узле списка — там же фокус, клавиатура и имя от `TAriaPlugin`
+    this._aria.add("role", "listbox");
 
-		this._applyView(props.view ?? ctor.defaultValues.view)
+    this._applyView(props.view ?? ctor.defaultValues.view);
 
-		this._maxRows = props.maxRows ?? ctor.defaultValues.maxRows
-		this._scrollBehavior = props.scrollBehavior ?? ctor.defaultValues.scrollBehavior
-		this._groupSeparators = props.groupSeparators ?? ctor.defaultValues.groupSeparators
+    this._maxRows = props.maxRows ?? ctor.defaultValues.maxRows;
+    this._scrollBehavior =
+      props.scrollBehavior ?? ctor.defaultValues.scrollBehavior;
+    this._groupSeparators =
+      props.groupSeparators ?? ctor.defaultValues.groupSeparators;
 
-		this._applyContentFit(props.contentFit ?? ctor.defaultValues.contentFit)
-		this._applyIndicator(props.indicator ?? ctor.defaultValues.indicator)
-	}
+    this._applyContentFit(props.contentFit ?? ctor.defaultValues.contentFit);
+    this._applyIndicator(props.indicator ?? ctor.defaultValues.indicator);
+  }
 
-	/**
-	 * `aria` стоит на узле списка внутри корня, а тег у него фиксированный
-	 * (`div`), разметка задаёт его сама. Поэтому ARIA-половина правила
-	 * «нативный атрибут вместо ARIA-дубля» от `tag` корня не зависит: у `div`
-	 * своего `disabled` нет, и выключенный список узел объявляет
-	 * `aria-disabled`, каким бы ни был корень — как строка `ListBox.Item`.
-	 */
-	protected override get _ariaTag(): string {
-		return 'div'
-	}
+  /**
+   * `aria` стоит на узле списка внутри корня, а тег у него фиксированный
+   * (`div`), разметка задаёт его сама. Поэтому ARIA-половина правила
+   * «нативный атрибут вместо ARIA-дубля» от `tag` корня не зависит: у `div`
+   * своего `disabled` нет, и выключенный список узел объявляет
+   * `aria-disabled`, каким бы ни был корень — как строка `ListBox.Item`.
+   */
+  protected override get _ariaTag(): string {
+    return "div";
+  }
 
-	get view(): TListBoxView | undefined {
-		return this._view
-	}
+  get view(): TListBoxView | undefined {
+    return this._view;
+  }
 
-	set view(value: TListBoxView | undefined) {
-		if (this._view === value) return
+  set view(value: TListBoxView | undefined) {
+    if (this._view === value) return;
 
-		this._applyView(value, this._view)
-		this.events.emit('change:view', value)
-	}
+    this._applyView(value, this._view);
+    this.events.emit("change:view", value);
+  }
 
-	/** Сколько строк показывать до появления прокрутки. `0` — все. */
-	get maxRows(): number {
-		return this._maxRows
-	}
+  /** Сколько строк показывать до появления прокрутки. `0` — все. */
+  get maxRows(): number {
+    return this._maxRows;
+  }
 
-	set maxRows(value: number) {
-		if (this._maxRows === value) return
+  set maxRows(value: number) {
+    if (this._maxRows === value) return;
 
-		this._maxRows = value
-		this.events.emit('change:maxRows', value)
-	}
+    const oldValue = this.maxRows;
 
-	/** Что делать с не помещающимся текстом. */
-	get contentFit(): TListContentFit {
-		return this._contentFit
-	}
+    this._maxRows = value;
+    this.events.emit("change:maxRows", { newValue: value, oldValue: oldValue });
+  }
 
-	set contentFit(value: TListContentFit) {
-		if (this._contentFit === value) return
+  /** Что делать с не помещающимся текстом. */
+  get contentFit(): TListContentFit {
+    return this._contentFit;
+  }
 
-		this._applyContentFit(value)
-		this.events.emit('change:contentFit', value)
-	}
+  set contentFit(value: TListContentFit) {
+    if (this._contentFit === value) return;
 
-	/** Как прокручивать к элементу при навигации. */
-	get scrollBehavior(): TScrollBehavior {
-		return this._scrollBehavior
-	}
+    this._applyContentFit(value);
+    this.events.emit("change:contentFit", value);
+  }
 
-	set scrollBehavior(value: TScrollBehavior) {
-		if (this._scrollBehavior === value) return
+  /** Как прокручивать к элементу при навигации. */
+  get scrollBehavior(): TScrollBehavior {
+    return this._scrollBehavior;
+  }
 
-		this._scrollBehavior = value
-		this.events.emit('change:scrollBehavior', value)
-	}
+  set scrollBehavior(value: TScrollBehavior) {
+    if (this._scrollBehavior === value) return;
 
-	/** Где показывать отметку выбранного элемента. */
-	get indicator(): TListIndicator {
-		return this._indicator
-	}
+    const oldValue = this._scrollBehavior;
 
-	set indicator(value: TListIndicator) {
-		if (this._indicator === value) return
+    this._scrollBehavior = value;
+    this.events.emit("change:scrollBehavior", {
+      newValue: value,
+      oldValue: oldValue,
+    });
+  }
 
-		this._applyIndicator(value)
-		this.events.emit('change:indicator', value)
-	}
+  /** Где показывать отметку выбранного элемента. */
+  get indicator(): TListIndicator {
+    return this._indicator;
+  }
 
-	/**
-	 * Рисовать ли разделитель между соседними секциями группировки. Рисует его
-	 * разметка, по секциям нарисованного (`drawnSections` фасада).
-	 */
-	get groupSeparators(): boolean {
-		return this._groupSeparators
-	}
+  set indicator(value: TListIndicator) {
+    if (this._indicator === value) return;
 
-	set groupSeparators(value: boolean) {
-		if (this._groupSeparators === value) return
+    this._applyIndicator(value);
+    this.events.emit("change:indicator", value);
+  }
 
-		this._groupSeparators = value
-		this.events.emit('change:groupSeparators', value)
-	}
+  /**
+   * Рисовать ли разделитель между соседними секциями группировки. Рисует его
+   * разметка, по секциям нарисованного (`drawnSections` фасада).
+   */
+  get groupSeparators(): boolean {
+    return this._groupSeparators;
+  }
 
-	/** Модификатор вида — с префиксом `--view-`; `swap` пропускает пустое значение. */
-	protected _applyView(newValue: TListBoxView | undefined, oldValue?: TListBoxView): void {
-		this._classes.swap({
-			prefix: '--view-',
-			oldValue,
-			newValue,
-		})
-		this._view = newValue
-	}
+  set groupSeparators(value: boolean) {
+    if (this._groupSeparators === value) return;
 
-	/**
-	 * `data-content-fit`, а не класс: то же имя получает каждый элемент, и тема
-	 * читает одно свойство на двух уровнях — `expand` со списка (ширина
-	 * контейнера), `wrap` с элемента (перенос текста).
-	 */
-	protected _applyContentFit(value: TListContentFit): void {
-		this._contentFit = value
-		this._dataset.add(LIST_CONTENT_FIT_ATTRIBUTE, value)
-	}
+    const oldValue = this.groupSeparators;
 
-	/**
-	 * `data-indicator` на самом списке: место под отметку резервирует тема, и
-	 * знать сторону ей надо до того, как что-то выбрано. Тот же атрибут каждому
-	 * элементу ставит `TListBoxExtension`.
-	 */
-	protected _applyIndicator(value: TListIndicator): void {
-		this._indicator = value
-		this._dataset.add(LIST_INDICATOR_ATTRIBUTE, value)
-	}
+    this._groupSeparators = value;
+    this.events.emit("change:groupSeparators", {
+      newValue: value,
+      oldValue: oldValue,
+    });
+  }
 
-	override getProps(): IListBoxProps {
-		return {
-			...super.getProps(),
-			view: this._view,
-			maxRows: this._maxRows,
-			contentFit: this._contentFit,
-			scrollBehavior: this._scrollBehavior,
-			indicator: this._indicator,
-			groupSeparators: this._groupSeparators,
-		} as IListBoxProps
-	}
+  /** Модификатор вида — с префиксом `--view-`; `swap` пропускает пустое значение. */
+  protected _applyView(
+    newValue: TListBoxView | undefined,
+    oldValue?: TListBoxView,
+  ): void {
+    this._classes.swap({
+      prefix: "--view-",
+      oldValue,
+      newValue,
+    });
+    this._view = newValue;
+  }
+
+  /**
+   * `data-content-fit`, а не класс: то же имя получает каждый элемент, и тема
+   * читает одно свойство на двух уровнях — `expand` со списка (ширина
+   * контейнера), `wrap` с элемента (перенос текста).
+   */
+  protected _applyContentFit(value: TListContentFit): void {
+    this._contentFit = value;
+    this._dataset.add(LIST_CONTENT_FIT_ATTRIBUTE, value);
+  }
+
+  /**
+   * `data-indicator` на самом списке: место под отметку резервирует тема, и
+   * знать сторону ей надо до того, как что-то выбрано. Тот же атрибут каждому
+   * элементу ставит `TListBoxExtension`.
+   */
+  protected _applyIndicator(value: TListIndicator): void {
+    this._indicator = value;
+    this._dataset.add(LIST_INDICATOR_ATTRIBUTE, value);
+  }
+
+  override getProps(): IListBoxProps {
+    return {
+      ...super.getProps(),
+      view: this._view,
+      maxRows: this._maxRows,
+      contentFit: this._contentFit,
+      scrollBehavior: this._scrollBehavior,
+      indicator: this._indicator,
+      groupSeparators: this._groupSeparators,
+    } as IListBoxProps;
+  }
 }

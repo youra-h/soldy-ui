@@ -1,14 +1,18 @@
-import { TBasePlugin } from '../../base'
-import type { IPluginContext } from '../../base'
-import { isAboveLayer } from '../../utils'
-import { TElementPlugin } from '../element'
+import { TBasePlugin } from "../../base";
+import type { IPluginContext } from "../../base";
+import { isAboveLayer } from "../../utils";
+import { TElementPlugin } from "../element";
 // Не из бочки `../overlay`: её плагины импортируют этот модуль, и вышел бы цикл
-import { bindOverlayOpen } from '../overlay/open-state'
-import type { IOverlayOpenState } from '../overlay/types'
-import type { IDismissPluginOptions, TDismissPendingPress, TDismissPluginEvents } from './types'
+import { bindOverlayOpen } from "../overlay/open-state";
+import type { IOverlayOpenState } from "../overlay/types";
+import type {
+  IDismissPluginOptions,
+  TDismissPendingPress,
+  TDismissPluginEvents,
+} from "./types";
 
 /** Атрибут, которым панель помечается владельцем (`ownerAttribute`). */
-const OWNER_ATTRIBUTE = 'data-owner'
+const OWNER_ATTRIBUTE = "data-owner";
 
 /**
  * TDismissPlugin — «нажали мимо».
@@ -67,264 +71,269 @@ const OWNER_ATTRIBUTE = 'data-owner'
  * владельца, его панели и слоёв выше даёт `dismiss`.
  */
 export class TDismissPlugin extends TBasePlugin<any, TDismissPluginEvents> {
-	/** Умолчания опций, объявленных пропами, — см. `TAnchorPlugin.defaultValues`. */
-	static defaultValues: Required<Pick<IDismissPluginOptions, 'enabled'>> = {
-		enabled: false,
-	}
+  /** Умолчания опций, объявленных пропами, — см. `TAnchorPlugin.defaultValues`. */
+  static defaultValues: Required<Pick<IDismissPluginOptions, "enabled">> = {
+    enabled: false,
+  };
 
-	private _element: Element | null = null
-	/**
-	 * Пометка панели владельца — значение `data-owner`. От монтирования, а не
-	 * от `uid`: пометка уходит в разметку, и на сервере и в браузере обязана
-	 * совпасть.
-	 */
-	private _ownerMark = ''
-	/**
-	 * Открытость владельца (`property`): по ней плагин включается, ею же
-	 * `dismiss` закрывает владельца. `null` — привязки нет, плагин только
-	 * сообщает.
-	 */
-	private _open: IOverlayOpenState | null = null
-	private _enabled = TDismissPlugin.defaultValues.enabled
-	private _focusOutside = false
-	private _listening = false
-	/** Нажатие мимо, которое ждёт решения, — касание или перо (см. `_onPointerDown`). */
-	private _pending: TDismissPendingPress | null = null
+  private _element: Element | null = null;
+  /**
+   * Пометка панели владельца — значение `data-owner`. От монтирования, а не
+   * от `uid`: пометка уходит в разметку, и на сервере и в браузере обязана
+   * совпасть.
+   */
+  private _ownerMark = "";
+  /**
+   * Открытость владельца (`property`): по ней плагин включается, ею же
+   * `dismiss` закрывает владельца. `null` — привязки нет, плагин только
+   * сообщает.
+   */
+  private _open: IOverlayOpenState | null = null;
+  private _enabled = TDismissPlugin.defaultValues.enabled;
+  private _focusOutside = false;
+  private _listening = false;
+  /** Нажатие мимо, которое ждёт решения, — касание или перо (см. `_onPointerDown`). */
+  private _pending: TDismissPendingPress | null = null;
 
-	override install(ctx: IPluginContext, options?: IDismissPluginOptions): void {
-		super.install(ctx, options)
+  override install(ctx: IPluginContext, options?: IDismissPluginOptions): void {
+    super.install(ctx, options);
 
-		this._ownerMark = ctx.createId('owner')
+    this._ownerMark = ctx.createId("owner");
 
-		ctx.get(TElementPlugin)?.events.on('ready', (element) => {
-			this._element = element
-			this._sync()
-		})
+    ctx.get(TElementPlugin)?.events.on("ready", (element) => {
+      this._element = element;
+      this._sync();
+    });
 
-		ctx.get(TElementPlugin)?.events.on('removed', () => {
-			this._element = null
-			this._sync()
-		})
+    ctx.get(TElementPlugin)?.events.on("removed", () => {
+      this._element = null;
+      this._sync();
+    });
 
-		this._enabled = options?.enabled ?? this._enabled
-		this._focusOutside = options?.focusOutside ?? this._focusOutside
+    this._enabled = options?.enabled ?? this._enabled;
+    this._focusOutside = options?.focusOutside ?? this._focusOutside;
 
-		this._open = bindOverlayOpen(ctx, options, (open) => {
-			this.enabled = open
-		})
+    this._open = bindOverlayOpen(ctx, options, (open) => {
+      this.enabled = open;
+    });
 
-		if (this._open) this.enabled = this._open.read()
-	}
+    if (this._open) this.enabled = this._open.read();
+  }
 
-	/**
-	 * Сообщает о нажатии или фокусе мимо, потом закрывает владельца.
-	 *
-	 * Закрывает здесь, после подписчиков `dismiss`, а не первым подписчиком:
-	 * иначе остальные узнавали бы о нажатии мимо уже закрытыми и не отличали
-	 * бы его от закрытия по другой причине.
-	 *
-	 * Закрывает с причиной `outside`: владелец, который принимает запрос
-	 * закрытия (модальное окно), решает сам — закрыться, отклонить нажатие
-	 * мимо или отдать решение подписчику. `dismiss` при этом уже пришёл:
-	 * нажатие мимо было, закроется окно или нет.
-	 */
-	private _dismiss(event: MouseEvent | FocusEvent): void {
-		this.events.emit('dismiss', event)
+  /**
+   * Сообщает о нажатии или фокусе мимо, потом закрывает владельца.
+   *
+   * Закрывает здесь, после подписчиков `dismiss`, а не первым подписчиком:
+   * иначе остальные узнавали бы о нажатии мимо уже закрытыми и не отличали
+   * бы его от закрытия по другой причине.
+   *
+   * Закрывает с причиной `outside`: владелец, который принимает запрос
+   * закрытия (модальное окно), решает сам — закрыться, отклонить нажатие
+   * мимо или отдать решение подписчику. `dismiss` при этом уже пришёл:
+   * нажатие мимо было, закроется окно или нет.
+   */
+  private _dismiss(event: MouseEvent | FocusEvent): void {
+    this.events.emit("dismiss", event);
 
-		this._open?.close('outside')
-	}
+    this._open?.close("outside");
+  }
 
-	/**
-	 * Следит ли плагин за нажатиями (с `focusOutside` — и за фокусом).
-	 * Владелец включает его на открытии.
-	 */
-	get enabled(): boolean {
-		return this._enabled
-	}
+  /**
+   * Следит ли плагин за нажатиями (с `focusOutside` — и за фокусом).
+   * Владелец включает его на открытии.
+   */
+  get enabled(): boolean {
+    return this._enabled;
+  }
 
-	set enabled(value: boolean) {
-		if (this._enabled === value) return
+  set enabled(value: boolean) {
+    if (this._enabled === value) return;
 
-		this._enabled = value
-		this._sync()
-		this.events.emit('change:enabled', value)
-	}
+    const oldValue = this.enabled;
 
-	/**
-	 * Атрибут для панели владельца. Разметка раскладывает его спредом на
-	 * телепортированный узел, иначе нажатие внутри панели будет считаться
-	 * нажатием мимо.
-	 */
-	get ownerAttribute(): Record<string, string> {
-		return { [OWNER_ATTRIBUTE]: this._ownerMark }
-	}
+    this._enabled = value;
+    this._sync();
+    this.events.emit("change:enabled", { newValue: value, oldValue: oldValue });
+  }
 
-	/**
-	 * Панель владельца — узел с его `ownerAttribute` в документе корня. `null`,
-	 * пока корень не объявлен или панели в документе нет.
-	 *
-	 * Панель телепортирована, и ссылки на неё у плагинов нет: разметка отдаёт
-	 * им только корень. Поэтому её находят по той же пометке, по которой
-	 * плагин отличает нажатие в неё. Нужна и соседям по набору: плагин фокуса
-	 * Popover уводит фокус в панель и слушает на ней клавиши.
-	 */
-	findPanel(): Element | null {
-		return this._element?.ownerDocument.querySelector(this._panelSelector) ?? null
-	}
+  /**
+   * Атрибут для панели владельца. Разметка раскладывает его спредом на
+   * телепортированный узел, иначе нажатие внутри панели будет считаться
+   * нажатием мимо.
+   */
+  get ownerAttribute(): Record<string, string> {
+    return { [OWNER_ATTRIBUTE]: this._ownerMark };
+  }
 
-	/**
-	 * Пришлось ли нажатие или фокус внутрь владельца, его панели или слоя выше
-	 * неё — панели, открытой поверх своей (см. шапку). Правило слоёв общее с
-	 * `THideOutsidePlugin`, поэтому живёт в утилитах (`isAboveLayer`).
-	 *
-	 * Нужно и соседям по набору: возврат поля Select на уходе фокуса решает
-	 * по тем же границам.
-	 */
-	isInside(target: EventTarget | null): boolean {
-		if (!(target instanceof Element)) return false
+  /**
+   * Панель владельца — узел с его `ownerAttribute` в документе корня. `null`,
+   * пока корень не объявлен или панели в документе нет.
+   *
+   * Панель телепортирована, и ссылки на неё у плагинов нет: разметка отдаёт
+   * им только корень. Поэтому её находят по той же пометке, по которой
+   * плагин отличает нажатие в неё. Нужна и соседям по набору: плагин фокуса
+   * Popover уводит фокус в панель и слушает на ней клавиши.
+   */
+  findPanel(): Element | null {
+    return (
+      this._element?.ownerDocument.querySelector(this._panelSelector) ?? null
+    );
+  }
 
-		if (this._element?.contains(target)) return true
+  /**
+   * Пришлось ли нажатие или фокус внутрь владельца, его панели или слоя выше
+   * неё — панели, открытой поверх своей (см. шапку). Правило слоёв общее с
+   * `THideOutsidePlugin`, поэтому живёт в утилитах (`isAboveLayer`).
+   *
+   * Нужно и соседям по набору: возврат поля Select на уходе фокуса решает
+   * по тем же границам.
+   */
+  isInside(target: EventTarget | null): boolean {
+    if (!(target instanceof Element)) return false;
 
-		if (target.closest(this._panelSelector)) return true
+    if (this._element?.contains(target)) return true;
 
-		return isAboveLayer(target, this.findPanel())
-	}
+    if (target.closest(this._panelSelector)) return true;
 
-	override destroy(): void {
-		this._enabled = false
-		this._sync()
+    return isAboveLayer(target, this.findPanel());
+  }
 
-		this._open?.unbind()
-		this._open = null
-		this._element = null
+  override destroy(): void {
+    this._enabled = false;
+    this._sync();
 
-		super.destroy()
-	}
+    this._open?.unbind();
+    this._open = null;
+    this._element = null;
 
-	/** Селектор панели владельца — по её пометке. */
-	private get _panelSelector(): string {
-		return `[${OWNER_ATTRIBUTE}="${this._ownerMark}"]`
-	}
+    super.destroy();
+  }
 
-	/**
-	 * Мышь решает на нажатии, касание и перо ждут (см. шапку).
-	 *
-	 * Ожидание одно — для последнего опущенного нажатия, поэтому любое нажатие
-	 * (мышью, пальцем или пером, внутрь или мимо) сначала снимает прежнее.
-	 * Иначе панель, с которой уже работают, закрыло бы отпускание пальца,
-	 * лёгшего мимо раньше, или `mousedown` мыши, нажатой внутрь, пока перо
-	 * лежит мимо: он засчитался бы за перо.
-	 */
-	private readonly _onPointerDown = (event: PointerEvent): void => {
-		this._pending = null
+  /** Селектор панели владельца — по её пометке. */
+  private get _panelSelector(): string {
+    return `[${OWNER_ATTRIBUTE}="${this._ownerMark}"]`;
+  }
 
-		if (event.pointerType === 'touch') {
-			this._startTouch(event)
-			return
-		}
+  /**
+   * Мышь решает на нажатии, касание и перо ждут (см. шапку).
+   *
+   * Ожидание одно — для последнего опущенного нажатия, поэтому любое нажатие
+   * (мышью, пальцем или пером, внутрь или мимо) сначала снимает прежнее.
+   * Иначе панель, с которой уже работают, закрыло бы отпускание пальца,
+   * лёгшего мимо раньше, или `mousedown` мыши, нажатой внутрь, пока перо
+   * лежит мимо: он засчитался бы за перо.
+   */
+  private readonly _onPointerDown = (event: PointerEvent): void => {
+    this._pending = null;
 
-		if (event.pointerType === 'pen') {
-			this._startPen(event)
-			return
-		}
+    if (event.pointerType === "touch") {
+      this._startTouch(event);
+      return;
+    }
 
-		if (this.isInside(event.target)) return
+    if (event.pointerType === "pen") {
+      this._startPen(event);
+      return;
+    }
 
-		this._dismiss(event)
-	}
+    if (this.isInside(event.target)) return;
 
-	/** Касание ничего не закрывает — только запоминается, если пришлось мимо. */
-	private _startTouch(event: PointerEvent): void {
-		if (this.isInside(event.target)) return
+    this._dismiss(event);
+  };
 
-		this._pending = { pointerId: event.pointerId, pointerType: 'touch' }
-	}
+  /** Касание ничего не закрывает — только запоминается, если пришлось мимо. */
+  private _startTouch(event: PointerEvent): void {
+    if (this.isInside(event.target)) return;
 
-	/**
-	 * Перо тоже только запоминается, если пришлось мимо. Решит его то, что
-	 * придёт первым: `pointerup` (стилус на экране) или совместимый `mousedown`
-	 * (перо графического планшета).
-	 */
-	private _startPen(event: PointerEvent): void {
-		if (this.isInside(event.target)) return
+    this._pending = { pointerId: event.pointerId, pointerType: "touch" };
+  }
 
-		this._pending = { pointerId: event.pointerId, pointerType: 'pen' }
-	}
+  /**
+   * Перо тоже только запоминается, если пришлось мимо. Решит его то, что
+   * придёт первым: `pointerup` (стилус на экране) или совместимый `mousedown`
+   * (перо графического планшета).
+   */
+  private _startPen(event: PointerEvent): void {
+    if (this.isInside(event.target)) return;
 
-	/**
-	 * Касание или перо мимо отпустили, не начав прокрутку, — это и есть нажатие
-	 * мимо. Перо, которое уже решил его `mousedown`, ожидания не оставляет, и
-	 * отпускание его не повторяет.
-	 */
-	private readonly _onPointerUp = (event: PointerEvent): void => {
-		if (event.pointerId !== this._pending?.pointerId) return
+    this._pending = { pointerId: event.pointerId, pointerType: "pen" };
+  }
 
-		this._pending = null
-		this._dismiss(event)
-	}
+  /**
+   * Касание или перо мимо отпустили, не начав прокрутку, — это и есть нажатие
+   * мимо. Перо, которое уже решил его `mousedown`, ожидания не оставляет, и
+   * отпускание его не повторяет.
+   */
+  private readonly _onPointerUp = (event: PointerEvent): void => {
+    if (event.pointerId !== this._pending?.pointerId) return;
 
-	/** Браузер забрал касание или перо под прокрутку или жест — закрывать нечего. */
-	private readonly _onPointerCancel = (event: PointerEvent): void => {
-		if (event.pointerId !== this._pending?.pointerId) return
+    this._pending = null;
+    this._dismiss(event);
+  };
 
-		this._pending = null
-	}
+  /** Браузер забрал касание или перо под прокрутку или жест — закрывать нечего. */
+  private readonly _onPointerCancel = (event: PointerEvent): void => {
+    if (event.pointerId !== this._pending?.pointerId) return;
 
-	/**
-	 * Совместимый `mousedown` решает перо, если пришёл раньше его `pointerup`:
-	 * так ведёт себя перо планшета, и панель закрывается до смены фокуса.
-	 *
-	 * Касание он не решает: прослойки, которые шлют `mousedown` на
-	 * `touchstart`, вернули бы закрытие в начале прокрутки. Мышь к нему уже
-	 * решена своим `pointerdown` и ожидания не оставляет. Переносить её сюда
-	 * нельзя: страница, отменившая `pointerdown` (так делают drag-библиотеки),
-	 * совместимого `mousedown` не получает.
-	 */
-	private readonly _onMouseDown = (event: MouseEvent): void => {
-		if (this._pending?.pointerType !== 'pen') return
+    this._pending = null;
+  };
 
-		this._pending = null
-		this._dismiss(event)
-	}
+  /**
+   * Совместимый `mousedown` решает перо, если пришёл раньше его `pointerup`:
+   * так ведёт себя перо планшета, и панель закрывается до смены фокуса.
+   *
+   * Касание он не решает: прослойки, которые шлют `mousedown` на
+   * `touchstart`, вернули бы закрытие в начале прокрутки. Мышь к нему уже
+   * решена своим `pointerdown` и ожидания не оставляет. Переносить её сюда
+   * нельзя: страница, отменившая `pointerdown` (так делают drag-библиотеки),
+   * совместимого `mousedown` не получает.
+   */
+  private readonly _onMouseDown = (event: MouseEvent): void => {
+    if (this._pending?.pointerType !== "pen") return;
 
-	/**
-	 * Фокус ушёл мимо — с `focusOutside`. Слушатель на документе, в фазе
-	 * перехвата, как у нажатий: `focusin` всплывает, и остановить его до
-	 * документа содержимое не может.
-	 */
-	private readonly _onFocusIn = (event: FocusEvent): void => {
-		if (this.isInside(event.target)) return
+    this._pending = null;
+    this._dismiss(event);
+  };
 
-		this._dismiss(event)
-	}
+  /**
+   * Фокус ушёл мимо — с `focusOutside`. Слушатель на документе, в фазе
+   * перехвата, как у нажатий: `focusin` всплывает, и остановить его до
+   * документа содержимое не может.
+   */
+  private readonly _onFocusIn = (event: FocusEvent): void => {
+    if (this.isInside(event.target)) return;
 
-	/** Слушатели на документе живут, только пока они нужны. */
-	private _sync(): void {
-		const shouldListen = this._enabled && !!this._element
+    this._dismiss(event);
+  };
 
-		if (shouldListen === this._listening) return
+  /** Слушатели на документе живут, только пока они нужны. */
+  private _sync(): void {
+    const shouldListen = this._enabled && !!this._element;
 
-		const doc = this._element?.ownerDocument ?? globalThis.document
+    if (shouldListen === this._listening) return;
 
-		if (!doc) return
+    const doc = this._element?.ownerDocument ?? globalThis.document;
 
-		if (shouldListen) {
-			doc.addEventListener('pointerdown', this._onPointerDown, true)
-			doc.addEventListener('pointerup', this._onPointerUp, true)
-			doc.addEventListener('pointercancel', this._onPointerCancel, true)
-			doc.addEventListener('mousedown', this._onMouseDown, true)
+    if (!doc) return;
 
-			if (this._focusOutside) doc.addEventListener('focusin', this._onFocusIn, true)
-		} else {
-			doc.removeEventListener('pointerdown', this._onPointerDown, true)
-			doc.removeEventListener('pointerup', this._onPointerUp, true)
-			doc.removeEventListener('pointercancel', this._onPointerCancel, true)
-			doc.removeEventListener('mousedown', this._onMouseDown, true)
-			doc.removeEventListener('focusin', this._onFocusIn, true)
-			// Нажатие, начатое до снятия, к следующему открытию не относится
-			this._pending = null
-		}
+    if (shouldListen) {
+      doc.addEventListener("pointerdown", this._onPointerDown, true);
+      doc.addEventListener("pointerup", this._onPointerUp, true);
+      doc.addEventListener("pointercancel", this._onPointerCancel, true);
+      doc.addEventListener("mousedown", this._onMouseDown, true);
 
-		this._listening = shouldListen
-	}
+      if (this._focusOutside)
+        doc.addEventListener("focusin", this._onFocusIn, true);
+    } else {
+      doc.removeEventListener("pointerdown", this._onPointerDown, true);
+      doc.removeEventListener("pointerup", this._onPointerUp, true);
+      doc.removeEventListener("pointercancel", this._onPointerCancel, true);
+      doc.removeEventListener("mousedown", this._onMouseDown, true);
+      doc.removeEventListener("focusin", this._onFocusIn, true);
+      // Нажатие, начатое до снятия, к следующему открытию не относится
+      this._pending = null;
+    }
+
+    this._listening = shouldListen;
+  }
 }

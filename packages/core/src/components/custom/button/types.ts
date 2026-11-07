@@ -1,5 +1,10 @@
-import type { ITextable, ITextableProps, TTextableEvents } from '../../base/textable'
-import type { TComponentVariant, TThemeRegistry } from '../../../common'
+import type {
+  ITextable,
+  ITextableProps,
+  TTextableEvents,
+} from "../../base/textable";
+import type { TComponentVariant, TThemeRegistry } from "../../../common";
+import type { TValuePayload } from "../../../common";
 
 /**
  * Реестр видов кнопки. Значения объявляет тема (см. `TThemeRegistry`).
@@ -10,18 +15,18 @@ import type { TComponentVariant, TThemeRegistry } from '../../../common'
  */
 export interface IButtonViews extends TThemeRegistry {}
 
-export type TButtonView = Extract<keyof IButtonViews, string>
+export type TButtonView = Extract<keyof IButtonViews, string>;
 
 export interface IButtonProps extends ITextableProps {
-	variant?: TComponentVariant
-	/** Вид кнопки. Не задан — модификатора нет, и кнопка выглядит видом темы по умолчанию */
-	view?: TButtonView
+  variant?: TComponentVariant;
+  /** Вид кнопки. Не задан — модификатора нет, и кнопка выглядит видом темы по умолчанию */
+  view?: TButtonView;
 }
 
 export type TButtonEvents = TTextableEvents & {
-	'change:view': (value: TButtonView | undefined) => void
-}
+  "change:view": (payload: TValuePayload<TButtonView | undefined>) => void;
+};
 
 export interface IButton extends ITextable<IButtonProps, TButtonEvents> {
-	view: TButtonView | undefined
+  view: TButtonView | undefined;
 }

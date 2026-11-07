@@ -1,20 +1,20 @@
-import { TComponentView } from '../../../base/component-view'
-import type { TDefaultValues } from '../../../base/component'
-import { TAria } from '../../../../common'
-import type { TEventSink } from '../../../../common'
-import type { TSlideEdge } from '../../slide'
+import { TComponentView } from "../../../base/component-view";
+import type { TDefaultValues } from "../../../base/component";
+import { TAria } from "../../../../common";
+import type { TEventSink } from "../../../../common";
+import type { TSlideEdge } from "../../slide";
 import type {
-	ITableColumn,
-	ITableColumnProps,
-	TTableColumnAlign,
-	TTableColumnEvents,
-	TTableColumnGesture,
-	TTableColumnResizer,
-	TTableColumnStyle,
-	TTableCompare,
-	TTableResizePreview,
-} from './types'
-import { RESIZE_MAX, RESIZE_MIN, clampWidth } from './width'
+  ITableColumn,
+  ITableColumnProps,
+  TTableColumnAlign,
+  TTableColumnEvents,
+  TTableColumnGesture,
+  TTableColumnResizer,
+  TTableColumnStyle,
+  TTableCompare,
+  TTableResizePreview,
+} from "./types";
+import { RESIZE_MAX, RESIZE_MIN, clampWidth } from "./width";
 
 /**
  * Колонка таблицы — элемент коллекции колонок: ось, по которой строки
@@ -90,679 +90,709 @@ import { RESIZE_MAX, RESIZE_MIN, clampWidth } from './width'
  * гибкая колонка остаётся гибкой.
  */
 export default class TTableColumn<
-	TProps extends ITableColumnProps = ITableColumnProps,
-	TEvents extends TTableColumnEvents = TTableColumnEvents,
+  TProps extends ITableColumnProps = ITableColumnProps,
+  TEvents extends TTableColumnEvents = TTableColumnEvents,
 >
-	extends TComponentView<TProps, TEvents>
-	implements ITableColumn<TProps, TEvents>
+  extends TComponentView<TProps, TEvents>
+  implements ITableColumn<TProps, TEvents>
 {
-	static override baseClass = 'so-table-column'
-
-	static defaultValues: typeof TComponentView.defaultValues &
-		TDefaultValues<
-			ITableColumnProps,
-			'field' | 'text' | 'align' | 'sortable' | 'rowHeader' | 'disabled',
-			'width' | 'minWidth' | 'maxWidth' | 'compare' | 'resizable' | 'reorderable'
-		> = {
-		...TComponentView.defaultValues,
-		tag: 'th',
-		field: '',
-		text: '',
-		align: 'start',
-		width: undefined,
-		minWidth: undefined,
-		maxWidth: undefined,
-		// Кнопка сортировки в заголовке — решение потребителя
-		sortable: false,
-		compare: undefined,
-		// Какая колонка называет строки, знает только потребитель
-		rowHeader: false,
-		// Ручка ширины и перестановка — как у таблицы, а у таблицы по умолчанию
-		// их нет: решение потребителя
-		resizable: undefined,
-		reorderable: undefined,
-		disabled: false,
-	}
-
-	protected _field: string
-	protected _text: string
-	/** Своя ширина — как задана; итог считает геттер `width` */
-	protected _width: number | undefined
-	/** Ширина раскладки — пишет расширение колонок; итог считает геттер `width` */
-	protected _layoutWidth: number | undefined = undefined
-	protected _minWidth: number | undefined
-	protected _maxWidth: number | undefined
-	protected _align: TTableColumnAlign
-	protected _sortable: boolean
-	protected _compare: TTableCompare | undefined
-	protected _rowHeader: boolean
-	/** Своё значение — как задано; итог с таблицей считает геттер `resizable` */
-	protected _resizable: boolean | undefined
-	/** Своё значение — как задано; итог с таблицей считает геттер `reorderable` */
-	protected _reorderable: boolean | undefined
-	/** `resizable` таблицы — пишет расширение колонок */
-	protected _tableResizable = false
-	/** `reorderable` таблицы — пишет расширение колонок */
-	protected _tableReorderable = false
-	protected _disabled: boolean
-	protected _gesture: TTableColumnGesture | undefined = undefined
-	/** Что идёт за протяжкой — значение таблицы, его пишет расширение колонок */
-	protected _resizePreview: TTableResizePreview = 'live'
-	protected _resizerAria: TAria
-	protected _textAria: TAria
-	protected _sortAria: TAria
-
-	constructor(props: Partial<TProps> = {}) {
-		super(props)
-
-		const ctor = new.target as typeof TTableColumn
-
-		this._field = props.field ?? ctor.defaultValues.field
-		this._text = props.text ?? ctor.defaultValues.text
-		this._width = props.width ?? ctor.defaultValues.width
-		this._minWidth = props.minWidth ?? ctor.defaultValues.minWidth
-		this._maxWidth = props.maxWidth ?? ctor.defaultValues.maxWidth
-		this._align = props.align ?? ctor.defaultValues.align
-		this._sortable = props.sortable ?? ctor.defaultValues.sortable
-		this._compare = props.compare ?? ctor.defaultValues.compare
-		this._rowHeader = props.rowHeader ?? ctor.defaultValues.rowHeader
-		this._resizable = props.resizable ?? ctor.defaultValues.resizable
-		this._reorderable = props.reorderable ?? ctor.defaultValues.reorderable
-		this._disabled = props.disabled ?? ctor.defaultValues.disabled
-
-		this._resizerAria = new TAria()
-		this._resizerAria.subscribe(() =>
-			this._sink.emit('change:resizerAria', this._resizerAria.toObject()),
-		)
-
-		this._textAria = new TAria()
-		this._textAria.subscribe(() =>
-			this._sink.emit('change:textAria', this._textAria.toObject()),
-		)
-
-		this._sortAria = new TAria()
-		this._sortAria.subscribe(() =>
-			this._sink.emit('change:sortAria', this._sortAria.toObject()),
-		)
-
-		this._syncAlign()
-		this._syncSized()
-		this._syncReorderable()
-
-		this.events.on('change:tag', () => this._syncScope())
-		this._syncScope()
-
-		// С первой отрисовки и значением `"false"`: тема отличает «не тянут»
-		// от «неприменимо»
-		this._dataset.add('resizing', false)
-	}
-
-	/**
-	 * Эмит собственных событий класса — без приведения `this.events` к
-	 * конкретной карте (см. `TEventSink` в `common/event/types.ts`).
-	 */
-	protected get _sink(): TEventSink<TTableColumnEvents> {
-		return this.events
-	}
-
-	get field(): string {
-		return this._field
-	}
-
-	set field(value: string) {
-		if (this._field === value) return
-
-		this._field = value
-		this._sink.emit('change:field', value)
-	}
-
-	get text(): string {
-		return this._text
-	}
-
-	set text(value: string) {
-		if (this._text === value) return
-
-		this._text = value
-		this._sink.emit('change:text', value)
-	}
-
-	/**
-	 * Итог: своё значение, а без него — ширина раскладки, прижатые к границам.
-	 * Нет ни того, ни другого — `undefined`: ширину решает тема.
-	 */
-	get width(): number | undefined {
-		return clampWidth(this._width ?? this._layoutWidth, this._minWidth, this._maxWidth)
-	}
-
-	/**
-	 * Пишет своё значение. Сверка — со своим, а не с итогом: своё, равное итогу,
-	 * но не своему, обязано записаться — границы потом разойдутся, и итогом
-	 * станет оно.
-	 */
-	set width(value: number | undefined) {
-		if (this._width === value) return
-
-		this._update(() => {
-			this._width = value
-		})
-	}
-
-	get layoutWidth(): number | undefined {
-		return this._layoutWidth
-	}
-
-	/**
-	 * Пишет ширину раскладки. Наружу о ней сообщает итог: сменился он —
-	 * `change:width`, у колонки со своей шириной итог от раскладки не зависит.
-	 */
-	set layoutWidth(value: number | undefined) {
-		if (this._layoutWidth === value) return
-
-		this._update(() => {
-			this._layoutWidth = value
-		})
-	}
-
-	get minWidth(): number | undefined {
-		return this._minWidth
-	}
-
-	set minWidth(value: number | undefined) {
-		if (this._minWidth === value) return
-
-		this._update(() => {
-			this._minWidth = value
-		})
-		this._sink.emit('change:minWidth', value)
-	}
-
-	get maxWidth(): number | undefined {
-		return this._maxWidth
-	}
-
-	set maxWidth(value: number | undefined) {
-		if (this._maxWidth === value) return
-
-		this._update(() => {
-			this._maxWidth = value
-		})
-		this._sink.emit('change:maxWidth', value)
-	}
-
-	get align(): TTableColumnAlign {
-		return this._align
-	}
-
-	set align(value: TTableColumnAlign) {
-		if (this._align === value) return
-
-		this._align = value
-		this._syncAlign()
-		this._sink.emit('change:align', value)
-	}
-
-	get sortable(): boolean {
-		return this._sortable
-	}
-
-	set sortable(value: boolean) {
-		if (this._sortable === value) return
-
-		this._sortable = value
-		this._sink.emit('change:sortable', value)
-	}
-
-	get compare(): TTableCompare | undefined {
-		return this._compare
-	}
-
-	/** Функция сверяется по ссылке: новая функция — новое сравнение. */
-	set compare(value: TTableCompare | undefined) {
-		if (this._compare === value) return
-
-		this._compare = value
-		this._sink.emit('change:compare', value)
-	}
-
-	get rowHeader(): boolean {
-		return this._rowHeader
-	}
-
-	set rowHeader(value: boolean) {
-		if (this._rowHeader === value) return
-
-		this._rowHeader = value
-		this._sink.emit('change:rowHeader', value)
-	}
-
-	/** Итог: своё значение, а без него — значение таблицы. */
-	get resizable(): boolean {
-		return this._resizable ?? this._tableResizable
-	}
-
-	/** Пишет своё значение; `undefined` — как у таблицы. Сверка — со своим. */
-	set resizable(value: boolean | undefined) {
-		if (this._resizable === value) return
-
-		this._updateResizable(() => {
-			this._resizable = value
-		})
-	}
-
-	get tableResizable(): boolean {
-		return this._tableResizable
-	}
-
-	set tableResizable(value: boolean) {
-		if (this._tableResizable === value) return
-
-		this._updateResizable(() => {
-			this._tableResizable = value
-		})
-	}
-
-	/** Итог: своё значение, а без него — значение таблицы. */
-	get reorderable(): boolean {
-		return this._reorderable ?? this._tableReorderable
-	}
-
-	/** Пишет своё значение; `undefined` — как у таблицы. Сверка — со своим. */
-	set reorderable(value: boolean | undefined) {
-		if (this._reorderable === value) return
-
-		this._updateReorderable(() => {
-			this._reorderable = value
-		})
-	}
-
-	get tableReorderable(): boolean {
-		return this._tableReorderable
-	}
-
-	set tableReorderable(value: boolean) {
-		if (this._tableReorderable === value) return
-
-		this._updateReorderable(() => {
-			this._tableReorderable = value
-		})
-	}
-
-	get disabled(): boolean {
-		return this._disabled
-	}
-
-	set disabled(value: boolean) {
-		if (this._disabled === value) return
-
-		this._update(() => {
-			this._disabled = value
-		})
-		this._sink.emit('change:disabled', value)
-	}
-
-	/**
-	 * `--so-table-column-width` — итог ширины в px. Без ширины переменной нет:
-	 * ширину колонки решает тема. Считает ядро, а не разметка: в шести
-	 * адаптерах одна формула была бы шесть раз.
-	 */
-	get widthStyle(): TTableColumnStyle {
-		const width = this.width
-
-		return width === undefined ? {} : { '--so-table-column-width': `${width}px` }
-	}
-
-	/* ------------------------------------------------------------------ */
-	/* Ручка ширины                                                       */
-	/* ------------------------------------------------------------------ */
-
-	get resizerRendered(): boolean {
-		return this._canResize() && this.width !== undefined
-	}
-
-	get resizer(): TTableColumnResizer {
-		const width = this.width
-		const [min, max] = this._travel(width)
-
-		return { min, max, value: width ?? min }
-	}
-
-	get resizePreview(): TTableResizePreview {
-		return this._resizePreview
-	}
-
-	set resizePreview(value: TTableResizePreview) {
-		this._resizePreview = value
-	}
-
-	get resizeGhost(): number | undefined {
-		const gesture = this._gesture
-
-		return gesture?.deferred ? gesture.ghost : undefined
-	}
-
-	/** Идёт жест ручки: от `grab` до `release` или `cancel`. */
-	get resizing(): boolean {
-		return this._gesture !== undefined
-	}
-
-	get resizerAria(): TAria {
-		return this._resizerAria
-	}
-
-	get textAria(): TAria {
-		return this._textAria
-	}
-
-	get sortAria(): TAria {
-		return this._sortAria
-	}
-
-	/**
-	 * Просьба отсортировать — и только она. Проверок здесь нет: сортируется ли
-	 * колонка и не выключена ли таблица, решает расширение сортировки тем же
-	 * правилом, что у команды таблицы, — второй его экземпляр однажды
-	 * разошёлся бы с первым.
-	 */
-	toggleSort(): void {
-		this._sink.emit('sort:request')
-	}
-
-	grab(): boolean {
-		const width = this.width
-
-		if (!this._canResize() || width === undefined) return false
-
-		// Указатель у ручки один: новый жест закрывает незаконченный
-		this.release()
-
-		const [lower, upper] = this._travel(width)
-
-		this._setGesture({
-			from: Math.round(width),
-			lower,
-			upper,
-			own: this._width,
-			before: width,
-			started: false,
-			deferred: this._resizePreview === 'deferred',
-			ghost: Math.round(width),
-		})
-
-		return true
-	}
-
-	drag(offset: number): void {
-		const gesture = this._gesture
-
-		if (!gesture || !this._canResize()) return
-
-		const { from, lower, upper, own } = gesture
-		const width = within(Math.round(from + offset), lower, upper)
-
-		// Отложенный жест ширину не трогает: таблица не перекладывается до
-		// отпускания, а новую границу показывает призрак
-		if (gesture.deferred) {
-			gesture.ghost = width
-
-			return
-		}
-
-		if (width !== from && !gesture.started) {
-			gesture.started = true
-			this._sink.emit('resize:start')
-		}
-
-		// Указатель на ширине нажатия — колонка такая, какой была при нажатии, со
-		// своим значением: нажатие без движения ширину не задаёт, и гибкая
-		// колонка остаётся гибкой
-		this.width = width === from ? own : width
-	}
-
-	release(): void {
-		const gesture = this._gesture
-
-		if (!gesture) return
-
-		this._setGesture(undefined)
-
-		if (gesture.deferred) {
-			// Призрак на ширине нажатия — писать нечего, и гибкая колонка остаётся
-			// гибкой
-			if (gesture.ghost === gesture.from) return
-
-			this._sink.emit('resize:start')
-			this.width = gesture.ghost
-			this._commit(gesture.before)
-
-			return
-		}
-
-		// Жест, вернувшийся к точке нажатия, своего значения не сменил — сохранять
-		// нечего, даже если итог за жест сдвинула раскладка
-		if (this._width !== gesture.own) this._commit(gesture.before)
-	}
-
-	cancel(): void {
-		const gesture = this._gesture
-
-		if (!gesture) return
-
-		this._setGesture(undefined)
-
-		// Живой жест ширину уже писал — колонке своё значение нажатия; отложенный
-		// не писал ничего
-		if (!gesture.deferred) this.width = gesture.own
-	}
-
-	shift(delta: number): void {
-		const width = this.width
-
-		if (!this._canResize() || width === undefined) return
-
-		this._resizeToward(width, Math.round(width + delta))
-	}
-
-	moveToEdge(edge: TSlideEdge): void {
-		const width = this.width
-
-		if (!this._canResize() || width === undefined) return
-
-		// Цель — бесконечно далеко в сторону края: ближе всего к ней край хода
-		this._resizeToward(width, edge === 'start' ? -Infinity : Infinity)
-	}
-
-	/* ------------------------------------------------------------------ */
-	/* Внутреннее                                                         */
-	/* ------------------------------------------------------------------ */
-
-	/** Ручка работает: колонка `resizable` и не выключена. */
-	protected _canResize(): boolean {
-		return this.resizable && !this._disabled
-	}
-
-	/** Сменить вход `resizable` — своё или таблицы: событие — о смене итога. */
-	protected _updateResizable(apply: () => void): void {
-		const resizable = this.resizable
-
-		this._update(apply)
-
-		if (this.resizable !== resizable) this._sink.emit('change:resizable', this.resizable)
-	}
-
-	/** Сменить вход `reorderable` — своё или таблицы: событие — о смене итога. */
-	protected _updateReorderable(apply: () => void): void {
-		const reorderable = this.reorderable
-
-		apply()
-
-		if (this.reorderable === reorderable) return
-
-		this._syncReorderable()
-		this._sink.emit('change:reorderable', this.reorderable)
-	}
-
-	/**
-	 * Ход ручки от ширины `width` — границы колонки, а на стороне без своей
-	 * границы — пределы ядра, не шире границ и расширенные до `width`: там
-	 * колонка примет любую. Итог всегда в границах, поэтому лежит и в ходе:
-	 * нативное поле не прижимает значение к своему ходу, а записанное ручкой
-	 * равно итогу. Нижняя граница сильнее верхней, как у итога.
-	 */
-	protected _travel(width: number | undefined): [number, number] {
-		const min = this._minWidth
-		const max = this._maxWidth
-		const floor = Math.min(RESIZE_MIN, max ?? RESIZE_MIN)
-		const lower = min ?? Math.min(floor, width ?? floor)
-		const ceiling = Math.max(RESIZE_MAX, lower)
-		const upper = max === undefined ? Math.max(ceiling, width ?? ceiling) : Math.max(max, lower)
-
-		return [lower, upper]
-	}
-
-	/**
-	 * Законченное действие клавиши от ширины `width` к цели `target`: ширина в
-	 * ходе, ближайшая к цели, и `commit`. У края хода ширина та же, и писать
-	 * нечего: своё значение не пишется, и гибкая колонка остаётся гибкой.
-	 */
-	protected _resizeToward(width: number, target: number): void {
-		const [lower, upper] = this._travel(width)
-		const next = within(target, lower, upper)
-
-		if (next === width) return
-
-		this._sink.emit('resize:start')
-		this.width = next
-		this._commit(width)
-	}
-
-	/** `commit` — только на смену итога. */
-	protected _commit(before: number | undefined): void {
-		const after = this.width
-
-		if (after === undefined || after === before) return
-
-		this._sink.emit('commit', after)
-	}
-
-	/**
-	 * Начать жест ручки (`gesture`) или закончить его (`undefined`): здесь, и
-	 * только здесь, меняется то, что от жеста видно снаружи, — призрак и
-	 * `resizing`. Идёт ли жест, сверяется до записи и после неё, поэтому
-	 * `_setResizing` приходит только на смену.
-	 */
-	protected _setGesture(gesture: TTableColumnGesture | undefined): void {
-		const resizing = this.resizing
-
-		this._gesture = gesture
-		this._setGhost(gesture?.deferred ?? false)
-
-		if (this.resizing !== resizing) this._setResizing(this.resizing)
-	}
-
-	/**
-	 * Жест ручки начался или кончился: `data-resizing` заголовка — по нему тема
-	 * подсвечивает заголовок и держит линию ручки — и `change:resizing`: по нему
-	 * расширение колонок ставит признак протяжки таблице, под курсор ручки на
-	 * всей таблице. Зовёт его `_setGesture`, только на смену.
-	 */
-	protected _setResizing(value: boolean): void {
-		this._dataset.add('resizing', value)
-		this._sink.emit('change:resizing', value)
-	}
-
-	/**
-	 * `data-resize-ghost` — идёт отложенный жест: тема рисует призрак новой
-	 * границы. Только на время жеста и только на заголовке: на покое атрибута
-	 * нет, и правила призрака ни с чем не сверяются.
-	 */
-	protected _setGhost(value: boolean): void {
-		this._dataset.add('resize-ghost', value || null)
-	}
-
-	/**
-	 * Сменить то, от чего зависят итог ширины и ручка: своё значение, ширину
-	 * раскладки, границу, `resizable` — своё или таблицы — или `disabled`. Хранимое не прижимается —
-	 * пересчитываются итог и выходы ручки, и каждое событие приходит, только
-	 * если его значение сменилось.
-	 */
-	protected _update(apply: () => void): void {
-		const width = this.width
-		const resizer = this.resizer
-		const rendered = this.resizerRendered
-
-		apply()
-
-		this._syncSized()
-
-		const nextWidth = this.width
-		const nextResizer = this.resizer
-		const nextRendered = this.resizerRendered
-
-		if (nextWidth !== width) this._sink.emit('change:width', nextWidth)
-		if (!sameResizer(nextResizer, resizer)) this._sink.emit('change:resizer', nextResizer)
-		if (nextRendered !== rendered) this._sink.emit('change:resizerRendered', nextRendered)
-	}
-
-	/**
-	 * `data-reorderable` — колонку можно взять за заголовок, с первой отрисовки:
-	 * тема подсвечивает такой заголовок под указателем и отдаёт его жесту
-	 * касания. Выключенную таблицу тема различает сама — по корню.
-	 */
-	protected _syncReorderable(): void {
-		this._dataset.add('reorderable', this.reorderable)
-	}
-
-	/** `data-align` — выравнивание для темы, с первой отрисовки. */
-	protected _syncAlign(): void {
-		this._dataset.add('align', this._align)
-	}
-
-	/**
-	 * `scope="col"` — пока корень `th`: заголовок колонки объявлен явно, а не
-	 * догадкой по месту ячейки в таблице. Нативный атрибут тега, поэтому — в
-	 * `attrs` и по тегу, как `disabled` у контрола: у другого тега его нет.
-	 */
-	protected _syncScope(): void {
-		this._attrs.add('scope', this.tag === 'th' ? 'col' : null)
-	}
-
-	/**
-	 * `data-sized` — ширина колонки известна: своя или раскладки, с первой
-	 * отрисовки. Когда она известна у всех показанных колонок, тема кладёт
-	 * таблицу шириной в их сумму: иначе раскладка браузера раздала бы излишек
-	 * места всем, и ширины колонок разошлись бы с итогом.
-	 */
-	protected _syncSized(): void {
-		this._dataset.add('sized', this.width !== undefined)
-	}
-
-	/** Пропсы — свои значения, как заданы: ширина в них своя, а не итог. */
-	override getProps(): TProps {
-		return {
-			...super.getProps(),
-			field: this._field,
-			text: this._text,
-			width: this._width,
-			minWidth: this._minWidth,
-			maxWidth: this._maxWidth,
-			align: this._align,
-			sortable: this._sortable,
-			compare: this._compare,
-			rowHeader: this._rowHeader,
-			resizable: this._resizable,
-			reorderable: this._reorderable,
-			disabled: this._disabled,
-		} as TProps
-	}
+  static override baseClass = "so-table-column";
+
+  static defaultValues: typeof TComponentView.defaultValues &
+    TDefaultValues<
+      ITableColumnProps,
+      "field" | "text" | "align" | "sortable" | "rowHeader" | "disabled",
+      | "width"
+      | "minWidth"
+      | "maxWidth"
+      | "compare"
+      | "resizable"
+      | "reorderable"
+    > = {
+    ...TComponentView.defaultValues,
+    tag: "th",
+    field: "",
+    text: "",
+    align: "start",
+    width: undefined,
+    minWidth: undefined,
+    maxWidth: undefined,
+    // Кнопка сортировки в заголовке — решение потребителя
+    sortable: false,
+    compare: undefined,
+    // Какая колонка называет строки, знает только потребитель
+    rowHeader: false,
+    // Ручка ширины и перестановка — как у таблицы, а у таблицы по умолчанию
+    // их нет: решение потребителя
+    resizable: undefined,
+    reorderable: undefined,
+    disabled: false,
+  };
+
+  protected _field: string;
+  protected _text: string;
+  /** Своя ширина — как задана; итог считает геттер `width` */
+  protected _width: number | undefined;
+  /** Ширина раскладки — пишет расширение колонок; итог считает геттер `width` */
+  protected _layoutWidth: number | undefined = undefined;
+  protected _minWidth: number | undefined;
+  protected _maxWidth: number | undefined;
+  protected _align: TTableColumnAlign;
+  protected _sortable: boolean;
+  protected _compare: TTableCompare | undefined;
+  protected _rowHeader: boolean;
+  /** Своё значение — как задано; итог с таблицей считает геттер `resizable` */
+  protected _resizable: boolean | undefined;
+  /** Своё значение — как задано; итог с таблицей считает геттер `reorderable` */
+  protected _reorderable: boolean | undefined;
+  /** `resizable` таблицы — пишет расширение колонок */
+  protected _tableResizable = false;
+  /** `reorderable` таблицы — пишет расширение колонок */
+  protected _tableReorderable = false;
+  protected _disabled: boolean;
+  protected _gesture: TTableColumnGesture | undefined = undefined;
+  /** Что идёт за протяжкой — значение таблицы, его пишет расширение колонок */
+  protected _resizePreview: TTableResizePreview = "live";
+  protected _resizerAria: TAria;
+  protected _textAria: TAria;
+  protected _sortAria: TAria;
+
+  constructor(props: Partial<TProps> = {}) {
+    super(props);
+
+    const ctor = new.target as typeof TTableColumn;
+
+    this._field = props.field ?? ctor.defaultValues.field;
+    this._text = props.text ?? ctor.defaultValues.text;
+    this._width = props.width ?? ctor.defaultValues.width;
+    this._minWidth = props.minWidth ?? ctor.defaultValues.minWidth;
+    this._maxWidth = props.maxWidth ?? ctor.defaultValues.maxWidth;
+    this._align = props.align ?? ctor.defaultValues.align;
+    this._sortable = props.sortable ?? ctor.defaultValues.sortable;
+    this._compare = props.compare ?? ctor.defaultValues.compare;
+    this._rowHeader = props.rowHeader ?? ctor.defaultValues.rowHeader;
+    this._resizable = props.resizable ?? ctor.defaultValues.resizable;
+    this._reorderable = props.reorderable ?? ctor.defaultValues.reorderable;
+    this._disabled = props.disabled ?? ctor.defaultValues.disabled;
+
+    this._resizerAria = new TAria();
+    this._resizerAria.subscribe(() =>
+      this._sink.emit("change:resizerAria", this._resizerAria.toObject()),
+    );
+
+    this._textAria = new TAria();
+    this._textAria.subscribe(() =>
+      this._sink.emit("change:textAria", this._textAria.toObject()),
+    );
+
+    this._sortAria = new TAria();
+    this._sortAria.subscribe(() =>
+      this._sink.emit("change:sortAria", this._sortAria.toObject()),
+    );
+
+    this._syncAlign();
+    this._syncSized();
+    this._syncReorderable();
+
+    this.events.on("change:tag", () => this._syncScope());
+    this._syncScope();
+
+    // С первой отрисовки и значением `"false"`: тема отличает «не тянут»
+    // от «неприменимо»
+    this._dataset.add("resizing", false);
+  }
+
+  /**
+   * Эмит собственных событий класса — без приведения `this.events` к
+   * конкретной карте (см. `TEventSink` в `common/event/types.ts`).
+   */
+  protected get _sink(): TEventSink<TTableColumnEvents> {
+    return this.events;
+  }
+
+  get field(): string {
+    return this._field;
+  }
+
+  set field(value: string) {
+    if (this._field === value) return;
+
+    const oldValue = this.field;
+
+    this._field = value;
+    this._sink.emit("change:field", { newValue: value, oldValue: oldValue });
+  }
+
+  get text(): string {
+    return this._text;
+  }
+
+  set text(value: string) {
+    if (this._text === value) return;
+
+    const oldValue = this.text;
+
+    this._text = value;
+    this._sink.emit("change:text", { newValue: value, oldValue: oldValue });
+  }
+
+  /**
+   * Итог: своё значение, а без него — ширина раскладки, прижатые к границам.
+   * Нет ни того, ни другого — `undefined`: ширину решает тема.
+   */
+  get width(): number | undefined {
+    return clampWidth(
+      this._width ?? this._layoutWidth,
+      this._minWidth,
+      this._maxWidth,
+    );
+  }
+
+  /**
+   * Пишет своё значение. Сверка — со своим, а не с итогом: своё, равное итогу,
+   * но не своему, обязано записаться — границы потом разойдутся, и итогом
+   * станет оно.
+   */
+  set width(value: number | undefined) {
+    if (this._width === value) return;
+
+    this._update(() => {
+      this._width = value;
+    });
+  }
+
+  get layoutWidth(): number | undefined {
+    return this._layoutWidth;
+  }
+
+  /**
+   * Пишет ширину раскладки. Наружу о ней сообщает итог: сменился он —
+   * `change:width`, у колонки со своей шириной итог от раскладки не зависит.
+   */
+  set layoutWidth(value: number | undefined) {
+    if (this._layoutWidth === value) return;
+
+    this._update(() => {
+      this._layoutWidth = value;
+    });
+  }
+
+  get minWidth(): number | undefined {
+    return this._minWidth;
+  }
+
+  set minWidth(value: number | undefined) {
+    if (this._minWidth === value) return;
+
+    this._update(() => {
+      this._minWidth = value;
+    });
+    this._sink.emit("change:minWidth", value);
+  }
+
+  get maxWidth(): number | undefined {
+    return this._maxWidth;
+  }
+
+  set maxWidth(value: number | undefined) {
+    if (this._maxWidth === value) return;
+
+    this._update(() => {
+      this._maxWidth = value;
+    });
+    this._sink.emit("change:maxWidth", value);
+  }
+
+  get align(): TTableColumnAlign {
+    return this._align;
+  }
+
+  set align(value: TTableColumnAlign) {
+    if (this._align === value) return;
+
+    this._align = value;
+    this._syncAlign();
+    this._sink.emit("change:align", value);
+  }
+
+  get sortable(): boolean {
+    return this._sortable;
+  }
+
+  set sortable(value: boolean) {
+    if (this._sortable === value) return;
+
+    const oldValue = this.sortable;
+
+    this._sortable = value;
+    this._sink.emit("change:sortable", { newValue: value, oldValue: oldValue });
+  }
+
+  get compare(): TTableCompare | undefined {
+    return this._compare;
+  }
+
+  /** Функция сверяется по ссылке: новая функция — новое сравнение. */
+  set compare(value: TTableCompare | undefined) {
+    if (this._compare === value) return;
+
+    const oldValue = this._compare;
+
+    this._compare = value;
+    this._sink.emit("change:compare", { newValue: value, oldValue: oldValue });
+  }
+
+  get rowHeader(): boolean {
+    return this._rowHeader;
+  }
+
+  set rowHeader(value: boolean) {
+    if (this._rowHeader === value) return;
+
+    const oldValue = this.rowHeader;
+
+    this._rowHeader = value;
+    this._sink.emit("change:rowHeader", {
+      newValue: value,
+      oldValue: oldValue,
+    });
+  }
+
+  /** Итог: своё значение, а без него — значение таблицы. */
+  get resizable(): boolean {
+    return this._resizable ?? this._tableResizable;
+  }
+
+  /** Пишет своё значение; `undefined` — как у таблицы. Сверка — со своим. */
+  set resizable(value: boolean | undefined) {
+    if (this._resizable === value) return;
+
+    this._updateResizable(() => {
+      this._resizable = value;
+    });
+  }
+
+  get tableResizable(): boolean {
+    return this._tableResizable;
+  }
+
+  set tableResizable(value: boolean) {
+    if (this._tableResizable === value) return;
+
+    this._updateResizable(() => {
+      this._tableResizable = value;
+    });
+  }
+
+  /** Итог: своё значение, а без него — значение таблицы. */
+  get reorderable(): boolean {
+    return this._reorderable ?? this._tableReorderable;
+  }
+
+  /** Пишет своё значение; `undefined` — как у таблицы. Сверка — со своим. */
+  set reorderable(value: boolean | undefined) {
+    if (this._reorderable === value) return;
+
+    this._updateReorderable(() => {
+      this._reorderable = value;
+    });
+  }
+
+  get tableReorderable(): boolean {
+    return this._tableReorderable;
+  }
+
+  set tableReorderable(value: boolean) {
+    if (this._tableReorderable === value) return;
+
+    this._updateReorderable(() => {
+      this._tableReorderable = value;
+    });
+  }
+
+  get disabled(): boolean {
+    return this._disabled;
+  }
+
+  set disabled(value: boolean) {
+    if (this._disabled === value) return;
+
+    this._update(() => {
+      this._disabled = value;
+    });
+    this._sink.emit("change:disabled", value);
+  }
+
+  /**
+   * `--so-table-column-width` — итог ширины в px. Без ширины переменной нет:
+   * ширину колонки решает тема. Считает ядро, а не разметка: в шести
+   * адаптерах одна формула была бы шесть раз.
+   */
+  get widthStyle(): TTableColumnStyle {
+    const width = this.width;
+
+    return width === undefined
+      ? {}
+      : { "--so-table-column-width": `${width}px` };
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Ручка ширины                                                       */
+  /* ------------------------------------------------------------------ */
+
+  get resizerRendered(): boolean {
+    return this._canResize() && this.width !== undefined;
+  }
+
+  get resizer(): TTableColumnResizer {
+    const width = this.width;
+    const [min, max] = this._travel(width);
+
+    return { min, max, value: width ?? min };
+  }
+
+  get resizePreview(): TTableResizePreview {
+    return this._resizePreview;
+  }
+
+  set resizePreview(value: TTableResizePreview) {
+    this._resizePreview = value;
+  }
+
+  get resizeGhost(): number | undefined {
+    const gesture = this._gesture;
+
+    return gesture?.deferred ? gesture.ghost : undefined;
+  }
+
+  /** Идёт жест ручки: от `grab` до `release` или `cancel`. */
+  get resizing(): boolean {
+    return this._gesture !== undefined;
+  }
+
+  get resizerAria(): TAria {
+    return this._resizerAria;
+  }
+
+  get textAria(): TAria {
+    return this._textAria;
+  }
+
+  get sortAria(): TAria {
+    return this._sortAria;
+  }
+
+  /**
+   * Просьба отсортировать — и только она. Проверок здесь нет: сортируется ли
+   * колонка и не выключена ли таблица, решает расширение сортировки тем же
+   * правилом, что у команды таблицы, — второй его экземпляр однажды
+   * разошёлся бы с первым.
+   */
+  toggleSort(): void {
+    this._sink.emit("sort:request");
+  }
+
+  grab(): boolean {
+    const width = this.width;
+
+    if (!this._canResize() || width === undefined) return false;
+
+    // Указатель у ручки один: новый жест закрывает незаконченный
+    this.release();
+
+    const [lower, upper] = this._travel(width);
+
+    this._setGesture({
+      from: Math.round(width),
+      lower,
+      upper,
+      own: this._width,
+      before: width,
+      started: false,
+      deferred: this._resizePreview === "deferred",
+      ghost: Math.round(width),
+    });
+
+    return true;
+  }
+
+  drag(offset: number): void {
+    const gesture = this._gesture;
+
+    if (!gesture || !this._canResize()) return;
+
+    const { from, lower, upper, own } = gesture;
+    const width = within(Math.round(from + offset), lower, upper);
+
+    // Отложенный жест ширину не трогает: таблица не перекладывается до
+    // отпускания, а новую границу показывает призрак
+    if (gesture.deferred) {
+      gesture.ghost = width;
+
+      return;
+    }
+
+    if (width !== from && !gesture.started) {
+      gesture.started = true;
+      this._sink.emit("resize:start");
+    }
+
+    // Указатель на ширине нажатия — колонка такая, какой была при нажатии, со
+    // своим значением: нажатие без движения ширину не задаёт, и гибкая
+    // колонка остаётся гибкой
+    this.width = width === from ? own : width;
+  }
+
+  release(): void {
+    const gesture = this._gesture;
+
+    if (!gesture) return;
+
+    this._setGesture(undefined);
+
+    if (gesture.deferred) {
+      // Призрак на ширине нажатия — писать нечего, и гибкая колонка остаётся
+      // гибкой
+      if (gesture.ghost === gesture.from) return;
+
+      this._sink.emit("resize:start");
+      this.width = gesture.ghost;
+      this._commit(gesture.before);
+
+      return;
+    }
+
+    // Жест, вернувшийся к точке нажатия, своего значения не сменил — сохранять
+    // нечего, даже если итог за жест сдвинула раскладка
+    if (this._width !== gesture.own) this._commit(gesture.before);
+  }
+
+  cancel(): void {
+    const gesture = this._gesture;
+
+    if (!gesture) return;
+
+    this._setGesture(undefined);
+
+    // Живой жест ширину уже писал — колонке своё значение нажатия; отложенный
+    // не писал ничего
+    if (!gesture.deferred) this.width = gesture.own;
+  }
+
+  shift(delta: number): void {
+    const width = this.width;
+
+    if (!this._canResize() || width === undefined) return;
+
+    this._resizeToward(width, Math.round(width + delta));
+  }
+
+  moveToEdge(edge: TSlideEdge): void {
+    const width = this.width;
+
+    if (!this._canResize() || width === undefined) return;
+
+    // Цель — бесконечно далеко в сторону края: ближе всего к ней край хода
+    this._resizeToward(width, edge === "start" ? -Infinity : Infinity);
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Внутреннее                                                         */
+  /* ------------------------------------------------------------------ */
+
+  /** Ручка работает: колонка `resizable` и не выключена. */
+  protected _canResize(): boolean {
+    return this.resizable && !this._disabled;
+  }
+
+  /** Сменить вход `resizable` — своё или таблицы: событие — о смене итога. */
+  protected _updateResizable(apply: () => void): void {
+    const resizable = this.resizable;
+
+    this._update(apply);
+
+    if (this.resizable !== resizable)
+      this._sink.emit("change:resizable", this.resizable);
+  }
+
+  /** Сменить вход `reorderable` — своё или таблицы: событие — о смене итога. */
+  protected _updateReorderable(apply: () => void): void {
+    const reorderable = this.reorderable;
+
+    apply();
+
+    if (this.reorderable === reorderable) return;
+
+    this._syncReorderable();
+    this._sink.emit("change:reorderable", this.reorderable);
+  }
+
+  /**
+   * Ход ручки от ширины `width` — границы колонки, а на стороне без своей
+   * границы — пределы ядра, не шире границ и расширенные до `width`: там
+   * колонка примет любую. Итог всегда в границах, поэтому лежит и в ходе:
+   * нативное поле не прижимает значение к своему ходу, а записанное ручкой
+   * равно итогу. Нижняя граница сильнее верхней, как у итога.
+   */
+  protected _travel(width: number | undefined): [number, number] {
+    const min = this._minWidth;
+    const max = this._maxWidth;
+    const floor = Math.min(RESIZE_MIN, max ?? RESIZE_MIN);
+    const lower = min ?? Math.min(floor, width ?? floor);
+    const ceiling = Math.max(RESIZE_MAX, lower);
+    const upper =
+      max === undefined
+        ? Math.max(ceiling, width ?? ceiling)
+        : Math.max(max, lower);
+
+    return [lower, upper];
+  }
+
+  /**
+   * Законченное действие клавиши от ширины `width` к цели `target`: ширина в
+   * ходе, ближайшая к цели, и `commit`. У края хода ширина та же, и писать
+   * нечего: своё значение не пишется, и гибкая колонка остаётся гибкой.
+   */
+  protected _resizeToward(width: number, target: number): void {
+    const [lower, upper] = this._travel(width);
+    const next = within(target, lower, upper);
+
+    if (next === width) return;
+
+    this._sink.emit("resize:start");
+    this.width = next;
+    this._commit(width);
+  }
+
+  /** `commit` — только на смену итога. */
+  protected _commit(before: number | undefined): void {
+    const after = this.width;
+
+    if (after === undefined || after === before) return;
+
+    this._sink.emit("commit", after);
+  }
+
+  /**
+   * Начать жест ручки (`gesture`) или закончить его (`undefined`): здесь, и
+   * только здесь, меняется то, что от жеста видно снаружи, — призрак и
+   * `resizing`. Идёт ли жест, сверяется до записи и после неё, поэтому
+   * `_setResizing` приходит только на смену.
+   */
+  protected _setGesture(gesture: TTableColumnGesture | undefined): void {
+    const resizing = this.resizing;
+
+    this._gesture = gesture;
+    this._setGhost(gesture?.deferred ?? false);
+
+    if (this.resizing !== resizing) this._setResizing(this.resizing);
+  }
+
+  /**
+   * Жест ручки начался или кончился: `data-resizing` заголовка — по нему тема
+   * подсвечивает заголовок и держит линию ручки — и `change:resizing`: по нему
+   * расширение колонок ставит признак протяжки таблице, под курсор ручки на
+   * всей таблице. Зовёт его `_setGesture`, только на смену.
+   */
+  protected _setResizing(value: boolean): void {
+    this._dataset.add("resizing", value);
+    this._sink.emit("change:resizing", value);
+  }
+
+  /**
+   * `data-resize-ghost` — идёт отложенный жест: тема рисует призрак новой
+   * границы. Только на время жеста и только на заголовке: на покое атрибута
+   * нет, и правила призрака ни с чем не сверяются.
+   */
+  protected _setGhost(value: boolean): void {
+    this._dataset.add("resize-ghost", value || null);
+  }
+
+  /**
+   * Сменить то, от чего зависят итог ширины и ручка: своё значение, ширину
+   * раскладки, границу, `resizable` — своё или таблицы — или `disabled`. Хранимое не прижимается —
+   * пересчитываются итог и выходы ручки, и каждое событие приходит, только
+   * если его значение сменилось.
+   */
+  protected _update(apply: () => void): void {
+    const width = this.width;
+    const resizer = this.resizer;
+    const rendered = this.resizerRendered;
+
+    apply();
+
+    this._syncSized();
+
+    const nextWidth = this.width;
+    const nextResizer = this.resizer;
+    const nextRendered = this.resizerRendered;
+
+    if (nextWidth !== width) this._sink.emit("change:width", nextWidth);
+    if (!sameResizer(nextResizer, resizer))
+      this._sink.emit("change:resizer", nextResizer);
+    if (nextRendered !== rendered)
+      this._sink.emit("change:resizerRendered", nextRendered);
+  }
+
+  /**
+   * `data-reorderable` — колонку можно взять за заголовок, с первой отрисовки:
+   * тема подсвечивает такой заголовок под указателем и отдаёт его жесту
+   * касания. Выключенную таблицу тема различает сама — по корню.
+   */
+  protected _syncReorderable(): void {
+    this._dataset.add("reorderable", this.reorderable);
+  }
+
+  /** `data-align` — выравнивание для темы, с первой отрисовки. */
+  protected _syncAlign(): void {
+    this._dataset.add("align", this._align);
+  }
+
+  /**
+   * `scope="col"` — пока корень `th`: заголовок колонки объявлен явно, а не
+   * догадкой по месту ячейки в таблице. Нативный атрибут тега, поэтому — в
+   * `attrs` и по тегу, как `disabled` у контрола: у другого тега его нет.
+   */
+  protected _syncScope(): void {
+    this._attrs.add("scope", this.tag === "th" ? "col" : null);
+  }
+
+  /**
+   * `data-sized` — ширина колонки известна: своя или раскладки, с первой
+   * отрисовки. Когда она известна у всех показанных колонок, тема кладёт
+   * таблицу шириной в их сумму: иначе раскладка браузера раздала бы излишек
+   * места всем, и ширины колонок разошлись бы с итогом.
+   */
+  protected _syncSized(): void {
+    this._dataset.add("sized", this.width !== undefined);
+  }
+
+  /** Пропсы — свои значения, как заданы: ширина в них своя, а не итог. */
+  override getProps(): TProps {
+    return {
+      ...super.getProps(),
+      field: this._field,
+      text: this._text,
+      width: this._width,
+      minWidth: this._minWidth,
+      maxWidth: this._maxWidth,
+      align: this._align,
+      sortable: this._sortable,
+      compare: this._compare,
+      rowHeader: this._rowHeader,
+      resizable: this._resizable,
+      reorderable: this._reorderable,
+      disabled: this._disabled,
+    } as TProps;
+  }
 }
 
 /** Число в отрезке. */
 function within(value: number, low: number, high: number): number {
-	return Math.min(Math.max(value, low), high)
+  return Math.min(Math.max(value, low), high);
 }
 
 /** Поле ручки то же: ход и ширина совпали. */
 function sameResizer(a: TTableColumnResizer, b: TTableColumnResizer): boolean {
-	return a.min === b.min && a.max === b.max && a.value === b.value
+  return a.min === b.min && a.max === b.max && a.value === b.value;
 }

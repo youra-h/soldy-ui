@@ -1,20 +1,24 @@
-import { TStylable } from '../../base/stylable'
-import type { TDefaultValues } from '../../base/component'
-import { TAria, TClasses } from '../../../common'
-import type { TComponentSize, TComponentVariant, TDatasetAttributes } from '../../../common'
+import { TStylable } from "../../base/stylable";
+import type { TDefaultValues } from "../../base/component";
+import { TAria, TClasses } from "../../../common";
 import type {
-	IMenu,
-	IMenuProps,
-	TMenuEvents,
-	TMenuOpenOn,
-	TMenuPlacement,
-	TMenuPoint,
-} from './types'
-import type { IMenuItem } from './item/types'
+  TComponentSize,
+  TComponentVariant,
+  TDatasetAttributes,
+} from "../../../common";
+import type {
+  IMenu,
+  IMenuProps,
+  TMenuEvents,
+  TMenuOpenOn,
+  TMenuPlacement,
+  TMenuPoint,
+} from "./types";
+import type { IMenuItem } from "./item/types";
 
 /** Одна ли это точка: координаты те же, или точки нет у обеих. */
 const samePoint = (a: TMenuPoint | null, b: TMenuPoint | null): boolean =>
-	a === b || (a !== null && b !== null && a.x === b.x && a.y === b.y)
+  a === b || (a !== null && b !== null && a.x === b.x && a.y === b.y);
 
 /**
  * Меню действий у кнопки — паттерн APG Menu Button — или контекстное меню
@@ -56,276 +60,298 @@ const samePoint = (a: TMenuPoint | null, b: TMenuPoint | null): boolean =>
  * меню).
  */
 export class TMenu extends TStylable<IMenuProps, TMenuEvents> implements IMenu {
-	static override baseClass = 'so-menu'
+  static override baseClass = "so-menu";
 
-	static defaultValues: typeof TStylable.defaultValues &
-		TDefaultValues<IMenuProps, 'open' | 'placement' | 'openOn' | 'groupSeparators'> = {
-		...TStylable.defaultValues,
-		// Строчный корень: меню встаёт и в строку текста, и в ряд кнопок
-		tag: 'span',
-		open: false,
-		placement: 'bottom-start',
-		openOn: 'press',
-		groupSeparators: true,
-	}
+  static defaultValues: typeof TStylable.defaultValues &
+    TDefaultValues<
+      IMenuProps,
+      "open" | "placement" | "openOn" | "groupSeparators"
+    > = {
+    ...TStylable.defaultValues,
+    // Строчный корень: меню встаёт и в строку текста, и в ряд кнопок
+    tag: "span",
+    open: false,
+    placement: "bottom-start",
+    openOn: "press",
+    groupSeparators: true,
+  };
 
-	protected _open!: boolean
-	/** Whether the panel has ever been open — from then on its items stay mounted. */
-	protected _opened = false
-	protected _placement: TMenuPlacement
-	protected _openOn: TMenuOpenOn
-	protected _groupSeparators: boolean
-	protected _point: TMenuPoint | null = null
-	protected _triggerAria: TAria
-	protected _panelClasses: TClasses
+  protected _open!: boolean;
+  /** Whether the panel has ever been open — from then on its items stay mounted. */
+  protected _opened = false;
+  protected _placement: TMenuPlacement;
+  protected _openOn: TMenuOpenOn;
+  protected _groupSeparators: boolean;
+  protected _point: TMenuPoint | null = null;
+  protected _triggerAria: TAria;
+  protected _panelClasses: TClasses;
 
-	constructor(props: Partial<IMenuProps> = {}) {
-		super(props)
+  constructor(props: Partial<IMenuProps> = {}) {
+    super(props);
 
-		const ctor = new.target as typeof TMenu
+    const ctor = new.target as typeof TMenu;
 
-		this._placement = props.placement ?? ctor.defaultValues.placement
-		this._openOn = props.openOn ?? ctor.defaultValues.openOn
-		this._groupSeparators = props.groupSeparators ?? ctor.defaultValues.groupSeparators
+    this._placement = props.placement ?? ctor.defaultValues.placement;
+    this._openOn = props.openOn ?? ctor.defaultValues.openOn;
+    this._groupSeparators =
+      props.groupSeparators ?? ctor.defaultValues.groupSeparators;
 
-		// Сторона панели связки: панель — меню. `id` и `aria-labelledby` на
-		// триггер пишет `TMenuIdsPlugin` в этот же набор
-		this._aria.add('role', 'menu')
+    // Сторона панели связки: панель — меню. `id` и `aria-labelledby` на
+    // триггер пишет `TMenuIdsPlugin` в этот же набор
+    this._aria.add("role", "menu");
 
-		this._triggerAria = new TAria()
-		this._triggerAria.subscribe(() =>
-			this.events.emit('change:triggerAria', this._triggerAria.toObject()),
-		)
+    this._triggerAria = new TAria();
+    this._triggerAria.subscribe(() =>
+      this.events.emit("change:triggerAria", this._triggerAria.toObject()),
+    );
 
-		// Блок панели — свой: модификаторы ставят его методы, как модификаторы
-		// корня ставит `TStylable`
-		this._panelClasses = new TClasses(`${ctor.baseClass}__panel`)
-		this._panelClasses.subscribe(() =>
-			this.events.emit('change:panelClasses', this._panelClasses.toArray()),
-		)
+    // Блок панели — свой: модификаторы ставят его методы, как модификаторы
+    // корня ставит `TStylable`
+    this._panelClasses = new TClasses(`${ctor.baseClass}__panel`);
+    this._panelClasses.subscribe(() =>
+      this.events.emit("change:panelClasses", this._panelClasses.toArray()),
+    );
 
-		this._applyPanelSize(this.size)
-		this._applyPanelVariant(this.variant)
+    this._applyPanelSize(this.size);
+    this._applyPanelVariant(this.variant);
 
-		this.events.on('change:size', ({ newValue, oldValue }) =>
-			this._applyPanelSize(newValue, oldValue),
-		)
-		// Вариант панели меню — его вариант: сменился он — сменился и её
-		this.events.on('change:variant', (payload) => {
-			this._applyPanelVariant(payload.newValue, payload.oldValue)
-			this.events.emit('change:panelVariant', payload)
-		})
+    this.events.on("change:size", ({ newValue, oldValue }) =>
+      this._applyPanelSize(newValue, oldValue),
+    );
+    // Вариант панели меню — его вариант: сменился он — сменился и её
+    this.events.on("change:variant", (payload) => {
+      this._applyPanelVariant(payload.newValue, payload.oldValue);
+      this.events.emit("change:panelVariant", payload);
+    });
 
-		this._applyOpen(props.open ?? ctor.defaultValues.open)
-	}
+    this._applyOpen(props.open ?? ctor.defaultValues.open);
+  }
 
-	get open(): boolean {
-		return this._open
-	}
+  get open(): boolean {
+    return this._open;
+  }
 
-	set open(value: boolean) {
-		if (this._open === value) return
+  set open(value: boolean) {
+    if (this._open === value) return;
 
-		this._applyOpen(value)
-		this.events.emit('change:open', value)
-	}
+    this._applyOpen(value);
+    this.events.emit("change:open", value);
+  }
 
-	/**
-	 * Пункт-действие выбрали — в панели меню или в любом его подменю: меню
-	 * закрывается целиком. Открытые подменю и панели пунктов закрывает его
-	 * коллекция, когда закрылось само меню, а фокус возвращает на триггер
-	 * модель фокуса.
-	 */
-	notifyChoose(_item: IMenuItem): void {
-		this.open = false
-	}
+  /**
+   * Пункт-действие выбрали — в панели меню или в любом его подменю: меню
+   * закрывается целиком. Открытые подменю и панели пунктов закрывает его
+   * коллекция, когда закрылось само меню, а фокус возвращает на триггер
+   * модель фокуса.
+   */
+  notifyChoose(_item: IMenuItem): void {
+    this.open = false;
+  }
 
-	/**
-	 * Сторона и выравнивание панели у триггера. Сторону у края окна считает
-	 * плагин якоря Frame (flip и shift) — здесь только выбор потребителя.
-	 */
-	get placement(): TMenuPlacement {
-		return this._placement
-	}
+  /**
+   * Сторона и выравнивание панели у триггера. Сторону у края окна считает
+   * плагин якоря Frame (flip и shift) — здесь только выбор потребителя.
+   */
+  get placement(): TMenuPlacement {
+    return this._placement;
+  }
 
-	set placement(value: TMenuPlacement) {
-		if (this._placement === value) return
+  set placement(value: TMenuPlacement) {
+    if (this._placement === value) return;
 
-		this._placement = value
-		this.events.emit('change:placement', value)
-	}
+    const oldValue = this._placement;
 
-	/**
-	 * Чем меню открывают: нажатием кнопки (`press`) или как контекстное меню
-	 * области (`contextmenu`). Что именно открывает меню в каждом режиме,
-	 * решают плагины открытия и клавиатуры — здесь выбор потребителя и то,
-	 * что из него следует для разметки: связка триггера с панелью есть только
-	 * у кнопки.
-	 *
-	 * Смена режима снимает точку вызова: она — место, где вызвали контекстное
-	 * меню, и кнопке, которая открывает меню у себя, ни к чему.
-	 */
-	get openOn(): TMenuOpenOn {
-		return this._openOn
-	}
+    this._placement = value;
+    this.events.emit("change:placement", {
+      newValue: value,
+      oldValue: oldValue,
+    });
+  }
 
-	set openOn(value: TMenuOpenOn) {
-		if (this._openOn === value) return
+  /**
+   * Чем меню открывают: нажатием кнопки (`press`) или как контекстное меню
+   * области (`contextmenu`). Что именно открывает меню в каждом режиме,
+   * решают плагины открытия и клавиатуры — здесь выбор потребителя и то,
+   * что из него следует для разметки: связка триггера с панелью есть только
+   * у кнопки.
+   *
+   * Смена режима снимает точку вызова: она — место, где вызвали контекстное
+   * меню, и кнопке, которая открывает меню у себя, ни к чему.
+   */
+  get openOn(): TMenuOpenOn {
+    return this._openOn;
+  }
 
-		this._openOn = value
-		this.point = null
-		this._syncTriggerAria()
-		this.events.emit('change:openOn', value)
-	}
+  set openOn(value: TMenuOpenOn) {
+    if (this._openOn === value) return;
 
-	/**
-	 * Рисовать ли разделитель между соседними секциями группировки пунктов из
-	 * данных. Ручной `Menu.Separator` разметки свойство не трогает: его
-	 * поставил потребитель.
-	 */
-	get groupSeparators(): boolean {
-		return this._groupSeparators
-	}
+    this._openOn = value;
+    this.point = null;
+    this._syncTriggerAria();
+    this.events.emit("change:openOn", value);
+  }
 
-	set groupSeparators(value: boolean) {
-		if (this._groupSeparators === value) return
+  /**
+   * Рисовать ли разделитель между соседними секциями группировки пунктов из
+   * данных. Ручной `Menu.Separator` разметки свойство не трогает: его
+   * поставил потребитель.
+   */
+  get groupSeparators(): boolean {
+    return this._groupSeparators;
+  }
 
-		this._groupSeparators = value
-		this.events.emit('change:groupSeparators', value)
-	}
+  set groupSeparators(value: boolean) {
+    if (this._groupSeparators === value) return;
 
-	/**
-	 * Точка вызова контекстного меню в координатах окна — у неё встаёт
-	 * панель: прямоугольник нулевого размера, главнее корня, пока задана.
-	 * `null` — точки нет, и панель встаёт у корня.
-	 *
-	 * Пишет её плагин открытия — правая кнопка, долгое касание, клавиша
-	 * контекстного меню, — разметка отдаёт якорю панели. Значение, а не живой
-	 * объект (AGENTS.md, «Контракт границы core → ui»): каждая смена — новый
-	 * объект, а та же точка ничего не меняет и события не шлёт. Закрытие
-	 * точку не снимает: гаснущая панель стоит там, где её открыли.
-	 */
-	get point(): TMenuPoint | null {
-		return this._point
-	}
+    const oldValue = this.groupSeparators;
 
-	set point(value: TMenuPoint | null) {
-		if (samePoint(this._point, value)) return
+    this._groupSeparators = value;
+    this.events.emit("change:groupSeparators", {
+      newValue: value,
+      oldValue: oldValue,
+    });
+  }
 
-		this._point = value === null ? null : { x: value.x, y: value.y }
-		this.events.emit('change:point', this._point)
-	}
+  /**
+   * Точка вызова контекстного меню в координатах окна — у неё встаёт
+   * панель: прямоугольник нулевого размера, главнее корня, пока задана.
+   * `null` — точки нет, и панель встаёт у корня.
+   *
+   * Пишет её плагин открытия — правая кнопка, долгое касание, клавиша
+   * контекстного меню, — разметка отдаёт якорю панели. Значение, а не живой
+   * объект (AGENTS.md, «Контракт границы core → ui»): каждая смена — новый
+   * объект, а та же точка ничего не меняет и события не шлёт. Закрытие
+   * точку не снимает: гаснущая панель стоит там, где её открыли.
+   */
+  get point(): TMenuPoint | null {
+    return this._point;
+  }
 
-	/**
-	 * Сторона триггера в связке с панелью.
-	 *
-	 * Отдельный набор, а не часть `aria`: `aria` описывает панель, а это —
-	 * чужой элемент, кнопка потребителя в слоте `trigger`. Экземпляра у неё
-	 * нет, поэтому набор — меню (AGENTS.md, «Часть или слот»).
-	 *
-	 * Живой, как `aria`, потому что пишут в него двое: `aria-haspopup` и
-	 * `aria-expanded` — меню, `id` и `aria-controls` — `TMenuIdsPlugin`. За
-	 * границу core → ui уходит снимок (`valueOf()`), об изменении набор
-	 * сообщает `change:triggerAria`.
-	 *
-	 * У области контекстного меню набор пуст: она не кнопка, и
-	 * `aria-haspopup` с `aria-expanded` объявили бы скринридеру кнопку меню
-	 * там, где её нет. Так и у Radix и Ark: паттерна APG у контекстного меню
-	 * нет, и связки у области они не ставят.
-	 */
-	get triggerAria(): TAria {
-		return this._triggerAria
-	}
+  set point(value: TMenuPoint | null) {
+    if (samePoint(this._point, value)) return;
 
-	/**
-	 * Состояние триггера для темы: открытый триггер выглядит нажатым.
-	 *
-	 * `data-selected`, а не `data-open`, как у Popover: имя описывает вид, а
-	 * не механизм. Button уже красит `[data-selected='true']` фоном нажатия
-	 * своего вида, и своего CSS триггеру не нужно.
-	 */
-	get triggerDataset(): TDatasetAttributes {
-		return { 'data-selected': this._open ? 'true' : 'false' }
-	}
+    const oldValue = this._point;
 
-	/**
-	 * Классы панели — блок `so-menu__panel` с размером и вариантом меню.
-	 *
-	 * Свой набор, а не модификаторы корня: панель — Frame, телепортированный
-	 * в `body`, и до неё модификаторы корня не доходят. Разметка раскладывает
-	 * снимок (`valueOf()`) на панель, об изменении набор сообщает
-	 * `change:panelClasses`.
-	 */
-	get panelClasses(): TClasses {
-		return this._panelClasses
-	}
+    this._point = value === null ? null : { x: value.x, y: value.y };
+    this.events.emit("change:point", {
+      newValue: this._point,
+      oldValue: oldValue,
+    });
+  }
 
-	/**
-	 * Вариант панели — вариант меню: им тема красит пункты без своего
-	 * варианта, а коллекция меню передаёт его подменю среди пунктов
-	 * (`menuVariant`) — их панели красятся им, пока у подменю нет своего.
-	 * Владелец пунктов отдаёт коллекции его, а не `variant`: у подменю вариант
-	 * панели — не его вариант.
-	 */
-	get panelVariant(): TComponentVariant | undefined {
-		return this.variant
-	}
+  /**
+   * Сторона триггера в связке с панелью.
+   *
+   * Отдельный набор, а не часть `aria`: `aria` описывает панель, а это —
+   * чужой элемент, кнопка потребителя в слоте `trigger`. Экземпляра у неё
+   * нет, поэтому набор — меню (AGENTS.md, «Часть или слот»).
+   *
+   * Живой, как `aria`, потому что пишут в него двое: `aria-haspopup` и
+   * `aria-expanded` — меню, `id` и `aria-controls` — `TMenuIdsPlugin`. За
+   * границу core → ui уходит снимок (`valueOf()`), об изменении набор
+   * сообщает `change:triggerAria`.
+   *
+   * У области контекстного меню набор пуст: она не кнопка, и
+   * `aria-haspopup` с `aria-expanded` объявили бы скринридеру кнопку меню
+   * там, где её нет. Так и у Radix и Ark: паттерна APG у контекстного меню
+   * нет, и связки у области они не ставят.
+   */
+  get triggerAria(): TAria {
+    return this._triggerAria;
+  }
 
-	/**
-	 * Whether the panel's items are mounted: from the first opening on. A menu
-	 * that was never opened builds only its root and an empty panel — on a page
-	 * with a menu in every table row, items nobody has seen would outweigh the
-	 * rest of the page. Closing does not unmount them: openness is the panel's
-	 * `visible`, not `rendered`, and unmounting would clear the collection and
-	 * the selection in it.
-	 */
-	get contentRendered(): boolean {
-		return this._opened
-	}
+  /**
+   * Состояние триггера для темы: открытый триггер выглядит нажатым.
+   *
+   * `data-selected`, а не `data-open`, как у Popover: имя описывает вид, а
+   * не механизм. Button уже красит `[data-selected='true']` фоном нажатия
+   * своего вида, и своего CSS триггеру не нужно.
+   */
+  get triggerDataset(): TDatasetAttributes {
+    return { "data-selected": this._open ? "true" : "false" };
+  }
 
-	protected _applyOpen(value: boolean): void {
-		this._open = value
+  /**
+   * Классы панели — блок `so-menu__panel` с размером и вариантом меню.
+   *
+   * Свой набор, а не модификаторы корня: панель — Frame, телепортированный
+   * в `body`, и до неё модификаторы корня не доходят. Разметка раскладывает
+   * снимок (`valueOf()`) на панель, об изменении набор сообщает
+   * `change:panelClasses`.
+   */
+  get panelClasses(): TClasses {
+    return this._panelClasses;
+  }
 
-		if (value) this._opened = true
+  /**
+   * Вариант панели — вариант меню: им тема красит пункты без своего
+   * варианта, а коллекция меню передаёт его подменю среди пунктов
+   * (`menuVariant`) — их панели красятся им, пока у подменю нет своего.
+   * Владелец пунктов отдаёт коллекции его, а не `variant`: у подменю вариант
+   * панели — не его вариант.
+   */
+  get panelVariant(): TComponentVariant | undefined {
+    return this.variant;
+  }
 
-		this._syncTriggerAria()
+  /**
+   * Whether the panel's items are mounted: from the first opening on. A menu
+   * that was never opened builds only its root and an empty panel — on a page
+   * with a menu in every table row, items nobody has seen would outweigh the
+   * rest of the page. Closing does not unmount them: openness is the panel's
+   * `visible`, not `rendered`, and unmounting would clear the collection and
+   * the selection in it.
+   */
+  get contentRendered(): boolean {
+    return this._opened;
+  }
 
-		// Потребитель, красящий свой триггер по контексту, читает открытость с
-		// корня — как у Popover
-		this._dataset.add('open', value)
-	}
+  protected _applyOpen(value: boolean): void {
+    this._open = value;
 
-	/**
-	 * Свою сторону связки меню пишет у кнопки: она открывает меню, и меню
-	 * открыто или нет. У области контекстного меню — ничего (см.
-	 * `triggerAria`).
-	 */
-	protected _syncTriggerAria(): void {
-		const button = this._openOn === 'press'
+    if (value) this._opened = true;
 
-		this._triggerAria.add('aria-haspopup', button ? 'menu' : null)
-		this._triggerAria.add('aria-expanded', button ? String(this._open) : null)
-	}
+    this._syncTriggerAria();
 
-	protected _applyPanelSize(newValue: TComponentSize, oldValue?: TComponentSize): void {
-		this._panelClasses.swap({ prefix: '--size-', oldValue, newValue })
-	}
+    // Потребитель, красящий свой триггер по контексту, читает открытость с
+    // корня — как у Popover
+    this._dataset.add("open", value);
+  }
 
-	/** `swap` пропускает пустое значение: без варианта модификатора нет. */
-	protected _applyPanelVariant(
-		newValue: TComponentVariant | undefined,
-		oldValue?: TComponentVariant,
-	): void {
-		this._panelClasses.swap({ prefix: '--variant-', oldValue, newValue })
-	}
+  /**
+   * Свою сторону связки меню пишет у кнопки: она открывает меню, и меню
+   * открыто или нет. У области контекстного меню — ничего (см.
+   * `triggerAria`).
+   */
+  protected _syncTriggerAria(): void {
+    const button = this._openOn === "press";
 
-	override getProps(): IMenuProps {
-		return {
-			...super.getProps(),
-			open: this._open,
-			placement: this._placement,
-			openOn: this._openOn,
-			groupSeparators: this._groupSeparators,
-		}
-	}
+    this._triggerAria.add("aria-haspopup", button ? "menu" : null);
+    this._triggerAria.add("aria-expanded", button ? String(this._open) : null);
+  }
+
+  protected _applyPanelSize(
+    newValue: TComponentSize,
+    oldValue?: TComponentSize,
+  ): void {
+    this._panelClasses.swap({ prefix: "--size-", oldValue, newValue });
+  }
+
+  /** `swap` пропускает пустое значение: без варианта модификатора нет. */
+  protected _applyPanelVariant(
+    newValue: TComponentVariant | undefined,
+    oldValue?: TComponentVariant,
+  ): void {
+    this._panelClasses.swap({ prefix: "--variant-", oldValue, newValue });
+  }
+
+  override getProps(): IMenuProps {
+    return {
+      ...super.getProps(),
+      open: this._open,
+      placement: this._placement,
+      openOn: this._openOn,
+      groupSeparators: this._groupSeparators,
+    };
+  }
 }

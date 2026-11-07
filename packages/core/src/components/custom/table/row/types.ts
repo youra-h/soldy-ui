@@ -1,6 +1,11 @@
-import type { IControl, IControlProps, TControlEvents } from '../../../base/control'
-import type { TAria, TAriaAttributes } from '../../../../common'
-import type { ITableCollectionItemProps } from '../collection/types'
+import type {
+  IControl,
+  IControlProps,
+  TControlEvents,
+} from "../../../base/control";
+import type { TAria, TAriaAttributes } from "../../../../common";
+import type { ITableCollectionItemProps } from "../collection/types";
+import type { TValuePayload } from "../../../../common";
 
 /**
  * Запись приложения — то, что показывает строка.
@@ -9,29 +14,30 @@ import type { ITableCollectionItemProps } from '../collection/types'
  * поле записи под ключом колонки (`field`), его достаёт проекция ячеек.
  * Запись не мутируется: сменилась запись — строке дают новую.
  */
-export type TTableRecord = object
+export type TTableRecord = object;
 
 export type TTableRowEvents = TControlEvents & {
-	/** Строке дали другую запись — её ячейки надо перечитать */
-	'change:data': (value: TTableRecord | undefined) => void
-	/** Набор атрибутов заголовка строки изменился */
-	'change:headerAria': (value: TAriaAttributes) => void
-}
+  /** Строке дали другую запись — её ячейки надо перечитать */
+  "change:data": (payload: TValuePayload<TTableRecord | undefined>) => void;
+  /** Набор атрибутов заголовка строки изменился */
+  "change:headerAria": (payload: TValuePayload<TAriaAttributes>) => void;
+};
 
-export interface ITableRowProps extends IControlProps, ITableCollectionItemProps {
-	/** Запись приложения, которую показывает строка */
-	data?: TTableRecord
+export interface ITableRowProps
+  extends IControlProps, ITableCollectionItemProps {
+  /** Запись приложения, которую показывает строка */
+  data?: TTableRecord;
 }
 
 export interface ITableRow<
-	TProps extends ITableRowProps = ITableRowProps,
-	TEvents extends TTableRowEvents = TTableRowEvents,
+  TProps extends ITableRowProps = ITableRowProps,
+  TEvents extends TTableRowEvents = TTableRowEvents,
 > extends IControl<TProps, TEvents> {
-	/** Запись приложения; не задана — ячейки строки пусты */
-	data: TTableRecord | undefined
-	/**
-	 * ARIA заголовка строки — ячейки колонки `rowHeader`: `id`, на который
-	 * ссылается имя чекбокса выбора строки, пишет плагин связок строки
-	 */
-	readonly headerAria: TAria
+  /** Запись приложения; не задана — ячейки строки пусты */
+  data: TTableRecord | undefined;
+  /**
+   * ARIA заголовка строки — ячейки колонки `rowHeader`: `id`, на который
+   * ссылается имя чекбокса выбора строки, пишет плагин связок строки
+   */
+  readonly headerAria: TAria;
 }

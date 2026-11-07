@@ -1,5 +1,5 @@
-import { TBasePlugin } from '../../base'
-import type { TIdPluginEvents } from './types'
+import { TBasePlugin } from "../../base";
+import type { TIdPluginEvents } from "./types";
 
 /**
  * TIdPlugin — `id`, который приложение задаёт узлу компонента, на который
@@ -23,21 +23,23 @@ import type { TIdPluginEvents } from './types'
  * Не задан — `undefined`.
  */
 export class TIdPlugin extends TBasePlugin<any, TIdPluginEvents> {
-	/** Умолчания опций, объявленных пропами, — см. `TDismissPlugin.defaultValues`. */
-	static defaultValues: { id: string | undefined } = {
-		id: undefined,
-	}
+  /** Умолчания опций, объявленных пропами, — см. `TDismissPlugin.defaultValues`. */
+  static defaultValues: { id: string | undefined } = {
+    id: undefined,
+  };
 
-	private _id = TIdPlugin.defaultValues.id
+  private _id = TIdPlugin.defaultValues.id;
 
-	get id(): string | undefined {
-		return this._id
-	}
+  get id(): string | undefined {
+    return this._id;
+  }
 
-	set id(value: string | undefined) {
-		if (this._id === value) return
+  set id(value: string | undefined) {
+    if (this._id === value) return;
 
-		this._id = value
-		this.events.emit('change:id', value)
-	}
+    const oldValue = this.id;
+
+    this._id = value;
+    this.events.emit("change:id", { newValue: value, oldValue: oldValue });
+  }
 }

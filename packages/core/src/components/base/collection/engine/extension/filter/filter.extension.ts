@@ -1,6 +1,10 @@
-import type { IExtension, IExtensionContext } from '../types'
-import type { TFilterEvents, IFilterExtension, TFilterPredicate } from './types'
-import { TBaseExtension } from '../base-extension.class'
+import type { IExtension, IExtensionContext } from "../types";
+import type {
+  TFilterEvents,
+  IFilterExtension,
+  TFilterPredicate,
+} from "./types";
+import { TBaseExtension } from "../base-extension.class";
 
 /**
  * TFilterExtension — отбор элементов на выдаче.
@@ -26,105 +30,114 @@ import { TBaseExtension } from '../base-extension.class'
  * ```
  */
 export class TFilterExtension<TItem extends object = any>
-	extends TBaseExtension<TItem, TFilterEvents<TItem>>
-	implements IExtension<TItem>, IFilterExtension<TItem>
+  extends TBaseExtension<TItem, TFilterEvents<TItem>>
+  implements IExtension<TItem>, IFilterExtension<TItem>
 {
-	readonly name = 'filter' as const
+  readonly name = "filter" as const;
 
-	private _query = ''
-	private _fields?: (keyof TItem)[]
-	private _predicate?: TFilterPredicate<TItem>
+  private _query = "";
+  private _fields?: (keyof TItem)[];
+  private _predicate?: TFilterPredicate<TItem>;
 
-	override install(ctx: IExtensionContext<TItem>): void {
-		super.install(ctx)
+  override install(ctx: IExtensionContext<TItem>): void {
+    super.install(ctx);
 
-		ctx.driver.events.on('items:query:before', (e) => {
-			if (!this.active) return
+    ctx.driver.events.on("items:query:before", (e) => {
+      if (!this.active) return;
 
-			e.items = e.items.filter((item) => this.matches(item))
-		})
-	}
+      e.items = e.items.filter((item) => this.matches(item));
+    });
+  }
 
-	get query(): string {
-		return this._query
-	}
+  get query(): string {
+    return this._query;
+  }
 
-	set query(value: string) {
-		if (this._query === value) return
+  set query(value: string) {
+    if (this._query === value) return;
 
-		this._query = value
+    const oldValue = this.query;
 
-		this.events.emit('change:query', value)
-		this.events.emit('change:filter')
+    this._query = value;
 
-		this._ctx.driver.invalidateQuery()
-	}
+    this.events.emit("change:query", { newValue: value, oldValue: oldValue });
+    this.events.emit("change:filter");
 
-	get fields(): (keyof TItem)[] | undefined {
-		return this._fields
-	}
+    this._ctx.driver.invalidateQuery();
+  }
 
-	set fields(value: (keyof TItem)[] | undefined) {
-		if (this._fields === value) return
+  get fields(): (keyof TItem)[] | undefined {
+    return this._fields;
+  }
 
-		this._fields = value
+  set fields(value: (keyof TItem)[] | undefined) {
+    if (this._fields === value) return;
 
-		this.events.emit('change:fields', value)
-		this.events.emit('change:filter')
+    const oldValue = this._fields;
 
-		this._ctx.driver.invalidateQuery()
-	}
+    this._fields = value;
 
-	get predicate(): TFilterPredicate<TItem> | undefined {
-		return this._predicate
-	}
+    this.events.emit("change:fields", { newValue: value, oldValue: oldValue });
+    this.events.emit("change:filter");
 
-	set predicate(value: TFilterPredicate<TItem> | undefined) {
-		if (this._predicate === value) return
+    this._ctx.driver.invalidateQuery();
+  }
 
-		this._predicate = value
+  get predicate(): TFilterPredicate<TItem> | undefined {
+    return this._predicate;
+  }
 
-		this.events.emit('change:predicate', value)
-		this.events.emit('change:filter')
+  set predicate(value: TFilterPredicate<TItem> | undefined) {
+    if (this._predicate === value) return;
 
-		this._ctx.driver.invalidateQuery()
-	}
+    const oldValue = this._predicate;
 
-	/**
-	 * Свой предикат делает фильтр активным всегда — он может отбирать и без
-	 * запроса («только доступные», «дороже тысячи»). Поиск по полям без запроса
-	 * не значит ничего, поэтому пустая строка выключает отбор.
-	 */
-	get active(): boolean {
-		return Boolean(this._predicate) || this._query.trim().length > 0
-	}
+    this._predicate = value;
 
-	matches(item: TItem): boolean {
-		if (this._predicate) return this._predicate(item, this._query)
+    this.events.emit("change:predicate", {
+      newValue: value,
+      oldValue: oldValue,
+    });
+    this.events.emit("change:filter");
 
-		const query = this._query.trim().toLowerCase()
+    this._ctx.driver.invalidateQuery();
+  }
 
-		if (!query) return true
+  /**
+   * Свой предикат делает фильтр активным всегда — он может отбирать и без
+   * запроса («только доступные», «дороже тысячи»). Поиск по полям без запроса
+   * не значит ничего, поэтому пустая строка выключает отбор.
+   */
+  get active(): boolean {
+    return Boolean(this._predicate) || this._query.trim().length > 0;
+  }
 
-		const fields = this._fields ?? (readableKeys(item) as (keyof TItem)[])
+  matches(item: TItem): boolean {
+    if (this._predicate) return this._predicate(item, this._query);
 
-		return fields.some((field) => {
-			const value = item[field]
+    const query = this._query.trim().toLowerCase();
 
-			if (typeof value === 'string') return value.toLowerCase().includes(query)
-			if (typeof value === 'number' || typeof value === 'boolean') {
-				return String(value).toLowerCase().includes(query)
-			}
+    if (!query) return true;
 
-			// Объекты, массивы, функции и пустые значения в поиск по подстроке не
-			// годятся: сравнивать «[object Object]» бессмысленно.
-			return false
-		})
-	}
+    const fields = this._fields ?? (readableKeys(item) as (keyof TItem)[]);
 
-	clear(): void {
-		this.query = ''
-	}
+    return fields.some((field) => {
+      const value = item[field];
+
+      if (typeof value === "string") return value.toLowerCase().includes(query);
+      if (typeof value === "number" || typeof value === "boolean") {
+        return String(value).toLowerCase().includes(query);
+      }
+
+      // Объекты, массивы, функции и пустые значения в поиск по подстроке не
+      // годятся: сравнивать «[object Object]» бессмысленно.
+      return false;
+    });
+  }
+
+  clear(): void {
+    this.query = "";
+  }
 }
 
 /**
@@ -139,18 +152,20 @@ export class TFilterExtension<TItem extends object = any>
  * прототипа сюда не попадёт. Кому нужна точность — задаёт `fields`.
  */
 function readableKeys(item: object): string[] {
-	const keys = new Set<string>(Object.keys(item))
+  const keys = new Set<string>(Object.keys(item));
 
-	let proto = Object.getPrototypeOf(item)
+  let proto = Object.getPrototypeOf(item);
 
-	while (proto && proto !== Object.prototype) {
-		for (const [key, descriptor] of Object.entries(Object.getOwnPropertyDescriptors(proto))) {
-			if (key === 'constructor') continue
-			if (typeof descriptor.get === 'function') keys.add(key)
-		}
+  while (proto && proto !== Object.prototype) {
+    for (const [key, descriptor] of Object.entries(
+      Object.getOwnPropertyDescriptors(proto),
+    )) {
+      if (key === "constructor") continue;
+      if (typeof descriptor.get === "function") keys.add(key);
+    }
 
-		proto = Object.getPrototypeOf(proto)
-	}
+    proto = Object.getPrototypeOf(proto);
+  }
 
-	return [...keys]
+  return [...keys];
 }

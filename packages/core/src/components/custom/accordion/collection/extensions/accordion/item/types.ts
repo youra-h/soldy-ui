@@ -1,18 +1,21 @@
-import type { IItemExtension, TBaseItemEventsExtension } from '../../../../../../base/collection'
-import type { TAccordionView } from '../../../../types'
+import type {
+  IItemExtension,
+  TBaseItemEventsExtension,
+} from "../../../../../../base/collection";
+import type { TAccordionView } from "../../../../types";
+import type { TValuePayload } from "../../../../../../../common";
 
 export type TAccordionItemEventsExtension = TBaseItemEventsExtension & {
-	'change:view': (value: TAccordionView | undefined) => void
-}
+  "change:view": (payload: TValuePayload<TAccordionView | undefined>) => void;
+};
 
 /**
  * Контракт item-адаптера accordion.
  * Предоставляет геттер view — резолвится из родительского расширения (TAccordion).
  */
-export interface IAccordionItemExtension<TItem extends object = any> extends IItemExtension<
-	TItem,
-	TAccordionItemEventsExtension
-> {
-	/** Внешний вид элемента (наследуется от TAccordion). */
-	readonly view: TAccordionView | undefined
+export interface IAccordionItemExtension<
+  TItem extends object = any,
+> extends IItemExtension<TItem, TAccordionItemEventsExtension> {
+  /** Внешний вид элемента (наследуется от TAccordion). */
+  readonly view: TAccordionView | undefined;
 }

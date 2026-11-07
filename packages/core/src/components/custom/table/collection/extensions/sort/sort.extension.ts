@@ -1,33 +1,36 @@
-import { TBaseExtension } from '../../../../../base/collection'
-import type { IExtensionContext, TQueryEvent } from '../../../../../base/collection'
-import type { ITableColumn } from '../../../column/types'
-import type { ITableRow } from '../../../row/types'
-import type { ITable } from '../../../types'
-import { columnsOf } from '../guards'
-import type { TTableEngineOptions } from '../table'
-import { collatorOf, rowComparator } from './compare'
-import { normalizeSort, sameSort } from './state'
-import { TMultipleSort, TSingleSort } from './strategies'
-import type { ITableSortStrategy, TTableSortStrategyCtor } from './strategies'
+import { TBaseExtension } from "../../../../../base/collection";
 import type {
-	ITableSortExtension,
-	TTableColumnSort,
-	TTableSortDirection,
-	TTableSortEvents,
-	TTableSortMode,
-} from './types'
+  IExtensionContext,
+  TQueryEvent,
+} from "../../../../../base/collection";
+import type { ITableColumn } from "../../../column/types";
+import type { ITableRow } from "../../../row/types";
+import type { ITable } from "../../../types";
+import { columnsOf } from "../guards";
+import type { TTableEngineOptions } from "../table";
+import { collatorOf, rowComparator } from "./compare";
+import { normalizeSort, sameSort } from "./state";
+import { TMultipleSort, TSingleSort } from "./strategies";
+import type { ITableSortStrategy, TTableSortStrategyCtor } from "./strategies";
+import type {
+  ITableSortExtension,
+  TTableColumnSort,
+  TTableSortDirection,
+  TTableSortEvents,
+  TTableSortMode,
+} from "./types";
 
 /** Стратегия сортировки на режим — её заводит сеттер `sortMode`. */
 const STRATEGIES: Readonly<Record<TTableSortMode, TTableSortStrategyCtor>> = {
-	single: TSingleSort,
-	multiple: TMultipleSort,
-}
+  single: TSingleSort,
+  multiple: TMultipleSort,
+};
 
 /** `aria-sort` заголовка по направлению. */
 const ARIA_SORT: Readonly<Record<TTableSortDirection, string>> = {
-	asc: 'ascending',
-	desc: 'descending',
-}
+  asc: "ascending",
+  desc: "descending",
+};
 
 /**
  * Сортировка строк таблицы по колонкам.
@@ -80,263 +83,288 @@ const ARIA_SORT: Readonly<Record<TTableSortDirection, string>> = {
  * строки текста, а выключенная таблица не сортирует по команде пользователя.
  * Соседа `columns` расширение узнаёт по контракту и ставится после него.
  */
-export class TTableSortExtension<TOwner extends ITable = ITable, TRow extends ITableRow = ITableRow>
-	extends TBaseExtension<TRow, TTableSortEvents, TTableEngineOptions<TOwner>>
-	implements ITableSortExtension<TRow>
+export class TTableSortExtension<
+  TOwner extends ITable = ITable,
+  TRow extends ITableRow = ITableRow,
+>
+  extends TBaseExtension<TRow, TTableSortEvents, TTableEngineOptions<TOwner>>
+  implements ITableSortExtension<TRow>
 {
-	readonly name = 'sort' as const
+  readonly name = "sort" as const;
 
-	/** Состояние в форме режима: свои записи, без повторов поля */
-	private _sort: TTableColumnSort[] = []
-	private _mode: TTableSortMode = 'single'
-	private _strategy: ITableSortStrategy = new TSingleSort()
-	private _presorted = false
+  /** Состояние в форме режима: свои записи, без повторов поля */
+  private _sort: TTableColumnSort[] = [];
+  private _mode: TTableSortMode = "single";
+  private _strategy: ITableSortStrategy = new TSingleSort();
+  private _presorted = false;
 
-	/** Язык таблицы и сравнение текста по нему — заводится при первой сортировке */
-	private _locale: string | undefined = undefined
-	private _collator: Intl.Collator | undefined = undefined
+  /** Язык таблицы и сравнение текста по нему — заводится при первой сортировке */
+  private _locale: string | undefined = undefined;
+  private _collator: Intl.Collator | undefined = undefined;
 
-	/**
-	 * Колонки коллекции колонок — с отпиской от их событий: своего сравнения и
-	 * просьбы отсортировать. Ушедшую колонку расширение больше не слушает:
-	 * подписка удерживала бы его, пока жива сама колонка, а её кнопка
-	 * сортировала бы строки таблицы, где колонки уже нет.
-	 */
-	private readonly _columns = new Map<ITableColumn, () => void>()
+  /**
+   * Колонки коллекции колонок — с отпиской от их событий: своего сравнения и
+   * просьбы отсортировать. Ушедшую колонку расширение больше не слушает:
+   * подписка удерживала бы его, пока жива сама колонка, а её кнопка
+   * сортировала бы строки таблицы, где колонки уже нет.
+   */
+  private readonly _columns = new Map<ITableColumn, () => void>();
 
-	/** Поля колонок на последнюю сверку: по ним видно, какое поле ушло и какое пришло */
-	private _fields = new Set<string>()
+  /** Поля колонок на последнюю сверку: по ним видно, какое поле ушло и какое пришло */
+  private _fields = new Set<string>();
 
-	private readonly _onColumns = (): void => {
-		if (this._syncColumns()) this._invalidate()
-	}
+  private readonly _onColumns = (): void => {
+    if (this._syncColumns()) this._invalidate();
+  };
 
-	private readonly _onQuery = (e: TQueryEvent<TRow>): void => {
-		if (this._sort.length === 0) return
+  private readonly _onQuery = (e: TQueryEvent<TRow>): void => {
+    if (this._sort.length === 0) return;
 
-		const columns = columnsOf(this._ctx)?.columns ?? []
+    const columns = columnsOf(this._ctx)?.columns ?? [];
 
-		e.items = [...e.items].sort(rowComparator(this._sort, columns, this._textCollator))
-	}
+    e.items = [...e.items].sort(
+      rowComparator(this._sort, columns, this._textCollator),
+    );
+  };
 
-	override install(ctx: IExtensionContext<TRow, TTableEngineOptions<TOwner>>): void {
-		super.install(ctx)
+  override install(
+    ctx: IExtensionContext<TRow, TTableEngineOptions<TOwner>>,
+  ): void {
+    super.install(ctx);
 
-		this._listen()
+    this._listen();
 
-		const columns = columnsOf(ctx)
+    const columns = columnsOf(ctx);
 
-		// Состав колонок: ушедшая колонка снимает свою сортировку, пришедшая
-		// получает пометки и, может быть, своё сравнение. Поле показанной
-		// колонки сменилось — для сортировки колонка поля ушла, а другая пришла:
-		// об этом колонки сообщают `change:cells`
-		columns?.engine.extensions.plain.events.on('change:items', this._onColumns)
-		columns?.events.on('change:cells', this._onColumns)
+    // Состав колонок: ушедшая колонка снимает свою сортировку, пришедшая
+    // получает пометки и, может быть, своё сравнение. Поле показанной
+    // колонки сменилось — для сортировки колонка поля ушла, а другая пришла:
+    // об этом колонки сообщают `change:cells`
+    columns?.engine.extensions.plain.events.on("change:items", this._onColumns);
+    columns?.events.on("change:cells", this._onColumns);
 
-		// Таблица — опция движка: приходит и уходит после сборки. Подписка на её
-		// язык живёт в области наблюдателя — сменилась таблица, прежняя снята
-		ctx.options.watch('owner', (owner, scope) => {
-			this._setLocale(owner?.locale)
+    // Таблица — опция движка: приходит и уходит после сборки. Подписка на её
+    // язык живёт в области наблюдателя — сменилась таблица, прежняя снята
+    ctx.options.watch("owner", (owner, scope) => {
+      this._setLocale(owner?.locale);
 
-			if (owner) {
-				scope.on(owner.events, 'change:locale', (locale: string) => this._setLocale(locale))
-			}
-		})
+      if (owner) {
+        scope.on(owner.events, "change:locale", (locale: string) =>
+          this._setLocale(locale),
+        );
+      }
+    });
 
-		// Догон: колонки могли прийти, а состояние — записаться до установки
-		this._syncColumns()
+    // Догон: колонки могли прийти, а состояние — записаться до установки
+    this._syncColumns();
 
-		if (this._sort.length) this._invalidate()
-	}
+    if (this._sort.length) this._invalidate();
+  }
 
-	get sort(): TTableColumnSort[] {
-		return this._sort.map((entry) => ({ ...entry }))
-	}
+  get sort(): TTableColumnSort[] {
+    return this._sort.map((entry) => ({ ...entry }));
+  }
 
-	set sort(value: readonly TTableColumnSort[]) {
-		if (this._commit(this._strategy.resolve(normalizeSort(value)))) this._invalidate()
-	}
+  set sort(value: readonly TTableColumnSort[]) {
+    if (this._commit(this._strategy.resolve(normalizeSort(value))))
+      this._invalidate();
+  }
 
-	get sortMode(): TTableSortMode {
-		return this._mode
-	}
+  get sortMode(): TTableSortMode {
+    return this._mode;
+  }
 
-	set sortMode(value: TTableSortMode) {
-		if (this._mode === value) return
+  set sortMode(value: TTableSortMode) {
+    if (this._mode === value) return;
 
-		this._mode = value
-		this._strategy = new STRATEGIES[value]()
+    this._mode = value;
+    this._strategy = new STRATEGIES[value]();
 
-		// Состояние — в форму нового режима
-		const changed = this._commit(this._strategy.resolve(this._sort))
+    // Состояние — в форму нового режима
+    const changed = this._commit(this._strategy.resolve(this._sort));
 
-		this.events.emit('change:sortMode', value)
+    this.events.emit("change:sortMode", value);
 
-		if (changed) this._invalidate()
-	}
+    if (changed) this._invalidate();
+  }
 
-	get presorted(): boolean {
-		return this._presorted
-	}
+  get presorted(): boolean {
+    return this._presorted;
+  }
 
-	set presorted(value: boolean) {
-		if (this._presorted === value) return
+  set presorted(value: boolean) {
+    if (this._presorted === value) return;
 
-		this._presorted = value
-		this._listen()
-		this.events.emit('change:presorted', value)
+    const oldValue = this.presorted;
 
-		// Показанное встаёт в порядок данных или в отсортированный — если есть
-		// по чему сортировать
-		if (this._sort.length) this._ctx?.driver.invalidateQuery()
-	}
+    this._presorted = value;
+    this._listen();
+    this.events.emit("change:presorted", {
+      newValue: value,
+      oldValue: oldValue,
+    });
 
-	toggle(field: string): void {
-		if (this._ctx?.options.get('owner')?.disabled) return
+    // Показанное встаёт в порядок данных или в отсортированный — если есть
+    // по чему сортировать
+    if (this._sort.length) this._ctx?.driver.invalidateQuery();
+  }
 
-		const column = columnsOf(this._ctx)?.columns.find((candidate) => candidate.field === field)
+  toggle(field: string): void {
+    if (this._ctx?.options.get("owner")?.disabled) return;
 
-		if (!column?.sortable) return
+    const column = columnsOf(this._ctx)?.columns.find(
+      (candidate) => candidate.field === field,
+    );
 
-		if (this._commit(this._strategy.toggle(this._sort, field))) this._invalidate()
-	}
+    if (!column?.sortable) return;
 
-	/* ------------------------------------------------------------------ */
-	/* Внутреннее                                                         */
-	/* ------------------------------------------------------------------ */
+    if (this._commit(this._strategy.toggle(this._sort, field)))
+      this._invalidate();
+  }
 
-	/**
-	 * Записать состояние, если оно другое: сначала пометки колонок, потом
-	 * `change:sort`. Сообщить, что показанное устарело, — дело вызывающего:
-	 * одна операция — одно сообщение.
-	 */
-	private _commit(next: TTableColumnSort[]): boolean {
-		if (sameSort(next, this._sort)) return false
+  /* ------------------------------------------------------------------ */
+  /* Внутреннее                                                         */
+  /* ------------------------------------------------------------------ */
 
-		this._sort = next
-		this._paint()
-		this.events.emit('change:sort', this.sort)
+  /**
+   * Записать состояние, если оно другое: сначала пометки колонок, потом
+   * `change:sort`. Сообщить, что показанное устарело, — дело вызывающего:
+   * одна операция — одно сообщение.
+   */
+  private _commit(next: TTableColumnSort[]): boolean {
+    if (sameSort(next, this._sort)) return false;
 
-		return true
-	}
+    this._sort = next;
+    this._paint();
+    this.events.emit("change:sort", this.sort);
 
-	/** Показанное устарело — если его упорядочивает таблица. */
-	private _invalidate(): void {
-		if (!this._presorted) this._ctx?.driver.invalidateQuery()
-	}
+    return true;
+  }
 
-	/** Подписка на выборку есть, пока строки упорядочивает таблица. */
-	private _listen(): void {
-		const events = this._ctx?.driver.events
+  /** Показанное устарело — если его упорядочивает таблица. */
+  private _invalidate(): void {
+    if (!this._presorted) this._ctx?.driver.invalidateQuery();
+  }
 
-		if (!events) return
+  /** Подписка на выборку есть, пока строки упорядочивает таблица. */
+  private _listen(): void {
+    const events = this._ctx?.driver.events;
 
-		if (this._presorted) events.off('items:query:before', this._onQuery)
-		else events.on('items:query:before', this._onQuery)
-	}
+    if (!events) return;
 
-	/** Сравнение текста по языку таблицы: заводится один раз на язык. */
-	private get _textCollator(): Intl.Collator {
-		this._collator ??= collatorOf(this._locale)
+    if (this._presorted) events.off("items:query:before", this._onQuery);
+    else events.on("items:query:before", this._onQuery);
+  }
 
-		return this._collator
-	}
+  /** Сравнение текста по языку таблицы: заводится один раз на язык. */
+  private get _textCollator(): Intl.Collator {
+    this._collator ??= collatorOf(this._locale);
 
-	/** Язык таблицы сменился — строки текста сравниваются по-новому. */
-	private _setLocale(locale: string | undefined): void {
-		if (this._locale === locale) return
+    return this._collator;
+  }
 
-		this._locale = locale
-		this._collator = undefined
+  /** Язык таблицы сменился — строки текста сравниваются по-новому. */
+  private _setLocale(locale: string | undefined): void {
+    if (this._locale === locale) return;
 
-		if (this._sort.length) this._invalidate()
-	}
+    this._locale = locale;
+    this._collator = undefined;
 
-	/** Сортируют ли строки по полю. */
-	private _sorts(field: string): boolean {
-		return this._sort.some((entry) => entry.field === field)
-	}
+    if (this._sort.length) this._invalidate();
+  }
 
-	/**
-	 * Сверить колонки с коллекцией колонок: новые — слушать и пометить, ушедшие —
-	 * больше не слушать и снять с них пометки. Поле ушло вместе с колонкой — его
-	 * сортировка снимается. Пришло поле, по которому уже сортируют, — у его
-	 * колонки может быть своё сравнение.
-	 *
-	 * Колонку слушают ради двух событий: её своё сравнение сменилось — и
-	 * пользователь нажал кнопку сортировки в её заголовке (`sort:request`). Это
-	 * просьба: о строках колонка не знает, и сортирует расширение — командой
-	 * пользователя `toggle` по полю колонки, с её правилами.
-	 *
-	 * Отвечает, устарело ли показанное: сообщить о нём — дело вызывающего.
-	 */
-	private _syncColumns(): boolean {
-		const columns = columnsOf(this._ctx)?.columns ?? []
-		const stored = new Set(columns)
+  /** Сортируют ли строки по полю. */
+  private _sorts(field: string): boolean {
+    return this._sort.some((entry) => entry.field === field);
+  }
 
-		for (const [column, unwatch] of this._columns) {
-			if (stored.has(column)) continue
+  /**
+   * Сверить колонки с коллекцией колонок: новые — слушать и пометить, ушедшие —
+   * больше не слушать и снять с них пометки. Поле ушло вместе с колонкой — его
+   * сортировка снимается. Пришло поле, по которому уже сортируют, — у его
+   * колонки может быть своё сравнение.
+   *
+   * Колонку слушают ради двух событий: её своё сравнение сменилось — и
+   * пользователь нажал кнопку сортировки в её заголовке (`sort:request`). Это
+   * просьба: о строках колонка не знает, и сортирует расширение — командой
+   * пользователя `toggle` по полю колонки, с её правилами.
+   *
+   * Отвечает, устарело ли показанное: сообщить о нём — дело вызывающего.
+   */
+  private _syncColumns(): boolean {
+    const columns = columnsOf(this._ctx)?.columns ?? [];
+    const stored = new Set(columns);
 
-			unwatch()
-			this._columns.delete(column)
-			this._unpaint(column)
-		}
+    for (const [column, unwatch] of this._columns) {
+      if (stored.has(column)) continue;
 
-		for (const column of columns) {
-			if (this._columns.has(column)) continue
+      unwatch();
+      this._columns.delete(column);
+      this._unpaint(column);
+    }
 
-			const onCompare = (): void => {
-				if (this._sorts(column.field)) this._invalidate()
-			}
-			// Поле — на нажатие, а не на подписку: колонка могла его сменить
-			const onRequest = (): void => this.toggle(column.field)
+    for (const column of columns) {
+      if (this._columns.has(column)) continue;
 
-			column.events.on('change:compare', onCompare)
-			column.events.on('sort:request', onRequest)
-			this._columns.set(column, () => {
-				column.events.off('change:compare', onCompare)
-				column.events.off('sort:request', onRequest)
-			})
-		}
+      const onCompare = (): void => {
+        if (this._sorts(column.field)) this._invalidate();
+      };
+      // Поле — на нажатие, а не на подписку: колонка могла его сменить
+      const onRequest = (): void => this.toggle(column.field);
 
-		const before = this._fields
-		const fields = new Set(columns.map((column) => column.field))
+      column.events.on("change:compare", onCompare);
+      column.events.on("sort:request", onRequest);
+      this._columns.set(column, () => {
+        column.events.off("change:compare", onCompare);
+        column.events.off("sort:request", onRequest);
+      });
+    }
 
-		this._fields = fields
+    const before = this._fields;
+    const fields = new Set(columns.map((column) => column.field));
 
-		const pruned = this._commit(
-			this._sort.filter(({ field }) => fields.has(field) || !before.has(field)),
-		)
-		const arrived = this._sort.some(({ field }) => fields.has(field) && !before.has(field))
+    this._fields = fields;
 
-		// Без смены состояния пометки ждут колонки, которые пришли
-		if (!pruned) this._paint()
+    const pruned = this._commit(
+      this._sort.filter(({ field }) => fields.has(field) || !before.has(field)),
+    );
+    const arrived = this._sort.some(
+      ({ field }) => fields.has(field) && !before.has(field),
+    );
 
-		return pruned || arrived
-	}
+    // Без смены состояния пометки ждут колонки, которые пришли
+    if (!pruned) this._paint();
 
-	/** Пометки всех колонок по состоянию. Запись того же значения набор не меняет. */
-	private _paint(): void {
-		for (const column of this._columns.keys()) {
-			const priority = this._sort.findIndex((entry) => entry.field === column.field)
+    return pruned || arrived;
+  }
 
-			if (priority < 0) {
-				this._unpaint(column)
-				continue
-			}
+  /** Пометки всех колонок по состоянию. Запись того же значения набор не меняет. */
+  private _paint(): void {
+    for (const column of this._columns.keys()) {
+      const priority = this._sort.findIndex(
+        (entry) => entry.field === column.field,
+      );
 
-			const { direction } = this._sort[priority]
+      if (priority < 0) {
+        this._unpaint(column);
+        continue;
+      }
 
-			column.dataset.add('sort', direction)
-			column.dataset.add('sort-priority', priority + 1)
-			column.aria.add('aria-sort', priority === 0 ? ARIA_SORT[direction] : null)
-		}
-	}
+      const { direction } = this._sort[priority];
 
-	/** Снять пометки сортировки с колонки. */
-	private _unpaint(column: ITableColumn): void {
-		column.dataset.add('sort', null)
-		column.dataset.add('sort-priority', null)
-		column.aria.add('aria-sort', null)
-	}
+      column.dataset.add("sort", direction);
+      column.dataset.add("sort-priority", priority + 1);
+      column.aria.add(
+        "aria-sort",
+        priority === 0 ? ARIA_SORT[direction] : null,
+      );
+    }
+  }
+
+  /** Снять пометки сортировки с колонки. */
+  private _unpaint(column: ITableColumn): void {
+    column.dataset.add("sort", null);
+    column.dataset.add("sort-priority", null);
+    column.aria.add("aria-sort", null);
+  }
 }
