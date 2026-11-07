@@ -148,7 +148,7 @@ export default {
 		-->
 		<Frame
 			embedded="select.frame"
-			:visible="open"
+			:visible="visible && open"
 			strategy="fixed"
 			:anchor_anchor="rootElement"
 			:anchor_placement="panelPlacement"

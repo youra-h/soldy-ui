@@ -123,7 +123,7 @@
 	embedded="select.frame"
 	class="so-select__panel"
 	strategy="fixed"
-	[visible]="state()['open']"
+	[visible]="state()['visible'] && state()['open']"
 	[anchor_anchor]="rootElement()"
 	[anchor_placement]="state()['panelPlacement']"
 	[anchor_flip]="state()['panelFlip']"

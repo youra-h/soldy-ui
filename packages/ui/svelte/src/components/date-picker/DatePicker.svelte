@@ -131,7 +131,7 @@
 		embedded="date-picker.frame"
 		class="so-date-picker__panel"
 		tabindex={-1}
-		visible={state.open}
+		visible={state.visible && state.open}
 		strategy="fixed"
 		anchor_anchor={binding.rootElement}
 		anchor_offset={4}

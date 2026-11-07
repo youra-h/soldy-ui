@@ -8,17 +8,14 @@
 		}"
 	/>
 }
-<!--
-	Наборы панели — одним объектом: директива набора на элементе одна. `visible` поповера
-	панели не передаётся, как у Vue: `v-show` корня до телепорта не доходит.
--->
+<!-- The detached panel follows both the owner's visibility and its open state. -->
 <div
 	so-frame
 	embedded="popover.frame"
 	class="so-popover__panel"
 	tabindex="-1"
 	strategy="fixed"
-	[visible]="state()['open']"
+	[visible]="state()['visible'] && state()['open']"
 	[contained]="state()['contained']"
 	[anchor_anchor]="rootElement()"
 	[anchor_placement]="state()['placement']"

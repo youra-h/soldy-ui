@@ -80,12 +80,12 @@ export const popoverTemplate: ITemplate<IPopover, unknown, TPopoverOutputs> = {
 
 	bindings: [
 		// `rendered` панели не пишется: увезённую панель прячет база Frame по признаку поддерева
-		bind(['open', 'contained', 'placement'], ({ root, state }) => {
+		bind(['open', 'contained', 'placement', 'visible'], ({ root, state }) => {
 			const panel = parts.get(root)?.panel
 
 			if (!panel) return
 
-			const visible = state.open === true
+			const visible = state.visible === true && state.open === true
 			const contained = state.contained === true
 
 			patch(panel, { visible, contained, anchor_placement: state.placement })

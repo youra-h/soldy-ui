@@ -51,7 +51,7 @@ export function Popover(props: PopoverProps): ReactElement | null {
 				embedded="popover.frame"
 				className="so-popover__panel"
 				tabIndex={-1}
-				visible={open}
+				visible={state.visible && open}
 				contained={contained}
 				strategy="fixed"
 				anchor_anchor={rootElement}

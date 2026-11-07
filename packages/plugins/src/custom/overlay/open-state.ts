@@ -6,34 +6,13 @@ import type { IOverlayOpenOptions, IOverlayOpenState } from './types'
 const DEFAULT_PROPERTY = 'open'
 
 /**
- * Связывает плагин оверлея с открытостью владельца: читает её, пишет обратно
- * и зовёт `onChange` на каждом изменении.
+ * Binds overlay behavior to its owner's openness and visibility. A hidden
+ * owner keeps its open state, but dismiss, focus and scroll behavior pause
+ * until it is shown again. Owners without a visible property remain supported.
  *
- * Открытость плагины слоя ведут сами, а не `watch` в адаптере: связка
- * «открыто ⇄ работаем» одинакова у всех шести адаптеров, и повторять её в
- * шаблоне каждого значило бы поменять в одном и забыть в пяти. Привязка одна
- * на все плагины слоя, `TDismissPlugin` в их числе: правило записано только
- * здесь.
- *
- * Закрытие, которое решил пользователь (`close`), — здесь же: владельца,
- * который принимает запрос закрытия (`isCloseRequestable`), плагины
- * закрывают запросом с причиной, остальных — записью. Решать, закрываться ли
- * по нажатию мимо и Escape, — дело владельца: модальное окно может
- * закрываться только кнопкой, а подписчик — отменить закрытие.
- *
- * Владелец берётся рефлексией, а не интерфейсом ядра: требовать от владельца
- * конкретный тип ради одного булева свойства значило бы связать плагины слоя
- * с каждым компонентом, который ими пользуется.
- *
- * Подписка живёт на шине владельца, а владелец бывает долговечнее плагина:
- * свой `ctrl` приложения переживает перемонтирование, и каждое монтирование
- * ставит ему новый набор. Поэтому привязка снимает свою подписку сама
- * (`unbind`) — обработчиком, который сама же и повесила, — а плагин зовёт это
- * в `destroy()`. Иначе на владельце копились бы обработчики уничтоженных
- * плагинов.
- *
- * `null` — привязки нет: владельца нет, `property: null` или такого свойства
- * у владельца не объявлено.
+ * User dismissal goes through requestClose when available; programmatic writes
+ * still target the configured property. Each binding removes only its own
+ * subscriptions when the plugin is destroyed.
  */
 export function bindOverlayOpen(
 	ctx: IPluginContext,
@@ -45,7 +24,8 @@ export function bindOverlayOpen(
 
 	if (!instance || !property || !(property in instance)) return null
 
-	const read = (): boolean => !!Reflect.get(instance, property)
+	const read = (): boolean =>
+		!!Reflect.get(instance, property) && Reflect.get(instance, 'visible') !== false
 	const write = (value: boolean): void => {
 		Reflect.set(instance, property, value)
 	}
@@ -55,6 +35,7 @@ export function bindOverlayOpen(
 	const handler = (): void => onChange(read())
 
 	source?.on(event, handler)
+	if (property !== 'visible') source?.on('change:visible', handler)
 
 	return {
 		read,
@@ -68,6 +49,7 @@ export function bindOverlayOpen(
 		},
 		unbind(): void {
 			source?.off(event, handler)
+			if (property !== 'visible') source?.off('change:visible', handler)
 		},
 	}
 }

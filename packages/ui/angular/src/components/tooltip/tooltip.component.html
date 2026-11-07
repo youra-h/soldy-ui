@@ -11,7 +11,7 @@
 	embedded="tooltip.frame"
 	class="so-tooltip__panel"
 	strategy="fixed"
-	[visible]="state()['open']"
+	[visible]="state()['visible'] && state()['open']"
 	[anchor_anchor]="rootElement()"
 	[anchor_placement]="state()['placement']"
 	[anchor_offset]="6"

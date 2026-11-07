@@ -852,3 +852,25 @@ describe('React', () => {
 		expect(panel().style.top).toBe('78px')
 	})
 })
+
+describe('owner visibility', () => {
+	it('hides the detached panel without resetting open', async () => {
+		const ctrl = new TPopover({ open: true, visible: false })
+		await render(page({ ctrl }))
+
+		const element = panel()
+		expect(isOpen()).toBe(false)
+		expect(ctrl.open).toBe(true)
+
+		act(() => ctrl.show())
+		expect(isOpen()).toBe(true)
+
+		act(() => ctrl.hide())
+		expect(isOpen()).toBe(false)
+		expect(ctrl.open).toBe(true)
+
+		act(() => ctrl.show())
+		expect(isOpen()).toBe(true)
+		expect(panel()).toBe(element)
+	})
+})

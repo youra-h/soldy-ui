@@ -65,7 +65,7 @@
 		embedded="menu.popover-item-frame"
 		class="so-menu-item__panel"
 		tabindex={-1}
-		visible={state.open}
+		visible={state.visible && state.open}
 		strategy="fixed"
 		anchor_anchor={binding.rootElement}
 		anchor_placement="end-start"

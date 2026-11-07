@@ -64,7 +64,7 @@ export default { ...SetupPopover, components: { Frame, Button, Icon } }
 			embedded="popover.frame"
 			class="so-popover__panel"
 			tabindex="-1"
-			:visible="open"
+			:visible="visible && open"
 			:contained="contained"
 			strategy="fixed"
 			:anchor_anchor="rootElement"

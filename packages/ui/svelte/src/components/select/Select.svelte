@@ -110,7 +110,7 @@
 	{/if}<Frame
 		embedded="select.frame"
 		class="so-select__panel"
-		visible={state.open}
+		visible={state.visible && state.open}
 		strategy="fixed"
 		anchor_anchor={binding.rootElement}
 		anchor_placement={state.panelPlacement}

@@ -93,3 +93,41 @@ describe('снятие привязки', () => {
 		expect(onChange.mock.calls).toEqual([[true]])
 	})
 })
+
+describe('hidden overlay owners', () => {
+	it('pauses behavior without changing open and resumes when shown', () => {
+		const owner = new TPopover({ open: true })
+		const changed = vi.fn()
+		const binding = bind(owner, changed)
+
+		owner.hide()
+
+		expect(binding.read()).toBe(false)
+		expect(owner.open).toBe(true)
+		expect(changed.mock.calls).toEqual([[false]])
+
+		owner.show()
+
+		expect(binding.read()).toBe(true)
+		expect(changed.mock.calls).toEqual([[false], [true]])
+
+		binding.unbind()
+		owner.hide()
+		expect(changed).toHaveBeenCalledTimes(2)
+	})
+
+	it('does not activate a panel opened while its owner is hidden', () => {
+		const owner = new TPopover({ visible: false })
+		const changed = vi.fn()
+		const binding = bind(owner, changed)
+
+		binding.write(true)
+
+		expect(owner.open).toBe(true)
+		expect(binding.read()).toBe(false)
+		expect(changed.mock.calls).toEqual([[false]])
+
+		owner.show()
+		expect(binding.read()).toBe(true)
+	})
+})

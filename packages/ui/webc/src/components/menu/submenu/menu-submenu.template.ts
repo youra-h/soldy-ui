@@ -96,9 +96,9 @@ export const menuSubmenuTemplate: ITemplate<
 
 		bind('size', ({ root, state }) => iconSize(parts.get(root)?.arrow ?? null, state.size)),
 
-		bind('open', ({ root, state }) => {
+		bind(['open', 'visible'], ({ root, state }) => {
 			const panel = parts.get(root)?.panel
-			const visible = state.open === true
+			const visible = state.visible === true && state.open === true
 
 			if (panel && panel.visible !== visible) panel.visible = visible
 		}),

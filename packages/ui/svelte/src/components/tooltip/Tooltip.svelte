@@ -24,7 +24,7 @@
 	{@render props.trigger?.({ triggerAria: state.triggerAria ?? {} })}<Frame
 		embedded="tooltip.frame"
 		class="so-tooltip__panel"
-		visible={state.open}
+		visible={state.visible && state.open}
 		strategy="fixed"
 		anchor_anchor={binding.rootElement}
 		anchor_placement={state.placement}
