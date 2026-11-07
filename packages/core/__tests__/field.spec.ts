@@ -80,7 +80,7 @@ describe('TField', () => {
 		const field = new TField()
 		const changed = vi.fn()
 
-		field.events.on('change:position', changed)
+		field.events.on('change:position', ({ newValue }) => changed(newValue))
 
 		field.position = 'end'
 		field.position = 'end'
@@ -99,7 +99,7 @@ describe('TField', () => {
 		const field = new TField()
 		const changed = vi.fn()
 
-		field.events.on(`change:${name}`, changed)
+		field.events.on(`change:${name}`, ({ newValue }) => changed(newValue))
 
 		field[name] = value
 		field[name] = value
@@ -112,7 +112,7 @@ describe('TField', () => {
 		const field = new TField()
 		const changed = vi.fn()
 
-		field.events.on('change:invalid', changed)
+		field.events.on('change:invalid', ({ newValue }) => changed(newValue))
 
 		field.invalid = true
 		field.invalid = true
@@ -159,9 +159,9 @@ describe('TField', () => {
 		const helper = vi.fn()
 		const error = vi.fn()
 
-		field.events.on('change:labelAria', label)
-		field.events.on('change:helperAria', helper)
-		field.events.on('change:errorAria', error)
+		field.events.on('change:labelAria', ({ newValue }) => label(newValue))
+		field.events.on('change:helperAria', ({ newValue }) => helper(newValue))
+		field.events.on('change:errorAria', ({ newValue }) => error(newValue))
 
 		field.labelAria.add('id', 'f-label')
 		field.helperAria.add('id', 'f-helper')
@@ -214,7 +214,7 @@ describe('TValueControl · invalid', () => {
 		const control = new TValueControl<string, P>()
 		const changed = vi.fn()
 
-		control.events.on('change:invalid', changed)
+		control.events.on('change:invalid', ({ newValue }) => changed(newValue))
 
 		control.invalid = true
 		control.invalid = true
@@ -328,7 +328,7 @@ describe('TDateInput · итог invalid', () => {
 		const input = new TDateInput({ value: '2026-05-12' })
 		const changed = vi.fn()
 
-		input.events.on('change:invalid', changed)
+		input.events.on('change:invalid', ({ newValue }) => changed(newValue))
 
 		input.min = '2026-06-01'
 		input.max = '2027-01-01'
@@ -342,7 +342,7 @@ describe('TDateInput · итог invalid', () => {
 		const input = new TDateInput({ value: '2026-05-12', min: '2026-06-01' })
 		const changed = vi.fn()
 
-		input.events.on('change:invalid', changed)
+		input.events.on('change:invalid', ({ newValue }) => changed(newValue))
 
 		input.invalid = true
 		input.min = undefined
@@ -407,7 +407,9 @@ describe('TControl · labelable', () => {
 		const seen: string[] = []
 
 		button.events.on('change:tag', () => seen.push('tag'))
-		button.events.on('change:labelable', (value) => seen.push(`labelable: ${value}`))
+		button.events.on('change:labelable', ({ newValue: value }) =>
+			seen.push(`labelable: ${value}`),
+		)
 
 		// div → button → div → span: labelable сменили только первые две записи
 		button.tag = 'button'
@@ -421,7 +423,7 @@ describe('TControl · labelable', () => {
 		const input = new TInput()
 		const changed = vi.fn()
 
-		input.events.on('change:labelable', changed)
+		input.events.on('change:labelable', ({ newValue }) => changed(newValue))
 
 		input.tag = 'span'
 

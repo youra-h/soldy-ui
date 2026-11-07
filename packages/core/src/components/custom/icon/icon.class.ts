@@ -63,9 +63,11 @@ export default class TIcon extends TComponentView<IIconProps, TIconEvents> imple
 	}
 
 	set width(value: string | number | undefined) {
+		const oldWidth = this.width
+
 		if (this._width !== value) {
 			this._width = value
-			this.events.emit('change:width', value)
+			this.events.emit('change:width', { newValue: value, oldValue: oldWidth })
 		}
 	}
 
@@ -74,9 +76,11 @@ export default class TIcon extends TComponentView<IIconProps, TIconEvents> imple
 	}
 
 	set height(value: string | number | undefined) {
+		const oldHeight = this.height
+
 		if (this._height !== value) {
 			this._height = value
-			this.events.emit('change:height', value)
+			this.events.emit('change:height', { newValue: value, oldValue: oldHeight })
 		}
 	}
 

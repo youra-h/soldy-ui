@@ -37,7 +37,7 @@ describe('панель секции', () => {
 		const item = new TAccordionItem()
 		const changes: unknown[] = []
 
-		item.events.on('change:contentAria', (value) => changes.push(value))
+		item.events.on('change:contentAria', ({ newValue: value }) => changes.push(value))
 		item.contentAria.add('id', 'panel')
 
 		expect(changes).toEqual([{ role: 'region', id: 'panel' }])

@@ -110,7 +110,7 @@ describe('регион (TToasts)', () => {
 
 		owner.ready = true
 		dialog.ready = true
-		owner.events.on('change:zIndex', onZIndex)
+		owner.events.on('change:zIndex', ({ newValue }) => onZIndex(newValue))
 		owner.raise()
 
 		expect(owner.zIndex).toBeGreaterThan(dialog.zIndex)
@@ -124,10 +124,10 @@ describe('регион (TToasts)', () => {
 		const onPlacement = vi.fn()
 		const onLayout = vi.fn()
 
-		owner.events.on('change:max', onMax)
-		owner.events.on('change:duration', onDuration)
-		owner.events.on('change:placement', onPlacement)
-		owner.events.on('change:layout', onLayout)
+		owner.events.on('change:max', ({ newValue }) => onMax(newValue))
+		owner.events.on('change:duration', ({ newValue }) => onDuration(newValue))
+		owner.events.on('change:placement', ({ newValue }) => onPlacement(newValue))
+		owner.events.on('change:layout', ({ newValue }) => onLayout(newValue))
 
 		owner.max = 3
 		owner.duration = 5000
@@ -243,8 +243,8 @@ describe('тост (TToastsItem)', () => {
 			const onType = vi.fn()
 			const onLoading = vi.fn()
 
-			toast.events.on('change:type', onType)
-			toast.events.on('change:loading', onLoading)
+			toast.events.on('change:type', ({ newValue }) => onType(newValue))
+			toast.events.on('change:loading', ({ newValue }) => onLoading(newValue))
 
 			toast.type = 'warning'
 			toast.loading = false
@@ -273,7 +273,7 @@ describe('тост (TToastsItem)', () => {
 			const toast = new TToastsItem()
 			const onOpen = vi.fn()
 
-			toast.events.on('change:open', onOpen)
+			toast.events.on('change:open', ({ newValue }) => onOpen(newValue))
 			toast.close()
 			toast.close()
 
@@ -315,7 +315,7 @@ describe('тост (TToastsItem)', () => {
 			const toast = new TToastsItem()
 			const onSwiping = vi.fn()
 
-			toast.events.on('change:swiping', onSwiping)
+			toast.events.on('change:swiping', ({ newValue }) => onSwiping(newValue))
 
 			expect(toast.beginSwipe()).toBe(true)
 			expect(toast.swiping).toBe(true)

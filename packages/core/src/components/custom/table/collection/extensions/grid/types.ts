@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../../../../common'
 import type {
 	IExtension,
 	IExtensionItems,
@@ -28,14 +29,14 @@ export type TTableGridEdgeScope = 'row' | 'grid'
 
 export type TTableGridEvents = {
 	/** Режим сетки включили или выключили */
-	'change:grid': (value: boolean) => void
+	'change:grid': (payload: TValuePayload<boolean>) => void
 	/**
 	 * Фокус сетки перешёл на другую ячейку. `undefined` — ячеек нет: у таблицы
 	 * нет ни колонок, ни колонки выбора
 	 */
-	'change:focusedCell': (value: TTableGridCell | undefined) => void
+	'change:focusedCell': (payload: TValuePayload<TTableGridCell | undefined>) => void
 	/** Сменился набор ячеек сетки: сетку включили, выключили или выключили таблицу */
-	'change:cellAria': (value: TAriaAttributes) => void
+	'change:cellAria': (payload: TValuePayload<TAriaAttributes>) => void
 }
 
 export type TTableGridItemEvents = TBaseItemEventsExtension & {

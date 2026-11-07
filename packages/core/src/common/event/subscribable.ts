@@ -1,14 +1,10 @@
 /**
- * A listener of {@link TSubscribable}: it receives the object that has changed
- * and reads it anew.
- *
- * The object comes as the base `TSubscribable`, not as the type of the set: a
- * listener typed by the set itself (`this`) would set the kinds of sets apart,
- * and a `TDataset`, whose listeners would take only a `TDataset`, would stop
- * being a `TAttributes`. Whoever listens to several objects tells them apart
- * by identity.
+ * Receives the changed object's identity and its value before the write.
+ * The source is an object so one listener can serve different kinds of sets.
+ * The previous value is provided by the writer; subscribers do not keep a
+ * parallel history or clone values. A source with no value uses `void`.
  */
-export type TSubscriber = (source: TSubscribable) => void
+export type TSubscriber<TValue = void> = (source: object, oldValue: TValue) => void
 
 /**
  * A plain object that reports its change — the base of the attribute and
@@ -16,7 +12,8 @@ export type TSubscriber = (source: TSubscribable) => void
  *
  * It is not a bus: there are no event names, no middlewares or relays. There
  * is one fact — "changed" — and the listener receives the object itself to
- * read it anew. That is all a set needs, and a bus per set (`TEvented`) cost
+ * read it anew, together with its value before the write. That is all a set
+ * needs, and a bus per set (`TEvented`) cost
  * every collection item four emitters with a subscription each, even an item
  * that is never drawn.
  *
@@ -34,9 +31,9 @@ export type TSubscriber = (source: TSubscribable) => void
  * one it found, so a listener added during it is called from the next one, and
  * a removed one is still called in the current one.
  */
-export class TSubscribable {
+export class TSubscribable<TValue = void> {
 	/** Listeners — one as is, a list from the second. */
-	private _subscribers?: TSubscriber | readonly TSubscriber[]
+	private _subscribers?: TSubscriber<TValue> | readonly TSubscriber<TValue>[]
 
 	/**
 	 * Listens to the changes of the object. The same listener twice is one
@@ -44,7 +41,7 @@ export class TSubscribable {
 	 *
 	 * @returns the unsubscription; calling it again does nothing
 	 */
-	subscribe(subscriber: TSubscriber): () => void {
+	subscribe(subscriber: TSubscriber<TValue>): () => void {
 		const current = this._subscribers
 
 		if (current === undefined) this._subscribers = subscriber
@@ -55,7 +52,7 @@ export class TSubscribable {
 		return () => this._unsubscribe(subscriber)
 	}
 
-	private _unsubscribe(subscriber: TSubscriber): void {
+	private _unsubscribe(subscriber: TSubscriber<TValue>): void {
 		const current = this._subscribers
 
 		if (current === subscriber) {
@@ -71,18 +68,18 @@ export class TSubscribable {
 		this._subscribers = rest.length === 1 ? rest[0] : rest
 	}
 
-	/** Reports the change to every listener, handing it the object. */
-	protected _notify(): void {
+	/** Reports the source and its value before the write to every listener. */
+	protected _notify(oldValue: TValue): void {
 		const current = this._subscribers
 
 		if (current === undefined) return
 
 		if (typeof current === 'function') {
-			current(this)
+			current(this, oldValue)
 
 			return
 		}
 
-		for (const subscriber of current) subscriber(this)
+		for (const subscriber of current) subscriber(this, oldValue)
 	}
 }

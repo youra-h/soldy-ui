@@ -484,7 +484,7 @@ describe('скрытый список: строки не измерены', () =
 		const list = assemble(rows, maxRows, undefined, () => (layout.shown ? ROW_HEIGHT : 0))
 		const changes: Array<[boolean, string]> = []
 
-		list.height.events.on('change:measured', (measured) => {
+		list.height.events.on('change:measured', ({ newValue: measured }) => {
 			changes.push([measured, list.panel.style.maxHeight])
 		})
 		list.rootElement.element = list.root

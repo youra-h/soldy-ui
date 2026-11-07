@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../../../../common'
 import { TBaseOwnerItemExtension } from '../../../../../base/collection'
 import type {
 	IBaseOwnerItemExtensionOptions,
@@ -271,10 +272,13 @@ export class TTableColumnsExtension<
 			this.columns.forEach((column) => this._inheritOwner(column))
 
 			// Смена у таблицы — всем колонкам, как у `<fieldset>`
-			scope.on(owner.events, 'change:disabled', (value: boolean) =>
-				this.columns.forEach((column) => {
-					column.disabled = value
-				}),
+			scope.on(
+				owner.events,
+				'change:disabled',
+				({ newValue: value }: TValuePayload<boolean>) =>
+					this.columns.forEach((column) => {
+						column.disabled = value
+					}),
 			)
 
 			scope.on(owner.events, 'change:columnFit', () => this._notifyLayout())
@@ -282,15 +286,21 @@ export class TTableColumnsExtension<
 			// Ручка ширины и перестановка у колонок без своего значения: пришла
 			// таблица и сменилось у неё; ушла — снова `false`
 			this.columns.forEach((column) => this._shareFlags(column))
-			scope.on(owner.events, 'change:resizable', (value: boolean) =>
-				this.columns.forEach((column) => {
-					column.tableResizable = value
-				}),
+			scope.on(
+				owner.events,
+				'change:resizable',
+				({ newValue: value }: TValuePayload<boolean>) =>
+					this.columns.forEach((column) => {
+						column.tableResizable = value
+					}),
 			)
-			scope.on(owner.events, 'change:reorderable', (value: boolean) =>
-				this.columns.forEach((column) => {
-					column.tableReorderable = value
-				}),
+			scope.on(
+				owner.events,
+				'change:reorderable',
+				({ newValue: value }: TValuePayload<boolean>) =>
+					this.columns.forEach((column) => {
+						column.tableReorderable = value
+					}),
 			)
 			scope.add(() =>
 				this.columns.forEach((column) => {

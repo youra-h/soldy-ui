@@ -13,7 +13,7 @@ export type TListBoxItemEvents = TValueControlEvents<string | number> & {
 	/** Запись своего `text` — подправить или отменить (`TChangeEvent`) */
 	'change:text:before': (e: TChangeEvent<string>) => void
 	/** change:contentFit */
-	'change:contentFit': (value: TListItemContentFit | undefined) => void
+	'change:contentFit': (payload: TValuePayload<TListItemContentFit | undefined>) => void
 }
 
 export interface IListBoxItemProps

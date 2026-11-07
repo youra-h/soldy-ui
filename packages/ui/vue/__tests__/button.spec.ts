@@ -142,8 +142,10 @@ describe('Button · inline props (декларативные свойства)',
 		expect(wrapper.emitted('change:text')).toBeTruthy()
 		expect(wrapper.emitted('change:variant')).toBeTruthy()
 		expect(wrapper.emitted('change:size')).toBeTruthy()
-		// TButton эмитит change:view с самим значением
-		expect(wrapper.emitted('change:view')?.at(-1)).toEqual(['ghost'])
+		// Property changes carry both sides of the transition.
+		expect(wrapper.emitted('change:view')?.at(-1)).toEqual([
+			{ newValue: 'ghost', oldValue: 'solid' },
+		])
 	})
 
 	it('эмитит change:disabled и change:focused', async () => {

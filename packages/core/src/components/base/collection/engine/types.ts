@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../../common'
 import type { ICommand, IQueryCommand } from './commands'
 import { TEvented } from '../../../../common/event'
 import { TActionEvent } from '../../../../common/event/action-event'
@@ -167,10 +168,10 @@ export type TCollectionStorageDriverEvents<TItem> = {
 	 * The storage composition changed. `items` is a snapshot: a listener may
 	 * keep it, and the next change does not alter it.
 	 */
-	'change:items': (items: readonly TItem[]) => void
+	'change:items': (payload: TValuePayload<readonly TItem[]>) => void
 
 	/** Изменение количества элементов */
-	'change:count': (count: number) => void
+	'change:count': (payload: TValuePayload<number>) => void
 
 	/**
 	 * Вызывается ПЕРЕД полной очисткой коллекции (до мутации хранилища).

@@ -216,7 +216,7 @@ describe('группа разметки — в группировке колле
 		const group = assembleGroup(groupLayer, { label: 'Фрукты' })
 		const sections = vi.fn()
 
-		list.extensions.group.events.on('change:sections', sections)
+		list.extensions.group.events.on('change:sections', ({ newValue }) => sections(newValue))
 		mountItem(childOf(groupLayer), { value: 'apple' })
 
 		expect(brief(list.extensions.group.sections)).toEqual([

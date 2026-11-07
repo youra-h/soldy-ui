@@ -1,4 +1,5 @@
 import type { ICommand, ICommandContext } from './types'
+import type { TValuePayload } from '../../../../../common'
 import { TClearEvent, TRemoveEvent } from '../types'
 
 /**
@@ -13,6 +14,7 @@ import { TClearEvent, TRemoveEvent } from '../types'
 export class TClearCommand<TItem> implements ICommand<TItem> {
 	/** Снимок удалённых элементов. Есть только после состоявшейся очистки. */
 	private _cleared: TClearEvent<TItem> | null = null
+	private _count?: TValuePayload<number>
 
 	get changed(): boolean {
 		return this._cleared !== null
@@ -31,7 +33,9 @@ export class TClearCommand<TItem> implements ICommand<TItem> {
 
 		this._cleared = event
 
+		const oldValue = ctx.storage.items.length
 		ctx.storage.clear()
+		this._count = { newValue: ctx.storage.items.length, oldValue }
 	}
 
 	emitEvents(ctx: ICommandContext<TItem>): void {
@@ -43,7 +47,7 @@ export class TClearCommand<TItem> implements ICommand<TItem> {
 			ctx.events.emit('item:removed', new TRemoveEvent<TItem>(item)),
 		)
 
-		ctx.events.emit('change:count', ctx.storage.items.length)
+		if (this._count) ctx.events.emit('change:count', this._count)
 		ctx.events.emit('reset')
 	}
 }

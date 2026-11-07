@@ -290,7 +290,7 @@ describe('TItemContext: release и destroy', () => {
 		const after = ctx.adapters.selection
 		const changed = vi.fn()
 
-		after.events.on('change:selected', changed)
+		after.events.on('change:selected', ({ newValue }) => changed(newValue))
 		col.extensions.selection.select(item)
 
 		expect(after).not.toBe(before)

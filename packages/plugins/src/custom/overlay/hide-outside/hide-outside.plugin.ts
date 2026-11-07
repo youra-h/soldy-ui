@@ -128,11 +128,13 @@ export class THideOutsidePlugin extends TBasePlugin<any, THideOutsidePluginEvent
 	}
 
 	set enabled(value: boolean) {
+		const oldEnabled = this.enabled
+
 		if (this._enabled === value) return
 
 		this._enabled = value
 		this._sync()
-		this.events.emit('change:enabled', value)
+		this.events.emit('change:enabled', { newValue: value, oldValue: oldEnabled })
 	}
 
 	override destroy(): void {

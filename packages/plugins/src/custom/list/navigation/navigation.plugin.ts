@@ -6,7 +6,7 @@ import { TElementPlugin } from '../../element'
 import { TCollectionBundlesPlugin } from '../../collection'
 import type { IDomEventTarget } from '../../../utils'
 import { TListItemPlugin } from '../item'
-import type { TListEdge, TListNavigationPluginEvents } from './types'
+import type { TListEdge, TListNavigationPluginEvents, THighlightPayload } from './types'
 
 /**
  * Можно ли подсветить элемент: он доступен и виден. Подсветить то, что нельзя
@@ -339,6 +339,7 @@ export abstract class TListNavigationPlugin<
 	 */
 	protected highlight(uid: string | number): void {
 		if (this._highlightedUid === uid && this._marked) return
+		const oldValue = this._highlightPayload(this._marked ? this._highlightedUid : null)
 
 		if (this._highlightedUid !== uid) this._moveTo(uid)
 
@@ -350,7 +351,7 @@ export abstract class TListNavigationPlugin<
 
 		this._marked = true
 
-		this._announce(uid)
+		this._announce(uid, oldValue)
 	}
 
 	/**
@@ -365,12 +366,13 @@ export abstract class TListNavigationPlugin<
 	 */
 	protected trackHighlight(uid: string | number): void {
 		if (this._highlightedUid === uid) return
+		const oldValue = this._highlightPayload(this._marked ? this._highlightedUid : null)
 
 		const marked = this._marked
 
 		this._moveTo(uid)
 
-		if (marked) this._announce(null)
+		if (marked) this._announce(null, oldValue)
 	}
 
 	/**
@@ -379,6 +381,7 @@ export abstract class TListNavigationPlugin<
 	 */
 	protected clearHighlight(): void {
 		if (this._highlightedUid == null) return
+		const oldValue = this._highlightPayload(this._marked ? this._highlightedUid : null)
 
 		const marked = this._marked
 
@@ -387,7 +390,7 @@ export abstract class TListNavigationPlugin<
 		this._highlightedUid = null
 		this._followPosition()
 
-		if (marked) this._announce(null)
+		if (marked) this._announce(null, oldValue)
 	}
 
 	protected itemPlugin(uid: string | number): TListItemPlugin | undefined {
@@ -427,16 +430,20 @@ export abstract class TListNavigationPlugin<
 	 * наследнику. Элемент — с соседями среди доступных; `null` — отметки
 	 * больше нет, и соседей тоже.
 	 */
-	private _announce(uid: string | number | null): void {
+	private _highlightPayload(uid: string | number | null): THighlightPayload {
 		const items = this.items()
 		const index = uid === null ? -1 : items.findIndex((item) => item.uid === uid)
 		const item = items[index] ?? null
 
-		this._sink.emit('change:highlight', {
+		return {
 			item,
 			prevItem: item && (items[index - 1] ?? null),
 			nextItem: item && (items[index + 1] ?? null),
-		})
+		}
+	}
+
+	private _announce(uid: string | number | null, oldValue: THighlightPayload): void {
+		this._sink.emit('change:highlight', { newValue: this._highlightPayload(uid), oldValue })
 		this.onHighlightChanged(uid)
 	}
 

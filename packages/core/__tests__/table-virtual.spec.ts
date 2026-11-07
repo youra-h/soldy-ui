@@ -135,7 +135,7 @@ describe('окно', () => {
 		const { facade, draw } = table(200)
 		const changed = vi.fn()
 
-		facade.events.on('change:drawn', changed)
+		facade.events.on('change:drawn', ({ newValue }) => changed(newValue))
 
 		draw.notifyViewport(viewport(4000, 4800))
 		// Полоса сдвинулась, но края остались в тех же строках — окно то же

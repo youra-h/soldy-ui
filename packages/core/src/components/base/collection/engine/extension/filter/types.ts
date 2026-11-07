@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../../../../common'
 import type { IExtension } from '../types'
 
 /**
@@ -9,9 +10,9 @@ import type { IExtension } from '../types'
 export type TFilterPredicate<TItem> = (item: TItem, query: string) => boolean
 
 export type TFilterEvents<TItem> = {
-	'change:query': (query: string) => void
-	'change:fields': (fields?: (keyof TItem)[]) => void
-	'change:predicate': (predicate?: TFilterPredicate<TItem>) => void
+	'change:query': (payload: TValuePayload<string>) => void
+	'change:fields': (payload: TValuePayload<(keyof TItem)[] | undefined>) => void
+	'change:predicate': (payload: TValuePayload<TFilterPredicate<TItem> | undefined>) => void
 
 	/**
 	 * Условия отбора изменились — прежняя выборка устарела.

@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../../../../common'
 import type {
 	IExtension,
 	IExtensionItems,
@@ -12,7 +13,7 @@ export type TCalendarWeekEdge = 'start' | 'end'
 
 export type TCalendarFocusEvents = {
 	/** Фокус сетки перешёл на другой день */
-	'change:focusedDate': (value: TCalendarDate) => void
+	'change:focusedDate': (payload: TValuePayload<TCalendarDate>) => void
 }
 
 /**

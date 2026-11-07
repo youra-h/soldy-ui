@@ -32,20 +32,20 @@ export type TRatingStar = {
 
 export type TRatingEvents = TInputControlEvents<number> & {
 	/** change:max */
-	'change:max': (value: number) => void
+	'change:max': (payload: TValuePayload<number>) => void
 	/** change:step */
-	'change:step': (value: number) => void
+	'change:step': (payload: TValuePayload<number>) => void
 	/**
 	 * Предпросмотр сменился: оценка, которую поставит нажатие под указателем;
 	 * указатель ушёл — `undefined`
 	 */
-	'change:preview': (value: number | undefined) => void
+	'change:preview': (payload: TValuePayload<number | undefined>) => void
 	/**
 	 * Смена режима щелчка — только ради контракта перетаскивания (`ISlidable`):
 	 * его слушает плагин указателя. Режим у оценки один, `none`, и событие не
 	 * приходит никогда.
 	 */
-	'change:snap': (value: TSlideSnap) => void
+	'change:snap': (payload: TValuePayload<TSlideSnap>) => void
 	/**
 	 * Пользователь поставил оценку: отпустил указатель, если за нажатие и
 	 * протяжку значение сменилось, или сдвинул его клавишей. `change:value`

@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../common'
 import type {
 	IComponentView,
 	IComponentViewProps,
@@ -33,21 +34,21 @@ export type TPopoverEdge = 'top' | 'bottom' | 'start' | 'end'
 export type TPopoverEvents = TComponentViewEvents &
 	TSwipeableEvents & {
 		/** change:open */
-		'change:open': (value: boolean) => void
+		'change:open': (payload: TValuePayload<boolean>) => void
 		/** change:closable */
-		'change:closable': (value: boolean) => void
+		'change:closable': (payload: TValuePayload<boolean>) => void
 		/** change:lazyMount */
-		'change:lazyMount': (value: boolean) => void
+		'change:lazyMount': (payload: TValuePayload<boolean>) => void
 		/** change:placement */
-		'change:placement': (value: TPopoverPlacement) => void
+		'change:placement': (payload: TValuePayload<TPopoverPlacement>) => void
 		/** change:contained */
-		'change:contained': (value: boolean) => void
+		'change:contained': (payload: TValuePayload<boolean>) => void
 		/** change:edge */
-		'change:edge': (value: TPopoverEdge) => void
+		'change:edge': (payload: TValuePayload<TPopoverEdge>) => void
 		/** change:triggerAria — набор атрибутов триггера изменился */
-		'change:triggerAria': (value: TAriaAttributes) => void
+		'change:triggerAria': (payload: TValuePayload<TAriaAttributes>) => void
 		/** change:closeAria — набор атрибутов кнопки закрытия изменился */
-		'change:closeAria': (value: TAriaAttributes) => void
+		'change:closeAria': (payload: TValuePayload<TAriaAttributes>) => void
 	}
 
 export interface IPopoverProps extends IComponentViewProps {

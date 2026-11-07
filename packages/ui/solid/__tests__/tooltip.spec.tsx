@@ -264,7 +264,12 @@ describe('показ и скрытие', () => {
 
 		expect(ctrl.open).toBe(false)
 		expect(isOpen()).toBe(false)
-		expect(onChangeOpen.mock.calls).toEqual([[true], [false], [true], [false]])
+		expect(onChangeOpen.mock.calls).toEqual([
+			[{ newValue: true, oldValue: false }],
+			[{ newValue: false, oldValue: true }],
+			[{ newValue: true, oldValue: false }],
+			[{ newValue: false, oldValue: true }],
+		])
 	})
 
 	it('open из разметки показывает и прячет', async () => {

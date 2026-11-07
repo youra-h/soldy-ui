@@ -239,18 +239,17 @@ function snapshotsOf(fill: () => void): number {
 	}
 }
 
-// One snapshot per composition change — the list `change:items` carries —
-// and none per inserted item: the position "at the end" is the insert
-// command's, read from the storage length
+// One pair of shallow snapshots per composition change, not per inserted
+// item inside a batch. Item objects retain their identities in both lists.
 describe('движок без компонента · снимки состава', () => {
-	it('снимок — один на смену состава: пачка — один, push по одному — по одному на элемент', () => {
-		expect(snapshotsOf(() => createEngine({ items: sources(COUNT) }))).toBe(1)
+	it('пара снимков — на всю пачку; отдельная вставка — отдельный переход', () => {
+		expect(snapshotsOf(() => createEngine({ items: sources(COUNT) }))).toBe(2)
 
 		const engine = createEngine<TSource>()
 
 		expect(
 			snapshotsOf(() => sources(COUNT).forEach((item) => engine.extensions.plain.push(item))),
-		).toBe(COUNT)
+		).toBe(2 * COUNT)
 		expect(engine.extensions.batch.items.map((item) => item.value)).toEqual(
 			sources(COUNT).map((item) => item.value),
 		)

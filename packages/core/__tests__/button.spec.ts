@@ -53,7 +53,7 @@ describe('TButton', () => {
 		const btn = new TButton({ view: 'ghost' })
 		const seen: unknown[] = []
 
-		btn.events.on('change:view', (value) => seen.push(value))
+		btn.events.on('change:view', ({ newValue: value }) => seen.push(value))
 
 		btn.view = undefined
 

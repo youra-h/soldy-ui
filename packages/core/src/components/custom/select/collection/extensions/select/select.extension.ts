@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../../../../common'
 import {
 	TBaseOwnerItemExtension,
 	batchOf,
@@ -198,8 +199,9 @@ export class TSelectExtension<
 			// `indicator` item-адаптеры читают из расширения — сообщить, если он
 			// сменился вместе с владельцем
 			if (indicator !== this.indicator) {
+				const oldValue = indicator
 				indicator = this.indicator
-				this.events.emit('change:indicator', indicator)
+				this.events.emit('change:indicator', { newValue: indicator, oldValue })
 			}
 
 			// Атрибуты темы — от текущего владельца или от умолчаний
@@ -217,11 +219,15 @@ export class TSelectExtension<
 
 			// Смена у владельца — всем элементам: `disabled` распространяется на
 			// них, как у `<fieldset>`, `size` и `variant` диктует он
-			scope.on(owner.events, 'change:disabled', (value: boolean) => {
-				ctx.driver.valueOf().forEach((item) => {
-					item.disabled = value
-				})
-			})
+			scope.on(
+				owner.events,
+				'change:disabled',
+				({ newValue: value }: TValuePayload<boolean>) => {
+					ctx.driver.valueOf().forEach((item) => {
+						item.disabled = value
+					})
+				},
+			)
 			scope.on(owner.events, 'change:size', () =>
 				ctx.driver.valueOf().forEach((item) => this._applyStyle(item as TItem, owner)),
 			)
@@ -234,11 +240,16 @@ export class TSelectExtension<
 			})
 
 			// Сторона отметки доезжает до опций и item-адаптеров
-			scope.on(owner.events, 'change:indicator', (value: TListIndicator) => {
-				indicator = value
-				ctx.driver.valueOf().forEach((item) => this._applyIndicator(item as TItem))
-				this.events.emit('change:indicator', value)
-			})
+			scope.on(
+				owner.events,
+				'change:indicator',
+				({ newValue: value }: TValuePayload<TListIndicator>) => {
+					const oldValue = indicator
+					indicator = value
+					ctx.driver.valueOf().forEach((item) => this._applyIndicator(item as TItem))
+					this.events.emit('change:indicator', { newValue: value, oldValue })
+				},
+			)
 
 			scope.on(owner.events, 'change:placeholder', () => this._syncFieldPlaceholder())
 

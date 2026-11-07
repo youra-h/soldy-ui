@@ -114,8 +114,8 @@ describe('слой', () => {
 		expect(layout.styles).toEqual({ 'z-index': 0 })
 		expect(layout.backdropStyles).toEqual({ 'z-index': 0 })
 
-		layout.events.on('change:styles', styles)
-		layout.events.on('change:backdropStyles', backdrop)
+		layout.events.on('change:styles', ({ newValue }) => styles(newValue))
+		layout.events.on('change:backdropStyles', ({ newValue }) => backdrop(newValue))
 		dialog.ready = true
 
 		expect(dialog.zIndex).toBeGreaterThan(0)
@@ -337,7 +337,7 @@ describe('отступ', () => {
 			layout.events.on('offset:before', (event) => {
 				event.top = 80
 			})
-			layout.events.on('change:styles', change)
+			layout.events.on('change:styles', ({ newValue }) => change(newValue))
 			layout.created()
 
 			expect(change).toHaveBeenCalledOnce()
@@ -352,7 +352,7 @@ describe('отступ', () => {
 			const styles = layout.styles
 			const change = vi.fn()
 
-			layout.events.on('change:styles', change)
+			layout.events.on('change:styles', ({ newValue }) => change(newValue))
 			layout.created()
 
 			expect(change).not.toHaveBeenCalled()
@@ -410,7 +410,7 @@ describe('значение, а не ручка на состояние', () => {
 		const { dialog, layout } = setup()
 		const backdrop = vi.fn()
 
-		layout.events.on('change:backdropStyles', backdrop)
+		layout.events.on('change:backdropStyles', ({ newValue }) => backdrop(newValue))
 		dialog.width = 480
 
 		expect(backdrop).not.toHaveBeenCalled()

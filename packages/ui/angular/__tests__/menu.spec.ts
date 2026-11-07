@@ -259,7 +259,7 @@ const variantsOf = (target: Element | null | undefined) =>
 		[openOn]="openOn()"
 		[engine]="engine"
 		(soChoose)="chosen.push($event.value)"
-		(soChangeOpen)="open.set($event)"
+		(soChangeOpen)="open.set($event.newValue)"
 	>
 		${TRIGGER}
 	</span>`,
@@ -510,7 +510,7 @@ describe('нажатие пунктов', () => {
 				value="grid"
 				text="Сетка"
 				[selected]="grid()"
-				(soChangeSelected)="grid.set($event)"
+				(soChangeSelected)="grid.set($event.newValue)"
 			></div>
 			<div so-menu-checkbox-item value="ruler" text="Линейка" selected></div>
 			<div so-menu-item value="edit" text="Изменить"></div>
@@ -720,14 +720,14 @@ describe('переключатели', () => {
 					value="name"
 					text="name"
 					[selected]="name()"
-					(soChangeSelected)="name.set($event)"
+					(soChangeSelected)="name.set($event.newValue)"
 				></div>
 				<div
 					so-menu-radio-item
 					value="date"
 					text="date"
 					[selected]="date()"
-					(soChangeSelected)="date.set($event)"
+					(soChangeSelected)="date.set($event.newValue)"
 				></div>
 			</div>
 		</span>`,
@@ -1571,7 +1571,7 @@ describe('подменю', () => {
 					[variant]="own()"
 					[rendered]="shareRendered()"
 					[open]="shareOpen()"
-					(soChangeOpen)="shareOpen.set($event)"
+					(soChangeOpen)="shareOpen.set($event.newValue)"
 					(soChoose)="nested.push($event.value)"
 				>
 					<div so-menu-item value="link" text="Ссылка"></div>
@@ -2754,7 +2754,7 @@ describe('пункт с панелью', () => {
 					[lazyMount]="lazyMount()"
 					[variant]="variant()"
 					[open]="dueOpen()"
-					(soChangeOpen)="dueOpen.set($event)"
+					(soChangeOpen)="dueOpen.set($event.newValue)"
 				>
 					<button class="so-test-earlier">Раньше</button>
 					<button class="so-test-later">Позже</button>

@@ -309,15 +309,21 @@ export class TDatePicker
 
 		// Набор кнопки: `dialog`, а не `true` — `true` у ARIA значит `menu`
 		this._triggerAria = new TAria()
-		this._triggerAria.subscribe(() =>
-			this.events.emit('change:triggerAria', this._triggerAria.toObject()),
+		this._triggerAria.subscribe((_set, oldValue) =>
+			this.events.emit('change:triggerAria', {
+				newValue: this._triggerAria.toObject(),
+				oldValue,
+			}),
 		)
 		this._triggerAria.add('aria-haspopup', 'dialog')
 
 		// Набор панели: диалог, модальный для клавиатуры и скринридера
 		this._panelAria = new TAria()
-		this._panelAria.subscribe(() =>
-			this.events.emit('change:panelAria', this._panelAria.toObject()),
+		this._panelAria.subscribe((_set, oldValue) =>
+			this.events.emit('change:panelAria', {
+				newValue: this._panelAria.toObject(),
+				oldValue,
+			}),
 		)
 		this._panelAria.add('role', 'dialog')
 		this._panelAria.add('aria-modal', 'true')
@@ -381,6 +387,8 @@ export class TDatePicker
 	 * the mode's form is laid out over the new mode's fields here.
 	 */
 	set mode(value: TDatePickerMode) {
+		const oldMode = this.mode
+
 		if (this._mode === value) return
 
 		this._classes.swapClass({ oldClass: `--${this._mode}`, newClass: `--${value}` })
@@ -391,7 +399,7 @@ export class TDatePicker
 		this._engine.extensions.selection.mode = value
 		this._acceptCalendar()
 		this._write('fields')
-		this.events.emit('change:mode', value)
+		this.events.emit('change:mode', { newValue: value, oldValue: oldMode })
 	}
 
 	get open(): boolean {
@@ -406,6 +414,8 @@ export class TDatePicker
 	 * сбрасывает черновик, каким бы путём панель ни закрыли.
 	 */
 	set open(value: boolean) {
+		const oldOpen = this.open
+
 		if (this._open === value) return
 		if (value && !this.openable) return
 
@@ -418,7 +428,7 @@ export class TDatePicker
 			this._commit.close()
 		}
 
-		this.events.emit('change:open', value)
+		this.events.emit('change:open', { newValue: value, oldValue: oldOpen })
 		this.events.emit(value ? 'open' : 'close')
 	}
 
@@ -453,10 +463,12 @@ export class TDatePicker
 	}
 
 	set closeOnSelect(value: boolean) {
+		const oldCloseOnSelect = this.closeOnSelect
+
 		if (this._closeOnSelect === value) return
 
 		this._closeOnSelect = value
-		this.events.emit('change:closeOnSelect', value)
+		this.events.emit('change:closeOnSelect', { newValue: value, oldValue: oldCloseOnSelect })
 	}
 
 	get confirmable(): boolean {
@@ -469,12 +481,14 @@ export class TDatePicker
 	 * панели черновика нет, и запись — эхо.
 	 */
 	set confirmable(value: boolean) {
+		const oldConfirmable = this.confirmable
+
 		if (this._confirmable === value) return
 
 		this._confirmable = value
 		this._commit = commitOf(value, this._commitHost)
 		this._write('calendar')
-		this.events.emit('change:confirmable', value)
+		this.events.emit('change:confirmable', { newValue: value, oldValue: oldConfirmable })
 	}
 
 	/**
@@ -504,13 +518,15 @@ export class TDatePicker
 
 	/** Полю одной даты и началу — как есть, концу — вместе с началом (`_syncEndMin`). */
 	set min(value: TCalendarDate | undefined) {
+		const oldMin = this.min
+
 		if (this._min === value) return
 
 		this._min = value
 		this._unanchored.forEach((input) => (input.min = value))
 		this._syncEndMin()
 		this._calendar.min = value
-		this.events.emit('change:min', value)
+		this.events.emit('change:min', { newValue: value, oldValue: oldMin })
 	}
 
 	get max(): TCalendarDate | undefined {
@@ -519,13 +535,15 @@ export class TDatePicker
 
 	/** Всем полям; `min` конца зависит и от него — начало за `max` его не поднимает. */
 	set max(value: TCalendarDate | undefined) {
+		const oldMax = this.max
+
 		if (this._max === value) return
 
 		this._max = value
 		this._inputs.forEach((input) => (input.max = value))
 		this._syncEndMin()
 		this._calendar.max = value
-		this.events.emit('change:max', value)
+		this.events.emit('change:max', { newValue: value, oldValue: oldMax })
 	}
 
 	/**
@@ -537,13 +555,15 @@ export class TDatePicker
 	}
 
 	set unavailable(value: TCalendarUnavailable | undefined) {
+		const oldUnavailable = this.unavailable
+
 		if (this._unavailable === value) return
 
 		this._unavailable = value
 		this._unanchored.forEach((input) => (input.unavailable = value))
 		this._syncEndRule()
 		this._calendar.unavailable = value
-		this.events.emit('change:unavailable', value)
+		this.events.emit('change:unavailable', { newValue: value, oldValue: oldUnavailable })
 	}
 
 	/**
@@ -556,11 +576,13 @@ export class TDatePicker
 	}
 
 	set validate(value: boolean) {
+		const oldValidate = this.validate
+
 		if (this._validate === value) return
 
 		this._validate = value
 		this._inputs.forEach((input) => (input.validate = value))
-		this.events.emit('change:validate', value)
+		this.events.emit('change:validate', { newValue: value, oldValue: oldValidate })
 	}
 
 	get weekStart(): TWeekday | undefined {
@@ -568,11 +590,13 @@ export class TDatePicker
 	}
 
 	set weekStart(value: TWeekday | undefined) {
+		const oldWeekStart = this.weekStart
+
 		if (this._weekStart === value) return
 
 		this._weekStart = value
 		this._calendar.weekStart = value
-		this.events.emit('change:weekStart', value)
+		this.events.emit('change:weekStart', { newValue: value, oldValue: oldWeekStart })
 	}
 
 	get locale(): string {
@@ -580,12 +604,14 @@ export class TDatePicker
 	}
 
 	set locale(value: string) {
+		const oldLocale = this.locale
+
 		if (this._locale === value) return
 
 		this._locale = value
 		this._inputs.forEach((input) => (input.locale = value))
 		this._calendar.locale = value
-		this.events.emit('change:locale', value)
+		this.events.emit('change:locale', { newValue: value, oldValue: oldLocale })
 	}
 
 	get timeZone(): string | undefined {
@@ -593,11 +619,13 @@ export class TDatePicker
 	}
 
 	set timeZone(value: string | undefined) {
+		const oldTimeZone = this.timeZone
+
 		if (this._timeZone === value) return
 
 		this._timeZone = value
 		this._calendar.timeZone = value
-		this.events.emit('change:timeZone', value)
+		this.events.emit('change:timeZone', { newValue: value, oldValue: oldTimeZone })
 	}
 
 	/**
@@ -609,11 +637,13 @@ export class TDatePicker
 	}
 
 	set startName(value: string) {
+		const oldStartName = this.startName
+
 		if (this._startName === value) return
 
 		this._startName = value
 		if (this._start) this._start.name = value
-		this.events.emit('change:startName', value)
+		this.events.emit('change:startName', { newValue: value, oldValue: oldStartName })
 	}
 
 	/** Имя конца диапазона в форме — `name` поля конца. */
@@ -622,11 +652,13 @@ export class TDatePicker
 	}
 
 	set endName(value: string) {
+		const oldEndName = this.endName
+
 		if (this._endName === value) return
 
 		this._endName = value
 		if (this._end) this._end.name = value
-		this.events.emit('change:endName', value)
+		this.events.emit('change:endName', { newValue: value, oldValue: oldEndName })
 	}
 
 	/**
@@ -639,6 +671,8 @@ export class TDatePicker
 	}
 
 	set swipe(value: TSwipe) {
+		const oldSwipe = this.swipe
+
 		if (this._swipe === value) return
 
 		this._swipe = value
@@ -646,7 +680,7 @@ export class TDatePicker
 		// Жест выключили посреди жеста — тянуть больше нечего
 		if (value === 'none') this._setSwiping(false)
 
-		this.events.emit('change:swipe', value)
+		this.events.emit('change:swipe', { newValue: value, oldValue: oldSwipe })
 	}
 
 	/**
@@ -816,10 +850,12 @@ export class TDatePicker
 	}
 
 	protected _setSwiping(value: boolean): void {
+		const oldSwiping = this.swiping
+
 		if (this._swiping === value) return
 
 		this._swiping = value
-		this.events.emit('change:swiping', value)
+		this.events.emit('change:swiping', { newValue: value, oldValue: oldSwiping })
 	}
 
 	/**
@@ -889,24 +925,24 @@ export class TDatePicker
 
 	/** Свои свойства из базы — полям и календарю. */
 	private _listenOwn(): void {
-		this.events.on('change:disabled', (value: boolean) => {
+		this.events.on('change:disabled', ({ newValue: value }: TValuePayload<boolean>) => {
 			// Закрыть раньше, чем выключится календарь: снять начатый диапазон
 			// выключенным он не даст
 			this._syncOpenable()
 			this._inputs.forEach((input) => (input.disabled = value))
 			this._calendar.disabled = value
 		})
-		this.events.on('change:readonly', (value: boolean) => {
+		this.events.on('change:readonly', ({ newValue: value }: TValuePayload<boolean>) => {
 			this._syncOpenable()
 			this._inputs.forEach((input) => (input.readonly = value))
 		})
-		this.events.on('change:required', (value: boolean) => {
+		this.events.on('change:required', ({ newValue: value }: TValuePayload<boolean>) => {
 			this._inputs.forEach((input) => (input.required = value))
 		})
 		// Ошибка поля формы — полям, как `required`: `aria-invalid` стоит на их
 		// частях. Свою проверку — границы и конец раньше начала — поля держат
 		// сами, и ошибка DatePicker её не стирает
-		this.events.on('change:invalid', (value: boolean) => {
+		this.events.on('change:invalid', ({ newValue: value }: TValuePayload<boolean>) => {
 			this._inputs.forEach((input) => (input.invalid = value))
 		})
 		this.events.on('change:size', (payload: TValuePayload<TComponentSize>) => {
@@ -920,7 +956,7 @@ export class TDatePicker
 				this._calendar.variant = payload.newValue
 			},
 		)
-		this.events.on('change:name', (value: string) => {
+		this.events.on('change:name', ({ newValue: value }: TValuePayload<string>) => {
 			if (this._field) this._field.name = value
 		})
 	}
@@ -1006,8 +1042,11 @@ export class TDatePicker
 
 		// Якорь ставит первый день диапазона и снимает второй, а смена режима и
 		// отмена — только снимают: каждая его смена выключает «OK» или включает
-		selection.events.on('change:anchor', (anchor) =>
-			this.events.emit('change:confirmDisabled', anchor !== undefined),
+		selection.events.on('change:anchor', ({ newValue: anchor, oldValue }) =>
+			this.events.emit('change:confirmDisabled', {
+				newValue: anchor !== undefined,
+				oldValue: oldValue !== undefined,
+			}),
 		)
 	}
 

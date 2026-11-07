@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../common'
 import type {
 	IValueControl,
 	IValueControlProps,
@@ -46,23 +47,23 @@ export type TCalendarWeekday = {
 
 export type TCalendarEvents = TValueControlEvents<TCalendarValue> & {
 	/** change:min */
-	'change:min': (value: TCalendarDate | undefined) => void
+	'change:min': (payload: TValuePayload<TCalendarDate | undefined>) => void
 	/** change:max */
-	'change:max': (value: TCalendarDate | undefined) => void
+	'change:max': (payload: TValuePayload<TCalendarDate | undefined>) => void
 	/** change:unavailable */
-	'change:unavailable': (value: TCalendarUnavailable | undefined) => void
+	'change:unavailable': (payload: TValuePayload<TCalendarUnavailable | undefined>) => void
 	/** change:weekStart */
-	'change:weekStart': (value: TWeekday | undefined) => void
+	'change:weekStart': (payload: TValuePayload<TWeekday | undefined>) => void
 	/** change:locale */
-	'change:locale': (value: string) => void
+	'change:locale': (payload: TValuePayload<string>) => void
 	/** change:timeZone */
-	'change:timeZone': (value: string | undefined) => void
+	'change:timeZone': (payload: TValuePayload<string | undefined>) => void
 	/** Сменились показанные месяцы — записью, листанием или уходом фокуса */
-	'change:months': (value: TCalendarDate[] | undefined) => void
+	'change:months': (payload: TValuePayload<TCalendarDate[] | undefined>) => void
 	/** change:prevAria — набор атрибутов кнопки «предыдущий месяц» изменился */
-	'change:prevAria': (value: TAriaAttributes) => void
+	'change:prevAria': (payload: TValuePayload<TAriaAttributes>) => void
 	/** change:nextAria — набор атрибутов кнопки «следующий месяц» изменился */
-	'change:nextAria': (value: TAriaAttributes) => void
+	'change:nextAria': (payload: TValuePayload<TAriaAttributes>) => void
 }
 
 /** Пропсы самого календаря (без коллекционной части). */

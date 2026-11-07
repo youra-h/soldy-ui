@@ -53,7 +53,7 @@ describe('TBatchExtension', () => {
 		const changeItems = vi.fn()
 		const added = vi.fn()
 
-		col.extensions.plain.events.on('change:items', changeItems)
+		col.extensions.plain.events.on('change:items', ({ newValue }) => changeItems(newValue))
 		col.extensions.plain.events.on('item:added', added)
 
 		col.extensions.batch.set([
@@ -175,7 +175,7 @@ describe('TBatchExtension', () => {
 
 		const changeItems = vi.fn()
 
-		col.extensions.plain.events.on('change:items', changeItems)
+		col.extensions.plain.events.on('change:items', ({ newValue }) => changeItems(newValue))
 
 		col.extensions.batch.set([{ id: 1, name: 'a' }])
 		changeItems.mockClear()
@@ -239,7 +239,7 @@ describe('TBatchExtension — пустой items с trackBy', () => {
 		const changeItems = vi.fn()
 		const added = vi.fn()
 
-		col.extensions.plain.events.on('change:items', changeItems)
+		col.extensions.plain.events.on('change:items', ({ newValue }) => changeItems(newValue))
 		col.extensions.batch.events.on('items:added', added)
 
 		col.extensions.batch.items = []
@@ -256,7 +256,7 @@ describe('TBatchExtension — пустой items с trackBy', () => {
 		const changeItems = vi.fn()
 		const added = vi.fn()
 
-		col.extensions.plain.events.on('change:items', changeItems)
+		col.extensions.plain.events.on('change:items', ({ newValue }) => changeItems(newValue))
 		col.extensions.batch.events.on('items:added', added)
 
 		col.extensions.batch.items = []
@@ -306,7 +306,7 @@ describe('TBatchExtension — items тем же составом', () => {
 		if (!first) throw new Error('состав пуст')
 
 		col.extensions.selection.select(first)
-		col.extensions.plain.events.on('change:items', changeItems)
+		col.extensions.plain.events.on('change:items', ({ newValue }) => changeItems(newValue))
 		col.extensions.batch.items = [...col.extensions.batch.items]
 
 		expect(changeItems).not.toHaveBeenCalled()
@@ -323,7 +323,7 @@ describe('TBatchExtension — items тем же составом', () => {
 
 		const changeItems = vi.fn()
 
-		col.extensions.plain.events.on('change:items', changeItems)
+		col.extensions.plain.events.on('change:items', ({ newValue }) => changeItems(newValue))
 		col.extensions.batch.items = [...col.extensions.batch.items].reverse()
 
 		expect(changeItems).toHaveBeenCalled()

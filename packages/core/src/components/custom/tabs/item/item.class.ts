@@ -55,8 +55,8 @@ export default class TTabsItem<
 		this._aria.add('role', 'tab')
 
 		this._closeAria = new TAria()
-		this._closeAria.subscribe(() =>
-			this._sink.emit('change:closeAria', this._closeAria.toObject()),
+		this._closeAria.subscribe((_set, oldValue) =>
+			this._sink.emit('change:closeAria', { newValue: this._closeAria.toObject(), oldValue }),
 		)
 
 		// Кнопка закрытия — не остановка Tab: по паттерну APG Tabs весь список —
@@ -116,6 +116,8 @@ export default class TTabsItem<
 	}
 
 	set closable(value: boolean | undefined) {
+		const oldClosable = this.closable
+
 		if (value === this._closable) return
 
 		const e = new TChangeEvent(value, this._closable)
@@ -126,7 +128,7 @@ export default class TTabsItem<
 
 		this._closable = e.value
 		this._classes.toggle(`--closable`, !!e.value)
-		this._sink.emit('change:closable', e.value)
+		this._sink.emit('change:closable', { newValue: e.value, oldValue: oldClosable })
 	}
 
 	/**

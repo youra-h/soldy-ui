@@ -114,7 +114,13 @@ describe('Составные props меняют идентичность при 
 		const heard: unknown[] = []
 
 		facade.connect(CommonProfile).events.listen((name, args) => {
-			if (name === 'change:items') heard.push(args[0])
+			if (name === 'change:items') {
+				const payload = args[0]
+				if (typeof payload !== 'object' || payload === null || !('newValue' in payload)) {
+					throw new Error('Expected a property change payload')
+				}
+				heard.push(payload.newValue)
+			}
 		})
 
 		const { plain } = facade.instance.extensions

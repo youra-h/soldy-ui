@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../../../../common'
 import type { ITabs } from '../../../types'
 import type { IExtension, IExtensionItems } from '../../../../../base/collection'
 import type { ITabsItemExtension } from './item'
@@ -41,5 +42,5 @@ export type TTabsEngineOptions<TOwner extends ITabs = ITabs> = {
  */
 export type TTabsExtensionEvents = {
 	'item:close': (item: ITabsItem) => void
-	'change:closable': (value: boolean) => void
+	'change:closable': (payload: TValuePayload<boolean>) => void
 }

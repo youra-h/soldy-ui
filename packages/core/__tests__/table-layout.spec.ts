@@ -291,7 +291,7 @@ describe('расширение: раскладка', () => {
 		const city = columnOf(engine, 'city')
 		const width = vi.fn()
 
-		city.events.on('change:width', width)
+		city.events.on('change:width', ({ newValue }) => width(newValue))
 		engine.extensions.columns.notifySpace(400.7)
 		engine.extensions.columns.notifySpace(400.2)
 
@@ -306,8 +306,8 @@ describe('расширение: раскладка', () => {
 		const cityWidth = vi.fn()
 		const nameWidth = vi.fn()
 
-		city.events.on('change:width', cityWidth)
-		name.events.on('change:width', nameWidth)
+		city.events.on('change:width', ({ newValue }) => cityWidth(newValue))
+		name.events.on('change:width', ({ newValue }) => nameWidth(newValue))
 
 		engine.extensions.columns.notifySpace(1000)
 
@@ -407,7 +407,7 @@ describe('расширение: раскладка', () => {
 			const width = vi.fn()
 
 			engine.extensions.columns.notifySpace(800)
-			city.events.on('change:width', width)
+			city.events.on('change:width', ({ newValue }) => width(newValue))
 
 			// Запись сменила и свою ширину имени, и его границу
 			engine.extensions.columns.columns = [{ ...NAME, width: 300, minWidth: 100 }, CITY]
@@ -483,7 +483,7 @@ describe('расширение: раскладка', () => {
 			const owner = new TTable()
 			const changed = vi.fn()
 
-			owner.events.on('change:columnFit', changed)
+			owner.events.on('change:columnFit', ({ newValue }) => changed(newValue))
 
 			owner.columnFit = 'auto'
 			owner.columnFit = 'none'
@@ -661,7 +661,7 @@ describe('расширение: колонки перед тянутой дер�
 		const width = vi.fn()
 		const resize = vi.fn()
 
-		a.events.on('change:width', width)
+		a.events.on('change:width', ({ newValue }) => width(newValue))
 		engine.extensions.columns.events.on('column:resize', resize)
 
 		b.grab()
@@ -713,7 +713,7 @@ describe('расширение: колонки перед тянутой дер�
 		const order: string[] = []
 
 		b.events.on('resize:start', () => order.push(`start ${b.width}`))
-		b.events.on('change:width', (value) => order.push(`width ${value}`))
+		b.events.on('change:width', ({ newValue: value }) => order.push(`width ${value}`))
 
 		b.grab()
 		b.drag(10)

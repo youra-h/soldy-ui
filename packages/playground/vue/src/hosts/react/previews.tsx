@@ -1,5 +1,5 @@
 import { useRef, useState, type ReactNode } from 'react'
-import type { TToastsItemType } from '@soldy-ui/core'
+import type { TToastsItemType, TValuePayload } from '@soldy-ui/core'
 import type {
 	DescriptorSlots,
 	MenuDescriptor,
@@ -188,10 +188,11 @@ function useShown(bind: Readonly<Record<string, unknown>>) {
 	return {
 		shown,
 		setShown,
-		onChangeVisible: (value: boolean) => {
+		onChangeVisible: (payload: TValuePayload<boolean>) => {
+			const value = payload.newValue
 			setShown(value)
 
-			if (typeof journal === 'function') journal(value)
+			if (typeof journal === 'function') journal(payload)
 		},
 	}
 }

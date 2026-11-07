@@ -98,16 +98,22 @@ export default class TPopover
 		this._aria.add('role', 'dialog')
 
 		this._triggerAria = new TAria()
-		this._triggerAria.subscribe(() =>
-			this.events.emit('change:triggerAria', this._triggerAria.toObject()),
+		this._triggerAria.subscribe((_set, oldValue) =>
+			this.events.emit('change:triggerAria', {
+				newValue: this._triggerAria.toObject(),
+				oldValue,
+			}),
 		)
 
 		// `dialog`, а не `true`: `true` у ARIA значит `menu`
 		this._triggerAria.add('aria-haspopup', 'dialog')
 
 		this._closeAria = new TAria()
-		this._closeAria.subscribe(() =>
-			this.events.emit('change:closeAria', this._closeAria.toObject()),
+		this._closeAria.subscribe((_set, oldValue) =>
+			this.events.emit('change:closeAria', {
+				newValue: this._closeAria.toObject(),
+				oldValue,
+			}),
 		)
 
 		this._applyOpen(props.open ?? ctor.defaultValues.open)
@@ -118,10 +124,12 @@ export default class TPopover
 	}
 
 	set open(value: boolean) {
+		const oldOpen = this.open
+
 		if (this._open === value) return
 
 		this._applyOpen(value)
-		this.events.emit('change:open', value)
+		this.events.emit('change:open', { newValue: value, oldValue: oldOpen })
 	}
 
 	/**
@@ -133,10 +141,12 @@ export default class TPopover
 	}
 
 	set closable(value: boolean) {
+		const oldClosable = this.closable
+
 		if (this._closable === value) return
 
 		this._closable = value
-		this.events.emit('change:closable', value)
+		this.events.emit('change:closable', { newValue: value, oldValue: oldClosable })
 	}
 
 	/**
@@ -151,10 +161,12 @@ export default class TPopover
 	}
 
 	set lazyMount(value: boolean) {
+		const oldLazyMount = this.lazyMount
+
 		if (this._lazyMount === value) return
 
 		this._lazyMount = value
-		this.events.emit('change:lazyMount', value)
+		this.events.emit('change:lazyMount', { newValue: value, oldValue: oldLazyMount })
 	}
 
 	/**
@@ -166,10 +178,12 @@ export default class TPopover
 	}
 
 	set placement(value: TPopoverPlacement) {
+		const oldPlacement = this.placement
+
 		if (this._placement === value) return
 
 		this._placement = value
-		this.events.emit('change:placement', value)
+		this.events.emit('change:placement', { newValue: value, oldValue: oldPlacement })
 	}
 
 	/**
@@ -184,12 +198,15 @@ export default class TPopover
 	}
 
 	set contained(value: boolean) {
+		const oldContained = this.contained
+		const oldSwipeSide = this.swipeSide
+
 		if (this._contained === value) return
 
 		this._contained = value
-		this.events.emit('change:contained', value)
+		this.events.emit('change:contained', { newValue: value, oldValue: oldContained })
 		// Место панели решает, куда она уходит жестом
-		this.events.emit('change:swipeSide', this.swipeSide)
+		this.events.emit('change:swipeSide', { newValue: this.swipeSide, oldValue: oldSwipeSide })
 	}
 
 	/**
@@ -203,13 +220,20 @@ export default class TPopover
 	}
 
 	set edge(value: TPopoverEdge) {
+		const oldEdge = this.edge
+		const oldSwipeSide = this.swipeSide
+
 		if (this._edge === value) return
 
 		this._edge = value
-		this.events.emit('change:edge', value)
+		this.events.emit('change:edge', { newValue: value, oldValue: oldEdge })
 
 		// Сторона ухода сменилась только у панели в контейнере
-		if (this._contained) this.events.emit('change:swipeSide', this.swipeSide)
+		if (this._contained)
+			this.events.emit('change:swipeSide', {
+				newValue: this.swipeSide,
+				oldValue: oldSwipeSide,
+			})
 	}
 
 	/**
@@ -221,6 +245,8 @@ export default class TPopover
 	}
 
 	set swipe(value: TSwipe) {
+		const oldSwipe = this.swipe
+
 		if (this._swipe === value) return
 
 		this._swipe = value
@@ -228,7 +254,7 @@ export default class TPopover
 		// Жест выключили посреди жеста — тянуть больше нечего
 		if (value === 'none') this._setSwiping(false)
 
-		this.events.emit('change:swipe', value)
+		this.events.emit('change:swipe', { newValue: value, oldValue: oldSwipe })
 	}
 
 	/**
@@ -355,10 +381,12 @@ export default class TPopover
 	}
 
 	protected _setSwiping(value: boolean): void {
+		const oldSwiping = this.swiping
+
 		if (this._swiping === value) return
 
 		this._swiping = value
-		this.events.emit('change:swiping', value)
+		this.events.emit('change:swiping', { newValue: value, oldValue: oldSwiping })
 	}
 
 	override getProps(): IPopoverProps {

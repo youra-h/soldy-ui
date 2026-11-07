@@ -27,7 +27,7 @@ import {
 	type RadioGroupItemProps,
 	type RadioGroupProps,
 } from '@soldy-ui/svelte'
-import type { IRadioGroupItem } from '@soldy-ui/core'
+import type { IRadioGroupItem, TValuePayload } from '@soldy-ui/core'
 import Harness from './RadioGroup.test.svelte'
 import Model from './RadioGroupModel.test.svelte'
 import { contentOf, mount, nextFrame } from './mount'
@@ -281,7 +281,7 @@ describe('отметка радио: active и onChangeActive', () => {
 		const radio = (value: string, active: boolean): RadioGroupItemProps => ({
 			value,
 			active,
-			onChangeActive: (next) => {
+			onChangeActive: ({ newValue: next }) => {
 				log.push(`${value}: ${next}`)
 
 				const own = props.items?.find((candidate) => candidate.value === value)
@@ -313,7 +313,7 @@ describe('отметка радио: active и onChangeActive', () => {
 	it('колбэк получает отметку: boolean', () => {
 		expectTypeOf<NonNullable<RadioGroupItemProps['onChangeActive']>>()
 			.parameter(0)
-			.toEqualTypeOf<boolean>()
+			.toEqualTypeOf<TValuePayload<boolean>>()
 	})
 })
 

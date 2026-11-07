@@ -87,10 +87,12 @@ export default class TField extends TStylable<IFieldProps, TFieldEvents> impleme
 	}
 
 	set label(value: string) {
+		const oldLabel = this.label
+
 		if (this._label === value) return
 
 		this._label = value
-		this._sink.emit('change:label', value)
+		this._sink.emit('change:label', { newValue: value, oldValue: oldLabel })
 	}
 
 	get helper(): string {
@@ -98,10 +100,12 @@ export default class TField extends TStylable<IFieldProps, TFieldEvents> impleme
 	}
 
 	set helper(value: string) {
+		const oldHelper = this.helper
+
 		if (this._helper === value) return
 
 		this._helper = value
-		this._sink.emit('change:helper', value)
+		this._sink.emit('change:helper', { newValue: value, oldValue: oldHelper })
 	}
 
 	get error(): string {
@@ -109,10 +113,12 @@ export default class TField extends TStylable<IFieldProps, TFieldEvents> impleme
 	}
 
 	set error(value: string) {
+		const oldError = this.error
+
 		if (this._error === value) return
 
 		this._error = value
-		this._sink.emit('change:error', value)
+		this._sink.emit('change:error', { newValue: value, oldValue: oldError })
 	}
 
 	get invalid(): boolean {
@@ -120,10 +126,12 @@ export default class TField extends TStylable<IFieldProps, TFieldEvents> impleme
 	}
 
 	set invalid(value: boolean) {
+		const oldInvalid = this.invalid
+
 		if (this._invalid === value) return
 
 		this._invalid = value
-		this._sink.emit('change:invalid', value)
+		this._sink.emit('change:invalid', { newValue: value, oldValue: oldInvalid })
 	}
 
 	get position(): TFieldPosition {
@@ -131,10 +139,12 @@ export default class TField extends TStylable<IFieldProps, TFieldEvents> impleme
 	}
 
 	set position(value: TFieldPosition) {
+		const oldPosition = this.position
+
 		if (this._position === value) return
 
 		this._applyPosition(value, this._position)
-		this._sink.emit('change:position', value)
+		this._sink.emit('change:position', { newValue: value, oldValue: oldPosition })
 	}
 
 	/** Ошибка видна: поле невалидно, и текст ошибки есть. */
@@ -187,7 +197,9 @@ export default class TField extends TStylable<IFieldProps, TFieldEvents> impleme
 	/** Живой набор части: о записи в него сообщает своё событие. */
 	private _partAria(event: 'change:labelAria' | 'change:helperAria' | 'change:errorAria'): TAria {
 		const aria: TAria = new TAria()
-		aria.subscribe(() => this._sink.emit(event, aria.toObject()))
+		aria.subscribe((_set, oldValue) =>
+			this._sink.emit(event, { newValue: aria.toObject(), oldValue }),
+		)
 
 		return aria
 	}

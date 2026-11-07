@@ -1,10 +1,11 @@
+import type { TValuePayload } from '../../../../../../common'
 import type { IExtension } from '../../../../../base/collection'
 import type { TAriaAttributes } from '../../../../../../common'
 import type { ITableRow } from '../../../row/types'
 
 export type TTableWindowEvents = {
 	/** Набор строки шапки сменился: окно поставили или сняли */
-	'change:headRowAria': (value: TAriaAttributes) => void
+	'change:headRowAria': (payload: TValuePayload<TAriaAttributes>) => void
 }
 
 /**

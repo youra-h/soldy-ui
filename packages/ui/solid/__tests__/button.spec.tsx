@@ -2,7 +2,7 @@ import { TPluginBundle } from '@soldy-ui/plugins'
 import { describe, it, expect, afterEach, vi } from 'vitest'
 import { createSignal, type ComponentProps } from 'solid-js'
 import { render } from 'solid-js/web'
-import { TButton } from '@soldy-ui/core'
+import { TButton, type TValuePayload } from '@soldy-ui/core'
 import { TActionPlugin } from '@soldy-ui/plugins'
 import { Button } from '@soldy-ui/solid'
 
@@ -189,7 +189,7 @@ describe('Button · события через колбэк-пропы', () => {
 		const ctrl = new TButton({ view: 'solid' })
 		const seen: (string | undefined)[] = []
 
-		mount({ ctrl, onChangeView: (v) => seen.push(v) })
+		mount({ ctrl, onChangeView: ({ newValue: v }) => seen.push(v) })
 
 		ctrl.view = 'ghost'
 
@@ -200,7 +200,10 @@ describe('Button · события через колбэк-пропы', () => {
 		const ctrl = new TButton()
 		const seen: boolean[] = []
 
-		mount({ ctrl, onChangeVisible: (v: boolean) => seen.push(v) })
+		mount({
+			ctrl,
+			onChangeVisible: ({ newValue: v }: TValuePayload<boolean>) => seen.push(v),
+		})
 
 		ctrl.hide()
 

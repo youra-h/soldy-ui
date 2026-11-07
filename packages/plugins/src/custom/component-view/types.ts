@@ -1,3 +1,4 @@
+import type { TValuePayload } from '@soldy-ui/core'
 import type { TPluginEvents } from '../../base'
 
 /**
@@ -16,11 +17,11 @@ export interface IAriaPluginOptions {
 
 export type TAriaPluginEvents = TPluginEvents & {
 	/** change:label */
-	'change:label': (value: string | undefined) => void
+	'change:label': (payload: TValuePayload<string | undefined>) => void
 	/** change:labelledBy */
-	'change:labelledBy': (value: string | undefined) => void
+	'change:labelledBy': (payload: TValuePayload<string | undefined>) => void
 	/** change:describedBy */
-	'change:describedBy': (value: string | undefined) => void
+	'change:describedBy': (payload: TValuePayload<string | undefined>) => void
 }
 
 /**

@@ -52,7 +52,7 @@ import { find, nextFrame } from './mount'
 		[type]="type()"
 		[placement]="placement()"
 		[rendered]="rendered()"
-		(soChangeOpen)="changes.push($event)"
+		(soChangeOpen)="changes.push($event.newValue)"
 	>
 		<ng-template slot="trigger" let-triggerAria="triggerAria">
 			<button

@@ -46,6 +46,7 @@ export class TCollectionStorageDriver<T> implements ICollectionStorageDriver<T> 
 	 * @param command Команда для выполнения
 	 */
 	public execute(command: ICommand<T>): void {
+		const oldValue = this._isBatching ? undefined : this.valueOf()
 		// apply отвечает за мутацию и синхронные «before»-хуки (например, item factory).
 		// Выполняется всегда сразу, в том числе внутри батча.
 		const ctx: ICommandContext<T> = { storage: this._storage, events: this.events }
@@ -55,8 +56,8 @@ export class TCollectionStorageDriver<T> implements ICollectionStorageDriver<T> 
 		if (!this._isBatching) {
 			command.emitEvents(ctx)
 
-			if (command.changed) {
-				this.events.emit('change:items', this.valueOf())
+			if (command.changed && oldValue !== undefined) {
+				this.events.emit('change:items', { newValue: this.valueOf(), oldValue })
 			}
 		} else {
 			this._pendingCommands.push(command)
@@ -115,6 +116,7 @@ export class TCollectionStorageDriver<T> implements ICollectionStorageDriver<T> 
 	 * @param action Действие, выполняемое в режиме батча.
 	 */
 	public batch(action: () => void): void {
+		const oldValue = this._isBatching ? undefined : this.valueOf()
 		const wasBatching = this._isBatching
 		this._isBatching = true
 
@@ -131,8 +133,8 @@ export class TCollectionStorageDriver<T> implements ICollectionStorageDriver<T> 
 					cmd.emitEvents({ storage: this._storage, events: this.events }),
 				)
 
-				if (commandsToEmit.some((cmd) => cmd.changed)) {
-					this.events.emit('change:items', this.valueOf())
+				if (oldValue !== undefined && commandsToEmit.some((cmd) => cmd.changed)) {
+					this.events.emit('change:items', { newValue: this.valueOf(), oldValue })
 				}
 			}
 		}

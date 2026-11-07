@@ -168,11 +168,11 @@ async function controlled(html = '<div is="so-calendar"></div>'): Promise<TCalen
  */
 function returnMonths(el: TCalendarElementProps): void {
 	el.addEventListener('so:change:months', (event) => {
-		if (!(event instanceof CustomEvent) || !Array.isArray(event.detail)) return
+		if (!(event instanceof CustomEvent)) return
+		const months: unknown = event.detail.newValue
+		if (!Array.isArray(months)) return
 
-		el.months = event.detail.filter(
-			(month): month is TCalendarDate => typeof month === 'string',
-		)
+		el.months = months.filter((month): month is TCalendarDate => typeof month === 'string')
 	})
 }
 

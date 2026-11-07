@@ -1,4 +1,5 @@
 <script lang="ts">
+	import type { TValuePayload } from '@soldy-ui/core'
 	import { Button, Dialog, Input } from '@soldy-ui/svelte'
 	import type { TPreviewProps } from './previews'
 
@@ -25,12 +26,12 @@
 	}
 
 	/** Своё состояние, затем обработчик страницы (журнал событий): он не затирается. */
-	function onChangeVisible(value: boolean): void {
-		setShown(value)
+	function onChangeVisible(payload: TValuePayload<boolean>): void {
+		setShown(payload.newValue)
 
 		const listener = bind.onChangeVisible
 
-		if (typeof listener === 'function') listener(value)
+		if (typeof listener === 'function') listener(payload)
 	}
 </script>
 

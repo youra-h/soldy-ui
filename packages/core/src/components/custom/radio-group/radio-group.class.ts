@@ -55,10 +55,12 @@ export class TRadioGroup
 	}
 
 	set view(value: TRadioGroupView | undefined) {
+		const oldView = this.view
+
 		if (this._view === value) return
 
 		this._applyView(value, this._view)
-		this.events.emit('change:view', value)
+		this.events.emit('change:view', { newValue: value, oldValue: oldView })
 	}
 
 	/** Модификатор вида — с префиксом `--view-`; `swap` пропускает пустое значение. */

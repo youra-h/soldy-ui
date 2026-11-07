@@ -57,6 +57,8 @@ export class TTextareaNamesPlugin extends TNamesPlugin<ITextarea, TTextareaNames
 	}
 
 	protected override _name(owner: ITextarea, translations: TTranslations): void {
+		const oldCounter = this.counter
+
 		const tag = this._locale?.locale.tag
 		const count = owner.textLength.toLocaleString(tag)
 		const max = owner.maxlength
@@ -68,7 +70,7 @@ export class TTextareaNamesPlugin extends TNamesPlugin<ITextarea, TTextareaNames
 		if (this._counter === counter) return
 
 		this._counter = counter
-		this._sink.emit('change:counter', counter)
+		this._sink.emit('change:counter', { newValue: counter, oldValue: oldCounter })
 	}
 
 	protected override _watch(owner: ITextarea, name: () => void): void {

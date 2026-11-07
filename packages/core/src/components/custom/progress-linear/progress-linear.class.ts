@@ -57,10 +57,12 @@ export default class TProgressLinear
 	}
 
 	set orientation(value: TProgressLinearOrientation) {
+		const oldOrientation = this.orientation
+
 		if (this._orientation === value) return
 
 		this._applyOrientation(value, this._orientation)
-		this.events.emit('change:orientation', value)
+		this.events.emit('change:orientation', { newValue: value, oldValue: oldOrientation })
 	}
 
 	/* ------------------------------------------------------------------ */

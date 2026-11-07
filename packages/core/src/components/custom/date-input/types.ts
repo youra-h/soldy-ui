@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../common'
 import type { IClearable, IClearableProps, TClearableEvents } from '../../base/clearable'
 import type {
 	TAria,
@@ -172,19 +173,19 @@ export type TDateInputEdit = {
 
 export type TDateInputEvents = TClearableEvents<TDateInputValue> & {
 	/** change:min */
-	'change:min': (value: TDateInputBound) => void
+	'change:min': (payload: TValuePayload<TDateInputBound>) => void
 	/** change:max */
-	'change:max': (value: TDateInputBound) => void
+	'change:max': (payload: TValuePayload<TDateInputBound>) => void
 	/** change:unavailable */
-	'change:unavailable': (value: TCalendarUnavailable | undefined) => void
+	'change:unavailable': (payload: TValuePayload<TCalendarUnavailable | undefined>) => void
 	/** change:locale */
-	'change:locale': (value: string) => void
+	'change:locale': (payload: TValuePayload<string>) => void
 	/** change:kind */
-	'change:kind': (value: TDateInputKind) => void
+	'change:kind': (payload: TValuePayload<TDateInputKind>) => void
 	/** change:timePrecision */
-	'change:timePrecision': (value: TTimePrecision) => void
+	'change:timePrecision': (payload: TValuePayload<TTimePrecision>) => void
 	/** change:validate */
-	'change:validate': (value: boolean) => void
+	'change:validate': (payload: TValuePayload<boolean>) => void
 	/**
 	 * Части надо перечитать: набрали, стёрли, вставили, записали значение, фокус
 	 * ушёл с части, где видны набранные нули, или плагин сменил набор части
@@ -192,7 +193,7 @@ export type TDateInputEvents = TClearableEvents<TDateInputValue> & {
 	 */
 	'change:segments': () => void
 	/** Сменилась часть под фокусом — плагин переводит туда DOM-фокус */
-	'change:focusedSegment': (part: TDateFieldPart | undefined) => void
+	'change:focusedSegment': (payload: TValuePayload<TDateFieldPart | undefined>) => void
 }
 
 export interface IDateInputProps extends IClearableProps<TDateInputValue> {

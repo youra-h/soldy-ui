@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../common'
 import type {
 	IValueControl,
 	IValueControlProps,
@@ -45,11 +46,11 @@ export type TTagsOverflow = 'wrap' | 'scroll'
 export type TTagsEvents = TValueControlEvents<TTagsValue> &
 	TCollectionStorageDriverEvents<ITagsItem> & {
 		/** change:closable */
-		'change:closable': (value: boolean) => void
+		'change:closable': (payload: TValuePayload<boolean>) => void
 		/** change:view */
-		'change:view': (value: TTagsView | undefined) => void
+		'change:view': (payload: TValuePayload<TTagsView | undefined>) => void
 		/** change:overflow */
-		'change:overflow': (value: TTagsOverflow) => void
+		'change:overflow': (payload: TValuePayload<TTagsOverflow>) => void
 	}
 
 /** Пропсы самого компонента (без коллекционной части). */

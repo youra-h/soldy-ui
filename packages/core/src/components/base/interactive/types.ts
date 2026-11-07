@@ -1,13 +1,14 @@
+import type { TValuePayload } from '../../../common'
 import type { IComponentView, IComponentViewProps, TComponentViewEvents } from '../component-view'
 import type { TChangeEvent } from '../../../common'
 
 export type TInteractiveEvents = TComponentViewEvents & {
 	/** change:disabled */
-	'change:disabled': (value: boolean) => void
+	'change:disabled': (payload: TValuePayload<boolean>) => void
 	/** Запись `disabled` — подправить или отменить (`TChangeEvent`) */
 	'change:disabled:before': (e: TChangeEvent<boolean>) => void
 	/** change:focused */
-	'change:focused': (value: boolean) => void
+	'change:focused': (payload: TValuePayload<boolean>) => void
 	/** Запись `focused` — подправить или отменить (`TChangeEvent`) */
 	'change:focused:before': (e: TChangeEvent<boolean>) => void
 }

@@ -50,34 +50,34 @@ export type TNumberInputEdit = {
 
 export type TNumberInputEvents = TClearableEvents<TNumberInputValue> & {
 	/** change:min */
-	'change:min': (value: number | undefined) => void
+	'change:min': (payload: TValuePayload<number | undefined>) => void
 	/** change:max */
-	'change:max': (value: number | undefined) => void
+	'change:max': (payload: TValuePayload<number | undefined>) => void
 	/** change:step */
-	'change:step': (value: number) => void
+	'change:step': (payload: TValuePayload<number>) => void
 	/** change:largeStep */
-	'change:largeStep': (value: number) => void
+	'change:largeStep': (payload: TValuePayload<number>) => void
 	/** change:formatOptions */
-	'change:formatOptions': (value: TNumberInputFormatOptions | undefined) => void
+	'change:formatOptions': (payload: TValuePayload<TNumberInputFormatOptions | undefined>) => void
 	/** change:placeholder */
-	'change:placeholder': (value: string) => void
+	'change:placeholder': (payload: TValuePayload<string>) => void
 	/** change:locale */
-	'change:locale': (value: string) => void
+	'change:locale': (payload: TValuePayload<string>) => void
 	/** change:text — сменился текст поля: набор, шаг, запись значения, смена формата */
-	'change:text': (value: string) => void
+	'change:text': (payload: TValuePayload<string>) => void
 	/**
 	 * Плагин сменил набор поля (`inputSets`). Без аргумента: событие значит
 	 * «перечитай `inputAria` и `inputAttrs`»
 	 */
 	'change:inputSets': () => void
 	/** change:decrementAria — набор кнопки «меньше» изменился */
-	'change:decrementAria': (value: TAriaAttributes) => void
+	'change:decrementAria': (payload: TValuePayload<TAriaAttributes>) => void
 	/** change:incrementAria — набор кнопки «больше» изменился */
-	'change:incrementAria': (value: TAriaAttributes) => void
+	'change:incrementAria': (payload: TValuePayload<TAriaAttributes>) => void
 	/** change:decrementDataset — набор темы кнопки «меньше» изменился */
-	'change:decrementDataset': (value: TDatasetAttributes) => void
+	'change:decrementDataset': (payload: TValuePayload<TDatasetAttributes>) => void
 	/** change:incrementDataset — набор темы кнопки «больше» изменился */
-	'change:incrementDataset': (value: TDatasetAttributes) => void
+	'change:incrementDataset': (payload: TValuePayload<TDatasetAttributes>) => void
 	/**
 	 * Пользователь закончил менять значение: набор — уходом фокуса или Enter,
 	 * шаг клавишей, нажатие или удержание кнопки шага — отпусканием, очистка.

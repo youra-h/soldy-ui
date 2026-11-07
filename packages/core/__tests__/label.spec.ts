@@ -52,7 +52,7 @@ describe('TLabel', () => {
 		const label = new TLabel()
 		const changed = vi.fn()
 
-		label.events.on('change:position', changed)
+		label.events.on('change:position', ({ newValue }) => changed(newValue))
 
 		label.position = 'start'
 		label.position = 'start'

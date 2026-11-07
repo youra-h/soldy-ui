@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../../../../common'
 import type {
 	IExtension,
 	IExtensionItems,
@@ -22,9 +23,9 @@ export type TTableShownSelection = 'all' | 'some' | 'none' | 'empty'
 
 export type TTableExtensionEvents = {
 	/** Сменилось, сколько показанных строк выбрано. Одно событие на действие */
-	'change:shownSelection': (value: TTableShownSelection) => void
+	'change:shownSelection': (payload: TValuePayload<TTableShownSelection>) => void
 	/** Выбор строк включили или выключили: режим выбора стал `none` или перестал им быть */
-	'change:selecting': (value: boolean) => void
+	'change:selecting': (payload: TValuePayload<boolean>) => void
 }
 
 export type TTableItemEvents = TBaseItemEventsExtension & {

@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../common'
 import type { IControl, IControlProps, TControlEvents } from '../../base/control'
 import type { TThemeRegistry } from '../../../common'
 import type { TCollectionStorageDriverEvents } from '../../base/collection'
@@ -20,15 +21,15 @@ export type TTabsView = Extract<keyof ITabsViews, string>
 export type TTabsEvents = TControlEvents &
 	TCollectionStorageDriverEvents<ITabsItem> & {
 		/** change:orientation */
-		'change:orientation': (value: TTabsOrientation) => void
+		'change:orientation': (payload: TValuePayload<TTabsOrientation>) => void
 		/** change:alignment */
-		'change:alignment': (value: TTabsAlignment) => void
+		'change:alignment': (payload: TValuePayload<TTabsAlignment>) => void
 		/** change:position */
-		'change:position': (value: TTabsPosition) => void
+		'change:position': (payload: TValuePayload<TTabsPosition>) => void
 		/** change:view */
-		'change:view': (value: TTabsView | undefined) => void
+		'change:view': (payload: TValuePayload<TTabsView | undefined>) => void
 		/** change:closable */
-		'change:closable': (value: boolean) => void
+		'change:closable': (payload: TValuePayload<boolean>) => void
 		// /** item:close — эмитится перед удалением таба при закрытии */
 		// 'item:close': (item: ITabsItem) => void
 		// /** item:closable — эмитится при изменении свойства closable у таба */

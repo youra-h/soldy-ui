@@ -46,11 +46,13 @@ export class TBatchExtension<TItem extends object>
 	}
 
 	set trackBy(fn: ((item: TCollectionEngineItemSource<TItem> | TItem) => unknown) | undefined) {
+		const oldTrackBy = this.trackBy
+
 		if (this._trackBy === fn) return
 
 		this._trackBy = fn
 
-		this.events.emit('change:trackBy', fn)
+		this.events.emit('change:trackBy', { newValue: fn, oldValue: oldTrackBy })
 	}
 
 	/**

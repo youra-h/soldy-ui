@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../common'
 import type {
 	IInputControl,
 	IInputControlProps,
@@ -24,8 +25,8 @@ export interface ICheckBoxProps extends IInputControlProps<boolean | undefined> 
 }
 
 export type TCheckBoxEvents = TInputControlEvents<boolean | undefined> & {
-	'change:indeterminate': (value: boolean) => void
-	'change:view': (value: TCheckBoxView | undefined) => void
+	'change:indeterminate': (payload: TValuePayload<boolean>) => void
+	'change:view': (payload: TValuePayload<TCheckBoxView | undefined>) => void
 }
 
 export interface ICheckBox extends IInputControl<

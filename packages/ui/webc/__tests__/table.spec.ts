@@ -1,3 +1,4 @@
+import { propertyDetail } from './property-detail'
 /**
  * Table под Web Components — проводка на настоящей разметке.
  *
@@ -130,7 +131,8 @@ function collect(target: EventTarget, name: string): unknown[] {
 	const seen: unknown[] = []
 
 	target.addEventListener(name, (event) => {
-		if (event instanceof CustomEvent && event.target === target) seen.push(event.detail)
+		if (event instanceof CustomEvent && event.target === target)
+			seen.push(propertyDetail(event))
 	})
 
 	return seen

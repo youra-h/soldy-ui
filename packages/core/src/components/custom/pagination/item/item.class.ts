@@ -61,10 +61,12 @@ export default class TPaginationItem
 	}
 
 	set text(value: string) {
+		const oldText = this.text
+
 		if (this._text === value) return
 
 		this._text = value
-		this.events.emit('change:text', value)
+		this.events.emit('change:text', { newValue: value, oldValue: oldText })
 	}
 
 	override getProps(): IPaginationItemProps {

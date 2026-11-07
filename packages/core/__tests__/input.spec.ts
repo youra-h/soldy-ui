@@ -54,11 +54,11 @@ describe('TInput', () => {
 		const focused = vi.fn()
 		const name = vi.fn()
 
-		input.events.on('change:readonly', readonly)
-		input.events.on('change:required', required)
-		input.events.on('change:disabled', disabled)
-		input.events.on('change:focused', focused)
-		input.events.on('change:name', name)
+		input.events.on('change:readonly', ({ newValue }) => readonly(newValue))
+		input.events.on('change:required', ({ newValue }) => required(newValue))
+		input.events.on('change:disabled', ({ newValue }) => disabled(newValue))
+		input.events.on('change:focused', ({ newValue }) => focused(newValue))
+		input.events.on('change:name', ({ newValue }) => name(newValue))
 
 		input.readonly = true
 		expect(readonly).toHaveBeenCalledWith(true)
@@ -141,7 +141,7 @@ describe('TInput · очистка', () => {
 		expect(input.clearable).toBe(false)
 		expect(input.classes.toArray()).not.toContain('so-input--clearable')
 
-		input.events.on('change:clearable', handler)
+		input.events.on('change:clearable', ({ newValue }) => handler(newValue))
 		input.clearable = true
 
 		expect(input.classes.toArray()).toContain('so-input--clearable')
@@ -160,7 +160,7 @@ describe('TInput · очистка', () => {
 			const input = new TInput({ name: 'Город' })
 			const handler = vi.fn()
 
-			input.events.on('change:clearAria', handler)
+			input.events.on('change:clearAria', ({ newValue }) => handler(newValue))
 			input.clearAria.add('aria-label', 'Очистить Город')
 
 			expect(handler).toHaveBeenCalledWith({ 'aria-label': 'Очистить Город' })

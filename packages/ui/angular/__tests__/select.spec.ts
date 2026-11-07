@@ -42,6 +42,7 @@ import {
 	type TSelectValue,
 	type TSelectionMode,
 	type TSwipe,
+	type TValuePayload,
 } from '@soldy-ui/core'
 import { TAnchorPlugin, ruRU } from '@soldy-ui/plugins'
 import {
@@ -253,7 +254,7 @@ const ITEMS = [
 		[open]="opened()"
 		[rendered]="rendered()"
 		(soChangeValue)="values.push($event.newValue)"
-		(soChangeOpen)="opens.push($event); opened.set($event)"
+		(soChangeOpen)="opens.push($event.newValue); opened.set($event.newValue)"
 		(soEngineCreate)="engines.push($event)"
 	>
 		@for (option of options(); track $index) {
@@ -2389,12 +2390,14 @@ describe('типы', () => {
 	})
 
 	it('выходы — выходы компонента', () => {
-		expectTypeOf<TSelectComponent['soChangeOpen']>().toEqualTypeOf<EventEmitter<boolean>>()
+		expectTypeOf<TSelectComponent['soChangeOpen']>().toEqualTypeOf<
+			EventEmitter<TValuePayload<boolean>>
+		>()
 		expectTypeOf<TSelectComponent>().toHaveProperty('soOpen')
 		expectTypeOf<TSelectComponent>().toHaveProperty('soClose')
 		expectTypeOf<TSelectComponent>().toHaveProperty('soEngineCreate')
 		expectTypeOf<TSelectItemComponent['soChangeSelected']>().toEqualTypeOf<
-			EventEmitter<boolean>
+			EventEmitter<TValuePayload<boolean>>
 		>()
 		expectTypeOf<TSelectItemComponent>().toHaveProperty('soChangeOrder')
 	})

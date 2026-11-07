@@ -451,7 +451,7 @@ describe('ручной путь', () => {
 		const { owner, plugin } = await modal(1001)
 		const seen: boolean[] = []
 
-		plugin.events.on('change:enabled', (value) => seen.push(value))
+		plugin.events.on('change:enabled', ({ newValue: value }) => seen.push(value))
 
 		owner.open = true
 		owner.open = false
@@ -471,7 +471,7 @@ describe('уничтожение', () => {
 		const { owner, bundle, plugin } = await modal(1001)
 		const seen: boolean[] = []
 
-		plugin.events.on('change:enabled', (value) => seen.push(value))
+		plugin.events.on('change:enabled', ({ newValue: value }) => seen.push(value))
 
 		owner.open = true
 		bundle.destroy()

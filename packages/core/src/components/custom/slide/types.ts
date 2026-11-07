@@ -1,4 +1,4 @@
-import type { TClasses } from '../../../common'
+import type { TClasses, TValuePayload } from '../../../common'
 
 /**
  * Перетаскивание значения — **только контракт**, класса в этой папке нет.
@@ -57,8 +57,8 @@ export type TSlideSnap = 'none' | 'magnet' | 'plateau' | 'settle' | 'hold'
  * владельца подходит сюда структурно.
  */
 export interface ISlideEvents {
-	on(event: 'change:snap', handler: (value: TSlideSnap) => void): void
-	off(event: 'change:snap', handler: (value: TSlideSnap) => void): void
+	on(event: 'change:snap', handler: (payload: TValuePayload<TSlideSnap>) => void): void
+	off(event: 'change:snap', handler: (payload: TValuePayload<TSlideSnap>) => void): void
 }
 
 /**

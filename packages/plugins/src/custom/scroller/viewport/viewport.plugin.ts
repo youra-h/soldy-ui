@@ -1,3 +1,4 @@
+import type { TValuePayload } from '@soldy-ui/core'
 import type { IScroller, TScrollerDirection } from '@soldy-ui/core'
 import { TBasePlugin } from '../../../base'
 import type { IPluginContext } from '../../../base'
@@ -115,12 +116,20 @@ export class TScrollerViewportPlugin extends TBasePlugin<IScroller, TScrollerVie
 		)
 
 		// Край закрылся — кнопку этого края выключат вместе с фокусом на ней
-		this._listenTo(this._owner?.events, 'change:canPrev', (open: boolean) => {
-			if (!open) this._onEdgeClosed('prev')
-		})
-		this._listenTo(this._owner?.events, 'change:canNext', (open: boolean) => {
-			if (!open) this._onEdgeClosed('next')
-		})
+		this._listenTo(
+			this._owner?.events,
+			'change:canPrev',
+			({ newValue: open }: TValuePayload<boolean>) => {
+				if (!open) this._onEdgeClosed('prev')
+			},
+		)
+		this._listenTo(
+			this._owner?.events,
+			'change:canNext',
+			({ newValue: open }: TValuePayload<boolean>) => {
+				if (!open) this._onEdgeClosed('next')
+			},
+		)
 	}
 
 	override destroy(): void {

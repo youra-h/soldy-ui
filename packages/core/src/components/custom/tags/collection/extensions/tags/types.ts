@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../../../../common'
 import type { ITags } from '../../../types'
 import type { IExtension, IExtensionItems } from '../../../../../base/collection'
 import type { ITagsItemExtension } from './item'
@@ -45,5 +46,5 @@ export type TTagsEngineOptions<TOwner extends ITags = ITags> = {
 /** События расширения TTagsExtension. */
 export type TTagsExtensionEvents = {
 	'item:close': (item: ITagsItem) => void
-	'change:closable': (value: boolean) => void
+	'change:closable': (payload: TValuePayload<boolean>) => void
 }

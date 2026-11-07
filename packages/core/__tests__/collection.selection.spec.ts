@@ -721,7 +721,7 @@ describe('TSelectionExtension', () => {
 		const col = createCollection()
 		const handler = vi.fn()
 
-		col.extensions.selection.events.on('change:mode', handler)
+		col.extensions.selection.events.on('change:mode', ({ newValue }) => handler(newValue))
 		col.extensions.selection.mode = 'multiple'
 
 		expect(handler).toHaveBeenCalledWith('multiple')
@@ -731,7 +731,7 @@ describe('TSelectionExtension', () => {
 		const col = createCollection()
 		const handler = vi.fn()
 
-		col.extensions.selection.events.on('change:mode', handler)
+		col.extensions.selection.events.on('change:mode', ({ newValue }) => handler(newValue))
 		col.extensions.selection.mode = 'single' // уже single
 
 		expect(handler).not.toHaveBeenCalled()

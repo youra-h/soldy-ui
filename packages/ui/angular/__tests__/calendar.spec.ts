@@ -164,7 +164,7 @@ const textsOf = (element: Element) =>
 		[disabled]="disabled()"
 		[unavailable]="unavailable()"
 		(soChangeValue)="change($event)"
-		(soChangeMonths)="months.set($event)"
+		(soChangeMonths)="months.set($event.newValue)"
 	></div>`,
 })
 class Page {

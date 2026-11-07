@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../common'
 import type {
 	IInputControl,
 	IInputControlProps,
@@ -61,27 +62,27 @@ export type TSelectEvents = TInputControlEvents<TSelectValue> &
 	TListEvents &
 	TSwipeableEvents & {
 		/** change:open */
-		'change:open': (value: boolean) => void
+		'change:open': (payload: TValuePayload<boolean>) => void
 		/** open — панель открылась */
 		open: () => void
 		/** close — панель закрылась */
 		close: () => void
 		/** change:placeholder */
-		'change:placeholder': (value: string) => void
+		'change:placeholder': (payload: TValuePayload<string>) => void
 		/** change:closeOnSelect */
-		'change:closeOnSelect': (value: boolean) => void
+		'change:closeOnSelect': (payload: TValuePayload<boolean>) => void
 		/** change:clearable */
-		'change:clearable': (value: boolean) => void
+		'change:clearable': (payload: TValuePayload<boolean>) => void
 		/** change:editable */
-		'change:editable': (value: boolean) => void
+		'change:editable': (payload: TValuePayload<boolean>) => void
 		/** change:editableMode */
-		'change:editableMode': (value: TSelectEditableMode) => void
+		'change:editableMode': (payload: TValuePayload<TSelectEditableMode>) => void
 		/** change:removeOnBackspace */
-		'change:removeOnBackspace': (value: boolean) => void
+		'change:removeOnBackspace': (payload: TValuePayload<boolean>) => void
 		/** change:placement */
-		'change:placement': (value: TSelectPlacement) => void
+		'change:placement': (payload: TValuePayload<TSelectPlacement>) => void
 		/** change:listAria — набор атрибутов списка изменился */
-		'change:listAria': (value: TAriaAttributes) => void
+		'change:listAria': (payload: TValuePayload<TAriaAttributes>) => void
 	}
 
 /**

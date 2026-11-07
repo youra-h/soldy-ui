@@ -96,10 +96,12 @@ export class TListBox
 	}
 
 	set view(value: TListBoxView | undefined) {
+		const oldView = this.view
+
 		if (this._view === value) return
 
 		this._applyView(value, this._view)
-		this.events.emit('change:view', value)
+		this.events.emit('change:view', { newValue: value, oldValue: oldView })
 	}
 
 	/** Сколько строк показывать до появления прокрутки. `0` — все. */
@@ -108,10 +110,12 @@ export class TListBox
 	}
 
 	set maxRows(value: number) {
+		const oldMaxRows = this.maxRows
+
 		if (this._maxRows === value) return
 
 		this._maxRows = value
-		this.events.emit('change:maxRows', value)
+		this.events.emit('change:maxRows', { newValue: value, oldValue: oldMaxRows })
 	}
 
 	/** Что делать с не помещающимся текстом. */
@@ -120,10 +124,12 @@ export class TListBox
 	}
 
 	set contentFit(value: TListContentFit) {
+		const oldContentFit = this.contentFit
+
 		if (this._contentFit === value) return
 
 		this._applyContentFit(value)
-		this.events.emit('change:contentFit', value)
+		this.events.emit('change:contentFit', { newValue: value, oldValue: oldContentFit })
 	}
 
 	/** Как прокручивать к элементу при навигации. */
@@ -132,10 +138,12 @@ export class TListBox
 	}
 
 	set scrollBehavior(value: TScrollBehavior) {
+		const oldScrollBehavior = this.scrollBehavior
+
 		if (this._scrollBehavior === value) return
 
 		this._scrollBehavior = value
-		this.events.emit('change:scrollBehavior', value)
+		this.events.emit('change:scrollBehavior', { newValue: value, oldValue: oldScrollBehavior })
 	}
 
 	/** Где показывать отметку выбранного элемента. */
@@ -144,10 +152,12 @@ export class TListBox
 	}
 
 	set indicator(value: TListIndicator) {
+		const oldIndicator = this.indicator
+
 		if (this._indicator === value) return
 
 		this._applyIndicator(value)
-		this.events.emit('change:indicator', value)
+		this.events.emit('change:indicator', { newValue: value, oldValue: oldIndicator })
 	}
 
 	/**
@@ -159,10 +169,15 @@ export class TListBox
 	}
 
 	set groupSeparators(value: boolean) {
+		const oldGroupSeparators = this.groupSeparators
+
 		if (this._groupSeparators === value) return
 
 		this._groupSeparators = value
-		this.events.emit('change:groupSeparators', value)
+		this.events.emit('change:groupSeparators', {
+			newValue: value,
+			oldValue: oldGroupSeparators,
+		})
 	}
 
 	/** Модификатор вида — с префиксом `--view-`; `swap` пропускает пустое значение. */

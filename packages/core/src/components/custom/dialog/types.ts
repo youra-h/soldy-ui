@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../common'
 import type { IModalLayer, IModalLayerProps, TModalLayerEvents } from '../../base/modal-layer'
 import type { TAria, TAriaAttributes } from '../../../common'
 
@@ -13,19 +14,19 @@ export type TDialogPlacement = 'center' | 'start' | 'end' | 'top' | 'bottom'
 
 export type TDialogEvents = TModalLayerEvents & {
 	/** change:placement */
-	'change:placement': (value: TDialogPlacement) => void
+	'change:placement': (payload: TValuePayload<TDialogPlacement>) => void
 	/** change:offset */
-	'change:offset': (value: number | string | undefined) => void
+	'change:offset': (payload: TValuePayload<number | string | undefined>) => void
 	/** change:maximized */
-	'change:maximized': (value: boolean) => void
+	'change:maximized': (payload: TValuePayload<boolean>) => void
 	/** change:maximizable */
-	'change:maximizable': (value: boolean) => void
+	'change:maximizable': (payload: TValuePayload<boolean>) => void
 	/** change:alert */
-	'change:alert': (value: boolean) => void
+	'change:alert': (payload: TValuePayload<boolean>) => void
 	/** change:bodyAria — набор атрибутов тела изменился */
-	'change:bodyAria': (value: TAriaAttributes) => void
+	'change:bodyAria': (payload: TValuePayload<TAriaAttributes>) => void
 	/** change:maximizeAria — набор атрибутов кнопки разворота изменился */
-	'change:maximizeAria': (value: TAriaAttributes) => void
+	'change:maximizeAria': (payload: TValuePayload<TAriaAttributes>) => void
 }
 
 export interface IDialogProps extends IModalLayerProps {

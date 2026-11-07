@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../common'
 import type {
 	IValueControl,
 	IValueControlProps,
@@ -29,7 +30,7 @@ export type TListBoxEvents = TValueControlEvents<TListBoxValue> &
 	TCollectionStorageDriverEvents<IListBoxItem> &
 	TListEvents & {
 		/** change:view */
-		'change:view': (value: TListBoxView | undefined) => void
+		'change:view': (payload: TValuePayload<TListBoxView | undefined>) => void
 	}
 
 /**

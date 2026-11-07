@@ -513,7 +513,7 @@ describe('событие change:highlight', () => {
 		const { keyboard, press, items } = await setup(['Один', 'Два', 'Три'])
 		const seen: unknown[] = []
 
-		keyboard.events.on('change:highlight', (payload) => seen.push(payload))
+		keyboard.events.on('change:highlight', ({ newValue: payload }) => seen.push(payload))
 
 		press('ArrowDown')
 		press('ArrowDown')
@@ -531,7 +531,7 @@ describe('событие change:highlight', () => {
 		const { batch, selection } = facade.engine.extensions
 		const seen: unknown[] = []
 
-		keyboard.events.on('change:highlight', (payload) => seen.push(payload))
+		keyboard.events.on('change:highlight', ({ newValue: payload }) => seen.push(payload))
 
 		selection.select(batch.items[1])
 		pressOnRow(rows[2], 'Tab')
@@ -547,7 +547,7 @@ describe('событие change:highlight', () => {
 
 		items[0].disabled = true
 		selection.select(batch.items[1])
-		keyboard.events.on('change:highlight', (payload) => seen.push(payload))
+		keyboard.events.on('change:highlight', ({ newValue: payload }) => seen.push(payload))
 		press('ArrowDown')
 
 		expect(seen).toEqual([{ item: items[1], prevItem: null, nextItem: null }])

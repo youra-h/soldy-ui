@@ -16,8 +16,8 @@ describe('TInputControl', () => {
 		const c = new TInputControl({ value: '' })
 		const ro = vi.fn()
 		const req = vi.fn()
-		c.events.on('change:readonly', ro)
-		c.events.on('change:required', req)
+		c.events.on('change:readonly', ({ newValue }) => ro(newValue))
+		c.events.on('change:required', ({ newValue }) => req(newValue))
 
 		c.readonly = true
 		expect(ro).toHaveBeenCalledWith(true)

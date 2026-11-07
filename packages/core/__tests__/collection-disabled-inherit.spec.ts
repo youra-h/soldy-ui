@@ -28,7 +28,7 @@ import {
 	TTabs,
 	TTags,
 } from '@soldy-ui/core'
-import type { ITableRow, TDataset, TTableRecord } from '@soldy-ui/core'
+import type { ITableRow, TDataset, TTableRecord, TValuePayload } from '@soldy-ui/core'
 
 /** Источник элемента — то, что приходит в `items`. */
 type TSource = { value: string; disabled?: boolean }
@@ -38,7 +38,7 @@ type TItemProbe = {
 	disabled: boolean
 	readonly dataset: TDataset
 	readonly events: {
-		on(event: 'change:disabled', handler: (value: boolean) => void): void
+		on(event: 'change:disabled', handler: (payload: TValuePayload<boolean>) => void): void
 	}
 }
 
@@ -283,8 +283,8 @@ describe.each(cases)('$name · disabled владельца распростра�
 		const own = vi.fn()
 		const inherited = vi.fn()
 
-		item('a').events.on('change:disabled', own)
-		item('b').events.on('change:disabled', inherited)
+		item('a').events.on('change:disabled', ({ newValue }) => own(newValue))
+		item('b').events.on('change:disabled', ({ newValue }) => inherited(newValue))
 
 		owner.disabled = true
 

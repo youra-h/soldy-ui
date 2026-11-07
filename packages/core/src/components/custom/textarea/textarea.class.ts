@@ -73,8 +73,11 @@ export default class TTextarea
 		this._counter = props.counter ?? ctor.defaultValues.counter
 
 		this._counterAria = new TAria()
-		this._counterAria.subscribe(() =>
-			this.events.emit('change:counterAria', this._counterAria.toObject()),
+		this._counterAria.subscribe((_set, oldValue) =>
+			this.events.emit('change:counterAria', {
+				newValue: this._counterAria.toObject(),
+				oldValue,
+			}),
 		)
 
 		this.events.on('change:value', () => this._syncLimit())
@@ -88,10 +91,12 @@ export default class TTextarea
 	}
 
 	set placeholder(value: string) {
+		const oldPlaceholder = this.placeholder
+
 		if (this._placeholder === value) return
 
 		this._placeholder = value
-		this.events.emit('change:placeholder', value)
+		this.events.emit('change:placeholder', { newValue: value, oldValue: oldPlaceholder })
 	}
 
 	get rows(): number {
@@ -99,10 +104,12 @@ export default class TTextarea
 	}
 
 	set rows(value: number) {
+		const oldRows = this.rows
+
 		if (this._rows === value) return
 
 		this._rows = value
-		this.events.emit('change:rows', value)
+		this.events.emit('change:rows', { newValue: value, oldValue: oldRows })
 	}
 
 	get maxRows(): number {
@@ -110,10 +117,12 @@ export default class TTextarea
 	}
 
 	set maxRows(value: number) {
+		const oldMaxRows = this.maxRows
+
 		if (this._maxRows === value) return
 
 		this._maxRows = value
-		this.events.emit('change:maxRows', value)
+		this.events.emit('change:maxRows', { newValue: value, oldValue: oldMaxRows })
 	}
 
 	get maxlength(): number | undefined {
@@ -121,10 +130,12 @@ export default class TTextarea
 	}
 
 	set maxlength(value: number | undefined) {
+		const oldMaxlength = this.maxlength
+
 		if (this._maxlength === value) return
 
 		this._maxlength = value
-		this.events.emit('change:maxlength', value)
+		this.events.emit('change:maxlength', { newValue: value, oldValue: oldMaxlength })
 	}
 
 	get autoresize(): boolean {
@@ -132,10 +143,12 @@ export default class TTextarea
 	}
 
 	set autoresize(value: boolean) {
+		const oldAutoresize = this.autoresize
+
 		if (this._autoresize === value) return
 
 		this._autoresize = value
-		this.events.emit('change:autoresize', value)
+		this.events.emit('change:autoresize', { newValue: value, oldValue: oldAutoresize })
 	}
 
 	get counter(): boolean {
@@ -143,10 +156,12 @@ export default class TTextarea
 	}
 
 	set counter(value: boolean) {
+		const oldCounter = this.counter
+
 		if (this._counter === value) return
 
 		this._counter = value
-		this.events.emit('change:counter', value)
+		this.events.emit('change:counter', { newValue: value, oldValue: oldCounter })
 	}
 
 	/**

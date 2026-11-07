@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../../common'
 import type {
 	IComponentView,
 	IComponentViewProps,
@@ -103,45 +104,45 @@ export type TTableColumnGesture = {
 
 export type TTableColumnEvents = TComponentViewEvents & {
 	/** change:field */
-	'change:field': (value: string) => void
+	'change:field': (payload: TValuePayload<string>) => void
 	/** change:text */
-	'change:text': (value: string) => void
+	'change:text': (payload: TValuePayload<string>) => void
 	/**
 	 * Итог ширины сменился — от своего значения, ширины раскладки или границ.
 	 * `undefined` — ширина неизвестна, её решает тема
 	 */
-	'change:width': (value: number | undefined) => void
+	'change:width': (payload: TValuePayload<number | undefined>) => void
 	/** change:minWidth */
-	'change:minWidth': (value: number | undefined) => void
+	'change:minWidth': (payload: TValuePayload<number | undefined>) => void
 	/** change:maxWidth */
-	'change:maxWidth': (value: number | undefined) => void
+	'change:maxWidth': (payload: TValuePayload<number | undefined>) => void
 	/** change:align */
-	'change:align': (value: TTableColumnAlign) => void
+	'change:align': (payload: TValuePayload<TTableColumnAlign>) => void
 	/** change:sortable */
-	'change:sortable': (value: boolean) => void
+	'change:sortable': (payload: TValuePayload<boolean>) => void
 	/** change:compare */
-	'change:compare': (value: TTableCompare | undefined) => void
+	'change:compare': (payload: TValuePayload<TTableCompare | undefined>) => void
 	/** change:rowHeader */
-	'change:rowHeader': (value: boolean) => void
+	'change:rowHeader': (payload: TValuePayload<boolean>) => void
 	/** Итог `resizable` сменился — от своего значения или таблицы */
-	'change:resizable': (value: boolean) => void
+	'change:resizable': (payload: TValuePayload<boolean>) => void
 	/** Итог `reorderable` сменился — от своего значения или таблицы */
-	'change:reorderable': (value: boolean) => void
+	'change:reorderable': (payload: TValuePayload<boolean>) => void
 	/** change:disabled */
-	'change:disabled': (value: boolean) => void
+	'change:disabled': (payload: TValuePayload<boolean>) => void
 	/**
 	 * Поле ручки надо перечитать: сменились ход или ширина — своя, от
 	 * раскладки или от границ. Сверка — по содержимому
 	 */
-	'change:resizer': (value: TTableColumnResizer) => void
+	'change:resizer': (payload: TValuePayload<TTableColumnResizer>) => void
 	/** Ручку начали или перестали рисовать */
-	'change:resizerRendered': (value: boolean) => void
+	'change:resizerRendered': (payload: TValuePayload<boolean>) => void
 	/** Набор атрибутов поля ручки изменился */
-	'change:resizerAria': (value: TAriaAttributes) => void
+	'change:resizerAria': (payload: TValuePayload<TAriaAttributes>) => void
 	/** Набор атрибутов подписи заголовка изменился */
-	'change:textAria': (value: TAriaAttributes) => void
+	'change:textAria': (payload: TValuePayload<TAriaAttributes>) => void
 	/** Набор атрибутов кнопки сортировки изменился */
-	'change:sortAria': (value: TAriaAttributes) => void
+	'change:sortAria': (payload: TValuePayload<TAriaAttributes>) => void
 	/**
 	 * Отсортировать строки по колонке — нажали кнопку сортировки в заголовке.
 	 *
@@ -172,7 +173,7 @@ export type TTableColumnEvents = TComponentViewEvents & {
 	 * протяжки у таблицы — курсор ручки нужен с нажатия, а `resize:start`
 	 * приходит только с первым сдвигом
 	 */
-	'change:resizing': (value: boolean) => void
+	'change:resizing': (payload: TValuePayload<boolean>) => void
 }
 
 export interface ITableColumnProps extends IComponentViewProps {

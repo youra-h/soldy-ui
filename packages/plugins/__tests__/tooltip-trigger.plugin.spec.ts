@@ -1,3 +1,4 @@
+import type { TValuePayload } from '@soldy-ui/core'
 // @vitest-environment jsdom
 
 /**
@@ -520,7 +521,9 @@ describe('закрытие снаружи', () => {
 		const { owner, root } = mountTooltip({ openDelay: 0 })
 		const changes: boolean[] = []
 
-		owner.events.on('change:open', (value: boolean) => changes.push(value))
+		owner.events.on('change:open', ({ newValue: value }: TValuePayload<boolean>) =>
+			changes.push(value),
+		)
 		enter(root)
 		leave(root)
 		owner.open = false

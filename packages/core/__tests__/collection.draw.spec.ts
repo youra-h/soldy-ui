@@ -95,7 +95,7 @@ describe('без окна', () => {
 		const { draw, batch } = engineKit(3)
 		const changed = vi.fn()
 
-		draw.events.on('change:drawn', changed)
+		draw.events.on('change:drawn', ({ newValue }) => changed(newValue))
 		draw.pin('focus', batch.items[2])
 		draw.notifyViewport(viewport(0, 20))
 
@@ -256,7 +256,7 @@ describe('события — только на смену', () => {
 		const strategy = new TWindowStrategy()
 		const changed = vi.fn()
 
-		draw.events.on('change:virtual', changed)
+		draw.events.on('change:virtual', ({ newValue }) => changed(newValue))
 		draw.useStrategy(strategy)
 		draw.useStrategy(strategy)
 		draw.useStrategy(null)
@@ -270,7 +270,7 @@ describe('события — только на смену', () => {
 		const changed = vi.fn()
 
 		draw.useStrategy(new TWindowStrategy())
-		draw.events.on('change:drawn', changed)
+		draw.events.on('change:drawn', ({ newValue }) => changed(newValue))
 		draw.notifyViewport(viewport(800, 1000))
 		// Края полосы остались в тех же элементах — окно то же
 		draw.notifyViewport(viewport(805, 995))
@@ -283,8 +283,8 @@ describe('события — только на смену', () => {
 		const drawnChanged = vi.fn()
 		const virtualChanged = vi.fn()
 
-		draw.events.on('change:drawn', drawnChanged)
-		draw.events.on('change:virtual', virtualChanged)
+		draw.events.on('change:drawn', ({ newValue }) => drawnChanged(newValue))
+		draw.events.on('change:virtual', ({ newValue }) => virtualChanged(newValue))
 		draw.useStrategy(new TWindowStrategy())
 
 		expect(drawnChanged).not.toHaveBeenCalled()
@@ -395,7 +395,7 @@ describe('группы', () => {
 
 		draw.useStrategy(new TWindowStrategy())
 		draw.notifyViewport(viewport(800, 1000))
-		draw.events.on('change:virtual', virtual)
+		draw.events.on('change:virtual', ({ newValue }) => virtual(newValue))
 
 		group.groupBy = byKind
 
@@ -421,7 +421,7 @@ describe('группы', () => {
 		const virtual = vi.fn()
 
 		group.groupBy = byKind
-		draw.events.on('change:virtual', virtual)
+		draw.events.on('change:virtual', ({ newValue }) => virtual(newValue))
 		draw.useStrategy(new TWindowStrategy())
 
 		expect(draw.virtual).toBe(false)
@@ -436,8 +436,8 @@ describe('группы', () => {
 
 		group.groups = [{ key: 'even', label: 'Чётные' }]
 		group.groupBy = byKind
-		draw.events.on('change:drawn', drawnChanged)
-		draw.events.on('change:drawnSections', sectionsChanged)
+		draw.events.on('change:drawn', ({ newValue }) => drawnChanged(newValue))
+		draw.events.on('change:drawnSections', ({ newValue }) => sectionsChanged(newValue))
 
 		group.groups = [{ key: 'even', label: 'Парные' }]
 
@@ -453,8 +453,8 @@ describe('группы', () => {
 		const sectionsChanged = vi.fn()
 
 		group.groupBy = byKind
-		draw.events.on('change:drawn', drawnChanged)
-		draw.events.on('change:drawnSections', sectionsChanged)
+		draw.events.on('change:drawn', ({ newValue }) => drawnChanged(newValue))
+		draw.events.on('change:drawnSections', ({ newValue }) => sectionsChanged(newValue))
 
 		const release = group.register({ key: 'even', label: 'Чётные' })
 
@@ -476,7 +476,7 @@ describe('группы', () => {
 
 		const before = draw.drawnSections
 
-		draw.events.on('change:drawnSections', sectionsChanged)
+		draw.events.on('change:drawnSections', ({ newValue }) => sectionsChanged(newValue))
 		// Окно на сгруппированном списке не рисует: пересчёт даёт те же секции
 		draw.useStrategy(new TWindowStrategy())
 

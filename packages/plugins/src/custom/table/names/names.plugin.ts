@@ -23,11 +23,13 @@ export class TTableNamesPlugin extends TNamesPlugin<object, TTableNamesPluginEve
 	}
 
 	protected override _name(_owner: object, translations: TTranslations): void {
+		const oldSelectAll = this.selectAll
+
 		const selectAll = translations.table.selectAll
 
 		if (this._selectAll === selectAll) return
 
 		this._selectAll = selectAll
-		this._sink.emit('change:selectAll', selectAll)
+		this._sink.emit('change:selectAll', { newValue: selectAll, oldValue: oldSelectAll })
 	}
 }

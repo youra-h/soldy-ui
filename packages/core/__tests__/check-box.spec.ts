@@ -44,7 +44,7 @@ describe('TCheckBox', () => {
 		const cb = new TCheckBox({ view: 'bare' })
 		const changeView = vi.fn()
 
-		cb.events.on('change:view', changeView)
+		cb.events.on('change:view', ({ newValue }) => changeView(newValue))
 
 		cb.view = 'boxed'
 		expect(cb.classes.toArray()).toContain('so-check-box--view-boxed')

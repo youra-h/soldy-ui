@@ -143,11 +143,13 @@ export class TDismissPlugin extends TBasePlugin<any, TDismissPluginEvents> {
 	}
 
 	set enabled(value: boolean) {
+		const oldEnabled = this.enabled
+
 		if (this._enabled === value) return
 
 		this._enabled = value
 		this._sync()
-		this.events.emit('change:enabled', value)
+		this.events.emit('change:enabled', { newValue: value, oldValue: oldEnabled })
 	}
 
 	/**

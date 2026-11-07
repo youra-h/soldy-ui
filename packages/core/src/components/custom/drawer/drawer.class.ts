@@ -99,12 +99,15 @@ export default class TDrawer extends TModalLayer<IDrawerProps, TDrawerEvents> im
 	}
 
 	set placement(value: TDrawerPlacement) {
+		const oldPlacement = this.placement
+		const oldSwipeSide = this.swipeSide
+
 		if (this._placement === value) return
 
 		this._applyPlacement(value, this._placement)
-		this.events.emit('change:placement', value)
+		this.events.emit('change:placement', { newValue: value, oldValue: oldPlacement })
 		// Край — он же сторона ухода жестом
-		this.events.emit('change:swipeSide', value)
+		this.events.emit('change:swipeSide', { newValue: value, oldValue: oldSwipeSide })
 	}
 
 	/** За что панель можно утянуть к её краю: ни за что, за полосу или за любое место. */
@@ -113,6 +116,8 @@ export default class TDrawer extends TModalLayer<IDrawerProps, TDrawerEvents> im
 	}
 
 	set swipe(value: TSwipe) {
+		const oldSwipe = this.swipe
+
 		if (this._swipe === value) return
 
 		this._swipe = value
@@ -120,7 +125,7 @@ export default class TDrawer extends TModalLayer<IDrawerProps, TDrawerEvents> im
 		// Жест выключили посреди жеста — тянуть больше нечего
 		if (value === 'none') this._setSwiping(false)
 
-		this.events.emit('change:swipe', value)
+		this.events.emit('change:swipe', { newValue: value, oldValue: oldSwipe })
 	}
 
 	/** Панель внутри своего контейнера, а не поверх страницы. */
@@ -129,10 +134,12 @@ export default class TDrawer extends TModalLayer<IDrawerProps, TDrawerEvents> im
 	}
 
 	set contained(value: boolean) {
+		const oldContained = this.contained
+
 		if (this._contained === value) return
 
 		this._applyContained(value)
-		this.events.emit('change:contained', value)
+		this.events.emit('change:contained', { newValue: value, oldValue: oldContained })
 	}
 
 	/** Куда панель уходит жестом — к своему краю. */
@@ -193,21 +200,25 @@ export default class TDrawer extends TModalLayer<IDrawerProps, TDrawerEvents> im
 	}
 
 	protected _setSwiping(value: boolean): void {
+		const oldSwiping = this.swiping
+
 		if (this._swiping === value) return
 
 		this._swiping = value
 		this._dataset.add('swiping', value)
-		this.events.emit('change:swiping', value)
+		this.events.emit('change:swiping', { newValue: value, oldValue: oldSwiping })
 	}
 
 	/** `change:locksScroll` — только на смену: открытость и место меняются врозь. */
 	protected _syncLocksScroll(): void {
+		const oldLocksScroll = this.locksScroll
+
 		const value = this.locksScroll
 
 		if (this._locksScroll === value) return
 
 		this._locksScroll = value
-		this.events.emit('change:locksScroll', value)
+		this.events.emit('change:locksScroll', { newValue: value, oldValue: oldLocksScroll })
 	}
 
 	override getProps(): IDrawerProps {

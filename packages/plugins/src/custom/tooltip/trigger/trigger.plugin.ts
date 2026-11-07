@@ -85,7 +85,9 @@ export class TTooltipTriggerPlugin extends TBasePlugin<any, TTooltipTriggerPlugi
 
 		this._owner = ctx.getInstance<ITooltip>()
 		this._dismiss = ctx.get(TDismissPlugin) ?? null
-		this._listenTo(this._owner?.events, 'change:open', this._onOpenChange)
+		this._listenTo(this._owner?.events, 'change:open', ({ newValue }) =>
+			this._onOpenChange(newValue),
+		)
 
 		const elementPlugin = ctx.get(TElementPlugin)
 

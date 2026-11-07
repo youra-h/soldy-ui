@@ -16,7 +16,7 @@ import type { IMenuItem } from './item/types'
 /** События владельца пунктов меню, которые слушает его коллекция. */
 export type TMenuOwnerEvents = {
 	/** change:open */
-	'change:open': (value: boolean) => void
+	'change:open': (payload: TValuePayload<boolean>) => void
 	/** change:size */
 	'change:size': (payload: TValuePayload<TComponentSize>) => void
 	/** change:panelVariant — вариант панели с пунктами сменился */
@@ -87,21 +87,21 @@ export type TMenuPoint = { readonly x: number; readonly y: number }
 export type TMenuEvents = TStylableEvents &
 	TCollectionStorageDriverEvents<IMenuItem> & {
 		/** change:open */
-		'change:open': (value: boolean) => void
+		'change:open': (payload: TValuePayload<boolean>) => void
 		/** change:placement */
-		'change:placement': (value: TMenuPlacement) => void
+		'change:placement': (payload: TValuePayload<TMenuPlacement>) => void
 		/** change:openOn */
-		'change:openOn': (value: TMenuOpenOn) => void
+		'change:openOn': (payload: TValuePayload<TMenuOpenOn>) => void
 		/** change:point — точка вызова контекстного меню сменилась */
-		'change:point': (value: TMenuPoint | null) => void
+		'change:point': (payload: TValuePayload<TMenuPoint | null>) => void
 		/** change:triggerAria — набор атрибутов триггера изменился */
-		'change:triggerAria': (value: TAriaAttributes) => void
+		'change:triggerAria': (payload: TValuePayload<TAriaAttributes>) => void
 		/** change:panelClasses — классы панели изменились */
-		'change:panelClasses': (value: string[]) => void
+		'change:panelClasses': (payload: TValuePayload<string[]>) => void
 		/** change:panelVariant — вариант панели сменился: у меню — с его вариантом */
 		'change:panelVariant': (payload: TValuePayload<TComponentVariant | undefined>) => void
 		/** change:groupSeparators */
-		'change:groupSeparators': (value: boolean) => void
+		'change:groupSeparators': (payload: TValuePayload<boolean>) => void
 	}
 
 /** Пропсы самого меню (без коллекционной части). */

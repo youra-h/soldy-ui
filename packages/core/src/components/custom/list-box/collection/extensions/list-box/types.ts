@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../../../../common'
 import type { IListBox, TListBoxView } from '../../../types'
 import type { TListIndicator } from '../../../../list'
 import type { IExtension, IExtensionItems } from '../../../../../base/collection'
@@ -35,8 +36,8 @@ export type TListBoxEngineOptions<TOwner extends IListBox = IListBox> = {
 }
 
 export type TListBoxExtensionEvents = {
-	'change:view': (value: TListBoxView | undefined) => void
-	'change:indicator': (value: TListIndicator) => void
+	'change:view': (payload: TValuePayload<TListBoxView | undefined>) => void
+	'change:indicator': (payload: TValuePayload<TListIndicator>) => void
 	/**
 	 * Пользователь выбрал элемент — кликом по строке или Enter и пробелом.
 	 * Приходит на каждый принятый выбор, и на повторный выбор выбранного

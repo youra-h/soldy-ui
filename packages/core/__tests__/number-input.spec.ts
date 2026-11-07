@@ -290,7 +290,7 @@ describe('значение', () => {
 		const input = field({ formatOptions: { style: 'percent' } })
 		const spy = vi.fn()
 
-		input.events.on('change:formatOptions', spy)
+		input.events.on('change:formatOptions', ({ newValue }) => spy(newValue))
 		input.formatOptions = { style: 'percent' }
 
 		expect(spy).not.toHaveBeenCalled()
@@ -723,8 +723,8 @@ describe('разметка', () => {
 		expect(input.decrementAria.get('tabindex')).toBe('-1')
 		expect(input.incrementAria.get('tabindex')).toBe('-1')
 
-		input.events.on('change:incrementAria', aria)
-		input.events.on('change:incrementDataset', dataset)
+		input.events.on('change:incrementAria', ({ newValue }) => aria(newValue))
+		input.events.on('change:incrementDataset', ({ newValue }) => dataset(newValue))
 		input.incrementAria.add('aria-label', 'Увеличить')
 		input.incrementDataset.add('pressed', true)
 

@@ -190,7 +190,7 @@ describe('change:shown — как экран узнаёт, что показан
 		const changeItems = vi.fn()
 
 		col.extensions.batch.set(rows())
-		col.getCore().driver.events.on('change:items', changeItems)
+		col.getCore().driver.events.on('change:items', ({ newValue }) => changeItems(newValue))
 
 		col.extensions.filter.query = 'мария'
 		col.extensions.filter.clear()

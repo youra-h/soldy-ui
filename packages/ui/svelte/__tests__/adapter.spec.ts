@@ -111,7 +111,7 @@ describe('ядро меняется посреди отрисовки Svelte', (
 		const props = reactiveProps({ ctrl, blur: false })
 		const changes: boolean[] = []
 
-		ctrl.events.on('change:focused', (focused) => changes.push(focused))
+		ctrl.events.on('change:focused', ({ newValue: focused }) => changes.push(focused))
 		mount(RenderEvent, props)
 
 		// Слушатели фокуса плагин ставит по `ready` узла — через кадр

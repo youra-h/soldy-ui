@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../../../../common'
 import type {
 	IBaseOwnerItemExtensionOptions,
 	IExtension,
@@ -108,13 +109,15 @@ export class TListBoxExtension<
 			// `view` и `indicator` item-адаптеры читают из расширения — сообщить,
 			// если они сменились вместе с владельцем
 			if (view !== this.view) {
+				const oldValue = view
 				view = this.view
-				this.events.emit('change:view', view)
+				this.events.emit('change:view', { newValue: view, oldValue })
 			}
 
 			if (indicator !== this.indicator) {
+				const oldValue = indicator
 				indicator = this.indicator
-				this.events.emit('change:indicator', indicator)
+				this.events.emit('change:indicator', { newValue: indicator, oldValue })
 			}
 
 			// Атрибуты темы — от текущего владельца или от умолчаний
@@ -130,11 +133,15 @@ export class TListBoxExtension<
 
 			// Смена у владельца — всем элементам: `disabled` распространяется на
 			// них, как у `<fieldset>`, `size` и `variant` диктует он
-			scope.on(owner.events, 'change:disabled', (value: boolean) => {
-				ctx.driver.valueOf().forEach((item) => {
-					item.disabled = value
-				})
-			})
+			scope.on(
+				owner.events,
+				'change:disabled',
+				({ newValue: value }: TValuePayload<boolean>) => {
+					ctx.driver.valueOf().forEach((item) => {
+						item.disabled = value
+					})
+				},
+			)
 			scope.on(owner.events, 'change:size', () =>
 				ctx.driver.valueOf().forEach((item) => this._applyStyle(item as TItem, owner)),
 			)
@@ -149,15 +156,25 @@ export class TListBoxExtension<
 			})
 
 			// Сторона отметки и внешний вид доезжают до элементов и item-адаптеров
-			scope.on(owner.events, 'change:indicator', (value: TListIndicator) => {
-				indicator = value
-				ctx.driver.valueOf().forEach((item) => this._applyIndicator(item as TItem))
-				this.events.emit('change:indicator', value)
-			})
-			scope.on(owner.events, 'change:view', (value: TListBoxView | undefined) => {
-				view = value
-				this.events.emit('change:view', value)
-			})
+			scope.on(
+				owner.events,
+				'change:indicator',
+				({ newValue: value }: TValuePayload<TListIndicator>) => {
+					const oldValue = indicator
+					indicator = value
+					ctx.driver.valueOf().forEach((item) => this._applyIndicator(item as TItem))
+					this.events.emit('change:indicator', { newValue: value, oldValue })
+				},
+			)
+			scope.on(
+				owner.events,
+				'change:view',
+				({ newValue: value }: TValuePayload<TListBoxView | undefined>) => {
+					const oldValue = view
+					view = value
+					this.events.emit('change:view', { newValue: value, oldValue })
+				},
+			)
 
 			// Можно ли выбрать несколько, решает режим выбора — его знает коллекция,
 			// а не список: пришедший владелец получает `aria-multiselectable` по

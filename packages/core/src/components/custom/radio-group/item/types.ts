@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../../common'
 import type {
 	IValueControl,
 	IValueControlProps,
@@ -8,7 +9,7 @@ import type { TRadioGroupView } from '../types'
 
 export type TRadioGroupItemEvents = TValueControlEvents<string | number> & {
 	/** change:view */
-	'change:view': (value: TRadioGroupView | undefined) => void
+	'change:view': (payload: TValuePayload<TRadioGroupView | undefined>) => void
 }
 
 export interface IRadioGroupItemProps

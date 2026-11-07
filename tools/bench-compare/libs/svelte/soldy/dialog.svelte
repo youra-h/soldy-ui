@@ -5,7 +5,7 @@
 </script>
 
 <Button text="Открыть окно" onclick={() => (shown = true)} />
-<Dialog visible={shown} onChangeVisible={(value: boolean) => (shown = value)}>
+<Dialog visible={shown} onChangeVisible={({ newValue }) => (shown = newValue)}>
 	{#snippet title()}Настройки{/snippet}
 	<p style="margin: 0 0 8px">Произвольное содержимое: текст, поля, кнопки</p>
 	<Input placeholder="Имя" />

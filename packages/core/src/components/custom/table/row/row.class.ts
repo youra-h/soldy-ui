@@ -49,8 +49,11 @@ export default class TTableRow<
 		this._data = props.data ?? ctor.defaultValues.data
 
 		this._headerAria = new TAria()
-		this._headerAria.subscribe(() =>
-			this._sink.emit('change:headerAria', this._headerAria.toObject()),
+		this._headerAria.subscribe((_set, oldValue) =>
+			this._sink.emit('change:headerAria', {
+				newValue: this._headerAria.toObject(),
+				oldValue,
+			}),
 		)
 	}
 
@@ -71,10 +74,12 @@ export default class TTableRow<
 	 * разбирает, а новая запись с тем же содержимым — это новый объект данных.
 	 */
 	set data(value: TTableRecord | undefined) {
+		const oldData = this.data
+
 		if (this._data === value) return
 
 		this._data = value
-		this._sink.emit('change:data', value)
+		this._sink.emit('change:data', { newValue: value, oldValue: oldData })
 	}
 
 	/**

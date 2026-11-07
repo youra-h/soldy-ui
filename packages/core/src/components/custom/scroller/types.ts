@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../common'
 import type { IControl, IControlProps, TControlEvents } from '../../base/control'
 import type { TAria, TAriaAttributes } from '../../../common'
 
@@ -21,17 +22,17 @@ export type TScrollerViewport = {
 
 export type TScrollerEvents = TControlEvents & {
 	/** change:prevAria — набор атрибутов кнопки «назад» изменился */
-	'change:prevAria': (value: TAriaAttributes) => void
+	'change:prevAria': (payload: TValuePayload<TAriaAttributes>) => void
 	/** change:nextAria — набор атрибутов кнопки «вперёд» изменился */
-	'change:nextAria': (value: TAriaAttributes) => void
+	'change:nextAria': (payload: TValuePayload<TAriaAttributes>) => void
 	/** change:viewportAria */
-	'change:viewportAria': (value: TAriaAttributes | undefined) => void
+	'change:viewportAria': (payload: TValuePayload<TAriaAttributes | undefined>) => void
 	/** change:canPrev */
-	'change:canPrev': (value: boolean) => void
+	'change:canPrev': (payload: TValuePayload<boolean>) => void
 	/** change:canNext */
-	'change:canNext': (value: boolean) => void
+	'change:canNext': (payload: TValuePayload<boolean>) => void
 	/** change:hasTabStops */
-	'change:hasTabStops': (value: boolean) => void
+	'change:hasTabStops': (payload: TValuePayload<boolean>) => void
 	/**
 	 * Листнуть ленту в эту сторону.
 	 *

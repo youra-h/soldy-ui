@@ -69,13 +69,15 @@ export class TSelectTagsExtension<
 	}
 
 	set overflow(value: TTagsOverflow) {
+		const oldOverflow = this.overflow
+
 		if (this._overflow === value) return
 
 		this._overflow = value
 
 		if (this._tags) this._tags.overflow = value
 
-		this.events.emit('change:overflow', value)
+		this.events.emit('change:overflow', { newValue: value, oldValue: oldOverflow })
 	}
 
 	/** Инстанс `TTags`, пока режим `multiple`; иначе `null`. */
@@ -120,9 +122,13 @@ export class TSelectTagsExtension<
 
 			if (this._tags) this._applyOwner(this._tags, owner)
 
-			scope.on(owner.events, 'change:disabled', (value: boolean) => {
-				if (this._tags) this._tags.disabled = value
-			})
+			scope.on(
+				owner.events,
+				'change:disabled',
+				({ newValue: value }: TValuePayload<boolean>) => {
+					if (this._tags) this._tags.disabled = value
+				},
+			)
 
 			scope.on(owner.events, 'change:size', (payload: TValuePayload<TComponentSize>) => {
 				if (this._tags) this._tags.size = payload.newValue
@@ -165,6 +171,8 @@ export class TSelectTagsExtension<
 	}
 
 	private _createTags(): void {
+		const oldTags = this.tags
+
 		const tags = new TTags({ closable: true, overflow: this._overflow })
 		const owner = this._ctx.options.get('owner')
 
@@ -179,16 +187,18 @@ export class TSelectTagsExtension<
 
 		this.syncTags()
 
-		this.events.emit('change:tags', tags)
+		this.events.emit('change:tags', { newValue: tags, oldValue: oldTags })
 	}
 
 	private _destroyTags(): void {
+		const oldTags = this.tags
+
 		if (!this._tags) return
 
 		this._tags = null
 		this._engine = null
 
-		this.events.emit('change:tags', null)
+		this.events.emit('change:tags', { newValue: null, oldValue: oldTags })
 	}
 
 	/**

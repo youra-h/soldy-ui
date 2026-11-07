@@ -36,7 +36,7 @@ describe('свойство overflow', () => {
 		const tags = new TTags()
 		const changed = vi.fn()
 
-		tags.events.on('change:overflow', changed)
+		tags.events.on('change:overflow', ({ newValue }) => changed(newValue))
 
 		tags.overflow = 'scroll'
 		tags.overflow = 'scroll'

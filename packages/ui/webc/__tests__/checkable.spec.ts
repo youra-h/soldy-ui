@@ -1,3 +1,4 @@
+import { propertyDetail } from './property-detail'
 /**
  * `<span is="so-check-box">` и `<span is="so-switch">`: корень — элемент
  * потребителя, вложенный `<input type="checkbox">` — узел шаблона, рядом —
@@ -90,7 +91,7 @@ function collect(el: Element, name: string): unknown[] {
 	const seen: unknown[] = []
 
 	el.addEventListener(name, (event) => {
-		if (event instanceof CustomEvent) seen.push(event.detail)
+		if (event instanceof CustomEvent) seen.push(propertyDetail(event))
 	})
 
 	return seen

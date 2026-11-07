@@ -14,9 +14,9 @@ export type TAccordionItemEvents = TValueControlEvents<string | number> & {
 	/** Запись своего `text` — подправить или отменить (`TChangeEvent`) */
 	'change:text:before': (e: TChangeEvent<string>) => void
 	/** change:arrowPlacement */
-	'change:arrowPlacement': (value: TAccordionArrowPlacement) => void
+	'change:arrowPlacement': (payload: TValuePayload<TAccordionArrowPlacement>) => void
 	/** change:contentAria — набор атрибутов панели изменился */
-	'change:contentAria': (value: TAriaAttributes) => void
+	'change:contentAria': (payload: TValuePayload<TAriaAttributes>) => void
 }
 
 export interface IAccordionItemProps

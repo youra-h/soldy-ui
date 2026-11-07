@@ -6,8 +6,8 @@ describe('TInteractive', () => {
 		const interactive = new TInteractive()
 		const disabledHandler = vi.fn()
 		const focusedHandler = vi.fn()
-		interactive.events.on('change:disabled', disabledHandler)
-		interactive.events.on('change:focused', focusedHandler)
+		interactive.events.on('change:disabled', ({ newValue }) => disabledHandler(newValue))
+		interactive.events.on('change:focused', ({ newValue }) => focusedHandler(newValue))
 
 		interactive.disabled = true
 		expect(interactive.disabled).toBe(true)
@@ -27,7 +27,7 @@ describe('TInteractive', () => {
 		const interactive = new TInteractive()
 		const changes = vi.fn()
 
-		interactive.events.on('change:disabled', changes)
+		interactive.events.on('change:disabled', ({ newValue }) => changes(newValue))
 		interactive.events.on('change:focused:before', (e) => {
 			if (interactive.disabled) e.value = false
 		})

@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../../../../common'
 import type {
 	IBaseOwnerItemExtensionOptions,
 	IExtension,
@@ -138,8 +139,9 @@ export class TTagsExtension<TOwner extends ITags = ITags, TItem extends ITagsIte
 			// `closable` тегов читают из расширения — сообщить, если он сменился
 			// вместе с владельцем
 			if (closable !== this.closable) {
+				const oldValue = closable
 				closable = this.closable
-				this.events.emit('change:closable', closable)
+				this.events.emit('change:closable', { newValue: closable, oldValue })
 			}
 
 			if (!owner) return
@@ -151,21 +153,30 @@ export class TTagsExtension<TOwner extends ITags = ITags, TItem extends ITagsIte
 			// Смена у владельца — всем элементам: `disabled` распространяется на
 			// них, как у `<fieldset>`, `size` диктует он. Вариант тега свой —
 			// смена варианта у набора тегов не трогает
-			scope.on(owner.events, 'change:disabled', (value: boolean) => {
-				ctx.driver.valueOf().forEach((item) => {
-					item.disabled = value
-				})
-			})
+			scope.on(
+				owner.events,
+				'change:disabled',
+				({ newValue: value }: TValuePayload<boolean>) => {
+					ctx.driver.valueOf().forEach((item) => {
+						item.disabled = value
+					})
+				},
+			)
 			scope.on(owner.events, 'change:size', () =>
 				ctx.driver.valueOf().forEach((item) => this._applySize(item, owner)),
 			)
 
 			// Глобальный closable — в item-адаптеры (TTagsItemExtension резолвит
 			// closable из item ?? owner)
-			scope.on(owner.events, 'change:closable', (value: boolean) => {
-				closable = value
-				this.events.emit('change:closable', value)
-			})
+			scope.on(
+				owner.events,
+				'change:closable',
+				({ newValue: value }: TValuePayload<boolean>) => {
+					const oldValue = closable
+					closable = value
+					this.events.emit('change:closable', { newValue: value, oldValue })
+				},
+			)
 		})
 	}
 

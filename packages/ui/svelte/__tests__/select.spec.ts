@@ -1088,7 +1088,7 @@ describe('жест', () => {
 
 		props.select = {
 			swipe: 'handle',
-			onChangeOpen: (value) => {
+			onChangeOpen: ({ newValue: value }) => {
 				opens.push(value)
 				props.select = { ...props.select, open: value }
 			},

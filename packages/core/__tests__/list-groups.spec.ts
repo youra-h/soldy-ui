@@ -86,8 +86,8 @@ describe('ListBox · группы', () => {
 		const drawnSections = vi.fn()
 		const by = (item: IListBoxItem) => (item.value === 'c' ? 'last' : undefined)
 
-		facade.events.on('change:sections', sections)
-		facade.events.on('change:drawnSections', drawnSections)
+		facade.events.on('change:sections', ({ newValue }) => sections(newValue))
+		facade.events.on('change:drawnSections', ({ newValue }) => drawnSections(newValue))
 
 		facade.groupBy = by
 		facade.groups = [{ key: 'last', label: 'Последний' }]
@@ -240,8 +240,8 @@ describe('часть группы — общая база трёх форм', ()
 		const labels = vi.fn()
 		const sets = vi.fn()
 
-		group.events.on('change:label', labels)
-		group.events.on('change:labelAria', sets)
+		group.events.on('change:label', ({ newValue }) => labels(newValue))
+		group.events.on('change:labelAria', ({ newValue }) => sets(newValue))
 
 		group.label = 'Фрукты'
 		group.label = 'Ягоды'

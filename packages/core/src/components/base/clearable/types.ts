@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../common'
 import type { IInputControl, IInputControlProps, TInputControlEvents } from '../input-control'
 import type { TAria, TAriaAttributes } from '../../../common'
 
@@ -8,9 +9,9 @@ export interface IClearableProps<T = string> extends IInputControlProps<T> {
 
 export type TClearableEvents<T = string> = TInputControlEvents<T> & {
 	/** change:clearable */
-	'change:clearable': (value: boolean) => void
+	'change:clearable': (payload: TValuePayload<boolean>) => void
 	/** change:clearAria — набор атрибутов кнопки очистки изменился */
-	'change:clearAria': (value: TAriaAttributes) => void
+	'change:clearAria': (payload: TValuePayload<TAriaAttributes>) => void
 	/**
 	 * clear — поле очистили (`clear`): шаг очистки поля уже сделан. Приходит
 	 * всегда, даже у пустого поля: владелец поля очищает своё — Select снимает

@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest'
-import { TPopover, isSwipeable } from '@soldy-ui/core'
+import { TPopover, isSwipeable, type TValuePayload } from '@soldy-ui/core'
 
 /**
  * Модель Popover: состояние панели и то, что из него следует для разметки.
@@ -81,7 +81,7 @@ describe('связка «триггер ↔ панель»', () => {
 		const popover = new TPopover()
 		const changes: unknown[] = []
 
-		popover.events.on('change:triggerAria', (value) => changes.push(value))
+		popover.events.on('change:triggerAria', ({ newValue: value }) => changes.push(value))
 		popover.open = true
 
 		expect(changes).toEqual([{ 'aria-haspopup': 'dialog', 'aria-expanded': 'true' }])
@@ -144,7 +144,7 @@ describe('кнопка закрытия', () => {
 		const popover = new TPopover()
 		const changes = vi.fn()
 
-		popover.events.on('change:closeAria', changes)
+		popover.events.on('change:closeAria', ({ newValue }) => changes(newValue))
 		popover.closeAria.add('aria-label', 'Закрыть')
 
 		expect(changes).toHaveBeenCalledWith({ 'aria-label': 'Закрыть' })
@@ -189,7 +189,7 @@ describe('события', () => {
 		const popover = new TPopover()
 		const handler = vi.fn()
 
-		popover.events.on('change:open', handler)
+		popover.events.on('change:open', ({ newValue }) => handler(newValue))
 
 		popover.open = true
 		popover.open = true
@@ -210,7 +210,7 @@ describe('события', () => {
 		const popover = new TPopover()
 		const handler = vi.fn()
 
-		popover.events.on(event, handler)
+		popover.events.on(event, ({ newValue }: TValuePayload<unknown>) => handler(newValue))
 
 		Reflect.set(popover, prop, value)
 		Reflect.set(popover, prop, value)
@@ -246,7 +246,7 @@ describe('жест', () => {
 		const popover = new TPopover()
 		const sides: unknown[] = []
 
-		popover.events.on('change:swipeSide', (side) => sides.push(side))
+		popover.events.on('change:swipeSide', ({ newValue: side }) => sides.push(side))
 
 		expect(popover.swipeSide).toBeNull()
 
@@ -267,7 +267,7 @@ describe('жест', () => {
 		const popover = new TPopover()
 		const sides = vi.fn()
 
-		popover.events.on('change:swipeSide', sides)
+		popover.events.on('change:swipeSide', ({ newValue }) => sides(newValue))
 		popover.edge = 'start'
 
 		expect(popover.swipeSide).toBeNull()
@@ -309,7 +309,7 @@ describe('жест', () => {
 		const popover = shown({ swipe: 'handle' })
 		const changes: boolean[] = []
 
-		popover.events.on('change:swiping', (value) => changes.push(value))
+		popover.events.on('change:swiping', ({ newValue: value }) => changes.push(value))
 
 		expect(popover.panelDataset['data-swiping']).toBe('false')
 		expect(popover.beginSwipe()).toBe(true)

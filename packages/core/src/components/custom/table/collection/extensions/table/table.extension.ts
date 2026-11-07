@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../../../../common'
 import { TBaseOwnerItemExtension } from '../../../../../base/collection'
 import type {
 	IBaseOwnerItemExtensionOptions,
@@ -139,12 +140,15 @@ export class TTableExtension<TOwner extends ITable = ITable, TRow extends ITable
 
 			// Смена у таблицы — всем строкам: `disabled` распространяется на
 			// них, как у `<fieldset>`, `size` и `variant` диктует она
-			scope.on(owner.events, 'change:disabled', (value: boolean) =>
-				this._group(() =>
-					ctx.driver.valueOf().forEach((row) => {
-						row.disabled = value
-					}),
-				),
+			scope.on(
+				owner.events,
+				'change:disabled',
+				({ newValue: value }: TValuePayload<boolean>) =>
+					this._group(() =>
+						ctx.driver.valueOf().forEach((row) => {
+							row.disabled = value
+						}),
+					),
 			)
 			scope.on(owner.events, 'change:size', () => this._restyle(owner))
 			scope.on(owner.events, 'change:variant', () => this._restyle(owner))
@@ -351,6 +355,8 @@ export class TTableExtension<TOwner extends ITable = ITable, TRow extends ITable
 	 * строке, а счёт остаётся «часть».
 	 */
 	private _sync(): void {
+		const oldShownSelection = this.shownSelection
+
 		if (this._grouping > 0) return
 
 		const value = this.shownSelection
@@ -360,7 +366,11 @@ export class TTableExtension<TOwner extends ITable = ITable, TRow extends ITable
 		this._syncSelectAll()
 		this._syncCheckBoxes()
 
-		if (changed) this.events.emit('change:shownSelection', value)
+		if (changed)
+			this.events.emit('change:shownSelection', {
+				newValue: value,
+				oldValue: oldShownSelection,
+			})
 	}
 
 	/** Чекбокс шапки — вид `shownSelection`. */
@@ -386,12 +396,14 @@ export class TTableExtension<TOwner extends ITable = ITable, TRow extends ITable
 
 	/** Выбор строк включили или выключили — сообщить, если сменилось. */
 	private _syncSelecting(): void {
+		const oldSelecting = this.selecting
+
 		const value = this.selecting
 
 		if (value === this._selecting) return
 
 		this._selecting = value
-		this.events.emit('change:selecting', value)
+		this.events.emit('change:selecting', { newValue: value, oldValue: oldSelecting })
 	}
 
 	/** Слушать `disabled` показанных строк, а ушедших из показанных — больше не слушать. */

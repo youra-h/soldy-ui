@@ -153,7 +153,7 @@ describe('имена при установке и на смену локали',
 		const { source } = mount(popover, TPopoverNamesPlugin)
 		const sameStrings = extendLocale(enUS, { tag: 'en-GB' })
 
-		popover.events.on('change:closeAria', changes)
+		popover.events.on('change:closeAria', ({ newValue }) => changes(newValue))
 
 		source.locale = sameStrings
 
@@ -321,7 +321,7 @@ describe('выходы плагина: имена для вложенных ко
 
 		expect(plugin?.selectAll).toBe('Select all')
 
-		plugin?.events.on('change:selectAll', changes)
+		plugin?.events.on('change:selectAll', ({ newValue }) => changes(newValue))
 		source.locale = ruRU
 
 		expect(plugin?.selectAll).toBe('Выбрать все')
@@ -337,7 +337,7 @@ describe('выходы плагина: имена для вложенных ко
 		expect(picker.panelAria.get('aria-label')).toBe('Choose date')
 		expect([plugin?.start, plugin?.end]).toEqual(['Start date', 'End date'])
 
-		plugin?.events.on('change:start', starts)
+		plugin?.events.on('change:start', ({ newValue }) => starts(newValue))
 		source.locale = ruRU
 
 		expect(picker.triggerAria.get('aria-label')).toBe('Выбрать дату')
@@ -353,8 +353,8 @@ describe('выходы плагина: имена для вложенных ко
 
 		expect([plugin?.confirm, plugin?.cancel]).toEqual(['OK', 'Cancel'])
 
-		plugin?.events.on('change:confirm', confirms)
-		plugin?.events.on('change:cancel', cancels)
+		plugin?.events.on('change:confirm', ({ newValue }) => confirms(newValue))
+		plugin?.events.on('change:cancel', ({ newValue }) => cancels(newValue))
 		source.locale = ruRU
 		// Регион того же языка — те же строки, событий нет
 		source.locale = extendLocale(ruRU, { tag: 'ru-BY' })
@@ -462,7 +462,7 @@ describe('счётчик Textarea: textarea.counter', () => {
 		const { plugin } = mount(textarea, TTextareaNamesPlugin)
 		const changes = vi.fn()
 
-		plugin?.events.on('change:counter', changes)
+		plugin?.events.on('change:counter', ({ newValue }) => changes(newValue))
 
 		textarea.value = 'abcd'
 		expect(plugin?.counter).toBe('4')

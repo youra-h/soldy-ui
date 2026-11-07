@@ -171,18 +171,21 @@ export default class TTableColumn<
 		this._disabled = props.disabled ?? ctor.defaultValues.disabled
 
 		this._resizerAria = new TAria()
-		this._resizerAria.subscribe(() =>
-			this._sink.emit('change:resizerAria', this._resizerAria.toObject()),
+		this._resizerAria.subscribe((_set, oldValue) =>
+			this._sink.emit('change:resizerAria', {
+				newValue: this._resizerAria.toObject(),
+				oldValue,
+			}),
 		)
 
 		this._textAria = new TAria()
-		this._textAria.subscribe(() =>
-			this._sink.emit('change:textAria', this._textAria.toObject()),
+		this._textAria.subscribe((_set, oldValue) =>
+			this._sink.emit('change:textAria', { newValue: this._textAria.toObject(), oldValue }),
 		)
 
 		this._sortAria = new TAria()
-		this._sortAria.subscribe(() =>
-			this._sink.emit('change:sortAria', this._sortAria.toObject()),
+		this._sortAria.subscribe((_set, oldValue) =>
+			this._sink.emit('change:sortAria', { newValue: this._sortAria.toObject(), oldValue }),
 		)
 
 		this._syncAlign()
@@ -210,10 +213,12 @@ export default class TTableColumn<
 	}
 
 	set field(value: string) {
+		const oldField = this.field
+
 		if (this._field === value) return
 
 		this._field = value
-		this._sink.emit('change:field', value)
+		this._sink.emit('change:field', { newValue: value, oldValue: oldField })
 	}
 
 	get text(): string {
@@ -221,10 +226,12 @@ export default class TTableColumn<
 	}
 
 	set text(value: string) {
+		const oldText = this.text
+
 		if (this._text === value) return
 
 		this._text = value
-		this._sink.emit('change:text', value)
+		this._sink.emit('change:text', { newValue: value, oldValue: oldText })
 	}
 
 	/**
@@ -269,12 +276,14 @@ export default class TTableColumn<
 	}
 
 	set minWidth(value: number | undefined) {
+		const oldMinWidth = this.minWidth
+
 		if (this._minWidth === value) return
 
 		this._update(() => {
 			this._minWidth = value
 		})
-		this._sink.emit('change:minWidth', value)
+		this._sink.emit('change:minWidth', { newValue: value, oldValue: oldMinWidth })
 	}
 
 	get maxWidth(): number | undefined {
@@ -282,12 +291,14 @@ export default class TTableColumn<
 	}
 
 	set maxWidth(value: number | undefined) {
+		const oldMaxWidth = this.maxWidth
+
 		if (this._maxWidth === value) return
 
 		this._update(() => {
 			this._maxWidth = value
 		})
-		this._sink.emit('change:maxWidth', value)
+		this._sink.emit('change:maxWidth', { newValue: value, oldValue: oldMaxWidth })
 	}
 
 	get align(): TTableColumnAlign {
@@ -295,11 +306,13 @@ export default class TTableColumn<
 	}
 
 	set align(value: TTableColumnAlign) {
+		const oldAlign = this.align
+
 		if (this._align === value) return
 
 		this._align = value
 		this._syncAlign()
-		this._sink.emit('change:align', value)
+		this._sink.emit('change:align', { newValue: value, oldValue: oldAlign })
 	}
 
 	get sortable(): boolean {
@@ -307,10 +320,12 @@ export default class TTableColumn<
 	}
 
 	set sortable(value: boolean) {
+		const oldSortable = this.sortable
+
 		if (this._sortable === value) return
 
 		this._sortable = value
-		this._sink.emit('change:sortable', value)
+		this._sink.emit('change:sortable', { newValue: value, oldValue: oldSortable })
 	}
 
 	get compare(): TTableCompare | undefined {
@@ -319,10 +334,12 @@ export default class TTableColumn<
 
 	/** Функция сверяется по ссылке: новая функция — новое сравнение. */
 	set compare(value: TTableCompare | undefined) {
+		const oldCompare = this.compare
+
 		if (this._compare === value) return
 
 		this._compare = value
-		this._sink.emit('change:compare', value)
+		this._sink.emit('change:compare', { newValue: value, oldValue: oldCompare })
 	}
 
 	get rowHeader(): boolean {
@@ -330,10 +347,12 @@ export default class TTableColumn<
 	}
 
 	set rowHeader(value: boolean) {
+		const oldRowHeader = this.rowHeader
+
 		if (this._rowHeader === value) return
 
 		this._rowHeader = value
-		this._sink.emit('change:rowHeader', value)
+		this._sink.emit('change:rowHeader', { newValue: value, oldValue: oldRowHeader })
 	}
 
 	/** Итог: своё значение, а без него — значение таблицы. */
@@ -393,12 +412,14 @@ export default class TTableColumn<
 	}
 
 	set disabled(value: boolean) {
+		const oldDisabled = this.disabled
+
 		if (this._disabled === value) return
 
 		this._update(() => {
 			this._disabled = value
 		})
-		this._sink.emit('change:disabled', value)
+		this._sink.emit('change:disabled', { newValue: value, oldValue: oldDisabled })
 	}
 
 	/**
@@ -583,15 +604,23 @@ export default class TTableColumn<
 
 	/** Сменить вход `resizable` — своё или таблицы: событие — о смене итога. */
 	protected _updateResizable(apply: () => void): void {
+		const oldResizable = this.resizable
+
 		const resizable = this.resizable
 
 		this._update(apply)
 
-		if (this.resizable !== resizable) this._sink.emit('change:resizable', this.resizable)
+		if (this.resizable !== resizable)
+			this._sink.emit('change:resizable', {
+				newValue: this.resizable,
+				oldValue: oldResizable,
+			})
 	}
 
 	/** Сменить вход `reorderable` — своё или таблицы: событие — о смене итога. */
 	protected _updateReorderable(apply: () => void): void {
+		const oldReorderable = this.reorderable
+
 		const reorderable = this.reorderable
 
 		apply()
@@ -599,7 +628,10 @@ export default class TTableColumn<
 		if (this.reorderable === reorderable) return
 
 		this._syncReorderable()
-		this._sink.emit('change:reorderable', this.reorderable)
+		this._sink.emit('change:reorderable', {
+			newValue: this.reorderable,
+			oldValue: oldReorderable,
+		})
 	}
 
 	/**
@@ -667,8 +699,10 @@ export default class TTableColumn<
 	 * всей таблице. Зовёт его `_setGesture`, только на смену.
 	 */
 	protected _setResizing(value: boolean): void {
+		const oldResizing = !value
+
 		this._dataset.add('resizing', value)
-		this._sink.emit('change:resizing', value)
+		this._sink.emit('change:resizing', { newValue: value, oldValue: oldResizing })
 	}
 
 	/**
@@ -687,6 +721,10 @@ export default class TTableColumn<
 	 * если его значение сменилось.
 	 */
 	protected _update(apply: () => void): void {
+		const oldWidth = this.width
+		const oldResizer = this.resizer
+		const oldResizerRendered = this.resizerRendered
+
 		const width = this.width
 		const resizer = this.resizer
 		const rendered = this.resizerRendered
@@ -699,9 +737,15 @@ export default class TTableColumn<
 		const nextResizer = this.resizer
 		const nextRendered = this.resizerRendered
 
-		if (nextWidth !== width) this._sink.emit('change:width', nextWidth)
-		if (!sameResizer(nextResizer, resizer)) this._sink.emit('change:resizer', nextResizer)
-		if (nextRendered !== rendered) this._sink.emit('change:resizerRendered', nextRendered)
+		if (nextWidth !== width)
+			this._sink.emit('change:width', { newValue: nextWidth, oldValue: oldWidth })
+		if (!sameResizer(nextResizer, resizer))
+			this._sink.emit('change:resizer', { newValue: nextResizer, oldValue: oldResizer })
+		if (nextRendered !== rendered)
+			this._sink.emit('change:resizerRendered', {
+				newValue: nextRendered,
+				oldValue: oldResizerRendered,
+			})
 	}
 
 	/**

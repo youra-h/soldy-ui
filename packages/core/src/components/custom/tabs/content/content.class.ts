@@ -56,10 +56,12 @@ export class TTabsContent<
 	}
 
 	set value(value: string | number) {
+		const oldValue = this.value
+
 		if (this._value === value) return
 
 		this._value = value
-		this._sink.emit('change:value', value)
+		this._sink.emit('change:value', { newValue: value, oldValue: oldValue })
 	}
 
 	/**

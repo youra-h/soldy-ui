@@ -1,8 +1,9 @@
+import type { TValuePayload } from '../../../../../../../common'
 import type { IItemExtension, TBaseItemEventsExtension } from '../../../../../../base/collection'
 import type { TAccordionView } from '../../../../types'
 
 export type TAccordionItemEventsExtension = TBaseItemEventsExtension & {
-	'change:view': (value: TAccordionView | undefined) => void
+	'change:view': (payload: TValuePayload<TAccordionView | undefined>) => void
 }
 
 /**

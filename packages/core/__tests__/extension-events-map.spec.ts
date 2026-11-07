@@ -102,7 +102,7 @@ describe('карта событий расширения видна через �
 
 		item.on('change:closable', closable)
 		item.relay(parent.events, ['change:closable'])
-		parent.events.emit('change:closable', true)
+		parent.events.emit('change:closable', { newValue: true, oldValue: false })
 
 		expect(closable).toHaveBeenCalledTimes(1)
 	})
@@ -117,9 +117,9 @@ describe('карта событий расширения видна через �
 		// @ts-expect-error — `destroy` объявлен у item-адаптера, но не у расширения
 		item.relay(parent.events, ['destroy'])
 
-		item.on('change:indicator', indicator)
+		item.on('change:indicator', ({ newValue }) => indicator(newValue))
 		item.relay(parent.events, ['change:indicator'])
-		parent.events.emit('change:indicator', 'end')
+		parent.events.emit('change:indicator', { newValue: 'end', oldValue: 'start' })
 
 		expect(indicator).toHaveBeenCalledWith('end')
 	})

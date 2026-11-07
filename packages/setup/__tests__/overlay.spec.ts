@@ -379,7 +379,7 @@ describe('flip: сторона у края экрана', () => {
 		const plugin = anchorFor(new TFrame({ position: 'fixed' }))
 		const handler = vi.fn()
 
-		plugin.events.on('change:flip', handler)
+		plugin.events.on('change:flip', ({ newValue }) => handler(newValue))
 		plugin.flip = true
 
 		expect(handler).not.toHaveBeenCalled()
@@ -1189,7 +1189,7 @@ describe('точка вместо якоря', () => {
 		const handler = vi.fn()
 		const given = { x: 300, y: 200 }
 
-		plugin.events.on('change:point', handler)
+		plugin.events.on('change:point', ({ newValue }) => handler(newValue))
 		plugin.point = given
 		plugin.point = { x: 300, y: 200 }
 
@@ -1298,7 +1298,7 @@ describe('position панели', () => {
 		const moved = vi.fn()
 
 		anchorFor(frame).setAnchor(anchor)
-		frame.events.on('change:y', moved)
+		frame.events.on('change:y', ({ newValue }) => moved(newValue))
 
 		scrollWindowTo(0, 500)
 		scrollAnchorTo(anchor, { left: 100, top: 120, bottom: 150, right: 300 })
@@ -2543,7 +2543,7 @@ describe('нажатие мимо', () => {
 			const dismiss = required(bundle.get(TDismissPlugin), 'TDismissPlugin')
 			const seen: boolean[] = []
 
-			dismiss.events.on('change:enabled', (value) => seen.push(value))
+			dismiss.events.on('change:enabled', ({ newValue: value }) => seen.push(value))
 
 			owner.open = true
 			bundle.destroy()
@@ -2574,7 +2574,7 @@ describe('раскладка панели внутри контейнера', ()
 		const layout = layoutOf(frame)
 		const changes = vi.fn()
 
-		layout.events.on('change:styles', changes)
+		layout.events.on('change:styles', ({ newValue }) => changes(newValue))
 		frame.contained = true
 
 		expect(changes).toHaveBeenCalledTimes(1)

@@ -1248,7 +1248,7 @@ describe('жест', () => {
 				name="Город"
 				swipe="handle"
 				open={opened()}
-				onChangeOpen={(value) => {
+				onChangeOpen={({ newValue: value }) => {
 					opens.push(value)
 					setOpened(value)
 				}}

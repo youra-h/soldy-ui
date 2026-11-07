@@ -1,3 +1,4 @@
+import type { TValuePayload } from '@soldy-ui/core'
 // @vitest-environment jsdom
 
 /**
@@ -189,7 +190,9 @@ describe('запись focused · узел фокуса', () => {
 		const { ctrl } = await mount(root, { focusTarget: fieldOf })
 		const changes: boolean[] = []
 
-		ctrl.events.on('change:focused', (value: boolean) => changes.push(value))
+		ctrl.events.on('change:focused', ({ newValue: value }: TValuePayload<boolean>) =>
+			changes.push(value),
+		)
 
 		ctrl.focused = true
 		input.blur()

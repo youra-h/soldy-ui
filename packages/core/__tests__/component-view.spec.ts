@@ -49,7 +49,7 @@ describe('TComponentView', () => {
 		p.events.on('hide:before', hideBeforeHandler)
 		p.events.on('show', showHandler)
 		p.events.on('hide', hideHandler)
-		p.events.on('change:visible', visibleHandler)
+		p.events.on('change:visible', ({ newValue }) => visibleHandler(newValue))
 
 		p.show()
 		expect(showBeforeHandler).toHaveBeenCalled()
@@ -79,8 +79,8 @@ describe('TComponentView', () => {
 		const p = new TComponentView()
 		const tagHandler = vi.fn()
 		const classesHandler = vi.fn()
-		p.events.on('change:tag', tagHandler)
-		p.events.on('change:classes', classesHandler)
+		p.events.on('change:tag', ({ newValue }) => tagHandler(newValue))
+		p.events.on('change:classes', ({ newValue }) => classesHandler(newValue))
 
 		p.tag = 'section'
 		expect(tagHandler).toHaveBeenCalledWith('section')
@@ -105,10 +105,16 @@ describe('TComponentView', () => {
 		p.attrs.add('dir', 'rtl')
 
 		expect(heard).toEqual([
-			['change:classes', ['so-component-view', 'so-component-view--x']],
-			['change:aria', { role: 'group' }],
-			['change:dataset', { 'data-open': 'true' }],
-			['change:attrs', { dir: 'rtl' }],
+			[
+				'change:classes',
+				{
+					newValue: ['so-component-view', 'so-component-view--x'],
+					oldValue: ['so-component-view'],
+				},
+			],
+			['change:aria', { newValue: { role: 'group' }, oldValue: {} }],
+			['change:dataset', { newValue: { 'data-open': 'true' }, oldValue: {} }],
+			['change:attrs', { newValue: { dir: 'rtl' }, oldValue: {} }],
 		])
 	})
 
@@ -118,7 +124,7 @@ describe('TComponentView', () => {
 		expect(p.getProps()).toHaveProperty('direction', 'inherit')
 
 		const handler = vi.fn()
-		p.events.on('change:direction', handler)
+		p.events.on('change:direction', ({ newValue }) => handler(newValue))
 
 		p.direction = 'rtl'
 		expect(p.direction).toBe('rtl')
@@ -138,7 +144,7 @@ describe('TComponentView', () => {
 		expect(p.attrs.get('dir')).toBeUndefined()
 
 		const handler = vi.fn()
-		p.events.on('change:attrs', handler)
+		p.events.on('change:attrs', ({ newValue }) => handler(newValue))
 
 		p.direction = 'rtl'
 		expect(p.attrs.get('dir')).toBe('rtl')
@@ -191,7 +197,7 @@ describe('TComponentView', () => {
 		const c = new TComponentView({ rendered: true })
 		const changes = vi.fn()
 
-		c.events.on('change:rendered', changes)
+		c.events.on('change:rendered', ({ newValue }) => changes(newValue))
 		c.events.on('change:rendered:before', (e) => {
 			if (e.oldValue) e.preventDefault()
 		})
@@ -206,7 +212,7 @@ describe('TComponentView', () => {
 		const c = new TComponentView({ visible: true })
 		const changes = vi.fn()
 
-		c.events.on('change:visible', changes)
+		c.events.on('change:visible', ({ newValue }) => changes(newValue))
 		c.events.on('hide:before', (e) => e.preventDefault())
 
 		c.visible = false

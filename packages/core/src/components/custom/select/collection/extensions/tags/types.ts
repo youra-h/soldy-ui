@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../../../../common'
 import type { IExtension } from '../../../../../base/collection'
 import type { ITags, TTagsCollection, TTagsOverflow } from '../../../../tags'
 import type { ISelectItem } from '../../../item/types'
@@ -33,7 +34,7 @@ export interface ISelectTagsExtension<TItem extends ISelectItem = ISelectItem> e
 
 export type TSelectTagsExtensionEvents = {
 	/** change:tags — сменился инстанс тегов (появился/пропал при смене режима) */
-	'change:tags': (value: ITags | null) => void
+	'change:tags': (payload: TValuePayload<ITags | null>) => void
 	/** change:overflow — сменился режим переполнения ряда тегов */
-	'change:overflow': (value: TTagsOverflow) => void
+	'change:overflow': (payload: TValuePayload<TTagsOverflow>) => void
 }

@@ -25,7 +25,7 @@
 
 <main>
 	<Button text="Open dialog" variant="accent" onclick={() => (open = true)} />
-	<Dialog visible={open} onChangeVisible={(value: boolean) => (open = value)}>
+	<Dialog visible={open} onChangeVisible={({ newValue }) => (open = newValue)}>
 		{#snippet title()}Settings{/snippet}
 		<p>Dialog content</p>
 	</Dialog>

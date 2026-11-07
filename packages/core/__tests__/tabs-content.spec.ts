@@ -112,7 +112,7 @@ describe('фасад панели — активность', () => {
 		const facade = facadeFor('b')
 		const handler = vi.fn()
 
-		facade.events.on('change:active', handler)
+		facade.events.on('change:active', ({ newValue }) => handler(newValue))
 		tabsFacade.activate(items[1])
 		tabsFacade.activate(items[0])
 
@@ -125,7 +125,7 @@ describe('фасад панели — активность', () => {
 		const handler = vi.fn()
 
 		tabsFacade.activate(items[0])
-		facade.events.on('change:active', handler)
+		facade.events.on('change:active', ({ newValue }) => handler(newValue))
 		tabsFacade.activate(items[1])
 
 		expect(handler).not.toHaveBeenCalled()
@@ -147,7 +147,7 @@ describe('фасад панели — смена контекста', () => {
 		const facade = value ? facadeFor(value) : new TTabsContentCollectionFacade()
 		const handler = vi.fn()
 
-		facade.events.on('change:active', handler)
+		facade.events.on('change:active', ({ newValue }) => handler(newValue))
 
 		return { facade, handler, contextOf }
 	}

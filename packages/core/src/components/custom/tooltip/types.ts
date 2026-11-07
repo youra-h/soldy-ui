@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../common'
 import type {
 	IComponentView,
 	IComponentViewProps,
@@ -34,17 +35,17 @@ export type TTooltipType = 'description' | 'label'
 
 export type TTooltipEvents = TComponentViewEvents & {
 	/** change:open */
-	'change:open': (value: boolean) => void
+	'change:open': (payload: TValuePayload<boolean>) => void
 	/** change:placement */
-	'change:placement': (value: TTooltipPlacement) => void
+	'change:placement': (payload: TValuePayload<TTooltipPlacement>) => void
 	/** change:openDelay */
-	'change:openDelay': (value: number) => void
+	'change:openDelay': (payload: TValuePayload<number>) => void
 	/** change:closeDelay */
-	'change:closeDelay': (value: number) => void
+	'change:closeDelay': (payload: TValuePayload<number>) => void
 	/** change:type */
-	'change:type': (value: TTooltipType) => void
+	'change:type': (payload: TValuePayload<TTooltipType>) => void
 	/** change:triggerAria — набор атрибутов триггера изменился */
-	'change:triggerAria': (value: TAriaAttributes) => void
+	'change:triggerAria': (payload: TValuePayload<TAriaAttributes>) => void
 }
 
 export interface ITooltipProps extends IComponentViewProps {

@@ -88,11 +88,13 @@ export default class TSkeleton
 	}
 
 	set shape(value: TSkeletonShape | undefined) {
+		const oldShape = this.shape
+
 		if (value === this._shape) return
 
 		this._classes.swap({ prefix: '--shape-', oldValue: this._shape, newValue: value })
 		this._shape = value
-		this.events.emit('change:shape', value)
+		this.events.emit('change:shape', { newValue: value, oldValue: oldShape })
 	}
 
 	get animation(): TSkeletonAnimation | undefined {
@@ -100,11 +102,13 @@ export default class TSkeleton
 	}
 
 	set animation(value: TSkeletonAnimation | undefined) {
+		const oldAnimation = this.animation
+
 		if (value === this._animation) return
 
 		this._classes.swap({ prefix: '--animation-', oldValue: this._animation, newValue: value })
 		this._animation = value
-		this.events.emit('change:animation', value)
+		this.events.emit('change:animation', { newValue: value, oldValue: oldAnimation })
 	}
 
 	get width(): number | string {
@@ -112,10 +116,12 @@ export default class TSkeleton
 	}
 
 	set width(value: number | string) {
+		const oldWidth = this.width
+
 		if (value === this._width) return
 
 		this._width = value
-		this.events.emit('change:width', value)
+		this.events.emit('change:width', { newValue: value, oldValue: oldWidth })
 	}
 
 	get height(): number | string {
@@ -123,10 +129,12 @@ export default class TSkeleton
 	}
 
 	set height(value: number | string) {
+		const oldHeight = this.height
+
 		if (value === this._height) return
 
 		this._height = value
-		this.events.emit('change:height', value)
+		this.events.emit('change:height', { newValue: value, oldValue: oldHeight })
 	}
 
 	getProps(): ISkeletonProps {

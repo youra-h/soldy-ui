@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../src/common'
 import { describe, it, expect, beforeEach } from 'vitest'
 import { TFrame, TLayer, FRAME_LAYER_ATTRIBUTE } from '@soldy-ui/core'
 
@@ -151,7 +152,9 @@ describe('TFrame', () => {
 	it('change:visible эмитится при show/hide', () => {
 		const frame = new TFrame()
 		const values: boolean[] = []
-		frame.events.on('change:visible', (v: boolean) => values.push(v))
+		frame.events.on('change:visible', ({ newValue: v }: TValuePayload<boolean>) =>
+			values.push(v),
+		)
 
 		frame.show()
 		frame.hide()
@@ -163,8 +166,8 @@ describe('TFrame', () => {
 		const frame = new TFrame()
 		const xValues: number[] = []
 		const yValues: number[] = []
-		frame.events.on('change:x', (v: number) => xValues.push(v))
-		frame.events.on('change:y', (v: number) => yValues.push(v))
+		frame.events.on('change:x', ({ newValue: v }: TValuePayload<number>) => xValues.push(v))
+		frame.events.on('change:y', ({ newValue: v }: TValuePayload<number>) => yValues.push(v))
 
 		frame.x = 100
 		frame.y = 200
@@ -177,8 +180,12 @@ describe('TFrame', () => {
 		const frame = new TFrame()
 		const widthValues: (number | string)[] = []
 		const heightValues: (number | string)[] = []
-		frame.events.on('change:width', (v: number | string) => widthValues.push(v))
-		frame.events.on('change:height', (v: number | string) => heightValues.push(v))
+		frame.events.on('change:width', ({ newValue: v }: TValuePayload<number | string>) =>
+			widthValues.push(v),
+		)
+		frame.events.on('change:height', ({ newValue: v }: TValuePayload<number | string>) =>
+			heightValues.push(v),
+		)
 
 		frame.width = 500
 		frame.height = 300
@@ -190,7 +197,9 @@ describe('TFrame', () => {
 	it('change:zIndex эмитится при show()', () => {
 		const frame = mounted(new TFrame())
 		const zValues: number[] = []
-		frame.events.on('change:zIndex', (v: number) => zValues.push(v))
+		frame.events.on('change:zIndex', ({ newValue: v }: TValuePayload<number>) =>
+			zValues.push(v),
+		)
 
 		frame.show()
 		expect(zValues.length).toBe(1)
@@ -224,7 +233,7 @@ describe('TFrame', () => {
 		expect(frame.contained).toBe(false)
 		expect(frame.dataset.get('contained')).toBe('false')
 
-		frame.events.on('change:contained', (value) => changes.push(value))
+		frame.events.on('change:contained', ({ newValue: value }) => changes.push(value))
 		frame.contained = true
 		frame.contained = true
 
@@ -306,7 +315,7 @@ describe('TFrame', () => {
 			const changes: number[] = []
 
 			for (const frame of [open, shown, raised]) {
-				frame.events.on('change:zIndex', (value) => changes.push(value))
+				frame.events.on('change:zIndex', ({ newValue: value }) => changes.push(value))
 			}
 
 			shown.show()
@@ -324,7 +333,7 @@ describe('TFrame', () => {
 			const frame = new TFrame({ visible: true })
 			const changes: number[] = []
 
-			frame.events.on('change:zIndex', (value) => changes.push(value))
+			frame.events.on('change:zIndex', ({ newValue: value }) => changes.push(value))
 			frame.ready = true
 
 			expect(frame.zIndex).toBeGreaterThan(0)
@@ -355,7 +364,7 @@ describe('TFrame', () => {
 			const number = frame.zIndex
 			const changes: number[] = []
 
-			frame.events.on('change:zIndex', (value) => changes.push(value))
+			frame.events.on('change:zIndex', ({ newValue: value }) => changes.push(value))
 			frame.ready = false
 
 			expect(frame.zIndex).toBe(0)
@@ -372,7 +381,7 @@ describe('TFrame', () => {
 			const frame = mounted(new TFrame())
 			const changes: number[] = []
 
-			frame.events.on('change:zIndex', (value) => changes.push(value))
+			frame.events.on('change:zIndex', ({ newValue: value }) => changes.push(value))
 			frame.show()
 
 			expect(frame.zIndex).toBeGreaterThan(0)
@@ -385,7 +394,7 @@ describe('TFrame', () => {
 			const frame = new TFrame({ visible: true })
 			const seen: [number, string | undefined][] = []
 
-			frame.events.on('change:zIndex', (value) =>
+			frame.events.on('change:zIndex', ({ newValue: value }) =>
 				seen.push([value, frame.dataset.get(FRAME_LAYER_ATTRIBUTE)]),
 			)
 			frame.ready = true
@@ -458,7 +467,9 @@ describe('TFrame', () => {
 			const frame = new TFrame()
 			const opens: (string | null)[] = []
 
-			frame.events.on('change:dataset', (value) => opens.push(value['data-open']))
+			frame.events.on('change:dataset', ({ newValue: value }) =>
+				opens.push(value['data-open']),
+			)
 
 			frame.show()
 
@@ -532,7 +543,9 @@ describe('TFrame', () => {
 	it('change:position эмитится при изменении', () => {
 		const frame = new TFrame()
 		const values: string[] = []
-		frame.events.on('change:position', (v: string) => values.push(v))
+		frame.events.on('change:position', ({ newValue: v }: TValuePayload<string>) =>
+			values.push(v),
+		)
 
 		frame.position = 'absolute'
 		expect(values).toEqual(['absolute'])
@@ -557,7 +570,7 @@ describe('TFrame', () => {
 	it('change:target эмитится при изменении', () => {
 		const frame = new TFrame()
 		const values: string[] = []
-		frame.events.on('change:target', (v: string) => values.push(v))
+		frame.events.on('change:target', ({ newValue: v }: TValuePayload<string>) => values.push(v))
 
 		frame.target = '#portal'
 		expect(values).toEqual(['#portal'])

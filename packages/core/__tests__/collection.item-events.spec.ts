@@ -17,6 +17,7 @@ import type {
 	TActivationItemEventsExtension,
 	TSelectionItemEventsExtension,
 	TSelectionMode,
+	TValuePayload,
 } from '@soldy-ui/core'
 
 type Item = { id: number; name: string }
@@ -53,7 +54,7 @@ describe('Item-адаптеры: проброс событий из расшир
 		ctx.adapters.activation.events.on('change:active', handler)
 		col.extensions.activation.activate(item)
 
-		expect(handler.mock.calls).toEqual([[true]])
+		expect(handler.mock.calls).toEqual([[{ newValue: true, oldValue: false }]])
 	})
 
 	it('order: change:order пробрасывается при изменении состава коллекции', () => {
@@ -87,7 +88,7 @@ describe('Item-адаптеры: проброс событий из расшир
 		ctx.adapters.selection.events.on('change:selected', handler)
 		col.extensions.selection.select(item)
 
-		expect(handler.mock.calls).toEqual([[true]])
+		expect(handler.mock.calls).toEqual([[{ newValue: true, oldValue: false }]])
 	})
 
 	it('tabs: change:closable элемента пробрасывается в адаптер', () => {
@@ -143,10 +144,10 @@ describe('Item-адаптеры: проброс событий из расшир
 
 	it('событие элемента несёт значение: отметку и активность', () => {
 		expectTypeOf<Parameters<TSelectionItemEventsExtension['change:selected']>>().toEqualTypeOf<
-			[value: boolean]
+			[payload: TValuePayload<boolean>]
 		>()
 		expectTypeOf<Parameters<TActivationItemEventsExtension['change:active']>>().toEqualTypeOf<
-			[value: boolean]
+			[payload: TValuePayload<boolean>]
 		>()
 	})
 })
@@ -182,10 +183,10 @@ describe('Item-адаптеры: событие — только элемент�
 				col.getCore().extensions,
 			)
 
-			adapters.selection.events.on('change:selected', (value) => {
+			adapters.selection.events.on('change:selected', ({ newValue: value }) => {
 				log.push(`${item.name}: selected ${value}`)
 			})
-			adapters.activation.events.on('change:active', (value) => {
+			adapters.activation.events.on('change:active', ({ newValue: value }) => {
 				log.push(`${item.name}: active ${value}`)
 			})
 		}

@@ -235,6 +235,8 @@ export class TListHeightPlugin extends TBasePlugin<any, TListHeightPluginEvents>
 	 * `removed`), ничего не мерит.
 	 */
 	private _update(): void {
+		const oldMeasured = this.measured
+
 		if (!this._element) return
 
 		const shown: readonly object[] = batchOf<object>(this._engine)?.shown ?? []
@@ -247,7 +249,7 @@ export class TListHeightPlugin extends TBasePlugin<any, TListHeightPluginEvents>
 		if (this._measured === measured) return
 
 		this._measured = measured
-		this.events.emit('change:measured', measured)
+		this.events.emit('change:measured', { newValue: measured, oldValue: oldMeasured })
 	}
 
 	/**

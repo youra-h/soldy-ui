@@ -44,7 +44,13 @@ import { DomElementSchemaRegistry } from '@angular/compiler'
 import { Component, EventEmitter, reflectComponentType, viewChild, type Type } from '@angular/core'
 import { outputToObservable } from '@angular/core/rxjs-interop'
 import { TestBed } from '@angular/core/testing'
-import { TButton, TComponent, TComponentView, type TPluginEvent } from '@soldy-ui/core'
+import {
+	TButton,
+	TComponent,
+	TComponentView,
+	type TPluginEvent,
+	type TValuePayload,
+} from '@soldy-ui/core'
 import * as setup from '@soldy-ui/setup'
 import {
 	ButtonDescriptor,
@@ -92,7 +98,11 @@ class ButtonHost {
 @Component({
 	standalone: true,
 	imports: [TComponentViewComponent],
-	template: `<div so-component-view [ctrl]="ctrl" (soChangeVisible)="onVisible($event)"></div>`,
+	template: `<div
+		so-component-view
+		[ctrl]="ctrl"
+		(soChangeVisible)="onVisible($event.newValue)"
+	></div>`,
 })
 class ComponentViewHost {
 	readonly ctrl = new TComponentView()
@@ -174,7 +184,7 @@ describe('тип выхода · эмиттер первого аргумент�
 	it('у события с аргументом — его тип', () => {
 		expectTypeOf<TButtonComponent['soActionPress']>().toEqualTypeOf<EventEmitter<MouseEvent>>()
 		expectTypeOf<TComponentViewComponent['soChangeVisible']>().toEqualTypeOf<
-			EventEmitter<boolean>
+			EventEmitter<TValuePayload<boolean>>
 		>()
 		expectTypeOf<TComponentComponent['soPluginEvent']>().toEqualTypeOf<
 			EventEmitter<TPluginEvent>
@@ -224,7 +234,11 @@ class BareComponentHost {
 @Component({
 	standalone: true,
 	imports: [TButtonComponent],
-	template: `<button so-button [ctrl]="ctrl" (soChangeVisible)="onVisible($event)"></button>`,
+	template: `<button
+		so-button
+		[ctrl]="ctrl"
+		(soChangeVisible)="onVisible($event.newValue)"
+	></button>`,
 })
 class BoundButtonHost {
 	readonly ctrl = new TButton({ text: 'Save' })
@@ -360,7 +374,7 @@ describe('эмиттер выхода · заводит первое чтени�
 
 		fixture.detectChanges()
 
-		fixture.componentInstance.view().soChangeVisible.subscribe((visible) => {
+		fixture.componentInstance.view().soChangeVisible.subscribe(({ newValue: visible }) => {
 			changes.push(visible)
 		})
 		fixture.componentInstance.ctrl.visible = false

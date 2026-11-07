@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../../../../common'
 import type { IExtension } from '../types'
 import type { TGroup } from '../group/types'
 
@@ -87,11 +88,11 @@ export interface IDrawStrategy {
 
 export type TDrawEvents<TItem extends TDrawable = TDrawable> = {
 	/** Сменилось, что рисовать: элементы или распорки */
-	'change:drawn': (value: ReadonlyArray<TDrawnEntry<TItem>>) => void
+	'change:drawn': (payload: TValuePayload<ReadonlyArray<TDrawnEntry<TItem>>>) => void
 	/** Сменились секции нарисованного: записи секции, её ключ или группа с подписью */
-	'change:drawnSections': (value: ReadonlyArray<TDrawnSection<TItem>>) => void
+	'change:drawnSections': (payload: TValuePayload<ReadonlyArray<TDrawnSection<TItem>>>) => void
 	/** Окно поставили или сняли — само или тем, что показанное сгруппировали */
-	'change:virtual': (value: boolean) => void
+	'change:virtual': (payload: TValuePayload<boolean>) => void
 }
 
 /**

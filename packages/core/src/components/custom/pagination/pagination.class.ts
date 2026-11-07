@@ -79,13 +79,13 @@ export default class TPagination
 		this._locale = props.locale ?? ctor.defaultValues.locale
 
 		this._prevAria = new TAria()
-		this._prevAria.subscribe(() =>
-			this.events.emit('change:prevAria', this._prevAria.toObject()),
+		this._prevAria.subscribe((_set, oldValue) =>
+			this.events.emit('change:prevAria', { newValue: this._prevAria.toObject(), oldValue }),
 		)
 
 		this._nextAria = new TAria()
-		this._nextAria.subscribe(() =>
-			this.events.emit('change:nextAria', this._nextAria.toObject()),
+		this._nextAria.subscribe((_set, oldValue) =>
+			this.events.emit('change:nextAria', { newValue: this._nextAria.toObject(), oldValue }),
 		)
 	}
 
@@ -94,10 +94,12 @@ export default class TPagination
 	}
 
 	set total(value: number) {
+		const oldTotal = this.total
+
 		if (this._total === value) return
 
 		this._total = value
-		this.events.emit('change:total', value)
+		this.events.emit('change:total', { newValue: value, oldValue: oldTotal })
 	}
 
 	get pageSize(): number {
@@ -105,10 +107,12 @@ export default class TPagination
 	}
 
 	set pageSize(value: number) {
+		const oldPageSize = this.pageSize
+
 		if (this._pageSize === value) return
 
 		this._pageSize = value
-		this.events.emit('change:pageSize', value)
+		this.events.emit('change:pageSize', { newValue: value, oldValue: oldPageSize })
 	}
 
 	get pages(): TPaginationPage[] | undefined {
@@ -120,10 +124,12 @@ export default class TPagination
 	 * и литерал в разметке, собранный заново тем же составом, — не смена.
 	 */
 	set pages(value: TPaginationPage[] | undefined) {
+		const oldPages = this.pages
+
 		if (samePages(this._pages, value)) return
 
 		this._pages = value
-		this.events.emit('change:pages', value)
+		this.events.emit('change:pages', { newValue: value, oldValue: oldPages })
 	}
 
 	/** Как задано: окно прижимает его к числу страниц само (`middleOf`). */
@@ -132,10 +138,12 @@ export default class TPagination
 	}
 
 	set middleCount(value: number) {
+		const oldMiddleCount = this.middleCount
+
 		if (this._middleCount === value) return
 
 		this._middleCount = value
-		this.events.emit('change:middleCount', value)
+		this.events.emit('change:middleCount', { newValue: value, oldValue: oldMiddleCount })
 	}
 
 	get locale(): string {
@@ -143,10 +151,12 @@ export default class TPagination
 	}
 
 	set locale(value: string) {
+		const oldLocale = this.locale
+
 		if (this._locale === value) return
 
 		this._locale = value
-		this.events.emit('change:locale', value)
+		this.events.emit('change:locale', { newValue: value, oldValue: oldLocale })
 	}
 
 	/**

@@ -1,3 +1,4 @@
+import type { TValuePayload } from '@soldy-ui/core'
 /**
  * Popover в React — проводка целиком, на настоящей разметке.
  *
@@ -286,7 +287,9 @@ describe('открытие и закрытие', () => {
 		const popover = new TPopover()
 		const changes: boolean[] = []
 
-		popover.events.on('change:open', (value: boolean) => changes.push(value))
+		popover.events.on('change:open', ({ newValue: value }: TValuePayload<boolean>) =>
+			changes.push(value),
+		)
 
 		await render(page({ ctrl: popover }))
 		await open()
@@ -312,7 +315,9 @@ describe('открытие и закрытие', () => {
 		const popover = new TPopover()
 		const changes: boolean[] = []
 
-		await render(page({ ctrl: popover, onChangeOpen: (value) => changes.push(value) }))
+		await render(
+			page({ ctrl: popover, onChangeOpen: ({ newValue: value }) => changes.push(value) }),
+		)
 
 		act(() => {
 			popover.open = true
@@ -725,7 +730,9 @@ describe('жест', () => {
 	it('смахнули вниз от триггера — закрыта, onChangeOpen видит закрытие, фокус — на триггер', async () => {
 		const changes: boolean[] = []
 
-		await render(page({ swipe: 'handle', onChangeOpen: (value) => changes.push(value) }))
+		await render(
+			page({ swipe: 'handle', onChangeOpen: ({ newValue: value }) => changes.push(value) }),
+		)
 		await open()
 
 		expect(panel().dataset.placement).toBe('bottom-start')

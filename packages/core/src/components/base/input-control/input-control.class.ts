@@ -62,10 +62,12 @@ export default class TInputControl<
 	}
 
 	set readonly(value: boolean) {
+		const oldReadonly = this.readonly
+
 		if (this._readonly === value) return
 
 		this._applyReadonly(value)
-		this._sink.emit('change:readonly', value)
+		this._sink.emit('change:readonly', { newValue: value, oldValue: oldReadonly })
 	}
 
 	get required(): boolean {
@@ -79,10 +81,12 @@ export default class TInputControl<
 	}
 
 	set required(value: boolean) {
+		const oldRequired = this.required
+
 		if (this._required === value) return
 
 		this._applyRequired(value)
-		this._sink.emit('change:required', value)
+		this._sink.emit('change:required', { newValue: value, oldValue: oldRequired })
 	}
 
 	/**

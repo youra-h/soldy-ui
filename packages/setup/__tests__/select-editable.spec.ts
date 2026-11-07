@@ -378,7 +378,7 @@ describe('query — плагин помнит набранное', () => {
 		const { editable, type } = await setup(['Москва'])
 		const handler = vi.fn()
 
-		editable.events.on('change:query', handler)
+		editable.events.on('change:query', ({ newValue }) => handler(newValue))
 		type('мо')
 
 		expect(editable.query).toBe('мо')

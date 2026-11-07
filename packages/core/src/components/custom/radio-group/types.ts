@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../common'
 import type {
 	IValueControl,
 	IValueControlProps,
@@ -31,7 +32,7 @@ export type TRadioGroupValue = string | number | undefined
 export type TRadioGroupEvents = TValueControlEvents<TRadioGroupValue> &
 	TCollectionStorageDriverEvents<IRadioGroupItem> & {
 		/** change:view */
-		'change:view': (value: TRadioGroupView | undefined) => void
+		'change:view': (payload: TValuePayload<TRadioGroupView | undefined>) => void
 	}
 
 /** Пропсы самого компонента (без коллекционной части). */

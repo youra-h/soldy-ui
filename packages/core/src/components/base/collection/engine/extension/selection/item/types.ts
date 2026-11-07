@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../../../../../common'
 import type { IItemExtension, TBaseItemEventsExtension } from '../../types'
 
 /** События item-адаптера выборки. */
@@ -7,7 +8,7 @@ export type TSelectionItemEventsExtension = TBaseItemEventsExtension & {
 	 * геттер `selected`. Приходит только элементу, чья отметка сменилась, а не
 	 * всем на любую смену выбора: значение у отметки одно — выбор коллекции.
 	 */
-	'change:selected': (value: boolean) => void
+	'change:selected': (payload: TValuePayload<boolean>) => void
 }
 
 /**

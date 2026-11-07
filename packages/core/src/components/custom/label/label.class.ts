@@ -69,10 +69,12 @@ export default class TLabel extends TStylable<ILabelProps, TLabelEvents> impleme
 	}
 
 	set position(value: TLabelPosition) {
+		const oldPosition = this.position
+
 		if (this._position === value) return
 
 		this._applyPosition(value, this._position)
-		this.events.emit('change:position', value)
+		this.events.emit('change:position', { newValue: value, oldValue: oldPosition })
 	}
 
 	protected _applyPosition(newValue: TLabelPosition, oldValue?: TLabelPosition): void {

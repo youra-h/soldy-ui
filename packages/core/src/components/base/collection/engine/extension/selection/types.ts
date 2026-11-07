@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../../../../common'
 import { TActionEvent } from '../../../../../../common/event/action-event'
 import type { IExtension, IExtensionItems } from '../types'
 import type { ISelectionItemExtension } from './item/types'
@@ -36,7 +37,7 @@ export type TSelectionEvents<TItem> = {
 	 * нём его элемент, и «выбрать все» в таблице иначе стал бы квадратичным.
 	 */
 	'change:selection': (items: TItem[], changed: ReadonlySet<TItem>) => void
-	'change:mode': (value: TSelectionMode) => void
+	'change:mode': (payload: TValuePayload<TSelectionMode>) => void
 }
 
 /** Контракт расширения выборки. Реализуется TSelectionExtension. */

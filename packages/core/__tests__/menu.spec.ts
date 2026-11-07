@@ -29,6 +29,7 @@ import type {
 	TMenuSubmenuEntries,
 	TMenuSubmenuEntry,
 	TUpdateEvent,
+	TValuePayload,
 } from '@soldy-ui/core'
 
 /**
@@ -109,7 +110,9 @@ describe.each([
 })
 
 /** Событие свойства, которое проверяют сторожа владельцев ниже. */
-type TGroupSeparatorsEvents = { 'change:groupSeparators': (value: boolean) => void }
+type TGroupSeparatorsEvents = {
+	'change:groupSeparators': (payload: TValuePayload<boolean>) => void
+}
 
 /**
  * Владелец своих пунктов — меню или пункт с подменю — для проверок ниже:
@@ -151,7 +154,7 @@ describe.each(SEPARATED_OWNERS)('%s · разделители секций гр�
 		const owner = create()
 		const seen: boolean[] = []
 
-		owner.events.on('change:groupSeparators', (value) => seen.push(value))
+		owner.events.on('change:groupSeparators', ({ newValue: value }) => seen.push(value))
 		owner.groupSeparators = false
 		owner.groupSeparators = false
 		owner.groupSeparators = true
@@ -191,7 +194,7 @@ describe('TMenu · связка «кнопка ↔ меню»', () => {
 		const menu = new TMenu()
 		const handler = vi.fn()
 
-		menu.events.on('change:triggerAria', handler)
+		menu.events.on('change:triggerAria', ({ newValue }) => handler(newValue))
 		menu.open = true
 
 		expect(handler).toHaveBeenLastCalledWith(
@@ -215,7 +218,7 @@ describe('TMenu · связка «кнопка ↔ меню»', () => {
 		const menu = new TMenu()
 		const handler = vi.fn()
 
-		menu.events.on('change:open', handler)
+		menu.events.on('change:open', ({ newValue }) => handler(newValue))
 		menu.open = false
 		menu.open = true
 		menu.open = true
@@ -258,7 +261,7 @@ describe('TMenu · контекстное меню', () => {
 		const menu = new TMenu({ open: true })
 		const handler = vi.fn()
 
-		menu.events.on('change:triggerAria', handler)
+		menu.events.on('change:triggerAria', ({ newValue }) => handler(newValue))
 		menu.openOn = 'contextmenu'
 
 		expect(menu.triggerAria.toObject()).toEqual({})
@@ -276,7 +279,7 @@ describe('TMenu · контекстное меню', () => {
 		const menu = new TMenu()
 		const handler = vi.fn()
 
-		menu.events.on('change:openOn', handler)
+		menu.events.on('change:openOn', ({ newValue }) => handler(newValue))
 		menu.openOn = 'press'
 		menu.openOn = 'contextmenu'
 		menu.openOn = 'contextmenu'
@@ -298,7 +301,7 @@ describe('TMenu · контекстное меню', () => {
 		const handler = vi.fn()
 		const given = { x: 120, y: 80 }
 
-		menu.events.on('change:point', handler)
+		menu.events.on('change:point', ({ newValue }) => handler(newValue))
 		menu.point = given
 
 		const first = menu.point
@@ -341,7 +344,7 @@ describe('TMenu · контекстное меню', () => {
 		const handler = vi.fn()
 
 		menu.point = { x: 40, y: 60 }
-		menu.events.on('change:point', handler)
+		menu.events.on('change:point', ({ newValue }) => handler(newValue))
 		menu.openOn = 'press'
 
 		expect(menu.point).toBe(null)
@@ -373,7 +376,7 @@ describe('TMenu · классы панели', () => {
 		const menu = new TMenu({ variant: 'brand' })
 		const handler = vi.fn()
 
-		menu.events.on('change:panelClasses', handler)
+		menu.events.on('change:panelClasses', ({ newValue }) => handler(newValue))
 
 		menu.size = 'xl'
 		menu.variant = 'danger'
@@ -483,8 +486,8 @@ describe('группа и разделитель', () => {
 		expect(group.aria.get('role')).toBe('group')
 		expect(group.label).toBe('Вид')
 
-		group.events.on('change:label', labels)
-		group.events.on('change:labelAria', sets)
+		group.events.on('change:label', ({ newValue }) => labels(newValue))
+		group.events.on('change:labelAria', ({ newValue }) => sets(newValue))
 
 		group.label = 'Вид'
 		group.label = 'Сортировка'
@@ -723,7 +726,7 @@ describe('TMenuSubmenu · пункт', () => {
 		const share = new TMenuSubmenu()
 		const handler = vi.fn()
 
-		share.events.on('change:open', handler)
+		share.events.on('change:open', ({ newValue }) => handler(newValue))
 		share.open = false
 		share.open = true
 		share.open = true
@@ -739,7 +742,7 @@ describe('TMenuSubmenu · пункт', () => {
 
 		expect(share.panelAria.toObject()).toEqual({ role: 'menu' })
 
-		share.events.on('change:panelAria', handler)
+		share.events.on('change:panelAria', ({ newValue }) => handler(newValue))
 		share.panelAria.add('id', 'x')
 
 		expect(handler).toHaveBeenCalledWith({ role: 'menu', id: 'x' })
@@ -755,7 +758,7 @@ describe('TMenuSubmenu · пункт', () => {
 			'so-menu__panel--variant-danger',
 		])
 
-		share.events.on('change:panelClasses', handler)
+		share.events.on('change:panelClasses', ({ newValue }) => handler(newValue))
 		share.size = 'lg'
 		share.variant = undefined
 
@@ -818,7 +821,7 @@ describe('TMenuSubmenu · пункт', () => {
 		const panelClasses = vi.fn()
 
 		share.events.on('change:panelVariant', panelVariant)
-		share.events.on('change:panelClasses', panelClasses)
+		share.events.on('change:panelClasses', ({ newValue }) => panelClasses(newValue))
 
 		share.menuVariant = 'brand'
 		share.menuVariant = 'brand'
@@ -1427,7 +1430,7 @@ describe('коллекция меню · подменю из данных', () =
 		const entry = entryOf(submenus.entries, share)
 		const link = itemOf(entry.engine.extensions.batch.items, 'link')
 
-		submenus.events.on('change:submenus', announced)
+		submenus.events.on('change:submenus', ({ newValue }) => announced(newValue))
 
 		batch.items = RESHARE
 
@@ -1588,7 +1591,7 @@ describe('коллекция меню · подменю из данных', () =
 		const pushed: IMenuItemSource = { value: 'e', items: [] }
 		const dropped: IMenuItemSource = { value: 'f', items: [] }
 
-		submenus.events.on('change:submenus', announced)
+		submenus.events.on('change:submenus', ({ newValue }) => announced(newValue))
 
 		batch.set(filled)
 
@@ -1635,7 +1638,7 @@ describe('коллекция меню · подменю из данных', () =
 		}
 		const vetoUpdate = (e: TUpdateEvent<IMenuItem>) => e.preventDefault()
 
-		submenus.events.on('change:submenus', announced)
+		submenus.events.on('change:submenus', ({ newValue }) => announced(newValue))
 
 		events.on('item:add:before', vetoInsert)
 		plain.push(SHARE[1])
@@ -1680,7 +1683,7 @@ describe('фасад меню · подменю из данных', () => {
 		const announced = vi.fn()
 		const recent: IMenuItemSource = { value: 'recent', items: [] }
 
-		facade.events.on('change:submenus', announced)
+		facade.events.on('change:submenus', ({ newValue }) => announced(newValue))
 		facade.extensions.plain.push(recent)
 
 		expect(facade.submenus).toBe(facade.extensions.submenus.entries)
@@ -1737,7 +1740,7 @@ describe('TMenuPopoverItem · пункт', () => {
 		const due = new TMenuPopoverItem()
 		const handler = vi.fn()
 
-		due.events.on('change:open', handler)
+		due.events.on('change:open', ({ newValue }) => handler(newValue))
 		due.open = false
 		due.open = true
 		due.open = true
@@ -1753,7 +1756,7 @@ describe('TMenuPopoverItem · пункт', () => {
 
 		expect(due.panelAria.toObject()).toEqual({ role: 'dialog' })
 
-		due.events.on('change:panelAria', handler)
+		due.events.on('change:panelAria', ({ newValue }) => handler(newValue))
 		due.panelAria.add('id', 'x')
 
 		expect(handler).toHaveBeenCalledWith({ role: 'dialog', id: 'x' })
@@ -1790,7 +1793,7 @@ describe('TMenuPopoverItem · пункт', () => {
 		const due = new TMenuPopoverItem({ lazyMount: true })
 		const handler = vi.fn()
 
-		due.events.on('change:lazyMount', handler)
+		due.events.on('change:lazyMount', ({ newValue }) => handler(newValue))
 		due.lazyMount = true
 		due.lazyMount = false
 
@@ -1972,7 +1975,7 @@ describe('фасад меню · группы', () => {
 		const sections = vi.fn()
 		const by = (item: IMenuItem) => (item.value === 'b' ? 'first' : undefined)
 
-		facade.events.on('change:sections', sections)
+		facade.events.on('change:sections', ({ newValue }) => sections(newValue))
 
 		facade.groupBy = by
 		facade.groups = [{ key: 'first', label: 'Первая' }]
@@ -2046,7 +2049,7 @@ describe('переключатель и группа переключателе�
 		const item = new TMenuRadioItem({ value: 'name', group: sort })
 		const changed = vi.fn()
 
-		item.events.on('change:group', changed)
+		item.events.on('change:group', ({ newValue }) => changed(newValue))
 
 		item.group = sort
 		item.group = view

@@ -1,3 +1,4 @@
+import { propertyDetail } from './property-detail'
 /**
  * `<div is="so-textarea">` — многострочное поле, чьё значение ведёт ядро.
  *
@@ -104,7 +105,7 @@ function collect(el: Element, name: string): unknown[] {
 	const seen: unknown[] = []
 
 	el.addEventListener(name, (event) => {
-		if (event instanceof CustomEvent) seen.push(event.detail)
+		if (event instanceof CustomEvent) seen.push(propertyDetail(event))
 	})
 
 	return seen

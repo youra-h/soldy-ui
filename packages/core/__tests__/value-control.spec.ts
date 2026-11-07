@@ -30,7 +30,7 @@ describe('TValueControl', () => {
 		type P = IValueControlProps<string>
 		const c = new TValueControl<string, P>({ value: 'x', name: 'a' })
 		const handler = vi.fn()
-		c.events.on('change:name', handler)
+		c.events.on('change:name', ({ newValue }) => handler(newValue))
 
 		c.name = 'b'
 		expect(handler).toHaveBeenCalledWith('b')

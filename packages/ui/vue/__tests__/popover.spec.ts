@@ -1,3 +1,4 @@
+import type { TValuePayload } from '@soldy-ui/core'
 /**
  * Popover во Vue — проводка целиком, на настоящей разметке.
  *
@@ -252,7 +253,9 @@ describe('открытие и закрытие', () => {
 		const popover = new TPopover()
 		const changes: boolean[] = []
 
-		popover.events.on('change:open', (value: boolean) => changes.push(value))
+		popover.events.on('change:open', ({ newValue: value }: TValuePayload<boolean>) =>
+			changes.push(value),
+		)
 
 		await render(() => page({ ctrl: popover }))
 		await open()

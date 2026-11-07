@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../common'
 import type { IComponent, IComponentProps, TComponentEvents } from '../../base/component'
 
 export interface IVirtualProps extends IComponentProps {
@@ -9,7 +10,7 @@ export interface IVirtualProps extends IComponentProps {
 }
 
 export type TVirtualEvents = TComponentEvents & {
-	'change:enabled': (value: boolean) => void
+	'change:enabled': (payload: TValuePayload<boolean>) => void
 }
 
 export interface IVirtual extends IComponent<IVirtualProps, TVirtualEvents> {

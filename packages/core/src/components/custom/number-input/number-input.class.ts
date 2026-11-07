@@ -144,21 +144,33 @@ export class TNumberInput
 		// Кнопки шага — не остановки Tab: число меняют ↑/↓ во вводе, а кнопки —
 		// для указателя и скринридера
 		this._decrementAria = new TAria({ tabindex: '-1' })
-		this._decrementAria.subscribe(() =>
-			this.events.emit('change:decrementAria', this._decrementAria.toObject()),
+		this._decrementAria.subscribe((_set, oldValue) =>
+			this.events.emit('change:decrementAria', {
+				newValue: this._decrementAria.toObject(),
+				oldValue,
+			}),
 		)
 		this._incrementAria = new TAria({ tabindex: '-1' })
-		this._incrementAria.subscribe(() =>
-			this.events.emit('change:incrementAria', this._incrementAria.toObject()),
+		this._incrementAria.subscribe((_set, oldValue) =>
+			this.events.emit('change:incrementAria', {
+				newValue: this._incrementAria.toObject(),
+				oldValue,
+			}),
 		)
 
 		this._decrementDataset = new TDataset()
-		this._decrementDataset.subscribe(() =>
-			this.events.emit('change:decrementDataset', this._decrementDataset.toObject()),
+		this._decrementDataset.subscribe((_set, oldValue) =>
+			this.events.emit('change:decrementDataset', {
+				newValue: this._decrementDataset.toObject(),
+				oldValue,
+			}),
 		)
 		this._incrementDataset = new TDataset()
-		this._incrementDataset.subscribe(() =>
-			this.events.emit('change:incrementDataset', this._incrementDataset.toObject()),
+		this._incrementDataset.subscribe((_set, oldValue) =>
+			this.events.emit('change:incrementDataset', {
+				newValue: this._incrementDataset.toObject(),
+				oldValue,
+			}),
 		)
 
 		this._inputSets = { aria: new TAria(), attrs: new TAttributes() }
@@ -191,12 +203,14 @@ export class TNumberInput
 	}
 
 	set min(value: number | undefined) {
+		const oldMin = this.min
+
 		if (this._min === value) return
 
 		this._rescale(() => {
 			this._min = value
 		})
-		this.events.emit('change:min', value)
+		this.events.emit('change:min', { newValue: value, oldValue: oldMin })
 	}
 
 	/** Меньше `min` — граница схлопывается в `min`, как у шкалы. */
@@ -205,12 +219,14 @@ export class TNumberInput
 	}
 
 	set max(value: number | undefined) {
+		const oldMax = this.max
+
 		if (this._max === value) return
 
 		this._rescale(() => {
 			this._max = value
 		})
-		this.events.emit('change:max', value)
+		this.events.emit('change:max', { newValue: value, oldValue: oldMax })
 	}
 
 	get step(): number {
@@ -218,12 +234,14 @@ export class TNumberInput
 	}
 
 	set step(value: number) {
+		const oldStep = this.step
+
 		if (this._step === value) return
 
 		this._rescale(() => {
 			this._step = value
 		})
-		this.events.emit('change:step', value)
+		this.events.emit('change:step', { newValue: value, oldValue: oldStep })
 	}
 
 	get largeStep(): number {
@@ -231,10 +249,12 @@ export class TNumberInput
 	}
 
 	set largeStep(value: number) {
+		const oldLargeStep = this.largeStep
+
 		if (this._largeStep === value) return
 
 		this._largeStep = value
-		this.events.emit('change:largeStep', value)
+		this.events.emit('change:largeStep', { newValue: value, oldValue: oldLargeStep })
 	}
 
 	/**
@@ -247,11 +267,13 @@ export class TNumberInput
 	}
 
 	set formatOptions(value: TNumberInputFormatOptions | undefined) {
+		const oldFormatOptions = this.formatOptions
+
 		if (sameOptions(this._formatOptions, value)) return
 
 		this._formatOptions = value
 		this._formatChanged()
-		this.events.emit('change:formatOptions', value)
+		this.events.emit('change:formatOptions', { newValue: value, oldValue: oldFormatOptions })
 	}
 
 	get placeholder(): string {
@@ -259,10 +281,12 @@ export class TNumberInput
 	}
 
 	set placeholder(value: string) {
+		const oldPlaceholder = this.placeholder
+
 		if (this._placeholder === value) return
 
 		this._placeholder = value
-		this.events.emit('change:placeholder', value)
+		this.events.emit('change:placeholder', { newValue: value, oldValue: oldPlaceholder })
 	}
 
 	get locale(): string {
@@ -274,11 +298,13 @@ export class TNumberInput
 	 * события, как у `formatOptions`.
 	 */
 	set locale(value: string) {
+		const oldLocale = this.locale
+
 		if (this._locale === value) return
 
 		this._locale = value
 		this._formatChanged()
-		this.events.emit('change:locale', value)
+		this.events.emit('change:locale', { newValue: value, oldValue: oldLocale })
 	}
 
 	/* ------------------------------------------------------------------ */
@@ -552,10 +578,12 @@ export class TNumberInput
 	}
 
 	protected _setText(text: string): void {
+		const oldText = this.text
+
 		if (this._text === text) return
 
 		this._text = text
-		this.events.emit('change:text', text)
+		this.events.emit('change:text', { newValue: text, oldValue: oldText })
 	}
 
 	/**

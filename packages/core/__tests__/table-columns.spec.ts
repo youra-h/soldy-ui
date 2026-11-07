@@ -466,8 +466,8 @@ describe('ширина', () => {
 		const changed = vi.fn()
 		const unchanged = vi.fn()
 
-		flexible.events.on('change:width', changed)
-		fixed.events.on('change:width', unchanged)
+		flexible.events.on('change:width', ({ newValue }) => changed(newValue))
+		fixed.events.on('change:width', ({ newValue }) => unchanged(newValue))
 
 		flexible.layoutWidth = 150
 		flexible.layoutWidth = 150
@@ -497,7 +497,7 @@ describe('ширина', () => {
 		const column = new TTableColumn({ width: 50, minWidth: 100 })
 		const changed = vi.fn()
 
-		column.events.on('change:width', changed)
+		column.events.on('change:width', ({ newValue }) => changed(newValue))
 
 		column.width = 80
 
@@ -518,8 +518,8 @@ describe('ширина', () => {
 		const width = vi.fn()
 		const maxWidth = vi.fn()
 
-		column.events.on('change:width', width)
-		column.events.on('change:maxWidth', maxWidth)
+		column.events.on('change:width', ({ newValue }) => width(newValue))
+		column.events.on('change:maxWidth', ({ newValue }) => maxWidth(newValue))
 
 		column.maxWidth = 120
 
@@ -537,7 +537,7 @@ describe('ширина', () => {
 		const column = new TTableColumn({ width: 150 })
 		const width = vi.fn()
 
-		column.events.on('change:width', width)
+		column.events.on('change:width', ({ newValue }) => width(newValue))
 
 		column.minWidth = 100
 		column.maxWidth = 200
@@ -550,7 +550,7 @@ describe('ширина', () => {
 		const column = new TTableColumn({ width: 150, maxWidth: 100 })
 		const width = vi.fn()
 
-		column.events.on('change:width', width)
+		column.events.on('change:width', ({ newValue }) => width(newValue))
 
 		expect(column.width).toBe(100)
 
@@ -564,7 +564,7 @@ describe('ширина', () => {
 		const column = new TTableColumn({ width: 50, minWidth: 100 })
 		const width = vi.fn()
 
-		column.events.on('change:width', width)
+		column.events.on('change:width', ({ newValue }) => width(newValue))
 
 		column.width = 100
 
@@ -705,7 +705,7 @@ describe('ручка ширины', () => {
 			const column = new TTableColumn()
 			const rendered = vi.fn()
 
-			column.events.on('change:resizerRendered', rendered)
+			column.events.on('change:resizerRendered', ({ newValue }) => rendered(newValue))
 
 			column.resizable = true
 			column.layoutWidth = 150
@@ -721,8 +721,8 @@ describe('ручка ширины', () => {
 			const column = new TTableColumn()
 			const changed = vi.fn()
 
-			column.events.on('change:resizable', changed)
-			column.events.on('change:disabled', changed)
+			column.events.on('change:resizable', ({ newValue }) => changed(newValue))
+			column.events.on('change:disabled', ({ newValue }) => changed(newValue))
 
 			column.resizable = true
 			column.resizable = true
@@ -805,7 +805,7 @@ describe('ручка ширины', () => {
 			const { column } = resizable({ width: 150 })
 			const changed = vi.fn()
 
-			column.events.on('change:resizer', changed)
+			column.events.on('change:resizer', ({ newValue }) => changed(newValue))
 
 			// Раскладка колонке со своей шириной поля не меняет
 			column.layoutWidth = 170
@@ -827,7 +827,7 @@ describe('ручка ширины', () => {
 			const width = vi.fn()
 
 			column.layoutWidth = 150
-			column.events.on('change:width', width)
+			column.events.on('change:width', ({ newValue }) => width(newValue))
 
 			expect(column.grab()).toBe(true)
 
@@ -844,7 +844,7 @@ describe('ручка ширины', () => {
 			const { column, commit } = resizable({ width: 150 })
 			const width = vi.fn()
 
-			column.events.on('change:width', width)
+			column.events.on('change:width', ({ newValue }) => width(newValue))
 
 			column.grab()
 			column.drag(10)
@@ -980,7 +980,9 @@ describe('ручка ширины', () => {
 			// Значение события и геттер в эту минуту — подписчик видит уже новое
 			const seen: Array<[boolean, boolean]> = []
 
-			column.events.on('change:resizing', (value) => seen.push([value, column.resizing]))
+			column.events.on('change:resizing', ({ newValue: value }) =>
+				seen.push([value, column.resizing]),
+			)
 
 			expect(column.resizing).toBe(false)
 
@@ -1016,7 +1018,7 @@ describe('ручка ширины', () => {
 			const { column } = resizable({ width: 150 })
 			const resizing = vi.fn<(value: boolean) => void>()
 
-			column.events.on('change:resizing', resizing)
+			column.events.on('change:resizing', ({ newValue }) => resizing(newValue))
 
 			column.release()
 			column.cancel()
@@ -1036,7 +1038,7 @@ describe('ручка ширины', () => {
 			const resizing = vi.fn<(value: boolean) => void>()
 
 			column.grab()
-			column.events.on('change:resizing', resizing)
+			column.events.on('change:resizing', ({ newValue }) => resizing(newValue))
 			column.grab()
 
 			expect(column.resizing).toBe(true)
@@ -1132,7 +1134,7 @@ describe('ручка ширины', () => {
 			const { column, commit } = deferred()
 			const width = vi.fn()
 
-			column.events.on('change:width', width)
+			column.events.on('change:width', ({ newValue }) => width(newValue))
 
 			expect(column.resizeGhost).toBeUndefined()
 
@@ -1198,7 +1200,7 @@ describe('ручка ширины', () => {
 			const order: string[] = []
 
 			column.events.on('resize:start', () => order.push(`start ${column.width}`))
-			column.events.on('change:width', (value) => order.push(`width ${value}`))
+			column.events.on('change:width', ({ newValue: value }) => order.push(`width ${value}`))
 			column.grab()
 			column.drag(20)
 
@@ -1262,7 +1264,7 @@ describe('ручка ширины', () => {
 			const { column } = deferred()
 			const resizing = vi.fn<(value: boolean) => void>()
 
-			column.events.on('change:resizing', resizing)
+			column.events.on('change:resizing', ({ newValue }) => resizing(newValue))
 			column.grab()
 
 			expect(column.resizing).toBe(true)
@@ -1391,9 +1393,9 @@ describe('ручка ширины', () => {
 			const text = vi.fn()
 			const sort = vi.fn()
 
-			column.events.on('change:resizerAria', resizer)
-			column.events.on('change:textAria', text)
-			column.events.on('change:sortAria', sort)
+			column.events.on('change:resizerAria', ({ newValue }) => resizer(newValue))
+			column.events.on('change:textAria', ({ newValue }) => text(newValue))
+			column.events.on('change:sortAria', ({ newValue }) => sort(newValue))
 
 			column.resizerAria.add('aria-labelledby', 'x')
 			column.textAria.add('id', 'x')
@@ -1566,7 +1568,7 @@ describe('заголовок строки', () => {
 		const column = new TTableColumn()
 		const changed = vi.fn()
 
-		column.events.on('change:rowHeader', changed)
+		column.events.on('change:rowHeader', ({ newValue }) => changed(newValue))
 		column.rowHeader = false
 		column.rowHeader = true
 		column.rowHeader = true
@@ -1605,8 +1607,8 @@ describe('заголовок', () => {
 		const align = vi.fn()
 		const dataset = vi.fn()
 
-		column.events.on('change:align', align)
-		column.events.on('change:dataset', dataset)
+		column.events.on('change:align', ({ newValue }) => align(newValue))
+		column.events.on('change:dataset', ({ newValue }) => dataset(newValue))
 
 		column.align = 'end'
 
@@ -1666,7 +1668,7 @@ describe('перестановка колонок', () => {
 			const column = new TTableColumn()
 			const changed = vi.fn()
 
-			column.events.on('change:reorderable', changed)
+			column.events.on('change:reorderable', ({ newValue }) => changed(newValue))
 
 			column.reorderable = true
 			column.reorderable = true
@@ -1891,7 +1893,7 @@ describe('перестановка колонок', () => {
 					[name, age, id, city].map((column) => {
 						const changed = vi.fn()
 
-						column.events.on('change:dataset', changed)
+						column.events.on('change:dataset', ({ newValue }) => changed(newValue))
 
 						return [column, changed] as const
 					}),
@@ -2571,10 +2573,10 @@ describe('resizable и reorderable таблицы', () => {
 		const rendered = vi.fn()
 		const ageResizable = vi.fn()
 
-		name.events.on('change:resizable', nameResizable)
-		name.events.on('change:reorderable', nameReorderable)
-		name.events.on('change:resizerRendered', rendered)
-		age.events.on('change:resizable', ageResizable)
+		name.events.on('change:resizable', ({ newValue }) => nameResizable(newValue))
+		name.events.on('change:reorderable', ({ newValue }) => nameReorderable(newValue))
+		name.events.on('change:resizerRendered', ({ newValue }) => rendered(newValue))
+		age.events.on('change:resizable', ({ newValue }) => ageResizable(newValue))
 
 		owner.resizable = true
 		owner.reorderable = true
@@ -2596,7 +2598,7 @@ describe('resizable и reorderable таблицы', () => {
 		const { owner, name } = tableWith({ resizable: true })
 		const changed = vi.fn()
 
-		name.events.on('change:resizable', changed)
+		name.events.on('change:resizable', ({ newValue }) => changed(newValue))
 
 		name.resizable = true
 

@@ -350,7 +350,7 @@ describe('group · ключ элемента', () => {
 		const handler = vi.fn()
 		const by = (item: Item) => item.kind
 
-		group.events.on('change:groupBy', handler)
+		group.events.on('change:groupBy', ({ newValue }) => handler(newValue))
 		group.groupBy = by
 		group.groupBy = by
 
@@ -366,7 +366,7 @@ describe('group · секции', () => {
 
 		group.groups = GROUPS
 		batch.set([source('a', 'edit'), source('b')])
-		group.events.on('change:sections', sections)
+		group.events.on('change:sections', ({ newValue }) => sections(newValue))
 
 		const before = group.sections
 
@@ -382,7 +382,7 @@ describe('group · секции', () => {
 		const sections = vi.fn()
 
 		batch.set([source('a', 'edit')])
-		group.events.on('change:sections', sections)
+		group.events.on('change:sections', ({ newValue }) => sections(newValue))
 
 		plain.push(source('b', 'edit'))
 
@@ -399,8 +399,8 @@ describe('group · секции', () => {
 
 		group.groups = GROUPS
 		batch.set([source('a', 'edit'), source('b', 'view')])
-		group.events.on('change:groups', groups)
-		group.events.on('change:sections', sections)
+		group.events.on('change:groups', ({ newValue }) => groups(newValue))
+		group.events.on('change:sections', ({ newValue }) => sections(newValue))
 		driver.events.on('items:query:invalidated', invalidated)
 
 		group.groups = GROUPS.map((entry) => ({ ...entry }))
@@ -507,7 +507,7 @@ describe('group · регистрация', () => {
 		const { group } = markupKit()
 		const sections = vi.fn()
 
-		group.events.on('change:sections', sections)
+		group.events.on('change:sections', ({ newValue }) => sections(newValue))
 
 		const release = group.register({ key: 'markup:1', label: 'Правка' })
 
@@ -567,7 +567,7 @@ describe('group · регистрация', () => {
 
 		const first = group.register({ key: 'markup:1', label: 'Правка' })
 
-		group.events.on('change:sections', sections)
+		group.events.on('change:sections', ({ newValue }) => sections(newValue))
 
 		const second = group.register({ key: 'markup:1', label: 'Edit' })
 
@@ -589,7 +589,7 @@ describe('group · регистрация', () => {
 		const sections = vi.fn()
 		const before = group.sections
 
-		group.events.on('change:sections', sections)
+		group.events.on('change:sections', ({ newValue }) => sections(newValue))
 		group.register({ key: 'markup:2', label: 'Пусто' })
 
 		expect(sections).not.toHaveBeenCalled()

@@ -1,3 +1,4 @@
+import type { TValuePayload } from '@soldy-ui/core'
 import type { IMenuOwner } from '@soldy-ui/core'
 import type { IPluginContext } from '../../../base'
 import { TElementPlugin } from '../../element'
@@ -84,17 +85,20 @@ export abstract class TMenuNavigationPlugin<
 		elementPlugin?.events.on('ready', () => this._syncPanel())
 		elementPlugin?.events.on('removed', () => this._unlistenPanel())
 
-		this._listenTo(this._owner?.events, 'change:open', (open: boolean) => {
-			this._syncPanel()
+		this._listenTo(
+			this._owner?.events,
+			'change:open',
+			({ newValue: open }: TValuePayload<boolean>) => {
+				this._syncPanel()
 
-			if (open) return
+				if (open) return
 
-			// Закрытое меню подсветку не держит; фокус не трогается — его
-			// возвращает модель фокуса
-			this._cancelEdgeFrame()
-			this._typeahead.reset()
-			this.clearHighlight()
-		})
+				// A closed menu clears its highlight; the focus model restores focus.
+				this._cancelEdgeFrame()
+				this._typeahead.reset()
+				this.clearHighlight()
+			},
+		)
 	}
 
 	override destroy(): void {

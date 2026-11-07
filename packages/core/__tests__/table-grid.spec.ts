@@ -112,8 +112,8 @@ describe('режим', () => {
 		const changed = vi.fn()
 		const cellAria = vi.fn()
 
-		facade.events.on('change:grid', changed)
-		facade.events.on('change:cellAria', cellAria)
+		facade.events.on('change:grid', ({ newValue }) => changed(newValue))
+		facade.events.on('change:cellAria', ({ newValue }) => cellAria(newValue))
 
 		facade.grid = false
 		facade.grid = false
@@ -206,7 +206,7 @@ describe('фокус ячейки', () => {
 		const { grid: ext, anna, vera, name, age } = grid()
 		const changed = vi.fn()
 
-		ext.events.on('change:focusedCell', changed)
+		ext.events.on('change:focusedCell', ({ newValue }) => changed(newValue))
 
 		ext.moveFocus(1, 1)
 
@@ -267,7 +267,7 @@ describe('фокус ячейки', () => {
 		const changed = vi.fn()
 
 		ext.focusCell(anna, age)
-		ext.events.on('change:focusedCell', changed)
+		ext.events.on('change:focusedCell', ({ newValue }) => changed(newValue))
 		engine.extensions.sort.sort = [{ field: 'age', direction: 'desc' }]
 
 		expect(ext.gridRows.indexOf(anna)).toBe(2)

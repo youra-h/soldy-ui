@@ -50,11 +50,13 @@ export class TFilterExtension<TItem extends object = any>
 	}
 
 	set query(value: string) {
+		const oldQuery = this.query
+
 		if (this._query === value) return
 
 		this._query = value
 
-		this.events.emit('change:query', value)
+		this.events.emit('change:query', { newValue: value, oldValue: oldQuery })
 		this.events.emit('change:filter')
 
 		this._ctx.driver.invalidateQuery()
@@ -65,11 +67,13 @@ export class TFilterExtension<TItem extends object = any>
 	}
 
 	set fields(value: (keyof TItem)[] | undefined) {
+		const oldFields = this.fields
+
 		if (this._fields === value) return
 
 		this._fields = value
 
-		this.events.emit('change:fields', value)
+		this.events.emit('change:fields', { newValue: value, oldValue: oldFields })
 		this.events.emit('change:filter')
 
 		this._ctx.driver.invalidateQuery()
@@ -80,11 +84,13 @@ export class TFilterExtension<TItem extends object = any>
 	}
 
 	set predicate(value: TFilterPredicate<TItem> | undefined) {
+		const oldPredicate = this.predicate
+
 		if (this._predicate === value) return
 
 		this._predicate = value
 
-		this.events.emit('change:predicate', value)
+		this.events.emit('change:predicate', { newValue: value, oldValue: oldPredicate })
 		this.events.emit('change:filter')
 
 		this._ctx.driver.invalidateQuery()

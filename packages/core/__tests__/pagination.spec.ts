@@ -165,7 +165,7 @@ describe('TPagination (чистый класс)', () => {
 		const owner = new TPagination({ pages: [{ text: 'А', value: 'a' }] })
 		const onPages = vi.fn()
 
-		owner.events.on('change:pages', onPages)
+		owner.events.on('change:pages', ({ newValue }) => onPages(newValue))
 
 		owner.pages = [{ text: 'А', value: 'a' }]
 
@@ -182,8 +182,8 @@ describe('TPagination (чистый класс)', () => {
 		const onPrev = vi.fn()
 		const onNext = vi.fn()
 
-		owner.events.on('change:prevAria', onPrev)
-		owner.events.on('change:nextAria', onNext)
+		owner.events.on('change:prevAria', ({ newValue }) => onPrev(newValue))
+		owner.events.on('change:nextAria', ({ newValue }) => onNext(newValue))
 
 		owner.prevAria.add('aria-label', 'Назад')
 		owner.nextAria.add('aria-label', 'Вперёд')
@@ -450,7 +450,7 @@ describe('окно в коллекции', () => {
 		const { owner, facade } = createPagination({ total: 100, pageSize: 10, value: 1 })
 		const onCells = vi.fn()
 
-		facade.events.on('change:cells', onCells)
+		facade.events.on('change:cells', ({ newValue }) => onCells(newValue))
 
 		// Окно у края то же: `1 2 3 4 5 … 10`
 		owner.value = 2

@@ -59,7 +59,7 @@ async function bound(initial: TDatePickerValue, props: DatePickerProps = {}) {
 			value={value()}
 			onChangeValue={(payload) => setValue(() => payload.newValue)}
 			open={open()}
-			onChangeOpen={(next) => setOpen(next)}
+			onChangeOpen={({ newValue: next }) => setOpen(next)}
 		/>
 	))
 

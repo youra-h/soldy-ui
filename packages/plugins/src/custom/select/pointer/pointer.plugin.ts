@@ -1,3 +1,4 @@
+import type { TValuePayload } from '@soldy-ui/core'
 import type { ISelect } from '@soldy-ui/core'
 import { TBasePlugin } from '../../../base'
 import type { IPluginContext } from '../../../base'
@@ -68,9 +69,13 @@ export class TSelectPointerPlugin extends TBasePlugin<any, TSelectPointerPluginE
 		elementPlugin?.events.on('ready', (element) => this._bind(element))
 		elementPlugin?.events.on('removed', () => this._bind(null))
 
-		this._listenTo(this._owner?.events, 'change:editable', (value: boolean) => {
-			this._editable = value
-		})
+		this._listenTo(
+			this._owner?.events,
+			'change:editable',
+			({ newValue: value }: TValuePayload<boolean>) => {
+				this._editable = value
+			},
+		)
 	}
 
 	override destroy(): void {

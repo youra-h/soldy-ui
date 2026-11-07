@@ -566,7 +566,7 @@ describe('Table над движком и владельцем снаружи', (
 		// Окно на каждом подключении — до слежки: своя подписка теста не в счёт
 		const windows: boolean[] = []
 
-		engine.extensions.draw.events.on('change:virtual', (on) => windows.push(on))
+		engine.extensions.draw.events.on('change:virtual', ({ newValue: on }) => windows.push(on))
 
 		const live = watchBuses([virtual.events, ...tableBuses(engine)])
 		const el = document.createElement('so-virtual')

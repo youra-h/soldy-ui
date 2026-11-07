@@ -276,9 +276,9 @@ describe('события — только на смену', () => {
 		const instance = progress({ value: 40 })
 		const fired: string[] = []
 
-		instance.events.on('change:value', (value) => fired.push(`value ${value}`))
-		instance.events.on('change:min', (value) => fired.push(`min ${value}`))
-		instance.events.on('change:max', (value) => fired.push(`max ${value}`))
+		instance.events.on('change:value', ({ newValue: value }) => fired.push(`value ${value}`))
+		instance.events.on('change:min', ({ newValue: value }) => fired.push(`min ${value}`))
+		instance.events.on('change:max', ({ newValue: value }) => fired.push(`max ${value}`))
 
 		instance.value = 40
 		instance.min = 0
@@ -298,8 +298,12 @@ describe('события — только на смену', () => {
 		const instance = progress()
 		const fired: string[] = []
 
-		instance.events.on('change:indeterminate', (value) => fired.push(`indeterminate ${value}`))
-		instance.events.on('change:orientation', (value) => fired.push(`orientation ${value}`))
+		instance.events.on('change:indeterminate', ({ newValue: value }) =>
+			fired.push(`indeterminate ${value}`),
+		)
+		instance.events.on('change:orientation', ({ newValue: value }) =>
+			fired.push(`orientation ${value}`),
+		)
 
 		instance.indeterminate = false
 		instance.orientation = 'horizontal'

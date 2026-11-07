@@ -72,12 +72,14 @@ describe('TInsertCommand', () => {
 		const count = vi.fn()
 
 		events.on('item:added', added)
-		events.on('change:count', count)
+		events.on('change:count', ({ newValue }) => count(newValue))
 
 		const item: Item = { id: 1, name: 'a' }
 
-		storage.insert(item, 0)
-		new TInsertCommand(item, 0).emitEvents(createContext(storage, events))
+		const command = new TInsertCommand(item, 0)
+		const context = createContext(storage, events)
+		command.apply(context)
+		command.emitEvents(context)
 
 		expect(added).toHaveBeenCalledTimes(1)
 		expect(added.mock.calls[0][0].item).toBe(item)
@@ -117,7 +119,7 @@ describe('TInsertCommand', () => {
 
 		events.on('item:add:before', (event) => event.preventDefault())
 		events.on('item:added', added)
-		events.on('change:count', count)
+		events.on('change:count', ({ newValue }) => count(newValue))
 
 		const item: Item = { id: 1, name: 'a' }
 		const command = new TInsertCommand(item, 0)
@@ -149,7 +151,7 @@ describe('TRemoveCommand', () => {
 		const count = vi.fn()
 
 		events.on('item:removed', removed)
-		events.on('change:count', count)
+		events.on('change:count', ({ newValue }) => count(newValue))
 
 		const item: Item = { id: 1, name: 'a' }
 
@@ -243,7 +245,7 @@ describe('TRemoveCommand', () => {
 
 		events.on('item:remove:before', (event) => event.preventDefault())
 		events.on('item:removed', removed)
-		events.on('change:count', count)
+		events.on('change:count', ({ newValue }) => count(newValue))
 
 		const item: Item = { id: 1, name: 'a' }
 
@@ -535,7 +537,7 @@ describe('TMoveCommand — место вне состава', () => {
 		const changed = vi.fn()
 
 		driver.events.on('item:moved', moved)
-		driver.events.on('change:items', changed)
+		driver.events.on('change:items', ({ newValue }) => changed(newValue))
 
 		return { driver, a, b, c, moved, changed }
 	}
@@ -608,7 +610,7 @@ describe('TMoveCommand — место вне состава', () => {
 		const changed = vi.fn()
 
 		plain.events.on('item:moved', moved)
-		plain.events.on('change:items', changed)
+		plain.events.on('change:items', ({ newValue }) => changed(newValue))
 		plain.move(items[0], 10)
 
 		expect(batch.items).toEqual(items)
@@ -636,7 +638,7 @@ describe('TClearCommand', () => {
 		const reset = vi.fn()
 
 		events.on('item:removed', removed)
-		events.on('change:count', count)
+		events.on('change:count', ({ newValue }) => count(newValue))
 		events.on('reset', reset)
 
 		const a: Item = { id: 1, name: 'a' }
@@ -679,7 +681,7 @@ describe('TClearCommand', () => {
 		const reset = vi.fn()
 
 		events.on('item:removed', removed)
-		events.on('change:count', count)
+		events.on('change:count', ({ newValue }) => count(newValue))
 		events.on('reset', reset)
 
 		const ctx = createContext(storage, events)
@@ -702,7 +704,7 @@ describe('TClearCommand', () => {
 
 		events.on('items:clear:before', (event) => event.preventDefault())
 		events.on('item:removed', removed)
-		events.on('change:count', count)
+		events.on('change:count', ({ newValue }) => count(newValue))
 		events.on('reset', reset)
 
 		storage.insert({ id: 1, name: 'a' }, 0)
@@ -732,8 +734,8 @@ describe('driver.execute — preventDefault в before-хуке гасит ком
 		const changeItems = vi.fn()
 		const changeCount = vi.fn()
 
-		driver.events.on('change:items', changeItems)
-		driver.events.on('change:count', changeCount)
+		driver.events.on('change:items', ({ newValue }) => changeItems(newValue))
+		driver.events.on('change:count', ({ newValue }) => changeCount(newValue))
 		driver.events.on('item:add:before', (e) => e.preventDefault())
 
 		driver.execute(new TInsertCommand<Item>({ id: 1, name: 'a' }, 0))
@@ -751,7 +753,7 @@ describe('driver.execute — preventDefault в before-хуке гасит ком
 
 		const changeItems = vi.fn()
 
-		driver.events.on('change:items', changeItems)
+		driver.events.on('change:items', ({ newValue }) => changeItems(newValue))
 		driver.events.on('item:update:before', (e) => e.preventDefault())
 
 		driver.execute(new TUpdateCommand(item, { name: 'b' }))
@@ -769,8 +771,8 @@ describe('driver.execute — preventDefault в before-хуке гасит ком
 		const changeItems = vi.fn()
 		const changeCount = vi.fn()
 
-		driver.events.on('change:items', changeItems)
-		driver.events.on('change:count', changeCount)
+		driver.events.on('change:items', ({ newValue }) => changeItems(newValue))
+		driver.events.on('change:count', ({ newValue }) => changeCount(newValue))
 		driver.events.on('item:remove:before', (e) => e.preventDefault())
 
 		driver.execute(new TRemoveCommand(item))
@@ -790,7 +792,7 @@ describe('driver.execute — preventDefault в before-хуке гасит ком
 
 		const changeItems = vi.fn()
 
-		driver.events.on('change:items', changeItems)
+		driver.events.on('change:items', ({ newValue }) => changeItems(newValue))
 		driver.events.on('item:move:before', (e) => e.preventDefault())
 
 		driver.execute(new TMoveCommand(a, 1))
@@ -807,8 +809,8 @@ describe('driver.execute — preventDefault в before-хуке гасит ком
 		const changeItems = vi.fn()
 		const changeCount = vi.fn()
 
-		driver.events.on('change:items', changeItems)
-		driver.events.on('change:count', changeCount)
+		driver.events.on('change:items', ({ newValue }) => changeItems(newValue))
+		driver.events.on('change:count', ({ newValue }) => changeCount(newValue))
 		driver.events.on('items:clear:before', (e) => e.preventDefault())
 
 		driver.execute(new TClearCommand<Item>())

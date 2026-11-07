@@ -1,13 +1,14 @@
+import type { TValuePayload } from '../../../../common'
 import type { IControl, IControlProps, TControlEvents } from '../../../base/control'
 import type { TChangeEvent, TCalendarDate } from '../../../../common'
 
 export type TCalendarItemEvents = TControlEvents & {
 	/** change:date */
-	'change:date': (value: TCalendarDate) => void
+	'change:date': (payload: TValuePayload<TCalendarDate>) => void
 	/** change:text */
-	'change:text': (value: string) => void
+	'change:text': (payload: TValuePayload<string>) => void
 	/** change:unavailable */
-	'change:unavailable': (value: boolean) => void
+	'change:unavailable': (payload: TValuePayload<boolean>) => void
 	/** Запись `unavailable` — подправить или отменить (`TChangeEvent`) */
 	'change:unavailable:before': (e: TChangeEvent<boolean>) => void
 }

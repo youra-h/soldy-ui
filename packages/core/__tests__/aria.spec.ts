@@ -180,7 +180,7 @@ describe('TComponentView.aria', () => {
 		const view = new TComponentView()
 		const seen: unknown[] = []
 
-		view.events.on('change:aria', (value) => seen.push(value))
+		view.events.on('change:aria', ({ newValue: value }) => seen.push(value))
 		view.aria.add('role', 'group')
 
 		expect(seen).toEqual([{ role: 'group' }])
@@ -196,7 +196,7 @@ describe('TComponentView.attrs', () => {
 		const view = new TComponentView()
 		const seen: unknown[] = []
 
-		view.events.on('change:attrs', (value) => seen.push(value))
+		view.events.on('change:attrs', ({ newValue: value }) => seen.push(value))
 		view.attrs.add('disabled', 'disabled')
 
 		expect(seen).toEqual([{ disabled: 'disabled' }])
@@ -687,7 +687,7 @@ describe('TTabsItem.closeAria · набор кнопки закрытия', () =
 		const item = new TTabsItem({ text: 'Почта' })
 		const seen: unknown[] = []
 
-		item.events.on('change:closeAria', (value) => seen.push(value))
+		item.events.on('change:closeAria', ({ newValue: value }) => seen.push(value))
 		item.closeAria.add('aria-label', 'Close Почта')
 
 		expect(seen).toEqual([{ 'aria-label': 'Close Почта', tabindex: '-1' }])

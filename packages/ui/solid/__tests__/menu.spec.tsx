@@ -375,7 +375,7 @@ describe('открытие', () => {
 			<Menu
 				items={ITEMS}
 				open={opened()}
-				onChangeOpen={(value) => setOpened(value)}
+				onChangeOpen={({ newValue: value }) => setOpened(value)}
 				trigger={trigger}
 			/>
 		))
@@ -405,7 +405,7 @@ describe('событие открытия — раньше отрисовки', 
 		await render(() => (
 			<Menu
 				trigger={trigger}
-				onChangeOpen={(value) => heard.push(`open:${String(value)}`)}
+				onChangeOpen={({ newValue: value }) => heard.push(`open:${String(value)}`)}
 				onItemAdded={(event) => heard.push(`added:${String(event.item.value)}`)}
 			>
 				<Menu.Item value="edit" text="Изменить" />
@@ -565,13 +565,13 @@ describe('нажатие пунктов', () => {
 					value="grid"
 					text="Сетка"
 					selected={checked()}
-					onChangeSelected={(selected) => setChecked(selected)}
+					onChangeSelected={({ newValue: selected }) => setChecked(selected)}
 				/>
 				<Menu.CheckboxItem
 					value="ruler"
 					text="Линейка"
 					selected
-					onChangeSelected={(selected) => ruler.push(selected)}
+					onChangeSelected={({ newValue: selected }) => ruler.push(selected)}
 				/>
 			</Menu>
 		))
@@ -763,13 +763,13 @@ describe('переключатели', () => {
 						value="name"
 						text="name"
 						selected={nameChecked()}
-						onChangeSelected={(selected) => setNameChecked(selected)}
+						onChangeSelected={({ newValue: selected }) => setNameChecked(selected)}
 					/>
 					<Menu.RadioItem
 						value="date"
 						text="date"
 						selected={dateChecked()}
-						onChangeSelected={(selected) => setDateChecked(selected)}
+						onChangeSelected={({ newValue: selected }) => setDateChecked(selected)}
 					/>
 				</Menu.RadioGroup>
 			</Menu>
@@ -1486,7 +1486,7 @@ describe('подменю', () => {
 		await render(() =>
 			markup(
 				() => ({}),
-				() => ({ open: opened(), onChangeOpen: (value) => setOpened(value) }),
+				() => ({ open: opened(), onChangeOpen: ({ newValue: value }) => setOpened(value) }),
 			),
 		)
 
@@ -2311,7 +2311,7 @@ describe('пункт с панелью', () => {
 		await render(() =>
 			markup(
 				() => ({}),
-				() => ({ open: opened(), onChangeOpen: (value) => setOpened(value) }),
+				() => ({ open: opened(), onChangeOpen: ({ newValue: value }) => setOpened(value) }),
 			),
 		)
 

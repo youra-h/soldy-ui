@@ -1,10 +1,11 @@
+import type { TValuePayload } from '../../../../common'
 import type { IMenuCollectionRadioItemProps } from '../collection/types'
 import type { IMenuItem, IMenuItemProps, TMenuItemEvents } from '../item/types'
 import type { IMenuRadioGroup } from '../radio-group/types'
 
 export type TMenuRadioItemEvents = TMenuItemEvents & {
 	/** change:group — переключатель перешёл в другую группу или вышел из неё */
-	'change:group': (value: IMenuRadioGroup | null) => void
+	'change:group': (payload: TValuePayload<IMenuRadioGroup | null>) => void
 }
 
 /**

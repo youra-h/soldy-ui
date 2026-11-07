@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../../common'
 import type { IControl, IControlProps, TControlEvents } from '../../../base/control'
 import type { TAria, TAriaAttributes } from '../../../../common'
 import type { ITableCollectionItemProps } from '../collection/types'
@@ -13,9 +14,9 @@ export type TTableRecord = object
 
 export type TTableRowEvents = TControlEvents & {
 	/** Строке дали другую запись — её ячейки надо перечитать */
-	'change:data': (value: TTableRecord | undefined) => void
+	'change:data': (payload: TValuePayload<TTableRecord | undefined>) => void
 	/** Набор атрибутов заголовка строки изменился */
-	'change:headerAria': (value: TAriaAttributes) => void
+	'change:headerAria': (payload: TValuePayload<TAriaAttributes>) => void
 }
 
 export interface ITableRowProps extends IControlProps, ITableCollectionItemProps {

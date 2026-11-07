@@ -32,12 +32,14 @@ export class TListItemPlugin extends TBasePlugin<any, TListItemPluginEvents> {
 	}
 
 	set highlighted(value: boolean) {
+		const oldHighlighted = this.highlighted
+
 		if (this._highlighted === value) return
 
 		this._highlighted = value
 		this._apply()
 
-		this.events.emit('change:highlighted', value)
+		this.events.emit('change:highlighted', { newValue: value, oldValue: oldHighlighted })
 	}
 
 	private _apply(): void {

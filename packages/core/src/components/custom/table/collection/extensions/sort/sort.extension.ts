@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../../../../common'
 import { TBaseExtension } from '../../../../../base/collection'
 import type { IExtensionContext, TQueryEvent } from '../../../../../base/collection'
 import type { ITableColumn } from '../../../column/types'
@@ -139,7 +140,11 @@ export class TTableSortExtension<TOwner extends ITable = ITable, TRow extends IT
 			this._setLocale(owner?.locale)
 
 			if (owner) {
-				scope.on(owner.events, 'change:locale', (locale: string) => this._setLocale(locale))
+				scope.on(
+					owner.events,
+					'change:locale',
+					({ newValue: locale }: TValuePayload<string>) => this._setLocale(locale),
+				)
 			}
 		})
 
@@ -162,6 +167,8 @@ export class TTableSortExtension<TOwner extends ITable = ITable, TRow extends IT
 	}
 
 	set sortMode(value: TTableSortMode) {
+		const oldSortMode = this.sortMode
+
 		if (this._mode === value) return
 
 		this._mode = value
@@ -170,7 +177,7 @@ export class TTableSortExtension<TOwner extends ITable = ITable, TRow extends IT
 		// Состояние — в форму нового режима
 		const changed = this._commit(this._strategy.resolve(this._sort))
 
-		this.events.emit('change:sortMode', value)
+		this.events.emit('change:sortMode', { newValue: value, oldValue: oldSortMode })
 
 		if (changed) this._invalidate()
 	}
@@ -180,11 +187,13 @@ export class TTableSortExtension<TOwner extends ITable = ITable, TRow extends IT
 	}
 
 	set presorted(value: boolean) {
+		const oldPresorted = this.presorted
+
 		if (this._presorted === value) return
 
 		this._presorted = value
 		this._listen()
-		this.events.emit('change:presorted', value)
+		this.events.emit('change:presorted', { newValue: value, oldValue: oldPresorted })
 
 		// Показанное встаёт в порядок данных или в отсортированный — если есть
 		// по чему сортировать
@@ -211,11 +220,13 @@ export class TTableSortExtension<TOwner extends ITable = ITable, TRow extends IT
 	 * одна операция — одно сообщение.
 	 */
 	private _commit(next: TTableColumnSort[]): boolean {
+		const oldSort = this.sort
+
 		if (sameSort(next, this._sort)) return false
 
 		this._sort = next
 		this._paint()
-		this.events.emit('change:sort', this.sort)
+		this.events.emit('change:sort', { newValue: this.sort, oldValue: oldSort })
 
 		return true
 	}

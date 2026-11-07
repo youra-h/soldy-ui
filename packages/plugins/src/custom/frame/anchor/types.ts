@@ -1,3 +1,4 @@
+import type { TValuePayload } from '@soldy-ui/core'
 import type { TPluginEvents } from '../../../base'
 import type { TPoint } from '../../../utils'
 
@@ -66,17 +67,17 @@ export interface IAnchorPluginOptions {
 
 export type TAnchorPluginEvents = TPluginEvents & {
 	/** change:anchor */
-	'change:anchor': (element: Element | null) => void
+	'change:anchor': (payload: TValuePayload<Element | null>) => void
 	/** change:point */
-	'change:point': (value: TPoint | null) => void
+	'change:point': (payload: TValuePayload<TPoint | null>) => void
 	/** change:placement */
-	'change:placement': (value: TFramePlacement) => void
+	'change:placement': (payload: TValuePayload<TFramePlacement>) => void
 	/** change:matchWidth */
-	'change:matchWidth': (value: boolean) => void
+	'change:matchWidth': (payload: TValuePayload<boolean>) => void
 	/** change:flip */
-	'change:flip': (value: boolean) => void
+	'change:flip': (payload: TValuePayload<boolean>) => void
 	/** change:offset */
-	'change:offset': (value: number) => void
+	'change:offset': (payload: TValuePayload<number>) => void
 }
 
 /**

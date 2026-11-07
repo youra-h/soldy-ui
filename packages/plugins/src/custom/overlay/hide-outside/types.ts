@@ -1,3 +1,4 @@
+import type { TValuePayload } from '@soldy-ui/core'
 import type { TPluginEvents } from '../../../base'
 import type { IOverlayOpenOptions } from '../types'
 
@@ -14,5 +15,5 @@ export interface IHideOutsidePluginOptions extends IOverlayOpenOptions {
 
 export type THideOutsidePluginEvents = TPluginEvents & {
 	/** change:enabled */
-	'change:enabled': (value: boolean) => void
+	'change:enabled': (payload: TValuePayload<boolean>) => void
 }

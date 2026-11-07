@@ -52,8 +52,11 @@ export default class TAccordionItem<
 		this._arrowPlacement = customProps.arrowPlacement ?? ctor.defaultValues.arrowPlacement
 
 		this._contentAria = new TAria()
-		this._contentAria.subscribe(() =>
-			this._sink.emit('change:contentAria', this._contentAria.toObject()),
+		this._contentAria.subscribe((_set, oldValue) =>
+			this._sink.emit('change:contentAria', {
+				newValue: this._contentAria.toObject(),
+				oldValue,
+			}),
 		)
 
 		// Секция — заголовок и раскрывающаяся панель-область (APG Accordion)
@@ -114,9 +117,14 @@ export default class TAccordionItem<
 	}
 
 	set arrowPlacement(value: TAccordionArrowPlacement) {
+		const oldArrowPlacement = this.arrowPlacement
+
 		if (this._arrowPlacement !== value) {
 			this._arrowPlacement = value
-			this._sink.emit('change:arrowPlacement', value)
+			this._sink.emit('change:arrowPlacement', {
+				newValue: value,
+				oldValue: oldArrowPlacement,
+			})
 		}
 	}
 

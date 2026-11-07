@@ -183,7 +183,7 @@ describe('общее — полям и календарю', () => {
 			false,
 		])
 
-		target.events.on('change:validate', handler)
+		target.events.on('change:validate', ({ newValue }) => handler(newValue))
 		target.validate = true
 		target.validate = true
 
@@ -894,7 +894,7 @@ describe('выбор с подтверждением', () => {
 		const target = picker()
 		const handler = vi.fn()
 
-		target.events.on('change:confirmable', handler)
+		target.events.on('change:confirmable', ({ newValue }) => handler(newValue))
 		target.confirmable = true
 		target.confirmable = true
 
@@ -971,7 +971,7 @@ describe('выбор с подтверждением', () => {
 		const { selection } = target.engine.extensions
 		const switches: boolean[] = []
 
-		target.events.on('change:confirmDisabled', (value) => switches.push(value))
+		target.events.on('change:confirmDisabled', ({ newValue: value }) => switches.push(value))
 
 		selection.chooseDate('2026-09-20')
 
@@ -1137,7 +1137,7 @@ describe('жест — смахнуть панель, чтобы закрыть'
 		const target = picker()
 		const handler = vi.fn()
 
-		target.events.on('change:swipe', handler)
+		target.events.on('change:swipe', ({ newValue }) => handler(newValue))
 		target.swipe = 'handle'
 		target.swipe = 'handle'
 
@@ -1159,7 +1159,7 @@ describe('жест — смахнуть панель, чтобы закрыть'
 		const target = shown({ swipe: 'handle' })
 		const changes: boolean[] = []
 
-		target.events.on('change:swiping', (value) => changes.push(value))
+		target.events.on('change:swiping', ({ newValue: value }) => changes.push(value))
 
 		expect(target.panelDataset).toEqual({ 'data-swiping': 'false' })
 		expect(target.beginSwipe()).toBe(true)
@@ -1402,8 +1402,8 @@ describe('форма', () => {
 		const target = picker()
 		const changes = vi.fn()
 
-		target.events.on('change:startName', changes)
-		target.events.on('change:endName', changes)
+		target.events.on('change:startName', ({ newValue }) => changes(newValue))
+		target.events.on('change:endName', ({ newValue }) => changes(newValue))
 
 		target.startName = 'from'
 		target.endName = 'to'

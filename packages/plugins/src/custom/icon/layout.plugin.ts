@@ -25,10 +25,10 @@ export class TIconLayoutPlugin extends TBasePlugin<any, TIconLayoutPluginEvents>
 			height: this._toCss(icon.height),
 		}
 
-		this._listenTo(icon.events, 'change:width', (value) => {
+		this._listenTo(icon.events, 'change:width', ({ newValue: value }) => {
 			this._patch('width', this._toCss(value))
 		})
-		this._listenTo(icon.events, 'change:height', (value) => {
+		this._listenTo(icon.events, 'change:height', ({ newValue: value }) => {
 			this._patch('height', this._toCss(value))
 		})
 	}
@@ -50,7 +50,9 @@ export class TIconLayoutPlugin extends TBasePlugin<any, TIconLayoutPluginEvents>
 	 * ссылку наружу, и без смены идентичности UI не увидит изменения.
 	 */
 	private _patch(key: string, value: string | number): void {
+		const oldStyles = this.styles
+
 		this._styles = { ...this._styles, [key]: value }
-		this.events.emit('change:styles', this._styles)
+		this.events.emit('change:styles', { newValue: this._styles, oldValue: oldStyles })
 	}
 }

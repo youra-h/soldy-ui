@@ -6,14 +6,14 @@ import type { IMenuOwner } from '../types'
 
 export type TMenuSubmenuEvents = TMenuPopupItemEvents & {
 	/** change:panelClasses — классы панели подменю изменились */
-	'change:panelClasses': (value: string[]) => void
+	'change:panelClasses': (payload: TValuePayload<string[]>) => void
 	/**
 	 * change:panelVariant — вариант панели подменю сменился: свой вариант или,
 	 * без него, вариант меню над ним
 	 */
 	'change:panelVariant': (payload: TValuePayload<TComponentVariant | undefined>) => void
 	/** change:groupSeparators */
-	'change:groupSeparators': (value: boolean) => void
+	'change:groupSeparators': (payload: TValuePayload<boolean>) => void
 	/**
 	 * В подменю выбрали пункт-действие: меню, в котором стоит подменю,
 	 * закрывается целиком и сообщает выбор выше (`notifyChoose`)

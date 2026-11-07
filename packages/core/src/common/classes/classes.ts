@@ -14,7 +14,7 @@ import type { TClassEntry } from './types'
  * from the first one, and a collection item usually holds one class, the size
  * modifier of `TStylable`.
  */
-export class TClasses extends TSubscribable {
+export class TClasses extends TSubscribable<string[]> {
 	/** Базовый класс (всегда первый в списке). */
 	private _base: string
 	/** Static classes added with `add(string)` — from the first one, without duplicates, in the order they were added. */
@@ -67,8 +67,9 @@ export class TClasses extends TSubscribable {
 	setBase(base: string): this {
 		if (this._base === base) return this
 
+		const oldValue = this.toArray()
 		this._base = base
-		this._notify()
+		this._notify(oldValue)
 
 		return this
 	}
@@ -98,13 +99,15 @@ export class TClasses extends TSubscribable {
 	 * @param withBase — if `true`, the string is prefixed with the base class
 	 */
 	add(entry: TClassEntry, withBase = true): this {
+		if (typeof entry === 'string' && this.has(entry, withBase)) return this
+		const oldValue = this.toArray()
 		if (typeof entry === 'function') {
 			if (this._dynamics) this._dynamics.push(entry)
 			else this._dynamics = [entry]
 
-			this._notify()
+			this._notify(oldValue)
 		} else if (this._addStatic(this.resolve(entry, { withBase }))) {
-			this._notify()
+			this._notify(oldValue)
 		}
 
 		return this
@@ -126,11 +129,13 @@ export class TClasses extends TSubscribable {
 
 		if (index === -1) return this
 
+		const oldValue = this.toArray()
+
 		this._statics =
 			statics.length === 1
 				? undefined
 				: statics.slice(0, index).concat(statics.slice(index + 1))
-		this._notify()
+		this._notify(oldValue)
 
 		return this
 	}

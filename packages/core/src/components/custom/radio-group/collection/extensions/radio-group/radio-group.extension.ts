@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../../../../common'
 import { TBaseExtension, activationOf } from '../../../../../base/collection'
 import type {
 	IActivationExtension,
@@ -93,11 +94,15 @@ export class TRadioGroupExtension<
 
 			// Смена у владельца — всем элементам: `disabled` распространяется на
 			// них, как у `<fieldset>`, `size` и `variant` диктует он
-			scope.on(owner.events, 'change:disabled', (value: boolean) => {
-				ctx.driver.valueOf().forEach((item) => {
-					item.disabled = value
-				})
-			})
+			scope.on(
+				owner.events,
+				'change:disabled',
+				({ newValue: value }: TValuePayload<boolean>) => {
+					ctx.driver.valueOf().forEach((item) => {
+						item.disabled = value
+					})
+				},
+			)
 			scope.on(owner.events, 'change:size', () =>
 				ctx.driver.valueOf().forEach((item) => this._applyStyle(item, owner)),
 			)
@@ -105,11 +110,15 @@ export class TRadioGroupExtension<
 				ctx.driver.valueOf().forEach((item) => this._applyStyle(item, owner)),
 			)
 
-			scope.on(owner.events, 'change:view', (value: TRadioGroupView | undefined) => {
-				ctx.driver.valueOf().forEach((item) => {
-					item.view = value
-				})
-			})
+			scope.on(
+				owner.events,
+				'change:view',
+				({ newValue: value }: TValuePayload<TRadioGroupView | undefined>) => {
+					ctx.driver.valueOf().forEach((item) => {
+						item.view = value
+					})
+				},
+			)
 
 			scope.on(owner.events, 'change:value', () => this._valueToActivation())
 

@@ -1,3 +1,4 @@
+import type { TValuePayload } from '../../../common'
 import type { IModalLayer, IModalLayerProps, TModalLayerEvents } from '../../base/modal-layer'
 import type { ISwipeable, TSwipe, TSwipeableEvents } from '../../base/layer'
 
@@ -14,11 +15,11 @@ export type TDrawerPlacement = 'start' | 'end' | 'top' | 'bottom'
 export type TDrawerEvents = TModalLayerEvents &
 	TSwipeableEvents & {
 		/** change:placement */
-		'change:placement': (value: TDrawerPlacement) => void
+		'change:placement': (payload: TValuePayload<TDrawerPlacement>) => void
 		/** change:contained */
-		'change:contained': (value: boolean) => void
+		'change:contained': (payload: TValuePayload<boolean>) => void
 		/** change:locksScroll — панель стала запирать прокрутку страницы или перестала */
-		'change:locksScroll': (value: boolean) => void
+		'change:locksScroll': (payload: TValuePayload<boolean>) => void
 	}
 
 export interface IDrawerProps extends IModalLayerProps {

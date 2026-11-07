@@ -1,3 +1,4 @@
+import type { TValuePayload } from '@soldy-ui/core'
 import type { TPluginEvents } from '../../base'
 import type { IOverlayOpenOptions } from '../overlay/types'
 
@@ -48,7 +49,7 @@ export type TDismissPluginEvents = TPluginEvents & {
 	 */
 	dismiss: (event: MouseEvent | FocusEvent) => void
 	/** change:enabled */
-	'change:enabled': (value: boolean) => void
+	'change:enabled': (payload: TValuePayload<boolean>) => void
 }
 
 /**

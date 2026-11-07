@@ -1,7 +1,7 @@
 import { TPluginBundle } from '@soldy-ui/plugins'
 import { describe, it, expect, afterEach, vi } from 'vitest'
 import { mount, unmount, flushSync, type ComponentProps } from 'svelte'
-import { TButton } from '@soldy-ui/core'
+import { TButton, type TValuePayload } from '@soldy-ui/core'
 import { TActionPlugin } from '@soldy-ui/plugins'
 import { Button } from '@soldy-ui/svelte'
 import { reactiveProps } from './reactive-props.svelte'
@@ -209,7 +209,7 @@ describe('Button · события через колбэк-пропы', () => {
 		const ctrl = new TButton({ view: 'solid' })
 		const seen: (string | undefined)[] = []
 
-		render({ ctrl, onChangeView: (v) => seen.push(v) })
+		render({ ctrl, onChangeView: ({ newValue: v }) => seen.push(v) })
 
 		ctrl.view = 'ghost'
 		flushSync()
@@ -221,7 +221,10 @@ describe('Button · события через колбэк-пропы', () => {
 		const ctrl = new TButton()
 		const seen: boolean[] = []
 
-		render({ ctrl, onChangeVisible: (v: boolean) => seen.push(v) })
+		render({
+			ctrl,
+			onChangeVisible: ({ newValue: v }: TValuePayload<boolean>) => seen.push(v),
+		})
 
 		ctrl.hide()
 		flushSync()
