@@ -2,16 +2,18 @@ import type { TPluginEvents } from '../../base/types'
 
 export type TElementServiceEvents = TPluginEvents & {
 	/**
-	 * Узел подключён. Приходит один раз на подключение, через кадр
-	 * (`requestAnimationFrame`), и только если к этому кадру узел всё ещё
-	 * привязан. Если узел несколько раз сменился до кадра, приходит одно
-	 * `ready` — для итогового узла.
+	 * The root DOM element is available. Emitted once per binding, in the next
+	 * requestAnimationFrame, only if the node is still bound. Changes before
+	 * that frame produce one ready for the final node. Plugins use the node to
+	 * attach DOM behavior; this does not wait for that behavior to finish.
+	 * Exposed as element:ready by the element plugin namespace.
 	 */
 	ready: (element: Element) => void
 	/**
-	 * Объявленный узел отключён или заменён. Приходит синхронно и только для
-	 * узла, о котором уже было `ready`: события строго чередуются, первым всегда
-	 * идёт `ready`. Замена узла — `removed` сразу и `ready` нового через кадр.
+	 * An announced root was removed or replaced. Emitted synchronously, only
+	 * after ready: the events alternate, starting with ready. Replacement emits
+	 * removed immediately and ready for the new node in the next animation frame.
+	 * Exposed as element:removed; use it to detach DOM behavior.
 	 */
 	removed: () => void
 }

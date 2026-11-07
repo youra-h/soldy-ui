@@ -247,7 +247,7 @@ Organized by inheritance:
   Enter/Space на не-нативном корне клик делает сам плагин, как браузер у `<button>`), сырой `click`, `focus`/`blur` и двусторонняя связь `focused` с DOM-фокусом.
   Узел, куда запись `focused` ставит фокус, называет дескриптор опцией `focusTarget` (см. `docs/agents/a11y.md`, «Прочее»).
   Элемент берёт у `TElementPlugin` через `ctx.get(...)` — композиция, а не наследование
-- `TReadyPlugin` - Syncs `IComponentView.ready` with `TElementPlugin` (`ready` / `removed`)
+- `TReadyPlugin` - Reports component availability through `IComponentView.ready`: the instance exists and its root DOM element has been announced. It translates element `ready` / `removed` into model `ready(true / false)`, including replacement and repeated mounting. It does not wait for other plugins' DOM handlers or asynchronous work. `TLayer` uses this same availability flag for `zIndex` / `data-layer`. See the [public readiness contract](../packages/plugins/README.md#component-availability-and-dom-readiness).
 - `TDragPlugin` (`custom/drag-and-drop/`) - DnD gesture: native dragging of the collection's items becomes the `move` command of the `DragAndDrop` wrapper (`IDragAndDrop`); takes only items `canMove` allows and accepts `dragover`/`drop` only of its own gesture
 - `TInputPlugin`, `TInputBoolPlugin`, `TInputControlPlugin` - Value tracking
 - `TIconLayoutPlugin`, `TSkeletonLayoutPlugin`, `TFrameLayoutPlugin` - UI-specific layout
