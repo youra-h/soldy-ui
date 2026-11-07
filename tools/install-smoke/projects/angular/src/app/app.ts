@@ -1,4 +1,5 @@
 import { Component, signal } from '@angular/core'
+import { FormsModule, ReactiveFormsModule, FormControl } from '@angular/forms'
 import {
 	TButtonComponent,
 	TDatePickerComponent,
@@ -11,6 +12,8 @@ import {
 @Component({
 	selector: 'app-root',
 	imports: [
+		FormsModule,
+		ReactiveFormsModule,
 		TButtonComponent,
 		TDatePickerComponent,
 		TDialogComponent,
@@ -25,8 +28,14 @@ import {
 				<span slot="title">Settings</span>
 				<p>Dialog content</p>
 			</div>
-			<div so-input placeholder="Name" aria_label="Name"></div>
-			<div so-select placeholder="City" aria_label="City" [items]="cities"></div>
+			<div so-input [formControl]="name" placeholder="Name" aria_label="Name"></div>
+			<div
+				so-select
+				[(ngModel)]="city"
+				placeholder="City"
+				aria_label="City"
+				[items]="cities"
+			></div>
 			<div so-table aria_label="Staff" [columns]="columns" [items]="rows"></div>
 			<div so-date-picker aria_label="Date"></div>
 		</main>
@@ -34,6 +43,8 @@ import {
 })
 export class App {
 	protected readonly open = signal(false)
+	protected readonly name = new FormControl('Anna', { nonNullable: true })
+	protected readonly city = signal('kzn')
 
 	protected readonly cities = [
 		{ value: 'kzn', text: 'Kazan' },

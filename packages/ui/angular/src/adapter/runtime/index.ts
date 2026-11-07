@@ -17,3 +17,5 @@ export { AttributesDirective } from './attributes.directive'
 export { FieldTextDirective } from './field-text.directive'
 export { TextPipe } from './text.pipe'
 export { RunsPipe, type TRun } from './runs.pipe'
+
+export { ValueAccessorDirective } from './value-accessor.directive'

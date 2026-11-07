@@ -50,7 +50,7 @@ render on the server (`@angular/platform-server`) and hydrate in the browser
 ## Install
 
 ```bash
-npm install @soldy-ui/angular @soldy-ui/setup @soldy-ui/theme-oren @soldy-ui/icons-material
+npm install @angular/forms @soldy-ui/angular @soldy-ui/setup @soldy-ui/theme-oren @soldy-ui/icons-material
 ```
 
 Install `@soldy-ui/setup` as a direct dependency for the `useIcons` and `useTheme` imports below.
@@ -567,8 +567,8 @@ instead. Building a new adapter component from Soldy's assembly helpers is not a
 public SDK.
 
 `SlotDirective`, `AttributesDirective`, `RoleIconDirective`, `TextPipe`, `LocaleProviderDirective` and `provideAttrs` are application
-API. The `ɵSubtreeDirective` export is required by Angular AOT and is private; applications
-must not import it.
+API. The `ɵSubtreeDirective` and `ɵValueAccessorDirective` exports are required by Angular AOT
+and are private; applications must not import them.
 
 ## License
 
@@ -588,3 +588,27 @@ Model outputs emit the current property value. Ordinary events keep their `so` p
 payload: `(valueChange)="text = $event"` receives the value, while `(soChangeValue)` receives
 `{ oldValue, newValue }`. Namespaced plugin inputs follow the same rule, for example
 `[(aria_label)]="label"`. Read-only properties have no model output.
+
+## Angular Forms
+
+All components with a writable `value` input support Angular Forms automatically. Install
+`@angular/forms` at the same version as `@angular/core`. Import `FormsModule` for `ngModel`,
+or `ReactiveFormsModule` for `formControl` and `formControlName`, alongside the Soldy components:
+
+```html
+<div so-input [(ngModel)]="name"></div>
+<label so-check-box [formControl]="accepted"></label>
+<form [formGroup]="profile">
+  <div so-input formControlName="name"></div>
+</form>
+```
+
+`writeValue` updates the component without echoing a form change. User changes update the
+form, form disabled state reaches the component, and leaving the control marks it touched.
+Focus moves between nodes inside the control do not mark it touched. Angular's
+`updateOn: 'blur'` and `updateOn: 'submit'` keep their usual behavior.
+
+Angular's `null` reset value clears the component to the descriptor default (for example,
+undefined for Input, false for CheckBox, or zero for Slider); the form retains `null`.
+A non-nullable FormControl resets to its own initial value. Use one form binding per control;
+`[(value)]` remains available for components managed without Angular Forms.

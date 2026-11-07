@@ -8,6 +8,7 @@ import type {
 } from '@soldy-ui/setup'
 import {
 	SlotDirective,
+	ValueAccessorDirective,
 	type TInputValue,
 	type TOutputEmitter,
 	type TModelEmitter,
@@ -93,6 +94,7 @@ export const AccordionItemOutputNames = [
 		{ name: 'selected', transform: booleanInput },
 	],
 	outputs: [...AccordionItemOutputNames],
+	hostDirectives: [ValueAccessorDirective],
 })
 export abstract class TAccordionItemSurface<TInstance extends IEntity> extends TViewSurface<
 	TInstance,

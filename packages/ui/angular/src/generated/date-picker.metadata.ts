@@ -4,6 +4,7 @@ import type { IEntity } from '@soldy-ui/core'
 import type { DescriptorPluginOutputs, DescriptorPluginProps } from '@soldy-ui/setup'
 import {
 	SlotDirective,
+	ValueAccessorDirective,
 	type TInputValue,
 	type TOutputEmitter,
 	type TModelEmitter,
@@ -157,6 +158,7 @@ export const DatePickerOutputNames = [
 		{ name: 'hideOutside_enabled', transform: booleanInput },
 	],
 	outputs: [...DatePickerOutputNames],
+	hostDirectives: [ValueAccessorDirective],
 })
 export abstract class TDatePickerSurface<TInstance extends IEntity> extends TViewSurface<
 	TInstance,

@@ -3,6 +3,7 @@ import { Directive, ElementRef, viewChild } from '@angular/core'
 import type { IEntity } from '@soldy-ui/core'
 import type { DescriptorPluginOutputs, DescriptorPluginProps } from '@soldy-ui/setup'
 import {
+	ValueAccessorDirective,
 	type TInputValue,
 	type TOutputEmitter,
 	type TModelEmitter,
@@ -113,6 +114,7 @@ export const TextareaOutputNames = [
 		'id',
 	],
 	outputs: [...TextareaOutputNames],
+	hostDirectives: [ValueAccessorDirective],
 })
 export abstract class TTextareaSurface<TInstance extends IEntity> extends TViewSurface<
 	TInstance,

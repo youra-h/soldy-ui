@@ -3,6 +3,7 @@ import { Directive } from '@angular/core'
 import type { IEntity } from '@soldy-ui/core'
 import type { DescriptorPluginOutputs, DescriptorPluginProps } from '@soldy-ui/setup'
 import {
+	ValueAccessorDirective,
 	type TInputValue,
 	type TOutputEmitter,
 	type TModelEmitter,
@@ -72,6 +73,7 @@ export const ProgressSpinnerOutputNames = [
 		'aria_describedBy',
 	],
 	outputs: [...ProgressSpinnerOutputNames],
+	hostDirectives: [ValueAccessorDirective],
 })
 export abstract class TProgressSpinnerSurface<TInstance extends IEntity> extends TViewSurface<
 	TInstance,

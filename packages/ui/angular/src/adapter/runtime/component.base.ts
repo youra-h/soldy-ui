@@ -44,6 +44,7 @@ import type { TRootSpec } from './root/spec'
 import type { SlotDirective } from './slot.directive'
 import { SUBTREE_PRESENT, SubtreeDirective } from './subtree.directive'
 import type { TBinding, TBindingState } from './useAdapter'
+import { ValueAccessorDirective } from './value-accessor.directive'
 
 /** The component's setup function: assembles its contexts into one binding. */
 export type TSetup<TInstance, TFacade = unknown, TOutputs = unknown, TOwnerFacade = unknown> = (
@@ -101,6 +102,7 @@ export abstract class TComponentBase<
 		TBinding<TInstance, TFacade, TOutputs, TOwnerFacade> | undefined
 	>(undefined)
 	private _eventsCleanup?: () => void
+	private readonly _forms = inject(ValueAccessorDirective, { self: true, optional: true })
 
 	private readonly _boundRoot = signal<Element | null>(null)
 
@@ -229,7 +231,7 @@ export abstract class TComponentBase<
 	ngOnInit(): void {
 		// The first ngOnChanges came before the binding: the assembly applies the
 		// inputs at mount
-		const inputs = this.collectInputs()
+		const inputs = { ...this.collectInputs(), ...this._forms?.initialInputs() }
 
 		if (this._root.tag !== undefined) inputs['tag'] = this._root.tag
 
@@ -240,6 +242,7 @@ export abstract class TComponentBase<
 		)
 
 		this._binding.set(binding)
+		this._forms?.connect(binding)
 	}
 
 	ngOnChanges(changes: SimpleChanges): void {

@@ -8,6 +8,7 @@ import type {
 } from '@soldy-ui/setup'
 import {
 	SlotDirective,
+	ValueAccessorDirective,
 	type TInputValue,
 	type TOutputEmitter,
 	type TModelEmitter,
@@ -87,6 +88,7 @@ export const MenuCheckboxItemOutputNames = [
 		{ name: 'selected', transform: booleanInput },
 	],
 	outputs: [...MenuCheckboxItemOutputNames],
+	hostDirectives: [ValueAccessorDirective],
 })
 export abstract class TMenuCheckboxItemSurface<TInstance extends IEntity> extends TViewSurface<
 	TInstance,

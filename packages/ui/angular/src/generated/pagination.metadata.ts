@@ -8,6 +8,7 @@ import type {
 } from '@soldy-ui/setup'
 import {
 	SlotDirective,
+	ValueAccessorDirective,
 	type TInputValue,
 	type TOutputEmitter,
 	type TModelEmitter,
@@ -100,6 +101,7 @@ export const PaginationOutputNames = [
 		'engine',
 	],
 	outputs: [...PaginationOutputNames],
+	hostDirectives: [ValueAccessorDirective],
 })
 export abstract class TPaginationSurface<TInstance extends IEntity> extends TViewSurface<
 	TInstance,

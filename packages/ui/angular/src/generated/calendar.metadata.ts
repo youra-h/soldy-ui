@@ -8,6 +8,7 @@ import type {
 } from '@soldy-ui/setup'
 import {
 	SlotDirective,
+	ValueAccessorDirective,
 	type TInputValue,
 	type TOutputEmitter,
 	type TModelEmitter,
@@ -112,6 +113,7 @@ export const CalendarOutputNames = [
 		'mode',
 	],
 	outputs: [...CalendarOutputNames],
+	hostDirectives: [ValueAccessorDirective],
 })
 export abstract class TCalendarSurface<TInstance extends IEntity> extends TViewSurface<
 	TInstance,

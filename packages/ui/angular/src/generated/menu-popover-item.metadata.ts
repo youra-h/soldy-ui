@@ -8,6 +8,7 @@ import type {
 } from '@soldy-ui/setup'
 import {
 	SlotDirective,
+	ValueAccessorDirective,
 	type TInputValue,
 	type TOutputEmitter,
 	type TModelEmitter,
@@ -100,6 +101,7 @@ export const MenuPopoverItemOutputNames = [
 		'id',
 	],
 	outputs: [...MenuPopoverItemOutputNames],
+	hostDirectives: [ValueAccessorDirective],
 })
 export abstract class TMenuPopoverItemSurface<TInstance extends IEntity> extends TViewSurface<
 	TInstance,

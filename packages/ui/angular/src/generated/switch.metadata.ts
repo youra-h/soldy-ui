@@ -4,6 +4,7 @@ import type { IEntity } from '@soldy-ui/core'
 import type { DescriptorPluginOutputs, DescriptorPluginProps } from '@soldy-ui/setup'
 import {
 	SlotDirective,
+	ValueAccessorDirective,
 	type TInputValue,
 	type TOutputEmitter,
 	type TModelEmitter,
@@ -90,6 +91,7 @@ export const SwitchOutputNames = [
 		'id',
 	],
 	outputs: [...SwitchOutputNames],
+	hostDirectives: [ValueAccessorDirective],
 })
 export abstract class TSwitchSurface<TInstance extends IEntity> extends TViewSurface<
 	TInstance,

@@ -1661,3 +1661,16 @@ ordinary events retain their payloads. `useModels` derives these outputs from `T
 the code generator declares their names and types, and the base creates their emitters lazily.
 Model types use the snapshot of an instance property where available, otherwise the input type.
 CheckBox uses `value` (boolean or undefined), and ListBox uses `value` for selection.
+
+## Angular Forms
+
+Surfaces with a writable `value` model inherit the generated host directive
+`ValueAccessorDirective`. It provides `NG_VALUE_ACCESSOR`; component classes contain no
+form hooks. The base seeds writes received before assembly, then connects the directive to
+the existing binding. Form writes suppress the return notification; model values reach
+`onChange`, and focus leaving the host calls `onTouched`. Null resets to the descriptor
+default. The private AOT export is `ɵValueAccessorDirective`.
+
+The integration is checked by `__tests__/forms.spec.ts`: reactive and template-driven forms
+on value controls, formControlName, reset, disabled, touched, updateOn, and automatic coverage
+of all exported components with `valueChange`.

@@ -102,6 +102,7 @@ export type TOutputOf = (name: string) => EventEmitter<unknown> | undefined
 type TExchange<TState> = {
 	readonly state: Signal<TState>
 	syncInputs(inputs: object): void
+	resetInputs(names: readonly string[]): void
 	/** Returns the unsubscription. */
 	syncEvents(outputOf: TOutputOf): () => void
 	/** The teardown began: the consumer hears nothing from then on. */
@@ -150,6 +151,12 @@ function useExchange<C extends IComponentContract>(
 		// A delta, not `full`: that would reset the other inputs to their defaults
 		syncInputs(inputs: object): void {
 			binding.inputs.delta(inputs)
+		},
+
+		resetInputs(names: readonly string[]): void {
+			for (const line of binding.lines) {
+				if (names.includes(line.name)) line.reset(binding.owners)
+			}
 		},
 
 		// The emitter is looked up on every event: the output's first read
@@ -217,6 +224,11 @@ export function joinBindings<TInstance, TFacade, TOutputs, TOwnerFacade = unknow
 			owner.syncInputs(inputs)
 
 			for (const each of facades) each.syncInputs(inputs)
+		},
+
+		resetInputs(names: readonly string[]): void {
+			owner.resetInputs(names)
+			for (const each of facades) each.resetInputs(names)
 		},
 
 		syncEvents(outputOf: TOutputOf): () => void {

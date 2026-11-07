@@ -8,6 +8,7 @@ import type {
 } from '@soldy-ui/setup'
 import {
 	SlotDirective,
+	ValueAccessorDirective,
 	type TInputValue,
 	type TOutputEmitter,
 	type TModelEmitter,
@@ -79,6 +80,7 @@ export const RadioGroupItemOutputNames = [
 		{ name: 'active', transform: booleanInput },
 	],
 	outputs: [...RadioGroupItemOutputNames],
+	hostDirectives: [ValueAccessorDirective],
 })
 export abstract class TRadioGroupItemSurface<TInstance extends IEntity> extends TViewSurface<
 	TInstance,
