@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="288" viewBox="0 0 880 288">
+  <title>Soldy UI — One core. Your framework.</title>
+  <desc>Headless UI components for Vue, React, Angular, Svelte, Solid and Web Components.</desc>
+  <defs>
+    <clipPath id="frame"><rect width="880" height="288" rx="20"/></clipPath>
+    <radialGradient id="halo"><stop stop-color="#4056D4" stop-opacity=".12"/><stop offset="1" stop-color="#4056D4" stop-opacity="0"/></radialGradient>
+    <linearGradient id="edge" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#19C3E9"/><stop offset=".5" stop-color="#4056D4"/><stop offset="1" stop-color="#6535D6"/></linearGradient>
+  </defs>
+  <g clip-path="url(#frame)">
+  <rect width="880" height="288" rx="20" fill="#0e111a"/>
+  <ellipse cx="151" cy="144" rx="203" ry="144" fill="url(#halo)"/>
+  <path d="M274 65V223" stroke="#2a3144"/>
+  <g opacity=".25" fill="none" stroke="#52608a" stroke-width="1">
+    <path d="M749 1H800L742 59H691Z"/>
+    <path d="M813 1H864L806 59H755Z"/>
+    <path d="M877 1H928L870 59H819Z"/>
+  </g>
+  <svg xmlns="http://www.w3.org/2000/svg" x="34" y="31" width="226" height="226" viewBox="20 1 101 101" fill="url(#brand)">
+  <title>Soldy</title>
+  <defs>
+    <linearGradient id="brand" gradientUnits="userSpaceOnUse" x1="43" y1="20" x2="98" y2="82">
+      <stop stop-color="#19C3E9"/>
+      <stop offset=".5" stop-color="#4056D4"/>
+      <stop offset="1" stop-color="#6535D6"/>
+    </linearGradient>
+  </defs>
+  <path d="M62 20H88C92 20 94 22 91 25L60 56C55 61 49 61 44 57L37 51C32 47 32 43 36 39L52 24Q56 20 62 20Z"/><path d="M79 82H53C49 82 47 80 50 77L81 46C86 41 92 41 97 45L104 51C109 55 109 59 105 63L89 78Q85 82 79 82Z"/>
+</svg>
+
+  <g font-family="Segoe UI, Arial, sans-serif">
+    <rect x="310" y="62" width="6" height="6" rx="2" fill="#19C3E9"/>
+    <text x="326" y="70" fill="#939fb9" font-size="10" font-weight="600" letter-spacing="2">HEADLESS. UNIVERSAL. FLEXIBLE.</text>
+    <text x="306" y="144" fill="#f6f7fb" font-size="66" font-weight="600" letter-spacing="-2.5">Soldy UI<tspan fill="#19C3E9">.</tspan></text>
+    <text x="310" y="180" fill="#b5bfd4" font-size="21" font-weight="300">One core. Your framework.</text>
+    <rect x="310" y="212" width="49" height="27" rx="6" fill="#161b29" stroke="#2a3144"/><text x="334.5" y="230" text-anchor="middle" fill="#a7b1c9" font-size="12">Vue</text>
+<rect x="366" y="212" width="59" height="27" rx="6" fill="#161b29" stroke="#2a3144"/><text x="395.5" y="230" text-anchor="middle" fill="#a7b1c9" font-size="12">React</text>
+<rect x="432" y="212" width="73" height="27" rx="6" fill="#161b29" stroke="#2a3144"/><text x="468.5" y="230" text-anchor="middle" fill="#a7b1c9" font-size="12">Angular</text>
+<rect x="512" y="212" width="64" height="27" rx="6" fill="#161b29" stroke="#2a3144"/><text x="544" y="230" text-anchor="middle" fill="#a7b1c9" font-size="12">Svelte</text>
+<rect x="583" y="212" width="55" height="27" rx="6" fill="#161b29" stroke="#2a3144"/><text x="610.5" y="230" text-anchor="middle" fill="#a7b1c9" font-size="12">Solid</text>
+<rect x="645" y="212" width="137" height="27" rx="6" fill="#161b29" stroke="#2a3144"/><text x="713.5" y="230" text-anchor="middle" fill="#a7b1c9" font-size="12">Web Components</text>
+  </g>
+  <rect x="310" y="287" width="232" height="1" fill="url(#edge)"/>
+  </g>
+</svg>

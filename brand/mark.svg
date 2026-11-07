@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="20 1 101 101" fill="url(#brand)">
+  <title>Soldy</title>
+  <defs>
+    <linearGradient id="brand" gradientUnits="userSpaceOnUse" x1="43" y1="20" x2="98" y2="82">
+      <stop stop-color="#19C3E9"/>
+      <stop offset=".5" stop-color="#4056D4"/>
+      <stop offset="1" stop-color="#6535D6"/>
+    </linearGradient>
+  </defs>
+  <path d="M62 20H88C92 20 94 22 91 25L60 56C55 61 49 61 44 57L37 51C32 47 32 43 36 39L52 24Q56 20 62 20Z"/><path d="M79 82H53C49 82 47 80 50 77L81 46C86 41 92 41 97 45L104 51C109 55 109 59 105 63L89 78Q85 82 79 82Z"/>
+</svg>
