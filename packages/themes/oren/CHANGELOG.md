@@ -1,5 +1,42 @@
 # @soldy-ui/theme-oren
 
+## 0.3.0-beta.0
+
+### Minor Changes
+
+- a491c3f: Stylesheets per component next to the whole one: `@soldy-ui/theme-oren/<component>.css` carries the shared part — tokens, schemes, the reset and the size scales — and the parts of its component, inner ones included, and the bundler of an application puts a shared file once. Every rule of the theme moves into a cascade layer (`components`), so the CSS of an application outside layers and the utilities of its Tailwind now override the theme — drop the specificity workarounds kept against it.
+- bcd5555: Replace boolean and state CSS modifiers with data attributes, including readonly, required, clearable, editable, closable, indeterminate and Tabs geometry readiness. Select now exposes open state only through data-open. Prefix orientation, DatePicker mode and Tabs alignment modifiers with their prop names.
+
+  Update custom themes: replace removed state modifiers with explicit selectors such as [data-required='true']; false remains the string "false". Replace --horizontal/--vertical with --orientation-horizontal/--orientation-vertical, --single/--range with --mode-single/--mode-range, and Tabs --center/--end/--stretch with --alignment-center/--alignment-end/--alignment-stretch. Replace the Tabs --ready-animation modifier with [data-ready-animation='true']. Native HTML attributes and component props retain their behavior.
+- 203edd0: Rename the Tabs.Content root class from `so-tabs__panel` to `so-tabs-content`. Update custom theme selectors and DOM queries to use `.so-tabs-content`.
+
+### Patch Changes
+
+- d1d4764: Versioned on their own: a theme or an icon pack no longer shares the version of the library and depends on it by a range (`^` and a library version) instead of its exact version, so it keeps working with the library releases that do not break its contract. The icon packs take `@soldy-ui/setup` as a peer dependency now.
+- fc65f24: Table in Safari and iOS: the head stays above row checkboxes, a column without a width keeps its minimum before the first measure, and rows no longer show through the rounded corners of the sticky head. A theme that draws a line under the sticky head names its thickness in `--so-table-head-border`, and the backing under the headers stops above it.
+- defba58: The values of `variant`, `view`, `shape` and `animation` now reach the types through `@soldy-ui/theme-oren/setup`, so `variant="accent"` type-checks when the stylesheet comes from Angular CLI `styles` or Nuxt `css`. README: where the stylesheet goes in each build.
+- 85e280b: Table: rows no longer show through the sticky head while a column is carried — one backing under the whole head replaces the squares under each header. Its height is the head height `TTableHeadPlugin` writes (`--so-table-head-height`): a theme that does not install the plugin gets a backing one head row high.
+- 7415726: Slider: the thumb halo shows the pressed veil while the thumb is held or dragged, also in Safari, where the pointer keeps hovering the thumb.
+- Updated dependencies [2d81d06]
+- Updated dependencies [7327698]
+- Updated dependencies [d1d4764]
+- Updated dependencies [fc65f24]
+- Updated dependencies [7335dd6]
+- Updated dependencies [28bcd83]
+- Updated dependencies [e682670]
+- Updated dependencies [bcd5555]
+- Updated dependencies [ac39aa9]
+- Updated dependencies [c95d6c4]
+- Updated dependencies [85e280b]
+- Updated dependencies [203edd0]
+- Updated dependencies [cfffb4b]
+- Updated dependencies [defba58]
+- Updated dependencies [a491c3f]
+- Updated dependencies [0690162]
+  - @soldy-ui/core@0.3.0-beta.0
+  - @soldy-ui/setup@0.3.0-beta.0
+  - @soldy-ui/theme-base@0.3.0-beta.0
+
 ## 0.3.0-alpha.7
 
 ### Patch Changes

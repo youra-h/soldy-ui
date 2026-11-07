@@ -89,10 +89,21 @@ function run(command, args) {
 			return 0
 		}
 
-		const { tag, title } = releaseOf(published, shared)
+		const { tag, title, prerelease } = releaseOf(published, shared)
 		const { status } = spawnSync(
 			'gh',
-			['release', 'create', tag, '--title', title, '--target', sha, '--notes-file', '-'],
+			[
+				'release',
+				'create',
+				tag,
+				'--title',
+				title,
+				'--target',
+				sha,
+				'--notes-file',
+				'-',
+				...(prerelease ? ['--prerelease'] : []),
+			],
 			{ input: notes, stdio: ['pipe', 'inherit', 'inherit'] },
 		)
 

@@ -59,12 +59,15 @@ jobs:
         name: Импорты пакетов объявлены
         run: npm run check:published-imports
 
-      # changeset publish publishes every package whose version npm does not
-      # have, under the npm tag `latest` (there is no pre-mode), and tags it
-      # `<package>@<version>` in git.
+      # Exit pre-mode only in the runner so Changesets accepts the explicit
+      # latest tag; the committed branch stays in beta for the next version.
       - if: steps.check.outputs.publish == 'true'
         name: Публикация
-        run: npx changeset publish
+        run: |
+          if [ -f .changeset/pre.json ]; then
+            npx changeset pre exit
+          fi
+          npx changeset publish --tag latest
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_CONFIG_PROVENANCE: true

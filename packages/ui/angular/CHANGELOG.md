@@ -1,5 +1,45 @@
 # @soldy-ui/angular
 
+## 0.3.0-beta.0
+
+### Minor Changes
+
+- 93b818d: Add Angular Forms support for writable value components. Install @angular/forms alongside the Angular adapter; existing model and event bindings are unchanged.
+- 7327698: Select: rename the tags_overflow prop to tagsOverflow. Update component props and collection facade access to the new name.
+- 1d2d4a0: Restrict adapter entry points to application components, helpers and consumer types. Remove assembly, profile, binding, generated metadata and template exports; use supported component props, slots, refs and core models instead. Vue now exports all component Props types. No public internal entry point is provided.
+- 7335dd6: Remove public plugin creation events. Replace namespace:create handlers with bundle:create and bundle.get(PluginClass); internal plugin lifecycle hooks remain unchanged.
+- 94263ac: Angular: outputs shared by every visual component (the events of `ComponentViewDescriptor` — `soShow`, `soChangeVisible` and the rest) are declared once, by the new abstract directive `TViewSurface` that every visual `T<Name>Surface` extends. `<Name>OutputNames` of a visual component now lists only its own outputs; the full list is `[...ViewOutputNames, ...<Name>OutputNames]`. Template bindings and output types do not change.
+- 28bcd83: Remove duplicate `input`, `input:value`, `show:after`, and `hide:after` component events. Subscribe to `change:value` for value changes and to `show` or `hide` after the corresponding lifecycle hook. Angular consumers must replace `soInput` and `soInputValue` with `soChangeValue`, and `soShowAfter`/`soHideAfter` with `soShow`/`soHide`. The `open`, `close`, `element:ready`, `element:removed`, and `ready` events remain available.
+- e682670: Publish only explicitly declared descriptor events. Internal property triggers no longer appear as component callbacks, Vue events, Angular outputs or Web Component events. Declare application notifications in contribution.events; property state refresh and two-way model updates remain driven by triggers.
+- cfffb4b: Standardize property change notifications to { newValue, oldValue }. Update bare-value handlers to read payload.newValue. Object values keep their references without deep cloning; collections and markup sets use shallow container snapshots. Cancelable before events, model bindings, collection operations, and invalidation signals retain their contracts.
+- 0690162: Frame: rename position to strategy and TFramePosition to TFrameStrategy. Replace the prop, controller property and change:position event with strategy and change:strategy; Angular outputs use soChangeStrategy.
+
+### Patch Changes
+
+- a491c3f: README: the stylesheets of the theme per component, next to the whole one; Angular — the page of the six components fits the budget of a new project with them.
+- 5d2df6e: Smaller production bundle: component outputs no longer ship a generated getter each; output names, types and the emitter created on first read are unchanged
+- 31a6d13: Add native Angular two-way bindings through typed propertyChange outputs, including collection and plugin properties.
+- 4dc0de8: Fix the generated Frame model output to use strategyChange after the strategy rename.
+- 3cb5c3c: Document the explicit @soldy-ui/setup dependency required by application theme and icon registration.
+- 1eae72b: Fix the Popover and Dialog README examples to read `newValue` from property change event payloads.
+- 13101c7: Hide detached overlay panels when their owning component is hidden. Preserve the panel's open state while pausing overlay focus, dismissal and scroll behavior until the owner is shown again.
+- defba58: README: the theme stylesheet goes into `src/styles.css` (`@import '@soldy-ui/theme-oren';`): Angular CLI puts CSS imported from `main.ts` into a chunk the page never loads.
+- Updated dependencies [2d81d06]
+- Updated dependencies [7327698]
+- Updated dependencies [7415726]
+- Updated dependencies [7335dd6]
+- Updated dependencies [13101c7]
+- Updated dependencies [28bcd83]
+- Updated dependencies [e682670]
+- Updated dependencies [bcd5555]
+- Updated dependencies [ac39aa9]
+- Updated dependencies [203edd0]
+- Updated dependencies [cfffb4b]
+- Updated dependencies [0690162]
+  - @soldy-ui/core@0.3.0-beta.0
+  - @soldy-ui/plugins@0.3.0-beta.0
+  - @soldy-ui/setup@0.3.0-beta.0
+
 ## 0.3.0-alpha.7
 
 ### Minor Changes

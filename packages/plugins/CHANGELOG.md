@@ -1,5 +1,27 @@
 # @soldy-ui/plugins
 
+## 0.3.0-beta.0
+
+### Minor Changes
+
+- 7335dd6: Remove public plugin creation events. Replace namespace:create handlers with bundle:create and bundle.get(PluginClass); internal plugin lifecycle hooks remain unchanged.
+- cfffb4b: Standardize property change notifications to { newValue, oldValue }. Update bare-value handlers to read payload.newValue. Object values keep their references without deep cloning; collections and markup sets use shallow container snapshots. Cancelable before events, model bindings, collection operations, and invalidation signals retain their contracts.
+- 0690162: Frame: rename position to strategy and TFramePosition to TFrameStrategy. Replace the prop, controller property and change:position event with strategy and change:strategy; Angular outputs use soChangeStrategy.
+
+### Patch Changes
+
+- 2d81d06: Clarify component availability and DOM element readiness without changing lifecycle behavior.
+- 7415726: Tags with `overflow: 'scroll'`: in Safari the tag that receives keyboard focus at the row's edge now scrolls fully into view, focus ring included.
+- 13101c7: Hide detached overlay panels when their owning component is hidden. Preserve the panel's open state while pausing overlay focus, dismissal and scroll behavior until the owner is shown again.
+- Updated dependencies [2d81d06]
+- Updated dependencies [7327698]
+- Updated dependencies [28bcd83]
+- Updated dependencies [bcd5555]
+- Updated dependencies [203edd0]
+- Updated dependencies [cfffb4b]
+- Updated dependencies [0690162]
+  - @soldy-ui/core@0.3.0-beta.0
+
 ## 0.3.0-alpha.7
 
 ### Patch Changes
