@@ -38,6 +38,15 @@ const declarations: TTsconfig = JSON.parse(
 )
 
 describe('общий слой тем · поставка', () => {
+	it('publishes both JSON references at their documented package subpaths', () => {
+		for (const file of ['theme-variables.json', 'theme-contract.json']) {
+			expect(manifest.exports[`./${file}`]).toBe(`./${file}`)
+			expect(manifest.files).toContain(file)
+			expect(() => JSON.parse(readFileSync(resolve(ROOT, file), 'utf8'))).not.toThrow()
+			expect(readFileSync(resolve(ROOT, 'README.md'), 'utf8')).toContain(`](./${file})`)
+		}
+	})
+
 	it('CSS уезжает исходником', () => {
 		expect(manifest.exports['.']).toBe('./src/index.css')
 		expect(manifest.style).toBe('./src/index.css')

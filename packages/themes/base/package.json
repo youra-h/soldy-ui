@@ -33,12 +33,14 @@
       "types": "./dist/setup/index.d.ts",
       "default": "./dist/setup/index.js"
     },
-    "./theme-variables.json": "./theme-variables.json"
+    "./theme-variables.json": "./theme-variables.json",
+    "./theme-contract.json": "./theme-contract.json"
   },
   "files": [
     "dist",
     "src",
-    "theme-variables.json"
+    "theme-variables.json",
+    "theme-contract.json"
   ],
   "scripts": {
     "build": "vite build -c vite.setup.config.ts && tsc -p tsconfig.build.json",

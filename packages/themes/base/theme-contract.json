@@ -1,0 +1,3390 @@
+{
+  "description": "Public Soldy UI class and data-attribute reference. Sources are repository-relative emission witnesses, not files required by a consuming theme.",
+  "conventions": {
+    "classes": "Roots and parts are literal names. Modifiers append to the concrete base class; <block> and <value> are placeholders, not literal selectors. Optional parts exist only while rendered. A part may also carry the classes of its own component.",
+    "data": "Scope identifies the node receiving the dataset, not necessarily the component wrapper. TDataset stringifies booleans: false is \"false\"; only null and undefined remove the attribute. Presence-only gesture flags are documented separately.",
+    "inheritance": "TControl supplies data-disabled; TValueControl supplies data-invalid; TInputControl supplies readonly/required class modifiers; TStylable supplies size/variant. Derived components and embedded parts keep their own concrete base classes.",
+    "dynamic": "Dynamic entries map source expressions to emitted names or bounded families; sources and expressions are checked for drift."
+  },
+  "roots": [
+    {
+      "name": "so-accordion",
+      "sources": ["packages/core/src/components/custom/accordion/accordion.class.ts"],
+      "description": "Root of accordion. Inherited component classes use the concrete component's base name.",
+      "scope": "so-accordion"
+    },
+    {
+      "name": "so-accordion-item",
+      "sources": ["packages/core/src/components/custom/accordion/item/item.class.ts"],
+      "description": "Root of accordion item. Inherited component classes use the concrete component's base name.",
+      "scope": "so-accordion-item"
+    },
+    {
+      "name": "so-button",
+      "sources": ["packages/core/src/components/custom/button/button.class.ts"],
+      "description": "Root of button. Inherited component classes use the concrete component's base name.",
+      "scope": "so-button"
+    },
+    {
+      "name": "so-calendar",
+      "sources": ["packages/core/src/components/custom/calendar/calendar.class.ts"],
+      "description": "Root of calendar. Inherited component classes use the concrete component's base name.",
+      "scope": "so-calendar"
+    },
+    {
+      "name": "so-calendar-item",
+      "sources": ["packages/core/src/components/custom/calendar/item/item.class.ts"],
+      "description": "Root of calendar item. Inherited component classes use the concrete component's base name.",
+      "scope": "so-calendar-item"
+    },
+    {
+      "name": "so-check-box",
+      "sources": ["packages/core/src/components/custom/check-box/check-box.class.ts"],
+      "description": "Root of check box. Inherited component classes use the concrete component's base name.",
+      "scope": "so-check-box"
+    },
+    {
+      "name": "so-component-view",
+      "sources": ["packages/core/src/components/base/component-view/component-view.class.ts"],
+      "description": "Root of the public base visual component; concrete subclasses normally replace its base class.",
+      "scope": "so-component-view"
+    },
+    {
+      "name": "so-date-input",
+      "sources": ["packages/core/src/components/custom/date-input/date-input.class.ts"],
+      "description": "Root of date input. Inherited component classes use the concrete component's base name.",
+      "scope": "so-date-input"
+    },
+    {
+      "name": "so-date-picker",
+      "sources": ["packages/core/src/components/custom/date-picker/date-picker.class.ts"],
+      "description": "Root of date picker. Inherited component classes use the concrete component's base name.",
+      "scope": "so-date-picker"
+    },
+    {
+      "name": "so-dialog",
+      "sources": ["packages/core/src/components/custom/dialog/dialog.class.ts"],
+      "description": "Root of dialog. Inherited component classes use the concrete component's base name.",
+      "scope": "so-dialog"
+    },
+    {
+      "name": "so-drawer",
+      "sources": ["packages/core/src/components/custom/drawer/drawer.class.ts"],
+      "description": "Root of drawer. Inherited component classes use the concrete component's base name.",
+      "scope": "so-drawer"
+    },
+    {
+      "name": "so-field",
+      "sources": ["packages/core/src/components/custom/field/field.class.ts"],
+      "description": "Root of field. Inherited component classes use the concrete component's base name.",
+      "scope": "so-field"
+    },
+    {
+      "name": "so-frame",
+      "sources": ["packages/core/src/components/custom/frame/frame.class.ts"],
+      "description": "Root of frame. Inherited component classes use the concrete component's base name.",
+      "scope": "so-frame"
+    },
+    {
+      "name": "so-icon",
+      "sources": ["packages/core/src/components/custom/icon/icon.class.ts"],
+      "description": "Root of icon. Inherited component classes use the concrete component's base name.",
+      "scope": "so-icon"
+    },
+    {
+      "name": "so-input",
+      "sources": ["packages/core/src/components/custom/input/input.class.ts"],
+      "description": "Root of input. Inherited component classes use the concrete component's base name.",
+      "scope": "so-input"
+    },
+    {
+      "name": "so-label",
+      "sources": ["packages/core/src/components/custom/label/label.class.ts"],
+      "description": "Root of label. Inherited component classes use the concrete component's base name.",
+      "scope": "so-label"
+    },
+    {
+      "name": "so-list-box",
+      "sources": ["packages/core/src/components/custom/list-box/list-box.class.ts"],
+      "description": "Root of list box. Inherited component classes use the concrete component's base name.",
+      "scope": "so-list-box"
+    },
+    {
+      "name": "so-list-box-group",
+      "sources": ["packages/core/src/components/custom/list-box/group/group.class.ts"],
+      "description": "Root of list box group. Inherited component classes use the concrete component's base name.",
+      "scope": "so-list-box-group"
+    },
+    {
+      "name": "so-list-box-item",
+      "sources": ["packages/core/src/components/custom/list-box/item/item.class.ts"],
+      "description": "Root of list box item. Inherited component classes use the concrete component's base name.",
+      "scope": "so-list-box-item"
+    },
+    {
+      "name": "so-menu",
+      "sources": ["packages/core/src/components/custom/menu/menu.class.ts"],
+      "description": "Root of menu. Inherited component classes use the concrete component's base name.",
+      "scope": "so-menu"
+    },
+    {
+      "name": "so-menu-group",
+      "sources": ["packages/core/src/components/custom/menu/group/group.class.ts"],
+      "description": "Root of menu group. Inherited component classes use the concrete component's base name.",
+      "scope": "so-menu-group"
+    },
+    {
+      "name": "so-menu-item",
+      "sources": ["packages/core/src/components/custom/menu/item/item.class.ts"],
+      "description": "Root of menu item. Inherited component classes use the concrete component's base name.",
+      "scope": "so-menu-item"
+    },
+    {
+      "name": "so-menu-separator",
+      "sources": ["packages/core/src/components/custom/menu/separator/separator.class.ts"],
+      "description": "Root of menu separator. Inherited component classes use the concrete component's base name.",
+      "scope": "so-menu-separator"
+    },
+    {
+      "name": "so-number-input",
+      "sources": ["packages/core/src/components/custom/number-input/number-input.class.ts"],
+      "description": "Root of number input. Inherited component classes use the concrete component's base name.",
+      "scope": "so-number-input"
+    },
+    {
+      "name": "so-pagination",
+      "sources": ["packages/core/src/components/custom/pagination/pagination.class.ts"],
+      "description": "Root of pagination. Inherited component classes use the concrete component's base name.",
+      "scope": "so-pagination"
+    },
+    {
+      "name": "so-pagination-item",
+      "sources": ["packages/core/src/components/custom/pagination/item/item.class.ts"],
+      "description": "Root of pagination item. Inherited component classes use the concrete component's base name.",
+      "scope": "so-pagination-item"
+    },
+    {
+      "name": "so-popover",
+      "sources": ["packages/core/src/components/custom/popover/popover.class.ts"],
+      "description": "Root of popover. Inherited component classes use the concrete component's base name.",
+      "scope": "so-popover"
+    },
+    {
+      "name": "so-progress-linear",
+      "sources": ["packages/core/src/components/custom/progress-linear/progress-linear.class.ts"],
+      "description": "Root of progress linear. Inherited component classes use the concrete component's base name.",
+      "scope": "so-progress-linear"
+    },
+    {
+      "name": "so-progress-spinner",
+      "sources": ["packages/core/src/components/custom/progress-spinner/progress-spinner.class.ts"],
+      "description": "Root of progress spinner. Inherited component classes use the concrete component's base name.",
+      "scope": "so-progress-spinner"
+    },
+    {
+      "name": "so-radio-group",
+      "sources": ["packages/core/src/components/custom/radio-group/radio-group.class.ts"],
+      "description": "Root of radio group. Inherited component classes use the concrete component's base name.",
+      "scope": "so-radio-group"
+    },
+    {
+      "name": "so-radio-group-item",
+      "sources": ["packages/core/src/components/custom/radio-group/item/item.class.ts"],
+      "description": "Root of radio group item. Inherited component classes use the concrete component's base name.",
+      "scope": "so-radio-group-item"
+    },
+    {
+      "name": "so-rating",
+      "sources": ["packages/core/src/components/custom/rating/rating.class.ts"],
+      "description": "Root of rating. Inherited component classes use the concrete component's base name.",
+      "scope": "so-rating"
+    },
+    {
+      "name": "so-scroller",
+      "sources": ["packages/core/src/components/custom/scroller/scroller.class.ts"],
+      "description": "Root of scroller. Inherited component classes use the concrete component's base name.",
+      "scope": "so-scroller"
+    },
+    {
+      "name": "so-select",
+      "sources": ["packages/core/src/components/custom/select/select.class.ts"],
+      "description": "Root of select. Inherited component classes use the concrete component's base name.",
+      "scope": "so-select"
+    },
+    {
+      "name": "so-select-group",
+      "sources": ["packages/core/src/components/custom/select/group/group.class.ts"],
+      "description": "Root of select group. Inherited component classes use the concrete component's base name.",
+      "scope": "so-select-group"
+    },
+    {
+      "name": "so-select-item",
+      "sources": ["packages/core/src/components/custom/select/item/item.class.ts"],
+      "description": "Root of select item. Inherited component classes use the concrete component's base name.",
+      "scope": "so-select-item"
+    },
+    {
+      "name": "so-skeleton",
+      "sources": ["packages/core/src/components/custom/skeleton/skeleton.class.ts"],
+      "description": "Root of skeleton. Inherited component classes use the concrete component's base name.",
+      "scope": "so-skeleton"
+    },
+    {
+      "name": "so-slider",
+      "sources": ["packages/core/src/components/custom/slider/slider.class.ts"],
+      "description": "Root of slider. Inherited component classes use the concrete component's base name.",
+      "scope": "so-slider"
+    },
+    {
+      "name": "so-switch",
+      "sources": ["packages/core/src/components/custom/switch/switch.class.ts"],
+      "description": "Root of switch. Inherited component classes use the concrete component's base name.",
+      "scope": "so-switch"
+    },
+    {
+      "name": "so-table",
+      "sources": ["packages/core/src/components/custom/table/table.class.ts"],
+      "description": "Root of table. Inherited component classes use the concrete component's base name.",
+      "scope": "so-table"
+    },
+    {
+      "name": "so-table-column",
+      "sources": ["packages/core/src/components/custom/table/column/column.class.ts"],
+      "description": "Root of table column. Inherited component classes use the concrete component's base name.",
+      "scope": "so-table-column"
+    },
+    {
+      "name": "so-table-row",
+      "sources": ["packages/core/src/components/custom/table/row/row.class.ts"],
+      "description": "Root of table row. Inherited component classes use the concrete component's base name.",
+      "scope": "so-table-row"
+    },
+    {
+      "name": "so-tabs",
+      "sources": ["packages/core/src/components/custom/tabs/tabs.class.ts"],
+      "description": "Root of tabs. Inherited component classes use the concrete component's base name.",
+      "scope": "so-tabs"
+    },
+    {
+      "name": "so-tabs-content",
+      "sources": ["packages/core/src/components/custom/tabs/content/content.class.ts"],
+      "description": "Root of tabs content. Inherited component classes use the concrete component's base name.",
+      "scope": "so-tabs-content"
+    },
+    {
+      "name": "so-tabs-item",
+      "sources": ["packages/core/src/components/custom/tabs/item/item.class.ts"],
+      "description": "Root of tabs item. Inherited component classes use the concrete component's base name.",
+      "scope": "so-tabs-item"
+    },
+    {
+      "name": "so-tags",
+      "sources": ["packages/core/src/components/custom/tags/tags.class.ts"],
+      "description": "Root of tags. Inherited component classes use the concrete component's base name.",
+      "scope": "so-tags"
+    },
+    {
+      "name": "so-tags-item",
+      "sources": ["packages/core/src/components/custom/tags/item/item.class.ts"],
+      "description": "Root of tags item. Inherited component classes use the concrete component's base name.",
+      "scope": "so-tags-item"
+    },
+    {
+      "name": "so-textarea",
+      "sources": ["packages/core/src/components/custom/textarea/textarea.class.ts"],
+      "description": "Root of textarea. Inherited component classes use the concrete component's base name.",
+      "scope": "so-textarea"
+    },
+    {
+      "name": "so-toasts",
+      "sources": ["packages/core/src/components/custom/toasts/toasts.class.ts"],
+      "description": "Root of toasts. Inherited component classes use the concrete component's base name.",
+      "scope": "so-toasts"
+    },
+    {
+      "name": "so-toasts-item",
+      "sources": ["packages/core/src/components/custom/toasts/item/item.class.ts"],
+      "description": "Root of toasts item. Inherited component classes use the concrete component's base name.",
+      "scope": "so-toasts-item"
+    },
+    {
+      "name": "so-tooltip",
+      "sources": ["packages/core/src/components/custom/tooltip/tooltip.class.ts"],
+      "description": "Root of tooltip. Inherited component classes use the concrete component's base name.",
+      "scope": "so-tooltip"
+    }
+  ],
+  "parts": [
+    {
+      "name": "so-accordion-item__arrow",
+      "sources": [
+        "packages/ui/angular/src/components/accordion/item/accordion-item.component.html",
+        "packages/ui/react/src/components/accordion/item/Item.tsx",
+        "packages/ui/solid/src/components/accordion/item/Item.tsx",
+        "packages/ui/svelte/src/components/accordion/item/Item.svelte",
+        "packages/ui/vue/src/components/accordion/item/Item.vue",
+        "packages/ui/webc/src/components/accordion/item/accordion-item.template.ts"
+      ],
+      "description": "arrow part of accordion item. Availability follows the rendered component structure.",
+      "scope": "so-accordion-item"
+    },
+    {
+      "name": "so-accordion-item__body",
+      "sources": [
+        "packages/ui/angular/src/components/accordion/item/accordion-item.component.html",
+        "packages/ui/react/src/components/accordion/item/Item.tsx",
+        "packages/ui/solid/src/components/accordion/item/Item.tsx",
+        "packages/ui/svelte/src/components/accordion/item/Item.svelte",
+        "packages/ui/vue/src/components/accordion/item/Item.vue",
+        "packages/ui/webc/src/components/accordion/item/accordion-item.template.ts"
+      ],
+      "description": "body part of accordion item. Availability follows the rendered component structure.",
+      "scope": "so-accordion-item"
+    },
+    {
+      "name": "so-accordion-item__content",
+      "sources": [
+        "packages/ui/angular/src/components/accordion/item/accordion-item.component.html",
+        "packages/ui/react/src/components/accordion/item/Item.tsx",
+        "packages/ui/solid/src/components/accordion/item/Item.tsx",
+        "packages/ui/svelte/src/components/accordion/item/Item.svelte",
+        "packages/ui/vue/src/components/accordion/item/Item.vue",
+        "packages/ui/webc/src/components/accordion/item/accordion-item.template.ts"
+      ],
+      "description": "content part of accordion item. Availability follows the rendered component structure.",
+      "scope": "so-accordion-item"
+    },
+    {
+      "name": "so-accordion-item__header",
+      "sources": [
+        "packages/ui/angular/src/components/accordion/item/accordion-item.component.html",
+        "packages/ui/react/src/components/accordion/item/Item.tsx",
+        "packages/ui/solid/src/components/accordion/item/Item.tsx",
+        "packages/ui/svelte/src/components/accordion/item/Item.svelte",
+        "packages/ui/vue/src/components/accordion/item/Item.vue",
+        "packages/ui/webc/src/components/accordion/item/accordion-item.template.ts"
+      ],
+      "description": "header part of accordion item. Availability follows the rendered component structure.",
+      "scope": "so-accordion-item"
+    },
+    {
+      "name": "so-button__text",
+      "sources": [
+        "packages/ui/angular/src/components/button/button.component.html",
+        "packages/ui/react/src/components/button/Button.tsx",
+        "packages/ui/solid/src/components/button/Button.tsx",
+        "packages/ui/svelte/src/components/button/Button.svelte",
+        "packages/ui/svelte/src/components/item-row/ItemRow.svelte",
+        "packages/ui/vue/src/components/button/Button.vue",
+        "packages/ui/vue/src/components/item-row/ItemRow.vue",
+        "packages/ui/webc/src/components/button/button.template.ts"
+      ],
+      "description": "text part of button. Availability follows the rendered component structure.",
+      "scope": "so-button"
+    },
+    {
+      "name": "so-calendar__filler",
+      "sources": [
+        "packages/ui/angular/src/components/calendar/calendar.component.html",
+        "packages/ui/react/src/components/calendar/Calendar.tsx",
+        "packages/ui/solid/src/components/calendar/Calendar.tsx",
+        "packages/ui/svelte/src/components/calendar/Calendar.svelte",
+        "packages/ui/vue/src/components/calendar/Calendar.vue",
+        "packages/ui/webc/src/components/calendar/calendar.template.ts"
+      ],
+      "description": "filler part of calendar. Availability follows the rendered component structure.",
+      "scope": "so-calendar"
+    },
+    {
+      "name": "so-calendar__footer",
+      "sources": [
+        "packages/ui/angular/src/components/calendar/calendar.component.html",
+        "packages/ui/react/src/components/calendar/Calendar.tsx",
+        "packages/ui/solid/src/components/calendar/Calendar.tsx",
+        "packages/ui/svelte/src/components/calendar/Calendar.svelte",
+        "packages/ui/vue/src/components/calendar/Calendar.vue",
+        "packages/ui/webc/src/components/calendar/calendar.template.ts"
+      ],
+      "description": "footer part of calendar. Availability follows the rendered component structure.",
+      "scope": "so-calendar"
+    },
+    {
+      "name": "so-calendar__grid",
+      "sources": [
+        "packages/ui/angular/src/components/calendar/calendar.component.html",
+        "packages/ui/react/src/components/calendar/Calendar.tsx",
+        "packages/ui/solid/src/components/calendar/Calendar.tsx",
+        "packages/ui/svelte/src/components/calendar/Calendar.svelte",
+        "packages/ui/vue/src/components/calendar/Calendar.vue",
+        "packages/ui/webc/src/components/calendar/calendar.template.ts"
+      ],
+      "description": "grid part of calendar. Availability follows the rendered component structure.",
+      "scope": "so-calendar"
+    },
+    {
+      "name": "so-calendar__heading",
+      "sources": [
+        "packages/ui/angular/src/components/calendar/calendar.component.html",
+        "packages/ui/react/src/components/calendar/Calendar.tsx",
+        "packages/ui/solid/src/components/calendar/Calendar.tsx",
+        "packages/ui/svelte/src/components/calendar/Calendar.svelte",
+        "packages/ui/vue/src/components/calendar/Calendar.vue",
+        "packages/ui/webc/src/components/calendar/calendar.template.ts"
+      ],
+      "description": "heading part of calendar. Availability follows the rendered component structure.",
+      "scope": "so-calendar"
+    },
+    {
+      "name": "so-calendar__month",
+      "sources": [
+        "packages/ui/angular/src/components/calendar/calendar.component.html",
+        "packages/ui/react/src/components/calendar/Calendar.tsx",
+        "packages/ui/solid/src/components/calendar/Calendar.tsx",
+        "packages/ui/svelte/src/components/calendar/Calendar.svelte",
+        "packages/ui/vue/src/components/calendar/Calendar.vue",
+        "packages/ui/webc/src/components/calendar/calendar.template.ts"
+      ],
+      "description": "month part of calendar. Availability follows the rendered component structure.",
+      "scope": "so-calendar"
+    },
+    {
+      "name": "so-calendar__months",
+      "sources": [
+        "packages/ui/angular/src/components/calendar/calendar.component.html",
+        "packages/ui/react/src/components/calendar/Calendar.tsx",
+        "packages/ui/solid/src/components/calendar/Calendar.tsx",
+        "packages/ui/svelte/src/components/calendar/Calendar.svelte",
+        "packages/ui/vue/src/components/calendar/Calendar.vue",
+        "packages/ui/webc/src/components/calendar/calendar.template.ts"
+      ],
+      "description": "months part of calendar. Availability follows the rendered component structure.",
+      "scope": "so-calendar"
+    },
+    {
+      "name": "so-calendar__next",
+      "sources": [
+        "packages/ui/angular/src/components/calendar/calendar.component.html",
+        "packages/ui/react/src/components/calendar/Calendar.tsx",
+        "packages/ui/solid/src/components/calendar/Calendar.tsx",
+        "packages/ui/svelte/src/components/calendar/Calendar.svelte",
+        "packages/ui/vue/src/components/calendar/Calendar.vue",
+        "packages/ui/webc/src/components/calendar/calendar.template.ts"
+      ],
+      "description": "next part of calendar. Availability follows the rendered component structure.",
+      "scope": "so-calendar"
+    },
+    {
+      "name": "so-calendar__picker",
+      "sources": [
+        "packages/ui/angular/src/components/calendar/calendar.component.html",
+        "packages/ui/react/src/components/calendar/Calendar.tsx",
+        "packages/ui/solid/src/components/calendar/Calendar.tsx",
+        "packages/ui/svelte/src/components/calendar/Calendar.svelte",
+        "packages/ui/vue/src/components/calendar/Calendar.vue",
+        "packages/ui/webc/src/components/calendar/calendar.template.ts"
+      ],
+      "description": "picker part of calendar. Availability follows the rendered component structure.",
+      "scope": "so-calendar"
+    },
+    {
+      "name": "so-calendar__picker-header",
+      "sources": [
+        "packages/ui/angular/src/components/calendar/calendar.component.html",
+        "packages/ui/react/src/components/calendar/Calendar.tsx",
+        "packages/ui/solid/src/components/calendar/Calendar.tsx",
+        "packages/ui/svelte/src/components/calendar/Calendar.svelte",
+        "packages/ui/vue/src/components/calendar/Calendar.vue",
+        "packages/ui/webc/src/components/calendar/calendar.template.ts"
+      ],
+      "description": "picker header part of calendar. Availability follows the rendered component structure.",
+      "scope": "so-calendar"
+    },
+    {
+      "name": "so-calendar__picker-heading",
+      "sources": [
+        "packages/ui/angular/src/components/calendar/calendar.component.html",
+        "packages/ui/react/src/components/calendar/Calendar.tsx",
+        "packages/ui/solid/src/components/calendar/Calendar.tsx",
+        "packages/ui/svelte/src/components/calendar/Calendar.svelte",
+        "packages/ui/vue/src/components/calendar/Calendar.vue",
+        "packages/ui/webc/src/components/calendar/calendar.template.ts"
+      ],
+      "description": "picker heading part of calendar. Availability follows the rendered component structure.",
+      "scope": "so-calendar"
+    },
+    {
+      "name": "so-calendar__picker-list",
+      "sources": [
+        "packages/ui/angular/src/components/calendar/calendar.component.html",
+        "packages/ui/react/src/components/calendar/Calendar.tsx",
+        "packages/ui/solid/src/components/calendar/Calendar.tsx",
+        "packages/ui/svelte/src/components/calendar/Calendar.svelte",
+        "packages/ui/vue/src/components/calendar/Calendar.vue",
+        "packages/ui/webc/src/components/calendar/calendar.template.ts"
+      ],
+      "description": "picker list part of calendar. Availability follows the rendered component structure.",
+      "scope": "so-calendar"
+    },
+    {
+      "name": "so-calendar__picker-next",
+      "sources": [
+        "packages/ui/angular/src/components/calendar/calendar.component.html",
+        "packages/ui/react/src/components/calendar/Calendar.tsx",
+        "packages/ui/solid/src/components/calendar/Calendar.tsx",
+        "packages/ui/svelte/src/components/calendar/Calendar.svelte",
+        "packages/ui/vue/src/components/calendar/Calendar.vue",
+        "packages/ui/webc/src/components/calendar/calendar.template.ts"
+      ],
+      "description": "picker next part of calendar. Availability follows the rendered component structure.",
+      "scope": "so-calendar"
+    },
+    {
+      "name": "so-calendar__picker-prev",
+      "sources": [
+        "packages/ui/angular/src/components/calendar/calendar.component.html",
+        "packages/ui/react/src/components/calendar/Calendar.tsx",
+        "packages/ui/solid/src/components/calendar/Calendar.tsx",
+        "packages/ui/svelte/src/components/calendar/Calendar.svelte",
+        "packages/ui/vue/src/components/calendar/Calendar.vue",
+        "packages/ui/webc/src/components/calendar/calendar.template.ts"
+      ],
+      "description": "picker prev part of calendar. Availability follows the rendered component structure.",
+      "scope": "so-calendar"
+    },
+    {
+      "name": "so-calendar__prev",
+      "sources": [
+        "packages/ui/angular/src/components/calendar/calendar.component.html",
+        "packages/ui/react/src/components/calendar/Calendar.tsx",
+        "packages/ui/solid/src/components/calendar/Calendar.tsx",
+        "packages/ui/svelte/src/components/calendar/Calendar.svelte",
+        "packages/ui/vue/src/components/calendar/Calendar.vue",
+        "packages/ui/webc/src/components/calendar/calendar.template.ts"
+      ],
+      "description": "prev part of calendar. Availability follows the rendered component structure.",
+      "scope": "so-calendar"
+    },
+    {
+      "name": "so-calendar__title",
+      "sources": [
+        "packages/ui/angular/src/components/calendar/calendar.component.html",
+        "packages/ui/react/src/components/calendar/Calendar.tsx",
+        "packages/ui/solid/src/components/calendar/Calendar.tsx",
+        "packages/ui/svelte/src/components/calendar/Calendar.svelte",
+        "packages/ui/vue/src/components/calendar/Calendar.vue",
+        "packages/ui/webc/src/components/calendar/calendar.template.ts"
+      ],
+      "description": "title part of calendar. Availability follows the rendered component structure.",
+      "scope": "so-calendar"
+    },
+    {
+      "name": "so-calendar__title-text",
+      "sources": [
+        "packages/ui/angular/src/components/calendar/calendar.component.html",
+        "packages/ui/react/src/components/calendar/Calendar.tsx",
+        "packages/ui/solid/src/components/calendar/Calendar.tsx",
+        "packages/ui/svelte/src/components/calendar/Calendar.svelte",
+        "packages/ui/vue/src/components/calendar/Calendar.vue",
+        "packages/ui/webc/src/components/calendar/calendar.template.ts"
+      ],
+      "description": "title text part of calendar. Availability follows the rendered component structure.",
+      "scope": "so-calendar"
+    },
+    {
+      "name": "so-calendar__week",
+      "sources": [
+        "packages/ui/angular/src/components/calendar/calendar.component.html",
+        "packages/ui/react/src/components/calendar/Calendar.tsx",
+        "packages/ui/solid/src/components/calendar/Calendar.tsx",
+        "packages/ui/svelte/src/components/calendar/Calendar.svelte",
+        "packages/ui/vue/src/components/calendar/Calendar.vue",
+        "packages/ui/webc/src/components/calendar/calendar.template.ts"
+      ],
+      "description": "week part of calendar. Availability follows the rendered component structure.",
+      "scope": "so-calendar"
+    },
+    {
+      "name": "so-calendar__weekday",
+      "sources": [
+        "packages/ui/angular/src/components/calendar/calendar.component.html",
+        "packages/ui/react/src/components/calendar/Calendar.tsx",
+        "packages/ui/solid/src/components/calendar/Calendar.tsx",
+        "packages/ui/svelte/src/components/calendar/Calendar.svelte",
+        "packages/ui/vue/src/components/calendar/Calendar.vue",
+        "packages/ui/webc/src/components/calendar/calendar.template.ts"
+      ],
+      "description": "weekday part of calendar. Availability follows the rendered component structure.",
+      "scope": "so-calendar"
+    },
+    {
+      "name": "so-calendar__weekdays",
+      "sources": [
+        "packages/ui/angular/src/components/calendar/calendar.component.html",
+        "packages/ui/react/src/components/calendar/Calendar.tsx",
+        "packages/ui/solid/src/components/calendar/Calendar.tsx",
+        "packages/ui/svelte/src/components/calendar/Calendar.svelte",
+        "packages/ui/vue/src/components/calendar/Calendar.vue",
+        "packages/ui/webc/src/components/calendar/calendar.template.ts"
+      ],
+      "description": "weekdays part of calendar. Availability follows the rendered component structure.",
+      "scope": "so-calendar"
+    },
+    {
+      "name": "so-calendar-item__day",
+      "sources": [
+        "packages/ui/angular/src/components/calendar/item/calendar-item.component.html",
+        "packages/ui/react/src/components/calendar/item/Item.tsx",
+        "packages/ui/solid/src/components/calendar/item/Item.tsx",
+        "packages/ui/svelte/src/components/calendar/item/Item.svelte",
+        "packages/ui/vue/src/components/calendar/item/Item.vue",
+        "packages/ui/webc/src/components/calendar/item/calendar-item.template.ts"
+      ],
+      "description": "day part of calendar item. Availability follows the rendered component structure.",
+      "scope": "so-calendar-item"
+    },
+    {
+      "name": "so-check-box__container",
+      "sources": [
+        "packages/ui/angular/src/components/check-box/check-box.component.html",
+        "packages/ui/react/src/components/check-box/CheckBox.tsx",
+        "packages/ui/solid/src/components/check-box/CheckBox.tsx",
+        "packages/ui/svelte/src/components/check-box/CheckBox.svelte",
+        "packages/ui/vue/src/components/check-box/CheckBox.vue",
+        "packages/ui/webc/src/components/check-box/check-box.template.ts"
+      ],
+      "description": "container part of check box. Availability follows the rendered component structure.",
+      "scope": "so-check-box"
+    },
+    {
+      "name": "so-check-box__mark",
+      "sources": [
+        "packages/ui/angular/src/components/check-box/check-box.component.html",
+        "packages/ui/react/src/components/check-box/CheckBox.tsx",
+        "packages/ui/solid/src/components/check-box/CheckBox.tsx",
+        "packages/ui/vue/src/components/check-box/CheckBox.vue",
+        "packages/ui/webc/src/components/check-box/check-box.template.ts"
+      ],
+      "description": "mark part of check box. Availability follows the rendered component structure.",
+      "scope": "so-check-box"
+    },
+    {
+      "name": "so-date-input__clear",
+      "sources": [
+        "packages/ui/angular/src/components/date-input/date-input.component.html",
+        "packages/ui/react/src/components/date-input/DateInput.tsx",
+        "packages/ui/solid/src/components/date-input/DateInput.tsx",
+        "packages/ui/svelte/src/components/date-input/DateInput.svelte",
+        "packages/ui/vue/src/components/date-input/DateInput.vue"
+      ],
+      "description": "clear part of date input. Availability follows the rendered component structure.",
+      "scope": "so-date-input"
+    },
+    {
+      "name": "so-date-input__leading",
+      "sources": [
+        "packages/ui/angular/src/components/date-input/date-input.component.html",
+        "packages/ui/react/src/components/date-input/DateInput.tsx",
+        "packages/ui/solid/src/components/date-input/DateInput.tsx",
+        "packages/ui/svelte/src/components/date-input/DateInput.svelte",
+        "packages/ui/vue/src/components/date-input/DateInput.vue",
+        "packages/ui/webc/src/components/date-input/date-input.template.ts"
+      ],
+      "description": "leading part of date input. Availability follows the rendered component structure.",
+      "scope": "so-date-input"
+    },
+    {
+      "name": "so-date-input__literal",
+      "sources": [
+        "packages/ui/angular/src/components/date-input/date-input.component.html",
+        "packages/ui/react/src/components/date-input/DateInput.tsx",
+        "packages/ui/solid/src/components/date-input/DateInput.tsx",
+        "packages/ui/svelte/src/components/date-input/DateInput.svelte",
+        "packages/ui/vue/src/components/date-input/DateInput.vue",
+        "packages/ui/webc/src/components/date-input/date-input.template.ts"
+      ],
+      "description": "literal part of date input. Availability follows the rendered component structure.",
+      "scope": "so-date-input"
+    },
+    {
+      "name": "so-date-input__segment",
+      "sources": [
+        "packages/ui/angular/src/components/date-input/date-input.component.html",
+        "packages/ui/react/src/components/date-input/DateInput.tsx",
+        "packages/ui/solid/src/components/date-input/DateInput.tsx",
+        "packages/ui/svelte/src/components/date-input/DateInput.svelte",
+        "packages/ui/vue/src/components/date-input/DateInput.vue",
+        "packages/ui/webc/src/components/date-input/date-input.template.ts"
+      ],
+      "description": "segment part of date input. Availability follows the rendered component structure.",
+      "scope": "so-date-input"
+    },
+    {
+      "name": "so-date-input__segments",
+      "sources": [
+        "packages/ui/angular/src/components/date-input/date-input.component.html",
+        "packages/ui/react/src/components/date-input/DateInput.tsx",
+        "packages/ui/solid/src/components/date-input/DateInput.tsx",
+        "packages/ui/svelte/src/components/date-input/DateInput.svelte",
+        "packages/ui/vue/src/components/date-input/DateInput.vue",
+        "packages/ui/webc/src/components/date-input/date-input.template.ts"
+      ],
+      "description": "segments part of date input. Availability follows the rendered component structure.",
+      "scope": "so-date-input"
+    },
+    {
+      "name": "so-date-input__trailing",
+      "sources": [
+        "packages/ui/angular/src/components/date-input/date-input.component.html",
+        "packages/ui/react/src/components/date-input/DateInput.tsx",
+        "packages/ui/solid/src/components/date-input/DateInput.tsx",
+        "packages/ui/svelte/src/components/date-input/DateInput.svelte",
+        "packages/ui/vue/src/components/date-input/DateInput.vue",
+        "packages/ui/webc/src/components/date-input/date-input.template.ts"
+      ],
+      "description": "trailing part of date input. Availability follows the rendered component structure.",
+      "scope": "so-date-input"
+    },
+    {
+      "name": "so-date-picker__calendar",
+      "sources": [
+        "packages/ui/angular/src/components/date-picker/date-picker.component.html",
+        "packages/ui/react/src/components/date-picker/DatePicker.tsx",
+        "packages/ui/solid/src/components/date-picker/DatePicker.tsx",
+        "packages/ui/svelte/src/components/date-picker/DatePicker.svelte",
+        "packages/ui/vue/src/components/date-picker/DatePicker.vue",
+        "packages/ui/webc/src/components/date-picker/date-picker.template.ts"
+      ],
+      "description": "calendar part of date picker. Availability follows the rendered component structure.",
+      "scope": "so-date-picker"
+    },
+    {
+      "name": "so-date-picker__cancel",
+      "sources": [
+        "packages/ui/angular/src/components/date-picker/date-picker.component.html",
+        "packages/ui/react/src/components/date-picker/DatePicker.tsx",
+        "packages/ui/solid/src/components/date-picker/DatePicker.tsx",
+        "packages/ui/svelte/src/components/date-picker/DatePicker.svelte",
+        "packages/ui/vue/src/components/date-picker/DatePicker.vue",
+        "packages/ui/webc/src/components/date-picker/date-picker.template.ts"
+      ],
+      "description": "cancel part of date picker. Availability follows the rendered component structure.",
+      "scope": "so-date-picker"
+    },
+    {
+      "name": "so-date-picker__clear",
+      "sources": [
+        "packages/ui/angular/src/components/date-picker/date-picker.component.html",
+        "packages/ui/react/src/components/date-picker/DatePicker.tsx",
+        "packages/ui/solid/src/components/date-picker/DatePicker.tsx",
+        "packages/ui/svelte/src/components/date-picker/DatePicker.svelte",
+        "packages/ui/vue/src/components/date-picker/DatePicker.vue"
+      ],
+      "description": "clear part of date picker. Availability follows the rendered component structure.",
+      "scope": "so-date-picker"
+    },
+    {
+      "name": "so-date-picker__confirm",
+      "sources": [
+        "packages/ui/angular/src/components/date-picker/date-picker.component.html",
+        "packages/ui/react/src/components/date-picker/DatePicker.tsx",
+        "packages/ui/solid/src/components/date-picker/DatePicker.tsx",
+        "packages/ui/svelte/src/components/date-picker/DatePicker.svelte",
+        "packages/ui/vue/src/components/date-picker/DatePicker.vue",
+        "packages/ui/webc/src/components/date-picker/date-picker.template.ts"
+      ],
+      "description": "confirm part of date picker. Availability follows the rendered component structure.",
+      "scope": "so-date-picker"
+    },
+    {
+      "name": "so-date-picker__content",
+      "sources": [
+        "packages/ui/angular/src/components/date-picker/date-picker.component.html",
+        "packages/ui/react/src/components/date-picker/DatePicker.tsx",
+        "packages/ui/solid/src/components/date-picker/DatePicker.tsx",
+        "packages/ui/svelte/src/components/date-picker/DatePicker.svelte",
+        "packages/ui/vue/src/components/date-picker/DatePicker.vue",
+        "packages/ui/webc/src/components/date-picker/date-picker.template.ts"
+      ],
+      "description": "content part of date picker. Availability follows the rendered component structure.",
+      "scope": "so-date-picker"
+    },
+    {
+      "name": "so-date-picker__dash",
+      "sources": [
+        "packages/ui/angular/src/components/date-picker/date-picker.component.html",
+        "packages/ui/react/src/components/date-picker/DatePicker.tsx",
+        "packages/ui/solid/src/components/date-picker/DatePicker.tsx",
+        "packages/ui/svelte/src/components/date-picker/DatePicker.svelte",
+        "packages/ui/vue/src/components/date-picker/DatePicker.vue",
+        "packages/ui/webc/src/components/date-picker/date-picker.template.ts"
+      ],
+      "description": "dash part of date picker. Availability follows the rendered component structure.",
+      "scope": "so-date-picker"
+    },
+    {
+      "name": "so-date-picker__end",
+      "sources": [
+        "packages/ui/angular/src/components/date-picker/date-picker.component.html",
+        "packages/ui/react/src/components/date-picker/DatePicker.tsx",
+        "packages/ui/solid/src/components/date-picker/DatePicker.tsx",
+        "packages/ui/svelte/src/components/date-picker/DatePicker.svelte",
+        "packages/ui/vue/src/components/date-picker/DatePicker.vue",
+        "packages/ui/webc/src/components/date-picker/date-picker.template.ts"
+      ],
+      "description": "end part of date picker. Availability follows the rendered component structure.",
+      "scope": "so-date-picker"
+    },
+    {
+      "name": "so-date-picker__field",
+      "sources": [
+        "packages/ui/angular/src/components/date-picker/date-picker.component.html",
+        "packages/ui/react/src/components/date-picker/DatePicker.tsx",
+        "packages/ui/solid/src/components/date-picker/DatePicker.tsx",
+        "packages/ui/svelte/src/components/date-picker/DatePicker.svelte",
+        "packages/ui/vue/src/components/date-picker/DatePicker.vue",
+        "packages/ui/webc/src/components/date-picker/date-picker.template.ts"
+      ],
+      "description": "field part of date picker. Availability follows the rendered component structure.",
+      "scope": "so-date-picker"
+    },
+    {
+      "name": "so-date-picker__handle",
+      "sources": [
+        "packages/ui/angular/src/components/date-picker/date-picker.component.html",
+        "packages/ui/react/src/components/date-picker/DatePicker.tsx",
+        "packages/ui/solid/src/components/date-picker/DatePicker.tsx",
+        "packages/ui/svelte/src/components/date-picker/DatePicker.svelte",
+        "packages/ui/vue/src/components/date-picker/DatePicker.vue",
+        "packages/ui/webc/src/components/date-picker/date-picker.template.ts"
+      ],
+      "description": "handle part of date picker. Availability follows the rendered component structure.",
+      "scope": "so-date-picker"
+    },
+    {
+      "name": "so-date-picker__panel",
+      "sources": [
+        "packages/ui/angular/src/components/date-picker/date-picker.component.html",
+        "packages/ui/react/src/components/date-picker/DatePicker.tsx",
+        "packages/ui/solid/src/components/date-picker/DatePicker.tsx",
+        "packages/ui/svelte/src/components/date-picker/DatePicker.svelte",
+        "packages/ui/vue/src/components/date-picker/DatePicker.vue",
+        "packages/ui/webc/src/components/date-picker/date-picker.template.ts"
+      ],
+      "description": "panel part of date picker. Availability follows the rendered component structure.",
+      "scope": "so-date-picker"
+    },
+    {
+      "name": "so-date-picker__start",
+      "sources": [
+        "packages/ui/angular/src/components/date-picker/date-picker.component.html",
+        "packages/ui/react/src/components/date-picker/DatePicker.tsx",
+        "packages/ui/solid/src/components/date-picker/DatePicker.tsx",
+        "packages/ui/svelte/src/components/date-picker/DatePicker.svelte",
+        "packages/ui/vue/src/components/date-picker/DatePicker.vue",
+        "packages/ui/webc/src/components/date-picker/date-picker.template.ts"
+      ],
+      "description": "start part of date picker. Availability follows the rendered component structure.",
+      "scope": "so-date-picker"
+    },
+    {
+      "name": "so-date-picker__trigger",
+      "sources": [
+        "packages/ui/angular/src/components/date-picker/date-picker.component.html",
+        "packages/ui/react/src/components/date-picker/DatePicker.tsx",
+        "packages/ui/solid/src/components/date-picker/DatePicker.tsx",
+        "packages/ui/svelte/src/components/date-picker/DatePicker.svelte",
+        "packages/ui/vue/src/components/date-picker/DatePicker.vue",
+        "packages/ui/webc/src/components/date-picker/date-picker.template.ts"
+      ],
+      "description": "trigger part of date picker. Availability follows the rendered component structure.",
+      "scope": "so-date-picker"
+    },
+    {
+      "name": "so-dialog__backdrop",
+      "sources": [
+        "packages/ui/angular/src/components/dialog/dialog.component.html",
+        "packages/ui/react/src/components/dialog/Dialog.tsx",
+        "packages/ui/solid/src/components/dialog/Dialog.tsx",
+        "packages/ui/svelte/src/components/dialog/Dialog.svelte",
+        "packages/ui/vue/src/components/dialog/Dialog.vue",
+        "packages/ui/webc/src/components/dialog/dialog.template.ts"
+      ],
+      "description": "backdrop part of dialog. Availability follows the rendered component structure.",
+      "scope": "so-dialog"
+    },
+    {
+      "name": "so-dialog__body",
+      "sources": [
+        "packages/ui/angular/src/components/dialog/dialog.component.html",
+        "packages/ui/react/src/components/dialog/Dialog.tsx",
+        "packages/ui/solid/src/components/dialog/Dialog.tsx",
+        "packages/ui/svelte/src/components/dialog/Dialog.svelte",
+        "packages/ui/vue/src/components/dialog/Dialog.vue",
+        "packages/ui/webc/src/components/dialog/dialog.template.ts"
+      ],
+      "description": "body part of dialog. Availability follows the rendered component structure.",
+      "scope": "so-dialog"
+    },
+    {
+      "name": "so-dialog__close",
+      "sources": [
+        "packages/ui/angular/src/components/dialog/dialog.component.html",
+        "packages/ui/react/src/components/dialog/Dialog.tsx",
+        "packages/ui/solid/src/components/dialog/Dialog.tsx",
+        "packages/ui/svelte/src/components/dialog/Dialog.svelte",
+        "packages/ui/vue/src/components/dialog/Dialog.vue",
+        "packages/ui/webc/src/components/dialog/dialog.template.ts"
+      ],
+      "description": "close part of dialog. Availability follows the rendered component structure.",
+      "scope": "so-dialog"
+    },
+    {
+      "name": "so-dialog__footer",
+      "sources": [
+        "packages/ui/angular/src/components/dialog/dialog.component.html",
+        "packages/ui/react/src/components/dialog/Dialog.tsx",
+        "packages/ui/solid/src/components/dialog/Dialog.tsx",
+        "packages/ui/svelte/src/components/dialog/Dialog.svelte",
+        "packages/ui/vue/src/components/dialog/Dialog.vue",
+        "packages/ui/webc/src/components/dialog/dialog.template.ts"
+      ],
+      "description": "footer part of dialog. Availability follows the rendered component structure.",
+      "scope": "so-dialog"
+    },
+    {
+      "name": "so-dialog__maximize",
+      "sources": [
+        "packages/ui/angular/src/components/dialog/dialog.component.html",
+        "packages/ui/react/src/components/dialog/Dialog.tsx",
+        "packages/ui/solid/src/components/dialog/Dialog.tsx",
+        "packages/ui/svelte/src/components/dialog/Dialog.svelte",
+        "packages/ui/vue/src/components/dialog/Dialog.vue",
+        "packages/ui/webc/src/components/dialog/dialog.template.ts"
+      ],
+      "description": "maximize part of dialog. Availability follows the rendered component structure.",
+      "scope": "so-dialog"
+    },
+    {
+      "name": "so-dialog__title",
+      "sources": [
+        "packages/ui/angular/src/components/dialog/dialog.component.html",
+        "packages/ui/react/src/components/dialog/Dialog.tsx",
+        "packages/ui/solid/src/components/dialog/Dialog.tsx",
+        "packages/ui/svelte/src/components/dialog/Dialog.svelte",
+        "packages/ui/vue/src/components/dialog/Dialog.vue",
+        "packages/ui/webc/src/components/dialog/dialog.template.ts"
+      ],
+      "description": "title part of dialog. Availability follows the rendered component structure.",
+      "scope": "so-dialog"
+    },
+    {
+      "name": "so-drag-and-drop__item",
+      "sources": ["packages/plugins/src/custom/drag-and-drop/drag.plugin.ts"],
+      "description": "item part of drag and drop. Availability follows the rendered component structure.",
+      "scope": "so-drag-and-drop"
+    },
+    {
+      "name": "so-drawer__backdrop",
+      "sources": [
+        "packages/ui/angular/src/components/drawer/drawer.component.html",
+        "packages/ui/react/src/components/drawer/Drawer.tsx",
+        "packages/ui/solid/src/components/drawer/Drawer.tsx",
+        "packages/ui/svelte/src/components/drawer/Drawer.svelte",
+        "packages/ui/vue/src/components/drawer/Drawer.vue",
+        "packages/ui/webc/src/components/drawer/drawer.template.ts"
+      ],
+      "description": "backdrop part of drawer. Availability follows the rendered component structure.",
+      "scope": "so-drawer"
+    },
+    {
+      "name": "so-drawer__body",
+      "sources": [
+        "packages/ui/angular/src/components/drawer/drawer.component.html",
+        "packages/ui/react/src/components/drawer/Drawer.tsx",
+        "packages/ui/solid/src/components/drawer/Drawer.tsx",
+        "packages/ui/svelte/src/components/drawer/Drawer.svelte",
+        "packages/ui/vue/src/components/drawer/Drawer.vue",
+        "packages/ui/webc/src/components/drawer/drawer.template.ts"
+      ],
+      "description": "body part of drawer. Availability follows the rendered component structure.",
+      "scope": "so-drawer"
+    },
+    {
+      "name": "so-drawer__close",
+      "sources": [
+        "packages/ui/angular/src/components/drawer/drawer.component.html",
+        "packages/ui/react/src/components/drawer/Drawer.tsx",
+        "packages/ui/solid/src/components/drawer/Drawer.tsx",
+        "packages/ui/svelte/src/components/drawer/Drawer.svelte",
+        "packages/ui/vue/src/components/drawer/Drawer.vue",
+        "packages/ui/webc/src/components/drawer/drawer.template.ts"
+      ],
+      "description": "close part of drawer. Availability follows the rendered component structure.",
+      "scope": "so-drawer"
+    },
+    {
+      "name": "so-drawer__footer",
+      "sources": [
+        "packages/ui/angular/src/components/drawer/drawer.component.html",
+        "packages/ui/react/src/components/drawer/Drawer.tsx",
+        "packages/ui/solid/src/components/drawer/Drawer.tsx",
+        "packages/ui/svelte/src/components/drawer/Drawer.svelte",
+        "packages/ui/vue/src/components/drawer/Drawer.vue",
+        "packages/ui/webc/src/components/drawer/drawer.template.ts"
+      ],
+      "description": "footer part of drawer. Availability follows the rendered component structure.",
+      "scope": "so-drawer"
+    },
+    {
+      "name": "so-drawer__handle",
+      "sources": [
+        "packages/ui/angular/src/components/drawer/drawer.component.html",
+        "packages/ui/react/src/components/drawer/Drawer.tsx",
+        "packages/ui/solid/src/components/drawer/Drawer.tsx",
+        "packages/ui/svelte/src/components/drawer/Drawer.svelte",
+        "packages/ui/vue/src/components/drawer/Drawer.vue",
+        "packages/ui/webc/src/components/drawer/drawer.template.ts"
+      ],
+      "description": "handle part of drawer. Availability follows the rendered component structure.",
+      "scope": "so-drawer"
+    },
+    {
+      "name": "so-drawer__title",
+      "sources": [
+        "packages/ui/angular/src/components/drawer/drawer.component.html",
+        "packages/ui/react/src/components/drawer/Drawer.tsx",
+        "packages/ui/solid/src/components/drawer/Drawer.tsx",
+        "packages/ui/svelte/src/components/drawer/Drawer.svelte",
+        "packages/ui/vue/src/components/drawer/Drawer.vue",
+        "packages/ui/webc/src/components/drawer/drawer.template.ts"
+      ],
+      "description": "title part of drawer. Availability follows the rendered component structure.",
+      "scope": "so-drawer"
+    },
+    {
+      "name": "so-field__control",
+      "sources": [
+        "packages/ui/angular/src/components/field/field.component.html",
+        "packages/ui/react/src/components/field/Field.tsx",
+        "packages/ui/solid/src/components/field/Field.tsx",
+        "packages/ui/svelte/src/components/field/Field.svelte",
+        "packages/ui/vue/src/components/field/Field.vue",
+        "packages/ui/webc/src/components/field/field.template.ts"
+      ],
+      "description": "control part of field. Availability follows the rendered component structure.",
+      "scope": "so-field"
+    },
+    {
+      "name": "so-field__error",
+      "sources": [
+        "packages/ui/angular/src/components/field/field.component.html",
+        "packages/ui/react/src/components/field/Field.tsx",
+        "packages/ui/solid/src/components/field/Field.tsx",
+        "packages/ui/svelte/src/components/field/Field.svelte",
+        "packages/ui/vue/src/components/field/Field.vue",
+        "packages/ui/webc/src/components/field/field.template.ts"
+      ],
+      "description": "error part of field. Availability follows the rendered component structure.",
+      "scope": "so-field"
+    },
+    {
+      "name": "so-field__error-icon",
+      "sources": [
+        "packages/ui/angular/src/components/field/field.component.html",
+        "packages/ui/react/src/components/field/Field.tsx",
+        "packages/ui/solid/src/components/field/Field.tsx",
+        "packages/ui/svelte/src/components/field/Field.svelte",
+        "packages/ui/vue/src/components/field/Field.vue",
+        "packages/ui/webc/src/components/field/field.template.ts"
+      ],
+      "description": "error icon part of field. Availability follows the rendered component structure.",
+      "scope": "so-field"
+    },
+    {
+      "name": "so-field__error-text",
+      "sources": [
+        "packages/ui/angular/src/components/field/field.component.html",
+        "packages/ui/react/src/components/field/Field.tsx",
+        "packages/ui/solid/src/components/field/Field.tsx",
+        "packages/ui/svelte/src/components/field/Field.svelte",
+        "packages/ui/vue/src/components/field/Field.vue",
+        "packages/ui/webc/src/components/field/field.template.ts"
+      ],
+      "description": "error text part of field. Availability follows the rendered component structure.",
+      "scope": "so-field"
+    },
+    {
+      "name": "so-field__helper",
+      "sources": [
+        "packages/ui/angular/src/components/field/field.component.html",
+        "packages/ui/react/src/components/field/Field.tsx",
+        "packages/ui/solid/src/components/field/Field.tsx",
+        "packages/ui/svelte/src/components/field/Field.svelte",
+        "packages/ui/vue/src/components/field/Field.vue",
+        "packages/ui/webc/src/components/field/field.template.ts"
+      ],
+      "description": "helper part of field. Availability follows the rendered component structure.",
+      "scope": "so-field"
+    },
+    {
+      "name": "so-field__label",
+      "sources": [
+        "packages/ui/angular/src/components/field/field.component.html",
+        "packages/ui/react/src/components/field/Field.tsx",
+        "packages/ui/solid/src/components/field/Field.tsx",
+        "packages/ui/svelte/src/components/field/Field.svelte",
+        "packages/ui/vue/src/components/field/Field.vue",
+        "packages/ui/webc/src/components/field/field.template.ts"
+      ],
+      "description": "label part of field. Availability follows the rendered component structure.",
+      "scope": "so-field"
+    },
+    {
+      "name": "so-input__clear",
+      "sources": [
+        "packages/ui/angular/src/components/input/input.component.html",
+        "packages/ui/react/src/components/input/Input.tsx",
+        "packages/ui/solid/src/components/input/Input.tsx",
+        "packages/ui/svelte/src/components/input/Input.svelte",
+        "packages/ui/vue/src/components/input/Input.vue"
+      ],
+      "description": "clear part of input. Availability follows the rendered component structure.",
+      "scope": "so-input"
+    },
+    {
+      "name": "so-input__leading",
+      "sources": [
+        "packages/ui/angular/src/components/input/input.component.html",
+        "packages/ui/react/src/components/input/Input.tsx",
+        "packages/ui/solid/src/components/input/Input.tsx",
+        "packages/ui/svelte/src/components/input/Input.svelte",
+        "packages/ui/vue/src/components/input/Input.vue",
+        "packages/ui/webc/src/components/input/input.template.ts"
+      ],
+      "description": "leading part of input. Availability follows the rendered component structure.",
+      "scope": "so-input"
+    },
+    {
+      "name": "so-input__trailing",
+      "sources": [
+        "packages/ui/angular/src/components/input/input.component.html",
+        "packages/ui/react/src/components/input/Input.tsx",
+        "packages/ui/solid/src/components/input/Input.tsx",
+        "packages/ui/svelte/src/components/input/Input.svelte",
+        "packages/ui/vue/src/components/input/Input.vue",
+        "packages/ui/webc/src/components/input/input.template.ts"
+      ],
+      "description": "trailing part of input. Availability follows the rendered component structure.",
+      "scope": "so-input"
+    },
+    {
+      "name": "so-label__control",
+      "sources": [
+        "packages/ui/angular/src/components/label/label.component.html",
+        "packages/ui/react/src/components/label/Label.tsx",
+        "packages/ui/solid/src/components/label/Label.tsx",
+        "packages/ui/svelte/src/components/label/Label.svelte",
+        "packages/ui/vue/src/components/label/Label.vue",
+        "packages/ui/webc/src/components/label/label.template.ts"
+      ],
+      "description": "control part of label. Availability follows the rendered component structure.",
+      "scope": "so-label"
+    },
+    {
+      "name": "so-label__text",
+      "sources": [
+        "packages/ui/angular/src/components/label/label.component.html",
+        "packages/ui/react/src/components/label/Label.tsx",
+        "packages/ui/solid/src/components/label/Label.tsx",
+        "packages/ui/svelte/src/components/label/Label.svelte",
+        "packages/ui/vue/src/components/label/Label.vue",
+        "packages/ui/webc/src/components/label/label.template.ts"
+      ],
+      "description": "text part of label. Availability follows the rendered component structure.",
+      "scope": "so-label"
+    },
+    {
+      "name": "so-list-box__filler",
+      "sources": [
+        "packages/ui/angular/src/components/list-box/list-box.component.html",
+        "packages/ui/react/src/components/list-box/ListBox.tsx",
+        "packages/ui/solid/src/components/list-box/ListBox.tsx",
+        "packages/ui/svelte/src/components/list-box/ListBox.svelte",
+        "packages/ui/vue/src/components/list-box/ListBox.vue"
+      ],
+      "description": "filler part of list box. Availability follows the rendered component structure.",
+      "scope": "so-list-box"
+    },
+    {
+      "name": "so-list-box__list",
+      "sources": [
+        "packages/ui/angular/src/components/list-box/list-box.component.html",
+        "packages/ui/react/src/components/list-box/ListBox.tsx",
+        "packages/ui/solid/src/components/list-box/ListBox.tsx",
+        "packages/ui/svelte/src/components/list-box/ListBox.svelte",
+        "packages/ui/vue/src/components/list-box/ListBox.vue",
+        "packages/ui/webc/src/components/list-box/list-box.template.ts"
+      ],
+      "description": "list part of list box. Availability follows the rendered component structure.",
+      "scope": "so-list-box"
+    },
+    {
+      "name": "so-list-box__separator",
+      "sources": [
+        "packages/ui/angular/src/components/list-box/list-box.component.html",
+        "packages/ui/react/src/components/list-box/ListBox.tsx",
+        "packages/ui/solid/src/components/list-box/ListBox.tsx",
+        "packages/ui/svelte/src/components/list-box/ListBox.svelte",
+        "packages/ui/vue/src/components/list-box/ListBox.vue"
+      ],
+      "description": "separator part of list box. Availability follows the rendered component structure.",
+      "scope": "so-list-box"
+    },
+    {
+      "name": "so-list-box-group__label",
+      "sources": [
+        "packages/ui/angular/src/components/list-box/group/list-box-group.component.html",
+        "packages/ui/react/src/components/list-box/group/Group.tsx",
+        "packages/ui/solid/src/components/list-box/group/Group.tsx",
+        "packages/ui/svelte/src/components/list-box/group/Group.svelte",
+        "packages/ui/vue/src/components/list-box/group/Group.vue",
+        "packages/ui/webc/src/components/list-box/group/list-box-group.template.ts"
+      ],
+      "description": "label part of list box group. Availability follows the rendered component structure.",
+      "scope": "so-list-box-group"
+    },
+    {
+      "name": "so-list-box-item__indicator",
+      "sources": [
+        "packages/ui/angular/src/components/list-box/item/list-box-item.component.html",
+        "packages/ui/react/src/components/list-box/item/Item.tsx",
+        "packages/ui/solid/src/components/list-box/item/Item.tsx",
+        "packages/ui/svelte/src/components/list-box/item/Item.svelte",
+        "packages/ui/vue/src/components/list-box/item/Item.vue",
+        "packages/ui/webc/src/components/list-box/item/list-box-item.template.ts"
+      ],
+      "description": "indicator part of list box item. Availability follows the rendered component structure.",
+      "scope": "so-list-box-item"
+    },
+    {
+      "name": "so-menu__list",
+      "sources": [
+        "packages/ui/angular/src/components/menu/menu.component.html",
+        "packages/ui/angular/src/components/menu/submenu/menu-submenu.component.html",
+        "packages/ui/react/src/components/menu/Menu.tsx",
+        "packages/ui/react/src/components/menu/submenu/Submenu.tsx",
+        "packages/ui/solid/src/components/menu/Menu.tsx",
+        "packages/ui/solid/src/components/menu/submenu/Submenu.tsx",
+        "packages/ui/svelte/src/components/menu/Menu.svelte",
+        "packages/ui/svelte/src/components/menu/submenu/Submenu.svelte",
+        "packages/ui/vue/src/components/menu/Menu.vue",
+        "packages/ui/vue/src/components/menu/submenu/Submenu.vue",
+        "packages/ui/webc/src/components/menu/menu.template.ts",
+        "packages/ui/webc/src/components/menu/submenu/menu-submenu.template.ts"
+      ],
+      "description": "list part of menu. Availability follows the rendered component structure.",
+      "scope": "so-menu"
+    },
+    {
+      "name": "so-menu-group__label",
+      "sources": [
+        "packages/ui/angular/src/components/menu/group/menu-group.component.html",
+        "packages/ui/angular/src/components/menu/radio-group/menu-radio-group.component.html",
+        "packages/ui/react/src/components/menu/group/Group.tsx",
+        "packages/ui/react/src/components/menu/radio-group/RadioGroup.tsx",
+        "packages/ui/solid/src/components/menu/group/Group.tsx",
+        "packages/ui/solid/src/components/menu/radio-group/RadioGroup.tsx",
+        "packages/ui/svelte/src/components/menu/group/Group.svelte",
+        "packages/ui/svelte/src/components/menu/radio-group/RadioGroup.svelte",
+        "packages/ui/vue/src/components/menu/group/Group.vue",
+        "packages/ui/vue/src/components/menu/radio-group/RadioGroup.vue",
+        "packages/ui/webc/src/components/menu/group/menu-group.template.ts"
+      ],
+      "description": "label part of menu group. Availability follows the rendered component structure.",
+      "scope": "so-menu-group"
+    },
+    {
+      "name": "so-menu-item__arrow",
+      "sources": [
+        "packages/ui/angular/src/components/menu/popover-item/menu-popover-item.component.html",
+        "packages/ui/angular/src/components/menu/submenu/menu-submenu.component.html",
+        "packages/ui/react/src/components/menu/popover-item/PopoverItem.tsx",
+        "packages/ui/react/src/components/menu/submenu/Submenu.tsx",
+        "packages/ui/solid/src/components/menu/popover-item/PopoverItem.tsx",
+        "packages/ui/solid/src/components/menu/submenu/Submenu.tsx",
+        "packages/ui/svelte/src/components/menu/popover-item/PopoverItem.svelte",
+        "packages/ui/svelte/src/components/menu/submenu/Submenu.svelte",
+        "packages/ui/vue/src/components/menu/popover-item/PopoverItem.vue",
+        "packages/ui/vue/src/components/menu/submenu/Submenu.vue",
+        "packages/ui/webc/src/components/menu/popover-item/menu-popover-item.template.ts",
+        "packages/ui/webc/src/components/menu/submenu/menu-submenu.template.ts"
+      ],
+      "description": "arrow part of menu item. Availability follows the rendered component structure.",
+      "scope": "so-menu-item"
+    },
+    {
+      "name": "so-menu-item__content",
+      "sources": [
+        "packages/ui/angular/src/components/menu/popover-item/menu-popover-item.component.html",
+        "packages/ui/react/src/components/menu/popover-item/PopoverItem.tsx",
+        "packages/ui/solid/src/components/menu/popover-item/PopoverItem.tsx",
+        "packages/ui/svelte/src/components/menu/popover-item/PopoverItem.svelte",
+        "packages/ui/vue/src/components/menu/popover-item/PopoverItem.vue",
+        "packages/ui/webc/src/components/menu/popover-item/menu-popover-item.template.ts"
+      ],
+      "description": "content part of menu item. Availability follows the rendered component structure.",
+      "scope": "so-menu-item"
+    },
+    {
+      "name": "so-menu-item__dot",
+      "sources": [
+        "packages/ui/angular/src/components/menu/radio-item/menu-radio-item.component.html",
+        "packages/ui/react/src/components/menu/radio-item/RadioItem.tsx",
+        "packages/ui/solid/src/components/menu/radio-item/RadioItem.tsx",
+        "packages/ui/svelte/src/components/menu/radio-item/RadioItem.svelte",
+        "packages/ui/vue/src/components/menu/radio-item/RadioItem.vue",
+        "packages/ui/webc/src/components/menu/radio-item/menu-radio-item.template.ts"
+      ],
+      "description": "dot part of menu item. Availability follows the rendered component structure.",
+      "scope": "so-menu-item"
+    },
+    {
+      "name": "so-menu-item__icon",
+      "sources": [
+        "packages/ui/angular/src/components/menu/checkbox-item/menu-checkbox-item.component.html",
+        "packages/ui/angular/src/components/menu/item/menu-item.component.html",
+        "packages/ui/angular/src/components/menu/popover-item/menu-popover-item.component.html",
+        "packages/ui/angular/src/components/menu/radio-item/menu-radio-item.component.html",
+        "packages/ui/angular/src/components/menu/submenu/menu-submenu.component.html",
+        "packages/ui/react/src/components/menu/checkbox-item/CheckboxItem.tsx",
+        "packages/ui/react/src/components/menu/item/Item.tsx",
+        "packages/ui/react/src/components/menu/popover-item/PopoverItem.tsx",
+        "packages/ui/react/src/components/menu/radio-item/RadioItem.tsx",
+        "packages/ui/react/src/components/menu/submenu/Submenu.tsx",
+        "packages/ui/solid/src/components/menu/checkbox-item/CheckboxItem.tsx",
+        "packages/ui/solid/src/components/menu/item/Item.tsx",
+        "packages/ui/solid/src/components/menu/popover-item/PopoverItem.tsx",
+        "packages/ui/solid/src/components/menu/radio-item/RadioItem.tsx",
+        "packages/ui/solid/src/components/menu/submenu/Submenu.tsx",
+        "packages/ui/svelte/src/components/menu/checkbox-item/CheckboxItem.svelte",
+        "packages/ui/svelte/src/components/menu/item/Item.svelte",
+        "packages/ui/svelte/src/components/menu/popover-item/PopoverItem.svelte",
+        "packages/ui/svelte/src/components/menu/radio-item/RadioItem.svelte",
+        "packages/ui/svelte/src/components/menu/submenu/Submenu.svelte",
+        "packages/ui/vue/src/components/menu/checkbox-item/CheckboxItem.vue",
+        "packages/ui/vue/src/components/menu/item/Item.vue",
+        "packages/ui/vue/src/components/menu/popover-item/PopoverItem.vue",
+        "packages/ui/vue/src/components/menu/radio-item/RadioItem.vue",
+        "packages/ui/vue/src/components/menu/submenu/Submenu.vue",
+        "packages/ui/webc/src/components/menu/checkbox-item/menu-checkbox-item.template.ts",
+        "packages/ui/webc/src/components/menu/item/menu-item.template.ts",
+        "packages/ui/webc/src/components/menu/popover-item/menu-popover-item.template.ts",
+        "packages/ui/webc/src/components/menu/radio-item/menu-radio-item.template.ts",
+        "packages/ui/webc/src/components/menu/submenu/menu-submenu.template.ts"
+      ],
+      "description": "icon part of menu item. Availability follows the rendered component structure.",
+      "scope": "so-menu-item"
+    },
+    {
+      "name": "so-menu-item__indicator",
+      "sources": [
+        "packages/ui/angular/src/components/menu/checkbox-item/menu-checkbox-item.component.html",
+        "packages/ui/angular/src/components/menu/radio-item/menu-radio-item.component.html",
+        "packages/ui/react/src/components/menu/checkbox-item/CheckboxItem.tsx",
+        "packages/ui/react/src/components/menu/radio-item/RadioItem.tsx",
+        "packages/ui/solid/src/components/menu/checkbox-item/CheckboxItem.tsx",
+        "packages/ui/solid/src/components/menu/radio-item/RadioItem.tsx",
+        "packages/ui/svelte/src/components/menu/checkbox-item/CheckboxItem.svelte",
+        "packages/ui/svelte/src/components/menu/radio-item/RadioItem.svelte",
+        "packages/ui/vue/src/components/menu/checkbox-item/CheckboxItem.vue",
+        "packages/ui/vue/src/components/menu/radio-item/RadioItem.vue",
+        "packages/ui/webc/src/components/menu/checkbox-item/menu-checkbox-item.template.ts",
+        "packages/ui/webc/src/components/menu/radio-item/menu-radio-item.template.ts"
+      ],
+      "description": "indicator part of menu item. Availability follows the rendered component structure.",
+      "scope": "so-menu-item"
+    },
+    {
+      "name": "so-menu-item__panel",
+      "sources": [
+        "packages/ui/angular/src/components/menu/popover-item/menu-popover-item.component.html",
+        "packages/ui/react/src/components/menu/popover-item/PopoverItem.tsx",
+        "packages/ui/solid/src/components/menu/popover-item/PopoverItem.tsx",
+        "packages/ui/svelte/src/components/menu/popover-item/PopoverItem.svelte",
+        "packages/ui/vue/src/components/menu/popover-item/PopoverItem.vue",
+        "packages/ui/webc/src/components/menu/popover-item/menu-popover-item.template.ts"
+      ],
+      "description": "panel part of menu item. Availability follows the rendered component structure.",
+      "scope": "so-menu-item"
+    },
+    {
+      "name": "so-menu-item__shortcut",
+      "sources": [
+        "packages/ui/angular/src/components/menu/checkbox-item/menu-checkbox-item.component.html",
+        "packages/ui/angular/src/components/menu/item/menu-item.component.html",
+        "packages/ui/angular/src/components/menu/radio-item/menu-radio-item.component.html",
+        "packages/ui/react/src/components/menu/checkbox-item/CheckboxItem.tsx",
+        "packages/ui/react/src/components/menu/item/Item.tsx",
+        "packages/ui/react/src/components/menu/radio-item/RadioItem.tsx",
+        "packages/ui/solid/src/components/menu/checkbox-item/CheckboxItem.tsx",
+        "packages/ui/solid/src/components/menu/item/Item.tsx",
+        "packages/ui/solid/src/components/menu/radio-item/RadioItem.tsx",
+        "packages/ui/svelte/src/components/menu/checkbox-item/CheckboxItem.svelte",
+        "packages/ui/svelte/src/components/menu/item/Item.svelte",
+        "packages/ui/svelte/src/components/menu/radio-item/RadioItem.svelte",
+        "packages/ui/vue/src/components/menu/checkbox-item/CheckboxItem.vue",
+        "packages/ui/vue/src/components/menu/item/Item.vue",
+        "packages/ui/vue/src/components/menu/radio-item/RadioItem.vue",
+        "packages/ui/webc/src/components/menu/checkbox-item/menu-checkbox-item.template.ts",
+        "packages/ui/webc/src/components/menu/item/menu-item.template.ts",
+        "packages/ui/webc/src/components/menu/radio-item/menu-radio-item.template.ts"
+      ],
+      "description": "shortcut part of menu item. Availability follows the rendered component structure.",
+      "scope": "so-menu-item"
+    },
+    {
+      "name": "so-number-input__clear",
+      "sources": [
+        "packages/ui/angular/src/components/number-input/number-input.component.html",
+        "packages/ui/react/src/components/number-input/NumberInput.tsx",
+        "packages/ui/solid/src/components/number-input/NumberInput.tsx",
+        "packages/ui/svelte/src/components/number-input/NumberInput.svelte",
+        "packages/ui/vue/src/components/number-input/NumberInput.vue"
+      ],
+      "description": "clear part of number input. Availability follows the rendered component structure.",
+      "scope": "so-number-input"
+    },
+    {
+      "name": "so-number-input__decrement",
+      "sources": [
+        "packages/ui/angular/src/components/number-input/number-input.component.html",
+        "packages/ui/react/src/components/number-input/NumberInput.tsx",
+        "packages/ui/solid/src/components/number-input/NumberInput.tsx",
+        "packages/ui/svelte/src/components/number-input/NumberInput.svelte",
+        "packages/ui/vue/src/components/number-input/NumberInput.vue",
+        "packages/ui/webc/src/components/number-input/number-input.template.ts"
+      ],
+      "description": "decrement part of number input. Availability follows the rendered component structure.",
+      "scope": "so-number-input"
+    },
+    {
+      "name": "so-number-input__increment",
+      "sources": [
+        "packages/ui/angular/src/components/number-input/number-input.component.html",
+        "packages/ui/react/src/components/number-input/NumberInput.tsx",
+        "packages/ui/solid/src/components/number-input/NumberInput.tsx",
+        "packages/ui/svelte/src/components/number-input/NumberInput.svelte",
+        "packages/ui/vue/src/components/number-input/NumberInput.vue",
+        "packages/ui/webc/src/components/number-input/number-input.template.ts"
+      ],
+      "description": "increment part of number input. Availability follows the rendered component structure.",
+      "scope": "so-number-input"
+    },
+    {
+      "name": "so-number-input__input",
+      "sources": [
+        "packages/ui/angular/src/components/number-input/number-input.component.html",
+        "packages/ui/react/src/components/number-input/NumberInput.tsx",
+        "packages/ui/solid/src/components/number-input/NumberInput.tsx",
+        "packages/ui/svelte/src/components/number-input/NumberInput.svelte",
+        "packages/ui/vue/src/components/number-input/NumberInput.vue",
+        "packages/ui/webc/src/components/number-input/number-input.template.ts"
+      ],
+      "description": "input part of number input. Availability follows the rendered component structure.",
+      "scope": "so-number-input"
+    },
+    {
+      "name": "so-number-input__leading",
+      "sources": [
+        "packages/ui/angular/src/components/number-input/number-input.component.html",
+        "packages/ui/react/src/components/number-input/NumberInput.tsx",
+        "packages/ui/solid/src/components/number-input/NumberInput.tsx",
+        "packages/ui/svelte/src/components/number-input/NumberInput.svelte",
+        "packages/ui/vue/src/components/number-input/NumberInput.vue",
+        "packages/ui/webc/src/components/number-input/number-input.template.ts"
+      ],
+      "description": "leading part of number input. Availability follows the rendered component structure.",
+      "scope": "so-number-input"
+    },
+    {
+      "name": "so-number-input__stepper",
+      "sources": [
+        "packages/ui/angular/src/components/number-input/number-input.component.html",
+        "packages/ui/react/src/components/number-input/NumberInput.tsx",
+        "packages/ui/solid/src/components/number-input/NumberInput.tsx",
+        "packages/ui/svelte/src/components/number-input/NumberInput.svelte",
+        "packages/ui/vue/src/components/number-input/NumberInput.vue",
+        "packages/ui/webc/src/components/number-input/number-input.template.ts"
+      ],
+      "description": "stepper part of number input. Availability follows the rendered component structure.",
+      "scope": "so-number-input"
+    },
+    {
+      "name": "so-number-input__trailing",
+      "sources": [
+        "packages/ui/angular/src/components/number-input/number-input.component.html",
+        "packages/ui/react/src/components/number-input/NumberInput.tsx",
+        "packages/ui/solid/src/components/number-input/NumberInput.tsx",
+        "packages/ui/svelte/src/components/number-input/NumberInput.svelte",
+        "packages/ui/vue/src/components/number-input/NumberInput.vue",
+        "packages/ui/webc/src/components/number-input/number-input.template.ts"
+      ],
+      "description": "trailing part of number input. Availability follows the rendered component structure.",
+      "scope": "so-number-input"
+    },
+    {
+      "name": "so-pagination__ellipsis",
+      "sources": [
+        "packages/ui/angular/src/components/pagination/pagination.component.html",
+        "packages/ui/react/src/components/pagination/Pagination.tsx",
+        "packages/ui/solid/src/components/pagination/Pagination.tsx",
+        "packages/ui/svelte/src/components/pagination/Pagination.svelte",
+        "packages/ui/vue/src/components/pagination/Pagination.vue",
+        "packages/ui/webc/src/components/pagination/pagination.template.ts"
+      ],
+      "description": "ellipsis part of pagination. Availability follows the rendered component structure.",
+      "scope": "so-pagination"
+    },
+    {
+      "name": "so-pagination__list",
+      "sources": [
+        "packages/ui/angular/src/components/pagination/pagination.component.html",
+        "packages/ui/react/src/components/pagination/Pagination.tsx",
+        "packages/ui/solid/src/components/pagination/Pagination.tsx",
+        "packages/ui/svelte/src/components/pagination/Pagination.svelte",
+        "packages/ui/vue/src/components/pagination/Pagination.vue",
+        "packages/ui/webc/src/components/pagination/pagination.template.ts"
+      ],
+      "description": "list part of pagination. Availability follows the rendered component structure.",
+      "scope": "so-pagination"
+    },
+    {
+      "name": "so-pagination__next",
+      "sources": [
+        "packages/ui/angular/src/components/pagination/pagination.component.html",
+        "packages/ui/react/src/components/pagination/Pagination.tsx",
+        "packages/ui/solid/src/components/pagination/Pagination.tsx",
+        "packages/ui/svelte/src/components/pagination/Pagination.svelte",
+        "packages/ui/vue/src/components/pagination/Pagination.vue",
+        "packages/ui/webc/src/components/pagination/pagination.template.ts"
+      ],
+      "description": "next part of pagination. Availability follows the rendered component structure.",
+      "scope": "so-pagination"
+    },
+    {
+      "name": "so-pagination__prev",
+      "sources": [
+        "packages/ui/angular/src/components/pagination/pagination.component.html",
+        "packages/ui/react/src/components/pagination/Pagination.tsx",
+        "packages/ui/solid/src/components/pagination/Pagination.tsx",
+        "packages/ui/svelte/src/components/pagination/Pagination.svelte",
+        "packages/ui/vue/src/components/pagination/Pagination.vue",
+        "packages/ui/webc/src/components/pagination/pagination.template.ts"
+      ],
+      "description": "prev part of pagination. Availability follows the rendered component structure.",
+      "scope": "so-pagination"
+    },
+    {
+      "name": "so-popover__close",
+      "sources": [
+        "packages/ui/angular/src/components/popover/popover.component.html",
+        "packages/ui/react/src/components/popover/Popover.tsx",
+        "packages/ui/solid/src/components/popover/Popover.tsx",
+        "packages/ui/svelte/src/components/popover/Popover.svelte",
+        "packages/ui/vue/src/components/popover/Popover.vue",
+        "packages/ui/webc/src/components/popover/popover.template.ts"
+      ],
+      "description": "close part of popover. Availability follows the rendered component structure.",
+      "scope": "so-popover"
+    },
+    {
+      "name": "so-popover__content",
+      "sources": [
+        "packages/ui/angular/src/components/popover/popover.component.html",
+        "packages/ui/react/src/components/popover/Popover.tsx",
+        "packages/ui/solid/src/components/popover/Popover.tsx",
+        "packages/ui/svelte/src/components/popover/Popover.svelte",
+        "packages/ui/vue/src/components/popover/Popover.vue",
+        "packages/ui/webc/src/components/popover/popover.template.ts"
+      ],
+      "description": "content part of popover. Availability follows the rendered component structure.",
+      "scope": "so-popover"
+    },
+    {
+      "name": "so-popover__handle",
+      "sources": [
+        "packages/ui/angular/src/components/popover/popover.component.html",
+        "packages/ui/react/src/components/popover/Popover.tsx",
+        "packages/ui/solid/src/components/popover/Popover.tsx",
+        "packages/ui/svelte/src/components/popover/Popover.svelte",
+        "packages/ui/vue/src/components/popover/Popover.vue",
+        "packages/ui/webc/src/components/popover/popover.template.ts"
+      ],
+      "description": "handle part of popover. Availability follows the rendered component structure.",
+      "scope": "so-popover"
+    },
+    {
+      "name": "so-popover__panel",
+      "sources": [
+        "packages/ui/angular/src/components/popover/popover.component.html",
+        "packages/ui/react/src/components/popover/Popover.tsx",
+        "packages/ui/solid/src/components/popover/Popover.tsx",
+        "packages/ui/svelte/src/components/popover/Popover.svelte",
+        "packages/ui/vue/src/components/popover/Popover.vue",
+        "packages/ui/webc/src/components/popover/popover.template.ts"
+      ],
+      "description": "panel part of popover. Availability follows the rendered component structure.",
+      "scope": "so-popover"
+    },
+    {
+      "name": "so-progress-linear__range",
+      "sources": [
+        "packages/ui/angular/src/components/progress-linear/progress-linear.component.html",
+        "packages/ui/react/src/components/progress-linear/ProgressLinear.tsx",
+        "packages/ui/solid/src/components/progress-linear/ProgressLinear.tsx",
+        "packages/ui/svelte/src/components/progress-linear/ProgressLinear.svelte",
+        "packages/ui/vue/src/components/progress-linear/ProgressLinear.vue",
+        "packages/ui/webc/src/components/progress-linear/progress-linear.template.ts"
+      ],
+      "description": "range part of progress linear. Availability follows the rendered component structure.",
+      "scope": "so-progress-linear"
+    },
+    {
+      "name": "so-progress-spinner__range",
+      "sources": [
+        "packages/ui/angular/src/components/progress-spinner/progress-spinner.component.html",
+        "packages/ui/react/src/components/progress-spinner/ProgressSpinner.tsx",
+        "packages/ui/solid/src/components/progress-spinner/ProgressSpinner.tsx",
+        "packages/ui/svelte/src/components/progress-spinner/ProgressSpinner.svelte",
+        "packages/ui/vue/src/components/progress-spinner/ProgressSpinner.vue"
+      ],
+      "description": "range part of progress spinner. Availability follows the rendered component structure.",
+      "scope": "so-progress-spinner"
+    },
+    {
+      "name": "so-progress-spinner__ring",
+      "sources": [
+        "packages/ui/angular/src/components/progress-spinner/progress-spinner.component.html",
+        "packages/ui/react/src/components/progress-spinner/ProgressSpinner.tsx",
+        "packages/ui/solid/src/components/progress-spinner/ProgressSpinner.tsx",
+        "packages/ui/svelte/src/components/progress-spinner/ProgressSpinner.svelte",
+        "packages/ui/vue/src/components/progress-spinner/ProgressSpinner.vue",
+        "packages/ui/webc/src/components/progress-spinner/progress-spinner.template.ts"
+      ],
+      "description": "ring part of progress spinner. Availability follows the rendered component structure.",
+      "scope": "so-progress-spinner"
+    },
+    {
+      "name": "so-progress-spinner__runner",
+      "sources": [
+        "packages/ui/angular/src/components/progress-spinner/progress-spinner.component.html",
+        "packages/ui/react/src/components/progress-spinner/ProgressSpinner.tsx",
+        "packages/ui/solid/src/components/progress-spinner/ProgressSpinner.tsx",
+        "packages/ui/svelte/src/components/progress-spinner/ProgressSpinner.svelte",
+        "packages/ui/vue/src/components/progress-spinner/ProgressSpinner.vue"
+      ],
+      "description": "runner part of progress spinner. Availability follows the rendered component structure.",
+      "scope": "so-progress-spinner"
+    },
+    {
+      "name": "so-progress-spinner__track",
+      "sources": [
+        "packages/ui/angular/src/components/progress-spinner/progress-spinner.component.html",
+        "packages/ui/react/src/components/progress-spinner/ProgressSpinner.tsx",
+        "packages/ui/solid/src/components/progress-spinner/ProgressSpinner.tsx",
+        "packages/ui/svelte/src/components/progress-spinner/ProgressSpinner.svelte",
+        "packages/ui/vue/src/components/progress-spinner/ProgressSpinner.vue"
+      ],
+      "description": "track part of progress spinner. Availability follows the rendered component structure.",
+      "scope": "so-progress-spinner"
+    },
+    {
+      "name": "so-radio-group-item__control",
+      "sources": [
+        "packages/ui/angular/src/components/radio-group/item/radio-group-item.component.html",
+        "packages/ui/react/src/components/radio-group/item/Item.tsx",
+        "packages/ui/solid/src/components/radio-group/item/Item.tsx",
+        "packages/ui/svelte/src/components/radio-group/item/Item.svelte",
+        "packages/ui/vue/src/components/radio-group/item/Item.vue",
+        "packages/ui/webc/src/components/radio-group/item/radio-group-item.template.ts"
+      ],
+      "description": "control part of radio group item. Availability follows the rendered component structure.",
+      "scope": "so-radio-group-item"
+    },
+    {
+      "name": "so-radio-group-item__indicator",
+      "sources": [
+        "packages/ui/angular/src/components/radio-group/item/radio-group-item.component.html",
+        "packages/ui/react/src/components/radio-group/item/Item.tsx",
+        "packages/ui/solid/src/components/radio-group/item/Item.tsx",
+        "packages/ui/svelte/src/components/radio-group/item/Item.svelte",
+        "packages/ui/vue/src/components/radio-group/item/Item.vue",
+        "packages/ui/webc/src/components/radio-group/item/radio-group-item.template.ts"
+      ],
+      "description": "indicator part of radio group item. Availability follows the rendered component structure.",
+      "scope": "so-radio-group-item"
+    },
+    {
+      "name": "so-radio-group-item__input",
+      "sources": [
+        "packages/ui/angular/src/components/radio-group/item/radio-group-item.component.html",
+        "packages/ui/react/src/components/radio-group/item/Item.tsx",
+        "packages/ui/solid/src/components/radio-group/item/Item.tsx",
+        "packages/ui/svelte/src/components/radio-group/item/Item.svelte",
+        "packages/ui/vue/src/components/radio-group/item/Item.vue",
+        "packages/ui/webc/src/components/radio-group/item/radio-group-item.template.ts"
+      ],
+      "description": "input part of radio group item. Availability follows the rendered component structure.",
+      "scope": "so-radio-group-item"
+    },
+    {
+      "name": "so-radio-group-item__text",
+      "sources": [
+        "packages/ui/angular/src/components/radio-group/item/radio-group-item.component.html",
+        "packages/ui/react/src/components/radio-group/item/Item.tsx",
+        "packages/ui/solid/src/components/radio-group/item/Item.tsx",
+        "packages/ui/svelte/src/components/radio-group/item/Item.svelte",
+        "packages/ui/vue/src/components/radio-group/item/Item.vue",
+        "packages/ui/webc/src/components/radio-group/item/radio-group-item.template.ts"
+      ],
+      "description": "text part of radio group item. Availability follows the rendered component structure.",
+      "scope": "so-radio-group-item"
+    },
+    {
+      "name": "so-rating__icon",
+      "sources": [
+        "packages/ui/angular/src/components/rating/rating.component.html",
+        "packages/ui/react/src/components/rating/Rating.tsx",
+        "packages/ui/solid/src/components/rating/Rating.tsx",
+        "packages/ui/vue/src/components/rating/Rating.vue",
+        "packages/ui/webc/src/components/rating/rating.template.ts"
+      ],
+      "description": "icon part of rating. Availability follows the rendered component structure.",
+      "scope": "so-rating"
+    },
+    {
+      "name": "so-rating__input",
+      "sources": [
+        "packages/ui/angular/src/components/rating/rating.component.html",
+        "packages/ui/react/src/components/rating/Rating.tsx",
+        "packages/ui/solid/src/components/rating/Rating.tsx",
+        "packages/ui/svelte/src/components/rating/Rating.svelte",
+        "packages/ui/vue/src/components/rating/Rating.vue",
+        "packages/ui/webc/src/components/rating/rating.template.ts"
+      ],
+      "description": "input part of rating. Availability follows the rendered component structure.",
+      "scope": "so-rating"
+    },
+    {
+      "name": "so-rating__star",
+      "sources": [
+        "packages/ui/angular/src/components/rating/rating.component.html",
+        "packages/ui/react/src/components/rating/Rating.tsx",
+        "packages/ui/solid/src/components/rating/Rating.tsx",
+        "packages/ui/svelte/src/components/rating/Rating.svelte",
+        "packages/ui/vue/src/components/rating/Rating.vue",
+        "packages/ui/webc/src/components/rating/rating.template.ts"
+      ],
+      "description": "star part of rating. Availability follows the rendered component structure.",
+      "scope": "so-rating"
+    },
+    {
+      "name": "so-rating__star-fill",
+      "sources": [
+        "packages/ui/angular/src/components/rating/rating.component.html",
+        "packages/ui/react/src/components/rating/Rating.tsx",
+        "packages/ui/solid/src/components/rating/Rating.tsx",
+        "packages/ui/svelte/src/components/rating/Rating.svelte",
+        "packages/ui/vue/src/components/rating/Rating.vue",
+        "packages/ui/webc/src/components/rating/rating.template.ts"
+      ],
+      "description": "star fill part of rating. Availability follows the rendered component structure.",
+      "scope": "so-rating"
+    },
+    {
+      "name": "so-rating__thumb",
+      "sources": [
+        "packages/ui/angular/src/components/rating/rating.component.html",
+        "packages/ui/react/src/components/rating/Rating.tsx",
+        "packages/ui/solid/src/components/rating/Rating.tsx",
+        "packages/ui/svelte/src/components/rating/Rating.svelte",
+        "packages/ui/vue/src/components/rating/Rating.vue",
+        "packages/ui/webc/src/components/rating/rating.template.ts"
+      ],
+      "description": "thumb part of rating. Availability follows the rendered component structure.",
+      "scope": "so-rating"
+    },
+    {
+      "name": "so-rating__track",
+      "sources": [
+        "packages/ui/angular/src/components/rating/rating.component.html",
+        "packages/ui/react/src/components/rating/Rating.tsx",
+        "packages/ui/solid/src/components/rating/Rating.tsx",
+        "packages/ui/svelte/src/components/rating/Rating.svelte",
+        "packages/ui/vue/src/components/rating/Rating.vue",
+        "packages/ui/webc/src/components/rating/rating.template.ts"
+      ],
+      "description": "track part of rating. Availability follows the rendered component structure.",
+      "scope": "so-rating"
+    },
+    {
+      "name": "so-scroller__next",
+      "sources": [
+        "packages/ui/angular/src/components/scroller/scroller.component.html",
+        "packages/ui/react/src/components/scroller/Scroller.tsx",
+        "packages/ui/solid/src/components/scroller/Scroller.tsx",
+        "packages/ui/svelte/src/components/scroller/Scroller.svelte",
+        "packages/ui/vue/src/components/scroller/Scroller.vue",
+        "packages/ui/webc/src/components/scroller/scroller.template.ts"
+      ],
+      "description": "next part of scroller. Availability follows the rendered component structure.",
+      "scope": "so-scroller"
+    },
+    {
+      "name": "so-scroller__prev",
+      "sources": [
+        "packages/ui/angular/src/components/scroller/scroller.component.html",
+        "packages/ui/react/src/components/scroller/Scroller.tsx",
+        "packages/ui/solid/src/components/scroller/Scroller.tsx",
+        "packages/ui/svelte/src/components/scroller/Scroller.svelte",
+        "packages/ui/vue/src/components/scroller/Scroller.vue",
+        "packages/ui/webc/src/components/scroller/scroller.template.ts"
+      ],
+      "description": "prev part of scroller. Availability follows the rendered component structure.",
+      "scope": "so-scroller"
+    },
+    {
+      "name": "so-scroller__viewport",
+      "sources": [
+        "packages/ui/angular/src/components/scroller/scroller.component.html",
+        "packages/ui/react/src/components/scroller/Scroller.tsx",
+        "packages/ui/solid/src/components/scroller/Scroller.tsx",
+        "packages/ui/svelte/src/components/scroller/Scroller.svelte",
+        "packages/ui/vue/src/components/scroller/Scroller.vue",
+        "packages/ui/webc/src/components/scroller/scroller.template.ts"
+      ],
+      "description": "viewport part of scroller. Availability follows the rendered component structure.",
+      "scope": "so-scroller"
+    },
+    {
+      "name": "so-select__arrow",
+      "sources": [
+        "packages/ui/angular/src/components/select/select.component.html",
+        "packages/ui/react/src/components/select/Select.tsx",
+        "packages/ui/solid/src/components/select/Select.tsx",
+        "packages/ui/svelte/src/components/select/Select.svelte",
+        "packages/ui/vue/src/components/select/Select.vue",
+        "packages/ui/webc/src/components/select/select.template.ts"
+      ],
+      "description": "arrow part of select. Availability follows the rendered component structure.",
+      "scope": "so-select"
+    },
+    {
+      "name": "so-select__field",
+      "sources": [
+        "packages/ui/angular/src/components/select/select.component.html",
+        "packages/ui/react/src/components/select/Select.tsx",
+        "packages/ui/solid/src/components/select/Select.tsx",
+        "packages/ui/svelte/src/components/select/Select.svelte",
+        "packages/ui/vue/src/components/select/Select.vue",
+        "packages/ui/webc/src/components/select/select.template.ts"
+      ],
+      "description": "field part of select. Availability follows the rendered component structure.",
+      "scope": "so-select"
+    },
+    {
+      "name": "so-select__filler",
+      "sources": [
+        "packages/ui/angular/src/components/select/select.component.html",
+        "packages/ui/react/src/components/select/Select.tsx",
+        "packages/ui/solid/src/components/select/Select.tsx",
+        "packages/ui/svelte/src/components/select/Select.svelte",
+        "packages/ui/vue/src/components/select/Select.vue"
+      ],
+      "description": "filler part of select. Availability follows the rendered component structure.",
+      "scope": "so-select"
+    },
+    {
+      "name": "so-select__handle",
+      "sources": [
+        "packages/ui/angular/src/components/select/select.component.html",
+        "packages/ui/react/src/components/select/Select.tsx",
+        "packages/ui/solid/src/components/select/Select.tsx",
+        "packages/ui/svelte/src/components/select/Select.svelte",
+        "packages/ui/vue/src/components/select/Select.vue",
+        "packages/ui/webc/src/components/select/select.template.ts"
+      ],
+      "description": "handle part of select. Availability follows the rendered component structure.",
+      "scope": "so-select"
+    },
+    {
+      "name": "so-select__list",
+      "sources": [
+        "packages/ui/angular/src/components/select/select.component.html",
+        "packages/ui/react/src/components/select/Select.tsx",
+        "packages/ui/solid/src/components/select/Select.tsx",
+        "packages/ui/svelte/src/components/select/Select.svelte",
+        "packages/ui/vue/src/components/select/Select.vue",
+        "packages/ui/webc/src/components/select/select.template.ts"
+      ],
+      "description": "list part of select. Availability follows the rendered component structure.",
+      "scope": "so-select"
+    },
+    {
+      "name": "so-select__panel",
+      "sources": [
+        "packages/ui/angular/src/components/select/select.component.html",
+        "packages/ui/react/src/components/select/Select.tsx",
+        "packages/ui/solid/src/components/select/Select.tsx",
+        "packages/ui/svelte/src/components/select/Select.svelte",
+        "packages/ui/vue/src/components/select/Select.vue",
+        "packages/ui/webc/src/components/select/select.template.ts"
+      ],
+      "description": "panel part of select. Availability follows the rendered component structure.",
+      "scope": "so-select"
+    },
+    {
+      "name": "so-select__separator",
+      "sources": [
+        "packages/ui/angular/src/components/select/select.component.html",
+        "packages/ui/react/src/components/select/Select.tsx",
+        "packages/ui/solid/src/components/select/Select.tsx",
+        "packages/ui/svelte/src/components/select/Select.svelte",
+        "packages/ui/vue/src/components/select/Select.vue"
+      ],
+      "description": "separator part of select. Availability follows the rendered component structure.",
+      "scope": "so-select"
+    },
+    {
+      "name": "so-select__tags",
+      "sources": [
+        "packages/ui/angular/src/components/select/select.component.html",
+        "packages/ui/react/src/components/select/Select.tsx",
+        "packages/ui/solid/src/components/select/Select.tsx",
+        "packages/ui/svelte/src/components/select/Select.svelte",
+        "packages/ui/vue/src/components/select/Select.vue",
+        "packages/ui/webc/src/components/select/select.template.ts"
+      ],
+      "description": "tags part of select. Availability follows the rendered component structure.",
+      "scope": "so-select"
+    },
+    {
+      "name": "so-select-group__label",
+      "sources": [
+        "packages/ui/angular/src/components/select/group/select-group.component.html",
+        "packages/ui/react/src/components/select/group/Group.tsx",
+        "packages/ui/solid/src/components/select/group/Group.tsx",
+        "packages/ui/svelte/src/components/select/group/Group.svelte",
+        "packages/ui/vue/src/components/select/group/Group.vue",
+        "packages/ui/webc/src/components/select/group/select-group.template.ts"
+      ],
+      "description": "label part of select group. Availability follows the rendered component structure.",
+      "scope": "so-select-group"
+    },
+    {
+      "name": "so-select-item__indicator",
+      "sources": [
+        "packages/ui/angular/src/components/select/item/select-item.component.html",
+        "packages/ui/react/src/components/select/item/Item.tsx",
+        "packages/ui/solid/src/components/select/item/Item.tsx",
+        "packages/ui/svelte/src/components/select/item/Item.svelte",
+        "packages/ui/vue/src/components/select/item/Item.vue",
+        "packages/ui/webc/src/components/select/item/select-item.template.ts"
+      ],
+      "description": "indicator part of select item. Availability follows the rendered component structure.",
+      "scope": "so-select-item"
+    },
+    {
+      "name": "so-skeleton__placeholder",
+      "sources": [
+        "packages/ui/angular/src/components/skeleton/skeleton.component.html",
+        "packages/ui/react/src/components/skeleton/Skeleton.tsx",
+        "packages/ui/solid/src/components/skeleton/Skeleton.tsx",
+        "packages/ui/svelte/src/components/skeleton/Skeleton.svelte",
+        "packages/ui/vue/src/components/skeleton/Skeleton.vue",
+        "packages/ui/webc/src/components/skeleton/skeleton.template.ts"
+      ],
+      "description": "placeholder part of skeleton. Availability follows the rendered component structure.",
+      "scope": "so-skeleton"
+    },
+    {
+      "name": "so-slider__input",
+      "sources": [
+        "packages/ui/angular/src/components/slider/slider.component.html",
+        "packages/ui/react/src/components/slider/Slider.tsx",
+        "packages/ui/solid/src/components/slider/Slider.tsx",
+        "packages/ui/svelte/src/components/slider/Slider.svelte",
+        "packages/ui/vue/src/components/slider/Slider.vue",
+        "packages/ui/webc/src/components/slider/slider.template.ts"
+      ],
+      "description": "input part of slider. Availability follows the rendered component structure.",
+      "scope": "so-slider"
+    },
+    {
+      "name": "so-slider__mark",
+      "sources": [
+        "packages/ui/angular/src/components/slider/slider.component.html",
+        "packages/ui/react/src/components/slider/Slider.tsx",
+        "packages/ui/solid/src/components/slider/Slider.tsx",
+        "packages/ui/svelte/src/components/slider/Slider.svelte",
+        "packages/ui/vue/src/components/slider/Slider.vue",
+        "packages/ui/webc/src/components/slider/slider.template.ts"
+      ],
+      "description": "mark part of slider. Availability follows the rendered component structure.",
+      "scope": "so-slider"
+    },
+    {
+      "name": "so-slider__mark-label",
+      "sources": [
+        "packages/ui/angular/src/components/slider/slider.component.html",
+        "packages/ui/react/src/components/slider/Slider.tsx",
+        "packages/ui/solid/src/components/slider/Slider.tsx",
+        "packages/ui/svelte/src/components/slider/Slider.svelte",
+        "packages/ui/vue/src/components/slider/Slider.vue",
+        "packages/ui/webc/src/components/slider/slider.template.ts"
+      ],
+      "description": "mark label part of slider. Availability follows the rendered component structure.",
+      "scope": "so-slider"
+    },
+    {
+      "name": "so-slider__marks",
+      "sources": [
+        "packages/ui/angular/src/components/slider/slider.component.html",
+        "packages/ui/react/src/components/slider/Slider.tsx",
+        "packages/ui/solid/src/components/slider/Slider.tsx",
+        "packages/ui/svelte/src/components/slider/Slider.svelte",
+        "packages/ui/vue/src/components/slider/Slider.vue",
+        "packages/ui/webc/src/components/slider/slider.template.ts"
+      ],
+      "description": "marks part of slider. Availability follows the rendered component structure.",
+      "scope": "so-slider"
+    },
+    {
+      "name": "so-slider__range",
+      "sources": [
+        "packages/ui/angular/src/components/slider/slider.component.html",
+        "packages/ui/react/src/components/slider/Slider.tsx",
+        "packages/ui/solid/src/components/slider/Slider.tsx",
+        "packages/ui/svelte/src/components/slider/Slider.svelte",
+        "packages/ui/vue/src/components/slider/Slider.vue",
+        "packages/ui/webc/src/components/slider/slider.template.ts"
+      ],
+      "description": "range part of slider. Availability follows the rendered component structure.",
+      "scope": "so-slider"
+    },
+    {
+      "name": "so-slider__thumb",
+      "sources": [
+        "packages/ui/angular/src/components/slider/slider.component.html",
+        "packages/ui/react/src/components/slider/Slider.tsx",
+        "packages/ui/solid/src/components/slider/Slider.tsx",
+        "packages/ui/svelte/src/components/slider/Slider.svelte",
+        "packages/ui/vue/src/components/slider/Slider.vue",
+        "packages/ui/webc/src/components/slider/slider.template.ts"
+      ],
+      "description": "thumb part of slider. Availability follows the rendered component structure.",
+      "scope": "so-slider"
+    },
+    {
+      "name": "so-slider__tooltip",
+      "sources": [
+        "packages/ui/angular/src/components/slider/slider.component.html",
+        "packages/ui/react/src/components/slider/Slider.tsx",
+        "packages/ui/solid/src/components/slider/Slider.tsx",
+        "packages/ui/svelte/src/components/slider/Slider.svelte",
+        "packages/ui/vue/src/components/slider/Slider.vue",
+        "packages/ui/webc/src/components/slider/slider.template.ts"
+      ],
+      "description": "tooltip part of slider. Availability follows the rendered component structure.",
+      "scope": "so-slider"
+    },
+    {
+      "name": "so-slider__track",
+      "sources": [
+        "packages/ui/angular/src/components/slider/slider.component.html",
+        "packages/ui/react/src/components/slider/Slider.tsx",
+        "packages/ui/solid/src/components/slider/Slider.tsx",
+        "packages/ui/svelte/src/components/slider/Slider.svelte",
+        "packages/ui/vue/src/components/slider/Slider.vue",
+        "packages/ui/webc/src/components/slider/slider.template.ts"
+      ],
+      "description": "track part of slider. Availability follows the rendered component structure.",
+      "scope": "so-slider"
+    },
+    {
+      "name": "so-switch__track",
+      "sources": [
+        "packages/ui/angular/src/components/switch/switch.component.html",
+        "packages/ui/react/src/components/switch/Switch.tsx",
+        "packages/ui/solid/src/components/switch/Switch.tsx",
+        "packages/ui/svelte/src/components/switch/Switch.svelte",
+        "packages/ui/vue/src/components/switch/Switch.vue",
+        "packages/ui/webc/src/components/switch/switch.template.ts"
+      ],
+      "description": "track part of switch. Availability follows the rendered component structure.",
+      "scope": "so-switch"
+    },
+    {
+      "name": "so-switch__track--thumb",
+      "sources": [
+        "packages/ui/angular/src/components/switch/switch.component.html",
+        "packages/ui/react/src/components/switch/Switch.tsx",
+        "packages/ui/solid/src/components/switch/Switch.tsx",
+        "packages/ui/svelte/src/components/switch/Switch.svelte",
+        "packages/ui/vue/src/components/switch/Switch.vue",
+        "packages/ui/webc/src/components/switch/switch.template.ts"
+      ],
+      "description": "track  thumb part of switch. Availability follows the rendered component structure.",
+      "scope": "so-switch"
+    },
+    {
+      "name": "so-table__body",
+      "sources": [
+        "packages/ui/angular/src/components/table/table.component.html",
+        "packages/ui/react/src/components/table/Table.tsx",
+        "packages/ui/solid/src/components/table/Table.tsx",
+        "packages/ui/svelte/src/components/table/Table.svelte",
+        "packages/ui/vue/src/components/table/Table.vue",
+        "packages/ui/webc/src/components/table/table.template.ts"
+      ],
+      "description": "body part of table. Availability follows the rendered component structure.",
+      "scope": "so-table"
+    },
+    {
+      "name": "so-table__empty",
+      "sources": [
+        "packages/ui/angular/src/components/table/table.component.html",
+        "packages/ui/react/src/components/table/Table.tsx",
+        "packages/ui/solid/src/components/table/Table.tsx",
+        "packages/ui/svelte/src/components/table/Table.svelte",
+        "packages/ui/vue/src/components/table/Table.vue",
+        "packages/ui/webc/src/components/table/table.template.ts"
+      ],
+      "description": "empty part of table. Availability follows the rendered component structure.",
+      "scope": "so-table"
+    },
+    {
+      "name": "so-table__empty-row",
+      "sources": [
+        "packages/ui/angular/src/components/table/table.component.html",
+        "packages/ui/react/src/components/table/Table.tsx",
+        "packages/ui/solid/src/components/table/Table.tsx",
+        "packages/ui/svelte/src/components/table/Table.svelte",
+        "packages/ui/vue/src/components/table/Table.vue",
+        "packages/ui/webc/src/components/table/table.template.ts"
+      ],
+      "description": "empty row part of table. Availability follows the rendered component structure.",
+      "scope": "so-table"
+    },
+    {
+      "name": "so-table__filler",
+      "sources": [
+        "packages/ui/angular/src/components/table/table.component.html",
+        "packages/ui/react/src/components/table/Table.tsx",
+        "packages/ui/solid/src/components/table/Table.tsx",
+        "packages/ui/svelte/src/components/table/Table.svelte",
+        "packages/ui/vue/src/components/table/Table.vue",
+        "packages/ui/webc/src/components/table/table.template.ts"
+      ],
+      "description": "filler part of table. Availability follows the rendered component structure.",
+      "scope": "so-table"
+    },
+    {
+      "name": "so-table__filler-row",
+      "sources": [
+        "packages/ui/angular/src/components/table/table.component.html",
+        "packages/ui/react/src/components/table/Table.tsx",
+        "packages/ui/solid/src/components/table/Table.tsx",
+        "packages/ui/svelte/src/components/table/Table.svelte",
+        "packages/ui/vue/src/components/table/Table.vue",
+        "packages/ui/webc/src/components/table/table.template.ts"
+      ],
+      "description": "filler row part of table. Availability follows the rendered component structure.",
+      "scope": "so-table"
+    },
+    {
+      "name": "so-table__head",
+      "sources": [
+        "packages/ui/angular/src/components/table/table.component.html",
+        "packages/ui/react/src/components/table/Table.tsx",
+        "packages/ui/solid/src/components/table/Table.tsx",
+        "packages/ui/svelte/src/components/table/Table.svelte",
+        "packages/ui/vue/src/components/table/Table.vue",
+        "packages/ui/webc/src/components/table/table.template.ts"
+      ],
+      "description": "head part of table. Availability follows the rendered component structure.",
+      "scope": "so-table"
+    },
+    {
+      "name": "so-table__head-row",
+      "sources": [
+        "packages/ui/angular/src/components/table/table.component.html",
+        "packages/ui/react/src/components/table/Table.tsx",
+        "packages/ui/solid/src/components/table/Table.tsx",
+        "packages/ui/svelte/src/components/table/Table.svelte",
+        "packages/ui/vue/src/components/table/Table.vue",
+        "packages/ui/webc/src/components/table/table.template.ts"
+      ],
+      "description": "head row part of table. Availability follows the rendered component structure.",
+      "scope": "so-table"
+    },
+    {
+      "name": "so-table__select",
+      "sources": [
+        "packages/ui/angular/src/components/table/table.component.html",
+        "packages/ui/react/src/components/table/Table.tsx",
+        "packages/ui/solid/src/components/table/Table.tsx",
+        "packages/ui/svelte/src/components/table/Table.svelte",
+        "packages/ui/vue/src/components/table/Table.vue",
+        "packages/ui/webc/src/components/table/table.template.ts"
+      ],
+      "description": "select part of table. Availability follows the rendered component structure.",
+      "scope": "so-table"
+    },
+    {
+      "name": "so-table__viewport",
+      "sources": [
+        "packages/ui/angular/src/components/table/table.component.ts",
+        "packages/ui/react/src/components/table/Table.tsx",
+        "packages/ui/solid/src/components/table/Table.tsx",
+        "packages/ui/vue/src/components/table/Table.vue",
+        "packages/ui/webc/src/components/table/table.template.ts"
+      ],
+      "description": "viewport part of table. Availability follows the rendered component structure.",
+      "scope": "so-table"
+    },
+    {
+      "name": "so-table-column__content",
+      "sources": [
+        "packages/ui/angular/src/components/table/column/table-column.component.html",
+        "packages/ui/react/src/components/table/column/Column.tsx",
+        "packages/ui/solid/src/components/table/column/Column.tsx",
+        "packages/ui/svelte/src/components/table/column/Column.svelte",
+        "packages/ui/vue/src/components/table/column/Column.vue",
+        "packages/ui/webc/src/components/table/column/table-column.template.ts"
+      ],
+      "description": "content part of table column. Availability follows the rendered component structure.",
+      "scope": "so-table-column"
+    },
+    {
+      "name": "so-table-column__input",
+      "sources": [
+        "packages/ui/angular/src/components/table/column/table-column.component.html",
+        "packages/ui/react/src/components/table/column/Column.tsx",
+        "packages/ui/solid/src/components/table/column/Column.tsx",
+        "packages/ui/svelte/src/components/table/column/Column.svelte",
+        "packages/ui/vue/src/components/table/column/Column.vue",
+        "packages/ui/webc/src/components/table/column/table-column.template.ts"
+      ],
+      "description": "input part of table column. Availability follows the rendered component structure.",
+      "scope": "so-table-column"
+    },
+    {
+      "name": "so-table-column__resizer",
+      "sources": [
+        "packages/ui/angular/src/components/table/column/table-column.component.html",
+        "packages/ui/react/src/components/table/column/Column.tsx",
+        "packages/ui/solid/src/components/table/column/Column.tsx",
+        "packages/ui/svelte/src/components/table/column/Column.svelte",
+        "packages/ui/vue/src/components/table/column/Column.vue",
+        "packages/ui/webc/src/components/table/column/table-column.template.ts"
+      ],
+      "description": "resizer part of table column. Availability follows the rendered component structure.",
+      "scope": "so-table-column"
+    },
+    {
+      "name": "so-table-column__sort",
+      "sources": [
+        "packages/ui/angular/src/components/table/column/table-column.component.html",
+        "packages/ui/react/src/components/table/column/Column.tsx",
+        "packages/ui/solid/src/components/table/column/Column.tsx",
+        "packages/ui/svelte/src/components/table/column/Column.svelte",
+        "packages/ui/vue/src/components/table/column/Column.vue",
+        "packages/ui/webc/src/components/table/column/table-column.template.ts"
+      ],
+      "description": "sort part of table column. Availability follows the rendered component structure.",
+      "scope": "so-table-column"
+    },
+    {
+      "name": "so-table-column__sort-icon",
+      "sources": [
+        "packages/ui/angular/src/components/table/column/table-column.component.html",
+        "packages/ui/react/src/components/table/column/Column.tsx",
+        "packages/ui/solid/src/components/table/column/Column.tsx",
+        "packages/ui/svelte/src/components/table/column/Column.svelte",
+        "packages/ui/vue/src/components/table/column/Column.vue",
+        "packages/ui/webc/src/components/table/column/table-column.template.ts"
+      ],
+      "description": "sort icon part of table column. Availability follows the rendered component structure.",
+      "scope": "so-table-column"
+    },
+    {
+      "name": "so-table-column__text",
+      "sources": [
+        "packages/ui/angular/src/components/table/column/table-column.component.html",
+        "packages/ui/react/src/components/table/column/Column.tsx",
+        "packages/ui/solid/src/components/table/column/Column.tsx",
+        "packages/ui/svelte/src/components/table/column/Column.svelte",
+        "packages/ui/vue/src/components/table/column/Column.vue",
+        "packages/ui/webc/src/components/table/column/table-column.template.ts"
+      ],
+      "description": "text part of table column. Availability follows the rendered component structure.",
+      "scope": "so-table-column"
+    },
+    {
+      "name": "so-table-row__cell",
+      "sources": [
+        "packages/ui/angular/src/components/table/row/table-row.component.html",
+        "packages/ui/react/src/components/table/row/Cells.tsx",
+        "packages/ui/solid/src/components/table/row/Cells.tsx",
+        "packages/ui/svelte/src/components/table/row/Row.svelte",
+        "packages/ui/vue/src/components/table/row/Cells.vue",
+        "packages/ui/webc/src/components/table/row/table-row.template.ts"
+      ],
+      "description": "cell part of table row. Availability follows the rendered component structure.",
+      "scope": "so-table-row"
+    },
+    {
+      "name": "so-table-row__select",
+      "sources": [
+        "packages/ui/angular/src/components/table/row/table-row.component.html",
+        "packages/ui/react/src/components/table/row/Row.tsx",
+        "packages/ui/solid/src/components/table/row/Row.tsx",
+        "packages/ui/svelte/src/components/table/row/Row.svelte",
+        "packages/ui/vue/src/components/table/row/Row.vue",
+        "packages/ui/webc/src/components/table/row/table-row.template.ts"
+      ],
+      "description": "select part of table row. Availability follows the rendered component structure.",
+      "scope": "so-table-row"
+    },
+    {
+      "name": "so-tabs__bar",
+      "sources": [
+        "packages/ui/angular/src/components/tabs/tabs.component.html",
+        "packages/ui/react/src/components/tabs/Tabs.tsx",
+        "packages/ui/solid/src/components/tabs/Tabs.tsx",
+        "packages/ui/svelte/src/components/tabs/Tabs.svelte",
+        "packages/ui/vue/src/components/tabs/Tabs.vue",
+        "packages/ui/webc/src/components/tabs/tabs.template.ts"
+      ],
+      "description": "bar part of tabs. Availability follows the rendered component structure.",
+      "scope": "so-tabs"
+    },
+    {
+      "name": "so-tabs__leading",
+      "sources": [
+        "packages/ui/angular/src/components/tabs/tabs.component.html",
+        "packages/ui/react/src/components/tabs/Tabs.tsx",
+        "packages/ui/solid/src/components/tabs/Tabs.tsx",
+        "packages/ui/svelte/src/components/tabs/Tabs.svelte",
+        "packages/ui/vue/src/components/tabs/Tabs.vue",
+        "packages/ui/webc/src/components/tabs/tabs.template.ts"
+      ],
+      "description": "leading part of tabs. Availability follows the rendered component structure.",
+      "scope": "so-tabs"
+    },
+    {
+      "name": "so-tabs__list",
+      "sources": [
+        "packages/ui/angular/src/components/tabs/tabs.component.html",
+        "packages/ui/react/src/components/tabs/Tabs.tsx",
+        "packages/ui/solid/src/components/tabs/Tabs.tsx",
+        "packages/ui/svelte/src/components/tabs/Tabs.svelte",
+        "packages/ui/vue/src/components/tabs/Tabs.vue",
+        "packages/ui/webc/src/components/tabs/tabs.template.ts"
+      ],
+      "description": "list part of tabs. Availability follows the rendered component structure.",
+      "scope": "so-tabs"
+    },
+    {
+      "name": "so-tabs__trailing",
+      "sources": [
+        "packages/ui/angular/src/components/tabs/tabs.component.html",
+        "packages/ui/react/src/components/tabs/Tabs.tsx",
+        "packages/ui/solid/src/components/tabs/Tabs.tsx",
+        "packages/ui/svelte/src/components/tabs/Tabs.svelte",
+        "packages/ui/vue/src/components/tabs/Tabs.vue",
+        "packages/ui/webc/src/components/tabs/tabs.template.ts"
+      ],
+      "description": "trailing part of tabs. Availability follows the rendered component structure.",
+      "scope": "so-tabs"
+    },
+    {
+      "name": "so-tabs-item__close",
+      "sources": [
+        "packages/ui/angular/src/components/tabs/item/tabs-item.component.html",
+        "packages/ui/react/src/components/tabs/item/Item.tsx",
+        "packages/ui/solid/src/components/tabs/item/Item.tsx",
+        "packages/ui/svelte/src/components/tabs/item/Item.svelte",
+        "packages/ui/vue/src/components/tabs/item/Item.vue",
+        "packages/ui/webc/src/components/tabs/item/tabs-item.template.ts"
+      ],
+      "description": "close part of tabs item. Availability follows the rendered component structure.",
+      "scope": "so-tabs-item"
+    },
+    {
+      "name": "so-tags-item__close",
+      "sources": [
+        "packages/ui/angular/src/components/tags/item/tags-item.component.html",
+        "packages/ui/react/src/components/tags/item/Item.tsx",
+        "packages/ui/solid/src/components/tags/item/Item.tsx",
+        "packages/ui/svelte/src/components/tags/item/Item.svelte",
+        "packages/ui/vue/src/components/tags/item/Item.vue",
+        "packages/ui/webc/src/components/tags/item/tags-item.template.ts"
+      ],
+      "description": "close part of tags item. Availability follows the rendered component structure.",
+      "scope": "so-tags-item"
+    },
+    {
+      "name": "so-textarea__counter",
+      "sources": [
+        "packages/ui/angular/src/components/textarea/textarea.component.html",
+        "packages/ui/react/src/components/textarea/Textarea.tsx",
+        "packages/ui/solid/src/components/textarea/Textarea.tsx",
+        "packages/ui/svelte/src/components/textarea/Textarea.svelte",
+        "packages/ui/vue/src/components/textarea/Textarea.vue",
+        "packages/ui/webc/src/components/textarea/textarea.template.ts"
+      ],
+      "description": "counter part of textarea. Availability follows the rendered component structure.",
+      "scope": "so-textarea"
+    },
+    {
+      "name": "so-toasts__list",
+      "sources": [
+        "packages/ui/angular/src/components/toasts/toasts.component.html",
+        "packages/ui/react/src/components/toasts/Toasts.tsx",
+        "packages/ui/solid/src/components/toasts/Toasts.tsx",
+        "packages/ui/svelte/src/components/toasts/Toasts.svelte",
+        "packages/ui/vue/src/components/toasts/Toasts.vue",
+        "packages/ui/webc/src/components/toasts/toasts.template.ts"
+      ],
+      "description": "list part of toasts. Availability follows the rendered component structure.",
+      "scope": "so-toasts"
+    },
+    {
+      "name": "so-toasts-item__body",
+      "sources": [
+        "packages/ui/angular/src/components/toasts/item/toasts-item.component.html",
+        "packages/ui/react/src/components/toasts/item/Item.tsx",
+        "packages/ui/solid/src/components/toasts/item/Item.tsx",
+        "packages/ui/svelte/src/components/toasts/item/Item.svelte",
+        "packages/ui/vue/src/components/toasts/item/Item.vue",
+        "packages/ui/webc/src/components/toasts/item/toasts-item.template.ts"
+      ],
+      "description": "body part of toasts item. Availability follows the rendered component structure.",
+      "scope": "so-toasts-item"
+    },
+    {
+      "name": "so-toasts-item__card",
+      "sources": [
+        "packages/ui/angular/src/components/toasts/item/toasts-item.component.html",
+        "packages/ui/react/src/components/toasts/item/Item.tsx",
+        "packages/ui/solid/src/components/toasts/item/Item.tsx",
+        "packages/ui/svelte/src/components/toasts/item/Item.svelte",
+        "packages/ui/vue/src/components/toasts/item/Item.vue",
+        "packages/ui/webc/src/components/toasts/item/toasts-item.template.ts"
+      ],
+      "description": "card part of toasts item. Availability follows the rendered component structure.",
+      "scope": "so-toasts-item"
+    },
+    {
+      "name": "so-toasts-item__close",
+      "sources": [
+        "packages/ui/angular/src/components/toasts/item/toasts-item.component.html",
+        "packages/ui/react/src/components/toasts/item/Item.tsx",
+        "packages/ui/solid/src/components/toasts/item/Item.tsx",
+        "packages/ui/svelte/src/components/toasts/item/Item.svelte",
+        "packages/ui/vue/src/components/toasts/item/Item.vue",
+        "packages/ui/webc/src/components/toasts/item/toasts-item.template.ts"
+      ],
+      "description": "close part of toasts item. Availability follows the rendered component structure.",
+      "scope": "so-toasts-item"
+    },
+    {
+      "name": "so-toasts-item__content",
+      "sources": [
+        "packages/ui/angular/src/components/toasts/item/toasts-item.component.html",
+        "packages/ui/react/src/components/toasts/item/Item.tsx",
+        "packages/ui/solid/src/components/toasts/item/Item.tsx",
+        "packages/ui/svelte/src/components/toasts/item/Item.svelte",
+        "packages/ui/vue/src/components/toasts/item/Item.vue",
+        "packages/ui/webc/src/components/toasts/item/toasts-item.template.ts"
+      ],
+      "description": "content part of toasts item. Availability follows the rendered component structure.",
+      "scope": "so-toasts-item"
+    },
+    {
+      "name": "so-toasts-item__description",
+      "sources": [
+        "packages/ui/angular/src/components/toasts/item/toasts-item.component.html",
+        "packages/ui/react/src/components/toasts/item/Item.tsx",
+        "packages/ui/solid/src/components/toasts/item/Item.tsx",
+        "packages/ui/svelte/src/components/toasts/item/Item.svelte",
+        "packages/ui/vue/src/components/toasts/item/Item.vue",
+        "packages/ui/webc/src/components/toasts/item/toasts-item.template.ts"
+      ],
+      "description": "description part of toasts item. Availability follows the rendered component structure.",
+      "scope": "so-toasts-item"
+    },
+    {
+      "name": "so-toasts-item__icon",
+      "sources": [
+        "packages/ui/angular/src/components/toasts/item/toasts-item.component.html",
+        "packages/ui/react/src/components/toasts/item/Item.tsx",
+        "packages/ui/solid/src/components/toasts/item/Item.tsx",
+        "packages/ui/svelte/src/components/toasts/item/Item.svelte",
+        "packages/ui/vue/src/components/toasts/item/Item.vue",
+        "packages/ui/webc/src/components/toasts/item/toasts-item.template.ts"
+      ],
+      "description": "icon part of toasts item. Availability follows the rendered component structure.",
+      "scope": "so-toasts-item"
+    },
+    {
+      "name": "so-toasts-item__text",
+      "sources": [
+        "packages/ui/angular/src/components/toasts/item/toasts-item.component.html",
+        "packages/ui/react/src/components/toasts/item/Item.tsx",
+        "packages/ui/solid/src/components/toasts/item/Item.tsx",
+        "packages/ui/svelte/src/components/toasts/item/Item.svelte",
+        "packages/ui/vue/src/components/toasts/item/Item.vue",
+        "packages/ui/webc/src/components/toasts/item/toasts-item.template.ts"
+      ],
+      "description": "text part of toasts item. Availability follows the rendered component structure.",
+      "scope": "so-toasts-item"
+    },
+    {
+      "name": "so-tooltip__content",
+      "sources": [
+        "packages/ui/angular/src/components/tooltip/tooltip.component.html",
+        "packages/ui/react/src/components/tooltip/Tooltip.tsx",
+        "packages/ui/solid/src/components/tooltip/Tooltip.tsx",
+        "packages/ui/svelte/src/components/tooltip/Tooltip.svelte",
+        "packages/ui/vue/src/components/tooltip/Tooltip.vue",
+        "packages/ui/webc/src/components/tooltip/tooltip.template.ts"
+      ],
+      "description": "content part of tooltip. Availability follows the rendered component structure.",
+      "scope": "so-tooltip"
+    },
+    {
+      "name": "so-tooltip__panel",
+      "sources": [
+        "packages/ui/angular/src/components/tooltip/tooltip.component.html",
+        "packages/ui/react/src/components/tooltip/Tooltip.tsx",
+        "packages/ui/solid/src/components/tooltip/Tooltip.tsx",
+        "packages/ui/svelte/src/components/tooltip/Tooltip.svelte",
+        "packages/ui/vue/src/components/tooltip/Tooltip.vue",
+        "packages/ui/webc/src/components/tooltip/tooltip.template.ts"
+      ],
+      "description": "panel part of tooltip. Availability follows the rendered component structure.",
+      "scope": "so-tooltip"
+    }
+  ],
+  "modifiers": [
+    {
+      "name": "--animation-",
+      "sources": ["packages/core/src/components/custom/skeleton/skeleton.class.ts"],
+      "pattern": "so-<block>--animation-<value>",
+      "description": "Theme-defined skeleton animation.",
+      "scope": "Skeleton",
+      "values": "<animation>; values declared by the theme"
+    },
+    {
+      "name": "--clearable",
+      "sources": ["packages/core/src/components/base/clearable/clearable.class.ts"],
+      "pattern": "so-<block>--clearable",
+      "description": "Control offers a clear action.",
+      "scope": "TClearable descendants",
+      "values": "present when clearable"
+    },
+    {
+      "name": "--closable",
+      "sources": [
+        "packages/core/src/components/custom/tabs/item/item.class.ts",
+        "packages/core/src/components/custom/tags/item/item.class.ts"
+      ],
+      "pattern": "so-<block>--closable",
+      "description": "Collection item exposes a close action.",
+      "scope": "Tabs item and Tags item roots",
+      "values": "present when closable"
+    },
+    {
+      "name": "--editable",
+      "sources": ["packages/core/src/components/custom/select/select.class.ts"],
+      "pattern": "so-<block>--editable",
+      "description": "Select accepts text input.",
+      "scope": "Select root",
+      "values": "present in search or filter mode"
+    },
+    {
+      "name": "--indeterminate",
+      "sources": ["packages/core/src/components/custom/check-box/check-box.class.ts"],
+      "pattern": "so-<block>--indeterminate",
+      "description": "Mixed check state.",
+      "scope": "CheckBox root",
+      "values": "present when indeterminate"
+    },
+    {
+      "name": "--layout-",
+      "sources": ["packages/core/src/components/custom/toasts/toasts.class.ts"],
+      "pattern": "so-<block>--layout-<value>",
+      "description": "Toast region layout.",
+      "scope": "Toasts root",
+      "values": "list | cascade"
+    },
+    {
+      "name": "--open",
+      "sources": ["packages/core/src/components/custom/select/select.class.ts"],
+      "pattern": "so-<block>--open",
+      "description": "Select popup is open.",
+      "scope": "Select root",
+      "values": "present when open"
+    },
+    {
+      "name": "--placement-",
+      "sources": [
+        "packages/core/src/components/custom/dialog/dialog.class.ts",
+        "packages/core/src/components/custom/drawer/drawer.class.ts",
+        "packages/core/src/components/custom/toasts/toasts.class.ts"
+      ],
+      "pattern": "so-<block>--placement-<value>",
+      "description": "Position relative to the window or containing area.",
+      "scope": "Dialog, Drawer and Toasts roots",
+      "values": "Dialog: center | start | end | top | bottom; Drawer: start | end | top | bottom; Toasts: top-start | top | top-end | bottom-start | bottom | bottom-end"
+    },
+    {
+      "name": "--position-",
+      "sources": [
+        "packages/core/src/components/custom/field/field.class.ts",
+        "packages/core/src/components/custom/label/label.class.ts"
+      ],
+      "pattern": "so-<block>--position-<value>",
+      "description": "Position of the label relative to its control.",
+      "scope": "Label and Field roots",
+      "values": "Label: start | end | top | bottom; Field: top | start | end"
+    },
+    {
+      "name": "--position-end",
+      "sources": ["packages/core/src/components/custom/tabs/tabs.class.ts"],
+      "pattern": "so-<block>--position-end",
+      "description": "Tabs bar follows the content.",
+      "scope": "Tabs root",
+      "values": "end"
+    },
+    {
+      "name": "--readonly",
+      "sources": ["packages/core/src/components/base/input-control/input-control.class.ts"],
+      "pattern": "so-<block>--readonly",
+      "description": "Value cannot be edited.",
+      "scope": "TInputControl descendants",
+      "values": "present when readonly"
+    },
+    {
+      "name": "--ready-animation",
+      "sources": ["packages/themes/base/setup/plugins/tabs-view.plugin.ts"],
+      "pattern": "so-<block>--ready-animation",
+      "description": "Tabs geometry has been measured by TTabsViewPlugin; removed on disposal.",
+      "scope": "Tabs root; requires @soldy-ui/theme-base/setup",
+      "values": "present after the initial layout measurement"
+    },
+    {
+      "name": "--required",
+      "sources": ["packages/core/src/components/base/input-control/input-control.class.ts"],
+      "pattern": "so-<block>--required",
+      "description": "A value is required.",
+      "scope": "TInputControl descendants",
+      "values": "present when required"
+    },
+    {
+      "name": "--shape-",
+      "sources": ["packages/core/src/components/custom/skeleton/skeleton.class.ts"],
+      "pattern": "so-<block>--shape-<value>",
+      "description": "Theme-defined skeleton geometry.",
+      "scope": "Skeleton",
+      "values": "<shape>; values declared by the theme"
+    },
+    {
+      "name": "--size-",
+      "sources": [
+        "packages/core/src/components/custom/menu/menu.class.ts",
+        "packages/core/src/components/custom/menu/submenu/submenu.class.ts"
+      ],
+      "pattern": "so-<block>--size-<value>",
+      "description": "Library size scale; normal is emitted too.",
+      "scope": "TStylable descendants, Icon, and Menu panels",
+      "values": "sm | normal | lg | xl | 2xl"
+    },
+    {
+      "name": "--tooltip-",
+      "sources": ["packages/core/src/components/custom/slider/slider.class.ts"],
+      "pattern": "so-<block>--tooltip-<value>",
+      "description": "Visibility policy of slider value tooltips.",
+      "scope": "Slider root",
+      "values": "none | auto | always"
+    },
+    {
+      "name": "--type-",
+      "sources": ["packages/core/src/components/custom/toasts/item/item.class.ts"],
+      "pattern": "so-<block>--type-<value>",
+      "description": "Semantic toast type; absent for an ordinary message.",
+      "scope": "Toasts item root",
+      "values": "info | success | warning | error"
+    },
+    {
+      "name": "--variant-",
+      "sources": [
+        "packages/core/src/components/base/stylable/stylable.class.ts",
+        "packages/core/src/components/custom/menu/menu.class.ts",
+        "packages/core/src/components/custom/menu/submenu/submenu.class.ts",
+        "packages/core/src/components/custom/skeleton/skeleton.class.ts"
+      ],
+      "pattern": "so-<block>--variant-<value>",
+      "description": "Theme-defined color or semantic variant; absent when unset.",
+      "scope": "TStylable descendants, Skeleton, and Menu panels",
+      "values": "<variant>; values declared by the theme"
+    },
+    {
+      "name": "--view-",
+      "sources": [
+        "packages/core/src/components/custom/accordion/accordion.class.ts",
+        "packages/core/src/components/custom/button/button.class.ts",
+        "packages/core/src/components/custom/check-box/check-box.class.ts",
+        "packages/core/src/components/custom/list-box/list-box.class.ts",
+        "packages/core/src/components/custom/radio-group/item/item.class.ts",
+        "packages/core/src/components/custom/radio-group/radio-group.class.ts",
+        "packages/core/src/components/custom/tabs/tabs.class.ts",
+        "packages/core/src/components/custom/tags/tags.class.ts"
+      ],
+      "pattern": "so-<block>--view-<value>",
+      "description": "Theme-defined visual treatment; absent when unset.",
+      "scope": "Button, CheckBox, RadioGroup/items, Tabs, Accordion/items, Tags/items, ListBox/Select rows",
+      "values": "<view>; values declared by the theme"
+    }
+  ],
+  "data": [
+    {
+      "name": "data-align",
+      "sources": [
+        "packages/core/src/components/custom/table/collection/extensions/columns/item/item.extension.ts",
+        "packages/core/src/components/custom/table/column/column.class.ts"
+      ],
+      "description": "Inline cell alignment.",
+      "scope": "Table column header and corresponding body cells",
+      "values": "start | center | end",
+      "presence": "TDataset serializes false as \"false\"; null/undefined removes the attribute. See scope for the bound DOM node."
+    },
+    {
+      "name": "data-can-next",
+      "sources": ["packages/core/src/components/custom/scroller/scroller.class.ts"],
+      "description": "More content can be scrolled forward.",
+      "scope": "Scroller root",
+      "values": "true | false",
+      "presence": "TDataset serializes false as \"false\"; null/undefined removes the attribute. See scope for the bound DOM node."
+    },
+    {
+      "name": "data-can-prev",
+      "sources": ["packages/core/src/components/custom/scroller/scroller.class.ts"],
+      "description": "More content can be scrolled backward.",
+      "scope": "Scroller root",
+      "values": "true | false",
+      "presence": "TDataset serializes false as \"false\"; null/undefined removes the attribute. See scope for the bound DOM node."
+    },
+    {
+      "name": "data-contained",
+      "sources": [
+        "packages/core/src/components/custom/drawer/drawer.class.ts",
+        "packages/core/src/components/custom/frame/frame.class.ts"
+      ],
+      "description": "Layer is constrained to a container.",
+      "scope": "Frame/Drawer root",
+      "values": "true | false",
+      "presence": "TDataset serializes false as \"false\"; null/undefined removes the attribute. See scope for the bound DOM node."
+    },
+    {
+      "name": "data-content-fit",
+      "sources": [
+        "packages/core/src/components/custom/list-box/collection/extensions/list-box/list-box.extension.ts",
+        "packages/core/src/components/custom/list-box/list-box.class.ts",
+        "packages/core/src/components/custom/select/collection/extensions/select/select.extension.ts",
+        "packages/core/src/components/custom/select/select.class.ts"
+      ],
+      "description": "Text fitting policy inherited by list items.",
+      "scope": "ListBox and Select list root and item wrapper; truncate | wrap | expand",
+      "values": "List: truncate | wrap | expand; item: truncate | wrap",
+      "presence": "Written when the list extension is attached; removed on disposal."
+    },
+    {
+      "name": "data-current",
+      "sources": ["packages/core/src/components/custom/slider/slider.class.ts"],
+      "description": "Mark equals the current slider value.",
+      "scope": "Slider mark",
+      "values": "true | false",
+      "presence": "TDataset serializes false as \"false\"; null/undefined removes the attribute. See scope for the bound DOM node."
+    },
+    {
+      "name": "data-disabled",
+      "sources": ["packages/core/src/components/base/control/control.class.ts"],
+      "description": "Control is disabled, including disabled inherited from its owner.",
+      "scope": "TControl descendants and collection items",
+      "values": "true | false",
+      "presence": "TDataset serializes false as \"false\"; null/undefined removes the attribute. See scope for the bound DOM node."
+    },
+    {
+      "name": "data-dragging",
+      "sources": [
+        "packages/core/src/components/custom/slider/slider.class.ts",
+        "packages/core/src/components/custom/table/collection/extensions/columns/columns.extension.ts"
+      ],
+      "description": "Pointer drag in progress.",
+      "scope": "Slider root and thumb; Table root and dragged column header",
+      "values": "Slider root/thumb: true | false; Table root/header: true or absent",
+      "presence": "Table flags exist only during the gesture; Slider writes both boolean states."
+    },
+    {
+      "name": "data-drop",
+      "sources": [
+        "packages/core/src/components/custom/table/collection/extensions/columns/columns.extension.ts"
+      ],
+      "description": "Proposed insertion side.",
+      "scope": "Table target column header",
+      "values": "before | after; absent outside a reorder target",
+      "presence": "Present only while applicable; null/undefined removes it. Boolean true is serialized as \"true\"."
+    },
+    {
+      "name": "data-edge",
+      "sources": ["packages/core/src/components/custom/popover/popover.class.ts"],
+      "description": "Container edge used by a contained overlay.",
+      "scope": "Popover panel",
+      "values": "start | end | top | bottom",
+      "presence": "TDataset serializes false as \"false\"; null/undefined removes the attribute. See scope for the bound DOM node."
+    },
+    {
+      "name": "data-grid",
+      "sources": [
+        "packages/core/src/components/custom/table/collection/extensions/grid/grid.extension.ts"
+      ],
+      "description": "Table uses keyboard grid navigation.",
+      "scope": "Table root",
+      "values": "true | false",
+      "presence": "TDataset serializes false as \"false\"; null/undefined removes the attribute. See scope for the bound DOM node."
+    },
+    {
+      "name": "data-highlighted",
+      "sources": ["packages/plugins/src/custom/list/item/item.plugin.ts"],
+      "description": "Current keyboard or pointer navigation target.",
+      "scope": "ListBox/Select item row and Menu item root",
+      "values": "true | false",
+      "presence": "TDataset serializes false as \"false\"; null/undefined removes the attribute. See scope for the bound DOM node."
+    },
+    {
+      "name": "data-in-range",
+      "sources": ["packages/core/src/components/custom/slider/slider.class.ts"],
+      "description": "Mark lies within the selected slider interval.",
+      "scope": "Slider mark",
+      "values": "true | false",
+      "presence": "TDataset serializes false as \"false\"; null/undefined removes the attribute. See scope for the bound DOM node."
+    },
+    {
+      "name": "data-indeterminate",
+      "sources": ["packages/core/src/components/base/progress/progress.class.ts"],
+      "description": "Progress has no known amount.",
+      "scope": "ProgressLinear and ProgressSpinner roots",
+      "values": "true | false",
+      "presence": "TDataset serializes false as \"false\"; null/undefined removes the attribute. See scope for the bound DOM node."
+    },
+    {
+      "name": "data-indicator",
+      "sources": [
+        "packages/core/src/components/custom/list-box/collection/extensions/list-box/list-box.extension.ts",
+        "packages/core/src/components/custom/list-box/list-box.class.ts",
+        "packages/core/src/components/custom/select/collection/extensions/select/select.extension.ts",
+        "packages/core/src/components/custom/select/select.class.ts"
+      ],
+      "description": "Side reserved for the selection indicator.",
+      "scope": "ListBox and Select list root and item wrapper; none | start | end",
+      "values": "none | start | end",
+      "presence": "Written when the list extension is attached; removed on disposal."
+    },
+    {
+      "name": "data-invalid",
+      "sources": ["packages/core/src/components/base/value-control/value-control.class.ts"],
+      "description": "Current value fails validation.",
+      "scope": "Value controls; Field association propagates it to its control",
+      "values": "true | false",
+      "presence": "TDataset serializes false as \"false\"; null/undefined removes the attribute. See scope for the bound DOM node."
+    },
+    {
+      "name": "data-landing",
+      "sources": [
+        "packages/core/src/components/custom/table/collection/extensions/columns/columns.extension.ts"
+      ],
+      "description": "Dragged column is returning to its committed place.",
+      "scope": "Table dragged column header",
+      "values": "true; absent when inactive",
+      "presence": "Gesture flag: written as true, removed with null when inactive."
+    },
+    {
+      "name": "data-layer",
+      "sources": ["packages/core/src/components/base/layer/types.ts"],
+      "description": "Layer ordering index.",
+      "scope": "Frame, modal panel and Toasts region roots",
+      "values": "positive integer; absent when the layer has no ordering slot",
+      "presence": "TDataset serializes false as \"false\"; null/undefined removes the attribute. See scope for the bound DOM node."
+    },
+    {
+      "name": "data-limit",
+      "sources": ["packages/core/src/components/custom/textarea/textarea.class.ts"],
+      "description": "Text length reaches the configured limit.",
+      "scope": "Textarea root",
+      "values": "reached | exceeded; absent below the limit or without maxlength",
+      "presence": "Present only when text length reaches or exceeds maxlength."
+    },
+    {
+      "name": "data-maximized",
+      "sources": ["packages/core/src/components/custom/dialog/dialog.class.ts"],
+      "description": "Dialog occupies the available area.",
+      "scope": "Dialog panel/root",
+      "values": "true | false",
+      "presence": "TDataset serializes false as \"false\"; null/undefined removes the attribute. See scope for the bound DOM node."
+    },
+    {
+      "name": "data-open",
+      "sources": [
+        "packages/core/src/components/base/layer/layer.class.ts",
+        "packages/core/src/components/base/modal-layer/modal-layer.class.ts",
+        "packages/core/src/components/custom/date-picker/date-picker.class.ts",
+        "packages/core/src/components/custom/menu/menu.class.ts",
+        "packages/core/src/components/custom/menu/popup-item/popup-item.class.ts",
+        "packages/core/src/components/custom/popover/popover.class.ts",
+        "packages/core/src/components/custom/select/select.class.ts",
+        "packages/core/src/components/custom/toasts/item/item.class.ts",
+        "packages/themes/base/setup/plugins/toasts-front.plugin.ts"
+      ],
+      "description": "Layer is visible or a popup owner is open.",
+      "scope": "Frame/popup panel, Dialog/Drawer backdrop and panel, Toast item; Popover/Menu/Select/DatePicker root",
+      "values": "true | false",
+      "presence": "TDataset serializes false as \"false\"; null/undefined removes the attribute. See scope for the bound DOM node."
+    },
+    {
+      "name": "data-out-of-bounds",
+      "sources": [
+        "packages/core/src/components/custom/calendar/collection/extensions/view/view.extension.ts"
+      ],
+      "description": "Date falls outside the allowed bounds.",
+      "scope": "Calendar day item",
+      "values": "true | false",
+      "presence": "TDataset serializes false as \"false\"; null/undefined removes the attribute. See scope for the bound DOM node."
+    },
+    {
+      "name": "data-overflow",
+      "sources": [
+        "packages/core/src/components/custom/table/collection/extensions/columns/columns.extension.ts",
+        "packages/core/src/components/custom/tags/tags.class.ts"
+      ],
+      "description": "Content exceeds the available space.",
+      "scope": "Table root; Tags root (layout overflow policy)",
+      "values": "Table: true | false; Tags: scroll | wrap",
+      "presence": "TDataset serializes false as \"false\"; null/undefined removes the attribute. See scope for the bound DOM node."
+    },
+    {
+      "name": "data-owner",
+      "sources": ["packages/plugins/src/custom/dismiss/dismiss.plugin.ts"],
+      "description": "Dismissal ownership link.",
+      "scope": "Owned overlay/trigger nodes configured by TDismissPlugin",
+      "values": "owner identifier; configured attribute may be overridden",
+      "presence": "TDataset serializes false as \"false\"; null/undefined removes the attribute. See scope for the bound DOM node."
+    },
+    {
+      "name": "data-placeholder",
+      "sources": ["packages/core/src/components/custom/date-input/date-input.class.ts"],
+      "description": "Segment has no date value and displays its placeholder.",
+      "scope": "DateInput inner segment",
+      "values": "true | false",
+      "presence": "TDataset serializes false as \"false\"; null/undefined removes the attribute. See scope for the bound DOM node."
+    },
+    {
+      "name": "data-placement",
+      "sources": ["packages/plugins/src/custom/frame/anchor/anchor.plugin.ts"],
+      "description": "Effective anchor placement after flipping.",
+      "scope": "Frame-backed Popover, Menu, Select, DatePicker and Tooltip panels",
+      "values": "top | bottom | left | right, optionally suffixed -start or -end; actual values depend on anchor configuration",
+      "presence": "TDataset serializes false as \"false\"; null/undefined removes the attribute. See scope for the bound DOM node."
+    },
+    {
+      "name": "data-pressed",
+      "sources": ["packages/plugins/src/custom/number-input/stepper/stepper.plugin.ts"],
+      "description": "Stepper button is held.",
+      "scope": "NumberInput increment/decrement buttons",
+      "values": "true | false",
+      "presence": "TDataset serializes false as \"false\"; null/undefined removes the attribute. See scope for the bound DOM node."
+    },
+    {
+      "name": "data-preview",
+      "sources": [
+        "packages/core/src/components/custom/calendar/collection/extensions/selection/selection.extension.ts"
+      ],
+      "description": "Day belongs to the pending calendar range preview.",
+      "scope": "Calendar day item",
+      "values": "true | false",
+      "presence": "TDataset serializes false as \"false\"; null/undefined removes the attribute. See scope for the bound DOM node."
+    },
+    {
+      "name": "data-range-end",
+      "sources": [
+        "packages/core/src/components/custom/calendar/collection/extensions/selection/selection.extension.ts"
+      ],
+      "description": "Last day of a selected range.",
+      "scope": "Calendar day item",
+      "values": "true | false",
+      "presence": "TDataset serializes false as \"false\"; null/undefined removes the attribute. See scope for the bound DOM node."
+    },
+    {
+      "name": "data-range-middle",
+      "sources": [
+        "packages/core/src/components/custom/calendar/collection/extensions/selection/selection.extension.ts"
+      ],
+      "description": "Interior day of a selected range.",
+      "scope": "Calendar day item",
+      "values": "true | false",
+      "presence": "TDataset serializes false as \"false\"; null/undefined removes the attribute. See scope for the bound DOM node."
+    },
+    {
+      "name": "data-range-start",
+      "sources": [
+        "packages/core/src/components/custom/calendar/collection/extensions/selection/selection.extension.ts"
+      ],
+      "description": "First day of a selected range.",
+      "scope": "Calendar day item",
+      "values": "true | false",
+      "presence": "TDataset serializes false as \"false\"; null/undefined removes the attribute. See scope for the bound DOM node."
+    },
+    {
+      "name": "data-reorder-preview",
+      "sources": [
+        "packages/core/src/components/custom/table/collection/extensions/columns/columns.extension.ts"
+      ],
+      "description": "Body columns follow a column reorder preview.",
+      "scope": "Table root",
+      "values": "column; absent outside that preview",
+      "presence": "Present only while applicable; null/undefined removes it. Boolean true is serialized as \"true\"."
+    },
+    {
+      "name": "data-reorderable",
+      "sources": ["packages/core/src/components/custom/table/column/column.class.ts"],
+      "description": "Header can initiate column reordering.",
+      "scope": "Table column header",
+      "values": "true | false",
+      "presence": "TDataset serializes false as \"false\"; null/undefined removes the attribute. See scope for the bound DOM node."
+    },
+    {
+      "name": "data-resize-ghost",
+      "sources": ["packages/core/src/components/custom/table/column/column.class.ts"],
+      "description": "Column resize preview is deferred.",
+      "scope": "Table column header",
+      "values": "true; absent when inactive",
+      "presence": "Gesture flag: written as true, removed with null when inactive."
+    },
+    {
+      "name": "data-resizing",
+      "sources": [
+        "packages/core/src/components/custom/table/collection/extensions/columns/columns.extension.ts",
+        "packages/core/src/components/custom/table/column/column.class.ts"
+      ],
+      "description": "A column resize gesture is active.",
+      "scope": "Table root and resized column header",
+      "values": "Column header: true | false; Table root: true or absent",
+      "presence": "Table root flag is removed outside a resize; column headers retain false."
+    },
+    {
+      "name": "data-selected",
+      "sources": [
+        "packages/core/src/components/base/collection/engine/extension/activation/activation.extension.ts",
+        "packages/core/src/components/base/collection/engine/extension/selection/selection.extension.ts",
+        "packages/core/src/components/custom/calendar/collection/extensions/selection/selection.extension.ts",
+        "packages/core/src/components/custom/date-picker/date-picker.class.ts",
+        "packages/core/src/components/custom/menu/menu.class.ts",
+        "packages/core/src/components/custom/popover/popover.class.ts"
+      ],
+      "description": "Selected/active state; for popup triggers indicates the open popup.",
+      "scope": "Selectable/activatable collection item; ListBox/Select inner row; popup triggerDataset (consumer trigger, Select arrow, DatePicker button)",
+      "values": "true | false",
+      "presence": "TDataset serializes false as \"false\"; null/undefined removes the attribute. See scope for the bound DOM node."
+    },
+    {
+      "name": "data-shift",
+      "sources": [
+        "packages/core/src/components/custom/table/collection/extensions/columns/columns.extension.ts"
+      ],
+      "description": "Direction a neighboring column moves to leave a gap.",
+      "scope": "Table column header",
+      "values": "start | end; absent for unshifted columns",
+      "presence": "Present only while applicable; null/undefined removes it. Boolean true is serialized as \"true\"."
+    },
+    {
+      "name": "data-sized",
+      "sources": [
+        "packages/core/src/components/custom/table/collection/extensions/columns/columns.extension.ts",
+        "packages/core/src/components/custom/table/column/column.class.ts"
+      ],
+      "description": "Layout width is known.",
+      "scope": "Table column header and Table root",
+      "values": "Column header: true | false; Table root: true or absent",
+      "presence": "Table root marker exists only if every shown column has a known width; column headers retain false."
+    },
+    {
+      "name": "data-so-motion",
+      "sources": ["packages/plugins/src/motion/motion.ts"],
+      "description": "Global motion preference override.",
+      "scope": "Document root",
+      "values": "full | reduce; absence follows prefers-reduced-motion",
+      "presence": "TDataset serializes false as \"false\"; null/undefined removes the attribute. See scope for the bound DOM node."
+    },
+    {
+      "name": "data-sort",
+      "sources": [
+        "packages/core/src/components/custom/table/collection/extensions/sort/sort.extension.ts"
+      ],
+      "description": "Current sort direction.",
+      "scope": "Table column header",
+      "values": "asc | desc; absent when unsorted",
+      "presence": "TDataset serializes false as \"false\"; null/undefined removes the attribute. See scope for the bound DOM node."
+    },
+    {
+      "name": "data-sort-priority",
+      "sources": [
+        "packages/core/src/components/custom/table/collection/extensions/sort/sort.extension.ts"
+      ],
+      "description": "One-based priority in multiple-column sorting.",
+      "scope": "Table column header",
+      "values": "positive integer; absent when unsorted",
+      "presence": "TDataset serializes false as \"false\"; null/undefined removes the attribute. See scope for the bound DOM node."
+    },
+    {
+      "name": "data-sticky-head",
+      "sources": ["packages/core/src/components/custom/table/table.class.ts"],
+      "description": "Table header remains visible during scrolling.",
+      "scope": "Table root",
+      "values": "true | false",
+      "presence": "TDataset serializes false as \"false\"; null/undefined removes the attribute. See scope for the bound DOM node."
+    },
+    {
+      "name": "data-still",
+      "sources": [
+        "packages/core/src/components/custom/table/collection/extensions/columns/columns.extension.ts"
+      ],
+      "description": "Column reorder leaves neighboring columns still.",
+      "scope": "Table dragged column header",
+      "values": "true; absent when inactive",
+      "presence": "Gesture flag: written as true, removed with null when inactive."
+    },
+    {
+      "name": "data-swiping",
+      "sources": [
+        "packages/core/src/components/custom/date-picker/date-picker.class.ts",
+        "packages/core/src/components/custom/drawer/drawer.class.ts",
+        "packages/core/src/components/custom/popover/popover.class.ts",
+        "packages/core/src/components/custom/select/select.class.ts",
+        "packages/core/src/components/custom/toasts/item/item.class.ts"
+      ],
+      "description": "Layer follows a swipe-to-dismiss gesture.",
+      "scope": "Drawer/Toast root and Popover/Select/DatePicker panel",
+      "values": "true | false",
+      "presence": "TDataset serializes false as \"false\"; null/undefined removes the attribute. See scope for the bound DOM node."
+    },
+    {
+      "name": "data-today",
+      "sources": [
+        "packages/core/src/components/custom/calendar/collection/extensions/view/view.extension.ts"
+      ],
+      "description": "Calendar day represents the current local date.",
+      "scope": "Calendar day item",
+      "values": "true | false",
+      "presence": "TDataset serializes false as \"false\"; null/undefined removes the attribute. See scope for the bound DOM node."
+    },
+    {
+      "name": "data-type",
+      "sources": [
+        "packages/core/src/components/custom/date-input/date-input.class.ts",
+        "packages/plugins/src/custom/date-input/parts.ts"
+      ],
+      "description": "Date segment kind.",
+      "scope": "DateInput inner segment",
+      "values": "day | month | year",
+      "presence": "TDataset serializes false as \"false\"; null/undefined removes the attribute. See scope for the bound DOM node."
+    },
+    {
+      "name": "data-unavailable",
+      "sources": ["packages/core/src/components/custom/calendar/item/item.class.ts"],
+      "description": "Date cannot be selected.",
+      "scope": "Calendar day item",
+      "values": "true | false",
+      "presence": "TDataset serializes false as \"false\"; null/undefined removes the attribute. See scope for the bound DOM node."
+    },
+    {
+      "name": "data-virtual",
+      "sources": [
+        "packages/core/src/components/custom/table/collection/extensions/window/window.extension.ts"
+      ],
+      "description": "Table body uses a rendering window.",
+      "scope": "Table root",
+      "values": "true | false",
+      "presence": "TDataset serializes false as \"false\"; null/undefined removes the attribute. See scope for the bound DOM node."
+    }
+  ],
+  "dynamic": [
+    {
+      "name": "`--${newValue}`",
+      "sources": [
+        "packages/core/src/components/custom/progress-linear/progress-linear.class.ts",
+        "packages/core/src/components/custom/slider/slider.class.ts",
+        "packages/core/src/components/custom/tabs/tabs.class.ts"
+      ],
+      "pattern": "so-<block>--<orientation>",
+      "scope": "Tabs, Slider and ProgressLinear roots; horizontal | vertical",
+      "description": "Computed emission: Tabs, Slider and ProgressLinear roots; horizontal | vertical. This source expression is checked explicitly so new dynamic cases require a documented mapping."
+    },
+    {
+      "name": "`--${this._mode}`",
+      "sources": ["packages/core/src/components/custom/date-picker/date-picker.class.ts"],
+      "pattern": "so-date-picker--<mode>",
+      "scope": "DatePicker root; single | range",
+      "description": "Computed emission: DatePicker root; single | range. This source expression is checked explicitly so new dynamic cases require a documented mapping."
+    },
+    {
+      "name": "`--${value}`",
+      "sources": ["packages/core/src/components/custom/date-picker/date-picker.class.ts"],
+      "pattern": "so-date-picker--<mode>",
+      "scope": "DatePicker root; single | range",
+      "description": "Computed emission: DatePicker root; single | range. This source expression is checked explicitly so new dynamic cases require a documented mapping."
+    },
+    {
+      "name": "`--size-${e.value}`",
+      "sources": [
+        "packages/core/src/components/base/stylable/stylable.class.ts",
+        "packages/core/src/components/custom/icon/icon.class.ts"
+      ],
+      "pattern": "so-<block>--size-<size>",
+      "scope": "TStylable descendants and Icon; sm | normal | lg | xl | 2xl",
+      "description": "Computed emission: TStylable descendants and Icon; sm | normal | lg | xl | 2xl. This source expression is checked explicitly so new dynamic cases require a documented mapping."
+    },
+    {
+      "name": "`--size-${this._size}`",
+      "sources": [
+        "packages/core/src/components/base/stylable/stylable.class.ts",
+        "packages/core/src/components/custom/icon/icon.class.ts"
+      ],
+      "pattern": "so-<block>--size-<size>",
+      "scope": "TStylable descendants and Icon; sm | normal | lg | xl | 2xl",
+      "description": "Computed emission: TStylable descendants and Icon; sm | normal | lg | xl | 2xl. This source expression is checked explicitly so new dynamic cases require a documented mapping."
+    },
+    {
+      "name": "`${ctor.baseClass}__panel`",
+      "sources": ["packages/core/src/components/custom/menu/menu.class.ts"],
+      "pattern": "so-menu__panel",
+      "scope": "Menu popup panel",
+      "description": "Computed emission: Menu popup panel. This source expression is checked explicitly so new dynamic cases require a documented mapping."
+    },
+    {
+      "name": "`${TMenu.baseClass}__panel`",
+      "sources": ["packages/core/src/components/custom/menu/submenu/submenu.class.ts"],
+      "pattern": "so-menu__panel",
+      "scope": "Submenu popup panel uses the Menu panel class",
+      "description": "Computed emission: Submenu popup panel uses the Menu panel class. This source expression is checked explicitly so new dynamic cases require a documented mapping."
+    },
+    {
+      "name": "`so-${block}__clear`",
+      "sources": ["packages/ui/webc/src/components/common/clear.ts"],
+      "pattern": "so-<block>__clear",
+      "scope": "WebC clear button; Input, NumberInput, DateInput",
+      "description": "Computed emission: WebC clear button; Input, NumberInput, DateInput. This source expression is checked explicitly so new dynamic cases require a documented mapping."
+    },
+    {
+      "name": "`so-${this._spec.block}__filler`",
+      "sources": ["packages/ui/webc/src/components/common/drawn-rows.ts"],
+      "pattern": "so-<block>__filler",
+      "scope": "WebC ListBox and Select virtual filler",
+      "description": "Computed emission: WebC ListBox and Select virtual filler. This source expression is checked explicitly so new dynamic cases require a documented mapping."
+    },
+    {
+      "name": "`so-${this._spec.block}__separator`",
+      "sources": ["packages/ui/webc/src/components/common/drawn-rows.ts"],
+      "pattern": "so-<block>__separator",
+      "scope": "WebC ListBox and Select group separator",
+      "description": "Computed emission: WebC ListBox and Select group separator. This source expression is checked explicitly so new dynamic cases require a documented mapping."
+    },
+    {
+      "name": "`so-progress-spinner__${part}`",
+      "sources": ["packages/ui/webc/src/components/progress-spinner/progress-spinner.template.ts"],
+      "pattern": "so-progress-spinner__<part>",
+      "scope": "WebC ProgressSpinner; track | range | runner",
+      "description": "Computed emission: WebC ProgressSpinner; track | range | runner. This source expression is checked explicitly so new dynamic cases require a documented mapping."
+    },
+    {
+      "name": "ANCHOR_PLACEMENT_ATTRIBUTE",
+      "sources": ["packages/plugins/src/custom/frame/anchor/anchor.plugin.ts"],
+      "pattern": "data-placement",
+      "scope": "Frame panel; effective anchor placement",
+      "description": "Computed emission: Frame panel; effective anchor placement. This source expression is checked explicitly so new dynamic cases require a documented mapping."
+    },
+    {
+      "name": "ctor.baseClass",
+      "sources": ["packages/core/src/components/base/component-view/component-view.class.ts"],
+      "pattern": "so-<block>",
+      "scope": "Concrete TComponentView subclass root; roots section lists baseClass declarations",
+      "description": "Computed emission: Concrete TComponentView subclass root; roots section lists baseClass declarations. This source expression is checked explicitly so new dynamic cases require a documented mapping."
+    },
+    {
+      "name": "FRAME_LAYER_ATTRIBUTE",
+      "sources": ["packages/core/src/components/base/layer/layer.class.ts"],
+      "pattern": "data-layer",
+      "scope": "Layer root; positive integer",
+      "description": "Computed emission: Layer root; positive integer. This source expression is checked explicitly so new dynamic cases require a documented mapping."
+    },
+    {
+      "name": "LIST_CONTENT_FIT_ATTRIBUTE",
+      "sources": [
+        "packages/core/src/components/custom/list-box/collection/extensions/list-box/list-box.extension.ts",
+        "packages/core/src/components/custom/list-box/list-box.class.ts",
+        "packages/core/src/components/custom/select/collection/extensions/select/select.extension.ts",
+        "packages/core/src/components/custom/select/select.class.ts"
+      ],
+      "pattern": "data-content-fit",
+      "scope": "ListBox and Select list root and item wrapper; truncate | wrap | expand",
+      "description": "Computed emission: ListBox and Select list root and item wrapper; truncate | wrap | expand. This source expression is checked explicitly so new dynamic cases require a documented mapping."
+    },
+    {
+      "name": "LIST_INDICATOR_ATTRIBUTE",
+      "sources": [
+        "packages/core/src/components/custom/list-box/collection/extensions/list-box/list-box.extension.ts",
+        "packages/core/src/components/custom/list-box/list-box.class.ts",
+        "packages/core/src/components/custom/select/collection/extensions/select/select.extension.ts",
+        "packages/core/src/components/custom/select/select.class.ts"
+      ],
+      "pattern": "data-indicator",
+      "scope": "ListBox and Select list root and item wrapper; none | start | end",
+      "description": "Computed emission: ListBox and Select list root and item wrapper; none | start | end. This source expression is checked explicitly so new dynamic cases require a documented mapping."
+    },
+    {
+      "name": "newValue !== 'start' ? `--${newValue}` : ''",
+      "sources": ["packages/core/src/components/custom/tabs/tabs.class.ts"],
+      "pattern": "so-tabs--<alignment>",
+      "scope": "Tabs root; center | end | stretch; absent for start alignment",
+      "description": "Alignment of tabs in the bar. Non-start alignment is emitted as a bare modifier."
+    },
+    {
+      "name": "TDragPlugin.DRAGGING_CLASS",
+      "sources": ["packages/plugins/src/custom/drag-and-drop/drag.plugin.ts"],
+      "pattern": "so-drag-and-drop__item",
+      "scope": "Dragged item while TDragPlugin owns the gesture; not a DragAndDrop root",
+      "description": "Computed emission: Dragged item while TDragPlugin owns the gesture; not a DragAndDrop root. This source expression is checked explicitly so new dynamic cases require a documented mapping."
+    }
+  ],
+  "globals": [
+    {
+      "name": "data-so-theme",
+      "description": "Theme/application-owned color scheme marker. The library does not set it.",
+      "scope": "Document root or themed subtree supported by the selected theme",
+      "values": "Theme-defined scheme name; absence selects the default scheme",
+      "source": "packages/themes/oren/README.md"
+    }
+  ]
+}
