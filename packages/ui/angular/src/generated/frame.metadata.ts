@@ -63,7 +63,7 @@ export const FrameOutputNames = [
 	'yChange',
 	'widthChange',
 	'heightChange',
-	'positionChange',
+	'strategyChange',
 	'containedChange',
 	'anchor_anchorChange',
 	'anchor_pointChange',
@@ -189,7 +189,7 @@ export abstract class TFrameSurface<TInstance extends IEntity> extends TViewSurf
 	declare readonly yChange: TModelEmitter<typeof descriptor, 'y'>
 	declare readonly widthChange: TModelEmitter<typeof descriptor, 'width'>
 	declare readonly heightChange: TModelEmitter<typeof descriptor, 'height'>
-	declare readonly positionChange: TModelEmitter<typeof descriptor, 'position'>
+	declare readonly strategyChange: TModelEmitter<typeof descriptor, 'strategy'>
 	declare readonly containedChange: TModelEmitter<typeof descriptor, 'contained'>
 	declare readonly anchor_anchorChange: TModelEmitter<typeof descriptor, 'anchor_anchor'>
 	declare readonly anchor_pointChange: TModelEmitter<typeof descriptor, 'anchor_point'>
