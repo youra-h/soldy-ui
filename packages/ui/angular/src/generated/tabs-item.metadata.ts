@@ -8,6 +8,7 @@ import type {
 } from '@soldy-ui/setup'
 import {
 	SlotDirective,
+	ValueAccessorDirective,
 	type TInputValue,
 	type TOutputEmitter,
 	type TModelEmitter,
@@ -93,6 +94,7 @@ export const TabsItemOutputNames = [
 		{ name: 'active', transform: booleanInput },
 	],
 	outputs: [...TabsItemOutputNames],
+	hostDirectives: [ValueAccessorDirective],
 })
 export abstract class TTabsItemSurface<TInstance extends IEntity> extends TViewSurface<
 	TInstance,

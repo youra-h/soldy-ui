@@ -72,3 +72,6 @@ export { useToasts } from './adapter/toasts'
 export { RoleIconDirective } from './adapter/common'
 
 export type { TToastRender } from './adapter/toasts'
+
+// Host directives must be reachable from the package entry for Angular AOT.
+export { ValueAccessorDirective as ɵValueAccessorDirective } from './adapter/runtime/value-accessor.directive'

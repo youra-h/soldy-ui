@@ -163,6 +163,7 @@ async function generate(): Promise<void> {
 		// A visual surface: it has every shared output, so it extends `TViewSurface`
 		// and declares only its own; the rule, not a list of names
 		const visual = viewOutputs.every((shared) => outputs.some(([output]) => output === shared))
+		const forms = models.some(([output, prop]) => output === 'valueChange' && prop === 'value')
 		const declaredOutputs = visual
 			? outputs.filter(([output]) => !viewOutputs.includes(output))
 			: outputs
@@ -188,6 +189,7 @@ async function generate(): Promise<void> {
 		]
 		const runtimeImports = [
 			...(slots ? ['SlotDirective'] : []),
+			...(forms ? ['ValueAccessorDirective'] : []),
 			...(visual ? [] : ['TComponentBase']),
 			'type TInputValue',
 			'type TOutputEmitter',
@@ -212,7 +214,7 @@ async function generate(): Promise<void> {
 			`export const ${constName}InputNames = ${JSON.stringify(inputs.map(([input]) => input))} as const`,
 			`export const ${constName}OutputNames = ${JSON.stringify([...declaredOutputs, ...models].map(([output]) => output))} as const`,
 			'',
-			`@Directive({ inputs: [${declaredInputs.join(', ')}], outputs: [...${constName}OutputNames] })`,
+			`@Directive({ inputs: [${declaredInputs.join(', ')}], outputs: [...${constName}OutputNames]${forms ? ', hostDirectives: [ValueAccessorDirective]' : ''} })`,
 			`export abstract class T${constName}Surface<TInstance extends IEntity> extends ${visual ? 'TViewSurface' : 'TComponentBase'}<${baseParams}> {`,
 			`constructor(setup: TSetup<${baseParams}>, spec?: TRootSpec) {`,
 			`super(${constName}InputNames, ${constName}OutputNames, setup, spec)`,

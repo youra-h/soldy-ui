@@ -8,6 +8,7 @@ import type {
 } from '@soldy-ui/setup'
 import {
 	SlotDirective,
+	ValueAccessorDirective,
 	type TInputValue,
 	type TOutputEmitter,
 	type TModelEmitter,
@@ -123,6 +124,7 @@ export const TagsOutputNames = [
 		'mode',
 	],
 	outputs: [...TagsOutputNames],
+	hostDirectives: [ValueAccessorDirective],
 })
 export abstract class TTagsSurface<TInstance extends IEntity> extends TViewSurface<
 	TInstance,

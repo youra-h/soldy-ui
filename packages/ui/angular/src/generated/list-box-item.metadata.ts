@@ -8,6 +8,7 @@ import type {
 } from '@soldy-ui/setup'
 import {
 	SlotDirective,
+	ValueAccessorDirective,
 	type TInputValue,
 	type TOutputEmitter,
 	type TModelEmitter,
@@ -93,6 +94,7 @@ export const ListBoxItemOutputNames = [
 		{ name: 'selected', transform: booleanInput },
 	],
 	outputs: [...ListBoxItemOutputNames],
+	hostDirectives: [ValueAccessorDirective],
 })
 export abstract class TListBoxItemSurface<TInstance extends IEntity> extends TViewSurface<
 	TInstance,

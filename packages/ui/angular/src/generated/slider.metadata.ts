@@ -4,6 +4,7 @@ import type { IEntity } from '@soldy-ui/core'
 import type { DescriptorPluginOutputs, DescriptorPluginProps } from '@soldy-ui/setup'
 import {
 	SlotDirective,
+	ValueAccessorDirective,
 	type TInputValue,
 	type TOutputEmitter,
 	type TModelEmitter,
@@ -131,6 +132,7 @@ export const SliderOutputNames = [
 		'aria_describedBy',
 	],
 	outputs: [...SliderOutputNames],
+	hostDirectives: [ValueAccessorDirective],
 })
 export abstract class TSliderSurface<TInstance extends IEntity> extends TViewSurface<
 	TInstance,

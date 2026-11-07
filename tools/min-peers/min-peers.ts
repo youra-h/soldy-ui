@@ -292,18 +292,29 @@ export function restoreRoot(root: string): void {
 	rmSync(saved, { recursive: true })
 }
 
+/** Remove stale resolutions before npm solves the pinned peer graph. */
+export function freshPeerLock(lock: TManifest, pins: readonly TPin[]): TManifest {
+	const packages = lock['packages']
+	if (!isObject(packages)) return lock
+	const names = new Set(pins.map(({ name }) => name))
+	return {
+		...lock,
+		packages: Object.fromEntries(
+			Object.entries(packages).filter(([location]) => {
+				const marker = 'node_modules/'
+				const index = location.lastIndexOf(marker)
+				return index < 0 || !names.has(location.slice(index + marker.length))
+			}),
+		),
+	}
+}
+
 /**
- * Подменяет пакеты списка во всём дереве каталога `root`: пишет их в
- * `overrides` манифеста корня и разрешает заново. Правит манифест корня, lock
- * и `node_modules` — это для раннера CI, в репозиторий подмена не попадает.
- * До правки сохраняет манифест и lock (`saveRoot`), и локально их возвращает
- * `restoreRoot`; копия, оставшаяся от прошлой подмены, роняет новую до правки.
- *
- * Разрешает их `npm update` по именам, а не `npm install`: тот новые
- * `overrides` в дереве из lock применяет не везде, и копия, которую lock уже
- * держит, остаётся прежней версии. Overrides корня до зависимостей воркспейсов
- * доносит только npm 11: у npm 10 копия из `devDependencies` адаптера остаётся
- * версией lock. Оба случая ловит `strayCopies`.
+ * Save the original root files, apply exact overrides, and resolve a fresh lock
+ * for the pinned packages before changing node_modules. Keeping their previous
+ * lock entries can make npm cycle between incompatible exact Angular peers.
+ * Other resolutions and workspace entries are preserved. restoreRoot returns
+ * the original files byte for byte.
  */
 export function pinTree(root: string, pins: readonly TPin[]): void {
 	const path = join(root, 'package.json')
@@ -320,8 +331,13 @@ export function pinTree(root: string, pins: readonly TPin[]): void {
 
 	saveRoot(root)
 	writeFileSync(path, `${JSON.stringify({ ...parsed, overrides }, null, 2)}\n`)
-	execSync(`npm update ${pins.map(({ name }) => name).join(' ')} --no-audit --no-fund`, {
+	const lockPath = join(root, 'package-lock.json')
+	const lock: unknown = JSON.parse(readFileSync(lockPath, 'utf8'))
+	if (!isObject(lock)) throw new Error('Expected a package lock object')
+	writeFileSync(lockPath, JSON.stringify(freshPeerLock(lock, pins), null, 2) + '\n')
+	execSync('npm install --package-lock-only --no-audit --no-fund', {
 		cwd: root,
 		stdio: 'inherit',
 	})
+	execSync('npm install --no-audit --no-fund', { cwd: root, stdio: 'inherit' })
 }

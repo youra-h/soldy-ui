@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { lowerBound, pinsOf, strayCopies } from '../min-peers.ts'
+import { lowerBound, pinsOf, strayCopies, freshPeerLock } from '../min-peers.ts'
 import type { TCopy, TManifest } from '../min-peers.ts'
 
 /**
@@ -170,5 +170,43 @@ describe('проверка дерева', () => {
 		expect(
 			strayCopies(pins, [copy('node_modules/react', { name: 'react', version: '19.2.0' })]),
 		).toEqual([{ name: 'vue', expected: '3.5.21' }])
+	})
+})
+
+describe('fresh pinned lock', () => {
+	it('drops all old pinned copies while retaining workspace links and unrelated resolutions', () => {
+		const packages = {
+			'': { name: 'fixture' },
+			'node_modules/@angular/core': { version: '22.2.3' },
+			'node_modules/@angular/forms': {
+				version: '22.2.3',
+				peerDependencies: { '@angular/core': '22.2.3' },
+			},
+			'packages/ui/angular/node_modules/@angular/forms': { version: '22.2.3' },
+			'node_modules/@angular/forms-extra': { version: '1.0.0' },
+			'node_modules/@soldy-ui/angular': { resolved: 'packages/ui/angular', link: true },
+			'packages/ui/angular': {
+				name: '@soldy-ui/angular',
+				peerDependencies: { '@angular/core': '^22.2.0' },
+			},
+			'node_modules/rxjs': { version: '7.8.2' },
+		}
+		const lock = { name: 'fixture', lockfileVersion: 3, packages }
+		const fresh = freshPeerLock(lock, [
+			{ name: '@angular/core', version: '22.2.0' },
+			{ name: '@angular/forms', version: '22.2.0' },
+		])
+		expect(fresh).toEqual({
+			...lock,
+			packages: {
+				'': packages[''],
+				'node_modules/@angular/forms-extra': packages['node_modules/@angular/forms-extra'],
+				'node_modules/@soldy-ui/angular': packages['node_modules/@soldy-ui/angular'],
+				'packages/ui/angular': packages['packages/ui/angular'],
+				'node_modules/rxjs': packages['node_modules/rxjs'],
+			},
+		})
+		expect(lock.packages).toBe(packages)
+		expect(lock.packages['node_modules/@angular/forms'].version).toBe('22.2.3')
 	})
 })

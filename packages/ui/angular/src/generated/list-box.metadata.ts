@@ -8,6 +8,7 @@ import type {
 } from '@soldy-ui/setup'
 import {
 	SlotDirective,
+	ValueAccessorDirective,
 	type TInputValue,
 	type TOutputEmitter,
 	type TModelEmitter,
@@ -144,6 +145,7 @@ export const ListBoxOutputNames = [
 		'groups',
 	],
 	outputs: [...ListBoxOutputNames],
+	hostDirectives: [ValueAccessorDirective],
 })
 export abstract class TListBoxSurface<TInstance extends IEntity> extends TViewSurface<
 	TInstance,

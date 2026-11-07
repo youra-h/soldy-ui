@@ -8,6 +8,7 @@ import type {
 } from '@soldy-ui/setup'
 import {
 	SlotDirective,
+	ValueAccessorDirective,
 	type TInputValue,
 	type TOutputEmitter,
 	type TModelEmitter,
@@ -83,6 +84,7 @@ export const MenuItemOutputNames = [
 		'aria_describedBy',
 	],
 	outputs: [...MenuItemOutputNames],
+	hostDirectives: [ValueAccessorDirective],
 })
 export abstract class TMenuItemSurface<TInstance extends IEntity> extends TViewSurface<
 	TInstance,

@@ -3,6 +3,7 @@ import { Directive } from '@angular/core'
 import type { IEntity } from '@soldy-ui/core'
 import type { DescriptorPluginOutputs, DescriptorPluginProps } from '@soldy-ui/setup'
 import {
+	ValueAccessorDirective,
 	type TInputValue,
 	type TOutputEmitter,
 	type TModelEmitter,
@@ -88,6 +89,7 @@ export const InputControlOutputNames = [
 		'id',
 	],
 	outputs: [...InputControlOutputNames],
+	hostDirectives: [ValueAccessorDirective],
 })
 export abstract class TInputControlSurface<TInstance extends IEntity> extends TViewSurface<
 	TInstance,

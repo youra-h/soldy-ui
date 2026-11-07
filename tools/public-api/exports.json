@@ -1136,7 +1136,8 @@
       "TextPipe",
       "provideAttrs",
       "useToasts",
-      "ɵSubtreeDirective"
+      "ɵSubtreeDirective",
+      "ɵValueAccessorDirective"
     ],
     "types": ["TToastRender"]
   }

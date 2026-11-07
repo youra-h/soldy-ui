@@ -8,6 +8,7 @@ import type {
 } from '@soldy-ui/setup'
 import {
 	SlotDirective,
+	ValueAccessorDirective,
 	type TInputValue,
 	type TOutputEmitter,
 	type TModelEmitter,
@@ -201,6 +202,7 @@ export const SelectOutputNames = [
 		'tagsOverflow',
 	],
 	outputs: [...SelectOutputNames],
+	hostDirectives: [ValueAccessorDirective],
 })
 export abstract class TSelectSurface<TInstance extends IEntity> extends TViewSurface<
 	TInstance,
