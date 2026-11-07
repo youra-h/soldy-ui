@@ -1,0 +1,52 @@
+{
+  "mode": "baseline",
+  "seed": 42,
+  "status": "two_patches_failed",
+  "model": "direct-qwen35-9b-q4-32k",
+  "baselineCommit": "091781987e9eb0c9d01e35f1e1ff552974827196",
+  "patches": 2,
+  "modelSourceSha256": "8d8abf3c4d6eaedab9a21a1280690a2ce423a4ea96ea2aef030db4c334f410b3",
+  "local": {
+    "inputTokens": 15139,
+    "outputTokens": 1077,
+    "cachedInputTokens": 7000,
+    "maxInputTokens": 8691
+  },
+  "newTargetCloudCalls": 0,
+  "engineeringCloudUsage": null,
+  "checks": [
+    {
+      "attempt": 1,
+      "passed": false,
+      "checks": [
+        {
+          "id": "react",
+          "passed": false,
+          "firstDiagnostic": "Error: A13: types failed"
+        },
+        {
+          "id": "ssr",
+          "passed": false,
+          "firstDiagnostic": "Error: A13: types failed"
+        }
+      ]
+    },
+    {
+      "attempt": 2,
+      "passed": false,
+      "checks": [
+        {
+          "id": "react",
+          "passed": false,
+          "firstDiagnostic": "Error: A13: types failed"
+        },
+        {
+          "id": "ssr",
+          "passed": false,
+          "firstDiagnostic": "Error: A13: types failed"
+        }
+      ]
+    }
+  ],
+  "humanSemanticFixes": false
+}
