@@ -187,6 +187,29 @@ namespace: a variable of the application with the same name would replace yours 
 
 ### 4. The look
 
+The published [class and data-attribute reference](./theme-contract.json) lists roots, parts,
+modifiers and datasets with their meanings, DOM scopes, values and emission sources. The
+[variable reference](./theme-variables.json) keeps its separate two-section contract. Both JSON
+files can also be imported from the corresponding package subpaths.
+
+Literal roots and parts are exact class names. Modifier patterns append to the concrete block:
+`so-<block>--size-<value>` uses the library sizes `sm`, `normal`, `lg`, `xl`, `2xl`;
+`variant`, `view`, `shape` and `animation` values belong to the theme. The `dynamic` section
+maps computed source expressions to their bounded families; these are checked alongside literal
+emissions in all six adapters. Global scheme selection, `data-so-theme`, belongs to the
+application and theme; `data-so-motion` controls the library's motion policy.
+
+Datasets may bind to an inner row, panel, trigger or input segment; use each entry's scope.
+Boolean false is the string `"false"`, so use an explicit value selector. Only null/undefined
+remove a TDataset attribute; gesture flags documented as presence-only disappear outside the gesture.
+For example, style a selected list row through its part and state:
+
+```css
+.so-select-item[data-selected='true'] .so-button__text {
+  font-weight: 600;
+}
+```
+
 Style the `so-*` classes and the `data-*` state attributes the library emits, with the same
 selectors as the structure in `src/components/`. The rules every theme keeps:
 
