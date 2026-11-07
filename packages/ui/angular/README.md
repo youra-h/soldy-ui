@@ -380,7 +380,7 @@ element. Like a Frame, the panel exists only in the browser: on the server it is
 element inside yours, and the trigger already links to it.
 
 ```ts
-template: `<span so-popover aria_label="Filters" lazyMount (soChangeOpen)="opened.set($event)">
+template: `<span so-popover aria_label="Filters" lazyMount (soChangeOpen)="opened.set($event.newValue)">
   <ng-template slot="trigger" let-triggerAria="triggerAria" let-triggerDataset="triggerDataset">
     <button so-button text="Filters" [so-attributes]="{ ...triggerAria, ...triggerDataset }"></button>
   </ng-template>
@@ -453,7 +453,7 @@ server it is your element, empty and hidden, and inside `@for` it needs a wrappi
 
 ```ts
 template: `<button so-button text="Settings" (click)="open.set(true)"></button>
-<div so-dialog [visible]="open()" (soChangeVisible)="open.set($event)">
+<div so-dialog [visible]="open()" (soChangeVisible)="open.set($event.newValue)">
   <span slot="title">Settings</span>
   …
   <button so-button slot="footer" text="Done" (click)="open.set(false)"></button>
