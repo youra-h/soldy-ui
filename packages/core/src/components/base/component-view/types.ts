@@ -32,22 +32,22 @@ export type TComponentViewEvents = TComponentEvents & {
 	'hide:before': (e: TActionEvent) => void
 
 	/** change:visible */
-	'change:visible': (value: boolean) => void
+	'change:visible': (payload: TValuePayload<boolean>) => void
 	/** change:rendered */
-	'change:rendered': (value: boolean) => void
+	'change:rendered': (payload: TValuePayload<boolean>) => void
 	/** Запись `rendered` — подправить или отменить (`TChangeEvent`). У `visible` то же делают `show:before` и `hide:before` */
 	'change:rendered:before': (e: TChangeEvent<boolean>) => void
 	/** change:present — rendered && visible */
-	'change:present': (value: boolean) => void
+	'change:present': (payload: TValuePayload<boolean>) => void
 
 	/** change:tag */
-	'change:tag': (value: string | object) => void
+	'change:tag': (payload: TValuePayload<string | object>) => void
 	/** change:direction */
-	'change:direction': (value: TDirection) => void
+	'change:direction': (payload: TValuePayload<TDirection>) => void
 	/** change:classes (без baseClass) */
-	'change:classes': (value: string[]) => void
+	'change:classes': (payload: TValuePayload<string[]>) => void
 	/** change:aria — набор атрибутов доступности изменился */
-	'change:aria': (value: TAriaAttributes) => void
+	'change:aria': (payload: TValuePayload<TAriaAttributes>) => void
 	/** change:dataset — набор `data-*` изменился */
 	'change:dataset': (value: TDatasetAttributes) => void
 	/** change:attrs — набор нативных атрибутов изменился */

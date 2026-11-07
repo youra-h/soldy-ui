@@ -43,7 +43,8 @@ export class TClearCommand<TItem> implements ICommand<TItem> {
 			ctx.events.emit('item:removed', new TRemoveEvent<TItem>(item)),
 		)
 
-		ctx.events.emit('change:count', ctx.storage.items.length)
+		const oldCount = ctx.storage.items.length
+		ctx.events.emit('change:count', { newValue: ctx.storage.items.length, oldValue: oldCount })
 		ctx.events.emit('reset')
 	}
 }

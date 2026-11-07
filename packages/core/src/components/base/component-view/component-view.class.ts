@@ -98,23 +98,20 @@ export default class TComponentView<
 	}
 
 	private _emitPresent(): void {
-		this._sink.emit('change:present', this.present)
+		this._sink.emit('change:present', { newValue: this.present, oldValue: this.rendered && this.visible ? false : true })
 	}
 
 	get rendered(): boolean {
 		return this._rendered
 	}
 	set rendered(value: boolean) {
-		if (value === this._rendered) return
-
-		const e = new TChangeEvent(value, this._rendered)
-
+		const oldValue = this._rendered
+		if (value === oldValue) return
+		const e = new TChangeEvent(value, oldValue)
 		this._sink.emit('change:rendered:before', e)
-
-		if (e.defaultPrevented || e.value === this._rendered) return
-
+		if (e.defaultPrevented || e.value === oldValue) return
 		this._rendered = e.value
-		this._sink.emit('change:rendered', e.value)
+		this._sink.emit('change:rendered', { newValue: e.value, oldValue })
 		this._emitPresent()
 	}
 
@@ -162,8 +159,9 @@ export default class TComponentView<
 	 * `change:visible:before` у видимости нет, это был бы второй путь.
 	 */
 	private _setVisible(value: boolean): void {
+		const oldValue = this._visible
 		this._visible = value
-		this._sink.emit('change:visible', value)
+		this._sink.emit('change:visible', { newValue: value, oldValue })
 		this._emitPresent()
 	}
 
@@ -235,11 +233,11 @@ export default class TComponentView<
 		return this._tag
 	}
 	set tag(value: string | object) {
-		if (this._tag === value) return
-
+		const oldValue = this._tag
+		if (oldValue === value) return
 		this._tag = value
 		this._syncTag()
-		this._sink.emit('change:tag', value)
+		this._sink.emit('change:tag', { newValue: value, oldValue })
 	}
 
 	/**
@@ -260,11 +258,11 @@ export default class TComponentView<
 		return this._direction
 	}
 	set direction(value: TDirection) {
-		if (this._direction === value) return
-
+		const oldValue = this._direction
+		if (oldValue === value) return
 		this._direction = value
 		this._syncDir()
-		this._sink.emit('change:direction', value)
+		this._sink.emit('change:direction', { newValue: value, oldValue })
 	}
 
 	/**
@@ -284,10 +282,10 @@ export default class TComponentView<
 		return this._ready
 	}
 	set ready(value: boolean) {
-		if (this._ready === value) return
-
+		const oldValue = this._ready
+		if (oldValue === value) return
 		this._ready = value
-		this._sink.emit('ready', value)
+		this._sink.emit('ready', { newValue: value, oldValue })
 	}
 
 	getProps(): TProps {

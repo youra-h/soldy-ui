@@ -1,4 +1,5 @@
 import type { IStorage } from './storage'
+import type { TValuePayload } from '../../../../common'
 import type { ICommand, ICommandContext, IQueryCommand } from './commands'
 import type {
 	ICollectionStorageDriver,
@@ -56,8 +57,9 @@ export class TCollectionStorageDriver<T> implements ICollectionStorageDriver<T> 
 			command.emitEvents(ctx)
 
 			if (command.changed) {
-				this.events.emit('change:items', this.valueOf())
-			}
+							const oldItems = [...this._storage.items]
+							this.events.emit('change:items', { newValue: this.valueOf(), oldValue: oldItems })
+		}
 		} else {
 			this._pendingCommands.push(command)
 		}
@@ -132,7 +134,8 @@ export class TCollectionStorageDriver<T> implements ICollectionStorageDriver<T> 
 				)
 
 				if (commandsToEmit.some((cmd) => cmd.changed)) {
-					this.events.emit('change:items', this.valueOf())
+				const oldItems = [...this._storage.items]
+				this.events.emit('change:items', { newValue: this.valueOf(), oldValue: oldItems })
 				}
 			}
 		}

@@ -99,16 +99,13 @@ export default class TControl<
 		return this._focused
 	}
 	set focused(value: boolean) {
-		if (value === this._focused) return
-
-		const e = new TChangeEvent(value, this._focused)
-
+		const oldValue = this._focused
+		if (value === oldValue) return
+		const e = new TChangeEvent(value, oldValue)
 		this._sink.emit('change:focused:before', e)
-
-		if (e.defaultPrevented || e.value === this._focused) return
-
+		if (e.defaultPrevented || e.value === oldValue) return
 		this._focused = e.value
-		this._sink.emit('change:focused', e.value)
+		this._sink.emit('change:focused', { newValue: e.value, oldValue })
 	}
 
 	/**

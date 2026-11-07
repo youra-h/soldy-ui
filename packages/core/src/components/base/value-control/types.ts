@@ -7,12 +7,12 @@ export type TValueControlEvents<T> = TControlEvents & {
 	/** Запись своего `value` — подправить или отменить (`TChangeEvent`) */
 	'change:value:before': (e: TChangeEvent<T>) => void
 	/** change:name */
-	'change:name': (value: string) => void
+	'change:name': (payload: TValuePayload<string>) => void
 	/**
 	 * change:invalid — итог ошибки сменился: записали своё или, у поля даты,
 	 * значение вышло за границы
 	 */
-	'change:invalid': (value: boolean) => void
+	'change:invalid': (payload: TValuePayload<boolean>) => void
 }
 
 export interface IValueControlProps<TValue> extends IControlProps {

@@ -1,4 +1,5 @@
 import type { IStylable, IStylableProps, TStylableEvents } from '../stylable'
+import type { TValuePayload } from '../../../common'
 
 export interface IProgressProps extends IStylableProps {
 	/** Сколько готово — число на шкале от `min` до `max` */
@@ -17,13 +18,13 @@ export interface IProgressProps extends IStylableProps {
 
 export type TProgressEvents = TStylableEvents & {
 	/** change:value */
-	'change:value': (value: number) => void
+	'change:value': (payload: TValuePayload<number>) => void
 	/** change:min */
-	'change:min': (value: number) => void
+	'change:min': (payload: TValuePayload<number>) => void
 	/** change:max */
-	'change:max': (value: number) => void
+	'change:max': (payload: TValuePayload<number>) => void
 	/** change:indeterminate */
-	'change:indeterminate': (value: boolean) => void
+	'change:indeterminate': (payload: TValuePayload<boolean>) => void
 }
 
 export interface IProgress<

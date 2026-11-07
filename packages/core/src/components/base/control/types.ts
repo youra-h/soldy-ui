@@ -1,11 +1,12 @@
 import type { IStylable, IStylableProps, TStylableEvents } from '../stylable'
+import type { TValuePayload } from '../../../common'
 import type { TChangeEvent } from '../../../common'
 
 export type TControlEvents = TStylableEvents & {
-	'change:disabled': (value: boolean) => void
+	'change:disabled': (payload: TValuePayload<boolean>) => void
 	/** Запись своего `disabled` — подправить или отменить (`TChangeEvent`) */
 	'change:disabled:before': (e: TChangeEvent<boolean>) => void
-	'change:focused': (value: boolean) => void
+	'change:focused': (payload: TValuePayload<boolean>) => void
 	/** Запись `focused` — подправить или отменить (`TChangeEvent`) */
 	'change:focused:before': (e: TChangeEvent<boolean>) => void
 	/**
@@ -13,7 +14,7 @@ export type TControlEvents = TStylableEvents & {
 	 * `aria` на корне — сменился тег, у ползунка — число ручек. По нему поле
 	 * формы `Field` переводит подпись между `for` и ссылкой
 	 */
-	'change:labelable': (value: boolean) => void
+	'change:labelable': (payload: TValuePayload<boolean>) => void
 }
 
 export interface IControlProps extends IStylableProps {

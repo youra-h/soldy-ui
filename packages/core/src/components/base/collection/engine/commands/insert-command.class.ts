@@ -37,6 +37,7 @@ export class TInsertCommand<TItem> implements ICommand<TItem> {
 		if (this._event.defaultPrevented) return
 
 		ctx.events.emit('item:added', this._event)
-		ctx.events.emit('change:count', ctx.storage.items.length)
+		const oldCount = ctx.storage.items.length
+		ctx.events.emit('change:count', { newValue: ctx.storage.items.length, oldValue: oldCount })
 	}
 }

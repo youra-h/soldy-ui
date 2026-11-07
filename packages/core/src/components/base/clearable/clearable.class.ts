@@ -60,7 +60,7 @@ export default class TClearable<
 
 		this._clearAria = new TAria()
 		this._clearAria.subscribe(() =>
-			this._sink.emit('change:clearAria', this._clearAria.toObject()),
+			this._sink.emit('change:clearAria', { newValue: this._clearAria.toObject(), oldValue: this._clearAria.toObject() }),
 		)
 	}
 
@@ -77,10 +77,10 @@ export default class TClearable<
 	}
 
 	set clearable(value: boolean) {
-		if (this._clearable === value) return
-
+		const oldValue = this._clearable
+		if (oldValue === value) return
 		this._applyClearable(value)
-		this._sink.emit('change:clearable', value)
+		this._sink.emit('change:clearable', { newValue: value, oldValue })
 	}
 
 	/**

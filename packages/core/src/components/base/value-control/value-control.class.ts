@@ -45,10 +45,10 @@ export default class TValueControl<
 		return this._name
 	}
 	set name(value: string) {
-		if (this._name === value) return
-
+		const oldValue = this._name
+		if (oldValue === value) return
 		this._name = value
-		this._sink.emit('change:name', value)
+		this._sink.emit('change:name', { newValue: value, oldValue })
 	}
 
 	get value(): TValue {
@@ -102,12 +102,10 @@ export default class TValueControl<
 	}
 
 	set invalid(value: boolean) {
-		if (this._invalid === value) return
-
-		const before = this.invalid
-
+		const oldValue = this._invalid
+		if (oldValue === value) return
 		this._invalid = value
-		this._invalidChanged(before)
+		this._invalidChanged(oldValue)
 	}
 
 	/**
@@ -117,11 +115,9 @@ export default class TValueControl<
 	 */
 	protected _invalidChanged(before: boolean): void {
 		const invalid = this.invalid
-
 		if (invalid === before) return
-
 		this._syncInvalid()
-		this._sink.emit('change:invalid', invalid)
+		this._sink.emit('change:invalid', { newValue: invalid, oldValue: before })
 	}
 
 	/** Атрибуты ошибки по итогу: только при `true`, `null` их снимает. */

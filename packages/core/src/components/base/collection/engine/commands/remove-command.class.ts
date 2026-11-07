@@ -47,6 +47,7 @@ export class TRemoveCommand<TItem> implements ICommand<TItem> {
 		if (!this._removed) return
 
 		ctx.events.emit('item:removed', this._event as TRemoveEvent<TItem>)
-		ctx.events.emit('change:count', ctx.storage.items.length)
+		const oldCount = ctx.storage.items.length
+		ctx.events.emit('change:count', { newValue: ctx.storage.items.length, oldValue: oldCount })
 	}
 }
