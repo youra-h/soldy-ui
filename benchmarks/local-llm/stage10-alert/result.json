@@ -1,0 +1,37 @@
+{
+  "run": "gpt-index-1794073453731",
+  "mode": "baseline",
+  "status": "checks_passed",
+  "model": "gpt-6.1-sol",
+  "effort": "high",
+  "baselineCommit": "091781987e9eb0c9d01e35f1e1ff552974827196",
+  "patches": 1,
+  "modelSourceSha256": "aff7c3a982e999d0eb0df112129b32a940610531a255d31b381ab1051e091d44",
+  "usage": {
+    "input_tokens": 78728,
+    "cached_input_tokens": 54400,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 836,
+    "reasoning_output_tokens": 155
+  },
+  "checks": [
+    {
+      "attempt": 1,
+      "passed": true,
+      "checks": [
+        {
+          "id": "react",
+          "passed": true
+        },
+        {
+          "id": "ssr",
+          "passed": true
+        }
+      ]
+    }
+  ],
+  "humanSemanticFixes": false,
+  "indexQueries": [],
+  "preparationCostExcludedFromComparison": true,
+  "engineeringCloudUsage": null
+}
