@@ -743,32 +743,23 @@ function checkChangesets(
 	return violations
 }
 
-/**
- * Before `1.0` a version is `0.x` without a suffix: the `0.x` itself marks the
- * library as unstable, and a breaking change bumps the minor. So changesets is
- * not in pre-mode. A suffix stays only while `.changeset/pre.json` leaves the
- * mode (`exit`): the next `changeset version` drops it together with the file.
- */
+/** Beta versions match the active channel; exiting keeps the suffix until versioning. */
 function checkPrerelease(
 	preState: TPreState | undefined,
 	library: readonly TWorkspacePackage[],
 ): string[] {
-	if (preState?.mode === 'pre') {
-		return [
-			`.changeset/pre.json: pre-режим «${preState.tag}» — до 1.0 версия идёт 0.x без суффикса (npx changeset pre exit)`,
-		]
-	}
+	if (preState?.mode === 'exit') return []
 
-	if (preState?.mode === 'exit') {
-		return []
+	if (preState?.mode === 'pre' && preState.tag !== 'beta') {
+		return ['.changeset/pre.json: разрешён только pre-канал beta']
 	}
 
 	return library.flatMap(({ dir, manifest }) => {
 		const { version } = manifest
+		if (typeof version !== 'string' || !version.includes('-')) return []
+		if (preState?.mode === 'pre' && /^\d+\.\d+\.\d+-beta\.\d+$/.test(version)) return []
 
-		return typeof version === 'string' && version.startsWith('0.') && version.includes('-')
-			? [`${dir}: версия ${version} с суффиксом — до 1.0 версия идёт 0.x без суффикса`]
-			: []
+		return [`${dir}: версия ${version} с суффиксом требует активного pre-канала beta`]
 	})
 }
 
@@ -869,7 +860,7 @@ describe('манифесты пакетов воркспейса', () => {
 		).toEqual([])
 	})
 
-	it('до 1.0 версия идёт 0.x без суффикса, pre-режима нет', () => {
+	it('суффиксы версий соответствуют разрешённому beta-каналу', () => {
 		const violations = checkPrerelease(readPreState(), library)
 
 		expect(
@@ -1465,18 +1456,35 @@ describe('сторож манифестов', () => {
 		expect(checkChangesets([changeset('major')], [library({})])).toEqual([])
 	})
 
-	it('pre-режим — нарушение, какие бы ни были версии', () => {
-		const message =
-			'.changeset/pre.json: pre-режим «alpha» — до 1.0 версия идёт 0.x без суффикса (npx changeset pre exit)'
-		const alpha = { mode: 'pre', tag: 'alpha' }
-
-		expect(checkPrerelease(alpha, [library({ version: '0.3.0-alpha.2' })])).toEqual([message])
-		expect(checkPrerelease(alpha, [library({ version: '0.3.0' })])).toEqual([message])
+	it('неразрешённый pre-канал — нарушение', () => {
+		expect(
+			checkPrerelease({ mode: 'pre', tag: 'alpha' }, [library({ version: '0.3.0-alpha.7' })]),
+		).toEqual(['.changeset/pre.json: разрешён только pre-канал beta'])
 	})
 
-	it('версия 0.x с суффиксом без pre.json — нарушение', () => {
-		expect(checkPrerelease(undefined, [library({ version: '0.3.0-alpha.7' })])).toEqual([
-			'packages/example: версия 0.3.0-alpha.7 с суффиксом — до 1.0 версия идёт 0.x без суффикса',
+	it('beta соответствует активному каналу', () => {
+		const beta = { mode: 'pre', tag: 'beta' }
+		expect(checkPrerelease(beta, [library({ version: '0.3.0-beta.0' })])).toEqual([])
+		expect(
+			checkPrerelease(beta, [
+				library({ version: '0.3.0-beta.1' }),
+				library({ version: '0.2.0' }),
+			]),
+		).toEqual([])
+	})
+
+	it('суффикс другого канала или без счётчика — нарушение', () => {
+		const beta = { mode: 'pre', tag: 'beta' }
+		for (const version of ['0.3.0-alpha.7', '0.3.0-beta', '0.3.0-beta.x']) {
+			expect(checkPrerelease(beta, [library({ version })])).toEqual([
+				`packages/example: версия ${version} с суффиксом требует активного pre-канала beta`,
+			])
+		}
+	})
+
+	it('суффикс без pre.json — нарушение', () => {
+		expect(checkPrerelease(undefined, [library({ version: '0.3.0-beta.0' })])).toEqual([
+			'packages/example: версия 0.3.0-beta.0 с суффиксом требует активного pre-канала beta',
 		])
 	})
 

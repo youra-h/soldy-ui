@@ -59,12 +59,15 @@ jobs:
         name: Импорты пакетов объявлены
         run: npm run check:published-imports
 
-      # changeset publish publishes every package whose version npm does not
-      # have, under the npm tag `latest` (there is no pre-mode), and tags it
-      # `<package>@<version>` in git.
+      # Exit pre-mode only in the runner so Changesets accepts the explicit
+      # latest tag; the committed branch stays in beta for the next version.
       - if: steps.check.outputs.publish == 'true'
         name: Публикация
-        run: npx changeset publish
+        run: |
+          if [ -f .changeset/pre.json ]; then
+            npx changeset pre exit
+          fi
+          npx changeset publish --tag latest
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_CONFIG_PROVENANCE: true
@@ -79,3 +82,29 @@ jobs:
         run: |
           git push origin --tags
           node tools/release-notes/cli.mjs release "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/blob/$GITHUB_SHA" "$GITHUB_SHA" < "$RUNNER_TEMP/unpublished.txt"
+
+  verify:
+    name: Установка опубликованного выпуска
+    needs: publish
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # SolidStart in the registry smoke matrix requires Node 24.
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+
+      - name: Chromium для проверки страниц
+        run: npx playwright install --with-deps chromium
+
+      # Registry mode installs the published latest packages without packing
+      # or resolving any library source from this checkout.
+      - name: Установка из npm в 11 чистых проектов
+        run: npm run check:install -- --registry latest

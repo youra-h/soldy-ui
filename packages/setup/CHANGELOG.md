@@ -1,5 +1,32 @@
 # @soldy-ui/setup
 
+## 0.3.0-beta.0
+
+### Minor Changes
+
+- 7327698: Select: rename the tags_overflow prop to tagsOverflow. Update component props and collection facade access to the new name.
+- 7335dd6: Remove public plugin creation events. Replace namespace:create handlers with bundle:create and bundle.get(PluginClass); internal plugin lifecycle hooks remain unchanged.
+- 28bcd83: Remove duplicate `input`, `input:value`, `show:after`, and `hide:after` component events. Subscribe to `change:value` for value changes and to `show` or `hide` after the corresponding lifecycle hook. Angular consumers must replace `soInput` and `soInputValue` with `soChangeValue`, and `soShowAfter`/`soHideAfter` with `soShow`/`soHide`. The `open`, `close`, `element:ready`, `element:removed`, and `ready` events remain available.
+- e682670: Publish only explicitly declared descriptor events. Internal property triggers no longer appear as component callbacks, Vue events, Angular outputs or Web Component events. Declare application notifications in contribution.events; property state refresh and two-way model updates remain driven by triggers.
+- ac39aa9: Accordion item arrow slots are now arrow-icon and item-arrow-icon. Replace leading-icon/trailing-icon and item-leading-icon/item-trailing-icon; use arrowPlacement to choose the side.
+- cfffb4b: Standardize property change notifications to { newValue, oldValue }. Update bare-value handlers to read payload.newValue. Object values keep their references without deep cloning; collections and markup sets use shallow container snapshots. Cancelable before events, model bindings, collection operations, and invalidation signals retain their contracts.
+- 0690162: Frame: rename position to strategy and TFramePosition to TFrameStrategy. Replace the prop, controller property and change:position event with strategy and change:strategy; Angular outputs use soChangeStrategy.
+
+### Patch Changes
+
+- Updated dependencies [2d81d06]
+- Updated dependencies [7327698]
+- Updated dependencies [7415726]
+- Updated dependencies [7335dd6]
+- Updated dependencies [13101c7]
+- Updated dependencies [28bcd83]
+- Updated dependencies [bcd5555]
+- Updated dependencies [203edd0]
+- Updated dependencies [cfffb4b]
+- Updated dependencies [0690162]
+  - @soldy-ui/core@0.3.0-beta.0
+  - @soldy-ui/plugins@0.3.0-beta.0
+
 ## 0.3.0-alpha.7
 
 ### Minor Changes

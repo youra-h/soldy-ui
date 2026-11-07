@@ -135,7 +135,11 @@ describe('GitHub Release выпуска', () => {
 			{ name: '@soldy-ui/vue', version: '0.4.0' },
 		]
 
-		expect(releaseOf(published, SHARED)).toEqual({ tag: 'v0.4.0', title: 'v0.4.0' })
+		expect(releaseOf(published, SHARED)).toEqual({
+			tag: 'v0.4.0',
+			title: 'v0.4.0',
+			prerelease: false,
+		})
 	})
 
 	it('без библиотеки — на теге первого пакета, в заголовке все пакеты', () => {
@@ -147,7 +151,23 @@ describe('GitHub Release выпуска', () => {
 		expect(releaseOf(published, SHARED)).toEqual({
 			tag: '@soldy-ui/theme-base@0.4.1',
 			title: 'theme-base@0.4.1, theme-oren@0.4.2',
+			prerelease: false,
 		})
+	})
+
+	it('бета библиотеки отмечается как GitHub prerelease', () => {
+		expect(releaseOf([{ name: '@soldy-ui/core', version: '0.3.0-beta.0' }], SHARED)).toEqual({
+			tag: 'v0.3.0-beta.0',
+			title: 'v0.3.0-beta.0',
+			prerelease: true,
+		})
+	})
+
+	it('бета независимой темы тоже отмечает выпуск как prerelease', () => {
+		expect(
+			releaseOf([{ name: '@soldy-ui/theme-oren', version: '0.3.0-beta.0' }], SHARED)
+				.prerelease,
+		).toBe(true)
 	})
 
 	it('библиотека двумя версиями — ошибка', () => {

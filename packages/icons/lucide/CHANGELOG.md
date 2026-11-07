@@ -1,5 +1,19 @@
 # @soldy-ui/icons-lucide
 
+## 0.3.0-beta.0
+
+### Patch Changes
+
+- d1d4764: Versioned on their own: a theme or an icon pack no longer shares the version of the library and depends on it by a range (`^` and a library version) instead of its exact version, so it keeps working with the library releases that do not break its contract. The icon packs take `@soldy-ui/setup` as a peer dependency now.
+- Updated dependencies [7327698]
+- Updated dependencies [7335dd6]
+- Updated dependencies [28bcd83]
+- Updated dependencies [e682670]
+- Updated dependencies [ac39aa9]
+- Updated dependencies [cfffb4b]
+- Updated dependencies [0690162]
+  - @soldy-ui/setup@0.3.0-beta.0
+
 ## 0.3.0-alpha.7
 
 ### Patch Changes
