@@ -6,6 +6,7 @@ import {
 	SlotDirective,
 	type TInputValue,
 	type TOutputEmitter,
+	type TModelEmitter,
 	type TRootSpec,
 	type TSetup,
 	type TTemplateRef,
@@ -54,6 +55,24 @@ export const InputOutputNames = [
 	'soAriaChangeLabelledBy',
 	'soAriaChangeDescribedBy',
 	'soChangeId',
+	'renderedChange',
+	'visibleChange',
+	'tagChange',
+	'directionChange',
+	'sizeChange',
+	'variantChange',
+	'disabledChange',
+	'focusedChange',
+	'valueChange',
+	'nameChange',
+	'readonlyChange',
+	'requiredChange',
+	'clearableChange',
+	'placeholderChange',
+	'aria_labelChange',
+	'aria_labelledByChange',
+	'aria_describedByChange',
+	'idChange',
 ] as const
 
 @Directive({
@@ -162,4 +181,22 @@ export abstract class TInputSurface<TInstance extends IEntity> extends TViewSurf
 		'aria:change:describedBy'
 	>
 	declare readonly soChangeId: TOutputEmitter<typeof descriptor, 'change:id'>
+	declare readonly renderedChange: TModelEmitter<typeof descriptor, 'rendered'>
+	declare readonly visibleChange: TModelEmitter<typeof descriptor, 'visible'>
+	declare readonly tagChange: TModelEmitter<typeof descriptor, 'tag'>
+	declare readonly directionChange: TModelEmitter<typeof descriptor, 'direction'>
+	declare readonly sizeChange: TModelEmitter<typeof descriptor, 'size'>
+	declare readonly variantChange: TModelEmitter<typeof descriptor, 'variant'>
+	declare readonly disabledChange: TModelEmitter<typeof descriptor, 'disabled'>
+	declare readonly focusedChange: TModelEmitter<typeof descriptor, 'focused'>
+	declare readonly valueChange: TModelEmitter<typeof descriptor, 'value'>
+	declare readonly nameChange: TModelEmitter<typeof descriptor, 'name'>
+	declare readonly readonlyChange: TModelEmitter<typeof descriptor, 'readonly'>
+	declare readonly requiredChange: TModelEmitter<typeof descriptor, 'required'>
+	declare readonly clearableChange: TModelEmitter<typeof descriptor, 'clearable'>
+	declare readonly placeholderChange: TModelEmitter<typeof descriptor, 'placeholder'>
+	declare readonly aria_labelChange: TModelEmitter<typeof descriptor, 'aria_label'>
+	declare readonly aria_labelledByChange: TModelEmitter<typeof descriptor, 'aria_labelledBy'>
+	declare readonly aria_describedByChange: TModelEmitter<typeof descriptor, 'aria_describedBy'>
+	declare readonly idChange: TModelEmitter<typeof descriptor, 'id'>
 }

@@ -6,6 +6,7 @@ import {
 	SlotDirective,
 	type TInputValue,
 	type TOutputEmitter,
+	type TModelEmitter,
 	type TRootSpec,
 	type TSetup,
 } from '../adapter/runtime'
@@ -71,6 +72,32 @@ export const SliderOutputNames = [
 	'soAriaChangeLabel',
 	'soAriaChangeLabelledBy',
 	'soAriaChangeDescribedBy',
+	'renderedChange',
+	'visibleChange',
+	'tagChange',
+	'directionChange',
+	'sizeChange',
+	'variantChange',
+	'disabledChange',
+	'focusedChange',
+	'valueChange',
+	'nameChange',
+	'minChange',
+	'maxChange',
+	'stepChange',
+	'largeStepChange',
+	'orientationChange',
+	'invertedChange',
+	'originChange',
+	'marksChange',
+	'minStepsBetweenThumbsChange',
+	'thumbLabelsChange',
+	'snapChange',
+	'snapRadiusChange',
+	'tooltipChange',
+	'aria_labelChange',
+	'aria_labelledByChange',
+	'aria_describedByChange',
 ] as const
 
 @Directive({
@@ -201,4 +228,33 @@ export abstract class TSliderSurface<TInstance extends IEntity> extends TViewSur
 		typeof descriptor,
 		'aria:change:describedBy'
 	>
+	declare readonly renderedChange: TModelEmitter<typeof descriptor, 'rendered'>
+	declare readonly visibleChange: TModelEmitter<typeof descriptor, 'visible'>
+	declare readonly tagChange: TModelEmitter<typeof descriptor, 'tag'>
+	declare readonly directionChange: TModelEmitter<typeof descriptor, 'direction'>
+	declare readonly sizeChange: TModelEmitter<typeof descriptor, 'size'>
+	declare readonly variantChange: TModelEmitter<typeof descriptor, 'variant'>
+	declare readonly disabledChange: TModelEmitter<typeof descriptor, 'disabled'>
+	declare readonly focusedChange: TModelEmitter<typeof descriptor, 'focused'>
+	declare readonly valueChange: TModelEmitter<typeof descriptor, 'value'>
+	declare readonly nameChange: TModelEmitter<typeof descriptor, 'name'>
+	declare readonly minChange: TModelEmitter<typeof descriptor, 'min'>
+	declare readonly maxChange: TModelEmitter<typeof descriptor, 'max'>
+	declare readonly stepChange: TModelEmitter<typeof descriptor, 'step'>
+	declare readonly largeStepChange: TModelEmitter<typeof descriptor, 'largeStep'>
+	declare readonly orientationChange: TModelEmitter<typeof descriptor, 'orientation'>
+	declare readonly invertedChange: TModelEmitter<typeof descriptor, 'inverted'>
+	declare readonly originChange: TModelEmitter<typeof descriptor, 'origin'>
+	declare readonly marksChange: TModelEmitter<typeof descriptor, 'marks'>
+	declare readonly minStepsBetweenThumbsChange: TModelEmitter<
+		typeof descriptor,
+		'minStepsBetweenThumbs'
+	>
+	declare readonly thumbLabelsChange: TModelEmitter<typeof descriptor, 'thumbLabels'>
+	declare readonly snapChange: TModelEmitter<typeof descriptor, 'snap'>
+	declare readonly snapRadiusChange: TModelEmitter<typeof descriptor, 'snapRadius'>
+	declare readonly tooltipChange: TModelEmitter<typeof descriptor, 'tooltip'>
+	declare readonly aria_labelChange: TModelEmitter<typeof descriptor, 'aria_label'>
+	declare readonly aria_labelledByChange: TModelEmitter<typeof descriptor, 'aria_labelledBy'>
+	declare readonly aria_describedByChange: TModelEmitter<typeof descriptor, 'aria_describedBy'>
 }

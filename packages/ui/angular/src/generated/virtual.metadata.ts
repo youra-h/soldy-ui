@@ -6,6 +6,7 @@ import {
 	TComponentBase,
 	type TInputValue,
 	type TOutputEmitter,
+	type TModelEmitter,
 	type TRootSpec,
 	type TSetup,
 } from '../adapter/runtime'
@@ -13,7 +14,12 @@ import { booleanInput } from '../adapter/runtime/boolean-input'
 import type { descriptor } from '../components/virtual/manifest'
 
 export const VirtualInputNames = ['embedded', 'pluginProps', 'enabled'] as const
-export const VirtualOutputNames = ['soBundleCreate', 'soPluginEvent', 'soChangeEnabled'] as const
+export const VirtualOutputNames = [
+	'soBundleCreate',
+	'soPluginEvent',
+	'soChangeEnabled',
+	'enabledChange',
+] as const
 
 @Directive({
 	inputs: ['embedded', 'pluginProps', { name: 'enabled', transform: booleanInput }],
@@ -40,4 +46,5 @@ export abstract class TVirtualSurface<TInstance extends IEntity> extends TCompon
 	declare readonly soBundleCreate: TOutputEmitter<typeof descriptor, 'bundle:create'>
 	declare readonly soPluginEvent: TOutputEmitter<typeof descriptor, 'plugin:event'>
 	declare readonly soChangeEnabled: TOutputEmitter<typeof descriptor, 'change:enabled'>
+	declare readonly enabledChange: TModelEmitter<typeof descriptor, 'enabled'>
 }

@@ -18,11 +18,13 @@ import { toInstanceState } from '@soldy-ui/setup'
 import type {
 	DescriptorAllEvents,
 	DescriptorComponentProps,
+	DescriptorInstance,
 	IAdapterContext,
 	IComponentContract,
 	IComponentDescriptor,
 	TAdapterState,
 	TStateSnapshot,
+	TSnapshotOf,
 	TInstanceState,
 } from '@soldy-ui/setup'
 import { AngularProfile } from '../common/profile'
@@ -65,6 +67,16 @@ export type TOutputEmitter<
 	TDescriptorFn extends (...args: any[]) => IComponentDescriptor,
 	TEvent extends keyof DescriptorAllEvents<TDescriptorFn>,
 > = EventEmitter<TOutputValue<DescriptorAllEvents<TDescriptorFn>[TEvent]>>
+
+/** A model emits the property value rather than its change event payload. */
+export type TModelEmitter<
+	TDescriptorFn extends (...args: any[]) => IComponentDescriptor,
+	TInput extends keyof DescriptorComponentProps<TDescriptorFn>,
+> = EventEmitter<
+	TInput extends keyof DescriptorInstance<TDescriptorFn>
+		? TSnapshotOf<DescriptorInstance<TDescriptorFn>[TInput]>
+		: TInputValue<TDescriptorFn, TInput>
+>
 
 /**
  * State as the template reads it: instance properties, plugin inputs and

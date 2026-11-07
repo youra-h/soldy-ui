@@ -10,6 +10,7 @@ import {
 	SlotDirective,
 	type TInputValue,
 	type TOutputEmitter,
+	type TModelEmitter,
 	type TRootSpec,
 	type TSetup,
 	type TTemplateRef,
@@ -54,6 +55,21 @@ export const TagsItemOutputNames = [
 	'soAriaChangeDescribedBy',
 	'soChangeSelected',
 	'soChangeOrder',
+	'renderedChange',
+	'visibleChange',
+	'tagChange',
+	'directionChange',
+	'variantChange',
+	'disabledChange',
+	'focusedChange',
+	'valueChange',
+	'nameChange',
+	'textChange',
+	'closableChange',
+	'aria_labelChange',
+	'aria_labelledByChange',
+	'aria_describedByChange',
+	'selectedChange',
 ] as const
 
 @Directive({
@@ -155,4 +171,19 @@ export abstract class TTagsItemSurface<TInstance extends IEntity> extends TViewS
 	>
 	declare readonly soChangeSelected: TOutputEmitter<typeof facade, 'change:selected'>
 	declare readonly soChangeOrder: TOutputEmitter<typeof facade, 'change:order'>
+	declare readonly renderedChange: TModelEmitter<typeof descriptor, 'rendered'>
+	declare readonly visibleChange: TModelEmitter<typeof descriptor, 'visible'>
+	declare readonly tagChange: TModelEmitter<typeof descriptor, 'tag'>
+	declare readonly directionChange: TModelEmitter<typeof descriptor, 'direction'>
+	declare readonly variantChange: TModelEmitter<typeof descriptor, 'variant'>
+	declare readonly disabledChange: TModelEmitter<typeof descriptor, 'disabled'>
+	declare readonly focusedChange: TModelEmitter<typeof descriptor, 'focused'>
+	declare readonly valueChange: TModelEmitter<typeof descriptor, 'value'>
+	declare readonly nameChange: TModelEmitter<typeof descriptor, 'name'>
+	declare readonly textChange: TModelEmitter<typeof descriptor, 'text'>
+	declare readonly closableChange: TModelEmitter<typeof descriptor, 'closable'>
+	declare readonly aria_labelChange: TModelEmitter<typeof descriptor, 'aria_label'>
+	declare readonly aria_labelledByChange: TModelEmitter<typeof descriptor, 'aria_labelledBy'>
+	declare readonly aria_describedByChange: TModelEmitter<typeof descriptor, 'aria_describedBy'>
+	declare readonly selectedChange: TModelEmitter<typeof descriptor, 'selected'>
 }

@@ -6,6 +6,7 @@ import {
 	SlotDirective,
 	type TInputValue,
 	type TOutputEmitter,
+	type TModelEmitter,
 	type TRootSpec,
 	type TSetup,
 } from '../adapter/runtime'
@@ -34,6 +35,16 @@ export const TooltipOutputNames = [
 	'soChangeType',
 	'soDismissDismiss',
 	'soDismissChangeEnabled',
+	'renderedChange',
+	'visibleChange',
+	'tagChange',
+	'directionChange',
+	'openChange',
+	'placementChange',
+	'openDelayChange',
+	'closeDelayChange',
+	'typeChange',
+	'dismiss_enabledChange',
 ] as const
 
 @Directive({
@@ -105,4 +116,14 @@ export abstract class TTooltipSurface<TInstance extends IEntity> extends TViewSu
 		typeof descriptor,
 		'dismiss:change:enabled'
 	>
+	declare readonly renderedChange: TModelEmitter<typeof descriptor, 'rendered'>
+	declare readonly visibleChange: TModelEmitter<typeof descriptor, 'visible'>
+	declare readonly tagChange: TModelEmitter<typeof descriptor, 'tag'>
+	declare readonly directionChange: TModelEmitter<typeof descriptor, 'direction'>
+	declare readonly openChange: TModelEmitter<typeof descriptor, 'open'>
+	declare readonly placementChange: TModelEmitter<typeof descriptor, 'placement'>
+	declare readonly openDelayChange: TModelEmitter<typeof descriptor, 'openDelay'>
+	declare readonly closeDelayChange: TModelEmitter<typeof descriptor, 'closeDelay'>
+	declare readonly typeChange: TModelEmitter<typeof descriptor, 'type'>
+	declare readonly dismiss_enabledChange: TModelEmitter<typeof descriptor, 'dismiss_enabled'>
 }

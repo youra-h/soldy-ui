@@ -15,3 +15,12 @@ export function useOutputs(
 		event.name.getName(),
 	])
 }
+
+/** Model outputs carry writable property values independently of public events. */
+export function useModels(
+	descriptor: IComponentDescriptor,
+): (readonly [output: string, prop: string])[] {
+	return TSurface.of(descriptor, AngularProfile).props.flatMap((prop) =>
+		prop.model === undefined ? [] : [[prop.model, prop.exportName] as const],
+	)
+}

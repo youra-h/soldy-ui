@@ -10,6 +10,7 @@ import {
 	SlotDirective,
 	type TInputValue,
 	type TOutputEmitter,
+	type TModelEmitter,
 	type TRootSpec,
 	type TSetup,
 } from '../adapter/runtime'
@@ -32,6 +33,10 @@ export const PaginationItemOutputNames = [
 	'soChangeValue',
 	'soChangeName',
 	'soChangeText',
+	'renderedChange',
+	'visibleChange',
+	'tagChange',
+	'directionChange',
 ] as const
 
 @Directive({
@@ -88,4 +93,8 @@ export abstract class TPaginationItemSurface<TInstance extends IEntity> extends 
 	declare readonly soChangeText: TOutputEmitter<typeof descriptor, 'change:text'>
 	declare readonly soElementReady: TOutputEmitter<typeof descriptor, 'element:ready'>
 	declare readonly soElementRemoved: TOutputEmitter<typeof descriptor, 'element:removed'>
+	declare readonly renderedChange: TModelEmitter<typeof descriptor, 'rendered'>
+	declare readonly visibleChange: TModelEmitter<typeof descriptor, 'visible'>
+	declare readonly tagChange: TModelEmitter<typeof descriptor, 'tag'>
+	declare readonly directionChange: TModelEmitter<typeof descriptor, 'direction'>
 }

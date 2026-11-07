@@ -5,6 +5,7 @@ import type { DescriptorPluginOutputs, DescriptorPluginProps } from '@soldy-ui/s
 import {
 	type TInputValue,
 	type TOutputEmitter,
+	type TModelEmitter,
 	type TRootSpec,
 	type TSetup,
 } from '../adapter/runtime'
@@ -19,7 +20,12 @@ export const MenuSeparatorInputNames = [
 	'visible',
 	'direction',
 ] as const
-export const MenuSeparatorOutputNames = [] as const
+export const MenuSeparatorOutputNames = [
+	'renderedChange',
+	'visibleChange',
+	'tagChange',
+	'directionChange',
+] as const
 
 @Directive({
 	inputs: [
@@ -64,4 +70,8 @@ export abstract class TMenuSeparatorSurface<TInstance extends IEntity> extends T
 	declare readonly soChangeDirection: TOutputEmitter<typeof descriptor, 'change:direction'>
 	declare readonly soElementReady: TOutputEmitter<typeof descriptor, 'element:ready'>
 	declare readonly soElementRemoved: TOutputEmitter<typeof descriptor, 'element:removed'>
+	declare readonly renderedChange: TModelEmitter<typeof descriptor, 'rendered'>
+	declare readonly visibleChange: TModelEmitter<typeof descriptor, 'visible'>
+	declare readonly tagChange: TModelEmitter<typeof descriptor, 'tag'>
+	declare readonly directionChange: TModelEmitter<typeof descriptor, 'direction'>
 }

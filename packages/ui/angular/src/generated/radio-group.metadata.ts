@@ -10,6 +10,7 @@ import {
 	SlotDirective,
 	type TInputValue,
 	type TOutputEmitter,
+	type TModelEmitter,
 	type TRootSpec,
 	type TSetup,
 } from '../adapter/runtime'
@@ -72,6 +73,22 @@ export const RadioGroupOutputNames = [
 	'soItemActivated',
 	'soItemDeactivated',
 	'soChangeActivation',
+	'renderedChange',
+	'visibleChange',
+	'tagChange',
+	'directionChange',
+	'sizeChange',
+	'variantChange',
+	'disabledChange',
+	'focusedChange',
+	'valueChange',
+	'nameChange',
+	'viewChange',
+	'aria_labelChange',
+	'aria_labelledByChange',
+	'aria_describedByChange',
+	'itemsChange',
+	'trackByChange',
 ] as const
 
 @Directive({
@@ -187,4 +204,20 @@ export abstract class TRadioGroupSurface<TInstance extends IEntity> extends TVie
 	declare readonly soItemActivated: TOutputEmitter<typeof facade, 'item:activated'>
 	declare readonly soItemDeactivated: TOutputEmitter<typeof facade, 'item:deactivated'>
 	declare readonly soChangeActivation: TOutputEmitter<typeof facade, 'change:activation'>
+	declare readonly renderedChange: TModelEmitter<typeof descriptor, 'rendered'>
+	declare readonly visibleChange: TModelEmitter<typeof descriptor, 'visible'>
+	declare readonly tagChange: TModelEmitter<typeof descriptor, 'tag'>
+	declare readonly directionChange: TModelEmitter<typeof descriptor, 'direction'>
+	declare readonly sizeChange: TModelEmitter<typeof descriptor, 'size'>
+	declare readonly variantChange: TModelEmitter<typeof descriptor, 'variant'>
+	declare readonly disabledChange: TModelEmitter<typeof descriptor, 'disabled'>
+	declare readonly focusedChange: TModelEmitter<typeof descriptor, 'focused'>
+	declare readonly valueChange: TModelEmitter<typeof descriptor, 'value'>
+	declare readonly nameChange: TModelEmitter<typeof descriptor, 'name'>
+	declare readonly viewChange: TModelEmitter<typeof descriptor, 'view'>
+	declare readonly aria_labelChange: TModelEmitter<typeof descriptor, 'aria_label'>
+	declare readonly aria_labelledByChange: TModelEmitter<typeof descriptor, 'aria_labelledBy'>
+	declare readonly aria_describedByChange: TModelEmitter<typeof descriptor, 'aria_describedBy'>
+	declare readonly itemsChange: TModelEmitter<typeof descriptor, 'items'>
+	declare readonly trackByChange: TModelEmitter<typeof descriptor, 'trackBy'>
 }

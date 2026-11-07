@@ -10,6 +10,7 @@ import {
 	SlotDirective,
 	type TInputValue,
 	type TOutputEmitter,
+	type TModelEmitter,
 	type TRootSpec,
 	type TSetup,
 } from '../adapter/runtime'
@@ -65,6 +66,21 @@ export const MenuOutputNames = [
 	'soChoose',
 	'soChangeGroupBy',
 	'soChangeGroups',
+	'renderedChange',
+	'visibleChange',
+	'tagChange',
+	'directionChange',
+	'sizeChange',
+	'variantChange',
+	'openChange',
+	'placementChange',
+	'openOnChange',
+	'groupSeparatorsChange',
+	'dismiss_enabledChange',
+	'itemsChange',
+	'trackByChange',
+	'groupByChange',
+	'groupsChange',
 ] as const
 
 @Directive({
@@ -172,4 +188,19 @@ export abstract class TMenuSurface<TInstance extends IEntity> extends TViewSurfa
 	declare readonly soChoose: TOutputEmitter<typeof facade, 'choose'>
 	declare readonly soChangeGroupBy: TOutputEmitter<typeof facade, 'change:groupBy'>
 	declare readonly soChangeGroups: TOutputEmitter<typeof facade, 'change:groups'>
+	declare readonly renderedChange: TModelEmitter<typeof descriptor, 'rendered'>
+	declare readonly visibleChange: TModelEmitter<typeof descriptor, 'visible'>
+	declare readonly tagChange: TModelEmitter<typeof descriptor, 'tag'>
+	declare readonly directionChange: TModelEmitter<typeof descriptor, 'direction'>
+	declare readonly sizeChange: TModelEmitter<typeof descriptor, 'size'>
+	declare readonly variantChange: TModelEmitter<typeof descriptor, 'variant'>
+	declare readonly openChange: TModelEmitter<typeof descriptor, 'open'>
+	declare readonly placementChange: TModelEmitter<typeof descriptor, 'placement'>
+	declare readonly openOnChange: TModelEmitter<typeof descriptor, 'openOn'>
+	declare readonly groupSeparatorsChange: TModelEmitter<typeof descriptor, 'groupSeparators'>
+	declare readonly dismiss_enabledChange: TModelEmitter<typeof descriptor, 'dismiss_enabled'>
+	declare readonly itemsChange: TModelEmitter<typeof descriptor, 'items'>
+	declare readonly trackByChange: TModelEmitter<typeof descriptor, 'trackBy'>
+	declare readonly groupByChange: TModelEmitter<typeof descriptor, 'groupBy'>
+	declare readonly groupsChange: TModelEmitter<typeof descriptor, 'groups'>
 }

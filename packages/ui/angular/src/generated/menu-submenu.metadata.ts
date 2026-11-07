@@ -10,6 +10,7 @@ import {
 	SlotDirective,
 	type TInputValue,
 	type TOutputEmitter,
+	type TModelEmitter,
 	type TRootSpec,
 	type TSetup,
 	type TTemplateRef,
@@ -83,6 +84,27 @@ export const MenuSubmenuOutputNames = [
 	'soChoose',
 	'soChangeGroupBy',
 	'soChangeGroups',
+	'renderedChange',
+	'visibleChange',
+	'tagChange',
+	'directionChange',
+	'variantChange',
+	'disabledChange',
+	'focusedChange',
+	'valueChange',
+	'nameChange',
+	'textChange',
+	'openChange',
+	'groupSeparatorsChange',
+	'aria_labelChange',
+	'aria_labelledByChange',
+	'aria_describedByChange',
+	'dismiss_enabledChange',
+	'idChange',
+	'itemsChange',
+	'trackByChange',
+	'groupByChange',
+	'groupsChange',
 ] as const
 
 @Directive({
@@ -228,4 +250,25 @@ export abstract class TMenuSubmenuSurface<TInstance extends IEntity> extends TVi
 	declare readonly soChoose: TOutputEmitter<typeof ownerFacade, 'choose'>
 	declare readonly soChangeGroupBy: TOutputEmitter<typeof ownerFacade, 'change:groupBy'>
 	declare readonly soChangeGroups: TOutputEmitter<typeof ownerFacade, 'change:groups'>
+	declare readonly renderedChange: TModelEmitter<typeof descriptor, 'rendered'>
+	declare readonly visibleChange: TModelEmitter<typeof descriptor, 'visible'>
+	declare readonly tagChange: TModelEmitter<typeof descriptor, 'tag'>
+	declare readonly directionChange: TModelEmitter<typeof descriptor, 'direction'>
+	declare readonly variantChange: TModelEmitter<typeof descriptor, 'variant'>
+	declare readonly disabledChange: TModelEmitter<typeof descriptor, 'disabled'>
+	declare readonly focusedChange: TModelEmitter<typeof descriptor, 'focused'>
+	declare readonly valueChange: TModelEmitter<typeof descriptor, 'value'>
+	declare readonly nameChange: TModelEmitter<typeof descriptor, 'name'>
+	declare readonly textChange: TModelEmitter<typeof descriptor, 'text'>
+	declare readonly openChange: TModelEmitter<typeof descriptor, 'open'>
+	declare readonly groupSeparatorsChange: TModelEmitter<typeof descriptor, 'groupSeparators'>
+	declare readonly aria_labelChange: TModelEmitter<typeof descriptor, 'aria_label'>
+	declare readonly aria_labelledByChange: TModelEmitter<typeof descriptor, 'aria_labelledBy'>
+	declare readonly aria_describedByChange: TModelEmitter<typeof descriptor, 'aria_describedBy'>
+	declare readonly dismiss_enabledChange: TModelEmitter<typeof descriptor, 'dismiss_enabled'>
+	declare readonly idChange: TModelEmitter<typeof descriptor, 'id'>
+	declare readonly itemsChange: TModelEmitter<typeof descriptor, 'items'>
+	declare readonly trackByChange: TModelEmitter<typeof descriptor, 'trackBy'>
+	declare readonly groupByChange: TModelEmitter<typeof descriptor, 'groupBy'>
+	declare readonly groupsChange: TModelEmitter<typeof descriptor, 'groups'>
 }

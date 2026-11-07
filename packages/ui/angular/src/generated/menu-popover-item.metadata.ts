@@ -10,6 +10,7 @@ import {
 	SlotDirective,
 	type TInputValue,
 	type TOutputEmitter,
+	type TModelEmitter,
 	type TRootSpec,
 	type TSetup,
 	type TTemplateRef,
@@ -58,6 +59,23 @@ export const MenuPopoverItemOutputNames = [
 	'soDismissDismiss',
 	'soDismissChangeEnabled',
 	'soChangeId',
+	'renderedChange',
+	'visibleChange',
+	'tagChange',
+	'directionChange',
+	'variantChange',
+	'disabledChange',
+	'focusedChange',
+	'valueChange',
+	'nameChange',
+	'textChange',
+	'openChange',
+	'lazyMountChange',
+	'aria_labelChange',
+	'aria_labelledByChange',
+	'aria_describedByChange',
+	'dismiss_enabledChange',
+	'idChange',
 ] as const
 
 @Directive({
@@ -168,4 +186,21 @@ export abstract class TMenuPopoverItemSurface<TInstance extends IEntity> extends
 		'dismiss:change:enabled'
 	>
 	declare readonly soChangeId: TOutputEmitter<typeof descriptor, 'change:id'>
+	declare readonly renderedChange: TModelEmitter<typeof descriptor, 'rendered'>
+	declare readonly visibleChange: TModelEmitter<typeof descriptor, 'visible'>
+	declare readonly tagChange: TModelEmitter<typeof descriptor, 'tag'>
+	declare readonly directionChange: TModelEmitter<typeof descriptor, 'direction'>
+	declare readonly variantChange: TModelEmitter<typeof descriptor, 'variant'>
+	declare readonly disabledChange: TModelEmitter<typeof descriptor, 'disabled'>
+	declare readonly focusedChange: TModelEmitter<typeof descriptor, 'focused'>
+	declare readonly valueChange: TModelEmitter<typeof descriptor, 'value'>
+	declare readonly nameChange: TModelEmitter<typeof descriptor, 'name'>
+	declare readonly textChange: TModelEmitter<typeof descriptor, 'text'>
+	declare readonly openChange: TModelEmitter<typeof descriptor, 'open'>
+	declare readonly lazyMountChange: TModelEmitter<typeof descriptor, 'lazyMount'>
+	declare readonly aria_labelChange: TModelEmitter<typeof descriptor, 'aria_label'>
+	declare readonly aria_labelledByChange: TModelEmitter<typeof descriptor, 'aria_labelledBy'>
+	declare readonly aria_describedByChange: TModelEmitter<typeof descriptor, 'aria_describedBy'>
+	declare readonly dismiss_enabledChange: TModelEmitter<typeof descriptor, 'dismiss_enabled'>
+	declare readonly idChange: TModelEmitter<typeof descriptor, 'id'>
 }

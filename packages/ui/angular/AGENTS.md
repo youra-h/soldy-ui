@@ -136,7 +136,7 @@
   прототипе `TViewSurface`, без копий на классе компонента, у остальных на
   прототипе его класса, — а второй Button и следом ComponentView геттеры
   первого не заменяют.
-- **Каждый выход — с префиксом `so`**: имя выхода — `so` и полное имя
+- **Ordinary event outputs use the `so` prefix** (model outputs are described below): имя выхода — `so` и полное имя
   события ядра в camelCase, у всех событий без исключений: `show` → `soShow`, `show:before` → `soShowBefore`,
   `element:ready` → `soElementReady`, `change:value` → `soChangeValue`, а с
   портом Select — `soOpen` и `soClose`. На `(x)="…"` у элемента Angular
@@ -1651,3 +1651,13 @@
   типов (`ngc`, соседи исходниками через `paths`, `noEmit`, `dist` исключён),
   `tsconfig.spec.json` — прогон спеков, `tsconfig.build.json` — сборка (пустые
   `paths`, частичная форма).
+
+## Model outputs
+
+The `so` prefix applies to ordinary public events. Writable properties with triggers also
+expose `<exportName>Change` outputs through `AngularProfile.model`, without `so`, for native
+Angular two-way bindings (`[(value)]`, `[(aria_label)]`). Models emit property values, while
+ordinary events retain their payloads. `useModels` derives these outputs from `TSurface.props`;
+the code generator declares their names and types, and the base creates their emitters lazily.
+Model types use the snapshot of an instance property where available, otherwise the input type.
+CheckBox uses `value` (boolean or undefined), and ListBox uses `value` for selection.

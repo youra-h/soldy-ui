@@ -16,7 +16,7 @@ own (`<ng-container so-virtual>`, `<ng-container so-drag-and-drop>`, like
 `<ng-container so-locale-provider>`) — events are outputs
 named `so` + the core name in camelCase (`show` → `soShow`, `show:before` → `soShowBefore`,
 `element:ready` → `soElementReady`), and slots are filled through the `slot` attribute. Every
-output has the prefix: Angular binds `(x)` both to an output and to the DOM event of that name, so
+ordinary event output has the prefix: Angular binds `(x)` both to an output and to the DOM event of that name, so
 `(input)` on a field is the browser's event, as on a native `<input>`, and the component's own is
 `(soChangeValue)`.
 
@@ -573,3 +573,18 @@ must not import it.
 ## License
 
 [MIT](https://github.com/youra-h/soldy-ui/blob/main/LICENSE)
+
+## Two-way bindings
+
+Writable inputs with change triggers expose a typed `<inputName>Change` output without `so`:
+
+```html
+<div so-input [(value)]="text"></div>
+<label so-check-box [(value)]="checked"></label>
+<div so-list-box [(value)]="selection"></div>
+```
+
+Model outputs emit the current property value. Ordinary events keep their `so` prefix and event
+payload: `(valueChange)="text = $event"` receives the value, while `(soChangeValue)` receives
+`{ oldValue, newValue }`. Namespaced plugin inputs follow the same rule, for example
+`[(aria_label)]="label"`. Read-only properties have no model output.

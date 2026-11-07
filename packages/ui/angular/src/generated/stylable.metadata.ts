@@ -5,6 +5,7 @@ import type { DescriptorPluginOutputs, DescriptorPluginProps } from '@soldy-ui/s
 import {
 	type TInputValue,
 	type TOutputEmitter,
+	type TModelEmitter,
 	type TRootSpec,
 	type TSetup,
 } from '../adapter/runtime'
@@ -21,7 +22,16 @@ export const StylableInputNames = [
 	'size',
 	'variant',
 ] as const
-export const StylableOutputNames = ['soChangeSize', 'soChangeVariant'] as const
+export const StylableOutputNames = [
+	'soChangeSize',
+	'soChangeVariant',
+	'renderedChange',
+	'visibleChange',
+	'tagChange',
+	'directionChange',
+	'sizeChange',
+	'variantChange',
+] as const
 
 @Directive({
 	inputs: [
@@ -72,4 +82,10 @@ export abstract class TStylableSurface<TInstance extends IEntity> extends TViewS
 	declare readonly soChangeVariant: TOutputEmitter<typeof descriptor, 'change:variant'>
 	declare readonly soElementReady: TOutputEmitter<typeof descriptor, 'element:ready'>
 	declare readonly soElementRemoved: TOutputEmitter<typeof descriptor, 'element:removed'>
+	declare readonly renderedChange: TModelEmitter<typeof descriptor, 'rendered'>
+	declare readonly visibleChange: TModelEmitter<typeof descriptor, 'visible'>
+	declare readonly tagChange: TModelEmitter<typeof descriptor, 'tag'>
+	declare readonly directionChange: TModelEmitter<typeof descriptor, 'direction'>
+	declare readonly sizeChange: TModelEmitter<typeof descriptor, 'size'>
+	declare readonly variantChange: TModelEmitter<typeof descriptor, 'variant'>
 }

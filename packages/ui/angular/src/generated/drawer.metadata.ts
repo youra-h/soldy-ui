@@ -6,6 +6,7 @@ import {
 	SlotDirective,
 	type TInputValue,
 	type TOutputEmitter,
+	type TModelEmitter,
 	type TRootSpec,
 	type TSetup,
 	type TTemplateRef,
@@ -47,6 +48,21 @@ export const DrawerOutputNames = [
 	'soDismissChangeEnabled',
 	'soHideOutsideChangeEnabled',
 	'soScrollLockChangeEnabled',
+	'renderedChange',
+	'visibleChange',
+	'tagChange',
+	'directionChange',
+	'targetChange',
+	'widthChange',
+	'heightChange',
+	'closableChange',
+	'dismissibleChange',
+	'placementChange',
+	'swipeChange',
+	'containedChange',
+	'dismiss_enabledChange',
+	'hideOutside_enabledChange',
+	'scrollLock_enabledChange',
 ] as const
 
 @Directive({
@@ -147,5 +163,26 @@ export abstract class TDrawerSurface<TInstance extends IEntity> extends TViewSur
 	declare readonly soScrollLockChangeEnabled: TOutputEmitter<
 		typeof descriptor,
 		'scrollLock:change:enabled'
+	>
+	declare readonly renderedChange: TModelEmitter<typeof descriptor, 'rendered'>
+	declare readonly visibleChange: TModelEmitter<typeof descriptor, 'visible'>
+	declare readonly tagChange: TModelEmitter<typeof descriptor, 'tag'>
+	declare readonly directionChange: TModelEmitter<typeof descriptor, 'direction'>
+	declare readonly targetChange: TModelEmitter<typeof descriptor, 'target'>
+	declare readonly widthChange: TModelEmitter<typeof descriptor, 'width'>
+	declare readonly heightChange: TModelEmitter<typeof descriptor, 'height'>
+	declare readonly closableChange: TModelEmitter<typeof descriptor, 'closable'>
+	declare readonly dismissibleChange: TModelEmitter<typeof descriptor, 'dismissible'>
+	declare readonly placementChange: TModelEmitter<typeof descriptor, 'placement'>
+	declare readonly swipeChange: TModelEmitter<typeof descriptor, 'swipe'>
+	declare readonly containedChange: TModelEmitter<typeof descriptor, 'contained'>
+	declare readonly dismiss_enabledChange: TModelEmitter<typeof descriptor, 'dismiss_enabled'>
+	declare readonly hideOutside_enabledChange: TModelEmitter<
+		typeof descriptor,
+		'hideOutside_enabled'
+	>
+	declare readonly scrollLock_enabledChange: TModelEmitter<
+		typeof descriptor,
+		'scrollLock_enabled'
 	>
 }
