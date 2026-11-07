@@ -81,6 +81,39 @@ pages use, import their stylesheets instead — `@soldy-ui/theme-oren/button.css
 `@soldy-ui/theme-oren/select.css`, one per component, each with the shared part of the theme
 (the theme's README, [Only the components you use](https://github.com/youra-h/soldy-ui/tree/main/packages/themes/oren#only-the-components-you-use)).
 
+## Two-way binding
+
+Use named `v-model` bindings with the property you want to control: `v-model:value` for a field's
+value, `v-model:open` for a panel's open state, or `v-model:selected` for an item's selection.
+A component can have several bindings at once:
+
+```vue
+<script setup lang="ts">
+import { ref } from 'vue'
+import { Input, Select } from '@soldy-ui/vue'
+
+const text = ref('')
+const selection = ref('a')
+const opened = ref(false)
+const options = [
+  { value: 'a', text: 'First' },
+  { value: 'b', text: 'Second' },
+]
+</script>
+
+<template>
+  <Input v-model:value="text" />
+  <Select v-model:value="selection" v-model:open="opened" :items="options" />
+</template>
+```
+
+`v-model:value="text"` is shorthand for `:value="text"` and `@update:value="text = $event"`.
+The same rule applies to other writable properties with change notifications: each uses
+`update:<property>` with the new value as its payload.
+
+Bare `v-model` is unsupported: Vue expands it to `modelValue` and `update:modelValue`, which
+Soldy components do not expose. Always specify the property name.
+
 ## Several Vue apps on one page
 
 Soldy builds the `id`s of component parts and the owner marks of panels (`data-owner`) on Vue's
