@@ -1,0 +1,43 @@
+{
+  "run": "gpt-index-1794073453731",
+  "mode": "index",
+  "status": "checks_passed",
+  "model": "gpt-6.1-sol",
+  "effort": "high",
+  "baselineCommit": "091781987e9eb0c9d01e35f1e1ff552974827196",
+  "patches": 1,
+  "modelSourceSha256": "a08d58f19e48b2ddab44903305c31de4b3e6d549b346f52acbdbc8428b2bd139",
+  "usage": {
+    "input_tokens": 114196,
+    "cached_input_tokens": 89344,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 944,
+    "reasoning_output_tokens": 173
+  },
+  "checks": [
+    {
+      "attempt": 1,
+      "passed": true,
+      "checks": [
+        {
+          "id": "react",
+          "passed": true
+        },
+        {
+          "id": "ssr",
+          "passed": true
+        }
+      ]
+    }
+  ],
+  "humanSemanticFixes": false,
+  "indexQueries": [
+    {
+      "at": "2026-11-07T17:46:13.969Z",
+      "action": "get_context",
+      "query": "Alert render adapter public props root slots roleIcon useClickAction contract"
+    }
+  ],
+  "preparationCostExcludedFromComparison": true,
+  "engineeringCloudUsage": null
+}
