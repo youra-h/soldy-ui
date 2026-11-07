@@ -99,7 +99,7 @@
 	class="so-date-picker__panel"
 	tabindex="-1"
 	strategy="fixed"
-	[visible]="state()['open']"
+	[visible]="state()['visible'] && state()['open']"
 	[anchor_anchor]="rootElement()"
 	[anchor_offset]="4"
 	[so-attributes]="{

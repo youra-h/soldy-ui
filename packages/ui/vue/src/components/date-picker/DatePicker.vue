@@ -197,7 +197,7 @@ export default { ...SetupDatePicker, components: { Button, Calendar, DateInput, 
 			embedded="date-picker.frame"
 			class="so-date-picker__panel"
 			tabindex="-1"
-			:visible="open"
+			:visible="visible && open"
 			strategy="fixed"
 			:anchor_anchor="rootElement"
 			:anchor_offset="4"

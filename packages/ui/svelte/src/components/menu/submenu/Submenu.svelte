@@ -159,7 +159,7 @@
 		embedded="menu.submenu-frame"
 		class={state.panelClasses}
 		tabindex={-1}
-		visible={state.open}
+		visible={state.visible && state.open}
 		strategy="fixed"
 		anchor_anchor={binding.rootElement}
 		anchor_placement="end-start"

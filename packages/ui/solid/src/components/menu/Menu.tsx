@@ -41,7 +41,7 @@ export function Menu(props: MenuProps): JSX.Element {
 						embedded="menu.frame"
 						class={toPartClass(state.panelClasses)}
 						tabindex="-1"
-						visible={state.open}
+						visible={state.visible && state.open}
 						strategy="fixed"
 						anchor_anchor={binding.rootElement()}
 						anchor_point={state.point}

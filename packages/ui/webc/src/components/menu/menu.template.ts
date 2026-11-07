@@ -74,12 +74,12 @@ export const menuTemplate: ITemplate<IMenu, TMenuCollectionFacade, TMenuOutputs>
 	},
 
 	bindings: [
-		bind(['open', 'placement', 'point'], ({ root, state }) => {
+		bind(['open', 'placement', 'point', 'visible'], ({ root, state }) => {
 			const panel = panels.get(root)
 
 			if (!panel) return
 
-			const visible = state.open === true
+			const visible = state.visible === true && state.open === true
 			const point = state.point ?? null
 
 			patch(panel, { visible, anchor_placement: state.placement, anchor_point: point })

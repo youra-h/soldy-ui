@@ -187,7 +187,7 @@
 	strategy="fixed"
 	anchor_placement="end-start"
 	[class]="state()['panelClasses']"
-	[visible]="state()['open']"
+	[visible]="state()['visible'] && state()['open']"
 	[anchor_anchor]="rootElement()"
 	[so-attributes]="{ ...state()['panelAria'], ...state()['dismiss_ownerAttribute'] }"
 >

@@ -163,7 +163,7 @@
 	tabindex="-1"
 	strategy="fixed"
 	[class]="state()['panelClasses']"
-	[visible]="state()['open']"
+	[visible]="state()['visible'] && state()['open']"
 	[anchor_anchor]="rootElement()"
 	[anchor_point]="state()['point']"
 	[anchor_placement]="state()['placement']"

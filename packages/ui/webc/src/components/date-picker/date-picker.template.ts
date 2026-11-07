@@ -350,9 +350,9 @@ export const datePickerTemplate: ITemplate<IDatePicker, unknown, TDatePickerOutp
 
 		// `visible`, а не `rendered`: увезённую панель прячет база Frame по поддереву
 		// (AGENTS.md (Web Components), «Поддерево»)
-		bind('open', ({ root, state }) => {
+		bind(['open', 'visible'], ({ root, state }) => {
 			const panel = parts.get(root)?.panel
-			const visible = state.open === true
+			const visible = state.visible === true && state.open === true
 
 			if (panel && panel.visible !== visible) panel.visible = visible
 		}),

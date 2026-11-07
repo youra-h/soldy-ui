@@ -110,7 +110,7 @@ export default { ...SetupMenuPopoverItem, components: { Frame, Icon, ItemRow } }
 			embedded="menu.popover-item-frame"
 			class="so-menu-item__panel"
 			tabindex="-1"
-			:visible="open"
+			:visible="visible && open"
 			strategy="fixed"
 			:anchor_anchor="rootElement"
 			anchor_placement="end-start"

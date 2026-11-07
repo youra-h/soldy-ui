@@ -1423,3 +1423,34 @@ describe('Angular', () => {
 		])
 	})
 })
+
+describe('owner visibility', () => {
+	it('hides the detached panel without resetting open', async () => {
+		const fixture = await render(Page, (page) => {
+			page.ctrl.open = true
+			page.ctrl.visible = false
+		})
+		const ctrl = fixture.componentInstance.ctrl
+
+		const element = panel()
+		expect(isOpen()).toBe(false)
+		expect(ctrl.open).toBe(true)
+
+		ctrl.show()
+		fixture.detectChanges()
+		await fixture.whenStable()
+		expect(isOpen()).toBe(true)
+
+		ctrl.hide()
+		fixture.detectChanges()
+		await fixture.whenStable()
+		expect(isOpen()).toBe(false)
+		expect(ctrl.open).toBe(true)
+
+		ctrl.show()
+		fixture.detectChanges()
+		await fixture.whenStable()
+		expect(isOpen()).toBe(true)
+		expect(panel()).toBe(element)
+	})
+})

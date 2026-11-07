@@ -120,7 +120,7 @@ export default { ...SetupMenuSubmenu, components }
 			embedded="menu.submenu-frame"
 			:class="panelClasses"
 			tabindex="-1"
-			:visible="open"
+			:visible="visible && open"
 			strategy="fixed"
 			:anchor_anchor="rootElement"
 			anchor_placement="end-start"

@@ -21,7 +21,7 @@ export interface IOverlayOpenOptions {
  * отвязаться.
  */
 export interface IOverlayOpenState {
-	/** Открыт ли владелец сейчас. */
+	/** Whether the configured property is open and the owner is visible. */
 	read(): boolean
 	/**
 	 * Записать открытость владельцу. Так оверлей закрывает сам себя, когда

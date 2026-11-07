@@ -71,7 +71,7 @@ export default {
 			embedded="menu.frame"
 			:class="panelClasses"
 			tabindex="-1"
-			:visible="open"
+			:visible="visible && open"
 			strategy="fixed"
 			:anchor_anchor="rootElement"
 			:anchor_point="point"

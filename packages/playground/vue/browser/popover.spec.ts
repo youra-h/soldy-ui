@@ -15,6 +15,7 @@ import { render, cleanup } from './render'
 import { userEvent } from 'vitest/browser'
 import { defineComponent, h, nextTick } from 'vue'
 import { Button, Popover } from '@soldy-ui/vue'
+import { TPopover } from '@soldy-ui/core'
 import type { DescriptorSlots, PopoverDescriptor } from '@soldy-ui/setup'
 
 import { expectFadesInPlace, ownTransitionRuns, settled } from './transitions'
@@ -251,5 +252,46 @@ describe('появление и исчезание', () => {
 
 		// Панель без жеста не уезжает — переходит одна прозрачность
 		await expectFadesInPlace(panel(), () => userEvent.keyboard('{Escape}'))
+	})
+})
+
+describe('owner visibility', () => {
+	it('hides the whole popover and retains its panel contents', async () => {
+		const ctrl = new TPopover({ open: true, visible: false })
+		render(
+			defineComponent({
+				render: () =>
+					h(
+						Popover,
+						{ ctrl },
+						{
+							trigger: () => h('button', { class: 'so-test-trigger' }, 'Open'),
+							default: () => h('input', { class: 'so-test-field', value: 'Kept' }),
+						},
+					),
+			}),
+		)
+		await nextTick()
+		await nextFrame()
+
+		const element = panel()
+		const field = document.querySelector('.so-test-field')
+		expect(isOpen()).toBe(false)
+
+		ctrl.show()
+		await nextTick()
+		await expect.poll(isOpen).toBe(true)
+
+		ctrl.hide()
+		await nextTick()
+		await expect.poll(isOpen).toBe(false)
+		expect(getComputedStyle(find('.so-popover')).display).toBe('none')
+		expect(ctrl.open).toBe(true)
+
+		ctrl.show()
+		await nextTick()
+		await expect.poll(isOpen).toBe(true)
+		expect(panel()).toBe(element)
+		expect(document.querySelector('.so-test-field')).toBe(field)
 	})
 })

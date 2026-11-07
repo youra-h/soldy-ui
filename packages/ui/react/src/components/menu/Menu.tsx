@@ -43,7 +43,7 @@ export function Menu(props: MenuProps): ReactElement | null {
 					embedded="menu.frame"
 					className={toPartClass(panelClasses)}
 					tabIndex={-1}
-					visible={open}
+					visible={state.visible && open}
 					strategy="fixed"
 					anchor_anchor={rootElement}
 					anchor_point={point}

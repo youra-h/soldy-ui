@@ -53,7 +53,7 @@ export function Popover(props: PopoverProps): JSX.Element {
 					embedded="popover.frame"
 					class="so-popover__panel"
 					tabindex="-1"
-					visible={state.open}
+					visible={state.visible && state.open}
 					contained={state.contained}
 					strategy="fixed"
 					anchor_anchor={binding.rootElement()}

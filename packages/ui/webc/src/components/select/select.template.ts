@@ -199,22 +199,25 @@ export const selectTemplate: ITemplate<ISelect, TSelectCollectionFacade, TSelect
 
 		// Открытость — `visible`, а не `rendered`: закрытие не вычищает коллекцию опций.
 		// Увезённую панель прячет база Frame, AGENTS.md (Web Components), «Поддерево»
-		bind(['open', 'panelPlacement', 'panelFlip', 'autoFitWidth'], ({ root, state }) => {
-			const panel = parts.get(root)?.panel
+		bind(
+			['open', 'panelPlacement', 'panelFlip', 'autoFitWidth', 'visible'],
+			({ root, state }) => {
+				const panel = parts.get(root)?.panel
 
-			if (!panel) return
+				if (!panel) return
 
-			const visible = state.open === true
-			const flip = state.panelFlip === true
-			const matchWidth = state.autoFitWidth === true
+				const visible = state.visible === true && state.open === true
+				const flip = state.panelFlip === true
+				const matchWidth = state.autoFitWidth === true
 
-			patch(panel, {
-				visible,
-				anchor_placement: state.panelPlacement,
-				anchor_flip: flip,
-				anchor_matchWidth: matchWidth,
-			})
-		}),
+				patch(panel, {
+					visible,
+					anchor_placement: state.panelPlacement,
+					anchor_flip: flip,
+					anchor_matchWidth: matchWidth,
+				})
+			},
+		),
 
 		// Без пометки владельцем нажатие в панель считалось бы нажатием мимо
 		bind(['panelDataset', 'dismiss_ownerAttribute'], ({ root, state }) => {

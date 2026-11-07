@@ -47,12 +47,12 @@ export const tooltipTemplate: ITemplate<ITooltip, unknown, TTooltipOutputs> = {
 
 	bindings: [
 		// Пропсы панели — только сменившиеся
-		bind(['open', 'placement'], ({ root, state }) => {
+		bind(['open', 'placement', 'visible'], ({ root, state }) => {
 			const panel = panels.get(root)
 
 			if (!panel) return
 
-			const visible = state.open === true
+			const visible = state.visible === true && state.open === true
 
 			patch(panel, { visible, anchor_placement: state.placement })
 		}),

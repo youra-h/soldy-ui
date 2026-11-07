@@ -167,7 +167,7 @@ export function DatePicker(props: DatePickerProps): ReactElement | null {
 					embedded="date-picker.frame"
 					className="so-date-picker__panel"
 					tabIndex={-1}
-					visible={open}
+					visible={state.visible && open}
 					strategy="fixed"
 					anchor_anchor={rootElement}
 					anchor_offset={4}

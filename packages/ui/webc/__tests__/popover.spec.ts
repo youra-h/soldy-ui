@@ -1327,3 +1327,28 @@ describe('<div is="so-popover-div"> · Popover на div', () => {
 		>()
 	})
 })
+
+describe('owner visibility', () => {
+	it('hides the detached panel without resetting open', async () => {
+		const ctrl = new TPopover({ open: true, visible: false })
+		await render({ ctrl })
+
+		const element = panel()
+		expect(isOpen()).toBe(false)
+		expect(ctrl.open).toBe(true)
+
+		ctrl.show()
+		await flush()
+		expect(isOpen()).toBe(true)
+
+		ctrl.hide()
+		await flush()
+		expect(isOpen()).toBe(false)
+		expect(ctrl.open).toBe(true)
+
+		ctrl.show()
+		await flush()
+		expect(isOpen()).toBe(true)
+		expect(panel()).toBe(element)
+	})
+})

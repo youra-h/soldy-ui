@@ -731,3 +731,25 @@ describe('жест', () => {
 		expect(document.activeElement).toBe(trigger())
 	})
 })
+
+describe('owner visibility', () => {
+	it('hides the detached panel without resetting open', async () => {
+		const ctrl = new TPopover({ open: true, visible: false })
+		await page({ ctrl })
+
+		const element = panel()
+		expect(isOpen()).toBe(false)
+		expect(ctrl.open).toBe(true)
+
+		ctrl.show()
+		expect(isOpen()).toBe(true)
+
+		ctrl.hide()
+		expect(isOpen()).toBe(false)
+		expect(ctrl.open).toBe(true)
+
+		ctrl.show()
+		expect(isOpen()).toBe(true)
+		expect(panel()).toBe(element)
+	})
+})
