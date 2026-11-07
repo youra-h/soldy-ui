@@ -668,7 +668,6 @@ export class TSelect<
 		// Закрытую панель не тянут: жест кончается вместе с ней
 		if (!value) this._setSwiping(false)
 
-		this._classes.toggle('--open', value)
 		// `aria-expanded` — в `field.aria`: паттерн combobox описывает нативный
 		// `<input>`, а не корневой `div`.
 		this._field.aria.add('aria-expanded', value ? 'true' : 'false')
@@ -689,7 +688,7 @@ export class TSelect<
 
 	protected _applyEditable(value: boolean): void {
 		this._editable = value
-		this._classes.toggle('--editable', value)
+		this._dataset.add('editable', value)
 		this._syncAutocomplete()
 	}
 

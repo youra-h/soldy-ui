@@ -30,7 +30,7 @@ describe('TCheckBox', () => {
 		expect(cb.classes.toArray()).toContain('so-check-box--size-xl')
 
 		cb.indeterminate = true
-		expect(cb.classes.toArray()).toContain('so-check-box--indeterminate')
+		expect(cb.dataset.toObject()['data-indeterminate']).toBe('true')
 
 		cb.view = 'bare'
 		expect(cb.classes.toArray()).toContain('so-check-box--view-bare')

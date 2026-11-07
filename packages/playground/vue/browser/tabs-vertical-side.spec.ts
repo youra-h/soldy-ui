@@ -109,7 +109,7 @@ describe.each(DIRECTION_CASES)('вертикальные табы по ближ�
 		setDir(document.documentElement, scenario.page)
 		mount(look, scenario.direction, scenario.ancestor)
 
-		await expect.poll(() => root().classList.contains('so-tabs--ready-animation')).toBe(true)
+		await expect.poll(() => root().getAttribute('data-ready-animation') === 'true').toBe(true)
 	}
 
 	it.each(POSITIONS)('line, position %s: линия и полоса — у края к панели', async (position) => {

@@ -149,12 +149,12 @@
 	--so-disabled-opacity: 1;
 }
 
-/* Контрол только для чтения. Клик по подписи его не меняет, значит и рука на
- * тексте обещала бы отклик, которого не будет. Гаснет один курсор: гасить ли
- * текст, решает тема, а readonly — не выключенный. Состояние читается с
- * корня контрола — `TInputControl` ставит ему модификатор `--readonly`, — а
- * какого блока этот корень, подпись не знает: в ней стоит и CheckBox, и
- * Switch, и чужой контрол. Отсюда совпадение по части класса. */
-.so-label:has(> .so-label__control > [class*='--readonly']) {
+/*
+ * A readonly control does not react to label clicks, so its label must not
+ * promise an action through a pointer cursor. Only the cursor is reset; the theme
+ * chooses text appearance. Read data-readonly on the direct control root without
+ * depending on its block name: Label may wrap CheckBox, Switch or a custom control.
+ */
+.so-label:has(> .so-label__control > [data-readonly='true']) {
 	cursor: default;
 }

@@ -74,7 +74,7 @@ $easing: linear;
 	transition-timing-function: $easing;
 	transition-behavior: allow-discrete;
 
-	&[data-open='true'] {
+	&:where([data-open='true']) {
 		transition-duration: $enter-duration;
 	}
 
@@ -85,8 +85,8 @@ $easing: linear;
 }
 
 @starting-style {
-	.so-dialog[data-open='true'],
-	.so-dialog__backdrop[data-open='true'] {
+	.so-dialog:where([data-open='true']),
+	.so-dialog__backdrop:where([data-open='true']) {
 		@apply opacity-0;
 	}
 }

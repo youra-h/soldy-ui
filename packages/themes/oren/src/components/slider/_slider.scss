@@ -154,12 +154,12 @@
 		border: var(--so-slider-thumb-border) solid var(--so-slider-fill);
 	}
 
-	&--horizontal #{$this}__mark::after {
+	&--orientation-horizontal #{$this}__mark::after {
 		inset-inline-start: 0;
 		inset-block-start: calc(var(--so-slider-thumb-size) / 2);
 	}
 
-	&--vertical #{$this}__mark::after {
+	&--orientation-vertical #{$this}__mark::after {
 		inset-inline-start: calc(var(--so-slider-thumb-size) / 2);
 		inset-block-start: 0;
 	}

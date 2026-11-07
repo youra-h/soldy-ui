@@ -32,7 +32,7 @@ describe('умолчания', () => {
 		expect(instance.tag).toBe('span')
 		expect(instance.classes.toArray()).toContain('so-progress-linear')
 		expect(instance.classes.toArray()).toContain('so-progress-linear--size-normal')
-		expect(instance.classes.toArray()).toContain('so-progress-linear--horizontal')
+		expect(instance.classes.toArray()).toContain('so-progress-linear--orientation-horizontal')
 		expect(instance.getProps()).toMatchObject({
 			value: 0,
 			min: 0,
@@ -170,24 +170,26 @@ describe('ось', () => {
 	it('модификатор меняется вместе с осью, прежний снимается', () => {
 		const instance = progress()
 		const axis = () =>
-			instance.classes.toArray().filter((name) => /--(horizontal|vertical)$/.test(name))
+			instance.classes
+				.toArray()
+				.filter((name) => /--orientation-(horizontal|vertical)$/.test(name))
 
-		expect(axis()).toEqual(['so-progress-linear--horizontal'])
+		expect(axis()).toEqual(['so-progress-linear--orientation-horizontal'])
 
 		instance.orientation = 'vertical'
 
-		expect(axis()).toEqual(['so-progress-linear--vertical'])
+		expect(axis()).toEqual(['so-progress-linear--orientation-vertical'])
 
 		instance.orientation = 'horizontal'
 
-		expect(axis()).toEqual(['so-progress-linear--horizontal'])
+		expect(axis()).toEqual(['so-progress-linear--orientation-horizontal'])
 	})
 
 	it('заданная конструктором ось — сразу своим модификатором', () => {
 		const classes = progress({ orientation: 'vertical' }).classes.toArray()
 
-		expect(classes).toContain('so-progress-linear--vertical')
-		expect(classes).not.toContain('so-progress-linear--horizontal')
+		expect(classes).toContain('so-progress-linear--orientation-vertical')
+		expect(classes).not.toContain('so-progress-linear--orientation-horizontal')
 	})
 
 	it('aria-orientation нет ни при какой оси', () => {

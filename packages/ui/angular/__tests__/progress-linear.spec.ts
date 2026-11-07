@@ -66,7 +66,7 @@ describe('первая отрисовка', () => {
 		expect([...node.classList]).toEqual([
 			'so-progress-linear',
 			'so-progress-linear--size-normal',
-			'so-progress-linear--horizontal',
+			'so-progress-linear--orientation-horizontal',
 		])
 		expect(node.getAttribute('role')).toBe('progressbar')
 		expect(node.getAttribute('aria-valuemin')).toBe('0')
@@ -102,8 +102,8 @@ describe('первая отрисовка', () => {
 	it('вертикальная ось — модификатором на корне, без aria-orientation', () => {
 		const node = root(mount({ value: 40, orientation: 'vertical' }))
 
-		expect(node.classList.contains('so-progress-linear--vertical')).toBe(true)
-		expect(node.classList.contains('so-progress-linear--horizontal')).toBe(false)
+		expect(node.classList.contains('so-progress-linear--orientation-vertical')).toBe(true)
+		expect(node.classList.contains('so-progress-linear--orientation-horizontal')).toBe(false)
 		expect(node.hasAttribute('aria-orientation')).toBe(false)
 		expect(percent(node)).toBe('40%')
 	})
@@ -177,13 +177,21 @@ describe('смена значения и флага', () => {
 
 		update(fixture, { orientation: 'vertical' })
 
-		expect(root(fixture).classList.contains('so-progress-linear--vertical')).toBe(true)
-		expect(root(fixture).classList.contains('so-progress-linear--horizontal')).toBe(false)
+		expect(root(fixture).classList.contains('so-progress-linear--orientation-vertical')).toBe(
+			true,
+		)
+		expect(root(fixture).classList.contains('so-progress-linear--orientation-horizontal')).toBe(
+			false,
+		)
 
 		update(fixture, { orientation: undefined })
 
-		expect(root(fixture).classList.contains('so-progress-linear--horizontal')).toBe(true)
-		expect(root(fixture).classList.contains('so-progress-linear--vertical')).toBe(false)
+		expect(root(fixture).classList.contains('so-progress-linear--orientation-horizontal')).toBe(
+			true,
+		)
+		expect(root(fixture).classList.contains('so-progress-linear--orientation-vertical')).toBe(
+			false,
+		)
 	})
 
 	it('смена шкалы пересчитывает долю и aria-value*', () => {
@@ -238,7 +246,9 @@ describe('внешний ctrl', () => {
 		ctrl.orientation = 'vertical'
 		fixture.detectChanges()
 
-		expect(root(fixture).classList.contains('so-progress-linear--vertical')).toBe(true)
+		expect(root(fixture).classList.contains('so-progress-linear--orientation-vertical')).toBe(
+			true,
+		)
 	})
 
 	it('пропсы разметки ложатся поверх ctrl', () => {
@@ -258,7 +268,9 @@ describe('внешний ctrl', () => {
 		const fixture = mount({ ctrl })
 
 		expect(root(fixture).dataset['indeterminate']).toBe('true')
-		expect(root(fixture).classList.contains('so-progress-linear--vertical')).toBe(true)
+		expect(root(fixture).classList.contains('so-progress-linear--orientation-vertical')).toBe(
+			true,
+		)
 	})
 })
 

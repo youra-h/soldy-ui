@@ -1834,8 +1834,8 @@ useToasts()`. API опускает лифт (`TOASTS_ELEVATOR`, расширен
   `--so-progress-linear-percent`) прижата к 0–100 %, `aria-valuenow` — к
   `[min, max]`, и полоса со скринридером показывают одно и то же. Ось —
   `orientation` (`horizontal` по умолчанию или `vertical` — снизу вверх, как
-  вертикальный Slider), модификатором без префикса (`--horizontal`,
-  `--vertical`), как у Slider и Tabs; `aria-orientation` ядро не пишет — у
+  вертикальный Slider), модификатором с именем пропа (`--orientation-horizontal`,
+  `--orientation-vertical`), как у Slider и Tabs; `aria-orientation` ядро не пишет — у
   роли `progressbar` его нет (ARIA 1.2). Имя — `aria_label` или
   `aria_labelledBy` (`TAriaPlugin` без `role`). Содержимого и слотов нет:
   дети `progressbar` презентационные, скринридер их не читает, — подпись и

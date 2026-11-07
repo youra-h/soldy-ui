@@ -66,10 +66,7 @@ export class TTabs extends TControl<ITabsProps, TTabsEvents> implements ITabs {
 	}
 
 	protected _applyOrientation(newValue: TTabsOrientation, oldValue?: TTabsOrientation) {
-		this._classes.swapClass({
-			oldClass: `--${oldValue}`,
-			newClass: `--${newValue}`,
-		})
+		this._classes.swap({ prefix: '--orientation-', oldValue, newValue })
 		// Не для вида: по ориентации скринридер объявляет, какими стрелками
 		// ходить по списку, — у вертикального это ↑/↓ (`TTabsKeyboardPlugin`)
 		this._aria.add('aria-orientation', newValue)
@@ -101,9 +98,10 @@ export class TTabs extends TControl<ITabsProps, TTabsEvents> implements ITabs {
 	}
 
 	protected _applyAlignment(newValue: TTabsAlignment, oldValue?: TTabsAlignment) {
-		this._classes.swapClass({
-			oldClass: `--${oldValue}`,
-			newClass: newValue !== 'start' ? `--${newValue}` : '',
+		this._classes.swap({
+			prefix: '--alignment-',
+			oldValue,
+			newValue: newValue !== 'start' ? newValue : undefined,
 		})
 		this._alignment = newValue
 	}

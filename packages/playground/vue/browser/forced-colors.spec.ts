@@ -1216,7 +1216,7 @@ describe.runIf(forcedColorsRepaint)('Tabs: активный таб', () => {
 			expect(outlined(idle()), 'до замера, соседняя обёртка').toBe(false)
 
 			await expect
-				.poll(() => find('.so-tabs').classList.contains('so-tabs--ready-animation'))
+				.poll(() => find('.so-tabs').getAttribute('data-ready-animation') === 'true')
 				.toBe(true)
 
 			expect(outlined(bar(), '::before'), 'после замера, карточка').toBe(true)

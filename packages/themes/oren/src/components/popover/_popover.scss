@@ -104,7 +104,7 @@
 // Въезд от края в контейнере — движение поверх проявления: начальную
 // прозрачность даёт `anchored.fade-look`, здесь только место за краем.
 @starting-style {
-	.so-popover__panel[data-open='true'][data-contained='true'] {
+	.so-popover__panel:where([data-open='true'])[data-contained='true'] {
 		translate: var(--so-popover-away);
 	}
 }

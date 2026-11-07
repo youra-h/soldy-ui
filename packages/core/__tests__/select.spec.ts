@@ -1106,8 +1106,8 @@ describe('field — экземпляр TInput, которым владеет Sel
 			const select = new TSelect({ clearable: true })
 
 			expect('clearAria' in select).toBe(false)
-			expect(select.classes.toArray()).not.toContain('so-select--clearable')
-			expect(select.field.classes.toArray()).toContain('so-input--clearable')
+			expect(select.dataset.toObject()['data-clearable']).toBeUndefined()
+			expect(select.field.dataset.toObject()['data-clearable']).toBe('true')
 		})
 	})
 })

@@ -30,6 +30,23 @@ function fixture(
 }
 
 describe('published theme contract', () => {
+	it('uses prop names for class modifiers and datasets for states', () => {
+		for (const entry of inventory.modifiers) expect(entry.name).toMatch(/^--[a-z][a-z-]*-/)
+		for (const name of [
+			'readonly',
+			'required',
+			'clearable',
+			'editable',
+			'open',
+			'closable',
+			'indeterminate',
+			'ready-animation',
+		]) {
+			expect(inventory.modifiers.some((entry) => entry.name === '--' + name)).toBe(false)
+			expect(inventory.data.some((entry) => entry.name === 'data-' + name)).toBe(true)
+		}
+	})
+
 	it('matches the current emission sites across core, setup, plugins and every adapter', () => {
 		for (const kind of kinds) expect(names(contract[kind]), kind).toEqual(inventory[kind])
 	})

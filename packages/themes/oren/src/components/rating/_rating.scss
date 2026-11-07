@@ -96,7 +96,8 @@
 // касания `:hover` залипает, и звезда осталась бы поднятой. Подъём — масштабом
 // звезды, а не размером ячейки: ряд не сдвигается, и доля под указателем та же.
 @media (hover: hover) {
-	.so-rating:not(.so-rating--readonly, [data-disabled='true']) .so-rating__star:hover {
+	.so-rating:not(.so-rating:where([data-readonly='true']), [data-disabled='true'])
+		.so-rating__star:hover {
 		scale: 1.15;
 	}
 }

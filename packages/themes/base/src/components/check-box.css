@@ -63,7 +63,7 @@
 
 /* Только для чтения: клик по коробке её не переключает — его отменяет
  * `TInputBoolPlugin`, — поэтому курсор обычный, как у выключенной. */
-.so-check-box--readonly input {
+.so-check-box:where([data-readonly='true']) input {
 	cursor: default;
 }
 

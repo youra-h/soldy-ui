@@ -3,23 +3,11 @@
 @use '../input/mixins' as input;
 @use '../../mixins/required' as required;
 
-// DateInput — поле даты из частей по формату локали.
-//
-// Структура — коробка поля семьи Input по шкале поля, слоты у краёв, квадрат
-// очистки, ряд частей флексом со своим `dir`, место года и минимум ряда, поля
-// части и разделителя, курсоры, гашение выключенного и место точки
-// обязательного поля — в общем слое тем (`components/date-input.css`,
-// `required.css` и `target.css` в `@soldy-ui/theme-base`). Здесь — облик:
-// рамка, поверхность, кольцо фокуса, подсветка части и выделения, цвет
-// подсказки, вид кнопки очистки, точка обязательного поля, варианты и ошибка.
-//
-// От ядра приходят: у корня — модификаторы `--size-*`, `--variant-*`,
-// `--readonly`, `--required` и `--clearable`, `data-disabled` и
-// `data-invalid` (собранная дата вне `min`/`max`); у ряда — `dir`; у части —
-// `data-type` (`day`, `month`, `year`, у поля со временем ещё `hour`,
-// `minute`, `dayPeriod` и, до секунды, `second`) и `data-placeholder` (часть
-// пуста и показывает подсказку). Фокус — у самой части, по остановке Tab на
-// часть; тема читает его псевдоклассом `:focus`.
+// DateInput is an Input-family frame with localized date/time segments. The root
+// receives size/variant classes and data-readonly, data-required, data-clearable,
+// data-disabled and data-invalid. Theme-base supplies layout, spacing, cursors and
+// disabled behavior. Oren paints the frame, placeholders, selected segments,
+// required dot, variants and invalid state.
 
 // Наведение красит рамку только у включённого поля. Выключенность —
 // `data-disabled` корня: нативного `disabled` у корня нет, а частей много.
@@ -45,14 +33,14 @@ $disabled: "[data-disabled='true']";
 	}
 
 	// Точка обязательного поля — место и размер в общем слое тем, здесь облик.
-	&--required::after {
+	&:where([data-required='true'])::after {
 		@include required.required-dot;
 	}
 
 	// Только для чтения — фокус встаёт и выделение работает (дату можно
 	// прочесть и скопировать), но ввода нет. Подсветка части — нейтраль: место
 	// фокуса видно, а ввода она не обещает. Кольцо поля — то же: это фокус.
-	&--readonly {
+	&:where([data-readonly='true']) {
 		@include mixines.date-input-highlight('neutral', var(--so-component-text));
 	}
 

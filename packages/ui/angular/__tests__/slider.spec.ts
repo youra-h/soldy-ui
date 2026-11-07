@@ -230,7 +230,7 @@ describe('разметка', () => {
 		const node = root(fixture)
 
 		expect(node.localName).toBe('span')
-		expect(node.classList.contains('so-slider--horizontal')).toBe(true)
+		expect(node.classList.contains('so-slider--orientation-horizontal')).toBe(true)
 		expect(node.classList.contains('so-slider--size-lg')).toBe(true)
 		expect(node.dataset['dragging']).toBe('false')
 		expect(node.dataset['disabled']).toBe('false')

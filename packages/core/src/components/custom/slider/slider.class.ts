@@ -642,10 +642,7 @@ export default class TSlider
 	}
 
 	protected _applyOrientation(newValue: TSlideOrientation, oldValue?: TSlideOrientation): void {
-		this._classes.swapClass({
-			oldClass: `--${oldValue}`,
-			newClass: `--${newValue}`,
-		})
+		this._classes.swap({ prefix: '--orientation-', oldValue, newValue })
 		// Не для вида: по ориентации скринридер объявляет, какими стрелками
 		// двигать ручку. Уходит на каждое поле и у нескольких ручек (`_fieldAria`)
 		this._aria.add('aria-orientation', newValue)

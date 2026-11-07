@@ -1,29 +1,17 @@
 /**
- * Общий слой тем без темы — ползунок, оценка, лента, индикаторы, заглушка и
- * пагинация: страница только с CSS базы (`@soldy-ui/theme-base`), без
- * `@soldy-ui/theme-oren`.
+ * Theme-base without oren: Slider, Rating, Scroller, progress indicators,
+ * Skeleton and Pagination. Structure works without theme colors, rails or stars.
+ * Tests check observable behavior rather than base constants: Slider thumbs reach
+ * the min/max endpoints and track clicks set the corresponding value horizontally,
+ * vertically and in RTL; a Rating star selects its number. Scroller starts at the
+ * logical beginning and advances to item starts. Progress fill represents its
+ * fraction; Skeleton covers content. Pagination cells match Button height and
+ * two-digit page cells stay square.
  *
- * Структура этих частей — раскладка и механика — лежит в базе, а облик в теме
- * (`packages/themes/base/AGENTS.md`, «Перенос структуры»). Без темы части
- * голые — без цвета, рельса и звёзд цвета темы, — но рабочие, и здесь это
- * проверяется тем, что видит пользователь, а не числами базы: ручки Slider
- * стоят на концах хода при `min` и `max`, а нажатие в точку хода ставит
- * значение там — по горизонтали, в RTL и по вертикали; нажатие на звезду
- * Rating ставит её номер; лента Scroller в покое стоит в начале строки, а
- * после листания — на начале элемента; заливка ProgressLinear — доля дорожки
- * от начала строки; заглушка Skeleton закрывает содержимое; клетки Pagination —
- * высотой с Button того же размера, а номера в две цифры — квадраты. Спеки с
- * темой держат базу под темой, и потерянное ею правило тема могла бы закрыть
- * своим, а сторожа CSS (`themes/base/__tests__/`) раскладки не считают.
- *
- * Страница у файла спека своя (`isolate` прогона), и листа темы на ней нет —
- * это проверяет первый тест. Проверен поломкой: без отступа корня Slider
- * вдоль оси (`padding-inline` у `.so-slider--horizontal`) ручки на краях хода
- * свисают за коробку ползунка, и падают случаи краёв хода; со сдвинутым ходом
- * (без поля ручки назад на полстороны) падают и края, и нажатие в точку хода
- * во всех трёх случаях; без запаса под кольцо фокуса в окне снапа ленты снап
- * сдвигает её в покое на этот запас, и падает лента; без ряда звёзд — оценка;
- * без поля строки страницы — клетки Pagination.
+ * The file has an isolated page with only base CSS. Theme-covered tests can mask
+ * a missing structural rule; CSS guards cannot measure layout. Removing Slider
+ * axis padding (--orientation-horizontal) sends endpoint thumbs beyond the rail
+ * and breaks these geometry checks.
  */
 
 import { describe, it, expect, afterEach } from 'vitest'

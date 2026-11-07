@@ -166,15 +166,15 @@ const quiet = (): Promise<unknown> =>
 	)
 
 /**
- * Сцена отрисована и устоялась: плагин раскладки записал геометрию на всех трёх
- * корнях (`--ready-animation`) — карточка `contained` уже псевдоэлемент
- * ряда, — указатель уведён с табов, переходы доиграли.
+ * Wait for geometry on all three roots (data-ready-animation). The contained
+ * card is then the bar's pseudo-element. Move the pointer away and let transitions
+ * finish before measuring the nested scene.
  */
 async function show(outerLook: TTabsLook, innerLook: TTabsLook): Promise<void> {
 	render(scene(outerLook, innerLook))
 
 	await expect
-		.poll(() => roots().filter((root) => root.classList.contains('so-tabs--ready-animation')))
+		.poll(() => roots().filter((root) => root.getAttribute('data-ready-animation') === 'true'))
 		.toHaveLength(3)
 	await userEvent.hover(find('.so-test-away'))
 	await quiet()

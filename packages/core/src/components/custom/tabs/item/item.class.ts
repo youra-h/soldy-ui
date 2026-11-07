@@ -44,7 +44,7 @@ export default class TTabsItem<
 
 		this._closable = customProps.closable ?? ctor.defaultValues.closable
 
-		this._classes.toggle(`--closable`, !!this._closable)
+		this._dataset.add('closable', !!this._closable)
 
 		// Только то, что таб знает о себе сам: он — таб.
 		//
@@ -127,7 +127,7 @@ export default class TTabsItem<
 		if (e.defaultPrevented || e.value === this._closable) return
 
 		this._closable = e.value
-		this._classes.toggle(`--closable`, !!e.value)
+		this._dataset.add('closable', !!e.value)
 		this._sink.emit('change:closable', { newValue: e.value, oldValue: oldClosable })
 	}
 

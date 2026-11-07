@@ -30,13 +30,13 @@ describe('разметка корня', () => {
 
 		expect(instance.tag).toBe('span')
 		expect(instance.classes.toArray()).toContain('so-slider')
-		expect(instance.classes.toArray()).toContain('so-slider--horizontal')
+		expect(instance.classes.toArray()).toContain('so-slider--orientation-horizontal')
 		expect(instance.aria.get('aria-orientation')).toBe('horizontal')
 
 		instance.orientation = 'vertical'
 
-		expect(instance.classes.toArray()).toContain('so-slider--vertical')
-		expect(instance.classes.toArray()).not.toContain('so-slider--horizontal')
+		expect(instance.classes.toArray()).toContain('so-slider--orientation-vertical')
+		expect(instance.classes.toArray()).not.toContain('so-slider--orientation-horizontal')
 		expect(instance.aria.get('aria-orientation')).toBe('vertical')
 	})
 

@@ -33,7 +33,7 @@ $disabled: mixines.$input-disabled;
 		}
 	}
 
-	&--required::after {
+	&:where([data-required='true'])::after {
 		@include required.required-dot;
 	}
 

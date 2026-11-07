@@ -137,7 +137,7 @@ $backdrop-easing: linear;
 	transition-property: opacity, display;
 	transition-behavior: allow-discrete;
 
-	&[data-open='true'] {
+	&:where([data-open='true']) {
 		transition-duration: $enter-duration;
 		transition-timing-function: $enter-easing;
 	}
@@ -157,7 +157,7 @@ $backdrop-easing: linear;
 	transition-timing-function: $backdrop-easing;
 	transition-behavior: allow-discrete;
 
-	&[data-open='true'] {
+	&:where([data-open='true']) {
 		transition-duration: $enter-duration;
 	}
 
@@ -167,12 +167,12 @@ $backdrop-easing: linear;
 }
 
 @starting-style {
-	.so-drawer[data-open='true'] {
+	.so-drawer:where([data-open='true']) {
 		@apply opacity-0;
 		translate: var(--so-drawer-away);
 	}
 
-	.so-drawer__backdrop[data-open='true'] {
+	.so-drawer__backdrop:where([data-open='true']) {
 		@apply opacity-0;
 	}
 }

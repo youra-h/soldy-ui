@@ -493,7 +493,7 @@ $picker-panel: '.so-calendar__month > .so-calendar__heading .so-popover__panel[d
 // разрешает (`motion.allowed`). Без движения карточка проявляется вместе с
 // подложкой на своём месте, а отпущенная встаёт на место сразу.
 #{$picker-panel} {
-	&[data-open='true']:not([data-swiping='true'])
+	&:where([data-open='true']):not([data-swiping='true'])
 		> :is(.so-popover__content, .so-popover__handle) {
 		@include motion.allowed {
 			transition-property: translate;

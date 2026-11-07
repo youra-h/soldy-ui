@@ -15,20 +15,10 @@ export default { ...SetupProgressLinear }
 		v-bind="{ ...attrs, ...aria, ...dataset }"
 	>
 		<!--
-			Индикатор выполнения — линия. Корень и есть дорожка во всю длину, в нём
-			заливка доли готового. Корень рисуется по `tag`, по умолчанию `span`:
-			полосу кладут в `Button` и `Label`, а внутри них HTML разрешает только
-			строчную разметку. Поэтому и заливка — `span`.
-
-			Разметка статическая: размер, вариант и ось (`--size-*`, `--variant-*`,
-			`--horizontal` или `--vertical`), доля (переменная
-			`--so-progress-linear-percent` в `style`), бег (`data-indeterminate`),
-			роль, значения и имя для скринридера и `dir` приходят кодом, здесь
-			только состав и имена классов.
-
-			Текста и слотов нет: содержимое узла с ролью `progressbar` скринридер
-			не читает, а в тонкую полосу текст не влезет. Подпись и число
-			потребитель ставит рядом своей разметкой.
+			Linear progress uses orientation, size and variant classes on the root.
+			Core exposes --orientation-horizontal or --orientation-vertical, the
+			percentage through --so-progress-linear-percent, and running state through
+			data-indeterminate. The theme draws the track, fill and indeterminate motion.
 		-->
 
 		<!--

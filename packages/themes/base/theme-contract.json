@@ -2581,47 +2581,20 @@
   ],
   "modifiers": [
     {
+      "name": "--alignment-",
+      "sources": ["packages/core/src/components/custom/tabs/tabs.class.ts"],
+      "pattern": "so-<block>--alignment-<value>",
+      "description": "Alignment of tabs within the list.",
+      "scope": "Tabs root",
+      "values": "center | end | stretch; start has no modifier"
+    },
+    {
       "name": "--animation-",
       "sources": ["packages/core/src/components/custom/skeleton/skeleton.class.ts"],
       "pattern": "so-<block>--animation-<value>",
       "description": "Theme-defined skeleton animation.",
       "scope": "Skeleton",
       "values": "<animation>; values declared by the theme"
-    },
-    {
-      "name": "--clearable",
-      "sources": ["packages/core/src/components/base/clearable/clearable.class.ts"],
-      "pattern": "so-<block>--clearable",
-      "description": "Control offers a clear action.",
-      "scope": "TClearable descendants",
-      "values": "present when clearable"
-    },
-    {
-      "name": "--closable",
-      "sources": [
-        "packages/core/src/components/custom/tabs/item/item.class.ts",
-        "packages/core/src/components/custom/tags/item/item.class.ts"
-      ],
-      "pattern": "so-<block>--closable",
-      "description": "Collection item exposes a close action.",
-      "scope": "Tabs item and Tags item roots",
-      "values": "present when closable"
-    },
-    {
-      "name": "--editable",
-      "sources": ["packages/core/src/components/custom/select/select.class.ts"],
-      "pattern": "so-<block>--editable",
-      "description": "Select accepts text input.",
-      "scope": "Select root",
-      "values": "present in search or filter mode"
-    },
-    {
-      "name": "--indeterminate",
-      "sources": ["packages/core/src/components/custom/check-box/check-box.class.ts"],
-      "pattern": "so-<block>--indeterminate",
-      "description": "Mixed check state.",
-      "scope": "CheckBox root",
-      "values": "present when indeterminate"
     },
     {
       "name": "--layout-",
@@ -2632,12 +2605,24 @@
       "values": "list | cascade"
     },
     {
-      "name": "--open",
-      "sources": ["packages/core/src/components/custom/select/select.class.ts"],
-      "pattern": "so-<block>--open",
-      "description": "Select popup is open.",
-      "scope": "Select root",
-      "values": "present when open"
+      "name": "--mode-",
+      "sources": ["packages/core/src/components/custom/date-picker/date-picker.class.ts"],
+      "pattern": "so-<block>--mode-<value>",
+      "description": "Date selection mode and field layout.",
+      "scope": "DatePicker root",
+      "values": "single | range"
+    },
+    {
+      "name": "--orientation-",
+      "sources": [
+        "packages/core/src/components/custom/progress-linear/progress-linear.class.ts",
+        "packages/core/src/components/custom/slider/slider.class.ts",
+        "packages/core/src/components/custom/tabs/tabs.class.ts"
+      ],
+      "pattern": "so-<block>--orientation-<value>",
+      "description": "Orientation of the component layout.",
+      "scope": "Tabs, Slider and ProgressLinear roots",
+      "values": "horizontal | vertical"
     },
     {
       "name": "--placement-",
@@ -2669,30 +2654,6 @@
       "description": "Tabs bar follows the content.",
       "scope": "Tabs root",
       "values": "end"
-    },
-    {
-      "name": "--readonly",
-      "sources": ["packages/core/src/components/base/input-control/input-control.class.ts"],
-      "pattern": "so-<block>--readonly",
-      "description": "Value cannot be edited.",
-      "scope": "TInputControl descendants",
-      "values": "present when readonly"
-    },
-    {
-      "name": "--ready-animation",
-      "sources": ["packages/themes/base/setup/plugins/tabs-view.plugin.ts"],
-      "pattern": "so-<block>--ready-animation",
-      "description": "Tabs geometry has been measured by TTabsViewPlugin; removed on disposal.",
-      "scope": "Tabs root; requires @soldy-ui/theme-base/setup",
-      "values": "present after the initial layout measurement"
-    },
-    {
-      "name": "--required",
-      "sources": ["packages/core/src/components/base/input-control/input-control.class.ts"],
-      "pattern": "so-<block>--required",
-      "description": "A value is required.",
-      "scope": "TInputControl descendants",
-      "values": "present when required"
     },
     {
       "name": "--shape-",
@@ -2789,6 +2750,25 @@
       "presence": "TDataset serializes false as \"false\"; null/undefined removes the attribute. See scope for the bound DOM node."
     },
     {
+      "name": "data-clearable",
+      "sources": ["packages/core/src/components/base/clearable/clearable.class.ts"],
+      "description": "Control offers a clear action.",
+      "scope": "TClearable descendants",
+      "values": "true | false",
+      "presence": "Always present on applicable component instances, including the initial render; false is serialized as \"false\"."
+    },
+    {
+      "name": "data-closable",
+      "sources": [
+        "packages/core/src/components/custom/tabs/item/item.class.ts",
+        "packages/core/src/components/custom/tags/item/item.class.ts"
+      ],
+      "description": "Own closable flag of a collection item; inherited collection policy and disabled state still determine the effective close action.",
+      "scope": "Tabs item and Tags item roots",
+      "values": "true | false",
+      "presence": "Always present on applicable component instances, including the initial render; false is serialized as \"false\"."
+    },
+    {
       "name": "data-contained",
       "sources": [
         "packages/core/src/components/custom/drawer/drawer.class.ts",
@@ -2858,6 +2838,14 @@
       "presence": "TDataset serializes false as \"false\"; null/undefined removes the attribute. See scope for the bound DOM node."
     },
     {
+      "name": "data-editable",
+      "sources": ["packages/core/src/components/custom/select/select.class.ts"],
+      "description": "Select accepts text input.",
+      "scope": "Select root",
+      "values": "true | false",
+      "presence": "Always present on applicable component instances, including the initial render; false is serialized as \"false\"."
+    },
+    {
       "name": "data-grid",
       "sources": [
         "packages/core/src/components/custom/table/collection/extensions/grid/grid.extension.ts"
@@ -2885,9 +2873,12 @@
     },
     {
       "name": "data-indeterminate",
-      "sources": ["packages/core/src/components/base/progress/progress.class.ts"],
-      "description": "Progress has no known amount.",
-      "scope": "ProgressLinear and ProgressSpinner roots",
+      "sources": [
+        "packages/core/src/components/base/progress/progress.class.ts",
+        "packages/core/src/components/custom/check-box/check-box.class.ts"
+      ],
+      "description": "Indeterminate check state or progress with an unknown value.",
+      "scope": "CheckBox root and TProgress descendants",
       "values": "true | false",
       "presence": "TDataset serializes false as \"false\"; null/undefined removes the attribute. See scope for the bound DOM node."
     },
@@ -3058,6 +3049,22 @@
       "presence": "TDataset serializes false as \"false\"; null/undefined removes the attribute. See scope for the bound DOM node."
     },
     {
+      "name": "data-readonly",
+      "sources": ["packages/core/src/components/base/input-control/input-control.class.ts"],
+      "description": "Value cannot be edited.",
+      "scope": "TInputControl descendants",
+      "values": "true | false",
+      "presence": "Always present on applicable component instances, including the initial render; false is serialized as \"false\"."
+    },
+    {
+      "name": "data-ready-animation",
+      "sources": ["packages/themes/base/setup/plugins/tabs-view.plugin.ts"],
+      "description": "Tabs geometry has been measured by TTabsViewPlugin; removed on disposal.",
+      "scope": "Tabs root; requires @soldy-ui/theme-base/setup",
+      "values": "true; absent before readiness or after removal",
+      "presence": "Written as \"true\" after element readiness; removed when the element is removed or the theme plugin is destroyed."
+    },
+    {
       "name": "data-reorder-preview",
       "sources": [
         "packages/core/src/components/custom/table/collection/extensions/columns/columns.extension.ts"
@@ -3074,6 +3081,14 @@
       "scope": "Table column header",
       "values": "true | false",
       "presence": "TDataset serializes false as \"false\"; null/undefined removes the attribute. See scope for the bound DOM node."
+    },
+    {
+      "name": "data-required",
+      "sources": ["packages/core/src/components/base/input-control/input-control.class.ts"],
+      "description": "A value is required.",
+      "scope": "TInputControl descendants",
+      "values": "true | false",
+      "presence": "Always present on applicable component instances, including the initial render; false is serialized as \"false\"."
     },
     {
       "name": "data-resize-ghost",
@@ -3232,31 +3247,6 @@
   ],
   "dynamic": [
     {
-      "name": "`--${newValue}`",
-      "sources": [
-        "packages/core/src/components/custom/progress-linear/progress-linear.class.ts",
-        "packages/core/src/components/custom/slider/slider.class.ts",
-        "packages/core/src/components/custom/tabs/tabs.class.ts"
-      ],
-      "pattern": "so-<block>--<orientation>",
-      "scope": "Tabs, Slider and ProgressLinear roots; horizontal | vertical",
-      "description": "Computed emission: Tabs, Slider and ProgressLinear roots; horizontal | vertical. This source expression is checked explicitly so new dynamic cases require a documented mapping."
-    },
-    {
-      "name": "`--${this._mode}`",
-      "sources": ["packages/core/src/components/custom/date-picker/date-picker.class.ts"],
-      "pattern": "so-date-picker--<mode>",
-      "scope": "DatePicker root; single | range",
-      "description": "Computed emission: DatePicker root; single | range. This source expression is checked explicitly so new dynamic cases require a documented mapping."
-    },
-    {
-      "name": "`--${value}`",
-      "sources": ["packages/core/src/components/custom/date-picker/date-picker.class.ts"],
-      "pattern": "so-date-picker--<mode>",
-      "scope": "DatePicker root; single | range",
-      "description": "Computed emission: DatePicker root; single | range. This source expression is checked explicitly so new dynamic cases require a documented mapping."
-    },
-    {
       "name": "`--size-${e.value}`",
       "sources": [
         "packages/core/src/components/base/stylable/stylable.class.ts",
@@ -3362,13 +3352,6 @@
       "pattern": "data-indicator",
       "scope": "ListBox and Select list root and item wrapper; none | start | end",
       "description": "Computed emission: ListBox and Select list root and item wrapper; none | start | end. This source expression is checked explicitly so new dynamic cases require a documented mapping."
-    },
-    {
-      "name": "newValue !== 'start' ? `--${newValue}` : ''",
-      "sources": ["packages/core/src/components/custom/tabs/tabs.class.ts"],
-      "pattern": "so-tabs--<alignment>",
-      "scope": "Tabs root; center | end | stretch; absent for start alignment",
-      "description": "Alignment of tabs in the bar. Non-start alignment is emitted as a bare modifier."
     },
     {
       "name": "TDragPlugin.DRAGGING_CLASS",

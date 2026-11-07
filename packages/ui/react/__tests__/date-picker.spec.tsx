@@ -170,7 +170,7 @@ describe('DatePicker · одна дата', () => {
 
 		const field = node('.so-date-picker__field')
 
-		expect(root().classList.contains('so-date-picker--single')).toBe(true)
+		expect(root().classList.contains('so-date-picker--mode-single')).toBe(true)
 		expect(root().id).toBe('when')
 		expect(root().hasAttribute('role')).toBe(false)
 		// Группа частей — само поле: имя DatePicker уходит ему
@@ -287,7 +287,7 @@ describe('DatePicker · диапазон', () => {
 		const start = node('.so-date-picker__start')
 		const end = node('.so-date-picker__end')
 
-		expect(root().classList.contains('so-date-picker--range')).toBe(true)
+		expect(root().classList.contains('so-date-picker--mode-range')).toBe(true)
 		expect(root().getAttribute('role')).toBe('group')
 		expect(root().getAttribute('aria-label')).toBe('Поездка')
 		expect(start.getAttribute('aria-label')).toBe('Start date')
@@ -488,10 +488,8 @@ describe('DatePicker · кнопка очистки', () => {
 		expect(slot.children[0]).toBe(clearButton())
 		expect(slot.children[1]).toBe(trigger())
 		expect(clearButton().getAttribute('aria-label')).toBe('Clear Заезд')
-		expect(root().classList.contains('so-date-picker--clearable')).toBe(true)
-		expect(node('.so-date-picker__field').classList.contains('so-date-input--clearable')).toBe(
-			false,
-		)
+		expect(root().getAttribute('data-clearable')).toBe('true')
+		expect(node('.so-date-picker__field').getAttribute('data-clearable')).toBe('false')
 		expect(nodes('.so-date-input__clear')).toHaveLength(0)
 	})
 

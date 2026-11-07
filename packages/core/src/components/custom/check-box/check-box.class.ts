@@ -49,7 +49,7 @@ export default class TCheckBox
 	}
 
 	protected _applyIndeterminate(value: boolean) {
-		this._classes.toggle(`--indeterminate`, value)
+		this._dataset.add('indeterminate', value)
 
 		this._indeterminate = value
 	}

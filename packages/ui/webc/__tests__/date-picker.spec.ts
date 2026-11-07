@@ -251,7 +251,7 @@ describe('DatePicker · одна дата', () => {
 		const field = node('.so-date-picker__field')
 
 		expect(el).toBeInstanceOf(HTMLDivElement)
-		expect(el.classList.contains('so-date-picker--single')).toBe(true)
+		expect(el.classList.contains('so-date-picker--mode-single')).toBe(true)
 		expect(el.id).toBe('when')
 		expect(el.hasAttribute('role')).toBe(false)
 		// Группа частей — само поле: имя DatePicker уходит ему
@@ -389,7 +389,7 @@ describe('DatePicker · диапазон', () => {
 		const start = node('.so-date-picker__start')
 		const end = node('.so-date-picker__end')
 
-		expect(el.classList.contains('so-date-picker--range')).toBe(true)
+		expect(el.classList.contains('so-date-picker--mode-range')).toBe(true)
 		expect(el.getAttribute('role')).toBe('group')
 		expect(el.getAttribute('aria-label')).toBe('Поездка')
 		expect(start.getAttribute('embedded')).toBe('date-picker.start')
@@ -638,10 +638,8 @@ describe('DatePicker · кнопка очистки', () => {
 		expect(clearButton().querySelector('.so-icon')?.getAttribute('embedded')).toBe(
 			'date-picker.clear-icon',
 		)
-		expect(el.classList.contains('so-date-picker--clearable')).toBe(true)
-		expect(node('.so-date-picker__field').classList.contains('so-date-input--clearable')).toBe(
-			false,
-		)
+		expect(el.getAttribute('data-clearable')).toBe('true')
+		expect(node('.so-date-picker__field').getAttribute('data-clearable')).toBe('false')
 		expect(findAll('.so-date-input__clear')).toHaveLength(0)
 	})
 

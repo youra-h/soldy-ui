@@ -199,6 +199,13 @@ maps computed source expressions to their bounded families; these are checked al
 emissions in all six adapters. Global scheme selection, `data-so-theme`, belongs to the
 application and theme; `data-so-motion` controls the library's motion policy.
 
+Boolean and state modifiers are data attributes: `data-readonly`, `data-required`,
+`data-clearable`, `data-editable`, `data-open`, `data-closable`,
+`data-indeterminate` and `data-ready-animation`. There are no parallel state classes.
+Layout and mode classes include their prop names: `--orientation-horizontal`,
+`--mode-range` and `--alignment-center`. Existing string-valued data contracts
+such as `data-align` and `data-placement` retain their meaning.
+
 Datasets may bind to an inner row, panel, trigger or input segment; use each entry's scope.
 Boolean false is the string `"false"`, so use an explicit value selector. Only null/undefined
 remove a TDataset attribute; gesture flags documented as presence-only disappear outside the gesture.
@@ -327,7 +334,7 @@ plain reference from the declarations it emits, as it drops `import type {}`. Do
   `--so-tabs-active-moving: 1` while the mark moves to a newly active tab. The place is measured
   from the bar because this package positions it and not the list, so draw the mark on the bar:
   a slot and the room left by `center` are already in the place. Once the node is measured, it
-  adds the modifier `so-tabs--ready-animation` to the root. Only the theme reads these (the
+  adds `data-ready-animation="true"` to the root. Only the theme reads these (the
   `theme-reads` section of the contract): it draws the mark of the active tab — a stripe, a card —
   from them. The plugin lifts the moving flag when the CSS transitions of the bar's own
   pseudo-elements have ended, so a mark that moves is a `::before` or `::after` of the bar, with a

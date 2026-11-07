@@ -93,7 +93,7 @@
 
 /* Размер без модификатора — `normal`. `relative` — опора точки обязательного
  * поля (`required.css`). */
-.so-date-picker--range {
+.so-date-picker--mode-range {
 	--so-date-picker-height: var(--so-input-height-normal);
 	--so-date-picker-slot-row: calc(
 		var(--so-date-picker-height) - 2 * var(--so-date-picker-border, 0px) - 2 *
@@ -107,85 +107,85 @@
 	height: var(--so-date-picker-height);
 }
 
-.so-date-picker--range[data-disabled='true'] {
+.so-date-picker--mode-range[data-disabled='true'] {
 	opacity: var(--so-disabled-opacity);
 }
 
-.so-date-picker--range[data-disabled='true'] > * {
+.so-date-picker--mode-range[data-disabled='true'] > * {
 	--so-disabled-opacity: 1;
 }
 
-.so-date-picker--range > .so-date-picker__dash {
+.so-date-picker--mode-range > .so-date-picker__dash {
 	line-height: var(--so-date-picker-slot-row);
 }
 
-.so-date-picker--range.so-date-picker--size-sm {
+.so-date-picker--mode-range.so-date-picker--size-sm {
 	--so-date-picker-height: var(--so-input-height-sm);
 }
 
-.so-date-picker--range.so-date-picker--size-sm > .so-date-picker__dash {
+.so-date-picker--mode-range.so-date-picker--size-sm > .so-date-picker__dash {
 	font-size: var(--so-input-font-size-sm);
 	line-height: var(--so-date-picker-slot-row);
 }
 
-.so-date-picker--range.so-date-picker--size-normal {
+.so-date-picker--mode-range.so-date-picker--size-normal {
 	--so-date-picker-height: var(--so-input-height-normal);
 }
 
-.so-date-picker--range.so-date-picker--size-normal > .so-date-picker__dash {
+.so-date-picker--mode-range.so-date-picker--size-normal > .so-date-picker__dash {
 	line-height: var(--so-date-picker-slot-row);
 }
 
-.so-date-picker--range.so-date-picker--size-lg {
+.so-date-picker--mode-range.so-date-picker--size-lg {
 	--so-date-picker-height: var(--so-input-height-lg);
 }
 
-.so-date-picker--range.so-date-picker--size-lg > .so-date-picker__dash {
+.so-date-picker--mode-range.so-date-picker--size-lg > .so-date-picker__dash {
 	font-size: var(--so-input-font-size-lg);
 	line-height: var(--so-date-picker-slot-row);
 }
 
-.so-date-picker--range.so-date-picker--size-xl {
+.so-date-picker--mode-range.so-date-picker--size-xl {
 	--so-date-picker-height: var(--so-input-height-xl);
 }
 
-.so-date-picker--range.so-date-picker--size-xl > .so-date-picker__dash {
+.so-date-picker--mode-range.so-date-picker--size-xl > .so-date-picker__dash {
 	font-size: var(--so-input-font-size-xl);
 	line-height: var(--so-date-picker-slot-row);
 }
 
-.so-date-picker--range.so-date-picker--size-2xl {
+.so-date-picker--mode-range.so-date-picker--size-2xl {
 	--so-date-picker-height: var(--so-input-height-2xl);
 }
 
-.so-date-picker--range.so-date-picker--size-2xl > .so-date-picker__dash {
+.so-date-picker--mode-range.so-date-picker--size-2xl > .so-date-picker__dash {
 	font-size: var(--so-input-font-size-2xl);
 	line-height: var(--so-date-picker-slot-row);
 }
 
-.so-date-picker--range > .so-date-input {
+.so-date-picker--mode-range > .so-date-input {
 	align-self: stretch;
 	height: auto;
 }
 
-.so-date-picker--range > .so-date-input.so-date-input--required::after {
+.so-date-picker--mode-range > .so-date-input.so-date-input:where([data-required='true'])::after {
 	content: none;
 }
 
 /* Минимум ряда держит поле начала: формат у полей один, и минимумы равны. */
-.so-date-picker--range > .so-date-picker__end {
+.so-date-picker--mode-range > .so-date-picker__end {
 	justify-self: flex-end;
 }
 
-.so-date-picker--range > .so-date-picker__end .so-date-input__segments {
+.so-date-picker--mode-range > .so-date-picker__end .so-date-input__segments {
 	min-inline-size: 0;
 }
 
-.so-date-picker--range > .so-date-picker__clear {
+.so-date-picker--mode-range > .so-date-picker__clear {
 	margin-inline-end: var(--so-input-slot-spacing);
 }
 
-.so-date-picker--range > .so-date-picker__trigger {
+.so-date-picker--mode-range > .so-date-picker__trigger {
 	margin-inline-end: var(--so-input-slot-padding);
 }
 

@@ -131,7 +131,7 @@ function commitOf(confirmable: boolean, host: IDatePickerCommitHost): IDatePicke
  * The accessibility pattern is APG Date Picker Dialog: a field and a separate
  * button, the panel has `role="dialog"` and `aria-modal`. For a single date the
  * group of parts is the field itself, for a range — the root (`rootAria`) with
- * the ends' fields inside. The mode modifier (`--single`, `--range`) is for the
+ * the ends' fields inside. The mode modifier (`--mode-single`, `--mode-range`) is for the
  * theme: it builds the range's box on the root.
  *
  * **Swipe** (`swipe`, off by default) — swipe the panel away to close it: the
@@ -301,7 +301,7 @@ export class TDatePicker
 		// first gives the collection work (`_bindCalendar`)
 		this._engine = createEngineCalendar()
 		this._engine.extensions.selection.mode = this._mode
-		this._classes.add(`--${this._mode}`)
+		this._classes.swap({ prefix: '--mode-', newValue: this._mode })
 
 		// The end is checked against the start as the fields are laid out: the
 		// start re-checks it on its own edit (`_listenStart`)
@@ -391,7 +391,7 @@ export class TDatePicker
 
 		if (this._mode === value) return
 
-		this._classes.swapClass({ oldClass: `--${this._mode}`, newClass: `--${value}` })
+		this._classes.swap({ prefix: '--mode-', oldValue: this._mode, newValue: value })
 		this._mode = value
 		this._fields = new FIELDS[value](this._fieldSet)
 		this._write('calendar')

@@ -17,20 +17,15 @@ export default { ...SetupDateInput, components: { Button, Icon } }
 		v-bind="{ ...attrs, ...aria, ...dataset }"
 	>
 		<!--
-			DateInput — поле даты из частей по формату локали: день, месяц и год, а
-			у поля даты и времени — ещё час, минута, с точностью до секунды
-			секунда и, у 12-часового цикла, период суток, в порядке и с
-			разделителями `Intl.DateTimeFormat#formatToParts`. Корень — коробка
-			поля семьи Input: рамка, высота размера, кольцо фокуса.
-			Рисуется по `tag`, по умолчанию `div`. На корне наборы `attrs` (`dir`
-			поля), `aria` (`role="group"`, имя — `aria_label` или
-			`aria_labelledBy`) и `dataset` (`data-disabled`, `data-invalid`).
-			Модификаторы — размер, вариант, `--readonly`, `--required`,
-			`--clearable`.
+			DateInput renders localized date/time segments in the order and with the
+			separators from Intl.DateTimeFormat.formatToParts. The root is an Input-family
+			frame rendered by tag (div by default). It receives attrs (including dir),
+			ARIA (group role and accessible name), size/variant classes and dataset
+			states: readonly, required, clearable, disabled and invalid.
 
-			Обработчик в разметке один — нажатие кнопки очистки: клавиши, буфер
-			обмена, выделение и контекстное меню ловят плагины на корне. Атрибуты
-			снаружи падают на корень.
+			Only the clear button has a markup handler. Plugins on the root handle
+			keyboard input, clipboard, selection and context menus. Consumer attributes
+			fall through to the root.
 		-->
 
 		<!--

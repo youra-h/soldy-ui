@@ -123,13 +123,10 @@ describe('Textarea · разметка', () => {
 
 		expect(el).toBeInstanceOf(HTMLDivElement)
 		expect([...el.classList]).toEqual(
-			expect.arrayContaining([
-				'so-textarea',
-				'so-textarea--size-lg',
-				'so-textarea--readonly',
-				'so-textarea--required',
-			]),
+			expect.arrayContaining(['so-textarea', 'so-textarea--size-lg']),
 		)
+		expect(el.getAttribute('data-readonly')).toBe('true')
+		expect(el.getAttribute('data-required')).toBe('true')
 		expect(el.dataset['disabled']).toBe('false')
 		expect(el.getAttribute('dir')).toBe('rtl')
 		expect([...el.children].map((node) => node.localName)).toEqual(['textarea'])

@@ -3,31 +3,11 @@
 @use '../../mixins/required' as required;
 @use '../../mixins/veil';
 
-// NumberInput — поле числа: ввод и кнопки шага «меньше» и «больше».
-//
-//   .so-number-input                   корень — коробка поля семьи Input
-//     .so-number-input__leading        слот перед числом
-//     .so-number-input__input          ввод — число строкой Intl
-//     .so-number-input__trailing       слот после числа
-//       .so-number-input__clear        кнопка очистки, первой в слоте — Button
-//     .so-number-input__stepper        кнопки шага — у конца поля
-//       .so-number-input__decrement    «меньше» — Button
-//       .so-number-input__increment    «больше» — Button
-//
-// От ядра приходят: у корня — модификаторы `--size-*`, `--variant-*`,
-// `--readonly`, `--required` и `--clearable`, `data-disabled` и
-// `data-invalid`, как у DateInput; у кнопок шага — их собственный
-// `data-disabled` (у «меньше» на `min`, у «больше» на `max`, у обеих — у
-// выключенного поля и только для чтения) и `data-pressed`, пока кнопку держат.
-// Фокус — у ввода; тема читает его псевдоклассом `:focus-visible`, как у Input.
-//
-// Структура поля — коробка с высотой и строкой слота по шкале поля, слоты и
-// пара кнопок шага у конца поля, квадраты кнопок с зоной нажатия, число у
-// начала поля, место точки обязательного поля, курсор и гашение выключенного
-// — в общем слое тем (`components/number-input.css` в `@soldy-ui/theme-base`).
-// Здесь — облик: рамка — та же, что у Input и DateInput
-// (`input.field-frame-look`), — кольцо фокуса, подсказка пустого поля, цифры
-// одной ширины, вид кнопок и их удержания, цвет точки, варианты и ошибка.
+// NumberInput is an Input-family frame with a native text field, step buttons
+// and optional clear button. Size/variant use classes; readonly, required, clearable,
+// disabled and invalid use dataset. Theme-base owns layout, type scales, spacing,
+// cursors and disabled handling. Oren paints the frame, placeholder, required dot,
+// step buttons, variants and errors. Consumer attributes follow the Input split.
 
 // Наведение красит рамку только у включённого поля. Выключенность корень несёт
 // сам (`data-disabled`), как DateInput: `:disabled` у корня-`div` не
@@ -47,7 +27,7 @@ $disabled: "[data-disabled='true']";
 		@include input.field-focus;
 	}
 
-	&--required::after {
+	&:where([data-required='true'])::after {
 		@include required.required-dot;
 	}
 

@@ -1,29 +1,18 @@
 /**
- * Общий слой тем без темы — поля семьи Input, Tabs, Tags и Accordion: страница
- * только с CSS базы (`@soldy-ui/theme-base`), без `@soldy-ui/theme-oren`.
+ * Theme-base without oren: Input-family fields, Tabs, Tags and Accordion.
+ * Structure and behavior must work without theme borders, colors or views. These
+ * tests check visible layout: tab bars follow orientation and logical position;
+ * edge slots stay at the edges and alignment uses the remaining list space,
+ * including RTL. Scrolling tags stay on one line and keyboard focus scrolls into
+ * view. Input slots flank the field, NumberInput steps sit at its end, Textarea
+ * grows up to maxRows and matches Input at one row. Closed Accordion content
+ * takes no space; opened content follows its header.
  *
- * Структура этих частей — раскладка и механика — лежит в базе, а облик в теме
- * (`packages/themes/base/AGENTS.md`, «Перенос структуры»). Без темы части
- * голые — без рамок, цвета и видов, — но рабочие, и здесь это проверяется тем,
- * что видит пользователь, а не числами базы: ряд табов стоит с заданной
- * стороны от панели, а табы в нём — по оси ориентации; слоты ряда — у его
- * краёв, а табы между ними — по выравниванию, при любом наборе слотов и в
- * обоих направлениях; ряд тегов `scroll` —
- * одной строкой и прокручивается вбок, а тег под фокусом с клавиатуры встаёт
- * в окно ряда; слоты Input и NumberInput — у краёв, ввод — между ними, кнопки
- * шага — у конца поля; Textarea растёт по строкам до `maxRows` и в одну строку
- * — высоты Input; свёрнутая секция Accordion места не занимает, раскрытая
- * встаёт под заголовком. Спеки с темой держат базу под темой, и потерянное ею
- * правило тема могла бы закрыть своим, а сторожа CSS (`themes/base/__tests__/`)
- * раскладки не считают.
- *
- * Страница у файла спека своя (`isolate` прогона), и листа темы на ней нет —
- * это проверяет первый тест. Проверен поломкой: без направления ряда и списка
- * вертикальных Tabs в базе (`flex-direction` у `.so-tabs--vertical >
- * .so-tabs__bar` и его списка) табы встают в строку, и падают все случаи
- * вертикальных, а без роста списка в ряду (`flex-grow` у `.so-tabs__list`)
- * падают все случаи с `trailing` — он встаёт вплотную к табам, а не у конца
- * ряда, — и все `center`, `end` и `stretch`: выравнивать табам негде.
+ * The file has an isolated page with base CSS only, checked by the first test.
+ * Removing flex-direction from the vertical bar/list breaks vertical layouts.
+ * Removing list flex-grow breaks trailing slots and center/end/stretch alignment.
+ * Theme-covered tests could hide missing base rules; CSS guards cannot measure
+ * layout, so this suite validates the structural contract directly.
  */
 
 import { describe, it, expect, afterEach } from 'vitest'
