@@ -1,0 +1,52 @@
+{
+  "mode": "expert",
+  "seed": 42,
+  "status": "two_patches_failed",
+  "model": "direct-qwen35-9b-q4-32k",
+  "baselineCommit": "091781987e9eb0c9d01e35f1e1ff552974827196",
+  "patches": 2,
+  "modelSourceSha256": "fc02815d51c8dea575dda9dcb08cbe65a98c7479e302c923edd7552ae9860e0e",
+  "local": {
+    "inputTokens": 20540,
+    "outputTokens": 1056,
+    "cachedInputTokens": 10200,
+    "maxInputTokens": 10869
+  },
+  "newTargetCloudCalls": 0,
+  "engineeringCloudUsage": null,
+  "checks": [
+    {
+      "attempt": 1,
+      "passed": false,
+      "checks": [
+        {
+          "id": "react",
+          "passed": false,
+          "firstDiagnostic": "Error: A14: candidate import is not allowed: @pilot/react-adapter"
+        },
+        {
+          "id": "ssr",
+          "passed": false,
+          "firstDiagnostic": "Error: A14: candidate import is not allowed: @pilot/react-adapter"
+        }
+      ]
+    },
+    {
+      "attempt": 2,
+      "passed": false,
+      "checks": [
+        {
+          "id": "react",
+          "passed": false,
+          "firstDiagnostic": "Error: A14: candidate import is not allowed: @soldy-ui/react"
+        },
+        {
+          "id": "ssr",
+          "passed": false,
+          "firstDiagnostic": "Error: A14: candidate import is not allowed: @soldy-ui/react"
+        }
+      ]
+    }
+  ],
+  "humanSemanticFixes": false
+}
