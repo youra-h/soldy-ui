@@ -121,7 +121,7 @@ export default { ...SetupMenuSubmenu, components }
 			:class="panelClasses"
 			tabindex="-1"
 			:visible="open"
-			position="fixed"
+			strategy="fixed"
 			:anchor_anchor="rootElement"
 			anchor_placement="end-start"
 			v-bind="{ ...panelAria, ...dismiss_ownerAttribute }"

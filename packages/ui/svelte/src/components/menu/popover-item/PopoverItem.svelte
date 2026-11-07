@@ -66,7 +66,7 @@
 		class="so-menu-item__panel"
 		tabindex={-1}
 		visible={state.open}
-		position="fixed"
+		strategy="fixed"
 		anchor_anchor={binding.rootElement}
 		anchor_placement="end-start"
 		{...state.panelAria}

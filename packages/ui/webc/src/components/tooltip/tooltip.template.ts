@@ -27,7 +27,7 @@ export const tooltipTemplate: ITemplate<ITooltip, unknown, TTooltipOutputs> = {
 		const content = ownerDocument.createElement('div')
 
 		panel.className = 'so-tooltip__panel'
-		panel.position = 'fixed'
+		panel.strategy = 'fixed'
 		panel.anchor_anchor = root
 		panel.anchor_offset = 6
 		content.className = 'so-tooltip__content'

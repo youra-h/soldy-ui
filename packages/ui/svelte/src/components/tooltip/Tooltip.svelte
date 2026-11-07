@@ -25,7 +25,7 @@
 		embedded="tooltip.frame"
 		class="so-tooltip__panel"
 		visible={state.open}
-		position="fixed"
+		strategy="fixed"
 		anchor_anchor={binding.rootElement}
 		anchor_placement={state.placement}
 		anchor_offset={6}

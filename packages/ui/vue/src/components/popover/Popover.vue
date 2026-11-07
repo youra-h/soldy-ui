@@ -66,7 +66,7 @@ export default { ...SetupPopover, components: { Frame, Button, Icon } }
 			tabindex="-1"
 			:visible="open"
 			:contained="contained"
-			position="fixed"
+			strategy="fixed"
 			:anchor_anchor="rootElement"
 			:anchor_placement="placement"
 			:anchor_offset="8"

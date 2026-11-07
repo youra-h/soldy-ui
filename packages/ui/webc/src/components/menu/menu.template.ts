@@ -44,7 +44,7 @@ export const menuTemplate: ITemplate<IMenu, TMenuCollectionFacade, TMenuOutputs>
 		})
 		const list = ownerDocument.createElement('div')
 
-		panel.position = 'fixed'
+		panel.strategy = 'fixed'
 		panel.anchor_anchor = root
 		panel.anchor_offset = 4
 		list.className = 'so-menu__list'

@@ -132,7 +132,7 @@
 		class="so-date-picker__panel"
 		tabindex={-1}
 		visible={state.open}
-		position="fixed"
+		strategy="fixed"
 		anchor_anchor={binding.rootElement}
 		anchor_offset={4}
 		{...state.panelAria}

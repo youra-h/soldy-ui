@@ -174,7 +174,7 @@ export function Select(props: SelectProps): ReactElement | null {
 					embedded="select.frame"
 					className="so-select__panel"
 					visible={open}
-					position="fixed"
+					strategy="fixed"
 					anchor_anchor={rootElement}
 					anchor_placement={panelPlacement}
 					anchor_flip={panelFlip}

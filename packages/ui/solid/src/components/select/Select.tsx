@@ -165,7 +165,7 @@ export function Select(props: SelectProps): JSX.Element {
 						embedded="select.frame"
 						class="so-select__panel"
 						visible={state.open}
-						position="fixed"
+						strategy="fixed"
 						anchor_anchor={binding.rootElement()}
 						anchor_placement={state.panelPlacement}
 						anchor_flip={state.panelFlip}

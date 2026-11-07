@@ -72,7 +72,7 @@ export default {
 			:class="panelClasses"
 			tabindex="-1"
 			:visible="open"
-			position="fixed"
+			strategy="fixed"
 			:anchor_anchor="rootElement"
 			:anchor_point="point"
 			:anchor_placement="placement"

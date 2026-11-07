@@ -557,7 +557,7 @@ describe('Frame · якорь', () => {
 
 		mount(Frame, {
 			visible: true,
-			position: 'fixed',
+			strategy: 'fixed',
 			onBundleCreate: (bundle: unknown) => {
 				if (bundle instanceof TPluginBundle) created.anchor = bundle.get(TAnchorPlugin)
 			},

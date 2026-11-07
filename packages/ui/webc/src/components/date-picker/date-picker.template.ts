@@ -208,7 +208,7 @@ export const datePickerTemplate: ITemplate<IDatePicker, unknown, TDatePickerOutp
 		dash.textContent = '–'
 		trigger.className = 'so-date-picker__trigger'
 		panel.className = 'so-date-picker__panel'
-		panel.position = 'fixed'
+		panel.strategy = 'fixed'
 		panel.anchor_anchor = root
 		panel.anchor_offset = 4
 		handle.className = 'so-date-picker__handle'

@@ -57,7 +57,7 @@ export const menuSubmenuTemplate: ITemplate<
 
 		if (arrow) arrowPart.appendChild(arrow)
 
-		panel.position = 'fixed'
+		panel.strategy = 'fixed'
 		panel.anchor_anchor = root
 		panel.anchor_placement = 'end-start'
 		list.className = 'so-menu__list'

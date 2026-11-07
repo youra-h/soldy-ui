@@ -23,7 +23,7 @@ export const FrameInputNames = [
 	'y',
 	'width',
 	'height',
-	'position',
+	'strategy',
 	'contained',
 	'anchor_anchor',
 	'anchor_point',
@@ -42,7 +42,7 @@ export const FrameOutputNames = [
 	'soChangeY',
 	'soChangeWidth',
 	'soChangeHeight',
-	'soChangePosition',
+	'soChangeStrategy',
 	'soChangeContained',
 	'soAnchorChangeAnchor',
 	'soAnchorChangePoint',
@@ -67,7 +67,7 @@ export const FrameOutputNames = [
 		'y',
 		'width',
 		'height',
-		'position',
+		'strategy',
 		{ name: 'contained', transform: booleanInput },
 		'anchor_anchor',
 		'anchor_point',
@@ -106,7 +106,7 @@ export abstract class TFrameSurface<TInstance extends IEntity> extends TViewSurf
 	declare y: TInputValue<typeof descriptor, 'y'>
 	declare width: TInputValue<typeof descriptor, 'width'>
 	declare height: TInputValue<typeof descriptor, 'height'>
-	declare position: TInputValue<typeof descriptor, 'position'>
+	declare strategy: TInputValue<typeof descriptor, 'strategy'>
 	declare contained: TInputValue<typeof descriptor, 'contained'>
 	declare anchor_anchor: TInputValue<typeof descriptor, 'anchor_anchor'>
 	declare anchor_point: TInputValue<typeof descriptor, 'anchor_point'>
@@ -134,7 +134,7 @@ export abstract class TFrameSurface<TInstance extends IEntity> extends TViewSurf
 	declare readonly soChangeY: TOutputEmitter<typeof descriptor, 'change:y'>
 	declare readonly soChangeWidth: TOutputEmitter<typeof descriptor, 'change:width'>
 	declare readonly soChangeHeight: TOutputEmitter<typeof descriptor, 'change:height'>
-	declare readonly soChangePosition: TOutputEmitter<typeof descriptor, 'change:position'>
+	declare readonly soChangeStrategy: TOutputEmitter<typeof descriptor, 'change:strategy'>
 	declare readonly soChangeContained: TOutputEmitter<typeof descriptor, 'change:contained'>
 	declare readonly soElementReady: TOutputEmitter<typeof descriptor, 'element:ready'>
 	declare readonly soElementRemoved: TOutputEmitter<typeof descriptor, 'element:removed'>

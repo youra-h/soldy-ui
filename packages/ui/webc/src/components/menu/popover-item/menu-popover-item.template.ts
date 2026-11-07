@@ -50,7 +50,7 @@ export const menuPopoverItemTemplate: ITemplate<
 		if (arrow) arrowPart.appendChild(arrow)
 
 		panel.className = 'so-menu-item__panel'
-		panel.position = 'fixed'
+		panel.strategy = 'fixed'
 		panel.anchor_anchor = root
 		panel.anchor_placement = 'end-start'
 		content.className = 'so-menu-item__content'

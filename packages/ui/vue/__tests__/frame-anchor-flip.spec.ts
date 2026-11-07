@@ -24,7 +24,7 @@ afterEach(() => {
 describe('anchor_flip', () => {
 	it('Frame без anchor_flip оставляет flip включённым', async () => {
 		const wrapper = mount(Frame, {
-			props: { visible: true, position: 'fixed' },
+			props: { visible: true, strategy: 'fixed' },
 			attachTo: document.body,
 		})
 

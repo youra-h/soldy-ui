@@ -74,7 +74,7 @@ export const MenuPopoverItem = withRenderBoundary(function MenuPopoverItem(
 				className="so-menu-item__panel"
 				tabIndex={-1}
 				visible={open}
-				position="fixed"
+				strategy="fixed"
 				anchor_anchor={rootElement}
 				anchor_placement="end-start"
 				{...toAriaProps(panelAria)}

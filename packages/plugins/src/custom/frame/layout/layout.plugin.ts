@@ -5,25 +5,16 @@ import { toCssValue } from '../../../utils'
 import type { TFrameLayoutPluginEvents } from './types'
 
 /**
- * Раскладка Frame: превращает собственные пропсы в объект стилей.
- *
- * Подписывается на `change:x/y/width/height/zIndex/position` и отдаёт готовый
- * набор, который шаблон вешает на элемент.
- *
- * Панель внутри контейнера (`contained`) встаёт `absolute` от ближайшего
- * позиционированного предка и без координат: где в нём встать, решает тема
- * по `data-contained`, а `left`/`top` в инлайне её бы перебили.
- *
- * Про чужие элементы не знает ничего. Привязка к якорю — отдельная
- * ответственность и отдельный плагин `TAnchorPlugin`: он вычисляет координаты
- * и пишет их сюда же, в `x`/`y`/`width`. Здесь остаётся только отрисовка того,
- * что во Frame уже лежит.
+ * Converts Frame properties into the styles applied by the template.
+ * Subscribes to change:x/y/width/height/zIndex/strategy and contained.
+ * A contained panel uses absolute positioning without inline coordinates:
+ * the theme places it using data-contained, without left/top overriding it.
+ * Anchoring belongs to TAnchorPlugin, which writes x/y/width; this plugin
+ * only renders the values already stored in Frame.
  *
  * @example
  * const layout = bundle.get(TFrameLayoutPlugin)
- * if (layout) {
- *     // layout.styles → { position: 'fixed', left: '100px', top: '200px', 'z-index': 1001 }
- * }
+ * // layout?.styles: { position: 'fixed', left: '100px', top: '200px', 'z-index': 1001 }
  */
 export class TFrameLayoutPlugin extends TBasePlugin<any, TFrameLayoutPluginEvents> {
 	private _styles: Record<string, string | number> = {}
@@ -58,7 +49,7 @@ export class TFrameLayoutPlugin extends TBasePlugin<any, TFrameLayoutPluginEvent
 		this._listenTo(frame.events, 'change:width', update)
 		this._listenTo(frame.events, 'change:height', update)
 		this._listenTo(frame.events, 'change:zIndex', update)
-		this._listenTo(frame.events, 'change:position', update)
+		this._listenTo(frame.events, 'change:strategy', update)
 		this._listenTo(frame.events, 'change:contained', update)
 
 		this._update()
@@ -73,7 +64,7 @@ export class TFrameLayoutPlugin extends TBasePlugin<any, TFrameLayoutPluginEvent
 
 		const styles: Record<string, string | number> = frame.contained
 			? { position: 'absolute' }
-			: { position: frame.position, left: toCssValue(frame.x), top: toCssValue(frame.y) }
+			: { position: frame.strategy, left: toCssValue(frame.x), top: toCssValue(frame.y) }
 
 		if (frame.width !== undefined) styles['width'] = toCssValue(frame.width)
 		if (frame.height !== undefined) styles['height'] = toCssValue(frame.height)

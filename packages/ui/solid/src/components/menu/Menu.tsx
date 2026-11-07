@@ -42,7 +42,7 @@ export function Menu(props: MenuProps): JSX.Element {
 						class={toPartClass(state.panelClasses)}
 						tabindex="-1"
 						visible={state.open}
-						position="fixed"
+						strategy="fixed"
 						anchor_anchor={binding.rootElement()}
 						anchor_point={state.point}
 						anchor_placement={state.placement}

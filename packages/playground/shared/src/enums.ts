@@ -21,7 +21,7 @@ import type {
 	TTabsAlignment,
 	TTabsPosition,
 	TTabsView,
-	TFramePosition,
+	TFrameStrategy,
 	TDirection,
 	TScrollBehavior,
 	TCalendarMode,
@@ -162,7 +162,7 @@ export const TABS_VIEWS = enumOf<TTabsView>()(['line', 'contained', 'outline'])
 /** Что делать с тегами, которым не хватило ширины ряда. */
 export const TAGS_OVERFLOWS = enumOf<TTagsOverflow>()(['wrap', 'scroll'])
 
-export const FRAME_POSITIONS = enumOf<TFramePosition>()(['fixed', 'absolute'])
+export const FRAME_STRATEGIES = enumOf<TFrameStrategy>()(['fixed', 'absolute'])
 
 export const DIRECTIONS = enumOf<TDirection>()(['ltr', 'rtl', 'inherit'])
 
