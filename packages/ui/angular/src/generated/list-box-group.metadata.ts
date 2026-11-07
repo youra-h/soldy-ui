@@ -5,6 +5,7 @@ import type { DescriptorPluginOutputs, DescriptorPluginProps } from '@soldy-ui/s
 import {
 	type TInputValue,
 	type TOutputEmitter,
+	type TModelEmitter,
 	type TRootSpec,
 	type TSetup,
 } from '../adapter/runtime'
@@ -20,7 +21,14 @@ export const ListBoxGroupInputNames = [
 	'direction',
 	'label',
 ] as const
-export const ListBoxGroupOutputNames = ['soChangeLabel'] as const
+export const ListBoxGroupOutputNames = [
+	'soChangeLabel',
+	'renderedChange',
+	'visibleChange',
+	'tagChange',
+	'directionChange',
+	'labelChange',
+] as const
 
 @Directive({
 	inputs: [
@@ -68,4 +76,9 @@ export abstract class TListBoxGroupSurface<TInstance extends IEntity> extends TV
 	declare readonly soChangeLabel: TOutputEmitter<typeof descriptor, 'change:label'>
 	declare readonly soElementReady: TOutputEmitter<typeof descriptor, 'element:ready'>
 	declare readonly soElementRemoved: TOutputEmitter<typeof descriptor, 'element:removed'>
+	declare readonly renderedChange: TModelEmitter<typeof descriptor, 'rendered'>
+	declare readonly visibleChange: TModelEmitter<typeof descriptor, 'visible'>
+	declare readonly tagChange: TModelEmitter<typeof descriptor, 'tag'>
+	declare readonly directionChange: TModelEmitter<typeof descriptor, 'direction'>
+	declare readonly labelChange: TModelEmitter<typeof descriptor, 'label'>
 }

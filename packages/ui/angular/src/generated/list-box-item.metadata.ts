@@ -10,6 +10,7 @@ import {
 	SlotDirective,
 	type TInputValue,
 	type TOutputEmitter,
+	type TModelEmitter,
 	type TRootSpec,
 	type TSetup,
 	type TTemplateRef,
@@ -55,6 +56,21 @@ export const ListBoxItemOutputNames = [
 	'soChangeId',
 	'soChangeSelected',
 	'soChangeOrder',
+	'renderedChange',
+	'visibleChange',
+	'tagChange',
+	'directionChange',
+	'disabledChange',
+	'focusedChange',
+	'valueChange',
+	'nameChange',
+	'textChange',
+	'contentFitChange',
+	'aria_labelChange',
+	'aria_labelledByChange',
+	'aria_describedByChange',
+	'idChange',
+	'selectedChange',
 ] as const
 
 @Directive({
@@ -157,4 +173,19 @@ export abstract class TListBoxItemSurface<TInstance extends IEntity> extends TVi
 	declare readonly soChangeId: TOutputEmitter<typeof descriptor, 'change:id'>
 	declare readonly soChangeSelected: TOutputEmitter<typeof facade, 'change:selected'>
 	declare readonly soChangeOrder: TOutputEmitter<typeof facade, 'change:order'>
+	declare readonly renderedChange: TModelEmitter<typeof descriptor, 'rendered'>
+	declare readonly visibleChange: TModelEmitter<typeof descriptor, 'visible'>
+	declare readonly tagChange: TModelEmitter<typeof descriptor, 'tag'>
+	declare readonly directionChange: TModelEmitter<typeof descriptor, 'direction'>
+	declare readonly disabledChange: TModelEmitter<typeof descriptor, 'disabled'>
+	declare readonly focusedChange: TModelEmitter<typeof descriptor, 'focused'>
+	declare readonly valueChange: TModelEmitter<typeof descriptor, 'value'>
+	declare readonly nameChange: TModelEmitter<typeof descriptor, 'name'>
+	declare readonly textChange: TModelEmitter<typeof descriptor, 'text'>
+	declare readonly contentFitChange: TModelEmitter<typeof descriptor, 'contentFit'>
+	declare readonly aria_labelChange: TModelEmitter<typeof descriptor, 'aria_label'>
+	declare readonly aria_labelledByChange: TModelEmitter<typeof descriptor, 'aria_labelledBy'>
+	declare readonly aria_describedByChange: TModelEmitter<typeof descriptor, 'aria_describedBy'>
+	declare readonly idChange: TModelEmitter<typeof descriptor, 'id'>
+	declare readonly selectedChange: TModelEmitter<typeof descriptor, 'selected'>
 }

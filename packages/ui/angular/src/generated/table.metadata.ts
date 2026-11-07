@@ -10,6 +10,7 @@ import {
 	SlotDirective,
 	type TInputValue,
 	type TOutputEmitter,
+	type TModelEmitter,
 	type TRootSpec,
 	type TSetup,
 	type TTemplateRef,
@@ -93,6 +94,31 @@ export const TableOutputNames = [
 	'soChangeGrid',
 	'soChangeSelection',
 	'soChangeShownSelection',
+	'renderedChange',
+	'visibleChange',
+	'tagChange',
+	'directionChange',
+	'sizeChange',
+	'variantChange',
+	'disabledChange',
+	'focusedChange',
+	'stickyHeadChange',
+	'columnFitChange',
+	'reorderPreviewChange',
+	'resizePreviewChange',
+	'resizableChange',
+	'reorderableChange',
+	'aria_labelChange',
+	'aria_labelledByChange',
+	'aria_describedByChange',
+	'itemsChange',
+	'trackByChange',
+	'modeChange',
+	'columnsChange',
+	'sortChange',
+	'sortModeChange',
+	'presortedChange',
+	'gridChange',
 ] as const
 
 @Directive({
@@ -250,4 +276,29 @@ export abstract class TTableSurface<TInstance extends IEntity> extends TViewSurf
 	declare readonly soChangeGrid: TOutputEmitter<typeof facade, 'change:grid'>
 	declare readonly soChangeSelection: TOutputEmitter<typeof facade, 'change:selection'>
 	declare readonly soChangeShownSelection: TOutputEmitter<typeof facade, 'change:shownSelection'>
+	declare readonly renderedChange: TModelEmitter<typeof descriptor, 'rendered'>
+	declare readonly visibleChange: TModelEmitter<typeof descriptor, 'visible'>
+	declare readonly tagChange: TModelEmitter<typeof descriptor, 'tag'>
+	declare readonly directionChange: TModelEmitter<typeof descriptor, 'direction'>
+	declare readonly sizeChange: TModelEmitter<typeof descriptor, 'size'>
+	declare readonly variantChange: TModelEmitter<typeof descriptor, 'variant'>
+	declare readonly disabledChange: TModelEmitter<typeof descriptor, 'disabled'>
+	declare readonly focusedChange: TModelEmitter<typeof descriptor, 'focused'>
+	declare readonly stickyHeadChange: TModelEmitter<typeof descriptor, 'stickyHead'>
+	declare readonly columnFitChange: TModelEmitter<typeof descriptor, 'columnFit'>
+	declare readonly reorderPreviewChange: TModelEmitter<typeof descriptor, 'reorderPreview'>
+	declare readonly resizePreviewChange: TModelEmitter<typeof descriptor, 'resizePreview'>
+	declare readonly resizableChange: TModelEmitter<typeof descriptor, 'resizable'>
+	declare readonly reorderableChange: TModelEmitter<typeof descriptor, 'reorderable'>
+	declare readonly aria_labelChange: TModelEmitter<typeof descriptor, 'aria_label'>
+	declare readonly aria_labelledByChange: TModelEmitter<typeof descriptor, 'aria_labelledBy'>
+	declare readonly aria_describedByChange: TModelEmitter<typeof descriptor, 'aria_describedBy'>
+	declare readonly itemsChange: TModelEmitter<typeof descriptor, 'items'>
+	declare readonly trackByChange: TModelEmitter<typeof descriptor, 'trackBy'>
+	declare readonly modeChange: TModelEmitter<typeof descriptor, 'mode'>
+	declare readonly columnsChange: TModelEmitter<typeof descriptor, 'columns'>
+	declare readonly sortChange: TModelEmitter<typeof descriptor, 'sort'>
+	declare readonly sortModeChange: TModelEmitter<typeof descriptor, 'sortMode'>
+	declare readonly presortedChange: TModelEmitter<typeof descriptor, 'presorted'>
+	declare readonly gridChange: TModelEmitter<typeof descriptor, 'grid'>
 }

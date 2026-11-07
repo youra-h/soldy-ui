@@ -5,6 +5,7 @@ import type { DescriptorPluginOutputs, DescriptorPluginProps } from '@soldy-ui/s
 import {
 	type TInputValue,
 	type TOutputEmitter,
+	type TModelEmitter,
 	type TRootSpec,
 	type TSetup,
 } from '../adapter/runtime'
@@ -30,6 +31,15 @@ export const SkeletonOutputNames = [
 	'soChangeAnimation',
 	'soChangeWidth',
 	'soChangeHeight',
+	'renderedChange',
+	'visibleChange',
+	'tagChange',
+	'directionChange',
+	'variantChange',
+	'shapeChange',
+	'animationChange',
+	'widthChange',
+	'heightChange',
 ] as const
 
 @Directive({
@@ -90,4 +100,13 @@ export abstract class TSkeletonSurface<TInstance extends IEntity> extends TViewS
 	declare readonly soChangeHeight: TOutputEmitter<typeof descriptor, 'change:height'>
 	declare readonly soElementReady: TOutputEmitter<typeof descriptor, 'element:ready'>
 	declare readonly soElementRemoved: TOutputEmitter<typeof descriptor, 'element:removed'>
+	declare readonly renderedChange: TModelEmitter<typeof descriptor, 'rendered'>
+	declare readonly visibleChange: TModelEmitter<typeof descriptor, 'visible'>
+	declare readonly tagChange: TModelEmitter<typeof descriptor, 'tag'>
+	declare readonly directionChange: TModelEmitter<typeof descriptor, 'direction'>
+	declare readonly variantChange: TModelEmitter<typeof descriptor, 'variant'>
+	declare readonly shapeChange: TModelEmitter<typeof descriptor, 'shape'>
+	declare readonly animationChange: TModelEmitter<typeof descriptor, 'animation'>
+	declare readonly widthChange: TModelEmitter<typeof descriptor, 'width'>
+	declare readonly heightChange: TModelEmitter<typeof descriptor, 'height'>
 }

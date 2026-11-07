@@ -10,6 +10,7 @@ import {
 	SlotDirective,
 	type TInputValue,
 	type TOutputEmitter,
+	type TModelEmitter,
 	type TRootSpec,
 	type TSetup,
 	type TTemplateRef,
@@ -58,6 +59,17 @@ export const ToastsOutputNames = [
 	'soChangeItems',
 	'soChangeTrackBy',
 	'soItemClose',
+	'renderedChange',
+	'visibleChange',
+	'tagChange',
+	'directionChange',
+	'targetChange',
+	'placementChange',
+	'layoutChange',
+	'maxChange',
+	'durationChange',
+	'itemsChange',
+	'trackByChange',
 ] as const
 
 @Directive({
@@ -154,4 +166,15 @@ export abstract class TToastsSurface<TInstance extends IEntity> extends TViewSur
 	declare readonly soChangeItems: TOutputEmitter<typeof facade, 'change:items'>
 	declare readonly soChangeTrackBy: TOutputEmitter<typeof facade, 'change:trackBy'>
 	declare readonly soItemClose: TOutputEmitter<typeof facade, 'item:close'>
+	declare readonly renderedChange: TModelEmitter<typeof descriptor, 'rendered'>
+	declare readonly visibleChange: TModelEmitter<typeof descriptor, 'visible'>
+	declare readonly tagChange: TModelEmitter<typeof descriptor, 'tag'>
+	declare readonly directionChange: TModelEmitter<typeof descriptor, 'direction'>
+	declare readonly targetChange: TModelEmitter<typeof descriptor, 'target'>
+	declare readonly placementChange: TModelEmitter<typeof descriptor, 'placement'>
+	declare readonly layoutChange: TModelEmitter<typeof descriptor, 'layout'>
+	declare readonly maxChange: TModelEmitter<typeof descriptor, 'max'>
+	declare readonly durationChange: TModelEmitter<typeof descriptor, 'duration'>
+	declare readonly itemsChange: TModelEmitter<typeof descriptor, 'items'>
+	declare readonly trackByChange: TModelEmitter<typeof descriptor, 'trackBy'>
 }

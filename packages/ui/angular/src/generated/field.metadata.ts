@@ -5,6 +5,7 @@ import type { DescriptorPluginOutputs, DescriptorPluginProps } from '@soldy-ui/s
 import {
 	type TInputValue,
 	type TOutputEmitter,
+	type TModelEmitter,
 	type TRootSpec,
 	type TSetup,
 } from '../adapter/runtime'
@@ -34,6 +35,17 @@ export const FieldOutputNames = [
 	'soChangeError',
 	'soChangeInvalid',
 	'soChangePosition',
+	'renderedChange',
+	'visibleChange',
+	'tagChange',
+	'directionChange',
+	'sizeChange',
+	'variantChange',
+	'labelChange',
+	'helperChange',
+	'errorChange',
+	'invalidChange',
+	'positionChange',
 ] as const
 
 @Directive({
@@ -100,4 +112,15 @@ export abstract class TFieldSurface<TInstance extends IEntity> extends TViewSurf
 	declare readonly soChangePosition: TOutputEmitter<typeof descriptor, 'change:position'>
 	declare readonly soElementReady: TOutputEmitter<typeof descriptor, 'element:ready'>
 	declare readonly soElementRemoved: TOutputEmitter<typeof descriptor, 'element:removed'>
+	declare readonly renderedChange: TModelEmitter<typeof descriptor, 'rendered'>
+	declare readonly visibleChange: TModelEmitter<typeof descriptor, 'visible'>
+	declare readonly tagChange: TModelEmitter<typeof descriptor, 'tag'>
+	declare readonly directionChange: TModelEmitter<typeof descriptor, 'direction'>
+	declare readonly sizeChange: TModelEmitter<typeof descriptor, 'size'>
+	declare readonly variantChange: TModelEmitter<typeof descriptor, 'variant'>
+	declare readonly labelChange: TModelEmitter<typeof descriptor, 'label'>
+	declare readonly helperChange: TModelEmitter<typeof descriptor, 'helper'>
+	declare readonly errorChange: TModelEmitter<typeof descriptor, 'error'>
+	declare readonly invalidChange: TModelEmitter<typeof descriptor, 'invalid'>
+	declare readonly positionChange: TModelEmitter<typeof descriptor, 'position'>
 }

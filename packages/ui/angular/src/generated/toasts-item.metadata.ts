@@ -10,6 +10,7 @@ import {
 	SlotDirective,
 	type TInputValue,
 	type TOutputEmitter,
+	type TModelEmitter,
 	type TRootSpec,
 	type TSetup,
 } from '../adapter/runtime'
@@ -42,6 +43,18 @@ export const ToastsItemOutputNames = [
 	'soChangeAlert',
 	'soChangeRender',
 	'soChangeOrder',
+	'renderedChange',
+	'visibleChange',
+	'tagChange',
+	'directionChange',
+	'textChange',
+	'descriptionChange',
+	'typeChange',
+	'loadingChange',
+	'closableChange',
+	'durationChange',
+	'alertChange',
+	'renderChange',
 ] as const
 
 @Directive({
@@ -116,4 +129,16 @@ export abstract class TToastsItemSurface<TInstance extends IEntity> extends TVie
 	declare readonly soElementReady: TOutputEmitter<typeof descriptor, 'element:ready'>
 	declare readonly soElementRemoved: TOutputEmitter<typeof descriptor, 'element:removed'>
 	declare readonly soChangeOrder: TOutputEmitter<typeof facade, 'change:order'>
+	declare readonly renderedChange: TModelEmitter<typeof descriptor, 'rendered'>
+	declare readonly visibleChange: TModelEmitter<typeof descriptor, 'visible'>
+	declare readonly tagChange: TModelEmitter<typeof descriptor, 'tag'>
+	declare readonly directionChange: TModelEmitter<typeof descriptor, 'direction'>
+	declare readonly textChange: TModelEmitter<typeof descriptor, 'text'>
+	declare readonly descriptionChange: TModelEmitter<typeof descriptor, 'description'>
+	declare readonly typeChange: TModelEmitter<typeof descriptor, 'type'>
+	declare readonly loadingChange: TModelEmitter<typeof descriptor, 'loading'>
+	declare readonly closableChange: TModelEmitter<typeof descriptor, 'closable'>
+	declare readonly durationChange: TModelEmitter<typeof descriptor, 'duration'>
+	declare readonly alertChange: TModelEmitter<typeof descriptor, 'alert'>
+	declare readonly renderChange: TModelEmitter<typeof descriptor, 'render'>
 }

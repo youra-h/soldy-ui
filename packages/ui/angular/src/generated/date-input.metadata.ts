@@ -6,6 +6,7 @@ import {
 	SlotDirective,
 	type TInputValue,
 	type TOutputEmitter,
+	type TModelEmitter,
 	type TRootSpec,
 	type TSetup,
 } from '../adapter/runtime'
@@ -64,6 +65,29 @@ export const DateInputOutputNames = [
 	'soAriaChangeLabelledBy',
 	'soAriaChangeDescribedBy',
 	'soChangeId',
+	'renderedChange',
+	'visibleChange',
+	'tagChange',
+	'directionChange',
+	'sizeChange',
+	'variantChange',
+	'disabledChange',
+	'focusedChange',
+	'valueChange',
+	'nameChange',
+	'readonlyChange',
+	'requiredChange',
+	'clearableChange',
+	'minChange',
+	'maxChange',
+	'unavailableChange',
+	'kindChange',
+	'timePrecisionChange',
+	'validateChange',
+	'aria_labelChange',
+	'aria_labelledByChange',
+	'aria_describedByChange',
+	'idChange',
 ] as const
 
 @Directive({
@@ -184,4 +208,27 @@ export abstract class TDateInputSurface<TInstance extends IEntity> extends TView
 		'aria:change:describedBy'
 	>
 	declare readonly soChangeId: TOutputEmitter<typeof descriptor, 'change:id'>
+	declare readonly renderedChange: TModelEmitter<typeof descriptor, 'rendered'>
+	declare readonly visibleChange: TModelEmitter<typeof descriptor, 'visible'>
+	declare readonly tagChange: TModelEmitter<typeof descriptor, 'tag'>
+	declare readonly directionChange: TModelEmitter<typeof descriptor, 'direction'>
+	declare readonly sizeChange: TModelEmitter<typeof descriptor, 'size'>
+	declare readonly variantChange: TModelEmitter<typeof descriptor, 'variant'>
+	declare readonly disabledChange: TModelEmitter<typeof descriptor, 'disabled'>
+	declare readonly focusedChange: TModelEmitter<typeof descriptor, 'focused'>
+	declare readonly valueChange: TModelEmitter<typeof descriptor, 'value'>
+	declare readonly nameChange: TModelEmitter<typeof descriptor, 'name'>
+	declare readonly readonlyChange: TModelEmitter<typeof descriptor, 'readonly'>
+	declare readonly requiredChange: TModelEmitter<typeof descriptor, 'required'>
+	declare readonly clearableChange: TModelEmitter<typeof descriptor, 'clearable'>
+	declare readonly minChange: TModelEmitter<typeof descriptor, 'min'>
+	declare readonly maxChange: TModelEmitter<typeof descriptor, 'max'>
+	declare readonly unavailableChange: TModelEmitter<typeof descriptor, 'unavailable'>
+	declare readonly kindChange: TModelEmitter<typeof descriptor, 'kind'>
+	declare readonly timePrecisionChange: TModelEmitter<typeof descriptor, 'timePrecision'>
+	declare readonly validateChange: TModelEmitter<typeof descriptor, 'validate'>
+	declare readonly aria_labelChange: TModelEmitter<typeof descriptor, 'aria_label'>
+	declare readonly aria_labelledByChange: TModelEmitter<typeof descriptor, 'aria_labelledBy'>
+	declare readonly aria_describedByChange: TModelEmitter<typeof descriptor, 'aria_describedBy'>
+	declare readonly idChange: TModelEmitter<typeof descriptor, 'id'>
 }

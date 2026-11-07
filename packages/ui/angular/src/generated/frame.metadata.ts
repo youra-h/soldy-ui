@@ -5,6 +5,7 @@ import type { DescriptorPluginOutputs, DescriptorPluginProps } from '@soldy-ui/s
 import {
 	type TInputValue,
 	type TOutputEmitter,
+	type TModelEmitter,
 	type TRootSpec,
 	type TSetup,
 } from '../adapter/runtime'
@@ -53,6 +54,26 @@ export const FrameOutputNames = [
 	'soAriaChangeLabel',
 	'soAriaChangeLabelledBy',
 	'soAriaChangeDescribedBy',
+	'renderedChange',
+	'visibleChange',
+	'tagChange',
+	'directionChange',
+	'targetChange',
+	'xChange',
+	'yChange',
+	'widthChange',
+	'heightChange',
+	'positionChange',
+	'containedChange',
+	'anchor_anchorChange',
+	'anchor_pointChange',
+	'anchor_placementChange',
+	'anchor_matchWidthChange',
+	'anchor_flipChange',
+	'anchor_offsetChange',
+	'aria_labelChange',
+	'aria_labelledByChange',
+	'aria_describedByChange',
 ] as const
 
 @Directive({
@@ -159,4 +180,24 @@ export abstract class TFrameSurface<TInstance extends IEntity> extends TViewSurf
 		typeof descriptor,
 		'aria:change:describedBy'
 	>
+	declare readonly renderedChange: TModelEmitter<typeof descriptor, 'rendered'>
+	declare readonly visibleChange: TModelEmitter<typeof descriptor, 'visible'>
+	declare readonly tagChange: TModelEmitter<typeof descriptor, 'tag'>
+	declare readonly directionChange: TModelEmitter<typeof descriptor, 'direction'>
+	declare readonly targetChange: TModelEmitter<typeof descriptor, 'target'>
+	declare readonly xChange: TModelEmitter<typeof descriptor, 'x'>
+	declare readonly yChange: TModelEmitter<typeof descriptor, 'y'>
+	declare readonly widthChange: TModelEmitter<typeof descriptor, 'width'>
+	declare readonly heightChange: TModelEmitter<typeof descriptor, 'height'>
+	declare readonly positionChange: TModelEmitter<typeof descriptor, 'position'>
+	declare readonly containedChange: TModelEmitter<typeof descriptor, 'contained'>
+	declare readonly anchor_anchorChange: TModelEmitter<typeof descriptor, 'anchor_anchor'>
+	declare readonly anchor_pointChange: TModelEmitter<typeof descriptor, 'anchor_point'>
+	declare readonly anchor_placementChange: TModelEmitter<typeof descriptor, 'anchor_placement'>
+	declare readonly anchor_matchWidthChange: TModelEmitter<typeof descriptor, 'anchor_matchWidth'>
+	declare readonly anchor_flipChange: TModelEmitter<typeof descriptor, 'anchor_flip'>
+	declare readonly anchor_offsetChange: TModelEmitter<typeof descriptor, 'anchor_offset'>
+	declare readonly aria_labelChange: TModelEmitter<typeof descriptor, 'aria_label'>
+	declare readonly aria_labelledByChange: TModelEmitter<typeof descriptor, 'aria_labelledBy'>
+	declare readonly aria_describedByChange: TModelEmitter<typeof descriptor, 'aria_describedBy'>
 }

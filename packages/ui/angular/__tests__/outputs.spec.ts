@@ -72,7 +72,7 @@ import { ComponentViewOutputNames } from '../src/generated/component-view.metada
 import { ListBoxOutputNames } from '../src/generated/list-box.metadata'
 import { TComponentBase } from '../src/adapter/runtime/component.base'
 import { TViewSurface, ViewOutputNames } from '../src/generated/view.metadata'
-import { useOutputs } from '../src/adapter/common/useOutputs'
+import { useModels, useOutputs } from '../src/adapter/common/useOutputs'
 import { exportedDeclarations, type TDeclaration } from './declarations'
 
 /** All outputs of a visual component: those of `TViewSurface` and its own. */
@@ -547,7 +547,9 @@ describe('выходы компонентов экспорта · геттер �
 			const outputs = found.find((declaration) => declaration.name === name)?.outputs
 
 			expect(new Set(outputs)).toEqual(
-				new Set(useOutputs(descriptor).map(([output]) => output)),
+				new Set(
+					[...useOutputs(descriptor), ...useModels(descriptor)].map(([output]) => output),
+				),
 			)
 		}
 	})

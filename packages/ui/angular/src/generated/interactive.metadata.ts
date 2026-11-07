@@ -5,6 +5,7 @@ import type { DescriptorPluginOutputs, DescriptorPluginProps } from '@soldy-ui/s
 import {
 	type TInputValue,
 	type TOutputEmitter,
+	type TModelEmitter,
 	type TRootSpec,
 	type TSetup,
 } from '../adapter/runtime'
@@ -21,7 +22,16 @@ export const InteractiveInputNames = [
 	'disabled',
 	'focused',
 ] as const
-export const InteractiveOutputNames = ['soChangeDisabled', 'soChangeFocused'] as const
+export const InteractiveOutputNames = [
+	'soChangeDisabled',
+	'soChangeFocused',
+	'renderedChange',
+	'visibleChange',
+	'tagChange',
+	'directionChange',
+	'disabledChange',
+	'focusedChange',
+] as const
 
 @Directive({
 	inputs: [
@@ -72,4 +82,10 @@ export abstract class TInteractiveSurface<TInstance extends IEntity> extends TVi
 	declare readonly soChangeFocused: TOutputEmitter<typeof descriptor, 'change:focused'>
 	declare readonly soElementReady: TOutputEmitter<typeof descriptor, 'element:ready'>
 	declare readonly soElementRemoved: TOutputEmitter<typeof descriptor, 'element:removed'>
+	declare readonly renderedChange: TModelEmitter<typeof descriptor, 'rendered'>
+	declare readonly visibleChange: TModelEmitter<typeof descriptor, 'visible'>
+	declare readonly tagChange: TModelEmitter<typeof descriptor, 'tag'>
+	declare readonly directionChange: TModelEmitter<typeof descriptor, 'direction'>
+	declare readonly disabledChange: TModelEmitter<typeof descriptor, 'disabled'>
+	declare readonly focusedChange: TModelEmitter<typeof descriptor, 'focused'>
 }

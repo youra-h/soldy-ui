@@ -4,6 +4,7 @@ export type {
 	TBindingState,
 	TCollectionBinding,
 	TInputValue,
+	TModelEmitter,
 	TOutputEmitter,
 	TOutputOf,
 } from './useAdapter'

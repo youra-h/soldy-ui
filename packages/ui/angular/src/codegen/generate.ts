@@ -48,7 +48,7 @@ import * as prettier from 'prettier'
 import { ComponentViewDescriptor, type IComponentDescriptor } from '@soldy-ui/setup'
 import { collectManifests } from './collect-manifests'
 import { useBooleanInputs, useInputs } from '../adapter/common/useInputs'
-import { useOutputs } from '../adapter/common/useOutputs'
+import { useModels, useOutputs } from '../adapter/common/useOutputs'
 
 function toPascalCase(str: string): string {
 	return str.replace(/(^\w|-\w)/g, (g) => g.replace('-', '').toUpperCase())
@@ -148,6 +148,12 @@ async function generate(): Promise<void> {
 			}),
 			([input]) => input,
 		)
+		const models = unique<TOutput>(
+			sources.flatMap(([source, descriptor]) =>
+				useModels(descriptor).map(([output, prop]): TOutput => [output, prop, source]),
+			),
+			([output]) => output,
+		)
 		const outputs = unique<TOutput>(
 			sources.flatMap(([source, descriptor]) =>
 				useOutputs(descriptor).map(([output, event]): TOutput => [output, event, source]),
@@ -185,6 +191,7 @@ async function generate(): Promise<void> {
 			...(visual ? [] : ['TComponentBase']),
 			'type TInputValue',
 			'type TOutputEmitter',
+			...(models.length ? ['type TModelEmitter'] : []),
 			'type TRootSpec',
 			'type TSetup',
 			...(refs.length ? ['type TTemplateRef'] : []),
@@ -203,7 +210,7 @@ async function generate(): Promise<void> {
 			`import type { ${sources.map(([source]) => source).join(', ')} } from '../components/${folder}/manifest'`,
 			'',
 			`export const ${constName}InputNames = ${JSON.stringify(inputs.map(([input]) => input))} as const`,
-			`export const ${constName}OutputNames = ${JSON.stringify(declaredOutputs.map(([output]) => output))} as const`,
+			`export const ${constName}OutputNames = ${JSON.stringify([...declaredOutputs, ...models].map(([output]) => output))} as const`,
 			'',
 			`@Directive({ inputs: [${declaredInputs.join(', ')}], outputs: [...${constName}OutputNames] })`,
 			`export abstract class T${constName}Surface<TInstance extends IEntity> extends ${visual ? 'TViewSurface' : 'TComponentBase'}<${baseParams}> {`,
@@ -245,6 +252,10 @@ async function generate(): Promise<void> {
 			...outputs.map(
 				([output, event, source]) =>
 					`declare readonly ${output}: TOutputEmitter<typeof ${source}, ${JSON.stringify(event)}>`,
+			),
+			...models.map(
+				([output, prop]) =>
+					`declare readonly ${output}: TModelEmitter<typeof descriptor, ${JSON.stringify(prop)}>`,
 			),
 			'}',
 			'',

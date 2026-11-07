@@ -6,6 +6,7 @@ import {
 	SlotDirective,
 	type TInputValue,
 	type TOutputEmitter,
+	type TModelEmitter,
 	type TRootSpec,
 	type TSetup,
 } from '../adapter/runtime'
@@ -85,6 +86,38 @@ export const DatePickerOutputNames = [
 	'soDismissDismiss',
 	'soDismissChangeEnabled',
 	'soHideOutsideChangeEnabled',
+	'renderedChange',
+	'visibleChange',
+	'tagChange',
+	'directionChange',
+	'sizeChange',
+	'variantChange',
+	'disabledChange',
+	'focusedChange',
+	'valueChange',
+	'nameChange',
+	'readonlyChange',
+	'requiredChange',
+	'clearableChange',
+	'modeChange',
+	'openChange',
+	'closeOnSelectChange',
+	'confirmableChange',
+	'minChange',
+	'maxChange',
+	'unavailableChange',
+	'validateChange',
+	'weekStartChange',
+	'timeZoneChange',
+	'startNameChange',
+	'endNameChange',
+	'swipeChange',
+	'aria_labelChange',
+	'aria_labelledByChange',
+	'aria_describedByChange',
+	'idChange',
+	'dismiss_enabledChange',
+	'hideOutside_enabledChange',
 ] as const
 
 @Directive({
@@ -240,5 +273,40 @@ export abstract class TDatePickerSurface<TInstance extends IEntity> extends TVie
 	declare readonly soHideOutsideChangeEnabled: TOutputEmitter<
 		typeof descriptor,
 		'hideOutside:change:enabled'
+	>
+	declare readonly renderedChange: TModelEmitter<typeof descriptor, 'rendered'>
+	declare readonly visibleChange: TModelEmitter<typeof descriptor, 'visible'>
+	declare readonly tagChange: TModelEmitter<typeof descriptor, 'tag'>
+	declare readonly directionChange: TModelEmitter<typeof descriptor, 'direction'>
+	declare readonly sizeChange: TModelEmitter<typeof descriptor, 'size'>
+	declare readonly variantChange: TModelEmitter<typeof descriptor, 'variant'>
+	declare readonly disabledChange: TModelEmitter<typeof descriptor, 'disabled'>
+	declare readonly focusedChange: TModelEmitter<typeof descriptor, 'focused'>
+	declare readonly valueChange: TModelEmitter<typeof descriptor, 'value'>
+	declare readonly nameChange: TModelEmitter<typeof descriptor, 'name'>
+	declare readonly readonlyChange: TModelEmitter<typeof descriptor, 'readonly'>
+	declare readonly requiredChange: TModelEmitter<typeof descriptor, 'required'>
+	declare readonly clearableChange: TModelEmitter<typeof descriptor, 'clearable'>
+	declare readonly modeChange: TModelEmitter<typeof descriptor, 'mode'>
+	declare readonly openChange: TModelEmitter<typeof descriptor, 'open'>
+	declare readonly closeOnSelectChange: TModelEmitter<typeof descriptor, 'closeOnSelect'>
+	declare readonly confirmableChange: TModelEmitter<typeof descriptor, 'confirmable'>
+	declare readonly minChange: TModelEmitter<typeof descriptor, 'min'>
+	declare readonly maxChange: TModelEmitter<typeof descriptor, 'max'>
+	declare readonly unavailableChange: TModelEmitter<typeof descriptor, 'unavailable'>
+	declare readonly validateChange: TModelEmitter<typeof descriptor, 'validate'>
+	declare readonly weekStartChange: TModelEmitter<typeof descriptor, 'weekStart'>
+	declare readonly timeZoneChange: TModelEmitter<typeof descriptor, 'timeZone'>
+	declare readonly startNameChange: TModelEmitter<typeof descriptor, 'startName'>
+	declare readonly endNameChange: TModelEmitter<typeof descriptor, 'endName'>
+	declare readonly swipeChange: TModelEmitter<typeof descriptor, 'swipe'>
+	declare readonly aria_labelChange: TModelEmitter<typeof descriptor, 'aria_label'>
+	declare readonly aria_labelledByChange: TModelEmitter<typeof descriptor, 'aria_labelledBy'>
+	declare readonly aria_describedByChange: TModelEmitter<typeof descriptor, 'aria_describedBy'>
+	declare readonly idChange: TModelEmitter<typeof descriptor, 'id'>
+	declare readonly dismiss_enabledChange: TModelEmitter<typeof descriptor, 'dismiss_enabled'>
+	declare readonly hideOutside_enabledChange: TModelEmitter<
+		typeof descriptor,
+		'hideOutside_enabled'
 	>
 }

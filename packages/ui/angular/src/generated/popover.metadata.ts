@@ -6,6 +6,7 @@ import {
 	SlotDirective,
 	type TInputValue,
 	type TOutputEmitter,
+	type TModelEmitter,
 	type TRootSpec,
 	type TSetup,
 } from '../adapter/runtime'
@@ -44,6 +45,21 @@ export const PopoverOutputNames = [
 	'soAriaChangeDescribedBy',
 	'soDismissDismiss',
 	'soDismissChangeEnabled',
+	'renderedChange',
+	'visibleChange',
+	'tagChange',
+	'directionChange',
+	'openChange',
+	'closableChange',
+	'lazyMountChange',
+	'placementChange',
+	'containedChange',
+	'edgeChange',
+	'swipeChange',
+	'aria_labelChange',
+	'aria_labelledByChange',
+	'aria_describedByChange',
+	'dismiss_enabledChange',
 ] as const
 
 @Directive({
@@ -136,4 +152,19 @@ export abstract class TPopoverSurface<TInstance extends IEntity> extends TViewSu
 		typeof descriptor,
 		'dismiss:change:enabled'
 	>
+	declare readonly renderedChange: TModelEmitter<typeof descriptor, 'rendered'>
+	declare readonly visibleChange: TModelEmitter<typeof descriptor, 'visible'>
+	declare readonly tagChange: TModelEmitter<typeof descriptor, 'tag'>
+	declare readonly directionChange: TModelEmitter<typeof descriptor, 'direction'>
+	declare readonly openChange: TModelEmitter<typeof descriptor, 'open'>
+	declare readonly closableChange: TModelEmitter<typeof descriptor, 'closable'>
+	declare readonly lazyMountChange: TModelEmitter<typeof descriptor, 'lazyMount'>
+	declare readonly placementChange: TModelEmitter<typeof descriptor, 'placement'>
+	declare readonly containedChange: TModelEmitter<typeof descriptor, 'contained'>
+	declare readonly edgeChange: TModelEmitter<typeof descriptor, 'edge'>
+	declare readonly swipeChange: TModelEmitter<typeof descriptor, 'swipe'>
+	declare readonly aria_labelChange: TModelEmitter<typeof descriptor, 'aria_label'>
+	declare readonly aria_labelledByChange: TModelEmitter<typeof descriptor, 'aria_labelledBy'>
+	declare readonly aria_describedByChange: TModelEmitter<typeof descriptor, 'aria_describedBy'>
+	declare readonly dismiss_enabledChange: TModelEmitter<typeof descriptor, 'dismiss_enabled'>
 }

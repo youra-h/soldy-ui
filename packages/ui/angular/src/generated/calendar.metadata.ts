@@ -10,6 +10,7 @@ import {
 	SlotDirective,
 	type TInputValue,
 	type TOutputEmitter,
+	type TModelEmitter,
 	type TRootSpec,
 	type TSetup,
 } from '../adapter/runtime'
@@ -63,6 +64,26 @@ export const CalendarOutputNames = [
 	'soAriaChangeLabelledBy',
 	'soAriaChangeDescribedBy',
 	'soChangeMode',
+	'renderedChange',
+	'visibleChange',
+	'tagChange',
+	'directionChange',
+	'sizeChange',
+	'variantChange',
+	'disabledChange',
+	'focusedChange',
+	'valueChange',
+	'nameChange',
+	'minChange',
+	'maxChange',
+	'unavailableChange',
+	'weekStartChange',
+	'timeZoneChange',
+	'monthsChange',
+	'aria_labelChange',
+	'aria_labelledByChange',
+	'aria_describedByChange',
+	'modeChange',
 ] as const
 
 @Directive({
@@ -173,4 +194,24 @@ export abstract class TCalendarSurface<TInstance extends IEntity> extends TViewS
 		'aria:change:describedBy'
 	>
 	declare readonly soChangeMode: TOutputEmitter<typeof facade, 'change:mode'>
+	declare readonly renderedChange: TModelEmitter<typeof descriptor, 'rendered'>
+	declare readonly visibleChange: TModelEmitter<typeof descriptor, 'visible'>
+	declare readonly tagChange: TModelEmitter<typeof descriptor, 'tag'>
+	declare readonly directionChange: TModelEmitter<typeof descriptor, 'direction'>
+	declare readonly sizeChange: TModelEmitter<typeof descriptor, 'size'>
+	declare readonly variantChange: TModelEmitter<typeof descriptor, 'variant'>
+	declare readonly disabledChange: TModelEmitter<typeof descriptor, 'disabled'>
+	declare readonly focusedChange: TModelEmitter<typeof descriptor, 'focused'>
+	declare readonly valueChange: TModelEmitter<typeof descriptor, 'value'>
+	declare readonly nameChange: TModelEmitter<typeof descriptor, 'name'>
+	declare readonly minChange: TModelEmitter<typeof descriptor, 'min'>
+	declare readonly maxChange: TModelEmitter<typeof descriptor, 'max'>
+	declare readonly unavailableChange: TModelEmitter<typeof descriptor, 'unavailable'>
+	declare readonly weekStartChange: TModelEmitter<typeof descriptor, 'weekStart'>
+	declare readonly timeZoneChange: TModelEmitter<typeof descriptor, 'timeZone'>
+	declare readonly monthsChange: TModelEmitter<typeof descriptor, 'months'>
+	declare readonly aria_labelChange: TModelEmitter<typeof descriptor, 'aria_label'>
+	declare readonly aria_labelledByChange: TModelEmitter<typeof descriptor, 'aria_labelledBy'>
+	declare readonly aria_describedByChange: TModelEmitter<typeof descriptor, 'aria_describedBy'>
+	declare readonly modeChange: TModelEmitter<typeof descriptor, 'mode'>
 }

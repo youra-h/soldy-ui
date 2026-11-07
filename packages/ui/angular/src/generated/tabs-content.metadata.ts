@@ -10,6 +10,7 @@ import {
 	SlotDirective,
 	type TInputValue,
 	type TOutputEmitter,
+	type TModelEmitter,
 	type TRootSpec,
 	type TSetup,
 } from '../adapter/runtime'
@@ -26,7 +27,17 @@ export const TabsContentInputNames = [
 	'value',
 	'id',
 ] as const
-export const TabsContentOutputNames = ['soChangeValue', 'soChangeId', 'soChangeActive'] as const
+export const TabsContentOutputNames = [
+	'soChangeValue',
+	'soChangeId',
+	'soChangeActive',
+	'renderedChange',
+	'visibleChange',
+	'tagChange',
+	'directionChange',
+	'valueChange',
+	'idChange',
+] as const
 
 @Directive({
 	inputs: [
@@ -82,4 +93,10 @@ export abstract class TTabsContentSurface<TInstance extends IEntity> extends TVi
 	declare readonly soElementRemoved: TOutputEmitter<typeof descriptor, 'element:removed'>
 	declare readonly soChangeId: TOutputEmitter<typeof descriptor, 'change:id'>
 	declare readonly soChangeActive: TOutputEmitter<typeof facade, 'change:active'>
+	declare readonly renderedChange: TModelEmitter<typeof descriptor, 'rendered'>
+	declare readonly visibleChange: TModelEmitter<typeof descriptor, 'visible'>
+	declare readonly tagChange: TModelEmitter<typeof descriptor, 'tag'>
+	declare readonly directionChange: TModelEmitter<typeof descriptor, 'direction'>
+	declare readonly valueChange: TModelEmitter<typeof descriptor, 'value'>
+	declare readonly idChange: TModelEmitter<typeof descriptor, 'id'>
 }

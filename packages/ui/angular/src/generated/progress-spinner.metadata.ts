@@ -5,6 +5,7 @@ import type { DescriptorPluginOutputs, DescriptorPluginProps } from '@soldy-ui/s
 import {
 	type TInputValue,
 	type TOutputEmitter,
+	type TModelEmitter,
 	type TRootSpec,
 	type TSetup,
 } from '../adapter/runtime'
@@ -38,6 +39,19 @@ export const ProgressSpinnerOutputNames = [
 	'soAriaChangeLabel',
 	'soAriaChangeLabelledBy',
 	'soAriaChangeDescribedBy',
+	'renderedChange',
+	'visibleChange',
+	'tagChange',
+	'directionChange',
+	'sizeChange',
+	'variantChange',
+	'valueChange',
+	'minChange',
+	'maxChange',
+	'indeterminateChange',
+	'aria_labelChange',
+	'aria_labelledByChange',
+	'aria_describedByChange',
 ] as const
 
 @Directive({
@@ -119,4 +133,17 @@ export abstract class TProgressSpinnerSurface<TInstance extends IEntity> extends
 		typeof descriptor,
 		'aria:change:describedBy'
 	>
+	declare readonly renderedChange: TModelEmitter<typeof descriptor, 'rendered'>
+	declare readonly visibleChange: TModelEmitter<typeof descriptor, 'visible'>
+	declare readonly tagChange: TModelEmitter<typeof descriptor, 'tag'>
+	declare readonly directionChange: TModelEmitter<typeof descriptor, 'direction'>
+	declare readonly sizeChange: TModelEmitter<typeof descriptor, 'size'>
+	declare readonly variantChange: TModelEmitter<typeof descriptor, 'variant'>
+	declare readonly valueChange: TModelEmitter<typeof descriptor, 'value'>
+	declare readonly minChange: TModelEmitter<typeof descriptor, 'min'>
+	declare readonly maxChange: TModelEmitter<typeof descriptor, 'max'>
+	declare readonly indeterminateChange: TModelEmitter<typeof descriptor, 'indeterminate'>
+	declare readonly aria_labelChange: TModelEmitter<typeof descriptor, 'aria_label'>
+	declare readonly aria_labelledByChange: TModelEmitter<typeof descriptor, 'aria_labelledBy'>
+	declare readonly aria_describedByChange: TModelEmitter<typeof descriptor, 'aria_describedBy'>
 }
