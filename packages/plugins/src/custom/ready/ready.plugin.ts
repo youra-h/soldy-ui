@@ -4,9 +4,13 @@ import { TElementPlugin } from '../element'
 import type { IComponentView } from '@soldy-ui/core'
 
 /**
- * Плагин-мост для синхронизации состояния ready между элементом и инстансом компонента.
- * Устанавливает ready в true, когда элемент готов, и в false, когда элемент удаляется.
- * Позволяет компоненту знать, когда он готов к взаимодействию с DOM.
+ * Reports component availability through IComponentView.ready: the instance
+ * exists and its root DOM element has been announced by TElementPlugin.
+ * Sets true on element ready and false on removal, including replacement.
+ *
+ * This is an availability signal, not a barrier for other plugins' DOM
+ * handlers or asynchronous work. The instance itself exists before the root.
+ * TLayer uses the same flag to expose its stack position while available.
  */
 export class TReadyPlugin extends TBasePlugin {
 	override install(ctx: IPluginContext): void {

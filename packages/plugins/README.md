@@ -10,6 +10,47 @@ Models in `@soldy-ui/core` have no access to the DOM. Everything that needs a li
 for events, moving focus, measuring and positioning an overlay, normalizing keyboard activation —
 is a plugin here, written once for all six adapters.
 
+## Component availability and DOM readiness
+
+`TReadyPlugin` reports that a component is loaded and available: its instance exists and its
+root DOM element has been announced. It maintains `instance.ready` and the model's `ready`
+event. The instance itself is created before the DOM root becomes available.
+
+| Signal                   | Meaning                                                                                                                |
+| ------------------------ | ---------------------------------------------------------------------------------------------------------------------- |
+| `element:ready(element)` | The bound root is announced in the next animation frame. DOM plugins can attach listeners, measure, or observe it.     |
+| `element:removed()`      | An announced root was removed or replaced. DOM plugins detach their behavior.                                          |
+| `ready(true / false)`    | Component availability changed. `TReadyPlugin` translates element readiness and removal into this boolean model state. |
+
+The `element:` prefix is the public plugin namespace. Inside a plugin, subscribe to
+`bundle.get(TElementPlugin)?.events.on('ready', handler)` and `'removed'` on the same bus.
+The model's `ready` event carries a boolean rather than a DOM node:
+
+```ts
+import { TButton } from '@soldy-ui/core'
+
+const button = new TButton({ text: 'Save' })
+
+// Subscribe before mounting this controller with an adapter.
+button.events.on('ready', (available) => {
+  console.log(available ? 'Component available' : 'Component unavailable')
+})
+```
+
+`ready` starts as `false`. Removing an announced root sets it to `false`; announcing a root
+again sets it to `true`. Replacing an announced root follows the same cycle: `false`
+synchronously, then `true` in the next animation frame. A binding removed before its first
+announcement emits neither element event. Server rendering does not announce a DOM root.
+
+Availability does not imply visibility or completion of every plugin's DOM handler,
+asynchronous initialization, layout observation, or animation. A `ready(true)` handler can run
+before other plugins' handlers of the same element announcement. The events do not replay:
+when subscribing after mounting, read `instance.ready` for current availability. DOM plugins
+can also read `TElementPlugin.element`, which is assigned immediately, before its announcement.
+
+`TLayer` continues to use `instance.ready` to expose `zIndex` and `data-layer` while the
+component is available; on the server or without an announced root, its exposed `zIndex` is `0`.
+
 ## Install
 
 ```bash

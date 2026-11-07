@@ -53,7 +53,11 @@ export type TComponentViewEvents = TComponentEvents & {
 	'change:dataset': (payload: TValuePayload<TDatasetAttributes>) => void
 	/** change:attrs — набор нативных атрибутов изменился */
 	'change:attrs': (payload: TValuePayload<TAttributesMap>) => void
-	/** ready — срабатывает когда компонент монтируется/демонтируется из DOM */
+	/**
+	 * Component availability changed: true when the instance has an announced
+	 * root DOM element, false when that root is removed or replaced.
+	 * Does not wait for other plugins' DOM handlers or asynchronous work.
+	 */
 	ready: (value: boolean) => void
 }
 
@@ -100,6 +104,13 @@ export interface IComponentView<
 	 * третий набор рядом с `aria`/`dataset`
 	 */
 	readonly attrs: TAttributes
-	/** Компонент смонтирован в DOM и готов (устанавливается плагин-слоем) */
+	/**
+	 * Component availability, maintained by TReadyPlugin: the instance exists
+	 * and its root DOM element has been announced. Initially false; returns to
+	 * false when the root is removed, and to true when a root is announced again.
+	 * Does not imply visibility or completion of other plugins' DOM handlers
+	 * or asynchronous work. Read this flag when subscribing after mounting:
+	 * the ready event only reports changes and does not replay the current value.
+	 */
 	ready: boolean
 }
