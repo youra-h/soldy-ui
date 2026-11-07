@@ -198,7 +198,7 @@ export default { ...SetupDatePicker, components: { Button, Calendar, DateInput, 
 			class="so-date-picker__panel"
 			tabindex="-1"
 			:visible="open"
-			position="fixed"
+			strategy="fixed"
 			:anchor_anchor="rootElement"
 			:anchor_offset="4"
 			v-bind="{ ...panelAria, ...panelDataset, ...dismiss_ownerAttribute }"

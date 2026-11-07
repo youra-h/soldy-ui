@@ -1,7 +1,7 @@
 import type { TValuePayload } from '../../../common'
 import type { ILayer, ILayerProps, TLayerEvents } from '../../base/layer'
 
-export type TFramePosition = 'fixed' | 'absolute'
+export type TFrameStrategy = 'fixed' | 'absolute'
 
 export interface IFrameProps extends ILayerProps {
 	/** Позиция по оси X (px) */
@@ -13,10 +13,10 @@ export interface IFrameProps extends ILayerProps {
 	/** Высота (px или CSS-значение) */
 	height?: number | string
 	/**
-	 * CSS-позиционирование: fixed (viewport) или absolute (родитель). У панели с
-	 * якорем его выбирает привязка, как и координаты
+	 * CSS positioning strategy: fixed (viewport) or absolute (containing block).
+	 * For anchored panels, the anchor plugin chooses it along with coordinates.
 	 */
-	position?: TFramePosition
+	strategy?: TFrameStrategy
 	/**
 	 * Панель внутри своего контейнера: не телепортируется, а остаётся в
 	 * разметке на месте и встаёт в ближайшем позиционированном предке. Где
@@ -34,8 +34,8 @@ export type TFrameEvents = TLayerEvents & {
 	'change:width': (payload: TValuePayload<number | string>) => void
 	/** change:height */
 	'change:height': (payload: TValuePayload<number | string>) => void
-	/** change:position */
-	'change:position': (payload: TValuePayload<TFramePosition>) => void
+	/** change:strategy */
+	'change:strategy': (payload: TValuePayload<TFrameStrategy>) => void
 	/** change:contained */
 	'change:contained': (payload: TValuePayload<boolean>) => void
 }
@@ -50,7 +50,7 @@ export interface IFrame extends ILayer<IFrameProps, TFrameEvents> {
 	/** Высота */
 	height: number | string
 	/** CSS-позиционирование */
-	position: TFramePosition
+	strategy: TFrameStrategy
 	/** Панель внутри своего контейнера, а не поверх страницы */
 	contained: boolean
 }

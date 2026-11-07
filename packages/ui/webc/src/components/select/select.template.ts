@@ -103,7 +103,7 @@ export const selectTemplate: ITemplate<ISelect, TSelectCollectionFacade, TSelect
 		field.className = 'so-select__field'
 		box.className = 'so-select__arrow'
 		panel.className = 'so-select__panel'
-		panel.position = 'fixed'
+		panel.strategy = 'fixed'
 		panel.anchor_anchor = root
 		panel.anchor_offset = 4
 		handle.className = 'so-select__handle'

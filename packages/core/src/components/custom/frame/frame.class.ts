@@ -1,6 +1,6 @@
 import { TLayer } from '../../base/layer'
 import type { TDefaultValues } from '../../base/component'
-import type { IFrame, IFrameProps, TFrameEvents, TFramePosition } from './types'
+import type { IFrame, IFrameProps, TFrameEvents, TFrameStrategy } from './types'
 
 /**
  * Headless-контейнер для всплывающего контента.
@@ -20,18 +20,18 @@ export default class TFrame extends TLayer<IFrameProps, TFrameEvents> implements
 	static baseClass = 'so-frame'
 
 	static defaultValues: typeof TLayer.defaultValues &
-		TDefaultValues<IFrameProps, 'x' | 'y' | 'width' | 'height' | 'position' | 'contained'> = {
+		TDefaultValues<IFrameProps, 'x' | 'y' | 'width' | 'height' | 'strategy' | 'contained'> = {
 		...TLayer.defaultValues,
 		x: 0,
 		y: 0,
 		// Слой по умолчанию берёт размер по содержимому — число задаётся осознанно.
 		width: 'auto',
 		height: 'auto',
-		position: 'fixed',
+		strategy: 'fixed',
 		contained: false,
 	}
 
-	private _position: TFramePosition
+	private _strategy: TFrameStrategy
 	protected _x: number
 	protected _y: number
 	protected _width: number | string
@@ -48,7 +48,7 @@ export default class TFrame extends TLayer<IFrameProps, TFrameEvents> implements
 		this._width = props.width ?? ctor.defaultValues.width
 		this._height = props.height ?? ctor.defaultValues.height
 
-		this._position = props.position ?? ctor.defaultValues.position
+		this._strategy = props.strategy ?? ctor.defaultValues.strategy
 		this._applyContained(props.contained ?? ctor.defaultValues.contained)
 	}
 
@@ -96,15 +96,15 @@ export default class TFrame extends TLayer<IFrameProps, TFrameEvents> implements
 		this.events.emit('change:height', { newValue: value, oldValue: oldHeight })
 	}
 
-	get position(): TFramePosition {
-		return this._position
+	get strategy(): TFrameStrategy {
+		return this._strategy
 	}
-	set position(value: TFramePosition) {
-		const oldPosition = this.position
+	set strategy(value: TFrameStrategy) {
+		const oldStrategy = this.strategy
 
-		if (this._position === value) return
-		this._position = value
-		this.events.emit('change:position', { newValue: value, oldValue: oldPosition })
+		if (this._strategy === value) return
+		this._strategy = value
+		this.events.emit('change:strategy', { newValue: value, oldValue: oldStrategy })
 	}
 
 	/**
@@ -134,7 +134,7 @@ export default class TFrame extends TLayer<IFrameProps, TFrameEvents> implements
 			y: this.y,
 			width: this.width,
 			height: this.height,
-			position: this.position,
+			strategy: this.strategy,
 			contained: this.contained,
 		}
 	}

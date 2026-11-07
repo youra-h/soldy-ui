@@ -534,7 +534,7 @@ export class TAnchorPlugin extends TBasePlugin<any, TAnchorPluginEvents> {
 		const rtl = this._rtl
 		const alignment = this._alignment
 		const side = this._resolveSide(rect, panel, rtl)
-		const origin = positionOriginOf(this._element, frame.position)
+		const origin = positionOriginOf(this._element, frame.strategy)
 
 		if (isInlineSide(side)) {
 			frame.x = this._inlineX(side, rect, panel.width, rtl) - origin.x
@@ -566,14 +566,14 @@ export class TAnchorPlugin extends TBasePlugin<any, TAnchorPluginEvents> {
 		if (!frame) return
 
 		if (this._point) {
-			frame.position = 'fixed'
+			frame.strategy = 'fixed'
 
 			return
 		}
 
 		const anchor = this._anchor
 
-		if (anchor) frame.position = isPinnedToViewport(anchor) ? 'fixed' : 'absolute'
+		if (anchor) frame.strategy = isPinnedToViewport(anchor) ? 'fixed' : 'absolute'
 	}
 
 	/**

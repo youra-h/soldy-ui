@@ -1,5 +1,5 @@
 import type { TValuePayload } from '../src/common'
-import { describe, it, expect, beforeEach } from 'vitest'
+import { describe, it, expect, beforeEach, vi } from 'vitest'
 import { TFrame, TLayer, FRAME_LAYER_ATTRIBUTE } from '@soldy-ui/core'
 
 /**
@@ -249,7 +249,7 @@ describe('TFrame', () => {
 			width: 300,
 			height: 200,
 			visible: true,
-			position: 'absolute',
+			strategy: 'absolute',
 			target: '#portal',
 			contained: true,
 		})
@@ -261,7 +261,7 @@ describe('TFrame', () => {
 			width: 300,
 			height: 200,
 			visible: true,
-			position: 'absolute',
+			strategy: 'absolute',
 			target: '#portal',
 			contained: true,
 		})
@@ -524,31 +524,34 @@ describe('TFrame', () => {
 		expect(frame.y).toBe(50)
 	})
 
-	it('position по умолчанию fixed', () => {
+	it('strategy по умолчанию fixed', () => {
 		const frame = new TFrame()
-		expect(frame.position).toBe('fixed')
+		expect(frame.strategy).toBe('fixed')
 	})
 
-	it('position можно задать при создании', () => {
-		const frame = new TFrame({ position: 'absolute' })
-		expect(frame.position).toBe('absolute')
+	it('strategy можно задать при создании', () => {
+		const frame = new TFrame({ strategy: 'absolute' })
+		expect(frame.strategy).toBe('absolute')
 	})
 
-	it('position можно изменить через сеттер', () => {
+	it('strategy можно изменить через сеттер', () => {
 		const frame = new TFrame()
-		frame.position = 'absolute'
-		expect(frame.position).toBe('absolute')
+		frame.strategy = 'absolute'
+		expect(frame.strategy).toBe('absolute')
 	})
 
-	it('change:position эмитится при изменении', () => {
+	it('change:strategy эмитится при изменении', () => {
 		const frame = new TFrame()
-		const values: string[] = []
-		frame.events.on('change:position', ({ newValue: v }: TValuePayload<string>) =>
-			values.push(v),
-		)
+		const changed = vi.fn()
+		frame.events.on('change:strategy', changed)
 
-		frame.position = 'absolute'
-		expect(values).toEqual(['absolute'])
+		frame.strategy = 'absolute'
+		frame.strategy = 'absolute'
+
+		expect(changed).toHaveBeenCalledExactlyOnceWith({
+			oldValue: 'fixed',
+			newValue: 'absolute',
+		})
 	})
 
 	it('target по умолчанию body', () => {

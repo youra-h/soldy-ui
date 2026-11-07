@@ -44,7 +44,7 @@ export function Menu(props: MenuProps): ReactElement | null {
 					className={toPartClass(panelClasses)}
 					tabIndex={-1}
 					visible={open}
-					position="fixed"
+					strategy="fixed"
 					anchor_anchor={rootElement}
 					anchor_point={point}
 					anchor_placement={placement}

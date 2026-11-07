@@ -149,7 +149,7 @@ export default {
 		<Frame
 			embedded="select.frame"
 			:visible="open"
-			position="fixed"
+			strategy="fixed"
 			:anchor_anchor="rootElement"
 			:anchor_placement="panelPlacement"
 			:anchor_flip="panelFlip"

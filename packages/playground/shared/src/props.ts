@@ -14,7 +14,7 @@ import {
 	FIELD_POSITIONS,
 	SWIPES,
 	FRAME_PLACEMENTS,
-	FRAME_POSITIONS,
+	FRAME_STRATEGIES,
 	HTML_TAGS,
 	LABEL_POSITIONS,
 	LIST_CONTENT_FITS,
@@ -410,18 +410,15 @@ const OWN: Record<string, Record<string, string>> = {
 		y: 'Смещение по вертикали',
 		width: 'Ширина слоя. `auto` — по содержимому',
 		height: 'Высота слоя. `auto` — по содержимому',
-		position: 'Способ позиционирования: в потоке страницы или относительно окна',
+		strategy: 'Способ позиционирования: в потоке страницы или относительно окна',
 		contained:
 			'Слой внутри контейнера: без телепорта и координат, место в ближайшем позиционированном предке задаёт тема',
 	},
 }
 
 /**
- * Списки значений для перечислимых пропов.
- *
- * Ключ `*` — общие для всех; конкретный компонент перекрывает. Разделение
- * обязательно: `position` у Tabs и у Frame — разные перечисления, и общий
- * список подсунул бы вкладкам `fixed`.
+ * Enumerated prop options. Component-specific lists override shared values:
+ * for example, label and field position may have different choices.
  */
 const OPTIONS: Record<string, Record<string, readonly string[]>> = {
 	'*': {
@@ -477,7 +474,7 @@ const OPTIONS: Record<string, Record<string, readonly string[]>> = {
 		resizePreview: TABLE_RESIZE_PREVIEWS,
 	},
 	skeleton: { shape: SKELETON_SHAPES, animation: SKELETON_ANIMATIONS },
-	frame: { position: FRAME_POSITIONS },
+	frame: { strategy: FRAME_STRATEGIES },
 }
 
 /**

@@ -47,7 +47,7 @@ export default { ...SetupTooltip, components: { Frame } }
 			embedded="tooltip.frame"
 			class="so-tooltip__panel"
 			:visible="open"
-			position="fixed"
+			strategy="fixed"
 			:anchor_anchor="rootElement"
 			:anchor_placement="placement"
 			:anchor_offset="6"

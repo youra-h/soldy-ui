@@ -164,7 +164,7 @@ export const MenuSubmenu = withRenderBoundary(function MenuSubmenu(
 					className={toPartClass(panelClasses)}
 					tabIndex={-1}
 					visible={open}
-					position="fixed"
+					strategy="fixed"
 					anchor_anchor={rootElement}
 					anchor_placement="end-start"
 					{...toAriaProps(panelAria)}

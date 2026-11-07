@@ -596,7 +596,7 @@ describe('Frame · якорь', () => {
 	it('Frame без anchor_flip оставляет flip включённым', async () => {
 		const { created, onBundleCreate } = anchorProbe()
 
-		mount(<Frame visible position="fixed" onBundleCreate={onBundleCreate} />)
+		mount(<Frame visible strategy="fixed" onBundleCreate={onBundleCreate} />)
 
 		await nextFrame()
 

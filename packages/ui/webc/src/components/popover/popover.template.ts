@@ -43,7 +43,7 @@ export const popoverTemplate: ITemplate<IPopover, unknown, TPopoverOutputs> = {
 		})
 
 		panel.className = 'so-popover__panel'
-		panel.position = 'fixed'
+		panel.strategy = 'fixed'
 		panel.anchor_anchor = root
 		panel.anchor_offset = 8
 		handle.className = 'so-popover__handle'

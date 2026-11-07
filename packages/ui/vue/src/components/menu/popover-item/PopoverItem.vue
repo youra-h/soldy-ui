@@ -111,7 +111,7 @@ export default { ...SetupMenuPopoverItem, components: { Frame, Icon, ItemRow } }
 			class="so-menu-item__panel"
 			tabindex="-1"
 			:visible="open"
-			position="fixed"
+			strategy="fixed"
 			:anchor_anchor="rootElement"
 			anchor_placement="end-start"
 			v-bind="{ ...panelAria, ...dismiss_ownerAttribute }"

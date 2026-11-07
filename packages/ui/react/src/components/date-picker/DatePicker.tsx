@@ -168,7 +168,7 @@ export function DatePicker(props: DatePickerProps): ReactElement | null {
 					className="so-date-picker__panel"
 					tabIndex={-1}
 					visible={open}
-					position="fixed"
+					strategy="fixed"
 					anchor_anchor={rootElement}
 					anchor_offset={4}
 					{...toAriaProps(panelAria)}

@@ -37,7 +37,7 @@ TEntity (uid, getProps, assign, toJSON)
 │   ├── TCollectionComponent / TCollectionItemComponent — фасады коллекций
 │   └── TComponentView (rendered/visible/present, show/hide, tag, direction, classes, aria/dataset/attrs, ready)
 │       ├── TLayer (target, zIndex — общий стек слоёв, data-layer)
-│       │   ├── TFrame (x, y, width, height, position)
+│       │   ├── TFrame (x, y, width, height, strategy)
 │       │   └── TModalLayer (width, height, closable, dismissible, requestClose)
 │       │       ├── TDialog (placement, maximized, alert)
 │       │       └── TDrawer (placement у края, swipe, contained)
@@ -1386,7 +1386,7 @@ ListBox режимы ради чужого компонента, после че
 стороны — накрывает якорь, но видна целиком (подробно — «Слой оверлея»,
 `docs/agents/overlay.md`).
 
-`position` панели у якоря тоже выбирает плагин: `absolute` — панель лежит в
+`strategy` панели у якоря тоже выбирает плагин: `absolute` — панель лежит в
 документе, и прокрутку окна браузер применяет к ней вместе с полем, без
 пересчёта по `scroll`, который на телефоне приходит кадром позже прокрутки; у
 якоря, который стоит в окне (`fixed` или `sticky` к окну), — `fixed`.

@@ -31,7 +31,7 @@ export function Tooltip(props: TooltipProps): ReactElement | null {
 				embedded="tooltip.frame"
 				className="so-tooltip__panel"
 				visible={open}
-				position="fixed"
+				strategy="fixed"
 				anchor_anchor={rootElement}
 				anchor_placement={placement}
 				anchor_offset={6}

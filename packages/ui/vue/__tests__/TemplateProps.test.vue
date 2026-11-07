@@ -209,8 +209,8 @@ const dragAndDrop = new TDragAndDrop()
 	<Field helper="Не покажем никому" />
 
 	<!-- @vue-expect-error — позиционирования `sticky` нет -->
-	<Frame position="sticky" />
-	<Frame position="absolute" />
+	<Frame strategy="sticky" />
+	<Frame strategy="absolute" />
 
 	<!-- @vue-expect-error — проп плагина: стороны `middle` нет -->
 	<Frame anchor_placement="middle" />

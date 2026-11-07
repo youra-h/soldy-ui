@@ -41,7 +41,7 @@
 		tabindex={-1}
 		visible={state.open}
 		contained={state.contained}
-		position="fixed"
+		strategy="fixed"
 		anchor_anchor={binding.rootElement}
 		anchor_placement={state.placement}
 		anchor_offset={8}
