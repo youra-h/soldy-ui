@@ -61,7 +61,7 @@
 		@include mixines.switch-track($this, 'negative');
 	}
 
-	&--required {
+	&:where([data-required='true']) {
 		&::after {
 			@include required.required-dot;
 		}
@@ -71,7 +71,7 @@
 	// а вид readonly решает тема. Выключенную дорожку гасит общий слой — его
 	// правило в слое, и это правило вне слоёв перекрыло бы его, поэтому у
 	// выключенного поля его нет: выключенный readonly гаснет как выключенный.
-	&--readonly input:not(:disabled) + #{$this}__track {
+	&:where([data-readonly='true']) input:not(:disabled) + #{$this}__track {
 		@apply opacity-60;
 	}
 }

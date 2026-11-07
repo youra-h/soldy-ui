@@ -224,7 +224,7 @@ describe('разметка', () => {
 
 		expect(node.localName).toBe('span')
 		expect(node.classList.contains('so-rating--size-lg')).toBe(true)
-		expect(node.classList.contains('so-rating--readonly')).toBe(true)
+		expect(node.getAttribute('data-readonly')).toBe('true')
 		expect(node.dataset['disabled']).toBe('false')
 		expect(node.getAttribute('dir')).toBe('rtl')
 		// Набор ARIA — полю, не корню

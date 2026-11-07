@@ -56,7 +56,7 @@ export default class TInputControl<
 	}
 
 	protected _applyReadonly(value: boolean) {
-		this._classes.toggle(`--readonly`, value)
+		this._dataset.add('readonly', value)
 
 		this._readonly = value
 	}
@@ -75,7 +75,7 @@ export default class TInputControl<
 	}
 
 	protected _applyRequired(value: boolean) {
-		this._classes.toggle(`--required`, value)
+		this._dataset.add('required', value)
 
 		this._required = value
 	}

@@ -151,7 +151,7 @@ const contentWidth = (element: HTMLElement) => {
 
 /** Плагин раскладки записал геометрию: модификатор он ставит после первой записи. */
 const measured = async () => {
-	await expect.poll(() => root().classList.contains('so-tabs--ready-animation')).toBe(true)
+	await expect.poll(() => root().getAttribute('data-ready-animation') === 'true').toBe(true)
 }
 
 /** Края отметки по строке, которые расходятся с краями активного таба. */

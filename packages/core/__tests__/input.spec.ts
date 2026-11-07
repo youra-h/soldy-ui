@@ -26,10 +26,10 @@ describe('TInput', () => {
 		expect(input.classes.toArray()).toContain('so-input--size-lg')
 
 		input.readonly = true
-		expect(input.classes.toArray()).toContain('so-input--readonly')
+		expect(input.dataset.toObject()['data-readonly']).toBe('true')
 
 		input.required = true
-		expect(input.classes.toArray()).toContain('so-input--required')
+		expect(input.dataset.toObject()['data-required']).toBe('true')
 	})
 
 	it('value setter emits change:value', () => {
@@ -139,12 +139,12 @@ describe('TInput · очистка', () => {
 		const handler = vi.fn()
 
 		expect(input.clearable).toBe(false)
-		expect(input.classes.toArray()).not.toContain('so-input--clearable')
+		expect(input.dataset.toObject()['data-clearable']).toBe('false')
 
 		input.events.on('change:clearable', ({ newValue }) => handler(newValue))
 		input.clearable = true
 
-		expect(input.classes.toArray()).toContain('so-input--clearable')
+		expect(input.dataset.toObject()['data-clearable']).toBe('true')
 		expect(handler).toHaveBeenCalledWith(true)
 
 		input.clearable = true

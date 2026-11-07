@@ -472,7 +472,7 @@ DatePicker (`TDatePicker`, `core/src/components/custom/date-picker`) — пол�
   с именем), у одной даты группа — само поле, имя `aria_*` разметка отдаёт
   ему, и набор пуст. Концы называют выходы плагина имён `names_start` и
   `names_end` — строки локали `datePicker.start` и `datePicker.end`, разметка
-  отдаёт их полям как `aria_label`. Модификатор режима (`--single`, `--range`) — для
+  отдаёт их полям как `aria_label`. Модификатор режима (`--mode-single`, `--mode-range`) — для
   темы: коробку диапазона она строит на корне.
 
 Сторожат `core/__tests__/calendar-date.spec.ts` — разбор, сдвиги, годы

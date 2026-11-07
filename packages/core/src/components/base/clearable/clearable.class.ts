@@ -5,34 +5,21 @@ import type { TEventSink } from '../../../common'
 import type { IClearable, IClearableProps, TClearableEvents } from './types'
 
 /**
- * Очистка значения — общая база текстового поля (`TInput`), поля числа
- * (`TNumberInput`), поля даты (`TDateInput`) и DatePicker (`TDatePicker`):
- * кнопка очистки значения.
+ * Shared clear action for Input, NumberInput, DateInput and DatePicker.
  *
- * База названа по тому, что добавляет, как `TStylable` и `TTextable`. Имя
- * `TField` — у поля формы: подписи, подсказки и ошибки вокруг контрола.
+ * The field owns its clear button. Select forwards clearable to its field rather
+ * than rendering another button. This base owns data-clearable, clearAria and clear;
+ * it has no baseClass because the concrete field supplies the CSS block. TField
+ * is the separate form wrapper with a label, helper and error.
  *
- * Кнопка — часть поля, а не его владельца: Select рисует её не сам, а отдаёт
- * своему полю `clearable`, как `name` и `size`. Поэтому всё, что следует из
- * кнопки, живёт здесь один раз: признак `clearable` с модификатором
- * `--clearable`, набор кнопки (`clearAria`) и команда `clear`. Две копии в формах разошлись бы, как расходились фасады, пока у
- * них не было баз. Блок CSS называет форма, поэтому своего `baseClass` у базы
- * нет.
+ * Clearing first calls _clearValue for the field's value shape, then emits clear
+ * even for an empty field: a multiple Select can have an empty input and selected
+ * tags. The built-in button and a custom clear slot use the same action.
  *
- * **Очистка — два шага.** Сначала шаг формы (`_clearValue`): у Input — пустая
- * строка, у поля числа — пусто и число, и набранный текст, у поля даты —
- * пустые части, у DatePicker — пустые поля его режима, у диапазона оба конца.
- * Потом база шлёт `clear` — всегда, даже у
- * пустого поля: владелец поля очищает своё сам, и Select снимает выбор, хотя в
- * `multiple` его поле пусто и при выбранных тегах. Путь один и у встроенной
- * кнопки, и у своей кнопки в слоте `clear`.
- *
- * Проверок `readonly` и `disabled` у очистки нет. Выключенное поле выключает
- * кнопку, и нажать её нельзя, а `readonly` её не гасит: select-only Select и
- * есть `readonly`, а очистка там работает. Код зовёт `clear` когда угодно.
- *
- * Событие `clear` в дескриптор не публикуется: это поверхность инстанса, как
- * `choose` у ListBox.
+ * There is no readonly or disabled guard on the command. Disabled fields disable
+ * the button; readonly fields can still clear, as select-only Select requires.
+ * Application code may call clear directly. The descriptor does not publish clear:
+ * it is an instance API, like ListBox.choose.
  */
 export default class TClearable<
 	TValue = string,
@@ -123,7 +110,7 @@ export default class TClearable<
 
 	protected _applyClearable(value: boolean): void {
 		this._clearable = value
-		this._classes.toggle('--clearable', value)
+		this._dataset.add('clearable', value)
 	}
 
 	override getProps(): TProps {

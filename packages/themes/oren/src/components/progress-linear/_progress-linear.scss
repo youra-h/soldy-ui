@@ -49,13 +49,13 @@
 		transition-timing-function: linear;
 	}
 
-	&--horizontal > #{$this}__range {
+	&--orientation-horizontal > #{$this}__range {
 		@include motion.allowed {
 			transition-property: background-color, inline-size;
 		}
 	}
 
-	&--vertical > #{$this}__range {
+	&--orientation-vertical > #{$this}__range {
 		@include motion.allowed {
 			transition-property: background-color, block-size;
 		}
@@ -78,7 +78,7 @@
 	// `ease-in-out` так проходит больше трети круга, — и дорожка казалась бы
 	// пустой, будто работа встала. Бег сменяет мерцание: это то же свойство
 	// `animation`.
-	&--horizontal[data-indeterminate='true']::after {
+	&--orientation-horizontal[data-indeterminate='true']::after {
 		@include motion.allowed {
 			inset-inline-end: auto;
 			inline-size: 40%;
@@ -88,7 +88,7 @@
 
 	// Вертикальный — тот же бег снизу вверх, на своих кадрах: у сдвига вдоль
 	// строки и поперёк неё разные оси.
-	&--vertical[data-indeterminate='true']::after {
+	&--orientation-vertical[data-indeterminate='true']::after {
 		@include motion.allowed {
 			inset-block-start: auto;
 			block-size: 40%;

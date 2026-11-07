@@ -151,7 +151,7 @@ $cascade-easing: cubic-bezier(0.21, 1.02, 0.73, 1);
 .so-toasts-item:not([data-swiping='true']) {
 	transition-property: opacity;
 
-	&[data-open='true'] {
+	&:where([data-open='true']) {
 		transition-duration: $enter-fade;
 		transition-timing-function: linear;
 	}
@@ -164,7 +164,7 @@ $cascade-easing: cubic-bezier(0.21, 1.02, 0.73, 1);
 	@include motion.allowed {
 		transition-property: opacity, translate, grid-template-rows;
 
-		&[data-open='true'] {
+		&:where([data-open='true']) {
 			transition-duration: $enter-fade, swipe.$return-duration, $enter-duration;
 			transition-timing-function: linear, swipe.$return-easing, $enter-easing;
 		}
@@ -178,7 +178,7 @@ $cascade-easing: cubic-bezier(0.21, 1.02, 0.73, 1);
 }
 
 @starting-style {
-	.so-toasts-item[data-open='true'] {
+	.so-toasts-item:where([data-open='true']) {
 		@apply opacity-0;
 		grid-template-rows: minmax(0, 0fr);
 	}
@@ -485,7 +485,7 @@ $cascade-front: '#{$cascade-list} > .so-toasts-item:focus-within, #{$cascade-lis
 #{$cascade-item}:not([data-swiping='true']) {
 	transition-property: opacity;
 
-	&[data-open='true'] {
+	&:where([data-open='true']) {
 		transition-duration: $enter-fade;
 		transition-timing-function: linear;
 	}
@@ -498,7 +498,7 @@ $cascade-front: '#{$cascade-list} > .so-toasts-item:focus-within, #{$cascade-lis
 	@include motion.allowed {
 		transition-property: opacity, translate, scale, height;
 
-		&[data-open='true'] {
+		&:where([data-open='true']) {
 			transition-duration: $enter-fade, $cascade-shift, $cascade-shift, $cascade-shift;
 			transition-timing-function:
 				$cascade-easing, $cascade-easing, $cascade-easing, $cascade-easing;
@@ -530,12 +530,14 @@ $cascade-front: '#{$cascade-list} > .so-toasts-item:focus-within, #{$cascade-lis
 		--so-toasts-arrive: calc(-100% * var(--so-toasts-peek-sign));
 	}
 
-	#{$cascade}:is(#{$starts}, #{$ends}) > .so-toasts__list > .so-toasts-item[data-open='true'] {
+	#{$cascade}:is(#{$starts}, #{$ends})
+		> .so-toasts__list
+		> .so-toasts-item:where([data-open='true']) {
 		translate: var(--so-swipe-offset, 0px)
 			calc(var(--so-toasts-lift) + var(--so-toasts-arrive, 0px));
 	}
 
-	#{$cascade}:is(#{$centers}) > .so-toasts__list > .so-toasts-item[data-open='true'] {
+	#{$cascade}:is(#{$centers}) > .so-toasts__list > .so-toasts-item:where([data-open='true']) {
 		translate: 0
 			calc(var(--so-swipe-offset, 0px) + var(--so-toasts-lift) + var(--so-toasts-arrive, 0px));
 	}

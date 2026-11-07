@@ -38,17 +38,16 @@ describe('умолчания', () => {
 		expect(TTextarea.defaultValues.maxlength).toBeUndefined()
 	})
 
-	it('блок so-textarea, модификаторы размера, варианта, readonly и required', () => {
+	it('блок so-textarea, модификаторы размера и варианта, состояния readonly и required', () => {
 		const textarea = new TTextarea({ size: 'lg', readonly: true, required: true })
 
 		expect(textarea.classes.toArray()).toEqual(
-			expect.arrayContaining([
-				'so-textarea',
-				'so-textarea--size-lg',
-				'so-textarea--readonly',
-				'so-textarea--required',
-			]),
+			expect.arrayContaining(['so-textarea', 'so-textarea--size-lg']),
 		)
+		expect(textarea.dataset.toObject()).toMatchObject({
+			'data-readonly': 'true',
+			'data-required': 'true',
+		})
 
 		textarea.variant = 'brand'
 

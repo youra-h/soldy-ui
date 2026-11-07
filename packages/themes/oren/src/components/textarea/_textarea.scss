@@ -1,32 +1,18 @@
 @use '../input/mixins' as input;
 @use '../../mixins/required' as required;
 
-// Textarea — многострочное поле семьи Input.
+// Textarea is an Input-family frame containing a native textarea and an optional
+// character counter. Size/variant are classes. Root states use data-readonly,
+// data-required, data-disabled, data-invalid and data-limit. The limit is reached
+// at maxlength and exceeded above it; below the limit or without maxlength the
+// attribute is absent. Programmatic text is not truncated. Native rows, maxlength,
+// disabled, readonly, required, placeholder and ARIA belong to the textarea.
 //
-//   .so-textarea               корень — рамка поля: поверхность, рамка, кольцо фокуса
-//     textarea                 нативное поле, без класса — как `<input>` у Input
-//     .so-textarea__counter    счётчик символов — под полем, внутри рамки
-//
-// От ядра приходят у корня: модификаторы `--size-*`, `--variant-*`,
-// `--readonly` и `--required`; `data-disabled`, `data-invalid` (пишет поле
-// формы `Field`) и `data-limit` — набранное у предела `maxlength`: `reached` —
-// ровно предел, `exceeded` — больше (значение, заданное кодом, браузер не
-// обрезает). Ниже предела и без `maxlength` атрибута нет. На `<textarea>` —
-// нативные `rows`, `maxlength`, `disabled`, `readonly`, `required`,
-// `placeholder` и её `aria`.
-//
-// Структура поля — столбец поля и счётчика, высота по строкам текста, поля
-// текста от строки поля по шкале поля, кегль и интерлиньяж по размеру, ручка
-// по высоте, место счётчика, место точки обязательного поля, курсоры и
-// гашение выключенного — в общем слое тем (`components/textarea.css` в
-// `@soldy-ui/theme-base`). Здесь — облик: рамка — та же, что у Input и
-// DateInput (`input.field-frame-look`), — скругление поля под рамкой,
-// подсказка пустого поля, цвет счётчика, цвет точки, варианты и ошибка.
-//
-// Наведение красит рамку только у включённого поля. Корень — `div`, и
-// выключенность тема читает с вложенного поля, как у Input
-// (`input.$input-disabled`). Нативный `disabled` поля ставит и выключенный
-// предок `<fieldset>` — его ядро не видит, а псевдокласс видит.
+// Theme-base owns column layout, row heights, type scales, counter placement,
+// required-dot placement, cursors and disabled handling. Oren supplies the Input
+// frame look, inner rounding, placeholder/counter colors, required dot, variants
+// and invalid state. Hover checks the native field, including disabled fieldset
+// ancestors that core cannot observe.
 $disabled: ':has(> textarea:disabled)';
 
 .so-textarea {
@@ -74,7 +60,7 @@ $disabled: ':has(> textarea:disabled)';
 		color: var(--so-negative-800);
 	}
 
-	&--required::after {
+	&:where([data-required='true'])::after {
 		@include required.required-dot;
 	}
 

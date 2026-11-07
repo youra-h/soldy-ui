@@ -70,7 +70,7 @@ describe('первая отрисовка', () => {
 		expect([...node.classList]).toEqual([
 			'so-progress-linear',
 			'so-progress-linear--size-normal',
-			'so-progress-linear--horizontal',
+			'so-progress-linear--orientation-horizontal',
 		])
 		expect(node.getAttribute('role')).toBe('progressbar')
 		expect(node.getAttribute('aria-valuemin')).toBe('0')
@@ -116,8 +116,8 @@ describe('первая отрисовка', () => {
 			'<span is="so-progress-linear" value="40" orientation="vertical"></span>',
 		)
 
-		expect(node.classList.contains('so-progress-linear--vertical')).toBe(true)
-		expect(node.classList.contains('so-progress-linear--horizontal')).toBe(false)
+		expect(node.classList.contains('so-progress-linear--orientation-vertical')).toBe(true)
+		expect(node.classList.contains('so-progress-linear--orientation-horizontal')).toBe(false)
 		expect(node.hasAttribute('aria-orientation')).toBe(false)
 		expect(percent(node)).toBe('40%')
 	})
@@ -193,14 +193,14 @@ describe('смена значения и флага', () => {
 		node.orientation = 'vertical'
 		await flush()
 
-		expect(node.classList.contains('so-progress-linear--vertical')).toBe(true)
-		expect(node.classList.contains('so-progress-linear--horizontal')).toBe(false)
+		expect(node.classList.contains('so-progress-linear--orientation-vertical')).toBe(true)
+		expect(node.classList.contains('so-progress-linear--orientation-horizontal')).toBe(false)
 
 		node.orientation = undefined
 		await flush()
 
-		expect(node.classList.contains('so-progress-linear--horizontal')).toBe(true)
-		expect(node.classList.contains('so-progress-linear--vertical')).toBe(false)
+		expect(node.classList.contains('so-progress-linear--orientation-horizontal')).toBe(true)
+		expect(node.classList.contains('so-progress-linear--orientation-vertical')).toBe(false)
 	})
 
 	it('смена шкалы пересчитывает долю и aria-value*', async () => {
@@ -259,7 +259,7 @@ describe('внешний ctrl', () => {
 		ctrl.orientation = 'vertical'
 		await flush()
 
-		expect(node.classList.contains('so-progress-linear--vertical')).toBe(true)
+		expect(node.classList.contains('so-progress-linear--orientation-vertical')).toBe(true)
 	})
 
 	it('атрибуты разметки ложатся поверх ctrl', () => {
@@ -279,7 +279,7 @@ describe('внешний ctrl', () => {
 		const node = mountCtrl(ctrl)
 
 		expect(node.dataset.indeterminate).toBe('true')
-		expect(node.classList.contains('so-progress-linear--vertical')).toBe(true)
+		expect(node.classList.contains('so-progress-linear--orientation-vertical')).toBe(true)
 	})
 })
 

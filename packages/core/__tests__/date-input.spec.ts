@@ -732,11 +732,11 @@ describe('очистка', () => {
 	it('кнопка по clearable — модификатор; набор кнопки без имени — его пишет плагин имён', () => {
 		const input = field({ name: 'Дата' })
 
-		expect(input.classes.toArray()).not.toContain('so-date-input--clearable')
+		expect(input.dataset.toObject()['data-clearable']).toBe('false')
 
 		input.clearable = true
 
-		expect(input.classes.toArray()).toContain('so-date-input--clearable')
+		expect(input.dataset.toObject()['data-clearable']).toBe('true')
 		expect(input.clearAria.valueOf()).toEqual({})
 	})
 

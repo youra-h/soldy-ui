@@ -86,13 +86,10 @@ describe('разметка', () => {
 
 		expect(root.localName).toBe('div')
 		expect([...root.classList]).toEqual(
-			expect.arrayContaining([
-				'so-textarea',
-				'so-textarea--size-lg',
-				'so-textarea--readonly',
-				'so-textarea--required',
-			]),
+			expect.arrayContaining(['so-textarea', 'so-textarea--size-lg']),
 		)
+		expect(root.getAttribute('data-readonly')).toBe('true')
+		expect(root.getAttribute('data-required')).toBe('true')
 		expect(root.dataset.disabled).toBe('false')
 		expect(root.getAttribute('dir')).toBe('rtl')
 		expect([...root.children].map((node) => node.localName)).toEqual(['textarea'])

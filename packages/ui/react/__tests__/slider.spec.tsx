@@ -83,7 +83,7 @@ describe('разметка', () => {
 		await render({ direction: 'rtl', size: 'lg' })
 
 		expect(root().localName).toBe('span')
-		expect(root().classList.contains('so-slider--horizontal')).toBe(true)
+		expect(root().classList.contains('so-slider--orientation-horizontal')).toBe(true)
 		expect(root().classList.contains('so-slider--size-lg')).toBe(true)
 		expect(root().dataset.dragging).toBe('false')
 		expect(root().dataset.disabled).toBe('false')

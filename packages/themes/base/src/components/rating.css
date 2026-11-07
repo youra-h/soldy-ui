@@ -104,7 +104,7 @@
 	pointer-events: none;
 }
 
-.so-rating--readonly {
+.so-rating:where([data-readonly='true']) {
 	cursor: default;
 }
 

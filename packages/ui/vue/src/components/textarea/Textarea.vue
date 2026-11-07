@@ -14,12 +14,10 @@ export default { ...SetupTextarea }
 		v-bind="{ ...attrs, ...dataset, ...containerAttrs }"
 	>
 		<!--
-			Корень рисуется по `tag`, по умолчанию `div`, как у Input: `tag` —
-			всегда тег корня. На корне — модификаторы (`--size-*`, `--variant-*`,
-			`--readonly`, `--required`) и `dataset`: `data-disabled`,
-			`data-invalid` и `data-limit` (`reached` — набрано ровно
-			`maxlength`, `exceeded` — больше). Тема красит рамку и счётчик по
-			корню, а `aria` — у вложенной `<textarea>`.
+			The root follows tag (div by default), as in Input. Size and variant are
+			classes; readonly, required, disabled, invalid and limit are dataset entries.
+			The limit is reached at maxlength and exceeded above it. The theme reads
+			the root to style the frame and counter; ARIA belongs to the inner textarea.
 		-->
 		<!--
 			Поле без класса, как `<input>` у Input. Нативные атрибуты — `id`,

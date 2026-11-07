@@ -132,13 +132,12 @@ const stripRuns = () => pseudoTransitionRuns(bar(), '::after')
 const stripSettled = () => pseudoSettled(bar(), '::after')
 
 /**
- * Плагин темы замерил табы: модификатор `--ready-animation` он ставит после
- * первой записи геометрии. Полоса модификатор не читает — здесь это только
- * знак, что замер был, в том числе у набора без активного таба, которому
- * плагин ничего не пишет.
+ * The theme plugin sets data-ready-animation after its initial geometry pass.
+ * The line does not read the flag; here it only confirms initialization, including
+ * a tab set with no active tab and therefore no geometry variables.
  */
 const measured = async () => {
-	await expect.poll(() => root().classList.contains('so-tabs--ready-animation')).toBe(true)
+	await expect.poll(() => root().getAttribute('data-ready-animation') === 'true').toBe(true)
 }
 
 /** Края полосы по главной оси — края обёртки таба. */

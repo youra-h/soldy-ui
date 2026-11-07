@@ -26,7 +26,7 @@ describe('первая отрисовка', () => {
 		expect([...node.classList]).toEqual([
 			'so-progress-linear',
 			'so-progress-linear--size-normal',
-			'so-progress-linear--horizontal',
+			'so-progress-linear--orientation-horizontal',
 		])
 		expect(node.getAttribute('role')).toBe('progressbar')
 		expect(node.getAttribute('aria-valuemin')).toBe('0')
@@ -62,8 +62,8 @@ describe('первая отрисовка', () => {
 	it('вертикальная ось — модификатором на корне, без aria-orientation', () => {
 		const node = mount(() => <ProgressLinear value={40} orientation="vertical" />).root()
 
-		expect(node.classList.contains('so-progress-linear--vertical')).toBe(true)
-		expect(node.classList.contains('so-progress-linear--horizontal')).toBe(false)
+		expect(node.classList.contains('so-progress-linear--orientation-vertical')).toBe(true)
+		expect(node.classList.contains('so-progress-linear--orientation-horizontal')).toBe(false)
 		expect(node.hasAttribute('aria-orientation')).toBe(false)
 		expect(percent(node)).toBe('40%')
 	})
@@ -75,7 +75,7 @@ describe('первая отрисовка', () => {
 			'so-progress-linear',
 			'so-progress-linear--size-lg',
 			'so-progress-linear--variant-brand',
-			'so-progress-linear--horizontal',
+			'so-progress-linear--orientation-horizontal',
 		])
 	})
 
@@ -150,13 +150,13 @@ describe('смена значения и флага', () => {
 
 		setOrientation('vertical')
 
-		expect(root().classList.contains('so-progress-linear--vertical')).toBe(true)
-		expect(root().classList.contains('so-progress-linear--horizontal')).toBe(false)
+		expect(root().classList.contains('so-progress-linear--orientation-vertical')).toBe(true)
+		expect(root().classList.contains('so-progress-linear--orientation-horizontal')).toBe(false)
 
 		setOrientation(undefined)
 
-		expect(root().classList.contains('so-progress-linear--horizontal')).toBe(true)
-		expect(root().classList.contains('so-progress-linear--vertical')).toBe(false)
+		expect(root().classList.contains('so-progress-linear--orientation-horizontal')).toBe(true)
+		expect(root().classList.contains('so-progress-linear--orientation-vertical')).toBe(false)
 	})
 
 	it('смена шкалы пересчитывает долю и aria-value*', () => {
@@ -210,7 +210,7 @@ describe('внешний ctrl', () => {
 
 		ctrl.orientation = 'vertical'
 
-		expect(root().classList.contains('so-progress-linear--vertical')).toBe(true)
+		expect(root().classList.contains('so-progress-linear--orientation-vertical')).toBe(true)
 	})
 
 	it('пропсы разметки ложатся поверх ctrl', () => {
@@ -230,7 +230,7 @@ describe('внешний ctrl', () => {
 		const { root } = mount(() => <ProgressLinear ctrl={ctrl} />)
 
 		expect(root().dataset.indeterminate).toBe('true')
-		expect(root().classList.contains('so-progress-linear--vertical')).toBe(true)
+		expect(root().classList.contains('so-progress-linear--orientation-vertical')).toBe(true)
 	})
 })
 

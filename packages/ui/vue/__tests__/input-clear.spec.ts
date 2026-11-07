@@ -53,7 +53,7 @@ describe('Input · кнопка очистки', () => {
 		expect(
 			[...slot.element.children].map((node) => parts.find((part) => node.matches(part))),
 		).toEqual(parts)
-		expect(input.classes()).toContain('so-input--clearable')
+		expect(input.attributes('data-clearable')).toBe('true')
 	})
 
 	it('имя собрано с именем поля по шаблону локали и следует за name', async () => {

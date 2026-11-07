@@ -19,20 +19,17 @@ export default { ...SetupDatePicker, components: { Button, Calendar, DateInput, 
 		v-bind="{ ...attrs, ...rootAria, ...dataset }"
 	>
 		<!--
-			DatePicker — поле даты и календарь в панели, как Select — поле и
-			список. Корень — якорь панели: она открывается под ним от его
-			начала, у края окна — над ним. Своей коробки у корня одной даты нет,
-			у диапазона корень и есть коробка поля (`--range`).
+			DatePicker combines a date field with a calendar panel, anchored to the
+			root. The panel starts below it and flips above near the viewport edge.
+			Single mode has no root field frame; --mode-range makes the root that frame.
 
-			На корне — `id` DatePicker, атрибуты снаружи и набор корня
-			(`rootAria`): у диапазона корень — группа полей концов со своим
-			именем, у одной даты группа — само поле, и набор пуст. `data-open` и
-			`data-disabled` — для темы и потребителя.
+			The root receives the DatePicker id, consumer attributes and rootAria. In
+			range mode it is the named group of endpoint fields; in single mode the
+			field itself is the group and rootAria is empty. Dataset carries the states.
 
-			Ниже оба режима подряд: одна дата и диапазон. В разметке стоит один
-			из них — по `mode`. Поля, календарь и его движок — экземпляры ядра
-			DatePicker (`:ctrl`, `:engine`): размер, вариант, `disabled`,
-			локаль, границы и значение им раздаёт ядро, а не разметка.
+			Only the current mode renders. Fields, calendar and engine are core-owned
+			instances passed via ctrl/engine. Core distributes size, variant, disabled,
+			locale, limits and value; markup only binds the resulting context.
 		-->
 
 		<!--

@@ -1,40 +1,17 @@
-/* ─── ProgressLinear ──────────────────────────────────────────
- * Индикатор выполнения линией: доля готового, когда она известна, и бег,
- * когда неизвестна.
+/*
+ * Linear progress: the root is the track, __range is the determinate fill,
+ * and the root's ::after is the indeterminate segment. Core supplies a percentage
+ * through --so-progress-linear-percent (absent while indeterminate),
+ * data-indeterminate and --orientation-horizontal/--orientation-vertical.
  *
- *   .so-progress-linear         корень — дорожка
- *     .so-progress-linear__range  заливка доли
- *   ::after корня                отрезок, пока доля неизвестна
- *
- * От ядра на корне приходят доля готового — `--so-progress-linear-percent` в
- * `style`, процентом от `min` до `max`; пока полоса бежит, переменной нет, —
- * `data-indeterminate` и модификатор оси, `--horizontal` или `--vertical`:
- * ядро пишет его всегда.
- *
- * Корень и есть дорожка, и обрезка — у неё: заливка у начала и отрезок у
- * краёв уходят под её край. Горизонтальная — блочная при любом теге, во всю
- * ширину контейнера: полосу меряют длиной, а не содержимым; толщина — её
- * высота. Вертикальная — строчный блок: несколько полос встают в ряд, как
- * столбики; толщина — её ширина. Длина по умолчанию — нулевой специфичности:
- * у горизонтальной — нижняя граница поля Input (`--so-input-min-width`), та
- * же, что у ползунка, — своего содержимого по ширине у полосы нет, и там, где
- * ширину берут по содержимому, она схлопнулась бы в ноль; у вертикальной —
- * длина вертикального ползунка (`--so-slider-length`).
- *
- * Заливка — от начала дорожки на долю готового: логическими свойствами, и в
- * RTL она встаёт справа сама; у вертикальной — снизу. Доля неизвестна —
- * заливка спрятана (`visibility`), а не убрана из раскладки: когда бег
- * снимут, тема ведёт её к доле от начала дорожки переходом, а из
- * `display: none` перехода не было бы. Вместо неё — отрезок во всю дорожку,
- * псевдоэлемент корня; его бег — движение, и его рисует тема.
- *
- * Толщина по размеру — толщина рельса Slider того же размера (шкала
- * `--so-slider-rail-size-*`, `components/slider.css`): линия, по которой идёт
- * заливка, у ползунка и у индикатора одного размера одной толщины. Блок берёт
- * ступень своего размера в `--so-progress-linear-thickness`.
- *
- * Облик — цвет дорожки, заливки и отрезка, скругления, переход доли, бег и
- * мерцание отрезка и вид в режиме принудительных цветов — рисует тема. */
+ * The track clips its fill and moving segment. Horizontal tracks are blocks,
+ * vertical tracks inline blocks. Default lengths have zero specificity: the
+ * Input minimum width horizontally and Slider length vertically. Thickness uses
+ * the Slider rail scale for the same size. Logical properties fill from inline
+ * start (right in RTL); vertical fill rises from the bottom. Visibility rather
+ * than display allows the determinate fill to resume its transition from zero.
+ * The theme owns colors, rounding, transitions, motion and forced-color appearance.
+ */
 
 /* Размер без модификатора — `normal`: ядро пишет `--size-*` всегда, но блок и
  * без него обязан выглядеть умолчанием. */
@@ -44,12 +21,12 @@
 	overflow: hidden;
 }
 
-.so-progress-linear--horizontal {
+.so-progress-linear--orientation-horizontal {
 	display: block;
 	block-size: var(--so-progress-linear-thickness);
 }
 
-.so-progress-linear--vertical {
+.so-progress-linear--orientation-vertical {
 	display: inline-block;
 	inline-size: var(--so-progress-linear-thickness);
 }
@@ -58,13 +35,13 @@
 	position: absolute;
 }
 
-.so-progress-linear--horizontal > .so-progress-linear__range {
+.so-progress-linear--orientation-horizontal > .so-progress-linear__range {
 	inset-block: 0;
 	inset-inline-start: 0;
 	inline-size: var(--so-progress-linear-percent, 0%);
 }
 
-.so-progress-linear--vertical > .so-progress-linear__range {
+.so-progress-linear--orientation-vertical > .so-progress-linear__range {
 	inset-inline: 0;
 	inset-block-end: 0;
 	block-size: var(--so-progress-linear-percent, 0%);
@@ -102,10 +79,10 @@
 
 /* Длина по умолчанию — нулевой специфичности: класс или стиль потребителя её
  * перекрывает, не споря. */
-:where(.so-progress-linear--horizontal) {
+:where(.so-progress-linear--orientation-horizontal) {
 	min-width: var(--so-input-min-width);
 }
 
-:where(.so-progress-linear--vertical) {
+:where(.so-progress-linear--orientation-vertical) {
 	height: var(--so-slider-length);
 }

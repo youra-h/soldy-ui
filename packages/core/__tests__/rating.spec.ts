@@ -52,12 +52,12 @@ describe('разметка корня', () => {
 
 		instance.readonly = true
 
-		expect(instance.classes.toArray()).toContain('so-rating--readonly')
+		expect(instance.dataset.toObject()['data-readonly']).toBe('true')
 		expect(instance.aria.get('aria-readonly')).toBe('true')
 
 		instance.readonly = false
 
-		expect(instance.classes.toArray()).not.toContain('so-rating--readonly')
+		expect(instance.dataset.toObject()['data-readonly']).toBe('false')
 		expect(instance.aria.has('aria-readonly')).toBe(false)
 	})
 })

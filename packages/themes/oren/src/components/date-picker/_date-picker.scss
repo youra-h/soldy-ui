@@ -4,25 +4,10 @@
 @use '../../mixins/place';
 @use '../../mixins/required' as required;
 
-// DatePicker — поле даты и календарь в панели, как Select — поле и список.
-//
-// Структура — строчный корень по полю, квадраты кнопок очистки и календаря в
-// строку слота, коробка диапазона сеткой из пяти колонок по шкале поля, поля
-// концов во всю её строку, гашение выключенного, а у панели — колонка с
-// прокруткой содержимого, потолки по окну, закрытая панель и полоса жеста —
-// в общем слое тем (`components/date-picker.css`, `anchored.css`,
-// `swipe.css`, `required.css` и `target.css` в `@soldy-ui/theme-base`). Здесь
-// — облик: рамка коробки диапазона, вид кнопок, цвет тире пустого периода,
-// варианты и ошибка, а у панели — поверхность, кромка, тень, проявление и
-// жест.
-//
-// Поле, его коробку и слоты рисует DateInput, день и сетку — Calendar, панель
-// — та же семья оверлеев, что у Select и Popover. От ядра приходят: у корня —
-// модификаторы режима (`--single`, `--range`), `--size-*`, `--variant-*`,
-// `--required`, `--clearable` и `data-disabled`; у кнопки календаря —
-// `data-selected`, пока панель открыта. Поле и календарь приносят свои
-// состояния сами, и коробка диапазона читает их с полей: фокус части и
-// `data-invalid`.
+// DatePicker paints the calendar trigger and the range field frame. Core supplies
+// --mode-single/--mode-range, size/variant classes and data-required,
+// data-clearable and data-disabled. Single mode uses DateInput's frame; range mode
+// wraps both endpoints in one frame. Theme-base owns structure; oren paints it.
 
 // Выключенность — `data-disabled`, как у DateInput: у поля одной даты и у
 // коробки диапазона. По ней наведение рамку не красит (`input.input-border`).
@@ -50,7 +35,7 @@ $disabled: "[data-disabled='true']";
 // Кольцо горит, пока фокус на части любого из полей, — как у DateInput, фокус
 // на кнопке его не зажигает. Ошибка — рамкой ошибки, пока её нашло хоть одно
 // поле: дата вне границ, недоступная или конец раньше начала.
-.so-date-picker--range {
+.so-date-picker--mode-range {
 	@include input.field-frame-look('date-picker');
 
 	&:has(.so-date-input__segment:focus) {
@@ -58,7 +43,7 @@ $disabled: "[data-disabled='true']";
 	}
 
 	// Точка обязательного поля — у коробки; место и размер в общем слое тем.
-	&.so-date-picker--required::after {
+	&.so-date-picker:where([data-required='true'])::after {
 		@include required.required-dot;
 	}
 
@@ -102,7 +87,7 @@ $disabled: "[data-disabled='true']";
 
 // Рамка коробки без варианта — нейтраль, как у DateInput. Нулевая
 // специфичность — вариант перекрывает базу, не споря с ней.
-:where(.so-date-picker--range) {
+:where(.so-date-picker--mode-range) {
 	@include input.input-variant('neutral', $disabled);
 }
 
@@ -113,7 +98,7 @@ $disabled: "[data-disabled='true']";
 // Условие — контекст нулевой специфичности, как у пустой даты DateInput:
 // сборка сливает правила с одинаковыми объявлениями в одно `:is()` с весом
 // самого тяжёлого, и тяжёлое условие подняло бы вес чужого правила.
-$empty: ".so-date-picker--range:where(:not(:has(.so-date-input__segment:not([data-placeholder='true']))))";
+$empty: ".so-date-picker--mode-range:where(:not(:has(.so-date-input__segment:not([data-placeholder='true']))))";
 
 #{$empty} > .so-date-picker__dash {
 	@apply text-so-neutral-500;

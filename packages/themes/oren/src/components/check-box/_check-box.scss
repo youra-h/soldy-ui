@@ -24,7 +24,7 @@
 	// Отметка — `svg` иконки по роли, без компонента Icon; размер ей даёт
 	// общий слой тем, цвет — виды и варианты по `svg` коробки (`_mixins.scss`).
 
-	&--required {
+	&:where([data-required='true']) {
 		#{$this}__container::after {
 			@include required.required-dot;
 		}

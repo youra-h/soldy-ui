@@ -1,21 +1,12 @@
 /**
- * Геометрия активного таба не зависит от вида табов.
+ * Active-tab geometry is independent of the theme's view names.
+ * TTabsViewPlugin from theme-base/setup is installed by useTheme(oren) in the
+ * test setup. It always writes active-position/size and line-gap variables
+ * on the bar, then exposes data-ready-animation after mounting. The theme
+ * chooses which geometry its view uses, including the default view.
  *
- * `TTabsViewPlugin` — плагин раскладки общего слоя тем
- * (`@soldy-ui/theme-base/setup`; ставит его `useTheme(oren)` в
- * `__tests__/setup.ts`). Он пишет на ряд набора переменные места и
- * длины активного таба (`--so-tabs-active-*`) и разрыва линии (`--so-tabs-gap-*`), а после
- * монтирования ставит `--ready-animation`. Раньше он делал это только для видов
- * `line` и `outline`, то есть знал имена видов. Значения вида теперь объявляет
- * тема, и у табов без `view` модификатора нет вовсе — а полоса нужна именно им:
- * вид блока по умолчанию у oren `line`. Поэтому плагин пишет обе пары всегда, а
- * какая нужна виду, решает тема.
- *
- * Сами значения в jsdom нулевые — раскладки нет, — проверяется, что
- * переменные записаны. Что полоса встаёт под активный таб, проверяет браузерный
- * прогон (`playground/vue/browser/tabs-layout.spec.ts`), что полоса и карточка
- * `contained` переезжают переходом, — `playground/vue/browser/tabs-line.spec.ts`
- * и `tabs-contained.spec.ts`.
+ * jsdom checks variable presence because it cannot measure layout. Browser
+ * tabs-layout tests check positions; tabs-line and tabs-contained check motion.
  */
 
 import { describe, it, expect, afterEach } from 'vitest'
@@ -82,6 +73,22 @@ const row = (index: number): HTMLElement => {
 }
 
 describe('геометрия активного таба без знания о виде', () => {
+	it('readiness is absent before mounting and removed on unmount', async () => {
+		const tabs = new TTabs()
+
+		expect(tabs.dataset.toObject()['data-ready-animation']).toBeUndefined()
+
+		await render(':ctrl="tabs"', () => ({ tabs }))
+
+		expect(tabs.dataset.toObject()['data-ready-animation']).toBe('true')
+		expect(tabs.classes.toArray()).not.toContain('so-tabs--ready-animation')
+
+		wrapper?.unmount()
+		wrapper = null
+
+		expect(tabs.dataset.toObject()['data-ready-animation']).toBeUndefined()
+	})
+
 	it.each([
 		['без view', ''],
 		['с view темы', 'view="cards"'],
@@ -95,7 +102,9 @@ describe('геометрия активного таба без знания о 
 		expect(style.getPropertyValue('--so-tabs-gap-pos')).not.toBe('')
 		expect(style.getPropertyValue('--so-tabs-gap-size')).not.toBe('')
 		expect(list().style.getPropertyValue('--so-tabs-active-pos'), 'не на списке').toBe('')
-		expect(document.querySelector('.so-tabs')?.classList).toContain('so-tabs--ready-animation')
+		expect(document.querySelector('.so-tabs')?.getAttribute('data-ready-animation')).toBe(
+			'true',
+		)
 	})
 })
 

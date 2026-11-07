@@ -141,11 +141,11 @@ const cardRuns = () => pseudoTransitionRuns(bar(), '::before')
 const cardSettled = () => pseudoSettled(bar(), '::before')
 
 /**
- * Плагин темы записал геометрию и включил скользящую карточку: модификатор
- * `--ready-animation` он ставит после первой записи.
+ * The theme plugin has written geometry and enabled the sliding card:
+ * data-ready-animation follows the first geometry pass.
  */
 const measured = async () => {
-	await expect.poll(() => root().classList.contains('so-tabs--ready-animation')).toBe(true)
+	await expect.poll(() => root().getAttribute('data-ready-animation') === 'true').toBe(true)
 }
 
 /** Края карточки — края обёртки таба, по обеим осям. */

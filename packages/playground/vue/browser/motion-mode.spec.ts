@@ -94,7 +94,7 @@ const animationOf = (selector: string, pseudo?: string) => (): string =>
 /** Плагин темы замерил табы: геометрия активного таба записана. */
 const tabsMeasured = async () => {
 	await expect
-		.poll(() => node('.so-tabs').classList.contains('so-tabs--ready-animation'))
+		.poll(() => node('.so-tabs').getAttribute('data-ready-animation') === 'true')
 		.toBe(true)
 }
 

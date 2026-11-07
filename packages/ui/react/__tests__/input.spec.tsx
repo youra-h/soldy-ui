@@ -381,7 +381,7 @@ describe('Input · кнопка очистки', () => {
 				parts.find((part) => node.matches(part)),
 			),
 		).toEqual(parts)
-		expect(el.classList.contains('so-input--clearable')).toBe(true)
+		expect(el.getAttribute('data-clearable')).toBe('true')
 		expect(clearOf(el).getAttribute('aria-label')).toBe('Clear Город')
 	})
 

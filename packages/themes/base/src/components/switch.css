@@ -102,7 +102,7 @@
 
 /* Только для чтения: клик переключатель не меняет — его отменяет
  * `TInputBoolPlugin`, — и поле нажатий не ловит. */
-.so-switch--readonly input {
+.so-switch:where([data-readonly='true']) input {
 	pointer-events: none;
 }
 
@@ -135,7 +135,7 @@
 /* Маркер обязательного поля (`required.css`) — на своём отступе от угла
  * дорожки (у oren точка ближе к углу, чем у коробки CheckBox: её дорожка
  * скруглена) и над полем, которое лежит поверх дорожки. */
-.so-switch--required::after {
+.so-switch:where([data-required='true'])::after {
 	top: var(--so-switch-required-offset);
 	inset-inline-start: var(--so-switch-required-offset);
 	z-index: 20;

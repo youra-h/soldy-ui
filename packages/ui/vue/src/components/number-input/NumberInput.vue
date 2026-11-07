@@ -16,21 +16,10 @@ export default { ...SetupNumberInput, components: { Button, Icon } }
 		v-bind="{ ...attrs, ...dataset, ...containerAttrs }"
 	>
 		<!--
-			NumberInput — поле числа: ввод и кнопки шага «меньше» и «больше».
-			Корень — коробка поля семьи Input: рамка, высота размера, кольцо
-			фокуса. Рисуется по `tag`, по умолчанию `div`. На корне — `attrs`
-			(`dir` поля) и `dataset` (`data-disabled`, `data-invalid`): тема
-			красит коробку и подпись поля формы по корню, а `aria` — у ввода.
-			Модификаторы — размер, вариант, `--readonly`, `--required`,
-			`--clearable`. Атрибуты снаружи делятся, как у Input: класс и стиль —
-			корню, остальное — вводу.
-
-			Порядок узлов: слот `leading`, ввод, слот у конца числа, кнопки шага,
-			значение для формы. Кнопки — последними из видимых, у края поля: их
-			место не зависит от того, чем заняты слоты.
-
-			Обработчик в разметке один — нажатие кнопки очистки: набор, клавиши и
-			кнопки шага ловят плагины на корне.
+			NumberInput uses the Input-family root frame, rendered by tag (div by
+			default). Size and variant are classes; readonly, required and clearable
+			are dataset states. Consumer class and style belong to the root, while
+			native field attributes belong to the inner input, as in Input.
 		-->
 
 		<!--

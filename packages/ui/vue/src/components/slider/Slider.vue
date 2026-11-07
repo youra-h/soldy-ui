@@ -14,26 +14,16 @@ export default { ...SetupSlider }
 		v-bind="{ ...attrs, ...rootAria, ...dataset }"
 	>
 		<!--
-			Ползунок: ручки на рельсе, заливка и метки. Корень рисуется по `tag`,
-			по умолчанию `span`: ползунок кладут в подпись `Label`, а внутри
-			`label` HTML разрешает только строчную разметку. Поэтому и всё
-			внутри — `span`.
+			Slider renders thumbs, fill and marks on a rail. The root follows tag
+			(span by default), and its children are spans so it can live inside Label.
+			Orientation, tooltip policy, size and variant use --orientation-*,
+			--tooltip-*, --size-* and --variant-* classes. States use dataset; dir uses
+			attrs. Pointer and keyboard plugins handle input rather than markup.
 
-			Ориентация, режим подсказки, размер и вариант приходят классами
-			(`--horizontal` / `--vertical`, `--tooltip-*`, `--size-*`,
-			`--variant-*`), состояния — набором `dataset` (`data-disabled`,
-			`data-dragging`), `dir` — в `attrs`.
-			Обработчиков здесь нет: нажатия и протяжку ловит плагин указателя на
-			корне, клавиши и жест скринридера — плагин клавиатуры на полях.
-
-			На корне — набор корня (`rootAria`): у нескольких ручек корень —
-			группа полей с именем и описанием ползунка, от подписи поля формы
-			`Field` тоже. У одной ручки набор пуст: имя и описание — у её поля.
-
-			Ручки и метки — разметка, а не компоненты: потребитель их не
-			адресует, число ручек задаёт значение, число меток — шкала. Всё, что
-			в них зависит от значения, ядро отдаёт готовым: позиции —
-			CSS-переменными в `style`, состояния — наборами `data-*`.
+			For multiple thumbs rootAria names and describes the field group, including
+			Field associations. For one thumb the accessible name belongs to its input.
+			Thumbs and marks are markup, not separately addressable components. Core
+			provides their computed positions as CSS variables and states as datasets.
 		-->
 
 		<!--

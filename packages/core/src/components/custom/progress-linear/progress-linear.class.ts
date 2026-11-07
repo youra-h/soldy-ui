@@ -10,21 +10,11 @@ import type {
 } from './types'
 
 /**
- * Индикатор выполнения линией: доля готового, когда она известна, и бег,
- * когда неизвестна.
- *
- * Модель — у базы `TProgress`, общей с кольцом `TProgressSpinner`: значение,
- * шкала, флаг бега, роль `progressbar` с `aria-value*`, `data-indeterminate` и
- * доля. Своё у полосы — ось и то, как доля уходит теме: процентом, потому что
- * заливку тема тянет по длине дорожки.
- *
- * Ось (`orientation`) — модификатор `--horizontal` или `--vertical`, как у
- * Slider и Tabs: значение библиотеки, а не темы. `aria-orientation` ядро не
- * пишет — у роли `progressbar` такого атрибута нет (ARIA 1.2).
- *
- * Теме на корне — модификатор оси, `data-indeterminate` и доля
- * CSS-переменной. Бег по `data-indeterminate` рисует сама тема: движение —
- * её дело, а не ядра.
+ * Linear progress shares value, scale, indeterminate state, progressbar ARIA
+ * and fraction calculation with TProgress. Orientation is exposed through
+ * --orientation-horizontal/--orientation-vertical, like Slider and Tabs.
+ * Progressbar does not support aria-orientation. The fraction is a percentage
+ * CSS variable; the theme draws motion from data-indeterminate.
  */
 export default class TProgressLinear
 	extends TProgress<IProgressLinearProps, TProgressLinearEvents>
@@ -87,19 +77,12 @@ export default class TProgressLinear
 	/* Внутреннее                                                         */
 	/* ------------------------------------------------------------------ */
 
-	/**
-	 * Модификатор оси — без префикса, как у Slider и Tabs: значение
-	 * библиотеки, и с именами темы оно не столкнётся. `aria-orientation` нет:
-	 * роль `progressbar` его не поддерживает.
-	 */
+	/** Orientation is a prop-prefixed class; progressbar has no aria-orientation. */
 	protected _applyOrientation(
 		newValue: TProgressLinearOrientation,
 		oldValue?: TProgressLinearOrientation,
 	): void {
-		this._classes.swapClass({
-			oldClass: `--${oldValue}`,
-			newClass: `--${newValue}`,
-		})
+		this._classes.swap({ prefix: '--orientation-', oldValue, newValue })
 		this._orientation = newValue
 	}
 

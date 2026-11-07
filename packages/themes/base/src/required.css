@@ -22,13 +22,13 @@
 	--so-required-offset: -0.25rem;
 }
 
-.so-check-box--required .so-check-box__container::after,
-.so-switch--required::after,
-.so-input--required::after,
-.so-number-input--required::after,
-.so-textarea--required::after,
-.so-date-input--required::after,
-.so-date-picker--range.so-date-picker--required::after {
+.so-check-box:where([data-required='true']) .so-check-box__container::after,
+.so-switch:where([data-required='true'])::after,
+.so-input:where([data-required='true'])::after,
+.so-number-input:where([data-required='true'])::after,
+.so-textarea:where([data-required='true'])::after,
+.so-date-input:where([data-required='true'])::after,
+.so-date-picker--mode-range.so-date-picker:where([data-required='true'])::after {
 	content: '';
 	display: var(--so-required-dot, block);
 	position: absolute;

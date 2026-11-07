@@ -81,7 +81,7 @@ describe('TTabs (чистый класс)', () => {
 		const tabs = new TTabs()
 
 		tabs.orientation = 'vertical'
-		expect(tabs.classes.toArray()).toContain('so-tabs--vertical')
+		expect(tabs.classes.toArray()).toContain('so-tabs--orientation-vertical')
 
 		tabs.view = 'cards'
 		expect(tabs.classes.toArray()).toContain('so-tabs--view-cards')
@@ -225,14 +225,14 @@ describe('TTabsItem (чистый класс)', () => {
 		expect(tab.closable).toBe(false)
 	})
 
-	it('класс --closable добавляется/убирается', () => {
+	it('data-closable меняется вместе со свойством', () => {
 		const tab = new TTabsItem()
 
-		expect(tab.classes.toArray()).not.toContain('--closable')
+		expect(tab.dataset.toObject()['data-closable']).toBe('false')
 
 		tab.closable = true
 
-		expect(tab.classes.toArray()).toContain('so-tabs-item--closable')
+		expect(tab.dataset.toObject()['data-closable']).toBe('true')
 	})
 })
 

@@ -1,38 +1,17 @@
-/* ─── Field ───────────────────────────────────────────────────
- * Поле формы: подпись, контрол, подсказка и ошибка.
+/*
+ * Field contains its label, control wrapper, helper and error (with icon and
+ * text). Core supplies --position-top/start/end and --size-* on the root. Field
+ * has no control states of its own: read data-disabled, data-readonly and
+ * data-required from the direct child of __control. Descendant states may belong
+ * to clear buttons or Select tags and must not affect the whole Field.
  *
- *   .so-field                          корень
- *     label.so-field__label            подпись — имя поля
- *     .so-field__control               обёртка контрола
- *     .so-field__helper                подсказка
- *     .so-field__error                 ошибка — на месте подсказки, пока поле невалидно
- *       .so-icon.so-field__error-icon  значок ошибки, роль `error`
- *       .so-field__error-text          текст ошибки
- *
- * От кода приходят у корня модификаторы `--position-*` (`top`, `start`,
- * `end`) и `--size-*`. Своих состояний у Field нет: выключенность, только
- * чтение и обязательность — состояния контрола, и читаются они с его корня,
- * прямого ребёнка `__control`, — `data-disabled`, модификаторы `--readonly` и
- * `--required`. Не с потомков: у кнопки очистки поля и у тега Select свой
- * `data-disabled`.
- *
- * Порядок частей в DOM один на все стороны — подпись, контрол, подсказка,
- * ошибка, — сторону ставит модификатор: `top` — столбец, `start` и `end` —
- * сетка. Ни одного `left`/`right`: `start` и `end` логические, и в RTL
- * подпись сама встаёт с другой стороны. Подсказка и ошибка стоят под
- * колонкой контрола, а не под подписью: справка поясняет контрол, и её начало
- * — начало контрола. Ошибка встаёт на место подсказки, а не под неё (рисует
- * одну из двух код): форма не прыгает, когда ошибка появляется и уходит.
- *
- * Размер — кегль подписи и справки и зазоры, по шкале подписи
- * (`caption.css`), той же, что у `Label`: флажок в подписи и поле в Field
- * стоят от своих подписей на одном расстоянии. Кегль — частям, а не корню:
- * контрол держит свой кегль сам, и его иконки меряются в `em`. Зазоры —
- * переменными блока: сбоку `--so-field-gap`, в столбце `--so-field-stack`.
- * Без модификатора размера — `normal`.
- *
- * Облик — начертание и цвет подписи, цвет справки и ошибки, цвет и форма
- * точки обязательного поля — рисует тема. */
+ * DOM order is label, control, helper, error for every position. Top is a column;
+ * start/end use a grid and logical directions, including RTL. Helper and error
+ * start under the control. Only one renders, so validation does not shift the
+ * form. Type sizes and gaps follow Label's caption scale. Parts own font sizes
+ * so the control retains its own text and em-based icons. Without a size modifier
+ * the size is normal. The theme paints text, errors and required dots.
+ */
 
 /* Колонки поля с подписью в начале строки — `--so-field-columns`, её ставит
  * приложение (см. `--position-start` ниже). Остальное — геометрия частей:
@@ -70,7 +49,7 @@
 
 /* Распорка ползунка — кеглем подписи (см. «ползунок» ниже). Кегль без
  * интерлиньяжа: высота её строки — полоса ручек. */
-.so-field--size-sm > .so-field__control > .so-slider--horizontal::before {
+.so-field--size-sm > .so-field__control > .so-slider--orientation-horizontal::before {
 	font-size: var(--so-caption-font-size-sm);
 }
 
@@ -102,7 +81,7 @@
 	line-height: var(--so-caption-note-line-height-lg);
 }
 
-.so-field--size-lg > .so-field__control > .so-slider--horizontal::before {
+.so-field--size-lg > .so-field__control > .so-slider--orientation-horizontal::before {
 	font-size: var(--so-caption-font-size-lg);
 }
 
@@ -123,7 +102,7 @@
 	line-height: var(--so-caption-note-line-height-xl);
 }
 
-.so-field--size-xl > .so-field__control > .so-slider--horizontal::before {
+.so-field--size-xl > .so-field__control > .so-slider--orientation-horizontal::before {
 	font-size: var(--so-caption-font-size-xl);
 }
 
@@ -144,7 +123,7 @@
 	line-height: var(--so-caption-note-line-height-2xl);
 }
 
-.so-field--size-2xl > .so-field__control > .so-slider--horizontal::before {
+.so-field--size-2xl > .so-field__control > .so-slider--orientation-horizontal::before {
 	font-size: var(--so-caption-font-size-2xl);
 }
 
@@ -287,21 +266,21 @@
 .so-field--position-end > .so-field__control:has(> :is(.so-radio-group, .so-label))::before,
 .so-field--position-end
 	> .so-field__control:has(> .so-select .so-tags[data-overflow='wrap'] .so-tags-item)::before,
-.so-field--position-start > .so-field__control:has(> .so-slider--horizontal)::before,
-.so-field--position-end > .so-field__control:has(> .so-slider--horizontal)::before {
+.so-field--position-start > .so-field__control:has(> .so-slider--orientation-horizontal)::before,
+.so-field--position-end > .so-field__control:has(> .so-slider--orientation-horizontal)::before {
 	content: none;
 }
 
-.so-field--position-start > .so-field__control > .so-slider--horizontal::before,
-.so-field--position-end > .so-field__control > .so-slider--horizontal::before {
+.so-field--position-start > .so-field__control > .so-slider--orientation-horizontal::before,
+.so-field--position-end > .so-field__control > .so-slider--orientation-horizontal::before {
 	content: '\200b';
 	visibility: hidden;
 	align-self: flex-start;
 	line-height: var(--so-slider-thumb-size);
 }
 
-.so-field--position-start > .so-field__control:has(> .so-slider--vertical),
-.so-field--position-end > .so-field__control:has(> .so-slider--vertical),
+.so-field--position-start > .so-field__control:has(> .so-slider--orientation-vertical),
+.so-field--position-end > .so-field__control:has(> .so-slider--orientation-vertical),
 .so-field--position-start > .so-field__control:has(> .so-textarea),
 .so-field--position-end > .so-field__control:has(> .so-textarea) {
 	align-items: flex-start;
@@ -425,7 +404,7 @@
 /* Контрол только для чтения — гаснет один курсор, как у `Label`: клик по
  * подписи его не меняет. Имени блока контрола подпись не знает — отсюда
  * совпадение по части класса. */
-.so-field:has(> .so-field__control > [class*='--readonly']) > .so-field__label {
+.so-field:has(> .so-field__control > [data-readonly='true']) > .so-field__label {
 	cursor: default;
 }
 
@@ -435,7 +414,7 @@
  * точки обязательного контрола. Точка у поля одна: с подписью точку контрола
  * гасит переменная `--so-required-dot` (`required.css`), без подписи она
  * остаётся у контрола. */
-.so-field:has(> .so-field__control > [class*='--required']) > .so-field__label::after {
+.so-field:has(> .so-field__control > [data-required='true']) > .so-field__label::after {
 	content: '';
 	display: inline-block;
 	inline-size: var(--so-field-required-size);
@@ -456,6 +435,6 @@
 
 /* Ползунок в поле — во всю обёртку: своей ширины по содержимому у него нет,
  * и по ней он встал бы в свою нижнюю границу. */
-.so-field__control > .so-slider--horizontal {
+.so-field__control > .so-slider--orientation-horizontal {
 	flex: 1 1 auto;
 }

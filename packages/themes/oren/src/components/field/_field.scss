@@ -37,7 +37,7 @@
 
 	// Обязательное поле — точка у подписи. Место и размер — у общего слоя тем,
 	// цвет и форма — точки обязательного контрола (`mixins/_required.scss`).
-	&:has(> #{$this}__control > [class*='--required']) > #{$this}__label::after {
+	&:has(> #{$this}__control > [data-required='true']) > #{$this}__label::after {
 		@include required.required-dot;
 	}
 }

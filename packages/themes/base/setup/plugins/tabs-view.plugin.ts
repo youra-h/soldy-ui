@@ -11,47 +11,28 @@ import { afterPseudoTransitions } from './transitions'
 /** Признак переезда на ряду: пока он стоит, тема ведёт геометрию переходом. */
 const MOVING = '--so-tabs-active-moving'
 
-/**
- * TTabsViewPlugin — геометрия активного таба для темы.
+/*
+ * Active-tab geometry for themes, independent of view names.
  *
- * Слушает TTabsActiveTabPlugin (change:active-tab) и пишет на ряд набора
- * (`__bar` — список табов и слоты по его краям) CSS-переменные:
- * `--so-tabs-active-pos`/`--so-tabs-active-size` — место и длина активного
- * таба по главной оси (по ним тема рисует отметку активного таба — у oren
- * полосу `line` и карточку `contained`), `--so-tabs-gap-pos`/`--so-tabs-gap-size`
- * — разрыв линии ряда под ним. Место — от ряда: он ближайший позиционированный
- * предок таба (общий слой тем, `components/tabs.css`), и отметку тема рисует
- * от его же края. Имена — схемы `--so-*`: до первого замера ряд наследует
- * переменную предка, и имя без префикса взяло бы одноимённую переменную
- * приложения.
- * Когда узел готов, ставит модификатор `--ready-animation` — знак теме, что
- * геометрия меряется: замер монтирования к этому времени уже записан. До
- * модификатора переменных ещё нет, и отметку тема рисует без них — oren,
- * например, рисует карточку фоном самого выбранного таба. Отметке, которая
- * читает переменные с первой отрисовки, модификатор не нужен: первая запись
- * идёт без признака переезда (ниже), и к первому активному табу отметка из
- * угла не выезжает.
+ * TTabsActiveTabPlugin supplies offsets from __bar, the nearest positioned
+ * ancestor shared by the list and edge slots. This plugin writes
+ * --so-tabs-active-pos/size and --so-tabs-gap-pos/size on the bar. The --so-
+ * prefix prevents inherited application variables from becoming layout defaults.
+ * When the element is ready, data-ready-animation marks initialized geometry.
+ * Before then, themes may use a static selected-tab background. The first
+ * geometry write has no movement flag, so indicators do not slide from a corner.
  *
- * **Признак переезда.** Сменился активный таб между двумя записанными —
- * плагин ставит на ряд `--so-tabs-active-moving: 1` в той же записи, что и
- * новое место, и тема ведёт его переходом. Без признака идут первая запись,
- * нули при отсутствии активного таба и пересчёт того же таба — ресайз, сдвиг
- * от закрытия соседа, смена вида: геометрия встаёт на место сразу и не
- * отстаёт от текста таба. Признак снимается, когда доиграли переходы
- * псевдоэлементов ряда — ими тема рисует геометрию (`transitions.ts`), — а
- * пока он стоит, каждая запись ждёт их заново: так переходом доезжает и сдвиг
- * посреди переезда — сосед встал на место закрытого таба. Каких именно
- * псевдоэлементов, плагин не выбирает: вида он не читает. Признак —
- * переменная, а не класс: класс дошёл бы до разметки только в цикле адаптера,
- * а переменные пишутся сразу, и переход должен увидеть новое место уже с
- * признаком.
+ * When the active tab changes between measured tabs, --so-tabs-active-moving: 1
+ * is written together with the new geometry. First measurement, no active tab,
+ * resize, view changes and shifts of the same tab apply immediately. The flag
+ * remains until bar pseudo-element transitions finish. Each write while moving
+ * restarts the wait, including shifts caused by closing a neighboring tab. It
+ * is an inline variable so geometry and transition flag are visible together
+ * without waiting for an adapter render.
  *
- * Плагин общего слоя тем, а не библиотеки: переменные читает только CSS темы,
- * и отметки у темы может не быть вовсе. Место активного таба — данные
- * раскладки, а не облик одной темы, поэтому плагин лежит в общем слое
- * (`@soldy-ui/theme-base/setup`), а ставит его тема своим `defineTheme` на все
- * Tabs (у oren — `setup/plugins/install.ts`). Вид табов плагин не читает:
- * переменные пишутся всегда, а какие из них нужны виду, решает CSS темы.
+ * This is theme-base behavior: only theme CSS consumes the geometry. Themes
+ * install it through defineTheme (oren: setup/plugins/install.ts). It writes
+ * both geometry pairs; the theme chooses which each view needs.
  */
 export class TTabsViewPlugin extends TBasePlugin<ITabs> {
 	private _tabs: ITabs | null = null
@@ -74,7 +55,7 @@ export class TTabsViewPlugin extends TBasePlugin<ITabs> {
 		const element = ctx.get(TElementPlugin)
 
 		element?.events.on('ready', () => {
-			this._tabs?.classes.add('--ready-animation')
+			this._tabs?.dataset.add('ready-animation', true)
 		})
 
 		// Новый узел до замера рисуется как без плагина — статично
@@ -174,6 +155,6 @@ export class TTabsViewPlugin extends TBasePlugin<ITabs> {
 	private _forget(): void {
 		this._stopMoving()
 		this._drawn = null
-		this._tabs?.classes.remove('--ready-animation')
+		this._tabs?.dataset.remove('ready-animation')
 	}
 }

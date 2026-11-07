@@ -31,7 +31,7 @@
 	transition-property: opacity, display;
 	transition-behavior: allow-discrete;
 
-	&[data-open='true'] {
+	&:where([data-open='true']) {
 		transition-duration: popover.$enter-fade;
 		transition-timing-function: linear;
 	}
@@ -43,7 +43,7 @@
 	}
 
 	@starting-style {
-		&[data-open='true'] {
+		&:where([data-open='true']) {
 			@apply opacity-0;
 		}
 	}
@@ -98,7 +98,7 @@
 		@include motion.allowed {
 			transition-property: opacity, translate, display;
 
-			&[data-open='true'] {
+			&:where([data-open='true']) {
 				transition-duration:
 					popover.$enter-fade, popover.$enter-duration, popover.$enter-duration;
 				transition-timing-function: linear, popover.$enter-easing, linear;

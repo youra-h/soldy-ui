@@ -14,17 +14,13 @@ export default { ...SetupRating }
 		v-bind="{ ...attrs, ...dataset }"
 	>
 		<!--
-			Оценка звёздами — ползунок с одной ручкой (APG, Rating Slider):
-			значение — число на шкале от 0 до `max`, звёзды — его зрительная
-			шкала. Корень рисуется по `tag`, по умолчанию `span`: оценку кладут в
-			подпись `Label`, а внутри `label` HTML разрешает только строчную
-			разметку. Поэтому и всё внутри — `span`.
+			Rating is a single-thumb slider with a visual star scale (APG Rating
+			Slider). Its value ranges from zero to max. The root follows tag (span by
+			default); children are spans so Rating can live inside Label.
 
-			Размер, вариант и только чтение приходят классами корня (`--size-*`,
-			`--variant-*`, `--readonly`), состояние — набором `dataset`
-			(`data-disabled`), `dir` — в `attrs`. Обработчиков здесь нет: нажатие
-			ловит плагин указателя на корне, наведение — плагин наведения там же,
-			клавиши и жест скринридера — плагин клавиатуры на поле.
+			Size and variant are root classes; readonly and disabled use dataset,
+			and dir uses attrs. Root plugins handle pointer and hover input; the
+			field's keyboard plugin handles keys and assistive-technology gestures.
 		-->
 
 		<!--

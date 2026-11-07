@@ -26,17 +26,13 @@
 // the bar, and tabs under the list. Orientation and alignment live in the base.
 $line: ':where(.so-tabs:not(.so-tabs--view-contained, .so-tabs--view-outline))';
 
-// Полоса под активным табом — `::after` ряда по `--so-tabs-active-*`. К новому
-// табу она переезжает так же, как карточка `contained` (`active-tab-move`):
-// место и длина вместе, длина — по главной оси, у вертикальных табов это
-// высота, и табы разной высоты полоса проходит без скачка длины. Едет она
-// только при смене активного таба; первая отрисовка, ресайз и сдвиг соседей
-// ставят её на место сразу. Модификатор `--ready-animation` ей не нужен: до
-// замера переменных нет и полоса нулевой длины, а первую запись плагин
-// раскладки делает без признака переезда.
+// The active line is the bar's ::after, using --so-tabs-active-* geometry.
+// It transitions position and length only when the active tab changes. Initial
+// measurement, resize and shifts of the same tab apply immediately. The line
+// needs no data-ready-animation gate: before measurement it has zero length.
 #{$line} {
 	// Горизонтальный ряд: линия под ним и полоса — `::after` по `--so-tabs-active-*`
-	&.so-tabs--horizontal {
+	&.so-tabs--orientation-horizontal {
 		> .so-tabs__bar {
 			@apply border-b;
 
@@ -57,7 +53,7 @@ $line: ':where(.so-tabs:not(.so-tabs--view-contained, .so-tabs--view-outline))';
 	// Сторона логическая: в RTL ряд встаёт по другую сторону от панели, и
 	// физическая оставила бы линию и полосу на внешнем краю. Место полосы вдоль
 	// ряда — сдвиг по вертикали, от направления письма оно не зависит.
-	&.so-tabs--vertical {
+	&.so-tabs--orientation-vertical {
 		> .so-tabs__bar {
 			@apply border-e;
 
@@ -104,16 +100,12 @@ $line: ':where(.so-tabs:not(.so-tabs--view-contained, .so-tabs--view-outline))';
 	}
 }
 
-// Карточка активного таба покрывает таб целиком — обёртку, а не строку:
-// кнопка закрытия стоит рядом со строкой, и карточка строки её бы не покрыла.
-//
-// Рисуется она двумя путями. До замера — в серверной разметке, до первого
-// кадра и в приложении без `useTheme` — это фон самой выбранной обёртки:
-// переменных геометрии ещё нет. Когда `TTabsViewPlugin` записал их и поставил
-// `--ready-animation`, карточка — `::before` ряда по `--so-tabs-active-*`, и к
-// новому табу она переезжает переходом (`active-tab-move`), как полоса `line`.
-// Именно `::before`: он стоит в дереве раньше табов, и позиционированные табы
-// ложатся поверх него без `z-index`.
+// The contained card covers the whole tab wrapper, including its sibling close
+// button. Before geometry is initialized (SSR, first frame, or without useTheme),
+// the selected wrapper paints its own static background. After data-ready-animation
+// is set, the bar's ::before draws the card from --so-tabs-active-* and moves with
+// the same active-tab-move transition as the line. Positioned tabs paint above
+// ::before without z-index because it precedes them in the tree.
 .so-tabs--view-contained {
 	// Отступ карточки от края ряда — паддинг ряда: по поперечной оси список и
 	// табы растянуты на весь ряд, и карточка, отступив на него же, встаёт ровно
@@ -140,7 +132,7 @@ $line: ':where(.so-tabs:not(.so-tabs--view-contained, .so-tabs--view-outline))';
 		@apply rounded-md transition-colors duration-200;
 	}
 
-	&:not(.so-tabs--ready-animation)
+	&:not(.so-tabs:where([data-ready-animation='true']))
 		> .so-tabs__bar
 		> .so-tabs__list
 		> .so-tabs-item[data-selected='true'] {
@@ -153,20 +145,20 @@ $line: ':where(.so-tabs:not(.so-tabs--view-contained, .so-tabs--view-outline))';
 	// записями, и пересчёт стиля между ними (его требует, например, смена
 	// `tabindex` у таба под фокусом) снял бы псевдоэлемент вместе с переходом —
 	// новый таб получил бы карточку без переезда.
-	&.so-tabs--ready-animation > .so-tabs__bar::before {
+	&.so-tabs:where([data-ready-animation='true']) > .so-tabs__bar::before {
 		content: '';
 		@apply invisible absolute pointer-events-none;
 		@include mixines.tabs-contained-card;
 	}
 
-	&.so-tabs--ready-animation
+	&.so-tabs:where([data-ready-animation='true'])
 		> .so-tabs__bar:has(> .so-tabs__list > .so-tabs-item[data-selected='true'])::before {
 		@apply visible;
 	}
 
 	// Место физическое — сдвиг от левого и верхнего края, как `offset*` таба,
 	// — поэтому в RTL знак строки не нужен
-	&.so-tabs--horizontal > .so-tabs__bar::before {
+	&.so-tabs--orientation-horizontal > .so-tabs__bar::before {
 		top: $inset;
 		bottom: $inset;
 		left: 0;
@@ -176,7 +168,7 @@ $line: ':where(.so-tabs:not(.so-tabs--view-contained, .so-tabs--view-outline))';
 		@include mixines.active-tab-move(width);
 	}
 
-	&.so-tabs--vertical > .so-tabs__bar::before {
+	&.so-tabs--orientation-vertical > .so-tabs__bar::before {
 		top: 0;
 		left: $inset;
 		right: $inset;
@@ -247,7 +239,7 @@ $line: ':where(.so-tabs:not(.so-tabs--view-contained, .so-tabs--view-outline))';
 		}
 	}
 
-	&.so-tabs--horizontal {
+	&.so-tabs--orientation-horizontal {
 		// Структурные стили (не зависят от варианта)
 		> .so-tabs__bar {
 			&::before,
@@ -275,7 +267,7 @@ $line: ':where(.so-tabs:not(.so-tabs--view-contained, .so-tabs--view-outline))';
 
 	// Вертикальные: линия и открытая сторона вкладок — к панели, логическими
 	// сторонами, как у `line`
-	&.so-tabs--vertical {
+	&.so-tabs--orientation-vertical {
 		> .so-tabs__bar {
 			&::before,
 			&::after {

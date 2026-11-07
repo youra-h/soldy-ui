@@ -70,7 +70,7 @@ export default class TTagsItem<
 			this._sink.emit('change:closeAria', { newValue: this._closeAria.toObject(), oldValue }),
 		)
 
-		this._classes.toggle(`--closable`, !!this._closable)
+		this._dataset.add('closable', !!this._closable)
 
 		// Только то, что тег знает о себе сам: он — элемент набора. Роль
 		// меняется на `option`, когда у коллекции включён выбор — об этом
@@ -138,7 +138,7 @@ export default class TTagsItem<
 		if (e.defaultPrevented || e.value === this._closable) return
 
 		this._closable = e.value
-		this._classes.toggle(`--closable`, !!e.value)
+		this._dataset.add('closable', !!e.value)
 		this._sink.emit('change:closable', { newValue: e.value, oldValue: oldClosable })
 	}
 

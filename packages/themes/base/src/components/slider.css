@@ -125,14 +125,14 @@
 	cursor: pointer;
 }
 
-.so-slider--horizontal {
+.so-slider--orientation-horizontal {
 	display: flex;
 	padding-inline: calc(var(--so-slider-thumb-size) / 2);
 	padding-block: var(--so-slider-halo-size);
 	touch-action: pan-y;
 }
 
-.so-slider--vertical {
+.so-slider--orientation-vertical {
 	display: inline-flex;
 	flex-direction: column;
 	padding-block: calc(var(--so-slider-thumb-size) / 2);
@@ -155,23 +155,23 @@
 
 /* Полоса ручек — высота дорожки: рельс, точки меток и ручки лежат по её
  * центру. */
-.so-slider--horizontal > .so-slider__track {
+.so-slider--orientation-horizontal > .so-slider__track {
 	min-inline-size: 0;
 	min-block-size: var(--so-slider-thumb-size);
 }
 
-.so-slider--horizontal > .so-slider__track::before {
+.so-slider--orientation-horizontal > .so-slider__track::before {
 	inset-inline: calc(var(--so-slider-thumb-size) / -2);
 	inset-block-start: calc((var(--so-slider-thumb-size) - var(--so-slider-rail-size)) / 2);
 	block-size: var(--so-slider-rail-size);
 }
 
-.so-slider--vertical > .so-slider__track {
+.so-slider--orientation-vertical > .so-slider__track {
 	min-block-size: 0;
 	min-inline-size: var(--so-slider-thumb-size);
 }
 
-.so-slider--vertical > .so-slider__track::before {
+.so-slider--orientation-vertical > .so-slider__track::before {
 	inset-block: calc(var(--so-slider-thumb-size) / -2);
 	inset-inline-start: calc((var(--so-slider-thumb-size) - var(--so-slider-rail-size)) / 2);
 	inline-size: var(--so-slider-rail-size);
@@ -189,7 +189,7 @@
 	position: absolute;
 }
 
-.so-slider--horizontal .so-slider__range {
+.so-slider--orientation-horizontal .so-slider__range {
 	inset-block-start: calc((var(--so-slider-thumb-size) - var(--so-slider-rail-size)) / 2);
 	block-size: var(--so-slider-rail-size);
 	inset-inline-start: calc(
@@ -210,7 +210,7 @@
 	);
 }
 
-.so-slider--vertical .so-slider__range {
+.so-slider--orientation-vertical .so-slider__range {
 	inset-inline-start: calc((var(--so-slider-thumb-size) - var(--so-slider-rail-size)) / 2);
 	inline-size: var(--so-slider-rail-size);
 	inset-block-end: calc(
@@ -245,13 +245,13 @@
 	cursor: grab;
 }
 
-.so-slider--horizontal .so-slider__thumb {
+.so-slider--orientation-horizontal .so-slider__thumb {
 	inset-block-start: 0;
 	inset-inline-start: var(--so-slider-position, 0%);
 	margin-inline-start: calc(var(--so-slider-thumb-size) / -2);
 }
 
-.so-slider--vertical .so-slider__thumb {
+.so-slider--orientation-vertical .so-slider__thumb {
 	inset-inline-start: 0;
 	inset-block-end: var(--so-slider-position, 0%);
 	margin-block-end: calc(var(--so-slider-thumb-size) / -2);
@@ -281,14 +281,14 @@
 	white-space: nowrap;
 }
 
-.so-slider--horizontal .so-slider__tooltip {
+.so-slider--orientation-horizontal .so-slider__tooltip {
 	inset-block-end: calc(
 		100% + var(--so-slider-thumb-border, 0px) + var(--so-slider-halo-size) +
 			var(--so-slider-gap)
 	);
 }
 
-.so-slider--vertical .so-slider__tooltip {
+.so-slider--orientation-vertical .so-slider__tooltip {
 	inset-inline-end: calc(
 		100% + var(--so-slider-thumb-border, 0px) + var(--so-slider-halo-size) +
 			var(--so-slider-gap)
@@ -311,7 +311,7 @@
 	}
 }
 
-.so-slider--horizontal.so-slider--tooltip-always {
+.so-slider--orientation-horizontal.so-slider--tooltip-always {
 	padding-block-start: calc(
 		var(--so-slider-halo-size) + var(--so-slider-gap) + var(--so-tooltip-line) + 2 *
 			var(--so-tooltip-padding-block)
@@ -336,7 +336,7 @@
 	block-size: var(--so-slider-tick-size);
 }
 
-.so-slider--horizontal .so-slider__mark {
+.so-slider--orientation-horizontal .so-slider__mark {
 	flex-direction: column;
 	align-items: center;
 	justify-self: start;
@@ -344,11 +344,11 @@
 	inset-inline-start: var(--so-slider-position, 0%);
 }
 
-.so-slider--horizontal .so-slider__mark::before {
+.so-slider--orientation-horizontal .so-slider__mark::before {
 	margin-block: calc((var(--so-slider-thumb-size) - var(--so-slider-tick-size)) / 2);
 }
 
-.so-slider--vertical .so-slider__mark {
+.so-slider--orientation-vertical .so-slider__mark {
 	flex-direction: row;
 	align-items: center;
 	align-self: end;
@@ -356,7 +356,7 @@
 	inset-block-end: var(--so-slider-position, 0%);
 }
 
-.so-slider--vertical .so-slider__mark::before {
+.so-slider--orientation-vertical .so-slider__mark::before {
 	margin-inline: calc((var(--so-slider-thumb-size) - var(--so-slider-tick-size)) / 2);
 }
 
@@ -370,11 +370,11 @@
 	display: none;
 }
 
-.so-slider--horizontal .so-slider__mark-label {
+.so-slider--orientation-horizontal .so-slider__mark-label {
 	margin-block-start: var(--so-slider-gap);
 }
 
-.so-slider--vertical .so-slider__mark-label {
+.so-slider--orientation-vertical .so-slider__mark-label {
 	margin-inline-start: var(--so-slider-gap);
 }
 
@@ -452,11 +452,11 @@
 
 /* Длина по умолчанию — нулевой специфичности: класс или стиль потребителя её
  * перекрывает, не споря. */
-:where(.so-slider--horizontal) {
+:where(.so-slider--orientation-horizontal) {
 	min-width: var(--so-input-min-width);
 }
 
-:where(.so-slider--vertical) {
+:where(.so-slider--orientation-vertical) {
 	height: var(--so-slider-length);
 }
 
@@ -468,15 +468,15 @@
  * остаток ряда. Растяжка поперёк — только в столбце: в ряду обёртка стоит по
  * базовой линии первой строки текста, и растяжка её бы сбила. */
 .so-label:is(.so-label--position-top, .so-label--position-bottom)
-	> .so-label__control:has(> .so-slider--horizontal) {
+	> .so-label__control:has(> .so-slider--orientation-horizontal) {
 	align-self: stretch;
 }
 
 .so-label:not(.so-label--position-top, .so-label--position-bottom)
-	> .so-label__control:has(> .so-slider--horizontal) {
+	> .so-label__control:has(> .so-slider--orientation-horizontal) {
 	flex-grow: 1;
 }
 
-.so-label__control > .so-slider--horizontal {
+.so-label__control > .so-slider--orientation-horizontal {
 	flex: 1 1 auto;
 }

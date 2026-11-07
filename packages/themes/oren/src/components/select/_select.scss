@@ -36,7 +36,7 @@
 		}
 	}
 
-	&[data-open='true'] &__arrow {
+	&:where([data-open='true']) &__arrow {
 		@apply rotate-180;
 	}
 

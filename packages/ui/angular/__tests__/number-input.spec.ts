@@ -610,7 +610,7 @@ describe('NumberInput · слоты', () => {
 		expect(clear.parentElement?.firstElementChild).toBe(clear)
 		expect(clear.getAttribute('type')).toBe('button')
 		expect(clear.getAttribute('aria-label')).toBe('Clear')
-		expect(el.classList.contains('so-number-input--clearable')).toBe(true)
+		expect(el.getAttribute('data-clearable')).toBe('true')
 	})
 
 	it('кнопка очистки: клик очищает число и текст, commit, до корня не всплывает', async () => {
