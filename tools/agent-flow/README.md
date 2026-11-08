@@ -4,7 +4,7 @@ Provider-independent ClickUp workflows for soxa-ui. MCP and the CLI run on Node.
 
 ## Start here
 
-1. Store a personal ClickUp token in the process environment as `CLICKUP_TOKEN`, or in the private user file `~/.config/soldy-agent-flow/credentials.json` as `{"CLICKUP_TOKEN":"pk_..."}`. Never commit it. `CLICKUP_CREDENTIALS_FILE` can select a different file. The environment wins. No runtime reads from provider settings.
+1. Store a personal ClickUp token in the process environment as `CLICKUP_TOKEN`, or in the private user file `~/.config/soxa-agent-flow/credentials.json` as `{"CLICKUP_TOKEN":"pk_..."}`. Never commit it. `CLICKUP_CREDENTIALS_FILE` can select a different file. The environment wins. No runtime reads from provider settings.
 2. `config.json` contains this project's Space/team/owner IDs and exact status names. `CLICKUP_CONFIG` may select another file. Space-wide queries include new lists; an empty spaceId selects listId instead. Never change Space statuses as part of client setup.
 3. Run `npm run agent:setup` in the code checkout. It generates ignored `.codex/config.toml` with absolute local paths and installs `.githooks/commit-msg` through repository-local core.hooksPath. It refuses unrelated existing configuration instead of overwriting it. The commit hook enforces English messages and rejects Claude/Anthropic attribution for all Git clients. It does not claim to intercept arbitrary worktree commands.
 4. Run `npm run agent -- doctor`: validates credentials with read-only requests and checks the planning queue and local pool. It prints counts, not task contents or the token.
@@ -49,7 +49,7 @@ Read comments before deciding; report before handoff. The server tags every comm
 
 ## Existing worktree pool and leases
 
-The pool remains sibling `soldy-*` Git worktrees, excluding soldy-conflicts. Its absence during restoration is temporary; the owner will restore the same names. No command creates worktrees, replacement clones or switches the main folder.
+The pool remains sibling `soxa-*` Git worktrees, excluding soxa-conflicts. Its absence during restoration is temporary; the owner will restore the same names. No command creates worktrees, replacement clones or switches the main folder.
 
 `pool` is read-only. `acquire <id> --write` atomically reserves the task and an existing suitable folder; no folder means failure before any ClickUp mutation. It prefers the existing task branch and preserves its unfinished work. Reader roles use `acquire <id>`. `drive` upgrades the same lease with `lease-workspace <token>` before its first writer stage. `release <token>` removes only recorded locks owned by that token. `unlock <id>` is for explicit owner-authorized recovery after a stopped run; it never changes task status or clears ClickUp on.
 

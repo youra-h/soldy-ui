@@ -48,7 +48,7 @@ function candidate(snapshot, id) {
 	const row = snapshot.rows.find((row) => row.free)
 	if (!row)
 		throw new Error(
-			'No available pool worktree. The owner will restore soldy-* folders; do not create replacements.',
+			'No available pool worktree. The owner will restore soxa-* folders; do not create replacements.',
 		)
 	return row
 }

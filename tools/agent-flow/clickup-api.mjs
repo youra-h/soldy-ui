@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url'
 const here = dirname(fileURLToPath(import.meta.url))
 export const credentialsPath = () =>
 	process.env.CLICKUP_CREDENTIALS_FILE ??
-	join(homedir(), '.config', 'soldy-agent-flow', 'credentials.json')
+	join(homedir(), '.config', 'soxa-agent-flow', 'credentials.json')
 export const config = JSON.parse(
 	readFileSync(process.env.CLICKUP_CONFIG ?? join(here, 'config.json'), 'utf8'),
 )
