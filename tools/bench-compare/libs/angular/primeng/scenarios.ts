@@ -18,7 +18,7 @@ function item(panel: HTMLElement | null, text: string): HTMLElement | undefined 
 	)
 }
 
-/** PrimeNG scenarios: the soldy ones step by step, on PrimeNG's own markup. */
+/** PrimeNG scenarios: the soxa ones step by step, on PrimeNG's own markup. */
 export const SCENARIOS: Record<string, TScenario> = {
 	button: each('.p-button', press),
 	input: each('input.p-inputtext', (field) => type(field, 'abc')),

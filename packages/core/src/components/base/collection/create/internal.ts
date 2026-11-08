@@ -12,7 +12,7 @@ import {
 import type { IExtension, TCollectionEngineItemSource, TEngineOptions } from '../engine'
 
 /**
- * Внутренняя кухня сборки коллекций — не часть публичного API `@soldy-ui/core`.
+ * Внутренняя кухня сборки коллекций — не часть публичного API `@soxa-ui/core`.
  *
  * Наружу (см. `./public.ts`, реэкспортирован через `index.ts`) уходит только
  * готовая сборка: `createEngine`, `createEngineActivation`,

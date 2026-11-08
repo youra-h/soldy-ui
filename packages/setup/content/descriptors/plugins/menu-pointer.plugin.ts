@@ -11,7 +11,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TMenuPointerPlugin } from '@soldy-ui/plugins'
+import { TMenuPointerPlugin } from '@soxa-ui/plugins'
 
 export const MenuPointerPluginDescriptor = definePlugin({
 	ctor: TMenuPointerPlugin,

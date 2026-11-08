@@ -17,7 +17,7 @@ async function handle(message) {
 			return reply(id, {
 				protocolVersion: params?.protocolVersion ?? '2025-06-18',
 				capabilities: { tools: {} },
-				serverInfo: { name: 'soldy-clickup', version: '0.2.0' },
+				serverInfo: { name: 'soxa-clickup', version: '0.2.0' },
 			})
 		case 'ping':
 			return reply(id, {})

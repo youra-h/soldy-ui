@@ -4,9 +4,9 @@
  * A destroyed bundle is never announced; nodes are detached before destruction.
  */
 
-import type { IEventEmitter } from '@soldy-ui/core'
-import { TElementPlugin, TPluginBundle } from '@soldy-ui/plugins'
-import type { IPluginBundle } from '@soldy-ui/plugins'
+import type { IEventEmitter } from '@soxa-ui/core'
+import { TElementPlugin, TPluginBundle } from '@soxa-ui/plugins'
+import type { IPluginBundle } from '@soxa-ui/plugins'
 import { PLUGIN_PROPS } from '../../naming'
 import { resolveRegisteredPlugins } from '../../registry'
 import type { IBundleContext, IComponentDescriptor, TPluginCtor } from '../../define'

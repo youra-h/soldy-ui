@@ -1,7 +1,7 @@
 import { useEmits, useProps } from '../../../adapter'
 import type { TEmits, TProps, UseProps } from '../../../types/common'
-import { ListBoxGroupDescriptor } from '@soldy-ui/setup'
-import type { IItemGroup } from '@soldy-ui/core'
+import { ListBoxGroupDescriptor } from '@soxa-ui/setup'
+import type { IItemGroup } from '@soxa-ui/core'
 
 export const emitsListBoxGroup: TEmits = useEmits(ListBoxGroupDescriptor())
 

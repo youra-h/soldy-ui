@@ -38,11 +38,11 @@ import {
 } from 'react'
 import { hydrateRoot } from 'react-dom/client'
 import { renderToString } from 'react-dom/server'
-import { createEngineListBox, createEngineToasts } from '@soldy-ui/core'
-import type { IToastsItem, TToastInput, TToastsItemType } from '@soldy-ui/core'
-import { ruRU } from '@soldy-ui/plugins'
-import { getIcon } from '@soldy-ui/setup'
-import type { TIconRole } from '@soldy-ui/setup'
+import { createEngineListBox, createEngineToasts } from '@soxa-ui/core'
+import type { IToastsItem, TToastInput, TToastsItemType } from '@soxa-ui/core'
+import { ruRU } from '@soxa-ui/plugins'
+import { getIcon } from '@soxa-ui/setup'
+import type { TIconRole } from '@soxa-ui/setup'
 import {
 	Dialog,
 	ListBox,
@@ -51,7 +51,7 @@ import {
 	useToasts,
 	type TToastRender,
 	type ToastsProps,
-} from '@soldy-ui/react'
+} from '@soxa-ui/react'
 import { isToastRender } from '../src/adapter/toasts/render'
 import { find, mount, nextFrame, track, type TMounted } from './mount'
 

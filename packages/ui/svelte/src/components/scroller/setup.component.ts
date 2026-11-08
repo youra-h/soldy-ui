@@ -1,4 +1,4 @@
-import { ScrollerDescriptor } from '@soldy-ui/setup'
+import { ScrollerDescriptor } from '@soxa-ui/setup'
 import { createSvelteAdapterContext, useAdapter, type TRootReceiver } from '../../adapter'
 import type { ScrollerProps } from './base.component'
 

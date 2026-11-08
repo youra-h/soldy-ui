@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core'
 import { NgTemplateOutlet } from '@angular/common'
-import type { IInput } from '@soldy-ui/core'
+import type { IInput } from '@soxa-ui/core'
 import {
 	AttributesDirective,
 	FieldTextDirective,

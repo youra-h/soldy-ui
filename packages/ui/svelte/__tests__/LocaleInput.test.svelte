@@ -4,9 +4,9 @@
 	 * вложенный провайдер со своим полем. Имя кнопки собирается из шаблона
 	 * локали (`field.clear`) и имени поля.
 	 */
-	import type { TInput } from '@soldy-ui/core'
-	import type { TLocale } from '@soldy-ui/plugins'
-	import { Input, LocaleProvider } from '@soldy-ui/svelte'
+	import type { TInput } from '@soxa-ui/core'
+	import type { TLocale } from '@soxa-ui/plugins'
+	import { Input, LocaleProvider } from '@soxa-ui/svelte'
 
 	type THarnessProps = {
 		locale: TLocale

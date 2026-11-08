@@ -1,5 +1,5 @@
-import { drawOf } from '@soldy-ui/core'
-import type { IDrawExtension, TDrawable } from '@soldy-ui/core'
+import { drawOf } from '@soxa-ui/core'
+import type { IDrawExtension, TDrawable } from '@soxa-ui/core'
 import { TBasePlugin } from '../../base'
 import type { IPluginContext } from '../../base'
 import { TElementPlugin } from '../element'
@@ -390,7 +390,7 @@ export class TVirtualPlugin extends TBasePlugin<any, TVirtualPluginEvents> {
 		if (!this._warned && gaps.some((gap) => gap > step + 0.5)) {
 			this._warned = true
 			console.warn(
-				'[soldy] Virtual: элемент выше остальных — в окне высота элементов должна быть ' +
+				'[soxa] Virtual: элемент выше остальных — в окне высота элементов должна быть ' +
 					'одной на все, иначе прокрутка поедет. Держите содержимое элемента в одну строку.',
 			)
 		}

@@ -1,5 +1,5 @@
-import type { IDateInput } from '@soldy-ui/core'
-import type { DateInputDescriptor } from '@soldy-ui/setup'
+import type { IDateInput } from '@soxa-ui/core'
+import type { DateInputDescriptor } from '@soxa-ui/setup'
 import type { EventProps, UseDomProps } from '../../types'
 
 /** События DateInput. */

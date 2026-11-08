@@ -1,4 +1,4 @@
-import type { IToasts } from '@soldy-ui/core'
+import type { IToasts } from '@soxa-ui/core'
 import { TNamesPlugin } from '../../../locale/names.plugin'
 import type { TTranslations } from '../../../locale/types'
 

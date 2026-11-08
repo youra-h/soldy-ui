@@ -6,7 +6,7 @@
  */
 
 import { describe, it, expect, vi } from 'vitest'
-import { TControl, TValueControl } from '@soldy-ui/core'
+import { TControl, TValueControl } from '@soxa-ui/core'
 
 describe('change:<x>:before', () => {
 	it('подписчик правит значение, следующий видит поправленное и прежнее', () => {

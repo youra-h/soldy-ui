@@ -46,8 +46,8 @@
 
 import { describe, it, expect, afterEach, vi } from 'vitest'
 import { Component, type ApplicationRef, type Type } from '@angular/core'
-import { createEngineMenu, createEngineSelect, type TTableColumnSource } from '@soldy-ui/core'
-import { ruRU } from '@soldy-ui/plugins'
+import { createEngineMenu, createEngineSelect, type TTableColumnSource } from '@soxa-ui/core'
+import { ruRU } from '@soxa-ui/plugins'
 import {
 	AttributesDirective,
 	LocaleProviderDirective,
@@ -71,7 +71,7 @@ import {
 	TTabsContentComponent,
 	TTabsItemComponent,
 	TVirtualComponent,
-} from '@soldy-ui/angular'
+} from '@soxa-ui/angular'
 import { hydrate, leavePage, loadPage, renderOnServer } from './server'
 
 /** Страница сервера, разобранная документом, — как её получил бы браузер. */

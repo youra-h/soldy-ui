@@ -1,5 +1,5 @@
-import type { ISwitch } from '@soldy-ui/core'
-import type { SwitchDescriptor } from '@soldy-ui/setup'
+import type { ISwitch } from '@soxa-ui/core'
+import type { SwitchDescriptor } from '@soxa-ui/setup'
 import type { EventProps, TDomAttributes, TFieldAttributes, UseDomProps } from '../../types'
 
 export type SwitchEventProps = EventProps<typeof SwitchDescriptor>

@@ -17,8 +17,8 @@
  */
 
 import { describe, it, expect, afterEach, vi } from 'vitest'
-import { TLayer, TToasts, createEngineToasts } from '@soldy-ui/core'
-import type { IToastsItem, IToastsProps, TToastInput } from '@soldy-ui/core'
+import { TLayer, TToasts, createEngineToasts } from '@soxa-ui/core'
+import type { IToastsItem, IToastsProps, TToastInput } from '@soxa-ui/core'
 import {
 	TCollectionBundlesPlugin,
 	TCollectionElements,

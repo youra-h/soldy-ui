@@ -5,8 +5,8 @@ import {
 	signal,
 	viewChild,
 } from '@angular/core'
-import { enUS, type TLocale } from '@soldy-ui/plugins'
-import { LocaleProviderDirective } from '@soldy-ui/angular'
+import { enUS, type TLocale } from '@soxa-ui/plugins'
+import { LocaleProviderDirective } from '@soxa-ui/angular'
 
 /**
  * Язык шапки — один на все корни хоста: сигнал, который читает провайдер

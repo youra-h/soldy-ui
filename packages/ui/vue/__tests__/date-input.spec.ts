@@ -16,10 +16,10 @@
 import { describe, it, expect, afterEach, beforeEach, vi } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { defineComponent, h, nextTick, ref, type VNode } from 'vue'
-import { DateInput, LocaleProvider } from '@soldy-ui/vue'
-import type { IDateInput, TTimePrecision } from '@soldy-ui/core'
-import { arEG, enUS, ruRU } from '@soldy-ui/plugins'
-import type { TLocale } from '@soldy-ui/plugins'
+import { DateInput, LocaleProvider } from '@soxa-ui/vue'
+import type { IDateInput, TTimePrecision } from '@soxa-ui/core'
+import { arEG, enUS, ruRU } from '@soxa-ui/plugins'
+import type { TLocale } from '@soxa-ui/plugins'
 
 const nextFrame = () => new Promise((resolve) => requestAnimationFrame(resolve))
 

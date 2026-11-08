@@ -1,4 +1,4 @@
-import { ProgressLinearDescriptor } from '@soldy-ui/setup'
+import { ProgressLinearDescriptor } from '@soxa-ui/setup'
 import { useAdapter, useExpose, createVueAdapterContext, type SetupContext } from '../../adapter'
 import BaseProgressLinear, { type ProgressLinearProps } from './base.component'
 

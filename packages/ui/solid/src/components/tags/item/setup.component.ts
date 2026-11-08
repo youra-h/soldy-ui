@@ -2,7 +2,7 @@ import {
 	TCollectionItemExtension,
 	TagsCollectionItemDescriptor,
 	TagsItemDescriptor,
-} from '@soldy-ui/setup'
+} from '@soxa-ui/setup'
 import {
 	createSolidAdapterContext,
 	useAdapter,

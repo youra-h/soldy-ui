@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Component } from 'svelte'
-	import type { TLocale } from '@soldy-ui/plugins'
-	import { LocaleProvider } from '@soldy-ui/svelte'
+	import type { TLocale } from '@soxa-ui/plugins'
+	import { LocaleProvider } from '@soxa-ui/svelte'
 
 	type TPageProps = {
 		locale: TLocale

@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from 'vitest'
-import { TSelect, TSelectCollectionFacade, TWindowStrategy } from '@soldy-ui/core'
-import type { ISelectItem, TDrawnEntry } from '@soldy-ui/core'
+import { TSelect, TSelectCollectionFacade, TWindowStrategy } from '@soxa-ui/core'
+import type { ISelectItem, TDrawnEntry } from '@soxa-ui/core'
 
 /**
  * Select в окне: список панели рисует то, что отдаёт рисование коллекции

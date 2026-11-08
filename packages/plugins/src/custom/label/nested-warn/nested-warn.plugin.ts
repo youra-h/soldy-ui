@@ -30,7 +30,7 @@ export class TLabelNestedWarnPlugin extends TBasePlugin {
 			if (!el || el.localName !== 'label' || !el.querySelector('label')) return
 
 			console.warn(
-				'[soldy] Label: внутри подписи оказался ещё один <label> — HTML запрещает ' +
+				'[soxa] Label: внутри подписи оказался ещё один <label> — HTML запрещает ' +
 					'вкладывать их друг в друга. Корень RadioGroup.Item — <label>: внутри ' +
 					'Label рисуйте его с tag="span".',
 			)

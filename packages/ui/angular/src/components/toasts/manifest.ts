@@ -1,4 +1,4 @@
 export {
 	ToastsDescriptor as descriptor,
 	ToastsCollectionDescriptor as facade,
-} from '@soldy-ui/setup'
+} from '@soxa-ui/setup'

@@ -1,5 +1,5 @@
-import { LabelDescriptor } from '@soldy-ui/setup'
-import type { ILabel } from '@soldy-ui/core'
+import { LabelDescriptor } from '@soxa-ui/setup'
+import type { ILabel } from '@soxa-ui/core'
 import { createWebcAdapterContext, useAdapter } from '../../adapter'
 import type { TBinding, TUpdateListener } from '../../adapter'
 

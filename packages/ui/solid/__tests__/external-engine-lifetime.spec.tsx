@@ -40,8 +40,8 @@ import {
 	type TSelectCollection,
 	type TTableCollection,
 	type TTagsCollection,
-} from '@soldy-ui/core'
-import { ListBox, Menu, Select, Table, Virtual } from '@soldy-ui/solid'
+} from '@soxa-ui/core'
+import { ListBox, Menu, Select, Table, Virtual } from '@soxa-ui/solid'
 import { mount } from './mount'
 
 afterEach(() => {

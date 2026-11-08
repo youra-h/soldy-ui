@@ -48,7 +48,7 @@ import {
 	TTextarea,
 	createEngineCalendar,
 	createEngineTabs,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 import {
 	Calendar,
 	CheckBox,
@@ -64,7 +64,7 @@ import {
 	Switch,
 	Tabs,
 	Textarea,
-} from '@soldy-ui/svelte'
+} from '@soxa-ui/svelte'
 import AccordionHarness from './Accordion.test.svelte'
 import SelectHarness from './Select.test.svelte'
 import TagsHarness from './Tags.test.svelte'

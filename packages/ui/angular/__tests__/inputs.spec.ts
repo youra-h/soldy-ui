@@ -48,15 +48,15 @@ import {
 } from '@angular/compiler-cli'
 import { Component, signal } from '@angular/core'
 import { TestBed, type ComponentFixture } from '@angular/core/testing'
-import type { TButtonView, TComponentSize } from '@soldy-ui/core'
+import type { TButtonView, TComponentSize } from '@soxa-ui/core'
 import {
 	ButtonDescriptor,
 	CheckBoxDescriptor,
 	SwitchDescriptor,
 	ValueControlDescriptor,
 	type TExternalPluginProps,
-} from '@soldy-ui/setup'
-import { TButtonComponent, TComponentComponent, TComponentViewComponent } from '@soldy-ui/angular'
+} from '@soxa-ui/setup'
+import { TButtonComponent, TComponentComponent, TComponentViewComponent } from '@soxa-ui/angular'
 import { useBooleanInputs, useInputs } from '../src/adapter/common/useInputs'
 import { exportedDeclarations, type TDeclaration } from './declarations'
 
@@ -254,12 +254,12 @@ type TExportedComponent = {
 }
 
 /**
- * Компоненты soldy экспорта — и директивы компонентов без корня — не ручным
+ * Компоненты soxa экспорта — и директивы компонентов без корня — не ручным
  * списком: новый попадёт под проверку сам.
  */
 function exportedComponents(): TExportedComponent[] {
 	return exportedDeclarations()
-		.filter(({ soldy }) => soldy)
+		.filter(({ soxa }) => soxa)
 		.map(({ name, selector, kind, inputs }) => ({
 			name,
 			selector,
@@ -314,7 +314,7 @@ function hostElement({ selector, kind }: TExportedComponent, bindings: readonly 
 function hostSource(component: TExportedComponent, bindings: readonly string[]): string {
 	return [
 		`import { Component } from '@angular/core'`,
-		`import { ${component.name} } from '@soldy-ui/angular'`,
+		`import { ${component.name} } from '@soxa-ui/angular'`,
 		'',
 		'@Component({',
 		'	standalone: true,',

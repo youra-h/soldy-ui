@@ -19,14 +19,14 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import { render, cleanup } from './render'
 import { userEvent } from 'vitest/browser'
 import { defineComponent, h, nextTick } from 'vue'
-import { DatePicker, Frame, Select, SelectItem } from '@soldy-ui/vue'
-import type { TSelectPlacement } from '@soldy-ui/core'
+import { DatePicker, Frame, Select, SelectItem } from '@soxa-ui/vue'
+import type { TSelectPlacement } from '@soxa-ui/core'
 
 import { find } from './colors'
 import { settled, whileLeaving } from './transitions'
 import { expectClassicScrollbar, expectInsideWindow } from './viewport'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 const OPTIONS = ['Москва', 'Тверь', 'Тула', 'Казань', 'Самара']
 

@@ -1,5 +1,5 @@
 {
-  "name": "soldy-install-nuxt",
+  "name": "soxa-install-nuxt",
   "type": "module",
   "private": true,
   "scripts": {
@@ -9,10 +9,10 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@soldy-ui/icons-material": "*",
-    "@soldy-ui/setup": "*",
-    "@soldy-ui/theme-oren": "*",
-    "@soldy-ui/vue": "*",
+    "@soxa-ui/icons-material": "*",
+    "@soxa-ui/setup": "*",
+    "@soxa-ui/theme-oren": "*",
+    "@soxa-ui/vue": "*",
     "nuxt": "^4.6.3",
     "vue": "^3.5.44",
     "vue-router": "^5.4.0"

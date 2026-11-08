@@ -24,7 +24,7 @@
  */
 
 import { batch, createSignal, type Accessor, type Setter } from 'solid-js'
-import type { IUpdateListener } from '@soldy-ui/setup'
+import type { IUpdateListener } from '@soxa-ui/setup'
 
 type TSignal = [Accessor<unknown>, Setter<unknown>]
 

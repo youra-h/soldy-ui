@@ -23,9 +23,9 @@
 import { describe, it, expect, afterEach } from 'vitest'
 import { Component, TemplateRef, ViewContainerRef, input, signal, viewChild } from '@angular/core'
 import { TestBed } from '@angular/core/testing'
-import { TFrame } from '@soldy-ui/core'
-import { TAnchorPlugin, TPluginBundle, ruRU } from '@soldy-ui/plugins'
-import { LocaleProviderDirective, TButtonComponent, TFrameComponent } from '@soldy-ui/angular'
+import { TFrame } from '@soxa-ui/core'
+import { TAnchorPlugin, TPluginBundle, ruRU } from '@soxa-ui/plugins'
+import { LocaleProviderDirective, TButtonComponent, TFrameComponent } from '@soxa-ui/angular'
 import { TELEPORT_ANCHOR } from '../src/adapter/runtime/teleport'
 import { find, mountHost, nextFrame } from './mount'
 

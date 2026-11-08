@@ -17,18 +17,18 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { render, cleanup } from './render'
 import { commands, page, userEvent } from 'vitest/browser'
 import { defineComponent, h } from 'vue'
-import { TRating } from '@soldy-ui/core'
-import type { IRatingProps } from '@soldy-ui/core'
-import { useIcons } from '@soldy-ui/setup'
-import * as lucide from '@soldy-ui/icons-lucide'
-import * as material from '@soldy-ui/icons-material'
-import { Label, Rating } from '@soldy-ui/vue'
+import { TRating } from '@soxa-ui/core'
+import type { IRatingProps } from '@soxa-ui/core'
+import { useIcons } from '@soxa-ui/setup'
+import * as lucide from '@soxa-ui/icons-lucide'
+import * as material from '@soxa-ui/icons-material'
+import { Label, Rating } from '@soxa-ui/vue'
 
 import { hue, iconPaint, pixel, style, systemColor } from './colors'
 import { forcedColors, reducedMotion } from './media'
 import { touchInput } from './engine'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 const nextFrame = () => new Promise<void>((resolve) => requestAnimationFrame(() => resolve()))
 

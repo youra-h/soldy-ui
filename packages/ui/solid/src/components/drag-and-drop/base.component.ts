@@ -1,5 +1,5 @@
-import type { IDragAndDrop } from '@soldy-ui/core'
-import type { DragAndDropDescriptor } from '@soldy-ui/setup'
+import type { IDragAndDrop } from '@soxa-ui/core'
+import type { DragAndDropDescriptor } from '@soxa-ui/setup'
 import type { EventProps, UseProps } from '../../types'
 
 /** События DragAndDrop, выведены из дескриптора автоматически. */

@@ -1,4 +1,4 @@
-import type { TCloseReason } from '@soldy-ui/core'
+import type { TCloseReason } from '@soxa-ui/core'
 
 /** Опции привязки плагина оверлея к открытости владельца. */
 export interface IOverlayOpenOptions {

@@ -5,7 +5,7 @@
  */
 
 import type { Ref } from 'react'
-import type { IAdapterContext } from '@soldy-ui/setup'
+import type { IAdapterContext } from '@soxa-ui/setup'
 
 /** `ref` потребителя. Узел — `Element`: `tag` свободен, корнем бывает `<svg>`. */
 export type TConsumerRef = Ref<Element> | undefined

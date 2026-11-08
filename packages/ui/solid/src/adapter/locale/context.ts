@@ -1,5 +1,5 @@
 import { createContext, useContext } from 'solid-js'
-import type { ILocaleSource } from '@soldy-ui/plugins'
+import type { ILocaleSource } from '@soxa-ui/plugins'
 
 export const LocaleContext = createContext<ILocaleSource | undefined>(undefined)
 

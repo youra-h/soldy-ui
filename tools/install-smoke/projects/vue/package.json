@@ -1,5 +1,5 @@
 {
-  "name": "soldy-install-vue",
+  "name": "soxa-install-vue",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -8,10 +8,10 @@
     "build": "vite build"
   },
   "dependencies": {
-    "@soldy-ui/icons-material": "*",
-    "@soldy-ui/setup": "*",
-    "@soldy-ui/theme-oren": "*",
-    "@soldy-ui/vue": "*",
+    "@soxa-ui/icons-material": "*",
+    "@soxa-ui/setup": "*",
+    "@soxa-ui/theme-oren": "*",
+    "@soxa-ui/vue": "*",
     "vue": "^3.5.44"
   },
   "devDependencies": {

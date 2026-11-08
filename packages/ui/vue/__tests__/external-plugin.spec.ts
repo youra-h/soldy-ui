@@ -16,12 +16,12 @@
 import { describe, it, expect, afterEach, vi } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { nextTick } from 'vue'
-import { TActionPlugin, TBasePlugin, TPluginBundle } from '@soldy-ui/plugins'
-import type { IPluginContext, TPluginEvents } from '@soldy-ui/plugins'
-import type { IExtension, IExtensionContext } from '@soldy-ui/core'
-import { TButton, TCollectionEngine, TEvented, TTags } from '@soldy-ui/core'
-import { definePlugin, useExtensions, usePlugins } from '@soldy-ui/setup'
-import { Button, ListBox, Select, SelectItem, Tags, TagsItem } from '@soldy-ui/vue'
+import { TActionPlugin, TBasePlugin, TPluginBundle } from '@soxa-ui/plugins'
+import type { IPluginContext, TPluginEvents } from '@soxa-ui/plugins'
+import type { IExtension, IExtensionContext } from '@soxa-ui/core'
+import { TButton, TCollectionEngine, TEvented, TTags } from '@soxa-ui/core'
+import { definePlugin, useExtensions, usePlugins } from '@soxa-ui/setup'
+import { Button, ListBox, Select, SelectItem, Tags, TagsItem } from '@soxa-ui/vue'
 
 /** Слушатели нажатия появляются по `element:ready`, а он приходит через кадр. */
 const mounted = () => new Promise<void>((resolve) => requestAnimationFrame(() => resolve()))

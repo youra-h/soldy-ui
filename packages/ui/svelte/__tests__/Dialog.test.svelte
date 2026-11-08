@@ -19,8 +19,8 @@
 	 * (`visible` и колбэк `onChangeVisible` в пропсах окна), как привязка.
 	 * Заголовок, содержимое и подвал разметкой пишутся только в `.svelte`.
 	 */
-	import type { DescriptorSlots, PopoverDescriptor } from '@soldy-ui/setup'
-	import { Button, Dialog, Popover, Select, type DialogProps } from '@soldy-ui/svelte'
+	import type { DescriptorSlots, PopoverDescriptor } from '@soxa-ui/setup'
+	import { Button, Dialog, Popover, Select, type DialogProps } from '@soxa-ui/svelte'
 
 	type TTriggerScope = DescriptorSlots<typeof PopoverDescriptor>['trigger']
 

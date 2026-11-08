@@ -9,7 +9,7 @@
 import { describe, it, expect, afterEach } from 'vitest'
 import { arrowStep, fractionAt, lengthAlong, slideDirection } from '../src'
 import type { TSlideDirection } from '../src'
-import type { TSlideOrientation } from '@soldy-ui/core'
+import type { TSlideOrientation } from '@soxa-ui/core'
 
 afterEach(() => {
 	document.body.innerHTML = ''

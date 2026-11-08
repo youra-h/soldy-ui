@@ -26,9 +26,9 @@
 import { describe, it, expect, beforeEach } from 'vitest'
 import { render } from './render'
 import { defineComponent, h, nextTick, type VNode } from 'vue'
-import { createEngineTable } from '@soldy-ui/core'
-import type { TComponentSize, TTableCollection } from '@soldy-ui/core'
-import { COMPONENT_SIZES } from '@soldy-ui/playground-shared'
+import { createEngineTable } from '@soxa-ui/core'
+import type { TComponentSize, TTableCollection } from '@soxa-ui/core'
+import { COMPONENT_SIZES } from '@soxa-ui/playground-shared'
 import {
 	Button,
 	Calendar,
@@ -44,11 +44,11 @@ import {
 	Tags,
 	TagsItem,
 	Textarea,
-} from '@soldy-ui/vue'
+} from '@soxa-ui/vue'
 
 import { find, style } from './colors'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 /**
  * Font sizes of the places, px: that of the stand, the browser default of the

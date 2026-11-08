@@ -1,10 +1,10 @@
-# Soldy UI playground
+# Soxa UI playground
 
-**The development stand of Soldy UI: every component with its props, events and test scenarios,
+**The development stand of Soxa UI: every component with its props, events and test scenarios,
 drawn by the framework picked in the header.**
 
 The playground is one application for every framework. The shell — header, menus, prop editors,
-the tests page — is a Vue app built from Soldy UI components, and the previews are drawn by the
+the tests page — is a Vue app built from Soxa UI components, and the previews are drawn by the
 _host_ of the framework picked in the header. A host is a folder in
 [`vue/src/hosts/`](vue/src/hosts/): the framework's previews and scenario fixtures, and the code
 that mounts them into a node the shell hands over, in a root of that framework. Vue is a host like
@@ -54,10 +54,10 @@ root README.
 ## What is where
 
 ```
-shared/       @soldy-ui/playground-shared — data with no framework in it
+shared/       @soxa-ui/playground-shared — data with no framework in it
   src/        component registry, prop descriptions, enum values, the preview host contract
               (host.ts), test scenarios: contract, topics, runner, journal, scenario host
-vue/          @soldy-ui/playground-vue — the application
+vue/          @soxa-ui/playground-vue — the application
   src/        the shell: pages, header and menus, prop rows, the preview stage
     hosts/    one folder per framework: previews, scenario fixtures, mounting
   __tests__/  the shell and every host, in jsdom

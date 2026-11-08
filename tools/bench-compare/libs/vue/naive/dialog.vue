@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import { NButton, NCard, NInput, NModal } from 'naive-ui'
 
-/** A button opens a modal card with a field inside, as the soldy preview. */
+/** A button opens a modal card with a field inside, as the soxa preview. */
 defineOptions({ name: 'NaiveDialogPage' })
 
 const shown = ref(false)

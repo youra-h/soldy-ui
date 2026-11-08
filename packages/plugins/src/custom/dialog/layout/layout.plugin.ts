@@ -1,4 +1,4 @@
-import type { IDialog } from '@soldy-ui/core'
+import type { IDialog } from '@soxa-ui/core'
 import type { IPluginContext } from '../../../base'
 import { toCssValue } from '../../../utils'
 import { TModalLayoutPlugin } from '../../overlay/modal-layout'

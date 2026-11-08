@@ -1,1 +1,1 @@
-export { ButtonDescriptor as descriptor } from '@soldy-ui/setup'
+export { ButtonDescriptor as descriptor } from '@soxa-ui/setup'

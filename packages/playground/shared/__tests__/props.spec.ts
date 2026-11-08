@@ -9,10 +9,10 @@
  */
 
 import { describe, it, expect } from 'vitest'
-import { TRating } from '@soldy-ui/core'
-import { TName, TPropSpec } from '@soldy-ui/setup'
-import { TAnchorPlugin } from '@soldy-ui/plugins'
-import { ButtonDescriptor } from '@soldy-ui/setup'
+import { TRating } from '@soxa-ui/core'
+import { TName, TPropSpec } from '@soxa-ui/setup'
+import { TAnchorPlugin } from '@soxa-ui/plugins'
+import { ButtonDescriptor } from '@soxa-ui/setup'
 import { FRAME_PLACEMENTS } from '../src/enums'
 import { createInstance } from '../src/instance'
 import {

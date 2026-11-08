@@ -1,4 +1,4 @@
-import type { IAdapterProfile } from '@soldy-ui/setup'
+import type { IAdapterProfile } from '@soxa-ui/setup'
 import { SolidNaming } from './naming'
 
 /** Профиль связки (`adapter.connect()`): имена и слот по умолчанию `children`. */

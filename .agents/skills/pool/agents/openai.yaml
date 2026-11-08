@@ -1,5 +1,5 @@
 interface:
   display_name: 'pool'
-  short_description: 'Inspect the existing soldy-ui worktree pool without changing it'
+  short_description: 'Inspect the existing soxa-ui worktree pool without changing it'
 policy:
   allow_implicit_invocation: false

@@ -1,4 +1,4 @@
-import type { TValuePayload } from '@soldy-ui/core'
+import type { TValuePayload } from '@soxa-ui/core'
 import type { TPluginEvents } from '../../base'
 
 /**
@@ -27,7 +27,7 @@ export type TAriaPluginEvents = TPluginEvents & {
 /**
  * Пропсы плагина такими, какими их объявляет contribution — без неймспейса.
  *
- * Неймспейс (`aria_label`) навешивает `DescriptorAllProps` в `@soldy-ui/setup`
+ * Неймспейс (`aria_label`) навешивает `DescriptorAllProps` в `@soxa-ui/setup`
  * по `namespace` из `definePlugin`; здесь только собственные имена пропсов.
  */
 export interface IAriaPluginProps {

@@ -1,8 +1,8 @@
-# @soldy-ui/webc
+# @soxa-ui/webc
 
-**The Web Components adapter: Soldy UI as Custom Elements on the headless models of the core.**
+**The Web Components adapter: Soxa UI as Custom Elements on the headless models of the core.**
 
-Part of [Soldy UI](https://github.com/youra-h/soldy-ui) — UI components with the logic written once: a
+Part of [Soxa UI](https://github.com/youra-h/soxa-ui) — UI components with the logic written once: a
 framework-agnostic core and thin adapters that render it in Vue, React, Angular, Svelte, Solid and
 Web Components.
 
@@ -20,7 +20,7 @@ item's `so:change:selected` carries its new mark and comes only to the item whos
 owner's `so:change:selection` carries `[selected, changed]`, the selected items and the items whose
 mark changed; `so:change:activation` of tabs and radio groups carries `[active, previous]`.
 
-Each component is a native element of its tag extended by Soldy (a customized built-in):
+Each component is a native element of its tag extended by Soxa (a customized built-in):
 `<button is="so-button">` is a real `<button>`, `<div is="so-component-view">` a real `<div>`.
 Whatever the browser does for the tag it does for the component — a button submits and resets its
 form, is the event's `submitter`, works with `new FormData(form, submitter)`, Enter in a form
@@ -65,16 +65,16 @@ Button's `default` slot) cannot be passed into it — slot content reads it from
 > or a range), the `<so-virtual>` window for long lists and the
 > `<so-drag-and-drop>` wrapper that lets users reorder the items of Tabs, ListBox and Accordion by
 > dragging (`so:move`; `so:move:before` can cancel with `event.preventDefault()`) are ported, the
-> rest of the set is on its way. See [the adapter table](https://github.com/youra-h/soldy-ui#components).
+> rest of the set is on its way. See [the adapter table](https://github.com/youra-h/soxa-ui#components).
 
 ## Install
 
 ```bash
-npm install @soldy-ui/webc @soldy-ui/setup @soldy-ui/theme-oren @soldy-ui/icons-material
+npm install @soxa-ui/webc @soxa-ui/setup @soxa-ui/theme-oren @soxa-ui/icons-material
 ```
 
-Install `@soldy-ui/setup` as a direct dependency for the `useIcons` and `useTheme` imports below.
-Keep it on the same version as `@soldy-ui/webc`.
+Install `@soxa-ui/setup` as a direct dependency for the `useIcons` and `useTheme` imports below.
+Keep it on the same version as `@soxa-ui/webc`.
 
 A theme and an icon pack are separate packages — pick the ones you want.
 
@@ -83,7 +83,7 @@ A theme and an icon pack are separate packages — pick the ones you want.
 Importing the package defines every element:
 
 ```ts
-import '@soldy-ui/webc'
+import '@soxa-ui/webc'
 ```
 
 A page that uses a few components can import just theirs. Every element has an entry of its own,
@@ -92,19 +92,19 @@ its markup draws (a select brings its field, panel and tags) and the locale prov
 application's bundle carries only those:
 
 ```ts
-import '@soldy-ui/webc/button' // <button is="so-button">
-import '@soldy-ui/webc/check-box' // <span is="so-check-box">
-import '@soldy-ui/webc/tabs' // <div is="so-tabs"> with so-tabs-item and so-tabs-content
-import { toastsOf } from '@soldy-ui/webc/toasts' // <so-toasts> and the queue of its toasts
-import { TLocaleProviderElement } from '@soldy-ui/webc/locale-provider'
+import '@soxa-ui/webc/button' // <button is="so-button">
+import '@soxa-ui/webc/check-box' // <span is="so-check-box">
+import '@soxa-ui/webc/tabs' // <div is="so-tabs"> with so-tabs-item and so-tabs-content
+import { toastsOf } from '@soxa-ui/webc/toasts' // <so-toasts> and the queue of its toasts
+import { TLocaleProviderElement } from '@soxa-ui/webc/locale-provider'
 ```
 
 An element you write without importing its entry is not an error: the browser says nothing about
 an unknown `is`, so `<button is="so-button">` stays a plain `<button>` — no classes, no behavior.
 That is why the package root, where there is nothing to forget, is the default, and the entries are
 a choice for size. Take the values of an element from its entry as well — `TButtonElement` from
-`@soldy-ui/webc/button`, `toastsOf` from `@soldy-ui/webc/toasts`, `roleIcon` from
-`@soldy-ui/webc/icon`: the same name from the root brings every element along.
+`@soxa-ui/webc/button`, `toastsOf` from `@soxa-ui/webc/toasts`, `roleIcon` from
+`@soxa-ui/webc/icon`: the same name from the root brings every element along.
 
 ```html
 <button is="so-button" text="Save" class="toolbar-action"><i slot="leading">★</i></button>
@@ -264,7 +264,7 @@ item drawn from data, so its events do not bubble: the manager reports a closed 
 </so-toasts>
 
 <script type="module">
-  import { toastsOf } from '@soldy-ui/webc'
+  import { toastsOf } from '@soxa-ui/webc'
 
   const save = document.getElementById('save')
 
@@ -546,8 +546,8 @@ a core instance can be handed over as `ctrl` before the element is connected. `i
 element class gives the node with its props typed (TypeScript 5.3+):
 
 ```ts
-import { TButton } from '@soldy-ui/core'
-import { TButtonElement } from '@soldy-ui/webc'
+import { TButton } from '@soxa-ui/core'
+import { TButtonElement } from '@soxa-ui/webc'
 
 const el = document.createElement('button', { is: 'so-button' })
 
@@ -570,7 +570,7 @@ place, and a nested provider gives its subtree a language of its own:
 </so-locale-provider>
 
 <script type="module">
-  import { ruRU } from '@soldy-ui/plugins'
+  import { ruRU } from '@soxa-ui/plugins'
 
   document.querySelector('so-locale-provider').locale = ruRU
 </script>
@@ -579,26 +579,26 @@ place, and a nested provider gives its subtree a language of its own:
 The application plugs in a theme and an icon pack once, in its entry point:
 
 ```ts
-import { useIcons, useTheme } from '@soldy-ui/setup'
-import * as material from '@soldy-ui/icons-material'
-import oren from '@soldy-ui/theme-oren/setup'
+import { useIcons, useTheme } from '@soxa-ui/setup'
+import * as material from '@soxa-ui/icons-material'
+import oren from '@soxa-ui/theme-oren/setup'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 useIcons(material)
 useTheme(oren)
 ```
 
-`@soldy-ui/theme-oren` is the stylesheet of every component. To take only the components your
-pages use, import their stylesheets instead — `@soldy-ui/theme-oren/button.css`,
-`@soldy-ui/theme-oren/select.css`, one per component, each with the shared part of the theme: the stylesheet of a component goes along with the entry of its element (`@soldy-ui/webc/button`)
-(the theme's README, [Only the components you use](https://github.com/youra-h/soldy-ui/tree/main/packages/themes/oren#only-the-components-you-use)).
+`@soxa-ui/theme-oren` is the stylesheet of every component. To take only the components your
+pages use, import their stylesheets instead — `@soxa-ui/theme-oren/button.css`,
+`@soxa-ui/theme-oren/select.css`, one per component, each with the shared part of the theme: the stylesheet of a component goes along with the entry of its element (`@soxa-ui/webc/button`)
+(the theme's README, [Only the components you use](https://github.com/youra-h/soxa-ui/tree/main/packages/themes/oren#only-the-components-you-use)).
 
 ## Documentation
 
-- [Soldy UI README](https://github.com/youra-h/soldy-ui#readme) — the component set and what each
+- [Soxa UI README](https://github.com/youra-h/soxa-ui#readme) — the component set and what each
   adapter implements so far.
-- [Architecture overview](https://github.com/youra-h/soldy-ui/blob/main/docs/architecture.md) —
+- [Architecture overview](https://github.com/youra-h/soxa-ui/blob/main/docs/architecture.md) —
   layers, descriptors, plugins, collections, adapters.
 
 ## Public API
@@ -606,18 +606,18 @@ pages use, import their stylesheets instead — `@soldy-ui/theme-oren/button.css
 The package entry exports application components, their consumer types, the locale provider,
 and the supported icon and toast helpers. Component props, slots, events, refs and core models
 passed through `ctrl` remain the supported ways to customize the UI. Models come from
-`@soldy-ui/core`; theme, icon and external-plugin registration comes from `@soldy-ui/setup`.
+`@soxa-ui/core`; theme, icon and external-plugin registration comes from `@soxa-ui/setup`.
 
 Assembly functions, adapter profiles, bindings, generated metadata and rendering templates
 are private implementation details. They are no longer exported from the package entry, and
 there is no public `/internal` entry. Code that imported them must use the component contract
-instead. Building a new adapter component from Soldy's assembly helpers is not a supported
+instead. Building a new adapter component from Soxa's assembly helpers is not a supported
 public SDK.
 
-The same boundary applies to individual element entries such as `@soldy-ui/webc/button`.
+The same boundary applies to individual element entries such as `@soxa-ui/webc/button`.
 They export the element classes and consumer types, and the documented helpers associated
 with that entry. Importing an entry still registers its elements and required parts.
 
 ## License
 
-[MIT](https://github.com/youra-h/soldy-ui/blob/main/LICENSE)
+[MIT](https://github.com/youra-h/soxa-ui/blob/main/LICENSE)

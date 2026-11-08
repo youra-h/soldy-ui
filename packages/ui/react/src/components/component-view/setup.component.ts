@@ -1,4 +1,4 @@
-import { ComponentViewDescriptor } from '@soldy-ui/setup'
+import { ComponentViewDescriptor } from '@soxa-ui/setup'
 import { useComponent } from '../../adapter'
 import type { ComponentViewProps } from './base.component'
 

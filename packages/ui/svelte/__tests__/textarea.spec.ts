@@ -17,9 +17,9 @@
 
 import { describe, it, expect, expectTypeOf, vi, afterEach } from 'vitest'
 import { flushSync } from 'svelte'
-import { TTextarea, type TValuePayload } from '@soldy-ui/core'
-import { ruRU } from '@soldy-ui/plugins'
-import { Textarea, type TextareaProps } from '@soldy-ui/svelte'
+import { TTextarea, type TValuePayload } from '@soxa-ui/core'
+import { ruRU } from '@soxa-ui/plugins'
+import { Textarea, type TextareaProps } from '@soxa-ui/svelte'
 import FieldTextarea from './FieldTextarea.test.svelte'
 import LocaleTextarea from './LocaleTextarea.test.svelte'
 import { find, mount, nextFrame } from './mount'

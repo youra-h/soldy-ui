@@ -10,8 +10,8 @@
 
 import { describe, it, expect, vi } from 'vitest'
 import type { SVGProps } from 'react'
-import { TIcon } from '@soldy-ui/core'
-import { Icon } from '@soldy-ui/react'
+import { TIcon } from '@soxa-ui/core'
+import { Icon } from '@soxa-ui/react'
 import { find, mount, nextFrame } from './mount'
 
 describe('Icon · размер из разметки', () => {

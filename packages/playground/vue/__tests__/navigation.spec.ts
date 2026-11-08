@@ -21,9 +21,9 @@ import { join } from 'node:path'
 import { describe, it, expect, beforeEach, vi } from 'vitest'
 import { mount, flushPromises, type VueWrapper } from '@vue/test-utils'
 import { nextTick } from 'vue'
-import { useIcons } from '@soldy-ui/setup'
-import * as material from '@soldy-ui/icons-material'
-import { COMPONENT_GROUPS } from '@soldy-ui/playground-shared'
+import { useIcons } from '@soxa-ui/setup'
+import * as material from '@soxa-ui/icons-material'
+import { COMPONENT_GROUPS } from '@soxa-ui/playground-shared'
 import { menuOf, showcaseOf } from '../src/catalog'
 import { DEFAULT_FRAMEWORK, FRAMEWORKS, hostOf, loadHost } from '../src/hosts'
 import { router } from '../src/router'
@@ -206,7 +206,7 @@ describe('название в шапке', () => {
 
 		wrapper.unmount()
 
-		expect(name).toBe('soldy-ui · playground')
+		expect(name).toBe('soxa-ui · playground')
 		expect(version).toBe(`v${libraryVersion()}`)
 	})
 })

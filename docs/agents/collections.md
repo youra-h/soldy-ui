@@ -250,7 +250,7 @@ const selection = ctx.extensions.selection as ISelectionExtension<TItem> | undef
 - **Стандартные соседи** — `activationOf`, `batchOf`, `drawOf`, `factoryOf`,
   `filterOf`, `groupOf`, `metaOf`, `plainOf`, `selectionOf`
   (`base/collection/engine/extension/neighbours.ts`, в экспорте
-  `@soldy-ui/core`). Ищут они и в контексте расширения, и в движке
+  `@soxa-ui/core`). Ищут они и в контексте расширения, и в движке
   (`TNeighbours`), а тип элементов берут у того, где ищут.
 - **Проверяются члены, которых нет у соседей с похожим API**: `update` и
   `clear` есть и у `batch`, `toggle` — и у выбора, и у активации. Классы
@@ -264,14 +264,14 @@ const selection = ctx.extensions.selection as ISelectionExtension<TItem> | undef
   из бочки. Охранник с контрактом компонента ищет в любой коллекции и у чужой
   отдаёт `undefined`, поэтому тип её элементов ему не важен.
 - **Имя — `<имя расширения>Of`, и ничего больше: ни префикса, ни постфикса
-  компонента.** Чей охранник, видно из пути импорта — `@soldy-ui/core` или
+  компонента.** Чей охранник, видно из пути импорта — `@soxa-ui/core` или
   `../guards` коллекции. Под одним именем у разных коллекций бывают разные
   контракты: `selectionOf` календаря выбирает даты, стандартный — элементы,
   `tagsOf` Select — не расширение Tags. Встретились одноимённые охранники в
   одном файле — их различает алиас в импорте, и только там:
 
   ```ts
-  import { selectionOf } from '@soldy-ui/core'
+  import { selectionOf } from '@soxa-ui/core'
   import { selectionOf as calendarSelectionOf } from '../calendar/collection/extensions/guards'
   ```
 
@@ -289,7 +289,7 @@ const selection = ctx.extensions.selection as ISelectionExtension<TItem> | undef
 Проверка классом (`batch instanceof TBatchExtension` в `fillEngine`, вид
 календаря) — тоже проверка, а не приведение.
 
-Сторожат блок eslint `soldy/no-casts` (`eslint.config.ts`) — `as` над
+Сторожат блок eslint `soxa/no-casts` (`eslint.config.ts`) — `as` над
 `x.extensions` и над `x.extensions.<имя>`, с `?.` и с переносом строки перед
 типом (фикстуры — `tools/eslint/__tests__/no-casts.spec.ts`), — и
 `core/__tests__/collection.neighbours.spec.ts`: охранник отдаёт расширение
@@ -952,7 +952,7 @@ TypeScript сравнивает карту цели с картой пробро
 `as never`, `as unknown as X`, `as TEvented<…>`, угловое приведение `<T>x`,
 приведение соседа по коллекции (`x.extensions.selection as …`, см. «Сосед по
 коллекции — по контракту»), директивы отключения проверки типов; `as any`
-ловит `soldy/no-explicit-any`.
+ловит `soxa/no-explicit-any`.
 Исключённых путей у блока нет. Голый `any` в констрейнте дженерика (см. абзацы
 выше) не запрещён — так распознаётся сама инвариантность, а не костыль.
 Приведения в адаптерах фасадов item-элементов, в конструкторах item-адаптеров
@@ -963,7 +963,7 @@ TypeScript сравнивает карту цели с картой пробро
 
 ### `any`: где он честный
 
-`any` стережёт локальное правило `soldy/no-explicit-any`
+`any` стережёт локальное правило `soxa/no-explicit-any`
 (`tools/eslint/rules/no-explicit-any.ts`, тест позиций —
 `npm run test:eslint`). В CI сборку роняет `npm run lint:ci` по всему
 репозиторию. Правило заменяет `@typescript-eslint/no-explicit-any`:
@@ -989,7 +989,7 @@ TypeScript сравнивает карту цели с картой пробро
 `value: any`. Указывайте тип или `unknown`.
 
 Состояние адаптеров (`state` у `useAdapter` в React, Solid, Svelte, Angular и
-webc) типизируется по инстансу: `TInstanceState<TInstance>` из `@soldy-ui/setup`
+webc) типизируется по инстансу: `TInstanceState<TInstance>` из `@soxa-ui/setup`
 — его свойства после `valueOf()`. Объект собирается по дескриптору в рантайме,
 поэтому граница с типом одна, `toInstanceState`, и приведений в разметке
 компонентов нет. Тип инстанса несёт контракт дескриптора
@@ -1666,7 +1666,7 @@ Solid — порталом, а ни эффекта, ни портала серв
 печатает раньше, чем контрол вошёл в поле, и вход контрола со своим `id`
 меняет её `for` уже во время гидратации, основной или поздней — если контрол
 за границей `Suspense`, — а вход группы его снимает. Прямой спред состояния
-на узле разметки ловит блок eslint `soldy/solid-part-props`. Вне помощников
+на узле разметки ловит блок eslint `soxa/solid-part-props`. Вне помощников
 остаются одиночные привязки (`id={state.id}`) и текст: их смена во время
 гидратации до узла не дойдёт — таких случаев нет. Набор части, которую
 браузер нарисовал сам, без гидратации, — например, в панели слоя: портал
@@ -1705,7 +1705,7 @@ ListBox и Select уходит, когда за границей вошёл эл
 это `Show`, `For` и `Index` Solid, с тем же числом вычислений, на сервере —
 они и есть. Держится вся структура компонентов, а не только та, что зависит
 от входа: правило выводится одним предложением, и его стережёт блок eslint
-`soldy/solid-components-flow`. Вне правила — тег корня (`Root`) и текст:
+`soxa/solid-components-flow`. Вне правила — тег корня (`Root`) и текст:
 их меняет проп приложения, — и ветки `Teleport` на `Show` Solid: условие у
 них — цель и `disabled`, а содержимое портала Solid рисует после окна сам.
 Ветка `ResolvedSlot` — `Show` адаптера: задан ли слот, она решает по его

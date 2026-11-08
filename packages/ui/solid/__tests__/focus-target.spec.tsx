@@ -51,7 +51,7 @@ import {
 	TTextarea,
 	createEngineCalendar,
 	createEngineTabs,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 import {
 	Accordion,
 	Calendar,
@@ -72,8 +72,8 @@ import {
 	Tabs,
 	Tags,
 	Textarea,
-} from '@soldy-ui/solid'
-import type { DescriptorSlots, MenuDescriptor } from '@soldy-ui/setup'
+} from '@soxa-ui/solid'
+import type { DescriptorSlots, MenuDescriptor } from '@soxa-ui/setup'
 import { find, mount, nextFrame } from './mount'
 
 type TMenuTriggerScope = DescriptorSlots<typeof MenuDescriptor>['trigger']

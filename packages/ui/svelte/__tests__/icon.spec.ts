@@ -10,9 +10,9 @@
 
 import { describe, it, expect } from 'vitest'
 import { flushSync } from 'svelte'
-import { TIcon } from '@soldy-ui/core'
-import { getIcon } from '@soldy-ui/setup'
-import { Icon, roleIcon, type IconProps } from '@soldy-ui/svelte'
+import { TIcon } from '@soxa-ui/core'
+import { getIcon } from '@soxa-ui/setup'
+import { Icon, roleIcon, type IconProps } from '@soxa-ui/svelte'
 import Glyph from './Glyph.test.svelte'
 import { find, mount, nextFrame, readyProbe } from './mount'
 import { reactiveProps } from './reactive-props.svelte'

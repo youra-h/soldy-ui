@@ -9,15 +9,15 @@
  * 	<button is="so-button" text="Сохранить"></button>
  * </so-locale-provider>
  * <script type="module">
- * 	import { ruRU } from '@soldy-ui/plugins'
+ * 	import { ruRU } from '@soxa-ui/plugins'
  *
  * 	document.querySelector('so-locale-provider').locale = ruRU
  * </script>
  * ```
  */
 
-import { TLocaleSource, enUS } from '@soldy-ui/plugins'
-import type { TLocale } from '@soldy-ui/plugins'
+import { TLocaleSource, enUS } from '@soxa-ui/plugins'
+import type { TLocale } from '@soxa-ui/plugins'
 import { defineAutonomousElement } from '../runtime/defineElement'
 import { displayContents } from '../runtime/display-contents'
 import { provideLocale } from './context'

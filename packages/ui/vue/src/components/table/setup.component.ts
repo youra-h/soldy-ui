@@ -3,7 +3,7 @@ import {
 	TVirtualCollectionExtension,
 	TableDescriptor,
 	TableCollectionDescriptor,
-} from '@soldy-ui/setup'
+} from '@soxa-ui/setup'
 import {
 	useAdapter,
 	extendBinding,

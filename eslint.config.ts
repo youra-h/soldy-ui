@@ -7,7 +7,7 @@ import pluginSvelte from 'eslint-plugin-svelte'
 import svelteParser from 'svelte-eslint-parser'
 import tseslint from 'typescript-eslint'
 import skipFormatting from '@vue/eslint-config-prettier/skip-formatting'
-import soldy from './tools/eslint/plugin'
+import soxa from './tools/eslint/plugin'
 
 export default defineConfigWithVueTs(
 	{
@@ -21,7 +21,7 @@ export default defineConfigWithVueTs(
 	// которые AGENTS.md сам предлагает туда класть), ни `test-results/`, ни
 	// `packages/_plugins/`, и `npm run lint` краснел на файлах, которых в
 	// репозитории нет. Поэтому список один — сам `.gitignore`.
-	includeIgnoreFile(fileURLToPath(new URL('.gitignore', import.meta.url)), 'soldy/gitignore'),
+	includeIgnoreFile(fileURLToPath(new URL('.gitignore', import.meta.url)), 'soxa/gitignore'),
 
 	// `.angular` объявлен в `packages/ui/angular/.gitignore`: корневой файл о
 	// нём не знает, а `includeIgnoreFile` читает ровно один файл.
@@ -35,7 +35,7 @@ export default defineConfigWithVueTs(
 	// в них те же узлы, что в `.ts`. `.svelte.ts` сюда не входят — это обычный
 	// TypeScript, их по-прежнему разбирает парсер из vueTsConfigs.
 	{
-		name: 'soldy/svelte-components',
+		name: 'soxa/svelte-components',
 		files: ['**/*.svelte'],
 		plugins: { svelte: pluginSvelte },
 		processor: 'svelte/svelte',
@@ -63,7 +63,7 @@ export default defineConfigWithVueTs(
 	// деструктуризации ({ class: _, style: __, ...rest }). Правило про это не
 	// знало и требовало удалить то, что удалять нельзя.
 	{
-		name: 'soldy/unused-underscore',
+		name: 'soxa/unused-underscore',
 		rules: {
 			// `interface ISwitchProps extends IInputControlProps<boolean> {}` —
 			// не пустышка, а именованная точка расширения: у компонента есть свой
@@ -93,7 +93,7 @@ export default defineConfigWithVueTs(
 	// (`ExplicitProperties`, `packages/ui/solid/src/types.ts`). Рантайм-namespace
 	// по-прежнему запрещён: опция пропускает его только внутри `declare`.
 	{
-		name: 'soldy/namespace-declarations',
+		name: 'soxa/namespace-declarations',
 		files: ['**/*.{ts,mts,tsx,vue,svelte}'],
 		rules: {
 			'@typescript-eslint/no-namespace': ['error', { allowDeclarations: true }],
@@ -104,21 +104,21 @@ export default defineConfigWithVueTs(
 	// тип. Встроенное правило этих позиций не различает (см. AGENTS.md,
 	// «`any`: где он честный»).
 	{
-		name: 'soldy/no-explicit-any',
+		name: 'soxa/no-explicit-any',
 		files: ['**/*.{ts,mts,tsx,vue,svelte}'],
-		plugins: { soldy },
+		plugins: { soxa },
 		rules: {
 			'@typescript-eslint/no-explicit-any': 'off',
-			'soldy/no-explicit-any': 'error',
+			'soxa/no-explicit-any': 'error',
 		},
 	},
 
 	// Приведения, которые прячут несовпавший контракт, запрещены целиком
-	// (см. AGENTS.md, «Никаких костылей»). `as any` ловит soldy/no-explicit-any,
+	// (см. AGENTS.md, «Никаких костылей»). `as any` ловит soxa/no-explicit-any,
 	// `@ts-ignore`/`@ts-nocheck` — ban-ts-comment из recommended. Что блок
 	// действительно включён на путях пакетов, проверяет tools/eslint/__tests__.
 	{
-		name: 'soldy/no-casts',
+		name: 'soxa/no-casts',
 		files: ['**/*.{ts,mts,tsx,vue,svelte}'],
 		rules: {
 			// `x!` — то же приведение к «не пусто» без проверки. Definite
@@ -169,7 +169,7 @@ export default defineConfigWithVueTs(
 	// `collectionAdapter`), строки и пути он пропускает. Что блок включён на
 	// путях пакетов, проверяет tools/eslint/__tests__.
 	{
-		name: 'soldy/no-collection-name',
+		name: 'soxa/no-collection-name',
 		files: ['**/*.{ts,mts,tsx,vue,svelte}'],
 		rules: {
 			'id-denylist': ['error', 'collection', '_collection'],
@@ -179,16 +179,16 @@ export default defineConfigWithVueTs(
 	// В тестах ядра `any` запрещён в любой позиции: инвариантных карт событий в
 	// констрейнтах там нет, а любой `any` глушит проверку, ради которой тест.
 	{
-		name: 'soldy/core-tests-no-any',
+		name: 'soxa/core-tests-no-any',
 		files: ['packages/core/__tests__/**/*.ts'],
 		rules: {
-			'soldy/no-explicit-any': 'off',
+			'soxa/no-explicit-any': 'off',
 			'@typescript-eslint/no-explicit-any': 'error',
 		},
 	},
 
 	{
-		name: 'soldy/ui-component-names',
+		name: 'soxa/ui-component-names',
 		files: ['packages/ui/**/*.vue'],
 		rules: {
 			'vue/multi-word-component-names': 'off',
@@ -203,7 +203,7 @@ export default defineConfigWithVueTs(
 	// задача 869f1qdxd: `createAdapterContext` напрямую пропускает снятие
 	// прокси с `ctrl`/`engine`, которое делает `createVueAdapterContext`.
 	{
-		name: 'soldy/vue-components-no-framework',
+		name: 'soxa/vue-components-no-framework',
 		files: ['packages/ui/vue/src/components/**/*.{ts,vue}'],
 		rules: {
 			'no-restricted-imports': [
@@ -216,7 +216,7 @@ export default defineConfigWithVueTs(
 								'Механизмы Vue — только в src/adapter/** (AGENTS.md, «Механизмы фреймворка — только в адаптерном слое»).',
 						},
 						{
-							name: '@soldy-ui/setup',
+							name: '@soxa-ui/setup',
 							importNames: ['createAdapterContext'],
 							message:
 								'Используйте createVueAdapterContext из src/adapter/common — он снимает Vue-прокси с ctrl/engine.',
@@ -236,7 +236,7 @@ export default defineConfigWithVueTs(
 	// `create`, которую отдаёт `useAdapterContext`: она несёт основу `id` от
 	// `useId`, и прямой `createAdapterContext` её молча потерял бы.
 	{
-		name: 'soldy/react-components-no-framework',
+		name: 'soxa/react-components-no-framework',
 		files: ['packages/ui/react/src/components/**/*.{ts,tsx}'],
 		rules: {
 			'@typescript-eslint/no-restricted-imports': [
@@ -250,7 +250,7 @@ export default defineConfigWithVueTs(
 								'Механизмы React — только в src/adapter/** (AGENTS.md, «Механизмы фреймворка — только в адаптерном слое»).',
 						},
 						{
-							name: '@soldy-ui/setup',
+							name: '@soxa-ui/setup',
 							importNames: ['createAdapterContext'],
 							message:
 								'Собирайте контекст функцией create из useAdapterContext — она несёт основу id от useId.',
@@ -265,14 +265,14 @@ export default defineConfigWithVueTs(
 	// запомнил бы как записанный, и до узла он не дошёл бы
 	// (packages/ui/solid/src/adapter/common/root.ts, шапка, «Гидратация»).
 	// Своё правило, а не `no-restricted-syntax`: flat config заменил бы им
-	// селекторы `soldy/no-casts` на этих путях. Что блок включён, проверяет
+	// селекторы `soxa/no-casts` на этих путях. Что блок включён, проверяет
 	// tools/eslint/__tests__.
 	{
-		name: 'soldy/solid-part-props',
+		name: 'soxa/solid-part-props',
 		files: ['packages/ui/solid/src/components/**/*.tsx'],
-		plugins: { soldy },
+		plugins: { soxa },
 		rules: {
-			'soldy/solid-part-props': 'error',
+			'soxa/solid-part-props': 'error',
 		},
 	},
 	// Ветки и петли компонента Solid — примитивы адаптера, а не Solid: ветка или
@@ -283,7 +283,7 @@ export default defineConfigWithVueTs(
 	// же: своих у адаптера пока нет. Что блок включён, проверяет
 	// tools/eslint/__tests__.
 	{
-		name: 'soldy/solid-components-flow',
+		name: 'soxa/solid-components-flow',
 		files: ['packages/ui/solid/src/components/**/*.{ts,tsx}'],
 		rules: {
 			'no-restricted-imports': [

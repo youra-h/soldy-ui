@@ -46,7 +46,7 @@ import {
 	type TCollectionEngineItemSource,
 	type TMenuCollection,
 	type TMenuRadioGroupValue,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 import {
 	AttributesDirective,
 	SlotDirective,
@@ -61,7 +61,7 @@ import {
 	TMenuRadioItemComponent,
 	TMenuSeparatorComponent,
 	TMenuSubmenuComponent,
-} from '@soldy-ui/angular'
+} from '@soxa-ui/angular'
 import { countAssemblies, type TAssemblyProbe } from './assemblies'
 import { find, nextFrame } from './mount'
 

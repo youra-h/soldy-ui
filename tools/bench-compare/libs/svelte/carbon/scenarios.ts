@@ -17,7 +17,7 @@ function withText(scope: Element, selector: string, text: string, act: number): 
 		.slice(0, act)
 }
 
-/** Carbon scenarios: the soldy ones step by step, on Carbon's own markup. */
+/** Carbon scenarios: the soxa ones step by step, on Carbon's own markup. */
 export const SCENARIOS: Record<string, TScenario> = {
 	button: each('.bx--btn', press),
 	input: each('input.bx--text-input', (field) => type(field, 'abc')),

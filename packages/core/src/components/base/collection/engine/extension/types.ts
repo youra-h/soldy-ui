@@ -1,6 +1,6 @@
 import type { ICommand } from '../commands'
 import type { ICollectionStorageDriver } from '../types'
-import type { TEvented } from '@soldy-ui/core'
+import type { TEvented } from '@soxa-ui/core'
 import type { IEngineOptionsReader, TEngineOptions } from '../options'
 
 /**

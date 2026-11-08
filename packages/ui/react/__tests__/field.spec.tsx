@@ -26,7 +26,7 @@ import { describe, it, expect, vi } from 'vitest'
 import { StrictMode, act, useState, type ReactElement, type ReactNode } from 'react'
 import { hydrateRoot } from 'react-dom/client'
 import { renderToString } from 'react-dom/server'
-import { TField, TSlider } from '@soldy-ui/core'
+import { TField, TSlider } from '@soxa-ui/core'
 import {
 	CheckBox,
 	DateInput,
@@ -40,7 +40,7 @@ import {
 	Select,
 	Slider,
 	Switch,
-} from '@soldy-ui/react'
+} from '@soxa-ui/react'
 import { find, mount, nextFrame, track } from './mount'
 
 /** Подпись поля на странице; нет её — тест падает здесь. */

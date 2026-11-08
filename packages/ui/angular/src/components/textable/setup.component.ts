@@ -1,5 +1,5 @@
-import { TextableDescriptor } from '@soldy-ui/setup'
-import type { ITextable } from '@soldy-ui/core'
+import { TextableDescriptor } from '@soxa-ui/setup'
+import type { ITextable } from '@soxa-ui/core'
 import { createAngularAdapterContext, useAdapter } from '../../adapter'
 import type { TBinding } from '../../adapter'
 

@@ -5,7 +5,7 @@
  * очистка там работает. Её клик не всплывает: Select открывает панель по клику поля.
  */
 
-import type { IInput } from '@soldy-ui/core'
+import type { IInput } from '@soxa-ui/core'
 import type { TInputOutputs } from './setup.component'
 import { bind, ownerAttributes, type ITemplate } from '../../adapter'
 import { placeClearButton } from '../common/clear'

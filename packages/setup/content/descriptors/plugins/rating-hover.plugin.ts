@@ -8,7 +8,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TRatingHoverPlugin } from '@soldy-ui/plugins'
+import { TRatingHoverPlugin } from '@soxa-ui/plugins'
 
 export const RatingHoverPluginDescriptor = definePlugin({
 	ctor: TRatingHoverPlugin,

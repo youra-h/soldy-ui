@@ -16,10 +16,10 @@
 
 import { describe, it, expect, vi, afterEach } from 'vitest'
 import { act, useState } from 'react'
-import { TRating } from '@soldy-ui/core'
-import type { TValuePayload } from '@soldy-ui/core'
-import { ruRU } from '@soldy-ui/plugins'
-import { Label, LocaleProvider, Rating, type RatingProps } from '@soldy-ui/react'
+import { TRating } from '@soxa-ui/core'
+import type { TValuePayload } from '@soxa-ui/core'
+import { ruRU } from '@soxa-ui/plugins'
+import { Label, LocaleProvider, Rating, type RatingProps } from '@soxa-ui/react'
 import { find, mount, nextFrame } from './mount'
 
 afterEach(() => {

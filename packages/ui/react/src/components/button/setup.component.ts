@@ -1,4 +1,4 @@
-import { ButtonDescriptor } from '@soldy-ui/setup'
+import { ButtonDescriptor } from '@soxa-ui/setup'
 import { useComponent } from '../../adapter'
 import type { ButtonProps } from './base.component'
 

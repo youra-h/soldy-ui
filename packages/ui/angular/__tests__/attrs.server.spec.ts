@@ -18,7 +18,7 @@
 
 import { describe, it, expect, afterEach } from 'vitest'
 import { Component, signal, type ApplicationRef } from '@angular/core'
-import type { TTableColumnSource } from '@soldy-ui/core'
+import type { TTableColumnSource } from '@soxa-ui/core'
 import {
 	TAccordionComponent,
 	TAccordionItemComponent,
@@ -35,7 +35,7 @@ import {
 	TTabsComponent,
 	TTabsItemComponent,
 	TTextareaComponent,
-} from '@soldy-ui/angular'
+} from '@soxa-ui/angular'
 import { find } from './mount'
 import { hydrate, leavePage, loadPage, renderOnServer } from './server'
 

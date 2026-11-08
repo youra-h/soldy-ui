@@ -1,5 +1,5 @@
-import type { IInput } from '@soldy-ui/core'
-import type { InputDescriptor } from '@soldy-ui/setup'
+import type { IInput } from '@soxa-ui/core'
+import type { InputDescriptor } from '@soxa-ui/setup'
 import type { EventProps, TDomAttributes, TFieldAttributes, UseDomProps } from '../../types'
 
 export type InputEventProps = EventProps<typeof InputDescriptor>

@@ -11,9 +11,9 @@
 
 import { describe, it, expect, vi } from 'vitest'
 import { createPluginContext } from './helpers'
-import { TAriaPlugin, TIconLayoutPlugin, TSkeletonLayoutPlugin } from '@soldy-ui/plugins'
-import { TButton, TIcon, TSkeleton, TTextarea } from '@soldy-ui/core'
-import type { IComponentView, IComponentViewProps } from '@soldy-ui/core'
+import { TAriaPlugin, TIconLayoutPlugin, TSkeletonLayoutPlugin } from '@soxa-ui/plugins'
+import { TButton, TIcon, TSkeleton, TTextarea } from '@soxa-ui/core'
+import type { IComponentView, IComponentViewProps } from '@soxa-ui/core'
 import {
 	ButtonDescriptor,
 	IconDescriptor,

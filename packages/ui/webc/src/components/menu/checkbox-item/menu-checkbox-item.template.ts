@@ -4,8 +4,8 @@
  * у меню есть колонка отметок.
  */
 
-import type { IMenuCheckboxItem, TMenuItemCollectionFacade } from '@soldy-ui/core'
-import { DEFAULT_SLOT } from '@soldy-ui/setup'
+import type { IMenuCheckboxItem, TMenuItemCollectionFacade } from '@soxa-ui/core'
+import { DEFAULT_SLOT } from '@soxa-ui/setup'
 import { bind, lend, type ITemplate } from '../../../adapter'
 import type { TIconElementProps } from '../../icon'
 import { createRow, iconSize, partOf, placeMark, roleIconOf, rowBindings } from '../row'

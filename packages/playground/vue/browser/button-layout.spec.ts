@@ -18,7 +18,7 @@
 import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { render, cleanup } from './render'
 import { defineComponent, h, nextTick, type VNodeChild } from 'vue'
-import { COMPONENT_SIZES } from '@soldy-ui/playground-shared'
+import { COMPONENT_SIZES } from '@soxa-ui/playground-shared'
 import {
 	Accordion,
 	AccordionItem,
@@ -29,9 +29,9 @@ import {
 	Select,
 	SelectItem,
 	roleIcon,
-} from '@soldy-ui/vue'
+} from '@soxa-ui/vue'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 /** Глиф строится один раз: новый компонент на каждый рендер пересоздавал бы узел. */
 const CLOSE = roleIcon('close')

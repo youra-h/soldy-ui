@@ -215,7 +215,7 @@
   расширение, когда создаёт список, а не разметка: имя месяца бывает в
   несколько слов (`vi-VN` — «Tháng 10»), подпись года — с эрой (`th-TH`), и
   многоточие срезало бы номер. Слово шире плитки режет общий слой тем
-  (`components/calendar.css` в `@soldy-ui/theme-base`). Стрелки — наборы
+  (`components/calendar.css` в `@soxa-ui/theme-base`). Стрелки — наборы
   места (`pickerSets`: `prev`, `next`); имена по уровню места (раздел
   `calendar` локали: `prevYear`, `nextYear` на месяцах, `prevYears`,
   `nextYears` на годах) пишет `TCalendarNamesPlugin` и переписывает на смену

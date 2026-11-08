@@ -5,7 +5,7 @@
  * первого тоста.
  */
 
-import type { IToasts, IToastsItem, TToastsCollectionFacade } from '@soldy-ui/core'
+import type { IToasts, IToastsItem, TToastsCollectionFacade } from '@soxa-ui/core'
 import {
 	TKeyedLoop,
 	bind,

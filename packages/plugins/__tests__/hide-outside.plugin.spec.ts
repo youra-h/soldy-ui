@@ -17,7 +17,7 @@
  */
 
 import { describe, it, expect, afterEach } from 'vitest'
-import { FRAME_LAYER_ATTRIBUTE, TPopover } from '@soldy-ui/core'
+import { FRAME_LAYER_ATTRIBUTE, TPopover } from '@soxa-ui/core'
 import { TDismissPlugin, TElementPlugin, THideOutsidePlugin, TPluginBundle } from '../src'
 import type { IHideOutsidePluginOptions, IPlugin, IPluginConstructor } from '../src'
 

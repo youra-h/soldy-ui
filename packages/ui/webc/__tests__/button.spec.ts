@@ -1,6 +1,6 @@
 import { propertyDetail } from './property-detail'
 /**
- * `<button is="so-button">` — нативная `<button>`, расширенная классом soldy
+ * `<button is="so-button">` — нативная `<button>`, расширенная классом soxa
  * (customized built-in). Классы, наборы ядра и скрытие лежат на самой кнопке,
  * рядом с тем, что написал потребитель, а атрибуты и классы потребителя
  * главнее — кроме атрибутов-входов пропов (`disabled`).
@@ -11,11 +11,11 @@ import { propertyDetail } from './property-detail'
  */
 
 import { describe, it, expect, expectTypeOf, afterEach, vi } from 'vitest'
-import { TButton } from '@soldy-ui/core'
-import { TElementPlugin, TPluginBundle } from '@soldy-ui/plugins'
-import { ButtonDescriptor } from '@soldy-ui/setup'
-import type { IButton } from '@soldy-ui/core'
-import { TButtonElement, type TButtonElementProps } from '@soldy-ui/webc'
+import { TButton } from '@soxa-ui/core'
+import { TElementPlugin, TPluginBundle } from '@soxa-ui/plugins'
+import { ButtonDescriptor } from '@soxa-ui/setup'
+import type { IButton } from '@soxa-ui/core'
+import { TButtonElement, type TButtonElementProps } from '@soxa-ui/webc'
 import { buttonTemplate } from '../src/components/button/button.template'
 import { bareContext } from './template-context'
 
@@ -25,7 +25,7 @@ const flush = () => new Promise<void>((resolve) => queueMicrotask(() => resolve(
 /** `TElementPlugin` объявляет узел через кадр — после него встают слушатели плагинов. */
 const nextFrame = () => new Promise<void>((resolve) => requestAnimationFrame(() => resolve()))
 
-/** Кнопка soldy — с props дескриптора; узел другой — тест падает здесь. */
+/** Кнопка soxa — с props дескриптора; узел другой — тест падает здесь. */
 function asButton(node: Element | null): TButtonElementProps {
 	if (!isButton(node)) throw new Error('<button is="so-button"> нет')
 
@@ -36,7 +36,7 @@ function isButton(node: Element | null): node is TButtonElementProps {
 	return node instanceof TButtonElement
 }
 
-/** Кнопка soldy из разметки. */
+/** Кнопка soxa из разметки. */
 function mountButton(html: string): TButtonElementProps {
 	const host = document.createElement('div')
 
@@ -46,12 +46,12 @@ function mountButton(html: string): TButtonElementProps {
 	return asButton(host.querySelector('button'))
 }
 
-/** Кнопка soldy из JS, ещё не подключённая. */
+/** Кнопка soxa из JS, ещё не подключённая. */
 function createButton(): TButtonElementProps {
 	return asButton(document.createElement('button', { is: 'so-button' }))
 }
 
-/** Кнопка soldy над готовым инстансом: `ctrl` выставлен до подключения. */
+/** Кнопка soxa над готовым инстансом: `ctrl` выставлен до подключения. */
 function mountCtrl(ctrl: TButton): TButtonElementProps {
 	const el = createButton()
 

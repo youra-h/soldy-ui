@@ -1,4 +1,4 @@
 export {
 	TabsContentDescriptor as descriptor,
 	TabsCollectionContentDescriptor as facade,
-} from '@soldy-ui/setup'
+} from '@soxa-ui/setup'

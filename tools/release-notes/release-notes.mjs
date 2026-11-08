@@ -16,11 +16,11 @@ import { join } from 'node:path'
 /** More items than this, and the notes link to the changelogs instead. */
 export const INLINE_LIMIT = 15
 
-const SCOPE = '@soldy-ui/'
+const SCOPE = '@soxa-ui/'
 
 const KINDS = ['Major Changes', 'Minor Changes', 'Patch Changes']
 
-/** `@soldy-ui/theme-oren` → `theme-oren`. */
+/** `@soxa-ui/theme-oren` → `theme-oren`. */
 export function shortName(name) {
 	return name.startsWith(SCOPE) ? name.slice(SCOPE.length) : name
 }
@@ -79,7 +79,7 @@ export function unpublishedOf(packages, view) {
 /**
  * Items of the section `## <version>`: a changeset item is `- <hash>: text`,
  * continued by indented lines. The lines of bumped dependencies
- * (`- Updated dependencies`, `- @soldy-ui/x@…`) carry no change of the package.
+ * (`- Updated dependencies`, `- @soxa-ui/x@…`) carry no change of the package.
  */
 export function entriesOf(changelog, version) {
 	const lines = changelog.split(/\r?\n/)

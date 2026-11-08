@@ -1,5 +1,5 @@
-import { PopoverDescriptor } from '@soldy-ui/setup'
-import type { IPopover } from '@soldy-ui/core'
+import { PopoverDescriptor } from '@soxa-ui/setup'
+import type { IPopover } from '@soxa-ui/core'
 import { createAngularAdapterContext, useAdapter } from '../../adapter'
 import type { TBinding } from '../../adapter'
 

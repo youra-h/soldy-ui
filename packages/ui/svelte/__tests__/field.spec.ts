@@ -21,8 +21,8 @@
 
 import { describe, it, expect } from 'vitest'
 import { flushSync } from 'svelte'
-import { TField, TSlider } from '@soldy-ui/core'
-import { Field, Select, type FieldProps } from '@soldy-ui/svelte'
+import { TField, TSlider } from '@soxa-ui/core'
+import { Field, Select, type FieldProps } from '@soxa-ui/svelte'
 import FieldHarness from './Field.test.svelte'
 import { find, htmlOf, mount } from './mount'
 import { reactiveProps } from './reactive-props.svelte'

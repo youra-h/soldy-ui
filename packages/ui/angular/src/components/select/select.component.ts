@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core'
 import { NgTemplateOutlet } from '@angular/common'
-import type { ISelect } from '@soldy-ui/core'
+import type { ISelect } from '@soxa-ui/core'
 import {
 	AttributesDirective,
 	RoleIconDirective,

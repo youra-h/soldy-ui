@@ -2,8 +2,8 @@ import {
 	CalendarCollectionDescriptor,
 	CalendarDescriptor,
 	TCollectionExtension,
-} from '@soldy-ui/setup'
-import type { ICalendar, ICalendarProps, TCalendarCollectionFacade } from '@soldy-ui/core'
+} from '@soxa-ui/setup'
+import type { ICalendar, ICalendarProps, TCalendarCollectionFacade } from '@soxa-ui/core'
 import {
 	AngularElevatorFactory,
 	createAngularAdapterContext,

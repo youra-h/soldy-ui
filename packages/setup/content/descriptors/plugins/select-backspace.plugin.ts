@@ -8,7 +8,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TSelectBackspacePlugin } from '@soldy-ui/plugins'
+import { TSelectBackspacePlugin } from '@soxa-ui/plugins'
 
 export const SelectBackspacePluginDescriptor = definePlugin({
 	ctor: TSelectBackspacePlugin,

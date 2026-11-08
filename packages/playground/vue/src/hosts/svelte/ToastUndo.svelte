@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { IToastsItem } from '@soldy-ui/core'
-	import { Button } from '@soldy-ui/svelte'
+	import type { IToastsItem } from '@soxa-ui/core'
+	import { Button } from '@soxa-ui/svelte'
 
 	const { toast }: { toast: IToastsItem } = $props()
 </script>

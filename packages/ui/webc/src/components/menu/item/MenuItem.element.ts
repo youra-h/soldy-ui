@@ -4,8 +4,8 @@
  * корня. docs/architecture.md, Layer 8d, «Меню».
  */
 
-import { MenuCollectionItemDescriptor, MenuItemDescriptor } from '@soldy-ui/setup'
-import type { IMenuItem, TMenuItemCollectionFacade } from '@soldy-ui/core'
+import { MenuCollectionItemDescriptor, MenuItemDescriptor } from '@soxa-ui/setup'
+import type { IMenuItem, TMenuItemCollectionFacade } from '@soxa-ui/core'
 import { ElementBase } from '../../../adapter'
 import type { TElementClassOf, TElementType } from '../../../adapter'
 import { menuItemTemplate } from './menu-item.template'

@@ -5,8 +5,8 @@
 	 * обёртка отдаёт наружу (`onPick`): последнее — текущее. Радио уходят из
 	 * группы и при её снятии (`group`), и по условию по одному (`second`).
 	 */
-	import type { TRadioGroupValue } from '@soldy-ui/core'
-	import { RadioGroup } from '@soldy-ui/svelte'
+	import type { TRadioGroupValue } from '@soxa-ui/core'
+	import { RadioGroup } from '@soxa-ui/svelte'
 
 	type THarnessProps = {
 		/** Группа в разметке; `false` — снята. */

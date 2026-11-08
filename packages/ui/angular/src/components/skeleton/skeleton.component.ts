@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core'
-import type { ISkeleton } from '@soldy-ui/core'
+import type { ISkeleton } from '@soxa-ui/core'
 import { TSkeletonSurface } from '../../generated/skeleton.metadata'
 import { setupSkeleton } from './setup.component'
 

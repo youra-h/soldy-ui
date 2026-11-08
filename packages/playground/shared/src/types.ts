@@ -1,4 +1,4 @@
-import type { IComponentDescriptor, IPluginDefinition } from '@soldy-ui/setup'
+import type { IComponentDescriptor, IPluginDefinition } from '@soxa-ui/setup'
 
 /**
  * How a prop is edited. Derived from metadata, never set by hand.

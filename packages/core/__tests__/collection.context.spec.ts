@@ -9,13 +9,13 @@ import {
 	TItemContextRegistry,
 	TBaseOwnerItemExtension,
 	TBaseItemExtension,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 import type {
 	IExtension,
 	IItemExtension,
 	IExtensionItems,
 	IBaseOwnerItemExtensionOptions,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 
 // --- Пользовательское расширение для теста ---
 

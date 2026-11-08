@@ -20,11 +20,11 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { render, cleanup } from './render'
 import { userEvent } from 'vitest/browser'
 import { defineComponent, h } from 'vue'
-import { Switch } from '@soldy-ui/vue'
+import { Switch } from '@soxa-ui/vue'
 
 import { find, lightness, settled, shift, style } from './colors'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 /** Обе схемы: ломалось только в одной, а правило дорожки общее. */
 const SCHEMES = ['oren', 'oren-dark'] as const

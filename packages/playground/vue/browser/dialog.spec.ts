@@ -25,9 +25,9 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { render, cleanup } from './render'
 import { page, userEvent } from 'vitest/browser'
 import { defineComponent, h, nextTick, ref, type VNode } from 'vue'
-import { Button, Dialog } from '@soldy-ui/vue'
-import type { IDialogProps, TDialogPlacement } from '@soldy-ui/core'
-import type { TDialogOffsetEvent } from '@soldy-ui/plugins'
+import { Button, Dialog } from '@soxa-ui/vue'
+import type { IDialogProps, TDialogPlacement } from '@soxa-ui/core'
+import type { TDialogOffsetEvent } from '@soxa-ui/plugins'
 
 import { reducedMotion } from './media'
 import {
@@ -41,7 +41,7 @@ import {
 import { expectClassicScrollbar } from './viewport'
 import { classicScrollbars } from './engine'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 /**
  * The dialog's offset from the screen's edge in the oren theme:

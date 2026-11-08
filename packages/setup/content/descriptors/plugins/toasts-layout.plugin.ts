@@ -7,7 +7,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TToastsLayoutPlugin } from '@soldy-ui/plugins'
+import { TToastsLayoutPlugin } from '@soxa-ui/plugins'
 
 export const ToastsLayoutPluginDescriptor = definePlugin({
 	ctor: TToastsLayoutPlugin,

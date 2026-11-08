@@ -40,7 +40,7 @@ import {
 	type TMenuCollection,
 	type TMenuOpenOn,
 	type TMenuRadioGroupValue,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 import {
 	Menu,
 	MenuCheckboxItem,
@@ -59,7 +59,7 @@ import {
 	type MenuRadioGroupProps,
 	type MenuRadioItemProps,
 	type MenuSubmenuProps,
-} from '@soldy-ui/svelte'
+} from '@soxa-ui/svelte'
 import Harness, { area, trigger } from './Menu.test.svelte'
 import { contentOf, find, mount, nextFrame, type TMounted } from './mount'
 import { reactiveProps } from './reactive-props.svelte'

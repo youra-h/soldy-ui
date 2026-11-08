@@ -4,11 +4,11 @@ import { NzDropdownModule } from 'ng-zorro-antd/dropdown'
 import { NzMenuModule } from 'ng-zorro-antd/menu'
 
 /**
- * The soldy menu preview in NG-ZORRO: `nz-dropdown` with an `nz-menu` —
+ * The soxa menu preview in NG-ZORRO: `nz-dropdown` with an `nz-menu` —
  * groups with titles, a submenu with a submenu inside (`nz-submenu`), a
  * disabled action and a danger one. The menu has no checkbox or radio items:
  * they are items with `role` and a mark. It opens on click (`nzTrigger`), as
- * the soldy menu does: the default is hover.
+ * the soxa menu does: the default is hover.
  */
 @Component({
 	selector: 'bench-menu',

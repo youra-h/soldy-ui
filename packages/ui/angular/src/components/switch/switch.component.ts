@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core'
 import { NgTemplateOutlet } from '@angular/common'
-import type { ISwitch } from '@soldy-ui/core'
+import type { ISwitch } from '@soxa-ui/core'
 import { AttributesDirective, provideElevator } from '../../adapter'
 import { TSwitchSurface } from '../../generated/switch.metadata'
 import { setupSwitch } from './setup.component'

@@ -20,7 +20,7 @@
 
 import { describe, it, expect, afterEach, vi } from 'vitest'
 import { Component, signal, type ApplicationRef } from '@angular/core'
-import { ruRU } from '@soldy-ui/plugins'
+import { ruRU } from '@soxa-ui/plugins'
 import {
 	LocaleProviderDirective,
 	TCheckBoxComponent,
@@ -29,7 +29,7 @@ import {
 	TNumberInputComponent,
 	TSwitchComponent,
 	TTextareaComponent,
-} from '@soldy-ui/angular'
+} from '@soxa-ui/angular'
 import { find } from './mount'
 import { hydrate, leavePage, loadPage, renderOnServer } from './server'
 

@@ -3,8 +3,8 @@ import {
 	TDragAndDropCollectionExtension,
 	TabsCollectionDescriptor,
 	TabsDescriptor,
-} from '@soldy-ui/setup'
-import type { ITabs, ITabsProps, TTabsCollectionFacade } from '@soldy-ui/core'
+} from '@soxa-ui/setup'
+import type { ITabs, ITabsProps, TTabsCollectionFacade } from '@soxa-ui/core'
 import {
 	AngularElevatorFactory,
 	createAngularAdapterContext,

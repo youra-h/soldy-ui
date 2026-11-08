@@ -19,13 +19,8 @@ import { describe, it, expect, afterEach } from 'vitest'
 import { render, cleanup } from './render'
 import { userEvent } from 'vitest/browser'
 import { defineComponent, h, nextTick, type VNode } from 'vue'
-import type {
-	TComponentSize,
-	TTabsAlignment,
-	TTabsOrientation,
-	TTabsPosition,
-} from '@soldy-ui/core'
-import { COMPONENT_SIZES, TABS_ALIGNMENTS } from '@soldy-ui/playground-shared'
+import type { TComponentSize, TTabsAlignment, TTabsOrientation, TTabsPosition } from '@soxa-ui/core'
+import { COMPONENT_SIZES, TABS_ALIGNMENTS } from '@soxa-ui/playground-shared'
 import {
 	Accordion,
 	AccordionItem,
@@ -36,9 +31,9 @@ import {
 	TabsItem,
 	Tags,
 	Textarea,
-} from '@soldy-ui/vue'
+} from '@soxa-ui/vue'
 
-import '@soldy-ui/theme-base'
+import '@soxa-ui/theme-base'
 
 /** Допуск на субпиксельное округление координат, px. */
 const EPSILON = 0.5

@@ -7,7 +7,7 @@
  */
 
 import { defineComponent, defineDescriptor } from '../../../../protected/define'
-import { TAccordionCollectionFacade, TAccordionItemCollectionFacade } from '@soldy-ui/core'
+import { TAccordionCollectionFacade, TAccordionItemCollectionFacade } from '@soxa-ui/core'
 import { CollectionDescriptor } from '../collection'
 
 export const AccordionCollectionDescriptor = defineDescriptor(() =>

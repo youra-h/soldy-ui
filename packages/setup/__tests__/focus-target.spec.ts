@@ -13,7 +13,7 @@
  */
 
 import { describe, it, expect } from 'vitest'
-import { TActionPlugin } from '@soldy-ui/plugins'
+import { TActionPlugin } from '@soxa-ui/plugins'
 import type { IComponentDescriptor } from '../protected/define'
 import { exportedDescriptors } from './helpers'
 

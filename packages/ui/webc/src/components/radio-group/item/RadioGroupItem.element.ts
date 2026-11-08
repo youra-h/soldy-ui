@@ -5,8 +5,8 @@
  * бы радио по чужому флекс-ряду. docs/architecture.md, Layer 8d, «Коллекция».
  */
 
-import { RadioGroupCollectionItemDescriptor, RadioGroupItemDescriptor } from '@soldy-ui/setup'
-import type { IRadioGroupItem, TRadioGroupItemCollectionFacade } from '@soldy-ui/core'
+import { RadioGroupCollectionItemDescriptor, RadioGroupItemDescriptor } from '@soxa-ui/setup'
+import type { IRadioGroupItem, TRadioGroupItemCollectionFacade } from '@soxa-ui/core'
 import { ElementBase } from '../../../adapter'
 import type { TElementClassOf, TElementType } from '../../../adapter'
 import { radioGroupItemTemplate } from './radio-group-item.template'

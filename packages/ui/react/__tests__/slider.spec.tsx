@@ -17,9 +17,9 @@ import { describe, it, expect, vi, afterEach } from 'vitest'
 import { StrictMode, act, useState } from 'react'
 import { hydrateRoot } from 'react-dom/client'
 import { renderToString } from 'react-dom/server'
-import { TSlider } from '@soldy-ui/core'
-import type { TSliderValue, TValuePayload } from '@soldy-ui/core'
-import { Label, Slider, type SliderProps } from '@soldy-ui/react'
+import { TSlider } from '@soxa-ui/core'
+import type { TSliderValue, TValuePayload } from '@soxa-ui/core'
+import { Label, Slider, type SliderProps } from '@soxa-ui/react'
 import { find, mount, nextFrame, track } from './mount'
 
 afterEach(() => {

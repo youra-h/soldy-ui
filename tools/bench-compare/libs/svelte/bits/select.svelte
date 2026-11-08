@@ -3,7 +3,7 @@
 	import { COLLECTION_ITEMS } from '../../../data'
 
 	/**
-	 * Select with typing and filtering — `Combobox`, as the soldy `editable`
+	 * Select with typing and filtering — `Combobox`, as the soxa `editable`
 	 * preview. Bits leaves filtering to the application: the list is filtered
 	 * by the typed text, as its documentation shows.
 	 */

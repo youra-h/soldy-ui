@@ -4,8 +4,8 @@
  * край строки. docs/architecture.md, Layer 8d, «Коллекция».
  */
 
-import type { IListBoxItem, TListBoxItemCollectionFacade, TListIndicator } from '@soldy-ui/core'
-import { DEFAULT_SLOT } from '@soldy-ui/setup'
+import type { IListBoxItem, TListBoxItemCollectionFacade, TListIndicator } from '@soxa-ui/core'
+import { DEFAULT_SLOT } from '@soxa-ui/setup'
 import { bind, createDetail, lend, ownerAttributes, type ITemplate, patch } from '../../../adapter'
 import { registerItemRowTag, type TItemRowElementProps } from '../../item-row'
 import { TIconElement, type TIconElementProps } from '../../icon'

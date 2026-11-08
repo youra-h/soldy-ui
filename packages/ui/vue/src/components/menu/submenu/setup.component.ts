@@ -4,7 +4,7 @@ import {
 	MenuCollectionItemDescriptor,
 	MenuSubmenuCollectionDescriptor,
 	MenuSubmenuDescriptor,
-} from '@soldy-ui/setup'
+} from '@soxa-ui/setup'
 import {
 	useAdapter,
 	extendBinding,

@@ -17,12 +17,12 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { render, cleanup } from './render'
 import { userEvent } from 'vitest/browser'
 import { defineComponent, h } from 'vue'
-import { COMPONENT_VARIANTS } from '@soldy-ui/playground-shared'
-import { CheckBox } from '@soldy-ui/vue'
+import { COMPONENT_VARIANTS } from '@soxa-ui/playground-shared'
+import { CheckBox } from '@soxa-ui/vue'
 
 import { iconPaint } from './colors'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 type TProps = Record<string, unknown>
 

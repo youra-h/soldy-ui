@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { DatePicker } from '@soldy-ui/svelte'
+	import { DatePicker } from '@soxa-ui/svelte'
 	import type { TPreviewProps } from './previews'
 
 	const bind: TPreviewProps = $props()

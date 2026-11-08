@@ -1,7 +1,7 @@
 /// <reference types="vite/client" />
 
 /** Версия библиотеки — константа сборки из манифеста ядра (`constants` в `vite.base.ts`). */
-declare const __SOLDY_VERSION__: string
+declare const __SOXA_VERSION__: string
 
 /**
  * Общий слой тем: вход пакета — CSS (`exports["."]` ведёт в `src/index.css`),
@@ -11,7 +11,7 @@ declare const __SOLDY_VERSION__: string
  * `browser/theme-base-dates.spec.ts`, `browser/theme-base-table.spec.ts`),
  * побочным импортом, как лист темы.
  */
-declare module '@soldy-ui/theme-base' {}
+declare module '@soxa-ui/theme-base' {}
 
 declare module '*.vue' {
 	import type { Component } from 'vue'

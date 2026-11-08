@@ -8,7 +8,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TToastsCascadePlugin } from '@soldy-ui/plugins'
+import { TToastsCascadePlugin } from '@soxa-ui/plugins'
 
 export const ToastsCascadePluginDescriptor = definePlugin({
 	ctor: TToastsCascadePlugin,

@@ -1,4 +1,4 @@
-import { enUS, type TLocale } from '@soldy-ui/plugins'
+import { enUS, type TLocale } from '@soxa-ui/plugins'
 
 /**
  * Значение, которое хост меняет снаружи, а корень Svelte читает: присвоение

@@ -13,7 +13,7 @@
  */
 
 import { defineComponent, defineDescriptor, defineType } from '../../../../protected/define'
-import { TCalendarItem } from '@soldy-ui/core'
+import { TCalendarItem } from '@soxa-ui/core'
 import { OWNER_STYLE_PROPS, StylableDescriptor } from '../stylable.descriptor'
 
 export const CalendarItemDescriptor = defineDescriptor(() =>

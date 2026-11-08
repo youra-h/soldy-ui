@@ -4,8 +4,8 @@ import {
 	TCollectionExtension,
 	TFieldControlExtension,
 	TVirtualCollectionExtension,
-} from '@soldy-ui/setup'
-import type { ISelect, ISelectProps, TSelectCollectionFacade } from '@soldy-ui/core'
+} from '@soxa-ui/setup'
+import type { ISelect, ISelectProps, TSelectCollectionFacade } from '@soxa-ui/core'
 import {
 	AngularElevatorFactory,
 	createAngularAdapterContext,

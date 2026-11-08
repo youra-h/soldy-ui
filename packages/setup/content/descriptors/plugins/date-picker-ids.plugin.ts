@@ -8,7 +8,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TDatePickerIdsPlugin } from '@soldy-ui/plugins'
+import { TDatePickerIdsPlugin } from '@soxa-ui/plugins'
 
 export const DatePickerIdsPluginDescriptor = definePlugin({
 	ctor: TDatePickerIdsPlugin,

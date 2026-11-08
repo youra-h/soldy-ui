@@ -4,7 +4,7 @@
  * `tag="span"`: `label` в `label` запрещён.
  */
 
-import type { ILabel } from '@soldy-ui/core'
+import type { ILabel } from '@soxa-ui/core'
 import { bind, type ITemplate } from '../../adapter'
 
 /** Обёртка текста каждой подписи — одна на всё время жизни элемента. */

@@ -7,7 +7,7 @@ import path from 'node:path'
  * прогон `tsc -p tsconfig.build.json` (см. AGENTS.md, «Сборка пакетов»).
  *
  * Одна фабрика на все пакеты, потому что копий конфига было бы по числу пакетов,
- * а расходятся они молча: `external: [/^@soldy\//]` у адаптера Vue пережил
+ * а расходятся они молча: `external: [/^@soxa\//]` у адаптера Vue пережил
  * переименование скоупа и перестал совпадать хоть с чем-нибудь.
  */
 
@@ -49,7 +49,7 @@ export type TLibraryBuildOptions = {
  * через `instanceof`, и вторая копия класса в приложении молча перестала бы
  * узнаваться (AGENTS.md, «Плагины и расширения снаружи»).
  */
-const SCOPE = /^@soldy-ui\//
+const SCOPE = /^@soxa-ui\//
 
 /** Совпадает ли спецификатор с зависимостью: сам пакет или его подпуть. */
 function matches(specifier: string, pattern: string | RegExp): boolean {
@@ -80,7 +80,7 @@ export function libConfig(options: TLibraryBuildOptions): UserConfig {
 		plugins,
 		resolve: {
 			// Ядро ссылается на свою же бочку (`import { TEvented } from
-			// '@soldy-ui/core'`). Себя пакет видит исходниками, иначе сборка
+			// '@soxa-ui/core'`). Себя пакет видит исходниками, иначе сборка
 			// зависела бы от собственного прошлого выхода
 			alias: { [name]: path.resolve(root, entry) },
 		},

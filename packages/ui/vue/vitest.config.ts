@@ -6,14 +6,14 @@ export default defineConfig({
 	plugins: [vue()],
 	resolve: {
 		alias: {
-			'@soldy-ui/vue': path.resolve(import.meta.dirname, 'src/index.ts'),
-			'@soldy-ui/core': path.resolve(import.meta.dirname, '../../core/src'),
-			'@soldy-ui/icons-material': path.resolve(
+			'@soxa-ui/vue': path.resolve(import.meta.dirname, 'src/index.ts'),
+			'@soxa-ui/core': path.resolve(import.meta.dirname, '../../core/src'),
+			'@soxa-ui/icons-material': path.resolve(
 				import.meta.dirname,
 				'../../icons/material/src',
 			),
-			'@soldy-ui/plugins': path.resolve(import.meta.dirname, '../../plugins/src'),
-			'@soldy-ui/setup': path.resolve(import.meta.dirname, '../../setup/index.ts'),
+			'@soxa-ui/plugins': path.resolve(import.meta.dirname, '../../plugins/src'),
+			'@soxa-ui/setup': path.resolve(import.meta.dirname, '../../setup/index.ts'),
 		},
 	},
 	test: {

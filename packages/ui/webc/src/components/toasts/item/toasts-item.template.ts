@@ -5,8 +5,8 @@
  * `:empty`.
  */
 
-import type { IToastsItem, TToastsItemCollectionFacade, TToastsItemType } from '@soldy-ui/core'
-import { DEFAULT_SLOT } from '@soldy-ui/setup'
+import type { IToastsItem, TToastsItemCollectionFacade, TToastsItemType } from '@soxa-ui/core'
+import { DEFAULT_SLOT } from '@soxa-ui/setup'
 import {
 	bind,
 	createDetail,

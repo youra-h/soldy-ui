@@ -4,8 +4,8 @@
  * docs/architecture.md, Layer 8d, «Меню».
  */
 
-import { MenuCollectionDescriptor, MenuDescriptor } from '@soldy-ui/setup'
-import type { IMenu, TMenuCollectionFacade } from '@soldy-ui/core'
+import { MenuCollectionDescriptor, MenuDescriptor } from '@soxa-ui/setup'
+import type { IMenu, TMenuCollectionFacade } from '@soxa-ui/core'
 import { ElementBase, defineElement } from '../../adapter'
 import type { TElementClassOf, TElementType } from '../../adapter'
 import { TMenuCheckboxItemElement } from './checkbox-item'

@@ -21,17 +21,17 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { render, cleanup } from './render'
 import { userEvent } from 'vitest/browser'
 import { defineComponent, h, nextTick } from 'vue'
-import { TDatePicker } from '@soldy-ui/core'
-import type { IDatePickerProps } from '@soldy-ui/core'
-import { COMPONENT_SIZES } from '@soldy-ui/playground-shared'
-import { DatePicker } from '@soldy-ui/vue'
+import { TDatePicker } from '@soxa-ui/core'
+import type { IDatePickerProps } from '@soxa-ui/core'
+import { COMPONENT_SIZES } from '@soxa-ui/playground-shared'
+import { DatePicker } from '@soxa-ui/vue'
 
 import { expectClearSquare } from './clear-button'
 import { settled } from './colors'
 import { expectFadesInPlace, ownTransitionRuns, transitionEvents } from './transitions'
 import { expectInsideWindow } from './viewport'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 const nextFrame = () => new Promise<void>((resolve) => requestAnimationFrame(() => resolve()))
 

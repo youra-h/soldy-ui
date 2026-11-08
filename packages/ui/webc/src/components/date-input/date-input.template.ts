@@ -6,7 +6,7 @@
  * её пустой или из нескольких узлов. Очистка — как у Input.
  */
 
-import type { IDateInput, TDateInputSegment } from '@soldy-ui/core'
+import type { IDateInput, TDateInputSegment } from '@soxa-ui/core'
 import type { TDateInputOutputs } from './setup.component'
 import { TKeyedLoop, bind, ownerAttributes, type ITemplate, patch } from '../../adapter'
 import { placeClearButton } from '../common/clear'

@@ -61,8 +61,8 @@ export const PROJECTS: readonly TProject[] = [
 	{ name: 'angular-ssr', title: 'Angular SSR', serve: { kind: 'server' } },
 ]
 
-/** The scope of the library: every package of it is named `@soldy-ui/*`. */
-const SCOPE = '@soldy-ui/'
+/** The scope of the library: every package of it is named `@soxa-ui/*`. */
+const SCOPE = '@soxa-ui/'
 
 function isObject(value: unknown): value is TManifest {
 	return typeof value === 'object' && value !== null && !Array.isArray(value)
@@ -236,7 +236,7 @@ export function lockProblems(
 }
 
 /** A path inside an installed library package: what a bundler or a compiler reports a module by. */
-const INSTALLED = /node_modules[\\/]@soldy-ui[\\/]/
+const INSTALLED = /node_modules[\\/]@soxa-ui[\\/]/
 
 /** A warning, as the tools of the projects mark one: npm, Vite, Rolldown, Angular CLI. */
 const WARNING = /warn|\(!\)|▲/i
@@ -247,11 +247,11 @@ const COLOR = new RegExp(`${String.fromCharCode(27)}\\[[0-9;]*m`, 'g')
 /**
  * Lines of a tool's output that report on the library: a path inside an
  * installed package — a module the bundler or the compiler of a framework
- * warns about (`node_modules/@soldy-ui/svelte/dist/…`) — or a warning that
+ * warns about (`node_modules/@soxa-ui/svelte/dist/…`) — or a warning that
  * names a package (npm on a peer it overrode). The install, the type check
  * and the build of a clean project have nothing to say about the library when
  * it is in order, so such a line is a defect of the package. A file the
- * bundler names after a package (`.output/server/_libs/@soldy-ui/core.mjs`) is
+ * bundler names after a package (`.output/server/_libs/@soxa-ui/core.mjs`) is
  * neither.
  */
 export function libraryLines(output: string): string[] {

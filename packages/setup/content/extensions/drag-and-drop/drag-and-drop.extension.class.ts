@@ -14,7 +14,7 @@
  *   adapter.use(TDragAndDropExtension, { elevator: VueElevatorFactory })
  */
 
-import type { IDragAndDrop } from '@soldy-ui/core'
+import type { IDragAndDrop } from '@soxa-ui/core'
 import type { TInstanceContext } from '../../../protected/adapter/context'
 import { DRAG_AND_DROP_ELEVATOR } from './keys'
 import type { IDragAndDropExtensionOptions } from './types'

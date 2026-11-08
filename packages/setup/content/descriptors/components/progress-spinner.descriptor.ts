@@ -9,7 +9,7 @@
  */
 
 import { defineComponent, defineDescriptor } from '../../../protected/define'
-import { TProgressSpinner } from '@soldy-ui/core'
+import { TProgressSpinner } from '@soxa-ui/core'
 import { ProgressDescriptor } from './progress.descriptor'
 
 export const ProgressSpinnerDescriptor = defineDescriptor(() =>

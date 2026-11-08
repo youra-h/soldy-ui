@@ -1,4 +1,4 @@
-import { PopoverDescriptor } from '@soldy-ui/setup'
+import { PopoverDescriptor } from '@soxa-ui/setup'
 import { useComponent, useRootElement } from '../../adapter'
 import type { PopoverProps } from './base.component'
 

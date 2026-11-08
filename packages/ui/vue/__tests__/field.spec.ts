@@ -19,7 +19,7 @@ import { mount } from '@vue/test-utils'
 import { defineComponent, h, nextTick, shallowRef, type VNode } from 'vue'
 import { renderToString } from 'vue/server-renderer'
 import { createSSRApp } from 'vue'
-import { TField, TSlider } from '@soldy-ui/core'
+import { TField, TSlider } from '@soxa-ui/core'
 import {
 	CheckBox,
 	DateInput,
@@ -36,7 +36,7 @@ import {
 	Slider,
 	Switch,
 	Textarea,
-} from '@soldy-ui/vue'
+} from '@soxa-ui/vue'
 
 const nextFrame = () => new Promise<void>((resolve) => requestAnimationFrame(() => resolve()))
 

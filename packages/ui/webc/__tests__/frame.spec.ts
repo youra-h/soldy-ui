@@ -1,5 +1,5 @@
 import { propertyDetail } from './property-detail'
-import { TPluginBundle } from '@soldy-ui/plugins'
+import { TPluginBundle } from '@soxa-ui/plugins'
 /**
  * `<div is="so-frame">` — слой поверх страницы.
  *
@@ -31,9 +31,9 @@ import { TPluginBundle } from '@soldy-ui/plugins'
  */
 
 import { describe, it, expect, expectTypeOf, afterEach } from 'vitest'
-import { TButton, TComponentView, TFrame } from '@soldy-ui/core'
-import { TAnchorPlugin, TBasePlugin, ruRU, zhCN, type IPluginContext } from '@soldy-ui/plugins'
-import { FrameDescriptor, usePlugins } from '@soldy-ui/setup'
+import { TButton, TComponentView, TFrame } from '@soxa-ui/core'
+import { TAnchorPlugin, TBasePlugin, ruRU, zhCN, type IPluginContext } from '@soxa-ui/plugins'
+import { FrameDescriptor, usePlugins } from '@soxa-ui/setup'
 import {
 	TButtonElement,
 	TComponentViewElement,
@@ -42,7 +42,7 @@ import {
 	type TButtonElementProps,
 	type TComponentViewElementProps,
 	type TFrameElementProps,
-} from '@soldy-ui/webc'
+} from '@soxa-ui/webc'
 import { defineElement } from '../src/adapter/runtime/defineElement'
 import { frameTemplate } from '../src/components/frame/frame.template'
 import { TELEPORT_ANCHOR } from '../src/adapter/runtime/teleport'
@@ -213,8 +213,8 @@ function collect(el: Element, name: string): unknown[] {
 	return seen
 }
 
-/** Элементы soldy в поддереве узла, сам узел — первым; так их находит полифил. */
-function soldyIn(node: Node): (TFrameElementProps | TButtonElementProps)[] {
+/** Элементы soxa в поддереве узла, сам узел — первым; так их находит полифил. */
+function soxaIn(node: Node): (TFrameElementProps | TButtonElementProps)[] {
 	if (!(node instanceof Element)) return []
 
 	return [node, ...node.querySelectorAll('*')].filter(
@@ -232,11 +232,11 @@ function polyfillCallbacks(): MutationObserver {
 	const observer = new MutationObserver((records) => {
 		for (const record of records) {
 			for (const node of record.removedNodes) {
-				for (const el of soldyIn(node)) el.disconnectedCallback()
+				for (const el of soxaIn(node)) el.disconnectedCallback()
 			}
 
 			for (const node of record.addedNodes) {
-				for (const el of soldyIn(node)) el.connectedCallback()
+				for (const el of soxaIn(node)) el.connectedCallback()
 			}
 		}
 	})
@@ -445,7 +445,7 @@ describe('Frame · rendered и visible', () => {
 })
 
 /**
- * Скрытый элемент soldy прячет и слой своего поддерева: у Vue `v-if` корня
+ * Скрытый элемент soxa прячет и слой своего поддерева: у Vue `v-if` корня
  * снимает всё поддерево — и панель, увезённую в цель, — а `display: none`
  * элемента до неё не доходит. Признак поддерева Frame берёт у ближайшего
  * предка по месту — от якоря — на каждую сборку: перенос силами базы подписку
@@ -456,7 +456,7 @@ describe('Frame · поддерево предка', () => {
 		return node instanceof TComponentViewElement
 	}
 
-	/** Контейнер soldy по селектору; нет его — тест падает здесь. */
+	/** Контейнер soxa по селектору; нет его — тест падает здесь. */
 	function view(root: ParentNode, selector: string): TComponentViewElementProps {
 		const node = root.querySelector(selector)
 
@@ -500,7 +500,7 @@ describe('Frame · поддерево предка', () => {
 		expect(frame().style.display).toBe('')
 	})
 
-	/** Скрыт предок через уровень: признак идёт по цепочке элементов soldy. */
+	/** Скрыт предок через уровень: признак идёт по цепочке элементов soxa. */
 	it('скрытый контейнер над контейнером прячет панель', async () => {
 		const place = mount(`<div is="so-component-view" class="outer">
 			<section><div is="so-component-view" class="inner"><div is="so-frame" visible></div></div></section>
@@ -1084,7 +1084,7 @@ describe('Frame · содержимое панели', () => {
 /**
  * Панель ходит с местом и тогда, когда место переставили одной операцией: якорь
  * из документа не уходит, а место — уже другое. Хозяин места — ближайший
- * элемент soldy вверх от якоря: его колбэки приходят тем же вызовом DOM, и
+ * элемент soxa вверх от якоря: его колбэки приходят тем же вызовом DOM, и
  * панель собирается заново сразу после его новой сборки, с его местом. Место
  * без хозяина — Frame в обычном контейнере — и контейнер внутри хозяина
  * сторожит наблюдатель документа, микрозадачей позже. Пересборка одна:
@@ -1110,7 +1110,7 @@ describe('Frame · место переставлено одной операци
 		return { place, other: provider(other, '.zh') }
 	}
 
-	it('Frame в элементе soldy — пересобран сразу после него, с локалью нового места', async () => {
+	it('Frame в элементе soxa — пересобран сразу после него, с локалью нового места', async () => {
 		dispose = usePlugins(TComponentView, [TAssemblyProbePlugin])
 		addTarget('first')
 
@@ -1192,11 +1192,11 @@ describe('Frame · место переставлено одной операци
 	})
 
 	/**
-	 * Хозяин места — элемент soldy — на месте, а контейнер с якорем переставлен
+	 * Хозяин места — элемент soxa — на месте, а контейнер с якорем переставлен
 	 * внутри него, под другой провайдер: колбэков у хозяина нет, и путь от якоря
 	 * до хозяина сторожит наблюдатель.
 	 */
-	it('контейнер внутри элемента soldy — пересобран наблюдателем, хозяин — нет', async () => {
+	it('контейнер внутри элемента soxa — пересобран наблюдателем, хозяин — нет', async () => {
 		dispose = usePlugins(TComponentView, [TAssemblyProbePlugin])
 		addTarget('first')
 

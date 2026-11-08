@@ -4,7 +4,7 @@
  * или `off` по значению.
  */
 
-import type { ISwitch } from '@soldy-ui/core'
+import type { ISwitch } from '@soxa-ui/core'
 import type { TSwitchOutputs } from './setup.component'
 import { bind, ownerAttributes, type ITemplate } from '../../adapter'
 

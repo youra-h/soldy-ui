@@ -1,9 +1,9 @@
 import { computed, onScopeDispose, ref, watchEffect } from 'vue'
-import { useMotion } from '@soldy-ui/plugins'
-import type { TMotionMode } from '@soldy-ui/plugins'
-import { MOTION_MODES } from '@soldy-ui/playground-shared'
+import { useMotion } from '@soxa-ui/plugins'
+import type { TMotionMode } from '@soxa-ui/plugins'
+import { MOTION_MODES } from '@soxa-ui/playground-shared'
 
-const STORAGE_KEY = 'soldy-playground-motion'
+const STORAGE_KEY = 'soxa-playground-motion'
 
 /** Медиазапрос настройки системы: пользователь просит меньше движения. */
 const SYSTEM_REDUCE = '(prefers-reduced-motion: reduce)'

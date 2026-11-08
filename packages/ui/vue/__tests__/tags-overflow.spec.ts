@@ -14,9 +14,9 @@
 import { describe, it, expect, afterEach } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { h, nextTick } from 'vue'
-import { TTags, createEngineTags } from '@soldy-ui/core'
-import type { ITags, ITagsItem, TTagsCollection, TTagsOverflow } from '@soldy-ui/core'
-import { Select, SelectItem, Tags, TagsItem } from '@soldy-ui/vue'
+import { TTags, createEngineTags } from '@soxa-ui/core'
+import type { ITags, ITagsItem, TTagsCollection, TTagsOverflow } from '@soxa-ui/core'
+import { Select, SelectItem, Tags, TagsItem } from '@soxa-ui/vue'
 
 let wrapper: ReturnType<typeof mount> | null = null
 

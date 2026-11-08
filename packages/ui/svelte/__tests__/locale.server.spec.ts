@@ -6,7 +6,7 @@
 
 import { describe, it, expect } from 'vitest'
 import { render } from 'svelte/server'
-import { enUS, ruRU, zhCN, type TLocale } from '@soldy-ui/plugins'
+import { enUS, ruRU, zhCN, type TLocale } from '@soxa-ui/plugins'
 import LocaleInput from './LocaleInput.test.svelte'
 import Surround from './Surround.test.svelte'
 

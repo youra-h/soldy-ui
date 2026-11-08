@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from 'vitest'
-import { TScroller } from '@soldy-ui/core'
-import type { TScrollerDirection, TScrollerViewport } from '@soldy-ui/core'
+import { TScroller } from '@soxa-ui/core'
+import type { TScrollerDirection, TScrollerViewport } from '@soxa-ui/core'
 
 /**
  * Модель ленты: значение и то, что из него следует для разметки.

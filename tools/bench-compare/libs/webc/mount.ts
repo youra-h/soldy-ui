@@ -12,7 +12,7 @@ export type TPage = () => Node
 
 /**
  * `count` copies of a page appended to the node — inside the library's root
- * when it has one, as the soldy host does it with `<so-locale-provider>`.
+ * when it has one, as the soxa host does it with `<so-locale-provider>`.
  * Elements upgrade synchronously on insertion. Returns the unmount.
  */
 export function mountPage(

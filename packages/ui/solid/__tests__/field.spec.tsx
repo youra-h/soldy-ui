@@ -22,8 +22,8 @@
 
 import { describe, it, expect } from 'vitest'
 import { Show, createSignal, useContext, type JSX } from 'solid-js'
-import { TField, TSlider } from '@soldy-ui/core'
-import type { TFieldPosition } from '@soldy-ui/core'
+import { TField, TSlider } from '@soxa-ui/core'
+import type { TFieldPosition } from '@soxa-ui/core'
 import {
 	CheckBox,
 	DateInput,
@@ -37,7 +37,7 @@ import {
 	Select,
 	Slider,
 	Switch,
-} from '@soldy-ui/solid'
+} from '@soxa-ui/solid'
 import { ElevatorContext, type TElevatorLayer } from '../src/adapter/elevator/layer'
 import { find, mount } from './mount'
 

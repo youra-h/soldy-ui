@@ -2,7 +2,7 @@ import {
 	CalendarCollectionItemDescriptor,
 	CalendarItemDescriptor,
 	TCollectionItemExtension,
-} from '@soldy-ui/setup'
+} from '@soxa-ui/setup'
 import { useAdapter, useAdapterContext, useCollectionAdapter } from '../../../adapter'
 import type { CalendarItemProps } from './base.component'
 

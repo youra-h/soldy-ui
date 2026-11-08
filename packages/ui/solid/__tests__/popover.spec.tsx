@@ -1,4 +1,4 @@
-import type { TValuePayload } from '@soldy-ui/core'
+import type { TValuePayload } from '@soxa-ui/core'
 /**
  * Popover в Solid — проводка целиком, на настоящей разметке.
  *
@@ -24,10 +24,10 @@ import type { TValuePayload } from '@soldy-ui/core'
 
 import { describe, it, expect, vi } from 'vitest'
 import { createSignal, type JSX } from 'solid-js'
-import { TPopover } from '@soldy-ui/core'
-import { ruRU } from '@soldy-ui/plugins'
-import type { DescriptorSlots, PopoverDescriptor } from '@soldy-ui/setup'
-import { Button, LocaleProvider, Popover, type PopoverProps } from '@soldy-ui/solid'
+import { TPopover } from '@soxa-ui/core'
+import { ruRU } from '@soxa-ui/plugins'
+import type { DescriptorSlots, PopoverDescriptor } from '@soxa-ui/setup'
+import { Button, LocaleProvider, Popover, type PopoverProps } from '@soxa-ui/solid'
 import { find, mount, nextFrame, type TMounted } from './mount'
 
 type TTriggerScope = DescriptorSlots<typeof PopoverDescriptor>['trigger']

@@ -11,8 +11,8 @@
 import { describe, it, expect, afterEach } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { h, nextTick, ref } from 'vue'
-import { TProgressLinear } from '@soldy-ui/core'
-import { ProgressLinear } from '@soldy-ui/vue'
+import { TProgressLinear } from '@soxa-ui/core'
+import { ProgressLinear } from '@soxa-ui/vue'
 
 let wrapper: ReturnType<typeof mount> | null = null
 

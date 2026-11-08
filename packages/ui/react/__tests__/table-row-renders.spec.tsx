@@ -16,9 +16,9 @@
 
 import { describe, it, expect, vi } from 'vitest'
 import { act, type ReactElement } from 'react'
-import { Table } from '@soldy-ui/react'
-import { createEngineTable } from '@soldy-ui/core'
-import type { TSelectionMode, TTableCollection, TTableRecord } from '@soldy-ui/core'
+import { Table } from '@soxa-ui/react'
+import { createEngineTable } from '@soxa-ui/core'
+import type { TSelectionMode, TTableCollection, TTableRecord } from '@soxa-ui/core'
 import { useSetupTableRow } from '../src/components/table/row/setup.component'
 import { mount, nextFrame, type TMounted } from './mount'
 

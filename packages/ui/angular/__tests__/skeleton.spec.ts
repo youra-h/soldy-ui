@@ -1,4 +1,4 @@
-import { TPluginBundle } from '@soldy-ui/plugins'
+import { TPluginBundle } from '@soxa-ui/plugins'
 /**
  * Skeleton под Angular: заглушка поверх содержимого.
  *
@@ -14,9 +14,9 @@ import { TPluginBundle } from '@soldy-ui/plugins'
 import { describe, it, expect } from 'vitest'
 import { Component, signal } from '@angular/core'
 import type { ComponentFixture } from '@angular/core/testing'
-import type { TComponentVariant } from '@soldy-ui/core'
-import { TElementPlugin } from '@soldy-ui/plugins'
-import { TPopoverComponent, TSkeletonComponent } from '@soldy-ui/angular'
+import type { TComponentVariant } from '@soxa-ui/core'
+import { TElementPlugin } from '@soxa-ui/plugins'
+import { TPopoverComponent, TSkeletonComponent } from '@soxa-ui/angular'
 import { find, findIn, mountHost, nextFrame } from './mount'
 
 const variantClasses = (el: HTMLElement) =>

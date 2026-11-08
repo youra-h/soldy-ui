@@ -1,4 +1,4 @@
-import type { ButtonProps, useToasts, TToastRender } from '@soldy-ui/react'
+import type { ButtonProps, useToasts, TToastRender } from '@soxa-ui/react'
 
 export type TPublicToastApi = [typeof useToasts, TToastRender]
 export type TButtonText = Pick<ButtonProps, 'text'>
@@ -7,9 +7,9 @@ export const validButtonText: TButtonText = { text: 'Save' }
 export const invalidButtonText: TButtonText = { text: 42 }
 
 // @ts-expect-error Adapter assembly is not an application API.
-import type { useAdapter } from '@soldy-ui/react'
+import type { useAdapter } from '@soxa-ui/react'
 export type TAssemblyMustStayPrivate = typeof useAdapter
 
 // @ts-expect-error No public internal entry point is provided.
-import type { useAdapter as internalAdapter } from '@soldy-ui/react/internal'
+import type { useAdapter as internalAdapter } from '@soxa-ui/react/internal'
 export type TInternalMustStayPrivate = typeof internalAdapter

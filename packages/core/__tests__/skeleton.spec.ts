@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
-import { TSkeleton } from '@soldy-ui/core'
-import type { TSkeletonShape, TSkeletonAnimation } from '@soldy-ui/core'
+import { TSkeleton } from '@soxa-ui/core'
+import type { TSkeletonShape, TSkeletonAnimation } from '@soxa-ui/core'
 
 describe('TSkeleton', () => {
 	/**

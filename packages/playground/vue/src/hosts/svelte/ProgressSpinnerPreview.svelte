@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { ProgressSpinner } from '@soldy-ui/svelte'
+	import { ProgressSpinner } from '@soxa-ui/svelte'
 	import type { TPreviewProps } from './previews'
 
 	const bind: TPreviewProps = $props()

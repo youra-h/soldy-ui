@@ -3,8 +3,8 @@ import {
 	TVirtualCollectionExtension,
 	TableCollectionDescriptor,
 	TableDescriptor,
-} from '@soldy-ui/setup'
-import type { ITable, ITableProps, TTableCollectionFacade } from '@soldy-ui/core'
+} from '@soxa-ui/setup'
+import type { ITable, ITableProps, TTableCollectionFacade } from '@soxa-ui/core'
 import {
 	AngularElevatorFactory,
 	createAngularAdapterContext,

@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core'
-import type { TMenuSeparator } from '@soldy-ui/core'
+import type { TMenuSeparator } from '@soxa-ui/core'
 import { TMenuSeparatorSurface } from '../../../generated/menu-separator.metadata'
 import { setupMenuSeparator } from './setup.component'
 

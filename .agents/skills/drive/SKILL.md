@@ -1,6 +1,6 @@
 ---
 name: drive
-description: Route one soldy-ui ClickUp task through roles until owner review. Use when the owner explicitly invokes this command; not for unrelated coding work.
+description: Route one soxa-ui ClickUp task through roles until owner review. Use when the owner explicitly invokes this command; not for unrelated coding work.
 ---
 
 Read [commands](../../../tools/agent-flow/commands.md) for the drive entry and [shared workflow](../../../tools/agent-flow/workflow.md). Apply the invocation's task ID or owner instruction.

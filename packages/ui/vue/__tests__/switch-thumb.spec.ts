@@ -16,8 +16,8 @@
 import { describe, it, expect, afterEach } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { h, nextTick } from 'vue'
-import { TSwitch, type ISwitch } from '@soldy-ui/core'
-import { Switch } from '@soldy-ui/vue'
+import { TSwitch, type ISwitch } from '@soxa-ui/core'
+import { Switch } from '@soxa-ui/vue'
 
 let wrapper: ReturnType<typeof mount> | null = null
 

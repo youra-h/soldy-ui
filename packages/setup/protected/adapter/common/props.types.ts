@@ -21,7 +21,7 @@ export type TAdapterProps<TInstance> = {
 	 */
 	ctrl?: TInstance
 	/**
-	 * Имя места, если компонент — деталь разметки другого компонента soldy
+	 * Имя места, если компонент — деталь разметки другого компонента soxa
 	 * (`tags.close`). Ставит разметка библиотеки, а не потребитель: по нему
 	 * `usePlugins` со `scope: 'own'` пропускает вложенный компонент.
 	 */
@@ -38,7 +38,7 @@ export type TAdapterProps<TInstance> = {
  * Пропсы внешних плагинов, которые знает приложение. Пустой намеренно: его
  * дополняют рядом с `definePlugin` плагина —
  *
- *   declare module '@soldy-ui/setup' {
+ *   declare module '@soxa-ui/setup' {
  *     interface IExternalPluginProps { timer_ms?: number }
  *   }
  */

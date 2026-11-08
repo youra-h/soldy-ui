@@ -1,5 +1,5 @@
 import { Directive } from '@angular/core'
-import type { IDragAndDrop } from '@soldy-ui/core'
+import type { IDragAndDrop } from '@soxa-ui/core'
 import { provideElevator } from '../../adapter'
 import { TDragAndDropSurface } from '../../generated/drag-and-drop.metadata'
 import { setupDragAndDrop } from './setup.component'

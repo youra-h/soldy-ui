@@ -1,8 +1,8 @@
 import { afterEach, describe, expect, it } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { h, nextTick } from 'vue'
-import { TPopover, TTooltip, TSelect, TDatePicker, TMenu } from '@soldy-ui/core'
-import { Popover, Tooltip, Select, DatePicker, Menu } from '@soldy-ui/vue'
+import { TPopover, TTooltip, TSelect, TDatePicker, TMenu } from '@soxa-ui/core'
+import { Popover, Tooltip, Select, DatePicker, Menu } from '@soxa-ui/vue'
 
 const cases = [
 	{

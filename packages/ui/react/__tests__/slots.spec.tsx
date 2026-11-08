@@ -9,7 +9,7 @@
 import { describe, it, expect, expectTypeOf, afterEach } from 'vitest'
 import { act, type ReactNode } from 'react'
 import { createRoot, type Root } from 'react-dom/client'
-import { ButtonDescriptor, type TabsDescriptor } from '@soldy-ui/setup'
+import { ButtonDescriptor, type TabsDescriptor } from '@soxa-ui/setup'
 import {
 	Button,
 	type ButtonProps,
@@ -27,7 +27,7 @@ import {
 	type SliderProps,
 	type ToastsProps,
 	type TooltipProps,
-} from '@soldy-ui/react'
+} from '@soxa-ui/react'
 import { type UseDomProps } from '../src/types'
 
 const roots: Root[] = []

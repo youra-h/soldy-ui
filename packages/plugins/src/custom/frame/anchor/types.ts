@@ -1,4 +1,4 @@
-import type { TValuePayload } from '@soldy-ui/core'
+import type { TValuePayload } from '@soxa-ui/core'
 import type { TPluginEvents } from '../../../base'
 import type { TPoint } from '../../../utils'
 
@@ -83,7 +83,7 @@ export type TAnchorPluginEvents = TPluginEvents & {
 /**
  * Пропсы плагина такими, какими их объявляет contribution — без неймспейса.
  *
- * Неймспейс (`anchor_anchor`) навешивает `DescriptorAllProps` в `@soldy-ui/setup`
+ * Неймспейс (`anchor_anchor`) навешивает `DescriptorAllProps` в `@soxa-ui/setup`
  * по `namespace` из `definePlugin`; здесь только собственные имена пропсов.
  */
 export interface IAnchorPluginProps {

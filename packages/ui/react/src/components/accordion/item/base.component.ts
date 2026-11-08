@@ -1,6 +1,6 @@
 import type { HTMLAttributes } from 'react'
-import type { IAccordionItem } from '@soldy-ui/core'
-import type { AccordionCollectionItemDescriptor, AccordionItemDescriptor } from '@soldy-ui/setup'
+import type { IAccordionItem } from '@soxa-ui/core'
+import type { AccordionCollectionItemDescriptor, AccordionItemDescriptor } from '@soxa-ui/setup'
 import type { EventProps, TDomAttributes, UseDomProps } from '../../../types'
 
 /** События секции — свои и фасада. */

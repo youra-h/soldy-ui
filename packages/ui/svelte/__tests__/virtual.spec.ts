@@ -20,9 +20,9 @@
 
 import { describe, it, expect } from 'vitest'
 import { flushSync } from 'svelte'
-import { createEngineListBox, createEngineSelect } from '@soldy-ui/core'
-import type { TListBoxCollection } from '@soldy-ui/core'
-import { ListBox, Select } from '@soldy-ui/svelte'
+import { createEngineListBox, createEngineSelect } from '@soxa-ui/core'
+import type { TListBoxCollection } from '@soxa-ui/core'
+import { ListBox, Select } from '@soxa-ui/svelte'
 import Windowed from './Virtual.test.svelte'
 import { mount, nextFrame } from './mount'
 import { reactiveProps } from './reactive-props.svelte'

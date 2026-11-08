@@ -17,7 +17,7 @@ const fieldOf = (input: Element | null | undefined) => input?.shadowRoot?.queryS
 const buttonOf = (host: Element | null | undefined) =>
 	host?.shadowRoot?.querySelector('button') ?? host
 
-/** Web Awesome scenarios: the soldy ones step by step, on its own markup. */
+/** Web Awesome scenarios: the soxa ones step by step, on its own markup. */
 export const SCENARIOS: Record<string, TScenario> = {
 	button: each('wa-button', (host) => press(buttonOf(host))),
 	input: each('wa-input', (host) => type(fieldOf(host), 'abc')),

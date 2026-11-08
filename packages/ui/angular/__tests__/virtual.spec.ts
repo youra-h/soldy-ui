@@ -25,14 +25,14 @@
 import { describe, it, expect } from 'vitest'
 import { Component, signal } from '@angular/core'
 import { TestBed, type ComponentFixture } from '@angular/core/testing'
-import { createEngineListBox, createEngineSelect } from '@soldy-ui/core'
-import type { TListBoxCollection, TSelectCollection } from '@soldy-ui/core'
+import { createEngineListBox, createEngineSelect } from '@soxa-ui/core'
+import type { TListBoxCollection, TSelectCollection } from '@soxa-ui/core'
 import {
 	SlotDirective,
 	TListBoxComponent,
 	TSelectComponent,
 	TVirtualComponent,
-} from '@soldy-ui/angular'
+} from '@soxa-ui/angular'
 import { mountHost, nextFrame } from './mount'
 
 /** `count` элементов: значение `v1`… и текст. */

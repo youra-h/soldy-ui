@@ -4,7 +4,7 @@ import {
 	TInsertCommand,
 	TRemoveCommand,
 	TArrayStorage,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 
 type Item = { id: number }
 

@@ -3,8 +3,8 @@
  * счётчик под ним. docs/architecture.md, Layer 8d, «Поле».
  */
 
-import { TextareaDescriptor } from '@soldy-ui/setup'
-import type { ITextarea } from '@soldy-ui/core'
+import { TextareaDescriptor } from '@soxa-ui/setup'
+import type { ITextarea } from '@soxa-ui/core'
 import { ElementBase, defineElement } from '../../adapter'
 import type { TElementClassOf, TElementType } from '../../adapter'
 import { textareaTemplate } from './textarea.template'

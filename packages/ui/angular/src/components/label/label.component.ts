@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core'
-import type { ILabel } from '@soldy-ui/core'
+import type { ILabel } from '@soxa-ui/core'
 import { TLabelSurface } from '../../generated/label.metadata'
 import { setupLabel } from './setup.component'
 

@@ -13,7 +13,7 @@
  */
 
 import { defineComponent, defineDescriptor } from '../../../protected/define'
-import { TItemGroup } from '@soldy-ui/core'
+import { TItemGroup } from '@soxa-ui/core'
 import { ComponentViewDescriptor } from './component-view.descriptor'
 import { ItemGroupIdsPluginDescriptor } from '../plugins'
 

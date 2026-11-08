@@ -23,13 +23,13 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { render, cleanup } from './render'
 import { page, userEvent } from 'vitest/browser'
 import { defineComponent, h, nextTick, ref, type Ref, type VNode } from 'vue'
-import { DatePicker, Select, SelectItem } from '@soldy-ui/vue'
-import type { TSwipe } from '@soldy-ui/core'
+import { DatePicker, Select, SelectItem } from '@soxa-ui/vue'
+import type { TSwipe } from '@soxa-ui/core'
 
 import { reducedMotion } from './media'
 import { expectFadesInPlace, expectHidesWhenFaded, settled, whileLeaving } from './transitions'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 /** The gesture strip's grip zone — at least 24px: the target minimum of WCAG 2.5.8. */
 const GRIP_ZONE = 24

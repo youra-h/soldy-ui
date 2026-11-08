@@ -4,7 +4,7 @@ import Button from 'primevue/button'
 import Dialog from 'primevue/dialog'
 import InputText from 'primevue/inputtext'
 
-/** A button opens a modal dialog with a field inside, as the soldy preview. */
+/** A button opens a modal dialog with a field inside, as the soxa preview. */
 defineOptions({ name: 'PrimeDialogPage' })
 
 const shown = ref(false)

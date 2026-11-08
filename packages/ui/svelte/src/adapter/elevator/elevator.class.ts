@@ -6,7 +6,7 @@
  */
 
 import { getContext, setContext } from 'svelte'
-import { TElevator } from '@soldy-ui/setup'
+import { TElevator } from '@soxa-ui/setup'
 
 export class TSvelteElevator<T = any> extends TElevator<T> {
 	constructor(

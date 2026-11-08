@@ -11,7 +11,7 @@
 
 import { describe, it, expect } from 'vitest'
 import { renderToString } from 'solid-js/web'
-import { Input, type InputProps } from '@soldy-ui/solid'
+import { Input, type InputProps } from '@soxa-ui/solid'
 
 /**
  * Открывающий тег поля в серверной разметке. Комментарии — метки гидратации

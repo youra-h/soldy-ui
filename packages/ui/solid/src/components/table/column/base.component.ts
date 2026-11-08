@@ -1,5 +1,5 @@
-import type { ITableColumn } from '@soldy-ui/core'
-import type { TableColumnDescriptor } from '@soldy-ui/setup'
+import type { ITableColumn } from '@soxa-ui/core'
+import type { TableColumnDescriptor } from '@soxa-ui/setup'
 import type { EventProps, UseDomProps } from '../../../types'
 
 /** События заголовка колонки. */

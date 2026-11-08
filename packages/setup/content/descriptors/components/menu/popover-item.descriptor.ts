@@ -16,7 +16,7 @@
  */
 
 import { defineComponent, defineDescriptor, defineType } from '../../../../protected/define'
-import { TMenuPopoverItem } from '@soldy-ui/core'
+import { TMenuPopoverItem } from '@soxa-ui/core'
 import { MenuItemDescriptor } from './item.descriptor'
 import {
 	DismissPluginDescriptor,

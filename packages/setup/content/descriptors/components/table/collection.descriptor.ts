@@ -7,7 +7,7 @@
  */
 
 import { defineComponent, defineDescriptor } from '../../../../protected/define'
-import { TTableCollectionFacade, TTableRowCollectionFacade } from '@soldy-ui/core'
+import { TTableCollectionFacade, TTableRowCollectionFacade } from '@soxa-ui/core'
 import { CollectionDescriptor } from '../collection'
 
 export const TableCollectionDescriptor = defineDescriptor(() =>

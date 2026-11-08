@@ -26,14 +26,14 @@
 import { describe, it, expect, afterEach, beforeEach, vi } from 'vitest'
 import { Component, signal, type Type } from '@angular/core'
 import { TestBed, type ComponentFixture } from '@angular/core/testing'
-import { TDatePicker, type TDatePickerValue, type TValuePayload } from '@soldy-ui/core'
-import { ruRU } from '@soldy-ui/plugins'
+import { TDatePicker, type TDatePickerValue, type TValuePayload } from '@soxa-ui/core'
+import { ruRU } from '@soxa-ui/plugins'
 import {
 	LocaleProviderDirective,
 	SlotDirective,
 	TDatePickerComponent,
 	TFrameComponent,
-} from '@soldy-ui/angular'
+} from '@soxa-ui/angular'
 import { find, nextFrame } from './mount'
 
 /** Смонтированный хост теста — его перепроверяют действия. */

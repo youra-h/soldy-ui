@@ -2,7 +2,7 @@ import { AST_NODE_TYPES, ESLintUtils } from '@typescript-eslint/utils'
 import type { TSESTree } from '@typescript-eslint/utils'
 
 /**
- * `soldy/no-explicit-any` — `any` только там, где он стирает инвариантность,
+ * `soxa/no-explicit-any` — `any` только там, где он стирает инвариантность,
  * а не прячет тип (см. AGENTS.md, «`any`: где он честный»).
  *
  * Заменяет `@typescript-eslint/no-explicit-any`. Встроенное правило не

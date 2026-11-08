@@ -1,5 +1,5 @@
 /**
- * TComponentBase — the base of a soldy Angular component: the binding's
+ * TComponentBase — the base of a soxa Angular component: the binding's
  * lifecycle, outputs, slots and the root. AGENTS.md (Angular), «Корень-хост
  * ведёт базовый `TComponentBase`».
  *
@@ -37,8 +37,8 @@ import {
 	signal,
 	type Signal,
 } from '@angular/core'
-import type { IEntity } from '@soldy-ui/core'
-import type { TStateSnapshot } from '@soldy-ui/setup'
+import type { IEntity } from '@soxa-ui/core'
+import type { TStateSnapshot } from '@soxa-ui/setup'
 import { createRoot, type TRoot } from './root/strategies'
 import type { TRootSpec } from './root/spec'
 import type { SlotDirective } from './slot.directive'

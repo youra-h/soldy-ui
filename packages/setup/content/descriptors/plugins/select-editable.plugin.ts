@@ -8,7 +8,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TEditablePlugin } from '@soldy-ui/plugins'
+import { TEditablePlugin } from '@soxa-ui/plugins'
 
 export const SelectEditablePluginDescriptor = definePlugin({
 	ctor: TEditablePlugin,

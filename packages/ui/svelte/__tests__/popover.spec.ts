@@ -1,4 +1,4 @@
-import type { TValuePayload } from '@soldy-ui/core'
+import type { TValuePayload } from '@soxa-ui/core'
 /**
  * Popover в Svelte — проводка целиком, на настоящей разметке.
  *
@@ -20,9 +20,9 @@ import type { TValuePayload } from '@soldy-ui/core'
 
 import { describe, it, expect, afterEach, vi } from 'vitest'
 import { flushSync } from 'svelte'
-import { TPopover } from '@soldy-ui/core'
-import { ruRU } from '@soldy-ui/plugins'
-import type { PopoverProps } from '@soldy-ui/svelte'
+import { TPopover } from '@soxa-ui/core'
+import { ruRU } from '@soxa-ui/plugins'
+import type { PopoverProps } from '@soxa-ui/svelte'
 import Harness, { type TPopoverCase } from './Popover.test.svelte'
 import { find, mount, nextFrame } from './mount'
 import { reactiveProps } from './reactive-props.svelte'

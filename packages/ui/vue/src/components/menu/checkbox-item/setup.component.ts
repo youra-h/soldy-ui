@@ -2,7 +2,7 @@ import {
 	TCollectionItemExtension,
 	MenuCheckboxItemDescriptor,
 	MenuCollectionCheckboxItemDescriptor,
-} from '@soldy-ui/setup'
+} from '@soxa-ui/setup'
 import {
 	useAdapter,
 	extendBinding,

@@ -1,5 +1,5 @@
-import type { IVirtual } from '@soldy-ui/core'
-import type { VirtualDescriptor } from '@soldy-ui/setup'
+import type { IVirtual } from '@soxa-ui/core'
+import type { VirtualDescriptor } from '@soxa-ui/setup'
 import type { EventProps, UseProps } from '../../types'
 
 /** События Virtual, выведены из дескриптора автоматически. */

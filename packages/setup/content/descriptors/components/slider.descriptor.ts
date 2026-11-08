@@ -10,8 +10,8 @@
  */
 
 import { defineComponent, defineDescriptor, defineType } from '../../../protected/define'
-import { TSlider } from '@soldy-ui/core'
-import { fieldOf } from '@soldy-ui/plugins'
+import { TSlider } from '@soxa-ui/core'
+import { fieldOf } from '@soxa-ui/plugins'
 import {
 	ActionPluginDescriptor,
 	SlideKeyboardPluginDescriptor,

@@ -6,8 +6,8 @@
  * (AGENTS.md (Web Components), «Поддерево»).
  */
 
-import type { ITooltip } from '@soldy-ui/core'
-import { DEFAULT_SLOT } from '@soldy-ui/setup'
+import type { ITooltip } from '@soxa-ui/core'
+import { DEFAULT_SLOT } from '@soxa-ui/setup'
 import { bind, createDetail, lend, ownerAttributes, type ITemplate, patch } from '../../adapter'
 import { TFrameElement, type TFrameElementProps } from '../frame'
 import type { TTooltipOutputs } from './setup.component'

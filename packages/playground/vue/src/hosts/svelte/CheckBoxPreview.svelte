@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { CheckBox, Label } from '@soldy-ui/svelte'
+	import { CheckBox, Label } from '@soxa-ui/svelte'
 	import type { TPreviewProps } from './previews'
 
 	const bind: TPreviewProps = $props()

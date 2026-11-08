@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core'
 import { NgTemplateOutlet } from '@angular/common'
-import type { IDateInput } from '@soldy-ui/core'
+import type { IDateInput } from '@soxa-ui/core'
 import { AttributesDirective, RoleIconDirective, provideElevator } from '../../adapter'
 import { TButtonComponent } from '../button'
 import { TIconComponent } from '../icon'

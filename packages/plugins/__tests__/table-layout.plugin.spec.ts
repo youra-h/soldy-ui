@@ -14,8 +14,8 @@
  */
 
 import { describe, it, expect, afterEach, afterAll, beforeAll, vi } from 'vitest'
-import { TTable, createEngineTable } from '@soldy-ui/core'
-import type { TTableCollection } from '@soldy-ui/core'
+import { TTable, createEngineTable } from '@soxa-ui/core'
+import type { TTableCollection } from '@soxa-ui/core'
 import { TCollectionBundlesPlugin, TElementPlugin, TPluginBundle, TTableLayoutPlugin } from '../src'
 import type { IPlugin, IPluginConstructor } from '../src'
 

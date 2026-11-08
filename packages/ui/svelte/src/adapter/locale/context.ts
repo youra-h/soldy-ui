@@ -1,10 +1,10 @@
 /** Локаль поддерева в контексте Svelte — ключ модуля, только эти две функции. */
 
 import { getContext, setContext } from 'svelte'
-import { TLocaleSource } from '@soldy-ui/plugins'
-import type { ILocaleSource } from '@soldy-ui/plugins'
+import { TLocaleSource } from '@soxa-ui/plugins'
+import type { ILocaleSource } from '@soxa-ui/plugins'
 
-const LOCALE_KEY = Symbol('soldy:locale')
+const LOCALE_KEY = Symbol('soxa:locale')
 
 export function provideLocale(source: TLocaleSource): void {
 	setContext(LOCALE_KEY, source)

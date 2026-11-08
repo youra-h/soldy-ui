@@ -69,7 +69,7 @@ jobs:
           fi
           npx changeset publish --tag latest
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.SOXA_NPM_TOKEN }}
           NPM_CONFIG_PROVENANCE: true
 
       # One GitHub Release per release: `v<version>` of the library, and

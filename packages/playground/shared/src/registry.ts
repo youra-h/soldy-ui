@@ -71,9 +71,9 @@ import {
 	TooltipDescriptor,
 	ValueControlDescriptor,
 	VirtualDescriptor,
-} from '@soldy-ui/setup'
-import { arEG, enUS, esES, extendLocale, frFR, ruRU, zhCN } from '@soldy-ui/plugins'
-import type { TLocale, TMotionMode } from '@soldy-ui/plugins'
+} from '@soxa-ui/setup'
+import { arEG, enUS, esES, extendLocale, frFR, ruRU, zhCN } from '@soxa-ui/plugins'
+import type { TLocale, TMotionMode } from '@soxa-ui/plugins'
 import type { TComponentEntry, TComponentGroup, TThemeEntry, TIconPackEntry } from './types'
 
 /**

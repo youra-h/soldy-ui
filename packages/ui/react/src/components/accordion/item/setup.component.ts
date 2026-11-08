@@ -2,7 +2,7 @@ import {
 	AccordionCollectionItemDescriptor,
 	AccordionItemDescriptor,
 	TCollectionItemExtension,
-} from '@soldy-ui/setup'
+} from '@soxa-ui/setup'
 import { useAdapter, useAdapterContext, useCollectionAdapter } from '../../../adapter'
 import type { AccordionItemProps } from './base.component'
 

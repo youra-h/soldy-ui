@@ -19,15 +19,15 @@
  */
 
 import { describe, it, expect, expectTypeOf, vi, afterEach } from 'vitest'
-import { TIcon, createEngineTabs } from '@soldy-ui/core'
-import { TBasePlugin, type IPluginContext } from '@soldy-ui/plugins'
+import { TIcon, createEngineTabs } from '@soxa-ui/core'
+import { TBasePlugin, type IPluginContext } from '@soxa-ui/plugins'
 import {
 	TabsCollectionContentDescriptor,
 	TabsContentDescriptor,
 	TabsDescriptor,
 	TabsItemDescriptor,
 	usePlugins,
-} from '@soldy-ui/setup'
+} from '@soxa-ui/setup'
 import {
 	TTabsContentElement,
 	TTabsElement,
@@ -35,7 +35,7 @@ import {
 	type TTabsContentElementProps,
 	type TTabsElementProps,
 	type TTabsItemElementProps,
-} from '@soldy-ui/webc'
+} from '@soxa-ui/webc'
 import { tabsTemplate } from '../src/components/tabs/tabs.template'
 import { tabsItemTemplate } from '../src/components/tabs/item/tabs-item.template'
 import { tabsContentTemplate } from '../src/components/tabs/content/tabs-content.template'
@@ -921,7 +921,7 @@ describe('кнопка закрытия: разметка', () => {
 		expect(closeOf('Настройки').getAttribute('aria-label')).toBe('Close Настройки')
 	})
 
-	/** Строка и крестик — детали разметки таба: элементы soldy с именами места. */
+	/** Строка и крестик — детали разметки таба: элементы soxa с именами места. */
 	it('строка, крестик и его иконка — детали с именами места и type="button"', async () => {
 		await mount(CLOSABLE)
 
@@ -1179,7 +1179,7 @@ describe('клавиатура', () => {
 /**
  * Свет детали: слоты таба — свет его строки и кнопки закрытия. Узлы встают в
  * деталь, пока та ждёт своей сборки, и деталь раскладывает их по назначенному
- * слоту, а не по атрибуту `slot` — у текста его нет вовсе. Элемент soldy в
+ * слоту, а не по атрибуту `slot` — у текста его нет вовсе. Элемент soxa в
  * свете таба переезжает в строку переносом силами базы и собирается один раз.
  */
 describe('свет детали', () => {
@@ -1381,7 +1381,7 @@ describe('образцы item-* набора', () => {
 
 /**
  * Набор, переставленный в документе, собирается заново, как любой элемент
- * soldy: новая связка — новый фасад. Состав и выбор живут в движке, и движок
+ * soxa: новая связка — новый фасад. Состав и выбор живут в движке, и движок
  * снаружи с табами из данных переставленный набор подхватывает целиком —
  * табы те же, активный тот же. Своего движка набор после перестановки не
  * держит: табы разметки входят в коллекцию заново, с тем, что задано их

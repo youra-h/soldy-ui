@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
-import { TProgressLinear } from '@soldy-ui/core'
-import type { IProgressLinearProps } from '@soldy-ui/core'
+import { TProgressLinear } from '@soxa-ui/core'
+import type { IProgressLinearProps } from '@soxa-ui/core'
 
 /**
  * TProgressLinear — индикатор выполнения линией: значение, шкала, флаг бега,

@@ -1,7 +1,7 @@
 import { useEmits, useProps } from '../../adapter'
 import type { TEmits, TProps, UseProps } from '../../types/common'
-import { ControlDescriptor } from '@soldy-ui/setup'
-import type { IControl } from '@soldy-ui/core'
+import { ControlDescriptor } from '@soxa-ui/setup'
+import type { IControl } from '@soxa-ui/core'
 
 export const emitsControl: TEmits = useEmits(ControlDescriptor())
 

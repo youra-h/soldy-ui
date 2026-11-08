@@ -17,10 +17,10 @@
  */
 
 import { describe, it, expect, afterEach } from 'vitest'
-import type { ISelectProps } from '@soldy-ui/core'
+import type { ISelectProps } from '@soxa-ui/core'
 import { createPluginContext } from './helpers'
-import { TSelect } from '@soldy-ui/core'
-import { TSelectPointerPlugin, TElementPlugin } from '@soldy-ui/plugins'
+import { TSelect } from '@soxa-ui/core'
+import { TSelectPointerPlugin, TElementPlugin } from '@soxa-ui/plugins'
 
 const nextFrame = () => new Promise((resolve) => requestAnimationFrame(resolve))
 

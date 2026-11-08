@@ -1,4 +1,4 @@
-import type { IFrame, TDefaultValues } from '@soldy-ui/core'
+import type { IFrame, TDefaultValues } from '@soxa-ui/core'
 import { TBasePlugin } from '../../../base'
 import type { IPluginContext } from '../../../base'
 import { TElementPlugin } from '../../element'

@@ -1,4 +1,4 @@
-import type { TValuePayload } from '@soldy-ui/core'
+import type { TValuePayload } from '@soxa-ui/core'
 import type { TPluginEvents } from '../../base'
 import type { IOverlayOpenOptions } from '../overlay/types'
 
@@ -55,7 +55,7 @@ export type TDismissPluginEvents = TPluginEvents & {
 /**
  * Пропсы плагина такими, какими их объявляет contribution — без неймспейса.
  *
- * Неймспейс (`dismiss_enabled`) навешивает `DescriptorAllProps` в `@soldy-ui/setup`
+ * Неймспейс (`dismiss_enabled`) навешивает `DescriptorAllProps` в `@soxa-ui/setup`
  * по `namespace` из `definePlugin`; здесь только собственные имена пропсов.
  * Защищённого `ownerAttribute` здесь нет: это выход, в разметку его не пишут.
  */

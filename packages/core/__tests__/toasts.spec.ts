@@ -11,8 +11,8 @@ import {
 	createEngineToasts,
 	isCloseRequestable,
 	isSwipeable,
-} from '@soldy-ui/core'
-import type { IToastsItem, TToastsItemType, TToastsPlacement } from '@soldy-ui/core'
+} from '@soxa-ui/core'
+import type { IToastsItem, TToastsItemType, TToastsPlacement } from '@soxa-ui/core'
 
 /**
  * Модель тостов: менеджер-регион, тост и очередь коллекции.

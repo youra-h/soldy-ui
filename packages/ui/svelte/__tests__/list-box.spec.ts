@@ -26,14 +26,14 @@ import {
 	type TListBoxCollection,
 	type TListBoxValue,
 	type TValuePayload,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 import {
 	ListBox,
 	ListBoxGroup,
 	ListBoxItem,
 	type ListBoxItemProps,
 	type ListBoxProps,
-} from '@soldy-ui/svelte'
+} from '@soxa-ui/svelte'
 import Harness from './ListBox.test.svelte'
 import Groups from './ListBoxGroups.test.svelte'
 import Slots from './ListBoxSlots.test.svelte'

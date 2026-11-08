@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest'
-import { TInput } from '@soldy-ui/core'
+import { TInput } from '@soxa-ui/core'
 
 describe('TInput', () => {
 	it('создаётся через { props } и через plain props', () => {

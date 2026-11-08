@@ -15,12 +15,12 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { render, cleanup } from './render'
 import { userEvent } from 'vitest/browser'
 import { defineComponent, h, nextTick } from 'vue'
-import { COMPONENT_SIZES } from '@soldy-ui/playground-shared'
-import { Tabs, TabsItem } from '@soldy-ui/vue'
+import { COMPONENT_SIZES } from '@soxa-ui/playground-shared'
+import { Tabs, TabsItem } from '@soxa-ui/vue'
 
 import { pseudoBox } from './pseudo-box'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 /**
  * Набор с крестиком: активный, обычный и выключенный. У выключенного крестика

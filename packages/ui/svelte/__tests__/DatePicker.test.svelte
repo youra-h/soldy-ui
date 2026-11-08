@@ -5,7 +5,7 @@
 	 * (`onParentClick`: клик кнопки очистки до него не всплывает). Смена полей
 	 * `picker` — смена пропсов DatePicker.
 	 */
-	import { DatePicker, type DatePickerProps } from '@soldy-ui/svelte'
+	import { DatePicker, type DatePickerProps } from '@soxa-ui/svelte'
 
 	type THarnessProps = {
 		/** DatePicker в `<form>`. */

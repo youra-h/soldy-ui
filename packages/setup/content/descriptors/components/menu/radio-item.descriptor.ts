@@ -15,7 +15,7 @@
  */
 
 import { defineComponent, defineDescriptor, defineType } from '../../../../protected/define'
-import { TMenuRadioItem } from '@soldy-ui/core'
+import { TMenuRadioItem } from '@soxa-ui/core'
 import { MenuItemDescriptor } from './item.descriptor'
 
 export const MenuRadioItemDescriptor = defineDescriptor(() =>

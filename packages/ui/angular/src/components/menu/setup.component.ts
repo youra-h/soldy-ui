@@ -1,5 +1,5 @@
-import { MenuCollectionDescriptor, MenuDescriptor, TCollectionExtension } from '@soldy-ui/setup'
-import type { IMenu, IMenuProps, TMenuCollectionFacade } from '@soldy-ui/core'
+import { MenuCollectionDescriptor, MenuDescriptor, TCollectionExtension } from '@soxa-ui/setup'
+import type { IMenu, IMenuProps, TMenuCollectionFacade } from '@soxa-ui/core'
 import {
 	AngularElevatorFactory,
 	createAngularAdapterContext,

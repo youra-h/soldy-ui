@@ -14,14 +14,14 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { render, cleanup } from './render'
 import { commands, userEvent } from 'vitest/browser'
 import { defineComponent, h, nextTick, ref, type VNode } from 'vue'
-import { Button, Calendar, Menu } from '@soldy-ui/vue'
-import type { DescriptorSlots, MenuDescriptor } from '@soldy-ui/setup'
+import { Button, Calendar, Menu } from '@soxa-ui/vue'
+import type { DescriptorSlots, MenuDescriptor } from '@soxa-ui/setup'
 
 import { pixel, settled, shift, style, systemColor } from './colors'
 import { forcedColors } from './media'
 import { contextMenuKey } from './engine'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 type TTriggerScope = DescriptorSlots<typeof MenuDescriptor>['trigger']
 

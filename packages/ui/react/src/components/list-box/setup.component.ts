@@ -4,7 +4,7 @@ import {
 	TCollectionExtension,
 	TDragAndDropCollectionExtension,
 	TVirtualCollectionExtension,
-} from '@soldy-ui/setup'
+} from '@soxa-ui/setup'
 import { useAdapter, useAdapterContext, useCollectionAdapter } from '../../adapter'
 import type { ListBoxProps } from './base.component'
 

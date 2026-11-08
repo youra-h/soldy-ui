@@ -7,7 +7,7 @@
 
 import { defineComponent, defineDescriptor } from '../../../protected/define'
 import type { IComponentPropDefinition } from '../../../protected/define'
-import { TStylable } from '@soldy-ui/core'
+import { TStylable } from '@soxa-ui/core'
 import { ComponentViewDescriptor } from './component-view.descriptor'
 
 export const StylableDescriptor = defineDescriptor(() =>

@@ -1,5 +1,5 @@
-import { DateInputDescriptor, TFieldControlExtension } from '@soldy-ui/setup'
-import type { IDateInput } from '@soldy-ui/core'
+import { DateInputDescriptor, TFieldControlExtension } from '@soxa-ui/setup'
+import type { IDateInput } from '@soxa-ui/core'
 import { AngularElevatorFactory, createAngularAdapterContext, useAdapter } from '../../adapter'
 import type { TBinding } from '../../adapter'
 

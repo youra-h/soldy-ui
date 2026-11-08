@@ -24,7 +24,7 @@ import {
 	TTagsItem,
 } from '../src'
 import type { TAria } from '../src'
-import type { TValuePayload } from '@soldy-ui/core'
+import type { TValuePayload } from '@soxa-ui/core'
 
 /** Набор кнопки и событие, которым он сообщает о записи. */
 type TNameSet = {

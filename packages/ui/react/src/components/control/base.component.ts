@@ -1,5 +1,5 @@
-import type { IControl } from '@soldy-ui/core'
-import type { ControlDescriptor } from '@soldy-ui/setup'
+import type { IControl } from '@soxa-ui/core'
+import type { ControlDescriptor } from '@soxa-ui/setup'
 import type { EventProps, UseProps } from '../../types'
 
 export type ControlEventProps = EventProps<typeof ControlDescriptor>

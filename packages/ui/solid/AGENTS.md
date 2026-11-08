@@ -19,7 +19,7 @@
 Контекст на чужом наборе (`config.bundle` — фасад коллекции) их не берёт: id и
 локаль у того, кто набор собрал, и у компонента с двумя контекстами id один.
 Сборку мимо обёртки ловит сторож `framework-mechanisms-components.spec.ts`:
-`createAdapterContext` из `@soldy-ui/setup` в компонентах Solid запрещён.
+`createAdapterContext` из `@soxa-ui/setup` в компонентах Solid запрещён.
 
 Чего тело компонента само не может, дают помощники адаптера:
 
@@ -51,12 +51,12 @@
 `const` из `createRootProps`, `createWrappedRootProps`, `createPartProps`,
 `fieldText` или `textareaText`. Прямой спред состояния
 (`{...state.contentAria}`) смену за гидратацию до узла не донёс бы; его ловит
-блок eslint `soldy/solid-part-props` (правило —
+блок eslint `soxa/solid-part-props` (правило —
 `tools/eslint/rules/solid-part-props.ts`). Корень спреда не берёт: `Root`
 получает мемо раскладки (`attributes={root}`), и тип `TRootProps` — с
 `class` и `style` раскладки — сырой набор состояния не пропускает. Ветки и петли — примитивы адаптера,
 а не Solid: импорт их из `solid-js` в компонентах ловит блок eslint
-`soldy/solid-components-flow`.
+`soxa/solid-components-flow`.
 
 ### Связка
 

@@ -29,9 +29,9 @@ import {
 	type TGroupSection,
 	type TSelectCollection,
 	type TSelectionMode,
-} from '@soldy-ui/core'
-import { ruRU } from '@soldy-ui/plugins'
-import { SelectDescriptor, SelectGroupDescriptor, SelectItemDescriptor } from '@soldy-ui/setup'
+} from '@soxa-ui/core'
+import { ruRU } from '@soxa-ui/plugins'
+import { SelectDescriptor, SelectGroupDescriptor, SelectItemDescriptor } from '@soxa-ui/setup'
 import {
 	TFrameElement,
 	TInputElement,
@@ -46,7 +46,7 @@ import {
 	type TSelectElementProps,
 	type TSelectItemElementProps,
 	type TTagsElementProps,
-} from '@soldy-ui/webc'
+} from '@soxa-ui/webc'
 import { defineElement } from '../src/adapter/runtime/defineElement'
 import { type ITemplate } from '../src/adapter/template/types'
 import { selectTemplate } from '../src/components/select/select.template'

@@ -3,8 +3,8 @@
  * через `for` и `id` нет. docs/architecture.md, Layer 8d, «Подпись».
  */
 
-import { LabelDescriptor } from '@soldy-ui/setup'
-import type { ILabel } from '@soldy-ui/core'
+import { LabelDescriptor } from '@soxa-ui/setup'
+import type { ILabel } from '@soxa-ui/core'
 import { ElementBase, defineElement } from '../../adapter'
 import type { TElementClassOf, TElementType } from '../../adapter'
 import { labelTemplate } from './label.template'

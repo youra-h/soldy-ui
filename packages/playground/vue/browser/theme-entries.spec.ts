@@ -2,7 +2,7 @@
  * The stylesheets of components of the theme oren cover their markup
  * (`packages/themes/oren/AGENTS.md`, «Слои: лист целиком и по компонентам»).
  *
- * The entry `@soldy-ui/theme-oren/<component>.css` imports the shared part and
+ * The entry `@soxa-ui/theme-oren/<component>.css` imports the shared part and
  * the parts the table of the theme names (`packages/themes/oren/entries.ts`).
  * Which parts a component needs is knowledge of the templates of the library:
  * Select draws its field with Input and its rows with Button, Calendar its
@@ -25,7 +25,7 @@
 
 import { afterEach, describe, it, expect } from 'vitest'
 import parser from 'postcss-selector-parser'
-import { PRESETS, previewProps } from '@soldy-ui/playground-shared'
+import { PRESETS, previewProps } from '@soxa-ui/playground-shared'
 import { loadHost } from '../src/hosts'
 
 const BUILT = import.meta.glob<string>('../../../themes/oren/dist/{components,parts}/*.css', {

@@ -1,1 +1,1 @@
-export { ListBoxGroupDescriptor as descriptor } from '@soldy-ui/setup'
+export { ListBoxGroupDescriptor as descriptor } from '@soxa-ui/setup'

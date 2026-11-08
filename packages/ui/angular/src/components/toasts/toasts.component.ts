@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core'
 import { NgTemplateOutlet } from '@angular/common'
-import type { IToasts } from '@soldy-ui/core'
+import type { IToasts } from '@soxa-ui/core'
 import { SlotDirective, provideElevator } from '../../adapter'
 import { TToastsItemComponent } from './item'
 import { TToastsSurface } from '../../generated/toasts.metadata'

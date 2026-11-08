@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest'
-import { TTooltip, type TValuePayload } from '@soldy-ui/core'
+import { TTooltip, type TValuePayload } from '@soxa-ui/core'
 
 /**
  * Модель Tooltip: состояние подсказки и то, что из него следует для разметки.

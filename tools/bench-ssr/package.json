@@ -2,7 +2,7 @@
   "name": "bench-ssr",
   "private": true,
   "type": "module",
-  "description": "Server render memory run of soldy: thousands of renders of a page with every component in Node, see benchmarks/ssr/README.md in the root",
+  "description": "Server render memory run of soxa: thousands of renders of a page with every component in Node, see benchmarks/ssr/README.md in the root",
   "scripts": {
     "bench": "node run.mjs"
   }

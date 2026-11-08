@@ -7,7 +7,7 @@
  * `.so-rating__star-fill`.
  */
 
-import type { IRating, TRatingStar } from '@soldy-ui/core'
+import type { IRating, TRatingStar } from '@soxa-ui/core'
 import type { TRatingOutputs } from './setup.component'
 import {
 	TKeyedLoop,

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { getIcon } from '@soldy-ui/setup'
+	import { getIcon } from '@soxa-ui/setup'
 	import type { Attachment } from 'svelte/attachments'
 	import type { TRoleIcon } from './icon'
 	import type { TRootNodeAttributes } from './root'

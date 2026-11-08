@@ -23,7 +23,7 @@
 
 import { describe, it, expect } from 'vitest'
 import { createSignal } from 'solid-js'
-import { createEngineListBox, createEngineTabs } from '@soldy-ui/core'
+import { createEngineListBox, createEngineTabs } from '@soxa-ui/core'
 import {
 	ListBoxEmptyStreamed,
 	StructureProbe,

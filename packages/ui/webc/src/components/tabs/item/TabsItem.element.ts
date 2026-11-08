@@ -4,8 +4,8 @@
  * docs/architecture.md, Layer 8d, «Коллекция».
  */
 
-import { TabsCollectionItemDescriptor, TabsItemDescriptor } from '@soldy-ui/setup'
-import type { ITabsItem, TTabsItemCollectionFacade } from '@soldy-ui/core'
+import { TabsCollectionItemDescriptor, TabsItemDescriptor } from '@soxa-ui/setup'
+import type { ITabsItem, TTabsItemCollectionFacade } from '@soxa-ui/core'
 import { ElementBase } from '../../../adapter'
 import type { TElementClassOf, TElementType } from '../../../adapter'
 import { setupTabsItem } from './setup.component'

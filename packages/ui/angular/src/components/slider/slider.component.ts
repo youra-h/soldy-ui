@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core'
 import { NgTemplateOutlet } from '@angular/common'
-import type { ISlider } from '@soldy-ui/core'
+import type { ISlider } from '@soxa-ui/core'
 import { AttributesDirective, FieldTextDirective, TextPipe, provideElevator } from '../../adapter'
 import { TSliderSurface } from '../../generated/slider.metadata'
 import { setupSlider } from './setup.component'

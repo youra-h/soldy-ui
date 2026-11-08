@@ -1,6 +1,6 @@
-import type { ITable } from '@soldy-ui/core'
-import { TBasePlugin, TElementPlugin } from '@soldy-ui/plugins'
-import type { IPluginContext } from '@soldy-ui/plugins'
+import type { ITable } from '@soxa-ui/core'
+import { TBasePlugin, TElementPlugin } from '@soxa-ui/plugins'
+import type { IPluginContext } from '@soxa-ui/plugins'
 
 /** Высота шапки на корне таблицы: по ней CSS держит фокус в теле ниже шапки. */
 const HEAD_HEIGHT = '--so-table-head-height'

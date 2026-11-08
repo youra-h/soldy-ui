@@ -40,7 +40,7 @@ const ENTRY = '/__tests__/hydration/server.tsx'
  * собирал бы solid-js для браузера в кэш пакета.
  */
 const withoutClientOptimizer: Plugin = {
-	name: 'soldy:without-client-optimizer',
+	name: 'soxa:without-client-optimizer',
 	configEnvironment(name, config) {
 		if (name === 'client') config.optimizeDeps = { noDiscovery: true, include: [] }
 	},

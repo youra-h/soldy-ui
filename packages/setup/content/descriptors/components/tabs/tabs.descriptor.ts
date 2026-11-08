@@ -8,9 +8,9 @@
  */
 
 import { defineComponent, defineDescriptor, defineType } from '../../../../protected/define'
-import { TTabs } from '@soldy-ui/core'
-import type { ITabsItem } from '@soldy-ui/core'
-import { tabStopOf } from '@soldy-ui/plugins'
+import { TTabs } from '@soxa-ui/core'
+import type { ITabsItem } from '@soxa-ui/core'
+import { tabStopOf } from '@soxa-ui/plugins'
 import { ControlDescriptor } from '../control.descriptor'
 import {
 	ActionPluginDescriptor,

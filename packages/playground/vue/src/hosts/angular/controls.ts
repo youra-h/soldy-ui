@@ -19,7 +19,7 @@ import {
 	TSliderComponent,
 	TSwitchComponent,
 	TTextareaComponent,
-} from '@soldy-ui/angular'
+} from '@soxa-ui/angular'
 import { CopyDirective } from './copy.directive'
 import type { TFixture } from './fixtures'
 

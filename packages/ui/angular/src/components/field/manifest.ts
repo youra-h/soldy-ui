@@ -1,1 +1,1 @@
-export { FieldDescriptor as descriptor } from '@soldy-ui/setup'
+export { FieldDescriptor as descriptor } from '@soxa-ui/setup'

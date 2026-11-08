@@ -1,4 +1,4 @@
-import type { TTagsCollection } from '@soldy-ui/core'
+import type { TTagsCollection } from '@soxa-ui/core'
 import type { IPluginContext } from '../../base'
 import { TCollectionElements } from '../collection'
 import { tabStops } from '../../utils'

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { IListBoxItem, TDrawnEntry } from '@soldy-ui/core'
+	import type { IListBoxItem, TDrawnEntry } from '@soxa-ui/core'
 	import { Dynamic, toControlAttrs, toRootForward, toRootProps, toStyleText } from '../../adapter'
 	import { ListBoxItem } from './item'
 	import { ListBoxGroup } from './group'

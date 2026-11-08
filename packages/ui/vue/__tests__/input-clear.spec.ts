@@ -13,9 +13,9 @@
 import { describe, it, expect, afterEach, vi } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { h, nextTick, type VNode } from 'vue'
-import { TInput } from '@soldy-ui/core'
-import { ruRU } from '@soldy-ui/plugins'
-import { Input, LocaleProvider } from '@soldy-ui/vue'
+import { TInput } from '@soxa-ui/core'
+import { ruRU } from '@soxa-ui/plugins'
+import { Input, LocaleProvider } from '@soxa-ui/vue'
 
 let wrapper: ReturnType<typeof mount> | null = null
 

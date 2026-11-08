@@ -8,9 +8,9 @@
  */
 
 import { defineComponent, defineDescriptor, defineType } from '../../../protected/define'
-import { TInput } from '@soldy-ui/core'
-import type { IInput } from '@soldy-ui/core'
-import { fieldOf } from '@soldy-ui/plugins'
+import { TInput } from '@soxa-ui/core'
+import type { IInput } from '@soxa-ui/core'
+import { fieldOf } from '@soxa-ui/plugins'
 import {
 	ActionPluginDescriptor,
 	ClearableNamesPluginDescriptor,

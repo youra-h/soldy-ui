@@ -4,8 +4,8 @@
  * (`hides: false`): `display: none` спрятал бы и содержимое.
  */
 
-import { SkeletonDescriptor } from '@soldy-ui/setup'
-import type { ISkeleton } from '@soldy-ui/core'
+import { SkeletonDescriptor } from '@soxa-ui/setup'
+import type { ISkeleton } from '@soxa-ui/core'
 import { ElementBase, defineElement } from '../../adapter'
 import type { TElementClassOf, TElementType } from '../../adapter'
 import { skeletonTemplate } from './skeleton.template'

@@ -9,7 +9,7 @@
  *   слой, а обёртка без коробки остаётся местом (регион тостов).
  */
 
-import type { TStateSnapshot } from '@soldy-ui/setup'
+import type { TStateSnapshot } from '@soxa-ui/setup'
 import type { TTeleportPlace } from './teleport'
 
 export type TRootSet = 'attrs' | 'aria' | 'dataset'

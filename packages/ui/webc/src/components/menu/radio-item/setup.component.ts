@@ -3,8 +3,8 @@ import {
 	MenuRadioItemDescriptor,
 	TCollectionItemExtension,
 	TMenuRadioItemExtension,
-} from '@soldy-ui/setup'
-import type { IMenuRadioItem, TMenuItemCollectionFacade } from '@soldy-ui/core'
+} from '@soxa-ui/setup'
+import type { IMenuRadioItem, TMenuItemCollectionFacade } from '@soxa-ui/core'
 import {
 	createWebcAdapterContext,
 	joinBindings,

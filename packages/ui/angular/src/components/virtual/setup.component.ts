@@ -1,5 +1,5 @@
-import { TVirtualExtension, VirtualDescriptor } from '@soldy-ui/setup'
-import type { IVirtual } from '@soldy-ui/core'
+import { TVirtualExtension, VirtualDescriptor } from '@soxa-ui/setup'
+import type { IVirtual } from '@soxa-ui/core'
 import { AngularElevatorFactory, createAngularAdapterContext, useAdapter } from '../../adapter'
 import type { TBinding } from '../../adapter'
 

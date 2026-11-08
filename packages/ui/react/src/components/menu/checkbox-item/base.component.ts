@@ -1,9 +1,9 @@
 import type { HTMLAttributes } from 'react'
-import type { IMenuCheckboxItem } from '@soldy-ui/core'
+import type { IMenuCheckboxItem } from '@soxa-ui/core'
 import type {
 	MenuCheckboxItemDescriptor,
 	MenuCollectionCheckboxItemDescriptor,
-} from '@soldy-ui/setup'
+} from '@soxa-ui/setup'
 import type { EventProps, TDomAttributes, UseDomProps } from '../../../types'
 
 export type MenuCheckboxItemEventProps = EventProps<typeof MenuCheckboxItemDescriptor> &

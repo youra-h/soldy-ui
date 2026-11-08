@@ -3,7 +3,7 @@
  * массивов в декораторе (`generated/*.metadata.ts`).
  */
 
-import { TSurface, type IComponentDescriptor } from '@soldy-ui/setup'
+import { TSurface, type IComponentDescriptor } from '@soxa-ui/setup'
 import { AngularProfile } from './profile'
 
 /**

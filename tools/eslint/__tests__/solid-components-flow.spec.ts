@@ -5,7 +5,7 @@ import { resolve } from 'node:path'
 /**
  * Сторож «ветки и петли компонента Solid — примитивы адаптера»
  * (`packages/ui/solid/src/adapter/runtime/flow.ts`, шапка) живёт блоком
- * `soldy/solid-components-flow` в `eslint.config.ts` — по образцу
+ * `soxa/solid-components-flow` в `eslint.config.ts` — по образцу
  * `react-components-no-framework.spec.ts`. Тест линтит фрагменты настоящим
  * конфигом репозитория: опечатка в `files` отключила бы защиту молча, и CI
  * остался бы зелёным.

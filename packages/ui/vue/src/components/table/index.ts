@@ -1,4 +1,4 @@
-import { withParts } from '@soldy-ui/setup'
+import { withParts } from '@soxa-ui/setup'
 import type { TClosedComponent } from '../../adapter'
 import TableComponent from './Table.vue'
 import { TableColumn } from './column'

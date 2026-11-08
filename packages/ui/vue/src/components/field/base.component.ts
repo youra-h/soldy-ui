@@ -1,7 +1,7 @@
 import { useEmits, useProps } from '../../adapter'
 import type { TEmits, TProps, UseProps } from '../../types/common'
-import { FieldDescriptor } from '@soldy-ui/setup'
-import type { IField } from '@soldy-ui/core'
+import { FieldDescriptor } from '@soxa-ui/setup'
+import type { IField } from '@soxa-ui/core'
 
 export const emitsField: TEmits = useEmits(FieldDescriptor())
 

@@ -12,7 +12,7 @@
 import { describe, it, expect, afterEach } from 'vitest'
 import { mount, type VueWrapper } from '@vue/test-utils'
 import { nextTick } from 'vue'
-import type { TPropControl } from '@soldy-ui/playground-shared'
+import type { TPropControl } from '@soxa-ui/playground-shared'
 import PropControl from '../src/components/PropControl.vue'
 
 /** Поле Input слушает ввод с `element:ready`, а оно приходит кадром. */

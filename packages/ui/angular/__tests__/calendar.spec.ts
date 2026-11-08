@@ -34,9 +34,9 @@ import {
 	type TCalendarUnavailable,
 	type TCalendarValue,
 	type TValuePayload,
-} from '@soldy-ui/core'
-import { ruRU } from '@soldy-ui/plugins'
-import { LocaleProviderDirective, SlotDirective, TCalendarComponent } from '@soldy-ui/angular'
+} from '@soxa-ui/core'
+import { ruRU } from '@soxa-ui/plugins'
+import { LocaleProviderDirective, SlotDirective, TCalendarComponent } from '@soxa-ui/angular'
 import { countAssemblies, type TAssemblyProbe } from './assemblies'
 import { find, nextFrame } from './mount'
 

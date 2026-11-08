@@ -21,7 +21,7 @@
  */
 
 import { defineComponent, defineDescriptor } from '../../../protected/define'
-import { TModalLayer } from '@soldy-ui/core'
+import { TModalLayer } from '@soxa-ui/core'
 import {
 	DismissPluginDescriptor,
 	HideOutsidePluginDescriptor,

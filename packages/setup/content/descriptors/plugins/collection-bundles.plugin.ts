@@ -5,7 +5,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TCollectionBundlesPlugin } from '@soldy-ui/plugins'
+import { TCollectionBundlesPlugin } from '@soxa-ui/plugins'
 
 export const CollectionBundlesPluginDescriptor = definePlugin({
 	ctor: TCollectionBundlesPlugin,

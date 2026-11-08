@@ -6,7 +6,7 @@
  */
 
 import type { ComponentType, ReactElement, SVGProps } from 'react'
-import { getIcon } from '@soldy-ui/setup'
+import { getIcon } from '@soxa-ui/setup'
 
 export type TRoleIconProps = SVGProps<SVGSVGElement>
 

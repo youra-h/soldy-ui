@@ -11,8 +11,8 @@
  */
 
 import { describe, it, expect, afterEach } from 'vitest'
-import { SkeletonDescriptor } from '@soldy-ui/setup'
-import { TSkeletonElement, type TSkeletonElementProps } from '@soldy-ui/webc'
+import { SkeletonDescriptor } from '@soxa-ui/setup'
+import { TSkeletonElement, type TSkeletonElementProps } from '@soxa-ui/webc'
 import { skeletonTemplate } from '../src/components/skeleton/skeleton.template'
 import { bareContext } from './template-context'
 

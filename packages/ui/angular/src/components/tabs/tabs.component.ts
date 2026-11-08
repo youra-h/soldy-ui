@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core'
 import { NgTemplateOutlet } from '@angular/common'
-import type { ITabs } from '@soldy-ui/core'
+import type { ITabs } from '@soxa-ui/core'
 import { AttributesDirective, SlotDirective, provideElevator } from '../../adapter'
 import { TTabsItemComponent } from './item'
 import { TTabsSurface } from '../../generated/tabs.metadata'

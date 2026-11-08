@@ -6,7 +6,7 @@
 	 * того же компонента. Смена `select` или `items` в `reactiveProps` —
 	 * перерисовка родителя.
 	 */
-	import { Select, type SelectItemProps, type SelectProps } from '@soldy-ui/svelte'
+	import { Select, type SelectItemProps, type SelectProps } from '@soxa-ui/svelte'
 
 	type THarnessProps = {
 		/** Пропсы Select. */

@@ -14,7 +14,7 @@ import {
 	TProgressLinear,
 	TTabsItem,
 	TTagsItem,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 
 describe('CSS state contract', () => {
 	it.each([

@@ -10,12 +10,12 @@
 
 import { describe, it, expect, expectTypeOf } from 'vitest'
 import { flushSync } from 'svelte'
-import { TInputControl, TInteractive, TValueControl } from '@soldy-ui/core'
+import { TInputControl, TInteractive, TValueControl } from '@soxa-ui/core'
 import {
 	type InputControlProps,
 	type InteractiveProps,
 	type ValueControlProps,
-} from '@soldy-ui/svelte'
+} from '@soxa-ui/svelte'
 import { setupInputControl } from '../src/components/input-control/setup.component'
 import { setupInteractive } from '../src/components/interactive/setup.component'
 import { setupValueControl } from '../src/components/value-control/setup.component'

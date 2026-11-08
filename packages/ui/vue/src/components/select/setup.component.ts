@@ -4,7 +4,7 @@ import {
 	TVirtualCollectionExtension,
 	SelectDescriptor,
 	SelectCollectionDescriptor,
-} from '@soldy-ui/setup'
+} from '@soxa-ui/setup'
 import {
 	useAdapter,
 	extendBinding,

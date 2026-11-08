@@ -1,5 +1,5 @@
 interface:
   display_name: 'plan-all'
-  short_description: 'Plan the available soldy-ui ClickUp queue sequentially'
+  short_description: 'Plan the available soxa-ui ClickUp queue sequentially'
 policy:
   allow_implicit_invocation: false

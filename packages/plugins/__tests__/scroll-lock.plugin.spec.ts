@@ -22,7 +22,7 @@
  */
 
 import { describe, it, expect, afterEach } from 'vitest'
-import { TPopover } from '@soldy-ui/core'
+import { TPopover } from '@soxa-ui/core'
 import { TElementPlugin, TPluginBundle, TScrollLockPlugin } from '../src'
 import type { IPlugin, IPluginConstructor } from '../src'
 

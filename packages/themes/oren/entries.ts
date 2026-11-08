@@ -1,6 +1,6 @@
 /**
  * The stylesheets of components: an entry per component of the export,
- * `@soldy-ui/theme-oren/<component>.css`, next to the whole sheet
+ * `@soxa-ui/theme-oren/<component>.css`, next to the whole sheet
  * (`AGENTS.md` of the package, «Слои: лист целиком и по компонентам»).
  *
  * An entry imports the shared part (`dist/common.css`) and the parts of its
@@ -54,7 +54,7 @@ const CALENDAR = [...POPOVER, 'list-box', 'calendar']
 /**
  * Component of the export → the parts of its entry. The name is the one of the
  * component in kebab case, as the entries of the Web Components adapter
- * (`@soldy-ui/webc/list-box`). The order of the parts does not matter: the
+ * (`@soxa-ui/webc/list-box`). The order of the parts does not matter: the
  * build imports them in the order of their layers.
  */
 export const COMPONENTS: Readonly<Record<string, readonly string[]>> = {

@@ -79,7 +79,7 @@ const reports = await inspectThemes(inspect)
  * базы здесь нет: их сторож видит в CSS каждой темы.
  */
 const baseBehaviour = behaviourVariables({
-	name: '@soldy-ui/theme-base',
+	name: '@soxa-ui/theme-base',
 	dir: resolve(import.meta.dirname, '..'),
 })
 

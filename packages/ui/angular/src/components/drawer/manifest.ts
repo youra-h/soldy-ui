@@ -1,1 +1,1 @@
-export { DrawerDescriptor as descriptor } from '@soldy-ui/setup'
+export { DrawerDescriptor as descriptor } from '@soxa-ui/setup'

@@ -1,10 +1,10 @@
 ---
-'@soldy-ui/vue': patch
-'@soldy-ui/react': patch
-'@soldy-ui/angular': patch
-'@soldy-ui/svelte': patch
-'@soldy-ui/solid': patch
-'@soldy-ui/webc': patch
+'@soxa-ui/vue': patch
+'@soxa-ui/react': patch
+'@soxa-ui/angular': patch
+'@soxa-ui/svelte': patch
+'@soxa-ui/solid': patch
+'@soxa-ui/webc': patch
 ---
 
-Document the explicit @soldy-ui/setup dependency required by application theme and icon registration.
+Document the explicit @soxa-ui/setup dependency required by application theme and icon registration.

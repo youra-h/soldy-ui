@@ -6,8 +6,8 @@
  * любой ключ, поэтому ключ — в наполнении, а не в механике лифта.
  */
 
-import type { IToastsApi } from '@soldy-ui/core'
+import type { IToastsApi } from '@soxa-ui/core'
 import type { IElevatorKey } from '../../../protected/adapter/elevator'
 
 /** API тостов ближайшего `Toasts` выше по дереву: `show` и тост в ответ. */
-export const TOASTS_ELEVATOR: IElevatorKey<IToastsApi> = { name: 'soldy:toasts' }
+export const TOASTS_ELEVATOR: IElevatorKey<IToastsApi> = { name: 'soxa:toasts' }

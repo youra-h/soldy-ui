@@ -208,7 +208,7 @@ Playwright (конфиг `vitest.browser.config.ts`).
   (`browser/theme-base-controls.spec.ts`, `browser/theme-base-fields.spec.ts`,
   `browser/theme-base-layers.spec.ts`, `browser/theme-base-scales.spec.ts`,
   `browser/theme-base-dates.spec.ts` и `browser/theme-base-table.spec.ts`:
-  `import '@soldy-ui/theme-base'`, а не `@soldy-ui/theme-oren`). У каждого
+  `import '@soxa-ui/theme-base'`, а не `@soxa-ui/theme-oren`). У каждого
   файла спека своя страница, и листа темы
   на его странице нет — это его первая проверка; поведение темы (`useTheme` в
   `browser/setup.ts`) CSS не несёт. Спек держит структуру, перенесённую в
@@ -249,7 +249,7 @@ notifications`. Фильтра по тексту в стороже нет и б�
 вычисленных стилей на страницах стенда под двумя листами темы:
 
 ```bash
-npm run build:css --workspace=@soldy-ui/theme-oren  # лист «после» — dist темы
+npm run build:css --workspace=@soxa-ui/theme-oren  # лист «после» — dist темы
 npm run compare:styles -- <до.css> [<после.css>] [--frameworks vue,webc] [--pages <regexp>] [--out <отчёт>]
 ```
 
@@ -301,8 +301,8 @@ Web Components; `--pages` — только страницы, чьё имя (`vue
 `npm run dev` из корня (тема собирается рядом, в watch).
 
 Оболочка — шапка, меню, редакторы пропов, страница тестов — сделана из
-компонентов soldy (`ListBox`, `Select`, `Switch`, `Input`, `Button`, `Field` из
-`@soldy-ui/vue`). Своё приложение на каждый фреймворк не построить, пока в его
+компонентов soxa (`ListBox`, `Select`, `Switch`, `Input`, `Button`, `Field` из
+`@soxa-ui/vue`). Своё приложение на каждый фреймворк не построить, пока в его
 адаптере нет `Select` и `ListBox`, а копий оболочки было бы пять. Поэтому
 дублируется только то, что фреймворкозависимо по природе, — разметка превью и
 фикстур, — а оболочка и данные одни. Подпись контрола оболочки — `Field`
@@ -494,7 +494,7 @@ jsdom правил теневого корня не считает, и корн�
 пишет.
 Слушатели — по поверхности в профиле Web Components (у коллекций — и по
 поверхности фасада), аргумент — `detail` события. Дети по слотам — свет
-элемента, который код ставит в элемент до вставки: элементы soldy со своим
+элемента, который код ставит в элемент до вставки: элементы soxa со своим
 описанием — с атрибутом `slot` (`button-slot-icons` — иконки по краям подписи,
 `label` — подпись с флажком в слоте по умолчанию, у поповера и подсказки —
 Button в слоте `trigger`: связку с панелью он получает сам), — и разметка без
@@ -734,7 +734,7 @@ Escape и подложка — через `(soChangeVisible)`. Панель — 
   `view`, `shape`, `animation`) у ядра нет вовсе — их объявляет тема (см.
   «Оформление: значения объявляет тема»). Стенд рисует oren, поэтому `enums.ts`
   подключает к программе типов её `index.d.ts`
-  (`/// <reference types="@soldy-ui/theme-oren" />`), и эти списки сверяются с
+  (`/// <reference types="@soxa-ui/theme-oren" />`), и эти списки сверяются с
   ним: тема добавила значение — стенд попросит его и у себя;
 - **Подписка на смену пакета иконок.** Захотелось добавить `onIconsChanged`
   в реестр. Но переключение пакетов на лету нужно только стенду, а он и так

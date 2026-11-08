@@ -10,9 +10,9 @@
  */
 
 import { defineComponent, defineDescriptor, defineType } from '../../../../protected/define'
-import { TMenu } from '@soldy-ui/core'
-import type { IMenuItem, TAriaAttributes, TDatasetAttributes } from '@soldy-ui/core'
-import { TMenuKeyboardPlugin } from '@soldy-ui/plugins'
+import { TMenu } from '@soxa-ui/core'
+import type { IMenuItem, TAriaAttributes, TDatasetAttributes } from '@soxa-ui/core'
+import { TMenuKeyboardPlugin } from '@soxa-ui/plugins'
 import { StylableDescriptor } from '../stylable.descriptor'
 import {
 	CollectionBundlesPluginDescriptor,

@@ -49,7 +49,7 @@ import {
 	createEngineTags,
 	type TListBoxCollection,
 	type TTableCollection,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 import {
 	TCalendarElement,
 	TDatePickerElement,
@@ -71,7 +71,7 @@ import {
 	type TTabsElementProps,
 	type TTagsElementProps,
 	type TVirtualElementProps,
-} from '@soldy-ui/webc'
+} from '@soxa-ui/webc'
 
 /** Отрисовка коалесцируется в микротаске — ждём её перед проверкой. */
 const flush = () => new Promise<void>((resolve) => queueMicrotask(() => resolve()))

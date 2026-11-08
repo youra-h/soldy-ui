@@ -4,7 +4,7 @@
  * заменяет иконку целиком.
  */
 
-import { DEFAULT_SLOT } from '@soldy-ui/setup'
+import { DEFAULT_SLOT } from '@soxa-ui/setup'
 import { createDetail, lend, patch } from '../../adapter'
 import { TButtonElement, type TButtonElementProps } from '../button'
 import { TIconElement, type TIconElementProps } from '../icon'

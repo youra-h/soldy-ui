@@ -4,8 +4,8 @@
 	 * с триггером со связкой из scope и содержимым панели. Расхождений у
 	 * сервера и браузера нет — пропсов у страницы нет.
 	 */
-	import type { DescriptorSlots, PopoverDescriptor } from '@soldy-ui/setup'
-	import { Popover } from '@soldy-ui/svelte'
+	import type { DescriptorSlots, PopoverDescriptor } from '@soxa-ui/setup'
+	import { Popover } from '@soxa-ui/svelte'
 
 	type TTriggerScope = DescriptorSlots<typeof PopoverDescriptor>['trigger']
 </script>

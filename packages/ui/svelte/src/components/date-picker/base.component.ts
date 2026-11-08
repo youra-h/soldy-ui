@@ -1,5 +1,5 @@
-import type { IDatePicker } from '@soldy-ui/core'
-import type { DatePickerDescriptor } from '@soldy-ui/setup'
+import type { IDatePicker } from '@soxa-ui/core'
+import type { DatePickerDescriptor } from '@soxa-ui/setup'
 import type { EventProps, UseDomProps } from '../../types'
 
 export type DatePickerEventProps = EventProps<typeof DatePickerDescriptor>

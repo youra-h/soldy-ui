@@ -1,1 +1,1 @@
-export { MenuSeparatorDescriptor as descriptor } from '@soldy-ui/setup'
+export { MenuSeparatorDescriptor as descriptor } from '@soxa-ui/setup'

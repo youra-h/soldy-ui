@@ -6,7 +6,7 @@
  */
 
 import { defineComponent, defineDescriptor } from '../../../../protected/define'
-import { TMenuGroup } from '@soldy-ui/core'
+import { TMenuGroup } from '@soxa-ui/core'
 import { ItemGroupDescriptor } from '../item-group.descriptor'
 
 export const MenuGroupDescriptor = defineDescriptor(() =>

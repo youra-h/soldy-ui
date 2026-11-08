@@ -1,6 +1,6 @@
 import type { Snippet } from 'svelte'
 import type { HTMLAttributes, HTMLInputAttributes, HTMLTextareaAttributes } from 'svelte/elements'
-import type { IEntity } from '@soldy-ui/core'
+import type { IEntity } from '@soxa-ui/core'
 import type {
 	IComponentDescriptor,
 	DescriptorAllProps,
@@ -9,7 +9,7 @@ import type {
 	DescriptorSlots,
 	DEFAULT_SLOT,
 	TContractOf,
-} from '@soldy-ui/setup'
+} from '@soxa-ui/setup'
 
 /** Событийные пропы компонента из дескриптора (core + плагины). */
 export type EventProps<TDescriptorFn extends (...args: any[]) => IComponentDescriptor> =

@@ -10,8 +10,8 @@ import {
 	TTabs,
 	TTabsContent,
 	TTabsItem,
-} from '@soldy-ui/core'
-import type { ITabsItem, TCollectionEngine } from '@soldy-ui/core'
+} from '@soxa-ui/core'
+import type { ITabsItem, TCollectionEngine } from '@soxa-ui/core'
 import {
 	TPluginBundle,
 	TCollectionBundlesPlugin,
@@ -20,7 +20,7 @@ import {
 	TFrameLayoutPlugin,
 	TIdPlugin,
 	TTabsItemIdsPlugin,
-} from '@soldy-ui/plugins'
+} from '@soxa-ui/plugins'
 import {
 	createAdapterContext,
 	defineComponent,
@@ -42,7 +42,7 @@ import {
 	type IComponentContract,
 	type TAdapterState,
 	type TElevatorFactory,
-} from '@soldy-ui/setup'
+} from '@soxa-ui/setup'
 import { COLLECTION_BUNDLES_ELEVATOR } from '../content/extensions/collection/keys'
 import { DRAG_AND_DROP_ELEVATOR } from '../content/extensions/drag-and-drop/keys'
 import { CallbackProfile, createElevatorFactory, required } from './helpers'

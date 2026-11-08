@@ -5,7 +5,7 @@
  * в таблице «выбрать все» тысячами.
  */
 
-import type { ICheckBox } from '@soldy-ui/core'
+import type { ICheckBox } from '@soxa-ui/core'
 import type { TCheckBoxOutputs } from './setup.component'
 import { bind, drawRoleIcon, ownerAttributes, roleIcon, type ITemplate, patch } from '../../adapter'
 

@@ -1,5 +1,5 @@
 /**
- * The entry of one element: `import '@soldy-ui/webc/button'` defines the
+ * The entry of one element: `import '@soxa-ui/webc/button'` defines the
  * button and the locale provider, which comes with every entry (the adapter
  * defines it), and no other element — a page with one button does not ship
  * the rest of the library. The file imports nothing else of the package, and a
@@ -7,8 +7,8 @@
  */
 
 import { describe, it, expect, afterEach } from 'vitest'
-import { TButton } from '@soldy-ui/core'
-import { TButtonElement, type TButtonElementProps } from '@soldy-ui/webc/button'
+import { TButton } from '@soxa-ui/core'
+import { TButtonElement, type TButtonElementProps } from '@soxa-ui/webc/button'
 
 afterEach(() => {
 	document.body.innerHTML = ''
@@ -18,7 +18,7 @@ function isButton(node: Element | null): node is TButtonElementProps {
 	return node instanceof TButtonElement
 }
 
-describe('вход @soldy-ui/webc/button', () => {
+describe('вход @soxa-ui/webc/button', () => {
 	it('определяет кнопку и провайдер локали, других элементов нет', () => {
 		expect(customElements.get('so-button')).toBe(TButtonElement)
 		expect(customElements.get('so-locale-provider')).toBeDefined()
@@ -35,7 +35,7 @@ describe('вход @soldy-ui/webc/button', () => {
 
 		const el = host.querySelector('button')
 
-		if (!isButton(el)) throw new Error('<button is="so-button"> is not a button of soldy')
+		if (!isButton(el)) throw new Error('<button is="so-button"> is not a button of soxa')
 
 		expect(el.ctrl).toBeInstanceOf(TButton)
 		expect(el.classList).toContain('so-button')

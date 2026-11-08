@@ -1,5 +1,5 @@
-import { InputControlDescriptor } from '@soldy-ui/setup'
-import type { IInputControl } from '@soldy-ui/core'
+import { InputControlDescriptor } from '@soxa-ui/setup'
+import type { IInputControl } from '@soxa-ui/core'
 import { createWebcAdapterContext, useAdapter } from '../../adapter'
 import type { TBinding, TUpdateListener } from '../../adapter'
 

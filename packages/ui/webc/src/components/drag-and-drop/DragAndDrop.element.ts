@@ -4,8 +4,8 @@
  * как `<so-virtual>`.
  */
 
-import { DragAndDropDescriptor } from '@soldy-ui/setup'
-import type { IDragAndDrop } from '@soldy-ui/core'
+import { DragAndDropDescriptor } from '@soxa-ui/setup'
+import type { IDragAndDrop } from '@soxa-ui/core'
 import { ElementBase } from '../../adapter'
 import type { TElementClassOf, TElementType } from '../../adapter'
 import { defineAutonomousElement } from '../../adapter/runtime/defineElement'

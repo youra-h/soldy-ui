@@ -8,7 +8,7 @@ import type { TRec } from './libs/data'
  */
 type TLib = { sel: TSel; render: (host: Element, rows: TRec[] | null) => void }
 const libs: Record<string, () => Promise<TLib>> = {
-	soldy: () => import('./libs/webc/soldy'),
+	soxa: () => import('./libs/webc/soxa'),
 	plain: () => import('./libs/webc/plain'),
 	vaadin: () => import('./libs/webc/vaadin'),
 	carbon: () => import('./libs/webc/carbon'),

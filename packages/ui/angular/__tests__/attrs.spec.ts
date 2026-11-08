@@ -51,8 +51,8 @@ import {
 	TTagsComponent,
 	TTagsItemComponent,
 	TTextareaComponent,
-} from '@soldy-ui/angular'
-import type { TTableColumnSource } from '@soldy-ui/core'
+} from '@soxa-ui/angular'
+import type { TTableColumnSource } from '@soxa-ui/core'
 import { ɵDomRendererFactory2 } from '@angular/platform-browser'
 import { TForwardingRendererFactory } from '../src/adapter/attrs/factory'
 import { TForwardRegistry } from '../src/adapter/attrs/registry'
@@ -886,7 +886,7 @@ describe('реестр', () => {
 		forwarded.release()
 	})
 
-	it('на хосте остаются класс, стиль, служебные атрибуты Angular, метки soldy и входы', () => {
+	it('на хосте остаются класс, стиль, служебные атрибуты Angular, метки soxa и входы', () => {
 		const { renderer, host, forwarded } = setup()
 		const node = document.createElement('input')
 
@@ -918,7 +918,7 @@ describe('реестр', () => {
 	 * Хост без коробки — обёртка, чей корень уехал в слой (`<div so-toasts>`):
 	 * внешний узел компонента — узел внутри, и класс со стилем уходят на него.
 	 * На хосте остаются только его метки — служебные атрибуты Angular, метки
-	 * soldy — и входы.
+	 * soxa — и входы.
 	 */
 	it('хост без коробки: класс и стиль — на узел, метки и входы — на хосте', () => {
 		const registry = TestBed.inject(TForwardRegistry)

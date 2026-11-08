@@ -1,5 +1,5 @@
-import type { IAccordion } from '@soldy-ui/core'
-import type { AccordionCollectionDescriptor, AccordionDescriptor } from '@soldy-ui/setup'
+import type { IAccordion } from '@soxa-ui/core'
+import type { AccordionCollectionDescriptor, AccordionDescriptor } from '@soxa-ui/setup'
 import type { EventProps, UseDomProps } from '../../types'
 
 /** События Accordion — свои и фасада коллекции. */

@@ -4,8 +4,8 @@ import {
 	TCollectionExtension,
 	TDragAndDropCollectionExtension,
 	TVirtualCollectionExtension,
-} from '@soldy-ui/setup'
-import type { IListBox, TListBoxCollectionFacade } from '@soldy-ui/core'
+} from '@soxa-ui/setup'
+import type { IListBox, TListBoxCollectionFacade } from '@soxa-ui/core'
 import {
 	createWebcAdapterContext,
 	joinBindings,

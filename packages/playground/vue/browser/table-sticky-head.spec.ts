@@ -26,15 +26,15 @@ import { describe, it, expect, afterAll, afterEach, beforeAll } from 'vitest'
 import { render, cleanup } from './render'
 import { commands, page, userEvent } from 'vitest/browser'
 import { defineComponent, h, ref, type VNode } from 'vue'
-import { TTable, createEngineTable } from '@soldy-ui/core'
-import type { TSelectionMode, TTableCollection, TTableColumnSource } from '@soldy-ui/core'
-import { TABLE_COLUMNS, TABLE_ROWS, TABLE_SCROLL_ROWS } from '@soldy-ui/playground-shared'
-import { Button, Dialog, Popover, Table, Virtual } from '@soldy-ui/vue'
+import { TTable, createEngineTable } from '@soxa-ui/core'
+import type { TSelectionMode, TTableCollection, TTableColumnSource } from '@soxa-ui/core'
+import { TABLE_COLUMNS, TABLE_ROWS, TABLE_SCROLL_ROWS } from '@soxa-ui/playground-shared'
+import { Button, Dialog, Popover, Table, Virtual } from '@soxa-ui/vue'
 
 import { find, gradientColor, opacity, pixel, settled, style, systemColor } from './colors'
 import { forcedColors } from './media'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 /** Tolerance for subpixel rounding, px. */
 const EPSILON = 1

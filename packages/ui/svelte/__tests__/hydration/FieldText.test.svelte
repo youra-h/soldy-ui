@@ -6,7 +6,7 @@
 	 * гидратации — умолчания страницы; пропсами их меняет тест после гидратации
 	 * (`reactiveProps`).
 	 */
-	import { Input, Textarea } from '@soldy-ui/svelte'
+	import { Input, Textarea } from '@soxa-ui/svelte'
 
 	type TPageProps = {
 		/** Значение текстового поля. */

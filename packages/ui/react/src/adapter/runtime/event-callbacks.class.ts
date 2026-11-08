@@ -4,7 +4,7 @@
  * AGENTS.md (React), «Функции дольше рендера — в классах».
  */
 
-import type { IAdapterContext, TEventSink, TExchange } from '@soldy-ui/setup'
+import type { IAdapterContext, TEventSink, TExchange } from '@soxa-ui/setup'
 import { isAccepting } from './accepting'
 
 export class TEventCallbacks {

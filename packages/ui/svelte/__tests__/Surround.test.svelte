@@ -11,7 +11,7 @@
 	 * Пропсы самого компонента — `rating`, `slider`, `pagination`, `calendar`,
 	 * `dateInput` и `datePicker`; смена их полей — смена пропсов компонента.
 	 */
-	import type { TLocale } from '@soldy-ui/plugins'
+	import type { TLocale } from '@soxa-ui/plugins'
 	import {
 		Calendar,
 		DateInput,
@@ -28,7 +28,7 @@
 		type PaginationProps,
 		type RatingProps,
 		type SliderProps,
-	} from '@soldy-ui/svelte'
+	} from '@soxa-ui/svelte'
 
 	type THarnessProps = {
 		/** Что вокруг компонента. */

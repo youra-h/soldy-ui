@@ -16,14 +16,14 @@
 import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { render, cleanup } from './render'
 import { defineComponent, h, nextTick, type VNode } from 'vue'
-import { COMPONENT_SIZES } from '@soldy-ui/playground-shared'
-import { useIcons } from '@soldy-ui/setup'
-import * as material from '@soldy-ui/icons-material'
-import { Calendar, DateInput, DatePicker } from '@soldy-ui/vue'
-import '@soldy-ui/webc'
+import { COMPONENT_SIZES } from '@soxa-ui/playground-shared'
+import { useIcons } from '@soxa-ui/setup'
+import * as material from '@soxa-ui/icons-material'
+import { Calendar, DateInput, DatePicker } from '@soxa-ui/vue'
+import '@soxa-ui/webc'
 import { BOX, measure, type TBox } from './panel-boxes'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 useIcons(material)
 

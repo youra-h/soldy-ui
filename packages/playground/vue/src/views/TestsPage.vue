@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, onUnmounted, watch } from 'vue'
-import { Button } from '@soldy-ui/vue'
-import { summarize, type TScenario } from '@soldy-ui/playground-shared'
+import { Button } from '@soxa-ui/vue'
+import { summarize, type TScenario } from '@soxa-ui/playground-shared'
 import { findAvailable } from '../catalog'
 import { hostOf } from '../hosts'
 import ScenarioBlock from '../components/ScenarioBlock.vue'

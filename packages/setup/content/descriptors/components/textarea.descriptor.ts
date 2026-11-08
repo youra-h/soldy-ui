@@ -11,8 +11,8 @@
  */
 
 import { defineComponent, defineDescriptor } from '../../../protected/define'
-import { TTextarea } from '@soldy-ui/core'
-import { fieldOf } from '@soldy-ui/plugins'
+import { TTextarea } from '@soxa-ui/core'
+import { fieldOf } from '@soxa-ui/plugins'
 import {
 	ActionPluginDescriptor,
 	InputPluginDescriptor,

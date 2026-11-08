@@ -1,5 +1,5 @@
-import type { ITabsContent } from '@soldy-ui/core'
-import type { TabsCollectionContentDescriptor, TabsContentDescriptor } from '@soldy-ui/setup'
+import type { ITabsContent } from '@soxa-ui/core'
+import type { TabsCollectionContentDescriptor, TabsContentDescriptor } from '@soxa-ui/setup'
 import type { EventProps, UseDomProps } from '../../../types'
 
 /** События панели — свои и фасада: активность связанного таба. */

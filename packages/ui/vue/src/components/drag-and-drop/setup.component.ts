@@ -1,4 +1,4 @@
-import { TDragAndDropExtension, DragAndDropDescriptor } from '@soldy-ui/setup'
+import { TDragAndDropExtension, DragAndDropDescriptor } from '@soxa-ui/setup'
 import {
 	useAdapter,
 	useExpose,

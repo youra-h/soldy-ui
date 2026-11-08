@@ -1,4 +1,4 @@
-import { createAdapterContext } from '@soldy-ui/setup'
+import { createAdapterContext } from '@soxa-ui/setup'
 import type {
 	IAdapterContext,
 	IAdapterContextConfig,
@@ -6,7 +6,7 @@ import type {
 	IComponentDescriptor,
 	IPluginsContract,
 	TContextContract,
-} from '@soldy-ui/setup'
+} from '@soxa-ui/setup'
 import { nearestLocale } from '../locale/context'
 
 /**

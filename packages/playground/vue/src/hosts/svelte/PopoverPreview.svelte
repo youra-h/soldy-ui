@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { DescriptorSlots, PopoverDescriptor } from '@soldy-ui/setup'
-	import { Button, Popover } from '@soldy-ui/svelte'
+	import type { DescriptorSlots, PopoverDescriptor } from '@soxa-ui/setup'
+	import { Button, Popover } from '@soxa-ui/svelte'
 	import type { TPreviewProps } from './previews'
 
 	type TTriggerScope = DescriptorSlots<typeof PopoverDescriptor>['trigger']

@@ -1,4 +1,4 @@
-import type { IPagination } from '@soldy-ui/core'
+import type { IPagination } from '@soxa-ui/core'
 import { TNamesPlugin } from '../../../locale/names.plugin'
 import type { TTranslations } from '../../../locale/types'
 

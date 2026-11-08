@@ -11,8 +11,8 @@ import type {
 	ITableRow,
 	TDrawnEntry,
 	TTableCollectionFacade,
-} from '@soldy-ui/core'
-import type { TStateSnapshot } from '@soldy-ui/setup'
+} from '@soxa-ui/core'
+import type { TStateSnapshot } from '@soxa-ui/setup'
 import {
 	TKeyedLoop,
 	bind,

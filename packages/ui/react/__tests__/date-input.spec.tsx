@@ -29,9 +29,9 @@ import { describe, it, expect, vi } from 'vitest'
 import { StrictMode, act, useState, type ReactElement, type ReactNode } from 'react'
 import { hydrateRoot } from 'react-dom/client'
 import { renderToString } from 'react-dom/server'
-import type { IDateInput, TDateInputKind, TTimePrecision } from '@soldy-ui/core'
-import { arEG, enUS, ruRU, type TLocale } from '@soldy-ui/plugins'
-import { DateInput, LocaleProvider, type DateInputProps } from '@soldy-ui/react'
+import type { IDateInput, TDateInputKind, TTimePrecision } from '@soxa-ui/core'
+import { arEG, enUS, ruRU, type TLocale } from '@soxa-ui/plugins'
+import { DateInput, LocaleProvider, type DateInputProps } from '@soxa-ui/react'
 import { find, mount, nextFrame, track } from './mount'
 
 /** Значение поля даты: строка даты или даты со временем, пусто — `undefined`. */

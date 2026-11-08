@@ -7,12 +7,12 @@ export interface IReactSetup {
 	Root: ComponentType<{ children?: ReactNode }>
 }
 
-/** Monotonic id prefix: every root of the page gets its own, as in the soldy host. */
+/** Monotonic id prefix: every root of the page gets its own, as in the soxa host. */
 let roots = 0
 
 /**
  * `count` copies of a page under one React root wrapped in the library's
- * provider, rendered synchronously — as the soldy host does it. Returns the
+ * provider, rendered synchronously — as the soxa host does it. Returns the
  * unmount.
  */
 export function mountPage(

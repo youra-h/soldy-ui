@@ -5,8 +5,8 @@
 	 * обёртке; набор кнопки тест получает в `onBundleCreate`. Цель и
 	 * `contained` у Frame тест меняет пропсами.
 	 */
-	import type { TLocale } from '@soldy-ui/plugins'
-	import { Button, Frame, LocaleProvider } from '@soldy-ui/svelte'
+	import type { TLocale } from '@soxa-ui/plugins'
+	import { Button, Frame, LocaleProvider } from '@soxa-ui/svelte'
 
 	type THarnessProps = {
 		locale: TLocale

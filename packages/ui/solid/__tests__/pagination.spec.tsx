@@ -16,9 +16,9 @@
 
 import { describe, it, expect, vi } from 'vitest'
 import { createSignal } from 'solid-js'
-import { TPagination, type TPaginationValue } from '@soldy-ui/core'
-import { arEG, ruRU } from '@soldy-ui/plugins'
-import { LocaleProvider, Pagination, type PaginationProps } from '@soldy-ui/solid'
+import { TPagination, type TPaginationValue } from '@soxa-ui/core'
+import { arEG, ruRU } from '@soxa-ui/plugins'
+import { LocaleProvider, Pagination, type PaginationProps } from '@soxa-ui/solid'
 import { find, mount, nextFrame } from './mount'
 
 /** Все HTML-узлы по селектору. */

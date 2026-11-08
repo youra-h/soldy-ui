@@ -50,8 +50,8 @@ import {
 	TComponentView,
 	type TPluginEvent,
 	type TValuePayload,
-} from '@soldy-ui/core'
-import * as setup from '@soldy-ui/setup'
+} from '@soxa-ui/core'
+import * as setup from '@soxa-ui/setup'
 import {
 	ButtonDescriptor,
 	ComponentDescriptor,
@@ -59,13 +59,13 @@ import {
 	InputDescriptor,
 	VirtualDescriptor,
 	type IComponentDescriptor,
-} from '@soldy-ui/setup'
+} from '@soxa-ui/setup'
 import {
 	TButtonComponent,
 	TComponentComponent,
 	TComponentViewComponent,
 	TListBoxComponent,
-} from '@soldy-ui/angular'
+} from '@soxa-ui/angular'
 import { ButtonOutputNames } from '../src/generated/button.metadata'
 import { ComponentOutputNames } from '../src/generated/component.metadata'
 import { ComponentViewOutputNames } from '../src/generated/component-view.metadata'
@@ -460,8 +460,8 @@ function getterHolder(instance: object, output: string): object | undefined {
  * their surface declares every output of the descriptor, as before.
  */
 describe('выходы компонентов экспорта · геттер на каждый выход', () => {
-	// The soldy components are not a hand-written list: a new one is checked by itself
-	const components = exportedDeclarations().filter(({ soldy }) => soldy)
+	// The soxa components are not a hand-written list: a new one is checked by itself
+	const components = exportedDeclarations().filter(({ soxa }) => soxa)
 
 	it('компоненты найдены в экспорте', () => {
 		expect(components.map(({ name }) => name)).toEqual(
@@ -587,7 +587,7 @@ function isComponentDescriptor(value: unknown): value is IComponentDescriptor {
 }
 
 /**
- * Component descriptors from the export of `@soldy-ui/setup` — not a
+ * Component descriptors from the export of `@soxa-ui/setup` — not a
  * hand-written list, as in the setup specs: a new one is checked by itself. A
  * descriptor factory is `<Name>Descriptor` with a capital (the mechanics'
  * `defineDescriptor` builds it rather than returns a descriptor); plugin

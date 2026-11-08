@@ -5,7 +5,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TReadyPlugin } from '@soldy-ui/plugins'
+import { TReadyPlugin } from '@soxa-ui/plugins'
 
 export const ReadyPluginDescriptor = definePlugin({
 	ctor: TReadyPlugin,

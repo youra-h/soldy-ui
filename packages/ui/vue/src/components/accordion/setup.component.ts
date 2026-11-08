@@ -3,7 +3,7 @@ import {
 	TDragAndDropCollectionExtension,
 	AccordionDescriptor,
 	AccordionCollectionDescriptor,
-} from '@soldy-ui/setup'
+} from '@soxa-ui/setup'
 import {
 	useAdapter,
 	joinBindings,

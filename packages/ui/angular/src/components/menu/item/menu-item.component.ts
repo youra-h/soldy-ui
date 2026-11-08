@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core'
 import { NgTemplateOutlet } from '@angular/common'
-import type { IMenuItem } from '@soldy-ui/core'
+import type { IMenuItem } from '@soxa-ui/core'
 import { AttributesDirective } from '../../../adapter'
 import { TItemRowComponent } from '../../item-row'
 import { TMenuItemSurface } from '../../../generated/menu-item.metadata'

@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core'
 import { NgTemplateOutlet } from '@angular/common'
-import type { ITableColumn } from '@soldy-ui/core'
+import type { ITableColumn } from '@soxa-ui/core'
 import {
 	AttributesDirective,
 	FieldTextDirective,

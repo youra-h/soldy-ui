@@ -1,4 +1,4 @@
-import { LabelDescriptor } from '@soldy-ui/setup'
+import { LabelDescriptor } from '@soxa-ui/setup'
 import { useAdapter, useExpose, createVueAdapterContext, type SetupContext } from '../../adapter'
 import BaseLabel, { type LabelProps } from './base.component'
 

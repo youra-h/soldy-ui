@@ -18,14 +18,14 @@
  */
 
 import { describe, it, expect, expectTypeOf } from 'vitest'
-import { TButton, type IButton } from '@soldy-ui/core'
+import { TButton, type IButton } from '@soxa-ui/core'
 import {
 	TButtonElement,
 	TDialogElement,
 	TFrameElement,
 	type TButtonElementProps,
 	type TDialogElementProps,
-} from '@soldy-ui/webc'
+} from '@soxa-ui/webc'
 import { defineElement } from '../src/adapter/runtime/defineElement'
 import { type TElementType } from '../src/adapter/runtime/element.base'
 

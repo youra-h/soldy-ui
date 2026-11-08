@@ -1,7 +1,7 @@
 import { useEmits, useProps } from '../../adapter'
 import type { TEmits, TProps, UseProps } from '../../types/common'
-import { DatePickerDescriptor } from '@soldy-ui/setup'
-import type { IDatePicker } from '@soldy-ui/core'
+import { DatePickerDescriptor } from '@soxa-ui/setup'
+import type { IDatePicker } from '@soxa-ui/core'
 
 export const emitsDatePicker: TEmits = useEmits(DatePickerDescriptor())
 

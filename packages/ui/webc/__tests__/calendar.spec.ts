@@ -16,7 +16,7 @@
  * день, оставшийся на экране, — тем же узлом, и фокус с него не слетает.
  * Заголовок месяца — Popover на `div` (`<div is="so-popover-div">`), панель
  * выбора с `contained` — на месте, в корне поповера. Класс части шаблон пишет
- * детали до сборки, поэтому у элемента soldy он первый, а не последний, как у
+ * детали до сборки, поэтому у элемента soxa он первый, а не последний, как у
  * Vue.
  *
  * Сегодня во всех тестах — суббота 2026-09-26, как в тестах ядра.
@@ -29,9 +29,9 @@ import {
 	type TCalendarDate,
 	type TCalendarValue,
 	type TValuePayload,
-} from '@soldy-ui/core'
-import { ruRU, type TLocale } from '@soldy-ui/plugins'
-import { CalendarDescriptor } from '@soldy-ui/setup'
+} from '@soxa-ui/core'
+import { ruRU, type TLocale } from '@soxa-ui/plugins'
+import { CalendarDescriptor } from '@soxa-ui/setup'
 import {
 	TButtonElement,
 	TCalendarElement,
@@ -42,7 +42,7 @@ import {
 	registerPopoverTag,
 	type TCalendarElementProps,
 	type TCalendarItemElementProps,
-} from '@soldy-ui/webc'
+} from '@soxa-ui/webc'
 import { CALENDAR_ITEM_SLOTS, calendarTemplate } from '../src/components/calendar/calendar.template'
 import { bareContext } from './template-context'
 
@@ -76,7 +76,7 @@ function isCalendar(node: Element | null): node is TCalendarElementProps {
 	return node instanceof TCalendarElement
 }
 
-/** Календарь soldy в разметке. */
+/** Календарь soxa в разметке. */
 function calendarOf(root: ParentNode): TCalendarElementProps {
 	const node = root.querySelector('[is="so-calendar"]')
 
@@ -238,7 +238,7 @@ function press(from: Element, key: string, init: KeyboardEventInit = {}): Keyboa
 }
 
 /**
- * Часть узла — первый класс календаря на нём: у элемента soldy класс части
+ * Часть узла — первый класс календаря на нём: у элемента soxa класс части
  * шаблон пишет до сборки, и он стоит перед классами компонента.
  */
 const partOf = (element: Element) =>
@@ -270,7 +270,7 @@ describe('Calendar · разметка', () => {
 
 	/**
 	 * Заголовок месяца — Popover на `div`, кнопки — детали Button: элементы
-	 * soldy с именами места. Поповер на `div` — свой элемент, `so-popover-div`.
+	 * soxa с именами места. Поповер на `div` — свой элемент, `so-popover-div`.
 	 */
 	it('заголовок — Popover на div, кнопки и иконки — детали с именами места', async () => {
 		await mount()

@@ -13,7 +13,7 @@
  */
 
 import { describe, it, expect, vi } from 'vitest'
-import { TEvented, TPopover } from '@soldy-ui/core'
+import { TEvented, TPopover } from '@soxa-ui/core'
 import { TPluginBundle } from '../src'
 import type { IOverlayOpenOptions, IOverlayOpenState, IPluginContext } from '../src'
 import { bindOverlayOpen } from '../src/custom/overlay/open-state'

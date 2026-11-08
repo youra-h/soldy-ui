@@ -2,14 +2,14 @@ import { describe, it, expect, vi } from 'vitest'
 import { readFileSync, readdirSync, statSync } from 'node:fs'
 import { join, resolve, relative } from 'node:path'
 import * as ts from 'typescript'
-import { TEvented, TSelectExtension, TTabsExtension } from '@soldy-ui/core'
+import { TEvented, TSelectExtension, TTabsExtension } from '@soxa-ui/core'
 import type {
 	ISelectExtension,
 	ITabsExtension,
 	TNoEvents,
 	TSelectItemEventsExtension,
 	TTabsItemEventsExtension,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 
 /**
  * Сторож правила «интерфейс расширения передаёт карту событий вторым аргументом

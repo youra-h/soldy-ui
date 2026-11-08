@@ -1,6 +1,6 @@
 /** Шаблон ComponentView: структуры нет, содержимое остаётся в корне. */
 
-import type { IComponentView } from '@soldy-ui/core'
+import type { IComponentView } from '@soxa-ui/core'
 import type { ITemplate } from '../../adapter'
 
 export const componentViewTemplate: ITemplate<IComponentView> = {

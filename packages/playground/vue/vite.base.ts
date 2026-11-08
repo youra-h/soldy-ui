@@ -89,7 +89,7 @@ export function constants(): Record<string, string> {
 		throw new Error(`[playground] ${file}: нет версии`)
 	}
 
-	return { __SOLDY_VERSION__: JSON.stringify(manifest.version) }
+	return { __SOXA_VERSION__: JSON.stringify(manifest.version) }
 }
 
 /**
@@ -104,22 +104,20 @@ export function constants(): Record<string, string> {
  */
 export function aliases({ themeCss }: { themeCss: boolean }): Record<string, string> {
 	return {
-		'@soldy-ui/theme-oren/setup': resolve('../../themes/oren/setup/index.ts'),
-		'@soldy-ui/theme-base/setup': resolve('../../themes/base/setup/index.ts'),
-		...(themeCss
-			? { '@soldy-ui/theme-oren': resolve('../../themes/oren/dist/index.css') }
-			: {}),
-		'@soldy-ui/core': resolve('../../core/src'),
-		'@soldy-ui/icons-lucide': resolve('../../icons/lucide/src'),
-		'@soldy-ui/icons-material': resolve('../../icons/material/src'),
-		'@soldy-ui/plugins': resolve('../../plugins/src'),
-		'@soldy-ui/setup': resolve('../../setup/index.ts'),
-		'@soldy-ui/vue': resolve('../../ui/vue/src/index.ts'),
-		'@soldy-ui/react': resolve('../../ui/react/src/index.ts'),
-		'@soldy-ui/solid': resolve('../../ui/solid/src/index.ts'),
-		'@soldy-ui/svelte': resolve('../../ui/svelte/src/index.ts'),
-		'@soldy-ui/webc': resolve('../../ui/webc/src/index.ts'),
-		'@soldy-ui/angular': resolve('../../ui/angular/src/index.ts'),
-		'@soldy-ui/playground-shared': resolve('../shared/src/index.ts'),
+		'@soxa-ui/theme-oren/setup': resolve('../../themes/oren/setup/index.ts'),
+		'@soxa-ui/theme-base/setup': resolve('../../themes/base/setup/index.ts'),
+		...(themeCss ? { '@soxa-ui/theme-oren': resolve('../../themes/oren/dist/index.css') } : {}),
+		'@soxa-ui/core': resolve('../../core/src'),
+		'@soxa-ui/icons-lucide': resolve('../../icons/lucide/src'),
+		'@soxa-ui/icons-material': resolve('../../icons/material/src'),
+		'@soxa-ui/plugins': resolve('../../plugins/src'),
+		'@soxa-ui/setup': resolve('../../setup/index.ts'),
+		'@soxa-ui/vue': resolve('../../ui/vue/src/index.ts'),
+		'@soxa-ui/react': resolve('../../ui/react/src/index.ts'),
+		'@soxa-ui/solid': resolve('../../ui/solid/src/index.ts'),
+		'@soxa-ui/svelte': resolve('../../ui/svelte/src/index.ts'),
+		'@soxa-ui/webc': resolve('../../ui/webc/src/index.ts'),
+		'@soxa-ui/angular': resolve('../../ui/angular/src/index.ts'),
+		'@soxa-ui/playground-shared': resolve('../shared/src/index.ts'),
 	}
 }

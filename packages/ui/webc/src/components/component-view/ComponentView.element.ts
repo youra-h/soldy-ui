@@ -1,7 +1,7 @@
 /** `<div is="so-component-view">`. docs/architecture.md, Layer 8d, «Light DOM». */
 
-import { ComponentViewDescriptor } from '@soldy-ui/setup'
-import type { IComponentView } from '@soldy-ui/core'
+import { ComponentViewDescriptor } from '@soxa-ui/setup'
+import type { IComponentView } from '@soxa-ui/core'
 import { ElementBase, defineElement } from '../../adapter'
 import type { TElementClassOf, TElementType } from '../../adapter'
 import { componentViewTemplate } from './component-view.template'

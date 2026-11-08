@@ -15,7 +15,7 @@ import {
 	TCheckBoxComponent,
 	TTableComponent,
 	TTableRowComponent,
-} from '@soldy-ui/angular'
+} from '@soxa-ui/angular'
 import { TComponentBase } from '../src/adapter/runtime/component.base'
 import { exportedDeclarations } from './declarations'
 
@@ -41,7 +41,7 @@ describe('запросы узлов шаблона', () => {
 
 	it('запросы есть только у поверхностей, которые отдают узлы шаблона', () => {
 		const components = exportedDeclarations().filter(
-			({ kind, soldy }) => kind === 'component' && soldy,
+			({ kind, soxa }) => kind === 'component' && soxa,
 		)
 
 		expect(components.length).toBeGreaterThan(0)

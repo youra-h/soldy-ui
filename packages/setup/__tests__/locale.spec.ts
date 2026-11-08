@@ -26,8 +26,8 @@ import {
 	enUS,
 	formatName,
 	ruRU,
-} from '@soldy-ui/plugins'
-import type { TLocale } from '@soldy-ui/plugins'
+} from '@soxa-ui/plugins'
+import type { TLocale } from '@soxa-ui/plugins'
 import { createAdapterContext } from '../protected/adapter'
 import type { IComponentDescriptor } from '../protected/define'
 import { CallbackProfile, exportedDescriptors } from './helpers'

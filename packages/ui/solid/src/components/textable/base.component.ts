@@ -1,5 +1,5 @@
-import type { ITextable } from '@soldy-ui/core'
-import type { TextableDescriptor } from '@soldy-ui/setup'
+import type { ITextable } from '@soxa-ui/core'
+import type { TextableDescriptor } from '@soxa-ui/setup'
 import type { EventProps, UseProps } from '../../types'
 
 /** События слоя Textable (core + плагины), выведены из дескриптора автоматически. */

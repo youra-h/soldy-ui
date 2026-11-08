@@ -1,4 +1,4 @@
-import type { TValuePayload } from '@soldy-ui/core'
+import type { TValuePayload } from '@soxa-ui/core'
 // @vitest-environment jsdom
 
 /**
@@ -19,8 +19,8 @@ import type { TValuePayload } from '@soldy-ui/core'
  */
 
 import { describe, it, expect, afterEach } from 'vitest'
-import { TControl, TTabs, TTabsItem, createEngineTabs } from '@soldy-ui/core'
-import type { IControlProps, ITabsItem, ITabsItemProps } from '@soldy-ui/core'
+import { TControl, TTabs, TTabsItem, createEngineTabs } from '@soxa-ui/core'
+import type { IControlProps, ITabsItem, ITabsItemProps } from '@soxa-ui/core'
 import {
 	TActionPlugin,
 	TCollectionBundlesPlugin,

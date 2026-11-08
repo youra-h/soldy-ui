@@ -4,8 +4,8 @@
  * шаблон, слота по умолчанию нет. docs/architecture.md, Layer 8d, «Коллекция».
  */
 
-import { PaginationCollectionDescriptor, PaginationDescriptor } from '@soldy-ui/setup'
-import type { IPagination, TPaginationCollectionFacade } from '@soldy-ui/core'
+import { PaginationCollectionDescriptor, PaginationDescriptor } from '@soxa-ui/setup'
+import type { IPagination, TPaginationCollectionFacade } from '@soxa-ui/core'
 import { ElementBase, defineElement } from '../../adapter'
 import type { TElementClassOf, TElementType } from '../../adapter'
 import { TPaginationItemElement } from './item'

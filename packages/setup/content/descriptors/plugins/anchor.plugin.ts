@@ -10,7 +10,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TAnchorPlugin } from '@soldy-ui/plugins'
+import { TAnchorPlugin } from '@soxa-ui/plugins'
 
 export const AnchorPluginDescriptor = definePlugin({
 	ctor: TAnchorPlugin,

@@ -1,4 +1,4 @@
-import { NumberInputDescriptor, TFieldControlExtension } from '@soldy-ui/setup'
+import { NumberInputDescriptor, TFieldControlExtension } from '@soxa-ui/setup'
 import { useComponent } from '../../adapter'
 import type { NumberInputProps } from './base.component'
 

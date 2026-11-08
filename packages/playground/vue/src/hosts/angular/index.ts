@@ -9,13 +9,13 @@ import {
 	type ViewContainerRef,
 } from '@angular/core'
 import { createApplication } from '@angular/platform-browser'
-import { provideAttrs } from '@soldy-ui/angular'
+import { provideAttrs } from '@soxa-ui/angular'
 import {
 	componentDescriptors,
 	findComponent,
 	partsOf,
 	type IPreviewHost,
-} from '@soldy-ui/playground-shared'
+} from '@soxa-ui/playground-shared'
 import { PREVIEWS, type TProps } from './previews'
 import { FIXTURES, type TFixture } from './fixtures'
 import { PART_LISTENERS, listen, listenersOf, type TOutputListener } from './events'

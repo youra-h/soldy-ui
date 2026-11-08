@@ -9,7 +9,7 @@
  */
 
 import { defineComponent, defineDescriptor } from '../../../protected/define'
-import { TProgress } from '@soldy-ui/core'
+import { TProgress } from '@soxa-ui/core'
 import { AriaPluginDescriptor } from '../plugins'
 import { StylableDescriptor } from './stylable.descriptor'
 

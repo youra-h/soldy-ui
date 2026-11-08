@@ -5,7 +5,7 @@
  * docs/architecture.md, Layer 8d, «Коллекция».
  */
 
-import type { IListBox, IListBoxItem, TListBoxCollectionFacade } from '@soldy-ui/core'
+import type { IListBox, IListBoxItem, TListBoxCollectionFacade } from '@soxa-ui/core'
 import { bind, ownerAttributes, type ITemplate, type TItemSlots } from '../../adapter'
 import { TDrawnRows, type TDrawnRowsSpec } from '../common/drawn-rows'
 import { TListBoxItemElement } from './item'

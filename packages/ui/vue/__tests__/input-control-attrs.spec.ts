@@ -18,8 +18,8 @@
 
 import { describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
-import { TCheckBox, TInput, TSwitch, TTextarea } from '@soldy-ui/core'
-import { CheckBox, Input, Switch, Textarea } from '@soldy-ui/vue'
+import { TCheckBox, TInput, TSwitch, TTextarea } from '@soxa-ui/core'
+import { CheckBox, Input, Switch, Textarea } from '@soxa-ui/vue'
 
 /** Контрол с ошибкой: её задают инстансу — в разметке её задаёт поле формы. */
 function invalid<T extends { invalid: boolean }>(ctrl: T): T {

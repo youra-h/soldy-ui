@@ -1,7 +1,7 @@
 ---
-'@soldy-ui/core': minor
-'@soldy-ui/theme-base': minor
-'@soldy-ui/theme-oren': minor
+'@soxa-ui/core': minor
+'@soxa-ui/theme-base': minor
+'@soxa-ui/theme-oren': minor
 ---
 
 Replace boolean and state CSS modifiers with data attributes, including readonly, required, clearable, editable, closable, indeterminate and Tabs geometry readiness. Select now exposes open state only through data-open. Prefix orientation, DatePicker mode and Tabs alignment modifiers with their prop names.

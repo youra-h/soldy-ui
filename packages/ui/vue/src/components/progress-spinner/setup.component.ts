@@ -1,4 +1,4 @@
-import { ProgressSpinnerDescriptor } from '@soldy-ui/setup'
+import { ProgressSpinnerDescriptor } from '@soxa-ui/setup'
 import { useAdapter, useExpose, createVueAdapterContext, type SetupContext } from '../../adapter'
 import BaseProgressSpinner, { type ProgressSpinnerProps } from './base.component'
 

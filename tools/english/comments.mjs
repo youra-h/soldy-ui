@@ -15,6 +15,7 @@
 
 import { execFileSync } from 'node:child_process'
 import { extname } from 'node:path'
+import { isSoxaRename } from './mechanical-rename.mjs'
 
 const base = process.argv[2]
 if (!base) {
@@ -43,7 +44,11 @@ const SYNTAX = {
 const cyrillic = /[Ѐ-ӿ]/
 
 function git(...args) {
-	return execFileSync('git', args, { encoding: 'utf8', maxBuffer: 1 << 28 })
+	return execFileSync('git', args, {
+		encoding: 'utf8',
+		maxBuffer: 1 << 28,
+		stdio: ['ignore', 'pipe', 'pipe'],
+	})
 }
 
 // Added line numbers of each changed file, from a zero-context diff.
@@ -152,8 +157,21 @@ function withoutTitles(comments) {
 
 const offenders = []
 for (const [file, lines] of addedLines()) {
-	const comments = commentsOf(git('show', `HEAD:${file}`), SYNTAX[extname(file)])
+	const source = git('show', `HEAD:${file}`)
+	const comments = commentsOf(source, SYNTAX[extname(file)])
 	const checked = withoutTitles(comments)
+	if (![...lines].some((n) => cyrillic.test(checked[n] ?? ''))) continue
+	let previous = null
+	// Renamed benchmark fixtures and the component skill have new paths.
+	for (const path of [file, file.replace(/soxa/gi, 'soldy')]) {
+		try {
+			previous = git('show', `${base}:${path}`)
+			break
+		} catch (failure) {
+			if (failure.status !== 128) throw failure
+		}
+	}
+	if (previous !== null && isSoxaRename(previous, source)) continue
 	for (const n of [...lines].sort((a, b) => a - b)) {
 		if (cyrillic.test(checked[n] ?? '')) offenders.push(`  ${file}:${n}: ${comments[n].trim()}`)
 	}

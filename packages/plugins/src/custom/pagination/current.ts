@@ -1,4 +1,4 @@
-import type { IPagination, TPaginationCollection } from '@soldy-ui/core'
+import type { IPagination, TPaginationCollection } from '@soxa-ui/core'
 import type { IPluginContext } from '../../base'
 import { TCollectionElements } from '../collection'
 

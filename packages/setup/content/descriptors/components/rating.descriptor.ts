@@ -12,8 +12,8 @@
  */
 
 import { defineComponent, defineDescriptor, defineType } from '../../../protected/define'
-import { TRating } from '@soldy-ui/core'
-import { fieldOf } from '@soldy-ui/plugins'
+import { TRating } from '@soxa-ui/core'
+import { fieldOf } from '@soxa-ui/plugins'
 import {
 	ActionPluginDescriptor,
 	RatingHoverPluginDescriptor,

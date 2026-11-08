@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest'
-import { TSwitch } from '@soldy-ui/core'
+import { TSwitch } from '@soxa-ui/core'
 
 describe('TSwitch', () => {
 	it('создаётся через { props } и через plain props', () => {

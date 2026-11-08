@@ -20,8 +20,8 @@ import {
 	TWindowStrategy,
 	createEngineListBox,
 	createEngineTable,
-} from '@soldy-ui/core'
-import type { TCollectionEngine, TDrawable } from '@soldy-ui/core'
+} from '@soxa-ui/core'
+import type { TCollectionEngine, TDrawable } from '@soxa-ui/core'
 import {
 	TCollectionBundlesPlugin,
 	TCollectionElements,

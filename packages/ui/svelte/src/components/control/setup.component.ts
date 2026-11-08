@@ -1,4 +1,4 @@
-import { ControlDescriptor } from '@soldy-ui/setup'
+import { ControlDescriptor } from '@soxa-ui/setup'
 import { createSvelteAdapterContext, useAdapter } from '../../adapter'
 import type { ControlProps } from './base.component'
 

@@ -1,4 +1,4 @@
-import type { ISwipeable, TClasses, TSwipeableEvents } from '@soldy-ui/core'
+import type { ISwipeable, TClasses, TSwipeableEvents } from '@soxa-ui/core'
 import type { IListenable, TPluginEvents } from '../../../base'
 
 /**

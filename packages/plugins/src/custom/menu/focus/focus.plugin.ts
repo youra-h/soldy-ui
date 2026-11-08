@@ -1,4 +1,4 @@
-import type { IMenu } from '@soldy-ui/core'
+import type { IMenu } from '@soxa-ui/core'
 import type { IPluginContext } from '../../../base'
 import { TPopoverFocusPlugin } from '../../popover/focus'
 import type { IOverlayOpenOptions } from '../../overlay/types'

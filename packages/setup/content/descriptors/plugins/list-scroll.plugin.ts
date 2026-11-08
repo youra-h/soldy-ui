@@ -14,7 +14,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TListScrollPlugin } from '@soldy-ui/plugins'
+import { TListScrollPlugin } from '@soxa-ui/plugins'
 
 export const ListScrollPluginDescriptor = definePlugin({
 	ctor: TListScrollPlugin,

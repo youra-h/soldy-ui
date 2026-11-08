@@ -1,6 +1,6 @@
 import type { HTMLAttributes } from 'react'
-import type { IListBox } from '@soldy-ui/core'
-import type { ListBoxCollectionDescriptor, ListBoxDescriptor } from '@soldy-ui/setup'
+import type { IListBox } from '@soxa-ui/core'
+import type { ListBoxCollectionDescriptor, ListBoxDescriptor } from '@soxa-ui/setup'
 import type { EventProps, TDomAttributes, UseDomProps } from '../../types'
 
 /** Колбэки обоих контекстов списка — свой и фасада коллекции — пропсы одного компонента. */

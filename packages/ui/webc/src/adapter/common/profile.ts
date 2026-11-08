@@ -1,4 +1,4 @@
-import type { IAdapterProfile } from '@soldy-ui/setup'
+import type { IAdapterProfile } from '@soxa-ui/setup'
 import { WebcNaming } from './naming'
 
 /** Одна поверхность на класс элемента (атрибуты, свойства) и на связку. */

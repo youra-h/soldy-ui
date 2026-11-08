@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { DescriptorSlots, TooltipDescriptor } from '@soldy-ui/setup'
-	import { Button, Tooltip } from '@soldy-ui/svelte'
+	import type { DescriptorSlots, TooltipDescriptor } from '@soxa-ui/setup'
+	import { Button, Tooltip } from '@soxa-ui/svelte'
 	import type { TPreviewProps } from './previews'
 
 	type TTriggerScope = DescriptorSlots<typeof TooltipDescriptor>['trigger']

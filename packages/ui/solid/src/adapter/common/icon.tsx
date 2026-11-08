@@ -6,7 +6,7 @@
  */
 
 import type { Component, JSX } from 'solid-js'
-import { getIcon } from '@soldy-ui/setup'
+import { getIcon } from '@soxa-ui/setup'
 
 export type TRoleIconProps = JSX.SvgSVGAttributes<SVGSVGElement>
 

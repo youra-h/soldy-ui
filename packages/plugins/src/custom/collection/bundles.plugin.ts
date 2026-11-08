@@ -1,7 +1,7 @@
-import { batchOf, plainOf } from '@soldy-ui/core'
+import { batchOf, plainOf } from '@soxa-ui/core'
 import { TBasePlugin } from '../../base'
 import type { IPluginBundle } from '../../base'
-import type { IComponentView, TCollectionEngine } from '@soldy-ui/core'
+import type { IComponentView, TCollectionEngine } from '@soxa-ui/core'
 import type { TBundlesEvents } from './types'
 
 /**

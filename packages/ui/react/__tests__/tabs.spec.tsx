@@ -22,7 +22,7 @@
 
 import { describe, it, expect, expectTypeOf, vi, afterEach } from 'vitest'
 import { act, type ReactNode } from 'react'
-import type { ITabsItem } from '@soldy-ui/core'
+import type { ITabsItem } from '@soxa-ui/core'
 import {
 	Tabs,
 	TabsContent,
@@ -30,7 +30,7 @@ import {
 	type TabsContentProps,
 	type TabsItemProps,
 	type TabsProps,
-} from '@soldy-ui/react'
+} from '@soxa-ui/react'
 import { find, mount, nextFrame } from './mount'
 
 afterEach(() => {

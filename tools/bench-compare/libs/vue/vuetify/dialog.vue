@@ -5,7 +5,7 @@ import { VCard, VCardActions, VCardText, VCardTitle } from 'vuetify/components/V
 import { VDialog } from 'vuetify/components/VDialog'
 import { VTextField } from 'vuetify/components/VTextField'
 
-/** A button opens a dialog with a field inside, as the soldy preview. */
+/** A button opens a dialog with a field inside, as the soxa preview. */
 defineOptions({ name: 'VuetifyDialogPage' })
 
 const shown = ref(false)

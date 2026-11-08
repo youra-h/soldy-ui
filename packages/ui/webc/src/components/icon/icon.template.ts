@@ -3,7 +3,7 @@
  * `aria-hidden` — имя у корня. Роли нет — `<svg>` снят.
  */
 
-import type { IIcon } from '@soldy-ui/core'
+import type { IIcon } from '@soxa-ui/core'
 import { bind, drawRoleIcon, roleIcon, type ITemplate } from '../../adapter'
 
 /** Рисунок каждого элемента — свой: создаётся с первой ролью и остаётся за элементом. */

@@ -9,7 +9,7 @@ import {
 	ValueControlDescriptor,
 	defineComponent,
 	type IComponentDescriptor,
-} from '@soldy-ui/setup'
+} from '@soxa-ui/setup'
 import { buildAttributeMap, coerceAttribute } from '../src/adapter/common/attributes'
 
 /**

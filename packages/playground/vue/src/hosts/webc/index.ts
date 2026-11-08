@@ -1,13 +1,13 @@
-import { enUS, type TLocale } from '@soldy-ui/plugins'
-import { DEFAULT_SLOT } from '@soldy-ui/setup'
-import { TLocaleProviderElement } from '@soldy-ui/webc'
+import { enUS, type TLocale } from '@soxa-ui/plugins'
+import { DEFAULT_SLOT } from '@soxa-ui/setup'
+import { TLocaleProviderElement } from '@soxa-ui/webc'
 import { isHostProp, toAttributeName } from '../../../../../ui/webc/src/adapter/common/attributes'
 import {
 	componentDescriptors,
 	findComponent,
 	partsOf,
 	type IPreviewHost,
-} from '@soldy-ui/playground-shared'
+} from '@soxa-ui/playground-shared'
 import { FIXTURES } from './fixtures'
 import { PREVIEWS, type TContent, type TPreview, type TPreviewProps } from './previews'
 import { listenersOf, type TElementListener } from './events'
@@ -53,7 +53,7 @@ function propsOf(preview: TPreview, bind: TPreviewProps): Map<string, unknown> {
 }
 
 /**
- * The description's element: a customized built-in soldy element as a tag
+ * The description's element: a customized built-in soxa element as a tag
  * with `is`; an autonomous one, or a wrapper without a component, as a bare
  * tag.
  */
@@ -144,7 +144,7 @@ function applyStyle(element: HTMLElement, preview: TPreview, bind: TPreviewProps
 }
 
 /**
- * A child in a slot. A soldy element, and markup without a component that has
+ * A child in a slot. A soxa element, and markup without a component that has
  * its own content (the row of the DragAndDrop preview), are built from their
  * description, like the wrapper, with the style but without the row's props;
  * markup without content by its function. A part (`TPreview.part`) gets its

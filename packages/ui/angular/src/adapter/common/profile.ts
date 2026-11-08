@@ -1,4 +1,4 @@
-import type { IAdapterProfile } from '@soldy-ui/setup'
+import type { IAdapterProfile } from '@soxa-ui/setup'
 import { AngularNaming } from './naming'
 
 /** One surface for code generation and runtime bindings, including native Angular models. */

@@ -48,8 +48,8 @@ import {
 	TTable,
 	TTabs,
 	TTags,
-} from '@soldy-ui/core'
-import type { TAria, TDataset } from '@soldy-ui/core'
+} from '@soxa-ui/core'
+import type { TAria, TDataset } from '@soxa-ui/core'
 
 /** Сколько элементов в меньшем наполнении; большее — вдвое. */
 const COUNT = 100

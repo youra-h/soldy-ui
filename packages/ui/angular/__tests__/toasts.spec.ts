@@ -1,4 +1,4 @@
-import { TPluginBundle } from '@soldy-ui/plugins'
+import { TPluginBundle } from '@soxa-ui/plugins'
 /**
  * Toasts под Angular — проводка целиком, на настоящей разметке.
  *
@@ -29,11 +29,11 @@ import { TPluginBundle } from '@soldy-ui/plugins'
 import { describe, it, expect, afterEach, vi } from 'vitest'
 import { Component, Input, input, signal, viewChild, type Type } from '@angular/core'
 import { TestBed, type ComponentFixture } from '@angular/core/testing'
-import { createEngineRadioGroup, createEngineToasts } from '@soldy-ui/core'
-import type { IToastsItem, IToastsProps, TToastsItemType, TToastsLayout } from '@soldy-ui/core'
-import { TElementPlugin, ruRU } from '@soldy-ui/plugins'
-import { getIcon } from '@soldy-ui/setup'
-import type { TIconRole } from '@soldy-ui/setup'
+import { createEngineRadioGroup, createEngineToasts } from '@soxa-ui/core'
+import type { IToastsItem, IToastsProps, TToastsItemType, TToastsLayout } from '@soxa-ui/core'
+import { TElementPlugin, ruRU } from '@soxa-ui/plugins'
+import { getIcon } from '@soxa-ui/setup'
+import type { TIconRole } from '@soxa-ui/setup'
 import {
 	AttributesDirective,
 	LocaleProviderDirective,
@@ -46,7 +46,7 @@ import {
 	TToastsComponent,
 	useToasts,
 	type TToastRender,
-} from '@soldy-ui/angular'
+} from '@soxa-ui/angular'
 import { TELEPORT_ANCHOR } from '../src/adapter/runtime/teleport'
 import { find, nextFrame } from './mount'
 

@@ -9,8 +9,8 @@ import {
 	type OnInit,
 	type Type,
 } from '@angular/core'
-import type { TLocale } from '@soldy-ui/plugins'
-import { LocaleProviderDirective } from '@soldy-ui/angular'
+import type { TLocale } from '@soxa-ui/plugins'
+import { LocaleProviderDirective } from '@soxa-ui/angular'
 import {
 	PREVIEWS,
 	type TProps,

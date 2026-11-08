@@ -1,6 +1,6 @@
 /**
  * The shared theme layer without a theme — the table: a page with the base's
- * CSS only (`@soldy-ui/theme-base`), without `@soldy-ui/theme-oren`.
+ * CSS only (`@soxa-ui/theme-base`), without `@soxa-ui/theme-oren`.
  *
  * Table's structure — layout and mechanics — lies in the base, the look and the
  * motion in the theme (`packages/themes/base/AGENTS.md`, «Перенос структуры»).
@@ -41,11 +41,11 @@ import { describe, it, expect, afterAll, afterEach, beforeAll } from 'vitest'
 import { render, cleanup } from './render'
 import { page, userEvent } from 'vitest/browser'
 import { defineComponent, h, nextTick, type VNode } from 'vue'
-import { createEngineTable } from '@soldy-ui/core'
-import type { TSelectionMode, TTableCollection, TTableColumnSource } from '@soldy-ui/core'
-import { Table } from '@soldy-ui/vue'
+import { createEngineTable } from '@soxa-ui/core'
+import type { TSelectionMode, TTableCollection, TTableColumnSource } from '@soxa-ui/core'
+import { Table } from '@soxa-ui/vue'
 
-import '@soldy-ui/theme-base'
+import '@soxa-ui/theme-base'
 
 /** Tolerance for subpixel rounding of coordinates, px. */
 const EPSILON = 1

@@ -6,8 +6,8 @@
 	 * и скрытие доходят до разметки. Пропсы самой подсказки — `tooltip`, они
 	 * ложатся поверх задержек.
 	 */
-	import type { DescriptorSlots, TooltipDescriptor } from '@soldy-ui/setup'
-	import { Button, Tooltip, type TooltipProps } from '@soldy-ui/svelte'
+	import type { DescriptorSlots, TooltipDescriptor } from '@soxa-ui/setup'
+	import { Button, Tooltip, type TooltipProps } from '@soxa-ui/svelte'
 
 	type TTriggerScope = DescriptorSlots<typeof TooltipDescriptor>['trigger']
 

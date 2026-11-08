@@ -5,8 +5,8 @@
  * импортирует сам.
  */
 
-import { useIcons } from '@soldy-ui/setup'
-import * as material from '@soldy-ui/icons-material'
+import { useIcons } from '@soxa-ui/setup'
+import * as material from '@soxa-ui/icons-material'
 
 /**
  * Пакет иконок подключает приложение — как тему. Тесты играют роль

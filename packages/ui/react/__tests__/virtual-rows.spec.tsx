@@ -16,9 +16,9 @@ import { describe, it, expect } from 'vitest'
 import { act, type ReactElement } from 'react'
 import { createRoot } from 'react-dom/client'
 import { queryObjects } from 'node:v8'
-import { TItemRow, createEngineListBox, createEngineSelect } from '@soldy-ui/core'
-import type { TDrawViewport } from '@soldy-ui/core'
-import { ListBox, Select, Virtual } from '@soldy-ui/react'
+import { TItemRow, createEngineListBox, createEngineSelect } from '@soxa-ui/core'
+import type { TDrawViewport } from '@soxa-ui/core'
+import { ListBox, Select, Virtual } from '@soxa-ui/react'
 import { nextFrame } from './mount'
 
 const rows = () => queryObjects(TItemRow, { format: 'count' })

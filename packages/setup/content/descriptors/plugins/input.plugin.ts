@@ -7,7 +7,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TInputPlugin } from '@soldy-ui/plugins'
+import { TInputPlugin } from '@soxa-ui/plugins'
 
 export const InputPluginDescriptor = definePlugin({
 	ctor: TInputPlugin,

@@ -1,6 +1,6 @@
 /**
  * Общий слой тем без темы — слои поверх страницы: страница только с CSS базы
- * (`@soldy-ui/theme-base`), без `@soldy-ui/theme-oren`.
+ * (`@soxa-ui/theme-base`), без `@soxa-ui/theme-oren`.
  *
  * Структура Popover, Select, Dialog и Drawer — раскладка и механика — лежит в
  * базе, а облик и движение в теме (`packages/themes/base/AGENTS.md`, «Перенос
@@ -33,11 +33,11 @@ import { describe, it, expect, afterEach } from 'vitest'
 import { render, cleanup } from './render'
 import { userEvent } from 'vitest/browser'
 import { defineComponent, h, nextTick, type VNode } from 'vue'
-import type { TDrawerPlacement, TPopoverEdge } from '@soldy-ui/core'
-import type { DescriptorSlots, PopoverDescriptor } from '@soldy-ui/setup'
-import { Button, Dialog, Drawer, Popover, Select, SelectItem } from '@soldy-ui/vue'
+import type { TDrawerPlacement, TPopoverEdge } from '@soxa-ui/core'
+import type { DescriptorSlots, PopoverDescriptor } from '@soxa-ui/setup'
+import { Button, Dialog, Drawer, Popover, Select, SelectItem } from '@soxa-ui/vue'
 
-import '@soldy-ui/theme-base'
+import '@soxa-ui/theme-base'
 
 type TTriggerScope = DescriptorSlots<typeof PopoverDescriptor>['trigger']
 

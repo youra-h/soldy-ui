@@ -25,7 +25,7 @@ import { specifiersOf } from '../published-imports/published-imports.ts'
  *   reference instead of every helper as well;
  * - **a module of parts** (`isPartsModule`): besides imports and exports, only
  *   declarations `X = withParts(<name>, { <key>: <name>, … })`, with
- *   `withParts` imported from `@soldy-ui/setup`. On the server its imports of
+ *   `withParts` imported from `@soxa-ui/setup`. On the server its imports of
  *   client modules are references, and `withParts` — `Object.assign`, it needs
  *   no React — hangs the references of the parts on the reference of the
  *   owner: a Server Component writes `Tabs.Item` as a Client Component does.
@@ -46,7 +46,7 @@ export const CLIENT_DIRECTIVE = 'use client'
 export type TModuleImports = {
 	/** Modules of the build, by their path in it. */
 	readonly modules: readonly string[]
-	/** Packages, by specifier as written: `react/jsx-runtime`, `@soldy-ui/setup`. */
+	/** Packages, by specifier as written: `react/jsx-runtime`, `@soxa-ui/setup`. */
 	readonly packages: readonly string[]
 }
 
@@ -138,11 +138,11 @@ export function reexportsOnly(text: string): boolean {
 }
 
 /** The package of the function that hangs parts on an owner, and its name there. */
-const PARTS_PACKAGE = '@soldy-ui/setup'
+const PARTS_PACKAGE = '@soxa-ui/setup'
 const PARTS_FUNCTION = 'withParts'
 
 /**
- * The local names the module imports `withParts` of `@soldy-ui/setup` under:
+ * The local names the module imports `withParts` of `@soxa-ui/setup` under:
  * its own name, or another one the bundle gave it (`withParts as withParts$1`).
  */
 function partsFunctionNames(source: ts.SourceFile): Set<string> {
@@ -171,7 +171,7 @@ function partsFunctionNames(source: ts.SourceFile): Set<string> {
 	return names
 }
 
-/** Whether the module imports `withParts` of `@soldy-ui/setup`, under any local name. */
+/** Whether the module imports `withParts` of `@soxa-ui/setup`, under any local name. */
 export function importsWithParts(text: string): boolean {
 	return partsFunctionNames(parse(text)).size > 0
 }

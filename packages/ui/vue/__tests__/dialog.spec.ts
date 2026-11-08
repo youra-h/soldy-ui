@@ -15,11 +15,11 @@
 import { describe, it, expect, afterEach, vi } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { defineComponent, h, nextTick, ref, type Ref, type VNode } from 'vue'
-import { Dialog, Select, SelectItem } from '@soldy-ui/vue'
-import { TDialog } from '@soldy-ui/core'
-import type { IDialogProps, TCloseEvent, TCloseReason } from '@soldy-ui/core'
-import type { TDialogOffsetEvent } from '@soldy-ui/plugins'
-import * as material from '@soldy-ui/icons-material'
+import { Dialog, Select, SelectItem } from '@soxa-ui/vue'
+import { TDialog } from '@soxa-ui/core'
+import type { IDialogProps, TCloseEvent, TCloseReason } from '@soxa-ui/core'
+import type { TDialogOffsetEvent } from '@soxa-ui/plugins'
+import * as material from '@soxa-ui/icons-material'
 
 const nextFrame = () => new Promise((resolve) => requestAnimationFrame(resolve))
 

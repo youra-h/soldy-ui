@@ -11,7 +11,7 @@ import {
 } from '../../../../bench-pages/scenarios'
 
 /**
- * Vaadin scenarios: the soldy ones step by step, on Vaadin's markup. Since
+ * Vaadin scenarios: the soxa ones step by step, on Vaadin's markup. Since
  * Vaadin 25 the overlays render into the light DOM of their element, while
  * the field buttons and the day cells live in shadow roots — `deep` looks
  * through both.

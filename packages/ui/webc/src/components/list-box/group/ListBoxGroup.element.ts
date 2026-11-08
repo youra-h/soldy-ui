@@ -3,8 +3,8 @@
  * регистрирует модуль списка. docs/architecture.md, Layer 8d, «Коллекция».
  */
 
-import { ListBoxGroupDescriptor } from '@soldy-ui/setup'
-import type { IItemGroup } from '@soldy-ui/core'
+import { ListBoxGroupDescriptor } from '@soxa-ui/setup'
+import type { IItemGroup } from '@soxa-ui/core'
 import { ElementBase } from '../../../adapter'
 import type { TElementClassOf, TElementType } from '../../../adapter'
 import { listBoxGroupTemplate } from './list-box-group.template'

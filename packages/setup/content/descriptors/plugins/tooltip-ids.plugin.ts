@@ -7,7 +7,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TTooltipIdsPlugin } from '@soldy-ui/plugins'
+import { TTooltipIdsPlugin } from '@soxa-ui/plugins'
 
 export const TooltipIdsPluginDescriptor = definePlugin({
 	ctor: TTooltipIdsPlugin,

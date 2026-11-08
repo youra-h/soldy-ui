@@ -1,5 +1,5 @@
 import { createUniqueId } from 'solid-js'
-import { createAdapterContext } from '@soldy-ui/setup'
+import { createAdapterContext } from '@soxa-ui/setup'
 import { nearestLocale } from '../locale/context'
 
 /**

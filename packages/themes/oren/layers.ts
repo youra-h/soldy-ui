@@ -34,7 +34,7 @@ const PROPERTY = 'property'
  */
 export function hoistRegistrations(): TPostcssPlugin {
 	return {
-		postcssPlugin: 'soldy-theme-registrations',
+		postcssPlugin: 'soxa-theme-registrations',
 		Once(root) {
 			root.walkAtRules(PROPERTY, (rule) => {
 				if (rule.parent === root) return
@@ -262,7 +262,7 @@ export const WHOLE = 'index.css'
  */
 export function componentSheets(): Plugin {
 	return {
-		name: 'soldy-theme-component-sheets',
+		name: 'soxa-theme-component-sheets',
 		enforce: 'post',
 		generateBundle(_options, bundle) {
 			const sheet = bundle[WHOLE]

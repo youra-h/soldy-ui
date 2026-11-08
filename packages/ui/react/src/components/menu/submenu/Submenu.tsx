@@ -1,5 +1,5 @@
 import type { ElementType, ReactElement } from 'react'
-import type { IMenuItem, TGroupSection, TMenuSubmenuEntries } from '@soldy-ui/core'
+import type { IMenuItem, TGroupSection, TMenuSubmenuEntries } from '@soxa-ui/core'
 import {
 	Elevate,
 	hasSlot,

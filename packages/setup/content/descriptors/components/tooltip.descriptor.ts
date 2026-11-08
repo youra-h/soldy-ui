@@ -8,8 +8,8 @@
  */
 
 import { defineComponent, defineDescriptor, defineType } from '../../../protected/define'
-import { TTooltip } from '@soldy-ui/core'
-import type { TAriaAttributes } from '@soldy-ui/core'
+import { TTooltip } from '@soxa-ui/core'
+import type { TAriaAttributes } from '@soxa-ui/core'
 import {
 	DismissPluginDescriptor,
 	TooltipIdsPluginDescriptor,

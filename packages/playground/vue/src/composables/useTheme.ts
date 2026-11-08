@@ -1,7 +1,7 @@
 import { ref, watchEffect } from 'vue'
-import { THEMES } from '@soldy-ui/playground-shared'
+import { THEMES } from '@soxa-ui/playground-shared'
 
-const STORAGE_KEY = 'soldy-playground-theme'
+const STORAGE_KEY = 'soxa-playground-theme'
 
 const theme = ref(THEMES[0].value)
 const dark = ref(false)

@@ -6,7 +6,7 @@ import '@spectrum-web-components/menu/sp-menu-divider.js'
 import { h } from '../dom'
 
 /**
- * The soldy menu in Spectrum: a group of checkboxes (`selects="multiple"`), a
+ * The soxa menu in Spectrum: a group of checkboxes (`selects="multiple"`), a
  * group of radios (`selects="single"`), shortcuts in the `value` slot, a
  * submenu with a submenu inside (`slot="submenu"`), a disabled item. Spectrum
  * has no destructive menu item: «Удалить» is a plain one.

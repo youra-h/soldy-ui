@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core'
 import { NgTemplateOutlet } from '@angular/common'
-import type { IMenu } from '@soldy-ui/core'
+import type { IMenu } from '@soxa-ui/core'
 import { AttributesDirective, SlotDirective, provideElevator } from '../../adapter'
 import { TFrameComponent } from '../frame'
 import { TMenuItemComponent } from './item'

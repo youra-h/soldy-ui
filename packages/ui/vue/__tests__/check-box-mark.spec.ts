@@ -11,8 +11,8 @@
 import { describe, it, expect, afterEach } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { defineComponent, h, nextTick, ref, type ComponentOptions } from 'vue'
-import * as material from '@soldy-ui/icons-material'
-import { CheckBox } from '@soldy-ui/vue'
+import * as material from '@soxa-ui/icons-material'
+import { CheckBox } from '@soxa-ui/vue'
 import { roleIcon } from '../src/adapter'
 
 let wrapper: ReturnType<typeof mount> | null = null

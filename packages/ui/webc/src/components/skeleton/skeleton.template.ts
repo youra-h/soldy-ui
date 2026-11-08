@@ -4,7 +4,7 @@
  * содержимое.
  */
 
-import type { ISkeleton } from '@soldy-ui/core'
+import type { ISkeleton } from '@soxa-ui/core'
 import { bind, type ITemplate } from '../../adapter'
 
 /** Заглушка элемента — один узел на всё время жизни: привязка вставляет и вынимает его. */

@@ -12,8 +12,8 @@ import { propertyDetail } from './property-detail'
  */
 
 import { describe, it, expect, afterEach } from 'vitest'
-import type { IButton } from '@soldy-ui/core'
-import { TButtonElement, registerItemRowTag, type TItemRowElementProps } from '@soldy-ui/webc'
+import type { IButton } from '@soxa-ui/core'
+import { TButtonElement, registerItemRowTag, type TItemRowElementProps } from '@soxa-ui/webc'
 
 /** Микрозадача: обновления состояния элемент разносит по ним. */
 const flush = () => new Promise<void>((resolve) => queueMicrotask(() => resolve()))

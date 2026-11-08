@@ -1,4 +1,4 @@
-import type { TValuePayload } from '@soldy-ui/core'
+import type { TValuePayload } from '@soxa-ui/core'
 /**
  * Popover в React — проводка целиком, на настоящей разметке.
  *
@@ -25,10 +25,10 @@ import { describe, it, expect, vi } from 'vitest'
 import { StrictMode, act, type ReactElement, type ReactNode } from 'react'
 import { hydrateRoot } from 'react-dom/client'
 import { renderToString } from 'react-dom/server'
-import { TPopover } from '@soldy-ui/core'
-import { ruRU } from '@soldy-ui/plugins'
-import type { DescriptorSlots, PopoverDescriptor } from '@soldy-ui/setup'
-import { Button, LocaleProvider, Popover, Select, type PopoverProps } from '@soldy-ui/react'
+import { TPopover } from '@soxa-ui/core'
+import { ruRU } from '@soxa-ui/plugins'
+import type { DescriptorSlots, PopoverDescriptor } from '@soxa-ui/setup'
+import { Button, LocaleProvider, Popover, Select, type PopoverProps } from '@soxa-ui/react'
 import { find, mount, nextFrame, track } from './mount'
 
 type TTriggerScope = DescriptorSlots<typeof PopoverDescriptor>['trigger']

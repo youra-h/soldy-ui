@@ -42,7 +42,7 @@ import {
 	TTable,
 	TTabs,
 	TTags,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 import type {
 	IMenuItemSource,
 	IMenuSubmenu,
@@ -52,7 +52,7 @@ import type {
 	TComponentVariant,
 	TTableRecord,
 	TValuePayload,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 
 /** Источник элемента — то, что приходит в `items`. */
 type TSource = { value: string; size?: TComponentSize; variant?: TComponentVariant }

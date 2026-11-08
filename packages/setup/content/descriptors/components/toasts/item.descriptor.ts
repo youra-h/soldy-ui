@@ -14,8 +14,8 @@
  */
 
 import { defineComponent, defineDescriptor, defineType } from '../../../../protected/define'
-import { TToastsItem } from '@soldy-ui/core'
-import type { TToastsItemType } from '@soldy-ui/core'
+import { TToastsItem } from '@soxa-ui/core'
+import type { TToastsItemType } from '@soxa-ui/core'
 import { ComponentViewDescriptor } from '../component-view.descriptor'
 import { SwipePluginDescriptor, ToastsItemNamesPluginDescriptor } from '../../plugins'
 

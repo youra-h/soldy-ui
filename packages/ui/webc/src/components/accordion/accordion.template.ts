@@ -4,7 +4,7 @@
  * docs/architecture.md, Layer 8d, «Коллекция».
  */
 
-import type { IAccordion, IAccordionItem, TAccordionCollectionFacade } from '@soldy-ui/core'
+import type { IAccordion, IAccordionItem, TAccordionCollectionFacade } from '@soxa-ui/core'
 import {
 	TKeyedLoop,
 	bind,

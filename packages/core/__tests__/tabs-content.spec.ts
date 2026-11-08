@@ -18,8 +18,8 @@ import {
 	TTabsContentCollectionFacade,
 	TTabsCollectionFacade,
 	TItemContextRegistry,
-} from '@soldy-ui/core'
-import type { ITabsItem } from '@soldy-ui/core'
+} from '@soxa-ui/core'
+import type { ITabsItem } from '@soxa-ui/core'
 
 function createTabs(values: string[]) {
 	const owner = new TTabs()

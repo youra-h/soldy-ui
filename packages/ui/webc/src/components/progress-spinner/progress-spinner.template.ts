@@ -4,7 +4,7 @@
  * `pathLength="1"` — доля из переменной корня ложится в штрих как есть.
  */
 
-import type { IProgressSpinner } from '@soldy-ui/core'
+import type { IProgressSpinner } from '@soxa-ui/core'
 import type { ITemplate } from '../../adapter'
 
 /** Рисунок — элементы SVG: в пространстве имён HTML `<svg>` не нарисуется. */

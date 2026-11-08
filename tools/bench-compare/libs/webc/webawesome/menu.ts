@@ -5,7 +5,7 @@ import '@awesome.me/webawesome/dist/components/dropdown-item/dropdown-item.js'
 import { h, slotted } from '../dom'
 
 /**
- * The soldy menu preview in Web Awesome: `wa-dropdown` with checkbox items,
+ * The soxa menu preview in Web Awesome: `wa-dropdown` with checkbox items,
  * shortcuts in the `details` slot, nested submenus (`slot="submenu"`), a
  * disabled item and a `danger` one. There are no radio items: the radio group
  * is checkbox items kept exclusive on `wa-select`; group labels are `h6`

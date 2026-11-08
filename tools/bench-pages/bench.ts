@@ -1,9 +1,9 @@
 // First: the counting build's render hooks stand before any framework loads
 import { counts, detail } from './count/probes'
-import { useIcons, useTheme } from '@soldy-ui/setup'
-import * as material from '@soldy-ui/icons-material'
-import { TActionEvent, TButton, TComponent, TEventEmitter } from '@soldy-ui/core'
-import { enUS, ruRU } from '@soldy-ui/plugins'
+import { useIcons, useTheme } from '@soxa-ui/setup'
+import * as material from '@soxa-ui/icons-material'
+import { TActionEvent, TButton, TComponent, TEventEmitter } from '@soxa-ui/core'
+import { enUS, ruRU } from '@soxa-ui/plugins'
 import {
 	COLLECTION_ITEMS,
 	COMPONENTS,
@@ -11,9 +11,9 @@ import {
 	previewProps,
 	type IPreviewHandle,
 	type IPreviewHost,
-} from '@soldy-ui/playground-shared'
-import '@soldy-ui/theme-oren'
-import oren from '@soldy-ui/theme-oren/setup'
+} from '@soxa-ui/playground-shared'
+import '@soxa-ui/theme-oren'
+import oren from '@soxa-ui/theme-oren/setup'
 import '../../packages/playground/vue/browser/page.css'
 import {
 	decideSteps,

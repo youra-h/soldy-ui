@@ -1,14 +1,14 @@
 import { Fragment, createElement } from 'react'
 import { flushSync } from 'react-dom'
 import { createRoot } from 'react-dom/client'
-import { enUS, type TLocale } from '@soldy-ui/plugins'
-import { LocaleProvider } from '@soldy-ui/react'
+import { enUS, type TLocale } from '@soxa-ui/plugins'
+import { LocaleProvider } from '@soxa-ui/react'
 import {
 	componentDescriptors,
 	findComponent,
 	partsOf,
 	type IPreviewHost,
-} from '@soldy-ui/playground-shared'
+} from '@soxa-ui/playground-shared'
 import { PREVIEWS, type TPreview } from './previews'
 import { FIXTURES } from './fixtures'
 import { listenersOf } from './events'

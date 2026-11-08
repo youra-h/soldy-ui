@@ -12,7 +12,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TDialogLayoutPlugin } from '@soldy-ui/plugins'
+import { TDialogLayoutPlugin } from '@soxa-ui/plugins'
 
 export const DialogLayoutPluginDescriptor = definePlugin({
 	ctor: TDialogLayoutPlugin,

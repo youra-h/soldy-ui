@@ -4,7 +4,7 @@
  * what the acceptance writes is the starting state.
  */
 
-import type { IAdapterContext } from '@soldy-ui/setup'
+import type { IAdapterContext } from '@soxa-ui/setup'
 
 const now = new Set<IAdapterContext>()
 

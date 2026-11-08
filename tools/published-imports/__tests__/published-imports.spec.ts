@@ -15,8 +15,8 @@ import type { TManifest } from '../published-imports'
  */
 
 const MANIFEST: TManifest = {
-	name: '@soldy-ui/sample',
-	dependencies: { '@soldy-ui/core': '^0.1.0' },
+	name: '@soxa-ui/sample',
+	dependencies: { '@soxa-ui/core': '^0.1.0' },
 	peerDependencies: { '@angular/core': '^22.1.5', 'solid-js': '^1.9.0', svelte: '^5.29.0' },
 	devDependencies: { '@angular/common': '^22.1.5' },
 }
@@ -36,7 +36,7 @@ describe('имя из спецификатора объявлено в мани�
 	})
 
 	it.each([
-		['dependencies', "import { TButton } from '@soldy-ui/core'"],
+		['dependencies', "import { TButton } from '@soxa-ui/core'"],
 		['peerDependencies', "import { createSignal } from 'solid-js'"],
 	])('объявлено в %s — не нарушение', (_field, text) => {
 		expect(undeclared('dist/index.js', text)).toEqual([])
@@ -74,7 +74,7 @@ describe('имя из спецификатора объявлено в мани�
 	it.each([
 		['относительный путь', "import { a } from './a.js'\nexport * from '../b'"],
 		['абсолютный путь', "import '/c.js'"],
-		['собственное имя пакета', "import type { TSample } from '@soldy-ui/sample'"],
+		['собственное имя пакета', "import type { TSample } from '@soxa-ui/sample'"],
 	])('%s — не пакет-зависимость', (_title, text) => {
 		expect(undeclared('dist/index.d.ts', text)).toEqual([])
 	})
@@ -180,7 +180,7 @@ describe('какие файлы читаются', () => {
 		'dist/index.cjs',
 		'dist/index.d.ts',
 		'dist/index.d.mts',
-		'dist/fesm2022/soldy-ui-angular.mjs',
+		'dist/fesm2022/soxa-ui-angular.mjs',
 		'dist/components/Button.svelte',
 		'dist/runtime/useAdapter.svelte.js',
 	])('%s — читается', (path) => {
@@ -206,7 +206,7 @@ describe('какие файлы читаются', () => {
 
 describe('точки входа — в тарболле', () => {
 	const THEME: TManifest = {
-		name: '@soldy-ui/theme-sample',
+		name: '@soxa-ui/theme-sample',
 		main: './dist/index.css',
 		style: './dist/index.css',
 		types: './index.d.ts',
@@ -239,7 +239,7 @@ describe('точки входа — в тарболле', () => {
 	it('цель шаблона подпути — на месте, когда в тарболле есть файл под неё', () => {
 		// Stylesheets per component, as the theme oren ships them: `./*.css`
 		const manifest: TManifest = {
-			name: '@soldy-ui/theme-sample',
+			name: '@soxa-ui/theme-sample',
 			exports: { './*.css': './dist/components/*.css' },
 		}
 
@@ -251,7 +251,7 @@ describe('точки входа — в тарболле', () => {
 
 	it('цели `main` и `types` без `exports` — как у адаптера Angular', () => {
 		const manifest: TManifest = {
-			name: '@soldy-ui/sample',
+			name: '@soxa-ui/sample',
 			main: './dist/fesm2022/sample.mjs',
 			types: './dist/types/sample.d.ts',
 		}

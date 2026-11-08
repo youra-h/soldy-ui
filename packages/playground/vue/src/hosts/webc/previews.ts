@@ -1,4 +1,4 @@
-import type { TToastsItemType } from '@soldy-ui/core'
+import type { TToastsItemType } from '@soxa-ui/core'
 import {
 	COLLECTION_ITEMS,
 	COLLECTION_MANY_ITEMS,
@@ -9,8 +9,8 @@ import {
 	TOASTS_ITEM_TYPES,
 	TOAST_SAVING,
 	toastSample,
-} from '@soldy-ui/playground-shared'
-import { toastsOf, type TToastRender } from '@soldy-ui/webc'
+} from '@soxa-ui/playground-shared'
+import { toastsOf, type TToastRender } from '@soxa-ui/webc'
 
 /**
  * How to draw a component on the playground, in Web Components.
@@ -19,7 +19,7 @@ import { toastsOf, type TToastRender } from '@soldy-ui/webc'
  * keys, the registry ids. The platform has no markup: the host's code builds
  * the element (`document.createElement(tag, { is })`), so a preview is not a
  * function with markup but a description of the element: the native tag, the
- * soldy element name, the element's own attributes, children by slot and a
+ * soxa element name, the element's own attributes, children by slot and a
  * wrapper. The previews are the same as in Vue and React, so the framework
  * columns can be compared by eye.
  *
@@ -33,12 +33,12 @@ import { toastsOf, type TToastRender } from '@soldy-ui/webc'
  * A component missing from the map is not shown by this host.
  */
 export type TPreview = {
-	/** The element's native tag: a soldy element is a customized built-in of its tag. */
+	/** The element's native tag: a soxa element is a customized built-in of its tag. */
 	readonly tag: string
 	/**
-	 * The soldy element name: the `is` value. Missing: either the element is
+	 * The soxa element name: the `is` value. Missing: either the element is
 	 * autonomous and its name is the tag itself (`<so-virtual>`,
-	 * `<so-drag-and-drop>`), or it is not a soldy element at all: the table's
+	 * `<so-drag-and-drop>`), or it is not a soxa element at all: the table's
 	 * width wrapper, the DragAndDrop preview row and its cells.
 	 */
 	readonly is?: string
@@ -66,7 +66,7 @@ export type TPreview = {
 	 */
 	readonly attributes?: Readonly<Record<string, string>>
 	/**
-	 * Children by slot, the element's light DOM: slot name → soldy elements and
+	 * Children by slot, the element's light DOM: slot name → soxa elements and
 	 * markup without a component. The host's code puts them into the element
 	 * before insertion, elements with a `slot` attribute except for the default
 	 * slot. A function derives children from the component's row props: a list
@@ -87,7 +87,7 @@ export type TPreview = {
 	readonly rebuild?: readonly string[]
 	/**
 	 * An element around the component, as in Vue and React: for CheckBox,
-	 * Switch, Slider and Rating a Label, a soldy element with its own props and
+	 * Switch, Slider and Rating a Label, a soxa element with its own props and
 	 * the component in its default slot; for Table, Tags, ProgressLinear and
 	 * Scroller a width bound, a styled `div` (the table's follows the row props);
 	 * for Drawer its container box, for Dialog a box-less `div`. The row props,
@@ -118,7 +118,7 @@ export type TPreview = {
 export type TPreviewProps = Readonly<Record<string, unknown>>
 
 /**
- * A child in a slot: a soldy element with its own description (a collection
+ * A child in a slot: a soxa element with its own description (a collection
  * part, a label's control) or markup without a component (text, a padded
  * block). Markup is built by a function, so each render has its own nodes.
  */
@@ -191,7 +191,7 @@ const field = (placeholder: string): TPreview => ({
  * still holds the button inside.
  */
 const closing = (text: string) => (): Node => {
-	const node = soldy('button', 'so-button', { text })
+	const node = soxa('button', 'so-button', { text })
 
 	node.addEventListener('click', () => {
 		const panel = node.closest('.so-dialog, .so-drawer')
@@ -204,7 +204,7 @@ const closing = (text: string) => (): Node => {
 
 /** Custom toast content, an Undo button: it gets the toast as a parameter and closes it. */
 const undo: TToastRender = (toast) => {
-	const node = soldy('button', 'so-button', { text: 'Отменить' })
+	const node = soxa('button', 'so-button', { text: 'Отменить' })
 
 	node.addEventListener('click', () => toast.close())
 
@@ -256,7 +256,7 @@ const toastsTrigger = (): Node => {
 	}
 
 	const action = (text: string, act: (node: Element) => void): Node => {
-		const node = soldy('button', 'so-button', { text })
+		const node = soxa('button', 'so-button', { text })
 
 		node.addEventListener('click', () => act(node))
 
@@ -393,10 +393,10 @@ const MENU_ITEMS: readonly TContent[] = [
 ]
 
 /**
- * A soldy element inside markup without a component, built in code as a
+ * A soxa element inside markup without a component, built in code as a
  * consumer builds it: props as properties before insertion.
  */
-function soldy(tag: string, is: string, props: TPreviewProps): HTMLElement {
+function soxa(tag: string, is: string, props: TPreviewProps): HTMLElement {
 	const element = document.createElement(tag, { is })
 
 	for (const [name, value] of Object.entries(props)) Reflect.set(element, name, value)
@@ -423,11 +423,11 @@ const windowed = (): Node => {
 	row.style.cssText = 'display:flex; gap:24px; align-items:flex-start; width:100%'
 	column.style.cssText = 'flex:none; width:220px'
 	column.appendChild(
-		soldy('div', 'so-select', { items: COLLECTION_MANY_ITEMS, placeholder: 'Выберите' }),
+		soxa('div', 'so-select', { items: COLLECTION_MANY_ITEMS, placeholder: 'Выберите' }),
 	)
 	frame.style.cssText = 'flex:1; min-width:0; height:320px; overflow:auto'
 	frame.appendChild(
-		soldy('div', 'so-table', {
+		soxa('div', 'so-table', {
 			items: TABLE_MANY_ROWS,
 			columns: TABLE_COLUMNS,
 			reorderPreview: 'column',
@@ -437,7 +437,7 @@ const windowed = (): Node => {
 		}),
 	)
 	row.append(
-		soldy('div', 'so-list-box', {
+		soxa('div', 'so-list-box', {
 			items: COLLECTION_MANY_ITEMS,
 			maxRows: 8,
 			aria_label: 'Пункты',

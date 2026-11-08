@@ -3,7 +3,7 @@
 	import { COLLECTION_ITEMS } from '../../../data'
 
 	/**
-	 * Select with typing and filtering — `ComboBox`, as the soldy `editable`
+	 * Select with typing and filtering — `ComboBox`, as the soxa `editable`
 	 * preview. It does not filter by default: the filter is `shouldFilterItem`,
 	 * as its documentation shows.
 	 */

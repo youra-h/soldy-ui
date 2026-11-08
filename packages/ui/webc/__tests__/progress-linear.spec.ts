@@ -10,9 +10,9 @@
  */
 
 import { describe, it, expect, afterEach } from 'vitest'
-import { TProgressLinear } from '@soldy-ui/core'
-import { ProgressLinearDescriptor } from '@soldy-ui/setup'
-import { TProgressLinearElement, type TProgressLinearElementProps } from '@soldy-ui/webc'
+import { TProgressLinear } from '@soxa-ui/core'
+import { ProgressLinearDescriptor } from '@soxa-ui/setup'
+import { TProgressLinearElement, type TProgressLinearElementProps } from '@soxa-ui/webc'
 import { toAttributeName } from '../src/adapter/common/attributes'
 import { progressLinearTemplate } from '../src/components/progress-linear/progress-linear.template'
 import { bareContext } from './template-context'

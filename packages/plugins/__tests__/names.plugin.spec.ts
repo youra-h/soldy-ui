@@ -27,7 +27,7 @@ import {
 	TTextarea,
 	TToasts,
 	TToastsItem,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 import {
 	TDatePickerNamesPlugin,
 	TDialogNamesPlugin,

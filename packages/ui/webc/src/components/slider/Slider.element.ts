@@ -5,8 +5,8 @@
  * Layer 8d, «Поле».
  */
 
-import { SliderDescriptor } from '@soldy-ui/setup'
-import type { ISlider } from '@soldy-ui/core'
+import { SliderDescriptor } from '@soxa-ui/setup'
+import type { ISlider } from '@soxa-ui/core'
 import { ElementBase, defineElement } from '../../adapter'
 import type { TElementClassOf, TElementType } from '../../adapter'
 import { sliderTemplate } from './slider.template'

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, ref } from 'vue'
-import { Drawer, LocaleProvider } from '@soldy-ui/vue'
+import { Drawer, LocaleProvider } from '@soxa-ui/vue'
 import AppHeader from './components/AppHeader.vue'
 import PageSwitch from './components/PageSwitch.vue'
 import { useLanguage } from './composables/useLanguage'

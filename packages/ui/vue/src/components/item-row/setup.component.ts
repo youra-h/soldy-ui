@@ -1,4 +1,4 @@
-import { ItemRowDescriptor } from '@soldy-ui/setup'
+import { ItemRowDescriptor } from '@soxa-ui/setup'
 import { useAdapter, useExpose, createVueAdapterContext, type SetupContext } from '../../adapter'
 import { BaseButton } from '../button'
 import type { ButtonProps } from '../button/base.component'

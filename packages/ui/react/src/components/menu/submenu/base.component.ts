@@ -1,10 +1,10 @@
 import type { HTMLAttributes } from 'react'
-import type { IMenuSubmenu } from '@soldy-ui/core'
+import type { IMenuSubmenu } from '@soxa-ui/core'
 import type {
 	MenuCollectionItemDescriptor,
 	MenuSubmenuCollectionDescriptor,
 	MenuSubmenuDescriptor,
-} from '@soldy-ui/setup'
+} from '@soxa-ui/setup'
 import type { EventProps, TDomAttributes, UseDomProps } from '../../../types'
 
 /** Колбэки трёх контекстов подменю — свой, фасад пункта и фасад меню — пропсы одного компонента. */

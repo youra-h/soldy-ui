@@ -5,8 +5,8 @@
  * docs/architecture.md, Layer 8d, «Даты».
  */
 
-import type { IDatePicker } from '@soldy-ui/core'
-import { DEFAULT_SLOT } from '@soldy-ui/setup'
+import type { IDatePicker } from '@soxa-ui/core'
+import { DEFAULT_SLOT } from '@soxa-ui/setup'
 import {
 	bind,
 	createDetail,
@@ -69,7 +69,7 @@ const footers = new WeakMap<HTMLElement, TFooter>()
 
 const calendars = new WeakMap<HTMLElement, TPanelCalendar>()
 
-/** Стоящий на месте узел не двигается: перенос элемента soldy — его отключение и подключение. */
+/** Стоящий на месте узел не двигается: перенос элемента soxa — его отключение и подключение. */
 function placeBefore(parent: Node, nodes: readonly Node[], ref: Node): void {
 	let next = ref
 

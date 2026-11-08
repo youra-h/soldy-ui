@@ -13,10 +13,10 @@
  */
 
 import { describe, it, expect, afterEach, vi } from 'vitest'
-import type { ISelectProps } from '@soldy-ui/core'
+import type { ISelectProps } from '@soxa-ui/core'
 import { createPluginContext, required } from './helpers'
-import { TSelect, TSelectItem, TSelectCollectionFacade } from '@soldy-ui/core'
-import type { ISelectItem } from '@soldy-ui/core'
+import { TSelect, TSelectItem, TSelectCollectionFacade } from '@soxa-ui/core'
+import type { ISelectItem } from '@soxa-ui/core'
 import {
 	TSelectKeyboardPlugin,
 	TEditablePlugin,
@@ -27,7 +27,7 @@ import {
 	TListItemPlugin,
 	TPluginBundle,
 	TOptionIdsPlugin,
-} from '@soldy-ui/plugins'
+} from '@soxa-ui/plugins'
 
 const nextFrame = () => new Promise((resolve) => requestAnimationFrame(resolve))
 

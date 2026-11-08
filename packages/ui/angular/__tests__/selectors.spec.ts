@@ -23,7 +23,7 @@
 import { describe, it, expect } from 'vitest'
 import { exportedDeclarations } from './declarations'
 
-/** Компоненты soldy без корня — директивы. */
+/** Компоненты soxa без корня — директивы. */
 const ROOTLESS = ['TComponentComponent', 'TDragAndDropComponent', 'TVirtualComponent']
 
 /** Части селектора через запятую. */
@@ -64,7 +64,7 @@ describe('селекторы компонентов и директив', () => 
 	 * атрибут: тег в нём не дал бы поставить директиву на контейнер.
 	 */
 	it('компонент без корня — директива с голым атрибутом', () => {
-		const rootless = directives.filter(({ soldy }) => soldy)
+		const rootless = directives.filter(({ soxa }) => soxa)
 
 		expect(rootless.map(({ name }) => name).sort()).toEqual(ROOTLESS)
 

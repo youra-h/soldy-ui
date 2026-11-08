@@ -1,4 +1,4 @@
-import type { IMenu, TMenuOpenOn, TMenuPoint } from '@soldy-ui/core'
+import type { IMenu, TMenuOpenOn, TMenuPoint } from '@soxa-ui/core'
 import { TBasePlugin } from '../../../base'
 import type { IPluginContext } from '../../../base'
 import { TElementPlugin } from '../../element'

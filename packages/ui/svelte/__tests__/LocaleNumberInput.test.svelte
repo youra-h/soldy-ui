@@ -4,8 +4,8 @@
 	 * пишет в формате тега локали, имена кнопок шага плагин имён собирает по
 	 * её шаблонам (`numberInput.increment`, `numberInput.decrement`).
 	 */
-	import type { TLocale } from '@soldy-ui/plugins'
-	import { LocaleProvider, NumberInput } from '@soldy-ui/svelte'
+	import type { TLocale } from '@soxa-ui/plugins'
+	import { LocaleProvider, NumberInput } from '@soxa-ui/svelte'
 
 	type THarnessProps = {
 		locale: TLocale

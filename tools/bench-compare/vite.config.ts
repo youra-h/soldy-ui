@@ -12,11 +12,11 @@ import { subpathSources } from '../vite/lib.config.ts'
  * The comparison stand (benchmarks/compare/README.md in the root): the
  * neighbors' pages — one per framework, `<framework>.html?lib=<library>` — and,
  * with `SIZE=<framework>`, the size entries `size.mjs` generates: one per page of a
- * library, soldy included, so that tree-shaking leaves each entry only what
+ * library, soxa included, so that tree-shaking leaves each entry only what
  * its page imports.
  *
  * As at the table stand (`tools/bench-table/vite.config.ts`): the frameworks
- * are one copy for all (`dedupe`) and of the root's versions, soldy is taken
+ * are one copy for all (`dedupe`) and of the root's versions, soxa is taken
  * from sources, every framework plugin compiles only its own files.
  */
 const pk = path.resolve(import.meta.dirname, '../../packages')
@@ -93,25 +93,25 @@ export default defineConfig({
 		],
 		alias: {
 			// Before the package root: an alias is matched by prefix
-			'@soldy-ui/theme-oren/setup': path.join(pk, 'themes/oren/setup/index.ts'),
-			'@soldy-ui/theme-oren': path.join(pk, 'themes/oren/dist/index.css'),
-			'@soldy-ui/theme-base/setup': path.join(pk, 'themes/base/setup/index.ts'),
-			'@soldy-ui/core': path.join(pk, 'core/src'),
-			'@soldy-ui/icons-material': path.join(pk, 'icons/material/src'),
-			'@soldy-ui/plugins': path.join(pk, 'plugins/src'),
-			'@soldy-ui/setup': path.join(pk, 'setup/index.ts'),
-			'@soldy-ui/vue': path.join(pk, 'ui/vue/src/index.ts'),
-			'@soldy-ui/react': path.join(pk, 'ui/react/src/index.ts'),
-			'@soldy-ui/angular': path.join(pk, 'ui/angular/src/index.ts'),
-			'@soldy-ui/svelte': path.join(pk, 'ui/svelte/src/index.ts'),
-			'@soldy-ui/solid': path.join(pk, 'ui/solid/src/index.ts'),
+			'@soxa-ui/theme-oren/setup': path.join(pk, 'themes/oren/setup/index.ts'),
+			'@soxa-ui/theme-oren': path.join(pk, 'themes/oren/dist/index.css'),
+			'@soxa-ui/theme-base/setup': path.join(pk, 'themes/base/setup/index.ts'),
+			'@soxa-ui/core': path.join(pk, 'core/src'),
+			'@soxa-ui/icons-material': path.join(pk, 'icons/material/src'),
+			'@soxa-ui/plugins': path.join(pk, 'plugins/src'),
+			'@soxa-ui/setup': path.join(pk, 'setup/index.ts'),
+			'@soxa-ui/vue': path.join(pk, 'ui/vue/src/index.ts'),
+			'@soxa-ui/react': path.join(pk, 'ui/react/src/index.ts'),
+			'@soxa-ui/angular': path.join(pk, 'ui/angular/src/index.ts'),
+			'@soxa-ui/svelte': path.join(pk, 'ui/svelte/src/index.ts'),
+			'@soxa-ui/solid': path.join(pk, 'ui/solid/src/index.ts'),
 			// The entries of the elements, before the root of the package
 			...subpathSources({
-				name: '@soldy-ui/webc',
+				name: '@soxa-ui/webc',
 				root: path.join(pk, 'ui/webc'),
 				entry: 'src/index.ts',
 			}),
-			'@soldy-ui/webc': path.join(pk, 'ui/webc/src/index.ts'),
+			'@soxa-ui/webc': path.join(pk, 'ui/webc/src/index.ts'),
 		},
 	},
 	build: {

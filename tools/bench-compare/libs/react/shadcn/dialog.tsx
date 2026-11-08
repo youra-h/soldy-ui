@@ -11,7 +11,7 @@ import {
 } from './ui/dialog'
 import { Input } from './ui/input'
 
-/** A button opens a dialog with a field inside, as the soldy preview. */
+/** A button opens a dialog with a field inside, as the soxa preview. */
 export default function Page() {
 	return (
 		<Dialog>

@@ -4,9 +4,9 @@
  * классам; ввод плагины находят по классу. docs/architecture.md, Layer 8d, «Поле».
  */
 
-import type { INumberInput } from '@soldy-ui/core'
+import type { INumberInput } from '@soxa-ui/core'
 import type { TNumberInputOutputs } from './setup.component'
-import { DEFAULT_SLOT } from '@soldy-ui/setup'
+import { DEFAULT_SLOT } from '@soxa-ui/setup'
 import { bind, ownerAttributes, type ITemplate, patch } from '../../adapter'
 import {
 	iconButton,

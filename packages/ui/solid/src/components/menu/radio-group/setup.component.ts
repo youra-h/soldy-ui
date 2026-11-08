@@ -2,7 +2,7 @@ import {
 	MenuRadioGroupDescriptor,
 	TItemGroupExtension,
 	TMenuRadioGroupExtension,
-} from '@soldy-ui/setup'
+} from '@soxa-ui/setup'
 import { createSolidAdapterContext, useAdapter, useElevator } from '../../../adapter'
 import type { MenuRadioGroupProps } from './base.component'
 

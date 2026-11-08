@@ -1,7 +1,7 @@
 import { useEmits, useProps } from '../../adapter'
 import type { TEmits, TProps, UseProps } from '../../types/common'
-import { DrawerDescriptor } from '@soldy-ui/setup'
-import type { IDrawer } from '@soldy-ui/core'
+import { DrawerDescriptor } from '@soxa-ui/setup'
+import type { IDrawer } from '@soxa-ui/core'
 
 export const emitsDrawer: TEmits = useEmits(DrawerDescriptor())
 

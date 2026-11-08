@@ -63,7 +63,7 @@ $self-focus: ('&:focus', '&:focus-visible');
 // Button: пилюлю тега — обёртка элемента (`tags/_tags.scss`). Опору для того,
 // что встаёт поверх поверхности (`relative`), и гашение выключенной у обеих
 // даёт общий слой тем (`components/button.css` и `components/tags.css` в
-// `@soldy-ui/theme-base`).
+// `@soxa-ui/theme-base`).
 @mixin button-surface-look {
 	@apply rounded-md;
 	@include button-transition;

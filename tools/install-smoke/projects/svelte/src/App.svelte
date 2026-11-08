@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { ComponentProps } from 'svelte'
-	import { Button, DatePicker, Dialog, Input, Select, Table } from '@soldy-ui/svelte'
+	import { Button, DatePicker, Dialog, Input, Select, Table } from '@soxa-ui/svelte'
 
 	let open = $state(false)
 

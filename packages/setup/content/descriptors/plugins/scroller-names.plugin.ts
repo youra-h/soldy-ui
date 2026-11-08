@@ -7,7 +7,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TScrollerNamesPlugin } from '@soldy-ui/plugins'
+import { TScrollerNamesPlugin } from '@soxa-ui/plugins'
 
 export const ScrollerNamesPluginDescriptor = definePlugin({
 	ctor: TScrollerNamesPlugin,

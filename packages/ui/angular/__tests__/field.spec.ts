@@ -24,7 +24,7 @@
 import { describe, it, expect } from 'vitest'
 import { Component, signal } from '@angular/core'
 import { TestBed, type ComponentFixture } from '@angular/core/testing'
-import { TField, TSlider, type TFieldPosition, type TSliderMarks } from '@soldy-ui/core'
+import { TField, TSlider, type TFieldPosition, type TSliderMarks } from '@soxa-ui/core'
 import {
 	SlotDirective,
 	TCheckBoxComponent,
@@ -41,7 +41,7 @@ import {
 	TSelectItemComponent,
 	TSliderComponent,
 	TSwitchComponent,
-} from '@soldy-ui/angular'
+} from '@soxa-ui/angular'
 import { findIn, markupOf, mountHost } from './mount'
 
 /** Подпись поля в разметке хоста. */

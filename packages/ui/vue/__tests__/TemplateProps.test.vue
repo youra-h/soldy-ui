@@ -1,6 +1,6 @@
 <script setup lang="ts">
 /**
- * Сторож: шаблон сверяет значения пропсов компонентов soldy с их типами.
+ * Сторож: шаблон сверяет значения пропсов компонентов soxa с их типами.
  *
  * Тип пропсов для шаблона vue-tsc выводит из аннотации `setup(props: XProps)`
  * в `setup.component.ts`, а не из опции `props` (AGENTS.md, Pitfalls). Своя
@@ -14,8 +14,8 @@
  * тот же проп с верным значением, чтобы ошибка не оказалась ошибкой по другой
  * причине.
  */
-import { TButton, TDragAndDrop, TInput } from '@soldy-ui/core'
-import { ruRU } from '@soldy-ui/plugins'
+import { TButton, TDragAndDrop, TInput } from '@soxa-ui/core'
+import { ruRU } from '@soxa-ui/plugins'
 import {
 	Accordion,
 	Button,
@@ -54,7 +54,7 @@ import {
 	Toasts,
 	Tooltip,
 	Virtual,
-} from '@soldy-ui/vue'
+} from '@soxa-ui/vue'
 // Тост — внутренняя часть менеджера, наружу пакета не выходит, но аннотация
 // пропсов у него своя
 import { ToastsItem } from '../src/components/toasts/item'

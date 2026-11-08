@@ -19,8 +19,8 @@
  */
 
 import { describe, it, expect, afterEach } from 'vitest'
-import { TPagination, createEnginePagination } from '@soldy-ui/core'
-import type { IPaginationItem, IPaginationProps } from '@soldy-ui/core'
+import { TPagination, createEnginePagination } from '@soxa-ui/core'
+import type { IPaginationItem, IPaginationProps } from '@soxa-ui/core'
 import {
 	TCollectionBundlesPlugin,
 	TCollectionElements,

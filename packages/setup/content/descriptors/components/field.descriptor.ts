@@ -19,7 +19,7 @@
  */
 
 import { defineComponent, defineDescriptor } from '../../../protected/define'
-import { TField } from '@soldy-ui/core'
+import { TField } from '@soxa-ui/core'
 import { FieldIdsPluginDescriptor } from '../plugins'
 import { StylableDescriptor } from './stylable.descriptor'
 

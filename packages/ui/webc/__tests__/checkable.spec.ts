@@ -19,15 +19,15 @@ import { propertyDetail } from './property-detail'
  */
 
 import { describe, it, expect, afterEach } from 'vitest'
-import { TCheckBox, TSwitch } from '@soldy-ui/core'
-import { CheckBoxDescriptor, SwitchDescriptor, getIcon, useIcons } from '@soldy-ui/setup'
-import * as material from '@soldy-ui/icons-material'
+import { TCheckBox, TSwitch } from '@soxa-ui/core'
+import { CheckBoxDescriptor, SwitchDescriptor, getIcon, useIcons } from '@soxa-ui/setup'
+import * as material from '@soxa-ui/icons-material'
 import {
 	TCheckBoxElement,
 	TSwitchElement,
 	type TCheckBoxElementProps,
 	type TSwitchElementProps,
-} from '@soldy-ui/webc'
+} from '@soxa-ui/webc'
 import { checkBoxTemplate } from '../src/components/check-box/check-box.template'
 import { switchTemplate } from '../src/components/switch/switch.template'
 import { bareContext } from './template-context'
@@ -69,7 +69,7 @@ function mountAs<T extends HTMLElement>(
 
 	const node = host.firstElementChild
 
-	if (!guard(node)) throw new Error(`${html}: элемента soldy нет`)
+	if (!guard(node)) throw new Error(`${html}: элемента soxa нет`)
 
 	return node
 }

@@ -27,14 +27,14 @@ export default defineConfig({
 	plugins: [svelte()],
 	resolve: {
 		alias: {
-			'@soldy-ui/core': path.resolve(import.meta.dirname, '../../core/src'),
-			'@soldy-ui/icons-material': path.resolve(
+			'@soxa-ui/core': path.resolve(import.meta.dirname, '../../core/src'),
+			'@soxa-ui/icons-material': path.resolve(
 				import.meta.dirname,
 				'../../icons/material/src',
 			),
-			'@soldy-ui/plugins': path.resolve(import.meta.dirname, '../../plugins/src'),
-			'@soldy-ui/setup': path.resolve(import.meta.dirname, '../../setup/index.ts'),
-			'@soldy-ui/svelte': path.resolve(import.meta.dirname, 'src/index.ts'),
+			'@soxa-ui/plugins': path.resolve(import.meta.dirname, '../../plugins/src'),
+			'@soxa-ui/setup': path.resolve(import.meta.dirname, '../../setup/index.ts'),
+			'@soxa-ui/svelte': path.resolve(import.meta.dirname, 'src/index.ts'),
 		},
 	},
 	test: {

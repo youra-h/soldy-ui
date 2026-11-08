@@ -6,8 +6,8 @@
  * slots })` и из `h()` метки стабильности не несут, и Vue считает их
  * динамическими — ячейки с ними перерисовывались бы с каждой строкой.
  */
-import { Table } from '@soldy-ui/vue'
-import type { TTableCollection } from '@soldy-ui/core'
+import { Table } from '@soxa-ui/vue'
+import type { TTableCollection } from '@soxa-ui/core'
 
 defineProps<{
 	engine: TTableCollection

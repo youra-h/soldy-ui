@@ -4,7 +4,7 @@ import {
 	type TComponentEntry,
 	type TPluginPropAddress,
 	type TPropControl,
-} from '@soldy-ui/playground-shared'
+} from '@soxa-ui/playground-shared'
 
 /**
  * Код колонок страницы свойств — в React.
@@ -69,7 +69,7 @@ function componentInstanceSnippet(
 	const ctor = entry.descriptor().ctor?.name ?? 'TComponent'
 
 	return example(
-		[USE_STATE, importOf(entry), `import { ${ctor} } from '@soldy-ui/core'`],
+		[USE_STATE, importOf(entry), `import { ${ctor} } from '@soxa-ui/core'`],
 		state('instance', `new ${ctor}()`, assignment(`instance.${prop}`, value)),
 		`<${entry.label}${presetAttrs(preset)} ctrl={instance} />`,
 	)
@@ -89,7 +89,7 @@ function collectionInstanceSnippet(
 	const create = `createEngine${entry.label}`
 
 	return example(
-		[USE_STATE, importOf(entry), `import { ${create} } from '@soldy-ui/core'`],
+		[USE_STATE, importOf(entry), `import { ${create} } from '@soxa-ui/core'`],
 		state('engine', `${create}()`, assignment(`engine.extensions.selection.${prop}`, value)),
 		`<${entry.label}${presetAttrs(preset)} engine={engine} />`,
 	)
@@ -110,7 +110,7 @@ function pluginInstanceSnippet(
 	const { imports, lines } = pluginAssignment(address, value)
 
 	return example(
-		[USE_STATE, importOf(entry), `import { ${ctor} } from '@soldy-ui/core'`, ...imports],
+		[USE_STATE, importOf(entry), `import { ${ctor} } from '@soxa-ui/core'`, ...imports],
 		state('instance', `new ${ctor}()`, lines),
 		`<${entry.label}${presetAttrs(preset)} ctrl={instance} />`,
 	)
@@ -118,7 +118,7 @@ function pluginInstanceSnippet(
 
 /** Импорт компонента примера из адаптера. */
 function importOf(entry: TComponentEntry): string {
-	return `import { ${entry.label} } from '@soldy-ui/react'`
+	return `import { ${entry.label} } from '@soxa-ui/react'`
 }
 
 /**
@@ -172,7 +172,7 @@ function pluginAssignment(
 	const pluginCtor = address.ctor.name
 
 	return {
-		imports: [`import { TPluginBundle, ${pluginCtor} } from '@soldy-ui/plugins'`],
+		imports: [`import { TPluginBundle, ${pluginCtor} } from '@soxa-ui/plugins'`],
 		lines: [
 			'',
 			"instance.events.on('bundle:create', (bundle: unknown) => {",

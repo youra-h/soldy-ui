@@ -1,4 +1,4 @@
-import { TableColumnDescriptor } from '@soldy-ui/setup'
+import { TableColumnDescriptor } from '@soxa-ui/setup'
 import { createSolidAdapterContext, useAdapter } from '../../../adapter'
 import type { TableColumnProps } from './base.component'
 

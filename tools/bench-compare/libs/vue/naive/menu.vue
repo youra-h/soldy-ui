@@ -3,7 +3,7 @@ import { computed, h, ref } from 'vue'
 import { NButton, NDropdown, type DropdownOption } from 'naive-ui'
 
 /**
- * The soldy menu preview in Naive: a group of checkboxes, a group of radios,
+ * The soxa menu preview in Naive: a group of checkboxes, a group of radios,
  * actions with shortcuts, a submenu with a submenu inside, a disabled action
  * and a destructive one. `NDropdown` has groups, submenus and disabled options
  * but no checkbox or radio options: they are options with a role (`node-props`), a mark icon

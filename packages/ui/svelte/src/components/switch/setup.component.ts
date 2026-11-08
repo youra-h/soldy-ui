@@ -1,4 +1,4 @@
-import { SwitchDescriptor, TFieldControlExtension } from '@soldy-ui/setup'
+import { SwitchDescriptor, TFieldControlExtension } from '@soxa-ui/setup'
 import {
 	createSvelteAdapterContext,
 	useAdapter,

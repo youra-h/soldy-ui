@@ -16,7 +16,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TIdPlugin } from '@soldy-ui/plugins'
+import { TIdPlugin } from '@soxa-ui/plugins'
 
 export const IdPluginDescriptor = definePlugin({
 	ctor: TIdPlugin,

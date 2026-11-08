@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { TABLE_COLUMNS, TABLE_ROWS, TABLE_SCROLL_ROWS } from '@soldy-ui/playground-shared'
-	import { Table } from '@soldy-ui/svelte'
+	import { TABLE_COLUMNS, TABLE_ROWS, TABLE_SCROLL_ROWS } from '@soxa-ui/playground-shared'
+	import { Table } from '@soxa-ui/svelte'
 	import type { TPreviewProps } from './previews'
 
 	const bind: TPreviewProps = $props()

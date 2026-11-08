@@ -1,6 +1,6 @@
 # Таблица
 
-Замеры таблицы soldy рядом с таблицами библиотек соседей: стенд, условия сравнения и методика,
+Замеры таблицы soxa рядом с таблицами библиотек соседей: стенд, условия сравнения и методика,
 общие для журналов платформ. Журналы — по файлу на платформу рядом ([`vue.md`](vue.md),
 [`react.md`](react.md), [`angular.md`](angular.md), [`svelte.md`](svelte.md),
 [`solid.md`](solid.md), [`webc.md`](webc.md)); [`history.md`](history.md) — история
@@ -11,29 +11,29 @@
 
 [`tools/bench-table/`](../../tools/bench-table/) — Vite-страницы и прогонщик на Playwright. Вне
 workspaces: зависимости других библиотек ставятся только в стенд и в монорепо не попадают.
-Фреймворки в стенде — тех же версий, что в корне монорепо, по одной копии на страницу; soldy
+Фреймворки в стенде — тех же версий, что в корне монорепо, по одной копии на страницу; soxa
 берётся исходниками.
 
 ```bash
 cd tools/bench-table
 npm install                                               # один раз: таблицы других библиотек
-npm run bench -- 5000 3 soldy+fit=none+width=3248+track   # строк, прогонов, участники через запятую
-npm run bench -- 5000 3 svelte:soldy+fit=none+width=3248+track,svelte:carbon
+npm run bench -- 5000 3 soxa+fit=none+width=3248+track   # строк, прогонов, участники через запятую
+npm run bench -- 5000 3 svelte:soxa+fit=none+width=3248+track,svelte:carbon
 ```
 
 Страница — на фреймворк, участник не на Vue пишется с её префиксом:
 
-| Страница       | Префикс    | Участники                                                            |
-| -------------- | ---------- | -------------------------------------------------------------------- |
-| `index.html`   | —          | `soldy`, `plain`, `tanstack`, `reka`, `core`, `naive`, `prime`       |
-| `react.html`   | `react:`   | `soldy`, `plain`, `shadcn`, `mui`, `antd`, `mantine`                 |
-| `angular.html` | `angular:` | `soldy`, `plain`, `tanstack`, `material`, `aggrid`, `prime`, `zorro` |
-| `svelte.html`  | `svelte:`  | `soldy`, `plain`, `tanstack`, `shadcn`, `carbon`, `svgrid`           |
-| `solid.html`   | `solid:`   | `soldy`, `plain`, `tanstack`, `kobalte`, `aggrid`                    |
-| `webc.html`    | `webc:`    | `soldy`, `plain`, `vaadin`, `carbon`, `spectrum`, `ui5`              |
+| Страница       | Префикс    | Участники                                                           |
+| -------------- | ---------- | ------------------------------------------------------------------- |
+| `index.html`   | —          | `soxa`, `plain`, `tanstack`, `reka`, `core`, `naive`, `prime`       |
+| `react.html`   | `react:`   | `soxa`, `plain`, `shadcn`, `mui`, `antd`, `mantine`                 |
+| `angular.html` | `angular:` | `soxa`, `plain`, `tanstack`, `material`, `aggrid`, `prime`, `zorro` |
+| `svelte.html`  | `svelte:`  | `soxa`, `plain`, `tanstack`, `shadcn`, `carbon`, `svgrid`           |
+| `solid.html`   | `solid:`   | `soxa`, `plain`, `tanstack`, `kobalte`, `aggrid`                    |
+| `webc.html`    | `webc:`    | `soxa`, `plain`, `vaadin`, `carbon`, `spectrum`, `ui5`              |
 
 - Потолок участника — 10 минут на все его прогоны (`LIMIT_MIN` в окружении меняет его). Не
-  уложился — итог `fail` без цифр, и soldy тоже: такую таблицу разбирают, а не меряют. Сценарий,
+  уложился — итог `fail` без цифр, и soxa тоже: такую таблицу разбирают, а не меряют. Сценарий,
   который бросил, — итог «ошибка» со снятыми до него цифрами; прогон идёт к следующему участнику.
 - `libs/data.ts` — данные и колонки, общие для всех: детерминированный генератор, 20 колонок,
   `name` — строка, остальные — числа. `bench.ts` — сценарии (`window.bench`), общие для всех
@@ -44,12 +44,12 @@ npm run bench -- 5000 3 svelte:soldy+fit=none+width=3248+track,svelte:carbon
 - `plain` — голый фреймворк: строки циклом с ключом, нативные чекбоксы, выбор и сортировка
   состоянием фреймворка. `tanstack` — TanStack Table v9 с нативными чекбоксами; `reka`, `shadcn`,
   `kobalte` — он же с чекбоксами компонентной библиотеки, как Data Table shadcn-vue, shadcn/ui,
-  shadcn-svelte и solid-ui. `core` — коллекция таблицы soldy без проводки, её рисует голый
+  shadcn-svelte и solid-ui. `core` — коллекция таблицы soxa без проводки, её рисует голый
   `v-for`.
-- Настройка и флаги soldy — общие для всех страниц (`libs/soldy-setup.ts`). Флаги участника — через
+- Настройка и флаги soxa — общие для всех страниц (`libs/soxa-setup.ts`). Флаги участника — через
   «+»: `fit=none` — `columnFit: 'none'`, колонки по 160 px; `width=3248` — таблица в обёртке такой
   ширины, px, — сумма 20 колонок по 160 px и колонки выбора; `track` — строки сверяются по ключу
-  записи (`trackBy`); `virtual` — окно: у soldy — обёртка `Virtual` в контейнере высотой 800 px, у
+  записи (`trackBy`); `virtual` — окно: у soxa — обёртка `Virtual` в контейнере высотой 800 px, у
   библиотеки — её собственное окно той же высоты; `mode=none` — без выбора; `cols=5` — первые
   колонки; `reorder`, `preview=…`, `resize`, `motion=reduce` — перестановка и ширина колонок,
   движение (сценарии жестов, `history.md`, «Стенд»).
@@ -57,8 +57,8 @@ npm run bench -- 5000 3 svelte:soldy+fit=none+width=3248+track,svelte:carbon
 ## Условия сравнения
 
 У большинства других таблиц нет ни ручки ширины, ни перестановки колонок, ни подгонки колонок
-под место, и сравнивать их с таблицей, где это включено, бессмысленно. Поэтому soldy мерится без
-них — участник `<страница>:soldy+fit=none+width=3248+track`:
+под место, и сравнивать их с таблицей, где это включено, бессмысленно. Поэтому soxa мерится без
+них — участник `<страница>:soxa+fit=none+width=3248+track`:
 
 - `resizable` и `reorderable` выключены — это умолчание таблицы;
 - `columnFit: 'none'` — колонки шириной по умолчанию, место они не делят;
@@ -73,9 +73,9 @@ npm run bench -- 5000 3 svelte:soldy+fit=none+width=3248+track,svelte:carbon
 ## Две таблицы в журнале
 
 - **Библиотеки** — готовые таблицы с выбором и сортировкой: основное сравнение.
-- **Ориентиры** — голый фреймворк, TanStack и подобные headless, ядро soldy без проводки. Они
+- **Ориентиры** — голый фреймворк, TanStack и подобные headless, ядро soxa без проводки. Они
   быстрые, потому что почти ничего не делают — ни доступности, ни клавиатуры, ни событий
-  компонента; так же быстро была бы и таблица soldy без событий. Ориентиры показывают, сколько
+  компонента; так же быстро была бы и таблица soxa без событий. Ориентиры показывают, сколько
   стоит сам фреймворк на этой разметке, и идут отдельной таблицей — для сравнения, а не в зачёт.
 
 ## Методика

@@ -9,11 +9,11 @@
 
 import { describe, it, expect, vi, afterEach } from 'vitest'
 import { flushSync } from 'svelte'
-import { TButton } from '@soldy-ui/core'
-import { TBasePlugin, TPluginBundle } from '@soldy-ui/plugins'
-import type { TPluginEvents } from '@soldy-ui/plugins'
-import { definePlugin, usePlugins } from '@soldy-ui/setup'
-import { Button, type ButtonProps } from '@soldy-ui/svelte'
+import { TButton } from '@soxa-ui/core'
+import { TBasePlugin, TPluginBundle } from '@soxa-ui/plugins'
+import type { TPluginEvents } from '@soxa-ui/plugins'
+import { definePlugin, usePlugins } from '@soxa-ui/setup'
+import { Button, type ButtonProps } from '@soxa-ui/svelte'
 import { mount } from './mount'
 import { reactiveProps } from './reactive-props.svelte'
 

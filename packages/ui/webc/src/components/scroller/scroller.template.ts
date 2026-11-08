@@ -5,8 +5,8 @@
  * Элементы содержимого — прямые дети вьюпорта: по ним тема ставит снап.
  */
 
-import type { IScroller } from '@soldy-ui/core'
-import { DEFAULT_SLOT } from '@soldy-ui/setup'
+import type { IScroller } from '@soxa-ui/core'
+import { DEFAULT_SLOT } from '@soxa-ui/setup'
 import { bind, ownerAttributes, type ITemplate } from '../../adapter'
 import {
 	iconButton,

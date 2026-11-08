@@ -1,5 +1,5 @@
-import type { ITextarea } from '@soldy-ui/core'
-import type { TextareaDescriptor } from '@soldy-ui/setup'
+import type { ITextarea } from '@soxa-ui/core'
+import type { TextareaDescriptor } from '@soxa-ui/setup'
 import type { EventProps, TDomAttributes, TTextareaAttributes, UseDomProps } from '../../types'
 
 export type TextareaEventProps = EventProps<typeof TextareaDescriptor>

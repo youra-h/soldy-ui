@@ -11,7 +11,7 @@ import {
 } from 'reka-ui'
 
 /**
- * A button opens a modal dialog with a field inside, as the soldy preview.
+ * A button opens a modal dialog with a field inside, as the soxa preview.
  * Reka has no button or field: they are native elements, as in shadcn-vue.
  */
 defineOptions({ name: 'RekaDialogPage' })

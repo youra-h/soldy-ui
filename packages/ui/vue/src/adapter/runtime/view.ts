@@ -44,7 +44,7 @@ class TViewParts {
 }
 
 /** The parts behind a view: only joining and extending ask for them. */
-const PARTS = Symbol('soldy.binding.parts')
+const PARTS = Symbol('soxa.binding.parts')
 
 /** Where the key lives — the fields or a state record. Reads no value and tracks nothing. */
 function sourceOf({ fields, states }: TViewParts, key: PropertyKey): object | undefined {
@@ -92,7 +92,7 @@ function partsOf(binding: object): TViewParts {
 
 	if (!(parts instanceof TViewParts)) {
 		throw new Error(
-			'[soldy] Not a binding: expected the result of useAdapter or useCollectionAdapter',
+			'[soxa] Not a binding: expected the result of useAdapter or useCollectionAdapter',
 		)
 	}
 

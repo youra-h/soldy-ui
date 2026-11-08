@@ -11,7 +11,7 @@ import {
 	type TComponentEntry,
 	type TPluginPropAddress,
 	type TPropControl,
-} from '@soldy-ui/playground-shared'
+} from '@soxa-ui/playground-shared'
 import { PREVIEWS, type TPreview } from './previews'
 
 /**
@@ -20,7 +20,7 @@ import { PREVIEWS, type TPreview } from './previews'
  * Тот же код, что пишут хосты Vue, React, Svelte и Solid, и устроен так же:
  * импорт один и настоящий, ничего от стенда. Синтаксис — страница HTML:
  * модуль `<script type="module">` регистрирует элементы (`import
- * '@soldy-ui/webc'`), а компонент — элемент своего тега с `is`.
+ * '@soxa-ui/webc'`), а компонент — элемент своего тега с `is`.
  *
  * Колонка пропа — разметка: значение уходит атрибутом. Чего атрибут не
  * передаст — `false` у флага (у флага значимо наличие атрибута), строку, которую
@@ -37,9 +37,9 @@ import { PREVIEWS, type TPreview } from './previews'
  */
 
 /** Импорт, который регистрирует элементы пакета. */
-const REGISTER = "import '@soldy-ui/webc'"
+const REGISTER = "import '@soxa-ui/webc'"
 
-/** Элемент компонента — из карты превью хоста: тег и имя элемента soldy. */
+/** Элемент компонента — из карты превью хоста: тег и имя элемента soxa. */
 function elementOf(entry: TComponentEntry): TPreview {
 	const preview = PREVIEWS[entry.id]
 
@@ -134,7 +134,7 @@ function componentInstanceSnippet(
 
 	return instanceExample(
 		entry,
-		[`import { ${ctor} } from '@soldy-ui/core'`],
+		[`import { ${ctor} } from '@soxa-ui/core'`],
 		[`const instance = new ${ctor}()`, ...assignment(`instance.${prop}`, value)],
 		preset,
 	)
@@ -156,7 +156,7 @@ function collectionInstanceSnippet(
 
 	return instanceExample(
 		entry,
-		[`import { ${create} } from '@soldy-ui/core'`],
+		[`import { ${create} } from '@soxa-ui/core'`],
 		[`const engine = ${create}()`, ...assignment(`engine.extensions.selection.${prop}`, value)],
 		preset,
 		'element.engine = engine',
@@ -179,7 +179,7 @@ function pluginInstanceSnippet(
 
 	return instanceExample(
 		entry,
-		[`import { ${ctor} } from '@soldy-ui/core'`, ...imports],
+		[`import { ${ctor} } from '@soxa-ui/core'`, ...imports],
 		[`const instance = new ${ctor}()`, ...lines],
 		preset,
 	)
@@ -252,7 +252,7 @@ function pluginAssignment(
 	const pluginCtor = address.ctor.name
 
 	return {
-		imports: [`import { TPluginBundle, ${pluginCtor} } from '@soldy-ui/plugins'`],
+		imports: [`import { TPluginBundle, ${pluginCtor} } from '@soxa-ui/plugins'`],
 		lines: [
 			'',
 			"instance.events.on('bundle:create', (bundle) => {",

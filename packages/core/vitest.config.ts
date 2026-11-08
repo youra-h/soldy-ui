@@ -4,7 +4,7 @@ import path from 'node:path'
 export default defineConfig({
 	resolve: {
 		alias: {
-			'@soldy-ui/core': path.resolve(import.meta.dirname, 'src'),
+			'@soxa-ui/core': path.resolve(import.meta.dirname, 'src'),
 		},
 	},
 	test: {

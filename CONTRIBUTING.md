@@ -1,6 +1,6 @@
-# Contributing to Soldy UI
+# Contributing to Soxa UI
 
-Thank you for your interest in Soldy UI. The project is in early development (`0.x`): the API
+Thank you for your interest in Soxa UI. The project is in early development (`0.x`): the API
 still changes, and the architecture rules below are enforced strictly. This page explains how to
 report problems, how to propose changes, and what a pull request needs to be merged.
 
@@ -9,13 +9,13 @@ By taking part you agree to follow the [Code of Conduct](CODE_OF_CONDUCT.md).
 ## Reporting issues
 
 - **Bugs** — use the
-  [Bug report](https://github.com/youra-h/soldy-ui/issues/new?template=bug.yml) form. Name the
+  [Bug report](https://github.com/youra-h/soxa-ui/issues/new?template=bug.yml) form. Name the
   framework adapter and the version, and give a minimal reproduction.
 - **Accessibility barriers** — use the
-  [Accessibility barrier](https://github.com/youra-h/soldy-ui/issues/new?template=accessibility.yml)
+  [Accessibility barrier](https://github.com/youra-h/soxa-ui/issues/new?template=accessibility.yml)
   form. See also [ACCESSIBILITY.md](ACCESSIBILITY.md).
 - **Feature requests and new components** — use the
-  [Feature request](https://github.com/youra-h/soldy-ui/issues/new?template=feature.yml) form.
+  [Feature request](https://github.com/youra-h/soxa-ui/issues/new?template=feature.yml) form.
 - **Security vulnerabilities** — never in a public issue; see [SECURITY.md](SECURITY.md).
 
 ## Before you start on a change
@@ -32,8 +32,8 @@ Changes to `packages/setup/protected/` — the mechanics shared by all adapters 
 You need Node `^22.12.0 || ^24 || >=26` and npm.
 
 ```bash
-git clone https://github.com/<you>/soldy.git
-cd soldy
+git clone https://github.com/<you>/soxa.git
+cd soxa
 npm install
 npm run dev          # playground with the theme rebuilt on change
 ```
@@ -85,10 +85,10 @@ welcome in the issue or the pull request.
 1. Fork the repository and create a branch from `main`.
 2. Make the change, with tests. A bug fix comes with a test that fails without it.
 3. Run the tests of the packages you touched, `npm run lint` and `npm run format`.
-4. **Add a changeset** if you changed a library package (`@soldy-ui/*`):
+4. **Add a changeset** if you changed a library package (`@soxa-ui/*`):
 
    ```bash
-   npm run changeset -- --patch @soldy-ui/core -m "Short description of the change"
+   npm run changeset -- --patch @soxa-ui/core -m "Short description of the change"
    ```
 
    Use `--minor` for a breaking change (there is no `major` before `1.0`), and `--empty` if only

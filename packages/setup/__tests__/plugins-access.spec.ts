@@ -3,15 +3,15 @@
 /**
  * Доступ к плагинам снаружи.
  *
- * В soldy компонентом управляют с двух сторон — декларативно (шаблон) и
+ * В soxa компонентом управляют с двух сторон — декларативно (шаблон) и
  * императивно (инстанс). Для props и событий ядра обе стороны равнозначны;
  * эти тесты сторожат ту же равнозначность для плагинов.
  */
 
 import { describe, it, expect, vi } from 'vitest'
-import { TButton } from '@soldy-ui/core'
-import { TBasePlugin, TElementPlugin, TPluginBundle, TReadyPlugin } from '@soldy-ui/plugins'
-import { createAdapterContext, ButtonDescriptor, ComponentDescriptor } from '@soldy-ui/setup'
+import { TButton } from '@soxa-ui/core'
+import { TBasePlugin, TElementPlugin, TPluginBundle, TReadyPlugin } from '@soxa-ui/plugins'
+import { createAdapterContext, ButtonDescriptor, ComponentDescriptor } from '@soxa-ui/setup'
 import { CallbackProfile, required } from './helpers'
 
 /**

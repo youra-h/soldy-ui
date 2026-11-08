@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core'
 import { NgTemplateOutlet } from '@angular/common'
-import type { IRating } from '@soldy-ui/core'
+import type { IRating } from '@soxa-ui/core'
 import {
 	AttributesDirective,
 	FieldTextDirective,

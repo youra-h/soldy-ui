@@ -1,6 +1,6 @@
 import type { Accessor, JSX } from 'solid-js'
-import type { TCalendarCell, TCalendarGrid, TCalendarPicker } from '@soldy-ui/core'
-import type { DescriptorSlots, PopoverDescriptor } from '@soldy-ui/setup'
+import type { TCalendarCell, TCalendarGrid, TCalendarPicker } from '@soxa-ui/core'
+import type { DescriptorSlots, PopoverDescriptor } from '@soxa-ui/setup'
 import {
 	Elevate,
 	KeyedFor,

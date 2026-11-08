@@ -1,7 +1,7 @@
 import { useEmits, useProps } from '../../../adapter'
 import type { TEmits, TProps, UseProps } from '../../../types/common'
-import { TableColumnDescriptor } from '@soldy-ui/setup'
-import type { ITableColumn } from '@soldy-ui/core'
+import { TableColumnDescriptor } from '@soxa-ui/setup'
+import type { ITableColumn } from '@soxa-ui/core'
 
 export const emitsTableColumn: TEmits = useEmits(TableColumnDescriptor())
 

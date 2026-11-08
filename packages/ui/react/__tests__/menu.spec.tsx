@@ -45,15 +45,15 @@ import {
 	type TMenuCollection,
 	type TMenuOpenOn,
 	type TMenuRadioGroupValue,
-} from '@soldy-ui/core'
-import type { DescriptorSlots, MenuDescriptor } from '@soldy-ui/setup'
+} from '@soxa-ui/core'
+import type { DescriptorSlots, MenuDescriptor } from '@soxa-ui/setup'
 import {
 	Button,
 	Menu,
 	type MenuPopoverItemProps,
 	type MenuProps,
 	type MenuSubmenuProps,
-} from '@soldy-ui/react'
+} from '@soxa-ui/react'
 import { find, mount, nextFrame, track, type TMounted } from './mount'
 
 type TTriggerScope = DescriptorSlots<typeof MenuDescriptor>['trigger']

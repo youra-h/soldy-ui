@@ -11,8 +11,8 @@
 import { describe, it, expect, expectTypeOf } from 'vitest'
 import { Component, signal, type EventEmitter } from '@angular/core'
 import type { ComponentFixture } from '@angular/core/testing'
-import type { TAccordionArrowPlacement, TSelectionMode, TValuePayload } from '@soldy-ui/core'
-import { SlotDirective, TAccordionComponent, TAccordionItemComponent } from '@soldy-ui/angular'
+import type { TAccordionArrowPlacement, TSelectionMode, TValuePayload } from '@soxa-ui/core'
+import { SlotDirective, TAccordionComponent, TAccordionItemComponent } from '@soxa-ui/angular'
 import { find, mountHost } from './mount'
 
 const headers = () => [...document.querySelectorAll('.so-accordion-item__header')]

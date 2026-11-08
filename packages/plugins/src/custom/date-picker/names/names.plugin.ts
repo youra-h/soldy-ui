@@ -1,4 +1,4 @@
-import type { IDatePicker, TEventSink } from '@soldy-ui/core'
+import type { IDatePicker, TEventSink } from '@soxa-ui/core'
 import { TClearableNamesPlugin } from '../../clearable/names'
 import type { TTranslations } from '../../../locale/types'
 import type { TDatePickerNamesPluginEvents } from './types'

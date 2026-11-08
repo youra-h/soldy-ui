@@ -1,5 +1,5 @@
-import { PopoverDescriptor, type DescriptorPluginOutputs } from '@soldy-ui/setup'
-import type { IPopover } from '@soldy-ui/core'
+import { PopoverDescriptor, type DescriptorPluginOutputs } from '@soxa-ui/setup'
+import type { IPopover } from '@soxa-ui/core'
 import { createWebcAdapterContext, useAdapter } from '../../adapter'
 import type { TBinding, TUpdateListener } from '../../adapter'
 

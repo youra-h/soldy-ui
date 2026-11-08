@@ -4,7 +4,7 @@ import type {
 	TClearEvent,
 	TRemoveEvent,
 	TValuePayload,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 import type { TCollectionElements } from './collection-elements.plugin'
 
 /**

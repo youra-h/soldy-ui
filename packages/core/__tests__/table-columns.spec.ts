@@ -13,7 +13,7 @@ import {
 	createEngine,
 	createEngineTable,
 	createEngineTableColumns,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 import type {
 	IExtension,
 	ITable,
@@ -26,7 +26,7 @@ import type {
 	TTableColumnsEvents,
 	TTableReorderPreview,
 	TTableResizePreview,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 import { columnsOf } from '../src/components/custom/table/collection/extensions/guards'
 
 /**

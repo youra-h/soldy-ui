@@ -1,11 +1,5 @@
 import type { ReactElement, ReactNode } from 'react'
-import type {
-	ISelectItem,
-	ITags,
-	TDrawnEntry,
-	TDrawnSection,
-	TTagsCollection,
-} from '@soldy-ui/core'
+import type { ISelectItem, ITags, TDrawnEntry, TDrawnSection, TTagsCollection } from '@soxa-ui/core'
 import {
 	Elevate,
 	hasSlot,

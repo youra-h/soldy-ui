@@ -16,9 +16,9 @@ import type { TStray } from './min-peers.ts'
  * спеки адаптера на нижних границах его peer.
  *
  * ```bash
- * node tools/min-peers/cli.ts list @soldy-ui/vue    # что подменяется: пакет@версия
- * node tools/min-peers/cli.ts pin @soldy-ui/vue     # подменить во всём дереве
- * node tools/min-peers/cli.ts verify @soldy-ui/vue  # все копии — версии списка
+ * node tools/min-peers/cli.ts list @soxa-ui/vue    # что подменяется: пакет@версия
+ * node tools/min-peers/cli.ts pin @soxa-ui/vue     # подменить во всём дереве
+ * node tools/min-peers/cli.ts verify @soxa-ui/vue  # все копии — версии списка
  * node tools/min-peers/cli.ts restore               # вернуть манифест и lock, дерево — по ним
  * ```
  *

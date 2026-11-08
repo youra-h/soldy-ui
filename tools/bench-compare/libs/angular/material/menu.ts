@@ -4,7 +4,7 @@ import { MatDivider } from '@angular/material/divider'
 import { MatMenuModule } from '@angular/material/menu'
 
 /**
- * The soldy menu preview in Material: a group of checkboxes, a group of
+ * The soxa menu preview in Material: a group of checkboxes, a group of
  * radios, actions with shortcuts, a submenu with a submenu inside, a disabled
  * action and a destructive one. Material has no checkbox, radio or group
  * items: they are `mat-menu-item` with `role` and a mark, kept open by

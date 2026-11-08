@@ -6,9 +6,9 @@
  */
 
 import { defineComponent, defineDescriptor, defineType } from '../../../protected/define'
-import { TSwitch } from '@soldy-ui/core'
-import type { ISwitch } from '@soldy-ui/core'
-import { fieldOf } from '@soldy-ui/plugins'
+import { TSwitch } from '@soxa-ui/core'
+import type { ISwitch } from '@soxa-ui/core'
+import { fieldOf } from '@soxa-ui/plugins'
 import { ActionPluginDescriptor, InputBoolPluginDescriptor } from '../plugins'
 import { InputControlDescriptor } from './input-control.descriptor'
 

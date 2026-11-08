@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Button, DatePicker, Dialog, Input, Select, Table } from '@soldy-ui/react'
+import { Button, DatePicker, Dialog, Input, Select, Table } from '@soxa-ui/react'
 
 const cities = [
 	{ value: 'kzn', text: 'Kazan' },

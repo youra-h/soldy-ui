@@ -1,5 +1,5 @@
-import { listOf, selectionOf } from '@soldy-ui/core'
-import type { IListBox, IListBoxItem, TCollectionEngine } from '@soldy-ui/core'
+import { listOf, selectionOf } from '@soxa-ui/core'
+import type { IListBox, IListBoxItem, TCollectionEngine } from '@soxa-ui/core'
 import type { IPluginContext } from '../../../base'
 import { isFocusableElement } from '../../../utils'
 import { TCollectionElements } from '../../collection'

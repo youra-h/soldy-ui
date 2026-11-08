@@ -6,7 +6,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TTabsKeyboardPlugin } from '@soldy-ui/plugins'
+import { TTabsKeyboardPlugin } from '@soxa-ui/plugins'
 
 export const TabsKeyboardPluginDescriptor = definePlugin({
 	ctor: TTabsKeyboardPlugin,

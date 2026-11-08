@@ -10,7 +10,7 @@
  */
 
 import { describe, it, expect, afterEach, vi } from 'vitest'
-import { TClasses, TEvented, TSlider } from '@soldy-ui/core'
+import { TClasses, TEvented, TSlider } from '@soxa-ui/core'
 import type {
 	ISlidable,
 	ISliderProps,
@@ -18,7 +18,7 @@ import type {
 	TSlideOrientation,
 	TSlideSnap,
 	TValuePayload,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 import { TElementPlugin, TPluginBundle, TSlidePointerPlugin } from '../src'
 import type { IPlugin, IPluginConstructor, ISlidePointerPluginOptions } from '../src'
 

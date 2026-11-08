@@ -2,8 +2,8 @@ import {
 	TCollectionItemExtension,
 	TableCollectionRowDescriptor,
 	TableRowDescriptor,
-} from '@soldy-ui/setup'
-import type { ITableRow, TTableRowCollectionFacade } from '@soldy-ui/core'
+} from '@soxa-ui/setup'
+import type { ITableRow, TTableRowCollectionFacade } from '@soxa-ui/core'
 import {
 	AngularElevatorFactory,
 	createAngularAdapterContext,

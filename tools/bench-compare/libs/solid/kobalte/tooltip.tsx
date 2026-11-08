@@ -1,7 +1,7 @@
 import { Tooltip } from '@kobalte/core/tooltip'
 
 /**
- * The open delay is the soldy one (400 ms) rather than Kobalte's 700 ms: the
+ * The open delay is the soxa one (400 ms) rather than Kobalte's 700 ms: the
  * hover step of the scenario waits 450 ms for the tooltip to show.
  */
 export default function Page() {

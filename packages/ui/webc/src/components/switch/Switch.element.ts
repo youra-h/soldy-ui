@@ -3,8 +3,8 @@
  * внутри; `span` — его кладут в `Label`. docs/architecture.md, Layer 8d, «Поле».
  */
 
-import { SwitchDescriptor } from '@soldy-ui/setup'
-import type { ISwitch } from '@soldy-ui/core'
+import { SwitchDescriptor } from '@soxa-ui/setup'
+import type { ISwitch } from '@soxa-ui/core'
 import { ElementBase, defineElement } from '../../adapter'
 import type { TElementClassOf, TElementType } from '../../adapter'
 import { switchTemplate } from './switch.template'

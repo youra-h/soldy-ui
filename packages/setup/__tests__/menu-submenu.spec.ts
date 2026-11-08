@@ -13,7 +13,7 @@
  */
 
 import { describe, it, expect } from 'vitest'
-import { TMenu, TMenuItem, TMenuSubmenu, createEngineMenu } from '@soldy-ui/core'
+import { TMenu, TMenuItem, TMenuSubmenu, createEngineMenu } from '@soxa-ui/core'
 import type {
 	IMenuItem,
 	IMenuItemSource,
@@ -21,7 +21,7 @@ import type {
 	TCollectionEngine,
 	TMenuCollection,
 	TMenuSubmenuEntry,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 import {
 	MenuCollectionDescriptor,
 	MenuCollectionItemDescriptor,

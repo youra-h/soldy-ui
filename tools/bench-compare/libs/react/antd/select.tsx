@@ -4,7 +4,7 @@ import { COLLECTION_ITEMS } from '../../../data'
 const OPTIONS = COLLECTION_ITEMS.map((item) => ({ value: item.value, label: item.text }))
 
 /**
- * Select with typing and filtering — `showSearch`, as the soldy `editable`
+ * Select with typing and filtering — `showSearch`, as the soxa `editable`
  * preview; the filter goes by the option's text, not by its value.
  */
 export default function Page() {

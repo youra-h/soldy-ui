@@ -1,6 +1,6 @@
 import type { IListenable, IPlugin, IPluginContext, TPluginEvents } from './types'
-import { TEvented } from '@soldy-ui/core'
-import type { TEventSink } from '@soldy-ui/core'
+import { TEvented } from '@soxa-ui/core'
+import type { TEventSink } from '@soxa-ui/core'
 
 export abstract class TBasePlugin<
 	TInstance = any,
@@ -37,7 +37,7 @@ export abstract class TBasePlugin<
 
 	/**
 	 * Эмит собственных событий базы — без приведения `this.events` к
-	 * конкретной карте (см. `TEventSink` в `@soldy-ui/core`). Эмит звучит за
+	 * конкретной карте (см. `TEventSink` в `@soxa-ui/core`). Эмит звучит за
 	 * счёт констрейнта: карта наследника включает `TPluginEvents`.
 	 */
 	protected get _sink(): TEventSink<TPluginEvents> {

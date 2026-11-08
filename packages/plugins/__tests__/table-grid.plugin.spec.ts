@@ -13,8 +13,8 @@
  */
 
 import { describe, it, expect, afterEach } from 'vitest'
-import { TTable, createEngineTable } from '@soldy-ui/core'
-import type { TSelectionMode, TTableCollection, TTableGridCell } from '@soldy-ui/core'
+import { TTable, createEngineTable } from '@soxa-ui/core'
+import type { TSelectionMode, TTableCollection, TTableGridCell } from '@soxa-ui/core'
 import {
 	TCollectionBundlesPlugin,
 	TCollectionElements,

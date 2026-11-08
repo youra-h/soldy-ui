@@ -8,11 +8,11 @@
     // импортируют друг друга без расширений.
     "allowImportingTsExtensions": true,
     "paths": {
-      "@soldy-ui/core": ["../core/src"],
-      "@soldy-ui/icons-lucide": ["../icons/lucide/src"],
-      "@soldy-ui/icons-material": ["../icons/material/src"],
-      "@soldy-ui/plugins": ["../plugins/src"],
-      "@soldy-ui/setup": ["./index.ts"]
+      "@soxa-ui/core": ["../core/src"],
+      "@soxa-ui/icons-lucide": ["../icons/lucide/src"],
+      "@soxa-ui/icons-material": ["../icons/material/src"],
+      "@soxa-ui/plugins": ["../plugins/src"],
+      "@soxa-ui/setup": ["./index.ts"]
     }
   },
   "include": ["**/*.ts"],

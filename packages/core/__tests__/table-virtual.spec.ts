@@ -1,12 +1,12 @@
 import { describe, it, expect, vi } from 'vitest'
-import { TTable, TTableCollectionFacade, TWindowStrategy, createEngineTable } from '@soldy-ui/core'
+import { TTable, TTableCollectionFacade, TWindowStrategy, createEngineTable } from '@soxa-ui/core'
 import type {
 	ITableRow,
 	TDrawnEntry,
 	TSelectionMode,
 	TTableCollection,
 	TTableRecord,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 
 /**
  * Окно таблицы: тело рисует только видимые строки. Что рисовать, решает

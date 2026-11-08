@@ -4,7 +4,7 @@
 	 * пропом: сервер и гидратация рисуют панель на месте, а после гидратации
 	 * тест уводит её с места и возвращает (`reactiveProps`).
 	 */
-	import { Frame } from '@soldy-ui/svelte'
+	import { Frame } from '@soxa-ui/svelte'
 
 	type TPageProps = {
 		contained: boolean

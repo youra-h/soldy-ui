@@ -15,7 +15,7 @@
  *   adapter.use(TMenuRadioGroupExtension, { elevator: VueElevatorFactory })
  */
 
-import type { IMenuRadioGroup } from '@soldy-ui/core'
+import type { IMenuRadioGroup } from '@soxa-ui/core'
 import type { TInstanceContext } from '../../../protected/adapter/context'
 import { MENU_RADIO_GROUP_ELEVATOR } from './keys'
 import type { IMenuRadioGroupExtensionOptions } from './types'

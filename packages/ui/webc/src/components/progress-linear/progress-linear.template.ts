@@ -4,7 +4,7 @@
  * не читает.
  */
 
-import type { IProgressLinear } from '@soldy-ui/core'
+import type { IProgressLinear } from '@soxa-ui/core'
 import type { ITemplate } from '../../adapter'
 
 export const progressLinearTemplate: ITemplate<IProgressLinear> = {

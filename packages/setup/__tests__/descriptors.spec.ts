@@ -17,7 +17,7 @@ import {
 	TSelectCollectionFacade,
 	TSelectItemCollectionFacade,
 	TClearable,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 import {
 	TElementPlugin,
 	TReadyPlugin,
@@ -30,7 +30,7 @@ import {
 	TClearableNamesPlugin,
 	TDatePickerNamesPlugin,
 	TNumberInputNamesPlugin,
-} from '@soldy-ui/plugins'
+} from '@soxa-ui/plugins'
 import {
 	ButtonDescriptor,
 	ComponentViewDescriptor,
@@ -56,14 +56,14 @@ import {
 	defineComponent,
 	CommonProfile,
 	createAdapterContext,
-} from '@soldy-ui/setup'
-import type { DescriptorEvents, DescriptorProps, IComponentDescriptor } from '@soldy-ui/setup'
+} from '@soxa-ui/setup'
+import type { DescriptorEvents, DescriptorProps, IComponentDescriptor } from '@soxa-ui/setup'
 import type {
 	IButtonProps,
 	IComponentViewProps,
 	TButtonEvents,
 	TComponentViewEvents,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 import { required } from './helpers'
 
 /** Собрать компонент так же, как это делает монтирование. */

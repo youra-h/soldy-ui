@@ -32,13 +32,13 @@ import {
 	type TTagsOverflow,
 	type TTagsValue,
 	type TValuePayload,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 import {
 	SlotDirective,
 	TScrollerComponent,
 	TTagsComponent,
 	TTagsItemComponent,
-} from '@soldy-ui/angular'
+} from '@soxa-ui/angular'
 import { find, findIn, mountHost, nextFrame } from './mount'
 
 /** Узел на виду: закрытый тег разметки — скрытый элемент потребителя. */

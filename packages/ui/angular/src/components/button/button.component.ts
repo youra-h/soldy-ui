@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core'
 import { NgTemplateOutlet } from '@angular/common'
-import type { IButton } from '@soldy-ui/core'
+import type { IButton } from '@soxa-ui/core'
 import { TButtonSurface } from '../../generated/button.metadata'
 import { setupButton } from './setup.component'
 

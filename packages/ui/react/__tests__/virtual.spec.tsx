@@ -24,9 +24,9 @@ import { describe, it, expect, vi } from 'vitest'
 import { StrictMode, act, type ReactElement } from 'react'
 import { hydrateRoot } from 'react-dom/client'
 import { renderToString } from 'react-dom/server'
-import { createEngineListBox, createEngineSelect } from '@soldy-ui/core'
-import type { IListBoxItem, TListBoxCollection } from '@soldy-ui/core'
-import { ListBox, Select, Virtual } from '@soldy-ui/react'
+import { createEngineListBox, createEngineSelect } from '@soxa-ui/core'
+import type { IListBoxItem, TListBoxCollection } from '@soxa-ui/core'
+import { ListBox, Select, Virtual } from '@soxa-ui/react'
 import { mount, nextFrame, track } from './mount'
 
 /** `count` элементов: значение `v1`… и текст. */

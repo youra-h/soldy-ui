@@ -26,9 +26,9 @@
  */
 
 import { describe, it, expect, afterEach, vi } from 'vitest'
-import { TButton } from '@soldy-ui/core'
-import { TBasePlugin, type IPluginContext } from '@soldy-ui/plugins'
-import { usePlugins } from '@soldy-ui/setup'
+import { TButton } from '@soxa-ui/core'
+import { TBasePlugin, type IPluginContext } from '@soxa-ui/plugins'
+import { usePlugins } from '@soxa-ui/setup'
 import {
 	TButtonElement,
 	TComponentViewElement,
@@ -37,7 +37,7 @@ import {
 	type TButtonElementProps,
 	type TRadioGroupElementProps,
 	type TRadioGroupItemElementProps,
-} from '@soldy-ui/webc'
+} from '@soxa-ui/webc'
 import { defineElement } from '../src/adapter/runtime/defineElement'
 
 /** Инстансы, на которые встал плагин приложения, — по одному на сборку. */
@@ -71,14 +71,14 @@ afterEach(() => {
 	document.body.innerHTML = ''
 })
 
-/** Новое имя кнопки soldy: имя регистрируется в документе один раз. */
+/** Новое имя кнопки soxa: имя регистрируется в документе один раз. */
 function freshName(): string {
 	defined += 1
 
 	return `so-define-button-${defined}`
 }
 
-/** Регистрация кнопки soldy под именем — как у модуля компонента при импорте пакета. */
+/** Регистрация кнопки soxa под именем — как у модуля компонента при импорте пакета. */
 function register(name: string): void {
 	defineElement(name, class extends TButtonElement {}, 'button')
 }
@@ -92,11 +92,11 @@ function isButton(node: Element | null): node is TButtonElementProps {
 	return node instanceof TButtonElement
 }
 
-/** Кнопка soldy в документе по селектору; другой узел — тест падает здесь. */
+/** Кнопка soxa в документе по селектору; другой узел — тест падает здесь. */
 function button(selector: string): TButtonElementProps {
 	const node = document.querySelector(selector)
 
-	if (!isButton(node)) throw new Error(`${selector}: кнопки soldy нет`)
+	if (!isButton(node)) throw new Error(`${selector}: кнопки soxa нет`)
 
 	return node
 }
@@ -137,7 +137,7 @@ function isRadio(node: Element | null): node is TRadioGroupItemElementProps {
 function group({ group: name }: TGroupNames): TRadioGroupElementProps {
 	const node = document.querySelector(`[is="${name}"]`)
 
-	if (!isGroup(node)) throw new Error(`${name}: группы soldy нет`)
+	if (!isGroup(node)) throw new Error(`${name}: группы soxa нет`)
 
 	return node
 }
@@ -197,7 +197,7 @@ describe('defineElement · первая сборка элемента разме
 
 		const created = document.createElement('button', { is: name })
 
-		if (!isButton(created)) throw new Error(`${name}: кнопки soldy нет`)
+		if (!isButton(created)) throw new Error(`${name}: кнопки soxa нет`)
 
 		document.body.appendChild(created)
 		document.body.insertAdjacentHTML(
@@ -324,7 +324,7 @@ describe('defineElement · сборка по месту', () => {
 		const late = document.createElement('label', { is: names.radio })
 		const el = group(names)
 
-		if (!isButton(created) || !isRadio(late)) throw new Error('элементы soldy не созданы')
+		if (!isButton(created) || !isRadio(late)) throw new Error('элементы soxa не созданы')
 
 		document.body.appendChild(created)
 		late.setAttribute('value', 'c')

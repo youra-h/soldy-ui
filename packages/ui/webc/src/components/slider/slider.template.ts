@@ -4,7 +4,7 @@
  * требует подпись `Label`. docs/architecture.md, Layer 8d, «Поле».
  */
 
-import type { ISlider, TSliderShownMark, TSliderThumb } from '@soldy-ui/core'
+import type { ISlider, TSliderShownMark, TSliderThumb } from '@soxa-ui/core'
 import {
 	TKeyedLoop,
 	bind,

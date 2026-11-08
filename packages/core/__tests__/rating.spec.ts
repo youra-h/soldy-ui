@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
-import { TRating } from '@soldy-ui/core'
-import type { IRatingProps } from '@soldy-ui/core'
+import { TRating } from '@soxa-ui/core'
+import type { IRatingProps } from '@soxa-ui/core'
 
 /**
  * TRating — значение на шкале звёзд, команды перетаскивания (`ISlidable`) и

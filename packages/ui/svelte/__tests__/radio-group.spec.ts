@@ -20,14 +20,14 @@
 
 import { describe, it, expect, expectTypeOf, vi, afterEach } from 'vitest'
 import { flushSync, type ComponentProps } from 'svelte'
-import { TRadioGroup, createEngineRadioGroup, type TRadioGroupValue } from '@soldy-ui/core'
+import { TRadioGroup, createEngineRadioGroup, type TRadioGroupValue } from '@soxa-ui/core'
 import {
 	RadioGroup,
 	RadioGroupItem,
 	type RadioGroupItemProps,
 	type RadioGroupProps,
-} from '@soldy-ui/svelte'
-import type { IRadioGroupItem, TValuePayload } from '@soldy-ui/core'
+} from '@soxa-ui/svelte'
+import type { IRadioGroupItem, TValuePayload } from '@soxa-ui/core'
 import Harness from './RadioGroup.test.svelte'
 import Model from './RadioGroupModel.test.svelte'
 import { contentOf, mount, nextFrame } from './mount'

@@ -4,7 +4,7 @@
 	 * (слот `default`, у Svelte — `children`), а содержимое разметкой пишется
 	 * только в `.svelte`.
 	 */
-	import { CheckBox, Label, Switch, type SwitchProps } from '@soldy-ui/svelte'
+	import { CheckBox, Label, Switch, type SwitchProps } from '@soxa-ui/svelte'
 
 	type THarnessProps = {
 		/** Контрол в подписи. */

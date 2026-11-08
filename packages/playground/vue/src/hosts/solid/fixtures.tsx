@@ -1,4 +1,4 @@
-import { Button, CheckBox, Icon, Label, RadioGroup, Switch, roleIcon } from '@soldy-ui/solid'
+import { Button, CheckBox, Icon, Label, RadioGroup, Switch, roleIcon } from '@soxa-ui/solid'
 import type { TPreview } from './previews'
 
 /**

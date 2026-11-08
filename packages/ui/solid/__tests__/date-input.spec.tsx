@@ -22,9 +22,9 @@
 
 import { describe, it, expect, vi } from 'vitest'
 import { createSignal, type JSX } from 'solid-js'
-import type { IDateInput, TDateInputKind, TTimePrecision } from '@soldy-ui/core'
-import { arEG, enUS, ruRU, type TLocale } from '@soldy-ui/plugins'
-import { DateInput, LocaleProvider, type DateInputProps } from '@soldy-ui/solid'
+import type { IDateInput, TDateInputKind, TTimePrecision } from '@soxa-ui/core'
+import { arEG, enUS, ruRU, type TLocale } from '@soxa-ui/plugins'
+import { DateInput, LocaleProvider, type DateInputProps } from '@soxa-ui/solid'
 import { find, mount, nextFrame } from './mount'
 
 /** Значение поля даты: строка даты или даты со временем, пусто — `undefined`. */

@@ -9,8 +9,8 @@ import {
 	MenuCollectionItemDescriptor,
 	MenuSubmenuCollectionDescriptor,
 	MenuSubmenuDescriptor,
-} from '@soldy-ui/setup'
-import type { IMenuSubmenu, TMenuCollectionFacade, TMenuItemCollectionFacade } from '@soldy-ui/core'
+} from '@soxa-ui/setup'
+import type { IMenuSubmenu, TMenuCollectionFacade, TMenuItemCollectionFacade } from '@soxa-ui/core'
 import { ElementBase } from '../../../adapter'
 import type { TElementClassOf, TElementType } from '../../../adapter'
 import { menuSubmenuTemplate } from './menu-submenu.template'

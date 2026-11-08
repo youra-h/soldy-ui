@@ -13,7 +13,7 @@ export type TAbstractConstructor<T = object> = abstract new (...args: any[]) => 
  * Тема дополняет модуль в своём `index.d.ts`:
  *
  * ```ts
- * declare module '@soldy-ui/core' {
+ * declare module '@soxa-ui/core' {
  * 	interface IButtonViews {
  * 		plain: true
  * 	}

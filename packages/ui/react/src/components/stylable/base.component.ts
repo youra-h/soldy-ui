@@ -1,5 +1,5 @@
-import type { IStylable } from '@soldy-ui/core'
-import type { StylableDescriptor } from '@soldy-ui/setup'
+import type { IStylable } from '@soxa-ui/core'
+import type { StylableDescriptor } from '@soxa-ui/setup'
 import type { EventProps, UseProps } from '../../types'
 
 export type StylableEventProps = EventProps<typeof StylableDescriptor>

@@ -14,7 +14,7 @@
 
 import { describe, it, expect, afterEach } from 'vitest'
 import { Component, signal } from '@angular/core'
-import { TButton } from '@soldy-ui/core'
+import { TButton } from '@soxa-ui/core'
 import {
 	TBasePlugin,
 	TPluginBundle,
@@ -24,14 +24,14 @@ import {
 	type ILocaleSource,
 	type IPluginContext,
 	type TLocale,
-} from '@soldy-ui/plugins'
-import { usePlugins } from '@soldy-ui/setup'
+} from '@soxa-ui/plugins'
+import { usePlugins } from '@soxa-ui/setup'
 import {
 	LocaleProviderDirective,
 	TButtonComponent,
 	TCalendarComponent,
 	TInputComponent,
-} from '@soldy-ui/angular'
+} from '@soxa-ui/angular'
 import { announced } from './element-plugin'
 import { find, mountHost } from './mount'
 

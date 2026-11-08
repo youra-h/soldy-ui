@@ -1,7 +1,7 @@
 import { useEmits, useProps } from '../../adapter'
 import type { TEmits, TProps, UseProps } from '../../types/common'
-import { ToastsDescriptor, ToastsCollectionDescriptor } from '@soldy-ui/setup'
-import type { IToasts } from '@soldy-ui/core'
+import { ToastsDescriptor, ToastsCollectionDescriptor } from '@soxa-ui/setup'
+import type { IToasts } from '@soxa-ui/core'
 
 export const emitsToasts: TEmits = [
 	...useEmits(ToastsDescriptor()),

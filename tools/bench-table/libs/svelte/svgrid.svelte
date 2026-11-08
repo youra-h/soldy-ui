@@ -15,7 +15,7 @@
 	 * (`showRowSelection`) встроены, строки сверяются по `getRowId`. Окно строк и
 	 * колонок у него по умолчанию; без флага `virtual` оба выключены
 	 * (`virtualization`, `columnVirtualization`), с флагом — грид в контейнере
-	 * высотой 800 px, как окно soldy.
+	 * высотой 800 px, как окно soxa.
 	 */
 	const { rows }: { rows: TRec[] } = $props()
 	const virtual = new URLSearchParams(location.search).get('virtual') === '1'

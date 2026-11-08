@@ -55,7 +55,7 @@ import {
 	TTextarea,
 	createEngineCalendar,
 	createEngineTabs,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 import {
 	AttributesDirective,
 	SlotDirective,
@@ -90,7 +90,7 @@ import {
 	TTagsComponent,
 	TTagsItemComponent,
 	TTextareaComponent,
-} from '@soldy-ui/angular'
+} from '@soxa-ui/angular'
 import { find, findIn, mountHost, nextFrame } from './mount'
 
 /**

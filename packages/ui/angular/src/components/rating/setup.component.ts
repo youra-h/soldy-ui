@@ -1,5 +1,5 @@
-import { RatingDescriptor, TFieldControlExtension } from '@soldy-ui/setup'
-import type { IRating } from '@soldy-ui/core'
+import { RatingDescriptor, TFieldControlExtension } from '@soxa-ui/setup'
+import type { IRating } from '@soxa-ui/core'
 import { AngularElevatorFactory, createAngularAdapterContext, useAdapter } from '../../adapter'
 import type { TBinding } from '../../adapter'
 

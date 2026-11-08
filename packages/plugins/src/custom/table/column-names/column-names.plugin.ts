@@ -1,4 +1,4 @@
-import type { ITableColumn } from '@soldy-ui/core'
+import type { ITableColumn } from '@soxa-ui/core'
 import { formatName } from '../../../locale/locale'
 import { TNamesPlugin } from '../../../locale/names.plugin'
 import type { TTranslations } from '../../../locale/types'

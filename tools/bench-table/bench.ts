@@ -18,7 +18,7 @@ export type TTarget = string | (() => HTMLElement)
 export type TShown = { rows: number; checked: number; first: string | undefined }
 
 /**
- * Селекторы участника: чекбокс «выбрать все», заголовок сортировки, у soldy —
+ * Селекторы участника: чекбокс «выбрать все», заголовок сортировки, у soxa —
  * заголовки и ручки. `shown` — счёт таблицы, если стандартный (`tbody tr`,
  * отмеченные чекбоксы тела) её не видит: строки в тени или не `tr`.
  */
@@ -70,9 +70,9 @@ function nodes(root: Document | ShadowRoot): number {
 	return count
 }
 
-/** Участник по имени из `?lib=`, по умолчанию `soldy`. */
+/** Участник по имени из `?lib=`, по умолчанию `soxa`. */
 export function participantName(): string {
-	return new URLSearchParams(location.search).get('lib') ?? 'soldy'
+	return new URLSearchParams(location.search).get('lib') ?? 'soxa'
 }
 
 /** Занятая куча — нестандартное `performance.memory` Chromium. */

@@ -3,8 +3,8 @@
  * начале. Обёртка отметки есть и у неотмеченного: она держит колонку.
  */
 
-import type { IMenuRadioItem, TMenuItemCollectionFacade } from '@soldy-ui/core'
-import { DEFAULT_SLOT } from '@soldy-ui/setup'
+import type { IMenuRadioItem, TMenuItemCollectionFacade } from '@soxa-ui/core'
+import { DEFAULT_SLOT } from '@soxa-ui/setup'
 import { bind, lend, type ITemplate } from '../../../adapter'
 import { createRow, partOf, placeMark, rowBindings } from '../row'
 

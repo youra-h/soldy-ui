@@ -14,7 +14,7 @@
 
 import { describe, it, expect, vi, afterEach } from 'vitest'
 import { createRawSnippet, flushSync } from 'svelte'
-import { Label, type LabelProps, type SwitchProps } from '@soldy-ui/svelte'
+import { Label, type LabelProps, type SwitchProps } from '@soxa-ui/svelte'
 import LabelControl from './LabelControl.test.svelte'
 import LabelRadio from './LabelRadio.test.svelte'
 import { contentOf, find, htmlOf, mount, nextFrame } from './mount'
@@ -157,7 +157,7 @@ describe.each(CHECKABLES)('Label · %s в подписи', (control) => {
 describe('Label · радио в подписи', () => {
 	/** Тексты предупреждений подписи о вложенном `label`. */
 	const nestedWarnings = (calls: readonly unknown[][]): string[] =>
-		calls.map(([message]) => String(message)).filter((text) => text.includes('[soldy] Label'))
+		calls.map(([message]) => String(message)).filter((text) => text.includes('[soxa] Label'))
 
 	it('без tag="span" — предупреждение о вложенном label', async () => {
 		const warn = vi.spyOn(console, 'warn').mockImplementation(() => {})

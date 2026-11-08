@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from 'vitest'
-import { TStylable } from '@soldy-ui/core'
-import type { IStylableProps } from '@soldy-ui/core'
+import { TStylable } from '@soxa-ui/core'
+import type { IStylableProps } from '@soxa-ui/core'
 
 describe('TStylable', () => {
 	it('size и variant выставляются и эмитят события', () => {

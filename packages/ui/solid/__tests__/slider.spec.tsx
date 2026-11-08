@@ -16,8 +16,8 @@
 
 import { describe, it, expect, vi } from 'vitest'
 import { batch, createSignal } from 'solid-js'
-import { TSlider, type TSliderMarks, type TSliderTooltip, type TSliderValue } from '@soldy-ui/core'
-import { Label, Slider, type SliderProps } from '@soldy-ui/solid'
+import { TSlider, type TSliderMarks, type TSliderTooltip, type TSliderValue } from '@soxa-ui/core'
+import { Label, Slider, type SliderProps } from '@soxa-ui/solid'
 import { find, mount, nextFrame } from './mount'
 
 /** Все узлы по селектору в документе. */

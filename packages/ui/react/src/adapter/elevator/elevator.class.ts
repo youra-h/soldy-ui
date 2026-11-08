@@ -5,7 +5,7 @@
  * контекста».
  */
 
-import { TElevator } from '@soldy-ui/setup'
+import { TElevator } from '@soxa-ui/setup'
 import type { TReactElevatorScope } from './scope.class'
 
 export class TReactElevator<T = unknown> extends TElevator<T> {

@@ -1,5 +1,5 @@
-import { batchOf } from '@soldy-ui/core'
-import type { IAccordionItem } from '@soldy-ui/core'
+import { batchOf } from '@soxa-ui/core'
+import type { IAccordionItem } from '@soxa-ui/core'
 import type { IPluginContext } from '../../base'
 import { TCollectionElements } from '../collection'
 import { isReachable } from '../collection/reachable'

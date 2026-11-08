@@ -8,9 +8,9 @@
  */
 
 import { defineComponent, defineDescriptor, defineType } from '../../../../protected/define'
-import { TAccordion } from '@soldy-ui/core'
-import type { IAccordionItem } from '@soldy-ui/core'
-import { firstHeaderOf } from '@soldy-ui/plugins'
+import { TAccordion } from '@soxa-ui/core'
+import type { IAccordionItem } from '@soxa-ui/core'
+import { firstHeaderOf } from '@soxa-ui/plugins'
 import { ControlDescriptor } from '../control.descriptor'
 import {
 	ActionPluginDescriptor,

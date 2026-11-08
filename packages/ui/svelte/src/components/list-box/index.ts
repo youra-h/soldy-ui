@@ -1,4 +1,4 @@
-import { withParts } from '@soldy-ui/setup'
+import { withParts } from '@soxa-ui/setup'
 import ListBoxComponent from './ListBox.svelte'
 import { ListBoxItem } from './item'
 import { ListBoxGroup } from './group'

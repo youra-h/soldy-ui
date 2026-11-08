@@ -1,4 +1,4 @@
-import { IconDescriptor } from '@soldy-ui/setup'
+import { IconDescriptor } from '@soxa-ui/setup'
 import { useAdapter, useExpose, createVueAdapterContext, type SetupContext } from '../../adapter'
 import BaseIcon, { type IconProps } from './base.component'
 

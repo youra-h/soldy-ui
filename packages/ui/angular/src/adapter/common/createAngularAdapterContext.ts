@@ -1,4 +1,4 @@
-import { createAdapterContext } from '@soldy-ui/setup'
+import { createAdapterContext } from '@soxa-ui/setup'
 import { nearestLocale } from '../locale/context'
 import { nextMountId } from './mount-id'
 

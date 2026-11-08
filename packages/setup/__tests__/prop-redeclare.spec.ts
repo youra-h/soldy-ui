@@ -36,15 +36,15 @@ import {
 	defineComponent,
 	TSurface,
 	underscorePropNaming,
-} from '@soldy-ui/setup'
+} from '@soxa-ui/setup'
 import type {
 	DescriptorProps,
 	IAdapterProfile,
 	IComponentDescriptor,
 	IDeclaration,
-} from '@soldy-ui/setup'
-import { TListBoxItem } from '@soldy-ui/core'
-import type { IListBoxItemProps, IMenuRadioItemProps, IRadioGroupItemProps } from '@soldy-ui/core'
+} from '@soxa-ui/setup'
+import { TListBoxItem } from '@soxa-ui/core'
+import type { IListBoxItemProps, IMenuRadioItemProps, IRadioGroupItemProps } from '@soxa-ui/core'
 import { inheritDeclarations } from '../protected/define/inherit'
 import { OWNER_STYLE_PROPS } from '../content/descriptors/components/stylable.descriptor'
 import { required } from './helpers'

@@ -5,8 +5,8 @@
  * «Набор тегов и поле выбора».
  */
 
-import { TagsCollectionItemDescriptor, TagsItemDescriptor } from '@soldy-ui/setup'
-import type { ITagsItem, TTagsItemCollectionFacade } from '@soldy-ui/core'
+import { TagsCollectionItemDescriptor, TagsItemDescriptor } from '@soxa-ui/setup'
+import type { ITagsItem, TTagsItemCollectionFacade } from '@soxa-ui/core'
 import { ElementBase } from '../../../adapter'
 import type { TElementClassOf, TElementType } from '../../../adapter'
 import { setupTagsItem } from './setup.component'

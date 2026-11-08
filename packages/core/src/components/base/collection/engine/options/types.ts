@@ -1,4 +1,4 @@
-import type { TEvented } from '@soldy-ui/core'
+import type { TEvented } from '@soxa-ui/core'
 
 /** Опции движка: значения, которые компонент передаёт своим расширениям. */
 export type TEngineOptions = Record<string, unknown>

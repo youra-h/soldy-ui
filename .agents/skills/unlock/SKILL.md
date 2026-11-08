@@ -1,6 +1,6 @@
 ---
 name: unlock
-description: Recover a stopped soldy-ui role run when explicitly requested. Use when the owner explicitly invokes this command; not for unrelated coding work.
+description: Recover a stopped soxa-ui role run when explicitly requested. Use when the owner explicitly invokes this command; not for unrelated coding work.
 ---
 
 Read [commands](../../../tools/agent-flow/commands.md) for the unlock entry and [shared workflow](../../../tools/agent-flow/workflow.md). Apply the invocation's task ID or owner instruction.

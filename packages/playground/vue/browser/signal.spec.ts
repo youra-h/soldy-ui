@@ -28,7 +28,7 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { render, cleanup } from './render'
 import { userEvent } from 'vitest/browser'
 import { defineComponent, h, type PropType, type VNode } from 'vue'
-import type { TComponentVariant, TToastsItemType } from '@soldy-ui/core'
+import type { TComponentVariant, TToastsItemType } from '@soxa-ui/core'
 import {
 	Button,
 	Calendar,
@@ -44,12 +44,12 @@ import {
 	TabsItem,
 	Toasts,
 	useToasts,
-} from '@soldy-ui/vue'
-import { COMPONENT_VARIANTS, TOASTS_ITEM_TYPES } from '@soldy-ui/playground-shared'
+} from '@soxa-ui/vue'
+import { COMPONENT_VARIANTS, TOASTS_ITEM_TYPES } from '@soxa-ui/playground-shared'
 
 import { find, gradientColor, iconPaint, pixel, settled, style } from './colors'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 const SCHEMES = ['oren', 'oren-dark'] as const
 

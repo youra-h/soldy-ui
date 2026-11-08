@@ -3,7 +3,7 @@
  * Роли `radiogroup` нет: в меню группа переключателей — `group` (APG).
  */
 
-import type { IMenuRadioGroup } from '@soldy-ui/core'
+import type { IMenuRadioGroup } from '@soxa-ui/core'
 import { bind, type ITemplate } from '../../../adapter'
 import { createGroup, labelAttributes, showLabel } from '../group/menu-group.template'
 

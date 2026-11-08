@@ -1,5 +1,5 @@
 import { Directive } from '@angular/core'
-import type { IVirtual } from '@soldy-ui/core'
+import type { IVirtual } from '@soxa-ui/core'
 import { provideElevator } from '../../adapter'
 import { TVirtualSurface } from '../../generated/virtual.metadata'
 import { setupVirtual } from './setup.component'

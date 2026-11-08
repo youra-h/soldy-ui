@@ -4,9 +4,9 @@
  * поля, а не живым регионом на каждый символ.
  */
 
-import type { ITextarea } from '@soldy-ui/core'
+import type { ITextarea } from '@soxa-ui/core'
 import type { TTextareaOutputs } from './setup.component'
-import type { TStateSnapshot } from '@soldy-ui/setup'
+import type { TStateSnapshot } from '@soxa-ui/setup'
 import { bind, ownerAttributes, type ITemplate, patch } from '../../adapter'
 
 /** Части поля: поле и счётчик, одни на всё время жизни элемента. */

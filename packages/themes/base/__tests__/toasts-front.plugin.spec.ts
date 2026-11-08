@@ -15,9 +15,9 @@
  */
 
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
-import { TToasts } from '@soldy-ui/core'
-import type { TToastsLayout } from '@soldy-ui/core'
-import { TElementPlugin, TPluginBundle } from '@soldy-ui/plugins'
+import { TToasts } from '@soxa-ui/core'
+import type { TToastsLayout } from '@soxa-ui/core'
+import { TElementPlugin, TPluginBundle } from '@soxa-ui/plugins'
 import { TToastsFrontPlugin } from '../setup'
 import { expectObserved, resize, stubResizeObserver } from './resize-observer'
 

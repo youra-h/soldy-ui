@@ -14,7 +14,7 @@
 
 import { describe, it, expect } from 'vitest'
 import { createSignal } from 'solid-js'
-import { TInput } from '@soldy-ui/core'
+import { TInput } from '@soxa-ui/core'
 import {
 	enUS,
 	extendLocale,
@@ -23,8 +23,8 @@ import {
 	TPluginBundle,
 	type ILocaleSource,
 	type TLocale,
-} from '@soldy-ui/plugins'
-import { Button, Calendar, Input, LocaleProvider } from '@soldy-ui/solid'
+} from '@soxa-ui/plugins'
+import { Button, Calendar, Input, LocaleProvider } from '@soxa-ui/solid'
 import { find, mount } from './mount'
 
 /** Наборы, которые объявили кнопки, — по порядку объявления. */

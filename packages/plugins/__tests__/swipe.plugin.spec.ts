@@ -27,7 +27,7 @@ import {
 	TToastsItem,
 	isCloseRequestable,
 	isSwipeable,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 import type {
 	IDrawerProps,
 	IPopoverProps,
@@ -36,7 +36,7 @@ import type {
 	TSwipeableEvents,
 	TSwipeSide,
 	TValuePayload,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 import { TDismissPlugin, TElementPlugin, TPluginBundle, TReadyPlugin, TSwipePlugin } from '../src'
 import type { IListenable, IPlugin, IPluginConstructor, ISwipeOwner } from '../src'
 

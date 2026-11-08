@@ -1,11 +1,11 @@
-import { batchOf, selectionOf, tagsOf } from '@soldy-ui/core'
+import { batchOf, selectionOf, tagsOf } from '@soxa-ui/core'
 import type {
 	ISelect,
 	ISelectItem,
 	ISelectionExtension,
 	ISelectTagsExtension,
 	TCollectionEngine,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 import { TBasePlugin } from '../../../base'
 import type { IPluginContext } from '../../../base'
 import { TElementPlugin } from '../../element'

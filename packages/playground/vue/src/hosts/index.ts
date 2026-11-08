@@ -1,5 +1,5 @@
 import { watch } from 'vue'
-import { isPreviewHostModule, type IPreviewHost } from '@soldy-ui/playground-shared'
+import { isPreviewHostModule, type IPreviewHost } from '@soxa-ui/playground-shared'
 import { locale } from '../composables/useLanguage'
 
 /** Фреймворк стенда. */
@@ -14,7 +14,7 @@ export type TFramework = {
  * Фреймворки стенда — в порядке списка в шапке.
  *
  * Хост фреймворка — папка рядом (`hosts/<id>/`) с модулем `index.ts`, чей
- * экспорт по умолчанию — хост превью (`IPreviewHost` в `@soldy-ui/playground-shared`).
+ * экспорт по умолчанию — хост превью (`IPreviewHost` в `@soxa-ui/playground-shared`).
  * Строка здесь, папка там: `__tests__/navigation.spec.ts` сверяет, что они не
  * разошлись.
  */

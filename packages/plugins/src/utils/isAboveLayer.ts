@@ -1,4 +1,4 @@
-import { FRAME_LAYER_ATTRIBUTE } from '@soldy-ui/core'
+import { FRAME_LAYER_ATTRIBUTE } from '@soxa-ui/core'
 import { layerOf } from './layerOf'
 
 /**

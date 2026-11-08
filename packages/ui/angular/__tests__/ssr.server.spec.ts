@@ -19,9 +19,9 @@
 
 import { describe, it, expect, afterEach, vi } from 'vitest'
 import { Component, signal, viewChild, type ApplicationRef, type Type } from '@angular/core'
-import { TButton, type TComponentSize } from '@soldy-ui/core'
-import { TBasePlugin, TElementPlugin, type IPluginContext } from '@soldy-ui/plugins'
-import { getIcon, usePlugins } from '@soldy-ui/setup'
+import { TButton, type TComponentSize } from '@soxa-ui/core'
+import { TBasePlugin, TElementPlugin, type IPluginContext } from '@soxa-ui/plugins'
+import { getIcon, usePlugins } from '@soxa-ui/setup'
 import {
 	AttributesDirective,
 	RoleIconDirective,
@@ -43,7 +43,7 @@ import {
 	TToastsComponent,
 	TTooltipComponent,
 	useToasts,
-} from '@soldy-ui/angular'
+} from '@soxa-ui/angular'
 import { find, nextFrame } from './mount'
 import { hydrate, leavePage, loadPage, renderOnServer } from './server'
 

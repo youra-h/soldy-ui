@@ -1,4 +1,4 @@
-import type { TValuePayload } from '@soldy-ui/core'
+import type { TValuePayload } from '@soxa-ui/core'
 /**
  * Popover во Vue — проводка целиком, на настоящей разметке.
  *
@@ -15,11 +15,11 @@ import type { TValuePayload } from '@soldy-ui/core'
 import { describe, it, expect, afterEach, vi } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { defineComponent, h, nextTick, type VNode } from 'vue'
-import { Button, LocaleProvider, Popover, Select, SelectItem } from '@soldy-ui/vue'
-import { TPopover } from '@soldy-ui/core'
-import type { IPopoverProps } from '@soldy-ui/core'
-import { ruRU } from '@soldy-ui/plugins'
-import type { DescriptorSlots, PopoverDescriptor } from '@soldy-ui/setup'
+import { Button, LocaleProvider, Popover, Select, SelectItem } from '@soxa-ui/vue'
+import { TPopover } from '@soxa-ui/core'
+import type { IPopoverProps } from '@soxa-ui/core'
+import { ruRU } from '@soxa-ui/plugins'
+import type { DescriptorSlots, PopoverDescriptor } from '@soxa-ui/setup'
 
 const nextFrame = () => new Promise((resolve) => requestAnimationFrame(resolve))
 

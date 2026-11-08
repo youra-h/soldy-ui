@@ -20,9 +20,9 @@
  */
 
 import { describe, it, expect } from 'vitest'
-import { TVirtual, createEngineListBox } from '@soldy-ui/core'
-import type { TCollectionEngine } from '@soldy-ui/core'
-import { TVirtualPlugin } from '@soldy-ui/plugins'
+import { TVirtual, createEngineListBox } from '@soxa-ui/core'
+import type { TCollectionEngine } from '@soxa-ui/core'
+import { TVirtualPlugin } from '@soxa-ui/plugins'
 import {
 	ListBoxCollectionDescriptor,
 	ListBoxDescriptor,
@@ -35,8 +35,8 @@ import {
 	TVirtualExtension,
 	VirtualDescriptor,
 	createAdapterContext,
-} from '@soldy-ui/setup'
-import type { TElevatorFactory } from '@soldy-ui/setup'
+} from '@soxa-ui/setup'
+import type { TElevatorFactory } from '@soxa-ui/setup'
 import { createElevatorFactory, leftovers, required, spyBus } from './helpers'
 
 const ITEMS = Array.from({ length: 100 }, (_, index) => ({

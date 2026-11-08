@@ -6,7 +6,7 @@ import { parseArgs } from 'node:util'
 
 /**
  * Build size of a page: a production build where every page of every library
- * — soldy included — is an entry of its own, and tree-shaking leaves it what
+ * — soxa included — is an entry of its own, and tree-shaking leaves it what
  * the page imports (see benchmarks/compare/README.md, «Размер сборки»).
  *
  *   npm run size                     # every framework

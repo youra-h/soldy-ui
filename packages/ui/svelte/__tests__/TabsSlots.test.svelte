@@ -5,8 +5,8 @@
 	 * объявляется только в `.svelte`; имя слота с дефисом — не имя сниппета,
 	 * поэтому сниппет передаётся атрибутом.
 	 */
-	import type { ITabsItem } from '@soldy-ui/core'
-	import { Tabs } from '@soldy-ui/svelte'
+	import type { ITabsItem } from '@soxa-ui/core'
+	import { Tabs } from '@soxa-ui/svelte'
 
 	const ITEMS = [
 		{ value: 'a', text: 'A', _: { active: true } },

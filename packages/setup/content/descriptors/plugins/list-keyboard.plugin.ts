@@ -3,7 +3,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TListKeyboardPlugin } from '@soldy-ui/plugins'
+import { TListKeyboardPlugin } from '@soxa-ui/plugins'
 
 export const ListKeyboardPluginDescriptor = definePlugin({
 	ctor: TListKeyboardPlugin,

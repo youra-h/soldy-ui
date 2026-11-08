@@ -10,7 +10,7 @@ import {
 } from '../../../../bench-pages/scenarios'
 import { last, popup } from '../../scenarios'
 
-/** PrimeVue scenarios: the soldy ones step by step, on PrimeVue's own markup. */
+/** PrimeVue scenarios: the soxa ones step by step, on PrimeVue's own markup. */
 export const SCENARIOS: Record<string, TScenario> = {
 	button: each('.p-button', press),
 	input: each('input.p-inputtext', (field) => type(field, 'abc')),

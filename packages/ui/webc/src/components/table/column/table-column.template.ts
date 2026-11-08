@@ -4,8 +4,8 @@
  * было бы недоступно.
  */
 
-import type { ITableColumn } from '@soldy-ui/core'
-import { DEFAULT_SLOT } from '@soldy-ui/setup'
+import type { ITableColumn } from '@soxa-ui/core'
+import { DEFAULT_SLOT } from '@soxa-ui/setup'
 import {
 	bind,
 	createDetail,

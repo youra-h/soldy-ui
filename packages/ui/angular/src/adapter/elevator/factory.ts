@@ -1,4 +1,4 @@
-import type { IElevatorKey, TElevatorFactory } from '@soldy-ui/setup'
+import type { IElevatorKey, TElevatorFactory } from '@soxa-ui/setup'
 import { TAngularElevator } from './elevator.class'
 
 /** Лифты сборки Angular: работают со слоем DI в контексте инъекции компонента. */

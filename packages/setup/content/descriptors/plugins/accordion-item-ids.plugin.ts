@@ -7,7 +7,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TAccordionItemIdsPlugin } from '@soldy-ui/plugins'
+import { TAccordionItemIdsPlugin } from '@soxa-ui/plugins'
 
 export const AccordionItemIdsPluginDescriptor = definePlugin({
 	ctor: TAccordionItemIdsPlugin,

@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core'
 import { NgTemplateOutlet } from '@angular/common'
-import type { ITooltip } from '@soldy-ui/core'
+import type { ITooltip } from '@soxa-ui/core'
 import { AttributesDirective } from '../../adapter'
 import { TFrameComponent } from '../frame'
 import { TTooltipSurface } from '../../generated/tooltip.metadata'

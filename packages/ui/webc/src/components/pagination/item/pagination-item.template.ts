@@ -4,8 +4,8 @@
  * Нажатие делает страницу текущей активацией коллекции через контекст фасада.
  */
 
-import type { IPaginationItem, TPaginationItemCollectionFacade } from '@soldy-ui/core'
-import { DEFAULT_SLOT } from '@soldy-ui/setup'
+import type { IPaginationItem, TPaginationItemCollectionFacade } from '@soxa-ui/core'
+import { DEFAULT_SLOT } from '@soxa-ui/setup'
 import { bind, createDetail, ownerAttributes, type ITemplate, patch } from '../../../adapter'
 import { TButtonElement, type TButtonElementProps } from '../../button'
 

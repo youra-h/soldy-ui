@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core'
 import { NgTemplateOutlet } from '@angular/common'
-import type { IAccordion } from '@soldy-ui/core'
+import type { IAccordion } from '@soxa-ui/core'
 import { SlotDirective, provideElevator } from '../../adapter'
 import { TAccordionItemComponent } from './item'
 import { TAccordionSurface } from '../../generated/accordion.metadata'

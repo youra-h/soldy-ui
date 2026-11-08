@@ -8,7 +8,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TTagsScrollPlugin } from '@soldy-ui/plugins'
+import { TTagsScrollPlugin } from '@soxa-ui/plugins'
 
 export const TagsScrollPluginDescriptor = definePlugin({
 	ctor: TTagsScrollPlugin,

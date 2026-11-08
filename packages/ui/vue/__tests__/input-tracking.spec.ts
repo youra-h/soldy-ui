@@ -14,8 +14,8 @@
 import { describe, it, expect } from 'vitest'
 import { ReactiveEffect, createApp, defineComponent, h, nextTick, ref } from 'vue'
 import { queryObjects } from 'node:v8'
-import { TButton } from '@soldy-ui/core'
-import { Button } from '@soldy-ui/vue'
+import { TButton } from '@soxa-ui/core'
+import { Button } from '@soxa-ui/vue'
 
 const effects = () => queryObjects(ReactiveEffect, { format: 'count' })
 

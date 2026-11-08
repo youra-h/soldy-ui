@@ -4,8 +4,8 @@
  * выше. Корень и строка — как у пункта (`MenuItem.element.ts`).
  */
 
-import { MenuCollectionRadioItemDescriptor, MenuRadioItemDescriptor } from '@soldy-ui/setup'
-import type { IMenuRadioItem, TMenuItemCollectionFacade } from '@soldy-ui/core'
+import { MenuCollectionRadioItemDescriptor, MenuRadioItemDescriptor } from '@soxa-ui/setup'
+import type { IMenuRadioItem, TMenuItemCollectionFacade } from '@soxa-ui/core'
 import { ElementBase } from '../../../adapter'
 import type { TElementClassOf, TElementType } from '../../../adapter'
 import { menuRadioItemTemplate } from './menu-radio-item.template'

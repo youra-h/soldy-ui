@@ -6,7 +6,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TListHeightPlugin } from '@soldy-ui/plugins'
+import { TListHeightPlugin } from '@soxa-ui/plugins'
 
 export const ListHeightPluginDescriptor = definePlugin({
 	ctor: TListHeightPlugin,

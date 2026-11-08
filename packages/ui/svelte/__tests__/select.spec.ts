@@ -26,8 +26,8 @@ import {
 	type TGroupSection,
 	type TSelectCollection,
 	type TSelectPlacement,
-} from '@soldy-ui/core'
-import { TAnchorPlugin, ruRU } from '@soldy-ui/plugins'
+} from '@soxa-ui/core'
+import { TAnchorPlugin, ruRU } from '@soxa-ui/plugins'
 import {
 	Select,
 	SelectGroup,
@@ -35,7 +35,7 @@ import {
 	type SelectGroupProps,
 	type SelectItemProps,
 	type SelectProps,
-} from '@soldy-ui/svelte'
+} from '@soxa-ui/svelte'
 import Harness from './Select.test.svelte'
 import Slots from './SelectSlots.test.svelte'
 import { find, mount, nextFrame } from './mount'

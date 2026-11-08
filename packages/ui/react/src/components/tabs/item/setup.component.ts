@@ -2,7 +2,7 @@ import {
 	TCollectionItemExtension,
 	TabsCollectionItemDescriptor,
 	TabsItemDescriptor,
-} from '@soldy-ui/setup'
+} from '@soxa-ui/setup'
 import { useAdapter, useAdapterContext, useCollectionAdapter } from '../../../adapter'
 import type { TabsItemProps } from './base.component'
 

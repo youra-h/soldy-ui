@@ -1,4 +1,4 @@
-import { FrameDescriptor } from '@soldy-ui/setup'
+import { FrameDescriptor } from '@soxa-ui/setup'
 import { createSvelteAdapterContext, useAdapter, type TRootReceiver } from '../../adapter'
 import type { FrameProps } from './base.component'
 

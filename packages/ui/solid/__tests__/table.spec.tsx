@@ -21,7 +21,7 @@
 
 import { describe, it, expect, expectTypeOf, vi } from 'vitest'
 import { createSignal, type JSX } from 'solid-js'
-import { TTable, createEngineTable } from '@soldy-ui/core'
+import { TTable, createEngineTable } from '@soxa-ui/core'
 import type {
 	ITableColumn,
 	ITableRow,
@@ -31,9 +31,9 @@ import type {
 	TTableColumnSource,
 	TTableRecord,
 	TTableReorderPreview,
-} from '@soldy-ui/core'
-import { enUS, ruRU } from '@soldy-ui/plugins'
-import type { TLocale } from '@soldy-ui/plugins'
+} from '@soxa-ui/core'
+import { enUS, ruRU } from '@soxa-ui/plugins'
+import type { TLocale } from '@soxa-ui/plugins'
 import {
 	LocaleProvider,
 	Table,
@@ -41,7 +41,7 @@ import {
 	TableRow,
 	Virtual,
 	type TableProps,
-} from '@soldy-ui/solid'
+} from '@soxa-ui/solid'
 import { mount, nextFrame, type TMounted } from './mount'
 
 /**

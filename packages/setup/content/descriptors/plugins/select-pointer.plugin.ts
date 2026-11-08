@@ -7,7 +7,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TSelectPointerPlugin } from '@soldy-ui/plugins'
+import { TSelectPointerPlugin } from '@soxa-ui/plugins'
 
 export const SelectPointerPluginDescriptor = definePlugin({
 	ctor: TSelectPointerPlugin,

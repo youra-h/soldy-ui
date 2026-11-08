@@ -5,7 +5,7 @@
  */
 
 import { describe, it, expect } from 'vitest'
-import type { TStateSnapshot } from '@soldy-ui/setup'
+import type { TStateSnapshot } from '@soxa-ui/setup'
 import { TStableSnapshot } from '../src/adapter/runtime/stable-snapshot.class'
 
 /** Снимок связки, который тест меняет сам: новый объект — как после перечитанной ячейки. */

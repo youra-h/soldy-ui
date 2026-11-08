@@ -4,7 +4,7 @@
  * выхода.
  */
 
-import { TSurface, type IComponentDescriptor } from '@soldy-ui/setup'
+import { TSurface, type IComponentDescriptor } from '@soxa-ui/setup'
 import { AngularProfile } from './profile'
 
 export function useOutputs(

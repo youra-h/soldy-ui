@@ -1,7 +1,7 @@
 import { useEmits, useProps } from '../../adapter'
 import type { TEmits, TProps, UseProps } from '../../types/common'
-import { ProgressLinearDescriptor } from '@soldy-ui/setup'
-import type { IProgressLinear } from '@soldy-ui/core'
+import { ProgressLinearDescriptor } from '@soxa-ui/setup'
+import type { IProgressLinear } from '@soxa-ui/core'
 
 export const emitsProgressLinear: TEmits = useEmits(ProgressLinearDescriptor())
 

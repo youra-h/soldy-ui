@@ -1,4 +1,4 @@
 export {
 	RadioGroupItemDescriptor as descriptor,
 	RadioGroupCollectionItemDescriptor as facade,
-} from '@soldy-ui/setup'
+} from '@soxa-ui/setup'

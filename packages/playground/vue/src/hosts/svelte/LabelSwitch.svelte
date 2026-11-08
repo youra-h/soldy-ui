@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Label, Switch } from '@soldy-ui/svelte'
+	import { Label, Switch } from '@soxa-ui/svelte'
 	import type { TPreviewProps } from './previews'
 
 	const bind: TPreviewProps = $props()

@@ -1,4 +1,4 @@
-import { filterOf, selectOf, selectionOf } from '@soldy-ui/core'
+import { filterOf, selectOf, selectionOf } from '@soxa-ui/core'
 import type {
 	ISelect,
 	IFilterExtension,
@@ -6,7 +6,7 @@ import type {
 	ISelectionExtension,
 	ISelectItem,
 	TCollectionEngine,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 import { TBasePlugin } from '../../../base'
 import type { IPluginContext } from '../../../base'
 import { afterTransitions } from '../../../utils'

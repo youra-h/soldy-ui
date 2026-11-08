@@ -1,5 +1,5 @@
-import type { IMenuRadioGroup } from '@soldy-ui/core'
-import type { MenuRadioGroupDescriptor } from '@soldy-ui/setup'
+import type { IMenuRadioGroup } from '@soxa-ui/core'
+import type { MenuRadioGroupDescriptor } from '@soxa-ui/setup'
 import type { EventProps, UseDomProps } from '../../../types'
 
 export type MenuRadioGroupEventProps = EventProps<typeof MenuRadioGroupDescriptor>

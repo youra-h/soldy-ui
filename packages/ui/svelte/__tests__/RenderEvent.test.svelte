@@ -8,8 +8,8 @@
 	 * здесь шлёт условие блока `{#if}` — тоже из эффекта блока: `blur: true`
 	 * отдаёт кнопке `focusout`, как браузер.
 	 */
-	import type { TButton } from '@soldy-ui/core'
-	import { Button } from '@soldy-ui/svelte'
+	import type { TButton } from '@soxa-ui/core'
+	import { Button } from '@soxa-ui/svelte'
 
 	type THarnessProps = {
 		ctrl: TButton

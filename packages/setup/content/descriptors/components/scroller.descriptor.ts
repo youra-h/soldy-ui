@@ -9,8 +9,8 @@
  */
 
 import { defineComponent, defineDescriptor } from '../../../protected/define'
-import { TScroller } from '@soldy-ui/core'
-import { viewportStopOf } from '@soldy-ui/plugins'
+import { TScroller } from '@soxa-ui/core'
+import { viewportStopOf } from '@soxa-ui/plugins'
 import {
 	ActionPluginDescriptor,
 	ScrollerNamesPluginDescriptor,

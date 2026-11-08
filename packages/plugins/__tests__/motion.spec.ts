@@ -17,8 +17,8 @@
  */
 
 import { describe, it, expect, afterAll, afterEach, beforeAll, vi } from 'vitest'
-import { TListBox, TScroller, createEngineListBox } from '@soldy-ui/core'
-import type { TScrollBehavior } from '@soldy-ui/core'
+import { TListBox, TScroller, createEngineListBox } from '@soxa-ui/core'
+import type { TScrollBehavior } from '@soxa-ui/core'
 import {
 	TCollectionBundlesPlugin,
 	TCollectionElements,

@@ -4,8 +4,8 @@
  * слот `header`). docs/architecture.md, Layer 8d, «Меню».
  */
 
-import { MenuCollectionItemDescriptor, MenuPopoverItemDescriptor } from '@soldy-ui/setup'
-import type { IMenuPopoverItem, TMenuItemCollectionFacade } from '@soldy-ui/core'
+import { MenuCollectionItemDescriptor, MenuPopoverItemDescriptor } from '@soxa-ui/setup'
+import type { IMenuPopoverItem, TMenuItemCollectionFacade } from '@soxa-ui/core'
 import { ElementBase } from '../../../adapter'
 import type { TElementClassOf, TElementType } from '../../../adapter'
 import { menuPopoverItemTemplate } from './menu-popover-item.template'

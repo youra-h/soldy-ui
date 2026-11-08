@@ -39,7 +39,7 @@
   ошибкой. В рантайме полей `declare` нет: значение входа пишет Angular, а
   выход читается геттером базы. Тип
   фабрики класс берёт из манифеста, поэтому `descriptor` там — реэкспорт из
-  `@soldy-ui/setup`, а не `const`: выведенный тип `const` декларации пакета
+  `@soxa-ui/setup`, а не `const`: выведенный тип `const` декларации пакета
   выписать не могут (TS2883, TS7056). Сторожа — `outputs.spec.ts` и
   `inputs.spec.ts` в `packages/ui/angular/__tests__`: хосты с верными
   привязками (их шаблоны проверяет «Типы — Angular») и `expectTypeOf` на тип
@@ -539,7 +539,7 @@
   следующий пункт). Что остаётся на корне, у обоих путей решает одно правило
   (`staysOnHost`, `src/adapter/attrs/host.ts`): класс и стиль, служебные
   атрибуты Angular (`ngh`, `ng-version`, `ng-server-context`,
-  `ngskiphydration`, `ng-reflect-*`, `_ng*`, `jsaction`) и метки soldy —
+  `ngskiphydration`, `ng-reflect-*`, `_ng*`, `jsaction`) и метки soxa —
   атрибуты с префиксом `so-`: селектор (`<label so-radio-group-item>`) и
   директивы адаптера метят корень для Angular, полю они ни к чему; а ещё имена
   входов и `ctrl` — это запись входа, а не атрибут. У обёртки без коробки
@@ -762,7 +762,7 @@
   (`generated/view.metadata.ts`) по выходам `ComponentViewDescriptor`, до
   поверхностей, а в экспорт пакета его отдаёт бочка `components/`. Манифест
   коллекционного компонента экспортирует ещё и фабрику дескриптора фасада
-  (`export { ListBoxCollectionDescriptor as facade } from '@soldy-ui/setup'`),
+  (`export { ListBoxCollectionDescriptor as facade } from '@soxa-ui/setup'`),
   и поверхность одна на оба: входы и выходы обоих дескрипторов, сначала
   компонента; одноимённые — один раз, от дескриптора компонента
   (`change:closable` есть у таба и у его фасада). Общие выходы визуального
@@ -783,7 +783,7 @@
   строгий шаблон отверг бы чтение по имени (TS7053), как `TAdapterState` у
   остальных адаптеров. Манифест части с тремя контекстами
   (пункт с подменю) экспортирует ещё и фасад владельца
-  (`export { MenuSubmenuCollectionDescriptor as ownerFacade } from '@soldy-ui/setup'`,
+  (`export { MenuSubmenuCollectionDescriptor as ownerFacade } from '@soxa-ui/setup'`,
   `facade` у неё — фасад элемента): его входы и выходы идут после фасада, по
   тому же правилу (одноимённые — от первого дескриптора), тип выхода — по его
   дескриптору, тип входа — по дескриптору компонента (пропсы своей коллекции
@@ -1508,7 +1508,7 @@
   `runInInjectionContext` своего инжектора, как `createOutput`. Обёртка берёт
   из DI (`inject(…, { optional: true })`) источник локали ближайшего
   `LocaleProviderDirective`, если локаль не задана опцией явно. `inject` и
-  `createAdapterContext` из `@soldy-ui/setup` в `src/components/**` запрещены —
+  `createAdapterContext` из `@soxa-ui/setup` в `src/components/**` запрещены —
   сторож `packages/setup/__tests__/framework-mechanisms-components.spec.ts`.
 - **Id монтирования — номер сборки в приложении** (`nextMountId`,
   `src/adapter/common/mount-id.ts`): `<APP_ID>-<номер>`, `ng-1`, `ng-2`, …

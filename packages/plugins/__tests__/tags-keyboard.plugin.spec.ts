@@ -14,14 +14,14 @@
  */
 
 import { describe, it, expect, afterEach, vi } from 'vitest'
-import { TTags, TTagsItem, createEngineTags } from '@soldy-ui/core'
+import { TTags, TTagsItem, createEngineTags } from '@soxa-ui/core'
 import type {
 	ITagsItem,
 	ITagsItemProps,
 	ITagsProps,
 	TSelectionMode,
 	TTagsCollection,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 import {
 	TCollectionBundlesPlugin,
 	TCollectionElements,

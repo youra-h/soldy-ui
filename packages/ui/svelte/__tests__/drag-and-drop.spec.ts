@@ -23,7 +23,7 @@
 
 import { describe, it, expect } from 'vitest'
 import { flushSync } from 'svelte'
-import type { IDragAndDropMove, TDragAndDropMoveEvent } from '@soldy-ui/core'
+import type { IDragAndDropMove, TDragAndDropMoveEvent } from '@soxa-ui/core'
 import Wrapped from './DragAndDrop.test.svelte'
 import { mount, nextFrame } from './mount'
 import { reactiveProps } from './reactive-props.svelte'

@@ -26,9 +26,9 @@
 import { describe, it, expect, afterEach, vi } from 'vitest'
 import { Component, input, signal, type Type } from '@angular/core'
 import { TestBed, type ComponentFixture } from '@angular/core/testing'
-import { TDialog, type TCloseEvent, type TCloseReason, type TDialogPlacement } from '@soldy-ui/core'
-import { ruRU, type TDialogOffsetEvent } from '@soldy-ui/plugins'
-import * as material from '@soldy-ui/icons-material'
+import { TDialog, type TCloseEvent, type TCloseReason, type TDialogPlacement } from '@soxa-ui/core'
+import { ruRU, type TDialogOffsetEvent } from '@soxa-ui/plugins'
+import * as material from '@soxa-ui/icons-material'
 import {
 	AttributesDirective,
 	LocaleProviderDirective,
@@ -36,7 +36,7 @@ import {
 	TButtonComponent,
 	TDialogComponent,
 	TPopoverComponent,
-} from '@soldy-ui/angular'
+} from '@soxa-ui/angular'
 import { TELEPORT_ANCHOR } from '../src/adapter/runtime/teleport'
 import { find, nextFrame } from './mount'
 

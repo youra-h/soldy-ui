@@ -9,8 +9,8 @@
 
 import { describe, it, expect } from 'vitest'
 import { Component, viewChild } from '@angular/core'
-import { TComponent, type TPluginEvent } from '@soldy-ui/core'
-import { TComponentComponent } from '@soldy-ui/angular'
+import { TComponent, type TPluginEvent } from '@soxa-ui/core'
+import { TComponentComponent } from '@soxa-ui/angular'
 import { mountHost } from './mount'
 
 @Component({

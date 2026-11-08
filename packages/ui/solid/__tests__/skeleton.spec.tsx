@@ -12,8 +12,8 @@
 
 import { describe, it, expect } from 'vitest'
 import { createSignal } from 'solid-js'
-import type { TComponentVariant } from '@soldy-ui/core'
-import { Skeleton } from '@soldy-ui/solid'
+import type { TComponentVariant } from '@soxa-ui/core'
+import { Skeleton } from '@soxa-ui/solid'
 import { mount } from './mount'
 
 const variantClasses = (el: HTMLElement) =>

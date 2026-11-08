@@ -15,7 +15,7 @@ function effects(path: string, text: string): string[] {
 describe('эффект модуля — то, что исполняется на верхнем уровне', () => {
 	it.each([
 		['вызов', "defineElement('so-button', TButtonElement)"],
-		['присваивание', 'window.soldy = registry'],
+		['присваивание', 'window.soxa = registry'],
 		['правка своего объекта', "Object.defineProperty(components, 'Submenu', { get })"],
 		['импорт без имён', "import '@ungap/custom-elements'"],
 		['ветка', 'if (typeof window !== "undefined") start()'],
@@ -28,8 +28,8 @@ describe('эффект модуля — то, что исполняется на
 		['объявление со значением', 'export const ButtonDescriptor = defineDescriptor(() => ({}))'],
 		['класс', 'export class TButton extends TControl { static defaultValues = {} }'],
 		['функция', 'export function roleIcon(role: string) { return role }'],
-		['импорт с именами', "import { TButton } from '@soldy-ui/core'"],
-		['импорт типа', "import type { IButton } from '@soldy-ui/core'"],
+		['импорт с именами', "import { TButton } from '@soxa-ui/core'"],
+		['импорт типа', "import type { IButton } from '@soxa-ui/core'"],
 		['реэкспорт', "export * from './components'"],
 		['экспорт по умолчанию', 'export default defineTheme({ name: "oren" })'],
 		['директива', "'use client'\nexport const x = 1"],

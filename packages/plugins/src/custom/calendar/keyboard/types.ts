@@ -1,4 +1,4 @@
-import type { ICalendarFocusExtension } from '@soldy-ui/core'
+import type { ICalendarFocusExtension } from '@soxa-ui/core'
 import type { TPluginEvents } from '../../../base'
 
 /**

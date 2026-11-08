@@ -3,8 +3,8 @@
  * docs/architecture.md, Layer 8d, «Коллекция».
  */
 
-import { RadioGroupCollectionDescriptor, RadioGroupDescriptor } from '@soldy-ui/setup'
-import type { IRadioGroup, TRadioGroupCollectionFacade } from '@soldy-ui/core'
+import { RadioGroupCollectionDescriptor, RadioGroupDescriptor } from '@soxa-ui/setup'
+import type { IRadioGroup, TRadioGroupCollectionFacade } from '@soxa-ui/core'
 import { ElementBase, defineElement } from '../../adapter'
 import type { TElementClassOf, TElementType } from '../../adapter'
 import { TRadioGroupItemElement } from './item'

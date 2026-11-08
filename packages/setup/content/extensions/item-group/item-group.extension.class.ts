@@ -43,7 +43,7 @@
  *   adapter.use(TItemGroupExtension, { elevator: VueElevatorFactory })
  */
 
-import { groupOf } from '@soldy-ui/core'
+import { groupOf } from '@soxa-ui/core'
 import type { TInstanceContext } from '../../../protected/adapter/context'
 import { ITEM_CONTEXT_ELEVATOR } from '../../../protected/adapter/elevator/keys'
 import { ITEM_GROUP_ELEVATOR } from './keys'

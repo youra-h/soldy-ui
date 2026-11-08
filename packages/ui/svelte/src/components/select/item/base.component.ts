@@ -1,5 +1,5 @@
-import type { ISelectItem } from '@soldy-ui/core'
-import type { SelectCollectionItemDescriptor, SelectItemDescriptor } from '@soldy-ui/setup'
+import type { ISelectItem } from '@soxa-ui/core'
+import type { SelectCollectionItemDescriptor, SelectItemDescriptor } from '@soxa-ui/setup'
 import type { EventProps, TDomAttributes, UseDomProps } from '../../../types'
 
 export type SelectItemEventProps = EventProps<typeof SelectItemDescriptor> &

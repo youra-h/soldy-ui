@@ -1,9 +1,9 @@
 {
-  "name": "@soldy-ui/angular",
+  "name": "@soxa-ui/angular",
   "version": "0.3.0-beta.0",
   "description": "Адаптер Angular: компоненты на headless-моделях ядра",
   "keywords": [
-    "soldy",
+    "soxa",
     "headless",
     "ui",
     "components",
@@ -13,20 +13,20 @@
   "author": "Yuri Soldatov",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/youra-h/soldy-ui.git",
+    "url": "git+https://github.com/youra-h/soxa-ui.git",
     "directory": "packages/ui/angular"
   },
-  "homepage": "https://github.com/youra-h/soldy-ui",
+  "homepage": "https://github.com/youra-h/soxa-ui",
   "bugs": {
-    "url": "https://github.com/youra-h/soldy-ui/issues"
+    "url": "https://github.com/youra-h/soxa-ui/issues"
   },
   "publishConfig": {
     "access": "public"
   },
   "type": "module",
   "sideEffects": false,
-  "main": "./dist/fesm2022/soldy-ui-angular.mjs",
-  "types": "./dist/types/soldy-ui-angular.d.ts",
+  "main": "./dist/fesm2022/soxa-ui-angular.mjs",
+  "types": "./dist/types/soxa-ui-angular.d.ts",
   "files": [
     "dist",
     "!dist/package.json",
@@ -39,9 +39,9 @@
     "test": "ng test --no-watch"
   },
   "dependencies": {
-    "@soldy-ui/core": "0.3.0-beta.0",
-    "@soldy-ui/plugins": "0.3.0-beta.0",
-    "@soldy-ui/setup": "0.3.0-beta.0",
+    "@soxa-ui/core": "0.3.0-beta.0",
+    "@soxa-ui/plugins": "0.3.0-beta.0",
+    "@soxa-ui/setup": "0.3.0-beta.0",
     "tslib": "^2.8.1"
   },
   "peerDependencies": {
@@ -61,8 +61,8 @@
     "@angular/forms": "^22.2.0",
     "@angular/platform-browser": "^22.2.0",
     "@angular/platform-server": "^22.2.0",
-    "@soldy-ui/icons-material": "0.3.0-beta.0",
-    "@soldy-ui/theme-oren": "0.3.0-beta.0",
+    "@soxa-ui/icons-material": "0.3.0-beta.0",
+    "@soxa-ui/theme-oren": "0.3.0-beta.0",
     "@types/node": "^22.0.0",
     "ng-packagr": "^22.1.1",
     "rxjs": "^7.8.2",

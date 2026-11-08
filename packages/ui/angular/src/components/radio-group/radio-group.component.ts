@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core'
 import { NgTemplateOutlet } from '@angular/common'
-import type { IRadioGroup } from '@soldy-ui/core'
+import type { IRadioGroup } from '@soxa-ui/core'
 import { SlotDirective, provideElevator } from '../../adapter'
 import { TRadioGroupItemComponent } from './item'
 import { TRadioGroupSurface } from '../../generated/radio-group.metadata'

@@ -8,8 +8,8 @@ import {
 	TBatchExtension,
 	TMenu,
 	TListBox,
-} from '@soldy-ui/core'
-import type { IListBoxItem } from '@soldy-ui/core'
+} from '@soxa-ui/core'
+import type { IListBoxItem } from '@soxa-ui/core'
 import {
 	IconDescriptor,
 	ButtonDescriptor,

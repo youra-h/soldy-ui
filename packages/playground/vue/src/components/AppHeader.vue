@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Button, Drawer, Icon } from '@soldy-ui/vue'
+import { Button, Drawer, Icon } from '@soxa-ui/vue'
 import { useSidebar } from '../composables/useSidebar'
 import { MENU_GLYPH, SETTINGS_GLYPH } from '../icons'
 import AppSettings from './AppSettings.vue'
@@ -10,7 +10,7 @@ const { narrow, menuOpen, settingsOpen } = useSidebar()
 // Версия библиотеки — константа сборки (`define` Vite). Её подставляет замена
 // в коде модуля, а выражение шаблона компилируется в `_ctx.…`, мимо замены,
 // поэтому константа берётся здесь
-const version = __SOLDY_VERSION__
+const version = __SOXA_VERSION__
 </script>
 
 <template>
@@ -33,7 +33,7 @@ const version = __SOLDY_VERSION__
 		</Button>
 
 		<div class="pg__brand">
-			<div class="pg__name">soldy-ui <span>· playground</span></div>
+			<div class="pg__name">soxa-ui <span>· playground</span></div>
 			<div class="pg__version">v{{ version }}</div>
 		</div>
 

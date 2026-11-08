@@ -1,4 +1,4 @@
-import type { IRating } from '@soldy-ui/core'
+import type { IRating } from '@soxa-ui/core'
 import { TBasePlugin } from '../../../base'
 import type { IPluginContext } from '../../../base'
 import { TElementPlugin } from '../../element'

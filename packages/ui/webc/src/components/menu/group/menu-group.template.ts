@@ -4,7 +4,7 @@
  * Пункты встают в конец корня.
  */
 
-import type { IItemGroup, TAttributesMap } from '@soldy-ui/core'
+import type { IItemGroup, TAttributesMap } from '@soxa-ui/core'
 import { bind, ownerAttributes, type ITemplate, type TTemplateParts } from '../../../adapter'
 
 /** Узел подписи каждой группы — один на всё время жизни элемента. */

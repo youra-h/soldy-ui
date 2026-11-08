@@ -7,8 +7,8 @@ import {
 	TCloseEvent,
 	FRAME_LAYER_ATTRIBUTE,
 	isSwipeable,
-} from '@soldy-ui/core'
-import type { TCloseReason } from '@soldy-ui/core'
+} from '@soxa-ui/core'
+import type { TCloseReason } from '@soxa-ui/core'
 
 /**
  * Модель выезжающей панели: состояние и то, что из него следует для разметки.

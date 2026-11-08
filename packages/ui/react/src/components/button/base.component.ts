@@ -1,6 +1,6 @@
 import type { ButtonHTMLAttributes } from 'react'
-import type { IButton } from '@soldy-ui/core'
-import type { ButtonDescriptor } from '@soldy-ui/setup'
+import type { IButton } from '@soxa-ui/core'
+import type { ButtonDescriptor } from '@soxa-ui/setup'
 import type { EventProps, UseDomProps } from '../../types'
 
 export type ButtonEventProps = EventProps<typeof ButtonDescriptor>

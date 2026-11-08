@@ -10,7 +10,7 @@ import {
 	TTabs,
 	TTabsItem,
 	TTabsExtension,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 import type {
 	ITabsItem,
 	ITabs,
@@ -18,7 +18,7 @@ import type {
 	TSelectionItemEventsExtension,
 	TSelectionMode,
 	TValuePayload,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 
 type Item = { id: number; name: string }
 

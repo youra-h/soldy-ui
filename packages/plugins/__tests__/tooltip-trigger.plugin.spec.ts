@@ -1,4 +1,4 @@
-import type { TValuePayload } from '@soldy-ui/core'
+import type { TValuePayload } from '@soxa-ui/core'
 // @vitest-environment jsdom
 
 /**
@@ -14,8 +14,8 @@ import type { TValuePayload } from '@soldy-ui/core'
  */
 
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
-import { TTooltip } from '@soldy-ui/core'
-import type { ITooltipProps } from '@soldy-ui/core'
+import { TTooltip } from '@soxa-ui/core'
+import type { ITooltipProps } from '@soxa-ui/core'
 import { TDismissPlugin, TElementPlugin, TPluginBundle, TTooltipTriggerPlugin } from '../src'
 import type { IPlugin, IPluginConstructor } from '../src'
 import { TOOLTIP_SKIP_DELAY_MS } from '../src/custom/tooltip/trigger/document-state'

@@ -4,7 +4,7 @@ import {
 	TPlainExtension,
 	TBatchExtension,
 	TUniqueExtension,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 
 type Item = { uid: number; name: string }
 

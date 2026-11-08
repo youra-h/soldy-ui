@@ -9,7 +9,7 @@
  */
 
 import { defineComponent, defineDescriptor } from '../../../../protected/define'
-import { TSelectGroup } from '@soldy-ui/core'
+import { TSelectGroup } from '@soxa-ui/core'
 import { ItemGroupDescriptor } from '../item-group.descriptor'
 
 export const SelectGroupDescriptor = defineDescriptor(() =>

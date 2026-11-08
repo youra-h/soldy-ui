@@ -19,7 +19,7 @@
 
 import { describe, it, expect } from 'vitest'
 import { flushSync } from 'svelte'
-import { createEngineTabs, createEngineTags } from '@soldy-ui/core'
+import { createEngineTabs, createEngineTags } from '@soxa-ui/core'
 import TabsActiveFirst from './TabsActiveFirst.test.svelte'
 import TabsActiveSecond from './TabsActiveSecond.test.svelte'
 import TabsContentOwnId from './TabsContentOwnId.test.svelte'

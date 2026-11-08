@@ -11,7 +11,7 @@ import { render } from './render'
 import { router } from '../src/router'
 import TestsSidebar from '../src/components/TestsSidebar.vue'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 import '../src/styles.css'
 
 const nextFrame = () => new Promise((resolve) => requestAnimationFrame(resolve))

@@ -10,7 +10,7 @@
  */
 export {}
 
-declare module '@soldy-ui/core' {
+declare module '@soxa-ui/core' {
 	interface IComponentVariants {
 		brand: true
 		danger: true

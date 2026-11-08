@@ -20,7 +20,7 @@ NumberInput «меньше» и «больше»: глифы «−» и «+», �
 `info`, `success` и `warning` (значки остальных видов тоста Toasts — обычного
 сообщения, сведений, успеха и предупреждения: в режиме принудительных цветов
 вид различает только глиф, поэтому роль у каждого своя). Ровно как тема
-реализует классы, которые soldy выпускает в разметку.
+реализует классы, которые soxa выпускает в разметку.
 
 Добавили иконку в новый компонент — добавьте роль в `ICON_ROLES`, и
 conformance-тест сразу покажет, какие пакеты её ещё не закрыли.
@@ -51,8 +51,8 @@ export const close: TIconSource = {
 **Пакет подключает приложение, как тему:**
 
 ```ts
-import { useIcons } from '@soldy-ui/setup'
-import * as material from '@soldy-ui/icons-material'
+import { useIcons } from '@soxa-ui/setup'
+import * as material from '@soxa-ui/icons-material'
 
 useIcons(material)
 useIcons({ close: myCloseIcon }) // точечно, поверх набора
@@ -66,7 +66,7 @@ useIcons({ close: myCloseIcon }) // точечно, поверх набора
 адаптерах корень Icon по роли — сам `<svg>`: его строит адаптер (`roleIcon` у
 Vue, React, Svelte и Solid, `RoleIconDirective` у Angular), и класс, размер и
 ARIA ложатся на него. Атрибут `is` расширяет только элементы
-HTML, и `<svg>` элементом soldy не сделать, поэтому иконка Web Components —
+HTML, и `<svg>` элементом soxa не сделать, поэтому иконка Web Components —
 `<span is="so-icon" icon="close">`: корень — элемент потребителя, как у всех
 элементов Web Components, а роль — свой атрибут элемента (`icon`, свойство
 `el.icon`), а не проп ядра, как `so-role-icon` у Angular. По роли шаблон
@@ -78,7 +78,7 @@ CheckBox), и для приложения — даёт `roleIcon(role)` адап
 
 Поэтому размер ступени общий слой тем даёт корню иконки любого тега, а не
 только `svg`: корень `.so-icon` — блок (`:where(.so-icon)` в
-`src/components/icon.css` пакета `@soldy-ui/theme-base`), как `svg`
+`src/components/icon.css` пакета `@soxa-ui/theme-base`), как `svg`
 библиотеки под сбросом того же слоя (`src/reset.css`), — у строчного `span`
 размер не действует вовсе. Так размер берёт и `<Icon>` без тега в любом
 адаптере. Размера вложенному `<svg>` (`.so-icon > svg`) не задаёт никто:
@@ -94,8 +94,8 @@ CheckBox), и для приложения — даёт `roleIcon(role)` адап
 Material `#1f1f1f` в обеих схемах, и стрелка Select на тёмном поле тёмной
 схемы едва виднелась бы. Сторожит `playground/vue/browser/icon-color.spec.ts`.
 
-**Пакетов два, роли у них одни**: `@soldy-ui/icons-material`
-(`packages/icons/material/`) и `@soldy-ui/icons-lucide`
+**Пакетов два, роли у них одни**: `@soxa-ui/icons-material`
+(`packages/icons/material/`) и `@soxa-ui/icons-lucide`
 (`packages/icons/lucide/`). Приложение подключает один из них. Пакет несёт
 только роли `ICON_ROLES`, а не весь чужой набор: иконки приложения — дело
 приложения, реестр примет любую. Новая роль закрывается в обоих пакетах —
@@ -249,7 +249,7 @@ export type TButtonView = Extract<keyof IButtonViews, string>
 модуль в своём `index.d.ts`:
 
 ```ts
-declare module '@soldy-ui/core' {
+declare module '@soxa-ui/core' {
   interface IButtonViews {
     plain: true
   }
@@ -326,7 +326,7 @@ tsc из деклараций выкидывает, директиву без `p
 «Плагины и расширения снаружи»). Данные, нужные любой теме, пишут плагины
 раскладки общего слоя тем — `TTabsViewPlugin` (геометрия активного таба),
 `TTableHeadPlugin` (высота закреплённой шапки Table) и `TToastsFrontPlugin`
-(высота переднего тоста стопки) в `@soldy-ui/theme-base/setup`
+(высота переднего тоста стопки) в `@soxa-ui/theme-base/setup`
 (`packages/themes/base/AGENTS.md`, «Плагины раскладки: `setup/`»); данные,
 нужные облику одной темы, — плагин в пакете этой темы. Те и другие тема
 ставит своим `defineTheme`.
@@ -391,7 +391,7 @@ Tabs `line`, выезд Drawer и бег индикаторов — нет. У �
 Задаёт его приложение в точке входа, рядом с темой:
 
 ```ts
-import { useMotion } from '@soldy-ui/plugins'
+import { useMotion } from '@soxa-ui/plugins'
 
 useMotion('full')
 ```
@@ -410,7 +410,7 @@ useMotion('full')
 любой темой: CSS читает его селектором корня, а без него — медиазапрос
 системы, поэтому серверная разметка и кадры до старта приложения идут по
 системе; свой режим и там приложение ставит атрибутом в шаблоне страницы.
-`useMotion` — в `@soldy-ui/plugins`, а не в реестре setup: режим читают
+`useMotion` — в `@soxa-ui/plugins`, а не в реестре setup: режим читают
 плагины, а `plugins` setup не импортирует; запись атрибута — операция над
 DOM.
 

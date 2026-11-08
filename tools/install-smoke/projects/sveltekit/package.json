@@ -1,5 +1,5 @@
 {
-  "name": "soldy-install-sveltekit",
+  "name": "soxa-install-sveltekit",
   "private": true,
   "version": "0.0.1",
   "type": "module",
@@ -10,10 +10,10 @@
     "prepare": "svelte-kit sync || echo ''"
   },
   "devDependencies": {
-    "@soldy-ui/icons-material": "*",
-    "@soldy-ui/setup": "*",
-    "@soldy-ui/svelte": "*",
-    "@soldy-ui/theme-oren": "*",
+    "@soxa-ui/icons-material": "*",
+    "@soxa-ui/setup": "*",
+    "@soxa-ui/svelte": "*",
+    "@soxa-ui/theme-oren": "*",
     "@sveltejs/adapter-node": "^6.0.0",
     "@sveltejs/kit": "^3.0.0",
     "@sveltejs/vite-plugin-svelte": "^7.2.0",

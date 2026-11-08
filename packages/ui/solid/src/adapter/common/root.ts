@@ -6,7 +6,7 @@
  */
 
 import type { Accessor, JSX } from 'solid-js'
-import type { TAttributesMap } from '@soldy-ui/core'
+import type { TAttributesMap } from '@soxa-ui/core'
 import { createHeldMemo, hydrating } from './hydration'
 
 /** Стиль, как его отдают плагины и ядро: имена — как в CSS (`z-index`, `--*`). */

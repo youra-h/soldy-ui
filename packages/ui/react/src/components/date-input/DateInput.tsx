@@ -1,5 +1,5 @@
 import type { ElementType, ReactElement } from 'react'
-import type { TDateInputSegment } from '@soldy-ui/core'
+import type { TDateInputSegment } from '@soxa-ui/core'
 import {
 	elevated,
 	hasSlot,

@@ -3,7 +3,7 @@
  * кладут и блочное содержимое. Полосу диапазона тема рисует псевдоэлементом ячейки.
  */
 
-import type { ICalendarItem, TCalendarItemCollectionFacade } from '@soldy-ui/core'
+import type { ICalendarItem, TCalendarItemCollectionFacade } from '@soxa-ui/core'
 import { bind, type ITemplate, patch } from '../../../adapter'
 
 export const calendarItemTemplate: ITemplate<ICalendarItem, TCalendarItemCollectionFacade> = {

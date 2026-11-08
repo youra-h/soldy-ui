@@ -15,8 +15,8 @@
  */
 
 import { defineComponent, defineDescriptor, defineType } from '../../../../protected/define'
-import { TRadioGroupItem } from '@soldy-ui/core'
-import { fieldOf } from '@soldy-ui/plugins'
+import { TRadioGroupItem } from '@soxa-ui/core'
+import { fieldOf } from '@soxa-ui/plugins'
 import { ValueControlDescriptor } from '../value-control.descriptor'
 import { OWNER_STYLE_PROPS } from '../stylable.descriptor'
 import { ActionPluginDescriptor } from '../../plugins'

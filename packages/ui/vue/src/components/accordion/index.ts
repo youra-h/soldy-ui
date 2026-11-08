@@ -1,4 +1,4 @@
-import { withParts } from '@soldy-ui/setup'
+import { withParts } from '@soxa-ui/setup'
 import type { TClosedComponent } from '../../adapter'
 import AccordionComponent from './Accordion.vue'
 import { AccordionItem } from './item'

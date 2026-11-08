@@ -31,8 +31,8 @@
 	 * разметкой пишется только в `.svelte`. Пропсы самого поповера —
 	 * `popover`, подсказки в его панели — `tooltip`.
 	 */
-	import type { TLocale } from '@soldy-ui/plugins'
-	import type { DescriptorSlots, PopoverDescriptor, TooltipDescriptor } from '@soldy-ui/setup'
+	import type { TLocale } from '@soxa-ui/plugins'
+	import type { DescriptorSlots, PopoverDescriptor, TooltipDescriptor } from '@soxa-ui/setup'
 	import {
 		Button,
 		LocaleProvider,
@@ -41,7 +41,7 @@
 		Tooltip,
 		type PopoverProps,
 		type TooltipProps,
-	} from '@soldy-ui/svelte'
+	} from '@soxa-ui/svelte'
 
 	type TTriggerScope = DescriptorSlots<typeof PopoverDescriptor>['trigger']
 	type TTooltipTriggerScope = DescriptorSlots<typeof TooltipDescriptor>['trigger']

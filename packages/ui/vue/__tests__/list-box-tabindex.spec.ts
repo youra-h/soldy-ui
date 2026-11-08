@@ -15,7 +15,7 @@
 import { describe, it, expect, afterEach } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { defineComponent, h, nextTick, ref } from 'vue'
-import { Button, Input, ListBox, ListBoxItem } from '@soldy-ui/vue'
+import { Button, Input, ListBox, ListBoxItem } from '@soxa-ui/vue'
 import ListBoxHarness from './ListBox.test.vue'
 
 let wrapper: ReturnType<typeof mount> | null = null

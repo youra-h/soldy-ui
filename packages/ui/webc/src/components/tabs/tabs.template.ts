@@ -6,7 +6,7 @@
  * Layer 8d, «Коллекция».
  */
 
-import type { ITabs, ITabsItem, TTabsCollectionFacade } from '@soldy-ui/core'
+import type { ITabs, ITabsItem, TTabsCollectionFacade } from '@soxa-ui/core'
 import {
 	TKeyedLoop,
 	bind,

@@ -3,8 +3,8 @@
  * экземпляра у вьюпорта нет: роль ряда он получает набором `viewportAria`.
  */
 
-import { ScrollerDescriptor } from '@soldy-ui/setup'
-import type { IScroller } from '@soldy-ui/core'
+import { ScrollerDescriptor } from '@soxa-ui/setup'
+import type { IScroller } from '@soxa-ui/core'
 import { ElementBase, defineElement } from '../../adapter'
 import type { TElementClassOf, TElementType } from '../../adapter'
 import { scrollerTemplate } from './scroller.template'

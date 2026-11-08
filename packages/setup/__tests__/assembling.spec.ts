@@ -13,7 +13,7 @@
  */
 
 import { describe, it, expect } from 'vitest'
-import { TActionEvent, TPopover } from '@soldy-ui/core'
+import { TActionEvent, TPopover } from '@soxa-ui/core'
 import { PopoverDescriptor } from '../content/descriptors'
 import { createAdapterContext } from '../protected/adapter'
 import { CommonProfile } from '../protected/naming'

@@ -1,5 +1,5 @@
-import type { TValuePayload } from '@soldy-ui/core'
-import type { IMenuOwner } from '@soldy-ui/core'
+import type { TValuePayload } from '@soxa-ui/core'
+import type { IMenuOwner } from '@soxa-ui/core'
 import type { IPluginContext } from '../../../base'
 import { TElementPlugin } from '../../element'
 import { TDismissPlugin } from '../../dismiss'

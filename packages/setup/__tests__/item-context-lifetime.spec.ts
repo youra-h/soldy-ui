@@ -40,9 +40,9 @@ import {
 	TListBoxItem,
 	TMenuCheckboxItem,
 	TMenuRadioItem,
-} from '@soldy-ui/core'
-import type { TCollectionEngine } from '@soldy-ui/core'
-import { TCollectionBundlesPlugin } from '@soldy-ui/plugins'
+} from '@soxa-ui/core'
+import type { TCollectionEngine } from '@soxa-ui/core'
+import { TCollectionBundlesPlugin } from '@soxa-ui/plugins'
 import {
 	AccordionCollectionDescriptor,
 	AccordionCollectionItemDescriptor,

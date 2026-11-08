@@ -1,4 +1,4 @@
-import type { ISlidable } from '@soldy-ui/core'
+import type { ISlidable } from '@soxa-ui/core'
 import type { TSlideDirection, TSlidePoint } from './types'
 
 /**

@@ -1,5 +1,5 @@
-import type { IProgressLinear } from '@soldy-ui/core'
-import type { ProgressLinearDescriptor } from '@soldy-ui/setup'
+import type { IProgressLinear } from '@soxa-ui/core'
+import type { ProgressLinearDescriptor } from '@soxa-ui/setup'
 import type { EventProps, UseDomProps } from '../../types'
 
 export type ProgressLinearEventProps = EventProps<typeof ProgressLinearDescriptor>

@@ -5,7 +5,7 @@ import {
 	hasGroups,
 	propControls,
 	type TPreviewEventSink,
-} from '@soldy-ui/playground-shared'
+} from '@soxa-ui/playground-shared'
 import { findAvailable } from '../catalog'
 import { frameworkLabel, hostOf } from '../hosts'
 import PropRow from '../components/PropRow.vue'

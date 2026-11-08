@@ -1,5 +1,5 @@
-import { InputDescriptor, TFieldControlExtension } from '@soldy-ui/setup'
-import type { IInput } from '@soldy-ui/core'
+import { InputDescriptor, TFieldControlExtension } from '@soxa-ui/setup'
+import type { IInput } from '@soxa-ui/core'
 import { AngularElevatorFactory, createAngularAdapterContext, useAdapter } from '../../adapter'
 import type { TBinding } from '../../adapter'
 

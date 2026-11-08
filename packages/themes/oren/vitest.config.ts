@@ -12,12 +12,12 @@ import path from 'node:path'
 export default defineConfig({
 	resolve: {
 		alias: {
-			'@soldy-ui/core': path.resolve(import.meta.dirname, '../../core/src'),
-			'@soldy-ui/plugins': path.resolve(import.meta.dirname, '../../plugins/src'),
-			'@soldy-ui/setup': path.resolve(import.meta.dirname, '../../setup/index.ts'),
+			'@soxa-ui/core': path.resolve(import.meta.dirname, '../../core/src'),
+			'@soxa-ui/plugins': path.resolve(import.meta.dirname, '../../plugins/src'),
+			'@soxa-ui/setup': path.resolve(import.meta.dirname, '../../setup/index.ts'),
 			// Плагины раскладки ставит oren из общего слоя тем. Его корень — CSS,
 			// и подключают его стили, а не тесты: алиас — только на поведение
-			'@soldy-ui/theme-base/setup': path.resolve(
+			'@soxa-ui/theme-base/setup': path.resolve(
 				import.meta.dirname,
 				'../base/setup/index.ts',
 			),

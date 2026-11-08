@@ -4,8 +4,8 @@ import {
 	MenuCollectionItemDescriptor,
 	MenuSubmenuCollectionDescriptor,
 	MenuSubmenuDescriptor,
-} from '@soldy-ui/setup'
-import type { IMenuSubmenu } from '@soldy-ui/core'
+} from '@soxa-ui/setup'
+import type { IMenuSubmenu } from '@soxa-ui/core'
 
 export const emitsMenuSubmenu: TEmits = [
 	...useEmits(MenuSubmenuDescriptor()),

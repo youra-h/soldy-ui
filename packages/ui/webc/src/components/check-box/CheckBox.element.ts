@@ -3,8 +3,8 @@
  * внутри; `span` — его кладут в `Label`. docs/architecture.md, Layer 8d, «Поле».
  */
 
-import { CheckBoxDescriptor } from '@soldy-ui/setup'
-import type { ICheckBox } from '@soldy-ui/core'
+import { CheckBoxDescriptor } from '@soxa-ui/setup'
+import type { ICheckBox } from '@soxa-ui/core'
 import { ElementBase, defineElement } from '../../adapter'
 import type { TElementClassOf, TElementType } from '../../adapter'
 import { checkBoxTemplate } from './check-box.template'

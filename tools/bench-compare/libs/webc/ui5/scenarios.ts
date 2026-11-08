@@ -9,7 +9,7 @@ import {
 } from '../../../../bench-pages/scenarios'
 
 /**
- * UI5 scenarios: the soldy ones step by step, on UI5's markup. Inner nodes —
+ * UI5 scenarios: the soxa ones step by step, on UI5's markup. Inner nodes —
  * the native button, input, list row — live in shadow roots, and UI5 listens
  * there, so the actions go to them. Popovers stay in the shadow of their
  * element (top layer), the rows of a list are its light DOM.

@@ -23,13 +23,13 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { render, cleanup } from './render'
 import { userEvent } from 'vitest/browser'
 import { defineComponent, h, type Component, type VNode } from 'vue'
-import type { TComponentVariant } from '@soldy-ui/core'
-import { Button, Tabs, TabsItem } from '@soldy-ui/vue'
-import { COMPONENT_VARIANTS } from '@soldy-ui/playground-shared'
+import type { TComponentVariant } from '@soxa-ui/core'
+import { Button, Tabs, TabsItem } from '@soxa-ui/vue'
+import { COMPONENT_VARIANTS } from '@soxa-ui/playground-shared'
 
 import { find, pixel, settled, shift, style } from './colors'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 /** Обе схемы: ломалось только в одной, а ступень у линий общая. */
 const SCHEMES = ['oren', 'oren-dark'] as const

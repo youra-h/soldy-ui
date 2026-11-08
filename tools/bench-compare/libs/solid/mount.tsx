@@ -8,7 +8,7 @@ export interface ISolidSetup {
 
 /**
  * `count` copies of a page under one Solid root wrapped in the library's
- * provider — as the soldy host does it: the copies are built once, in the body
+ * provider — as the soxa host does it: the copies are built once, in the body
  * of the root. Solid renders synchronously. Returns the unmount.
  */
 export function mountPage(

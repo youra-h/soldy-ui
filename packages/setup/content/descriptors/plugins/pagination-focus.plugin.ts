@@ -8,7 +8,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TPaginationFocusPlugin } from '@soldy-ui/plugins'
+import { TPaginationFocusPlugin } from '@soxa-ui/plugins'
 
 export const PaginationFocusPluginDescriptor = definePlugin({
 	ctor: TPaginationFocusPlugin,

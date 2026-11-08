@@ -22,9 +22,9 @@ import { describe, it, expect, vi } from 'vitest'
 import { StrictMode, act, createRef, useState, type ReactElement, type ReactNode } from 'react'
 import { hydrateRoot } from 'react-dom/client'
 import { renderToString } from 'react-dom/server'
-import { TDrawer } from '@soldy-ui/core'
-import type { TCloseEvent, TCloseReason } from '@soldy-ui/core'
-import { Dialog, Drawer, type DrawerProps } from '@soldy-ui/react'
+import { TDrawer } from '@soxa-ui/core'
+import type { TCloseEvent, TCloseReason } from '@soxa-ui/core'
+import { Dialog, Drawer, type DrawerProps } from '@soxa-ui/react'
 import { find, mount, nextFrame, track } from './mount'
 
 /** Узел по селектору; нет его — тест падает здесь, а не на чтении свойства. */

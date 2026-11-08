@@ -3,8 +3,8 @@ import {
 	MenuPopoverItemDescriptor,
 	TCollectionItemExtension,
 	type DescriptorPluginOutputs,
-} from '@soldy-ui/setup'
-import type { IMenuPopoverItem, TMenuItemCollectionFacade } from '@soldy-ui/core'
+} from '@soxa-ui/setup'
+import type { IMenuPopoverItem, TMenuItemCollectionFacade } from '@soxa-ui/core'
 import {
 	createWebcAdapterContext,
 	joinBindings,

@@ -27,7 +27,7 @@
 import { describe, it, expect, expectTypeOf } from 'vitest'
 import { Component, signal, type EventEmitter, type Type } from '@angular/core'
 import { TestBed, type ComponentFixture } from '@angular/core/testing'
-import { TTable, createEngineTable } from '@soldy-ui/core'
+import { TTable, createEngineTable } from '@soxa-ui/core'
 import type {
 	ITableColumn,
 	ITableRow,
@@ -39,14 +39,14 @@ import type {
 	TTableColumnSource,
 	TTableRecord,
 	TTableReorderPreview,
-} from '@soldy-ui/core'
-import { enUS, ruRU, type TLocale } from '@soldy-ui/plugins'
+} from '@soxa-ui/core'
+import { enUS, ruRU, type TLocale } from '@soxa-ui/plugins'
 import {
 	LocaleProviderDirective,
 	SlotDirective,
 	TTableComponent,
 	TVirtualComponent,
-} from '@soldy-ui/angular'
+} from '@soxa-ui/angular'
 import { TextPipe } from '../src/adapter/runtime/text.pipe'
 import { mountHost, nextFrame } from './mount'
 

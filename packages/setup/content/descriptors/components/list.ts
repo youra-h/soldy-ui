@@ -4,7 +4,7 @@
  * Public events are declared separately in each consuming descriptor.
  */
 
-import type { TGroupEvents, TListEvents } from '@soldy-ui/core'
+import type { TGroupEvents, TListEvents } from '@soxa-ui/core'
 import type { IComponentPropDefinition } from '../../../protected/define'
 
 export const LIST_PROPS = {

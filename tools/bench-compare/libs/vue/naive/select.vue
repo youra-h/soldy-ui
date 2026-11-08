@@ -2,7 +2,7 @@
 import { NSelect } from 'naive-ui'
 import { COLLECTION_ITEMS } from '../../../data'
 
-/** Select with typing and filtering — `filterable`, as the soldy `editable` preview. */
+/** Select with typing and filtering — `filterable`, as the soxa `editable` preview. */
 defineOptions({ name: 'NaiveSelectPage' })
 
 const options = COLLECTION_ITEMS.map((item) => ({ label: item.text, value: item.value }))

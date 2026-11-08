@@ -11,7 +11,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TTableColumnReorderPlugin } from '@soldy-ui/plugins'
+import { TTableColumnReorderPlugin } from '@soxa-ui/plugins'
 
 export const TableColumnReorderPluginDescriptor = definePlugin({
 	ctor: TTableColumnReorderPlugin,

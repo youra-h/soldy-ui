@@ -1,5 +1,5 @@
-import { SliderDescriptor, TFieldControlExtension } from '@soldy-ui/setup'
-import type { ISlider } from '@soldy-ui/core'
+import { SliderDescriptor, TFieldControlExtension } from '@soxa-ui/setup'
+import type { ISlider } from '@soxa-ui/core'
 import { AngularElevatorFactory, createAngularAdapterContext, useAdapter } from '../../adapter'
 import type { TBinding } from '../../adapter'
 

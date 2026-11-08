@@ -11,9 +11,9 @@
 
 import { describe, it, expect } from 'vitest'
 import { createSignal, type JSX } from 'solid-js'
-import { TScroller } from '@soldy-ui/core'
-import { enUS, extendLocale, ruRU } from '@soldy-ui/plugins'
-import { LocaleProvider, Scroller } from '@soldy-ui/solid'
+import { TScroller } from '@soxa-ui/core'
+import { enUS, extendLocale, ruRU } from '@soxa-ui/plugins'
+import { LocaleProvider, Scroller } from '@soxa-ui/solid'
 import { find, mount, nextFrame } from './mount'
 
 /** Корень ленты в документе. */

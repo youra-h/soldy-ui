@@ -1,5 +1,5 @@
-import { InteractiveDescriptor } from '@soldy-ui/setup'
-import type { IInteractive } from '@soldy-ui/core'
+import { InteractiveDescriptor } from '@soxa-ui/setup'
+import type { IInteractive } from '@soxa-ui/core'
 import { createAngularAdapterContext, useAdapter } from '../../adapter'
 import type { TBinding } from '../../adapter'
 

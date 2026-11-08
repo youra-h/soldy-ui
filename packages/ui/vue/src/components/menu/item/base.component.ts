@@ -1,7 +1,7 @@
 import { useEmits, useProps } from '../../../adapter'
 import type { TEmits, TProps, UseProps } from '../../../types/common'
-import { MenuItemDescriptor, MenuCollectionItemDescriptor } from '@soldy-ui/setup'
-import type { IMenuItem } from '@soldy-ui/core'
+import { MenuItemDescriptor, MenuCollectionItemDescriptor } from '@soxa-ui/setup'
+import type { IMenuItem } from '@soxa-ui/core'
 
 export const emitsMenuItem: TEmits = [
 	...useEmits(MenuItemDescriptor()),

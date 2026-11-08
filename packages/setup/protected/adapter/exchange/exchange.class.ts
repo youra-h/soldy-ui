@@ -44,7 +44,7 @@
  * missing from a foreign bundle is skipped silently.
  */
 
-import { TActionEvent } from '@soldy-ui/core'
+import { TActionEvent } from '@soxa-ui/core'
 import type { TSurface } from '../surface'
 import { assembling } from './assembling.class'
 import { TEventRelay } from './event-relay.class'

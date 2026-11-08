@@ -20,13 +20,13 @@
 import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { render, cleanup } from './render'
 import { defineComponent, h } from 'vue'
-import type { TComponentVariant } from '@soldy-ui/core'
-import { Button, Skeleton } from '@soldy-ui/vue'
-import { COMPONENT_VARIANTS } from '@soldy-ui/playground-shared'
+import type { TComponentVariant } from '@soxa-ui/core'
+import { Button, Skeleton } from '@soxa-ui/vue'
+import { COMPONENT_VARIANTS } from '@soxa-ui/playground-shared'
 
 import { find, pixel, shift, style } from './colors'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 /** Обе схемы: ломалось только в тёмной, а заглушка у схем общая. */
 const SCHEMES = ['oren', 'oren-dark'] as const

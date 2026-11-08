@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core'
-import type { IComponentView } from '@soldy-ui/core'
+import type { IComponentView } from '@soxa-ui/core'
 import { TComponentViewSurface } from '../../generated/component-view.metadata'
 import { setupComponentView } from './setup.component'
 

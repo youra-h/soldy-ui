@@ -14,10 +14,10 @@ import { describe, it, expect, afterEach } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { createSSRApp, h, nextTick } from 'vue'
 import { renderToString } from 'vue/server-renderer'
-import { TTextarea } from '@soldy-ui/core'
-import type { ITextareaProps } from '@soldy-ui/core'
-import { ruRU } from '@soldy-ui/plugins'
-import { Field, LocaleProvider, Textarea } from '@soldy-ui/vue'
+import { TTextarea } from '@soxa-ui/core'
+import type { ITextareaProps } from '@soxa-ui/core'
+import { ruRU } from '@soxa-ui/plugins'
+import { Field, LocaleProvider, Textarea } from '@soxa-ui/vue'
 
 /** Плагины цепляют слушатели по `element:ready`, а оно приходит кадром. */
 const nextFrame = () => new Promise((resolve) => requestAnimationFrame(resolve))

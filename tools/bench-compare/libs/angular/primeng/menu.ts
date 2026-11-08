@@ -4,7 +4,7 @@ import { Button } from 'primeng/button'
 import { TieredMenu } from 'primeng/tieredmenu'
 
 /**
- * The soldy menu preview in PrimeNG: a popup `p-tieredmenu` — its nested
+ * The soxa menu preview in PrimeNG: a popup `p-tieredmenu` — its nested
  * items are the submenu with a submenu inside, a disabled action and a
  * destructive one. TieredMenu has no checkbox, radio or group items: the
  * checkbox and radio items are items with a mark in the item template (the

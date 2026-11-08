@@ -6,7 +6,7 @@
  * ключ, поэтому ключ — в наполнении, а не в механике лифта.
  */
 
-import type { IDragAndDrop } from '@soldy-ui/core'
+import type { IDragAndDrop } from '@soxa-ui/core'
 import type { IElevatorKey } from '../../../protected/adapter/elevator'
 
 /**
@@ -15,5 +15,5 @@ import type { IElevatorKey } from '../../../protected/adapter/elevator'
  * перестановку не наследуют.
  */
 export const DRAG_AND_DROP_ELEVATOR: IElevatorKey<IDragAndDrop | null> = {
-	name: 'soldy:drag-and-drop',
+	name: 'soxa:drag-and-drop',
 }

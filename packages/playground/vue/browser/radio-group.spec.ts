@@ -15,12 +15,12 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { render, cleanup } from './render'
 import { userEvent } from 'vitest/browser'
 import { defineComponent, h, nextTick, ref } from 'vue'
-import { createEngineRadioGroup } from '@soldy-ui/core'
-import type { TRadioGroupCollection } from '@soldy-ui/core'
-import { Button, RadioGroup, RadioGroupItem } from '@soldy-ui/vue'
+import { createEngineRadioGroup } from '@soxa-ui/core'
+import type { TRadioGroupCollection } from '@soxa-ui/core'
+import { Button, RadioGroup, RadioGroupItem } from '@soxa-ui/vue'
 import { radioArrowsWrap } from './engine'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 const nextFrame = () => new Promise<void>((resolve) => requestAnimationFrame(() => resolve()))
 

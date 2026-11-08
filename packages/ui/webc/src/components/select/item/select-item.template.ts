@@ -5,8 +5,8 @@
  * Select, опцию объявляет его `aria-activedescendant`.
  */
 
-import type { ISelectItem, TListIndicator, TSelectItemCollectionFacade } from '@soldy-ui/core'
-import { DEFAULT_SLOT } from '@soldy-ui/setup'
+import type { ISelectItem, TListIndicator, TSelectItemCollectionFacade } from '@soxa-ui/core'
+import { DEFAULT_SLOT } from '@soxa-ui/setup'
 import { bind, createDetail, lend, ownerAttributes, type ITemplate, patch } from '../../../adapter'
 import { registerItemRowTag, type TItemRowElementProps } from '../../item-row'
 import { TIconElement, type TIconElementProps } from '../../icon'

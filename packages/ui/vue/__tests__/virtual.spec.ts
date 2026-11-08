@@ -15,9 +15,9 @@
 import { describe, it, expect, afterEach } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { defineComponent, h, nextTick, ref, type VNode } from 'vue'
-import { createEngineListBox, createEngineSelect } from '@soldy-ui/core'
-import type { IListBoxItem, TListBoxCollection } from '@soldy-ui/core'
-import { ListBox, Select, Virtual } from '@soldy-ui/vue'
+import { createEngineListBox, createEngineSelect } from '@soxa-ui/core'
+import type { IListBoxItem, TListBoxCollection } from '@soxa-ui/core'
+import { ListBox, Select, Virtual } from '@soxa-ui/vue'
 
 const nextFrame = () => new Promise((resolve) => requestAnimationFrame(resolve))
 

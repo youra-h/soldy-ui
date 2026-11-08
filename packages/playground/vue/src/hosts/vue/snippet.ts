@@ -4,7 +4,7 @@ import {
 	type TComponentEntry,
 	type TPluginPropAddress,
 	type TPropControl,
-} from '@soldy-ui/playground-shared'
+} from '@soxa-ui/playground-shared'
 
 /**
  * Сниппет для колонки «Component»: значение приходит пропом.
@@ -30,7 +30,7 @@ export function propSnippet(
 
 	return [
 		'<script setup lang="ts">',
-		`import { ${entry.label} } from '@soldy-ui/vue'`,
+		`import { ${entry.label} } from '@soxa-ui/vue'`,
 		'</script>',
 		'',
 		'<template>',
@@ -81,8 +81,8 @@ function componentInstanceSnippet(
 
 	return [
 		'<script setup lang="ts">',
-		`import { ${entry.label} } from '@soldy-ui/vue'`,
-		`import { ${ctor} } from '@soldy-ui/core'`,
+		`import { ${entry.label} } from '@soxa-ui/vue'`,
+		`import { ${ctor} } from '@soxa-ui/core'`,
 		'',
 		`const instance = new ${ctor}()`,
 		...assignment(`instance.${prop}`, value),
@@ -115,8 +115,8 @@ function collectionInstanceSnippet(
 
 	return [
 		'<script setup lang="ts">',
-		`import { ${entry.label} } from '@soldy-ui/vue'`,
-		`import { ${create} } from '@soldy-ui/core'`,
+		`import { ${entry.label} } from '@soxa-ui/vue'`,
+		`import { ${create} } from '@soxa-ui/core'`,
 		'',
 		`const engine = ${create}()`,
 		...assignment(`engine.extensions.selection.${prop}`, value),
@@ -147,8 +147,8 @@ function pluginInstanceSnippet(
 
 	return [
 		'<script setup lang="ts">',
-		`import { ${entry.label} } from '@soldy-ui/vue'`,
-		`import { ${ctor} } from '@soldy-ui/core'`,
+		`import { ${entry.label} } from '@soxa-ui/vue'`,
+		`import { ${ctor} } from '@soxa-ui/core'`,
 		...imports,
 		'',
 		`const instance = new ${ctor}()`,
@@ -179,7 +179,7 @@ function pluginAssignment(
 	const pluginCtor = address.ctor.name
 
 	return {
-		imports: [`import { TPluginBundle, ${pluginCtor} } from '@soldy-ui/plugins'`],
+		imports: [`import { TPluginBundle, ${pluginCtor} } from '@soxa-ui/plugins'`],
 		lines: [
 			'',
 			"instance.events.on('bundle:create', (bundle: unknown) => {",

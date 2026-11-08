@@ -2,7 +2,7 @@ import { AST_NODE_TYPES, ASTUtils, ESLintUtils, TSESLint } from '@typescript-esl
 import type { TSESTree } from '@typescript-eslint/utils'
 
 /**
- * `soldy/solid-part-props` — атрибуты узла разметки компонента Solid идут
+ * `soxa/solid-part-props` — атрибуты узла разметки компонента Solid идут
  * через помощник адаптера, а не спредом прямо из состояния
  * (`packages/ui/solid/src/adapter/common/root.ts`, шапка, «Гидратация»).
  *

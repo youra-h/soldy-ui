@@ -3,7 +3,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button'
 import { NzInputModule } from 'ng-zorro-antd/input'
 import { NzModalModule } from 'ng-zorro-antd/modal'
 
-/** A button opens a modal with a field inside, as the soldy preview. */
+/** A button opens a modal with a field inside, as the soxa preview. */
 @Component({
 	selector: 'bench-dialog',
 	imports: [NzButtonModule, NzInputModule, NzModalModule],

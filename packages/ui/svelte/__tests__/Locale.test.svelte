@@ -3,8 +3,8 @@
 	 * Тестовая обёртка: провайдер локали с кнопкой и вложенный провайдер со
 	 * своей кнопкой. Набор каждой кнопки тест получает в `onBundleCreate`.
 	 */
-	import type { TLocale } from '@soldy-ui/plugins'
-	import { Button, LocaleProvider } from '@soldy-ui/svelte'
+	import type { TLocale } from '@soxa-ui/plugins'
+	import { Button, LocaleProvider } from '@soxa-ui/svelte'
 
 	type THarnessProps = {
 		locale: TLocale

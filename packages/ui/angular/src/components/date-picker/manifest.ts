@@ -1,1 +1,1 @@
-export { DatePickerDescriptor as descriptor } from '@soldy-ui/setup'
+export { DatePickerDescriptor as descriptor } from '@soxa-ui/setup'

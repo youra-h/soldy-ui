@@ -1,4 +1,4 @@
-import { withParts } from '@soldy-ui/setup'
+import { withParts } from '@soxa-ui/setup'
 import { Select as SelectComponent } from './Select'
 import { SelectItem } from './item'
 import { SelectGroup } from './group'

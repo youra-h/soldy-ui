@@ -9,7 +9,7 @@
  */
 
 import { describe, it, expect, vi } from 'vitest'
-import { TTextarea, type TValuePayload } from '@soldy-ui/core'
+import { TTextarea, type TValuePayload } from '@soxa-ui/core'
 
 describe('умолчания', () => {
 	it('две строки, без потолка, без предела; авторост и счётчик выключены', () => {

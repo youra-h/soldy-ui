@@ -1,1 +1,1 @@
-export { PopoverDescriptor as descriptor } from '@soldy-ui/setup'
+export { PopoverDescriptor as descriptor } from '@soxa-ui/setup'

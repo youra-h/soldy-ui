@@ -1,5 +1,5 @@
-import type { IRadioGroup } from '@soldy-ui/core'
-import type { RadioGroupCollectionDescriptor, RadioGroupDescriptor } from '@soldy-ui/setup'
+import type { IRadioGroup } from '@soxa-ui/core'
+import type { RadioGroupCollectionDescriptor, RadioGroupDescriptor } from '@soxa-ui/setup'
 import type { EventProps, UseDomProps } from '../../types'
 
 /** События RadioGroup — свои и фасада коллекции. */

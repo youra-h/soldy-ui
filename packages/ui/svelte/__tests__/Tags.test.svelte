@@ -5,7 +5,7 @@
 	 * новое значение — новый тег. Смена `items` или `tags` в `reactiveProps` —
 	 * перерисовка родителя.
 	 */
-	import { Tags, type TagsItemProps, type TagsProps } from '@soldy-ui/svelte'
+	import { Tags, type TagsItemProps, type TagsProps } from '@soxa-ui/svelte'
 
 	type THarnessProps = {
 		/** Пропсы набора. */

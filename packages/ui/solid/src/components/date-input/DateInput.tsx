@@ -1,5 +1,5 @@
 import type { Accessor, JSX } from 'solid-js'
-import type { TDateInputPart, TDateInputSegment } from '@soldy-ui/core'
+import type { TDateInputPart, TDateInputSegment } from '@soxa-ui/core'
 import {
 	Elevate,
 	KeyedFor,

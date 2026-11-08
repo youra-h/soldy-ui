@@ -1,12 +1,12 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import { TCalendar, TCalendarCollectionFacade, createEngineCalendar } from '@soldy-ui/core'
+import { TCalendar, TCalendarCollectionFacade, createEngineCalendar } from '@soxa-ui/core'
 import type {
 	ICalendarItem,
 	ICalendarProps,
 	TCalendarGrid,
 	TCalendarMode,
 	TCalendarValue,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 import { addDays, compareDates } from '../src/common/calendar'
 
 /**

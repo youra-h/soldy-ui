@@ -1,6 +1,6 @@
 import { createSSRApp, h } from 'vue'
 import { renderToString } from 'vue/server-renderer'
-import { LocaleProvider } from '@soldy-ui/vue'
+import { LocaleProvider } from '@soxa-ui/vue'
 import { PREVIEW_COMPONENTS } from '../../../packages/playground/vue/src/hosts/vue/previews'
 import { measure } from './measure'
 

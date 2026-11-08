@@ -1,5 +1,5 @@
 import { Pipe, type PipeTransform } from '@angular/core'
-import { toText } from '@soldy-ui/core'
+import { toText } from '@soxa-ui/core'
 
 /** Значение текстом по правилу ядра (`toText`): `{{ value | soText }}`. */
 @Pipe({

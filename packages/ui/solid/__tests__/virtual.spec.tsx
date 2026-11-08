@@ -19,9 +19,9 @@
 
 import { describe, it, expect } from 'vitest'
 import { createSignal } from 'solid-js'
-import { createEngineListBox, createEngineSelect } from '@soldy-ui/core'
-import type { TListBoxCollection } from '@soldy-ui/core'
-import { ListBox, Select, Virtual } from '@soldy-ui/solid'
+import { createEngineListBox, createEngineSelect } from '@soxa-ui/core'
+import type { TListBoxCollection } from '@soxa-ui/core'
+import { ListBox, Select, Virtual } from '@soxa-ui/solid'
 import { find, mount, nextFrame } from './mount'
 
 /** `count` элементов: значение `v1`… и текст. */

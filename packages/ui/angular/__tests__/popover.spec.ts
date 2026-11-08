@@ -1,4 +1,4 @@
-import type { TValuePayload } from '@soldy-ui/core'
+import type { TValuePayload } from '@soxa-ui/core'
 /**
  * Popover под Angular — проводка целиком, на настоящей разметке.
  *
@@ -28,8 +28,8 @@ import type { TValuePayload } from '@soldy-ui/core'
 import { describe, it, expect, afterEach, beforeEach, vi } from 'vitest'
 import { Component, signal, type Type } from '@angular/core'
 import { TestBed, type ComponentFixture } from '@angular/core/testing'
-import { TCheckBox, TPopover, type TSwipe } from '@soldy-ui/core'
-import { ruRU } from '@soldy-ui/plugins'
+import { TCheckBox, TPopover, type TSwipe } from '@soxa-ui/core'
+import { ruRU } from '@soxa-ui/plugins'
 import {
 	AttributesDirective,
 	LocaleProviderDirective,
@@ -40,7 +40,7 @@ import {
 	TPopoverComponent,
 	TSelectComponent,
 	TSelectItemComponent,
-} from '@soldy-ui/angular'
+} from '@soxa-ui/angular'
 import { TELEPORT_ANCHOR } from '../src/adapter/runtime/teleport'
 import { countAssemblies, type TAssemblyProbe } from './assemblies'
 import { find, nextFrame } from './mount'

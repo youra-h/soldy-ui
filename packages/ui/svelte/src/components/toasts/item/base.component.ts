@@ -1,5 +1,5 @@
-import type { IToastsItem } from '@soldy-ui/core'
-import type { ToastsCollectionItemDescriptor, ToastsItemDescriptor } from '@soldy-ui/setup'
+import type { IToastsItem } from '@soxa-ui/core'
+import type { ToastsCollectionItemDescriptor, ToastsItemDescriptor } from '@soxa-ui/setup'
 import type { EventProps, UseDomProps } from '../../../types'
 
 export type ToastsItemEventProps = EventProps<typeof ToastsItemDescriptor> &

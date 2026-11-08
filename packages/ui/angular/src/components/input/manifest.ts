@@ -1,1 +1,1 @@
-export { InputDescriptor as descriptor } from '@soldy-ui/setup'
+export { InputDescriptor as descriptor } from '@soxa-ui/setup'

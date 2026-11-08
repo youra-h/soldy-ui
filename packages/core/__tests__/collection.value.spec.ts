@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from 'vitest'
-import { TListBox, TListBoxCollectionFacade, TListBoxItem } from '@soldy-ui/core'
-import type { IListBoxItem, IListBoxProps, TSelectionMode } from '@soldy-ui/core'
+import { TListBox, TListBoxCollectionFacade, TListBoxItem } from '@soxa-ui/core'
+import type { IListBoxItem, IListBoxProps, TSelectionMode } from '@soxa-ui/core'
 
 /**
  * Связь `value` владельца и выбора коллекции (`TValueSelectionExtension`) на

@@ -1,4 +1,4 @@
-import { TPluginBundle } from '@soldy-ui/plugins'
+import { TPluginBundle } from '@soxa-ui/plugins'
 /**
  * Tabs под Angular — набор вкладок на движке коллекций.
  *
@@ -25,13 +25,8 @@ import { TPluginBundle } from '@soldy-ui/plugins'
 import { describe, it, expect, expectTypeOf, vi, afterEach, beforeEach } from 'vitest'
 import { Component, signal, type EventEmitter } from '@angular/core'
 import type { ComponentFixture } from '@angular/core/testing'
-import {
-	TCheckBox,
-	type ITabsItem,
-	type TTabsOrientation,
-	type TValuePayload,
-} from '@soldy-ui/core'
-import { TElementPlugin } from '@soldy-ui/plugins'
+import { TCheckBox, type ITabsItem, type TTabsOrientation, type TValuePayload } from '@soxa-ui/core'
+import { TElementPlugin } from '@soxa-ui/plugins'
 import {
 	SlotDirective,
 	TCheckBoxComponent,
@@ -39,7 +34,7 @@ import {
 	TTabsComponent,
 	TTabsContentComponent,
 	TTabsItemComponent,
-} from '@soldy-ui/angular'
+} from '@soxa-ui/angular'
 import { countAssemblies, type TAssemblyProbe } from './assemblies'
 import { announced } from './element-plugin'
 import { find, findIn, mountHost, nextFrame } from './mount'

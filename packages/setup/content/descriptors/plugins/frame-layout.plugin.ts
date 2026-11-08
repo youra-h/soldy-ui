@@ -5,7 +5,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TFrameLayoutPlugin } from '@soldy-ui/plugins'
+import { TFrameLayoutPlugin } from '@soxa-ui/plugins'
 
 export const FrameLayoutPluginDescriptor = definePlugin({
 	ctor: TFrameLayoutPlugin,

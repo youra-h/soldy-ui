@@ -57,8 +57,8 @@
  * its own collection: submenu items inside a menu group are the submenu's.
  */
 
-import { TItemContext, batchOf, factoryOf, metaOf, plainOf } from '@soldy-ui/core'
-import type { TCollectionEngine, TRemoveEvent } from '@soldy-ui/core'
+import { TItemContext, batchOf, factoryOf, metaOf, plainOf } from '@soxa-ui/core'
+import type { TCollectionEngine, TRemoveEvent } from '@soxa-ui/core'
 import type { TInstanceContext } from '../../../protected/adapter/context'
 import {
 	COLLECTION_ENGINE_ELEVATOR,

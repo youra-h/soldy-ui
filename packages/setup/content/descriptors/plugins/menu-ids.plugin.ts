@@ -8,7 +8,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TMenuIdsPlugin } from '@soldy-ui/plugins'
+import { TMenuIdsPlugin } from '@soxa-ui/plugins'
 
 export const MenuIdsPluginDescriptor = definePlugin({
 	ctor: TMenuIdsPlugin,

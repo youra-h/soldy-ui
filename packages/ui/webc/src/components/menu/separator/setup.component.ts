@@ -1,5 +1,5 @@
-import { MenuSeparatorDescriptor } from '@soldy-ui/setup'
-import type { TMenuSeparator } from '@soldy-ui/core'
+import { MenuSeparatorDescriptor } from '@soxa-ui/setup'
+import type { TMenuSeparator } from '@soxa-ui/core'
 import { createWebcAdapterContext, useAdapter } from '../../../adapter'
 import type { TBinding, TUpdateListener } from '../../../adapter'
 

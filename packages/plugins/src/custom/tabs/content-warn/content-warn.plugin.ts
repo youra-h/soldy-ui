@@ -30,7 +30,7 @@ export class TTabsContentWarnPlugin extends TBasePlugin {
 			if (!el || !el.closest('[role="tablist"]')) return
 
 			console.warn(
-				'[soldy] Tabs.Content оказался внутри [role="tablist"]: панель нужно ' +
+				'[soxa] Tabs.Content оказался внутри [role="tablist"]: панель нужно ' +
 					'класть в слот `content`, а не в `default`.',
 			)
 		}

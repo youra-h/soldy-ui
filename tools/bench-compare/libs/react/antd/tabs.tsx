@@ -7,7 +7,7 @@ const ITEMS = COLLECTION_ITEMS.map((item) => ({
 	children: <div style={{ padding: 12 }}>Панель «{item.text}»</div>,
 }))
 
-/** Tabs and a panel per tab, as the soldy preview: «Панель «…»». */
+/** Tabs and a panel per tab, as the soxa preview: «Панель «…»». */
 export default function Page() {
 	return <Tabs items={ITEMS} />
 }

@@ -15,7 +15,7 @@ const stylesReport = defineBrowserCommand<[text: string, out: string]>((_context
 })
 
 /**
- * Сравнение вычисленных стилей частей soldy под двумя листами темы —
+ * Сравнение вычисленных стилей частей soxa под двумя листами темы —
  * `npm run compare:styles` (`styles-diff/cli.ts`; описание —
  * `packages/playground/AGENTS.md`, «Сравнение стилей»). Прогон, а не тест:
  * свой конфиг и своя папка, `test:layout` его не берёт.

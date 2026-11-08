@@ -3,8 +3,8 @@ import {
 	TToastsApiExtension,
 	ToastsCollectionDescriptor,
 	ToastsDescriptor,
-} from '@soldy-ui/setup'
-import type { IToasts, IToastsProps, TToastsCollectionFacade } from '@soldy-ui/core'
+} from '@soxa-ui/setup'
+import type { IToasts, IToastsProps, TToastsCollectionFacade } from '@soxa-ui/core'
 import {
 	AngularElevatorFactory,
 	createAngularAdapterContext,

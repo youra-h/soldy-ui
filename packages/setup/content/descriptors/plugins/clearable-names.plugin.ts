@@ -8,7 +8,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TClearableNamesPlugin } from '@soldy-ui/plugins'
+import { TClearableNamesPlugin } from '@soxa-ui/plugins'
 
 export const ClearableNamesPluginDescriptor = definePlugin({
 	ctor: TClearableNamesPlugin,

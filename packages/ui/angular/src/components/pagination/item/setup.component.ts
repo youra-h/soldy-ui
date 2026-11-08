@@ -2,8 +2,8 @@ import {
 	PaginationCollectionItemDescriptor,
 	PaginationItemDescriptor,
 	TCollectionItemExtension,
-} from '@soldy-ui/setup'
-import type { IPaginationItem, TPaginationItemCollectionFacade } from '@soldy-ui/core'
+} from '@soxa-ui/setup'
+import type { IPaginationItem, TPaginationItemCollectionFacade } from '@soxa-ui/core'
 import {
 	AngularElevatorFactory,
 	createAngularAdapterContext,

@@ -1,6 +1,6 @@
 import { useLayoutEffect, useState, type ReactNode } from 'react'
-import { TLocaleSource } from '@soldy-ui/plugins'
-import type { TLocale } from '@soldy-ui/plugins'
+import { TLocaleSource } from '@soxa-ui/plugins'
+import type { TLocale } from '@soxa-ui/plugins'
 import { LocaleContext } from './context'
 
 export type TLocaleProviderProps = {

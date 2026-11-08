@@ -11,9 +11,9 @@
  */
 
 import { describe, it, expect, afterEach } from 'vitest'
-import { TProgressSpinner } from '@soldy-ui/core'
-import { ProgressSpinnerDescriptor } from '@soldy-ui/setup'
-import { TProgressSpinnerElement, type TProgressSpinnerElementProps } from '@soldy-ui/webc'
+import { TProgressSpinner } from '@soxa-ui/core'
+import { ProgressSpinnerDescriptor } from '@soxa-ui/setup'
+import { TProgressSpinnerElement, type TProgressSpinnerElementProps } from '@soxa-ui/webc'
 import { toAttributeName } from '../src/adapter/common/attributes'
 import { progressSpinnerTemplate } from '../src/components/progress-spinner/progress-spinner.template'
 import { bareContext } from './template-context'

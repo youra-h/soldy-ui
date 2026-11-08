@@ -25,8 +25,8 @@
 	 * по условию внутри сниппета, — или со своим контролом. Такой сниппет
 	 * объявляется только в `.svelte`. Пропсы таблицы — `table`.
 	 */
-	import type { ITableColumn, ITableRow } from '@soldy-ui/core'
-	import { Table, type TableProps } from '@soldy-ui/svelte'
+	import type { ITableColumn, ITableRow } from '@soxa-ui/core'
+	import { Table, type TableProps } from '@soxa-ui/svelte'
 
 	type THeaderScope = { column: ITableColumn; text: string; sortable: boolean }
 	type TCellScope = { row: ITableRow; column: ITableColumn; value: unknown }

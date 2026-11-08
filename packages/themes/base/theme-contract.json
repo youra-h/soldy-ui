@@ -1,5 +1,5 @@
 {
-  "description": "Public Soldy UI class and data-attribute reference. Sources are repository-relative emission witnesses, not files required by a consuming theme.",
+  "description": "Public Soxa UI class and data-attribute reference. Sources are repository-relative emission witnesses, not files required by a consuming theme.",
   "conventions": {
     "classes": "Roots and parts are literal names. Modifiers append to the concrete base class; <block> and <value> are placeholders, not literal selectors. Optional parts exist only while rendered. A part may also carry the classes of its own component.",
     "data": "Scope identifies the node receiving the dataset, not necessarily the component wrapper. TDataset stringifies booleans: false is \"false\"; only null and undefined remove the attribute. Presence-only gesture flags are documented separately.",
@@ -3060,7 +3060,7 @@
       "name": "data-ready-animation",
       "sources": ["packages/themes/base/setup/plugins/tabs-view.plugin.ts"],
       "description": "Tabs geometry has been measured by TTabsViewPlugin; removed on disposal.",
-      "scope": "Tabs root; requires @soldy-ui/theme-base/setup",
+      "scope": "Tabs root; requires @soxa-ui/theme-base/setup",
       "values": "true; absent before readiness or after removal",
       "presence": "Written as \"true\" after element readiness; removed when the element is removed or the theme plugin is destroyed."
     },

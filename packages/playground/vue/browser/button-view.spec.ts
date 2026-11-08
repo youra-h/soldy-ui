@@ -22,11 +22,11 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { render, cleanup } from './render'
 import { userEvent } from 'vitest/browser'
 import { defineComponent, h } from 'vue'
-import { Button, Tags, TagsItem } from '@soldy-ui/vue'
+import { Button, Tags, TagsItem } from '@soxa-ui/vue'
 
 import { find, opacity, settled, shift, style } from './colors'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 /** Обе схемы: ломалось только в одной, а условие у видов общее. */
 const SCHEMES = ['oren', 'oren-dark'] as const

@@ -1,12 +1,12 @@
 import { createApp, h, shallowRef } from 'vue'
-import { enUS, type TLocale } from '@soldy-ui/plugins'
-import { LocaleProvider } from '@soldy-ui/vue'
+import { enUS, type TLocale } from '@soxa-ui/plugins'
+import { LocaleProvider } from '@soxa-ui/vue'
 import {
 	componentDescriptors,
 	findComponent,
 	partsOf,
 	type IPreviewHost,
-} from '@soldy-ui/playground-shared'
+} from '@soxa-ui/playground-shared'
 import { PREVIEWS, toComponent, type TPreview } from './previews'
 import { FIXTURES } from './fixtures'
 import { listenersOf } from './events'

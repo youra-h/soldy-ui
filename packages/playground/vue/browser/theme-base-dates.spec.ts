@@ -1,6 +1,6 @@
 /**
  * Общий слой тем без темы — календарь, поля дат и уведомления: страница только
- * с CSS базы (`@soldy-ui/theme-base`), без `@soldy-ui/theme-oren`.
+ * с CSS базы (`@soxa-ui/theme-base`), без `@soxa-ui/theme-oren`.
  *
  * Структура Calendar, DateInput, DatePicker и Toasts — раскладка и механика —
  * лежит в базе, а облик и движение в теме (`packages/themes/base/AGENTS.md`,
@@ -28,12 +28,12 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { render, cleanup } from './render'
 import { page, userEvent } from 'vitest/browser'
 import { defineComponent, h, nextTick, type VNode } from 'vue'
-import { createEngineToasts, TDatePicker } from '@soldy-ui/core'
-import type { IToastsProps, TToastInput, TToastsPlacement } from '@soldy-ui/core'
-import { Calendar, DatePicker, Toasts } from '@soldy-ui/vue'
+import { createEngineToasts, TDatePicker } from '@soxa-ui/core'
+import type { IToastsProps, TToastInput, TToastsPlacement } from '@soxa-ui/core'
+import { Calendar, DatePicker, Toasts } from '@soxa-ui/vue'
 import { setDir } from './directions'
 
-import '@soldy-ui/theme-base'
+import '@soxa-ui/theme-base'
 
 /** Допуск на субпиксельное округление координат, px. */
 const EPSILON = 1

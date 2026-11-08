@@ -12,7 +12,7 @@ import {
 import { last, popup } from '../../scenarios'
 
 /**
- * Kobalte scenarios: the soldy ones step by step, on Kobalte's markup. Kobalte
+ * Kobalte scenarios: the soxa ones step by step, on Kobalte's markup. Kobalte
  * renders no classes of its own, so the pages put `kb-*` classes on the parts
  * the scenarios look for.
  */

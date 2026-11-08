@@ -1,8 +1,8 @@
 /** Retrieve the node plugin through the public bundle output before change detection. */
 
 import type { ComponentFixture } from '@angular/core/testing'
-import { TElementPlugin, TPluginBundle } from '@soldy-ui/plugins'
-import type { TComponentViewComponent } from '@soldy-ui/angular'
+import { TElementPlugin, TPluginBundle } from '@soxa-ui/plugins'
+import type { TComponentViewComponent } from '@soxa-ui/angular'
 
 /** A component with `TElementPlugin` in its bundle: every visual one has the same `soBundleCreate`. */
 type TWithBundleCreate = Pick<TComponentViewComponent, 'soBundleCreate'>

@@ -1,1 +1,1 @@
-export { DragAndDropDescriptor as descriptor } from '@soldy-ui/setup'
+export { DragAndDropDescriptor as descriptor } from '@soxa-ui/setup'

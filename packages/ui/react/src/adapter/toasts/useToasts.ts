@@ -1,6 +1,6 @@
 import { useContext } from 'react'
-import type { IToastsApi } from '@soldy-ui/core'
-import { TOASTS_ELEVATOR } from '@soldy-ui/setup'
+import type { IToastsApi } from '@soxa-ui/core'
+import { TOASTS_ELEVATOR } from '@soxa-ui/setup'
 import { ElevatorContext } from '../elevator/layer'
 import { TReactElevatorScope } from '../elevator/scope.class'
 import type { TToastRender } from './types'

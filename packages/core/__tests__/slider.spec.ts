@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from 'vitest'
-import { TSlider } from '@soldy-ui/core'
-import type { ISliderProps, TSliderValue } from '@soldy-ui/core'
+import { TSlider } from '@soxa-ui/core'
+import type { ISliderProps, TSliderValue } from '@soxa-ui/core'
 
 /**
  * TSlider — значение, шкала и команды перетаскивания (`ISlidable`).

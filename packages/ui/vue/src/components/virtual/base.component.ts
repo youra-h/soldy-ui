@@ -1,7 +1,7 @@
 import { useEmits, useProps } from '../../adapter'
 import type { TEmits, TProps, UseProps } from '../../types/common'
-import { VirtualDescriptor } from '@soldy-ui/setup'
-import type { IVirtual } from '@soldy-ui/core'
+import { VirtualDescriptor } from '@soxa-ui/setup'
+import type { IVirtual } from '@soxa-ui/core'
 
 export const emitsVirtual: TEmits = useEmits(VirtualDescriptor())
 

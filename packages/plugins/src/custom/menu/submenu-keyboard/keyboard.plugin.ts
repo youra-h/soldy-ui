@@ -1,4 +1,4 @@
-import type { IMenuSubmenu } from '@soldy-ui/core'
+import type { IMenuSubmenu } from '@soxa-ui/core'
 import type { IPluginContext } from '../../../base'
 import { TElementPlugin } from '../../element'
 import { rowIn } from '../../list/row'

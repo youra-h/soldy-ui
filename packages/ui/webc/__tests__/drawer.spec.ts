@@ -24,17 +24,17 @@ import { propertyDetail } from './property-detail'
  */
 
 import { describe, it, expect, afterEach, beforeEach, vi } from 'vitest'
-import { TButton, TComponentView, TDrawer } from '@soldy-ui/core'
-import type { TCloseEvent, TCloseReason } from '@soldy-ui/core'
-import { TBasePlugin, ruRU, zhCN, type IPluginContext } from '@soldy-ui/plugins'
-import { DrawerDescriptor, usePlugins } from '@soldy-ui/setup'
+import { TButton, TComponentView, TDrawer } from '@soxa-ui/core'
+import type { TCloseEvent, TCloseReason } from '@soxa-ui/core'
+import { TBasePlugin, ruRU, zhCN, type IPluginContext } from '@soxa-ui/plugins'
+import { DrawerDescriptor, usePlugins } from '@soxa-ui/setup'
 import {
 	TDialogElement,
 	TDrawerElement,
 	TLocaleProviderElement,
 	type TDialogElementProps,
 	type TDrawerElementProps,
-} from '@soldy-ui/webc'
+} from '@soxa-ui/webc'
 import { drawerTemplate } from '../src/components/drawer/drawer.template'
 import { TELEPORT_ANCHOR } from '../src/adapter/runtime/teleport'
 import { bareContext } from './template-context'
@@ -822,8 +822,8 @@ describe('перенос', () => {
 	it('колбэки полифила после переноса с подложкой связок не трогают', async () => {
 		dispose = usePlugins(TComponentView, [TAssemblyProbePlugin], { scope: 'all' })
 
-		/** Элементы soldy в поддереве узла, сам узел — первым; так их находит полифил. */
-		const soldyIn = (node: Node): (TDrawerElementProps | HTMLElement)[] =>
+		/** Элементы soxa в поддереве узла, сам узел — первым; так их находит полифил. */
+		const soxaIn = (node: Node): (TDrawerElementProps | HTMLElement)[] =>
 			node instanceof Element
 				? [node, ...node.querySelectorAll('*')].filter(
 						(each): each is HTMLElement =>
@@ -838,11 +838,11 @@ describe('перенос', () => {
 		const observer = new MutationObserver((records) => {
 			for (const record of records) {
 				for (const node of record.removedNodes) {
-					for (const el of soldyIn(node)) callbacks(el, 'disconnectedCallback')
+					for (const el of soxaIn(node)) callbacks(el, 'disconnectedCallback')
 				}
 
 				for (const node of record.addedNodes) {
-					for (const el of soldyIn(node)) callbacks(el, 'connectedCallback')
+					for (const el of soxaIn(node)) callbacks(el, 'connectedCallback')
 				}
 			}
 		})

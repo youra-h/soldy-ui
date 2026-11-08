@@ -48,9 +48,9 @@ import {
 	createEngineTabs,
 	createEngineTags,
 	createEngineToasts,
-} from '@soldy-ui/core'
-import type { TCollectionEngine } from '@soldy-ui/core'
-import { TCollectionBundlesPlugin } from '@soldy-ui/plugins'
+} from '@soxa-ui/core'
+import type { TCollectionEngine } from '@soxa-ui/core'
+import { TCollectionBundlesPlugin } from '@soxa-ui/plugins'
 import { FrameDescriptor, TabsDescriptor } from '../content/descriptors'
 import { createAdapterContext } from '../protected/adapter'
 import type { IComponentDescriptor } from '../protected/define'

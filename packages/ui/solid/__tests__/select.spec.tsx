@@ -31,8 +31,8 @@ import {
 	type TSelectCollection,
 	type TSelectPlacement,
 	type TTagsCollection,
-} from '@soldy-ui/core'
-import { TAnchorPlugin, ruRU } from '@soldy-ui/plugins'
+} from '@soxa-ui/core'
+import { TAnchorPlugin, ruRU } from '@soxa-ui/plugins'
 import {
 	LocaleProvider,
 	Select,
@@ -42,7 +42,7 @@ import {
 	type SelectGroupProps,
 	type SelectItemProps,
 	type SelectProps,
-} from '@soldy-ui/solid'
+} from '@soxa-ui/solid'
 import { find, mount, nextFrame } from './mount'
 
 afterEach(() => {

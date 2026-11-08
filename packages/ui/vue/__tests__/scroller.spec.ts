@@ -11,9 +11,9 @@
 import { describe, it, expect, afterEach } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { defineComponent, h, nextTick, ref, type VNode } from 'vue'
-import { LocaleProvider, Scroller } from '@soldy-ui/vue'
-import { TScroller } from '@soldy-ui/core'
-import { enUS, extendLocale, ruRU } from '@soldy-ui/plugins'
+import { LocaleProvider, Scroller } from '@soxa-ui/vue'
+import { TScroller } from '@soxa-ui/core'
+import { enUS, extendLocale, ruRU } from '@soxa-ui/plugins'
 
 const nextFrame = () => new Promise((resolve) => requestAnimationFrame(resolve))
 

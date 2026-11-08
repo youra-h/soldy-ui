@@ -32,7 +32,7 @@ import type {
 	IListBoxProps,
 	TListContentFit,
 	TListItemContentFit,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 
 function createListBox(texts: string[], props: Partial<IListBoxProps> = {}) {
 	const owner = new TListBox(props)

@@ -4,7 +4,7 @@
 	 * поля (слот `default`, у Svelte — `children`), а содержимое разметкой
 	 * пишется только в `.svelte`.
 	 */
-	import { Field, Textarea } from '@soldy-ui/svelte'
+	import { Field, Textarea } from '@soxa-ui/svelte'
 
 	type THarnessProps = {
 		label?: string

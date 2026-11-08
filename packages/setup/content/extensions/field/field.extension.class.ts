@@ -14,8 +14,8 @@
  *   adapter.use(TFieldExtension, { elevator: VueElevatorFactory })
  */
 
-import type { IField } from '@soldy-ui/core'
-import { TFieldIdsPlugin } from '@soldy-ui/plugins'
+import type { IField } from '@soxa-ui/core'
+import { TFieldIdsPlugin } from '@soxa-ui/plugins'
 import type { TInstanceContext } from '../../../protected/adapter/context'
 import { FIELD_ELEVATOR } from './keys'
 import type { IFieldExtensionOptions } from './types'

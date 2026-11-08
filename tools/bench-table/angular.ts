@@ -6,7 +6,7 @@ import {
 	type Type,
 } from '@angular/core'
 import { createApplication } from '@angular/platform-browser'
-import { provideAttrs } from '@soldy-ui/angular'
+import { provideAttrs } from '@soxa-ui/angular'
 import { participantName, q, startBench, type TSel } from './bench'
 import type { TRec } from './libs/data'
 
@@ -24,7 +24,7 @@ type TLib = {
 	providers?: (Provider | EnvironmentProviders)[]
 }
 const libs: Record<string, () => Promise<TLib>> = {
-	soldy: () => import('./libs/angular/soldy'),
+	soxa: () => import('./libs/angular/soxa'),
 	plain: () => import('./libs/angular/plain'),
 	tanstack: () => import('./libs/angular/tanstack'),
 	material: () => import('./libs/angular/material'),

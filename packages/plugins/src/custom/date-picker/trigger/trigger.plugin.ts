@@ -1,4 +1,4 @@
-import type { IDatePicker } from '@soldy-ui/core'
+import type { IDatePicker } from '@soxa-ui/core'
 import { TBasePlugin } from '../../../base'
 import type { IPluginContext } from '../../../base'
 import { TElementPlugin } from '../../element'

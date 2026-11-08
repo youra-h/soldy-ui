@@ -32,8 +32,8 @@ import {
 	type TComponentVariant,
 	type TTagsCollection,
 	type TTagsOverflow,
-} from '@soldy-ui/core'
-import { Tags, TagsItem, type TagsItemProps, type TagsProps } from '@soldy-ui/react'
+} from '@soxa-ui/core'
+import { Tags, TagsItem, type TagsItemProps, type TagsProps } from '@soxa-ui/react'
 import { find, mount, nextFrame, track } from './mount'
 
 /** Пропсы набора и теги разметки — пропсы каждого `Tags.Item`. */

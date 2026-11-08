@@ -12,7 +12,7 @@ import type {
 	TGroupSection,
 	TMenuSubmenuEntries,
 	TMenuSubmenuEntry,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 import {
 	TKeyedLoop,
 	createItem,

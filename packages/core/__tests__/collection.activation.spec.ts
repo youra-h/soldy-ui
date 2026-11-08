@@ -5,7 +5,7 @@ import {
 	TBatchExtension,
 	TActivationExtension,
 	createEngineActivation,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 
 type Item = { id: number; name: string }
 

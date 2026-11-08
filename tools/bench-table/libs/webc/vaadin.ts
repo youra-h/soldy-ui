@@ -40,7 +40,7 @@ export const sel = {
  * (`vaadin-grid-sort-column`) встроены, строки сверяются по `id`
  * (`itemIdPath`), стили — базовые, встроенные в элементы. Окно строк у него по
  * умолчанию; без флага `virtual` оно выключено (`allRowsVisible`), с флагом —
- * грид высотой 800 px, как окно soldy.
+ * грид высотой 800 px, как окно soxa.
  */
 const virtual = new URLSearchParams(location.search).get('virtual') === '1'
 let element: HTMLElement | null = null

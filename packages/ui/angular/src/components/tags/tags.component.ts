@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core'
 import { NgTemplateOutlet } from '@angular/common'
-import type { ITags } from '@soldy-ui/core'
+import type { ITags } from '@soxa-ui/core'
 import { SlotDirective, provideElevator } from '../../adapter'
 import { TTagsItemComponent } from './item'
 import { TTagsSurface } from '../../generated/tags.metadata'

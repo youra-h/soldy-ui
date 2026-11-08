@@ -13,10 +13,10 @@
 import { describe, it, expect, afterEach } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { defineComponent, h, nextTick, type VNode } from 'vue'
-import { Button, Popover, Tooltip } from '@soldy-ui/vue'
-import { TTooltip } from '@soldy-ui/core'
-import type { ITooltipProps } from '@soldy-ui/core'
-import type { DescriptorSlots, PopoverDescriptor, TooltipDescriptor } from '@soldy-ui/setup'
+import { Button, Popover, Tooltip } from '@soxa-ui/vue'
+import { TTooltip } from '@soxa-ui/core'
+import type { ITooltipProps } from '@soxa-ui/core'
+import type { DescriptorSlots, PopoverDescriptor, TooltipDescriptor } from '@soxa-ui/setup'
 
 const nextFrame = () => new Promise((resolve) => requestAnimationFrame(resolve))
 

@@ -1,4 +1,4 @@
-import type { IRadioGroup, IRadioGroupItem, TRadioGroupCollection } from '@soldy-ui/core'
+import type { IRadioGroup, IRadioGroupItem, TRadioGroupCollection } from '@soxa-ui/core'
 import { TBasePlugin } from '../../../base'
 import type { IPluginContext } from '../../../base'
 import { TCollectionBundlesPlugin } from '../../collection'

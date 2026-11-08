@@ -11,12 +11,12 @@ import { types, urlOf } from './pages.mjs'
 //
 //   node trace.mjs <строк> [библиотеки через запятую] [прогонов] [набор]
 //
-// Библиотека с флагами через «+», как у `run.mjs`: `soldy+reorder+preview=none`.
+// Библиотека с флагами через «+», как у `run.mjs`: `soxa+reorder+preview=none`.
 // Набор сценариев (`SETS` ниже) — `reorder` по умолчанию: жест перестановки, ему
 // нужен флаг `reorder`; `resize` — протяжка ручки ширины, флаг `resize`;
 // `rest` — таблица на покое: выбор и сортировки.
 const N = Number(process.argv[2] ?? 5000)
-const LIBS = (process.argv[3] ?? 'soldy+reorder').split(',')
+const LIBS = (process.argv[3] ?? 'soxa+reorder').split(',')
 const RUNS = Number(process.argv[4] ?? 3)
 const SET = process.argv[5] ?? 'reorder'
 

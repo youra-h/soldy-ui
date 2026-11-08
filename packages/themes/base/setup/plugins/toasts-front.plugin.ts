@@ -1,6 +1,6 @@
-import type { IToasts } from '@soldy-ui/core'
-import { TBasePlugin, TElementPlugin } from '@soldy-ui/plugins'
-import type { IPluginContext } from '@soldy-ui/plugins'
+import type { IToasts } from '@soxa-ui/core'
+import { TBasePlugin, TElementPlugin } from '@soxa-ui/plugins'
+import type { IPluginContext } from '@soxa-ui/plugins'
 
 /** Высота переднего тоста стопки на регионе: по ней CSS держит высоту задних. */
 const FRONT_HEIGHT = '--so-toasts-front-height'

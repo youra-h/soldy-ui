@@ -4,13 +4,13 @@
  *
  * The application plugs it in once, at its entry point:
  *
- *   import oren from '@soldy-ui/theme-oren/setup'
+ *   import oren from '@soxa-ui/theme-oren/setup'
  *
  *   useTheme(oren)
  *
  * The stylesheet goes next to it, where the build takes styles from: an import
  * in the entry module or the root layout with Vite, Next.js, SvelteKit and
- * SolidStart (`import '@soldy-ui/theme-oren'`), `@import` in `src/styles.css`
+ * SolidStart (`import '@soxa-ui/theme-oren'`), `@import` in `src/styles.css`
  * with Angular CLI, `css` in `nuxt.config.ts` with Nuxt — the package README,
  * "Usage".
  *
@@ -22,7 +22,7 @@
  * behind the front one of a stack take its height at once, with no transition.
  *
  * The plugins are the layout plugins of the shared theme layer
- * (`@soldy-ui/theme-base/setup`): the shared layer has no `useTheme` of its own,
+ * (`@soxa-ui/theme-base/setup`): the shared layer has no `useTheme` of its own,
  * so the theme installs them. Their classes are not exported from here — the
  * shared layer exports them.
  *
@@ -40,9 +40,9 @@
  * plain one, as it drops `import type {}`.
  */
 
-/// <reference types="@soldy-ui/theme-oren" preserve="true" />
+/// <reference types="@soxa-ui/theme-oren" preserve="true" />
 
-import { defineTheme } from '@soldy-ui/setup'
+import { defineTheme } from '@soxa-ui/setup'
 import { plugins } from './plugins'
 
 export default defineTheme({

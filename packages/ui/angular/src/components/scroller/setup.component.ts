@@ -1,5 +1,5 @@
-import { ScrollerDescriptor } from '@soldy-ui/setup'
-import type { IScroller } from '@soldy-ui/core'
+import { ScrollerDescriptor } from '@soxa-ui/setup'
+import type { IScroller } from '@soxa-ui/core'
 import { createAngularAdapterContext, useAdapter } from '../../adapter'
 import type { TBinding } from '../../adapter'
 

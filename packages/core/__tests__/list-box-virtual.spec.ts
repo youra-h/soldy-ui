@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
-import { TListBox, TListBoxCollectionFacade, TWindowStrategy } from '@soldy-ui/core'
-import type { IListBoxItem } from '@soldy-ui/core'
+import { TListBox, TListBoxCollectionFacade, TWindowStrategy } from '@soxa-ui/core'
+import type { IListBoxItem } from '@soxa-ui/core'
 
 /**
  * ListBox в окне: в документе только видимые элементы, и посчитать набор

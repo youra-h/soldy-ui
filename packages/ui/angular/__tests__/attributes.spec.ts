@@ -22,7 +22,7 @@
 import { describe, it, expect } from 'vitest'
 import { Component, signal } from '@angular/core'
 import { TestBed } from '@angular/core/testing'
-import type { TAttributesMap } from '@soldy-ui/core'
+import type { TAttributesMap } from '@soxa-ui/core'
 import {
 	AttributesDirective,
 	TButtonComponent,
@@ -30,7 +30,7 @@ import {
 	TListBoxComponent,
 	TListBoxItemComponent,
 	TSelectComponent,
-} from '@soldy-ui/angular'
+} from '@soxa-ui/angular'
 import { TForwardRegistry } from '../src/adapter/attrs/registry'
 import { TElementAttributes } from '../src/adapter/runtime/root-attributes'
 import { find, findIn, mountHost } from './mount'

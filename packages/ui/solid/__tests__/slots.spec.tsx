@@ -10,8 +10,8 @@ import {
 	type DialogDescriptor,
 	type InputDescriptor,
 	type TabsDescriptor,
-} from '@soldy-ui/setup'
-import { TButton } from '@soldy-ui/core'
+} from '@soxa-ui/setup'
+import { TButton } from '@soxa-ui/core'
 import {
 	Button,
 	type ButtonProps,
@@ -31,7 +31,7 @@ import {
 	type SliderProps,
 	type SwitchProps,
 	type TooltipProps,
-} from '@soldy-ui/solid'
+} from '@soxa-ui/solid'
 import { ResolvedSlot } from '../src/adapter/common/ResolvedSlot'
 import { liveScope, relaySlot, renderSlot, type TSlotContent } from '../src/adapter/common/slots'
 import { type UseDomProps } from '../src/types'

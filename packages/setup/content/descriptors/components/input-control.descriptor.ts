@@ -6,7 +6,7 @@
  */
 
 import { defineComponent, defineDescriptor } from '../../../protected/define'
-import { TInputControl } from '@soldy-ui/core'
+import { TInputControl } from '@soxa-ui/core'
 import { ValueControlDescriptor } from './value-control.descriptor'
 import { IdPluginDescriptor } from '../plugins'
 

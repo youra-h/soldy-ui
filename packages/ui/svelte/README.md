@@ -1,8 +1,8 @@
-# @soldy-ui/svelte
+# @soxa-ui/svelte
 
-**The Svelte adapter: Soldy UI components rendered on the headless models of the core.**
+**The Svelte adapter: Soxa UI components rendered on the headless models of the core.**
 
-Part of [Soldy UI](https://github.com/youra-h/soldy-ui) — UI components with the logic written once: a
+Part of [Soxa UI](https://github.com/youra-h/soxa-ui) — UI components with the logic written once: a
 framework-agnostic core and thin adapters that render it in Vue, React, Angular, Svelte, Solid and
 Web Components.
 
@@ -55,16 +55,16 @@ slot is `children`.
 > class, style and `ref` to the scroll viewport around it; a menu, like a popover, gives them to
 > its root around the trigger. `Label` names the control it wraps; `LocaleProvider` gives a subtree
 > its language and library strings, such as the name of the clear button of `Input`. See
-> [the adapter table](https://github.com/youra-h/soldy-ui#components).
+> [the adapter table](https://github.com/youra-h/soxa-ui#components).
 
 ## Install
 
 ```bash
-npm install @soldy-ui/svelte @soldy-ui/setup @soldy-ui/theme-oren @soldy-ui/icons-material
+npm install @soxa-ui/svelte @soxa-ui/setup @soxa-ui/theme-oren @soxa-ui/icons-material
 ```
 
-Install `@soldy-ui/setup` as a direct dependency for the `useIcons` and `useTheme` imports below.
-Keep it on the same version as `@soldy-ui/svelte`.
+Install `@soxa-ui/setup` as a direct dependency for the `useIcons` and `useTheme` imports below.
+Keep it on the same version as `@soxa-ui/svelte`.
 
 Svelte `^5.55.10` is a peer dependency. The package ships its `.svelte` components uncompiled, so
 your app's bundler compiles them with its Svelte plugin (for Vite, `@sveltejs/vite-plugin-svelte`).
@@ -74,7 +74,7 @@ A theme and an icon pack are separate packages — pick the ones you want.
 
 ```svelte
 <script lang="ts">
-  import { Button } from '@soldy-ui/svelte'
+  import { Button } from '@soxa-ui/svelte'
 </script>
 
 <Button text="Save" onActionPress={() => console.log('pressed')} />
@@ -85,8 +85,8 @@ same state and events:
 
 ```svelte
 <script lang="ts">
-  import { TButton } from '@soldy-ui/core'
-  import { Button } from '@soldy-ui/svelte'
+  import { TButton } from '@soxa-ui/core'
+  import { Button } from '@soxa-ui/svelte'
 
   const btn = new TButton({ text: 'Save' })
 </script>
@@ -98,7 +98,7 @@ An icon from the registered pack — the root of `Icon` is an `<svg>` of that ro
 
 ```svelte
 <script lang="ts">
-  import { Icon, roleIcon } from '@soldy-ui/svelte'
+  import { Icon, roleIcon } from '@soxa-ui/svelte'
 </script>
 
 <Icon tag={roleIcon('close')} aria_label="Close" />
@@ -108,7 +108,7 @@ A check box has no text of its own — its visible name is the `Label` around it
 
 ```svelte
 <script lang="ts">
-  import { CheckBox, Label } from '@soldy-ui/svelte'
+  import { CheckBox, Label } from '@soxa-ui/svelte'
 </script>
 
 <Label text="I agree">
@@ -121,7 +121,7 @@ A collection takes its items as markup parts or as data (`items`). Tabs keep the
 
 ```svelte
 <script lang="ts">
-  import { Tabs } from '@soldy-ui/svelte'
+  import { Tabs } from '@soxa-ui/svelte'
 </script>
 
 <Tabs aria_label="Settings">
@@ -145,7 +145,7 @@ come to it in the scope:
 
 ```svelte
 <script lang="ts">
-  import { Button, Popover } from '@soldy-ui/svelte'
+  import { Button, Popover } from '@soxa-ui/svelte'
 </script>
 
 <Popover aria_label="Filters">
@@ -168,7 +168,7 @@ prop:
 
 <!-- Page.svelte -->
 <script lang="ts">
-  import { Button, useToasts } from '@soldy-ui/svelte'
+  import { Button, useToasts } from '@soxa-ui/svelte'
   import Undo from './Undo.svelte'
 
   const { show } = useToasts()
@@ -180,26 +180,26 @@ prop:
 The application plugs in a theme and an icon pack once, in its entry point:
 
 ```ts
-import { useIcons, useTheme } from '@soldy-ui/setup'
-import * as material from '@soldy-ui/icons-material'
-import oren from '@soldy-ui/theme-oren/setup'
+import { useIcons, useTheme } from '@soxa-ui/setup'
+import * as material from '@soxa-ui/icons-material'
+import oren from '@soxa-ui/theme-oren/setup'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 useIcons(material)
 useTheme(oren)
 ```
 
-`@soldy-ui/theme-oren` is the stylesheet of every component. To take only the components your
-pages use, import their stylesheets instead — `@soldy-ui/theme-oren/button.css`,
-`@soldy-ui/theme-oren/select.css`, one per component, each with the shared part of the theme
-(the theme's README, [Only the components you use](https://github.com/youra-h/soldy-ui/tree/main/packages/themes/oren#only-the-components-you-use)).
+`@soxa-ui/theme-oren` is the stylesheet of every component. To take only the components your
+pages use, import their stylesheets instead — `@soxa-ui/theme-oren/button.css`,
+`@soxa-ui/theme-oren/select.css`, one per component, each with the shared part of the theme
+(the theme's README, [Only the components you use](https://github.com/youra-h/soxa-ui/tree/main/packages/themes/oren#only-the-components-you-use)).
 
 ## Documentation
 
-- [Soldy UI README](https://github.com/youra-h/soldy-ui#readme) — the component set and what each
+- [Soxa UI README](https://github.com/youra-h/soxa-ui#readme) — the component set and what each
   adapter implements so far.
-- [Architecture overview](https://github.com/youra-h/soldy-ui/blob/main/docs/architecture.md) —
+- [Architecture overview](https://github.com/youra-h/soxa-ui/blob/main/docs/architecture.md) —
   layers, descriptors, plugins, collections, adapters.
 
 ## Public API
@@ -207,14 +207,14 @@ pages use, import their stylesheets instead — `@soldy-ui/theme-oren/button.css
 The package entry exports application components, their consumer types, the locale provider,
 and the supported icon and toast helpers. Component props, slots, events, refs and core models
 passed through `ctrl` remain the supported ways to customize the UI. Models come from
-`@soldy-ui/core`; theme, icon and external-plugin registration comes from `@soldy-ui/setup`.
+`@soxa-ui/core`; theme, icon and external-plugin registration comes from `@soxa-ui/setup`.
 
 Assembly functions, adapter profiles, bindings, generated metadata and rendering templates
 are private implementation details. They are no longer exported from the package entry, and
 there is no public `/internal` entry. Code that imported them must use the component contract
-instead. Building a new adapter component from Soldy's assembly helpers is not a supported
+instead. Building a new adapter component from Soxa's assembly helpers is not a supported
 public SDK.
 
 ## License
 
-[MIT](https://github.com/youra-h/soldy-ui/blob/main/LICENSE)
+[MIT](https://github.com/youra-h/soxa-ui/blob/main/LICENSE)

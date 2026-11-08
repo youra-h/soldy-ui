@@ -13,15 +13,15 @@
  */
 
 import { describe, it, expect } from 'vitest'
-import { TMenu, TMenuSubmenu } from '@soldy-ui/core'
-import type { IMenuItem, TCollectionEngine } from '@soldy-ui/core'
+import { TMenu, TMenuSubmenu } from '@soxa-ui/core'
+import type { IMenuItem, TCollectionEngine } from '@soxa-ui/core'
 import {
 	TCollectionBundlesPlugin,
 	TDismissPlugin,
 	TMenuPopoverItemFocusPlugin,
 	TMenuPopoverItemKeyboardPlugin,
 	TMenuPopupIdsPlugin,
-} from '@soldy-ui/plugins'
+} from '@soxa-ui/plugins'
 import {
 	MenuCollectionDescriptor,
 	MenuCollectionItemDescriptor,

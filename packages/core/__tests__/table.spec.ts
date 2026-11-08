@@ -10,7 +10,7 @@ import {
 	createEngine,
 	createEngineTable,
 	toText,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 import type {
 	ITableColumn,
 	ITableRow,
@@ -18,7 +18,7 @@ import type {
 	TTableCollection,
 	TTableColumnSource,
 	TTableRecord,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 
 /**
  * Таблица — владелец коллекции строк, как ListBox — владелец опций.

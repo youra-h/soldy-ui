@@ -9,7 +9,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { THideOutsidePlugin } from '@soldy-ui/plugins'
+import { THideOutsidePlugin } from '@soxa-ui/plugins'
 
 export const HideOutsidePluginDescriptor = definePlugin({
 	ctor: THideOutsidePlugin,

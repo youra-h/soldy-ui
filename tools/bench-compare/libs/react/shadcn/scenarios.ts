@@ -13,7 +13,7 @@ import { last, popup } from '../../scenarios'
 /** The open panel of a Radix layer: closed ones leave the document or stay `closed`. */
 const shown = (slot: string) => last(`[data-slot="${slot}"][data-state="open"]`)
 
-/** shadcn/ui scenarios: the soldy ones step by step, on its markup (`data-slot`). */
+/** shadcn/ui scenarios: the soxa ones step by step, on its markup (`data-slot`). */
 export const SCENARIOS: Record<string, TScenario> = {
 	button: each('[data-slot="button"]', press),
 	input: each('[data-slot="input"]', (field) => type(field, 'abc')),

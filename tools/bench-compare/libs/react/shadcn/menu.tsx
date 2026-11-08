@@ -18,7 +18,7 @@ import {
 } from './ui/dropdown-menu'
 
 /**
- * The soldy menu preview in shadcn's Dropdown Menu: a group of checkboxes, a
+ * The soxa menu preview in shadcn's Dropdown Menu: a group of checkboxes, a
  * group of radios, actions with shortcuts, a submenu with a submenu inside, a
  * disabled action and a destructive one — all of them its own parts.
  */

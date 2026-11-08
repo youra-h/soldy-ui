@@ -20,8 +20,8 @@
  */
 
 import { describe, it, expect, afterEach, beforeEach, vi } from 'vitest'
-import { TDateInput } from '@soldy-ui/core'
-import type { IDateInputProps, TDateFieldPart } from '@soldy-ui/core'
+import { TDateInput } from '@soxa-ui/core'
+import type { IDateInputProps, TDateFieldPart } from '@soxa-ui/core'
 import {
 	TDateInputClipboardPlugin,
 	TDateInputIdsPlugin,

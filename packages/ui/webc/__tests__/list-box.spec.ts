@@ -26,8 +26,8 @@ import {
 	type TListBoxValue,
 	type TSelectionMode,
 	type TValuePayload,
-} from '@soldy-ui/core'
-import { ListBoxDescriptor, ListBoxGroupDescriptor, ListBoxItemDescriptor } from '@soldy-ui/setup'
+} from '@soxa-ui/core'
+import { ListBoxDescriptor, ListBoxGroupDescriptor, ListBoxItemDescriptor } from '@soxa-ui/setup'
 import {
 	TListBoxElement,
 	TListBoxGroupElement,
@@ -37,7 +37,7 @@ import {
 	type TItemRowElementProps,
 	type TListBoxElementProps,
 	type TListBoxItemElementProps,
-} from '@soldy-ui/webc'
+} from '@soxa-ui/webc'
 import { defineElement } from '../src/adapter/runtime/defineElement'
 import { type ITemplate } from '../src/adapter/template/types'
 import { listBoxTemplate } from '../src/components/list-box/list-box.template'

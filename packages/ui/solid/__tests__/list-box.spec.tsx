@@ -28,14 +28,14 @@ import {
 	type TListBoxView,
 	type TListIndicator,
 	type TValuePayload,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 import {
 	ListBox,
 	ListBoxGroup,
 	ListBoxItem,
 	type ListBoxItemProps,
 	type ListBoxProps,
-} from '@soldy-ui/solid'
+} from '@soxa-ui/solid'
 import { find, mount, nextFrame } from './mount'
 
 type TItem = { value: string; text: string }

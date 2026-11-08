@@ -1,8 +1,8 @@
 /* Tailwind in parts: the theme and the utilities, without preflight. Preflight
  * resets every element of the document, and the theme does not style the page
  * (root `AGENTS.md`, «Темы: у пакета темы свои инструкции»): what the parts of
- * soldy relied on in it comes from the reset of the library's nodes of the
- * shared layer of themes (`@soldy-ui/theme-base`, with the writing-direction
+ * soxa relied on in it comes from the reset of the library's nodes of the
+ * shared layer of themes (`@soxa-ui/theme-base`, with the writing-direction
  * sign). The layer order is the one of `@import 'tailwindcss'`.
  *
  * Every rule of the theme is in a layer, and the place of each layer is the
@@ -26,7 +26,7 @@
 @layer theme, base, components, utilities;
 @import 'tailwindcss/theme.css' layer(theme);
 @import 'tailwindcss/utilities.css' layer(utilities) source(none);
-@import '@soldy-ui/theme-base' layer(base);
+@import '@soxa-ui/theme-base' layer(base);
 @import './tokens.css' layer(components.so.tokens);
 /* Strictly after tokens.css: `:root` and `[data-so-theme='oren-dark']` have
  * the same specificity, and the lower one wins. */

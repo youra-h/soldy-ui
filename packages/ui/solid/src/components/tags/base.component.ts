@@ -1,5 +1,5 @@
-import type { ITags } from '@soldy-ui/core'
-import type { TagsCollectionDescriptor, TagsDescriptor } from '@soldy-ui/setup'
+import type { ITags } from '@soxa-ui/core'
+import type { TagsCollectionDescriptor, TagsDescriptor } from '@soxa-ui/setup'
 import type { EventProps, UseDomProps } from '../../types'
 
 /** События Tags — свои и фасада коллекции. */

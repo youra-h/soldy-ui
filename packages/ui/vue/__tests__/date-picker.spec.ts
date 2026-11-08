@@ -14,10 +14,10 @@
 import { describe, it, expect, afterEach, beforeEach, vi } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { defineComponent, h, nextTick, ref, type VNode } from 'vue'
-import { DatePicker, LocaleProvider } from '@soldy-ui/vue'
-import { TDatePicker } from '@soldy-ui/core'
-import type { ICalendarItem, TDatePickerValue } from '@soldy-ui/core'
-import { ruRU } from '@soldy-ui/plugins'
+import { DatePicker, LocaleProvider } from '@soxa-ui/vue'
+import { TDatePicker } from '@soxa-ui/core'
+import type { ICalendarItem, TDatePickerValue } from '@soxa-ui/core'
+import { ruRU } from '@soxa-ui/plugins'
 
 const nextFrame = () => new Promise((resolve) => requestAnimationFrame(resolve))
 

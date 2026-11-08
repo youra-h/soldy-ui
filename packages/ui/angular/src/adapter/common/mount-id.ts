@@ -7,7 +7,7 @@
 
 import { APP_ID, InjectionToken, inject } from '@angular/core'
 
-const MOUNT_ID = new InjectionToken<() => string>('soldy:mount-id', {
+const MOUNT_ID = new InjectionToken<() => string>('soxa:mount-id', {
 	providedIn: 'root',
 	factory: () => {
 		const prefix = inject(APP_ID)

@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { ITableRow, TAriaAttributes, TTableCell } from '@soldy-ui/core'
+import type { ITableRow, TAriaAttributes, TTableCell } from '@soxa-ui/core'
 import { useExpose } from '../../../adapter'
 
 /** Входы ячеек — то, что строка уже получила, и сама строка для scope слота. */

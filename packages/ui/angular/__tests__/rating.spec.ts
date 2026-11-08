@@ -19,14 +19,14 @@
 import { describe, it, expect, vi, afterEach } from 'vitest'
 import { Component, signal } from '@angular/core'
 import { TestBed, type ComponentFixture } from '@angular/core/testing'
-import { TRating, type TComponentSize, type TDirection, type TValuePayload } from '@soldy-ui/core'
-import { ruRU } from '@soldy-ui/plugins'
+import { TRating, type TComponentSize, type TDirection, type TValuePayload } from '@soxa-ui/core'
+import { ruRU } from '@soxa-ui/plugins'
 import {
 	LocaleProviderDirective,
 	SlotDirective,
 	TLabelComponent,
 	TRatingComponent,
-} from '@soldy-ui/angular'
+} from '@soxa-ui/angular'
 import { find, findIn, mountHost, nextFrame } from './mount'
 
 afterEach(() => {

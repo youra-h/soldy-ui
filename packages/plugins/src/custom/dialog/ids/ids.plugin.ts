@@ -1,4 +1,4 @@
-import type { IDialog } from '@soldy-ui/core'
+import type { IDialog } from '@soxa-ui/core'
 import type { IPluginContext } from '../../../base'
 import { TModalIdsPlugin } from '../../overlay/modal-ids'
 

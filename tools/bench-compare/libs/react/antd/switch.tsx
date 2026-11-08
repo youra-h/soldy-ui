@@ -1,7 +1,7 @@
 import { Switch } from 'antd'
 
 /**
- * antd's Switch has no label of its own: a `label` around it, as the soldy
+ * antd's Switch has no label of its own: a `label` around it, as the soxa
  * preview wraps its switch in `Label`, and the label's click reaches the switch.
  */
 export default function Page() {

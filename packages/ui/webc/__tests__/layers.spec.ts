@@ -11,7 +11,7 @@
  */
 
 import { describe, it, expect } from 'vitest'
-import { TInputControl, TInteractive, TValueControl } from '@soldy-ui/core'
+import { TInputControl, TInteractive, TValueControl } from '@soxa-ui/core'
 import { setupInputControl } from '../src/components/input-control/setup.component'
 import { setupInteractive } from '../src/components/interactive/setup.component'
 import { setupValueControl } from '../src/components/value-control/setup.component'

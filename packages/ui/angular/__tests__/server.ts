@@ -42,7 +42,7 @@ import {
 	type BootstrapContext,
 } from '@angular/platform-browser'
 import { provideServerRendering, renderApplication } from '@angular/platform-server'
-import { provideAttrs } from '@soldy-ui/angular'
+import { provideAttrs } from '@soxa-ui/angular'
 
 /**
  * Провайдеры приложения, общие для сервера и браузера, — `appConfig`:

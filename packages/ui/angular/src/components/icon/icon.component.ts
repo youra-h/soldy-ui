@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core'
-import type { IIcon } from '@soldy-ui/core'
+import type { IIcon } from '@soxa-ui/core'
 import { TIconSurface } from '../../generated/icon.metadata'
 import { setupIcon } from './setup.component'
 

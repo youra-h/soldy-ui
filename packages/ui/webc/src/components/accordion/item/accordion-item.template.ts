@@ -4,8 +4,8 @@
  * docs/architecture.md, Layer 8d, «Коллекция».
  */
 
-import type { IAccordionItem, TAccordionItemCollectionFacade } from '@soldy-ui/core'
-import { DEFAULT_SLOT } from '@soldy-ui/setup'
+import type { IAccordionItem, TAccordionItemCollectionFacade } from '@soxa-ui/core'
+import { DEFAULT_SLOT } from '@soxa-ui/setup'
 import { bind, createDetail, lend, ownerAttributes, type ITemplate, patch } from '../../../adapter'
 import { TButtonElement, type TButtonElementProps } from '../../button'
 import { TIconElement, type TIconElementProps } from '../../icon'

@@ -1,4 +1,4 @@
-import { NumberInputDescriptor, TFieldControlExtension } from '@soldy-ui/setup'
+import { NumberInputDescriptor, TFieldControlExtension } from '@soxa-ui/setup'
 import {
 	createSvelteAdapterContext,
 	useAdapter,

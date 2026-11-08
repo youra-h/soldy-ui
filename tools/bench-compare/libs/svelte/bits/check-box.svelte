@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Checkbox, Label } from 'bits-ui'
 
-	/** The label names the control by `for`, as the soldy `Label` around the checkbox. */
+	/** The label names the control by `for`, as the soxa `Label` around the checkbox. */
 	const id = $props.id()
 </script>
 

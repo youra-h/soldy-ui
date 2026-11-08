@@ -14,9 +14,9 @@
 import { describe, it, expect, vi } from 'vitest'
 import { StrictMode, act } from 'react'
 import { createRoot } from 'react-dom/client'
-import { TEvented, TListBox, createEngineListBox } from '@soldy-ui/core'
-import type { TCollectionEngine } from '@soldy-ui/core'
-import { ListBox } from '@soldy-ui/react'
+import { TEvented, TListBox, createEngineListBox } from '@soxa-ui/core'
+import type { TCollectionEngine } from '@soxa-ui/core'
+import { ListBox } from '@soxa-ui/react'
 
 const ITEMS = [
 	{ value: 'a', text: 'Первый' },

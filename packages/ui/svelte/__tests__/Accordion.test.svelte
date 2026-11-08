@@ -4,7 +4,7 @@
 	 * `items`, ключ — значение; содержимое панели — абзац с текстом из
 	 * `bodies` по значению секции.
 	 */
-	import { Accordion, type AccordionItemProps, type AccordionProps } from '@soldy-ui/svelte'
+	import { Accordion, type AccordionItemProps, type AccordionProps } from '@soxa-ui/svelte'
 
 	type THarnessProps = {
 		/** Пропсы аккордеона. */

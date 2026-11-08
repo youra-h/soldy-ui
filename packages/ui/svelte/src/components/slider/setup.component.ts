@@ -1,4 +1,4 @@
-import { SliderDescriptor, TFieldControlExtension } from '@soldy-ui/setup'
+import { SliderDescriptor, TFieldControlExtension } from '@soxa-ui/setup'
 import {
 	createSvelteAdapterContext,
 	useAdapter,

@@ -74,7 +74,7 @@
 	 * календаря, сам по себе; `ref` DatePicker — корень вокруг полей, а не
 	 * телепортированная панель.
 	 */
-	import type { TButton } from '@soldy-ui/core'
+	import type { TButton } from '@soxa-ui/core'
 	import {
 		Accordion,
 		Button,
@@ -110,7 +110,7 @@
 		Textarea,
 		Toasts,
 		Tooltip,
-	} from '@soldy-ui/svelte'
+	} from '@soxa-ui/svelte'
 
 	type THarnessProps = {
 		kind: TRootKind

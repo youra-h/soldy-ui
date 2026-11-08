@@ -9,8 +9,8 @@
  * browser.
  */
 
-import { TBasePlugin, type IPluginContext } from '@soldy-ui/plugins'
-import { usePlugins } from '@soldy-ui/setup'
+import { TBasePlugin, type IPluginContext } from '@soxa-ui/plugins'
+import { usePlugins } from '@soxa-ui/setup'
 
 /** How many components of the class were assembled and torn down. */
 export type TAssemblies = { install: number; destroy: number }

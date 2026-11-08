@@ -4,32 +4,26 @@ import { posix, relative, resolve, sep } from 'node:path'
 import * as ts from 'typescript'
 
 /**
- * Сторож абзаца «Локальная разработка сборки не требует» (AGENTS.md, «Сборка
- * пакетов»). Проверки типов ходят в соседей и в сам пакет исходниками — по
- * `paths` своего конфига. Цель, которая называет каталог с `package.json`,
- * TypeScript разрешает через манифест: по `types` — в `dist`, а без `dist` — в
- * `index.ts` каталога. Проверка типов тогда судит то, что лежит в игнорируемом
- * каталоге: в CI её шаг идёт после сборки, и `dist` свежий, а локально — какой
- * остался. Так «Типы — Setup» читал сам пакет (`"@soldy-ui/setup": ["."]`):
- * спеки, которые импортируют его по имени, сверялись со старой сборкой и
- * краснели на коде, которого в исходниках уже нет.
+ * Guard source-only local type checking (docs/agents/build.md). Every package
+ * resolves itself and its neighbours through source entries in tsconfig paths.
+ * A target directory with package.json resolves through its manifest: types
+ * points into dist, or TypeScript falls back to index.ts without a build. CI
+ * checks types after building, but local dist can be stale. Setup previously
+ * mapped "@soxa-ui/setup" to ["."], so specs importing it by name checked stale
+ * declarations instead of the current source.
  *
- * Проверяется цель, а не резолв: тесты в CI идут до сборки, и без `dist` резолв
- * уходит в исходники — дефекта не видно. Шаблон с `*` сверяется с каждым
- * каталогом пакета, в который его приводит подстановка: `"@soldy-ui/*":
- * ["../*"]` ведёт в каталоги всех пакетов разом. Опции судятся действующие — с
- * учётом `extends`, как их читает сам TypeScript, — и цель считается от того же
- * каталога, что у него: от звена, которое объявило `paths`.
+ * Check the target rather than its resolution: tests run before building in
+ * CI, when the missing dist would hide this defect. Expand wildcard mappings
+ * against every matching package directory. Read effective options, including
+ * extends, through TypeScript, and resolve paths relative to the config that
+ * declares them.
  *
- * Судятся только пакеты репозитория. Каталог, который на деле лежит в
- * `node_modules`, — внешняя зависимость, и манифест ей положен: стенд замеров
- * ведёт `@angular/*` в свои `node_modules`, чтобы фреймворк был одной копией.
- * Место берётся настоящее, после ссылок: пакет воркспейса в `node_modules` —
- * ссылка на каталог репозитория, и запись через `node_modules` его не прячет.
- *
- * Список конфигов не хардкодится: это каждый `tsconfig*.json` репозитория, и
- * находит их тот же обход, которым TypeScript раскрывает `include`, —
- * `node_modules` он пропускает.
+ * Only repository packages are checked. Real paths inside node_modules are
+ * external dependencies and may resolve through manifests: benchmark hosts
+ * deliberately map Angular there to keep one framework copy. Resolve symlinks
+ * first so a workspace link through node_modules cannot hide a repository package.
+ * Discover every tsconfig*.json with TypeScript's include traversal, which
+ * skips node_modules, rather than maintaining a hardcoded config list.
  */
 
 const ROOT = resolve(__dirname, '../../..')
@@ -252,33 +246,33 @@ describe('сторож путей к исходникам', () => {
 
 	it('файл входа и каталог без манифеста — без нарушений', () => {
 		expect(
-			withPaths({ '@soldy-ui/core': ['../core/src'], '@soldy-ui/setup': ['./index.ts'] }),
+			withPaths({ '@soxa-ui/core': ['../core/src'], '@soxa-ui/setup': ['./index.ts'] }),
 		).toEqual([])
 	})
 
 	it('каталог пакета — нарушение, свой он или соседа', () => {
-		expect(withPaths({ '@soldy-ui/setup': ['.'] })).toEqual([
-			`paths "@soldy-ui/setup" → "." — ${WHY}`,
+		expect(withPaths({ '@soxa-ui/setup': ['.'] })).toEqual([
+			`paths "@soxa-ui/setup" → "." — ${WHY}`,
 		])
-		expect(withPaths({ '@soldy-ui/core': ['../core/', '../core/src'] })).toEqual([
-			`paths "@soldy-ui/core" → "../core/" — ${WHY}`,
+		expect(withPaths({ '@soxa-ui/core': ['../core/', '../core/src'] })).toEqual([
+			`paths "@soxa-ui/core" → "../core/" — ${WHY}`,
 		])
 	})
 
 	// Цель считается от звена, которое объявило paths: от каталога проверяемого
 	// конфига "./packages/setup" не назвал бы ничего
 	it('paths из звена extends — от каталога этого звена', () => {
-		const base = { compilerOptions: { paths: { '@soldy-ui/setup': ['./packages/setup'] } } }
+		const base = { compilerOptions: { paths: { '@soxa-ui/setup': ['./packages/setup'] } } }
 
 		expect(check({ extends: '../../tsconfig.base.json' }, base)).toEqual([
-			`paths "@soldy-ui/setup" → "./packages/setup" — ${WHY}`,
+			`paths "@soxa-ui/setup" → "./packages/setup" — ${WHY}`,
 		])
 	})
 
 	it('шаблон — нарушение на каждый каталог пакета, в который ведёт подстановка', () => {
-		expect(withPaths({ '@soldy-ui/*': ['../*'] })).toEqual([
-			`paths "@soldy-ui/*" → "../*" → "../core" — ${WHY}`,
-			`paths "@soldy-ui/*" → "../*" → "../setup" — ${WHY}`,
+		expect(withPaths({ '@soxa-ui/*': ['../*'] })).toEqual([
+			`paths "@soxa-ui/*" → "../*" → "../core" — ${WHY}`,
+			`paths "@soxa-ui/*" → "../*" → "../setup" — ${WHY}`,
 		])
 		// Подстановка идёт и через «/»: `@repo/packages/core` → `../../packages/core`
 		expect(withPaths({ '@repo/*': ['../../*'] })).toEqual([
@@ -286,9 +280,9 @@ describe('сторож путей к исходникам', () => {
 			`paths "@repo/*" → "../../*" → "../../packages/setup" — ${WHY}`,
 		])
 		// Подпути пакета и каталоги исходников манифеста не несут
-		expect(
-			withPaths({ '@soldy-ui/setup/*': ['./*'], '@soldy-ui/src/*': ['../*/src'] }),
-		).toEqual([])
+		expect(withPaths({ '@soxa-ui/setup/*': ['./*'], '@soxa-ui/src/*': ['../*/src'] })).toEqual(
+			[],
+		)
 	})
 
 	describe('node_modules', () => {
@@ -308,11 +302,11 @@ describe('сторож путей к исходникам', () => {
 						'/repo/tools/bench/node_modules/rxjs/package.json': '{}',
 						'/repo/tools/bench/node_modules/@angular/core/package.json': '{}',
 						'/repo/tools/bench/node_modules/@angular/common/package.json': '{}',
-						'/repo/tools/bench/node_modules/@soldy-ui/core/package.json':
+						'/repo/tools/bench/node_modules/@soxa-ui/core/package.json':
 							'{ "types": "./dist/index.d.ts" }',
 						[STAND]: text({ compilerOptions: { paths } }),
 					},
-					{ '/repo/tools/bench/node_modules/@soldy-ui/core': '/repo/packages/core' },
+					{ '/repo/tools/bench/node_modules/@soxa-ui/core': '/repo/packages/core' },
 				),
 			)
 
@@ -328,11 +322,11 @@ describe('сторож путей к исходникам', () => {
 
 		// Пакет воркспейса в node_modules — ссылка: судится каталог репозитория за ней
 		it('пакет репозитория через node_modules — нарушение', () => {
-			expect(standCheck({ '@soldy-ui/core': ['./node_modules/@soldy-ui/core'] })).toEqual([
-				`paths "@soldy-ui/core" → "./node_modules/@soldy-ui/core" — ${WHY}`,
+			expect(standCheck({ '@soxa-ui/core': ['./node_modules/@soxa-ui/core'] })).toEqual([
+				`paths "@soxa-ui/core" → "./node_modules/@soxa-ui/core" — ${WHY}`,
 			])
-			expect(standCheck({ '@soldy-ui/*': ['./node_modules/@soldy-ui/*'] })).toEqual([
-				`paths "@soldy-ui/*" → "./node_modules/@soldy-ui/*" → "./node_modules/@soldy-ui/core" — ${WHY}`,
+			expect(standCheck({ '@soxa-ui/*': ['./node_modules/@soxa-ui/*'] })).toEqual([
+				`paths "@soxa-ui/*" → "./node_modules/@soxa-ui/*" → "./node_modules/@soxa-ui/core" — ${WHY}`,
 			])
 		})
 	})

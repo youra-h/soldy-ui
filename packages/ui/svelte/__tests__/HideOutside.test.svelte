@@ -5,9 +5,9 @@
 	 * фона поставлен снаружи, из `onBundleCreate`, с открытостью по `visible` —
 	 * так, как его поставит модальное окно. Открытость слоя — `shown`.
 	 */
-	import { THideOutsidePlugin, TPluginBundle } from '@soldy-ui/plugins'
-	import type { DescriptorSlots, PopoverDescriptor } from '@soldy-ui/setup'
-	import { Button, Frame, Popover, Select } from '@soldy-ui/svelte'
+	import { THideOutsidePlugin, TPluginBundle } from '@soxa-ui/plugins'
+	import type { DescriptorSlots, PopoverDescriptor } from '@soxa-ui/setup'
+	import { Button, Frame, Popover, Select } from '@soxa-ui/svelte'
 
 	type TTriggerScope = DescriptorSlots<typeof PopoverDescriptor>['trigger']
 

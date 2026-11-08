@@ -22,9 +22,9 @@
  */
 
 import { describe, it, expect, afterEach, vi } from 'vitest'
-import { TDateInput, type TTimePrecision, type TValuePayload } from '@soldy-ui/core'
-import { arEG, enUS, ruRU, type TLocale } from '@soldy-ui/plugins'
-import { DateInputDescriptor } from '@soldy-ui/setup'
+import { TDateInput, type TTimePrecision, type TValuePayload } from '@soxa-ui/core'
+import { arEG, enUS, ruRU, type TLocale } from '@soxa-ui/plugins'
+import { DateInputDescriptor } from '@soxa-ui/setup'
 import {
 	TButtonElement,
 	TDateInputElement,
@@ -32,7 +32,7 @@ import {
 	TLocaleProviderElement,
 	type TButtonElementProps,
 	type TDateInputElementProps,
-} from '@soldy-ui/webc'
+} from '@soxa-ui/webc'
 import { dateInputTemplate } from '../src/components/date-input/date-input.template'
 import { bareContext } from './template-context'
 
@@ -58,7 +58,7 @@ function isButton(node: Element | null): node is TButtonElementProps {
 	return node instanceof TButtonElement
 }
 
-/** Поле soldy в разметке. */
+/** Поле soxa в разметке. */
 function dateInputOf(root: ParentNode): TDateInputElementProps {
 	const node = root.querySelector('[is="so-date-input"]')
 

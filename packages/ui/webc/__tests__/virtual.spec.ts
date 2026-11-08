@@ -20,16 +20,16 @@
  */
 
 import { describe, it, expect, expectTypeOf, afterEach } from 'vitest'
-import { createEngineListBox, createEngineSelect } from '@soldy-ui/core'
-import type { TListBoxCollection } from '@soldy-ui/core'
-import { VirtualDescriptor } from '@soldy-ui/setup'
+import { createEngineListBox, createEngineSelect } from '@soxa-ui/core'
+import type { TListBoxCollection } from '@soxa-ui/core'
+import { VirtualDescriptor } from '@soxa-ui/setup'
 import {
 	TListBoxElement,
 	TSelectElement,
 	TVirtualElement,
 	type TListBoxElementProps,
 	type TVirtualElementProps,
-} from '@soldy-ui/webc'
+} from '@soxa-ui/webc'
 import { virtualTemplate } from '../src/components/virtual/virtual.template'
 import { bareContext } from './template-context'
 

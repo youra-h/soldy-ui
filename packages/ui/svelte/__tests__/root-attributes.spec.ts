@@ -40,7 +40,7 @@ import {
 	TTextarea,
 	createEngineTable,
 	type TTableCollection,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 import {
 	Accordion,
 	Button,
@@ -114,7 +114,7 @@ import {
 	type TextareaProps,
 	type ToastsProps,
 	type TooltipProps,
-} from '@soldy-ui/svelte'
+} from '@soxa-ui/svelte'
 import {
 	toControlAttrs,
 	toRootForward,

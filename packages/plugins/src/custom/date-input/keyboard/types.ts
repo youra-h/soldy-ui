@@ -1,4 +1,4 @@
-import type { IDateInput } from '@soldy-ui/core'
+import type { IDateInput } from '@soxa-ui/core'
 import type { TPluginEvents } from '../../../base'
 
 /**

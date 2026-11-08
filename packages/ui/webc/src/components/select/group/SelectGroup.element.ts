@@ -3,8 +3,8 @@
  * (`Select.Group`); регистрирует модуль Select.
  */
 
-import { SelectGroupDescriptor } from '@soldy-ui/setup'
-import type { IItemGroup } from '@soldy-ui/core'
+import { SelectGroupDescriptor } from '@soxa-ui/setup'
+import type { IItemGroup } from '@soxa-ui/core'
 import { ElementBase } from '../../../adapter'
 import type { TElementClassOf, TElementType } from '../../../adapter'
 import { selectGroupTemplate } from './select-group.template'

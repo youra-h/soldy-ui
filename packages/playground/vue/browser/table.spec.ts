@@ -27,15 +27,15 @@ import { describe, it, expect, afterEach } from 'vitest'
 import { render, cleanup } from './render'
 import { commands, page, userEvent } from 'vitest/browser'
 import { defineComponent, h, nextTick, ref, type Ref } from 'vue'
-import { createEngineTable } from '@soldy-ui/core'
+import { createEngineTable } from '@soxa-ui/core'
 import type {
 	ITableColumn,
 	TTableCollection,
 	TTableColumnSource,
 	TTableRecord,
-} from '@soldy-ui/core'
-import { useMotion } from '@soldy-ui/plugins'
-import { Button, Table } from '@soldy-ui/vue'
+} from '@soxa-ui/core'
+import { useMotion } from '@soxa-ui/plugins'
+import { Button, Table } from '@soxa-ui/vue'
 
 import {
 	find,
@@ -60,7 +60,7 @@ import {
 	transitioning,
 } from './transitions'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 /** Tolerance for subpixel rounding, px. */
 const EPSILON = 1

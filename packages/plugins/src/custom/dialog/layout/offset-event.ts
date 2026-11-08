@@ -1,5 +1,5 @@
-import { TActionEvent } from '@soldy-ui/core'
-import type { TDialogPlacement } from '@soldy-ui/core'
+import { TActionEvent } from '@soxa-ui/core'
+import type { TDialogPlacement } from '@soxa-ui/core'
 
 /**
  * Отступы окна от краёв экрана перед раскладкой — аргумент `offset:before`

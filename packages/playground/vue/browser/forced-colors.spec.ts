@@ -38,7 +38,7 @@ import { describe, it, expect, afterEach } from 'vitest'
 import { render, cleanup } from './render'
 import { userEvent } from 'vitest/browser'
 import { defineComponent, h, nextTick, type PropType, type VNode } from 'vue'
-import type { TToastInput } from '@soldy-ui/core'
+import type { TToastInput } from '@soxa-ui/core'
 import {
 	Button,
 	Calendar,
@@ -63,16 +63,16 @@ import {
 	Toasts,
 	Tooltip,
 	useToasts,
-} from '@soldy-ui/vue'
-import type { TToastRender } from '@soldy-ui/vue'
-import type { DescriptorSlots, PopoverDescriptor } from '@soldy-ui/setup'
-import { TOASTS_ITEM_TYPES } from '@soldy-ui/playground-shared'
+} from '@soxa-ui/vue'
+import type { TToastRender } from '@soxa-ui/vue'
+import type { DescriptorSlots, PopoverDescriptor } from '@soxa-ui/setup'
+import { TOASTS_ITEM_TYPES } from '@soxa-ui/playground-shared'
 
 import { find, outlined, pixel, settled, style, systemColor } from './colors'
 import { forcedColors } from './media'
 import { forcedColorsRepaint } from './engine'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 type TTriggerScope = DescriptorSlots<typeof PopoverDescriptor>['trigger']
 

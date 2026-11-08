@@ -1,6 +1,6 @@
 import { defineComponent, provide, watch } from 'vue'
-import { TLocaleSource } from '@soldy-ui/plugins'
-import type { TLocale } from '@soldy-ui/plugins'
+import { TLocaleSource } from '@soxa-ui/plugins'
+import type { TLocale } from '@soxa-ui/plugins'
 import { useExpose, type TClosedComponent } from '../static'
 import { LOCALE_KEY } from './key'
 

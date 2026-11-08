@@ -15,7 +15,7 @@
 import * as fs from 'node:fs'
 import * as path from 'node:path'
 import { pathToFileURL } from 'node:url'
-import type { IComponentDescriptor } from '@soldy-ui/setup'
+import type { IComponentDescriptor } from '@soxa-ui/setup'
 import type { TTemplateRef } from '../adapter/runtime/component.base'
 
 export type TManifest = {

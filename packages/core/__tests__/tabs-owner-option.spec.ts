@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { createEngine, TTabs, TTabsCollectionFacade, TTabsItem } from '@soldy-ui/core'
+import { createEngine, TTabs, TTabsCollectionFacade, TTabsItem } from '@soxa-ui/core'
 
 /**
  * Владелец — опция движка: движок переживает владельца (модалка с

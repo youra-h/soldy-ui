@@ -1,4 +1,4 @@
-import type { ITextarea } from '@soldy-ui/core'
+import type { ITextarea } from '@soxa-ui/core'
 import { TBasePlugin } from '../../../base'
 import type { IPluginContext } from '../../../base'
 import { TAriaPlugin } from '../../component-view'

@@ -10,8 +10,8 @@ import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
 import { MISSING_ICON, getIcon, hasIcon, resetIcons, useIcons } from '../protected/registry/icons'
 import { ICON_ROLES, missingIconRoles } from '../content/icons/roles'
 import type { TIconSource } from '../protected/registry'
-import * as material from '@soldy-ui/icons-material'
-import * as lucide from '@soldy-ui/icons-lucide'
+import * as material from '@soxa-ui/icons-material'
+import * as lucide from '@soxa-ui/icons-lucide'
 
 const anIcon = { viewBox: '0 0 24 24', body: '<path d="M0 0h24v24H0z"/>' }
 

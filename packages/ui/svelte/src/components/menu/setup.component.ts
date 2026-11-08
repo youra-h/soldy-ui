@@ -1,4 +1,4 @@
-import { MenuCollectionDescriptor, MenuDescriptor, TCollectionExtension } from '@soldy-ui/setup'
+import { MenuCollectionDescriptor, MenuDescriptor, TCollectionExtension } from '@soxa-ui/setup'
 import {
 	createSvelteAdapterContext,
 	joinBindings,

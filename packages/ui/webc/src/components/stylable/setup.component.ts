@@ -1,5 +1,5 @@
-import { StylableDescriptor } from '@soldy-ui/setup'
-import type { IStylable } from '@soldy-ui/core'
+import { StylableDescriptor } from '@soxa-ui/setup'
+import type { IStylable } from '@soxa-ui/core'
 import { createWebcAdapterContext, useAdapter } from '../../adapter'
 import type { TBinding, TUpdateListener } from '../../adapter'
 

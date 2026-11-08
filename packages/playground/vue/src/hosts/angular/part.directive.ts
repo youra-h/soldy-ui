@@ -10,7 +10,7 @@ import {
 	TRadioGroupItemComponent,
 	TTabsContentComponent,
 	TTabsItemComponent,
-} from '@soldy-ui/angular'
+} from '@soxa-ui/angular'
 import { PART_LISTENERS, listen } from './events'
 
 /**

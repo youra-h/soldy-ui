@@ -25,8 +25,8 @@ import {
 	createEngineListBox,
 	createEngineSelection,
 	createEngineTabs,
-} from '@soldy-ui/core'
-import type { ISelectItem } from '@soldy-ui/core'
+} from '@soxa-ui/core'
+import type { ISelectItem } from '@soxa-ui/core'
 
 const ABC = [{ value: 'a' }, { value: 'b' }, { value: 'c' }]
 

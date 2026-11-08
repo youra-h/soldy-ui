@@ -25,15 +25,15 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { render, cleanup } from './render'
 import { userEvent } from 'vitest/browser'
 import { defineComponent, h } from 'vue'
-import { COMPONENT_SIZES } from '@soldy-ui/playground-shared'
-import { Select, SelectItem } from '@soldy-ui/vue'
-import type { TDirection, TTagsOverflow } from '@soldy-ui/core'
+import { COMPONENT_SIZES } from '@soxa-ui/playground-shared'
+import { Select, SelectItem } from '@soxa-ui/vue'
+import type { TDirection, TTagsOverflow } from '@soxa-ui/core'
 
 import { DIRECTION_CASES, setDir, sidesOf, type TLine } from './directions'
 import { expectFocusedClearOfFades, fades } from './fades'
 import { expectRingInsideVertically } from './focus-ring'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 /** Нижняя граница ширины ввода — `min-w-16` из `_input.scss`, в пикселях. */
 const MIN_INPUT_WIDTH = 64

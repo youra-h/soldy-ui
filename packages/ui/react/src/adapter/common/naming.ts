@@ -3,8 +3,8 @@
  * `element:ready` → колбэк `onElementReady`.
  */
 
-import type { INamingStrategy } from '@soldy-ui/setup'
-import { underscorePropNaming, callbackEventNaming } from '@soldy-ui/setup'
+import type { INamingStrategy } from '@soxa-ui/setup'
+import { underscorePropNaming, callbackEventNaming } from '@soxa-ui/setup'
 
 export const ReactNaming: INamingStrategy = {
 	prop: underscorePropNaming,

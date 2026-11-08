@@ -10,8 +10,8 @@
  */
 
 import { describe, it, expect, vi } from 'vitest'
-import { createEngine } from '@soldy-ui/core'
-import type { TCollectionEngineItemSource, TMetaEntry } from '@soldy-ui/core'
+import { createEngine } from '@soxa-ui/core'
+import type { TCollectionEngineItemSource, TMetaEntry } from '@soxa-ui/core'
 
 type Item = { id: number; name: string }
 

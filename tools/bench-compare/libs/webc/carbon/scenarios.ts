@@ -16,7 +16,7 @@ function inner(host: Element | null | undefined, selector: string): HTMLElement 
 	return host?.shadowRoot?.querySelector<HTMLElement>(selector) ?? null
 }
 
-/** Carbon scenarios: the soldy ones step by step, on Carbon's own markup and shadow roots. */
+/** Carbon scenarios: the soxa ones step by step, on Carbon's own markup and shadow roots. */
 export const SCENARIOS: Record<string, TScenario> = {
 	button: each('cds-button', (copy) => press(inner(copy, 'button'))),
 	input: each('cds-text-input', (copy) => type(inner(copy, 'input'), 'abc')),

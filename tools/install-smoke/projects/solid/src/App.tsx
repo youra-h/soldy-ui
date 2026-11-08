@@ -1,5 +1,5 @@
 import { createSignal } from 'solid-js'
-import { Button, DatePicker, Dialog, Input, Select, Table } from '@soldy-ui/solid'
+import { Button, DatePicker, Dialog, Input, Select, Table } from '@soxa-ui/solid'
 
 const cities = [
 	{ value: 'kzn', text: 'Kazan' },

@@ -8,7 +8,7 @@ import {
 	type Accessor,
 	type JSX,
 } from 'solid-js'
-import type { TToastsItemType, TValuePayload } from '@soldy-ui/core'
+import type { TToastsItemType, TValuePayload } from '@soxa-ui/core'
 import {
 	COLLECTION_ITEMS,
 	COLLECTION_MANY_ITEMS,
@@ -19,13 +19,13 @@ import {
 	TOASTS_ITEM_TYPES,
 	TOAST_SAVING,
 	toastSample,
-} from '@soldy-ui/playground-shared'
+} from '@soxa-ui/playground-shared'
 import type {
 	DescriptorSlots,
 	MenuDescriptor,
 	PopoverDescriptor,
 	TooltipDescriptor,
-} from '@soldy-ui/setup'
+} from '@soxa-ui/setup'
 import {
 	Accordion,
 	Button,
@@ -64,7 +64,7 @@ import {
 	roleIcon,
 	useToasts,
 	type TToastRender,
-} from '@soldy-ui/solid'
+} from '@soxa-ui/solid'
 import type { TParts } from './events'
 
 /** Preview props: the row's props, `ctrl` with a core instance, the host's event callbacks. */

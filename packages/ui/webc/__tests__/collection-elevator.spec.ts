@@ -8,7 +8,7 @@
  * предкам его не видно.
  *
  * В коллекцию элемент входит, когда собирается, — при подключении (`attach`
- * в связке). Подключение, пришедшее, пока подключается другой элемент soldy,
+ * в связке). Подключение, пришедшее, пока подключается другой элемент soxa,
  * ждёт его конца и идёт сразу после него, в порядке прихода (ожидание):
  * раскладка света владельца переносит элементы разметки, и их колбэки
  * приходят внутри его подключения — раньше, чем он опустил движок. Разметку,
@@ -23,8 +23,8 @@
  */
 
 import { describe, it, expect, afterEach } from 'vitest'
-import { TTabsItem } from '@soldy-ui/core'
-import type { IElevatorKey } from '@soldy-ui/setup'
+import { TTabsItem } from '@soxa-ui/core'
+import type { IElevatorKey } from '@soxa-ui/setup'
 import {
 	TAccordionElement,
 	TAccordionItemElement,
@@ -35,7 +35,7 @@ import {
 	type TRadioGroupElementProps,
 	type TTabsElementProps,
 	type TTabsItemElementProps,
-} from '@soldy-ui/webc'
+} from '@soxa-ui/webc'
 import { defineElement } from '../src/adapter/runtime/defineElement'
 import { createWebcElevator } from '../src/adapter/elevator'
 import { TPlaceContext } from '../src/adapter/context'

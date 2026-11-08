@@ -14,4 +14,4 @@ import type { TVirtualConnect } from './types'
  * Подключение к окну. Пустое значение опускает своему поддереву сама
  * коллекция: списки в слотах её элементов окна не наследуют.
  */
-export const VIRTUAL_ELEVATOR: IElevatorKey<TVirtualConnect | null> = { name: 'soldy:virtual' }
+export const VIRTUAL_ELEVATOR: IElevatorKey<TVirtualConnect | null> = { name: 'soxa:virtual' }

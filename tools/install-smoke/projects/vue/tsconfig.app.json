@@ -1,7 +1,7 @@
 {
   // The starter extends `@vue/tsconfig/tsconfig.dom.json`; its options (0.9) are written out
   // here: the repository parses every tsconfig in it (`source-paths.spec.ts` of
-  // `@soldy-ui/setup`), and a package to extend is installed only in the run's copy
+  // `@soxa-ui/setup`), and a package to extend is installed only in the run's copy
   "compilerOptions": {
     "noEmit": true,
     "module": "ESNext",

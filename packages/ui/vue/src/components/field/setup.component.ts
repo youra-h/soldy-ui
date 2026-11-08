@@ -1,4 +1,4 @@
-import { FieldDescriptor, TFieldExtension } from '@soldy-ui/setup'
+import { FieldDescriptor, TFieldExtension } from '@soxa-ui/setup'
 import {
 	useAdapter,
 	extendBinding,

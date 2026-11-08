@@ -11,7 +11,7 @@ import {
 import { last } from '../../scenarios'
 import { key, popup } from '../scenarios'
 
-/** Angular Material scenarios: the soldy ones step by step, on Material's own markup. */
+/** Angular Material scenarios: the soxa ones step by step, on Material's own markup. */
 export const SCENARIOS: Record<string, TScenario> = {
 	button: each('.mat-mdc-button', press),
 	input: each('.mat-mdc-form-field input', (field) => type(field, 'abc')),

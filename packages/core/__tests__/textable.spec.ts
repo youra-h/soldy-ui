@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from 'vitest'
-import { TTextable } from '@soldy-ui/core'
-import type { ITextableProps } from '@soldy-ui/core'
+import { TTextable } from '@soxa-ui/core'
+import type { ITextableProps } from '@soxa-ui/core'
 
 describe('TTextable', () => {
 	it('принимает text через { props } и через plain props', () => {

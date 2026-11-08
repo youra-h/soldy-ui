@@ -1,14 +1,16 @@
 <p align="center">
-  <img src="brand/banner.png" alt="Soldy UI — One core. Your framework." width="880">
+  <img src="brand/banner.png" alt="Soxa UI — One core. Your framework." width="880">
 </p>
 
-# Soldy UI
+# Soxa UI
+
+Previously Soldy UI. See the [migration guide](docs/migration-to-soxa.md) for the scope change.
 
 **UI components with the logic written once: a framework-agnostic core and thin adapters that
 render it in Vue, React, Angular, Svelte, Solid and Web Components.**
 
-[![CI](https://github.com/youra-h/soldy-ui/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/youra-h/soldy-ui/actions/workflows/ci.yml)
-[![npm](https://img.shields.io/npm/v/@soldy-ui/core?label=npm)](https://www.npmjs.com/org/soldy-ui)
+[![CI](https://github.com/youra-h/soxa-ui/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/youra-h/soxa-ui/actions/workflows/ci.yml)
+[![npm](https://img.shields.io/npm/v/@soxa-ui/core?label=npm)](https://www.npmjs.com/org/soxa-ui)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 > **Status:** Beta, version `0.3.0-beta.0` on npm under `latest`.
@@ -19,14 +21,14 @@ render it in Vue, React, Angular, Svelte, Solid and Web Components.**
 
 ## What it is
 
-The behavior of a Soldy UI component lives in a headless core with no framework in it: component
+The behavior of a Soxa UI component lives in a headless core with no framework in it: component
 models in plain TypeScript that own their state, events, collections and ARIA. Behavior that needs
 the DOM — focus, keyboard, overlay — comes as plugins, and the component contract (props, events,
 slots) is declared once, in a descriptor. Thin adapters for Vue, React, Angular, Svelte, Solid and
 Web Components connect that model to a framework and render the markup: BEM classes `so-*` and
 `data-*` state attributes. The look comes from a theme, shipped as a separate package.
 
-## Why Soldy UI
+## Why Soxa UI
 
 - **Logic is written once.** Behavior lives in the core, plugins and collection extensions, and an
   adapter only wires it up. Reactivity and lifecycle hooks stay in the adapter layer of each
@@ -58,37 +60,37 @@ Web Components connect that model to a framework and render the markup: BEM clas
 
 ## Installation
 
-Install the adapter for your framework, `@soldy-ui/setup`, a theme and an icon pack. The adapter
-depends on the core packages (`@soldy-ui/core`, `@soldy-ui/plugins`, `@soldy-ui/setup`), but packages
+Install the adapter for your framework, `@soxa-ui/setup`, a theme and an icon pack. The adapter
+depends on the core packages (`@soxa-ui/core`, `@soxa-ui/plugins`, `@soxa-ui/setup`), but packages
 you import directly must also be direct dependencies of your application. The entry point below
-imports `useIcons` and `useTheme` from `@soldy-ui/setup`, so install it explicitly.
+imports `useIcons` and `useTheme` from `@soxa-ui/setup`, so install it explicitly.
 
-| Framework      | Install                                         | Requires        |
-| -------------- | ----------------------------------------------- | --------------- |
-| Vue            | `npm install @soldy-ui/vue @soldy-ui/setup`     | Vue 3.5.21+     |
-| React          | `npm install @soldy-ui/react @soldy-ui/setup`   | React 19.3+     |
-| Angular        | `npm install @soldy-ui/angular @soldy-ui/setup` | Angular 22.2+   |
-| Svelte         | `npm install @soldy-ui/svelte @soldy-ui/setup`  | Svelte 5.55.10+ |
-| Solid          | `npm install @soldy-ui/solid @soldy-ui/setup`   | Solid 1.9.13+   |
-| Web Components | `npm install @soldy-ui/webc @soldy-ui/setup`    | —               |
+| Framework      | Install                                       | Requires        |
+| -------------- | --------------------------------------------- | --------------- |
+| Vue            | `npm install @soxa-ui/vue @soxa-ui/setup`     | Vue 3.5.21+     |
+| React          | `npm install @soxa-ui/react @soxa-ui/setup`   | React 19.3+     |
+| Angular        | `npm install @soxa-ui/angular @soxa-ui/setup` | Angular 22.2+   |
+| Svelte         | `npm install @soxa-ui/svelte @soxa-ui/setup`  | Svelte 5.55.10+ |
+| Solid          | `npm install @soxa-ui/solid @soxa-ui/setup`   | Solid 1.9.13+   |
+| Web Components | `npm install @soxa-ui/webc @soxa-ui/setup`    | —               |
 
 The theme and the icon pack are the same for every adapter.
 
 **Themes**
 
-| Package                | What it does                                                                                                                                                                                        | Install                            |
-| ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- |
-| `@soldy-ui/theme-base` | The shared layer of every theme: a reset of the library's own nodes, the structure and layout of the components, the layout plugins. No look of its own. Install it directly only to write a theme. | comes with a theme                 |
-| `@soldy-ui/theme-oren` | Styles the components on top of the shared layer: colors, light and dark schemes, borders, focus ring, states, motion.                                                                              | `npm install @soldy-ui/theme-oren` |
+| Package               | What it does                                                                                                                                                                                        | Install                           |
+| --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------- |
+| `@soxa-ui/theme-base` | The shared layer of every theme: a reset of the library's own nodes, the structure and layout of the components, the layout plugins. No look of its own. Install it directly only to write a theme. | comes with a theme                |
+| `@soxa-ui/theme-oren` | Styles the components on top of the shared layer: colors, light and dark schemes, borders, focus ring, states, motion.                                                                              | `npm install @soxa-ui/theme-oren` |
 
 **Icons** — one pack is enough; each draws the same icon roles.
 
-| Package                    | Icons                                                        | License                       | Install                                |
-| -------------------------- | ------------------------------------------------------------ | ----------------------------- | -------------------------------------- |
-| `@soldy-ui/icons-material` | [Material Symbols](https://fonts.google.com/icons) by Google | package MIT, icons Apache-2.0 | `npm install @soldy-ui/icons-material` |
-| `@soldy-ui/icons-lucide`   | [Lucide](https://lucide.dev)                                 | package MIT, icons ISC        | `npm install @soldy-ui/icons-lucide`   |
+| Package                   | Icons                                                        | License                       | Install                               |
+| ------------------------- | ------------------------------------------------------------ | ----------------------------- | ------------------------------------- |
+| `@soxa-ui/icons-material` | [Material Symbols](https://fonts.google.com/icons) by Google | package MIT, icons Apache-2.0 | `npm install @soxa-ui/icons-material` |
+| `@soxa-ui/icons-lucide`   | [Lucide](https://lucide.dev)                                 | package MIT, icons ISC        | `npm install @soxa-ui/icons-lucide`   |
 
-The adapter and the core packages it brings share one version; keep your direct `@soldy-ui/setup`
+The adapter and the core packages it brings share one version; keep your direct `@soxa-ui/setup`
 dependency on that same version. A theme and an icon pack have versions of their own and declare
 the range of library versions they work with, which npm checks on install. Then plug in the theme
 and the icons at the application entry point, as shown below.
@@ -101,7 +103,7 @@ Compound components name their parts with a dot:
 
 ```vue
 <script setup lang="ts">
-import { Accordion } from '@soldy-ui/vue'
+import { Accordion } from '@soxa-ui/vue'
 </script>
 
 <template>
@@ -120,9 +122,9 @@ The same component can be driven from code — pass a core instance as `ctrl`:
 
 ```vue
 <script setup lang="ts">
-import { TButton } from '@soldy-ui/core'
-import { TActionPlugin, TPluginBundle } from '@soldy-ui/plugins'
-import { Button } from '@soldy-ui/vue'
+import { TButton } from '@soxa-ui/core'
+import { TActionPlugin, TPluginBundle } from '@soxa-ui/plugins'
+import { Button } from '@soxa-ui/vue'
 
 const btn = new TButton({ text: 'Save', variant: 'accent' })
 
@@ -147,12 +149,12 @@ tab:
 
 ```ts
 import { createApp } from 'vue'
-import { useIcons, useTheme } from '@soldy-ui/setup'
-import * as material from '@soldy-ui/icons-material'
+import { useIcons, useTheme } from '@soxa-ui/setup'
+import * as material from '@soxa-ui/icons-material'
 import App from './App.vue'
 
-import '@soldy-ui/theme-oren'
-import oren from '@soldy-ui/theme-oren/setup'
+import '@soxa-ui/theme-oren'
+import oren from '@soxa-ui/theme-oren/setup'
 
 useIcons(material)
 useTheme(oren)
@@ -170,7 +172,7 @@ The dark scheme is switched on with `<html data-so-theme="oren-dark">`.
 Motion — panels sliding in, thumbs travelling, indicators running — follows the system's
 reduced-motion setting by default. An application that wants motion regardless, or never, sets one
 mode for the whole library at its entry point: `useMotion('full')` or `useMotion('reduce')` from
-`@soldy-ui/plugins`.
+`@soxa-ui/plugins`.
 
 Language and the strings the library draws itself — names of buttons without text (close, scroll,
 clear) and of fields nothing else names — come as one value, a locale, from the nearest
@@ -182,8 +184,8 @@ gives its subtree another language, and the server renders parallel requests eac
 ```vue
 <script setup lang="ts">
 import { ref } from 'vue'
-import { LocaleProvider } from '@soldy-ui/vue'
-import { ruRU, zhCN } from '@soldy-ui/plugins'
+import { LocaleProvider } from '@soxa-ui/vue'
+import { ruRU, zhCN } from '@soxa-ui/plugins'
 
 const current = ref(ruRU) // current.value = zhCN switches on the fly
 </script>
@@ -206,52 +208,52 @@ component: `*` — all six, a list — only those, `-` — none yet. **Release**
 release planned to include the component in at least one adapter. `0.3.0` is the upcoming release;
 `next` — already in `main`, ships with the next release; `future` — queued for development.
 
-| Component       | What it is                                                                                     | Frameworks | Release       |
-| --------------- | ---------------------------------------------------------------------------------------------- | ---------- | ------------- |
-| Button          | Button: text, icons in slots, four views                                                       | *          | 0.3.0         |
-| Input           | Text field with slots for icons and buttons                                                    | *          | 0.3.0         |
-| NumberInput     | Number field in the locale's format: step and bounds, arrow keys, − and + buttons with hold    | *          | 0.3.0         |
-| CheckBox        | Checkbox with a third, indeterminate state                                                     | *          | 0.3.0         |
-| Switch          | Switch: the same value as a checkbox, a different metaphor                                     | *          | 0.3.0         |
-| Label           | Control label: clicking the text toggles the control, and the text is its accessible name      | *          | 0.3.0         |
-| Slider          | Slider: a number or a range, set by dragging, with keys or with a screen reader gesture        | *          | 0.3.0         |
-| Rating          | Rating with stars: set by click, drag or arrow keys, halves, hover preview, read-only display  | *          | 0.3.0         |
-| RadioGroup      | One option out of several: native radio buttons sharing a `name`                               | *          | 0.3.0         |
-| Select          | Select field: an input plus a list in an overlay, the Combobox pattern                         | *          | 0.3.0         |
-| Calendar        | Month grids: pick a single date, several dates or a range                                      | *          | 0.3.0         |
-| DateInput       | Date and time field typed in parts in the locale's format, selected and copied as a whole      | *          | 0.3.0         |
-| DatePicker      | Date field and a calendar in a panel: a single date or a range                                 | *          | 0.3.0         |
-| Popover         | Panel at a trigger with any content: a non-modal dialog                                        | *          | 0.3.0         |
-| Tooltip         | Hint for an element, shown on hover and on keyboard focus                                      | *          | 0.3.0         |
-| Dialog          | Modal window: centered or at an edge of the screen, can be maximized to full screen            | *          | 0.3.0         |
-| Drawer          | Panel that slides in at an edge of the screen or a container, can be swiped away               | *          | 0.3.0         |
-| Toasts          | Pop-up notifications shown from code: a queue, auto-dismiss with a pause, swipe to close       | *          | 0.3.0         |
-| Scroller        | Single-row strip of any content, paged with two buttons                                        | *          | 0.3.0         |
-| ListBox         | List with single or multiple selection                                                         | *          | 0.3.0         |
-| Table           | Table: columns as data, sorting by column headers, row selection with checkboxes               | *          | 0.3.0         |
-| Tabs            | Tabs: a tab list and panels linked by value                                                    | *          | 0.3.0         |
-| Tags            | Tag set: close buttons, optional selection                                                     | *          | 0.3.0         |
-| Accordion       | Sections that expand one at a time or several at once                                          | *          | 0.3.0         |
-| Icon            | Icon from the registered pack, by role                                                         | *          | 0.3.0         |
-| ProgressLinear  | Linear progress indicator: the share done, or an indeterminate animation while it is unknown   | *          | 0.3.0         |
-| ProgressSpinner | Circular progress indicator: the share done, or an indeterminate animation while it is unknown | *          | 0.3.0         |
-| Skeleton        | Placeholder while content loads                                                                | *          | 0.3.0         |
-| DragAndDrop     | Drag and drop of collection items                                                              | *          | 0.3.0         |
-| Virtual         | Window for long lists: ListBox and Table inside render only the visible items                  | *          | 0.3.0         |
-| Pagination      | Page navigation: page numbers with gaps, previous and next, first and last                     | *          | 0.3.0         |
-| Menu            | Action menu at a button or on right click: submenus, checkbox and radio items                  | *          | 0.3.0         |
-| Textarea        | Multi-line text field that grows with its content                                              | *          | 0.3.0         |
-| Field           | Field wrapper: description, error message and invalid state linked to the control              | *          | 0.3.0         |
-| Alert           | Inline message by severity: info, success, warning, error                                      | -          | future        |
-| Badge           | Counter or status mark, on its own or over another element                                     | -          | future        |
-| Avatar          | User picture with a fallback to initials or an icon                                            | -          | future        |
-| Breadcrumbs     | Path to the current page, collapsing a long trail                                              | -          | future        |
-| Separator       | Horizontal or vertical divider, semantic or decorative                                         | -          | future        |
-| ToggleGroup     | Toggle button and a group of them with single or multiple selection                            | -          | future        |
-| Tree            | Hierarchy with expandable branches, selection and keyboard navigation by level                 | -          | future        |
-| Stepper         | Steps of a multi-step form: done, current, with an error; linear or free order                 | -          | future        |
-| FileUpload      | File picker and drop zone with type, size and count limits                                     | -          | future        |
-| Splitter        | Panels with a draggable border: size limits, keyboard, collapsing                              | -          | future        |
+| Component       | What it is                                                                                     | Frameworks | Release |
+| --------------- | ---------------------------------------------------------------------------------------------- | ---------- | ------- |
+| Button          | Button: text, icons in slots, four views                                                       | *          | 0.3.0   |
+| Input           | Text field with slots for icons and buttons                                                    | *          | 0.3.0   |
+| NumberInput     | Number field in the locale's format: step and bounds, arrow keys, − and + buttons with hold    | *          | 0.3.0   |
+| CheckBox        | Checkbox with a third, indeterminate state                                                     | *          | 0.3.0   |
+| Switch          | Switch: the same value as a checkbox, a different metaphor                                     | *          | 0.3.0   |
+| Label           | Control label: clicking the text toggles the control, and the text is its accessible name      | *          | 0.3.0   |
+| Slider          | Slider: a number or a range, set by dragging, with keys or with a screen reader gesture        | *          | 0.3.0   |
+| Rating          | Rating with stars: set by click, drag or arrow keys, halves, hover preview, read-only display  | *          | 0.3.0   |
+| RadioGroup      | One option out of several: native radio buttons sharing a `name`                               | *          | 0.3.0   |
+| Select          | Select field: an input plus a list in an overlay, the Combobox pattern                         | *          | 0.3.0   |
+| Calendar        | Month grids: pick a single date, several dates or a range                                      | *          | 0.3.0   |
+| DateInput       | Date and time field typed in parts in the locale's format, selected and copied as a whole      | *          | 0.3.0   |
+| DatePicker      | Date field and a calendar in a panel: a single date or a range                                 | *          | 0.3.0   |
+| Popover         | Panel at a trigger with any content: a non-modal dialog                                        | *          | 0.3.0   |
+| Tooltip         | Hint for an element, shown on hover and on keyboard focus                                      | *          | 0.3.0   |
+| Dialog          | Modal window: centered or at an edge of the screen, can be maximized to full screen            | *          | 0.3.0   |
+| Drawer          | Panel that slides in at an edge of the screen or a container, can be swiped away               | *          | 0.3.0   |
+| Toasts          | Pop-up notifications shown from code: a queue, auto-dismiss with a pause, swipe to close       | *          | 0.3.0   |
+| Scroller        | Single-row strip of any content, paged with two buttons                                        | *          | 0.3.0   |
+| ListBox         | List with single or multiple selection                                                         | *          | 0.3.0   |
+| Table           | Table: columns as data, sorting by column headers, row selection with checkboxes               | *          | 0.3.0   |
+| Tabs            | Tabs: a tab list and panels linked by value                                                    | *          | 0.3.0   |
+| Tags            | Tag set: close buttons, optional selection                                                     | *          | 0.3.0   |
+| Accordion       | Sections that expand one at a time or several at once                                          | *          | 0.3.0   |
+| Icon            | Icon from the registered pack, by role                                                         | *          | 0.3.0   |
+| ProgressLinear  | Linear progress indicator: the share done, or an indeterminate animation while it is unknown   | *          | 0.3.0   |
+| ProgressSpinner | Circular progress indicator: the share done, or an indeterminate animation while it is unknown | *          | 0.3.0   |
+| Skeleton        | Placeholder while content loads                                                                | *          | 0.3.0   |
+| DragAndDrop     | Drag and drop of collection items                                                              | *          | 0.3.0   |
+| Virtual         | Window for long lists: ListBox and Table inside render only the visible items                  | *          | 0.3.0   |
+| Pagination      | Page navigation: page numbers with gaps, previous and next, first and last                     | *          | 0.3.0   |
+| Menu            | Action menu at a button or on right click: submenus, checkbox and radio items                  | *          | 0.3.0   |
+| Textarea        | Multi-line text field that grows with its content                                              | *          | 0.3.0   |
+| Field           | Field wrapper: description, error message and invalid state linked to the control              | *          | 0.3.0   |
+| Alert           | Inline message by severity: info, success, warning, error                                      | -          | future  |
+| Badge           | Counter or status mark, on its own or over another element                                     | -          | future  |
+| Avatar          | User picture with a fallback to initials or an icon                                            | -          | future  |
+| Breadcrumbs     | Path to the current page, collapsing a long trail                                              | -          | future  |
+| Separator       | Horizontal or vertical divider, semantic or decorative                                         | -          | future  |
+| ToggleGroup     | Toggle button and a group of them with single or multiple selection                            | -          | future  |
+| Tree            | Hierarchy with expandable branches, selection and keyboard navigation by level                 | -          | future  |
+| Stepper         | Steps of a multi-step form: done, current, with an error; linear or free order                 | -          | future  |
+| FileUpload      | File picker and drop zone with type, size and count limits                                     | -          | future  |
+| Splitter        | Panels with a draggable border: size limits, keyboard, collapsing                              | -          | future  |
 
 A new component comes to Vue first and moves to the other adapters after that.
 
@@ -279,7 +281,7 @@ packages/
     shared/         framework-free playground data: component registry, prop descriptions, enums
     vue/            Vue playground app
 tools/
-  eslint/           local ESLint rule (soldy/no-explicit-any) and tests for the lint blocks
+  eslint/           local ESLint rule (soxa/no-explicit-any) and tests for the lint blocks
   vite/             shared Vite library build config for the packages
   published-imports/  check that built packages declare every package they import
   install-smoke/    built packages installed into a clean project of every framework, run in Chromium

@@ -1,4 +1,4 @@
-import type { IModalLayer, TEventSink } from '@soldy-ui/core'
+import type { IModalLayer, TEventSink } from '@soxa-ui/core'
 import { TBasePlugin } from '../../../base'
 import type { IPluginContext } from '../../../base'
 import { toCssValue } from '../../../utils'
@@ -95,7 +95,7 @@ export abstract class TModalLayoutPlugin<
 
 	/**
 	 * Эмит собственных событий раскладки — без приведения `this.events` к
-	 * конкретной карте (см. `TEventSink` в `@soldy-ui/core`): карта — дженерик,
+	 * конкретной карте (см. `TEventSink` в `@soxa-ui/core`): карта — дженерик,
 	 * а `change:styles` и `change:backdropStyles` объявлены здесь.
 	 */
 	protected override get _sink(): TEventSink<TModalLayoutPluginEvents> {

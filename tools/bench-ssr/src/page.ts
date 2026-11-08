@@ -1,8 +1,8 @@
-import { useIcons, useTheme } from '@soldy-ui/setup'
-import * as material from '@soldy-ui/icons-material'
-import type { TLocale } from '@soldy-ui/plugins'
-import { COLLECTION_ITEMS, COMPONENTS, previewProps } from '@soldy-ui/playground-shared'
-import oren from '@soldy-ui/theme-oren/setup'
+import { useIcons, useTheme } from '@soxa-ui/setup'
+import * as material from '@soxa-ui/icons-material'
+import type { TLocale } from '@soxa-ui/plugins'
+import { COLLECTION_ITEMS, COMPONENTS, previewProps } from '@soxa-ui/playground-shared'
+import oren from '@soxa-ui/theme-oren/setup'
 
 /**
  * The server page of one framework (see benchmarks/ssr/README.md in the root):

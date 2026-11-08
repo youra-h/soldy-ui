@@ -1,5 +1,5 @@
 name: Bug report
-description: Something in a Soldy UI component does not work as expected.
+description: Something in a Soxa UI component does not work as expected.
 labels: [bug]
 body:
   - type: markdown
@@ -20,20 +20,20 @@ body:
       description: Where does it happen? Select every adapter you checked.
       multiple: true
       options:
-        - Vue (@soldy-ui/vue)
-        - React (@soldy-ui/react)
-        - Angular (@soldy-ui/angular)
-        - Svelte (@soldy-ui/svelte)
-        - Solid (@soldy-ui/solid)
-        - Web Components (@soldy-ui/webc)
+        - Vue (@soxa-ui/vue)
+        - React (@soxa-ui/react)
+        - Angular (@soxa-ui/angular)
+        - Svelte (@soxa-ui/svelte)
+        - Solid (@soxa-ui/solid)
+        - Web Components (@soxa-ui/webc)
         - Core or plugins, without a framework
     validations:
       required: true
   - type: input
     id: version
     attributes:
-      label: Soldy UI version
-      description: All @soldy-ui/* packages share one version. For an unreleased build, give the commit.
+      label: Soxa UI version
+      description: All @soxa-ui/* packages share one version. For an unreleased build, give the commit.
       placeholder: e.g. 0.1.0
     validations:
       required: true

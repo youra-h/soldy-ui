@@ -19,7 +19,7 @@ import {
 	AccordionItem,
 	RadioGroup,
 	RadioGroupItem,
-} from '@soldy-ui/vue'
+} from '@soxa-ui/vue'
 import Harness from './Parts.test.vue'
 
 describe('точка и плоское имя — один компонент', () => {

@@ -1,5 +1,5 @@
-import type { IToastsApi, IToastsItem } from '@soldy-ui/core'
-import { TOASTS_ELEVATOR } from '@soldy-ui/setup'
+import type { IToastsApi, IToastsItem } from '@soxa-ui/core'
+import { TOASTS_ELEVATOR } from '@soxa-ui/setup'
 import { createWebcElevator } from '../elevator'
 
 /** Своё содержимое тоста: функция получает тост и отдаёт узел. Ядро держит его как `unknown`. */

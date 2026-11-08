@@ -9,7 +9,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TCalendarKeyboardPlugin } from '@soldy-ui/plugins'
+import { TCalendarKeyboardPlugin } from '@soxa-ui/plugins'
 
 export const CalendarKeyboardPluginDescriptor = definePlugin({
 	ctor: TCalendarKeyboardPlugin,

@@ -3,8 +3,8 @@
  * — слоты `leading` и `trailing`. docs/architecture.md, Layer 8d, «Поле».
  */
 
-import { InputDescriptor } from '@soldy-ui/setup'
-import type { IInput } from '@soldy-ui/core'
+import { InputDescriptor } from '@soxa-ui/setup'
+import type { IInput } from '@soxa-ui/core'
 import { ElementBase, defineElement } from '../../adapter'
 import type { TElementClassOf, TElementType } from '../../adapter'
 import { inputTemplate } from './input.template'

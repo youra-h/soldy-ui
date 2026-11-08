@@ -8,8 +8,8 @@ import {
 	TPlainExtension,
 	TWindowStrategy,
 	createEngineSelection,
-} from '@soldy-ui/core'
-import type { TDrawnEntry, TDrawnSection, TQueryEvent } from '@soldy-ui/core'
+} from '@soxa-ui/core'
+import type { TDrawnEntry, TDrawnSection, TQueryEvent } from '@soxa-ui/core'
 
 /**
  * Рисование коллекции (`draw`) — что коллекция рисует из показанных

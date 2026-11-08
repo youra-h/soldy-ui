@@ -12,10 +12,10 @@
 import { describe, it, expect, afterEach } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { h, nextTick } from 'vue'
-import { TSlider } from '@soldy-ui/core'
-import type { ISliderProps, TSliderValue } from '@soldy-ui/core'
-import type { DescriptorSlots, SliderDescriptor } from '@soldy-ui/setup'
-import { Label, Slider } from '@soldy-ui/vue'
+import { TSlider } from '@soxa-ui/core'
+import type { ISliderProps, TSliderValue } from '@soxa-ui/core'
+import type { DescriptorSlots, SliderDescriptor } from '@soxa-ui/setup'
+import { Label, Slider } from '@soxa-ui/vue'
 
 type TMarkScope = DescriptorSlots<typeof SliderDescriptor>['mark']
 type TThumbScope = DescriptorSlots<typeof SliderDescriptor>['thumb']

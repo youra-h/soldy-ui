@@ -3,8 +3,8 @@
 	 * Тестовая обёртка: своя кнопка очистки в слоте `clear`. Команду очистки
 	 * кнопка берёт из scope и зовёт голой функцией.
 	 */
-	import type { TInput } from '@soldy-ui/core'
-	import { Input } from '@soldy-ui/svelte'
+	import type { TInput } from '@soxa-ui/core'
+	import { Input } from '@soxa-ui/svelte'
 
 	const { ctrl, clearable = false }: { ctrl?: TInput; clearable?: boolean } = $props()
 </script>

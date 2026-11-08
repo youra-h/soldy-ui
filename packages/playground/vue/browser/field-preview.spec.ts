@@ -16,14 +16,14 @@
 
 import { describe, it, expect, beforeEach } from 'vitest'
 import { page, userEvent } from 'vitest/browser'
-import { useIcons, useTheme } from '@soldy-ui/setup'
-import * as material from '@soldy-ui/icons-material'
-import type { TFieldPosition } from '@soldy-ui/core'
+import { useIcons, useTheme } from '@soxa-ui/setup'
+import * as material from '@soxa-ui/icons-material'
+import type { TFieldPosition } from '@soxa-ui/core'
 import { router } from '../src/router'
 import { renderStand } from './stand'
 
-import '@soldy-ui/theme-oren'
-import oren from '@soldy-ui/theme-oren/setup'
+import '@soxa-ui/theme-oren'
+import oren from '@soxa-ui/theme-oren/setup'
 import '../src/styles.css'
 
 useIcons(material)

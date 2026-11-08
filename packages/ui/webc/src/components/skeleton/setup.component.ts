@@ -1,5 +1,5 @@
-import { SkeletonDescriptor } from '@soldy-ui/setup'
-import type { ISkeleton } from '@soldy-ui/core'
+import { SkeletonDescriptor } from '@soxa-ui/setup'
+import type { ISkeleton } from '@soxa-ui/core'
 import { createWebcAdapterContext, useAdapter } from '../../adapter'
 import type { TBinding, TUpdateListener } from '../../adapter'
 

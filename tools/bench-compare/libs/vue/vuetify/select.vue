@@ -2,7 +2,7 @@
 import { VAutocomplete } from 'vuetify/components/VAutocomplete'
 import { COLLECTION_ITEMS } from '../../../data'
 
-/** Select with typing and filtering — `VAutocomplete`, as the soldy `editable` preview. */
+/** Select with typing and filtering — `VAutocomplete`, as the soxa `editable` preview. */
 defineOptions({ name: 'VuetifySelectPage' })
 </script>
 

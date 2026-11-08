@@ -4,8 +4,8 @@
  * (`percentStyle`) база кладёт на корень стиль-выходом.
  */
 
-import { ProgressLinearDescriptor } from '@soldy-ui/setup'
-import type { IProgressLinear } from '@soldy-ui/core'
+import { ProgressLinearDescriptor } from '@soxa-ui/setup'
+import type { IProgressLinear } from '@soxa-ui/core'
 import { ElementBase, defineElement } from '../../adapter'
 import type { TElementClassOf, TElementType } from '../../adapter'
 import { progressLinearTemplate } from './progress-linear.template'

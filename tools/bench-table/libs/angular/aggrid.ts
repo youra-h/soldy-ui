@@ -20,7 +20,7 @@ ModuleRegistry.registerModules([AllCommunityModule])
  * умолчанию, и строк он рисует не больше 500; без флага `virtual` всё это
  * выключено (`suppressRowVirtualisation`, `suppressColumnVirtualisation`,
  * `suppressMaxRenderedRowRestriction`), а высота — по строкам (`domLayout:
- * 'autoHeight'`). С флагом — грид высотой 800 px, как окно soldy.
+ * 'autoHeight'`). С флагом — грид высотой 800 px, как окно soxa.
  */
 const virtual = new URLSearchParams(location.search).get('virtual') === '1'
 

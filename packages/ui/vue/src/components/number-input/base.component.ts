@@ -1,7 +1,7 @@
 import { useEmits, useProps } from '../../adapter'
 import type { TEmits, TProps, UseProps } from '../../types/common'
-import { NumberInputDescriptor } from '@soldy-ui/setup'
-import type { INumberInput } from '@soldy-ui/core'
+import { NumberInputDescriptor } from '@soxa-ui/setup'
+import type { INumberInput } from '@soxa-ui/core'
 
 export const emitsNumberInput: TEmits = useEmits(NumberInputDescriptor())
 

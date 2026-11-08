@@ -1,4 +1,4 @@
-import type { IElevatorKey, TElevatorFactory } from '@soldy-ui/setup'
+import type { IElevatorKey, TElevatorFactory } from '@soxa-ui/setup'
 import { TWebcElevator } from './elevator.class'
 
 /** Фабрика на хост: место значения у Web Components — сам элемент. */

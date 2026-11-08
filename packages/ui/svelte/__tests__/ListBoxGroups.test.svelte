@@ -4,8 +4,8 @@
 	 * «Сок» под ней, группы в `groups` не заявлены. Движок — снаружи: по нему
 	 * тест читает секции. Смена подписи в `reactiveProps` — перерисовка родителя.
 	 */
-	import { ListBox } from '@soldy-ui/svelte'
-	import type { TListBoxCollection } from '@soldy-ui/core'
+	import { ListBox } from '@soxa-ui/svelte'
+	import type { TListBoxCollection } from '@soxa-ui/core'
 
 	type THarnessProps = {
 		/** Движок списка. */

@@ -6,7 +6,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TTabsContentWarnPlugin } from '@soldy-ui/plugins'
+import { TTabsContentWarnPlugin } from '@soxa-ui/plugins'
 
 export const TabsContentWarnPluginDescriptor = definePlugin({
 	ctor: TTabsContentWarnPlugin,

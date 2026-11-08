@@ -9,8 +9,8 @@
  * AGENTS.md (Web Components), «Поддерево».
  */
 
-import type { IMenuPopoverItem, TMenuItemCollectionFacade } from '@soldy-ui/core'
-import { DEFAULT_SLOT } from '@soldy-ui/setup'
+import type { IMenuPopoverItem, TMenuItemCollectionFacade } from '@soxa-ui/core'
+import { DEFAULT_SLOT } from '@soxa-ui/setup'
 import { bind, createDetail, lend, ownerAttributes, type ITemplate } from '../../../adapter'
 import { TFrameElement, type TFrameElementProps } from '../../frame'
 import type { TIconElementProps } from '../../icon'
@@ -95,7 +95,7 @@ export const menuPopoverItemTemplate: ITemplate<
 		}),
 
 		// `lazyMount` — только на слот: обёртка остаётся, а содержимое до первого
-		// открытия вне документа, и элементы soldy в нём не собираются
+		// открытия вне документа, и элементы soxa в нём не собираются
 		bind('contentRendered', ({ state, showSlot }) => {
 			showSlot(DEFAULT_SLOT, state.contentRendered === true)
 		}),

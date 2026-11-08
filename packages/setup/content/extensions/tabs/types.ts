@@ -2,7 +2,7 @@
  * Options of the Tabs panel's binding to its tab: the panel's adapter and the lift to the owner's engine.
  */
 
-import type { ITabsContent } from '@soldy-ui/core'
+import type { ITabsContent } from '@soxa-ui/core'
 import type { TElevatorFactory } from '../../../protected/adapter/elevator'
 import type { TMemberAdapter } from '../collection'
 

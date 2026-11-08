@@ -21,13 +21,13 @@ import {
 	TTabsContentComponent,
 	TTabsItemComponent,
 	TTagsComponent,
-} from '@soldy-ui/angular'
+} from '@soxa-ui/angular'
 import {
 	COLLECTION_ITEMS,
 	TABLE_COLUMNS,
 	TABLE_ROWS,
 	TABLE_SCROLL_ROWS,
-} from '@soldy-ui/playground-shared'
+} from '@soxa-ui/playground-shared'
 import { CopyDirective } from './copy.directive'
 import { PartDirective } from './part.directive'
 import type { TFixture } from './fixtures'

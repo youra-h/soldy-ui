@@ -15,7 +15,7 @@ import {
 	TSelectCollectionFacade,
 	createEngineSelect,
 } from '../src'
-import type { ITagsItem } from '@soldy-ui/core'
+import type { ITagsItem } from '@soxa-ui/core'
 
 describe('свойство overflow', () => {
 	it('по умолчанию wrap — поведение ряда не меняется', () => {

@@ -10,9 +10,9 @@
 
 import { describe, it, expect, vi } from 'vitest'
 import { createSignal, type JSX } from 'solid-js'
-import { TIcon } from '@soldy-ui/core'
-import { getIcon } from '@soldy-ui/setup'
-import { Icon, roleIcon } from '@soldy-ui/solid'
+import { TIcon } from '@soxa-ui/core'
+import { getIcon } from '@soxa-ui/setup'
+import { Icon, roleIcon } from '@soxa-ui/solid'
 import { find, mount, nextFrame } from './mount'
 
 /**

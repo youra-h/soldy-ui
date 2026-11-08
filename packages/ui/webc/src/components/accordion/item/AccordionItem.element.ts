@@ -4,8 +4,8 @@
  * «Коллекция».
  */
 
-import { AccordionCollectionItemDescriptor, AccordionItemDescriptor } from '@soldy-ui/setup'
-import type { IAccordionItem, TAccordionItemCollectionFacade } from '@soldy-ui/core'
+import { AccordionCollectionItemDescriptor, AccordionItemDescriptor } from '@soxa-ui/setup'
+import type { IAccordionItem, TAccordionItemCollectionFacade } from '@soxa-ui/core'
 import { ElementBase } from '../../../adapter'
 import type { TElementClassOf, TElementType } from '../../../adapter'
 import { accordionItemTemplate } from './accordion-item.template'

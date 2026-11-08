@@ -1,5 +1,5 @@
-import { DatePickerDescriptor, TFieldControlExtension } from '@soldy-ui/setup'
-import type { IDatePicker } from '@soldy-ui/core'
+import { DatePickerDescriptor, TFieldControlExtension } from '@soxa-ui/setup'
+import type { IDatePicker } from '@soxa-ui/core'
 import { AngularElevatorFactory, createAngularAdapterContext, useAdapter } from '../../adapter'
 import type { TBinding } from '../../adapter'
 

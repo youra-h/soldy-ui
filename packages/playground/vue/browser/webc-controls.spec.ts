@@ -18,15 +18,15 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { render, cleanup } from './render'
 import { userEvent } from 'vitest/browser'
 import { defineComponent, h, nextTick } from 'vue'
-import { Pagination, ProgressLinear, Rating, Scroller, Slider } from '@soldy-ui/vue'
+import { Pagination, ProgressLinear, Rating, Scroller, Slider } from '@soxa-ui/vue'
 import {
 	TRatingElement,
 	TSliderElement,
 	type TRatingElementProps,
 	type TSliderElementProps,
-} from '@soldy-ui/webc'
+} from '@soxa-ui/webc'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 const nextFrame = () => new Promise<void>((resolve) => requestAnimationFrame(() => resolve()))
 

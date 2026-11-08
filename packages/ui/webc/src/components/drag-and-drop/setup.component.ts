@@ -1,5 +1,5 @@
-import { DragAndDropDescriptor, TDragAndDropExtension } from '@soldy-ui/setup'
-import type { IDragAndDrop } from '@soldy-ui/core'
+import { DragAndDropDescriptor, TDragAndDropExtension } from '@soxa-ui/setup'
+import type { IDragAndDrop } from '@soxa-ui/core'
 import { createWebcAdapterContext, useAdapter } from '../../adapter'
 import type { TBinding, TUpdateListener } from '../../adapter'
 import { createWebcElevator } from '../../adapter/elevator'

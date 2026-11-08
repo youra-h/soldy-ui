@@ -18,9 +18,9 @@ import { describe, it, expect, afterEach } from 'vitest'
 import { render, cleanup } from './render'
 import { userEvent } from 'vitest/browser'
 import { defineComponent, h, nextTick, type VNode } from 'vue'
-import { TRating, TSlider } from '@soldy-ui/core'
-import type { IRatingProps, ISliderProps, TComponentSize } from '@soldy-ui/core'
-import { COMPONENT_SIZES } from '@soldy-ui/playground-shared'
+import { TRating, TSlider } from '@soxa-ui/core'
+import type { IRatingProps, ISliderProps, TComponentSize } from '@soxa-ui/core'
+import { COMPONENT_SIZES } from '@soxa-ui/playground-shared'
 import {
 	Button,
 	Pagination,
@@ -29,9 +29,9 @@ import {
 	Scroller,
 	Skeleton,
 	Slider,
-} from '@soldy-ui/vue'
+} from '@soxa-ui/vue'
 
-import '@soldy-ui/theme-base'
+import '@soxa-ui/theme-base'
 
 /** Допуск на субпиксельное округление координат, px. */
 const EPSILON = 0.5

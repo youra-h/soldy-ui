@@ -8,7 +8,7 @@
  */
 
 import { defineComponent, defineDescriptor } from '../../../protected/define'
-import { TVirtual } from '@soldy-ui/core'
+import { TVirtual } from '@soxa-ui/core'
 import { ComponentDescriptor } from './component.descriptor'
 
 export const VirtualDescriptor = defineDescriptor(() =>

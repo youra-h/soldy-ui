@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { resolveEdges } from '@soldy-ui/plugins'
+import { resolveEdges } from '@soxa-ui/plugins'
 
 /**
  * Края ленты — счёт без DOM.

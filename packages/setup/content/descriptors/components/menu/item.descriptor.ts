@@ -11,8 +11,8 @@
  */
 
 import { defineComponent, defineDescriptor, defineType } from '../../../../protected/define'
-import { TMenuItem } from '@soldy-ui/core'
-import { rowIn } from '@soldy-ui/plugins'
+import { TMenuItem } from '@soxa-ui/core'
+import { rowIn } from '@soxa-ui/plugins'
 import { ValueControlDescriptor } from '../value-control.descriptor'
 import { ActionPluginDescriptor, ListItemPluginDescriptor } from '../../plugins'
 

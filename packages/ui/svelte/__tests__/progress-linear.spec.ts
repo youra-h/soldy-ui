@@ -12,8 +12,8 @@
 
 import { describe, it, expect } from 'vitest'
 import { createRawSnippet, flushSync } from 'svelte'
-import { TProgressLinear } from '@soldy-ui/core'
-import { ProgressLinear, type ProgressLinearProps } from '@soldy-ui/svelte'
+import { TProgressLinear } from '@soxa-ui/core'
+import { ProgressLinear, type ProgressLinearProps } from '@soxa-ui/svelte'
 import { mount } from './mount'
 import { reactiveProps } from './reactive-props.svelte'
 

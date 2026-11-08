@@ -6,7 +6,7 @@
 
 ## Версии пакетов
 
-Библиотечные пакеты `@soldy-ui/*` — всё, что уходит в npm: ядро, `setup`,
+Библиотечные пакеты `@soxa-ui/*` — всё, что уходит в npm: ядро, `setup`,
 `plugins`, адаптеры по фреймворкам (`vue`, `react`, `angular`, `svelte`,
 `solid`, `webc`), общий слой тем (`theme-base`), тема oren и иконки.
 **Библиотека — ядро, `setup`, `plugins` и адаптеры — идёт одной версией.**
@@ -36,7 +36,7 @@
   диапазон (ниже). У корневого `package.json` версии нет: changesets двигает
   только пакеты воркспейса, и версия корня после первого же выпуска стала бы
   устаревшей копией;
-- **стенд (`@soldy-ui/playground-*`) — в `ignore`**: это инструмент, а не
+- **стенд (`@soxa-ui/playground-*`) — в `ignore`**: это инструмент, а не
   библиотека, он не выпускается и метаданных пакета не несёт. Новый стенд
   вносится в `ignore`, новый пакет библиотеки — в `fixed`, новая тема и новый
   пакет иконок — никуда. В обоих списках
@@ -104,8 +104,8 @@ changeset по нему:
 интерактивные вопросы:
 
 ```bash
-npm run changeset -- --patch @soldy-ui/core,@soldy-ui/setup -m "Select: the panel closes on Escape"
-npm run changeset -- --minor @soldy-ui/vue -m "Tabs: prop \`closeable\` renamed to \`closable\` — rename it in your templates"
+npm run changeset -- --patch @soxa-ui/core,@soxa-ui/setup -m "Select: the panel closes on Escape"
+npm run changeset -- --minor @soxa-ui/vue -m "Tabs: prop \`closeable\` renamed to \`closable\` — rename it in your templates"
 npm run changeset -- --empty
 ```
 
@@ -164,7 +164,7 @@ changeset'ы выпуск уже удалил, и она бы его урони�
 версии в npm нет (`npx changeset publish --tag latest`, с provenance, под тегом `latest`),
 пушит теги пакетов и
 заводит один GitHub Release на выпуск: `v<версия>` библиотеки, а без неё — на
-теге первого пакета (`@soldy-ui/theme-base@0.3.1`). Заметки собирает
+теге первого пакета (`@soxa-ui/theme-base@0.3.1`). Заметки собирает
 `tools/release-notes` по разделу своей версии у каждого пакета: пакет вне
 библиотеки назван с версией, пунктов мало — они в самих заметках, много —
 ссылками на `CHANGELOG.md` пакетов. Все версии уже в npm — шаги пропущены.
@@ -191,7 +191,7 @@ changeset'ы выпуск уже удалил, и она бы его урони�
 `license` рядом лежит непустой `LICENSE-<идентификатор>`, внесённый в `files`,
 а текста лицензии, не названной в `license`, в `files` нет.
 Тема и пакет иконок (`packages/themes/*`, `packages/icons/*`) объявляют пакет
-библиотеки диапазоном `^<версия>`, любой другой сосед `@soldy-ui/*` в любом
+библиотеки диапазоном `^<версия>`, любой другой сосед `@soxa-ui/*` в любом
 поле зависимостей объявлен точной `<его версией>`. У библиотеки версия одна, у
 тем и иконок — своя, у корня её нет; `fixed` — одна группа ровно из пакетов
 библиотеки, без тем и иконок; каждое имя из `ignore` — пакет воркспейса; ни
@@ -237,7 +237,7 @@ PnP, видно только объявленное. Так адаптер Angul
 — выпуск библиотеки, с которым тема вышла (см. выше), и проверили её задачи
 того выпуска. Версия библиотеки в воркспейсе не бывает ниже этой границы, а
 прежняя версия из npm подменила бы те самые пакеты, которые прогон проверяет.
-Матрицу составляет peer на чужой пакет (не `@soldy-ui/*`) — он есть только у
+Матрицу составляет peer на чужой пакет (не `@soxa-ui/*`) — он есть только у
 адаптеров.
 
 Что подменяется, выводит `tools/min-peers/` из манифеста адаптера и дерева
@@ -290,7 +290,7 @@ peer-версиями. Перед спеками проверяется, что 
 `packages/ui/svelte/__tests__/hydration/global-setup.ts`).
 
 Локально — те же шаги:
-`node tools/min-peers/cli.ts list|pin|verify @soldy-ui/<адаптер>`, затем
+`node tools/min-peers/cli.ts list|pin|verify @soxa-ui/<адаптер>`, затем
 `npm run test:<адаптер>`. `pin` правит манифест корня и lock, и правка не
 коммитится: до правки `pin` сохраняет оба файла в `.min-peers/` (каталог — в
 `.gitignore`), а `node tools/min-peers/cli.ts restore` возвращает их оттуда
@@ -317,7 +317,7 @@ lock, с которой граница поднимается. Копия уже
 приложения, тоже три; у адаптеров Svelte и Angular — один проход своего
 инструмента, см. ниже).
 
-Исключение одно — CSS общего слоя тем `@soldy-ui/theme-base`: он чистый и
+Исключение одно — CSS общего слоя тем `@soxa-ui/theme-base`: он чистый и
 уезжает исходником (`exports["."]` и `style` ведут в `src/index.css`) —
 компилировать в нём нечего, и сторож манифестов принимает такие точки входа
 как файлы пакета. Тема вшивает его в свой `dist`. Поведение базы — плагины
@@ -330,20 +330,20 @@ lock, с которой граница поднимается. Копия уже
 
 ```bash
 npm run build                                    # все пакеты, по зависимостям
-npm run build --workspace=@soldy-ui/core         # vite build, затем tsc
-npm run build --workspace=@soldy-ui/solid        # vite build, tsc, затем исходник с JSX (tsc)
-npm run build --workspace=@soldy-ui/svelte       # svelte-package: .svelte как есть + .d.ts
-npm run build --workspace=@soldy-ui/angular      # ng-packagr: частичная форма и .d.ts
+npm run build --workspace=@soxa-ui/core         # vite build, затем tsc
+npm run build --workspace=@soxa-ui/solid        # vite build, tsc, затем исходник с JSX (tsc)
+npm run build --workspace=@soxa-ui/svelte       # svelte-package: .svelte как есть + .d.ts
+npm run build --workspace=@soxa-ui/angular      # ng-packagr: частичная форма и .d.ts
 ```
 
 - **JS собирает Vite** по общей фабрике `tools/vite/lib.config.ts`: вход,
   `dist`, `formats: ['es']`, соседи по скоупу — external. Четыре копии одного
-  конфига разъехались бы: `external: [/^@soldy\//]` у адаптера Vue пережил
+  конфига разъехались бы: `external: [/^@soxa\//]` у адаптера Vue пережил
   переименование скоупа и перестал совпадать хоть с чем-нибудь. Подпути
   `exports` с кодом — тоже входы бандла (`subpaths: true`, у адаптера Web
   Components — вход каждого элемента): модуль, который не вход, держит только
   экспорты, которые у него берут другие модули, и `toastsOf`, который корень
-  берёт другим путём, из `@soldy-ui/webc/toasts` выпадал. Исходник подпути
+  берёт другим путём, из `@soxa-ui/webc/toasts` выпадал. Исходник подпути
   фабрика выводит из цели (`subpathSources`: `dist/X.js` собран из
   `src/X.ts`), этой же функцией алиасы подпутей строят тесты и стенд
   сравнения.
@@ -416,7 +416,7 @@ npm run build --workspace=@soldy-ui/angular      # ng-packagr: частична�
   вместо значения пришёл бы и каждый помощник. Второй — модуль частей: кроме
   импортов и экспортов в нём только объявления
   `X = withParts(<имя>, { <ключ>: <имя>, … })`, а `withParts` импортирован из
-  `@soldy-ui/setup`. На сервере его импорты из клиентских модулей — ссылки, а
+  `@soxa-ui/setup`. На сервере его импорты из клиентских модулей — ссылки, а
   `withParts` (это `Object.assign`, React ему не нужен) вешает на ссылку
   владельца ссылки частей: серверный компонент пишет части через точку
   (`Tabs.Item`), как клиентский. Аргументы — только имена: любой другой вызов
@@ -434,7 +434,7 @@ npm run build --workspace=@soldy-ui/angular      # ng-packagr: частична�
   каждого собранного пакета с `react` в `peerDependencies` директива стоит у
   каждого клиентского модуля, достижимого от его входов, и только у них, вход
   — серверный модуль, и модуль частей серверный: каждый модуль, который
-  импортирует `withParts` из `@soldy-ui/setup`, не клиентский. Что часть через
+  импортирует `withParts` из `@soxa-ui/setup`, не клиентский. Что часть через
   точку доходит до серверного компонента, проверяет страница Next.js прогона
   установки (см. «Прогон установки»).
 - **Адаптер Angular собирает `ng-packagr`** — одним проходом, командой
@@ -448,12 +448,12 @@ npm run build --workspace=@soldy-ui/angular      # ng-packagr: частична�
   явно: с конфигом пакета без него `ng-packagr` собирает полную форму. `paths`
   у конфига пустой, как у всех: соседи и в коде, и в декларациях — по имени
   пакета. Формат выхода задаёт **Angular Package Format**, и «модуль на модуль»
-  к нему неприменим: один FESM (`dist/fesm2022/soldy-ui-angular.mjs` — ESM, без
+  к нему неприменим: один FESM (`dist/fesm2022/soxa-ui-angular.mjs` — ESM, без
   минификации) и декларации, свёрнутые в один файл
-  (`dist/types/soldy-ui-angular.d.ts`), — такой пакет и ждёт Angular CLI
+  (`dist/types/soxa-ui-angular.d.ts`), — такой пакет и ждёт Angular CLI
   потребителя. Соседи лежат в `dependencies`, а `ng-packagr` пропускает там
   только `tslib`, поэтому в `ng-package.json` —
-  `allowedNonPeerDependencies: ["^@soldy-ui/"]`.
+  `allowedNonPeerDependencies: ["^@soxa-ui/"]`.
 - **У манифеста Angular нет `exports`.** `ng-packagr` строит свой манифест
   выхода из нашего и `exports["."]` пишет сам: наши условия `types` и
   `default` для него — конфликт, строку он перетирает. Точки входа — `main` и
@@ -526,7 +526,7 @@ npm run build --workspace=@soldy-ui/angular      # ng-packagr: частична�
   продакшен-сборке, где его выбросили. `true` — у адаптера Web Components:
   импорт определяет элементы (`defineElement` в модуле каждого элемента), и
   это его контракт. Корень пакета определяет все, вход элемента
-  (`@soldy-ui/webc/button`) — свой элемент и то, что рисует его разметка:
+  (`@soxa-ui/webc/button`) — свой элемент и то, что рисует его разметка:
   сборщик берёт граф модулей входа, а не весь пакет (кнопка — 67 КБ gzip
   вместе с CSS темы против 190 с корнем, benchmarks/compare/webc.md, «вход на
   элемент»; packages/ui/webc/AGENTS.md, «Входы элементов»). Перечислить
@@ -543,7 +543,7 @@ npm run build --workspace=@soldy-ui/angular      # ng-packagr: частична�
   `<script module>` и импорты экземпляра), ничего не делают на импорте;
   импорт без имён пакета с `true` оставляет каждый модуль с эффектом; сборка
   одной кнопки любого адаптера — у Web Components входом
-  `@soldy-ui/webc/button` — не содержит модулей Table и Calendar; у Web
+  `@soxa-ui/webc/button` — не содержит модулей Table и Calendar; у Web
   Components вход есть у каждого компонента, чей модуль элемента
   регистрирует при импорте, и у провайдера локали, а полифил встроенных
   элементов достаётся каждому модулю элемента его импортами. Сборщик —
@@ -564,17 +564,17 @@ npm run build --workspace=@soldy-ui/angular      # ng-packagr: частична�
 читает.
 
 Свой пакет — тоже исходниками. Тесты импортируют его по имени
-(`import { Button } from '@soldy-ui/vue'`), и у пакета, чей `tsconfig.json`
+(`import { Button } from '@soxa-ui/vue'`), и у пакета, чей `tsconfig.json`
 берёт в программу `__tests__`, в `paths` есть ссылка на себя — в исходники:
-`"@soldy-ui/vue": ["./src/index.ts"]`. Без неё имя уходило через
+`"@soxa-ui/vue": ["./src/index.ts"]`. Без неё имя уходило через
 `node_modules` в манифест: без сборки «Типы — Vue» падали на «модуль не
 найден», а со старой сборкой молча сверяли тесты с устаревшими типами.
 Каталог с манифестом (`"."`, как было у setup) ведёт туда же, только
 незаметно: пока `dist` нет, TypeScript откатывается на `index.ts` рядом.
 Ссылка нужна каждому входу с типами: корню — с условием `types` в
 `exports["."]` или с полем `types` манифеста — и каждому подпути с условием
-`types`. У темы oren их две: `"@soldy-ui/theme-oren": ["./index.d.ts"]` и
-`"@soldy-ui/theme-oren/setup": ["./setup/index.ts"]`. Входу без типов ссылка
+`types`. У темы oren их две: `"@soxa-ui/theme-oren": ["./index.d.ts"]` и
+`"@soxa-ui/theme-oren/setup": ["./setup/index.ts"]`. Входу без типов ссылка
 не нужна: корень общего слоя тем — CSS, по имени TypeScript его не разрешает,
 и у базы ссылка одна — на поведение, `./setup`. Сторожит
 `packages/setup/__tests__/package-builds.spec.ts`: имя каждого входа с типами
@@ -628,7 +628,7 @@ SvelteKit с `adapter-node`, SolidStart и Angular SSR. Каждый — ста�
 как пользователь, который создаёт проект сегодня. Нижние границы peer
 проверяет «Минимальные версии», а этот прогон — верхний край. Библиотеку
 проект называет, как пользователь, — адаптер, тему oren, иконки Material и
-`@soldy-ui/setup` для `useIcons` и `useTheme`, — под заглушкой `"*"`; её
+`@soxa-ui/setup` для `useIcons` и `useTheme`, — под заглушкой `"*"`; её
 прогон заменяет на тарболлы и добавляет в `dependencies` остальное замыкание
 пакетов библиотеки: оставленный npm пакет пришёл бы из реестра. Страница у
 всех одна: кнопка `variant="accent"` открывает Dialog, рядом Input, Select
@@ -650,7 +650,7 @@ SvelteKit с `adapter-node`, SolidStart и Angular SSR. Каждый — ста�
 - **Angular**: лист темы — `@import` в `src/styles.css`, а не `import` в
   `main.ts`. CSS из модуля TS Angular CLI кладёт в кусок, который страница не
   грузит, и тема молча не подключалась. У Angular и Angular SSR это листы
-  компонентов страницы (`@soldy-ui/theme-oren/button.css` и соседи,
+  компонентов страницы (`@soxa-ui/theme-oren/button.css` и соседи,
   `packages/themes/oren/AGENTS.md`, «Слои: лист целиком и по компонентам»), а
   не лист целиком: с ним начальная загрузка больше порога ошибки бюджета нового
   проекта (1 МБ), с листами компонентов — укладывается
@@ -666,7 +666,7 @@ SvelteKit с `adapter-node`, SolidStart и Angular SSR. Каждый — ста�
 копилась бы.
 
 **Что проверяется**, по порядку; проект копируется из репозитория в папку
-прогона (`--dir`, по умолчанию `soldy-install-smoke` во временной папке
+прогона (`--dir`, по умолчанию `soxa-install-smoke` во временной папке
 системы) — внутри репозитория Node нашёл бы `node_modules` воркспейса выше
 проекта:
 
@@ -691,7 +691,7 @@ SvelteKit с `adapter-node`, SolidStart и Angular SSR. Каждый — ста�
    (`styles`, `css`), и значения туда приносят только декларации `./setup`
    (theming.md, «Оформление: значения объявляет тема»).
 3. **Сборка** — `npm run build`. Строка вывода установки, типов или сборки с
-   путём внутри поставленного пакета (`node_modules/@soldy-ui/…`) или
+   путём внутри поставленного пакета (`node_modules/@soxa-ui/…`) или
    предупреждение с именем пакета — тоже падение: о библиотеке в порядке
    чистому проекту сказать нечего.
 4. **Сервер**: проект без сервера прогон раздаёт сам из папки сборки, серверный

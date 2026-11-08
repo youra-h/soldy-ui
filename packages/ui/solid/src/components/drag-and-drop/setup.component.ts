@@ -1,4 +1,4 @@
-import { DragAndDropDescriptor, TDragAndDropExtension } from '@soldy-ui/setup'
+import { DragAndDropDescriptor, TDragAndDropExtension } from '@soxa-ui/setup'
 import { createSolidAdapterContext, useAdapter, useElevator } from '../../adapter'
 import type { DragAndDropProps } from './base.component'
 

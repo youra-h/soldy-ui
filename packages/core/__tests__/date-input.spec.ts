@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import { TChangeEvent, TDateInput } from '@soldy-ui/core'
+import { TChangeEvent, TDateInput } from '@soxa-ui/core'
 import type {
 	IDateInputProps,
 	TCalendarUnavailable,
@@ -7,7 +7,7 @@ import type {
 	TDateInputPart,
 	TDateInputSegment,
 	TTimePrecision,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 import { parseFieldText } from '../src/components/custom/date-input/date-time'
 import { fieldFormat } from '../src/components/custom/date-input/format'
 

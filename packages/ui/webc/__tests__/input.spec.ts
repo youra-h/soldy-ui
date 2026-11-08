@@ -16,9 +16,9 @@ import { propertyDetail } from './property-detail'
  */
 
 import { describe, it, expect, afterEach, vi } from 'vitest'
-import { TInput } from '@soldy-ui/core'
-import { TPluginBundle, ruRU, zhCN } from '@soldy-ui/plugins'
-import { InputDescriptor } from '@soldy-ui/setup'
+import { TInput } from '@soxa-ui/core'
+import { TPluginBundle, ruRU, zhCN } from '@soxa-ui/plugins'
+import { InputDescriptor } from '@soxa-ui/setup'
 import {
 	TButtonElement,
 	TIconElement,
@@ -26,7 +26,7 @@ import {
 	TLocaleProviderElement,
 	type TButtonElementProps,
 	type TInputElementProps,
-} from '@soldy-ui/webc'
+} from '@soxa-ui/webc'
 import { inputTemplate } from '../src/components/input/input.template'
 import { bareContext } from './template-context'
 
@@ -58,7 +58,7 @@ function markup(html: string): HTMLElement {
 	return host
 }
 
-/** Поле soldy из разметки, подключённое к документу; узел другой — тест падает здесь. */
+/** Поле soxa из разметки, подключённое к документу; узел другой — тест падает здесь. */
 function mount(html: string): TInputElementProps {
 	const host = markup(html)
 
@@ -67,7 +67,7 @@ function mount(html: string): TInputElementProps {
 	return input(host)
 }
 
-/** Поле soldy в разметке. */
+/** Поле soxa в разметке. */
 function input(root: ParentNode): TInputElementProps {
 	const node = root.querySelector('[is="so-input"]')
 
@@ -458,10 +458,10 @@ describe('Input · кнопка очистки', () => {
 	})
 
 	/**
-	 * Кнопка — деталь разметки поля: элемент soldy с именем места. Иконка в
+	 * Кнопка — деталь разметки поля: элемент soxa с именем места. Иконка в
 	 * ней — тоже деталь, по роли `close`.
 	 */
-	it('кнопка и иконка — элементы soldy с именами места', () => {
+	it('кнопка и иконка — элементы soxa с именами места', () => {
 		const el = mount('<div is="so-input" clearable></div>')
 		const button = clearOf(el)
 		const icon = button.querySelector('.so-icon')

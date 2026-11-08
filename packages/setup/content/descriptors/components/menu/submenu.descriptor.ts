@@ -17,9 +17,9 @@
  */
 
 import { defineComponent, defineDescriptor, defineType } from '../../../../protected/define'
-import { TMenuSubmenu } from '@soldy-ui/core'
-import type { IMenuItem } from '@soldy-ui/core'
-import { TMenuSubmenuKeyboardPlugin } from '@soldy-ui/plugins'
+import { TMenuSubmenu } from '@soxa-ui/core'
+import type { IMenuItem } from '@soxa-ui/core'
+import { TMenuSubmenuKeyboardPlugin } from '@soxa-ui/plugins'
 import { MenuItemDescriptor } from './item.descriptor'
 import {
 	CollectionBundlesPluginDescriptor,

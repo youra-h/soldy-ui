@@ -1,8 +1,8 @@
 import { computed, ref, watchEffect } from 'vue'
-import type { TLocale } from '@soldy-ui/plugins'
-import { LOCALES } from '@soldy-ui/playground-shared'
+import type { TLocale } from '@soxa-ui/plugins'
+import { LOCALES } from '@soxa-ui/playground-shared'
 
-const STORAGE_KEY = 'soldy-playground-locale'
+const STORAGE_KEY = 'soxa-playground-locale'
 
 /** Язык ли это из списка стенда — у значения из хранилища и из списка в шапке. */
 function isLanguage(value: unknown): value is string {

@@ -1,6 +1,6 @@
 import type { HTMLAttributes } from 'react'
-import type { IMenuRadioItem } from '@soldy-ui/core'
-import type { MenuCollectionRadioItemDescriptor, MenuRadioItemDescriptor } from '@soldy-ui/setup'
+import type { IMenuRadioItem } from '@soxa-ui/core'
+import type { MenuCollectionRadioItemDescriptor, MenuRadioItemDescriptor } from '@soxa-ui/setup'
 import type { EventProps, TDomAttributes, UseDomProps } from '../../../types'
 
 export type MenuRadioItemEventProps = EventProps<typeof MenuRadioItemDescriptor> &

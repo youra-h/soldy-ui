@@ -3,7 +3,7 @@
 	import { COLLECTION_ITEMS } from '../../../data'
 </script>
 
-<!-- Tabs and a panel per tab, as the soldy preview: «Панель «…»» -->
+<!-- Tabs and a panel per tab, as the soxa preview: «Панель «…»» -->
 <Tabs.Root value={COLLECTION_ITEMS[0].value}>
 	<Tabs.List>
 		{#each COLLECTION_ITEMS as item (item.value)}

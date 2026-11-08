@@ -8,7 +8,7 @@ export interface ISvelteSetup {
 
 /**
  * `count` copies of a page under one Svelte root wrapped in the library's
- * `Root`, flushed synchronously — as the soldy host does it. Returns the
+ * `Root`, flushed synchronously — as the soxa host does it. Returns the
  * unmount.
  */
 export function mountPage(

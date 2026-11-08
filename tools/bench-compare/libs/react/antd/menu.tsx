@@ -2,13 +2,13 @@ import { useState } from 'react'
 import { Button, Dropdown, type MenuProps } from 'antd'
 
 /**
- * The soldy menu preview in antd: a group of checkboxes, a group of radios,
+ * The soxa menu preview in antd: a group of checkboxes, a group of radios,
  * actions with shortcuts, a submenu with a submenu inside, a disabled action
  * and a destructive one. antd's menu has groups, submenus, `extra` and `danger`
  * but no checkbox or radio items: those are items with a mark that keep the
  * menu open — the way antd's docs keep a dropdown open on a menu click
  * (controlled `open`, `onOpenChange` with `source`). The trigger opens on
- * click, as the soldy one; antd's default is hover.
+ * click, as the soxa one; antd's default is hover.
  */
 const KEEP_OPEN = new Set(['grid', 'ruler', 'name', 'date'])
 

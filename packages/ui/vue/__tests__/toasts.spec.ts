@@ -16,13 +16,13 @@
 import { describe, it, expect, afterEach } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { defineComponent, h, nextTick, type VNode } from 'vue'
-import { createEngineTags, createEngineToasts } from '@soldy-ui/core'
-import type { IToastsItem, IToastsProps, TToastsItemType } from '@soldy-ui/core'
-import { ruRU } from '@soldy-ui/plugins'
-import { getIcon } from '@soldy-ui/setup'
-import type { TIconRole } from '@soldy-ui/setup'
-import { LocaleProvider, Tags, Toasts, useToasts } from '@soldy-ui/vue'
-import type { TToastRender } from '@soldy-ui/vue'
+import { createEngineTags, createEngineToasts } from '@soxa-ui/core'
+import type { IToastsItem, IToastsProps, TToastsItemType } from '@soxa-ui/core'
+import { ruRU } from '@soxa-ui/plugins'
+import { getIcon } from '@soxa-ui/setup'
+import type { TIconRole } from '@soxa-ui/setup'
+import { LocaleProvider, Tags, Toasts, useToasts } from '@soxa-ui/vue'
+import type { TToastRender } from '@soxa-ui/vue'
 
 const nextFrame = () => new Promise((resolve) => requestAnimationFrame(resolve))
 

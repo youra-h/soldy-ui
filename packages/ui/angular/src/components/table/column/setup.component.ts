@@ -1,5 +1,5 @@
-import { TableColumnDescriptor } from '@soldy-ui/setup'
-import type { ITableColumn } from '@soldy-ui/core'
+import { TableColumnDescriptor } from '@soxa-ui/setup'
+import type { ITableColumn } from '@soxa-ui/core'
 import { createAngularAdapterContext, useAdapter } from '../../../adapter'
 import type { TBinding } from '../../../adapter'
 

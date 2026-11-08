@@ -4,7 +4,7 @@
  * docs/architecture.md, Layer 8d, «Коллекция».
  */
 
-import type { IRadioGroup, IRadioGroupItem, TRadioGroupCollectionFacade } from '@soldy-ui/core'
+import type { IRadioGroup, IRadioGroupItem, TRadioGroupCollectionFacade } from '@soxa-ui/core'
 import {
 	TKeyedLoop,
 	bind,

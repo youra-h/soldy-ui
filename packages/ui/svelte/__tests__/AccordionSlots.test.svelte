@@ -4,8 +4,8 @@
 	 * content for one section at a time. A snippet with a hyphenated slot name
 	 * must be passed as an attribute in Svelte.
 	 */
-	import type { IAccordionItem } from '@soldy-ui/core'
-	import { Accordion } from '@soldy-ui/svelte'
+	import type { IAccordionItem } from '@soxa-ui/core'
+	import { Accordion } from '@soxa-ui/svelte'
 
 	type THarnessProps = {
 		case: 'first' | 'second'

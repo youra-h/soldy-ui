@@ -4,7 +4,7 @@ import { parseArgs } from 'node:util'
 import { startVitest } from 'vitest/node'
 
 /**
- * Сравнение вычисленных стилей частей soldy под двумя листами темы
+ * Сравнение вычисленных стилей частей soxa под двумя листами темы
  * (`packages/playground/AGENTS.md`, «Сравнение стилей»).
  *
  * ```bash
@@ -14,7 +14,7 @@ import { startVitest } from 'vitest/node'
  * «До» — копия собранного CSS темы, снятая до правки, вне отслеживаемых
  * файлов. «После» по умолчанию — нынешняя сборка темы
  * (`packages/themes/oren/dist/index.css`): перед прогоном её собирает
- * `npm run build:css --workspace=@soldy-ui/theme-oren`. Пути — от папки, из
+ * `npm run build:css --workspace=@soxa-ui/theme-oren`. Пути — от папки, из
  * которой запущен npm. Фреймворки стенда — через запятую, по умолчанию Vue и
  * Web Components; `--pages` — только страницы, чьё имя (`vue/button`)
  * подходит под выражение. Отчёт печатается в консоль и, с `--out`, пишется в

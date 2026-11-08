@@ -15,9 +15,9 @@
 import { describe, it, expect, afterEach, vi } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { defineComponent, h, nextTick, ref, type Ref, type VNode } from 'vue'
-import { Dialog, Drawer } from '@soldy-ui/vue'
-import { TDrawer } from '@soldy-ui/core'
-import type { IDrawerProps, TCloseEvent, TCloseReason } from '@soldy-ui/core'
+import { Dialog, Drawer } from '@soxa-ui/vue'
+import { TDrawer } from '@soxa-ui/core'
+import type { IDrawerProps, TCloseEvent, TCloseReason } from '@soxa-ui/core'
 
 const nextFrame = () => new Promise((resolve) => requestAnimationFrame(resolve))
 

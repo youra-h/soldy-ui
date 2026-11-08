@@ -5,7 +5,7 @@ import { resolve } from 'node:path'
 /**
  * Сторож «атрибуты узла разметки компонента Solid — от помощника адаптера»
  * (`packages/ui/solid/src/adapter/common/root.ts`, шапка, «Гидратация») живёт
- * своим правилом `soldy/solid-part-props` — блоком в `eslint.config.ts`, по
+ * своим правилом `soxa/solid-part-props` — блоком в `eslint.config.ts`, по
  * образцу `react-components-no-framework.spec.ts`. Тест линтит фрагменты
  * настоящим конфигом репозитория: опечатка в `files` отключила бы защиту
  * молча, и CI остался бы зелёным.
@@ -13,7 +13,7 @@ import { resolve } from 'node:path'
 
 const eslint = new ESLint({ cwd: resolve(__dirname, '../../..') })
 
-const RULE = 'soldy/solid-part-props'
+const RULE = 'soxa/solid-part-props'
 const COMPONENT = 'packages/ui/solid/src/components/__fixture__/Fixture.tsx'
 const ADAPTER = 'packages/ui/solid/src/adapter/common/__fixture__.tsx'
 

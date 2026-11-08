@@ -11,7 +11,7 @@
  */
 
 import { defineComponent, defineDescriptor } from '../../../../protected/define'
-import { TMenuRadioGroup } from '@soldy-ui/core'
+import { TMenuRadioGroup } from '@soxa-ui/core'
 import { MenuGroupDescriptor } from './group.descriptor'
 
 export const MenuRadioGroupDescriptor = defineDescriptor(() =>

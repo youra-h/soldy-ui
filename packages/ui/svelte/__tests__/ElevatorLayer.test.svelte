@@ -1,5 +1,5 @@
 <script module lang="ts">
-	import type { IElevatorKey } from '@soldy-ui/setup'
+	import type { IElevatorKey } from '@soxa-ui/setup'
 
 	/** Шаг сборки: `up` — взять значение ключа, `{ down }` — опустить своё. */
 	export type TElevatorStep = 'up' | { readonly down: string }
@@ -11,7 +11,7 @@
 	}
 
 	/** Ключ лифта теста — один на все уровни, как ключ коллекции меню. */
-	const KEY: IElevatorKey<string> = { name: 'soldy-test:elevator-layer' }
+	const KEY: IElevatorKey<string> = { name: 'soxa-test:elevator-layer' }
 </script>
 
 <script lang="ts">

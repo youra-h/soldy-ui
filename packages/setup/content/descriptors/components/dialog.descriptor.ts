@@ -11,7 +11,7 @@
  */
 
 import { defineComponent, defineDescriptor } from '../../../protected/define'
-import { TDialog } from '@soldy-ui/core'
+import { TDialog } from '@soxa-ui/core'
 import {
 	DialogIdsPluginDescriptor,
 	DialogLayoutPluginDescriptor,

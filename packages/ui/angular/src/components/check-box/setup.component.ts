@@ -1,5 +1,5 @@
-import { CheckBoxDescriptor, TFieldControlExtension } from '@soldy-ui/setup'
-import type { ICheckBox } from '@soldy-ui/core'
+import { CheckBoxDescriptor, TFieldControlExtension } from '@soxa-ui/setup'
+import type { ICheckBox } from '@soxa-ui/core'
 import { AngularElevatorFactory, createAngularAdapterContext, useAdapter } from '../../adapter'
 import type { TBinding } from '../../adapter'
 

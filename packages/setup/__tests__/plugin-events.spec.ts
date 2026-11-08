@@ -2,8 +2,8 @@
 
 import { describe, it, expect } from 'vitest'
 import { exportedDescriptors, CallbackProfile } from './helpers'
-import { TSurface, ControlDescriptor, SelectDescriptor } from '@soldy-ui/setup'
-import type { DescriptorAllEvents, IComponentDescriptor } from '@soldy-ui/setup'
+import { TSurface, ControlDescriptor, SelectDescriptor } from '@soxa-ui/setup'
+import type { DescriptorAllEvents, IComponentDescriptor } from '@soxa-ui/setup'
 
 /**
  * Имена событий в типах дескриптора: свои и плагинные. Из этой же карты React,

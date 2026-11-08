@@ -2,17 +2,17 @@ import type { TScenario } from '../bench-pages/scenarios'
 import { COMPARED } from './pages'
 
 /**
- * The neighbor page (`window.bench`) — the same surface as the soldy page of
+ * The neighbor page (`window.bench`) — the same surface as the soxa page of
  * `tools/bench-pages/bench.ts`, so one runner measures both: a component page
  * is N copies under one root of the framework, `all` is every compared
  * component once, each under its own root, `empty` is a root without
- * components. A scenario acts on the copies of the page the way the soldy
+ * components. A scenario acts on the copies of the page the way the soxa
  * scenario acts on its own, with the same number of actions
  * (benchmarks/compare/README.md, «Сценарии»).
  *
  * There is no locale switch: the neighbors take their strings from their own
- * providers, and the runner skips the locale step for soldy as well. Core
- * instances (`prototypes`) exist only on the soldy page.
+ * providers, and the runner skips the locale step for soxa as well. Core
+ * instances (`prototypes`) exist only on the soxa page.
  */
 
 /** Mounts `count` copies of a component on a node; returns the unmount. */

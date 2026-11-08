@@ -1,10 +1,10 @@
 import { describe, it, expect } from 'vitest'
 import { readFileSync, readdirSync, statSync } from 'node:fs'
 import { join, resolve, relative, sep } from 'node:path'
-import { TButton } from '@soldy-ui/core'
+import { TButton } from '@soxa-ui/core'
 
 /**
- * Сторож признака `embedded`: компонент soldy, который разметка библиотеки
+ * Сторож признака `embedded`: компонент soxa, который разметка библиотеки
  * использует как деталь другого компонента (строка и крестик тега, поле и
  * список Select), несёт имя места.
  *
@@ -33,7 +33,7 @@ import { TButton } from '@soldy-ui/core'
  * — код, и `type` своей детали он ставит помощником `createDetail`
  * (`attributes`).
  *
- * Компонентом soldy считается тег с именем папки компонента (`Button`,
+ * Компонентом soxa считается тег с именем папки компонента (`Button`,
  * `so-button`) или с её префиксом (`TagsItem`), а в Angular — ещё и атрибут
  * `so-<имя>` на обычном теге: корень там — сам элемент потребителя
  * (`<button so-button>`), и по имени тега его не узнать. Сканируется
@@ -63,7 +63,7 @@ function adapters(): { adapter: string; dir: string }[] {
 		})
 }
 
-/** Имена компонентов soldy — папки компонентов всех адаптеров. */
+/** Имена компонентов soxa — папки компонентов всех адаптеров. */
 function componentNames(): string[] {
 	const names = new Set<string>()
 
@@ -145,7 +145,7 @@ function componentOf(name: string, opening: string): string | null {
 	return /\s(so-[a-z-]+)(?=[\s=/>])/.exec(attributes)?.[1] ?? null
 }
 
-/** Компонент soldy в разметке. */
+/** Компонент soxa в разметке. */
 type TMarkupComponent = {
 	/** Как его назвала разметка: `Button`, `so-icon`, `so-button` (атрибут Angular). */
 	readonly raw: string
@@ -157,7 +157,7 @@ type TMarkupComponent = {
 	readonly opening: string
 }
 
-/** Компоненты soldy в разметке, без комментариев. */
+/** Компоненты soxa в разметке, без комментариев. */
 function* componentsOf(source: string): Generator<TMarkupComponent> {
 	const code = stripComments(source)
 
@@ -173,7 +173,7 @@ function* componentsOf(source: string): Generator<TMarkupComponent> {
 	}
 }
 
-/** Вложенные компоненты soldy без признака: `тег` для отчёта. */
+/** Вложенные компоненты soxa без признака: `тег` для отчёта. */
 function findUnmarked(source: string, owner: string, names: readonly string[]): string[] {
 	const found: string[] = []
 

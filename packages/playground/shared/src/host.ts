@@ -1,5 +1,5 @@
-import type { TLocale } from '@soldy-ui/plugins'
-import type { IComponentDescriptor } from '@soldy-ui/setup'
+import type { TLocale } from '@soxa-ui/plugins'
+import type { IComponentDescriptor } from '@soxa-ui/setup'
 import type { TComponentEntry, TPropControl } from './types'
 import { isSnippetExtension, type TSnippetExtension } from './snippet-file'
 
@@ -7,7 +7,7 @@ import { isSnippetExtension, type TSnippetExtension } from './snippet-file'
  * Preview host: the framework half of the playground.
  *
  * The shell is one, on Vue: it draws the header, the menu and the prop editors
- * with soldy components. The component on the page is drawn by the host of the
+ * with soxa components. The component on the page is drawn by the host of the
  * framework picked in the header, in its own root, on a node the shell gives.
  * The host knows nothing of the shell; the shell knows only this contract of
  * the host: what it can draw, how to mount it and in which language.

@@ -18,14 +18,14 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { render, cleanup } from './render'
 import { page, userEvent } from 'vitest/browser'
 import { defineComponent, h, nextTick, ref } from 'vue'
-import { Button, Popover } from '@soldy-ui/vue'
-import type { IPopoverProps } from '@soldy-ui/core'
-import type { DescriptorSlots, PopoverDescriptor } from '@soldy-ui/setup'
+import { Button, Popover } from '@soxa-ui/vue'
+import type { IPopoverProps } from '@soxa-ui/core'
+import type { DescriptorSlots, PopoverDescriptor } from '@soxa-ui/setup'
 
 import { reducedMotion } from './media'
 import { expectFadesInPlace, expectHidesWhenFaded, whileLeaving } from './transitions'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 type TTriggerScope = DescriptorSlots<typeof PopoverDescriptor>['trigger']
 

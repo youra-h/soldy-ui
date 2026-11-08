@@ -5,7 +5,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TIconLayoutPlugin } from '@soldy-ui/plugins'
+import { TIconLayoutPlugin } from '@soxa-ui/plugins'
 
 export const IconLayoutPluginDescriptor = definePlugin({
 	ctor: TIconLayoutPlugin,

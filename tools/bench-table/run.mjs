@@ -6,9 +6,9 @@ import { types, urlOf } from './pages.mjs'
 
 const N = Number(process.argv[2] ?? 5000)
 const RUNS = Number(process.argv[3] ?? 5)
-// Библиотека с флагами через «+»: `soldy+virtual` — `?lib=soldy&virtual=1`,
-// `soldy+mode=none+cols=5` — `?lib=soldy&mode=none&cols=5`
-const LIBS = (process.argv[4] ?? 'plain,tanstack,reka,soldy,naive,prime').split(',')
+// Библиотека с флагами через «+»: `soxa+virtual` — `?lib=soxa&virtual=1`,
+// `soxa+mode=none+cols=5` — `?lib=soxa&mode=none&cols=5`
+const LIBS = (process.argv[4] ?? 'plain,tanstack,reka,soxa,naive,prime').split(',')
 const dist = path.resolve(import.meta.dirname, 'dist')
 const server = http
 	.createServer((req, res) => {
@@ -26,7 +26,7 @@ const browser = await chromium.launch({
 const MB = (x) => Math.round(x / 1e5) / 10
 const table = {}
 // Потолок участника: все его прогоны — не дольше 10 минут. Не уложился — итог
-// `fail`, без цифр: таблица, которая меряется дольше, — уже провал, и soldy тоже.
+// `fail`, без цифр: таблица, которая меряется дольше, — уже провал, и soxa тоже.
 // Страница закрывается посреди сценария, и прогон идёт к следующему участнику.
 // `LIMIT_MIN` в окружении меняет потолок, минут
 const LIMIT_MIN = Number(process.env.LIMIT_MIN ?? 10)

@@ -6,6 +6,6 @@
 	Carbon Components Svelte has no tooltip around an arbitrary trigger (React
 	Carbon's `Tooltip`): `Tooltip` brings its own icon trigger, and
 	`TooltipDefinition` — a button trigger opened by hover (with the enter
-	delay) and by focus — is the closest to the soldy preview.
+	delay) and by focus — is the closest to the soxa preview.
 -->
 <TooltipDefinition tooltipText="Короткое пояснение к кнопке">Наведи</TooltipDefinition>

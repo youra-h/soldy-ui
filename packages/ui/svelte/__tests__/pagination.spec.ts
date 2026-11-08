@@ -17,9 +17,9 @@ import {
 	createEnginePagination,
 	type IPaginationItem,
 	type TPaginationValue,
-} from '@soldy-ui/core'
-import { arEG, ruRU } from '@soldy-ui/plugins'
-import { Pagination, type PaginationProps } from '@soldy-ui/svelte'
+} from '@soxa-ui/core'
+import { arEG, ruRU } from '@soxa-ui/plugins'
+import { Pagination, type PaginationProps } from '@soxa-ui/svelte'
 import Surround from './Surround.test.svelte'
 import { find, mount } from './mount'
 import { reactiveProps } from './reactive-props.svelte'

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { TAttributesMap } from '@soldy-ui/core'
+	import type { TAttributesMap } from '@soxa-ui/core'
 	import { clickAction, Dynamic, Teleport, roleIcon, toRootProps, toShownStyleText } from '../../adapter'
 	import { Button } from '../button'
 	import { Icon } from '../icon'

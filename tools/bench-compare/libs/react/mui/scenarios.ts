@@ -11,7 +11,7 @@ import {
 } from '../../../../bench-pages/scenarios'
 import { last, popup } from '../../scenarios'
 
-/** MUI scenarios: the soldy ones step by step, on MUI's own markup. */
+/** MUI scenarios: the soxa ones step by step, on MUI's own markup. */
 export const SCENARIOS: Record<string, TScenario> = {
 	button: each('.MuiButton-root', press),
 	input: each('.MuiTextField-root input', (field) => type(field, 'abc')),

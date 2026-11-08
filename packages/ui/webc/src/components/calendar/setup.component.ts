@@ -2,8 +2,8 @@ import {
 	CalendarCollectionDescriptor,
 	CalendarDescriptor,
 	TCollectionExtension,
-} from '@soldy-ui/setup'
-import type { ICalendar, TCalendarCollectionFacade } from '@soldy-ui/core'
+} from '@soxa-ui/setup'
+import type { ICalendar, TCalendarCollectionFacade } from '@soxa-ui/core'
 import {
 	createWebcAdapterContext,
 	joinBindings,

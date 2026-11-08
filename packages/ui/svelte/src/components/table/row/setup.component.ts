@@ -2,7 +2,7 @@ import {
 	TCollectionItemExtension,
 	TableCollectionRowDescriptor,
 	TableRowDescriptor,
-} from '@soldy-ui/setup'
+} from '@soxa-ui/setup'
 import {
 	createSvelteAdapterContext,
 	joinBindings,

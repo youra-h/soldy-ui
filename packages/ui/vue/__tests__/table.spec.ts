@@ -23,8 +23,8 @@ import {
 	type ComponentOptions,
 	type VNode,
 } from 'vue'
-import { LocaleProvider, Table, TableColumn, TableRow, Virtual } from '@soldy-ui/vue'
-import { TTable, createEngineTable } from '@soldy-ui/core'
+import { LocaleProvider, Table, TableColumn, TableRow, Virtual } from '@soxa-ui/vue'
+import { TTable, createEngineTable } from '@soxa-ui/core'
 import type {
 	ITableColumn,
 	ITableRow,
@@ -35,9 +35,9 @@ import type {
 	TTableColumnSource,
 	TTableRecord,
 	TTableReorderPreview,
-} from '@soldy-ui/core'
-import { enUS, ruRU } from '@soldy-ui/plugins'
-import type { TLocale } from '@soldy-ui/plugins'
+} from '@soxa-ui/core'
+import { enUS, ruRU } from '@soxa-ui/plugins'
+import type { TLocale } from '@soxa-ui/plugins'
 import Harness from './Table.test.vue'
 
 const nextFrame = () => new Promise((resolve) => requestAnimationFrame(resolve))

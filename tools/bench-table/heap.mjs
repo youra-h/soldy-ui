@@ -7,7 +7,7 @@ import { urlOf } from './pages.mjs'
 import { group } from './heap-group.mjs'
 
 /**
- * Снимок кучи: что прибавляют N строк таблицы soldy. Два снимка на одной
+ * Снимок кучи: что прибавляют N строк таблицы soxa. Два снимка на одной
  * странице — пустая таблица и N строк, — разница по группам делится на N.
  * Группа — конструктор объекта, имя функции замыкания или тип узла; у
  * простых объектов (`Object`) имени нет, и группой служит набор их свойств.
@@ -15,9 +15,9 @@ import { group } from './heap-group.mjs'
  *   npm run heap -- 500 multiple        # строк, режим выбора[, сколько групп показать]
  *   npm run heap -- 500 none
  *   npm run heap -- 5000 multiple 45 scroll
- *   npm run heap -- 5000 unmount soldy+fit=contain+track 1  # строк, участник, замен[, пауза, мс[, групп]]
- *   npm run heap -- 5000 unmount react:soldy+fit=contain+track 5 2000
- *   npm run heap -- 500 mounted react:soldy+fit=contain+track 2  # то же, без размонтирования
+ *   npm run heap -- 5000 unmount soxa+fit=contain+track 1  # строк, участник, замен[, пауза, мс[, групп]]
+ *   npm run heap -- 5000 unmount react:soxa+fit=contain+track 5 2000
+ *   npm run heap -- 500 mounted react:soxa+fit=contain+track 2  # то же, без размонтирования
  *
  * `scroll` — режим окна (`virtual`): первый снимок — после рендера, второй —
  * после прохода прокруткой по всем строкам. Разница — то, что прокрученные
@@ -29,7 +29,7 @@ import { group } from './heap-group.mjs'
  * включительно и паузы после него. Замен данных (`bench.replace`) перед
  * размонтированием — k: первая с тем же зерном, что у `run.mjs` (7), каждая
  * следующая — со следующим. Сверх разницы по группам — пережившие: классы
- * soldy (`T…`) и записи строк, штук на строку, и на каждый — кратчайшая
+ * soxa (`T…`) и записи строк, штук на строку, и на каждый — кратчайшая
  * цепочка удерживающих от корня по сильным рёбрам.
  *
  * `mounted` — что держит смонтированная таблица после замен. Участник и k —
@@ -44,7 +44,7 @@ const SCENARIO = ['unmount', 'mounted'].includes(process.argv[3]) ? process.argv
 const UNMOUNT = SCENARIO === 'unmount'
 const MOUNTED = SCENARIO === 'mounted'
 const MODE = SCENARIO ? undefined : (process.argv[3] ?? 'multiple')
-const LIB = SCENARIO ? (process.argv[4] ?? 'soldy') : undefined
+const LIB = SCENARIO ? (process.argv[4] ?? 'soxa') : undefined
 const REPLACES = SCENARIO ? Number(process.argv[5] ?? 1) : 0
 const PAUSE = SCENARIO ? Number(process.argv[6] ?? 0) : 0
 const TOP = Number(process.argv[SCENARIO ? 7 : 4] ?? 45)
@@ -72,7 +72,7 @@ const page = await browser.newPage({ viewport: { width: 1600, height: 1000 } })
 page.on('pageerror', (e) => console.error('pageerror', e.message))
 await page.goto(
 	`http://127.0.0.1:${server.address().port}/` +
-		(SCENARIO ? urlOf(LIB) : `?lib=soldy&mode=${MODE}${SCROLL ? '&virtual=1' : ''}`),
+		(SCENARIO ? urlOf(LIB) : `?lib=soxa&mode=${MODE}${SCROLL ? '&virtual=1' : ''}`),
 )
 await page.waitForFunction(() => 'bench' in window)
 const cdp = await page.context().newCDPSession(page)
@@ -334,7 +334,7 @@ console.log('\nСостав хозяев (хозяин :: узел)')
 show(diff.filter((d) => d.name.startsWith('% ')))
 
 if (UNMOUNT) {
-	// Пережившие размонтирование: экземпляры классов soldy и записи строк
+	// Пережившие размонтирование: экземпляры классов soxa и записи строк
 	const RECORD = '(запись строки)'
 	const records = recordsOf(raw)
 	const classes = diff.filter((d) => /^T[A-Z]\w*(\$\d+)?$/.test(d.name) && d.count > 0)
@@ -349,7 +349,7 @@ if (UNMOUNT) {
 		records.marks[i] ? RECORD : wanted.has(names[i]) ? names[i] : undefined,
 	)
 
-	console.log('\nПережили размонтирование: классы soldy и записи строк')
+	console.log('\nПережили размонтирование: классы soxa и записи строк')
 	if (!survived.length) console.log('  нет')
 	else console.log('     шт  шт/стр  группа')
 	for (const d of survived)

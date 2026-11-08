@@ -16,12 +16,12 @@
 import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { render, cleanup } from './render'
 import { defineComponent, h, nextTick } from 'vue'
-import { createEngineTable } from '@soldy-ui/core'
-import type { TTableCollection, TTableColumnSource, TTableRecord } from '@soldy-ui/core'
-import { Table } from '@soldy-ui/vue'
-import { TTableElement, TVirtualElement, type TTableElementProps } from '@soldy-ui/webc'
+import { createEngineTable } from '@soxa-ui/core'
+import type { TTableCollection, TTableColumnSource, TTableRecord } from '@soxa-ui/core'
+import { Table } from '@soxa-ui/vue'
+import { TTableElement, TVirtualElement, type TTableElementProps } from '@soxa-ui/webc'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 /** Tolerance for subpixel rounding, px. */
 const EPSILON = 1

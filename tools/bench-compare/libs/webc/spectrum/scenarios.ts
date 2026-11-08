@@ -45,7 +45,7 @@ async function closed(overlay: Element | null | undefined): Promise<void> {
 	}
 }
 
-/** Spectrum scenarios: the soldy ones step by step, on Spectrum's own markup. */
+/** Spectrum scenarios: the soxa ones step by step, on Spectrum's own markup. */
 export const SCENARIOS: Record<string, TScenario> = {
 	button: each('sp-button', press),
 	// The native input lives in the shadow tree of the field

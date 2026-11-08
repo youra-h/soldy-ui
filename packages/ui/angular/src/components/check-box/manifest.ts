@@ -1,1 +1,1 @@
-export { CheckBoxDescriptor as descriptor } from '@soldy-ui/setup'
+export { CheckBoxDescriptor as descriptor } from '@soxa-ui/setup'

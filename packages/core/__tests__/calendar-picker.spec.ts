@@ -1,12 +1,12 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { queryObjects } from 'node:v8'
-import { TCalendar, TCalendarCollectionFacade, TListBox, TPopover } from '@soldy-ui/core'
+import { TCalendar, TCalendarCollectionFacade, TListBox, TPopover } from '@soxa-ui/core'
 import type {
 	ICalendarProps,
 	IListBoxItem,
 	TCalendarPicker,
 	TCalendarPickerList,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 
 /**
  * Панели выбора месяца и года — расширение `picker` коллекции календаря.

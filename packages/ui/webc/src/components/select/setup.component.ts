@@ -6,8 +6,8 @@ import {
 	TVirtualCollectionExtension,
 	type DescriptorPluginOutputs,
 	type DescriptorPluginProps,
-} from '@soldy-ui/setup'
-import type { ISelect, TSelectCollectionFacade } from '@soldy-ui/core'
+} from '@soxa-ui/setup'
+import type { ISelect, TSelectCollectionFacade } from '@soxa-ui/core'
 import {
 	createWebcAdapterContext,
 	joinBindings,

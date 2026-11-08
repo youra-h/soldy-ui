@@ -32,7 +32,7 @@
 
 import { describe, it, expect, vi } from 'vitest'
 import { createSignal, type Component, type JSX } from 'solid-js'
-import { TButton, type TTableColumnSource } from '@soldy-ui/core'
+import { TButton, type TTableColumnSource } from '@soxa-ui/core'
 import {
 	Accordion,
 	Button,
@@ -115,7 +115,7 @@ import {
 	type TextareaProps,
 	type ToastsProps,
 	type TooltipProps,
-} from '@soldy-ui/solid'
+} from '@soxa-ui/solid'
 import {
 	toControlAttrs,
 	toRootForward,

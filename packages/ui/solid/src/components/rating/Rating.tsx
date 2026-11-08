@@ -1,5 +1,5 @@
 import type { Accessor, JSX } from 'solid-js'
-import type { TRatingStar } from '@soldy-ui/core'
+import type { TRatingStar } from '@soxa-ui/core'
 import {
 	Elevate,
 	Root,

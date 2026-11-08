@@ -5,7 +5,7 @@
  */
 
 import type { ClassValue } from 'svelte/elements'
-import type { TAttributesMap } from '@soldy-ui/core'
+import type { TAttributesMap } from '@soxa-ui/core'
 
 /** Стиль, как его отдают плагины и ядро: имена — как в CSS (`z-index`, `--*`). */
 export type TRootStyle = Readonly<Record<string, string | number>>

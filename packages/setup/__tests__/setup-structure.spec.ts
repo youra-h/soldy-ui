@@ -15,7 +15,7 @@
  * - `protected/` импортирует что-нибудь из `content/`;
  * - на верхнем уровне пакета заведена папка мимо двух слоёв;
  * - у модуля слоя нет строки в таблице (кроме `__tests__`);
- * - код пакета вне тестов импортирует `@soldy-ui/setup`: себя пакет видит только
+ * - код пакета вне тестов импортирует `@soxa-ui/setup`: себя пакет видит только
  *   относительными путями;
  * - файл модуля нарушает соглашения раздела: нет шапки, рантайм в `types.ts`
  *   или `*.types.ts`, экспорт типов из файла с рантаймом, `export *` из файла
@@ -47,7 +47,7 @@ const SKIPPED = new Set([
 	'vitest.config.ts',
 ])
 
-/** Корень пакета — точка входа `@soldy-ui/setup`. */
+/** Корень пакета — точка входа `@soxa-ui/setup`. */
 const ENTRY = 'index.ts'
 
 /** Слои пакета: механика и наполнение. */
@@ -515,7 +515,7 @@ describe('структура packages/setup', () => {
 			.filter(({ file }) => file.startsWith('protected/adapter/exchange/'))
 			.filter(
 				({ specifier }) =>
-					specifier === '@soldy-ui/plugins' ||
+					specifier === '@soxa-ui/plugins' ||
 					FORBIDDEN.some(
 						(prefix) => specifier === prefix || specifier.startsWith(`${prefix}/`),
 					),
@@ -525,11 +525,11 @@ describe('структура packages/setup', () => {
 		expect(violations, `Ядро обмена знает лишнее:\n${violations.join('\n')}`).toEqual([])
 	})
 
-	it('код пакета не импортирует @soldy-ui/setup', () => {
+	it('код пакета не импортирует @soxa-ui/setup', () => {
 		const violations = imports
 			.filter(
 				({ specifier }) =>
-					specifier === '@soldy-ui/setup' || specifier.startsWith('@soldy-ui/setup/'),
+					specifier === '@soxa-ui/setup' || specifier.startsWith('@soxa-ui/setup/'),
 			)
 			.map(({ file, specifier }) => `${file}: '${specifier}'`)
 

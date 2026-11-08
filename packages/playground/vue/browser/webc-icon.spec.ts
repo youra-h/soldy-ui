@@ -13,11 +13,11 @@
  */
 
 import { describe, it, expect, afterEach } from 'vitest'
-import { COMPONENT_SIZES } from '@soldy-ui/playground-shared'
-import { getIcon } from '@soldy-ui/setup'
-import { TIconElement, type TIconElementProps } from '@soldy-ui/webc'
+import { COMPONENT_SIZES } from '@soxa-ui/playground-shared'
+import { getIcon } from '@soxa-ui/setup'
+import { TIconElement, type TIconElementProps } from '@soxa-ui/webc'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 /** Узел разметки теста — снимается после каждого. */
 let stage: HTMLElement | null = null
@@ -44,7 +44,7 @@ function isIcon(node: Element | null): node is TIconElementProps {
 	return node instanceof TIconElement
 }
 
-/** Иконка soldy разметки теста; нет её — тест падает здесь. */
+/** Иконка soxa разметки теста; нет её — тест падает здесь. */
 function icon(root: ParentNode): TIconElementProps {
 	const node = root.querySelector('[is="so-icon"]')
 

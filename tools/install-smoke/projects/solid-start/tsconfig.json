@@ -13,7 +13,7 @@
     "types": ["vite/client"],
     "isolatedModules": true,
     // Not in the template: without it the declarations of the template's own
-    // dependencies (Nitro's, written for Node) fail the check, soldy or not
+    // dependencies (Nitro's, written for Node) fail the check, soxa or not
     "skipLibCheck": true,
     "paths": {
       "~/*": ["./src/*"]

@@ -11,7 +11,7 @@
 
 import { describe, it, expect } from 'vitest'
 import { render } from 'svelte/server'
-import { Textarea, type TextareaProps } from '@soldy-ui/svelte'
+import { Textarea, type TextareaProps } from '@soxa-ui/svelte'
 import FieldTextarea from './FieldTextarea.test.svelte'
 
 /**

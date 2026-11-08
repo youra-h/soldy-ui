@@ -1,4 +1,4 @@
-import { TooltipDescriptor } from '@soldy-ui/setup'
+import { TooltipDescriptor } from '@soxa-ui/setup'
 import { useComponent, useRootElement } from '../../adapter'
 import type { TooltipProps } from './base.component'
 

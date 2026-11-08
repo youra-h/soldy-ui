@@ -1,4 +1,4 @@
-import type { ITableColumn } from '@soldy-ui/core'
+import type { ITableColumn } from '@soxa-ui/core'
 import type { TPluginEvents } from '../../../base'
 import type { TSlideDirection } from '../../slide/types'
 

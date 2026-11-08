@@ -1,6 +1,6 @@
 # AGENTS.md
 
-Guidance for AI coding agents working in the **soldy** monorepo.
+Guidance for AI coding agents working in the **soxa** monorepo.
 
 ## What this is
 
@@ -54,8 +54,8 @@ See `tools/agent-flow/README.md` for credentials, setup, and the CLI fallback.
 
 ```bash
 npm run dev          # стенд: оболочка Vue, превью на фреймворке из шапки (Vite)
-npm run test:core    # Vitest — @soldy-ui/core
-npm run test:setup   # Vitest — @soldy-ui/setup
+npm run test:core    # Vitest — @soxa-ui/core
+npm run test:setup   # Vitest — @soxa-ui/setup
 npm run test:vue
 npm run test:angular # спеки Angular — билдером @angular/build:unit-test, см. «Angular-специфика»
 npm run test:theme   # Vitest — инварианты токенов темы oren
@@ -65,7 +65,7 @@ npm run test:side-effects  # `sideEffects` пакетов и сборка одн
 npm run compare:styles -- <до.css>  # вычисленные стили частей на стенде: лист темы «до» против dist
 npm run lint         # ESLint (auto-fix)
 npm run format       # Prettier; CI проверяет `prettier --check .` в задаче `lint`
-npm run changeset -- --patch @soldy-ui/core -m "…"  # changeset для PR, см. «Версии пакетов»
+npm run changeset -- --patch @soxa-ui/core -m "…"  # changeset для PR, см. «Версии пакетов»
 npm run changeset:version  # выпуск: версии, CHANGELOG.md, package-lock (программист, /release)
 
 # Библиотечные пакеты: JS бандлом Vite + .d.ts прогоном tsc, адаптеры Svelte и
@@ -90,10 +90,10 @@ npm run check:install -- vue next
 # Тема отдаёт dist/index.css, который подключает стенд (dist в .gitignore).
 # Полный build темы собирает ещё и её поведение (./setup) и потому требует
 # собранных соседей — правишь стили, зови build:css
-npm run build:css --workspace=@soldy-ui/theme-oren
+npm run build:css --workspace=@soxa-ui/theme-oren
 
 # Angular: перегенерировать статические inputs/outputs после правки дескриптора
-npm run generate --workspace=@soldy-ui/angular
+npm run generate --workspace=@soxa-ui/angular
 ```
 
 CI (`.github/workflows/ci.yml`) гоняет тесты всех пакетов (включая
@@ -229,7 +229,7 @@ PR сливает владелец; разрешение коммитить на
 - `packages/ui/webc/AGENTS.md` — адаптер Web Components: база элемента, корень, свет и слоты, отсрочка сборки, перенос, телепорт. Разделы: «Web Components-специфика».
 - `packages/playground/AGENTS.md` — стенд, страница тестов, `test:layout` и браузерные спеки, сравнение стилей темы. Разделы: «Браузерный прогон (`test:layout`)», «Сравнение стилей (`compare:styles`)», «Playground: инструмент не диктует библиотеке (критично)», «Страница тестов».
 
-- `packages/themes/base/AGENTS.md` — общий слой тем `@soldy-ui/theme-base`: сброс узлов библиотеки, знак направления письма, гашение выключенного, структура частей и её перенос из темы, цена стиля и окно таблицы, слои, плагины раскладки (`./setup`), контракт переменных, сторожа любой темы; как сделать свою тему — `README.md` пакета. Разделы: «Чистый CSS — исходником, поведение — сборкой», «Слои», «Сброс узлов библиотеки», «Знак направления письма», «Выключенное гаснет поддеревом», «Структура частей», «Правило на каждую ячейку Table — под признаком, которого на покое нет (критично)», «Окно и закреплённая шапка Table», «Перенос структуры», «Плагины раскладки: `setup/`», «Контракт: переменные темы», «Сторожа».
+- `packages/themes/base/AGENTS.md` — общий слой тем `@soxa-ui/theme-base`: сброс узлов библиотеки, знак направления письма, гашение выключенного, структура частей и её перенос из темы, цена стиля и окно таблицы, слои, плагины раскладки (`./setup`), контракт переменных, сторожа любой темы; как сделать свою тему — `README.md` пакета. Разделы: «Чистый CSS — исходником, поведение — сборкой», «Слои», «Сброс узлов библиотеки», «Знак направления письма», «Выключенное гаснет поддеревом», «Структура частей», «Правило на каждую ячейку Table — под признаком, которого на покое нет (критично)», «Окно и закреплённая шапка Table», «Перенос структуры», «Плагины раскладки: `setup/`», «Контракт: переменные темы», «Сторожа».
 - `packages/themes/oren/AGENTS.md` — стили темы oren: шкалы, схемы, токены, облик частей, чья структура в общем слое.
 
 ## Версии пакетов — коротко
@@ -314,14 +314,14 @@ README) правило тоже не затрагивает.
 - **Приведение типа, чтобы заткнуть несоответствие.** `as any`,
   `as unknown as X` и `!` вместо проверки прячут ошибку, а не чинят её. Если
   типы не сходятся — неверен контракт, править надо его. Во всём репозитории
-  это стережёт eslint (`eslint.config.ts`, блок `soldy/no-casts`): `as never`,
+  это стережёт eslint (`eslint.config.ts`, блок `soxa/no-casts`): `as never`,
   `as unknown as X`, `as TEvented<…>`, угловое приведение `<T>x`, `x!`
   (`@typescript-eslint/no-non-null-assertion`), приведение соседа по коллекции
   (`ctx.extensions.selection as …` — соседа находит охранник `selectionOf`,
   collections.md, «Сосед по коллекции — по контракту»), `@ts-ignore` и
   `@ts-nocheck` роняют CI. Definite assignment у поля
   (`protected _x!: boolean`) — не приведение, правило его не ловит. В тестах
-  ядра блок `soldy/core-tests-no-any` запрещает ещё и `any` в любом типе. Что
+  ядра блок `soxa/core-tests-no-any` запрещает ещё и `any` в любом типе. Что
   блоки включены на своих путях, проверяет `npm run test:eslint`. Честный
   `@ts-expect-error` с пояснением не запрещён. Блок действует и на
   `<script lang="ts">` компонентов `.vue` и `.svelte`. Исключённых путей у
@@ -483,9 +483,9 @@ dismiss.events.on('dismiss', () => {
 
 Vue-компоненты снимают Vue-прокси с `ctrl`/`engine` не сами: контекст создают
 через `createVueAdapterContext` (`packages/ui/vue/src/adapter/common/`), она
-и вызывает `toRaw`. Сторож — блок eslint `soldy/vue-components-no-framework`
+и вызывает `toRaw`. Сторож — блок eslint `soxa/vue-components-no-framework`
 (`eslint.config.ts`): запрещает импорт `'vue'` и `createAdapterContext` из
-`@soldy-ui/setup` в `packages/ui/vue/src/components/**`. Связку Vue-компонент
+`@soxa-ui/setup` в `packages/ui/vue/src/components/**`. Связку Vue-компонент
 отдаёт шаблону целиком — видом, который вернул `useAdapter`: фасады с ним
 сводит `joinBindings`, свои значения добавляет `extendBinding`
 (`ui/vue/src/adapter/runtime/view.ts`). Спред связки прочёл бы состояние один
@@ -515,7 +515,7 @@ Svelte-компоненты собирают контекст через `create
 узел в него пишет адаптер. Забытые id и приёмник ловят типы (`mountId` у
 обёртки и приёмник у setup-функции компонента обязательны), сборку мимо
 обёртки — тот же сторож:
-`createAdapterContext` из `@soldy-ui/setup` в компонентах Svelte запрещён.
+`createAdapterContext` из `@soxa-ui/setup` в компонентах Svelte запрещён.
 
 Solid-компоненты собирают контекст через `createSolidAdapterContext`
 (`packages/ui/solid/src/adapter/common/`): она берёт локаль поддерева и id
@@ -524,10 +524,10 @@ Solid-компоненты собирают контекст через `createS
 разворот слота, живой scope, текст поля, лифт, ветки и петли, которые
 переживают окна гидратации, — дают помощники адаптера: таблица и правила — в
 `packages/ui/solid/AGENTS.md`, «Помощники адаптера». Сборку мимо обёртки
-ловит тот же сторож: `createAdapterContext` из `@soldy-ui/setup` в
+ловит тот же сторож: `createAdapterContext` из `@soxa-ui/setup` в
 компонентах Solid запрещён. Спред на узле разметки — только от помощников
-(блок eslint `soldy/solid-part-props`), ветки и петли — `Show`, `For` и
-`Index` адаптера, а не `solid-js` (блок eslint `soldy/solid-components-flow`).
+(блок eslint `soxa/solid-part-props`), ветки и петли — `Show`, `For` и
+`Index` адаптера, а не `solid-js` (блок eslint `soxa/solid-components-flow`).
 
 Angular-компоненты собирают контекст через `createAngularAdapterContext`
 (`packages/ui/angular/src/adapter/common/`): она берёт локаль поддерева —
@@ -559,7 +559,7 @@ Popover, Tooltip, Menu, Select, DatePicker и пунктов меню со св�
 же `id` на корень поля даты и DatePicker'а кладёт база, по описанию корня
 (`id`), а не привязка хоста в компоненте.
 Сборку мимо обёртки ловит тот же сторож: `createAdapterContext` из
-`@soldy-ui/setup` в компонентах Angular запрещён, как и `inject` из
+`@soxa-ui/setup` в компонентах Angular запрещён, как и `inject` из
 `@angular/core`.
 
 Web Components-компоненты собирают контекст через `createWebcAdapterContext`
@@ -573,7 +573,7 @@ Web Components-компоненты собирают контекст через
 переставленный под другой провайдер, собирается уже с его локалью. Id
 монтирования обёртка не передаёт: Custom Element живёт только в браузере, и
 серверной разметки, с которой `id` пришлось бы сойтись, у него нет. Сборку
-мимо обёртки ловит тот же сторож: `createAdapterContext` из `@soldy-ui/setup`
+мимо обёртки ловит тот же сторож: `createAdapterContext` из `@soxa-ui/setup`
 в компонентах Web Components запрещён.
 
 React-компоненты держат adapter-context между рендерами не сами: вместо
@@ -602,9 +602,9 @@ React-компоненты держат adapter-context между рендер�
 экземпляра строкой для `className` (панель Menu и подменю на их Frame) отдаёт
 помощник адаптера `toPartClass` (`ui/react/src/adapter/common/`), а не `join`
 в разметке каждого. Сторож — блок eslint
-`soldy/react-components-no-framework` (`eslint.config.ts`): запрещает
+`soxa/react-components-no-framework` (`eslint.config.ts`): запрещает
 значения из `'react'` (в том числе `React.useRef` через namespace-импорт) и
-`createAdapterContext` из `@soldy-ui/setup` в
+`createAdapterContext` из `@soxa-ui/setup` в
 `packages/ui/react/src/components/**`, `import type` пропускает.
 
 ### `setup/content/extensions/` — тоже не место для операций над DOM
@@ -702,7 +702,7 @@ Setup — всё, что у шести адаптеров общее: описа
 | Атрибут корня документа | `data-so-motion`            | корень документа общий с приложением и другими библиотеками; так же схема темы oren — `data-so-theme`; `data-*` своего узла — без префикса: `data-selected`                                                                                                                                                          |
 | **Экспорт компонента**  | `Button`, `TabsItem`        | **без префикса** — namespace уже дал npm-скоуп                                                                                                                                                                                                                                                                       |
 
-`SButton`/`STabs` не вводим: `import { Button } from '@soldy-ui/vue'` уже
+`SButton`/`STabs` не вводим: `import { Button } from '@soxa-ui/vue'` уже
 однозначен, префикс дублировал бы то, что делает импорт.
 
 **Элемент Web Components на другом теге — имя компонента и тег через
@@ -801,11 +801,11 @@ Select, `contentAria` у секции Accordion, `triggerAria` у Popover и Too
 Отдельный вопрос — нужен ли части **внутри** компонента собственный экземпляр
 (так у Select устроены `field` и `tags`, хотя потребитель их не адресует):
 критерий и разбор на примере Select —
-[Complex component reference](.github/skills/add-soldy-component/references/complex-component.md).
+[Complex component reference](.github/skills/add-soxa-component/references/complex-component.md).
 
-Критерий выведен из модели soldy, а не заимствован. Ark-таксономия
+Критерий выведен из модели soxa, а не заимствован. Ark-таксономия
 (`Root`/`Trigger`/`Indicator`/`Label`/`Positioner`) кодирует чужую модель: там
-нет слотов и табы не коллекция. В soldy табы — коллекция: `TTabs` наследует
+нет слотов и табы не коллекция. В soxa табы — коллекция: `TTabs` наследует
 `TControl`, а членство в ней выставляют фасады — `TTabsCollectionFacade`
 (`TCollectionComponent`) у владельца и `TTabsItemCollectionFacade`
 (`TCollectionItemComponent`) у таба. Поэтому часть называется `Item`, а не
@@ -813,7 +813,7 @@ Select, `contentAria` у секции Accordion, `triggerAria` у Popover и Too
 
 ### Составные компоненты: точка — основная форма
 
-`withParts` из `@soldy-ui/setup` вешает части на владельца:
+`withParts` из `@soxa-ui/setup` вешает части на владельца:
 
 ```ts
 export const Tabs = withParts(TabsComponent, { Item: TabsItem, Content: TabsContent })
@@ -888,7 +888,7 @@ bundles.events.on('engine:bound', (engine) => {
 `base/collection/`. Там слово стоит на месте — оно называет слой, а не
 конкретный объект в руках.
 
-Сторож — блок eslint `soldy/no-collection-name` (`eslint.config.ts`):
+Сторож — блок eslint `soxa/no-collection-name` (`eslint.config.ts`):
 встроенный `id-denylist` запрещает имена `collection` и `_collection` (и
 `#collection`) у переменной, функции, параметра, поля, ключа объекта и члена
 типа и запись `x.collection = …`. Чтение чужого свойства, имена, где слово
@@ -1026,7 +1026,7 @@ TCollectionItemComponent
 темы два: она стилизует только узлы библиотеки, а не страницу, и только по
 `data-*`, а не по `aria-*` (оба — ниже).
 
-**Общий слой тем — `@soldy-ui/theme-base` (`packages/themes/base`).** В нём
+**Общий слой тем — `@soxa-ui/theme-base` (`packages/themes/base`).** В нём
 то, что нужно частям в любой теме, а не облику одной: сброс узлов библиотеки,
 механизмы, на которые опираются части (знак направления письма, гашение
 выключенного), структура частей — раскладка и механика, числа которой —
@@ -1064,7 +1064,7 @@ CSS, без препроцессора и без Tailwind: Tailwind бывает
 
 Решения одной темы на другую не переносят: в `oren` номер ступени означает
 роль (расстояние от поверхности), а не светлоту, — но это решение `oren`, а
-не контракт soldy. В общий слой уходит только то, что нужно частям в любой
+не контракт soxa. В общий слой уходит только то, что нужно частям в любой
 теме; облик остаётся в теме.
 
 Поведение темы — плагины и расширения, без которых её CSS не работает, —
@@ -1104,7 +1104,7 @@ input`), а правил на всё внутри части (`.so-x *`) нет:
 стилей»).
 
 Лента (`Scroller`) опирается на общий слой тем (`components/scroller.css` в
-`@soldy-ui/theme-base`) — на снап `start` у элементов вьюпорта и на
+`@soxa-ui/theme-base`) — на снап `start` у элементов вьюпорта и на
 `scroll-padding-inline` вьюпорта: шириной в подсказку у края, которую рисует
 тема, и не уже запаса под кольцо фокуса. Это окно, куда
 `TScrollerViewportPlugin` доводит элемент под фокусом с клавиатуры вместе с
@@ -1330,7 +1330,7 @@ Proxy над инстансом библиотека не запрещает, н
 - У `packages/setup` общего окружения в vitest-конфиге нет, и по умолчанию оно
   `node`. Тестам с DOM нужна первая строка `// @vitest-environment jsdom`. Сам
   конфиг держит только алиасы на исходники соседей и самого пакета.
-- Внутри `packages/core` собственный пакет (`@soldy-ui/core`) в рантайме не
+- Внутри `packages/core` собственный пакет (`@soxa-ui/core`) в рантайме не
   импортируется — только относительные пути, как внутри `setup`. Имя пакета
   ведёт в бочку `src/index.ts`, и импорт изнутри замыкает цикл через все
   компоненты ядра; сработает ли цикл, решает сборщик — с какого модуля он
@@ -1342,7 +1342,7 @@ Proxy над инстансом библиотека не запрещает, н
 ## Docs
 
 - `docs/architecture.md` — full adapter architecture overview (layers, descriptors/plugins, collection pattern, per-framework notes). Read it before touching adapter/descriptor/plugin code.
-- `.github/skills/add-soldy-component/references/complex-component.md` —
+- `.github/skills/add-soxa-component/references/complex-component.md` —
   разбор Select как эталона сложного компонента: анатомия по слоям и критерий
   «внутренний экземпляр или разметка».
 - `packages/themes/base/AGENTS.md` — общий слой тем: сброс узлов библиотеки,
@@ -1356,3 +1356,8 @@ Proxy над инстансом библиотека не запрещает, н
   библиотеками компонентов: папка на замер (`table/`, `pages/`), в ней
   методика и журнал на платформу. Устройство и как завести новый замер — в
   `benchmarks/README.md`.
+
+For the owner-approved Soldy to Soxa mechanical rename (task 869fpbftq), existing
+comments may retain their language when the entire file changes only by the
+case-preserving brand substitution. Any additional edit still follows the
+English-comment rule. This exception does not permit new Russian comments.

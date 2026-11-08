@@ -1,4 +1,4 @@
-import type { TValuePayload } from '@soldy-ui/core'
+import type { TValuePayload } from '@soxa-ui/core'
 // plugins/custom/input-bool/types.ts
 
 import type { TPluginEvents } from '../../base'

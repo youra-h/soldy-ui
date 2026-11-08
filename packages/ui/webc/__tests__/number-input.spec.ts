@@ -19,9 +19,9 @@ import { propertyDetail } from './property-detail'
  */
 
 import { describe, it, expect, afterEach, vi } from 'vitest'
-import { TNumberInput, type TValuePayload } from '@soldy-ui/core'
-import { ruRU, zhCN } from '@soldy-ui/plugins'
-import { NumberInputDescriptor } from '@soldy-ui/setup'
+import { TNumberInput, type TValuePayload } from '@soxa-ui/core'
+import { ruRU, zhCN } from '@soxa-ui/plugins'
+import { NumberInputDescriptor } from '@soxa-ui/setup'
 import {
 	TButtonElement,
 	TIconElement,
@@ -29,7 +29,7 @@ import {
 	TNumberInputElement,
 	type TButtonElementProps,
 	type TNumberInputElementProps,
-} from '@soldy-ui/webc'
+} from '@soxa-ui/webc'
 import { numberInputTemplate } from '../src/components/number-input/number-input.template'
 import { bareContext } from './template-context'
 
@@ -64,7 +64,7 @@ function markup(html: string): HTMLElement {
 	return host
 }
 
-/** Поле soldy в разметке. */
+/** Поле soxa в разметке. */
 function numberInputOf(root: ParentNode): TNumberInputElementProps {
 	const node = root.querySelector('[is="so-number-input"]')
 
@@ -73,7 +73,7 @@ function numberInputOf(root: ParentNode): TNumberInputElementProps {
 	return node
 }
 
-/** Поле soldy из разметки, подключённое к документу; узел другой — тест падает здесь. */
+/** Поле soxa из разметки, подключённое к документу; узел другой — тест падает здесь. */
 function mount(html: string): TNumberInputElementProps {
 	const host = markup(html)
 
@@ -290,11 +290,11 @@ describe('NumberInput · разметка', () => {
 	})
 
 	/**
-	 * Кнопки и иконки — детали разметки поля: элементы soldy с именами места.
+	 * Кнопки и иконки — детали разметки поля: элементы soxa с именами места.
 	 * Набор поля на кнопке — поверх того, что она пишет себе сама: свои классы
 	 * и `data-disabled` у неё остаются.
 	 */
-	it('кнопки шага и их иконки — элементы soldy с именами места', () => {
+	it('кнопки шага и их иконки — элементы soxa с именами места', () => {
 		const el = mount('<div is="so-number-input"></div>')
 		const decrement = buttonOf(el, '.so-number-input__decrement')
 		const icon = decrement.querySelector('.so-icon')

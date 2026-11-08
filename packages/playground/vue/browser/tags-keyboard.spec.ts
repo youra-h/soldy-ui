@@ -18,9 +18,9 @@ import { render, cleanup } from './render'
 import { userEvent } from 'vitest/browser'
 import { defineComponent, h, nextTick } from 'vue'
 import type { VNode } from 'vue'
-import { Select, SelectItem, Tags, TagsItem } from '@soldy-ui/vue'
+import { Select, SelectItem, Tags, TagsItem } from '@soxa-ui/vue'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 const nextFrame = () => new Promise<void>((resolve) => requestAnimationFrame(() => resolve()))
 

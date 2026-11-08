@@ -25,8 +25,8 @@ import {
 	resolveSlotName,
 	isScopedSlot,
 	slotNames,
-} from '@soldy-ui/setup'
-import type { DescriptorSlots, TEmptySlotScope } from '@soldy-ui/setup'
+} from '@soxa-ui/setup'
+import type { DescriptorSlots, TEmptySlotScope } from '@soxa-ui/setup'
 
 describe('normalizeContribution · slots', () => {
 	it('переносит имя из ключа словаря в декларацию', () => {

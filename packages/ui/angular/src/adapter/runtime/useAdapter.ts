@@ -14,7 +14,7 @@
  */
 
 import { computed, signal, type EventEmitter, type Signal } from '@angular/core'
-import { toInstanceState } from '@soldy-ui/setup'
+import { toInstanceState } from '@soxa-ui/setup'
 import type {
 	DescriptorAllEvents,
 	DescriptorComponentProps,
@@ -26,7 +26,7 @@ import type {
 	TStateSnapshot,
 	TSnapshotOf,
 	TInstanceState,
-} from '@soldy-ui/setup'
+} from '@soxa-ui/setup'
 import { AngularProfile } from '../common/profile'
 
 /**

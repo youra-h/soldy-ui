@@ -1,5 +1,5 @@
-import { batchOf, isMenuPopupItem, menuOf } from '@soldy-ui/core'
-import type { IControl, IMenuOwner, IMenuPopupItem } from '@soldy-ui/core'
+import { batchOf, isMenuPopupItem, menuOf } from '@soxa-ui/core'
+import type { IControl, IMenuOwner, IMenuPopupItem } from '@soxa-ui/core'
 import { TBasePlugin } from '../../../base'
 import type { IPluginContext } from '../../../base'
 import { TElementPlugin } from '../../element'

@@ -4,7 +4,7 @@ import { resolve } from 'node:path'
 
 /**
  * Запрет приведений живёт не в отдельном правиле, а в блоках `eslint.config.ts`
- * (`soldy/no-casts` — весь репозиторий, `soldy/core-tests-no-any` — тесты
+ * (`soxa/no-casts` — весь репозиторий, `soxa/core-tests-no-any` — тесты
  * ядра). Тест линтит фрагменты настоящим конфигом репозитория по путям
  * пакетов: опечатка в `files` или лишний путь в `ignores` иначе отключили бы
  * защиту молча, и CI остался бы зелёным.
@@ -46,7 +46,7 @@ describe('eslint.config.ts: приведения в src ядра', () => {
 		],
 		[
 			'as TEvented<…>',
-			"import type { TEvented } from '@soldy-ui/core'\ndeclare const value: object\nexport const x = value as TEvented<object>",
+			"import type { TEvented } from '@soxa-ui/core'\ndeclare const value: object\nexport const x = value as TEvented<object>",
 			'no-restricted-syntax',
 		],
 		[
@@ -63,7 +63,7 @@ describe('eslint.config.ts: приведения в src ядра', () => {
 		[
 			'as any',
 			'declare const value: unknown\nexport const x = value as any',
-			'soldy/no-explicit-any',
+			'soxa/no-explicit-any',
 		],
 		['non-null assertion `x!`', NON_NULL, '@typescript-eslint/no-non-null-assertion'],
 		[
@@ -104,7 +104,7 @@ describe('eslint.config.ts: приведения в src ядра', () => {
 		['definite assignment у поля', 'export class TSample {\n\tprivate _a!: string\n}'],
 		[
 			'сосед охранником `selectionOf(ctx)`',
-			"import { selectionOf } from '@soldy-ui/core'\nimport type { IExtensionContext } from '@soldy-ui/core'\ndeclare const ctx: IExtensionContext<object>\nexport const x = selectionOf(ctx)",
+			"import { selectionOf } from '@soxa-ui/core'\nimport type { IExtensionContext } from '@soxa-ui/core'\ndeclare const ctx: IExtensionContext<object>\nexport const x = selectionOf(ctx)",
 		],
 	])('%s — допустимо', async (_title, code) => {
 		expect(await ruleIds(code, SRC)).toEqual([])
@@ -116,7 +116,7 @@ describe('eslint.config.ts: тесты ядра', () => {
 		const ids = await ruleIds('export type TMap<T extends Record<string, any>> = T', TESTS)
 
 		expect(ids).toContain('@typescript-eslint/no-explicit-any')
-		expect(ids).not.toContain('soldy/no-explicit-any')
+		expect(ids).not.toContain('soxa/no-explicit-any')
 	})
 
 	it('as unknown as — ошибка', async () => {
@@ -150,7 +150,7 @@ describe('eslint.config.ts: приведения вне ядра', () => {
 
 	it.each([
 		['as unknown as', 'const text = value as unknown as string', 'no-restricted-syntax'],
-		['as any', 'const text = value as any', 'soldy/no-explicit-any'],
+		['as any', 'const text = value as any', 'soxa/no-explicit-any'],
 	])(
 		'<script lang="ts"> в .svelte под packages/ui/svelte/src: %s — ошибка',
 		async (_title, cast, ruleId) => {

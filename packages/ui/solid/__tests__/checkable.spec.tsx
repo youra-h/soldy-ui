@@ -18,10 +18,10 @@
 
 import { describe, it, expect, vi, afterEach } from 'vitest'
 import { createSignal, type JSX } from 'solid-js'
-import { TCheckBox, TSwitch, type ISwitch } from '@soldy-ui/core'
-import { useIcons, type TIconSource } from '@soldy-ui/setup'
-import * as material from '@soldy-ui/icons-material'
-import { CheckBox, Switch, type CheckBoxProps, type SwitchProps } from '@soldy-ui/solid'
+import { TCheckBox, TSwitch, type ISwitch } from '@soxa-ui/core'
+import { useIcons, type TIconSource } from '@soxa-ui/setup'
+import * as material from '@soxa-ui/icons-material'
+import { CheckBox, Switch, type CheckBoxProps, type SwitchProps } from '@soxa-ui/solid'
 import { find, mount, nextFrame, type TMounted } from './mount'
 
 afterEach(() => {

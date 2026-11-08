@@ -15,7 +15,7 @@ function active(selector: string): HTMLElement | null {
 	return last(`.v-overlay--active ${selector}`)
 }
 
-/** Vuetify scenarios: the soldy ones step by step, on Vuetify's own markup. */
+/** Vuetify scenarios: the soxa ones step by step, on Vuetify's own markup. */
 export const SCENARIOS: Record<string, TScenario> = {
 	button: each('.v-btn', press),
 	input: each('.v-text-field input', (field) => type(field, 'abc')),

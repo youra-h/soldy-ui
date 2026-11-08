@@ -15,7 +15,7 @@
  */
 
 import { defineComponent, defineDescriptor } from '../../../protected/define'
-import { TDrawer } from '@soldy-ui/core'
+import { TDrawer } from '@soxa-ui/core'
 import {
 	DrawerLayoutPluginDescriptor,
 	ModalIdsPluginDescriptor,

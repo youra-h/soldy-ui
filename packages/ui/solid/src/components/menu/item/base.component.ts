@@ -1,5 +1,5 @@
-import type { IMenuItem } from '@soldy-ui/core'
-import type { MenuCollectionItemDescriptor, MenuItemDescriptor } from '@soldy-ui/setup'
+import type { IMenuItem } from '@soxa-ui/core'
+import type { MenuCollectionItemDescriptor, MenuItemDescriptor } from '@soxa-ui/setup'
 import type { EventProps, TDomAttributes, UseDomProps } from '../../../types'
 
 /** События пункта — свои (ядро и плагины) и фасада: вход в коллекцию меню. */

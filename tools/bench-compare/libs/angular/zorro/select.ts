@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core'
 import { NzSelectModule } from 'ng-zorro-antd/select'
 import { COLLECTION_ITEMS } from '../../../data'
 
-/** Select with typing and filtering — `nz-select` with search, as the soldy `editable` preview. */
+/** Select with typing and filtering — `nz-select` with search, as the soxa `editable` preview. */
 @Component({
 	selector: 'bench-select',
 	imports: [NzSelectModule],

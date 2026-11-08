@@ -1,12 +1,12 @@
 import { describe, it, expect, vi } from 'vitest'
-import { TBasePlugin } from '@soldy-ui/plugins'
+import { TBasePlugin } from '@soxa-ui/plugins'
 import {
 	CommonProfile,
 	createAdapterContext,
 	normalizeContribution,
 	defineComponent,
 	definePlugin,
-} from '@soldy-ui/setup'
+} from '@soxa-ui/setup'
 import { required } from './helpers'
 
 describe('normalizeContribution', () => {

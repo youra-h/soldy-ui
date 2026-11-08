@@ -1,4 +1,4 @@
-// @soldy-ui/core
+// @soxa-ui/core
 // components (headless компоненты)
 export * from './components'
 // вспомогательные функции

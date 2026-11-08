@@ -25,10 +25,10 @@ import {
 	type TComponentVariant,
 	type TPaginationPage,
 	type TPaginationValue,
-} from '@soldy-ui/core'
-import { arEG, ruRU, type TLocale } from '@soldy-ui/plugins'
-import * as angular from '@soldy-ui/angular'
-import { LocaleProviderDirective, SlotDirective, TPaginationComponent } from '@soldy-ui/angular'
+} from '@soxa-ui/core'
+import { arEG, ruRU, type TLocale } from '@soxa-ui/plugins'
+import * as angular from '@soxa-ui/angular'
+import { LocaleProviderDirective, SlotDirective, TPaginationComponent } from '@soxa-ui/angular'
 import { find, findIn, mountHost, nextFrame } from './mount'
 
 /** Входы пагинации, которые задают сценарии, кроме значения. */

@@ -18,7 +18,7 @@
 
 import { describe, it, expect, afterEach } from 'vitest'
 import { h, nextTick } from 'vue'
-import { Tabs, TabsItem, Tags, TagsItem } from '@soldy-ui/vue'
+import { Tabs, TabsItem, Tags, TagsItem } from '@soxa-ui/vue'
 import { hydrate, unmountHydrated } from './hydrate'
 
 afterEach(unmountHydrated)

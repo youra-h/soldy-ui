@@ -13,7 +13,7 @@
  */
 
 import { defineComponent, defineDescriptor } from '../../../protected/define'
-import { TItemRow } from '@soldy-ui/core'
+import { TItemRow } from '@soxa-ui/core'
 import { BUTTON_SLOTS, ButtonDescriptor } from './button.descriptor'
 
 export const ItemRowDescriptor = defineDescriptor(() =>

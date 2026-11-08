@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core'
 import { NgTemplateOutlet } from '@angular/common'
-import type { IScroller } from '@soldy-ui/core'
+import type { IScroller } from '@soxa-ui/core'
 import { AttributesDirective, RoleIconDirective, TextPipe } from '../../adapter'
 import { TButtonComponent } from '../button'
 import { TIconComponent } from '../icon'

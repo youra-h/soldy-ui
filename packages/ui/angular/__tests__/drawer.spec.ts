@@ -29,14 +29,14 @@ import {
 	type TCloseReason,
 	type TDrawerPlacement,
 	type TSwipe,
-} from '@soldy-ui/core'
-import { ruRU } from '@soldy-ui/plugins'
+} from '@soxa-ui/core'
+import { ruRU } from '@soxa-ui/plugins'
 import {
 	LocaleProviderDirective,
 	SlotDirective,
 	TDialogComponent,
 	TDrawerComponent,
-} from '@soldy-ui/angular'
+} from '@soxa-ui/angular'
 import { TELEPORT_ANCHOR } from '../src/adapter/runtime/teleport'
 import { find, nextFrame } from './mount'
 

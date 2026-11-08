@@ -10,7 +10,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TNumberInputStepperPlugin } from '@soldy-ui/plugins'
+import { TNumberInputStepperPlugin } from '@soxa-ui/plugins'
 
 export const NumberInputStepperPluginDescriptor = definePlugin({
 	ctor: TNumberInputStepperPlugin,

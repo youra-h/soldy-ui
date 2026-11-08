@@ -1,4 +1,4 @@
-import { MenuGroupDescriptor, TItemGroupExtension } from '@soldy-ui/setup'
+import { MenuGroupDescriptor, TItemGroupExtension } from '@soxa-ui/setup'
 import {
 	createSvelteAdapterContext,
 	useAdapter,

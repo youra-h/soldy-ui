@@ -7,8 +7,8 @@
 
 import { beforeAll, beforeEach, expect, onTestFinished } from 'vitest'
 import { format } from 'node:util'
-import { useIcons } from '@soldy-ui/setup'
-import * as material from '@soldy-ui/icons-material'
+import { useIcons } from '@soxa-ui/setup'
+import * as material from '@soxa-ui/icons-material'
 
 /**
  * Пакет иконок подключает приложение — как тему. Спеки играют роль

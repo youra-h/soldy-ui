@@ -5,10 +5,10 @@
  * любой ключ, поэтому ключ — в наполнении, а не в механике лифта.
  */
 
-import type { IMenuRadioGroup } from '@soldy-ui/core'
+import type { IMenuRadioGroup } from '@soxa-ui/core'
 import type { IElevatorKey } from '../../../protected/adapter/elevator'
 
 /** Ближайшая группа переключателей выше по дереву. */
 export const MENU_RADIO_GROUP_ELEVATOR: IElevatorKey<IMenuRadioGroup> = {
-	name: 'soldy:menu-radio-group',
+	name: 'soxa:menu-radio-group',
 }

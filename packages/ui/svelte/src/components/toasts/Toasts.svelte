@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { TToastsItemType } from '@soldy-ui/core'
+	import type { TToastsItemType } from '@soxa-ui/core'
 	import { Dynamic, Teleport, toRootProps } from '../../adapter'
 	import { ToastsItem } from './item'
 	import { setupToasts } from './setup.component'

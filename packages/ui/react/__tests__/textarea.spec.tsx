@@ -19,9 +19,9 @@ import { describe, it, expect, expectTypeOf, vi, afterEach } from 'vitest'
 import { act, type ReactElement } from 'react'
 import { hydrateRoot } from 'react-dom/client'
 import { renderToString } from 'react-dom/server'
-import { TTextarea, type TValuePayload } from '@soldy-ui/core'
-import { ruRU } from '@soldy-ui/plugins'
-import { Field, LocaleProvider, Textarea, type TextareaProps } from '@soldy-ui/react'
+import { TTextarea, type TValuePayload } from '@soxa-ui/core'
+import { ruRU } from '@soxa-ui/plugins'
+import { Field, LocaleProvider, Textarea, type TextareaProps } from '@soxa-ui/react'
 import { find, mount, nextFrame, track } from './mount'
 
 afterEach(() => {

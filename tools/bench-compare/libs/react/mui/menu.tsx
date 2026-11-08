@@ -9,7 +9,7 @@ import MenuItem from '@mui/material/MenuItem'
 import Typography from '@mui/material/Typography'
 
 /**
- * The soldy menu preview in MUI: a group of checkboxes, a group of radios,
+ * The soxa menu preview in MUI: a group of checkboxes, a group of radios,
  * actions with shortcuts, a submenu with a submenu inside, a disabled action
  * and a destructive one. MUI has no checkbox items and no submenus: checkbox
  * and radio items are `MenuItem` with `role` and a mark, a submenu is a nested

@@ -1,9 +1,9 @@
 {
-  "name": "@soldy-ui/theme-oren",
+  "name": "@soxa-ui/theme-oren",
   "version": "0.3.0-beta.0",
-  "description": "Тема oren: CSS под BEM-классы и data-* компонентов Soldy UI, светлая и тёмная схемы",
+  "description": "Тема oren: CSS под BEM-классы и data-* компонентов Soxa UI, светлая и тёмная схемы",
   "keywords": [
-    "soldy",
+    "soxa",
     "ui",
     "theme",
     "css"
@@ -12,12 +12,12 @@
   "author": "Yuri Soldatov",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/youra-h/soldy-ui.git",
+    "url": "git+https://github.com/youra-h/soxa-ui.git",
     "directory": "packages/themes/oren"
   },
-  "homepage": "https://github.com/youra-h/soldy-ui",
+  "homepage": "https://github.com/youra-h/soxa-ui",
   "bugs": {
-    "url": "https://github.com/youra-h/soldy-ui/issues"
+    "url": "https://github.com/youra-h/soxa-ui/issues"
   },
   "publishConfig": {
     "access": "public"
@@ -51,11 +51,11 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@soldy-ui/theme-base": "0.3.0-beta.0"
+    "@soxa-ui/theme-base": "0.3.0-beta.0"
   },
   "peerDependencies": {
-    "@soldy-ui/core": "^0.3.0-beta.0",
-    "@soldy-ui/setup": "^0.3.0-beta.0"
+    "@soxa-ui/core": "^0.3.0-beta.0",
+    "@soxa-ui/setup": "^0.3.0-beta.0"
   },
   "devDependencies": {
     "@tailwindcss/node": "^4.2.2",

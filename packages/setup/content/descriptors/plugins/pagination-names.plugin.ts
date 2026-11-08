@@ -8,7 +8,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TPaginationNamesPlugin } from '@soldy-ui/plugins'
+import { TPaginationNamesPlugin } from '@soxa-ui/plugins'
 
 export const PaginationNamesPluginDescriptor = definePlugin({
 	ctor: TPaginationNamesPlugin,

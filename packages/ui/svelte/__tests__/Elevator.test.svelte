@@ -9,7 +9,7 @@
 	 *
 	 * Движок первого списка тест получает в `onFirst`, второго — в `onSecond`.
 	 */
-	import { ListBox, type ListBoxProps } from '@soldy-ui/svelte'
+	import { ListBox, type ListBoxProps } from '@soxa-ui/svelte'
 
 	type TEngineProbe = NonNullable<ListBoxProps['onEngineCreate']>
 

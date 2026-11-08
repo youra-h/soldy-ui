@@ -1,4 +1,4 @@
-import type { TEventSink } from '@soldy-ui/core'
+import type { TEventSink } from '@soxa-ui/core'
 import { TNamesPlugin } from '../../../locale/names.plugin'
 import type { TTranslations } from '../../../locale/types'
 import type { TTableNamesPluginEvents } from './types'

@@ -5,7 +5,7 @@
  * mechanics.
  */
 
-import type { TCollectionBundlesPlugin } from '@soldy-ui/plugins'
+import type { TCollectionBundlesPlugin } from '@soxa-ui/plugins'
 import type { IElevatorKey } from '../../../protected/adapter/elevator'
 import type { TCollectionMembers } from './members.class'
 
@@ -17,7 +17,7 @@ import type { TCollectionMembers } from './members.class'
  * above does not reach its subtree.
  */
 export const COLLECTION_BUNDLES_ELEVATOR: IElevatorKey<TCollectionBundlesPlugin | null> = {
-	name: 'soldy:collection-bundles',
+	name: 'soxa:collection-bundles',
 }
 
 /**
@@ -26,5 +26,5 @@ export const COLLECTION_BUNDLES_ELEVATOR: IElevatorKey<TCollectionBundlesPlugin 
  * ends.
  */
 export const COLLECTION_MEMBERS_ELEVATOR: IElevatorKey<TCollectionMembers> = {
-	name: 'soldy:collection-members',
+	name: 'soxa:collection-members',
 }

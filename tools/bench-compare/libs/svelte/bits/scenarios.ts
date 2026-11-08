@@ -65,7 +65,7 @@ async function popup(
 }
 
 /**
- * Bits scenarios: the soldy ones step by step, on Bits' own markup — its
+ * Bits scenarios: the soxa ones step by step, on Bits' own markup — its
  * parts mark themselves with `data-<component>-<part>` attributes, and the
  * panels are portalled to the end of `body`.
  */

@@ -106,8 +106,8 @@ for (const key of pageKeys) {
 }
 
 if (size) {
-	// soldy first, pages in the order of the run, `all` last
-	const libs = ['soldy', ...Object.keys(size).filter((lib) => lib !== 'soldy')]
+	// soxa first, pages in the order of the run, `all` last
+	const libs = ['soxa', ...Object.keys(size).filter((lib) => lib !== 'soxa')]
 	const ids = [...pageKeys.filter((key) => !key.includes(':') && key !== 'empty'), 'all']
 
 	lines.push('', `| Страница | ${libs.map((lib) => `${lib}, gzip / brotli`).join(' | ')} |`)

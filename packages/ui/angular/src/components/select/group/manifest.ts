@@ -1,1 +1,1 @@
-export { SelectGroupDescriptor as descriptor } from '@soldy-ui/setup'
+export { SelectGroupDescriptor as descriptor } from '@soxa-ui/setup'

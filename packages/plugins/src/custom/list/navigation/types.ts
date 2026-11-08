@@ -1,5 +1,5 @@
-import type { TValuePayload } from '@soldy-ui/core'
-import type { IControl } from '@soldy-ui/core'
+import type { TValuePayload } from '@soxa-ui/core'
+import type { IControl } from '@soxa-ui/core'
 import type { TPluginEvents } from '../../../base'
 
 /**

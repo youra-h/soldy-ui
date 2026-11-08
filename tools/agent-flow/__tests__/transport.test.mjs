@@ -45,7 +45,7 @@ test('stdio stays valid JSON-RPC across notifications, malformed frames and tool
 })
 
 test('Git commit guard accepts English and rejects Cyrillic and obsolete attribution', (t) => {
-	const directory = mkdtempSync(join(tmpdir(), 'soldy-commit-'))
+	const directory = mkdtempSync(join(tmpdir(), 'soxa-commit-'))
 	t.after(() => rmSync(directory, { recursive: true, force: true }))
 	const message = join(directory, 'message')
 	const guard = fileURLToPath(new URL('../check-commit.mjs', import.meta.url))

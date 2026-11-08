@@ -3,8 +3,8 @@ import { Component, signal, ɵgetDirectiveDef } from '@angular/core'
 import { TestBed } from '@angular/core/testing'
 import { By } from '@angular/platform-browser'
 import { FormsModule, ReactiveFormsModule, FormControl, FormGroup, NgModel } from '@angular/forms'
-import * as core from '@soldy-ui/core'
-import * as angular from '@soldy-ui/angular'
+import * as core from '@soxa-ui/core'
+import * as angular from '@soxa-ui/angular'
 import { exportedDeclarations } from './declarations'
 import { ValueAccessorDirective } from '../src/adapter/runtime/value-accessor.directive'
 
@@ -477,7 +477,7 @@ describe('Angular Forms', () => {
 	)
 
 	it('provides an accessor on every exported component with a writable value model', () => {
-		const declarations = exportedDeclarations().filter((d) => d.soldy)
+		const declarations = exportedDeclarations().filter((d) => d.soxa)
 		expect(declarations.length).toBeGreaterThan(50)
 		for (const declaration of declarations) {
 			const definition = ɵgetDirectiveDef(declaration.type)

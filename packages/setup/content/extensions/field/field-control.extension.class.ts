@@ -57,7 +57,7 @@
  *   adapter.use(TFieldControlExtension, { elevator: VueElevatorFactory })
  */
 
-import { TAriaPlugin, TIdPlugin } from '@soldy-ui/plugins'
+import { TAriaPlugin, TIdPlugin } from '@soxa-ui/plugins'
 import type { TInstanceContext } from '../../../protected/adapter/context'
 import { FIELD_ELEVATOR } from './keys'
 import type { IFieldControl, IFieldControlExtensionOptions } from './types'

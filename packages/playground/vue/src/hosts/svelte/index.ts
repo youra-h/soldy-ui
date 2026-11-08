@@ -4,7 +4,7 @@ import {
 	findComponent,
 	partsOf,
 	type IPreviewHost,
-} from '@soldy-ui/playground-shared'
+} from '@soxa-ui/playground-shared'
 import { PREVIEWS, type TPreview, type TPreviewProps } from './previews'
 import { FIXTURES } from './fixtures'
 import { listenersOf } from './events'

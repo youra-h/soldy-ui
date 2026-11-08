@@ -1,1 +1,1 @@
-export { TooltipDescriptor as descriptor } from '@soldy-ui/setup'
+export { TooltipDescriptor as descriptor } from '@soxa-ui/setup'

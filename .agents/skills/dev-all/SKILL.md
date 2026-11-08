@@ -1,6 +1,6 @@
 ---
 name: dev-all
-description: Implement the available soldy-ui ClickUp queue sequentially. Use when the owner explicitly invokes this command; not for unrelated coding work.
+description: Implement the available soxa-ui ClickUp queue sequentially. Use when the owner explicitly invokes this command; not for unrelated coding work.
 ---
 
 Read [commands](../../../tools/agent-flow/commands.md) for the dev-all entry and [shared workflow](../../../tools/agent-flow/workflow.md). Apply the invocation's task ID or owner instruction.

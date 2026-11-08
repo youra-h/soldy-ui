@@ -2,7 +2,7 @@
   "name": "bench-compare",
   "private": true,
   "type": "module",
-  "description": "Страницы компонентов soldy рядом с библиотеками соседей, см. benchmarks/compare/README.md в корне",
+  "description": "Страницы компонентов soxa рядом с библиотеками соседей, см. benchmarks/compare/README.md в корне",
   "scripts": {
     "bench": "node run.mjs",
     "size": "node size.mjs"

@@ -8,7 +8,7 @@
  */
 
 import { describe, expect, it, vi } from 'vitest'
-import { TCalendar, TDateInput, TTable } from '@soldy-ui/core'
+import { TCalendar, TDateInput, TTable } from '@soxa-ui/core'
 import {
 	TLocalePlugin,
 	TLocaleSource,

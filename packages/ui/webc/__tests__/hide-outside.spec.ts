@@ -16,8 +16,8 @@
  */
 
 import { describe, it, expect, afterEach } from 'vitest'
-import { THideOutsidePlugin, TPluginBundle } from '@soldy-ui/plugins'
-import { TFrameElement, type TFrameElementProps } from '@soldy-ui/webc'
+import { THideOutsidePlugin, TPluginBundle } from '@soxa-ui/plugins'
+import { TFrameElement, type TFrameElementProps } from '@soxa-ui/webc'
 
 /** Отрисовка и наблюдатель плагина — на микрозадаче. */
 const flush = () => new Promise<void>((resolve) => queueMicrotask(() => resolve()))

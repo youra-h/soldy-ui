@@ -1,5 +1,5 @@
-import type { IScroller } from '@soldy-ui/core'
-import type { ScrollerDescriptor } from '@soldy-ui/setup'
+import type { IScroller } from '@soxa-ui/core'
+import type { ScrollerDescriptor } from '@soxa-ui/setup'
 import type { EventProps, UseDomProps } from '../../types'
 
 export type ScrollerEventProps = EventProps<typeof ScrollerDescriptor>

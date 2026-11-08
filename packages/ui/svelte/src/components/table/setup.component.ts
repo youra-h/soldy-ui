@@ -3,7 +3,7 @@ import {
 	TVirtualCollectionExtension,
 	TableCollectionDescriptor,
 	TableDescriptor,
-} from '@soldy-ui/setup'
+} from '@soxa-ui/setup'
 import {
 	createSvelteAdapterContext,
 	joinBindings,

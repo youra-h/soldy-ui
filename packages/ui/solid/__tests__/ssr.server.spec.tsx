@@ -20,7 +20,7 @@ import type {
 	MenuDescriptor,
 	PopoverDescriptor,
 	TooltipDescriptor,
-} from '@soldy-ui/setup'
+} from '@soxa-ui/setup'
 import {
 	Button,
 	CheckBox,
@@ -49,7 +49,7 @@ import {
 	Toasts,
 	Tooltip,
 	roleIcon,
-} from '@soldy-ui/solid'
+} from '@soxa-ui/solid'
 
 /**
  * Разметка сервера без меток гидратации: ключи узлов (`data-hk`) и

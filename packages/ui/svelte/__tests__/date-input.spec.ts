@@ -26,9 +26,9 @@
 
 import { describe, it, expect, vi } from 'vitest'
 import { createRawSnippet, flushSync } from 'svelte'
-import type { IDateInput, TDateInputKind, TTimePrecision } from '@soldy-ui/core'
-import { arEG, enUS, ruRU, type TLocale } from '@soldy-ui/plugins'
-import type { DateInputProps } from '@soldy-ui/svelte'
+import type { IDateInput, TDateInputKind, TTimePrecision } from '@soxa-ui/core'
+import { arEG, enUS, ruRU, type TLocale } from '@soxa-ui/plugins'
+import type { DateInputProps } from '@soxa-ui/svelte'
 import Surround from './Surround.test.svelte'
 import { find, mount, nextFrame } from './mount'
 import { reactiveProps } from './reactive-props.svelte'

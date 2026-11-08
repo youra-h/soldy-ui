@@ -10,13 +10,13 @@
 
 import { describe, it, expect, expectTypeOf, vi } from 'vitest'
 import { act, type ReactNode } from 'react'
-import type { IAccordionItem } from '@soldy-ui/core'
+import type { IAccordionItem } from '@soxa-ui/core'
 import {
 	Accordion,
 	AccordionItem,
 	type AccordionItemProps,
 	type AccordionProps,
-} from '@soldy-ui/react'
+} from '@soxa-ui/react'
 import { find, mount } from './mount'
 
 const headers = () => [...document.querySelectorAll('.so-accordion-item__header')]

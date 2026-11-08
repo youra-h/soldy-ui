@@ -1,4 +1,4 @@
-import type { IScroller } from '@soldy-ui/core'
+import type { IScroller } from '@soxa-ui/core'
 import { TNamesPlugin } from '../../../locale/names.plugin'
 import type { TTranslations } from '../../../locale/types'
 

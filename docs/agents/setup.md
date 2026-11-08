@@ -58,7 +58,7 @@
 
 Внутри `protected/adapter/` граница одна, и её держит сторож: **ядро обмена
 (`protected/adapter/exchange/`) не импортирует сборку, реестры и
-`@soldy-ui/plugins`.** Оно знает описание свойства и поверхность — и только.
+`@soxa-ui/plugins`.** Оно знает описание свойства и поверхность — и только.
 Узнай оно о наборе плагинов, правила записи снова расползлись бы по сборке.
 
 **Сборка над инстансом атомарна для остальных его монтирований
@@ -219,7 +219,7 @@ different component». Граница тишины — сама сборка, с
 - `TAdapterContext` наружу не выходит: адаптер получает интерфейс
   `IAdapterContext`. Публичный интерфейс не наследует внутренний тип сборки —
   declaration emit Vue его не назовёт.
-- Внутри пакета `@soldy-ui/setup` не импортируется, только относительные пути.
+- Внутри пакета `@soxa-ui/setup` не импортируется, только относительные пути.
 - **Пакет объявлен `"sideEffects": false`** — иначе вызовы `defineDescriptor` /
   `definePlugin` на верхнем уровне модулей заставляют сборщик сохранить все
   дескрипторы и плагины ради одной кнопки. Импорт ради побочного эффекта в
@@ -292,7 +292,7 @@ Builder добавил бы изменяемое состояние, pipeline �
 
 Сторож — `packages/setup/__tests__/setup-structure.spec.ts`: рантайм-импорт вне
 таблицы, импорт наполнения из `protected/`, папка верхнего уровня мимо слоёв,
-модуль без строки в таблице, импорт `@soldy-ui/setup` внутри пакета, знание ядра
+модуль без строки в таблице, импорт `@soxa-ui/setup` внутри пакета, знание ядра
 обмена о сборке и нарушение соглашений о файлах роняют тест.
 
 ## Project-specific patterns
@@ -443,15 +443,15 @@ Builder добавил бы изменяемое состояние, pipeline �
   `view: { type: String, … }`. Обёртка `defineType` в пропе была бы второй
   записью типа, которую никто не сверяет с ядром, а Vue проверял бы её как
   `Object`. Сторож — `setup/__tests__/prop-defaults.spec.ts`, «тип пропа —
-  конструктор рантайма». `defineType` экспортируется из `@soldy-ui/setup` и живёт
+  конструктор рантайма». `defineType` экспортируется из `@soxa-ui/setup` и живёт
   в `packages/setup/protected/define/prop-type.ts`; дескрипторы внутри пакета
   импортируют его из `protected/define/` относительным путём, не из
-  `@soldy-ui/setup` — см.
+  `@soxa-ui/setup` — см.
   «Структура `packages/setup`».
 
 - **Collections use facades**: the owner is a `TCollectionComponent` subclass (e.g. `TTabsCollectionFacade`) that owns a `TCollectionEngine` and exposes getters (`items`, `trackBy`, `activeItem`); the item is a `TCollectionItemComponent` subclass (e.g. `TTabsItemCollectionFacade`) holding a `TItemContext`. Both are wired through `defineComponent` descriptors — there is no `defineCollection`/`defineExtension`. Facades don't implement these from scratch: they extend the base matching their extension set (`TBatchCollectionFacade`/`TSelectionCollectionFacade`/`TActivationCollectionFacade`, `TOrderItemFacade`/`TSelectionItemFacade`/`TActivationItemFacade`) — see «Иерархия фасадов повторяет состав расширений» above. Facades never list the events they forward: `relayAll` takes the source's whole map, and the facade's event map is an intersection of those maps — see «Карта событий выводится из источника, а не переписывается» above.
 
-- **Vue collection setup** creates two adapter contexts sharing one bundle: the owner component (`TabsDescriptor`, through `useAdapter`) and the collection facade (`TabsCollectionDescriptor`, `{ bundle: adapter.bundle }`, through `useCollectionAdapter`). The facade is bound first, the component after it: a context listens to its events after its `attach`, and what the accepted facade writes into the component is its starting state, not an event — the same order in Vue, Svelte, Solid and Web Components. Both contexts are created via `createVueAdapterContext` (`packages/ui/vue/src/adapter/common/`), not `createAdapterContext` from `@soldy-ui/setup` directly — the wrapper strips Vue proxies from `ctrl` and from top-level values of `options`. The facade context's `options` carries `{ owner: adapter.instance, engine: props.engine }`; `resolveEngine` picks up the passed-in engine and attaches it to the owner, or builds its own when none was passed. `useCollectionAdapter` binds the facade without `ctrl` and without a root: both belong to the owner, and a facade shares the owner's bundle and has no node of its own — no root ref and no `watch` on it. The setup returns `joinBindings(refs, refsCollection)` — one view of both states that reads them on every access (a spread would read them once, in `setup()`, and untie the markup from the core) — and adds its own values with `extendBinding` (`packages/ui/vue/src/adapter/runtime/view.ts`). An item binds its facade the same way — `useCollectionAdapter` for the facade, `joinBindings(ownerBinding, itemBinding)`. Items register through `TCollectionExtension`/`TCollectionItemExtension` over the elevator (provide/inject): the item setup assembles `TCollectionItemExtension`, and the item joins the collection when `useCollectionAdapter` attaches the facade context in `setup()` (see «Элемент входит в коллекцию при монтировании, а не при сборке»).
+- **Vue collection setup** creates two adapter contexts sharing one bundle: the owner component (`TabsDescriptor`, through `useAdapter`) and the collection facade (`TabsCollectionDescriptor`, `{ bundle: adapter.bundle }`, through `useCollectionAdapter`). The facade is bound first, the component after it: a context listens to its events after its `attach`, and what the accepted facade writes into the component is its starting state, not an event — the same order in Vue, Svelte, Solid and Web Components. Both contexts are created via `createVueAdapterContext` (`packages/ui/vue/src/adapter/common/`), not `createAdapterContext` from `@soxa-ui/setup` directly — the wrapper strips Vue proxies from `ctrl` and from top-level values of `options`. The facade context's `options` carries `{ owner: adapter.instance, engine: props.engine }`; `resolveEngine` picks up the passed-in engine and attaches it to the owner, or builds its own when none was passed. `useCollectionAdapter` binds the facade without `ctrl` and without a root: both belong to the owner, and a facade shares the owner's bundle and has no node of its own — no root ref and no `watch` on it. The setup returns `joinBindings(refs, refsCollection)` — one view of both states that reads them on every access (a spread would read them once, in `setup()`, and untie the markup from the core) — and adds its own values with `extendBinding` (`packages/ui/vue/src/adapter/runtime/view.ts`). An item binds its facade the same way — `useCollectionAdapter` for the facade, `joinBindings(ownerBinding, itemBinding)`. Items register through `TCollectionExtension`/`TCollectionItemExtension` over the elevator (provide/inject): the item setup assembles `TCollectionItemExtension`, and the item joins the collection when `useCollectionAdapter` attaches the facade context in `setup()` (see «Элемент входит в коллекцию при монтировании, а не при сборке»).
 
 ## Что общее, а что специфично для фреймворка
 
@@ -776,7 +776,7 @@ Partial<IXProps>` вместо аннотации не годится: он ос
 
 Цена решения: `bundle:create` идёт по шине core, хотя плагины — слой над core.
 Это осознанное исключение, а не протечка. Шина используется как транспорт, не
-как зависимость: `packages/core` не импортирует `@soldy-ui/plugins`, но имя
+как зависимость: `packages/core` не импортирует `@soxa-ui/plugins`, но имя
 события объявляет — в `TComponentEvents`, с аргументом `unknown`. Карта событий
 закрыта, и без имени в ней не скомпилировались бы ни подписка с инстанса, ни
 проп события адаптера, который выводится из той же карты. Тип бандла ядру
@@ -816,7 +816,7 @@ usePlugins(TButton, [TRipplePlugin], { scope: 'all' })  // и детали чу�
 useExtensions(TTags, [(owner) => new TTagsHistoryExtension({ owner })])
 
 // 3. Тема — тот же реестр одним объектом
-import oren from '@soldy-ui/theme-oren/setup'
+import oren from '@soxa-ui/theme-oren/setup'
 useTheme(oren)
 ```
 
@@ -870,14 +870,14 @@ useTheme(oren)
 темы (`useTheme`) — `'all'`: тема рисует компонент везде.
 
 Отличает деталь признак `embedded` с именем места (`tags.close`,
-`select.field`). Ставит его **разметка библиотеки** на каждый компонент soldy,
+`select.field`). Ставит его **разметка библиотеки** на каждый компонент soxa,
 который использует как деталь; элементы своей коллекции (`ListBoxItem` в
 `ListBox`) признака не несут. Проп объявлен у всех компонентов в
 `EntityDescriptor` рядом с `ctrl`: триггеров нет, в инстанс он не пишется,
 читает его сборка компонента (`createAdapterContext`) из пропсов — ни
 один адаптер не обязан помнить отдельный шаг.
 
-Сторож — `setup/__tests__/embedded-markup.spec.ts`: вложенный компонент soldy в
+Сторож — `setup/__tests__/embedded-markup.spec.ts`: вложенный компонент soxa в
 `packages/ui/*/src/components/**` без `embedded` роняет тест. Забытый признак
 ничего не ломает видимо, поэтому стережётся тестом, а не ревью. Шаблон Web
 Components — код, а не разметка, и сторож его не читает: деталь шаблон строит
@@ -890,7 +890,7 @@ Components — код, а не разметка, и сторож его не ч�
 другим помощником — `createItem`, без `embedded`.
 
 Всплытие событий в Web Components решает не `embedded`, а то, кто написал
-элемент: **событие элемента soldy всплывает, только если элемент написал
+элемент: **событие элемента soxa всплывает, только если элемент написал
 потребитель — разметкой или кодом.** Элемент, который построил шаблон
 библиотеки, — деталь (`createDetail`) и элемент своей коллекции из данных
 (`createItem`: элементы `items` и `engine` у ListBox, Tabs, Accordion и
@@ -964,7 +964,7 @@ el.pluginProps = { timer_ms: 500 }; el.addEventListener('so:plugin:event', …) 
 - **Плагин дескриптора через `pluginProps` не пишется**: его пропсы уже в
   поверхности (`aria_label`, а не `pluginProps.aria_label`).
 - Типы ключей приложение дописывает в `IExternalPluginProps` (module
-  augmentation `@soldy-ui/setup`).
+  augmentation `@soxa-ui/setup`).
 
 Прошлые попытки: пропсы внешнего плагина плоско, через `attrs` во Vue, и
 типы `IRegisteredPlugins` — поверхность начинала зависеть от фреймворка;
@@ -1115,7 +1115,7 @@ DatePicker совпадение слотов держалось руками: ш
 
 - **Angular**: `<ng-content>` объявляется один раз и **вне `@if`** — иначе
   содержимое теряется при смене ветки. `SlotDirective` импортирует потребитель,
-  а не компонент soldy. Шаблон слота (`<ng-template slot>`) Angular считает
+  а не компонент soxa. Шаблон слота (`<ng-template slot>`) Angular считает
   содержимым для проекции, и в основной проекции он снял бы запасное
   содержимое, поэтому у компонента со слотами-шаблонами и запасным
   содержимым шаблоны уходят в слив (`<ng-content select="ng-template[slot]">`;
@@ -1139,11 +1139,11 @@ DatePicker совпадение слотов держалось руками: ш
   содержимое слота, объявленного раньше, встаёт раньше при любом порядке в
   разметке (`clear` перед `trailing` у Input). Узел едет в свою точку
   переносом силами базы — одной операцией, не выходя из документа, — и
-  элемент soldy в нём не пересобирается
+  элемент soxa в нём не пересобирается
   (`ui/webc/src/adapter/runtime/relocation.ts`). Слот, который рисуется по
   состоянию (`on` и `off` у Switch, отметка у CheckBox и у выбранного
   элемента ListBox), выводит привязка шаблона — `showSlot` его контекста:
-  снятое уходит из документа, и элементы soldy в нём отключаются, как при
+  снятое уходит из документа, и элементы soxa в нём отключаются, как при
   перестановке, а показ — переносом силами базы. Содержимое слота, которого шаблон не объявил, не
   выводится — как у остальных адаптеров и у теневого дерева: текст внутри
   кольца ProgressSpinner, у которого слотов нет, вошёл бы в узел с ролью

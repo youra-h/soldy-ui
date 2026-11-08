@@ -14,7 +14,7 @@
  */
 
 import { describe, it, expect, expectTypeOf, vi } from 'vitest'
-import { TEvented } from '@soldy-ui/core'
+import { TEvented } from '@soxa-ui/core'
 import { TBasePlugin, TLocaleSource, TPluginBundle, enUS } from '../src'
 import type { IListenable, IPluginContext, TPluginEvents } from '../src'
 

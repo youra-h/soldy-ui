@@ -12,8 +12,8 @@
 
 import { describe, it, expect } from 'vitest'
 import { act } from 'react'
-import { TProgressSpinner } from '@soldy-ui/core'
-import { ProgressSpinner } from '@soldy-ui/react'
+import { TProgressSpinner } from '@soxa-ui/core'
+import { ProgressSpinner } from '@soxa-ui/react'
 import { mount } from './mount'
 
 /** Доля готового на корне; пустая строка — переменной нет. */

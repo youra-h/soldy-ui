@@ -82,9 +82,9 @@ import {
 	ToastsItemDescriptor,
 	TooltipDescriptor,
 	VirtualDescriptor,
-} from '@soldy-ui/setup'
-import type { IComponentDescriptor } from '@soldy-ui/setup'
-import { Button, ComponentView } from '@soldy-ui/vue'
+} from '@soxa-ui/setup'
+import type { IComponentDescriptor } from '@soxa-ui/setup'
+import { Button, ComponentView } from '@soxa-ui/vue'
 
 const COMPONENTS = resolve(import.meta.dirname, '../src/components')
 

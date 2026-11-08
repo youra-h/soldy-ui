@@ -9,7 +9,7 @@
  */
 
 import { defineComponent, defineDescriptor } from '../../../../protected/define'
-import { TListBoxGroup } from '@soldy-ui/core'
+import { TListBoxGroup } from '@soxa-ui/core'
 import { ItemGroupDescriptor } from '../item-group.descriptor'
 
 export const ListBoxGroupDescriptor = defineDescriptor(() =>

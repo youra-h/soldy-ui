@@ -1,4 +1,4 @@
-import { SelectGroupDescriptor, TItemGroupExtension } from '@soldy-ui/setup'
+import { SelectGroupDescriptor, TItemGroupExtension } from '@soxa-ui/setup'
 import { createSolidAdapterContext, useAdapter, useElevator } from '../../../adapter'
 import type { SelectGroupProps } from './base.component'
 

@@ -1,7 +1,7 @@
 import { useEmits, useProps } from '../../adapter'
 import type { TEmits, TProps, UseProps } from '../../types/common'
-import { InteractiveDescriptor } from '@soldy-ui/setup'
-import type { IInteractive } from '@soldy-ui/core'
+import { InteractiveDescriptor } from '@soxa-ui/setup'
+import type { IInteractive } from '@soxa-ui/core'
 
 export const emitsInteractive: TEmits = useEmits(InteractiveDescriptor())
 

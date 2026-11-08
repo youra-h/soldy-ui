@@ -1,4 +1,4 @@
-import { LabelDescriptor } from '@soldy-ui/setup'
+import { LabelDescriptor } from '@soxa-ui/setup'
 import { createSvelteAdapterContext, useAdapter, type TRootReceiver } from '../../adapter'
 import type { LabelProps } from './base.component'
 

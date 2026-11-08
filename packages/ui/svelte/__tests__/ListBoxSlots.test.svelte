@@ -10,8 +10,8 @@
 	 * - `owner-indicator` — список из данных, отметка-проброс рисуется только у
 	 *   элемента `a`.
 	 */
-	import type { IListBoxItem } from '@soldy-ui/core'
-	import { ListBox } from '@soldy-ui/svelte'
+	import type { IListBoxItem } from '@soxa-ui/core'
+	import { ListBox } from '@soxa-ui/svelte'
 
 	type THarnessProps = {
 		case: 'indicator' | 'owner-indicator'

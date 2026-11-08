@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, useTemplateRef, watch } from 'vue'
-import type { IPreviewHandle, IPreviewHost, TPreviewEventSink } from '@soldy-ui/playground-shared'
+import type { IPreviewHandle, IPreviewHost, TPreviewEventSink } from '@soxa-ui/playground-shared'
 import { useIconPack } from '../composables/useIconPack'
 
 /**

@@ -25,8 +25,8 @@
  */
 
 import { describe, it, expect } from 'vitest'
-import { TListBoxItem } from '@soldy-ui/core'
-import type { IListBoxItem } from '@soldy-ui/core'
+import { TListBoxItem } from '@soxa-ui/core'
+import type { IListBoxItem } from '@soxa-ui/core'
 import { TListNavigationPlugin } from '../src'
 import type { TListNavigationPluginEvents, THighlightPayload } from '../src'
 

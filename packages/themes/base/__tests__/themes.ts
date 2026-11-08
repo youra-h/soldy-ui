@@ -29,10 +29,10 @@ const BASE = resolve(import.meta.dirname, '..')
 const THEMES_DIR = resolve(BASE, '..')
 
 /** Тема, у которой сторожа проверяют, что им есть что сторожить. */
-export const OREN = '@soldy-ui/theme-oren'
+export const OREN = '@soxa-ui/theme-oren'
 
 export type TTheme = {
-	/** Имя пакета: `@soldy-ui/theme-oren`. */
+	/** Имя пакета: `@soxa-ui/theme-oren`. */
 	readonly name: string
 	/** Каталог пакета. */
 	readonly dir: string

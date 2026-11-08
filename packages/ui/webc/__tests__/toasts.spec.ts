@@ -24,17 +24,17 @@
  */
 
 import { describe, it, expect, afterEach } from 'vitest'
-import { TComponentView, TToasts, TToastsItem, createEngineToasts } from '@soldy-ui/core'
-import type { IToastsItem, TToastsItemType } from '@soldy-ui/core'
-import { TBasePlugin, ruRU, type IPluginContext } from '@soldy-ui/plugins'
-import { ToastsDescriptor, usePlugins } from '@soldy-ui/setup'
+import { TComponentView, TToasts, TToastsItem, createEngineToasts } from '@soxa-ui/core'
+import type { IToastsItem, TToastsItemType } from '@soxa-ui/core'
+import { TBasePlugin, ruRU, type IPluginContext } from '@soxa-ui/plugins'
+import { ToastsDescriptor, usePlugins } from '@soxa-ui/setup'
 import {
 	TLocaleProviderElement,
 	TToastsElement,
 	toastsOf,
 	type TToastRender,
 	type TToastsElementProps,
-} from '@soldy-ui/webc'
+} from '@soxa-ui/webc'
 import { toastsTemplate } from '../src/components/toasts/toasts.template'
 import { TELEPORT_ANCHOR } from '../src/adapter/runtime/teleport'
 import { bareContext } from './template-context'
@@ -253,9 +253,9 @@ describe('менеджер и API', () => {
 	 */
 	it('rendered=false снимает узел региона у плагинов, кнопка приложения свой держит; rendered=true возвращает регион', async () => {
 		const manager = await render({
-			content: '<button is="so-button" class="so-test-soldy" text="Сохранить"></button>',
+			content: '<button is="so-button" class="so-test-soxa" text="Сохранить"></button>',
 		})
-		const button = find('.so-test-soldy')
+		const button = find('.so-test-soxa')
 		const own = elementEvents(manager)
 		const inner = elementEvents(button)
 

@@ -13,7 +13,7 @@
  * сброса страницы не даёт (корневой `AGENTS.md`, «Темы: у пакета темы свои
  * инструкции»). Шрифт и высоту строки страницы, поля заголовков и абзацев,
  * маркеры списков своей разметки стенд задаёт сам — её классами, без правил
- * на теги частей soldy (`button`, `input`, `svg`).
+ * на теги частей soxa (`button`, `input`, `svg`).
  */
 
 /* Типографика страницы — своя: тема её больше не задаёт */
@@ -43,7 +43,7 @@ body {
 	background: var(--so-neutral-50);
 }
 
-/* Links of the playground itself, not a part of soldy on the tag `a`
+/* Links of the playground itself, not a part of soxa on the tag `a`
  * (`<Button tag="a">`): the theme is in cascade layers, and a rule of the page
  * outside them would take its look off */
 a:not([class^='so-'], [class*=' so-']) {

@@ -1,4 +1,4 @@
-import type { ITextarea, TEventSink } from '@soldy-ui/core'
+import type { ITextarea, TEventSink } from '@soxa-ui/core'
 import { TNamesPlugin } from '../../../locale/names.plugin'
 import type { IPluginContext } from '../../../base'
 import type { ILocaleSource, TTranslations } from '../../../locale/types'

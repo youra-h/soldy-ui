@@ -19,7 +19,7 @@ import {
 	findComponent,
 	type IPreviewHost,
 	type TScenario,
-} from '@soldy-ui/playground-shared'
+} from '@soxa-ui/playground-shared'
 import { componentsOf, coversScenario, scenariosOf, testsPath, topicsOf } from '../src/catalog'
 import { FRAMEWORKS, hostOf, loadHost } from '../src/hosts'
 import { createScenarioBench, SCENARIO_BENCH } from '../src/composables/useScenarios'

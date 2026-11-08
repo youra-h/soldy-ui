@@ -6,7 +6,7 @@ import { COLLECTION_ITEMS } from '../../../data'
 
 /**
  * Select with typing and filtering — `mat-autocomplete` over a field, as the
- * soldy `editable` preview; the filter is the one of the docs example
+ * soxa `editable` preview; the filter is the one of the docs example
  * («Filter autocomplete»): options whose text contains the typed one.
  */
 @Component({

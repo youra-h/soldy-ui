@@ -8,7 +8,7 @@
  * кому они нужны так.
  */
 
-import type { TStateSnapshot, TStateStore } from '@soldy-ui/setup'
+import type { TStateSnapshot, TStateStore } from '@soxa-ui/setup'
 
 function isPlain(value: unknown): value is object {
 	if (typeof value !== 'object' || value === null) return false

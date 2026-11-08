@@ -15,7 +15,7 @@
  */
 
 import { describe, it, expect, afterAll, afterEach, beforeAll, vi } from 'vitest'
-import { TScroller } from '@soldy-ui/core'
+import { TScroller } from '@soxa-ui/core'
 import { TElementPlugin, TPluginBundle, TScrollerViewportPlugin, resolveFocusShift } from '../src'
 import type { TInlineSpan } from '../src'
 

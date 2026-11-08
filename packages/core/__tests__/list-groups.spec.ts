@@ -12,8 +12,8 @@ import {
 	createEngineListBox,
 	createEngineSelect,
 	createEngineSelection,
-} from '@soldy-ui/core'
-import type { IListBoxItem, ISelectItem, TDrawnSection } from '@soldy-ui/core'
+} from '@soxa-ui/core'
+import type { IListBoxItem, ISelectItem, TDrawnSection } from '@soxa-ui/core'
 
 /**
  * Группы элементов ListBox и Select из данных — как у меню: метка `_.group`

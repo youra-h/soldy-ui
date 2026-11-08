@@ -37,7 +37,7 @@ describe('React — сам пакет и его подпути', () => {
 		},
 	)
 
-	it.each(['react-is', 'preact', '@soldy-ui/react', '@soldy-ui/setup', './react.js'])(
+	it.each(['react-is', 'preact', '@soxa-ui/react', '@soxa-ui/setup', './react.js'])(
 		'%s — не React',
 		(name) => {
 			expect(isReactSpecifier(name)).toBe(false)
@@ -48,9 +48,9 @@ describe('React — сам пакет и его подпути', () => {
 describe('React достижим через импорты', () => {
 	const importsOf = graph({
 		'button.js': { modules: ['setup.js', 'helpers.js'], packages: ['react/jsx-runtime'] },
-		'setup.js': { modules: ['hooks.js'], packages: ['@soldy-ui/setup'] },
+		'setup.js': { modules: ['hooks.js'], packages: ['@soxa-ui/setup'] },
 		'hooks.js': { packages: ['react'] },
-		'helpers.js': { packages: ['@soldy-ui/core'] },
+		'helpers.js': { packages: ['@soxa-ui/core'] },
 		'a.js': { modules: ['b.js'] },
 		'b.js': { modules: ['a.js'] },
 	})
@@ -114,7 +114,7 @@ describe('модуль из одних импортов и экспортов с
 describe('модуль частей вешает на владельца части и больше ничего не исполняет', () => {
 	/** Imports of a module of parts as the bundle writes them, `withParts` among them. */
 	const imports = [
-		'import { withParts } from "@soldy-ui/setup";',
+		'import { withParts } from "@soxa-ui/setup";',
 		'import { Tabs as Tabs$1 } from "./Tabs.js";',
 		'import { TabsItem } from "./item/Item.js";',
 		'import { memo } from "./memo.js";',
@@ -124,7 +124,7 @@ describe('модуль частей вешает на владельца час�
 		[
 			'исходная форма',
 			[
-				"import { withParts } from '@soldy-ui/setup'",
+				"import { withParts } from '@soxa-ui/setup'",
 				"import { Tabs as TabsComponent } from './Tabs'",
 				"import { TabsItem } from './item'",
 				"import { TabsContent } from './content'",
@@ -139,7 +139,7 @@ describe('модуль частей вешает на владельца час�
 				'import { TabsItem } from "./item/Item.js";',
 				'import { Tabs as Tabs$1 } from "./Tabs.js";',
 				'import { TabsContent } from "./content/Content.js";',
-				'import { withParts } from "@soldy-ui/setup";',
+				'import { withParts } from "@soxa-ui/setup";',
 				'//#region src/components/tabs/index.ts',
 				'var Tabs = withParts(Tabs$1, {',
 				'\tItem: TabsItem,',
@@ -152,7 +152,7 @@ describe('модуль частей вешает на владельца час�
 		[
 			'переименованный импорт',
 			[
-				'import { withParts as withParts$1 } from "@soldy-ui/setup";',
+				'import { withParts as withParts$1 } from "@soxa-ui/setup";',
 				'import { List as List$1 } from "./List.js";',
 				'import { Item } from "./Item.js";',
 				'var List = withParts$1(List$1, { Item });',
@@ -204,10 +204,10 @@ describe('модуль частей вешает на владельца час�
 		expect(isPartsModule(text)).toBe(false)
 	})
 
-	it('импорт withParts — из @soldy-ui/setup, под любым именем', () => {
-		expect(importsWithParts('import { withParts as parts } from "@soldy-ui/setup";')).toBe(true)
+	it('импорт withParts — из @soxa-ui/setup, под любым именем', () => {
+		expect(importsWithParts('import { withParts as parts } from "@soxa-ui/setup";')).toBe(true)
 		expect(importsWithParts('import { withParts } from "./parts.js";')).toBe(false)
-		expect(importsWithParts('import { useIcons } from "@soldy-ui/setup";')).toBe(false)
+		expect(importsWithParts('import { useIcons } from "@soxa-ui/setup";')).toBe(false)
 	})
 })
 

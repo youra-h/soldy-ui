@@ -5,7 +5,7 @@ import {
 	type BootstrapContext,
 } from '@angular/platform-browser'
 import { provideServerRendering, renderApplication } from '@angular/platform-server'
-import { provideAttrs } from '@soldy-ui/angular'
+import { provideAttrs } from '@soxa-ui/angular'
 import { PREVIEWS } from '../../../packages/playground/vue/src/hosts/angular/previews'
 import { PAGE, PageComponent } from './angular/page.component'
 import { measure } from './measure'

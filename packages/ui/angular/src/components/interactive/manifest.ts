@@ -1,1 +1,1 @@
-export { InteractiveDescriptor as descriptor } from '@soldy-ui/setup'
+export { InteractiveDescriptor as descriptor } from '@soxa-ui/setup'
