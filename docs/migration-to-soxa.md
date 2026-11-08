@@ -1,8 +1,8 @@
 # Migrating to the Soxa UI npm scope
 
-All 13 public packages now use the `@soxa-ui` npm scope. Replace the previous
-scope while keeping each package suffix. This guide applies once the Soxa packages are
-published; the rename PR itself does not publish packages or deprecate the old ones.
+All 13 public packages are available under the `@soxa-ui` npm scope.
+The first release is `0.3.0-beta.1`, published under the `latest` tag. Replace
+the previous scope while keeping each package suffix.
 
 ## Replace dependencies
 
@@ -24,8 +24,10 @@ Keep each package suffix and replace its scope:
 | `icons-material` | `@soxa-ui/icons-material` |
 | `icons-lucide`   | `@soxa-ui/icons-lucide`   |
 
-Remove the old direct dependencies from your application and install their
-new counterparts. For example, a Vue application with Oren and Material icons:
+Remove every direct dependency on the previous scope from your application's
+package manifest, including any declared in devDependencies or peerDependencies.
+Install the corresponding packages under the new scope. For example, a Vue
+application with Oren and Material icons:
 
 ```sh
 npm install @soxa-ui/vue @soxa-ui/setup @soxa-ui/theme-oren @soxa-ui/icons-material
@@ -51,8 +53,8 @@ useTheme(oren)
 ```
 
 Replace the scope in every import/export and any package subpath. Update CSS
-`@import`, framework configuration, aliases, and TypeScript declarations such
-so module augmentations target `@soxa-ui/core` or `@soxa-ui/setup` instead
+`@import`, framework configuration, aliases, and TypeScript declarations so
+module augmentations target `@soxa-ui/core` or `@soxa-ui/setup` instead
 of the previous scope. Third-party integrations must also
 switch their peer dependencies and module augmentations.
 
@@ -66,9 +68,19 @@ package dependencies are updated.
 
 ## Links and history
 
-The target repository address is `https://github.com/youra-h/soxa-ui`.
-The repository rename is a separate step; it is not performed by this PR.
-The existing local worktree directories and private credential paths stay in
-place. Package names in changelogs and benchmark journals are normalized to
-Soxa; release versions, dates and measured results are unchanged. Old npm packages remain available;
-their deprecation is a separate step after the new packages are verified.
+The repository is [youra-h/soxa-ui](https://github.com/youra-h/soxa-ui/).
+Existing issues, pull requests, releases, tags, and Git history are preserved.
+Old npm package versions remain available for installation. A deprecation
+notice points to the replacement package; it does not remove the old version.
+
+## Verify the migration
+
+Run your package manager's install command to update the lockfile, then check
+that the previous scope is absent from both the package manifest and lockfile.
+All library packages should resolve under the new scope; do not leave a
+transitive dependency or local integration using the previous runtime registry.
+
+Run your application's type check, tests, and production build. Open a page
+that uses your components and confirm that theme CSS, icons, overlays, and
+framework hydration work as before. Custom themes keep their existing
+`so-*`, `data-so-*`, and `--so-*` selectors and variables.
