@@ -13,7 +13,7 @@ render it in Vue, React, Angular, Svelte, Solid and Web Components.**
 [![npm](https://img.shields.io/npm/v/@soxa-ui/core?label=npm)](https://www.npmjs.com/org/soxa-ui)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-> **Status:** Beta, version `0.3.0-beta.0` on npm under `latest`.
+> **Status:** Beta, version `0.3.0-beta.1` on npm under `latest`.
 > Every released component in [the component table](#components) is available in all six adapters:
 > Vue, React, Angular, Svelte, Solid and Web Components. The public API is frozen from this beta;
 > breaking changes require an explicit owner decision and migration guidance.

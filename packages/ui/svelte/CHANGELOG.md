@@ -1,5 +1,18 @@
 # @soxa-ui/svelte
 
+## 0.3.0-beta.1
+
+### Minor Changes
+
+- 1c78107: Publish Soxa UI packages under the `@soxa-ui` scope. Replace the previous npm scope in every dependency and import (including theme CSS, theme setup, icons, and TypeScript module augmentations) with `@soxa-ui/<package>`. Keep the core, plugins, setup, and adapters on the same release. Component exports, props, events, and the `so-*`, `data-so-*`, and `--so-*` styling contracts are unchanged. See `docs/migration-to-soxa.md` for the package mapping and upgrade steps.
+
+### Patch Changes
+
+- Updated dependencies [1c78107]
+  - @soxa-ui/core@0.3.0-beta.1
+  - @soxa-ui/plugins@0.3.0-beta.1
+  - @soxa-ui/setup@0.3.0-beta.1
+
 ## 0.3.0-beta.0
 
 ### Minor Changes
