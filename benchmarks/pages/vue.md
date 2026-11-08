@@ -1,10 +1,10 @@
 # Страницы компонентов на Vue
 
-Страницы компонентов soldy на адаптере Vue: сколько весят десятки копий компонента и всё ли уходит из памяти со снятием страницы. Стенд и методика — [`README.md`](README.md).
+Страницы компонентов soxa на адаптере Vue: сколько весят десятки копий компонента и всё ли уходит из памяти со снятием страницы. Стенд и методика — [`README.md`](README.md).
 
 ## 2026-10-26 — первый замер
 
-[869fhddjf](https://app.clickup.com/t/869fhddjf). soldy — ветка `task/869fhddjf-pages-memory-bench` на `c90c4c916`; 34 компонентов.
+[869fhddjf](https://app.clickup.com/t/869fhddjf). soxa — ветка `task/869fhddjf-pages-memory-bench` на `c90c4c916`; 34 компонентов.
 
 ```bash
 npm run bench -- --fw vue
@@ -75,7 +75,7 @@ Chromium 156.0.8078.4, 50 копий на страницу, сценарий —
 
 ## 2026-10-26 — элемент коллекции без своих шин
 
-[869fmdb8b](https://app.clickup.com/t/869fmdb8b). soldy — ветка `task/869fmdb8b-item-buses` на `5429a3968`; «до» — её основа `2dec183ca` (`main`), тем же прогоном подряд. Страницы — те, где в копии есть элементы коллекции: `virtual` (ListBox, Select и Table по 1000 элементов под окном) и `list-box`, `select`, `table`.
+[869fmdb8b](https://app.clickup.com/t/869fmdb8b). soxa — ветка `task/869fmdb8b-item-buses` на `5429a3968`; «до» — её основа `2dec183ca` (`main`), тем же прогоном подряд. Страницы — те, где в копии есть элементы коллекции: `virtual` (ListBox, Select и Table по 1000 элементов под окном) и `list-box`, `select`, `table`.
 
 ```bash
 npm run bench -- --pages virtual,list-box,select,table
@@ -126,7 +126,7 @@ Chromium 156.0.8078.4, 50 копий на страницу, сценарий —
 
 ## 2026-10-26 — прогрев всех страниц при любом `--pages`
 
-[869fmefet](https://app.clickup.com/t/869fmefet). Страница `all` прогоном без других страниц (`--pages all,empty`) давала «куча растёт» — 33,4 КБ/цикл при счётчиках на месте, — а в полном прогоне первого замера она чиста. Прогрев проходил только страницы самого прогона — здесь `all` и `empty` по разу. Теперь он проходит все страницы компонентов, затем остальные страницы прогона, при любом `--pages` ([`README.md`](README.md), «Сценарий»). soldy — ветка `task/869fmefet-pages-warmup` на `1936b5101`; «до» — её основа `3dec925ed` (`main`).
+[869fmefet](https://app.clickup.com/t/869fmefet). Страница `all` прогоном без других страниц (`--pages all,empty`) давала «куча растёт» — 33,4 КБ/цикл при счётчиках на месте, — а в полном прогоне первого замера она чиста. Прогрев проходил только страницы самого прогона — здесь `all` и `empty` по разу. Теперь он проходит все страницы компонентов, затем остальные страницы прогона, при любом `--pages` ([`README.md`](README.md), «Сценарий»). soxa — ветка `task/869fmefet-pages-warmup` на `1936b5101`; «до» — её основа `3dec925ed` (`main`).
 
 ```bash
 npm run bench -- --fw vue --pages all,empty --cycles 60   # до правки: кривая 60 циклов
@@ -173,7 +173,7 @@ Chromium 156.0.8078.4, 50 копий на страницу, сценарий —
 
 ## 2026-10-26 — наборы элемента без `Map` и `Set`
 
-[869fmeyyg](https://app.clickup.com/t/869fmeyyg). soldy — ветка `task/869fmeyyg-compact-sets` на `604ae77d9`; «до» — её основа `3dec925ed` (`main`), тем же прогоном подряд. Страницы — те же, что в прошлом разделе: `virtual` (ListBox, Select и Table по 1000 элементов под окном) и `list-box`, `select`, `table`.
+[869fmeyyg](https://app.clickup.com/t/869fmeyyg). soxa — ветка `task/869fmeyyg-compact-sets` на `604ae77d9`; «до» — её основа `3dec925ed` (`main`), тем же прогоном подряд. Страницы — те же, что в прошлом разделе: `virtual` (ListBox, Select и Table по 1000 элементов под окном) и `list-box`, `select`, `table`.
 
 ```bash
 npm run bench -- --pages virtual,list-box,select,table
@@ -235,7 +235,7 @@ Chromium 156.0.8078.4, 50 копий на страницу, сценарий —
 
 ## 2026-10-26 — элемент коллекции: входы без `watch`, крестики по требованию
 
-[869fmhuag](https://app.clickup.com/t/869fmhuag). soldy — ветка `task/869fmhuag-item-weight` на `a73c5bfc1`; «до» — её основа `4833135b2` (`main`), той же командой подряд. Время монтирования между прогонами не сравнивается: во время прогона ветки на машине шёл ещё один замер.
+[869fmhuag](https://app.clickup.com/t/869fmhuag). soxa — ветка `task/869fmhuag-item-weight` на `a73c5bfc1`; «до» — её основа `4833135b2` (`main`), той же командой подряд. Время монтирования между прогонами не сравнивается: во время прогона ветки на машине шёл ещё один замер.
 
 ```bash
 npm run bench -- --fw vue,react --pages select,tabs,list-box,tags,button,dialog,popover,toasts,menu,table
@@ -300,7 +300,7 @@ Chromium 156.0.8078.4, 50 копий на страницу, сценарий —
 
 ## 2026-10-26 — опции Select из данных с первого открытия
 
-[869fmj95y](https://app.clickup.com/t/869fmj95y). soldy — ветка `task/869fmj95y-select-options-first-open` на `54f5b1d72`; «до» — та же ветка на `ed297112d`: `main` (`3b0a66cd1`) со сменившейся страницей `select`, той же командой подряд.
+[869fmj95y](https://app.clickup.com/t/869fmj95y). soxa — ветка `task/869fmj95y-select-options-first-open` на `54f5b1d72`; «до» — та же ветка на `ed297112d`: `main` (`3b0a66cd1`) со сменившейся страницей `select`, той же командой подряд.
 
 Страница `select` сменила состав: Select на ней — с опциями данными (`items: COLLECTION_ITEMS` поверх пропсов превью, [`README.md`](README.md), «Стенд»), как у соседей ([`../compare/`](../compare/README.md)), а не разметкой, как в превью; копия Select в `all` — тоже. На `main` опции данными весили столько же, сколько разметкой: 232,3 КБ на копию против 230,2 в разделе выше.
 
@@ -333,7 +333,7 @@ Chromium 156.0.8078.4, 50 копий на страницу, сценарий —
 
 ## 2026-10-27 — календарь без списка выбора месяца до первого открытия
 
-[869fmjjw6](https://app.clickup.com/t/869fmjjw6). Место панели выбора месяца и года держало с создания ListBox с движком, хотя карточку открывают редко. Теперь поповер место заводит сразу — он триггер заголовка сетки, — а список с движком — с первым открытием поповера (docs/agents/dates.md, «Даты», `picker`). soldy — ветка `task/869fmjjw6-lazy-picker-list` на `2e2ff153d`; «до» — её основа `73ea2b7c9` (`main`), той же командой подряд.
+[869fmjjw6](https://app.clickup.com/t/869fmjjw6). Место панели выбора месяца и года держало с создания ListBox с движком, хотя карточку открывают редко. Теперь поповер место заводит сразу — он триггер заголовка сетки, — а список с движком — с первым открытием поповера (docs/agents/dates.md, «Даты», `picker`). soxa — ветка `task/869fmjjw6-lazy-picker-list` на `2e2ff153d`; «до» — её основа `73ea2b7c9` (`main`), той же командой подряд.
 
 ```bash
 npm run bench -- --fw vue --pages calendar
@@ -363,7 +363,7 @@ Chromium 156.0.8078.4, 50 копий на страницу, сценарий —
 
 ## 2026-10-27 — состояние Vue без рефа на свойство
 
-[869fmjnaq](https://app.clickup.com/t/869fmjnaq). Адаптер Vue заводил `shallowRef` на каждое свойство связки — у каждого компонента, читает его разметка или нет. Теперь состояние контекста — одна неглубокая запись (`shallowReactive`), и `Dep` Vue заводит только на ключ, который прочла отрисовка; шаблону запись отдаёт вид — один `Proxy` на компонент (`packages/ui/vue/src/adapter/runtime/view.ts`). Фасад коллекции больше не заводит корень с `watch`. soldy — ветка `task/869fmjnaq-vue-lazy-state` на `30fd6e01d`; «до» — `main` на `3b50b695a`, той же командой подряд.
+[869fmjnaq](https://app.clickup.com/t/869fmjnaq). Адаптер Vue заводил `shallowRef` на каждое свойство связки — у каждого компонента, читает его разметка или нет. Теперь состояние контекста — одна неглубокая запись (`shallowReactive`), и `Dep` Vue заводит только на ключ, который прочла отрисовка; шаблону запись отдаёт вид — один `Proxy` на компонент (`packages/ui/vue/src/adapter/runtime/view.ts`). Фасад коллекции больше не заводит корень с `watch`. soxa — ветка `task/869fmjnaq-vue-lazy-state` на `30fd6e01d`; «до» — `main` на `3b50b695a`, той же командой подряд.
 
 ```bash
 npm run bench -- --fw vue --pages button,select,list-box,tabs,table,date-picker
@@ -436,7 +436,7 @@ Chromium 156.0.8078.4, 50 копий на страницу, сценарий —
 
 ## 2026-10-27 — `change:items` со снимком состава
 
-[869fmqma6](https://app.clickup.com/t/869fmqma6). soldy — ветка `task/869fmqma6-change-items-snapshot`; «до» — её основа `00384ab0e` (`main`), тем же прогоном подряд. Событие драйвера `change:items` несёт снимок состава, а не живой массив хранилища: копия на каждую смену состава, и элементы разметки входят по одному. Страницы — коллекции: `virtual` (ListBox, Select и Table по 1000 элементов), `list-box`, `tabs`, `menu`, `select`.
+[869fmqma6](https://app.clickup.com/t/869fmqma6). soxa — ветка `task/869fmqma6-change-items-snapshot`; «до» — её основа `00384ab0e` (`main`), тем же прогоном подряд. Событие драйвера `change:items` несёт снимок состава, а не живой массив хранилища: копия на каждую смену состава, и элементы разметки входят по одному. Страницы — коллекции: `virtual` (ListBox, Select и Table по 1000 элементов), `list-box`, `tabs`, `menu`, `select`.
 
 ```bash
 npm run bench -- --fw vue,solid --pages virtual,list-box,tabs,menu,select
@@ -458,7 +458,7 @@ Chromium 156.0.8078.4, 50 копий на страницу, сценарий —
 
 ## 2026-10-29 — долгая сессия
 
-[869fmdbem](https://app.clickup.com/t/869fmdbem). soldy — ветка `task/869fmdbem-pages-soak` на `48d985bd9`; методика — [`README.md`](README.md), «Долгая сессия». Шесть платформ шли одним прогоном, параллельно, своим браузером каждая, с одним зерном: переходы и решения в них у платформ одни и те же.
+[869fmdbem](https://app.clickup.com/t/869fmdbem). soxa — ветка `task/869fmdbem-pages-soak` на `48d985bd9`; методика — [`README.md`](README.md), «Долгая сессия». Шесть платформ шли одним прогоном, параллельно, своим браузером каждая, с одним зерном: переходы и решения в них у платформ одни и те же.
 
 ```bash
 npm run soak -- --minutes 60 --seed 20261029

@@ -30,4 +30,4 @@
   раз, а журнал даёт на них ссылку и пишет только своё. Отчёт замера для статьи — `report.md` в его
   папке.
 
-Earlier benchmark journals retain the Soldy name and original commands as historical evidence. Current runners and commands use Soxa.
+Project names in earlier journals are normalized to Soxa; measurements, dates and commit references are unchanged.

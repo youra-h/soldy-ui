@@ -1,21 +1,21 @@
 # Таблица на Angular
 
-Таблица soldy на адаптере Angular рядом с таблицами библиотек Angular. Стенд, условия сравнения
+Таблица soxa на адаптере Angular рядом с таблицами библиотек Angular. Стенд, условия сравнения
 и методика — [`README.md`](README.md).
 
 ## 2026-10-25 — Angular, первый замер
 
-[869fhddhx](https://app.clickup.com/t/869fhddhx). soldy — `main` на `c3e7d275c`, в условиях
-сравнения: `angular:soldy+fit=none+width=3248+track`. Angular 22.2, без Zone.js. 5000 строк × 20
+[869fhddhx](https://app.clickup.com/t/869fhddhx). soxa — `main` на `c3e7d275c`, в условиях
+сравнения: `angular:soxa+fit=none+width=3248+track`. Angular 22.2, без Zone.js. 5000 строк × 20
 колонок, 3 прогона, медиана; время — в секундах до успокоения кадров.
 
 ```bash
-npm run bench -- 5000 3 angular:soldy+fit=none+width=3248+track,angular:material,angular:aggrid,angular:prime,angular:zorro,angular:plain,angular:tanstack
+npm run bench -- 5000 3 angular:soxa+fit=none+width=3248+track,angular:material,angular:aggrid,angular:prime,angular:zorro,angular:plain,angular:tanstack
 ```
 
 ### Библиотеки
 
-|                      | **soldy**    | Material 22.2 | AG Grid 36.2 | PrimeNG 22.1 | NG-ZORRO 22.1 |
+|                      | **soxa**     | Material 22.2 | AG Grid 36.2 | PrimeNG 22.1 | NG-ZORRO 22.1 |
 | -------------------- | ------------ | ------------- | ------------ | ------------ | ------------- |
 | Первый рендер        | 2,01         | **1,63**      | 2,68         | **1,63**     | 1,76          |
 | Память после рендера | 400 МБ       | **104 МБ**    | 359 МБ       | 200 МБ       | 227 МБ        |
@@ -39,22 +39,22 @@ npm run bench -- 5000 3 angular:soldy+fit=none+width=3248+track,angular:material
 
 ### Ориентиры
 
-|                      | голый Angular | TanStack 9.3 | **soldy** |
-| -------------------- | ------------- | ------------ | --------- |
-| Первый рендер        | 0,81          | 0,83         | 2,01      |
-| Память после рендера | 34 МБ         | 45 МБ        | 400 МБ    |
-| DOM-узлов            | 115 тыс.      | 115 тыс.     | 125 тыс.  |
-| Выделить все         | 0,06          | 0,07         | 0,76      |
-| Снять выделение      | 0,05          | 0,05         | 0,66      |
-| Сортировка ↑         | 0,72          | 0,74         | 1,30      |
-| Сортировка ↓         | 0,75          | 0,73         | 1,01      |
-| Замена данных        | 0,92          | 0,93         | 1,49      |
-| Размонтирование      | 0,10          | 0,09         | 0,32      |
-| Память после снятия  | 0,6 МБ        | 0,8 МБ       | 4,9 МБ    |
+|                      | голый Angular | TanStack 9.3 | **soxa** |
+| -------------------- | ------------- | ------------ | -------- |
+| Первый рендер        | 0,81          | 0,83         | 2,01     |
+| Память после рендера | 34 МБ         | 45 МБ        | 400 МБ   |
+| DOM-узлов            | 115 тыс.      | 115 тыс.     | 125 тыс. |
+| Выделить все         | 0,06          | 0,07         | 0,76     |
+| Снять выделение      | 0,05          | 0,05         | 0,66     |
+| Сортировка ↑         | 0,72          | 0,74         | 1,30     |
+| Сортировка ↓         | 0,75          | 0,73         | 1,01     |
+| Замена данных        | 0,92          | 0,93         | 1,49     |
+| Размонтирование      | 0,10          | 0,09         | 0,32     |
+| Память после снятия  | 0,6 МБ        | 0,8 МБ       | 4,9 МБ   |
 
 ### Вывод
 
-- Выделение у soldy — быстрее всех библиотек; рендер на 0,4 с медленнее Material и PrimeNG.
+- Выделение у soxa — быстрее всех библиотек; рендер на 0,4 с медленнее Material и PrimeNG.
 - Память — больше всех: 400 МБ против 104 МБ у Material. У Vue та же таблица — 296 МБ
   (`vue.md`): адаптер Angular держит на строку на треть больше.
 
@@ -65,9 +65,9 @@ Vue — в том же прогоне, на той же машине (она м�
 не 1,68).
 
 ```bash
-npm run bench -- 5000 3 soldy+fit=none+width=3248+track,angular:soldy+fit=none+width=3248+track
-npm run heap -- 1000 mounted angular:soldy+fit=none+width=3248+track 0 0 60
-npm run heap -- 5000 unmount angular:soldy+fit=none+width=3248+track 1 2000
+npm run bench -- 5000 3 soxa+fit=none+width=3248+track,angular:soxa+fit=none+width=3248+track
+npm run heap -- 1000 mounted angular:soxa+fit=none+width=3248+track 0 0 60
+npm run heap -- 5000 unmount angular:soxa+fit=none+width=3248+track 1 2000
 ```
 
 |                      | Angular до | **Angular после** | Vue     |
@@ -108,13 +108,13 @@ npm run heap -- 5000 unmount angular:soldy+fit=none+width=3248+track 1 2000
 
 [869fmckzg](https://app.clickup.com/t/869fmckzg). Правка общего слоя — обмена setup
 (`packages/setup/protected/`) и эмиттера ядра, — одна для всех адаптеров; разбор по куче —
-`webc.md`, раздел этого дня. soldy — `main` на `80f66138f` и ветка
+`webc.md`, раздел этого дня. soxa — `main` на `80f66138f` и ветка
 `task/869fmckzg-exchange-memory`; замеры подряд, в одних условиях:
-`angular:soldy+fit=none+width=3248+track`, 5000 строк × 20 колонок, 3 прогона, медиана; время — в
+`angular:soxa+fit=none+width=3248+track`, 5000 строк × 20 колонок, 3 прогона, медиана; время — в
 секундах до успокоения.
 
 ```bash
-npm run bench -- 5000 3 angular:soldy+fit=none+width=3248+track
+npm run bench -- 5000 3 angular:soxa+fit=none+width=3248+track
 ```
 
 - **Обмен setup:** линия свойства — знание типа, одна на все монтирования; состояние и входы —
@@ -144,12 +144,12 @@ npm run bench -- 5000 3 angular:soldy+fit=none+width=3248+track
 ## 2026-10-25 — Angular, слушатель шины снимается по ссылке
 
 [869fmcrp8](https://app.clickup.com/t/869fmcrp8). Правка шины ядра и обмена setup
-(`packages/setup/protected/`), одна для всех адаптеров; разбор по куче — `webc.md`, раздел этого дня. soldy — `main` на `ddf80c3f6` и
-ветка `task/869fmcrp8-unlisten`; замеры подряд, в одних условиях: `soldy+fit=none+width=3248+track`,
+(`packages/setup/protected/`), одна для всех адаптеров; разбор по куче — `webc.md`, раздел этого дня. soxa — `main` на `ddf80c3f6` и
+ветка `task/869fmcrp8-unlisten`; замеры подряд, в одних условиях: `soxa+fit=none+width=3248+track`,
 5000 строк × 20 колонок, 3 прогона, медиана; время — в секундах до успокоения.
 
 ```bash
-npm run bench -- 5000 3 angular:soldy+fit=none+width=3248+track
+npm run bench -- 5000 3 angular:soxa+fit=none+width=3248+track
 ```
 
 - **Шина ядра:** `TEvented.listen` не возвращает функцию отписки, слушателя снимает
