@@ -11,7 +11,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TSelectKeyboardPlugin } from '@soldy-ui/plugins'
+import { TSelectKeyboardPlugin } from '@soxa-ui/plugins'
 
 export const SelectKeyboardPluginDescriptor = definePlugin({
 	ctor: TSelectKeyboardPlugin,

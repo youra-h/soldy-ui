@@ -13,7 +13,7 @@
 import { describe, it, expect, afterEach, vi } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { defineComponent, h, nextTick, type Component } from 'vue'
-import { CheckBox, Label, RadioGroup, Switch } from '@soldy-ui/vue'
+import { CheckBox, Label, RadioGroup, Switch } from '@soxa-ui/vue'
 
 const nextFrame = () => new Promise((resolve) => requestAnimationFrame(resolve))
 
@@ -172,7 +172,7 @@ describe('радио в подписи', () => {
 
 	/** Тексты предупреждений подписи о вложенном `label`. */
 	const nestedWarnings = (calls: readonly unknown[][]): string[] =>
-		calls.map(([message]) => String(message)).filter((text) => text.includes('[soldy] Label'))
+		calls.map(([message]) => String(message)).filter((text) => text.includes('[soxa] Label'))
 
 	it('без tag="span" — предупреждение о вложенном label', async () => {
 		const warn = vi.spyOn(console, 'warn').mockImplementation(() => {})

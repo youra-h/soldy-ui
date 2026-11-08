@@ -10,13 +10,13 @@
 
 import { describe, it, expect, expectTypeOf, vi } from 'vitest'
 import { createSignal, type JSX } from 'solid-js'
-import type { IAccordionItem, TAccordionArrowPlacement } from '@soldy-ui/core'
+import type { IAccordionItem, TAccordionArrowPlacement } from '@soxa-ui/core'
 import {
 	Accordion,
 	AccordionItem,
 	type AccordionItemProps,
 	type AccordionProps,
-} from '@soldy-ui/solid'
+} from '@soxa-ui/solid'
 import { find, mount } from './mount'
 
 const headers = () => [...document.querySelectorAll('.so-accordion-item__header')]

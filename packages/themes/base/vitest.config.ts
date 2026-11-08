@@ -12,8 +12,8 @@ import path from 'node:path'
 export default defineConfig({
 	resolve: {
 		alias: {
-			'@soldy-ui/core': path.resolve(import.meta.dirname, '../../core/src'),
-			'@soldy-ui/plugins': path.resolve(import.meta.dirname, '../../plugins/src'),
+			'@soxa-ui/core': path.resolve(import.meta.dirname, '../../core/src'),
+			'@soxa-ui/plugins': path.resolve(import.meta.dirname, '../../plugins/src'),
 		},
 	},
 	test: {

@@ -1,7 +1,7 @@
 import { useEmits, useProps } from '../../../adapter'
 import type { TEmits, TProps, UseProps } from '../../../types/common'
-import { ListBoxItemDescriptor, ListBoxCollectionItemDescriptor } from '@soldy-ui/setup'
-import type { IListBoxItem } from '@soldy-ui/core'
+import { ListBoxItemDescriptor, ListBoxCollectionItemDescriptor } from '@soxa-ui/setup'
+import type { IListBoxItem } from '@soxa-ui/core'
 
 export const emitsListBoxItem: TEmits = [
 	...useEmits(ListBoxItemDescriptor()),

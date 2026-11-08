@@ -3,7 +3,7 @@
 	 * Своё содержимое тоста — кнопка «Отменить»: тост приходит ей пропом
 	 * `toast`, и она его закрывает. `data-uid` — какой тост она получила.
 	 */
-	import type { IToastsItem } from '@soldy-ui/core'
+	import type { IToastsItem } from '@soxa-ui/core'
 
 	const { toast }: { toast: IToastsItem } = $props()
 </script>

@@ -1,1 +1,1 @@
-export { ProgressSpinnerDescriptor as descriptor } from '@soldy-ui/setup'
+export { ProgressSpinnerDescriptor as descriptor } from '@soxa-ui/setup'

@@ -1,5 +1,5 @@
-import type { IListBoxItem } from '@soldy-ui/core'
-import type { ListBoxCollectionItemDescriptor, ListBoxItemDescriptor } from '@soldy-ui/setup'
+import type { IListBoxItem } from '@soxa-ui/core'
+import type { ListBoxCollectionItemDescriptor, ListBoxItemDescriptor } from '@soxa-ui/setup'
 import type { EventProps, TDomAttributes, UseDomProps } from '../../../types'
 
 export type ListBoxItemEventProps = EventProps<typeof ListBoxItemDescriptor> &

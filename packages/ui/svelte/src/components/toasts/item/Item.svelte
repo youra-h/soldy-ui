@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { TToastsItemType } from '@soldy-ui/core'
+	import type { TToastsItemType } from '@soxa-ui/core'
 	import { clickAction, Dynamic, isToastRender, roleIcon, toRootProps, type TRoleIcon } from '../../../adapter'
 	import { Button } from '../../button'
 	import { Icon } from '../../icon'

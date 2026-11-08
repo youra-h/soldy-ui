@@ -1,4 +1,4 @@
-import type { IClearable } from '@soldy-ui/core'
+import type { IClearable } from '@soxa-ui/core'
 import type { TPluginEvents } from '../../../base'
 import { formatName } from '../../../locale/locale'
 import { TNamesPlugin } from '../../../locale/names.plugin'

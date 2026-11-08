@@ -18,9 +18,9 @@
 
 import { describe, it, expect, expectTypeOf, vi, afterEach, type Mock } from 'vitest'
 import { createSignal, type JSX } from 'solid-js'
-import { TNumberInput, type INumberInput, type TValuePayload } from '@soldy-ui/core'
-import { ruRU } from '@soldy-ui/plugins'
-import { LocaleProvider, NumberInput, type NumberInputProps } from '@soldy-ui/solid'
+import { TNumberInput, type INumberInput, type TValuePayload } from '@soxa-ui/core'
+import { ruRU } from '@soxa-ui/plugins'
+import { LocaleProvider, NumberInput, type NumberInputProps } from '@soxa-ui/solid'
 import { find, mount, nextFrame } from './mount'
 
 afterEach(() => {

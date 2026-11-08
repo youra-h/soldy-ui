@@ -1,5 +1,5 @@
-import type { IInputControl } from '@soldy-ui/core'
-import type { InputControlDescriptor } from '@soldy-ui/setup'
+import type { IInputControl } from '@soxa-ui/core'
+import type { InputControlDescriptor } from '@soxa-ui/setup'
 import type { EventProps, UseProps } from '../../types'
 
 /** События слоя InputControl (core + плагины), выведены из дескриптора автоматически. */

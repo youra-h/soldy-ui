@@ -1,5 +1,5 @@
-import { NumberInputDescriptor, TFieldControlExtension } from '@soldy-ui/setup'
-import type { INumberInput } from '@soldy-ui/core'
+import { NumberInputDescriptor, TFieldControlExtension } from '@soxa-ui/setup'
+import type { INumberInput } from '@soxa-ui/core'
 import { AngularElevatorFactory, createAngularAdapterContext, useAdapter } from '../../adapter'
 import type { TBinding } from '../../adapter'
 

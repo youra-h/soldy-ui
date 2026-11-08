@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Button, Input, Modal } from 'antd'
 
-/** A button opens a dialog with a field inside, as the soldy preview. */
+/** A button opens a dialog with a field inside, as the soxa preview. */
 export default function Page() {
 	const [open, setOpen] = useState(false)
 

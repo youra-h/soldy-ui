@@ -8,7 +8,7 @@
 
 import { describe, it, expect, afterEach } from 'vitest'
 import { mount } from '@vue/test-utils'
-import { Icon } from '@soldy-ui/vue'
+import { Icon } from '@soxa-ui/vue'
 
 let wrapper: ReturnType<typeof mount> | null = null
 

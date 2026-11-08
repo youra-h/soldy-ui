@@ -7,8 +7,8 @@
  */
 
 import { describe, it, expect, beforeEach } from 'vitest'
-import { TDrawer, TLayer } from '@soldy-ui/core'
-import type { IDrawerProps } from '@soldy-ui/core'
+import { TDrawer, TLayer } from '@soxa-ui/core'
+import type { IDrawerProps } from '@soxa-ui/core'
 import { TDrawerLayoutPlugin, TModalLayoutPlugin, TPluginBundle } from '../src'
 
 beforeEach(() => {

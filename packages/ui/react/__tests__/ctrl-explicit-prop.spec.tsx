@@ -10,9 +10,9 @@
  */
 
 import { describe, it, expect, vi } from 'vitest'
-import { TButton, TPopover } from '@soldy-ui/core'
-import type { TActionEvent } from '@soldy-ui/core'
-import { Button, Popover } from '@soldy-ui/react'
+import { TButton, TPopover } from '@soxa-ui/core'
+import type { TActionEvent } from '@soxa-ui/core'
+import { Button, Popover } from '@soxa-ui/react'
 import { mount, nextFrame } from './mount'
 
 /** Кнопка над `ctrl`, который пользователь уже скрыл. */

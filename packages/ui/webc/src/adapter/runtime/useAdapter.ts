@@ -6,14 +6,14 @@
  * Components), «Связка».
  */
 
-import { TActionEvent } from '@soldy-ui/core'
-import { toInstanceState } from '@soldy-ui/setup'
+import { TActionEvent } from '@soxa-ui/core'
+import { toInstanceState } from '@soxa-ui/setup'
 import type {
 	IAdapterContext,
 	IComponentContract,
 	TAdapterState,
 	TInstanceState,
-} from '@soldy-ui/setup'
+} from '@soxa-ui/setup'
 import { WebcProfile } from '../common'
 import { isOwnerMarkup } from './marks'
 

@@ -16,8 +16,8 @@
 import { describe, it, expect, afterEach } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { nextTick } from 'vue'
-import { Tags, TagsItem } from '@soldy-ui/vue'
-import type { ITagsItem, TCollectionEngineItemSource } from '@soldy-ui/core'
+import { Tags, TagsItem } from '@soxa-ui/vue'
+import type { ITagsItem, TCollectionEngineItemSource } from '@soxa-ui/core'
 
 let wrapper: ReturnType<typeof mount> | null = null
 

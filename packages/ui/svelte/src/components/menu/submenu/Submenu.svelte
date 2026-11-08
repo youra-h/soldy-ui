@@ -1,5 +1,5 @@
 <script lang="ts" module>
-	import type { IMenuItem, TGroupSection, TMenuSubmenuEntries } from '@soldy-ui/core'
+	import type { IMenuItem, TGroupSection, TMenuSubmenuEntries } from '@soxa-ui/core'
 	import { MenuGroup } from '../group'
 	import { MenuItem } from '../item'
 	import { MenuSeparator } from '../separator'

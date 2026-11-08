@@ -28,8 +28,8 @@
 
 import { describe, it, expect } from 'vitest'
 import { render } from 'svelte/server'
-import type { TTableColumnSource } from '@soldy-ui/core'
-import { ruRU } from '@soldy-ui/plugins'
+import type { TTableColumnSource } from '@soxa-ui/core'
+import { ruRU } from '@soxa-ui/plugins'
 import {
 	Accordion,
 	Calendar,
@@ -39,7 +39,7 @@ import {
 	Select,
 	Table,
 	Tags,
-} from '@soldy-ui/svelte'
+} from '@soxa-ui/svelte'
 import AccordionHarness from './Accordion.test.svelte'
 import DragAndDropHarness from './DragAndDrop.test.svelte'
 import ListBoxHarness from './ListBox.test.svelte'

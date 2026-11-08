@@ -13,8 +13,8 @@
  */
 
 import { defineComponent, defineDescriptor, defineType } from '../../../../protected/define'
-import { TToasts } from '@soldy-ui/core'
-import type { IToastsItem, TToastsItemType } from '@soldy-ui/core'
+import { TToasts } from '@soxa-ui/core'
+import type { IToastsItem, TToastsItemType } from '@soxa-ui/core'
 import { LayerDescriptor } from '../layer.descriptor'
 import {
 	CollectionBundlesPluginDescriptor,

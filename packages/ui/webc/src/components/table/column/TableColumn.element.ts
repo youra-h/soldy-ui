@@ -4,8 +4,8 @@
  * Ширина — `--so-table-column-width` из `widthStyle`, по ней тема режет колонку.
  */
 
-import { TableColumnDescriptor } from '@soldy-ui/setup'
-import type { ITableColumn } from '@soldy-ui/core'
+import { TableColumnDescriptor } from '@soxa-ui/setup'
+import type { ITableColumn } from '@soxa-ui/core'
 import { ElementBase } from '../../../adapter'
 import type { TElementClassOf, TElementType } from '../../../adapter'
 import { setupTableColumn } from './setup.component'

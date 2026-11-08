@@ -1,4 +1,4 @@
-import { withParts } from '@soldy-ui/setup'
+import { withParts } from '@soxa-ui/setup'
 import { RadioGroup as RadioGroupComponent } from './RadioGroup'
 import { RadioGroupItem } from './item'
 

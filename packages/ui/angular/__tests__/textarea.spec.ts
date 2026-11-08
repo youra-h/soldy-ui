@@ -19,9 +19,9 @@
 import { describe, it, expect, afterEach, vi } from 'vitest'
 import { Component, signal } from '@angular/core'
 import { TestBed, type ComponentFixture } from '@angular/core/testing'
-import { TTextarea, type TValuePayload } from '@soldy-ui/core'
-import { ruRU } from '@soldy-ui/plugins'
-import { LocaleProviderDirective, TFieldComponent, TTextareaComponent } from '@soldy-ui/angular'
+import { TTextarea, type TValuePayload } from '@soxa-ui/core'
+import { ruRU } from '@soxa-ui/plugins'
+import { LocaleProviderDirective, TFieldComponent, TTextareaComponent } from '@soxa-ui/angular'
 import { find, findIn, mountHost, nextFrame } from './mount'
 
 afterEach(() => {

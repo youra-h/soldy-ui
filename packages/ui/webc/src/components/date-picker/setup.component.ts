@@ -3,8 +3,8 @@ import {
 	TFieldControlExtension,
 	type DescriptorPluginOutputs,
 	type DescriptorPluginProps,
-} from '@soldy-ui/setup'
-import type { IDatePicker } from '@soldy-ui/core'
+} from '@soxa-ui/setup'
+import type { IDatePicker } from '@soxa-ui/core'
 import { createWebcAdapterContext, useAdapter } from '../../adapter'
 import type { TBinding, TUpdateListener } from '../../adapter'
 import { createWebcElevator } from '../../adapter/elevator'

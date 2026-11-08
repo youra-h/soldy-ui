@@ -5,14 +5,14 @@ import {
 	TTableCollectionFacade,
 	TTableRowCollectionFacade,
 	type ITableRow,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 import { COLUMNS, type TRec } from './data'
 
 /**
- * Опыт «ядро без проводки»: коллекция таблицы soldy (выбор, сортировка,
+ * Опыт «ядро без проводки»: коллекция таблицы soxa (выбор, сортировка,
  * ячейки строк) как есть, а рисует её голый `v-for`, как у TanStack. Нет ни
  * компонентов строк, ни адаптерных контекстов, ни обмена: после действия
- * перерисовывается вся таблица (`tick`). Разница с `soldy` — цена проводки
+ * перерисовывается вся таблица (`tick`). Разница с `soxa` — цена проводки
  * на строку, разница с `plain` — цена модели ядра.
  */
 const props = defineProps<{ data: TRec[] }>()

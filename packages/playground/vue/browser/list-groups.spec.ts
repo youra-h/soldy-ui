@@ -28,14 +28,14 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { render, cleanup } from './render'
 import { userEvent } from 'vitest/browser'
 import { defineComponent, h, nextTick } from 'vue'
-import type { TComponentSize } from '@soldy-ui/core'
-import type { DescriptorSlots, MenuDescriptor } from '@soldy-ui/setup'
-import { COMPONENT_SIZES } from '@soldy-ui/playground-shared'
-import { Button, Field, Input, ListBox, Menu, Select } from '@soldy-ui/vue'
+import type { TComponentSize } from '@soxa-ui/core'
+import type { DescriptorSlots, MenuDescriptor } from '@soxa-ui/setup'
+import { COMPONENT_SIZES } from '@soxa-ui/playground-shared'
+import { Button, Field, Input, ListBox, Menu, Select } from '@soxa-ui/vue'
 
 import { settled } from './transitions'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 type TTriggerScope = DescriptorSlots<typeof MenuDescriptor>['trigger']
 

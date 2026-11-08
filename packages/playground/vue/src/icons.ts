@@ -11,7 +11,7 @@
  */
 
 import { defineComponent, h, markRaw, type Component } from 'vue'
-import type { TIconSource } from '@soldy-ui/setup'
+import type { TIconSource } from '@soxa-ui/setup'
 
 /**
  * Глифы оболочки стенда: кнопки «Меню» и «Настройки» в шапке узкого окна.
@@ -22,7 +22,7 @@ import type { TIconSource } from '@soldy-ui/setup'
  * пакете иконок, ни в реестре (`useIcons`): реестр меняет переключатель
  * «Иконки», а глифы оболочки от выбранного пакета не зависят.
  *
- * Набор и стиль те же, что у `@soldy-ui/icons-material`, — Material Symbols
+ * Набор и стиль те же, что у `@soxa-ui/icons-material`, — Material Symbols
  * Rounded, — и формат тот же: данные `TIconSource`, корень `<svg>` строит
  * компонент глифа, а покраска — ссылка на цвет иконки темы с цветом исходника
  * запасным, как у пакета (`docs/agents/theming.md`, «Пакеты иконок»): цвет

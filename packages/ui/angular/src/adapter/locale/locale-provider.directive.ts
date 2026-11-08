@@ -1,6 +1,6 @@
 import { Directive, Input, inject } from '@angular/core'
-import { TLocaleSource, enUS } from '@soldy-ui/plugins'
-import type { TLocale } from '@soldy-ui/plugins'
+import { TLocaleSource, enUS } from '@soxa-ui/plugins'
+import type { TLocale } from '@soxa-ui/plugins'
 import { LOCALE_SOURCE } from './context'
 
 /**

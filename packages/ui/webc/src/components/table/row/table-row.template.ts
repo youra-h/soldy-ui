@@ -10,7 +10,7 @@ import type {
 	TAriaAttributes,
 	TTableCell,
 	TTableRowCollectionFacade,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 import {
 	TKeyedLoop,
 	bind,

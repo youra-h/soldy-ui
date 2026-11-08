@@ -34,7 +34,7 @@
  */
 
 import { defineComponent, defineDescriptor, defineType } from '../../../../protected/define'
-import { TTableColumn } from '@soldy-ui/core'
+import { TTableColumn } from '@soxa-ui/core'
 import { ComponentViewDescriptor } from '../component-view.descriptor'
 import {
 	TableColumnIdsPluginDescriptor,

@@ -10,7 +10,7 @@
 import { describe, it, expect, afterEach } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { nextTick } from 'vue'
-import { ListBox, ListBoxItem, Tabs, TabsItem } from '@soldy-ui/vue'
+import { ListBox, ListBoxItem, Tabs, TabsItem } from '@soxa-ui/vue'
 
 let wrapper: ReturnType<typeof mount> | null = null
 

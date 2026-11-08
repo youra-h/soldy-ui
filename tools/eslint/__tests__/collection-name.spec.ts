@@ -4,7 +4,7 @@ import { resolve } from 'node:path'
 
 /**
  * Правило «Переменная — `engine`, а не `collection`» (AGENTS.md) держит блок
- * `soldy/no-collection-name` в `eslint.config.ts` — встроенный `id-denylist`.
+ * `soxa/no-collection-name` в `eslint.config.ts` — встроенный `id-denylist`.
  * Тест линтит фрагменты настоящим конфигом репозитория по путям пакетов:
  * опечатка в `files` или лишний путь в `ignores` отключили бы защиту молча, и
  * CI остался бы зелёным. Позиции проверяются по строке: фрагмент, где имя
@@ -76,7 +76,7 @@ describe('eslint.config.ts: имя collection в src ядра', () => {
 		['слово — часть имени', 'export const collectionAdapter = 1'],
 		[
 			'класс и тип ядра',
-			"import type { TCollectionEngine } from '@soldy-ui/core'\n\nexport type TEngine = TCollectionEngine<object>",
+			"import type { TCollectionEngine } from '@soxa-ui/core'\n\nexport type TEngine = TCollectionEngine<object>",
 		],
 		['путь импорта', "export { createEngineTabs } from './collection'"],
 		['строка', "export const name = 'collection'"],

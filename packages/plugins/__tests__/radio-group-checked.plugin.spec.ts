@@ -16,7 +16,7 @@
  */
 
 import { describe, it, expect, afterEach, vi } from 'vitest'
-import { TRadioGroup, TRadioGroupItem, createEngineRadioGroup } from '@soldy-ui/core'
+import { TRadioGroup, TRadioGroupItem, createEngineRadioGroup } from '@soxa-ui/core'
 import {
 	TCollectionBundlesPlugin,
 	TCollectionElements,

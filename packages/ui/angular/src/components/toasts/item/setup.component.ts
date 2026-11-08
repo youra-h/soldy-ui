@@ -2,8 +2,8 @@ import {
 	TCollectionItemExtension,
 	ToastsCollectionItemDescriptor,
 	ToastsItemDescriptor,
-} from '@soldy-ui/setup'
-import type { IToastsItem, TToastsItemCollectionFacade } from '@soldy-ui/core'
+} from '@soxa-ui/setup'
+import type { IToastsItem, TToastsItemCollectionFacade } from '@soxa-ui/core'
 import {
 	AngularElevatorFactory,
 	createAngularAdapterContext,

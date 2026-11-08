@@ -1,10 +1,5 @@
 import { describe, it, expect, vi } from 'vitest'
-import {
-	TCollectionEngine,
-	TBatchExtension,
-	TPlainExtension,
-	TOrderExtension,
-} from '@soldy-ui/core'
+import { TCollectionEngine, TBatchExtension, TPlainExtension, TOrderExtension } from '@soxa-ui/core'
 
 type Item = { id: number; name: string }
 

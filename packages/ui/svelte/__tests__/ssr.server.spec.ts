@@ -16,7 +16,7 @@ import { describe, it, expect } from 'vitest'
 import { createRawSnippet } from 'svelte'
 import { createAttachmentKey } from 'svelte/attachments'
 import { render } from 'svelte/server'
-import type { TAriaAttributes } from '@soldy-ui/core'
+import type { TAriaAttributes } from '@soxa-ui/core'
 import {
 	Button,
 	CheckBox,
@@ -39,7 +39,7 @@ import {
 	Toasts,
 	Tooltip,
 	roleIcon,
-} from '@soldy-ui/svelte'
+} from '@soxa-ui/svelte'
 import RootRef, { type TRootKind } from './RootRef.test.svelte'
 
 /** Содержимое панели. */

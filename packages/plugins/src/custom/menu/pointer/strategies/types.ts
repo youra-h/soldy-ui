@@ -1,4 +1,4 @@
-import type { TMenuPoint } from '@soldy-ui/core'
+import type { TMenuPoint } from '@soxa-ui/core'
 
 /**
  * Срез плагина открытия, который видят стратегии: что они делают с меню.

@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
-import { TComponentView, TFrame, TTabsItem } from '@soldy-ui/core'
-import type { TDefaultValues } from '@soldy-ui/core'
+import { TComponentView, TFrame, TTabsItem } from '@soxa-ui/core'
+import type { TDefaultValues } from '@soxa-ui/core'
 
 interface ISampleProps {
 	size?: 'small' | 'large'

@@ -19,15 +19,15 @@
 import { describe, it, expect, afterEach } from 'vitest'
 import { render, cleanup } from './render'
 import { defineComponent, h, nextTick } from 'vue'
-import { TSwitch } from '@soldy-ui/core'
-import type { TComponentSize, TDirection } from '@soldy-ui/core'
-import { Switch } from '@soldy-ui/vue'
-import { COMPONENT_SIZES } from '@soldy-ui/playground-shared'
+import { TSwitch } from '@soxa-ui/core'
+import type { TComponentSize, TDirection } from '@soxa-ui/core'
+import { Switch } from '@soxa-ui/vue'
+import { COMPONENT_SIZES } from '@soxa-ui/playground-shared'
 
 import { find } from './colors'
 import { settled, transitionEvents, transitionRuns } from './transitions'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 /** Допуск на субпиксельное округление координат, px. */
 const EPSILON = 0.5

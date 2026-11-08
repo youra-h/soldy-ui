@@ -1,4 +1,4 @@
-import { ScrollerDescriptor } from '@soldy-ui/setup'
+import { ScrollerDescriptor } from '@soxa-ui/setup'
 import { useComponent } from '../../adapter'
 import type { ScrollerProps } from './base.component'
 

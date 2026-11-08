@@ -1,1 +1,1 @@
-export { FrameDescriptor as descriptor } from '@soldy-ui/setup'
+export { FrameDescriptor as descriptor } from '@soxa-ui/setup'

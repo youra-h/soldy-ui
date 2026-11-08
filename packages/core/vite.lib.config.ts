@@ -2,11 +2,11 @@
 import { libConfig } from '../../tools/vite/lib.config.ts'
 
 /**
- * Библиотечная сборка @soldy-ui/core: headless-модели без зависимостей.
+ * Библиотечная сборка @soxa-ui/core: headless-модели без зависимостей.
  * Декларации собирает `tsc -p tsconfig.build.json` вторым шагом скрипта `build`.
  */
 export default libConfig({
-	name: '@soldy-ui/core',
+	name: '@soxa-ui/core',
 	root: import.meta.dirname,
 	entry: 'src/index.ts',
 })

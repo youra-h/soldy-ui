@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest'
-import { TClasses, TDataset, TSubscribable } from '@soldy-ui/core'
+import { TClasses, TDataset, TSubscribable } from '@soxa-ui/core'
 
 class TProbe extends TSubscribable {
 	change(): void {

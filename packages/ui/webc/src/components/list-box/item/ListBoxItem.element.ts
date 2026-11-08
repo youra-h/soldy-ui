@@ -4,8 +4,8 @@
  * docs/architecture.md, Layer 8d, «Коллекция».
  */
 
-import { ListBoxCollectionItemDescriptor, ListBoxItemDescriptor } from '@soldy-ui/setup'
-import type { IListBoxItem, TListBoxItemCollectionFacade } from '@soldy-ui/core'
+import { ListBoxCollectionItemDescriptor, ListBoxItemDescriptor } from '@soxa-ui/setup'
+import type { IListBoxItem, TListBoxItemCollectionFacade } from '@soxa-ui/core'
 import { ElementBase } from '../../../adapter'
 import type { TElementClassOf, TElementType } from '../../../adapter'
 import { listBoxItemTemplate } from './list-box-item.template'

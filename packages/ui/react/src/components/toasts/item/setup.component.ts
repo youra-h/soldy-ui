@@ -2,7 +2,7 @@ import {
 	TCollectionItemExtension,
 	ToastsCollectionItemDescriptor,
 	ToastsItemDescriptor,
-} from '@soldy-ui/setup'
+} from '@soxa-ui/setup'
 import { useAdapter, useAdapterContext, useCollectionAdapter } from '../../../adapter'
 import type { ToastsItemProps } from './base.component'
 

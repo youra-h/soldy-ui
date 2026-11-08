@@ -36,8 +36,8 @@ import {
 	createEnginePagination,
 	createEngineRadioGroup,
 	createEngineTags,
-} from '@soldy-ui/core'
-import type { ICalendarItem, ITagsItem, TCollectionEngine } from '@soldy-ui/core'
+} from '@soxa-ui/core'
+import type { ICalendarItem, ITagsItem, TCollectionEngine } from '@soxa-ui/core'
 import {
 	TBasePlugin,
 	TCalendarIdsPlugin,

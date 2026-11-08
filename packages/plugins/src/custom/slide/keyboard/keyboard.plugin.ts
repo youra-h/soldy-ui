@@ -1,4 +1,4 @@
-import type { ISlidable } from '@soldy-ui/core'
+import type { ISlidable } from '@soxa-ui/core'
 import { TBasePlugin } from '../../../base'
 import type { IPluginContext } from '../../../base'
 import { TElementPlugin } from '../../element'

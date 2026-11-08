@@ -77,13 +77,13 @@ import {
 	createEngineTabs,
 	createEngineTags,
 	createEngineToasts,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 import type {
 	TCalendarCollection,
 	TListBoxCollection,
 	TSelectCollection,
 	TTableCollection,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 import {
 	Accordion,
 	Button,
@@ -121,7 +121,7 @@ import {
 	Toasts,
 	Tooltip,
 	Virtual,
-} from '@soldy-ui/react'
+} from '@soxa-ui/react'
 import { ItemRow } from '../src/components/item-row'
 import { nextFrame, track } from './mount'
 

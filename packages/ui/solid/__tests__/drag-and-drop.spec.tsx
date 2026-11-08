@@ -24,8 +24,8 @@
 
 import { describe, it, expect } from 'vitest'
 import { For, Show, createSignal } from 'solid-js'
-import type { IDragAndDropMove, TDragAndDropMoveEvent } from '@soldy-ui/core'
-import { Accordion, DragAndDrop, ListBox, Tabs } from '@soldy-ui/solid'
+import type { IDragAndDropMove, TDragAndDropMoveEvent } from '@soxa-ui/core'
+import { Accordion, DragAndDrop, ListBox, Tabs } from '@soxa-ui/solid'
 import { mount, nextFrame } from './mount'
 
 const ITEMS = ['a', 'b', 'c'].map((value) => ({ value, text: value.toUpperCase() }))

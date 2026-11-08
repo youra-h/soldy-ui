@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { COLLECTION_ITEMS } from '@soldy-ui/playground-shared'
-	import { Scroller } from '@soldy-ui/svelte'
+	import { COLLECTION_ITEMS } from '@soxa-ui/playground-shared'
+	import { Scroller } from '@soxa-ui/svelte'
 	import type { TPreviewProps } from './previews'
 
 	const bind: TPreviewProps = $props()

@@ -1,4 +1,4 @@
-/// <reference types="@soldy-ui/theme-oren" />
+/// <reference types="@soxa-ui/theme-oren" />
 
 import type {
 	TComponentSize,
@@ -48,8 +48,8 @@ import type {
 	TToastsItemType,
 	TToastsLayout,
 	TToastsPlacement,
-} from '@soldy-ui/core'
-import type { TFramePlacement } from '@soldy-ui/plugins'
+} from '@soxa-ui/core'
+import type { TFramePlacement } from '@soxa-ui/plugins'
 
 /**
  * Списки допустимых значений перечислимых пропов.

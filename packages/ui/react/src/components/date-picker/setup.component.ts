@@ -1,4 +1,4 @@
-import { DatePickerDescriptor, TFieldControlExtension } from '@soldy-ui/setup'
+import { DatePickerDescriptor, TFieldControlExtension } from '@soxa-ui/setup'
 import { useComponent, useRootElement } from '../../adapter'
 import type { DatePickerProps } from './base.component'
 

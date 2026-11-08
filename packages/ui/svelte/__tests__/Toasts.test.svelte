@@ -20,8 +20,8 @@
 	 * набора — `tags`). С `locale` — под провайдером
 	 * локали. Сниппеты слотов разметкой пишутся только в `.svelte`.
 	 */
-	import type { IToastsApi, IToastsItem, TToastsItemType } from '@soldy-ui/core'
-	import type { TLocale } from '@soldy-ui/plugins'
+	import type { IToastsApi, IToastsItem, TToastsItemType } from '@soxa-ui/core'
+	import type { TLocale } from '@soxa-ui/plugins'
 	import {
 		LocaleProvider,
 		Tags,
@@ -29,7 +29,7 @@
 		type TToastRender,
 		type TagsProps,
 		type ToastsProps,
-	} from '@soldy-ui/svelte'
+	} from '@soxa-ui/svelte'
 	import App from './ToastsApp.test.svelte'
 
 	type THarnessProps = {

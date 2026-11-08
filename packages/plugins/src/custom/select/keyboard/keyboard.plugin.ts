@@ -1,5 +1,5 @@
-import { batchOf, selectOf, selectionOf } from '@soldy-ui/core'
-import type { ISelect, ISelectItem, TCollectionEngine } from '@soldy-ui/core'
+import { batchOf, selectOf, selectionOf } from '@soxa-ui/core'
+import type { ISelect, ISelectItem, TCollectionEngine } from '@soxa-ui/core'
 import type { IPluginContext } from '../../../base'
 import { TElementPlugin } from '../../element'
 import { fieldOf } from '../../input/field'

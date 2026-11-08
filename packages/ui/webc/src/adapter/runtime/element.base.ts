@@ -19,13 +19,13 @@
 // entry of the package reaches it here or through the registration, before the
 // first class of an element. Where the browser supports them, it does nothing
 import '@ungap/custom-elements'
-import type { IComponent, IComponentProps } from '@soldy-ui/core'
+import type { IComponent, IComponentProps } from '@soxa-ui/core'
 import {
 	TSurface,
 	type DescriptorComponentProps,
 	type IComponentDescriptor,
 	type TStateSnapshot,
-} from '@soldy-ui/setup'
+} from '@soxa-ui/setup'
 import {
 	buildAttributeMap,
 	coerceAttribute,
@@ -79,7 +79,7 @@ function attributesOf(
 
 /** The root spec names a node the template didn't build: nowhere to carry it. */
 function built(node: HTMLElement | undefined, what: string): HTMLElement {
-	if (!node) throw new Error(`[soldy] Описание корня объявляет ${what}, а шаблон его не построил`)
+	if (!node) throw new Error(`[soxa] Описание корня объявляет ${what}, а шаблон его не построил`)
 
 	return node
 }
@@ -217,7 +217,7 @@ export function ElementBase<
 	const attributes = attributesOf(descriptors)
 
 	if (plan.fieldId && !attributes.has(ID)) {
-		throw new Error('[soldy] Описание корня объявляет id поля, а у дескриптора пропа id нет')
+		throw new Error('[soxa] Описание корня объявляет id поля, а у дескриптора пропа id нет')
 	}
 
 	// The field's `id` is not an input of the root and is not in the prop map:
@@ -511,7 +511,7 @@ export function ElementBase<
 			if (plan.layer === undefined) {
 				if (companion) {
 					throw new Error(
-						'[soldy] Шаблон построил спутник корня, а описание корня слоя не объявляет',
+						'[soxa] Шаблон построил спутник корня, а описание корня слоя не объявляет',
 					)
 				}
 
@@ -687,7 +687,7 @@ export function ElementBase<
 					property in this.prototype
 				) {
 					throw new Error(
-						`[soldy] Свой атрибут «${attribute}» занят: это имя уже у пропа, класса элемента или нативного элемента`,
+						`[soxa] Свой атрибут «${attribute}» занят: это имя уже у пропа, класса элемента или нативного элемента`,
 					)
 				}
 

@@ -12,8 +12,8 @@
  * Frame — AGENTS.md (Web Components), «Поддерево».
  */
 
-import type { IMenu, TMenuCollectionFacade } from '@soldy-ui/core'
-import { DEFAULT_SLOT } from '@soldy-ui/setup'
+import type { IMenu, TMenuCollectionFacade } from '@soxa-ui/core'
+import { DEFAULT_SLOT } from '@soxa-ui/setup'
 import {
 	bind,
 	createDetail,

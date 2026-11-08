@@ -22,8 +22,8 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { render, cleanup } from './render'
 import { commands, page, userEvent } from 'vitest/browser'
 import { defineComponent, h, nextTick, ref, type VNode } from 'vue'
-import { Drawer, Input } from '@soldy-ui/vue'
-import type { IDrawerProps, TCloseEvent, TCloseReason, TDrawerPlacement } from '@soldy-ui/core'
+import { Drawer, Input } from '@soxa-ui/vue'
+import type { IDrawerProps, TCloseEvent, TCloseReason, TDrawerPlacement } from '@soxa-ui/core'
 
 import { DIRECTION_CASES, setDir, sidesOf, type TLine } from './directions'
 import { reducedMotion } from './media'
@@ -31,7 +31,7 @@ import { durationOf, settled, transitionOf, transitioning, whileLeaving } from '
 import { expectClassicScrollbar } from './viewport'
 import { classicScrollbars, touchInput } from './engine'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 /** The side panel's default width in the oren theme: `20rem`. */
 const DEFAULT_WIDTH = 320

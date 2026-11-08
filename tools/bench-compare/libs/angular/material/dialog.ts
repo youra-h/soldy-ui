@@ -25,7 +25,7 @@ import { MatInputModule } from '@angular/material/input'
 })
 class DialogContent {}
 
-/** A button opens a dialog with a field inside, as the soldy preview. */
+/** A button opens a dialog with a field inside, as the soxa preview. */
 @Component({
 	selector: 'bench-dialog',
 	imports: [MatButton],

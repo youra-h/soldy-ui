@@ -14,9 +14,9 @@
 
 import { describe, it, expect, vi } from 'vitest'
 import { act, useState } from 'react'
-import { TPopover } from '@soldy-ui/core'
-import type { TActionEvent } from '@soldy-ui/core'
-import { Popover } from '@soldy-ui/react'
+import { TPopover } from '@soxa-ui/core'
+import type { TActionEvent } from '@soxa-ui/core'
+import { Popover } from '@soxa-ui/react'
 import { mount, nextFrame } from './mount'
 
 describe('React: переезд Popover над тем же ctrl с закрытием', () => {

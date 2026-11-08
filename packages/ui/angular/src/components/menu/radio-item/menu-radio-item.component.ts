@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core'
 import { NgTemplateOutlet } from '@angular/common'
-import type { IMenuRadioItem } from '@soldy-ui/core'
+import type { IMenuRadioItem } from '@soxa-ui/core'
 import { AttributesDirective } from '../../../adapter'
 import { TItemRowComponent } from '../../item-row'
 import { TMenuRadioItemSurface } from '../../../generated/menu-radio-item.metadata'

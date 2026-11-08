@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { Field, Select, Switch } from '@soldy-ui/vue'
+import { Field, Select, Switch } from '@soxa-ui/vue'
 import { useTheme } from '../composables/useTheme'
 import { useIconPack } from '../composables/useIconPack'
 import { useLanguage } from '../composables/useLanguage'

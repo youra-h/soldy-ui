@@ -19,8 +19,8 @@
  */
 
 import { afterEach, beforeEach, expect } from 'vitest'
-import { useTheme } from '@soldy-ui/setup'
-import oren from '@soldy-ui/theme-oren/setup'
+import { useTheme } from '@soxa-ui/setup'
+import oren from '@soxa-ui/theme-oren/setup'
 
 /**
  * Страница прогона — как приложение без сброса: типографика страницы, и

@@ -1,5 +1,5 @@
-import { ProgressSpinnerDescriptor } from '@soldy-ui/setup'
-import type { IProgressSpinner } from '@soldy-ui/core'
+import { ProgressSpinnerDescriptor } from '@soxa-ui/setup'
+import type { IProgressSpinner } from '@soxa-ui/core'
 import { createWebcAdapterContext, useAdapter } from '../../adapter'
 import type { TBinding, TUpdateListener } from '../../adapter'
 

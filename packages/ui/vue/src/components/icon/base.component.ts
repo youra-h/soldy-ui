@@ -1,7 +1,7 @@
 import { useEmits, useProps } from '../../adapter'
 import type { TEmits, TProps, UseProps } from '../../types/common'
-import { IconDescriptor } from '@soldy-ui/setup'
-import type { IIcon } from '@soldy-ui/core'
+import { IconDescriptor } from '@soxa-ui/setup'
+import type { IIcon } from '@soxa-ui/core'
 
 export const emitsIcon: TEmits = useEmits(IconDescriptor())
 

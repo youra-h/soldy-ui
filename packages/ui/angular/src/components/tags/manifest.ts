@@ -1,1 +1,1 @@
-export { TagsDescriptor as descriptor, TagsCollectionDescriptor as facade } from '@soldy-ui/setup'
+export { TagsDescriptor as descriptor, TagsCollectionDescriptor as facade } from '@soxa-ui/setup'

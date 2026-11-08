@@ -1,5 +1,5 @@
-import type { ITabs } from '@soldy-ui/core'
-import type { TabsCollectionDescriptor, TabsDescriptor } from '@soldy-ui/setup'
+import type { ITabs } from '@soxa-ui/core'
+import type { TabsCollectionDescriptor, TabsDescriptor } from '@soxa-ui/setup'
 import type { EventProps, TDomAttributes, UseDomProps } from '../../types'
 
 export type TabsEventProps = EventProps<typeof TabsDescriptor> &

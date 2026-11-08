@@ -5,8 +5,8 @@
 
 import { describe, it, expect, vi } from 'vitest'
 import { act, useState } from 'react'
-import { TPopover } from '@soldy-ui/core'
-import { Popover } from '@soldy-ui/react'
+import { TPopover } from '@soxa-ui/core'
+import { Popover } from '@soxa-ui/react'
 import { mount, nextFrame } from './mount'
 
 describe('React: уведомление прежнего при перемонтировании над тем же ctrl', () => {

@@ -3,8 +3,8 @@ import {
 	AccordionDescriptor,
 	TCollectionExtension,
 	TDragAndDropCollectionExtension,
-} from '@soldy-ui/setup'
-import type { IAccordion, TAccordionCollectionFacade } from '@soldy-ui/core'
+} from '@soxa-ui/setup'
+import type { IAccordion, TAccordionCollectionFacade } from '@soxa-ui/core'
 import {
 	createWebcAdapterContext,
 	joinBindings,

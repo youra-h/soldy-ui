@@ -6,7 +6,7 @@
  */
 
 import { defineComponent, defineDescriptor, defineType } from '../../../protected/define'
-import { TButton } from '@soldy-ui/core'
+import { TButton } from '@soxa-ui/core'
 import { TextableDescriptor } from './textable.descriptor'
 
 /**

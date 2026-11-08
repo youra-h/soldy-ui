@@ -1,5 +1,5 @@
 /**
- * Data of the pages — the same as the soldy previews take
+ * Data of the pages — the same as the soxa previews take
  * (`packages/playground/shared`): five items of a collection, and the texts of
  * the previews where a component has them.
  */

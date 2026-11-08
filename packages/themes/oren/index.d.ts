@@ -8,8 +8,8 @@
  * rejects a typo.
  *
  * It comes into the program by either of two ways: with the stylesheet
- * imported from a module of TS — `import '@soldy-ui/theme-oren'` — or with the
- * behavior, `@soldy-ui/theme-oren/setup`, whose declarations reference this
+ * imported from a module of TS — `import '@soxa-ui/theme-oren'` — or with the
+ * behavior, `@soxa-ui/theme-oren/setup`, whose declarations reference this
  * file. The second works in any build: Angular CLI takes the stylesheet from
  * `styles` in `angular.json` and Nuxt from `css` in `nuxt.config.ts`, and
  * there no module of TS imports it.
@@ -22,7 +22,7 @@
  */
 export {}
 
-declare module '@soldy-ui/core' {
+declare module '@soxa-ui/core' {
 	/**
 	 * The color by meaning. Without a variant — the neutral; `accent` for
 	 * ProgressLinear and ProgressSpinner, which inside a button take the color

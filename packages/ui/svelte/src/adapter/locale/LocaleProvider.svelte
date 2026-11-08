@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { untrack } from 'svelte'
-	import { TLocaleSource } from '@soldy-ui/plugins'
+	import { TLocaleSource } from '@soxa-ui/plugins'
 	import { provideLocale } from './context'
 	import type { TLocaleProviderProps } from './types'
 

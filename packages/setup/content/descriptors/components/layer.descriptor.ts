@@ -9,7 +9,7 @@
  */
 
 import { defineComponent, defineDescriptor } from '../../../protected/define'
-import { TLayer } from '@soldy-ui/core'
+import { TLayer } from '@soxa-ui/core'
 import { ComponentViewDescriptor } from './component-view.descriptor'
 
 export const LayerDescriptor = defineDescriptor(() =>

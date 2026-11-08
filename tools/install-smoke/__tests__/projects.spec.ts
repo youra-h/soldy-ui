@@ -74,7 +74,7 @@ describe('проекты прогона установки', () => {
 
 			expect(named.filter((name) => ADAPTERS.includes(name))).toHaveLength(1)
 			expect(named).toEqual(
-				expect.arrayContaining(['@soldy-ui/theme-oren', '@soldy-ui/icons-material']),
+				expect.arrayContaining(['@soxa-ui/theme-oren', '@soxa-ui/icons-material']),
 			)
 			expect(named.filter((name) => specs[name] !== '*')).toEqual([])
 		},

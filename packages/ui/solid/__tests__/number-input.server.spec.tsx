@@ -14,8 +14,8 @@
 import { describe, it, expect } from 'vitest'
 import type { JSX } from 'solid-js'
 import { renderToString } from 'solid-js/web'
-import { ruRU } from '@soldy-ui/plugins'
-import { Field, LocaleProvider, NumberInput } from '@soldy-ui/solid'
+import { ruRU } from '@soxa-ui/plugins'
+import { Field, LocaleProvider, NumberInput } from '@soxa-ui/solid'
 
 /**
  * Разметка сервера без меток гидратации: ключи узлов (`data-hk`) и

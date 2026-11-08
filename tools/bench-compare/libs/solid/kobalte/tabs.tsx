@@ -2,7 +2,7 @@ import { For } from 'solid-js'
 import { Tabs } from '@kobalte/core/tabs'
 import { COLLECTION_ITEMS } from '../../../data'
 
-/** Tabs and a panel of the active one, as the soldy preview: «Панель «…»». */
+/** Tabs and a panel of the active one, as the soxa preview: «Панель «…»». */
 export default function Page() {
 	return (
 		<Tabs class="kb-tabs" defaultValue={COLLECTION_ITEMS[0].value}>

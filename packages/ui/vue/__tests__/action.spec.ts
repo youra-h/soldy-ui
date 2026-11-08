@@ -1,4 +1,4 @@
-import type { TValuePayload } from '@soldy-ui/core'
+import type { TValuePayload } from '@soxa-ui/core'
 /**
  * TActionPlugin — взаимодействие контрола с пользователем.
  *
@@ -8,9 +8,9 @@ import type { TValuePayload } from '@soldy-ui/core'
 
 import { describe, it, expect, vi, afterEach } from 'vitest'
 import { mount } from '@vue/test-utils'
-import { TButton } from '@soldy-ui/core'
-import { TActionPlugin, TPluginBundle } from '@soldy-ui/plugins'
-import { Accordion, AccordionItem, Button, CheckBox, Input, Tabs, TabsItem } from '@soldy-ui/vue'
+import { TButton } from '@soxa-ui/core'
+import { TActionPlugin, TPluginBundle } from '@soxa-ui/plugins'
+import { Accordion, AccordionItem, Button, CheckBox, Input, Tabs, TabsItem } from '@soxa-ui/vue'
 
 /**
  * Плагин цепляет слушатели по `element:ready`, а TElementPlugin отдаёт его

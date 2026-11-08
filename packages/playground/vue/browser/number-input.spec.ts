@@ -19,16 +19,16 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { render, cleanup } from './render'
 import { commands, userEvent } from 'vitest/browser'
 import { defineComponent, h, type VNode } from 'vue'
-import { TNumberInput } from '@soldy-ui/core'
-import type { INumberInputProps, TComponentSize } from '@soldy-ui/core'
-import { ruRU } from '@soldy-ui/plugins'
-import { Field, Input, LocaleProvider, NumberInput } from '@soldy-ui/vue'
+import { TNumberInput } from '@soxa-ui/core'
+import type { INumberInputProps, TComponentSize } from '@soxa-ui/core'
+import { ruRU } from '@soxa-ui/plugins'
+import { Field, Input, LocaleProvider, NumberInput } from '@soxa-ui/vue'
 
 import { expectClearSquare } from './clear-button'
 import { find } from './colors'
 import { pseudoBox } from './pseudo-box'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 const nextFrame = () => new Promise<void>((resolve) => requestAnimationFrame(() => resolve()))
 

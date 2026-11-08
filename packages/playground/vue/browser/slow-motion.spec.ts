@@ -11,7 +11,7 @@
  */
 
 import { it, expect, onTestFinished } from 'vitest'
-import { slowMotion } from '@soldy-ui/playground-shared'
+import { slowMotion } from '@soxa-ui/playground-shared'
 
 const nextFrame = () => new Promise<void>((resolve) => requestAnimationFrame(() => resolve()))
 

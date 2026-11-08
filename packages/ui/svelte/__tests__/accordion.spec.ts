@@ -10,13 +10,13 @@
 
 import { describe, it, expect, expectTypeOf, vi } from 'vitest'
 import { flushSync, type ComponentProps, type Snippet } from 'svelte'
-import type { IAccordionItem } from '@soldy-ui/core'
+import type { IAccordionItem } from '@soxa-ui/core'
 import {
 	Accordion,
 	AccordionItem,
 	type AccordionItemProps,
 	type AccordionProps,
-} from '@soldy-ui/svelte'
+} from '@soxa-ui/svelte'
 import Harness from './Accordion.test.svelte'
 import Slots from './AccordionSlots.test.svelte'
 import { find, mount } from './mount'

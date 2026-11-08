@@ -1,5 +1,5 @@
 ---
-'@soldy-ui/vue': patch
+'@soxa-ui/vue': patch
 ---
 
 Document named Vue v-model bindings.

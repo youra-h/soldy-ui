@@ -1,1 +1,1 @@
-export { ScrollerDescriptor as descriptor } from '@soldy-ui/setup'
+export { ScrollerDescriptor as descriptor } from '@soxa-ui/setup'

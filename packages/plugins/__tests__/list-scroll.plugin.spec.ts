@@ -39,8 +39,8 @@ import {
 	listOf,
 	menuOf,
 	selectOf,
-} from '@soldy-ui/core'
-import type { IListBoxItem, TScrollBehavior } from '@soldy-ui/core'
+} from '@soxa-ui/core'
+import type { IListBoxItem, TScrollBehavior } from '@soxa-ui/core'
 import {
 	TCollectionBundlesPlugin,
 	TCollectionElements,

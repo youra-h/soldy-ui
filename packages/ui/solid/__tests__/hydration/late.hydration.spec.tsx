@@ -20,7 +20,7 @@
 
 import { describe, it, expect } from 'vitest'
 import { createSignal } from 'solid-js'
-import { createEngineTabs, createEngineTags } from '@soldy-ui/core'
+import { createEngineTabs, createEngineTags } from '@soxa-ui/core'
 import {
 	FieldControlStreamed,
 	IslandEntry,

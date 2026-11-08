@@ -1,9 +1,9 @@
-# @soldy-ui/theme-oren
+# @soxa-ui/theme-oren
 
-**The oren theme: CSS for the BEM classes and `data-*` attributes of Soldy UI, in a light and a
+**The oren theme: CSS for the BEM classes and `data-*` attributes of Soxa UI, in a light and a
 dark scheme.**
 
-Part of [Soldy UI](https://github.com/youra-h/soldy-ui) — UI components with the logic written once: a
+Part of [Soxa UI](https://github.com/youra-h/soxa-ui) — UI components with the logic written once: a
 framework-agnostic core and thin adapters that render it in Vue, React, Angular, Svelte, Solid and
 Web Components.
 
@@ -15,14 +15,14 @@ from it, not the other way round.
 ## Install
 
 ```bash
-npm install @soldy-ui/theme-oren
+npm install @soxa-ui/theme-oren
 ```
 
-The theme is built on [`@soldy-ui/theme-base`](https://www.npmjs.com/package/@soldy-ui/theme-base),
-the shared layer of Soldy UI themes, and depends on it: the stylesheet carries its CSS, and the
+The theme is built on [`@soxa-ui/theme-base`](https://www.npmjs.com/package/@soxa-ui/theme-base),
+the shared layer of Soxa UI themes, and depends on it: the stylesheet carries its CSS, and the
 behavior installs its layout plugins. npm installs it with the theme; you do not import it
 yourself. To make a theme of your own on the same layer, see
-[Make your own theme](https://github.com/youra-h/soldy-ui/tree/main/packages/themes/base#make-your-own-theme).
+[Make your own theme](https://github.com/youra-h/soxa-ui/tree/main/packages/themes/base#make-your-own-theme).
 
 ## Usage
 
@@ -30,8 +30,8 @@ The theme comes in two parts: the stylesheet and the behavior. The behavior is p
 the application's entry point:
 
 ```ts
-import { useTheme } from '@soldy-ui/setup'
-import oren from '@soldy-ui/theme-oren/setup'
+import { useTheme } from '@soxa-ui/setup'
+import oren from '@soxa-ui/theme-oren/setup'
 
 useTheme(oren)
 ```
@@ -44,24 +44,24 @@ front one of a stack take its height at once, with no transition.
 
 The stylesheet goes where the build takes styles from:
 
-- **Vite** — Vue, React, Svelte, Solid, Web Components: `import '@soldy-ui/theme-oren'` in the
+- **Vite** — Vue, React, Svelte, Solid, Web Components: `import '@soxa-ui/theme-oren'` in the
   entry module, next to `useTheme`;
 - **Next.js** — the same import in the root layout, `app/layout.tsx`;
 - **SvelteKit** — the same import in the root layout, `src/routes/+layout.svelte`;
 - **SolidStart** — the same import in `src/app.tsx`;
-- **Angular CLI** — `@import '@soldy-ui/theme-oren';` in `src/styles.css`, the file listed in
+- **Angular CLI** — `@import '@soxa-ui/theme-oren';` in `src/styles.css`, the file listed in
   `styles` of `angular.json`. Not an `import` in `main.ts`: Angular CLI puts CSS imported from a
   module into a chunk the page never loads;
-- **Nuxt** — `css: ['@soldy-ui/theme-oren']` in `nuxt.config.ts`.
+- **Nuxt** — `css: ['@soxa-ui/theme-oren']` in `nuxt.config.ts`.
 
 The values of the theme — `variant`, `view`, `shape`, `animation` — come with the behavior: the
-declarations of `@soldy-ui/theme-oren/setup` reference them, so `variant="accent"` type-checks
+declarations of `@soxa-ui/theme-oren/setup` reference them, so `variant="accent"` type-checks
 however the stylesheet is plugged in.
 
 ### Only the components you use
 
-The stylesheet `@soldy-ui/theme-oren` carries every component. Next to it lies a stylesheet per
-component, `@soldy-ui/theme-oren/<component>.css`, named after the component in kebab case:
+The stylesheet `@soxa-ui/theme-oren` carries every component. Next to it lies a stylesheet per
+component, `@soxa-ui/theme-oren/<component>.css`, named after the component in kebab case:
 `button.css`, `list-box.css`, `date-picker.css`. Each one carries the shared part — the tokens and
 the color schemes, the reset of the library's nodes, the size scales — and the parts of its
 component, the inner ones included: `select.css` brings Input, Tags and Button, because Select
@@ -69,9 +69,9 @@ draws its field, its tags and its rows with them. Take the stylesheets of the co
 use, wherever the whole stylesheet would go — with Angular CLI in `src/styles.css`:
 
 ```css
-@import '@soldy-ui/theme-oren/button.css';
-@import '@soldy-ui/theme-oren/select.css';
-@import '@soldy-ui/theme-oren/dialog.css';
+@import '@soxa-ui/theme-oren/button.css';
+@import '@soxa-ui/theme-oren/select.css';
+@import '@soxa-ui/theme-oren/dialog.css';
 ```
 
 The bundler puts a file several stylesheets share once, and the order of the imports does not
@@ -91,7 +91,7 @@ of its own before the theme — a layer named first is the weakest:
 
 ```css
 @import 'modern-normalize' layer(reset);
-@import '@soldy-ui/theme-oren';
+@import '@soxa-ui/theme-oren';
 ```
 
 The dark scheme is switched on with an attribute on the root element:
@@ -102,7 +102,7 @@ The dark scheme is switched on with an attribute on the root element:
 
 ## The page is yours
 
-The theme styles only the nodes of Soldy UI — elements with a `so-*` class. It ships no page reset:
+The theme styles only the nodes of Soxa UI — elements with a `so-*` class. It ships no page reset:
 Tailwind's preflight is not part of it, and outside the components it sets nothing but CSS
 variables and the `color-scheme` of each scheme. Your headings, lists, links, buttons and the
 `body` margin stay as your own styles leave them. The components inherit the font and the line
@@ -122,11 +122,11 @@ body {
 
 ## Documentation
 
-- [Soldy UI README](https://github.com/youra-h/soldy-ui#readme) — what the library is and how it is
+- [Soxa UI README](https://github.com/youra-h/soxa-ui#readme) — what the library is and how it is
   put together.
-- [The theme's own notes](https://github.com/youra-h/soldy-ui/blob/main/packages/themes/oren/AGENTS.md)
+- [The theme's own notes](https://github.com/youra-h/soxa-ui/blob/main/packages/themes/oren/AGENTS.md)
   — scales, step roles, semantic tokens, color schemes (in Russian).
 
 ## License
 
-[MIT](https://github.com/youra-h/soldy-ui/blob/main/LICENSE)
+[MIT](https://github.com/youra-h/soxa-ui/blob/main/LICENSE)

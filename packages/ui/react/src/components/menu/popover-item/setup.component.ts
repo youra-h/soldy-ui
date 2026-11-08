@@ -2,7 +2,7 @@ import {
 	MenuCollectionItemDescriptor,
 	MenuPopoverItemDescriptor,
 	TCollectionItemExtension,
-} from '@soldy-ui/setup'
+} from '@soxa-ui/setup'
 import {
 	useAdapter,
 	useAdapterContext,

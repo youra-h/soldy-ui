@@ -1,10 +1,10 @@
 import { createSignal } from 'solid-js'
-import { Button, DatePicker, Dialog, Input, Select, Table } from '@soldy-ui/solid'
-import { useIcons, useTheme } from '@soldy-ui/setup'
-import * as material from '@soldy-ui/icons-material'
-import oren from '@soldy-ui/theme-oren/setup'
+import { Button, DatePicker, Dialog, Input, Select, Table } from '@soxa-ui/solid'
+import { useIcons, useTheme } from '@soxa-ui/setup'
+import * as material from '@soxa-ui/icons-material'
+import oren from '@soxa-ui/theme-oren/setup'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 // The registries are global: filled once per process, on the server too, not
 // once per request

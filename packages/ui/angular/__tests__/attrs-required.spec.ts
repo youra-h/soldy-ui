@@ -28,7 +28,7 @@ import {
 	TTableComponent,
 	TToastsComponent,
 	provideAttrs,
-} from '@soldy-ui/angular'
+} from '@soxa-ui/angular'
 
 /** Приложение спека — снимается после каждого теста. */
 let app: ApplicationRef | undefined

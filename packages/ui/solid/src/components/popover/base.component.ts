@@ -1,5 +1,5 @@
-import type { IPopover } from '@soldy-ui/core'
-import type { PopoverDescriptor } from '@soldy-ui/setup'
+import type { IPopover } from '@soxa-ui/core'
+import type { PopoverDescriptor } from '@soxa-ui/setup'
 import type { EventProps, UseDomProps } from '../../types'
 
 /** События Popover (ядро и плагины). */

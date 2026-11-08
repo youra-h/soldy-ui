@@ -4,7 +4,7 @@ import type { TRec } from './libs/data'
 
 /** Страница Vue: таблица участника над `shallowRef` строк. */
 const libs = {
-	soldy: () => import('./libs/soldy'),
+	soxa: () => import('./libs/soxa'),
 	naive: () => import('./libs/naive'),
 	prime: () => import('./libs/prime'),
 	plain: () => import('./libs/plain'),

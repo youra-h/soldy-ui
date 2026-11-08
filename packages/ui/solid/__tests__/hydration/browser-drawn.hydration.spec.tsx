@@ -33,7 +33,7 @@ import {
 	type IAccordionItem,
 	type TAccordionCollection,
 	type TAttributesMap,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 import { AccordionLayerStreamed } from './pages'
 import { hydrateServed, markupOf, serveStreamed } from './serve'
 

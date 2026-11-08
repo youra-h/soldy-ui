@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core'
 import { NgTemplateOutlet } from '@angular/common'
-import type { ICalendarItem } from '@soldy-ui/core'
+import type { ICalendarItem } from '@soxa-ui/core'
 import { TCalendarItemSurface } from '../../../generated/calendar-item.metadata'
 import { setupCalendarItem } from './setup.component'
 

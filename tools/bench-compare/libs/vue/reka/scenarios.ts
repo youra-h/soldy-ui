@@ -15,7 +15,7 @@ function open(selector: string): HTMLElement | null {
 	return last(`${selector}[data-state="open"]`)
 }
 
-/** Reka UI scenarios: the soldy ones step by step, on Reka's own markup. */
+/** Reka UI scenarios: the soxa ones step by step, on Reka's own markup. */
 export const SCENARIOS: Record<string, TScenario> = {
 	'check-box': each('label', press),
 	switch: each('label', press),

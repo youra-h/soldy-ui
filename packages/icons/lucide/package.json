@@ -1,9 +1,9 @@
 {
-  "name": "@soldy-ui/icons-lucide",
+  "name": "@soxa-ui/icons-lucide",
   "version": "0.3.0-beta.0",
   "description": "Иконки Lucide: реализация контракта ролей ICON_ROLES",
   "keywords": [
-    "soldy",
+    "soxa",
     "ui",
     "icons",
     "lucide"
@@ -12,12 +12,12 @@
   "author": "Yuri Soldatov",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/youra-h/soldy-ui.git",
+    "url": "git+https://github.com/youra-h/soxa-ui.git",
     "directory": "packages/icons/lucide"
   },
-  "homepage": "https://github.com/youra-h/soldy-ui",
+  "homepage": "https://github.com/youra-h/soxa-ui",
   "bugs": {
-    "url": "https://github.com/youra-h/soldy-ui/issues"
+    "url": "https://github.com/youra-h/soxa-ui/issues"
   },
   "publishConfig": {
     "access": "public"
@@ -41,6 +41,6 @@
     "generate": "node scripts/generate.mjs"
   },
   "peerDependencies": {
-    "@soldy-ui/setup": "^0.3.0-beta.0"
+    "@soxa-ui/setup": "^0.3.0-beta.0"
   }
 }

@@ -1,5 +1,5 @@
-import type { TValuePayload } from '@soldy-ui/core'
-import type { IScroller, TScrollerDirection } from '@soldy-ui/core'
+import type { TValuePayload } from '@soxa-ui/core'
+import type { IScroller, TScrollerDirection } from '@soxa-ui/core'
 import { TBasePlugin } from '../../../base'
 import type { IPluginContext } from '../../../base'
 import { TElementPlugin } from '../../element'

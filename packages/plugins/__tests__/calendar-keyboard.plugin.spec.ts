@@ -16,8 +16,8 @@
  */
 
 import { describe, it, expect, afterEach, beforeEach, vi } from 'vitest'
-import { TCalendar, createEngineCalendar } from '@soldy-ui/core'
-import type { ICalendarItem, ICalendarProps, TCalendarMode } from '@soldy-ui/core'
+import { TCalendar, createEngineCalendar } from '@soxa-ui/core'
+import type { ICalendarItem, ICalendarProps, TCalendarMode } from '@soxa-ui/core'
 import {
 	TCalendarKeyboardPlugin,
 	TCollectionBundlesPlugin,

@@ -2,8 +2,8 @@ import {
 	TCollectionItemExtension,
 	TagsCollectionItemDescriptor,
 	TagsItemDescriptor,
-} from '@soldy-ui/setup'
-import type { ITagsItem, TTagsItemCollectionFacade } from '@soldy-ui/core'
+} from '@soxa-ui/setup'
+import type { ITagsItem, TTagsItemCollectionFacade } from '@soxa-ui/core'
 import {
 	createWebcAdapterContext,
 	joinBindings,

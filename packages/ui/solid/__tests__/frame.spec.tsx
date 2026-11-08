@@ -17,9 +17,9 @@
 
 import { describe, it, expect } from 'vitest'
 import { createSignal, type JSX } from 'solid-js'
-import { TFrame } from '@soldy-ui/core'
-import { TAnchorPlugin, TPluginBundle, ruRU } from '@soldy-ui/plugins'
-import { Button, Frame, LocaleProvider } from '@soldy-ui/solid'
+import { TFrame } from '@soxa-ui/core'
+import { TAnchorPlugin, TPluginBundle, ruRU } from '@soxa-ui/plugins'
+import { Button, Frame, LocaleProvider } from '@soxa-ui/solid'
 import { find, mount, nextFrame } from './mount'
 
 /** Узел Frame — там, куда его увёл телепорт. */

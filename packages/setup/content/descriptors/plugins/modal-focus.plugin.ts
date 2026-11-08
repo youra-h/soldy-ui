@@ -9,7 +9,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TModalFocusPlugin } from '@soldy-ui/plugins'
+import { TModalFocusPlugin } from '@soxa-ui/plugins'
 
 export const ModalFocusPluginDescriptor = definePlugin({
 	ctor: TModalFocusPlugin,

@@ -43,8 +43,8 @@ import {
 	type TSelectionMode,
 	type TSwipe,
 	type TValuePayload,
-} from '@soldy-ui/core'
-import { TAnchorPlugin, ruRU } from '@soldy-ui/plugins'
+} from '@soxa-ui/core'
+import { TAnchorPlugin, ruRU } from '@soxa-ui/plugins'
 import {
 	LocaleProviderDirective,
 	SlotDirective,
@@ -53,7 +53,7 @@ import {
 	TSelectItemComponent,
 	TTagsComponent,
 	TTagsItemComponent,
-} from '@soldy-ui/angular'
+} from '@soxa-ui/angular'
 import { find, nextFrame } from './mount'
 
 /** Смонтированный хост теста — его перепроверяют действия. */

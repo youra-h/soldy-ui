@@ -5,18 +5,18 @@
   "format": "auto",
   "changelog": "@changesets/cli/changelog",
   "commit": false,
-  "ignore": ["@soldy-ui/playground-shared", "@soldy-ui/playground-vue"],
+  "ignore": ["@soxa-ui/playground-shared", "@soxa-ui/playground-vue"],
   "fixed": [
     [
-      "@soldy-ui/core",
-      "@soldy-ui/plugins",
-      "@soldy-ui/setup",
-      "@soldy-ui/angular",
-      "@soldy-ui/react",
-      "@soldy-ui/solid",
-      "@soldy-ui/svelte",
-      "@soldy-ui/vue",
-      "@soldy-ui/webc"
+      "@soxa-ui/core",
+      "@soxa-ui/plugins",
+      "@soxa-ui/setup",
+      "@soxa-ui/angular",
+      "@soxa-ui/react",
+      "@soxa-ui/solid",
+      "@soxa-ui/svelte",
+      "@soxa-ui/vue",
+      "@soxa-ui/webc"
     ]
   ],
   "linked": [],

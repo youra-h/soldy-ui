@@ -13,7 +13,7 @@ import * as ts from 'typescript'
  * ESM, модуль на модуль, без минификации — приняты один раз, в общей фабрике
  * `tools/vite/lib.config.ts`, а проверяется конфиг самого пакета: своя копия
  * расходится с фабрикой молча. У адаптера Vue такая копия пережила
- * переименование скоупа (`external: [/^@soldy\//]` перестал совпадать хоть с
+ * переименование скоупа (`external: [/^@soxa\//]` перестал совпадать хоть с
  * чем-нибудь), держала формат `cjs` и складывала выход в `lib` мимо `dist`,
  * объявленного в манифесте.
  *
@@ -445,7 +445,7 @@ function bundleEntriesOf(build: Readonly<Record<string, unknown>>): string[] {
  * it. A module
  * that is not an entry keeps only the exports other modules take from it: a
  * subpath that re-exports a name the root takes by another path loses it, as
- * `toastsOf` of `@soldy-ui/webc/toasts` did. An entry keeps every export of its
+ * `toastsOf` of `@soxa-ui/webc/toasts` did. An entry keeps every export of its
  * own. The output of an entry is its path from the root of the kept modules,
  * as `.js`, in `outDir`.
  */
@@ -754,14 +754,14 @@ describe('сборка пакетов', () => {
 	// рецепта есть пакет — иначе его проверки молча не запускались бы вовсе
 	it('очередь корневого build разобрана', () => {
 		expect(PACKAGES.map(({ name }) => name)).toEqual(
-			expect.arrayContaining(['@soldy-ui/core', '@soldy-ui/vue']),
+			expect.arrayContaining(['@soxa-ui/core', '@soxa-ui/vue']),
 		)
 
 		for (const recipe of RECIPES) {
 			expect(packagesOf(recipe), recipe.name).not.toEqual([])
 		}
 
-		expect(SOLID.map(({ name }) => name)).toEqual(expect.arrayContaining(['@soldy-ui/solid']))
+		expect(SOLID.map(({ name }) => name)).toEqual(expect.arrayContaining(['@soxa-ui/solid']))
 	})
 
 	// Тоже не вхолостую: у пакетов, где тесты в программе проверки типов точно
@@ -775,11 +775,11 @@ describe('сборка пакетов', () => {
 
 		expect(tested.map(({ name }) => name)).toEqual(
 			expect.arrayContaining([
-				'@soldy-ui/setup',
-				'@soldy-ui/vue',
-				'@soldy-ui/webc',
-				'@soldy-ui/theme-base',
-				'@soldy-ui/theme-oren',
+				'@soxa-ui/setup',
+				'@soxa-ui/vue',
+				'@soxa-ui/webc',
+				'@soxa-ui/theme-base',
+				'@soxa-ui/theme-oren',
 			]),
 		)
 	})
@@ -792,14 +792,14 @@ describe('сборка пакетов', () => {
 
 		expect(entries).toEqual(
 			expect.arrayContaining([
-				'@soldy-ui/vue',
-				'@soldy-ui/angular',
-				'@soldy-ui/theme-oren',
-				'@soldy-ui/theme-oren/setup',
-				'@soldy-ui/theme-base/setup',
+				'@soxa-ui/vue',
+				'@soxa-ui/angular',
+				'@soxa-ui/theme-oren',
+				'@soxa-ui/theme-oren/setup',
+				'@soxa-ui/theme-base/setup',
 			]),
 		)
-		expect(entries).not.toContain('@soldy-ui/theme-base')
+		expect(entries).not.toContain('@soxa-ui/theme-base')
 	})
 
 	it('каждый пакет очереди собирается ровно одним рецептом', () => {
@@ -999,7 +999,7 @@ describe('сторож рецептов', () => {
 		})
 	})
 
-	const NAME = '@soldy-ui/example'
+	const NAME = '@soxa-ui/example'
 
 	/**
 	 * Каталог в памяти: путь → текст файла. Программа любого конфига — все
@@ -1031,7 +1031,7 @@ describe('сторож рецептов', () => {
 	"extends": "../tsconfig.base.json",
 	"compilerOptions": {
 		"paths": {
-			"@soldy-ui/core": ["../core/src"],
+			"@soxa-ui/core": ["../core/src"],
 			"${NAME}": ["./src"],
 		},
 	},
@@ -1067,9 +1067,9 @@ describe('сторож рецептов', () => {
 
 		// Пакетный конфиг ведёт соседей в исходники, и extends приносит его paths
 		it('сосед в paths — нарушение, свой он или пришёл по extends', () => {
-			const neighbour = { compilerOptions: { paths: { '@soldy-ui/core': ['../core/src'] } } }
+			const neighbour = { compilerOptions: { paths: { '@soxa-ui/core': ['../core/src'] } } }
 			const inherited = { extends: './tsconfig.json', compilerOptions: { noEmit: false } }
-			const violation = `paths знает соседа @soldy-ui/core — ${WHY}`
+			const violation = `paths знает соседа @soxa-ui/core — ${WHY}`
 
 			expect(check(neighbour)).toEqual([violation])
 			expect(check(inherited)).toEqual([violation])
@@ -1215,7 +1215,7 @@ describe('сторож рецептов', () => {
 		})
 
 		it('нет ссылки на себя — нарушение', () => {
-			expect(check({ '@soldy-ui/core': ['../core/src'] })).toEqual([unknown(NAME)])
+			expect(check({ '@soxa-ui/core': ['../core/src'] })).toEqual([unknown(NAME)])
 		})
 
 		// Корень общего слоя тем — CSS: по имени корня TypeScript ничего не
@@ -1319,9 +1319,9 @@ describe('сторож рецептов', () => {
 		}
 
 		const svelte = (build: string, entry: TManifest = ENTRY): TBuiltPackage => ({
-			name: '@soldy-ui/example',
+			name: '@soxa-ui/example',
 			dir: 'packages/example',
-			manifest: { name: '@soldy-ui/example', exports: { '.': entry } },
+			manifest: { name: '@soxa-ui/example', exports: { '.': entry } },
 			build,
 		})
 
@@ -1408,9 +1408,9 @@ describe('сторож рецептов', () => {
 		const BUILD = 'ng-packagr -p ng-package.json -c tsconfig.build.json'
 
 		const angular = (build: string): TBuiltPackage => ({
-			name: '@soldy-ui/example',
+			name: '@soxa-ui/example',
 			dir: 'packages/example',
-			manifest: { name: '@soldy-ui/example' },
+			manifest: { name: '@soxa-ui/example' },
 			build,
 		})
 
@@ -1519,7 +1519,7 @@ describe('сторож рецептов', () => {
 			}),
 			'/example/tsconfig.json': text({
 				extends: '../tsconfig.base.json',
-				compilerOptions: { jsx, paths: { '@soldy-ui/core': ['../core/src'] } },
+				compilerOptions: { jsx, paths: { '@soxa-ui/core': ['../core/src'] } },
 			}),
 			'/example/tsconfig.build.json': text({
 				extends: './tsconfig.json',
@@ -1632,10 +1632,10 @@ describe('сторож рецептов', () => {
 
 		// Пакетный конфиг ведёт соседей в исходники, и extends принёс бы их paths
 		it('сосед в paths — нарушение, как у конфига сборки', () => {
-			const paths = { '@soldy-ui/core': ['../core/src'] }
+			const paths = { '@soxa-ui/core': ['../core/src'] }
 
 			expect(check(solid(), { ...OPTIONS, paths })).toEqual([
-				'paths знает соседа @soldy-ui/core — сосед резолвится как пакет, по своему dist',
+				'paths знает соседа @soxa-ui/core — сосед резолвится как пакет, по своему dist',
 			])
 		})
 

@@ -2,7 +2,7 @@ import {
 	TCollectionItemExtension,
 	ListBoxItemDescriptor,
 	ListBoxCollectionItemDescriptor,
-} from '@soldy-ui/setup'
+} from '@soxa-ui/setup'
 import {
 	useAdapter,
 	extendBinding,

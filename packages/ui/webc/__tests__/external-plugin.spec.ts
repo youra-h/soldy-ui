@@ -11,11 +11,11 @@
  */
 
 import { describe, it, expect, afterEach } from 'vitest'
-import { TButton } from '@soldy-ui/core'
-import { TBasePlugin, TPluginBundle } from '@soldy-ui/plugins'
-import type { TPluginEvents } from '@soldy-ui/plugins'
-import { definePlugin, usePlugins } from '@soldy-ui/setup'
-import { TButtonElement, type TButtonElementProps } from '@soldy-ui/webc'
+import { TButton } from '@soxa-ui/core'
+import { TBasePlugin, TPluginBundle } from '@soxa-ui/plugins'
+import type { TPluginEvents } from '@soxa-ui/plugins'
+import { definePlugin, usePlugins } from '@soxa-ui/setup'
+import { TButtonElement, type TButtonElementProps } from '@soxa-ui/webc'
 
 type TStepEvents = TPluginEvents & {
 	'change:size': (size: number) => void

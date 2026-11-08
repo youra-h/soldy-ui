@@ -1,4 +1,4 @@
-import { TEvented } from '@soldy-ui/core'
+import { TEvented } from '@soxa-ui/core'
 import type { ILocaleSource, TLocale, TLocaleSourceEvents } from './types'
 
 /**

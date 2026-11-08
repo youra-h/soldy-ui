@@ -11,10 +11,10 @@
 
 import { describe, it, expect } from 'vitest'
 import { act } from 'react'
-import { TScroller } from '@soldy-ui/core'
-import { enUS, extendLocale, ruRU } from '@soldy-ui/plugins'
-import type { TLocale } from '@soldy-ui/plugins'
-import { LocaleProvider, Scroller } from '@soldy-ui/react'
+import { TScroller } from '@soxa-ui/core'
+import { enUS, extendLocale, ruRU } from '@soxa-ui/plugins'
+import type { TLocale } from '@soxa-ui/plugins'
+import { LocaleProvider, Scroller } from '@soxa-ui/react'
 import { find, mount, nextFrame } from './mount'
 
 const root = () => find(document, '.so-scroller', HTMLElement)

@@ -13,9 +13,9 @@
 import { describe, it, expect, afterEach } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { defineComponent, nextTick } from 'vue'
-import { createEngineRadioGroup } from '@soldy-ui/core'
-import type { TRadioGroupCollection } from '@soldy-ui/core'
-import { RadioGroup, RadioGroupItem } from '@soldy-ui/vue'
+import { createEngineRadioGroup } from '@soxa-ui/core'
+import type { TRadioGroupCollection } from '@soxa-ui/core'
+import { RadioGroup, RadioGroupItem } from '@soxa-ui/vue'
 
 let wrapper: ReturnType<typeof mount> | null = null
 

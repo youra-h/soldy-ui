@@ -2,9 +2,9 @@
 
 /** Explicit event publication stays independent from state refresh and two-way models. */
 import { afterEach, describe, expect, expectTypeOf, it, vi } from 'vitest'
-import { TButton } from '@soldy-ui/core'
-import { TAriaPlugin, TBasePlugin } from '@soldy-ui/plugins'
-import type { TPluginEvents } from '@soldy-ui/plugins'
+import { TButton } from '@soxa-ui/core'
+import { TAriaPlugin, TBasePlugin } from '@soxa-ui/plugins'
+import type { TPluginEvents } from '@soxa-ui/plugins'
 import {
 	ButtonDescriptor,
 	CommonProfile,
@@ -13,8 +13,8 @@ import {
 	defineComponent,
 	definePlugin,
 	TSurface,
-} from '@soldy-ui/setup'
-import type { DescriptorAllEvents, DescriptorEvents, TEventSink } from '@soldy-ui/setup'
+} from '@soxa-ui/setup'
+import type { DescriptorAllEvents, DescriptorEvents, TEventSink } from '@soxa-ui/setup'
 import { CallbackProfile, exportedDescriptors, required } from './helpers'
 
 const disposers: Array<() => void> = []

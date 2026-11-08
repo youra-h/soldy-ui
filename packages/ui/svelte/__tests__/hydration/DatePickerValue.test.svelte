@@ -4,7 +4,7 @@
 	 * сервере нет — её рисует браузер после гидратации. Расхождений у сервера и
 	 * браузера нет — пропсов у страницы нет.
 	 */
-	import { DatePicker } from '@soldy-ui/svelte'
+	import { DatePicker } from '@soxa-ui/svelte'
 </script>
 
 <DatePicker value="2026-09-10" name="trip" />

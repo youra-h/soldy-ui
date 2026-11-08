@@ -1,5 +1,5 @@
-import { ListBoxGroupDescriptor, TItemGroupExtension } from '@soldy-ui/setup'
-import type { IItemGroup } from '@soldy-ui/core'
+import { ListBoxGroupDescriptor, TItemGroupExtension } from '@soxa-ui/setup'
+import type { IItemGroup } from '@soxa-ui/core'
 import { createWebcAdapterContext, useAdapter } from '../../../adapter'
 import type { TBinding, TUpdateListener } from '../../../adapter'
 import { createWebcElevator } from '../../../adapter/elevator'

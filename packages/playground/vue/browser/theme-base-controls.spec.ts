@@ -1,6 +1,6 @@
 /**
- * Общий слой тем без темы: страница только с CSS базы (`@soldy-ui/theme-base`),
- * без `@soldy-ui/theme-oren`.
+ * Общий слой тем без темы: страница только с CSS базы (`@soxa-ui/theme-base`),
+ * без `@soxa-ui/theme-oren`.
  *
  * Структура частей — раскладка и механика — лежит в базе, а облик в теме
  * (`packages/themes/base/AGENTS.md`, «Перенос структуры»). Без темы части
@@ -21,10 +21,10 @@ import { describe, it, expect, afterEach } from 'vitest'
 import { render, cleanup } from './render'
 import { userEvent } from 'vitest/browser'
 import { defineComponent, h, nextTick, type Component, type VNode } from 'vue'
-import type { TFieldPosition } from '@soldy-ui/core'
-import { Button, CheckBox, Field, Input, Label, RadioGroup, Switch } from '@soldy-ui/vue'
+import type { TFieldPosition } from '@soxa-ui/core'
+import { Button, CheckBox, Field, Input, Label, RadioGroup, Switch } from '@soxa-ui/vue'
 
-import '@soldy-ui/theme-base'
+import '@soxa-ui/theme-base'
 
 /** Допуск на субпиксельное округление координат, px. */
 const EPSILON = 0.5

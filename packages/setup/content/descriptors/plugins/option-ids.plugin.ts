@@ -7,7 +7,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TOptionIdsPlugin } from '@soldy-ui/plugins'
+import { TOptionIdsPlugin } from '@soxa-ui/plugins'
 
 export const OptionIdsPluginDescriptor = definePlugin({
 	ctor: TOptionIdsPlugin,

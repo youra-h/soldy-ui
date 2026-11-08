@@ -2,7 +2,7 @@
 
 Инструкции для этого пакета. Всё написанное ниже — **решения именно темы
 `oren`**, а не библиотеки. Другая тема вправе устроить палитру, схемы и сборку
-как угодно: soldy выпускает BEM-классы и `data-*`, а чем они покрашены — дело
+как угодно: soxa выпускает BEM-классы и `data-*`, а чем они покрашены — дело
 пакета темы. Корневой `AGENTS.md` описывает контракт, этот файл — реализацию.
 
 ## Что здесь чем является
@@ -12,7 +12,7 @@
 | `src/tokens.css`                  | светлая схема и регистрация шкал в `@theme inline` (общая на обе схемы)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | `src/tokens-dark.css`             | тёмная схема: те же ступени, инвертированные по ролям                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | `src/utilities.css`               | утилиты из семантических токенов (`@utility`)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| `src/base.css`                    | Tailwind частями — тема и утилиты, без preflight (см. «Тема не стилизует страницу»), общий слой тем `@soldy-ui/theme-base` в слое `base` — сброс узлов библиотеки, знак направления письма, гашение выключенного и структура перенесённых частей, — токены и схемы в слое `components.so.tokens` и утилиты; инжектится в каждый SCSS через `additionalData`                                                                                                                                                                                                                                                                 |
+| `src/base.css`                    | Tailwind частями — тема и утилиты, без preflight (см. «Тема не стилизует страницу»), общий слой тем `@soxa-ui/theme-base` в слое `base` — сброс узлов библиотеки, знак направления письма, гашение выключенного и структура перенесённых частей, — токены и схемы в слое `components.so.tokens` и утилиты; инжектится в каждый SCSS через `additionalData`                                                                                                                                                                                                                                                                  |
 | `src/index.scss`                  | стили компонентов по слоям: каждая часть — в свой `components.so.<часть>`, порядок блоков — порядок слоёв (см. «Слои: лист целиком и по компонентам»)                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | `entries.ts`                      | таблица входов: компонент экспорта → части его листа; общие части базы, которые уходят в общую часть                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | `layers.ts`                       | шаги сборки CSS по слоям: регистрации `@property` — из слоёв частей наверх, лист целиком — на общую часть, части и входы компонентов                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
@@ -35,14 +35,14 @@
 | `tsconfig.json`                   | проверка типов — шаг CI «Типы — Themes»: тесты, поведение, `index.d.ts` и конфиги сборки с шагом Tailwind; соседи — исходниками                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 
 ```bash
-npm run build:css --workspace=@soldy-ui/theme-oren  # → dist/index.css
-npm run build --workspace=@soldy-ui/theme-oren      # + dist/setup (нужны dist соседей)
+npm run build:css --workspace=@soxa-ui/theme-oren  # → dist/index.css
+npm run build --workspace=@soxa-ui/theme-oren      # + dist/setup (нужны dist соседей)
 npm run test:theme                                  # сторожа общего слоя тем и тесты oren
 ```
 
 Общий слой тем — сброс узлов библиотеки, знак направления письма, гашение
 выключенного, структура частей и плагины раскладки — живёт в пакете
-`@soldy-ui/theme-base` (`packages/themes/base`): oren вшивает его CSS в свой
+`@soxa-ui/theme-base` (`packages/themes/base`): oren вшивает его CSS в свой
 (`src/base.css`), а его плагины ставит своим `defineTheme` (см. «Поведение
 темы: `setup/`»). Там же сторожа, которые годятся любой теме: они проходят и
 по oren (`packages/themes/base/AGENTS.md`, «Сторожа»).
@@ -111,8 +111,8 @@ DatePicker остались миксины облика — `field-frame-look`, 
 
 ## Слои: лист целиком и по компонентам (критично)
 
-Тема отдаёт лист целиком (`@soldy-ui/theme-oren`, `dist/index.css`) и рядом —
-лист на каждый компонент экспорта (`@soldy-ui/theme-oren/<компонент>.css`,
+Тема отдаёт лист целиком (`@soxa-ui/theme-oren`, `dist/index.css`) и рядом —
+лист на каждый компонент экспорта (`@soxa-ui/theme-oren/<компонент>.css`,
 `dist/components/`): приложение с одной кнопкой не платит за CSS таблицы и
 календаря. Лист компонента импортирует общую часть (`dist/common.css`) и части
 своего компонента (`dist/parts/<часть>.css`), свои и внутренние: Select рисует
@@ -130,7 +130,7 @@ CLI) оставляет последнюю, как браузер. Поэтом�
 | Слой                             | Что в нём                                                          |
 | -------------------------------- | ------------------------------------------------------------------ |
 | `properties`, `theme`            | то, что Tailwind выпускает на весь лист: начальные значения и тема |
-| `base.so.<часть>`                | общий слой тем (`@soldy-ui/theme-base`), каждая его часть отдельно |
+| `base.so.<часть>`                | общий слой тем (`@soxa-ui/theme-base`), каждая его часть отдельно  |
 | `components.so.tokens`           | токены и схемы (`tokens.css`, `tokens-dark.css`)                   |
 | `components.so.<часть>`          | облик части (`src/components/<часть>/`)                            |
 | `components.so.modifiers.button` | модификаторы Button — вид и вариант (`button/_modifiers.scss`)     |
@@ -577,7 +577,7 @@ Tabs. Поэтому линия строки — вуаль нейтрали п�
 оверлеев, чья структура в общем слое тем, — Popover, Select, Menu и пункта
 Menu, окно Dialog и панель Drawer, — объявляет база: поверхность места внутри
 панели — её поверхность `--so-panel-surface` (`place.css` в
-`@soldy-ui/theme-base`), а oren задаёт её на панели поверхностью контрола и
+`@soxa-ui/theme-base`), а oren задаёт её на панели поверхностью контрола и
 красит ею фон (`place.panel-surface` в `mixins/_place.scss`): фон и
 сообщение читают одну переменную, разойтись им нечему. Так же — панель
 DatePicker, карточка выбора месяца Calendar и плашка тоста: поверхность
@@ -634,11 +634,11 @@ DatePicker, карточка выбора месяца Calendar и плашка 
 приложения, блочные `img` и `svg`, — и у приложения, которое подключило тему,
 всё это менялось без спроса.
 
-**Сброс узлов библиотеки — из общего слоя тем** (`@soldy-ui/theme-base`; что
+**Сброс узлов библиотеки — из общего слоя тем** (`@soxa-ui/theme-base`; что
 в нём и чего в нём нет — `packages/themes/base/AGENTS.md`, «Сброс узлов
 библиотеки»): то из preflight, на что опираются части, и только им. oren
 кладёт базу в слой `base`, где был preflight, а не в свой
-(`@import '@soldy-ui/theme-base' layer(base)` в `src/base.css`): правила темы
+(`@import '@soxa-ui/theme-base' layer(base)` в `src/base.css`): правила темы
 в слое `components` и утилиты приложения в слое `utilities` перекрывают сброс
 в прежнем порядке (см. «Слои: лист целиком и по компонентам»). У новой части
 узел без класса, которому нужен сброс, — строка в
@@ -745,11 +745,11 @@ Tailwind и самой темы (края маски ряда тегов) — в
 даёт только полифил.
 
 **Приложение дублей не вернёт, если тема подключена файлом.**
-`import '@soldy-ui/theme-oren'` Tailwind приложения не трогает: в собранном
+`import '@soxa-ui/theme-oren'` Tailwind приложения не трогает: в собранном
 CSS темы нет ни одной директивы Tailwind, и такой файл пропускают и
 `@tailwindcss/postcss`, и `@tailwindcss/vite`. Минификатор Vite приложения —
 Lightning CSS — смеси с `var()` не раскрывает и при целях без `color-mix()`:
-значения переменной он не знает. А `@import '@soldy-ui/theme-oren'` в CSS,
+значения переменной он не знает. А `@import '@soxa-ui/theme-oren'` в CSS,
 который обрабатывает Tailwind приложения, отдаёт тему его компилятору, и
 полифил приложения вернёт все дубли.
 
@@ -1136,7 +1136,7 @@ Calendar и его дни, DateInput и коробку диапазона DatePi
 ## Поле формы Field: подпись, колонки и ошибка
 
 Field — подпись, контрол, подсказка и ошибка. Структура поля — в общем слое
-тем (`components/field.css` в `@soldy-ui/theme-base`), облик — начертание и
+тем (`components/field.css` в `@soxa-ui/theme-base`), облик — начертание и
 цвет подписи, цвет справки и ошибки, цвет и форма точки — в
 `components/field/_field.scss`. Порядок частей в DOM один на все стороны,
 сторону ставит модификатор `--position-*`: `top` — столбец, `start` и `end` —
@@ -1155,7 +1155,7 @@ Textarea и подписи меток Slider (кегль справки): фла
 (`note`) того же размера, на шаг мельче строк (решение владельца, 2026-10-26;
 прежде — на размер ниже, и в месте 14px подпись у строк `normal` была 10px).
 Кегль и поля подписи — структура, они в общем слое тем (`group.css` в
-`@soldy-ui/theme-base`). Сторожит `playground/vue/browser/list-groups.spec.ts`:
+`@soxa-ui/theme-base`). Сторожит `playground/vue/browser/list-groups.spec.ts`:
 заглавные, начертание и цвет — подсказки Field, кегль и интерлиньяж — её же
 того же размера, в обеих схемах.
 
@@ -1208,7 +1208,7 @@ DatePicker атрибут на корне, рамку красит их поле
 — поля разделителя (`--so-menu-separator-margin`): зазоров у списка меню нет.
 Отступы и место секции без разделителя — структура, они в общем слое тем
 (`components/list-box.css`, `select.css` и `menu.css` в
-`@soldy-ui/theme-base`).
+`@soxa-ui/theme-base`).
 
 **Выключенный разделитель оставляет своё место пустым**: секция, перед
 которой разделителя нет, отступает на то, что он занимал, —
@@ -1235,7 +1235,7 @@ Textarea — рамка Input без строки поля: **высоты у р
 инлайновой `height` на самой `<textarea>`; корень растёт за ней. Интерлиньяж
 задан на каждом размере, без `normal`: плагин мерит строку по вычисленному.
 Структура — столбец, поля текста, интерлиньяж, ручка, место счётчика — в
-общем слое тем (`components/textarea.css` в `@soldy-ui/theme-base`), облик —
+общем слое тем (`components/textarea.css` в `@soxa-ui/theme-base`), облик —
 рамка (`input.field-frame-look`, одна на семью Input), скругление поля под
 ней, цвет счётчика — здесь (`components/textarea/`).
 
@@ -1362,18 +1362,18 @@ CSS и `index.d.ts` — не всё, что нужно теме. Полосу п
 `_tabs.scss` рисует по переменным `--so-tabs-active-*` (место и длина
 активного таба по главной оси) и `--so-tabs-gap-*`, а пишет их
 `TTabsViewPlugin` — плагин раскладки общего слоя тем
-(`@soldy-ui/theme-base/setup`, `packages/themes/base/AGENTS.md`, «Плагины
+(`@soxa-ui/theme-base/setup`, `packages/themes/base/AGENTS.md`, «Плагины
 раскладки: `setup/`»). Там же `TTableHeadPlugin` и `TToastsFrontPlugin` —
 высота закреплённой шапки Table и переднего тоста стопки. Раньше
-`TTabsViewPlugin` лежал в `@soldy-ui/plugins` и стоял в дескрипторе Tabs, то
+`TTabsViewPlugin` лежал в `@soxa-ui/plugins` и стоял в дескрипторе Tabs, то
 есть библиотека работала на CSS одной темы; потом все три лежали в oren, и
 общий слой тем читал переменные плагинов одной темы. Своего `defineTheme` у
 общего слоя нет, и ставит их oren: `setup/index.ts` отдаёт объект
 `defineTheme`:
 
 ```ts
-import '@soldy-ui/theme-oren'
-import oren from '@soldy-ui/theme-oren/setup'
+import '@soxa-ui/theme-oren'
+import oren from '@soxa-ui/theme-oren/setup'
 
 useTheme(oren)
 ```
@@ -1402,9 +1402,9 @@ setup/
   (корневой `AGENTS.md`, «Сборка пакетов»): `./setup` ведёт в `dist/setup`,
   исходники наружу не отдаются (`files` — только `dist` и `index.d.ts`).
   Плагины общего слоя оно импортирует в рантайме, поэтому
-  `@soldy-ui/theme-base` у oren — в `dependencies`.
+  `@soxa-ui/theme-base` у oren — в `dependencies`.
 - Плагин темы и плагин общего слоя тем вправе знать CSS тем, плагин
-  библиотеки — нет. Новые данные для стилей пишет не `@soldy-ui/plugins`:
+  библиотеки — нет. Новые данные для стилей пишет не `@soxa-ui/plugins`:
   нужные любой теме — плагин общего слоя, нужные облику oren — плагин здесь.
 - `scope` у регистраций темы по умолчанию `'all'`: тема рисует компонент и там,
   где он деталь чужой разметки.
@@ -1416,10 +1416,10 @@ setup/
   `browser/setup.ts`.
 
 **Значения темы едут с поведением.** `setup/index.ts` открывается директивой
-`/// <reference types="@soldy-ui/theme-oren" preserve="true" />`: декларации
+`/// <reference types="@soxa-ui/theme-oren" preserve="true" />`: декларации
 `./setup` (`dist/setup/index.d.ts`) ссылаются на `index.d.ts`, и значения
 `variant`, `view`, `shape` и `animation` входят в программу приложения вместе с
-`import oren from '@soldy-ui/theme-oren/setup'`. Импорт листа из TS для этого
+`import oren from '@soxa-ui/theme-oren/setup'`. Импорт листа из TS для этого
 не нужен — его и нет там, где лист подключает сборка: в Angular CLI (`@import`
 в `src/styles.css`, файл из `styles` в `angular.json`) и в Nuxt (`css` в
 `nuxt.config.ts`). Без директивы `variant="accent"` там не проходил типы:
@@ -1489,8 +1489,8 @@ setup/
 ровно лист целиком, общую часть, части и входы компонентов из таблицы.
 
 Отсюда же второй скрипт, `build:css`. Прогон деклараций `setup/` читает
-`@soldy-ui/core`, `@soldy-ui/setup` и поведение общего слоя тем
-(`@soldy-ui/theme-base/setup`) через их манифесты, то есть по их `dist`, — а
+`@soxa-ui/core`, `@soxa-ui/setup` и поведение общего слоя тем
+(`@soxa-ui/theme-base/setup`) через их манифесты, то есть по их `dist`, — а
 тему собирают и до того, как соседи собраны: первым шагом CI и внутри
 `npm run test:layout`, где нужен только CSS. Там зовут `build:css`, полный
 `build` там упал бы. Правишь стили — тебе нужен он.

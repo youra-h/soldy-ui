@@ -7,7 +7,7 @@
  * (Web Components), «Свет и слоты».
  */
 
-import { DEFAULT_SLOT } from '@soldy-ui/setup'
+import { DEFAULT_SLOT } from '@soxa-ui/setup'
 import type { TSlotTarget, TSlotTargets } from '../template'
 import { isContent } from './content'
 import { assignSlot, isSlotMark, takeAssignedSlot } from './marks'

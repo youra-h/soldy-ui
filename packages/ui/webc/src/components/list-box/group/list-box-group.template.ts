@@ -4,7 +4,7 @@
  * пускает только опции и группы.
  */
 
-import type { IItemGroup } from '@soldy-ui/core'
+import type { IItemGroup } from '@soxa-ui/core'
 import { bind, ownerAttributes, type ITemplate } from '../../../adapter'
 
 const labels = new WeakMap<HTMLElement, HTMLElement>()

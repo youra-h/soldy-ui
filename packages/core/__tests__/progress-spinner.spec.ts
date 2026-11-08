@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
-import { TProgress, TProgressLinear, TProgressSpinner } from '@soldy-ui/core'
-import type { IProgressProps } from '@soldy-ui/core'
+import { TProgress, TProgressLinear, TProgressSpinner } from '@soxa-ui/core'
+import type { IProgressProps } from '@soxa-ui/core'
 
 /**
  * TProgressSpinner — индикатор выполнения кольцом: та же модель, что у линии

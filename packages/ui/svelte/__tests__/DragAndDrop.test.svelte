@@ -18,7 +18,7 @@
 		Tabs,
 		type DragAndDropProps,
 		type ListBoxProps,
-	} from '@soldy-ui/svelte'
+	} from '@soxa-ui/svelte'
 
 	type THarnessProps = {
 		kind?: 'collections' | 'list' | 'nested'

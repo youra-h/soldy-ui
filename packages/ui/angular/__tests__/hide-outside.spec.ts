@@ -21,8 +21,8 @@
 import { describe, it, expect } from 'vitest'
 import { Component, signal } from '@angular/core'
 import { TestBed, type ComponentFixture } from '@angular/core/testing'
-import { THideOutsidePlugin, TPluginBundle } from '@soldy-ui/plugins'
-import { TFrameComponent, TSelectComponent, TSelectItemComponent } from '@soldy-ui/angular'
+import { THideOutsidePlugin, TPluginBundle } from '@soxa-ui/plugins'
+import { TFrameComponent, TSelectComponent, TSelectItemComponent } from '@soxa-ui/angular'
 import { find, nextFrame } from './mount'
 
 /**

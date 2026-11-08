@@ -1,7 +1,7 @@
 import { useEmits, useProps } from '../../adapter'
 import type { TEmits, TProps, UseProps } from '../../types/common'
-import { InputDescriptor } from '@soldy-ui/setup'
-import type { IInput } from '@soldy-ui/core'
+import { InputDescriptor } from '@soxa-ui/setup'
+import type { IInput } from '@soxa-ui/core'
 
 export const emitsInput: TEmits = useEmits(InputDescriptor())
 

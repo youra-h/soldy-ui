@@ -18,16 +18,16 @@
  */
 
 import { describe, it, expect, afterEach } from 'vitest'
-import { TButton, TCalendar, TListBox, createEngine } from '@soldy-ui/core'
-import { TBasePlugin, type IPluginContext } from '@soldy-ui/plugins'
-import { usePlugins } from '@soldy-ui/setup'
+import { TButton, TCalendar, TListBox, createEngine } from '@soxa-ui/core'
+import { TBasePlugin, type IPluginContext } from '@soxa-ui/plugins'
+import { usePlugins } from '@soxa-ui/setup'
 import {
 	COLLECTION_ITEMS,
 	TABLE_COLUMNS,
 	TABLE_ROWS,
 	TABLE_SCROLL_ROWS,
 	presetForProp,
-} from '@soldy-ui/playground-shared'
+} from '@soxa-ui/playground-shared'
 import { loadHost } from '../src/hosts'
 
 const host = await loadHost('angular')

@@ -22,7 +22,7 @@ export class TElevatorLayer {
 	}
 }
 
-export const ELEVATOR_LAYER = new InjectionToken<TElevatorLayer>('soldy:elevator')
+export const ELEVATOR_LAYER = new InjectionToken<TElevatorLayer>('soxa:elevator')
 
 /** Строка `providers` в декораторе владельца. */
 export function provideElevator(): Provider {

@@ -5,7 +5,7 @@
  * выводится тип связки. Слой лифта — `layer`, детям его отдаёт `Elevate`.
  */
 
-import type { IAdapterContext, IComponentContract, TElevatorFactory } from '@soldy-ui/setup'
+import type { IAdapterContext, IComponentContract, TElevatorFactory } from '@soxa-ui/setup'
 import type { TElevatorLayer } from '../elevator/layer'
 import { useAdapter, type TBinding } from './useAdapter'
 import { useAdapterContext, type TCreateAdapterContext } from './useAdapterContext'

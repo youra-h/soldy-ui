@@ -11,8 +11,8 @@
 
 import { describe, it, expect } from 'vitest'
 import { render } from 'svelte/server'
-import { ruRU } from '@soldy-ui/plugins'
-import { NumberInput } from '@soldy-ui/svelte'
+import { ruRU } from '@soxa-ui/plugins'
+import { NumberInput } from '@soxa-ui/svelte'
 import FieldHarness from './Field.test.svelte'
 import LocaleNumberInput from './LocaleNumberInput.test.svelte'
 

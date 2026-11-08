@@ -27,9 +27,9 @@ import {
 	createEngineSelect,
 	createEngineTabs,
 	createEngineTags,
-} from '@soldy-ui/core'
-import type { TCollectionEngine } from '@soldy-ui/core'
-import { Accordion, ListBox, Menu, RadioGroup, Select, Tabs, Tags } from '@soldy-ui/solid'
+} from '@soxa-ui/core'
+import type { TCollectionEngine } from '@soxa-ui/core'
+import { Accordion, ListBox, Menu, RadioGroup, Select, Tabs, Tags } from '@soxa-ui/solid'
 import { mount } from './mount'
 
 afterEach(() => {

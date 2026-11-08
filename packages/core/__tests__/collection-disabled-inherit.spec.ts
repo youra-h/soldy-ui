@@ -27,8 +27,8 @@ import {
 	TTable,
 	TTabs,
 	TTags,
-} from '@soldy-ui/core'
-import type { ITableRow, TDataset, TTableRecord, TValuePayload } from '@soldy-ui/core'
+} from '@soxa-ui/core'
+import type { ITableRow, TDataset, TTableRecord, TValuePayload } from '@soxa-ui/core'
 
 /** Источник элемента — то, что приходит в `items`. */
 type TSource = { value: string; disabled?: boolean }

@@ -1,4 +1,4 @@
-import { MenuCollectionDescriptor, MenuDescriptor, TCollectionExtension } from '@soldy-ui/setup'
+import { MenuCollectionDescriptor, MenuDescriptor, TCollectionExtension } from '@soxa-ui/setup'
 import { useAdapter, useAdapterContext, useCollectionAdapter, useRootElement } from '../../adapter'
 import type { MenuProps } from './base.component'
 

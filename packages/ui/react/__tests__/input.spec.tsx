@@ -19,9 +19,9 @@ import { describe, it, expect, expectTypeOf, vi, afterEach } from 'vitest'
 import { StrictMode, act, createRef, type ReactElement } from 'react'
 import { hydrateRoot } from 'react-dom/client'
 import { renderToString } from 'react-dom/server'
-import { TInput, type IInput, type TValuePayload } from '@soldy-ui/core'
-import { ruRU } from '@soldy-ui/plugins'
-import { Input, LocaleProvider, type InputProps } from '@soldy-ui/react'
+import { TInput, type IInput, type TValuePayload } from '@soxa-ui/core'
+import { ruRU } from '@soxa-ui/plugins'
+import { Input, LocaleProvider, type InputProps } from '@soxa-ui/react'
 import { find, mount, nextFrame, track } from './mount'
 
 afterEach(() => {

@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core'
 import { NgTemplateOutlet } from '@angular/common'
-import type { ITabsContent } from '@soldy-ui/core'
+import type { ITabsContent } from '@soxa-ui/core'
 import { TTabsContentSurface } from '../../../generated/tabs-content.metadata'
 import { setupTabsContent } from './setup.component'
 

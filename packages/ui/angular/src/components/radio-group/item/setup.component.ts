@@ -2,8 +2,8 @@ import {
 	RadioGroupCollectionItemDescriptor,
 	RadioGroupItemDescriptor,
 	TCollectionItemExtension,
-} from '@soldy-ui/setup'
-import type { IRadioGroupItem, TRadioGroupItemCollectionFacade } from '@soldy-ui/core'
+} from '@soxa-ui/setup'
+import type { IRadioGroupItem, TRadioGroupItemCollectionFacade } from '@soxa-ui/core'
 import {
 	AngularElevatorFactory,
 	createAngularAdapterContext,

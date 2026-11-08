@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Toasts } from '@soldy-ui/svelte'
+	import { Toasts } from '@soxa-ui/svelte'
 	import ToastsTrigger from './ToastsTrigger.svelte'
 	import type { TPreviewProps } from './previews'
 

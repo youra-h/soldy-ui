@@ -9,8 +9,8 @@
  */
 
 import { defineComponent, defineDescriptor, defineType } from '../../../protected/define'
-import { TPopover } from '@soldy-ui/core'
-import type { TAriaAttributes, TDatasetAttributes } from '@soldy-ui/core'
+import { TPopover } from '@soxa-ui/core'
+import type { TAriaAttributes, TDatasetAttributes } from '@soxa-ui/core'
 import {
 	AriaPluginDescriptor,
 	DismissPluginDescriptor,

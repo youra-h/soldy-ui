@@ -3,7 +3,7 @@
  * пишет в слой компонента. AGENTS.md (Solid), «Лифт».
  */
 
-import { TElevator } from '@soldy-ui/setup'
+import { TElevator } from '@soxa-ui/setup'
 import type { TElevatorLayer } from './layer'
 
 export class TSolidElevator<T = unknown> extends TElevator<T> {

@@ -10,7 +10,7 @@
  * включительно (`update:anchor_anchor` у Frame).
  */
 
-import type { IAdapterProfile } from '@soldy-ui/setup'
+import type { IAdapterProfile } from '@soxa-ui/setup'
 import { VueNaming } from './naming'
 
 export const VueProfile: IAdapterProfile = {

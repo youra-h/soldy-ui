@@ -1,4 +1,4 @@
-import { TPluginBundle } from '@soldy-ui/plugins'
+import { TPluginBundle } from '@soxa-ui/plugins'
 /**
  * Frame в React: слой поверх страницы.
  *
@@ -26,9 +26,9 @@ import { describe, it, expect, vi } from 'vitest'
 import { StrictMode, act } from 'react'
 import { hydrateRoot, type Root } from 'react-dom/client'
 import { renderToString } from 'react-dom/server'
-import { TFrame } from '@soldy-ui/core'
-import { TAnchorPlugin } from '@soldy-ui/plugins'
-import { Button, Frame, type FrameProps } from '@soldy-ui/react'
+import { TFrame } from '@soxa-ui/core'
+import { TAnchorPlugin } from '@soxa-ui/plugins'
+import { Button, Frame, type FrameProps } from '@soxa-ui/react'
 import { find, mount, nextFrame, track } from './mount'
 
 /** Узел Frame — там, куда его увёл телепорт. */

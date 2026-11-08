@@ -13,8 +13,8 @@
  */
 
 import { describe, it, expect, afterEach, beforeAll, afterAll, vi } from 'vitest'
-import { TTextarea } from '@soldy-ui/core'
-import type { ITextareaProps } from '@soldy-ui/core'
+import { TTextarea } from '@soxa-ui/core'
+import type { ITextareaProps } from '@soxa-ui/core'
 import { TElementPlugin, TPluginBundle, TTextareaAutoresizePlugin } from '../src'
 import type { IPlugin, IPluginConstructor } from '../src'
 

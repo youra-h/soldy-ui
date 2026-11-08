@@ -1,4 +1,4 @@
-import { FRAME_LAYER_ATTRIBUTE } from '@soldy-ui/core'
+import { FRAME_LAYER_ATTRIBUTE } from '@soxa-ui/core'
 
 /**
  * Номер слоя узла (`data-layer`); `null` — узла нет или слоя у него нет.

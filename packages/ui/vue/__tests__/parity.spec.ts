@@ -1,4 +1,4 @@
-import { TPluginBundle } from '@soldy-ui/plugins'
+import { TPluginBundle } from '@soxa-ui/plugins'
 /**
  * What the platform parity run found in the Vue adapter
  * (benchmarks/parity/README.md).
@@ -16,8 +16,8 @@ import { TPluginBundle } from '@soldy-ui/plugins'
 import { describe, it, expect, afterEach, vi } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { defineComponent, h, nextTick, ref } from 'vue'
-import { TElementPlugin } from '@soldy-ui/plugins'
-import { Icon, ListBox, ListBoxItem } from '@soldy-ui/vue'
+import { TElementPlugin } from '@soxa-ui/plugins'
+import { Icon, ListBox, ListBoxItem } from '@soxa-ui/vue'
 
 let wrapper: ReturnType<typeof mount> | null = null
 

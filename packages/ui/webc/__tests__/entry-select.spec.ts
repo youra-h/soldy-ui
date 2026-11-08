@@ -1,5 +1,5 @@
 /**
- * The entry of a composite element: `import '@soldy-ui/webc/select'` defines
+ * The entry of a composite element: `import '@soxa-ui/webc/select'` defines
  * the select with its parts and every element its markup draws — the field,
  * the panel, the tags of `multiple`, the rows of the options. A template takes
  * a detail by its class, so the module graph of the entry brings the detail's
@@ -9,7 +9,7 @@
  */
 
 import { describe, it, expect, afterEach } from 'vitest'
-import { TSelectElement, type TSelectElementProps } from '@soldy-ui/webc/select'
+import { TSelectElement, type TSelectElementProps } from '@soxa-ui/webc/select'
 
 /** Rendering is coalesced into a microtask, and a change of the select renders its details. */
 async function settle(): Promise<void> {
@@ -58,7 +58,7 @@ async function render(): Promise<TSelectElementProps> {
 
 	const el = host.querySelector('[is="so-select"]')
 
-	if (!isSelect(el)) throw new Error('<div is="so-select"> is not a select of soldy')
+	if (!isSelect(el)) throw new Error('<div is="so-select"> is not a select of soxa')
 
 	return el
 }
@@ -85,7 +85,7 @@ const tagTexts = (el: Element) =>
 		.filter((node) => node instanceof HTMLElement && node.style.display !== 'none')
 		.map((node) => node.firstElementChild?.textContent?.trim())
 
-describe('вход @soldy-ui/webc/select', () => {
+describe('вход @soxa-ui/webc/select', () => {
 	it('определяет Select с частями и детали его разметки, чужих элементов нет', () => {
 		expect(customElements.get('so-select')).toBe(TSelectElement)
 

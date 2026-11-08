@@ -7,7 +7,7 @@ import path from 'node:path'
 import { angular } from '../../packages/playground/vue/src/vite-angular.ts'
 
 /**
- * Стенд замера таблиц (см. benchmarks/table/README.md в корне). soldy берётся исходниками,
+ * Стенд замера таблиц (см. benchmarks/table/README.md в корне). soxa берётся исходниками,
  * как в стенде разработчика; таблицы других библиотек — из своих зависимостей стенда.
  * Страница на фреймворк: `index.html` — участники на Vue, `react.html`, `angular.html`,
  * `svelte.html`, `solid.html` и `webc.html` — на своих.
@@ -73,20 +73,20 @@ export default defineConfig({
 		],
 		alias: {
 			// Раньше корня пакета: алиас сравнивается префиксом
-			'@soldy-ui/theme-oren/setup': path.join(pk, 'themes/oren/setup/index.ts'),
-			'@soldy-ui/theme-oren': path.join(pk, 'themes/oren/dist/index.css'),
+			'@soxa-ui/theme-oren/setup': path.join(pk, 'themes/oren/setup/index.ts'),
+			'@soxa-ui/theme-oren': path.join(pk, 'themes/oren/dist/index.css'),
 			// Плагины раскладки, которые ставит поведение темы
-			'@soldy-ui/theme-base/setup': path.join(pk, 'themes/base/setup/index.ts'),
-			'@soldy-ui/core': path.join(pk, 'core/src'),
-			'@soldy-ui/icons-material': path.join(pk, 'icons/material/src'),
-			'@soldy-ui/plugins': path.join(pk, 'plugins/src'),
-			'@soldy-ui/setup': path.join(pk, 'setup/index.ts'),
-			'@soldy-ui/vue': path.join(pk, 'ui/vue/src/index.ts'),
-			'@soldy-ui/react': path.join(pk, 'ui/react/src/index.ts'),
-			'@soldy-ui/angular': path.join(pk, 'ui/angular/src/index.ts'),
-			'@soldy-ui/svelte': path.join(pk, 'ui/svelte/src/index.ts'),
-			'@soldy-ui/solid': path.join(pk, 'ui/solid/src/index.ts'),
-			'@soldy-ui/webc': path.join(pk, 'ui/webc/src/index.ts'),
+			'@soxa-ui/theme-base/setup': path.join(pk, 'themes/base/setup/index.ts'),
+			'@soxa-ui/core': path.join(pk, 'core/src'),
+			'@soxa-ui/icons-material': path.join(pk, 'icons/material/src'),
+			'@soxa-ui/plugins': path.join(pk, 'plugins/src'),
+			'@soxa-ui/setup': path.join(pk, 'setup/index.ts'),
+			'@soxa-ui/vue': path.join(pk, 'ui/vue/src/index.ts'),
+			'@soxa-ui/react': path.join(pk, 'ui/react/src/index.ts'),
+			'@soxa-ui/angular': path.join(pk, 'ui/angular/src/index.ts'),
+			'@soxa-ui/svelte': path.join(pk, 'ui/svelte/src/index.ts'),
+			'@soxa-ui/solid': path.join(pk, 'ui/solid/src/index.ts'),
+			'@soxa-ui/webc': path.join(pk, 'ui/webc/src/index.ts'),
 		},
 	},
 	build: {

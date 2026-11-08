@@ -1,4 +1,4 @@
-import { withParts } from '@soldy-ui/setup'
+import { withParts } from '@soxa-ui/setup'
 import CalendarComponent from './Calendar.svelte'
 import { CalendarItem } from './item'
 

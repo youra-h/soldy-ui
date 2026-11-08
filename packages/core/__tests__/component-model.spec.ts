@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
-import { TComponent, TComponentView, TDragAndDrop, TFrame } from '@soldy-ui/core'
-import type { IComponentViewProps } from '@soldy-ui/core'
+import { TComponent, TComponentView, TDragAndDrop, TFrame } from '@soxa-ui/core'
+import type { IComponentViewProps } from '@soxa-ui/core'
 
 /**
  * rendered/visible живут в TComponentView, а не в TComponent: база должна

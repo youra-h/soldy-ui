@@ -1,5 +1,5 @@
-import { batchOf } from '@soldy-ui/core'
-import type { IComponentView } from '@soldy-ui/core'
+import { batchOf } from '@soxa-ui/core'
+import type { IComponentView } from '@soxa-ui/core'
 import type { IPluginBundle } from '../../base'
 import { TElementPlugin } from '../element'
 import { TCollectionBundlesAccess } from './collection-bundles-access.plugin'

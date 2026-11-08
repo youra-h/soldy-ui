@@ -1,6 +1,6 @@
 # Accessibility
 
-Soldy UI is a component library, so the accessibility of every application built with it starts
+Soxa UI is a component library, so the accessibility of every application built with it starts
 here. This page says what the library commits to, how that is checked, where it falls short today,
 and how to report a barrier.
 
@@ -75,7 +75,7 @@ and how to report a barrier.
 
 ## Known limitations
 
-Soldy UI is in early development (`0.x`), and the following is known today:
+Soxa UI is in early development (`0.x`), and the following is known today:
 
 - **No formal conformance claim.** The library has not been audited against WCAG, and makes no
   WCAG conformance claim. Conformance is a property of an application, but an audit of the library
@@ -92,14 +92,14 @@ Soldy UI is in early development (`0.x`), and the following is known today:
 
 ## Reporting a barrier
 
-If something in Soldy UI keeps you from using an application, or keeps you from building an
+If something in Soxa UI keeps you from using an application, or keeps you from building an
 accessible one, please tell us:
 
 - open an issue with the
-  [Accessibility barrier](https://github.com/youra-h/soldy-ui/issues/new?template=accessibility.yml)
+  [Accessibility barrier](https://github.com/youra-h/soxa-ui/issues/new?template=accessibility.yml)
   form. Say which component and adapter, what you expected, what happened, and which browser and
   assistive technology you use;
 - if the problem should not be public, report it privately through
-  [GitHub's private reporting form](https://github.com/youra-h/soldy-ui/security/advisories/new).
+  [GitHub's private reporting form](https://github.com/youra-h/soxa-ui/security/advisories/new).
 
 Accessibility barriers are treated as bugs, not as feature requests.

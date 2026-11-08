@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from 'vitest'
-import { TChangeEvent, TNumberInput } from '@soldy-ui/core'
-import type { INumberInputProps, TNumberInputFormatOptions } from '@soldy-ui/core'
+import { TChangeEvent, TNumberInput } from '@soxa-ui/core'
+import type { INumberInputProps, TNumberInputFormatOptions } from '@soxa-ui/core'
 import { numberFormat } from '../src/components/custom/number-input/format'
 
 /**

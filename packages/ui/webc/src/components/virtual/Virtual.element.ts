@@ -4,8 +4,8 @@
  * не проходит. `enabled` выключают из кода: в разметке значимо наличие атрибута.
  */
 
-import { VirtualDescriptor } from '@soldy-ui/setup'
-import type { IVirtual } from '@soldy-ui/core'
+import { VirtualDescriptor } from '@soxa-ui/setup'
+import type { IVirtual } from '@soxa-ui/core'
 import { ElementBase } from '../../adapter'
 import type { TElementClassOf, TElementType } from '../../adapter'
 import { defineAutonomousElement } from '../../adapter/runtime/defineElement'

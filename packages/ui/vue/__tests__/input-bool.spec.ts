@@ -8,8 +8,8 @@
 
 import { describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
-import { TCheckBox, TSwitch } from '@soldy-ui/core'
-import { CheckBox, Switch } from '@soldy-ui/vue'
+import { TCheckBox, TSwitch } from '@soxa-ui/core'
+import { CheckBox, Switch } from '@soxa-ui/vue'
 
 /**
  * Плагин цепляет слушатели по `element:ready`, а TElementPlugin отдаёт его

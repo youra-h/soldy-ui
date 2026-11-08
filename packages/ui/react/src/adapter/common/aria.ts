@@ -3,7 +3,7 @@
  * другие (`tabindex` → `tabIndex`), переводятся, `null` — атрибута нет.
  */
 
-import type { TAriaAttributes } from '@soldy-ui/core'
+import type { TAriaAttributes } from '@soxa-ui/core'
 
 /** HTML-атрибут → имя пропа: только те, где имена расходятся. */
 const ATTRIBUTE_TO_PROP: Record<string, string> = {

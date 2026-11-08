@@ -2,7 +2,7 @@ import {
 	TTabsContentBindingExtension,
 	TabsCollectionContentDescriptor,
 	TabsContentDescriptor,
-} from '@soldy-ui/setup'
+} from '@soxa-ui/setup'
 import { useAdapter, useAdapterContext, useCollectionAdapter } from '../../../adapter'
 import type { TabsContentProps } from './base.component'
 

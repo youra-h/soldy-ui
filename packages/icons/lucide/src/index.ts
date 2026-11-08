@@ -14,10 +14,10 @@
 
 /**
  * СГЕНЕРИРОВАНО. Не править руками — правьте SVG рядом и запускайте
- * `npm run generate --workspace=@soldy-ui/icons-lucide`.
+ * `npm run generate --workspace=@soxa-ui/icons-lucide`.
  */
 
-import type { TIconSource } from '@soldy-ui/setup'
+import type { TIconSource } from '@soxa-ui/setup'
 
 export const arrowDown: TIconSource = {
 	viewBox: '0 0 24 24',

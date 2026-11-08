@@ -23,8 +23,8 @@ import { describe, it, expect, vi } from 'vitest'
 import { StrictMode, act, type ReactElement } from 'react'
 import { hydrateRoot } from 'react-dom/client'
 import { renderToString } from 'react-dom/server'
-import { LocaleProvider, Table, TableColumn, TableRow, Virtual } from '@soldy-ui/react'
-import { TTable, createEngineTable } from '@soldy-ui/core'
+import { LocaleProvider, Table, TableColumn, TableRow, Virtual } from '@soxa-ui/react'
+import { TTable, createEngineTable } from '@soxa-ui/core'
 import type {
 	ITableColumn,
 	ITableRow,
@@ -34,9 +34,9 @@ import type {
 	TTableColumnSource,
 	TTableRecord,
 	TTableReorderPreview,
-} from '@soldy-ui/core'
-import { enUS, ruRU } from '@soldy-ui/plugins'
-import type { TLocale } from '@soldy-ui/plugins'
+} from '@soxa-ui/core'
+import { enUS, ruRU } from '@soxa-ui/plugins'
+import type { TLocale } from '@soxa-ui/plugins'
 import { mount, nextFrame, track, type TMounted } from './mount'
 
 /**

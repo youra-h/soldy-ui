@@ -16,14 +16,14 @@
 
 import { describe, it, expect, vi, afterEach } from 'vitest'
 import { Component, signal } from '@angular/core'
-import type { TLabelPosition, TRadioGroupValue, TValuePayload } from '@soldy-ui/core'
+import type { TLabelPosition, TRadioGroupValue, TValuePayload } from '@soxa-ui/core'
 import {
 	TCheckBoxComponent,
 	TLabelComponent,
 	TRadioGroupComponent,
 	TRadioGroupItemComponent,
 	TSwitchComponent,
-} from '@soldy-ui/angular'
+} from '@soxa-ui/angular'
 import { find, findIn, mountHost, nextFrame } from './mount'
 
 afterEach(() => {
@@ -253,7 +253,7 @@ class LabelSpanRadioHost {
 describe('Label · радио в подписи', () => {
 	/** Тексты предупреждений подписи о вложенном `label`. */
 	const nestedWarnings = (calls: readonly unknown[][]): string[] =>
-		calls.map(([message]) => String(message)).filter((text) => text.includes('[soldy] Label'))
+		calls.map(([message]) => String(message)).filter((text) => text.includes('[soxa] Label'))
 
 	it('радио на label — предупреждение о вложенном label', async () => {
 		const warn = vi.spyOn(console, 'warn').mockImplementation(() => {})

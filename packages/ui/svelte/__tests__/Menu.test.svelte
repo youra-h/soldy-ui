@@ -9,8 +9,8 @@
 	 * - `area` — область контекстного меню, строка «файла»: связку из scope она
 	 *   берёт, если та есть.
 	 */
-	import type { DescriptorSlots, MenuDescriptor } from '@soldy-ui/setup'
-	import { Button } from '@soldy-ui/svelte'
+	import type { DescriptorSlots, MenuDescriptor } from '@soxa-ui/setup'
+	import { Button } from '@soxa-ui/svelte'
 
 	type TTriggerScope = DescriptorSlots<typeof MenuDescriptor>['trigger']
 
@@ -68,7 +68,7 @@
 	 * меню — `menu`, частей — по их именам из описания случаев выше; смена их в
 	 * `reactiveProps` — перерисовка родителя, и до частей она доходит пропсами.
 	 */
-	import type { IMenuItem } from '@soldy-ui/core'
+	import type { IMenuItem } from '@soxa-ui/core'
 	import {
 		Menu,
 		type MenuCheckboxItemProps,
@@ -79,7 +79,7 @@
 		type MenuRadioGroupProps,
 		type MenuRadioItemProps,
 		type MenuSubmenuProps,
-	} from '@soldy-ui/svelte'
+	} from '@soxa-ui/svelte'
 
 	type THarnessProps = {
 		case: TMenuCase

@@ -1,1 +1,1 @@
-export { SliderDescriptor as descriptor } from '@soldy-ui/setup'
+export { SliderDescriptor as descriptor } from '@soxa-ui/setup'

@@ -22,14 +22,14 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { render, cleanup } from './render'
 import { userEvent } from 'vitest/browser'
 import { defineComponent, h, nextTick } from 'vue'
-import { Pagination } from '@soldy-ui/vue'
-import { COMPONENT_SIZES } from '@soldy-ui/playground-shared'
+import { Pagination } from '@soxa-ui/vue'
+import { COMPONENT_SIZES } from '@soxa-ui/playground-shared'
 
 import { find, pixel, settled, style, systemColor } from './colors'
 import { forcedColors } from './media'
 import { transitionEvents } from './transitions'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 /** Допуск на субпиксельное округление координат. */
 const EPSILON = 0.5

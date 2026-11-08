@@ -22,9 +22,9 @@
  */
 
 import { describe, it, expect, afterEach, beforeEach, vi } from 'vitest'
-import { TDatePicker, type TDatePickerValue } from '@soldy-ui/core'
-import { ruRU, type TLocale } from '@soldy-ui/plugins'
-import { DatePickerDescriptor } from '@soldy-ui/setup'
+import { TDatePicker, type TDatePickerValue } from '@soxa-ui/core'
+import { ruRU, type TLocale } from '@soxa-ui/plugins'
+import { DatePickerDescriptor } from '@soxa-ui/setup'
 import {
 	TButtonElement,
 	TCalendarElement,
@@ -37,7 +37,7 @@ import {
 	type TButtonElementProps,
 	type TCalendarItemElementProps,
 	type TDatePickerElementProps,
-} from '@soldy-ui/webc'
+} from '@soxa-ui/webc'
 import {
 	DATE_PICKER_CALENDAR_SLOTS,
 	datePickerTemplate,
@@ -86,7 +86,7 @@ function isButton(node: Element | null): node is TButtonElementProps {
 	return node instanceof TButtonElement
 }
 
-/** DatePicker soldy в разметке. */
+/** DatePicker soxa в разметке. */
 function datePickerOf(root: ParentNode): TDatePickerElementProps {
 	const node = root.querySelector('[is="so-date-picker"]')
 
@@ -238,7 +238,7 @@ async function type(keys: string): Promise<void> {
 }
 
 /**
- * Часть узла — первый класс DatePicker на нём: у элемента soldy класс части
+ * Часть узла — первый класс DatePicker на нём: у элемента soxa класс части
  * шаблон пишет до сборки, и он стоит перед классами компонента.
  */
 const partOf = (element: Element) =>

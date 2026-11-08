@@ -3,7 +3,7 @@ import '@carbon/web-components/es/components/modal/index.js'
 import '@carbon/web-components/es/components/text-input/index.js'
 import { fragment, h } from '../dom'
 
-/** `cds-modal` opened by a button; its footer buttons close it, as in the soldy preview. */
+/** `cds-modal` opened by a button; its footer buttons close it, as in the soxa preview. */
 export default () => {
 	const close = () => modal.removeAttribute('open')
 	const closing = (text: string, kind: string) => {

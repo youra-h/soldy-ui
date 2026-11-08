@@ -4,8 +4,8 @@
  * docs/architecture.md, Layer 8d, «Набор тегов и поле выбора».
  */
 
-import { TagsCollectionDescriptor, TagsDescriptor } from '@soldy-ui/setup'
-import type { ITags, TTagsCollectionFacade } from '@soldy-ui/core'
+import { TagsCollectionDescriptor, TagsDescriptor } from '@soxa-ui/setup'
+import type { ITags, TTagsCollectionFacade } from '@soxa-ui/core'
 import { ElementBase, defineElement } from '../../adapter'
 import type { TElementClassOf, TElementType } from '../../adapter'
 import { TTagsItemElement } from './item'

@@ -1,4 +1,4 @@
-import type { TDateFieldPart } from '@soldy-ui/core'
+import type { TDateFieldPart } from '@soxa-ui/core'
 
 /** Часть поля даты и её узел — коробка части в ряду. */
 export type TDateInputSegmentNode = {

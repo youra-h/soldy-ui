@@ -1,7 +1,7 @@
 /**
  * `<button is="so-button">` в форме — в настоящем браузере.
  *
- * Элемент — нативная `<button>`, расширенная классом soldy (customized
+ * Элемент — нативная `<button>`, расширенная классом soxa (customized
  * built-in): с формой его ведёт браузер, как любую кнопку. Спек сторожит, что
  * так и есть — что адаптер ничего из поведения кнопки не отнял: отправка и
  * сброс по `type`, отмена `click`, `submitter` и `new FormData(form,
@@ -17,8 +17,8 @@
 import { describe, it, expect, afterEach } from 'vitest'
 import { userEvent } from 'vitest/browser'
 
-import { TButtonElement, type TButtonElementProps } from '@soldy-ui/webc'
-import '@soldy-ui/theme-oren'
+import { TButtonElement, type TButtonElementProps } from '@soxa-ui/webc'
+import '@soxa-ui/theme-oren'
 
 const nextFrame = () => new Promise<void>((resolve) => requestAnimationFrame(() => resolve()))
 
@@ -52,7 +52,7 @@ function isButton(node: Element | undefined): node is TButtonElementProps {
 	return node instanceof TButtonElement
 }
 
-/** Кнопка soldy разметки теста: первая или с этим `id`. Нет её — тест падает здесь. */
+/** Кнопка soxa разметки теста: первая или с этим `id`. Нет её — тест падает здесь. */
 function button(root: ParentNode, id?: string): TButtonElementProps {
 	const buttons = Array.from(root.querySelectorAll('button[is="so-button"]'))
 	const element = id === undefined ? buttons[0] : buttons.find((item) => item.id === id)

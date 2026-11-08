@@ -2,8 +2,8 @@ import {
 	TCollectionItemExtension,
 	TabsCollectionItemDescriptor,
 	TabsItemDescriptor,
-} from '@soldy-ui/setup'
-import type { ITabsItem, TTabsItemCollectionFacade } from '@soldy-ui/core'
+} from '@soxa-ui/setup'
+import type { ITabsItem, TTabsItemCollectionFacade } from '@soxa-ui/core'
 import {
 	AngularElevatorFactory,
 	createAngularAdapterContext,

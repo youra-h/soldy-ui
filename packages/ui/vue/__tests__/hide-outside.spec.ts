@@ -17,8 +17,8 @@ import { describe, it, expect, afterEach } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { defineComponent, h, nextTick, ref } from 'vue'
 import type { Ref } from 'vue'
-import { Frame, Select, SelectItem } from '@soldy-ui/vue'
-import { THideOutsidePlugin, TPluginBundle } from '@soldy-ui/plugins'
+import { Frame, Select, SelectItem } from '@soxa-ui/vue'
+import { THideOutsidePlugin, TPluginBundle } from '@soxa-ui/plugins'
 
 const nextFrame = () => new Promise((resolve) => requestAnimationFrame(resolve))
 

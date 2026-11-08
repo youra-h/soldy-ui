@@ -9,7 +9,7 @@ import type { TRec } from './libs/data'
  */
 type TLib = { Bench: Component<{ rows: TRec[] }>; sel: TSel }
 const libs: Record<string, () => Promise<TLib>> = {
-	soldy: () => import('./libs/solid/soldy'),
+	soxa: () => import('./libs/solid/soxa'),
 	plain: () => import('./libs/solid/plain'),
 	tanstack: () => import('./libs/solid/tanstack'),
 	kobalte: () => import('./libs/solid/kobalte'),

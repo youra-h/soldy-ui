@@ -1,1 +1,1 @@
-export { TableColumnDescriptor as descriptor } from '@soldy-ui/setup'
+export { TableColumnDescriptor as descriptor } from '@soxa-ui/setup'

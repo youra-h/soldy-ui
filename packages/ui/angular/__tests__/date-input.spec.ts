@@ -28,9 +28,9 @@
 import { describe, it, expect, afterEach, vi } from 'vitest'
 import { Component, signal, type Type } from '@angular/core'
 import { TestBed, type ComponentFixture } from '@angular/core/testing'
-import type { TDateInputKind, TTimePrecision, TValuePayload } from '@soldy-ui/core'
-import { arEG, enUS, ruRU, type TLocale } from '@soldy-ui/plugins'
-import { LocaleProviderDirective, SlotDirective, TDateInputComponent } from '@soldy-ui/angular'
+import type { TDateInputKind, TTimePrecision, TValuePayload } from '@soxa-ui/core'
+import { arEG, enUS, ruRU, type TLocale } from '@soxa-ui/plugins'
+import { LocaleProviderDirective, SlotDirective, TDateInputComponent } from '@soxa-ui/angular'
 import { find, nextFrame } from './mount'
 
 /** Значение поля даты: строка даты или даты со временем, пусто — `undefined`. */

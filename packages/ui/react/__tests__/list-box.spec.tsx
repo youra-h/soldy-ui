@@ -21,14 +21,14 @@ import {
 	type TListBoxCollection,
 	type TListBoxValue,
 	type TValuePayload,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 import {
 	ListBox,
 	ListBoxGroup,
 	ListBoxItem,
 	type ListBoxItemProps,
 	type ListBoxProps,
-} from '@soldy-ui/react'
+} from '@soxa-ui/react'
 import { find, mount, nextFrame } from './mount'
 
 type TItem = { value: string; text: string }

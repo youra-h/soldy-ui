@@ -7,7 +7,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TSlideKeyboardPlugin } from '@soldy-ui/plugins'
+import { TSlideKeyboardPlugin } from '@soxa-ui/plugins'
 
 export const SlideKeyboardPluginDescriptor = definePlugin({
 	ctor: TSlideKeyboardPlugin,

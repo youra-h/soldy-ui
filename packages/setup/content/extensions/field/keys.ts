@@ -13,4 +13,4 @@ import type { IFieldLink } from './types'
  * Связка ближайшего поля выше по дереву. Пустое значение опускает своему
  * поддереву сам контрол: контролы в его слотах связку его поля не берут.
  */
-export const FIELD_ELEVATOR: IElevatorKey<IFieldLink | null> = { name: 'soldy:field' }
+export const FIELD_ELEVATOR: IElevatorKey<IFieldLink | null> = { name: 'soxa:field' }

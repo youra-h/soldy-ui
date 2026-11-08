@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { TButton } from '@soldy-ui/core'
+import { TButton } from '@soxa-ui/core'
 
 describe('TButton', () => {
 	it('создаётся через { props } и через plain props', () => {

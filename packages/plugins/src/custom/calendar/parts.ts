@@ -1,4 +1,4 @@
-import type { ICalendar, TCalendarCollection, TCalendarDate, TCalendarPicker } from '@soldy-ui/core'
+import type { ICalendar, TCalendarCollection, TCalendarDate, TCalendarPicker } from '@soxa-ui/core'
 import type { TCollectionElements } from '../collection'
 import { listOf } from '../list/row'
 import type { TCalendarDay, TCalendarPager, TCalendarPickerHit, TCalendarPickerPart } from './types'

@@ -6,13 +6,13 @@ import { parseArgs } from 'node:util'
 import { serve } from './serve.mjs'
 
 /**
- * Comparison run: the soldy component pages next to the same pages of the
+ * Comparison run: the soxa component pages next to the same pages of the
  * neighbors (see benchmarks/compare/README.md).
  *
- *   npm run bench -- --fw react                      # soldy and every React neighbor
+ *   npm run bench -- --fw react                      # soxa and every React neighbor
  *   npm run bench -- --fw vue --libs naive --pages select,all --cycles 10
  *
- * soldy is the page of `tools/bench-pages` (the developer stand's hosts), the
+ * soxa is the page of `tools/bench-pages` (the developer stand's hosts), the
  * neighbors are the pages of this stand; one runner measures both the same
  * way. Every participant gets its own browser. First the warm-up — every
  * component page the participant compares once, then the other pages of its
@@ -21,12 +21,12 @@ import { serve } from './serve.mjs'
  * the first `act` copies; unmount, measure. There is no locale step — the
  * neighbors have no shared locale source to switch.
  *
- * `all` is per pair: every component both soldy and the neighbor have, once,
- * each under its own root. soldy measures it once per neighbor (`all:<lib>`).
+ * `all` is per pair: every component both soxa and the neighbor have, once,
+ * each under its own root. soxa measures it once per neighbor (`all:<lib>`).
  *
  * A measurement follows garbage collection over the DevTools protocol, as in
  * `tools/bench-pages/run.mjs`: the used heap, live DOM nodes and event
- * listeners, and — on the soldy page only — live core instances. The number
+ * listeners, and — on the soxa page only — live core instances. The number
  * of actions a scenario made is kept: a pair whose numbers differ is reported
  * and its page does not count (`mismatch`).
  *
@@ -54,18 +54,18 @@ const CYCLES = Number(values.cycles)
 const SETTLE = Number(values.settle)
 const here = (...parts) => path.resolve(import.meta.dirname, ...parts)
 
-/** Neighbors of a framework: the folders of `libs/<framework>/` except soldy's size entries. */
+/** Neighbors of a framework: the folders of `libs/<framework>/` except soxa's size entries. */
 function librariesOf(fw) {
 	const all = fs
 		.readdirSync(here('libs', fw), { withFileTypes: true })
-		.filter((entry) => entry.isDirectory() && entry.name !== 'soldy')
+		.filter((entry) => entry.isDirectory() && entry.name !== 'soxa')
 		.map((entry) => entry.name)
 
 	return values.libs ? all.filter((name) => values.libs.split(',').includes(name)) : all
 }
 
 /**
- * Builds of a framework — the soldy page of `tools/bench-pages` and the
+ * Builds of a framework — the soxa page of `tools/bench-pages` and the
  * neighbors' page — into `dist/<framework>/`: runs of two frameworks never
  * share an output folder.
  */
@@ -74,7 +74,7 @@ async function buildFramework(fw) {
 
 	await build({
 		configFile: here('../bench-pages/vite.config.ts'),
-		build: { outDir: here('dist', fw, 'soldy') },
+		build: { outDir: here('dist', fw, 'soxa') },
 	})
 	process.env.PAGES = fw
 	await build({ configFile: here('vite.config.ts') })
@@ -182,7 +182,7 @@ async function measureParticipant(url, components, plan) {
 	// plan's other pages, whatever `--pages` lists. Warming only the plan is not
 	// enough: `all` holds a single copy of each component per cycle, and the
 	// first `all` of the plan kept warming up through its own measured cycles
-	// (soldy on Svelte, `all:bits`: 24.7 KB/cycle with every counter in place;
+	// (soxa on Svelte, `all:bits`: 24.7 KB/cycle with every counter in place;
 	// the next `all` of the same run was clean)
 	const warmup = [
 		...components.map((id) => ({ key: id, page: id })),
@@ -262,20 +262,20 @@ const wanted = (id) => !values.pages || values.pages.split(',').includes(id)
 for (const fw of FRAMEWORKS) {
 	await buildFramework(fw)
 
-	const soldy = serve(here('dist', fw, 'soldy'))
+	const soxa = serve(here('dist', fw, 'soxa'))
 	const neighbors = serve(here('dist', fw, 'neighbors'))
 
 	try {
 		const libs = librariesOf(fw)
-		const soldyUrl = `${soldy.base}?fw=${fw}`
-		const soldyPages = await pagesOf(soldyUrl)
+		const soxaUrl = `${soxa.base}?fw=${fw}`
+		const soxaPages = await pagesOf(soxaUrl)
 		const libPages = {}
 
 		for (const lib of libs)
 			libPages[lib] = await pagesOf(`${neighbors.base}${fw}.html?lib=${lib}`)
 
 		const compared = [...new Set(Object.values(libPages).flat())].filter((id) =>
-			soldyPages.includes(id),
+			soxaPages.includes(id),
 		)
 		const result = {
 			framework: fw,
@@ -288,22 +288,22 @@ for (const fw of FRAMEWORKS) {
 			matrix: libPages,
 			participants: {},
 		}
-		const soldyPlan = [
+		const soxaPlan = [
 			...compared.filter(wanted).map((id) => ({ key: id, page: id })),
 			...(wanted('all')
 				? libs.map((lib) => ({
 						key: `all:${lib}`,
 						page: 'all',
-						only: libPages[lib].filter((id) => soldyPages.includes(id)),
+						only: libPages[lib].filter((id) => soxaPages.includes(id)),
 					}))
 				: []),
 			...(wanted('empty') ? [{ key: 'empty', page: 'empty' }] : []),
 		]
 
-		result.participants.soldy = await measureParticipant(soldyUrl, compared, soldyPlan)
+		result.participants.soxa = await measureParticipant(soxaUrl, compared, soxaPlan)
 
 		for (const lib of libs) {
-			const own = libPages[lib].filter((id) => soldyPages.includes(id))
+			const own = libPages[lib].filter((id) => soxaPages.includes(id))
 			const plan = [
 				...own.filter(wanted).map((id) => ({ key: id, page: id })),
 				...(wanted('all') ? [{ key: `all:${lib}`, page: 'all', only: own }] : []),
@@ -322,12 +322,12 @@ for (const fw of FRAMEWORKS) {
 
 		for (const lib of libs) {
 			for (const [key, data] of Object.entries(result.participants[lib].pages)) {
-				const ours = result.participants.soldy.pages[key]?.cycles[WARM]?.actions
+				const ours = result.participants.soxa.pages[key]?.cycles[WARM]?.actions
 				const theirs = data.cycles[WARM]?.actions
 
 				if (ours !== undefined && ours !== theirs) {
-					result.mismatches.push({ lib, page: key, soldy: ours, [lib]: theirs })
-					console.warn(fw, lib, key, `действий: soldy ${ours}, ${lib} ${theirs}`)
+					result.mismatches.push({ lib, page: key, soxa: ours, [lib]: theirs })
+					console.warn(fw, lib, key, `действий: soxa ${ours}, ${lib} ${theirs}`)
 				}
 			}
 		}
@@ -337,6 +337,6 @@ for (const fw of FRAMEWORKS) {
 		console.error(fw, 'ошибка', error)
 	}
 
-	soldy.server.close()
+	soxa.server.close()
 	neighbors.server.close()
 }

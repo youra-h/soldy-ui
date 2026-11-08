@@ -14,7 +14,7 @@ import { appear, key, popup } from '../scenarios'
 /** A plain item of the dropdown menu — not a checkbox or radio one. */
 const ACTION = '.ant-dropdown-menu-item:not([role="menuitemcheckbox"]):not([role="menuitemradio"])'
 
-/** NG-ZORRO scenarios: the soldy ones step by step, on NG-ZORRO's own markup. */
+/** NG-ZORRO scenarios: the soxa ones step by step, on NG-ZORRO's own markup. */
 export const SCENARIOS: Record<string, TScenario> = {
 	button: each('.ant-btn', press),
 	input: each('input.ant-input', (field) => type(field, 'abc')),

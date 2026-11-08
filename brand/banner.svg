@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="880" height="288" viewBox="0 0 880 288">
-  <title>Soldy UI — One core. Your framework.</title>
+  <title>Soxa UI — One core. Your framework.</title>
   <desc>Headless UI components for Vue, React, Angular, Svelte, Solid and Web Components.</desc>
   <defs>
     <clipPath id="frame"><rect width="880" height="288" rx="20"/></clipPath>
@@ -16,7 +16,7 @@
     <path d="M877 1H928L870 59H819Z"/>
   </g>
   <svg xmlns="http://www.w3.org/2000/svg" x="34" y="31" width="226" height="226" viewBox="20 1 101 101" fill="url(#brand)">
-  <title>Soldy</title>
+  <title>Soxa</title>
   <defs>
     <linearGradient id="brand" gradientUnits="userSpaceOnUse" x1="43" y1="20" x2="98" y2="82">
       <stop stop-color="#19C3E9"/>
@@ -30,7 +30,7 @@
   <g font-family="Segoe UI, Arial, sans-serif">
     <rect x="310" y="62" width="6" height="6" rx="2" fill="#19C3E9"/>
     <text x="326" y="70" fill="#939fb9" font-size="10" font-weight="600" letter-spacing="2">HEADLESS. UNIVERSAL. FLEXIBLE.</text>
-    <text x="306" y="144" fill="#f6f7fb" font-size="66" font-weight="600" letter-spacing="-2.5">Soldy UI<tspan fill="#19C3E9">.</tspan></text>
+    <text x="306" y="144" fill="#f6f7fb" font-size="66" font-weight="600" letter-spacing="-2.5">Soxa UI<tspan fill="#19C3E9">.</tspan></text>
     <text x="310" y="180" fill="#b5bfd4" font-size="21" font-weight="300">One core. Your framework.</text>
     <rect x="310" y="212" width="49" height="27" rx="6" fill="#161b29" stroke="#2a3144"/><text x="334.5" y="230" text-anchor="middle" fill="#a7b1c9" font-size="12">Vue</text>
 <rect x="366" y="212" width="59" height="27" rx="6" fill="#161b29" stroke="#2a3144"/><text x="395.5" y="230" text-anchor="middle" fill="#a7b1c9" font-size="12">React</text>

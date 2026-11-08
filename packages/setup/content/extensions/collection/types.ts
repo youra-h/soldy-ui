@@ -2,7 +2,7 @@
  * Contracts of the collection extensions: the instance each is installed on, and its options.
  */
 
-import type { TCollectionEngine, TItemContext } from '@soldy-ui/core'
+import type { TCollectionEngine, TItemContext } from '@soxa-ui/core'
 import type { TInstanceContext } from '../../../protected/adapter/context'
 import type { TElevatorFactory } from '../../../protected/adapter/elevator'
 

@@ -1,4 +1,4 @@
-import { withParts } from '@soldy-ui/setup'
+import { withParts } from '@soxa-ui/setup'
 import TableComponent from './Table.svelte'
 import { TableColumn } from './column'
 import { TableRow } from './row'

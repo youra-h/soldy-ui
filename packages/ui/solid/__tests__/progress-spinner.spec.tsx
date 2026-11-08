@@ -12,8 +12,8 @@
 
 import { describe, it, expect } from 'vitest'
 import { createSignal } from 'solid-js'
-import { TProgressSpinner } from '@soldy-ui/core'
-import { ProgressSpinner } from '@soldy-ui/solid'
+import { TProgressSpinner } from '@soxa-ui/core'
+import { ProgressSpinner } from '@soxa-ui/solid'
 import { mount } from './mount'
 
 /** Доля готового на корне; пустая строка — переменной нет. */

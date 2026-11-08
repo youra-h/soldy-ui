@@ -6,7 +6,7 @@
 
 ## Affected packages
 
-<!-- e.g. @soldy-ui/core, @soldy-ui/vue -->
+<!-- e.g. @soxa-ui/core, @soxa-ui/vue -->
 
 ## Checklist
 

@@ -1,5 +1,5 @@
-import { FrameDescriptor } from '@soldy-ui/setup'
-import type { IFrame } from '@soldy-ui/core'
+import { FrameDescriptor } from '@soxa-ui/setup'
+import type { IFrame } from '@soxa-ui/core'
 import { createAngularAdapterContext, useAdapter } from '../../adapter'
 import type { TBinding } from '../../adapter'
 

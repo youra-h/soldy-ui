@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core'
 import { NgTemplateOutlet } from '@angular/common'
-import type { ICheckBox } from '@soldy-ui/core'
+import type { ICheckBox } from '@soxa-ui/core'
 import { AttributesDirective, RoleIconDirective, provideElevator } from '../../adapter'
 import { TCheckBoxSurface } from '../../generated/check-box.metadata'
 import { setupCheckBox } from './setup.component'

@@ -7,8 +7,8 @@ import {
 	TMemoryExtension,
 	TMetaExtension,
 	TPlainExtension,
-} from '@soldy-ui/core'
-import type { TCollectionEngineItemSource, TGroupSection, TQueryEvent } from '@soldy-ui/core'
+} from '@soxa-ui/core'
+import type { TCollectionEngineItemSource, TGroupSection, TQueryEvent } from '@soxa-ui/core'
 
 /**
  * Группировка коллекции (`group`) — выборка, а не перестановка хранилища:

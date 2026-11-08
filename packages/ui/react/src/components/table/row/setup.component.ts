@@ -2,7 +2,7 @@ import {
 	TCollectionItemExtension,
 	TableCollectionRowDescriptor,
 	TableRowDescriptor,
-} from '@soldy-ui/setup'
+} from '@soxa-ui/setup'
 import { useAdapter, useAdapterContext, useCollectionAdapter } from '../../../adapter'
 import type { TableRowProps } from './base.component'
 

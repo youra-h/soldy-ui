@@ -9,8 +9,8 @@ import {
 	TPlainExtension,
 	TActivationExtension,
 	createEngineTabs,
-} from '@soldy-ui/core'
-import type { ITabsItem, ITabs } from '@soldy-ui/core'
+} from '@soxa-ui/core'
+import type { ITabsItem, ITabs } from '@soxa-ui/core'
 
 // ============================================================================
 // Pure TTabs

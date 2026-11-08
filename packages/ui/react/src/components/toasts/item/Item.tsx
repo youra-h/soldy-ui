@@ -1,5 +1,5 @@
 import type { ComponentType, ElementType, ReactElement } from 'react'
-import type { TToastsItemType } from '@soldy-ui/core'
+import type { TToastsItemType } from '@soxa-ui/core'
 import {
 	isToastRender,
 	renderSlot,

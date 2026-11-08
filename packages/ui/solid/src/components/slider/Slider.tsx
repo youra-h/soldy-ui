@@ -1,5 +1,5 @@
 import type { Accessor, JSX } from 'solid-js'
-import type { TSliderShownMark, TSliderThumb } from '@soldy-ui/core'
+import type { TSliderShownMark, TSliderThumb } from '@soxa-ui/core'
 import {
 	Elevate,
 	Root,

@@ -1,5 +1,5 @@
 import { Directive, ElementRef, computed, effect, inject, input } from '@angular/core'
-import { getIcon } from '@soldy-ui/setup'
+import { getIcon } from '@soxa-ui/setup'
 
 /**
  * Иконка по роли из реестра на `<svg>` Icon, аналог `roleIcon` у Vue:

@@ -1,4 +1,4 @@
-import { DrawerDescriptor } from '@soldy-ui/setup'
+import { DrawerDescriptor } from '@soxa-ui/setup'
 import { createSvelteAdapterContext, useAdapter, type TRootReceiver } from '../../adapter'
 import type { DrawerProps } from './base.component'
 

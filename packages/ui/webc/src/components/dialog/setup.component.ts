@@ -1,5 +1,5 @@
-import { DialogDescriptor, type DescriptorPluginOutputs } from '@soldy-ui/setup'
-import type { IDialog } from '@soldy-ui/core'
+import { DialogDescriptor, type DescriptorPluginOutputs } from '@soxa-ui/setup'
+import type { IDialog } from '@soxa-ui/core'
 import { createWebcAdapterContext, useAdapter } from '../../adapter'
 import type { TBinding, TUpdateListener } from '../../adapter'
 

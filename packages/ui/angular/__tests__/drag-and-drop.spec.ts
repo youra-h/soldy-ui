@@ -32,7 +32,7 @@
 import { describe, it, expect } from 'vitest'
 import { Component } from '@angular/core'
 import type { ComponentFixture } from '@angular/core/testing'
-import type { IDragAndDropMove, TDragAndDropMoveEvent } from '@soldy-ui/core'
+import type { IDragAndDropMove, TDragAndDropMoveEvent } from '@soxa-ui/core'
 import {
 	TAccordionComponent,
 	TAccordionItemComponent,
@@ -40,7 +40,7 @@ import {
 	TListBoxComponent,
 	TTabsComponent,
 	TTabsItemComponent,
-} from '@soldy-ui/angular'
+} from '@soxa-ui/angular'
 import { mountHost, nextFrame } from './mount'
 
 const ITEMS = ['a', 'b', 'c'].map((value) => ({ value, text: value.toUpperCase() }))

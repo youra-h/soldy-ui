@@ -1,4 +1,4 @@
-import { ListBoxGroupDescriptor, TItemGroupExtension } from '@soldy-ui/setup'
+import { ListBoxGroupDescriptor, TItemGroupExtension } from '@soxa-ui/setup'
 import {
 	useAdapter,
 	useExpose,

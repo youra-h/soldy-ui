@@ -10,7 +10,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TTableLayoutPlugin } from '@soldy-ui/plugins'
+import { TTableLayoutPlugin } from '@soxa-ui/plugins'
 
 export const TableLayoutPluginDescriptor = definePlugin({
 	ctor: TTableLayoutPlugin,

@@ -1,4 +1,4 @@
-import type { IScroller } from '@soldy-ui/core'
+import type { IScroller } from '@soxa-ui/core'
 import type { IPluginContext } from '../../../base'
 import { tabStops } from '../../../utils'
 

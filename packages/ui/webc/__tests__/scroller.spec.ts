@@ -13,14 +13,10 @@
  */
 
 import { describe, it, expect, afterEach } from 'vitest'
-import { TScroller } from '@soldy-ui/core'
-import { enUS, extendLocale, ruRU } from '@soldy-ui/plugins'
-import { ScrollerDescriptor } from '@soldy-ui/setup'
-import {
-	TLocaleProviderElement,
-	TScrollerElement,
-	type TScrollerElementProps,
-} from '@soldy-ui/webc'
+import { TScroller } from '@soxa-ui/core'
+import { enUS, extendLocale, ruRU } from '@soxa-ui/plugins'
+import { ScrollerDescriptor } from '@soxa-ui/setup'
+import { TLocaleProviderElement, TScrollerElement, type TScrollerElementProps } from '@soxa-ui/webc'
 import { scrollerTemplate } from '../src/components/scroller/scroller.template'
 import { bareContext } from './template-context'
 

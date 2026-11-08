@@ -5,7 +5,7 @@
  * заменяет целиком.
  */
 
-import type { TAttributesMap } from '@soldy-ui/core'
+import type { TAttributesMap } from '@soxa-ui/core'
 import { createDetail, ownerAttributes, patch } from '../../adapter'
 import { TButtonElement, type TButtonElementProps } from '../button'
 import { TIconElement, type TIconElementProps } from '../icon'

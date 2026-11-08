@@ -1,5 +1,5 @@
-import type { ISelect } from '@soldy-ui/core'
-import type { SelectCollectionDescriptor, SelectDescriptor } from '@soldy-ui/setup'
+import type { ISelect } from '@soxa-ui/core'
+import type { SelectCollectionDescriptor, SelectDescriptor } from '@soxa-ui/setup'
 import type { EventProps, TDomAttributes, TFieldAttributes, UseDomProps } from '../../types'
 
 /** События Select — свои и фасада коллекции. */

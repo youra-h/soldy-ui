@@ -6,8 +6,8 @@
 	 * reports the run to `onRun` with the values it read. Template effects read
 	 * the state the same way, so the effects stand for markup.
 	 */
-	import type { TButton } from '@soldy-ui/core'
-	import { ButtonDescriptor } from '@soldy-ui/setup'
+	import type { TButton } from '@soxa-ui/core'
+	import { ButtonDescriptor } from '@soxa-ui/setup'
 	import { createSvelteAdapterContext } from '../src/adapter/common/createSvelteAdapterContext'
 	import { useAdapter } from '../src/adapter/runtime/useAdapter.svelte'
 

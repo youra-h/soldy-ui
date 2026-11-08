@@ -11,16 +11,16 @@
 
 import { describe, it, expect, afterEach } from 'vitest'
 import { Component, InjectionToken, inject, type Type } from '@angular/core'
-import { TButton } from '@soldy-ui/core'
-import { TBasePlugin, enUS, ruRU, zhCN, type IPluginContext, type TLocale } from '@soldy-ui/plugins'
-import { usePlugins } from '@soldy-ui/setup'
+import { TButton } from '@soxa-ui/core'
+import { TBasePlugin, enUS, ruRU, zhCN, type IPluginContext, type TLocale } from '@soxa-ui/plugins'
+import { usePlugins } from '@soxa-ui/setup'
 import {
 	LocaleProviderDirective,
 	TButtonComponent,
 	TCalendarComponent,
 	TDateInputComponent,
 	TInputComponent,
-} from '@soldy-ui/angular'
+} from '@soxa-ui/angular'
 import { find } from './mount'
 import { renderOnServer } from './server'
 

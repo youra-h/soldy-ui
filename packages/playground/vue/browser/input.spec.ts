@@ -22,13 +22,13 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { render, cleanup } from './render'
 import { userEvent } from 'vitest/browser'
 import { defineComponent, h, nextTick, type VNode } from 'vue'
-import { COMPONENT_SIZES, COMPONENT_VARIANTS } from '@soldy-ui/playground-shared'
-import { Button, Input } from '@soldy-ui/vue'
+import { COMPONENT_SIZES, COMPONENT_VARIANTS } from '@soxa-ui/playground-shared'
+import { Button, Input } from '@soxa-ui/vue'
 
 import { expectClearSquare } from './clear-button'
 import { find, settled, style } from './colors'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 const nextFrame = () => new Promise<void>((resolve) => requestAnimationFrame(() => resolve()))
 

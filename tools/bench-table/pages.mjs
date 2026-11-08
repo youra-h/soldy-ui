@@ -2,9 +2,9 @@
  * Страницы участников — общее для прогонщика, трассы и снимка кучи: адрес
  * страницы участника и типы файлов её сборки.
  *
- * Флаги — через «+»: `soldy+virtual` — `?lib=soldy&virtual=1`,
- * `soldy+mode=none+cols=5` — `?lib=soldy&mode=none&cols=5`. Участник не на Vue —
- * с префиксом своей страницы: `react:soldy+fit=none` — `react.html?lib=soldy&fit=none`,
+ * Флаги — через «+»: `soxa+virtual` — `?lib=soxa&virtual=1`,
+ * `soxa+mode=none+cols=5` — `?lib=soxa&mode=none&cols=5`. Участник не на Vue —
+ * с префиксом своей страницы: `react:soxa+fit=none` — `react.html?lib=soxa&fit=none`,
  * так же `angular:`, `svelte:`, `solid:` и `webc:`.
  */
 const PAGES = ['react', 'angular', 'svelte', 'solid', 'webc']

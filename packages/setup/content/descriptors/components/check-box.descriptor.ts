@@ -7,8 +7,8 @@
  */
 
 import { defineComponent, defineDescriptor, defineType } from '../../../protected/define'
-import { TCheckBox } from '@soldy-ui/core'
-import { fieldOf } from '@soldy-ui/plugins'
+import { TCheckBox } from '@soxa-ui/core'
+import { fieldOf } from '@soxa-ui/plugins'
 import { ActionPluginDescriptor, InputBoolPluginDescriptor } from '../plugins'
 import { InputControlDescriptor } from './input-control.descriptor'
 

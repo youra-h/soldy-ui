@@ -21,7 +21,7 @@ import {
 	TRadioGroupItemComponent,
 	TRatingComponent,
 	TSliderComponent,
-} from '@soldy-ui/angular'
+} from '@soxa-ui/angular'
 import { find } from './mount'
 import { hydrate, leavePage, loadPage, renderOnServer } from './server'
 

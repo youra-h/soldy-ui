@@ -13,7 +13,7 @@
 import { describe, it, expect, beforeAll, afterEach, vi } from 'vitest'
 import { mount, type DOMWrapper, type VueWrapper } from '@vue/test-utils'
 import { nextTick } from 'vue'
-import { LOCALES } from '@soldy-ui/playground-shared'
+import { LOCALES } from '@soxa-ui/playground-shared'
 import { router } from '../src/router'
 import App from '../src/App.vue'
 import PropControl from '../src/components/PropControl.vue'

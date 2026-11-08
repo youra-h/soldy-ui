@@ -14,9 +14,9 @@
 	 * - `locale` — Select с кнопкой очистки под провайдером локали: имя кнопки
 	 *   поле собирает из строки локали поддерева.
 	 */
-	import type { ISelectItem, ITags, ITagsItem, TSelectCollection, TTagsCollection } from '@soldy-ui/core'
-	import type { TLocale } from '@soldy-ui/plugins'
-	import { LocaleProvider, Select, Tags } from '@soldy-ui/svelte'
+	import type { ISelectItem, ITags, ITagsItem, TSelectCollection, TTagsCollection } from '@soxa-ui/core'
+	import type { TLocale } from '@soxa-ui/plugins'
+	import { LocaleProvider, Select, Tags } from '@soxa-ui/svelte'
 
 	type THarnessProps = {
 		case: 'own-tags' | 'indicator' | 'groups' | 'locale'

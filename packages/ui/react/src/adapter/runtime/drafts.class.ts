@@ -8,7 +8,7 @@
  * 3. `accept(held)` при коммите — больше не черновик.
  */
 
-import type { IAdapterContextOptions } from '@soldy-ui/setup'
+import type { IAdapterContextOptions } from '@soxa-ui/setup'
 
 function isObject(value: unknown): value is object {
 	return typeof value === 'object' && value !== null

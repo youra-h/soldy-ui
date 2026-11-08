@@ -5,8 +5,8 @@ import { resolve } from 'node:path'
 /**
  * Сторож «механизмы React — только в адаптерном слое» (AGENTS.md, «Механизмы
  * фреймворка — только в адаптерном слое») живёт блоком
- * `soldy/react-components-no-framework` в `eslint.config.ts` — по образцу
- * `soldy/vue-components-no-framework` и `vue-components-no-framework.spec.ts`.
+ * `soxa/react-components-no-framework` в `eslint.config.ts` — по образцу
+ * `soxa/vue-components-no-framework` и `vue-components-no-framework.spec.ts`.
  * Тест линтит фрагменты настоящим конфигом репозитория: опечатка в `files`
  * отключила бы защиту молча, и CI остался бы зелёным.
  */
@@ -50,29 +50,29 @@ describe('eslint.config.ts: компоненты React не импортирую
 		)
 	})
 
-	it('createAdapterContext из @soldy-ui/setup под components/ — ошибка', async () => {
+	it('createAdapterContext из @soxa-ui/setup под components/ — ошибка', async () => {
 		// Контекст собирает `create` из `useAdapterContext`: прямой вызов
 		// потерял бы основу `id` от `useId`
 		const code =
-			"import { createAdapterContext } from '@soldy-ui/setup'\nexport const x = createAdapterContext"
+			"import { createAdapterContext } from '@soxa-ui/setup'\nexport const x = createAdapterContext"
 
 		expect(await ruleIds(code, COMPONENT_TS)).toContain(
 			'@typescript-eslint/no-restricted-imports',
 		)
 	})
 
-	it('другой импорт из @soldy-ui/setup под components/ — допустимо', async () => {
+	it('другой импорт из @soxa-ui/setup под components/ — допустимо', async () => {
 		const code =
-			"import { ButtonDescriptor } from '@soldy-ui/setup'\nexport const x = ButtonDescriptor"
+			"import { ButtonDescriptor } from '@soxa-ui/setup'\nexport const x = ButtonDescriptor"
 
 		expect(await ruleIds(code, COMPONENT_TS)).not.toContain(
 			'@typescript-eslint/no-restricted-imports',
 		)
 	})
 
-	it('createAdapterContext из @soldy-ui/setup вне components/ (адаптер) — допустимо', async () => {
+	it('createAdapterContext из @soxa-ui/setup вне components/ (адаптер) — допустимо', async () => {
 		const code =
-			"import { createAdapterContext } from '@soldy-ui/setup'\nexport const x = createAdapterContext"
+			"import { createAdapterContext } from '@soxa-ui/setup'\nexport const x = createAdapterContext"
 
 		expect(await ruleIds(code, ADAPTER)).not.toContain(
 			'@typescript-eslint/no-restricted-imports',

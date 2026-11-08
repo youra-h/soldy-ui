@@ -1,4 +1,4 @@
-import { IconDescriptor } from '@soldy-ui/setup'
+import { IconDescriptor } from '@soxa-ui/setup'
 import { createSvelteAdapterContext, useAdapter, type TRootReceiver } from '../../adapter'
 import type { IconProps } from './base.component'
 

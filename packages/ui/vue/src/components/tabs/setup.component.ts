@@ -3,7 +3,7 @@ import {
 	TDragAndDropCollectionExtension,
 	TabsDescriptor,
 	TabsCollectionDescriptor,
-} from '@soldy-ui/setup'
+} from '@soxa-ui/setup'
 import {
 	useAdapter,
 	extendBinding,

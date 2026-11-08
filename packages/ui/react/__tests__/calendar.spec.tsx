@@ -28,10 +28,10 @@ import { describe, it, expect, afterEach, beforeEach, vi } from 'vitest'
 import { StrictMode, act, useState, type ReactElement } from 'react'
 import { hydrateRoot } from 'react-dom/client'
 import { renderToString } from 'react-dom/server'
-import { TCalendar, createEngineCalendar } from '@soldy-ui/core'
-import type { ICalendarItem, TCalendarDate, TCalendarValue } from '@soldy-ui/core'
-import { frFR, ruRU, type TLocale } from '@soldy-ui/plugins'
-import { Calendar, LocaleProvider, type CalendarProps } from '@soldy-ui/react'
+import { TCalendar, createEngineCalendar } from '@soxa-ui/core'
+import type { ICalendarItem, TCalendarDate, TCalendarValue } from '@soxa-ui/core'
+import { frFR, ruRU, type TLocale } from '@soxa-ui/plugins'
+import { Calendar, LocaleProvider, type CalendarProps } from '@soxa-ui/react'
 import { find, mount, nextFrame, track } from './mount'
 
 beforeEach(() => {
@@ -105,7 +105,7 @@ function press(from: Element, key: string, init: KeyboardEventInit = {}): Keyboa
 	return event
 }
 
-/** Последний класс узла — его часть: у компонента soldy первым идёт блок. */
+/** Последний класс узла — его часть: у компонента soxa первым идёт блок. */
 const partsOf = (element: Element) =>
 	[...element.children].map((child) => child.classList[child.classList.length - 1])
 

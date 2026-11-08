@@ -16,12 +16,12 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { render, cleanup } from './render'
 import { userEvent } from 'vitest/browser'
 import { defineComponent, h } from 'vue'
-import { ListBox } from '@soldy-ui/vue'
+import { ListBox } from '@soxa-ui/vue'
 import { router } from '../src/router'
 import AppSidebar from '../src/components/AppSidebar.vue'
 import { expectRingInsideHorizontally } from './focus-ring'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 import '../src/styles.css'
 
 const nextFrame = () => new Promise<void>((resolve) => requestAnimationFrame(() => resolve()))

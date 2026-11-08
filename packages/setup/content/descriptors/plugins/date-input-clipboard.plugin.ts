@@ -7,7 +7,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TDateInputClipboardPlugin } from '@soldy-ui/plugins'
+import { TDateInputClipboardPlugin } from '@soxa-ui/plugins'
 
 export const DateInputClipboardPluginDescriptor = definePlugin({
 	ctor: TDateInputClipboardPlugin,

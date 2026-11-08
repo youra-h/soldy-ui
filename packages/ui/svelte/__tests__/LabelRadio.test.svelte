@@ -4,7 +4,7 @@
 	 * `label`, а `label` в `label` HTML запрещает: внутри подписи радио рисуется
 	 * с `tag="span"`, его тест передаёт пропом.
 	 */
-	import { Label, RadioGroup, type RadioGroupProps } from '@soldy-ui/svelte'
+	import { Label, RadioGroup, type RadioGroupProps } from '@soxa-ui/svelte'
 
 	type THarnessProps = {
 		/** Тег корня радио. */

@@ -1,4 +1,4 @@
-import type { IModalLayer } from '@soldy-ui/core'
+import type { IModalLayer } from '@soxa-ui/core'
 import { TBasePlugin } from '../../../base'
 import type { IPluginContext } from '../../../base'
 

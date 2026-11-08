@@ -1,9 +1,9 @@
 {
-  "name": "@soldy-ui/vue",
+  "name": "@soxa-ui/vue",
   "version": "0.3.0-beta.0",
   "description": "Адаптер Vue: компоненты на headless-моделях ядра",
   "keywords": [
-    "soldy",
+    "soxa",
     "headless",
     "ui",
     "components",
@@ -13,12 +13,12 @@
   "author": "Yuri Soldatov",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/youra-h/soldy-ui.git",
+    "url": "git+https://github.com/youra-h/soxa-ui.git",
     "directory": "packages/ui/vue"
   },
-  "homepage": "https://github.com/youra-h/soldy-ui",
+  "homepage": "https://github.com/youra-h/soxa-ui",
   "bugs": {
-    "url": "https://github.com/youra-h/soldy-ui/issues"
+    "url": "https://github.com/youra-h/soxa-ui/issues"
   },
   "publishConfig": {
     "access": "public"
@@ -41,15 +41,15 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@soldy-ui/core": "0.3.0-beta.0",
-    "@soldy-ui/plugins": "0.3.0-beta.0",
-    "@soldy-ui/setup": "0.3.0-beta.0"
+    "@soxa-ui/core": "0.3.0-beta.0",
+    "@soxa-ui/plugins": "0.3.0-beta.0",
+    "@soxa-ui/setup": "0.3.0-beta.0"
   },
   "peerDependencies": {
     "vue": "^3.5.21"
   },
   "devDependencies": {
-    "@soldy-ui/icons-material": "0.3.0-beta.0",
+    "@soxa-ui/icons-material": "0.3.0-beta.0",
     "@types/node": "^26.1.1",
     "vite-plugin-vue-devtools": "^8.2.1",
     "vue": "^3.5.32",

@@ -1,5 +1,5 @@
-import type { ISlider } from '@soldy-ui/core'
-import type { SliderDescriptor } from '@soldy-ui/setup'
+import type { ISlider } from '@soxa-ui/core'
+import type { SliderDescriptor } from '@soxa-ui/setup'
 import type { EventProps, UseDomProps } from '../../types'
 
 export type SliderEventProps = EventProps<typeof SliderDescriptor>

@@ -15,7 +15,7 @@
  */
 
 import { describe, it, expect } from 'vitest'
-import { TFieldIdsPlugin } from '@soldy-ui/plugins'
+import { TFieldIdsPlugin } from '@soxa-ui/plugins'
 import {
 	CheckBoxDescriptor,
 	DateInputDescriptor,
@@ -30,7 +30,7 @@ import {
 	TFieldControlExtension,
 	TFieldExtension,
 	createAdapterContext,
-} from '@soldy-ui/setup'
+} from '@soxa-ui/setup'
 import type {
 	IAdapterContext,
 	IComponentDescriptor,
@@ -39,7 +39,7 @@ import type {
 	TContextContract,
 	TElevatorFactory,
 	IFieldControl,
-} from '@soldy-ui/setup'
+} from '@soxa-ui/setup'
 import { FIELD_ELEVATOR } from '../content/extensions/field/keys'
 import {
 	createElevatorFactory,

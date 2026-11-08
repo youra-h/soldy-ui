@@ -2,11 +2,11 @@
 import { libConfig } from '../../tools/vite/lib.config.ts'
 
 /**
- * Библиотечная сборка @soldy-ui/plugins: плагины поведения над ядром.
+ * Библиотечная сборка @soxa-ui/plugins: плагины поведения над ядром.
  * Декларации собирает `tsc -p tsconfig.build.json` вторым шагом скрипта `build`.
  */
 export default libConfig({
-	name: '@soldy-ui/plugins',
+	name: '@soxa-ui/plugins',
 	root: import.meta.dirname,
 	entry: 'src/index.ts',
 })

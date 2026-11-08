@@ -25,7 +25,7 @@ import {
 	Select,
 	Tabs,
 	Tags,
-} from '@soldy-ui/vue'
+} from '@soxa-ui/vue'
 
 let wrapper: ReturnType<typeof mount> | null = null
 

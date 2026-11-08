@@ -3,7 +3,7 @@
   "compilerOptions": {
     "types": ["node"],
     "paths": {
-      "@soldy-ui/core": ["./src"]
+      "@soxa-ui/core": ["./src"]
     }
   },
   "include": ["src/**/*", "__tests__/**/*"]

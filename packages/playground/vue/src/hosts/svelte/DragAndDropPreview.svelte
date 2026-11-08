@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { COLLECTION_ITEMS } from '@soldy-ui/playground-shared'
-	import { DragAndDrop, ListBox } from '@soldy-ui/svelte'
+	import { COLLECTION_ITEMS } from '@soxa-ui/playground-shared'
+	import { DragAndDrop, ListBox } from '@soxa-ui/svelte'
 	import AccordionPreview from './AccordionPreview.svelte'
 	import TabsPreview from './TabsPreview.svelte'
 	import type { TPreviewProps } from './previews'

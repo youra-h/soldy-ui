@@ -1,9 +1,9 @@
 {
-  "name": "@soldy-ui/core",
+  "name": "@soxa-ui/core",
   "version": "0.3.0-beta.0",
   "description": "Headless-модели компонентов без привязки к фреймворку: компоненты, движок коллекций, фасады, расширения",
   "keywords": [
-    "soldy",
+    "soxa",
     "headless",
     "ui",
     "components",
@@ -13,12 +13,12 @@
   "author": "Yuri Soldatov",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/youra-h/soldy-ui.git",
+    "url": "git+https://github.com/youra-h/soxa-ui.git",
     "directory": "packages/core"
   },
-  "homepage": "https://github.com/youra-h/soldy-ui",
+  "homepage": "https://github.com/youra-h/soxa-ui",
   "bugs": {
-    "url": "https://github.com/youra-h/soldy-ui/issues"
+    "url": "https://github.com/youra-h/soxa-ui/issues"
   },
   "publishConfig": {
     "access": "public"

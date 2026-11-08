@@ -28,16 +28,16 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { render, cleanup } from './render'
 import { commands, userEvent } from 'vitest/browser'
 import { defineComponent, h, nextTick } from 'vue'
-import { TDateInput } from '@soldy-ui/core'
-import type { IDateInputProps } from '@soldy-ui/core'
-import { enUS, extendLocale } from '@soldy-ui/plugins'
-import { COMPONENT_SIZES } from '@soldy-ui/playground-shared'
-import { DateInput, LocaleProvider } from '@soldy-ui/vue'
+import { TDateInput } from '@soxa-ui/core'
+import type { IDateInputProps } from '@soxa-ui/core'
+import { enUS, extendLocale } from '@soxa-ui/plugins'
+import { COMPONENT_SIZES } from '@soxa-ui/playground-shared'
+import { DateInput, LocaleProvider } from '@soxa-ui/vue'
 
 import { expectClearSquare } from './clear-button'
 import { touchInput } from './engine'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 const nextFrame = () => new Promise<void>((resolve) => requestAnimationFrame(() => resolve()))
 

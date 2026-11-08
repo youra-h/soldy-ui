@@ -59,7 +59,7 @@ import {
 	TToasts,
 	TToastsCollectionFacade,
 	TToastsItemCollectionFacade,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 import { createAdapterContext } from '../protected/adapter'
 import type { TPropSpec } from '../protected/define'
 import { exportedDescriptors, isFacade, required } from './helpers'

@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { COLLECTION_ITEMS } from '@soldy-ui/playground-shared'
-	import { Accordion } from '@soldy-ui/svelte'
+	import { COLLECTION_ITEMS } from '@soxa-ui/playground-shared'
+	import { Accordion } from '@soxa-ui/svelte'
 	import type { TPreviewProps } from './previews'
 	import { getParts } from './events'
 

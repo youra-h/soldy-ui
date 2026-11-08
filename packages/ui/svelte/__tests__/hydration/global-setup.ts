@@ -42,7 +42,7 @@ const ENTRY = '/__tests__/hydration/server.ts'
  * и тот собирал бы Svelte в кэш пакета.
  */
 const withoutOptimizer: Plugin = {
-	name: 'soldy:without-optimizer',
+	name: 'soxa:without-optimizer',
 	configEnvironment(_name, config) {
 		config.optimizeDeps = { noDiscovery: true, include: [] }
 	},

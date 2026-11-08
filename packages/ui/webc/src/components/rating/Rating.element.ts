@@ -4,8 +4,8 @@
  * `id` встал бы и на корень, и `<label for>` нашёл бы корень.
  */
 
-import { RatingDescriptor } from '@soldy-ui/setup'
-import type { IRating } from '@soldy-ui/core'
+import { RatingDescriptor } from '@soxa-ui/setup'
+import type { IRating } from '@soxa-ui/core'
 import { ElementBase, defineElement } from '../../adapter'
 import type { TElementClassOf, TElementType } from '../../adapter'
 import { ratingTemplate } from './rating.template'

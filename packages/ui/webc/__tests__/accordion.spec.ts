@@ -14,14 +14,14 @@
  */
 
 import { describe, it, expect, expectTypeOf, afterEach } from 'vitest'
-import type { TSelectionMode } from '@soldy-ui/core'
-import { AccordionDescriptor, AccordionItemDescriptor } from '@soldy-ui/setup'
+import type { TSelectionMode } from '@soxa-ui/core'
+import { AccordionDescriptor, AccordionItemDescriptor } from '@soxa-ui/setup'
 import {
 	TAccordionElement,
 	TAccordionItemElement,
 	type TAccordionElementProps,
 	type TAccordionItemElementProps,
-} from '@soldy-ui/webc'
+} from '@soxa-ui/webc'
 import { accordionTemplate } from '../src/components/accordion/accordion.template'
 import { accordionItemTemplate } from '../src/components/accordion/item/accordion-item.template'
 import { bareContext } from './template-context'

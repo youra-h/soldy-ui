@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Button, Dialog } from '@soldy-ui/react'
+import { Button, Dialog } from '@soxa-ui/react'
 
 /** The dialog needs state, so it is a client component; the rest of the page is a server one. */
 export function DialogDemo() {

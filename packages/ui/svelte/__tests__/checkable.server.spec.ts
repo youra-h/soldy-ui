@@ -6,7 +6,7 @@
 
 import { describe, it, expect } from 'vitest'
 import { render } from 'svelte/server'
-import { CheckBox, Switch } from '@soldy-ui/svelte'
+import { CheckBox, Switch } from '@soxa-ui/svelte'
 
 /** Открывающий тег поля в серверной разметке, без меток гидратации. */
 function fieldOf(body: string): string {

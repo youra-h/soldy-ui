@@ -18,7 +18,7 @@
 
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import { act } from 'react'
-import { Accordion, Calendar, Select } from '@soldy-ui/react'
+import { Accordion, Calendar, Select } from '@soxa-ui/react'
 import { useSetupAccordionItem } from '../src/components/accordion/item/setup.component'
 import { useSetupCalendarItem } from '../src/components/calendar/item/setup.component'
 import { useSetupSelectItem } from '../src/components/select/item/setup.component'

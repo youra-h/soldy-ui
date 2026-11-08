@@ -1,7 +1,7 @@
 import { useEmits, useProps } from '../../adapter'
 import type { TEmits, TProps, UseProps } from '../../types/common'
-import { DragAndDropDescriptor } from '@soldy-ui/setup'
-import type { IDragAndDrop } from '@soldy-ui/core'
+import { DragAndDropDescriptor } from '@soxa-ui/setup'
+import type { IDragAndDrop } from '@soxa-ui/core'
 
 export const emitsDragAndDrop: TEmits = useEmits(DragAndDropDescriptor())
 

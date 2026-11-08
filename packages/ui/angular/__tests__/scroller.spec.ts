@@ -16,10 +16,10 @@
 
 import { describe, it, expect } from 'vitest'
 import { Component, signal } from '@angular/core'
-import { TScroller } from '@soldy-ui/core'
-import { enUS, extendLocale, ruRU, type TLocale } from '@soldy-ui/plugins'
-import type { TAttributesMap } from '@soldy-ui/core'
-import { LocaleProviderDirective, SlotDirective, TScrollerComponent } from '@soldy-ui/angular'
+import { TScroller } from '@soxa-ui/core'
+import { enUS, extendLocale, ruRU, type TLocale } from '@soxa-ui/plugins'
+import type { TAttributesMap } from '@soxa-ui/core'
+import { LocaleProviderDirective, SlotDirective, TScrollerComponent } from '@soxa-ui/angular'
 import { find, findIn, mountHost, nextFrame } from './mount'
 
 @Component({

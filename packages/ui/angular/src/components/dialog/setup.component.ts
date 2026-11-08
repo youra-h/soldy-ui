@@ -1,5 +1,5 @@
-import { DialogDescriptor } from '@soldy-ui/setup'
-import type { IDialog } from '@soldy-ui/core'
+import { DialogDescriptor } from '@soxa-ui/setup'
+import type { IDialog } from '@soxa-ui/core'
 import { createAngularAdapterContext, useAdapter } from '../../adapter'
 import type { TBinding } from '../../adapter'
 

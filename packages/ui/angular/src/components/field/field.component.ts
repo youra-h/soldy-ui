@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core'
-import type { IField } from '@soldy-ui/core'
+import type { IField } from '@soxa-ui/core'
 import { AttributesDirective, RoleIconDirective, provideElevator } from '../../adapter'
 import { TIconComponent } from '../icon'
 import { TFieldSurface } from '../../generated/field.metadata'

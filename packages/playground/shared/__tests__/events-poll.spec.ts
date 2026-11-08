@@ -12,8 +12,8 @@
  */
 
 import { describe, it, expect } from 'vitest'
-import { isEventSource } from '@soldy-ui/core'
-import { underscorePropNaming, type IComponentDescriptor } from '@soldy-ui/setup'
+import { isEventSource } from '@soxa-ui/core'
+import { underscorePropNaming, type IComponentDescriptor } from '@soxa-ui/setup'
 import { findComponent } from '../src/registry'
 import { propControls } from '../src/props'
 import { TScenarioRunner, eventsPoll, pollTargets, type IScenarioHost } from '../src/scenarios'

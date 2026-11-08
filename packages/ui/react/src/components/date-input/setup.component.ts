@@ -1,4 +1,4 @@
-import { DateInputDescriptor, TFieldControlExtension } from '@soldy-ui/setup'
+import { DateInputDescriptor, TFieldControlExtension } from '@soxa-ui/setup'
 import { useComponent } from '../../adapter'
 import type { DateInputProps } from './base.component'
 

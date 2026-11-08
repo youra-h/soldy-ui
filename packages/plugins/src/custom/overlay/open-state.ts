@@ -1,4 +1,4 @@
-import { isCloseRequestable, isEventSource } from '@soldy-ui/core'
+import { isCloseRequestable, isEventSource } from '@soxa-ui/core'
 import type { IPluginContext } from '../../base'
 import type { IOverlayOpenOptions, IOverlayOpenState } from './types'
 

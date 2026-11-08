@@ -25,8 +25,8 @@ import {
 	createEngineRadioGroup,
 	type TRadioGroupValue,
 	type TValuePayload,
-} from '@soldy-ui/core'
-import { SlotDirective, TRadioGroupComponent, TRadioGroupItemComponent } from '@soldy-ui/angular'
+} from '@soxa-ui/core'
+import { SlotDirective, TRadioGroupComponent, TRadioGroupItemComponent } from '@soxa-ui/angular'
 import { mountHost, nextFrame } from './mount'
 
 /** Радио на странице по порядку. */
@@ -476,7 +476,7 @@ describe('состояние для темы — на корне радио', ()
 	})
 
 	/**
-	 * Селектор радио — атрибут на `label`, и он остаётся на корне: метки soldy
+	 * Селектор радио — атрибут на `label`, и он остаётся на корне: метки soxa
 	 * на поле не переезжают, хотя атрибуты потребителя делятся, как у поля.
 	 */
 	it('селектор радио остаётся на корне, поле его не несёт', () => {

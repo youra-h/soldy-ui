@@ -13,7 +13,7 @@
  */
 
 import { defineComponent, defineDescriptor } from '../../../../protected/define'
-import { TCalendarCollectionFacade, TCalendarItemCollectionFacade } from '@soldy-ui/core'
+import { TCalendarCollectionFacade, TCalendarItemCollectionFacade } from '@soxa-ui/core'
 
 export const CalendarCollectionDescriptor = defineDescriptor(() =>
 	defineComponent({

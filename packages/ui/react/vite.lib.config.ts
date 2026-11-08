@@ -4,7 +4,7 @@ import { libConfig } from '../../../tools/vite/lib.config.ts'
 import { clientDirective } from '../../../tools/client-directive/plugin.ts'
 
 /**
- * The library build of @soldy-ui/react: components on the headless models of
+ * The library build of @soxa-ui/react: components on the headless models of
  * the core.
  *
  * JSX compiles with the automatic transform, so the bundle keeps an import of
@@ -15,7 +15,7 @@ import { clientDirective } from '../../../tools/client-directive/plugin.ts'
  * `tsc -p tsconfig.build.json`, the second step of the `build` script.
  */
 export default libConfig({
-	name: '@soldy-ui/react',
+	name: '@soxa-ui/react',
 	root: import.meta.dirname,
 	entry: 'src/index.ts',
 	external: ['react', 'react-dom'],

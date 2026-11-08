@@ -1,5 +1,5 @@
-import type { IItemGroup } from '@soldy-ui/core'
-import type { ListBoxGroupDescriptor } from '@soldy-ui/setup'
+import type { IItemGroup } from '@soxa-ui/core'
+import type { ListBoxGroupDescriptor } from '@soxa-ui/setup'
 import type { EventProps, UseDomProps } from '../../../types'
 
 /** События группы: подпись и её набор. */

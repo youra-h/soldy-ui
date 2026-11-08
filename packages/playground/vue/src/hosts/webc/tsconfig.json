@@ -8,11 +8,11 @@
     "noEmit": true,
     "types": [],
     "paths": {
-      "@soldy-ui/core": ["../../../../../core/src"],
-      "@soldy-ui/plugins": ["../../../../../plugins/src"],
-      "@soldy-ui/setup": ["../../../../../setup/index.ts"],
-      "@soldy-ui/webc": ["../../../../../ui/webc/src/index.ts"],
-      "@soldy-ui/playground-shared": ["../../../../shared/src/index.ts"]
+      "@soxa-ui/core": ["../../../../../core/src"],
+      "@soxa-ui/plugins": ["../../../../../plugins/src"],
+      "@soxa-ui/setup": ["../../../../../setup/index.ts"],
+      "@soxa-ui/webc": ["../../../../../ui/webc/src/index.ts"],
+      "@soxa-ui/playground-shared": ["../../../../shared/src/index.ts"]
     }
   },
   "include": ["./**/*"]

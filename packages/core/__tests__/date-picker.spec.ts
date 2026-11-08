@@ -9,14 +9,14 @@ import {
 	TListBox,
 	TPopover,
 	isSwipeable,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 import type {
 	IDateInput,
 	IDatePickerProps,
 	TCalendarUnavailable,
 	TChangeEvent,
 	TDatePickerValue,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 
 /**
  * DatePicker — поле даты и календарь в панели. Сам он дат не считает:

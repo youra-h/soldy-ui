@@ -7,7 +7,7 @@
  */
 
 import { effect, type Signal } from '@angular/core'
-import type { TStateSnapshot } from '@soldy-ui/setup'
+import type { TStateSnapshot } from '@soxa-ui/setup'
 import {
 	NO_ATTRIBUTES,
 	TElementAttributes,

@@ -1,4 +1,4 @@
-import { withParts } from '@soldy-ui/setup'
+import { withParts } from '@soxa-ui/setup'
 import TabsComponent from './Tabs.svelte'
 import { TabsItem } from './item'
 import { TabsContent } from './content'

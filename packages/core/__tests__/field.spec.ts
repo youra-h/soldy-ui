@@ -13,8 +13,8 @@ import {
 	TSlider,
 	TSwitch,
 	TValueControl,
-} from '@soldy-ui/core'
-import type { IValueControlProps } from '@soldy-ui/core'
+} from '@soxa-ui/core'
+import type { IValueControlProps } from '@soxa-ui/core'
 
 /**
  * Поле формы: подпись, подсказка и ошибка вокруг контрола.

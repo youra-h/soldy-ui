@@ -24,10 +24,10 @@
 
 import { describe, it, expect, afterEach, beforeEach, vi } from 'vitest'
 import { flushSync } from 'svelte'
-import { TCalendar, createEngineCalendar } from '@soldy-ui/core'
-import type { ICalendarItem, TCalendarDate, TCalendarValue } from '@soldy-ui/core'
-import { ruRU, type TLocale } from '@soldy-ui/plugins'
-import { Calendar, type CalendarProps } from '@soldy-ui/svelte'
+import { TCalendar, createEngineCalendar } from '@soxa-ui/core'
+import type { ICalendarItem, TCalendarDate, TCalendarValue } from '@soxa-ui/core'
+import { ruRU, type TLocale } from '@soxa-ui/plugins'
+import { Calendar, type CalendarProps } from '@soxa-ui/svelte'
 import Surround from './Surround.test.svelte'
 import { find, mount, nextFrame } from './mount'
 import { reactiveProps } from './reactive-props.svelte'
@@ -103,7 +103,7 @@ function press(from: Element, key: string, init: KeyboardEventInit = {}): Keyboa
 	return event
 }
 
-/** Последний класс узла — его часть: у компонента soldy первым идёт блок. */
+/** Последний класс узла — его часть: у компонента soxa первым идёт блок. */
 const partsOf = (element: Element) =>
 	[...element.children].map((child) => child.classList[child.classList.length - 1])
 

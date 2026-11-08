@@ -3,8 +3,8 @@ import {
 	AccordionDescriptor,
 	TCollectionExtension,
 	TDragAndDropCollectionExtension,
-} from '@soldy-ui/setup'
-import type { IAccordion, IAccordionProps, TAccordionCollectionFacade } from '@soldy-ui/core'
+} from '@soxa-ui/setup'
+import type { IAccordion, IAccordionProps, TAccordionCollectionFacade } from '@soxa-ui/core'
 import {
 	AngularElevatorFactory,
 	createAngularAdapterContext,

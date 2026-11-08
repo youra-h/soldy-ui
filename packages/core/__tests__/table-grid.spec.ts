@@ -5,7 +5,7 @@ import {
 	TTableCollectionFacade,
 	TTableRowCollectionFacade,
 	createEngineTable,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 import type {
 	ITableColumn,
 	ITableRow,
@@ -14,7 +14,7 @@ import type {
 	TTableColumnSource,
 	TTableGridCell,
 	TTableRecord,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 
 /**
  * Сетка — режим таблицы по паттерну APG Data Grid, расширение `grid`

@@ -1,4 +1,4 @@
-import type { IAccordionItem } from '@soldy-ui/core'
+import type { IAccordionItem } from '@soxa-ui/core'
 import { TBasePlugin } from '../../../base'
 import type { IPluginContext } from '../../../base'
 import { TIdPlugin } from '../../id'

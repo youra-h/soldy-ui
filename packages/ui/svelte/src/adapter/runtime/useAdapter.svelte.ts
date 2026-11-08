@@ -18,8 +18,8 @@
  */
 
 import { onDestroy, untrack } from 'svelte'
-import { toInstanceState } from '@soldy-ui/setup'
-import type { IAdapterContext, IComponentContract, TAdapterState, TExchange } from '@soldy-ui/setup'
+import { toInstanceState } from '@soxa-ui/setup'
+import type { IAdapterContext, IComponentContract, TAdapterState, TExchange } from '@soxa-ui/setup'
 import { SvelteProfile } from '../common'
 import { joinState, type TJoinedState } from './state'
 

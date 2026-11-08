@@ -3,8 +3,8 @@
 		COLLECTION_MANY_ITEMS,
 		TABLE_COLUMNS,
 		TABLE_MANY_ROWS,
-	} from '@soldy-ui/playground-shared'
-	import { ListBox, Select, Table, Virtual } from '@soldy-ui/svelte'
+	} from '@soxa-ui/playground-shared'
+	import { ListBox, Select, Table, Virtual } from '@soxa-ui/svelte'
 	import type { TPreviewProps } from './previews'
 
 	const bind: TPreviewProps = $props()

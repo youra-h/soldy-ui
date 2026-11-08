@@ -10,7 +10,7 @@
  */
 
 import { describe, it, expect } from 'vitest'
-import { underscorePropNaming } from '@soldy-ui/setup'
+import { underscorePropNaming } from '@soxa-ui/setup'
 import { COMPONENTS } from '../src/registry'
 import {
 	describeProp,

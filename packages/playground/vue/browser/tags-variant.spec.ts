@@ -19,12 +19,12 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { render, cleanup } from './render'
 import { userEvent } from 'vitest/browser'
 import { defineComponent, h } from 'vue'
-import type { ITagsItem } from '@soldy-ui/core'
-import { Button, Tags, TagsItem } from '@soldy-ui/vue'
+import type { ITagsItem } from '@soxa-ui/core'
+import { Button, Tags, TagsItem } from '@soxa-ui/vue'
 
 import { find, settled, style } from './colors'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 /** Варианты, которые показывают теги спека; `undefined` — без варианта. */
 const VARIANTS = [undefined, 'normal', 'accent', 'negative'] as const

@@ -11,9 +11,9 @@
 
 import { describe, it, expect, afterEach } from 'vitest'
 import { mount } from '@vue/test-utils'
-import { TTabs } from '@soldy-ui/core'
-import { TPluginBundle, TTabsActiveTabPlugin } from '@soldy-ui/plugins'
-import { Tabs, TabsItem } from '@soldy-ui/vue'
+import { TTabs } from '@soxa-ui/core'
+import { TPluginBundle, TTabsActiveTabPlugin } from '@soxa-ui/plugins'
+import { Tabs, TabsItem } from '@soxa-ui/vue'
 
 const nextFrame = () => new Promise((resolve) => requestAnimationFrame(resolve))
 

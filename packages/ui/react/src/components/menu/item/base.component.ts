@@ -1,6 +1,6 @@
 import type { HTMLAttributes } from 'react'
-import type { IMenuItem } from '@soldy-ui/core'
-import type { MenuCollectionItemDescriptor, MenuItemDescriptor } from '@soldy-ui/setup'
+import type { IMenuItem } from '@soxa-ui/core'
+import type { MenuCollectionItemDescriptor, MenuItemDescriptor } from '@soxa-ui/setup'
 import type { EventProps, TDomAttributes, UseDomProps } from '../../../types'
 
 export type MenuItemEventProps = EventProps<typeof MenuItemDescriptor> &

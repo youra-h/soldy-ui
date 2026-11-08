@@ -13,14 +13,14 @@
 import { describe, it, expect, afterEach, vi } from 'vitest'
 import { Component, type Type } from '@angular/core'
 import { TestBed } from '@angular/core/testing'
-import { TEvented, TListBox, createEngine, createEngineListBox } from '@soldy-ui/core'
-import type { TCollectionEngine } from '@soldy-ui/core'
+import { TEvented, TListBox, createEngine, createEngineListBox } from '@soxa-ui/core'
+import type { TCollectionEngine } from '@soxa-ui/core'
 import {
 	TAccordionComponent,
 	TListBoxComponent,
 	TRadioGroupComponent,
 	TTabsComponent,
-} from '@soldy-ui/angular'
+} from '@soxa-ui/angular'
 
 afterEach(() => {
 	vi.restoreAllMocks()

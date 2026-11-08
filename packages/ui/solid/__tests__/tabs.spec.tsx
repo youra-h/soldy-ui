@@ -21,7 +21,7 @@
 
 import { describe, it, expect, expectTypeOf, vi, afterEach } from 'vitest'
 import { createSignal, Show, type JSX } from 'solid-js'
-import type { ITabsItem } from '@soldy-ui/core'
+import type { ITabsItem } from '@soxa-ui/core'
 import {
 	Tabs,
 	TabsContent,
@@ -29,7 +29,7 @@ import {
 	type TabsContentProps,
 	type TabsItemProps,
 	type TabsProps,
-} from '@soldy-ui/solid'
+} from '@soxa-ui/solid'
 import { find, mount, nextFrame } from './mount'
 
 afterEach(() => {

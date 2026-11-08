@@ -8,7 +8,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TTextareaAutoresizePlugin } from '@soldy-ui/plugins'
+import { TTextareaAutoresizePlugin } from '@soxa-ui/plugins'
 
 export const TextareaAutoresizePluginDescriptor = definePlugin({
 	ctor: TTextareaAutoresizePlugin,

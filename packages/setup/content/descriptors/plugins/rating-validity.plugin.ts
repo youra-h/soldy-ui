@@ -8,7 +8,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TRatingValidityPlugin } from '@soldy-ui/plugins'
+import { TRatingValidityPlugin } from '@soxa-ui/plugins'
 
 export const RatingValidityPluginDescriptor = definePlugin({
 	ctor: TRatingValidityPlugin,

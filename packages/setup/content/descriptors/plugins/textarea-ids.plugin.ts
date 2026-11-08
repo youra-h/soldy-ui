@@ -9,7 +9,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TTextareaIdsPlugin } from '@soldy-ui/plugins'
+import { TTextareaIdsPlugin } from '@soxa-ui/plugins'
 
 export const TextareaIdsPluginDescriptor = definePlugin({
 	ctor: TTextareaIdsPlugin,

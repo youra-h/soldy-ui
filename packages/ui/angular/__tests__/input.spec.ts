@@ -17,8 +17,8 @@
 import { describe, it, expect, afterEach, vi } from 'vitest'
 import { Component, signal } from '@angular/core'
 import { TestBed, type ComponentFixture } from '@angular/core/testing'
-import { TInput, type IInput, type TValuePayload } from '@soldy-ui/core'
-import { SlotDirective, TInputComponent } from '@soldy-ui/angular'
+import { TInput, type IInput, type TValuePayload } from '@soxa-ui/core'
+import { SlotDirective, TInputComponent } from '@soxa-ui/angular'
 import { find, findIn, markupOf, mountHost, nextFrame } from './mount'
 
 afterEach(() => {

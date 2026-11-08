@@ -5,8 +5,8 @@
  * AGENTS.md (Angular), «Каждый выход — с префиксом `so`».
  */
 
-import type { INamingStrategy } from '@soldy-ui/setup'
-import { underscorePropNaming } from '@soldy-ui/setup'
+import type { INamingStrategy } from '@soxa-ui/setup'
+import { underscorePropNaming } from '@soxa-ui/setup'
 
 const OUTPUT_PREFIX = 'so'
 

@@ -1,5 +1,5 @@
 import type { Accessor, JSX } from 'solid-js'
-import type { IPaginationItem, TPaginationCell } from '@soldy-ui/core'
+import type { IPaginationItem, TPaginationCell } from '@soxa-ui/core'
 import {
 	Elevate,
 	KeyedFor,

@@ -4,8 +4,8 @@
  * закрытый сообщает менеджер (`so:item:close`).
  */
 
-import { ToastsCollectionItemDescriptor, ToastsItemDescriptor } from '@soldy-ui/setup'
-import type { IToastsItem, TToastsItemCollectionFacade } from '@soldy-ui/core'
+import { ToastsCollectionItemDescriptor, ToastsItemDescriptor } from '@soxa-ui/setup'
+import type { IToastsItem, TToastsItemCollectionFacade } from '@soxa-ui/core'
 import { ElementBase } from '../../../adapter'
 import type { TElementClassOf, TElementType } from '../../../adapter'
 import { setupToastsItem } from './setup.component'

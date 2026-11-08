@@ -12,9 +12,9 @@
  * Своего `defineTheme` у общего слоя нет: приложение подключает одну тему, и
  * плагины общего слоя ставит она — в своём объекте `defineTheme`:
  *
- *   import { TTable, TTabs, TToasts } from '@soldy-ui/core'
- *   import { defineTheme } from '@soldy-ui/setup'
- *   import { TTableHeadPlugin, TTabsViewPlugin, TToastsFrontPlugin } from '@soldy-ui/theme-base/setup'
+ *   import { TTable, TTabs, TToasts } from '@soxa-ui/core'
+ *   import { defineTheme } from '@soxa-ui/setup'
+ *   import { TTableHeadPlugin, TTabsViewPlugin, TToastsFrontPlugin } from '@soxa-ui/theme-base/setup'
  *
  *   export default defineTheme({
  *     name: 'my-theme',

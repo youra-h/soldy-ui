@@ -1,6 +1,6 @@
 import { propertyDetail } from './property-detail'
 /**
- * `<div is="so-component-view">` — нативный `div`, расширенный классом soldy,
+ * `<div is="so-component-view">` — нативный `div`, расширенный классом soxa,
  * как Button — нативная кнопка.
  *
  * Классы, наборы ядра `aria`, `attrs` и `dataset` и скрытие база раскладывает
@@ -17,14 +17,14 @@ import { propertyDetail } from './property-detail'
  */
 
 import { describe, it, expect, afterEach } from 'vitest'
-import { TActionEvent, TButton, TComponentView } from '@soldy-ui/core'
-import { TBasePlugin, ruRU, type IPluginContext } from '@soldy-ui/plugins'
-import { usePlugins } from '@soldy-ui/setup'
+import { TActionEvent, TButton, TComponentView } from '@soxa-ui/core'
+import { TBasePlugin, ruRU, type IPluginContext } from '@soxa-ui/plugins'
+import { usePlugins } from '@soxa-ui/setup'
 import {
 	TComponentViewElement,
 	TLocaleProviderElement,
 	type TComponentViewElementProps,
-} from '@soldy-ui/webc'
+} from '@soxa-ui/webc'
 
 /** Рендер коалесцируется в микротаске — ждём её перед проверкой. */
 const flush = () => new Promise<void>((resolve) => queueMicrotask(() => resolve()))
@@ -57,7 +57,7 @@ class TLocaleProbePlugin extends TBasePlugin<TButton> {
 
 let dispose: (() => void) | undefined
 
-/** Элемент soldy с props дескриптора; узел другой — тест падает здесь. */
+/** Элемент soxa с props дескриптора; узел другой — тест падает здесь. */
 function asView(node: Element | null): TComponentViewElementProps {
 	if (!isView(node)) throw new Error('<div is="so-component-view"> нет')
 

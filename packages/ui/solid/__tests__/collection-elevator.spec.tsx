@@ -20,7 +20,7 @@
 
 import { describe, it, expect } from 'vitest'
 import { createSignal, For } from 'solid-js'
-import { Accordion, ListBox, Tabs, type ListBoxProps } from '@soldy-ui/solid'
+import { Accordion, ListBox, Tabs, type ListBoxProps } from '@soxa-ui/solid'
 import { mount } from './mount'
 
 /** Движок так, как его видит тест: состав элементов по значениям. */

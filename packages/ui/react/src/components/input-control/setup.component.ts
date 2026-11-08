@@ -1,4 +1,4 @@
-import { InputControlDescriptor } from '@soldy-ui/setup'
+import { InputControlDescriptor } from '@soxa-ui/setup'
 import { useComponent } from '../../adapter'
 import type { InputControlProps } from './base.component'
 

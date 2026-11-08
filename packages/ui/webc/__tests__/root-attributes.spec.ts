@@ -29,7 +29,7 @@
  */
 
 import { describe, it, expect, afterEach } from 'vitest'
-import { TButton } from '@soldy-ui/core'
+import { TButton } from '@soxa-ui/core'
 import {
 	TAccordionElement,
 	TAccordionItemElement,
@@ -127,7 +127,7 @@ import {
 	type TTagsItemElementProps,
 	type TTextareaElementProps,
 	type TTooltipElementProps,
-} from '@soldy-ui/webc'
+} from '@soxa-ui/webc'
 import { TElementAttributes, applyStyles, stylesOf } from '../src/adapter/runtime/paint'
 import { ownerStyles } from '../src/adapter/template'
 
@@ -141,7 +141,7 @@ afterEach(() => {
 	document.body.innerHTML = ''
 })
 
-/** Проверка вида узла: элемент soldy своего компонента. */
+/** Проверка вида узла: элемент soxa своего компонента. */
 type TElementGuard<T extends HTMLElement> = (node: Element | null) => node is T
 
 function isButton(node: Element | null): node is TButtonElementProps {
@@ -351,7 +351,7 @@ function mount<T extends HTMLElement>(html: string, guard: TElementGuard<T>): T 
 
 	const node = host.firstElementChild
 
-	if (!guard(node)) throw new Error(`${html}: элемента soldy нет`)
+	if (!guard(node)) throw new Error(`${html}: элемента soxa нет`)
 
 	document.body.appendChild(host)
 
@@ -712,7 +712,7 @@ describe('корень связан с TElementPlugin', () => {
 	const ALONE = COMPONENTS.filter(([name]) => name !== 'Tabs.Content')
 
 	/**
-	 * До элемента доходит только его `so:element:ready`. Элементы soldy, которые
+	 * До элемента доходит только его `so:element:ready`. Элементы soxa, которые
 	 * построил его шаблон, — детали (строка таба, стрелки пагинации) и элементы
 	 * из данных (страницы пагинации), — разметка владельца: их события слышно
 	 * только на них самих. Это общий сторож: ни одна часть шаблона не всплывает

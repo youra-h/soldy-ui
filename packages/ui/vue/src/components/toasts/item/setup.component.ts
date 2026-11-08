@@ -1,9 +1,9 @@
-import type { TToastsItemType } from '@soldy-ui/core'
+import type { TToastsItemType } from '@soxa-ui/core'
 import {
 	TCollectionItemExtension,
 	ToastsItemDescriptor,
 	ToastsCollectionItemDescriptor,
-} from '@soldy-ui/setup'
+} from '@soxa-ui/setup'
 import {
 	isToastRender,
 	extendBinding,

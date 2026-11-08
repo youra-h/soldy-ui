@@ -1,6 +1,6 @@
 ---
 name: dev
-description: Implement a soldy-ui ClickUp task in an existing pool worktree. Use when the owner explicitly invokes this command; not for unrelated coding work.
+description: Implement a soxa-ui ClickUp task in an existing pool worktree. Use when the owner explicitly invokes this command; not for unrelated coding work.
 ---
 
 Read [commands](../../../tools/agent-flow/commands.md) for the dev entry and [shared workflow](../../../tools/agent-flow/workflow.md). Apply the invocation's task ID or owner instruction.

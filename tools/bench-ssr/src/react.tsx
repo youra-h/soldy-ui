@@ -1,6 +1,6 @@
 import { Fragment } from 'react'
 import { renderToString } from 'react-dom/server'
-import { LocaleProvider } from '@soldy-ui/react'
+import { LocaleProvider } from '@soxa-ui/react'
 import { PREVIEWS } from '../../../packages/playground/vue/src/hosts/react/previews'
 import { measure } from './measure'
 

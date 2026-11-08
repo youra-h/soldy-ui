@@ -1,4 +1,4 @@
-import { ScrollerDescriptor } from '@soldy-ui/setup'
+import { ScrollerDescriptor } from '@soxa-ui/setup'
 import {
 	useAdapter,
 	extendBinding,

@@ -4,8 +4,8 @@
  * (`shownBy`). Регистрирует модуль набора. docs/architecture.md, Layer 8d, «Коллекция».
  */
 
-import { TabsCollectionContentDescriptor, TabsContentDescriptor } from '@soldy-ui/setup'
-import type { ITabsContent, TTabsContentCollectionFacade } from '@soldy-ui/core'
+import { TabsCollectionContentDescriptor, TabsContentDescriptor } from '@soxa-ui/setup'
+import type { ITabsContent, TTabsContentCollectionFacade } from '@soxa-ui/core'
 import { ElementBase } from '../../../adapter'
 import type { TElementClassOf, TElementType } from '../../../adapter'
 import { setupTabsContent } from './setup.component'

@@ -19,10 +19,10 @@
 
 import { describe, it, expect, afterEach, beforeEach, vi } from 'vitest'
 import { createSignal, type JSX } from 'solid-js'
-import { TDatePicker } from '@soldy-ui/core'
-import type { ICalendarItem, TDatePickerMode, TDatePickerValue } from '@soldy-ui/core'
-import { ruRU } from '@soldy-ui/plugins'
-import { DatePicker, LocaleProvider, type DatePickerProps } from '@soldy-ui/solid'
+import { TDatePicker } from '@soxa-ui/core'
+import type { ICalendarItem, TDatePickerMode, TDatePickerValue } from '@soxa-ui/core'
+import { ruRU } from '@soxa-ui/plugins'
+import { DatePicker, LocaleProvider, type DatePickerProps } from '@soxa-ui/solid'
 import { find, mount, nextFrame } from './mount'
 
 beforeEach(() => {

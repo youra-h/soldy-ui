@@ -1,5 +1,5 @@
-import type { ISkeleton } from '@soldy-ui/core'
-import type { SkeletonDescriptor } from '@soldy-ui/setup'
+import type { ISkeleton } from '@soxa-ui/core'
+import type { SkeletonDescriptor } from '@soxa-ui/setup'
 import type { EventProps, UseDomProps } from '../../types'
 
 /** События слоя Skeleton (core + плагины), выведены из дескриптора автоматически. */

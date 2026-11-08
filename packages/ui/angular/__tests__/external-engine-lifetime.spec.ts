@@ -23,9 +23,9 @@ import {
 	TPagination,
 	createEngineListBox,
 	createEnginePagination,
-} from '@soldy-ui/core'
-import type { TListBoxCollection } from '@soldy-ui/core'
-import { TListBoxComponent, TPaginationComponent } from '@soldy-ui/angular'
+} from '@soxa-ui/core'
+import type { TListBoxCollection } from '@soxa-ui/core'
+import { TListBoxComponent, TPaginationComponent } from '@soxa-ui/angular'
 
 afterEach(() => {
 	vi.restoreAllMocks()

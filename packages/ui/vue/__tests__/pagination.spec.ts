@@ -12,10 +12,10 @@ import { describe, it, expect, afterEach } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { createSSRApp, defineComponent, h, nextTick, ref, type VNode } from 'vue'
 import { renderToString } from 'vue/server-renderer'
-import { LocaleProvider, Pagination } from '@soldy-ui/vue'
-import { TPagination } from '@soldy-ui/core'
-import { arEG, ruRU } from '@soldy-ui/plugins'
-import type { IPaginationItem, TPaginationValue } from '@soldy-ui/core'
+import { LocaleProvider, Pagination } from '@soxa-ui/vue'
+import { TPagination } from '@soxa-ui/core'
+import { arEG, ruRU } from '@soxa-ui/plugins'
+import type { IPaginationItem, TPaginationValue } from '@soxa-ui/core'
 
 let wrapper: ReturnType<typeof mount> | null = null
 

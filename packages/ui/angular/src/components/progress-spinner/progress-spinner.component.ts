@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core'
-import type { IProgressSpinner } from '@soldy-ui/core'
+import type { IProgressSpinner } from '@soxa-ui/core'
 import { TProgressSpinnerSurface } from '../../generated/progress-spinner.metadata'
 import { setupProgressSpinner } from './setup.component'
 

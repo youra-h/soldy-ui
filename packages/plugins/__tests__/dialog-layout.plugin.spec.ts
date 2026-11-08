@@ -10,8 +10,8 @@
  */
 
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { TDialog, TLayer } from '@soldy-ui/core'
-import type { IDialogProps } from '@soldy-ui/core'
+import { TDialog, TLayer } from '@soxa-ui/core'
+import type { IDialogProps } from '@soxa-ui/core'
 import { TDialogLayoutPlugin, TDialogOffsetEvent, TPluginBundle } from '../src'
 
 beforeEach(() => {

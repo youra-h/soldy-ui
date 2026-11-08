@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from 'vitest'
-import { TButton, TCollectionItemComponent, TComponent, TEvented } from '@soldy-ui/core'
-import type { IExtension, TComponentEvents, TValuePayload } from '@soldy-ui/core'
+import { TButton, TCollectionItemComponent, TComponent, TEvented } from '@soxa-ui/core'
+import type { IExtension, TComponentEvents, TValuePayload } from '@soxa-ui/core'
 
 type TTextEvents = { 'change:text': (payload: TValuePayload<string>) => void }
 type TTypoEvents = { 'change:txt': (payload: TValuePayload<string>) => void }

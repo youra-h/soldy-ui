@@ -1,4 +1,4 @@
-import type { TEvented } from '@soldy-ui/core'
+import type { TEvented } from '@soxa-ui/core'
 import type { IOptionScope } from './types'
 
 /** Область наблюдателя опции. Закрытие снимает всё, что в ней зарегистрировано. */

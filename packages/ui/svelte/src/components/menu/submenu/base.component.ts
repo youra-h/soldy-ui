@@ -1,9 +1,9 @@
-import type { IMenuSubmenu } from '@soldy-ui/core'
+import type { IMenuSubmenu } from '@soxa-ui/core'
 import type {
 	MenuCollectionItemDescriptor,
 	MenuSubmenuCollectionDescriptor,
 	MenuSubmenuDescriptor,
-} from '@soldy-ui/setup'
+} from '@soxa-ui/setup'
 import type { EventProps, TDomAttributes, UseDomProps } from '../../../types'
 
 export type MenuSubmenuEventProps = EventProps<typeof MenuSubmenuDescriptor> &

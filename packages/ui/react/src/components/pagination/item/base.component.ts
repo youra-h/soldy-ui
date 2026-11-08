@@ -1,5 +1,5 @@
-import type { IPaginationItem } from '@soldy-ui/core'
-import type { PaginationCollectionItemDescriptor, PaginationItemDescriptor } from '@soldy-ui/setup'
+import type { IPaginationItem } from '@soxa-ui/core'
+import type { PaginationCollectionItemDescriptor, PaginationItemDescriptor } from '@soxa-ui/setup'
 import type { EventProps, UseDomProps } from '../../../types'
 
 export type PaginationItemEventProps = EventProps<typeof PaginationItemDescriptor> &

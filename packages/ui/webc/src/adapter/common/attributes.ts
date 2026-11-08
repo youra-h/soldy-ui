@@ -5,7 +5,7 @@
  * атрибут у булева пропа — `false`, у остальных — «проп не задан».
  */
 
-import { TSurface, type IComponentDescriptor } from '@soldy-ui/setup'
+import { TSurface, type IComponentDescriptor } from '@soxa-ui/setup'
 import { WebcProfile } from './profile'
 
 export interface IAttributeBinding {

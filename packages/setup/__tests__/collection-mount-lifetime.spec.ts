@@ -55,8 +55,8 @@ import {
 	createEngineTabs,
 	createEngineTags,
 	createEngineToasts,
-} from '@soldy-ui/core'
-import type { TCollectionEngine } from '@soldy-ui/core'
+} from '@soxa-ui/core'
+import type { TCollectionEngine } from '@soxa-ui/core'
 import {
 	AccordionCollectionDescriptor,
 	AccordionDescriptor,

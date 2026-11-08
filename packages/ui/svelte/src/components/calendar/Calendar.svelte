@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { DescriptorSlots, PopoverDescriptor } from '@soldy-ui/setup'
+	import type { DescriptorSlots, PopoverDescriptor } from '@soxa-ui/setup'
 	import { Dynamic, roleIcon, toRootProps } from '../../adapter'
 	import { Button } from '../button'
 	import { Icon } from '../icon'

@@ -22,7 +22,7 @@ import {
 	COMPONENTS,
 	findComponent,
 	propControls,
-} from '@soldy-ui/playground-shared'
+} from '@soxa-ui/playground-shared'
 import { availableOf, showcaseOf } from '../../src/catalog'
 import { hostOf } from '../../src/hosts'
 import { useIconPack } from '../../src/composables/useIconPack'

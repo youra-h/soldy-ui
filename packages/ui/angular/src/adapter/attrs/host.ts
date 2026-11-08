@@ -47,7 +47,7 @@ const SERVICE_ATTRIBUTES: ReadonlySet<string> = new Set([
 	'jsaction',
 ])
 
-/** `ng-reflect-*`, инкапсуляция стилей и метки soldy (селектор, директивы адаптера). */
+/** `ng-reflect-*`, инкапсуляция стилей и метки soxa (селектор, директивы адаптера). */
 const HOST_PREFIXES: readonly string[] = ['ng-reflect-', '_ng', 'so-']
 
 /** Старые анимации: `[@x]` и `(@x.done)` анимирует рендерер анимаций на самом хосте. */

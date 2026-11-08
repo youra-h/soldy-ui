@@ -1,6 +1,6 @@
 <script setup lang="ts">
 /** Тестовая обёртка: точка резолвится только компилятором SFC. */
-import { Select } from '@soldy-ui/vue'
+import { Select } from '@soxa-ui/vue'
 
 defineProps<{
 	mode?: 'single' | 'multiple'

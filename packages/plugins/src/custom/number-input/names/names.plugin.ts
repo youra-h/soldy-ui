@@ -1,4 +1,4 @@
-import type { INumberInput } from '@soldy-ui/core'
+import type { INumberInput } from '@soxa-ui/core'
 import { TClearableNamesPlugin } from '../../clearable/names'
 import { formatName } from '../../../locale/locale'
 import type { TTranslations } from '../../../locale/types'

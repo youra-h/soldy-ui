@@ -5,8 +5,8 @@
  * поле выбора».
  */
 
-import { SelectCollectionItemDescriptor, SelectItemDescriptor } from '@soldy-ui/setup'
-import type { ISelectItem, TSelectItemCollectionFacade } from '@soldy-ui/core'
+import { SelectCollectionItemDescriptor, SelectItemDescriptor } from '@soxa-ui/setup'
+import type { ISelectItem, TSelectItemCollectionFacade } from '@soxa-ui/core'
 import { ElementBase } from '../../../adapter'
 import type { TElementClassOf, TElementType } from '../../../adapter'
 import { selectItemTemplate } from './select-item.template'

@@ -2,11 +2,11 @@
 	import { DropdownMenu } from 'bits-ui'
 
 	/**
-	 * The soldy menu preview in Bits: a group of checkboxes, a group of radios,
+	 * The soxa menu preview in Bits: a group of checkboxes, a group of radios,
 	 * actions with shortcuts, a submenu with a submenu inside, a disabled action
 	 * and a destructive one — `DropdownMenu` has all the parts; shortcuts and
 	 * the destructive look are the application's markup. The item with a
-	 * calendar panel of soldy has no counterpart and is left out.
+	 * calendar panel of soxa has no counterpart and is left out.
 	 */
 	let checked = $state(['grid'])
 	let sort = $state('name')

@@ -1,4 +1,4 @@
-import type { ICalendar, TCalendarCollection } from '@soldy-ui/core'
+import type { ICalendar, TCalendarCollection } from '@soxa-ui/core'
 import { TNamesPlugin } from '../../../locale/names.plugin'
 import type { IPluginContext } from '../../../base'
 import type { TTranslations } from '../../../locale/types'

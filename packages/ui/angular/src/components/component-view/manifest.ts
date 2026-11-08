@@ -1,1 +1,1 @@
-export { ComponentViewDescriptor as descriptor } from '@soldy-ui/setup'
+export { ComponentViewDescriptor as descriptor } from '@soxa-ui/setup'

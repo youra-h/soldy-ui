@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core'
-import type { IFrame } from '@soldy-ui/core'
+import type { IFrame } from '@soxa-ui/core'
 import { TFrameSurface } from '../../generated/frame.metadata'
 import { setupFrame } from './setup.component'
 

@@ -1,4 +1,4 @@
-import type { IField } from '@soldy-ui/core'
+import type { IField } from '@soxa-ui/core'
 import { TBasePlugin } from '../../../base'
 import type { IPluginContext } from '../../../base'
 import type { IFieldControlInfo, IFieldLinks, TFieldIdsPluginEvents } from './types'

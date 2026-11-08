@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { TValuePayload } from '@soldy-ui/core'
-	import { Button, Dialog, Input } from '@soldy-ui/svelte'
+	import type { TValuePayload } from '@soxa-ui/core'
+	import { Button, Dialog, Input } from '@soxa-ui/svelte'
 	import type { TPreviewProps } from './previews'
 
 	const bind: TPreviewProps = $props()

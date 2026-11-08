@@ -6,7 +6,7 @@ import {
 	type IPreviewHost,
 	type TComponentEntry,
 	type TPreviewEventSink,
-} from '@soldy-ui/playground-shared'
+} from '@soxa-ui/playground-shared'
 import PreviewColumns from './PreviewColumns.vue'
 
 /**

@@ -4,7 +4,7 @@ import {
 	type TComponentEntry,
 	type TPluginPropAddress,
 	type TPropControl,
-} from '@soldy-ui/playground-shared'
+} from '@soxa-ui/playground-shared'
 
 /**
  * Код колонок страницы свойств — в Svelte.
@@ -68,7 +68,7 @@ function componentInstanceSnippet(
 	const ctor = entry.descriptor().ctor?.name ?? 'TComponent'
 
 	return example(
-		[importOf(entry), `import { ${ctor} } from '@soldy-ui/core'`],
+		[importOf(entry), `import { ${ctor} } from '@soxa-ui/core'`],
 		[`const instance = new ${ctor}()`, ...assignment(`instance.${prop}`, value)],
 		`<${entry.label}${presetAttrs(preset)} ctrl={instance} />`,
 	)
@@ -88,7 +88,7 @@ function collectionInstanceSnippet(
 	const create = `createEngine${entry.label}`
 
 	return example(
-		[importOf(entry), `import { ${create} } from '@soldy-ui/core'`],
+		[importOf(entry), `import { ${create} } from '@soxa-ui/core'`],
 		[`const engine = ${create}()`, ...assignment(`engine.extensions.selection.${prop}`, value)],
 		`<${entry.label}${presetAttrs(preset)} engine={engine} />`,
 	)
@@ -109,7 +109,7 @@ function pluginInstanceSnippet(
 	const { imports, lines } = pluginAssignment(address, value)
 
 	return example(
-		[importOf(entry), `import { ${ctor} } from '@soldy-ui/core'`, ...imports],
+		[importOf(entry), `import { ${ctor} } from '@soxa-ui/core'`, ...imports],
 		[`const instance = new ${ctor}()`, ...lines],
 		`<${entry.label}${presetAttrs(preset)} ctrl={instance} />`,
 	)
@@ -117,7 +117,7 @@ function pluginInstanceSnippet(
 
 /** Импорт компонента примера из адаптера. */
 function importOf(entry: TComponentEntry): string {
-	return `import { ${entry.label} } from '@soldy-ui/svelte'`
+	return `import { ${entry.label} } from '@soxa-ui/svelte'`
 }
 
 /**
@@ -148,7 +148,7 @@ function pluginAssignment(
 	const pluginCtor = address.ctor.name
 
 	return {
-		imports: [`import { TPluginBundle, ${pluginCtor} } from '@soldy-ui/plugins'`],
+		imports: [`import { TPluginBundle, ${pluginCtor} } from '@soxa-ui/plugins'`],
 		lines: [
 			'',
 			"instance.events.on('bundle:create', (bundle: unknown) => {",

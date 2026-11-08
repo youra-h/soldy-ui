@@ -11,8 +11,8 @@
 import { describe, it, expect, afterEach } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { h, nextTick, ref } from 'vue'
-import { TProgressSpinner } from '@soldy-ui/core'
-import { ProgressSpinner } from '@soldy-ui/vue'
+import { TProgressSpinner } from '@soxa-ui/core'
+import { ProgressSpinner } from '@soxa-ui/vue'
 
 let wrapper: ReturnType<typeof mount> | null = null
 

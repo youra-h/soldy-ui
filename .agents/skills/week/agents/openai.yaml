@@ -1,5 +1,5 @@
 interface:
   display_name: 'week'
-  short_description: 'Summarize soldy-ui releases and merged PRs without changes'
+  short_description: 'Summarize soxa-ui releases and merged PRs without changes'
 policy:
   allow_implicit_invocation: false

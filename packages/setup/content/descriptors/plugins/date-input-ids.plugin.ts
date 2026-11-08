@@ -6,7 +6,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TDateInputIdsPlugin } from '@soldy-ui/plugins'
+import { TDateInputIdsPlugin } from '@soxa-ui/plugins'
 
 export const DateInputIdsPluginDescriptor = definePlugin({
 	ctor: TDateInputIdsPlugin,

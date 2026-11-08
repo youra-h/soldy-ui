@@ -23,16 +23,16 @@
 import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { render, cleanup } from './render'
 import { defineComponent, h } from 'vue'
-import { TProgressSpinner } from '@soldy-ui/core'
-import type { IProgressProps } from '@soldy-ui/core'
-import { ProgressSpinner } from '@soldy-ui/vue'
-import { COMPONENT_SIZES } from '@soldy-ui/playground-shared'
+import { TProgressSpinner } from '@soxa-ui/core'
+import type { IProgressProps } from '@soxa-ui/core'
+import { ProgressSpinner } from '@soxa-ui/vue'
+import { COMPONENT_SIZES } from '@soxa-ui/playground-shared'
 
 import { find, pixel, systemColor } from './colors'
 import { forcedColors, reducedMotion } from './media'
 import { animatedProperties, settled, transitionEvents, transitionRuns } from './transitions'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 /** Допуск на субпиксельное округление длины, px. */
 const EPSILON = 0.5

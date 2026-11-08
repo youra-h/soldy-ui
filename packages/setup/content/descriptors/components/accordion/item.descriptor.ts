@@ -7,9 +7,9 @@
  */
 
 import { defineComponent, defineDescriptor, defineType } from '../../../../protected/define'
-import { TAccordionItem } from '@soldy-ui/core'
-import type { IAccordionItem } from '@soldy-ui/core'
-import { headerIn } from '@soldy-ui/plugins'
+import { TAccordionItem } from '@soxa-ui/core'
+import type { IAccordionItem } from '@soxa-ui/core'
+import { headerIn } from '@soxa-ui/plugins'
 import { ValueControlDescriptor } from '../value-control.descriptor'
 import { OWNER_STYLE_PROPS } from '../stylable.descriptor'
 import {

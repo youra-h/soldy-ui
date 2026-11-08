@@ -24,7 +24,7 @@ function specs(field: unknown): [string, string][] {
 
 /**
  * Framework adapters — workspaces with a peer on a foreign package. A theme's
- * peer on the library (`@soldy-ui/*`) is a range from the library release the
+ * peer on the library (`@soxa-ui/*`) is a range from the library release the
  * theme came out with: the library of the workspace is never older than that
  * bound, an older one from npm would replace the very packages under test, and
  * the bound itself was checked by the jobs of that release.
@@ -32,7 +32,7 @@ function specs(field: unknown): [string, string][] {
 const adapters = tree
 	.filter(({ location }) => !location.split('/').includes('node_modules'))
 	.filter(({ manifest }) =>
-		specs(manifest.peerDependencies).some(([name]) => !name.startsWith('@soldy-ui/')),
+		specs(manifest.peerDependencies).some(([name]) => !name.startsWith('@soxa-ui/')),
 	)
 	.map(({ manifest }) => String(manifest.name))
 	.sort()
@@ -41,11 +41,11 @@ describe('список подмены настоящих адаптеров', ()
 	it('адаптеры найдены', () => {
 		expect(adapters).toEqual(
 			expect.arrayContaining([
-				'@soldy-ui/angular',
-				'@soldy-ui/react',
-				'@soldy-ui/solid',
-				'@soldy-ui/svelte',
-				'@soldy-ui/vue',
+				'@soxa-ui/angular',
+				'@soxa-ui/react',
+				'@soxa-ui/solid',
+				'@soxa-ui/svelte',
+				'@soxa-ui/vue',
 			]),
 		)
 	})
@@ -60,7 +60,7 @@ describe('список подмены настоящих адаптеров', ()
 	})
 
 	it('Angular: пакеты фреймворка из devDependencies — в списке, инструменты сборки — нет', () => {
-		const pinned = pinsOf(workspaceOf('@soldy-ui/angular', tree), tree).map(({ name }) => name)
+		const pinned = pinsOf(workspaceOf('@soxa-ui/angular', tree), tree).map(({ name }) => name)
 
 		expect(pinned).toEqual(
 			expect.arrayContaining([
@@ -76,7 +76,7 @@ describe('список подмены настоящих адаптеров', ()
 	})
 
 	it('Vue: пакеты выпуска vue — в списке, версией vue', () => {
-		const pins = pinsOf(workspaceOf('@soldy-ui/vue', tree), tree)
+		const pins = pinsOf(workspaceOf('@soxa-ui/vue', tree), tree)
 		const vue = pins.find(({ name }) => name === 'vue')
 
 		expect(pins).toContainEqual({ name: '@vue/server-renderer', version: vue?.version })
@@ -96,7 +96,7 @@ describe('матрица задачи «Минимальные версии»', 
 	).scripts
 
 	it('в матрице — каждый адаптер фреймворка, и только они', () => {
-		expect(listed.map((adapter) => `@soldy-ui/${adapter}`).sort()).toEqual(adapters)
+		expect(listed.map((adapter) => `@soxa-ui/${adapter}`).sort()).toEqual(adapters)
 	})
 
 	it.each(listed)('%s: у корня есть скрипт его спеков', (adapter) => {

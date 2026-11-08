@@ -2,8 +2,8 @@ import {
 	PaginationCollectionDescriptor,
 	PaginationDescriptor,
 	TCollectionExtension,
-} from '@soldy-ui/setup'
-import type { IPagination, TPaginationCollectionFacade } from '@soldy-ui/core'
+} from '@soxa-ui/setup'
+import type { IPagination, TPaginationCollectionFacade } from '@soxa-ui/core'
 import {
 	createWebcAdapterContext,
 	joinBindings,

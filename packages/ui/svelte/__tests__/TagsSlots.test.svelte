@@ -9,8 +9,8 @@
 	 * - `own` — набор из данных со своей раскладкой показанных тегов: обёртка
 	 *   `.own` и в ней по `Tags.Item` на тег.
 	 */
-	import type { ITagsItem } from '@soldy-ui/core'
-	import { Tags } from '@soldy-ui/svelte'
+	import type { ITagsItem } from '@soxa-ui/core'
+	import { Tags } from '@soxa-ui/svelte'
 
 	type THarnessProps = {
 		case: 'close-icon' | 'own'

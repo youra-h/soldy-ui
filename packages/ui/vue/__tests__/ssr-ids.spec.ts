@@ -40,8 +40,8 @@ import {
 	TabsItem,
 	Textarea,
 	LocaleProvider,
-} from '@soldy-ui/vue'
-import { ruRU } from '@soldy-ui/plugins'
+} from '@soxa-ui/vue'
+import { ruRU } from '@soxa-ui/plugins'
 import { hydrate, unmountHydrated } from './hydrate'
 
 afterEach(unmountHydrated)

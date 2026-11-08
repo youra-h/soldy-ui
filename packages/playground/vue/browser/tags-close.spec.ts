@@ -21,13 +21,13 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { render, cleanup } from './render'
 import { commands, userEvent } from 'vitest/browser'
 import { defineComponent, h } from 'vue'
-import { BUTTON_VIEWS, COMPONENT_SIZES, COMPONENT_VARIANTS } from '@soldy-ui/playground-shared'
-import { Button, Select, SelectItem, Tags, TagsItem } from '@soldy-ui/vue'
-import type { TTagsOverflow } from '@soldy-ui/core'
+import { BUTTON_VIEWS, COMPONENT_SIZES, COMPONENT_VARIANTS } from '@soxa-ui/playground-shared'
+import { Button, Select, SelectItem, Tags, TagsItem } from '@soxa-ui/vue'
+import type { TTagsOverflow } from '@soxa-ui/core'
 
 import { lightness, pixel } from './colors'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 /**
  * Набор с крестиком: обычный, выбранный и выключенный тег. У выключенного

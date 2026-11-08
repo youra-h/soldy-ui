@@ -28,7 +28,7 @@ import type {
 	TTableColumnSource,
 	TTabsCollection,
 	TTagsCollection,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 import {
 	Accordion,
 	Dialog,
@@ -41,7 +41,7 @@ import {
 	Tags,
 	Toasts,
 	useToasts,
-} from '@soldy-ui/solid'
+} from '@soxa-ui/solid'
 import { KeyedFor } from '../../src/adapter/runtime/KeyedFor'
 import { createPartNodes } from '../../src/adapter/runtime/part-node'
 import { createPartProps, createRootProps } from '../../src/adapter/common/root'

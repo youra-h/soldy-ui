@@ -7,7 +7,7 @@
  */
 
 import { defineComponent, defineDescriptor } from '../../../protected/define'
-import { TProgressLinear } from '@soldy-ui/core'
+import { TProgressLinear } from '@soxa-ui/core'
 import { ProgressDescriptor } from './progress.descriptor'
 
 export const ProgressLinearDescriptor = defineDescriptor(() =>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Button, DatePicker, Dialog, Input, Select, Table } from '@soldy-ui/vue'
+import { Button, DatePicker, Dialog, Input, Select, Table } from '@soxa-ui/vue'
 
 const open = ref(false)
 

@@ -17,8 +17,8 @@
 import { describe, it, expect } from 'vitest'
 import { Component } from '@angular/core'
 import { TestBed, type ComponentFixture } from '@angular/core/testing'
-import { TProgressSpinner } from '@soldy-ui/core'
-import { TProgressSpinnerComponent } from '@soldy-ui/angular'
+import { TProgressSpinner } from '@soxa-ui/core'
+import { TProgressSpinnerComponent } from '@soxa-ui/angular'
 import { findIn, mountHost } from './mount'
 
 /** ProgressSpinner сам по себе: корень — `<span>`, тег первого селектора. */

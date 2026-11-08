@@ -14,7 +14,7 @@
 
 import { describe, it, expect, vi, afterEach } from 'vitest'
 import { createSignal, type JSX } from 'solid-js'
-import type { TLabelPosition } from '@soldy-ui/core'
+import type { TLabelPosition } from '@soxa-ui/core'
 import {
 	CheckBox,
 	Label,
@@ -22,7 +22,7 @@ import {
 	Switch,
 	type RadioGroupProps,
 	type SwitchProps,
-} from '@soldy-ui/solid'
+} from '@soxa-ui/solid'
 import { find, mount, nextFrame } from './mount'
 
 afterEach(() => {
@@ -182,7 +182,7 @@ describe('Label · радио в подписи', () => {
 
 	/** Тексты предупреждений подписи о вложенном `label`. */
 	const nestedWarnings = (calls: readonly unknown[][]): string[] =>
-		calls.map(([message]) => String(message)).filter((text) => text.includes('[soldy] Label'))
+		calls.map(([message]) => String(message)).filter((text) => text.includes('[soxa] Label'))
 
 	it('без tag="span" — предупреждение о вложенном label', async () => {
 		const warn = vi.spyOn(console, 'warn').mockImplementation(() => {})

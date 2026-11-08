@@ -8,8 +8,8 @@
 	 * новой сборки.
 	 */
 	import type { TransitionConfig } from 'svelte/transition'
-	import type { TListBoxCollection } from '@soldy-ui/core'
-	import { ListBox } from '@soldy-ui/svelte'
+	import type { TListBoxCollection } from '@soxa-ui/core'
+	import { ListBox } from '@soxa-ui/svelte'
 
 	type THarnessProps = {
 		/** Движок списка — один на обе ветки. */

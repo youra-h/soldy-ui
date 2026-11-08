@@ -11,7 +11,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TMenuPopoverItemKeyboardPlugin } from '@soldy-ui/plugins'
+import { TMenuPopoverItemKeyboardPlugin } from '@soxa-ui/plugins'
 
 export const MenuPopoverItemKeyboardPluginDescriptor = definePlugin({
 	ctor: TMenuPopoverItemKeyboardPlugin,

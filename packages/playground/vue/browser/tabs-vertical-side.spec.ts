@@ -20,14 +20,14 @@
 import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { render, cleanup } from './render'
 import { defineComponent, h } from 'vue'
-import type { TTabsPosition } from '@soldy-ui/core'
-import { Tabs, TabsContent, TabsItem } from '@soldy-ui/vue'
+import type { TTabsPosition } from '@soxa-ui/core'
+import { Tabs, TabsContent, TabsItem } from '@soxa-ui/vue'
 
 import { find } from './colors'
 import { DIRECTION_CASES, setDir, sidesOf, type TLine, type TSide } from './directions'
 import { pseudoBox } from './pseudo-box'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 /** Допуск на округление коробок, px: полоса выступает на пиксель за рамку. */
 const EPSILON = 1.5

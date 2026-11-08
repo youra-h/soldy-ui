@@ -27,10 +27,10 @@
 
 import { describe, it, expect, vi } from 'vitest'
 import { createSignal, type JSX } from 'solid-js'
-import { TDrawer } from '@soldy-ui/core'
-import type { TCloseEvent, TCloseReason, TValuePayload } from '@soldy-ui/core'
-import { ruRU } from '@soldy-ui/plugins'
-import { Dialog, Drawer, LocaleProvider, type DrawerProps } from '@soldy-ui/solid'
+import { TDrawer } from '@soxa-ui/core'
+import type { TCloseEvent, TCloseReason, TValuePayload } from '@soxa-ui/core'
+import { ruRU } from '@soxa-ui/plugins'
+import { Dialog, Drawer, LocaleProvider, type DrawerProps } from '@soxa-ui/solid'
 import { find, mount, nextFrame, type TMounted } from './mount'
 
 /** Узел по селектору; нет его — тест падает здесь, а не на чтении свойства. */

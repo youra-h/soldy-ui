@@ -11,7 +11,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TAriaPlugin } from '@soldy-ui/plugins'
+import { TAriaPlugin } from '@soxa-ui/plugins'
 
 /**
  * Опция `role` (`AriaPluginDescriptor.with({ role: 'img' })`) — роль, которую

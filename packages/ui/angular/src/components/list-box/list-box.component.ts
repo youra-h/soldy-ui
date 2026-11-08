@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core'
 import { NgTemplateOutlet } from '@angular/common'
-import type { IListBox } from '@soldy-ui/core'
+import type { IListBox } from '@soxa-ui/core'
 import { AttributesDirective, SlotDirective, provideElevator } from '../../adapter'
 import { TListBoxItemComponent } from './item'
 import { TListBoxGroupComponent } from './group'

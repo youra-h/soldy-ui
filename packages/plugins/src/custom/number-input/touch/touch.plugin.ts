@@ -1,4 +1,4 @@
-import type { INumberInput } from '@soldy-ui/core'
+import type { INumberInput } from '@soxa-ui/core'
 import { TBasePlugin } from '../../../base'
 import type { IPluginContext } from '../../../base'
 import { TElementPlugin } from '../../element'

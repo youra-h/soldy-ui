@@ -14,7 +14,7 @@ import { libConfig } from '../../../tools/vite/lib.config.ts'
  * `build`.
  */
 export default libConfig({
-	name: '@soldy-ui/theme-base',
+	name: '@soxa-ui/theme-base',
 	root: import.meta.dirname,
 	entry: 'setup/index.ts',
 	outDir: 'dist/setup',

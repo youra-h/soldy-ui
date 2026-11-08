@@ -6,8 +6,8 @@
 	 *
 	 * Движок снаружи (`engine`) — только у гидратации, как у `TabsActiveSecond`.
 	 */
-	import type { TTabsCollection } from '@soldy-ui/core'
-	import { Tabs } from '@soldy-ui/svelte'
+	import type { TTabsCollection } from '@soxa-ui/core'
+	import { Tabs } from '@soxa-ui/svelte'
 
 	type TPageProps = {
 		/** Движок табов — только у гидратации. */

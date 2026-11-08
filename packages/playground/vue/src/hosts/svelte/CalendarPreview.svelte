@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Calendar } from '@soldy-ui/svelte'
+	import { Calendar } from '@soxa-ui/svelte'
 	import type { TPreviewProps } from './previews'
 
 	const bind: TPreviewProps = $props()

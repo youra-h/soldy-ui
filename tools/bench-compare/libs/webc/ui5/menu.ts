@@ -6,7 +6,7 @@ import '@ui5/webcomponents/dist/MenuSeparator.js'
 import { h } from '../dom'
 
 /**
- * The soldy menu preview in UI5: checkbox and radio groups are
+ * The soxa menu preview in UI5: checkbox and radio groups are
  * `ui5-menu-item-group` with `check-mode` Multiple and Single (groups have no
  * caption), shortcuts — `additional-text`, submenus — nested items. The menu
  * is opened by a button through `opener`.

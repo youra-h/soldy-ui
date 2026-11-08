@@ -1,4 +1,4 @@
-import { ComponentViewDescriptor } from '@soldy-ui/setup'
+import { ComponentViewDescriptor } from '@soxa-ui/setup'
 import { createSvelteAdapterContext, useAdapter, type TRootReceiver } from '../../adapter'
 import type { ComponentViewProps } from './base.component'
 

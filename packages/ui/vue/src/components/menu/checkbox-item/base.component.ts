@@ -1,7 +1,7 @@
 import { useEmits, useProps } from '../../../adapter'
 import type { TEmits, TProps, UseProps } from '../../../types/common'
-import { MenuCheckboxItemDescriptor, MenuCollectionCheckboxItemDescriptor } from '@soldy-ui/setup'
-import type { IMenuCheckboxItem } from '@soldy-ui/core'
+import { MenuCheckboxItemDescriptor, MenuCollectionCheckboxItemDescriptor } from '@soxa-ui/setup'
+import type { IMenuCheckboxItem } from '@soxa-ui/core'
 
 export const emitsMenuCheckboxItem: TEmits = [
 	...useEmits(MenuCheckboxItemDescriptor()),

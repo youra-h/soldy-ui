@@ -24,9 +24,9 @@ import { describe, it, expect, expectTypeOf, vi, afterEach, type Mock } from 'vi
 import { act, useState, type ReactElement } from 'react'
 import { hydrateRoot } from 'react-dom/client'
 import { renderToString } from 'react-dom/server'
-import { TNumberInput, type INumberInput, type TValuePayload } from '@soldy-ui/core'
-import { ruRU } from '@soldy-ui/plugins'
-import { Field, LocaleProvider, NumberInput, type NumberInputProps } from '@soldy-ui/react'
+import { TNumberInput, type INumberInput, type TValuePayload } from '@soxa-ui/core'
+import { ruRU } from '@soxa-ui/plugins'
+import { Field, LocaleProvider, NumberInput, type NumberInputProps } from '@soxa-ui/react'
 import { find, mount, nextFrame, track } from './mount'
 
 afterEach(() => {

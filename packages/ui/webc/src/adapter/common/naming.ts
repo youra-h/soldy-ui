@@ -4,8 +4,8 @@
  * общий канал DOM, и префикс говорит, чьё оно.
  */
 
-import type { INamingStrategy } from '@soldy-ui/setup'
-import { underscorePropNaming } from '@soldy-ui/setup'
+import type { INamingStrategy } from '@soxa-ui/setup'
+import { underscorePropNaming } from '@soxa-ui/setup'
 
 const EVENT_PREFIX = 'so:'
 

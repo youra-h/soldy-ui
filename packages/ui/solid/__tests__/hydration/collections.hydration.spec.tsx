@@ -18,7 +18,7 @@
  */
 
 import { describe, it, expect } from 'vitest'
-import { createEngineTabs, createEngineTags } from '@soldy-ui/core'
+import { createEngineTabs, createEngineTags } from '@soxa-ui/core'
 import {
 	RootProbe,
 	TabsActiveFirst,

@@ -20,7 +20,7 @@
 import { describe, it, expect } from 'vitest'
 import { Component, signal, type Type } from '@angular/core'
 import type { ComponentFixture } from '@angular/core/testing'
-import { TButton, type TDirection } from '@soldy-ui/core'
+import { TButton, type TDirection } from '@soxa-ui/core'
 import {
 	TButtonComponent,
 	TCalendarComponent,
@@ -56,7 +56,7 @@ import {
 	TTagsComponent,
 	TTextareaComponent,
 	TTooltipComponent,
-} from '@soldy-ui/angular'
+} from '@soxa-ui/angular'
 import {
 	NO_APPLIED_ATTRIBUTES,
 	applyAttributes,

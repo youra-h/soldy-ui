@@ -24,7 +24,7 @@ export function h(
 	return node
 }
 
-/** A soldy element on a native tag — `<button is="so-button">` — with its props as properties. */
+/** A soxa element on a native tag — `<button is="so-button">` — with its props as properties. */
 export function so(
 	tag: string,
 	is: string,

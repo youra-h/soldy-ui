@@ -1,7 +1,7 @@
 <script lang="ts">
-	import type { TToastsItemType } from '@soldy-ui/core'
-	import { TOASTS_ITEM_TYPES, TOAST_SAVING, toastSample } from '@soldy-ui/playground-shared'
-	import { Button, useToasts } from '@soldy-ui/svelte'
+	import type { TToastsItemType } from '@soxa-ui/core'
+	import { TOASTS_ITEM_TYPES, TOAST_SAVING, toastSample } from '@soxa-ui/playground-shared'
+	import { Button, useToasts } from '@soxa-ui/svelte'
 	import ToastUndo from './ToastUndo.svelte'
 
 	/**

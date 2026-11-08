@@ -2,7 +2,7 @@ import Autocomplete from '@mui/material/Autocomplete'
 import TextField from '@mui/material/TextField'
 import { COLLECTION_ITEMS } from '../../../data'
 
-/** Select with typing and filtering — `Autocomplete`, as the soldy `editable` preview. */
+/** Select with typing and filtering — `Autocomplete`, as the soxa `editable` preview. */
 export default function Page() {
 	return (
 		<Autocomplete

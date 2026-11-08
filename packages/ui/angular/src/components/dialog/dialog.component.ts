@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core'
 import { NgTemplateOutlet } from '@angular/common'
-import type { IDialog } from '@soldy-ui/core'
+import type { IDialog } from '@soxa-ui/core'
 import { AttributesDirective, RoleIconDirective } from '../../adapter'
 import { TButtonComponent } from '../button'
 import { TIconComponent } from '../icon'

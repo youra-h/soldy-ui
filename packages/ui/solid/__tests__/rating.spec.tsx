@@ -15,9 +15,9 @@
 
 import { describe, it, expect, vi, afterEach } from 'vitest'
 import { batch, createSignal } from 'solid-js'
-import { TRating } from '@soldy-ui/core'
-import { ruRU } from '@soldy-ui/plugins'
-import { Label, LocaleProvider, Rating, type RatingProps } from '@soldy-ui/solid'
+import { TRating } from '@soxa-ui/core'
+import { ruRU } from '@soxa-ui/plugins'
+import { Label, LocaleProvider, Rating, type RatingProps } from '@soxa-ui/solid'
 import { find, mount, nextFrame } from './mount'
 
 afterEach(() => {

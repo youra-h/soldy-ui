@@ -7,7 +7,7 @@ $sticky-head-line: 1px;
 // forced colors mode the backing and the line take the system colors of the
 // page and its text. The backing — the head's background in the color of the
 // place, and the same background once more under the whole head — comes from
-// the shared theme layer (`components/table.css` in `@soldy-ui/theme-base`);
+// the shared theme layer (`components/table.css` in `@soxa-ui/theme-base`);
 // here the head also paints it with an inset shadow over the whole `thead`:
 // the first shadow is the line, the second, under it, the surface. The shadow
 // is one property, so the theme writes the backing into it together with the

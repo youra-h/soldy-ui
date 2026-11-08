@@ -13,7 +13,7 @@
 import { describe, it, expect, beforeAll, afterEach, vi } from 'vitest'
 import { mount, type VueWrapper } from '@vue/test-utils'
 import { nextTick } from 'vue'
-import { MOTION_MODES } from '@soldy-ui/playground-shared'
+import { MOTION_MODES } from '@soxa-ui/playground-shared'
 import { router } from '../src/router'
 import AppHeader from '../src/components/AppHeader.vue'
 

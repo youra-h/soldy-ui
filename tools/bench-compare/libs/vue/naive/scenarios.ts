@@ -33,7 +33,7 @@ async function escapeCode(panel: HTMLElement | null): Promise<number> {
 	return 1
 }
 
-/** Naive UI scenarios: the soldy ones step by step, on Naive's own markup. */
+/** Naive UI scenarios: the soxa ones step by step, on Naive's own markup. */
 export const SCENARIOS: Record<string, TScenario> = {
 	button: each('.n-button', press),
 	input: each('.n-input input', (field) => type(field, 'abc')),

@@ -12,9 +12,9 @@
 
 import { describe, it, expect, afterEach, vi } from 'vitest'
 import { flushSync } from 'svelte'
-import { TRating, type TValuePayload } from '@soldy-ui/core'
-import { ruRU } from '@soldy-ui/plugins'
-import { Rating, type RatingProps } from '@soldy-ui/svelte'
+import { TRating, type TValuePayload } from '@soxa-ui/core'
+import { ruRU } from '@soxa-ui/plugins'
+import { Rating, type RatingProps } from '@soxa-ui/svelte'
 import Surround from './Surround.test.svelte'
 import { find, mount, nextFrame } from './mount'
 import { reactiveProps } from './reactive-props.svelte'

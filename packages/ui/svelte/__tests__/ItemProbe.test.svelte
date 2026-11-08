@@ -16,7 +16,7 @@
 	 *   переключателей), `menu-submenu` и `menu-popover-item` — пункт меню
 	 *   своего вида: он в панели меню, телепортированной в `body`.
 	 */
-	import { Accordion, Menu, RadioGroup, Select, Tabs, Tags } from '@soldy-ui/svelte'
+	import { Accordion, Menu, RadioGroup, Select, Tabs, Tags } from '@soxa-ui/svelte'
 
 	type THarnessProps = {
 		kind:

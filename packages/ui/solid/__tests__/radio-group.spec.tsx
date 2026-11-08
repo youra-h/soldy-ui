@@ -24,13 +24,13 @@ import {
 	createEngineRadioGroup,
 	type TRadioGroupValue,
 	type TValuePayload,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 import {
 	RadioGroup,
 	RadioGroupItem,
 	type RadioGroupItemProps,
 	type RadioGroupProps,
-} from '@soldy-ui/solid'
+} from '@soxa-ui/solid'
 import { mount, nextFrame } from './mount'
 
 afterEach(() => {

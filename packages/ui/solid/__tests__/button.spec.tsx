@@ -1,10 +1,10 @@
-import { TPluginBundle } from '@soldy-ui/plugins'
+import { TPluginBundle } from '@soxa-ui/plugins'
 import { describe, it, expect, afterEach, vi } from 'vitest'
 import { createSignal, type ComponentProps } from 'solid-js'
 import { render } from 'solid-js/web'
-import { TButton, type TValuePayload } from '@soldy-ui/core'
-import { TActionPlugin } from '@soldy-ui/plugins'
-import { Button } from '@soldy-ui/solid'
+import { TButton, type TValuePayload } from '@soxa-ui/core'
+import { TActionPlugin } from '@soxa-ui/plugins'
+import { Button } from '@soxa-ui/solid'
 
 const disposers: Array<() => void> = []
 

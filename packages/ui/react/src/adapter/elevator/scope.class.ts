@@ -3,7 +3,7 @@
  * прочитанное. Сменилось прочитанное — сборка устарела (`isStale`).
  */
 
-import type { IElevatorKey, TElevatorFactory } from '@soldy-ui/setup'
+import type { IElevatorKey, TElevatorFactory } from '@soxa-ui/setup'
 import { TReactElevator } from './elevator.class'
 import type { TElevatorLayer } from './layer'
 

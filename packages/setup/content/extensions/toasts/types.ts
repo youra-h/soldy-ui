@@ -2,7 +2,7 @@
  * Контракты проводки тостов: фасад, у которого берут API, и опции расширения.
  */
 
-import type { IToastsApi } from '@soldy-ui/core'
+import type { IToastsApi } from '@soxa-ui/core'
 import type { TElevatorFactory } from '../../../protected/adapter/elevator'
 
 /**

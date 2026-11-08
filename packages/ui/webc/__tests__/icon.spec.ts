@@ -3,7 +3,7 @@
  *
  * Сценарии размера и имени — те же, что у React (`icon.spec.tsx`): размер
  * держит плагин раскладки, имя — плагин доступного имени, а база раскладывает
- * их на корень — сам элемент, как у любого элемента soldy. Своё у Web
+ * их на корень — сам элемент, как у любого элемента soxa. Своё у Web
  * Components — рисунок роли: `<svg>` внутри корня, а роль — свой атрибут
  * элемента `icon`, не проп ядра. Раскладку — что корень берёт размер ступени,
  * а рисунок стоит во весь корень — сторожит браузерный спек стенда
@@ -14,9 +14,9 @@
  */
 
 import { describe, it, expect, afterEach, beforeAll } from 'vitest'
-import { TIcon } from '@soldy-ui/core'
-import { IconDescriptor, useIcons, type TIconSource } from '@soldy-ui/setup'
-import { TIconElement, roleIcon, type TIconElementProps } from '@soldy-ui/webc'
+import { TIcon } from '@soxa-ui/core'
+import { IconDescriptor, useIcons, type TIconSource } from '@soxa-ui/setup'
+import { TIconElement, roleIcon, type TIconElementProps } from '@soxa-ui/webc'
 import { ElementBase } from '../src/adapter/runtime/element.base'
 import { bind } from '../src/adapter/template/types'
 import { defineElement } from '../src/adapter/runtime/defineElement'
@@ -24,7 +24,7 @@ import { drawRoleIcon } from '../src/adapter/common/icon'
 import { setupIcon } from '../src/components/icon/setup.component'
 import { toAttributeName } from '../src/adapter/common/attributes'
 import { type ITemplate } from '../src/adapter/template/types'
-import type { IIcon } from '@soldy-ui/core'
+import type { IIcon } from '@soxa-ui/core'
 import { iconTemplate } from '../src/components/icon/icon.template'
 import { bareContext } from './template-context'
 

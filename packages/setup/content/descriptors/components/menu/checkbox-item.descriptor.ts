@@ -10,7 +10,7 @@
  */
 
 import { defineComponent, defineDescriptor, defineType } from '../../../../protected/define'
-import { TMenuCheckboxItem } from '@soldy-ui/core'
+import { TMenuCheckboxItem } from '@soxa-ui/core'
 import { MenuItemDescriptor } from './item.descriptor'
 
 export const MenuCheckboxItemDescriptor = defineDescriptor(() =>

@@ -1,1 +1,1 @@
-export { NumberInputDescriptor as descriptor } from '@soldy-ui/setup'
+export { NumberInputDescriptor as descriptor } from '@soxa-ui/setup'

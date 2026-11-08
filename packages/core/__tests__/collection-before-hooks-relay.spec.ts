@@ -4,7 +4,7 @@ import {
 	TPlainExtension,
 	TBatchExtension,
 	TCollectionComponent,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 
 type Item = { id: number; name: string }
 type Extensions = { plain: TPlainExtension<Item>; batch: TBatchExtension<Item> }

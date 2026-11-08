@@ -7,7 +7,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TModalNamesPlugin } from '@soldy-ui/plugins'
+import { TModalNamesPlugin } from '@soxa-ui/plugins'
 
 export const ModalNamesPluginDescriptor = definePlugin({
 	ctor: TModalNamesPlugin,

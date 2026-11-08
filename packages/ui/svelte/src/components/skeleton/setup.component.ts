@@ -1,4 +1,4 @@
-import { SkeletonDescriptor } from '@soldy-ui/setup'
+import { SkeletonDescriptor } from '@soxa-ui/setup'
 import { createSvelteAdapterContext, useAdapter, type TRootReceiver } from '../../adapter'
 import type { SkeletonProps } from './base.component'
 

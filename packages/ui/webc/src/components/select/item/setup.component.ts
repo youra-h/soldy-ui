@@ -2,8 +2,8 @@ import {
 	SelectCollectionItemDescriptor,
 	SelectItemDescriptor,
 	TCollectionItemExtension,
-} from '@soldy-ui/setup'
-import type { ISelectItem, TSelectItemCollectionFacade } from '@soldy-ui/core'
+} from '@soxa-ui/setup'
+import type { ISelectItem, TSelectItemCollectionFacade } from '@soxa-ui/core'
 import {
 	createWebcAdapterContext,
 	joinBindings,

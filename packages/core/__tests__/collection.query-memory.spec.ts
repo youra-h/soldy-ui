@@ -4,8 +4,8 @@ import {
 	TCollectionEngine,
 	TMemoryExtension,
 	TPlainExtension,
-} from '@soldy-ui/core'
-import type { TQueryEvent } from '@soldy-ui/core'
+} from '@soxa-ui/core'
+import type { TQueryEvent } from '@soxa-ui/core'
 
 /**
  * Память выборки — стратегия чтения драйвера: `batch.shown` исполняет

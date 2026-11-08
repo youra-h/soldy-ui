@@ -1,5 +1,5 @@
 {
-  "name": "soldy-install-angular-ssr",
+  "name": "soxa-install-angular-ssr",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -16,10 +16,10 @@
     "@angular/platform-browser": "^22.2.0",
     "@angular/platform-server": "^22.2.0",
     "@angular/ssr": "^22.2.5",
-    "@soldy-ui/angular": "*",
-    "@soldy-ui/icons-material": "*",
-    "@soldy-ui/setup": "*",
-    "@soldy-ui/theme-oren": "*",
+    "@soxa-ui/angular": "*",
+    "@soxa-ui/icons-material": "*",
+    "@soxa-ui/setup": "*",
+    "@soxa-ui/theme-oren": "*",
     "express": "^5.1.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"

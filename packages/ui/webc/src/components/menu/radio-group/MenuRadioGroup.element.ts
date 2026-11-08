@@ -3,8 +3,8 @@
  * отмеченного переключателя. Переключатель берёт группу при сборке.
  */
 
-import { MenuRadioGroupDescriptor } from '@soldy-ui/setup'
-import type { IMenuRadioGroup } from '@soldy-ui/core'
+import { MenuRadioGroupDescriptor } from '@soxa-ui/setup'
+import type { IMenuRadioGroup } from '@soxa-ui/core'
 import { ElementBase } from '../../../adapter'
 import type { TElementClassOf, TElementType } from '../../../adapter'
 import { menuRadioGroupTemplate } from './menu-radio-group.template'

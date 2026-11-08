@@ -1,6 +1,6 @@
 # Agent flow
 
-Provider-independent ClickUp workflows for soldy-ui. MCP and the CLI run on Node.js with no extra runtime dependencies. Shared role instructions are plain English Markdown; Agent Skills provide portable entry points. No model or provider is selected by the workflow.
+Provider-independent ClickUp workflows for soxa-ui. MCP and the CLI run on Node.js with no extra runtime dependencies. Shared role instructions are plain English Markdown; Agent Skills provide portable entry points. No model or provider is selected by the workflow.
 
 ## Start here
 

@@ -1,4 +1,4 @@
 export {
 	CalendarDescriptor as descriptor,
 	CalendarCollectionDescriptor as facade,
-} from '@soldy-ui/setup'
+} from '@soxa-ui/setup'

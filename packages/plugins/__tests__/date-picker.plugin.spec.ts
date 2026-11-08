@@ -17,8 +17,8 @@
  */
 
 import { describe, it, expect, afterEach } from 'vitest'
-import { TDatePicker } from '@soldy-ui/core'
-import type { IDatePickerProps, TDatePickerMode } from '@soldy-ui/core'
+import { TDatePicker } from '@soxa-ui/core'
+import type { IDatePickerProps, TDatePickerMode } from '@soxa-ui/core'
 import {
 	TDatePickerFocusPlugin,
 	TDatePickerTriggerPlugin,

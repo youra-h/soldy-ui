@@ -1,4 +1,4 @@
-import { MenuSeparatorDescriptor } from '@soldy-ui/setup'
+import { MenuSeparatorDescriptor } from '@soxa-ui/setup'
 import { useAdapter, useExpose, createVueAdapterContext, type SetupContext } from '../../../adapter'
 import BaseMenuSeparator, { type MenuSeparatorProps } from './base.component'
 

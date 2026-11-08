@@ -23,10 +23,10 @@ const ROOT = resolve(import.meta.dirname, '../../..')
 const LINKS = 'https://github.com/owner/repo/blob/abc'
 
 /** The library of the fixtures: one `fixed` group. */
-const SHARED = new Set(['@soldy-ui/core', '@soldy-ui/vue'])
+const SHARED = new Set(['@soxa-ui/core', '@soxa-ui/vue'])
 
 const CORE_CHANGELOG = [
-	'# @soldy-ui/core',
+	'# @soxa-ui/core',
 	'',
 	'## 0.4.0',
 	'',
@@ -39,7 +39,7 @@ const CORE_CHANGELOG = [
 	'',
 	'- def5678: Select: the panel closes on Escape',
 	'- Updated dependencies [abc1234]',
-	'  - @soldy-ui/plugins@0.4.0',
+	'  - @soxa-ui/plugins@0.4.0',
 	'',
 	'## 0.3.2',
 	'',
@@ -89,7 +89,7 @@ describe('пункты раздела версии', () => {
 			'### Patch Changes',
 			'',
 			'- Updated dependencies [abc1234]',
-			'  - @soldy-ui/theme-base@0.3.1',
+			'  - @soxa-ui/theme-base@0.3.1',
 		].join('\n')
 
 		expect(entriesOf(text, '0.3.1')).toEqual([])
@@ -98,14 +98,14 @@ describe('пункты раздела версии', () => {
 
 describe('имя и версия пакета', () => {
 	it('@ скоупа — не разделитель', () => {
-		expect(parseSpec('@soldy-ui/core@0.4.0')).toEqual({
-			name: '@soldy-ui/core',
+		expect(parseSpec('@soxa-ui/core@0.4.0')).toEqual({
+			name: '@soxa-ui/core',
 			version: '0.4.0',
 		})
-		expect(shortName('@soldy-ui/theme-oren')).toBe('theme-oren')
+		expect(shortName('@soxa-ui/theme-oren')).toBe('theme-oren')
 	})
 
-	it.each(['@soldy-ui/core', '@soldy-ui/core@', 'core'])('«%s» — ошибка', (spec) => {
+	it.each(['@soxa-ui/core', '@soxa-ui/core@', 'core'])('«%s» — ошибка', (spec) => {
 		expect(() => parseSpec(spec)).toThrow('expected <name>@<version>')
 	})
 })
@@ -113,16 +113,16 @@ describe('имя и версия пакета', () => {
 describe('что не опубликовано', () => {
 	it('пакет, версии которого в npm нет, — в списке', () => {
 		const npm = new Map([
-			['@soldy-ui/core@0.4.0', '0.4.0'],
-			['@soldy-ui/theme-oren@0.3.1', undefined],
+			['@soxa-ui/core@0.4.0', '0.4.0'],
+			['@soxa-ui/theme-oren@0.3.1', undefined],
 		])
 		const packages = [
-			{ name: '@soldy-ui/core', version: '0.4.0' },
-			{ name: '@soldy-ui/theme-oren', version: '0.3.1' },
+			{ name: '@soxa-ui/core', version: '0.4.0' },
+			{ name: '@soxa-ui/theme-oren', version: '0.3.1' },
 		]
 
 		expect(unpublishedOf(packages, (spec: string) => npm.get(spec))).toEqual([
-			{ name: '@soldy-ui/theme-oren', version: '0.3.1' },
+			{ name: '@soxa-ui/theme-oren', version: '0.3.1' },
 		])
 	})
 })
@@ -130,9 +130,9 @@ describe('что не опубликовано', () => {
 describe('GitHub Release выпуска', () => {
 	it('с библиотекой — её версией, тема с другой версией его не меняет', () => {
 		const published = [
-			{ name: '@soldy-ui/core', version: '0.4.0' },
-			{ name: '@soldy-ui/theme-oren', version: '0.3.5' },
-			{ name: '@soldy-ui/vue', version: '0.4.0' },
+			{ name: '@soxa-ui/core', version: '0.4.0' },
+			{ name: '@soxa-ui/theme-oren', version: '0.3.5' },
+			{ name: '@soxa-ui/vue', version: '0.4.0' },
 		]
 
 		expect(releaseOf(published, SHARED)).toEqual({
@@ -144,19 +144,19 @@ describe('GitHub Release выпуска', () => {
 
 	it('без библиотеки — на теге первого пакета, в заголовке все пакеты', () => {
 		const published = [
-			{ name: '@soldy-ui/theme-oren', version: '0.4.2' },
-			{ name: '@soldy-ui/theme-base', version: '0.4.1' },
+			{ name: '@soxa-ui/theme-oren', version: '0.4.2' },
+			{ name: '@soxa-ui/theme-base', version: '0.4.1' },
 		]
 
 		expect(releaseOf(published, SHARED)).toEqual({
-			tag: '@soldy-ui/theme-base@0.4.1',
+			tag: '@soxa-ui/theme-base@0.4.1',
 			title: 'theme-base@0.4.1, theme-oren@0.4.2',
 			prerelease: false,
 		})
 	})
 
 	it('бета библиотеки отмечается как GitHub prerelease', () => {
-		expect(releaseOf([{ name: '@soldy-ui/core', version: '0.3.0-beta.0' }], SHARED)).toEqual({
+		expect(releaseOf([{ name: '@soxa-ui/core', version: '0.3.0-beta.0' }], SHARED)).toEqual({
 			tag: 'v0.3.0-beta.0',
 			title: 'v0.3.0-beta.0',
 			prerelease: true,
@@ -165,15 +165,15 @@ describe('GitHub Release выпуска', () => {
 
 	it('бета независимой темы тоже отмечает выпуск как prerelease', () => {
 		expect(
-			releaseOf([{ name: '@soldy-ui/theme-oren', version: '0.3.0-beta.0' }], SHARED)
+			releaseOf([{ name: '@soxa-ui/theme-oren', version: '0.3.0-beta.0' }], SHARED)
 				.prerelease,
 		).toBe(true)
 	})
 
 	it('библиотека двумя версиями — ошибка', () => {
 		const published = [
-			{ name: '@soldy-ui/core', version: '0.4.0' },
-			{ name: '@soldy-ui/vue', version: '0.4.1' },
+			{ name: '@soxa-ui/core', version: '0.4.0' },
+			{ name: '@soxa-ui/vue', version: '0.4.1' },
 		]
 
 		expect(() => releaseOf(published, SHARED)).toThrow('more than one version')
@@ -188,21 +188,21 @@ describe('заметки выпуска', () => {
 	it('пункт — один раз, с пакетами; тема — со своей версией', () => {
 		const shared = 'Tags: the close button is keyboard-reachable'
 		const packages = [
-			pkg('@soldy-ui/core', '0.4.0', changelog('@soldy-ui/core', '0.4.0', [shared])),
+			pkg('@soxa-ui/core', '0.4.0', changelog('@soxa-ui/core', '0.4.0', [shared])),
 			pkg(
-				'@soldy-ui/theme-oren',
+				'@soxa-ui/theme-oren',
 				'0.3.5',
-				changelog('@soldy-ui/theme-oren', '0.3.5', [shared, 'Tags: a calmer focus ring']),
+				changelog('@soxa-ui/theme-oren', '0.3.5', [shared, 'Tags: a calmer focus ring']),
 			),
-			pkg('@soldy-ui/vue', '0.4.0', changelog('@soldy-ui/vue', '0.4.0', [])),
+			pkg('@soxa-ui/vue', '0.4.0', changelog('@soxa-ui/vue', '0.4.0', [])),
 		]
 
 		expect(notesOf(packages, SHARED, LINKS)).toBe(
 			[
 				'### Patch Changes',
 				'',
-				`- ${shared} (\`@soldy-ui/core\`, \`@soldy-ui/theme-oren@0.3.5\`)`,
-				'- Tags: a calmer focus ring (`@soldy-ui/theme-oren@0.3.5`)',
+				`- ${shared} (\`@soxa-ui/core\`, \`@soxa-ui/theme-oren@0.3.5\`)`,
+				'- Tags: a calmer focus ring (`@soxa-ui/theme-oren@0.3.5`)',
 				'',
 			].join('\n'),
 		)
@@ -211,7 +211,7 @@ describe('заметки выпуска', () => {
 	// The theme once released a version equal to the one the library gets now
 	it('пункты читаются по своей версии пакета, а не по версии библиотеки', () => {
 		const oren = [
-			'# @soldy-ui/theme-oren',
+			'# @soxa-ui/theme-oren',
 			'',
 			'## 0.4.3',
 			'',
@@ -227,20 +227,20 @@ describe('заметки выпуска', () => {
 			'',
 		].join('\n')
 		const packages = [
-			pkg('@soldy-ui/core', '0.4.0', changelog('@soldy-ui/core', '0.4.0', ['A fix'])),
-			pkg('@soldy-ui/theme-oren', '0.4.3', oren),
+			pkg('@soxa-ui/core', '0.4.0', changelog('@soxa-ui/core', '0.4.0', ['A fix'])),
+			pkg('@soxa-ui/theme-oren', '0.4.3', oren),
 		]
 		const notes = notesOf(packages, SHARED, LINKS)
 
-		expect(notes).toContain('- Released now (`@soldy-ui/theme-oren@0.4.3`)')
+		expect(notes).toContain('- Released now (`@soxa-ui/theme-oren@0.4.3`)')
 		expect(notes).not.toContain('Released earlier')
 	})
 
 	it('тема без своих пунктов — последней строкой, пакет библиотеки — нет', () => {
 		const packages = [
-			pkg('@soldy-ui/core', '0.4.0', changelog('@soldy-ui/core', '0.4.0', ['A fix'])),
-			pkg('@soldy-ui/vue', '0.4.0', changelog('@soldy-ui/vue', '0.4.0', [])),
-			pkg('@soldy-ui/theme-oren', '0.3.1', changelog('@soldy-ui/theme-oren', '0.3.1', [])),
+			pkg('@soxa-ui/core', '0.4.0', changelog('@soxa-ui/core', '0.4.0', ['A fix'])),
+			pkg('@soxa-ui/vue', '0.4.0', changelog('@soxa-ui/vue', '0.4.0', [])),
+			pkg('@soxa-ui/theme-oren', '0.3.1', changelog('@soxa-ui/theme-oren', '0.3.1', [])),
 		]
 		const notes = notesOf(packages, SHARED, LINKS)
 
@@ -248,9 +248,9 @@ describe('заметки выпуска', () => {
 			[
 				'### Patch Changes',
 				'',
-				'- A fix (`@soldy-ui/core`)',
+				'- A fix (`@soxa-ui/core`)',
 				'',
-				'Published with updated dependencies only: `@soldy-ui/theme-oren@0.3.1`.',
+				'Published with updated dependencies only: `@soxa-ui/theme-oren@0.3.1`.',
 				'',
 			].join('\n'),
 		)
@@ -259,12 +259,12 @@ describe('заметки выпуска', () => {
 	it('пунктов больше предела — ссылки на changelog пакетов с пунктами', () => {
 		const many = Array.from({ length: INLINE_LIMIT + 1 }, (_, index) => `Change ${index}`)
 		const packages = [
-			pkg('@soldy-ui/core', '0.4.0', changelog('@soldy-ui/core', '0.4.0', many)),
-			pkg('@soldy-ui/vue', '0.4.0', changelog('@soldy-ui/vue', '0.4.0', [])),
+			pkg('@soxa-ui/core', '0.4.0', changelog('@soxa-ui/core', '0.4.0', many)),
+			pkg('@soxa-ui/vue', '0.4.0', changelog('@soxa-ui/vue', '0.4.0', [])),
 			pkg(
-				'@soldy-ui/theme-oren',
+				'@soxa-ui/theme-oren',
 				'0.3.1',
-				changelog('@soldy-ui/theme-oren', '0.3.1', ['A look']),
+				changelog('@soxa-ui/theme-oren', '0.3.1', ['A look']),
 			),
 		]
 
@@ -272,8 +272,8 @@ describe('заметки выпуска', () => {
 			[
 				'What changed is in the changelogs of the packages:',
 				'',
-				`- [@soldy-ui/core](${LINKS}/packages/core/CHANGELOG.md)`,
-				`- [@soldy-ui/theme-oren@0.3.1](${LINKS}/packages/theme-oren/CHANGELOG.md)`,
+				`- [@soxa-ui/core](${LINKS}/packages/core/CHANGELOG.md)`,
+				`- [@soxa-ui/theme-oren@0.3.1](${LINKS}/packages/theme-oren/CHANGELOG.md)`,
 				'',
 			].join('\n'),
 		)
@@ -281,7 +281,7 @@ describe('заметки выпуска', () => {
 
 	it('пунктов нет ни у кого — так и сказано', () => {
 		const packages = [
-			pkg('@soldy-ui/core', '0.4.0', CORE_CHANGELOG.replace(/- [0-9a-f]{7}: .*/g, '')),
+			pkg('@soxa-ui/core', '0.4.0', CORE_CHANGELOG.replace(/- [0-9a-f]{7}: .*/g, '')),
 		]
 
 		expect(notesOf(packages, SHARED, LINKS)).toBe('No changes in the packages.\n')
@@ -295,15 +295,15 @@ describe('пакеты репозитория', () => {
 	it('в npm уходят библиотека, темы и иконки, стенд — нет', () => {
 		expect(names).toEqual(
 			expect.arrayContaining([
-				'@soldy-ui/core',
-				'@soldy-ui/vue',
-				'@soldy-ui/theme-base',
-				'@soldy-ui/theme-oren',
-				'@soldy-ui/icons-lucide',
-				'@soldy-ui/icons-material',
+				'@soxa-ui/core',
+				'@soxa-ui/vue',
+				'@soxa-ui/theme-base',
+				'@soxa-ui/theme-oren',
+				'@soxa-ui/icons-lucide',
+				'@soxa-ui/icons-material',
 			]),
 		)
-		expect(names.filter((name) => name.startsWith('@soldy-ui/playground'))).toEqual([])
+		expect(names.filter((name) => name.startsWith('@soxa-ui/playground'))).toEqual([])
 	})
 
 	it('группа общей версии — пакеты, которые уходят в npm', () => {

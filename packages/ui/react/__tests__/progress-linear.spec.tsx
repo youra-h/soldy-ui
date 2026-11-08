@@ -12,8 +12,8 @@
 
 import { describe, it, expect } from 'vitest'
 import { act } from 'react'
-import { TProgressLinear } from '@soldy-ui/core'
-import { ProgressLinear } from '@soldy-ui/react'
+import { TProgressLinear } from '@soxa-ui/core'
+import { ProgressLinear } from '@soxa-ui/react'
 import { mount } from './mount'
 
 /** Доля готового на корне; пустая строка — переменной нет. */

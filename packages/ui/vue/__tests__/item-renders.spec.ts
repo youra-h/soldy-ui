@@ -27,7 +27,7 @@ import {
 	Select,
 	Tabs,
 	Tags,
-} from '@soldy-ui/vue'
+} from '@soxa-ui/vue'
 
 const nextFrame = () => new Promise((resolve) => requestAnimationFrame(resolve))
 

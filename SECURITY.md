@@ -2,7 +2,7 @@
 
 ## Supported versions
 
-Soldy UI is in early development (`0.x`). All `@soldy-ui/*` packages share one version, and only
+Soxa UI is in early development (`0.x`). All `@soxa-ui/*` packages share one version, and only
 the latest release receives security fixes.
 
 | Version        | Supported |
@@ -15,7 +15,7 @@ the latest release receives security fixes.
 **Please do not report security vulnerabilities in public issues, pull requests or discussions.**
 
 Report them privately through GitHub:
-[open a private vulnerability report](https://github.com/youra-h/soldy-ui/security/advisories/new)
+[open a private vulnerability report](https://github.com/youra-h/soxa-ui/security/advisories/new)
 (the **Security** tab → **Report a vulnerability**). The report is visible only to the maintainers.
 
 Please include:
@@ -36,9 +36,9 @@ Please give us a reasonable time to release the fix before disclosing the issue 
 
 ## Scope
 
-In scope: the published `@soldy-ui/*` packages — the core, plugins, setup, framework adapters,
+In scope: the published `@soxa-ui/*` packages — the core, plugins, setup, framework adapters,
 themes and icon packs.
 
 Out of scope: the playground and the tools in `tools/`, which are not published, and
-vulnerabilities in third-party dependencies that are not exploitable through Soldy UI (report
+vulnerabilities in third-party dependencies that are not exploitable through Soxa UI (report
 those upstream).

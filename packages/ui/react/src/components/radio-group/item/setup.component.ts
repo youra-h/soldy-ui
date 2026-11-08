@@ -2,7 +2,7 @@ import {
 	RadioGroupCollectionItemDescriptor,
 	RadioGroupItemDescriptor,
 	TCollectionItemExtension,
-} from '@soldy-ui/setup'
+} from '@soxa-ui/setup'
 import { useAdapter, useAdapterContext, useCollectionAdapter } from '../../../adapter'
 import type { RadioGroupItemProps } from './base.component'
 

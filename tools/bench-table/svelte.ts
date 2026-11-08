@@ -11,7 +11,7 @@ import { page } from './libs/svelte/page.svelte'
  */
 type TLib = { default: Component<{ rows: TRec[] }>; sel: TSel }
 const libs: Record<string, () => Promise<TLib>> = {
-	soldy: () => import('./libs/svelte/soldy.svelte'),
+	soxa: () => import('./libs/svelte/soxa.svelte'),
 	plain: () => import('./libs/svelte/plain.svelte'),
 	tanstack: () => import('./libs/svelte/tanstack.svelte'),
 	shadcn: () => import('./libs/svelte/shadcn.svelte'),

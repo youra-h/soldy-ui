@@ -15,8 +15,8 @@
  */
 
 import { describe, it, expect } from 'vitest'
-import { TDragAndDrop, TDragAndDropMoveEvent, TListBox, createEngineListBox } from '@soldy-ui/core'
-import type { IDragAndDropMove, TListBoxCollection } from '@soldy-ui/core'
+import { TDragAndDrop, TDragAndDropMoveEvent, TListBox, createEngineListBox } from '@soxa-ui/core'
+import type { IDragAndDropMove, TListBoxCollection } from '@soxa-ui/core'
 
 /** Обёртка и список из четырёх элементов. */
 function setup() {

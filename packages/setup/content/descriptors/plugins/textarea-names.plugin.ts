@@ -8,7 +8,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TTextareaNamesPlugin } from '@soldy-ui/plugins'
+import { TTextareaNamesPlugin } from '@soxa-ui/plugins'
 
 export const TextareaNamesPluginDescriptor = definePlugin({
 	ctor: TTextareaNamesPlugin,

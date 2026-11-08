@@ -1,5 +1,5 @@
 import type { HTMLAttributes, InputHTMLAttributes, ReactNode, TextareaHTMLAttributes } from 'react'
-import type { IEntity } from '@soldy-ui/core'
+import type { IEntity } from '@soxa-ui/core'
 import type {
 	IComponentDescriptor,
 	DescriptorAllProps,
@@ -8,7 +8,7 @@ import type {
 	DescriptorSlots,
 	TContractOf,
 	TSlotProps,
-} from '@soldy-ui/setup'
+} from '@soxa-ui/setup'
 import type { TConsumerRef } from './adapter'
 
 /** Событийные пропсы компонента из дескриптора (core + плагины). */

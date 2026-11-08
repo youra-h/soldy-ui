@@ -1,5 +1,5 @@
-import { batchOf, drawOf } from '@soldy-ui/core'
-import type { IControl, TCollectionEngine, TComponentViewEvents, TEventSink } from '@soldy-ui/core'
+import { batchOf, drawOf } from '@soxa-ui/core'
+import type { IControl, TCollectionEngine, TComponentViewEvents, TEventSink } from '@soxa-ui/core'
 import { TBasePlugin } from '../../../base'
 import type { IListenable, IPluginContext } from '../../../base'
 import { TElementPlugin } from '../../element'
@@ -128,7 +128,7 @@ export abstract class TListNavigationPlugin<
 
 	/**
 	 * Эмит собственных событий навигации — без приведения `this.events` к
-	 * конкретной карте (см. `TEventSink` в `@soldy-ui/core`).
+	 * конкретной карте (см. `TEventSink` в `@soxa-ui/core`).
 	 *
 	 * Перекрывает сток базы, потому что у `TBasePlugin._sink` карта
 	 * `TPluginEvents`, а `change:highlight` объявлен здесь: через базовый сток

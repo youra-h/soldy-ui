@@ -1,6 +1,6 @@
 import { createSignal, type Accessor, type JSX } from 'solid-js'
-import { enUS, type TLocale } from '@soldy-ui/plugins'
-import { LocaleProvider } from '@soldy-ui/solid'
+import { enUS, type TLocale } from '@soxa-ui/plugins'
+import { LocaleProvider } from '@soxa-ui/solid'
 import type { TPreview, TPreviewProps } from './previews'
 import type { TParts } from './events'
 

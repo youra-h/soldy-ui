@@ -19,14 +19,14 @@
  */
 
 import { describe, it, expect, expectTypeOf, afterEach } from 'vitest'
-import { TRadioGroup, createEngineRadioGroup, type TValuePayload } from '@soldy-ui/core'
-import { RadioGroupDescriptor, RadioGroupItemDescriptor } from '@soldy-ui/setup'
+import { TRadioGroup, createEngineRadioGroup, type TValuePayload } from '@soxa-ui/core'
+import { RadioGroupDescriptor, RadioGroupItemDescriptor } from '@soxa-ui/setup'
 import {
 	TRadioGroupElement,
 	TRadioGroupItemElement,
 	type TRadioGroupElementProps,
 	type TRadioGroupItemElementProps,
-} from '@soldy-ui/webc'
+} from '@soxa-ui/webc'
 import { radioGroupTemplate } from '../src/components/radio-group/radio-group.template'
 import { radioGroupItemTemplate } from '../src/components/radio-group/item/radio-group-item.template'
 import { bareContext } from './template-context'

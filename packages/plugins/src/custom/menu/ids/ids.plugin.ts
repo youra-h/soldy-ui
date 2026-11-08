@@ -1,4 +1,4 @@
-import type { IMenu } from '@soldy-ui/core'
+import type { IMenu } from '@soxa-ui/core'
 import { TBasePlugin } from '../../../base'
 import type { IPluginContext } from '../../../base'
 

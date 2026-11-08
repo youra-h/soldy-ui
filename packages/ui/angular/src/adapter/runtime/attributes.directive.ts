@@ -1,5 +1,5 @@
 import { Directive, ElementRef, Input, inject } from '@angular/core'
-import type { TAttributesMap } from '@soldy-ui/core'
+import type { TAttributesMap } from '@soxa-ui/core'
 import { TForwardRegistry } from '../attrs/registry'
 import { TElementAttributes, attributesOf } from './root-attributes'
 

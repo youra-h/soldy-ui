@@ -29,8 +29,8 @@ import {
 	type TSelectionMode,
 	type TTagsCollection,
 	type TTagsOverflow,
-} from '@soldy-ui/core'
-import { TagsDescriptor, TagsItemDescriptor } from '@soldy-ui/setup'
+} from '@soxa-ui/core'
+import { TagsDescriptor, TagsItemDescriptor } from '@soxa-ui/setup'
 import {
 	TTagsElement,
 	TTagsItemElement,
@@ -38,7 +38,7 @@ import {
 	type TItemRowElementProps,
 	type TTagsElementProps,
 	type TTagsItemElementProps,
-} from '@soldy-ui/webc'
+} from '@soxa-ui/webc'
 import { defineElement } from '../src/adapter/runtime/defineElement'
 import { type ITemplate } from '../src/adapter/template/types'
 import { tagsTemplate } from '../src/components/tags/tags.template'

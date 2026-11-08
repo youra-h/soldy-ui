@@ -35,9 +35,9 @@ import {
 	type VNode,
 	type VNodeRef,
 } from 'vue'
-import { TDialog, TDrawer, TFrame, TToasts, type TTableColumnSource } from '@soldy-ui/core'
-import { ruRU } from '@soldy-ui/plugins'
-import * as SoldyVue from '@soldy-ui/vue'
+import { TDialog, TDrawer, TFrame, TToasts, type TTableColumnSource } from '@soxa-ui/core'
+import { ruRU } from '@soxa-ui/plugins'
+import * as SoxaVue from '@soxa-ui/vue'
 import {
 	Accordion,
 	AccordionItem,
@@ -86,7 +86,7 @@ import {
 	Textarea,
 	Toasts,
 	Tooltip,
-} from '@soldy-ui/vue'
+} from '@soxa-ui/vue'
 import ButtonTemplate from '../src/components/button/Button.vue'
 
 const nextFrame = () => new Promise((resolve) => requestAnimationFrame(resolve))
@@ -560,7 +560,7 @@ describe('экземпляр закрыт: свойства Vue — да, при
 })
 
 /** Экспорты пакета-значения: компоненты, функции и константы адаптера. */
-type TPackage = typeof SoldyVue
+type TPackage = typeof SoxaVue
 
 /** Экземпляры компонентов пакета: у экспорта есть конструктор, у экземпляра — `$props`. */
 type TPackageInstances = {

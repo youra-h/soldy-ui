@@ -8,7 +8,7 @@
     "outDir": "dist",
     "rootDir": "src",
     "paths": {
-      "@soldy-ui/core": ["./src"]
+      "@soxa-ui/core": ["./src"]
     }
   },
   "include": ["src/**/*"]

@@ -16,9 +16,9 @@
 import { describe, it, expect } from 'vitest'
 import { Component, signal } from '@angular/core'
 import { TestBed } from '@angular/core/testing'
-import { TIcon } from '@soldy-ui/core'
-import { getIcon } from '@soldy-ui/setup'
-import { RoleIconDirective, TIconComponent } from '@soldy-ui/angular'
+import { TIcon } from '@soxa-ui/core'
+import { getIcon } from '@soxa-ui/setup'
+import { RoleIconDirective, TIconComponent } from '@soxa-ui/angular'
 import { findIn, mountHost, nextFrame } from './mount'
 
 /** Пространство имён SVG: в нём документ разбирает рисунок иконки. */

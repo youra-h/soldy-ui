@@ -4,7 +4,7 @@
  * docs/architecture.md, Layer 8d, «Коллекция».
  */
 
-import type { IRadioGroupItem, TRadioGroupItemCollectionFacade } from '@soldy-ui/core'
+import type { IRadioGroupItem, TRadioGroupItemCollectionFacade } from '@soxa-ui/core'
 import { bind, ownerAttributes, type ITemplate } from '../../../adapter'
 
 const fields = new WeakMap<HTMLElement, HTMLInputElement>()

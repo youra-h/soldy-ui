@@ -17,7 +17,7 @@ import type { TImportsOf } from './client-directive.ts'
  */
 export function clientDirective(): Plugin {
 	return {
-		name: 'soldy:client-directive',
+		name: 'soxa:client-directive',
 		enforce: 'post',
 		renderChunk(code, chunk, _options, { chunks }) {
 			const importsOf: TImportsOf = (module) => {

@@ -9,7 +9,7 @@
  */
 
 import type { EnvironmentProviders } from '@angular/core'
-import { provideAttrs } from '@soldy-ui/angular'
+import { provideAttrs } from '@soxa-ui/angular'
 
 const providers: EnvironmentProviders[] = [provideAttrs()]
 

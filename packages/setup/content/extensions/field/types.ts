@@ -3,8 +3,8 @@
  * связка видит контрол, и опции расширений.
  */
 
-import type { IField, TAria, TControlEvents } from '@soldy-ui/core'
-import type { IListenable, TFieldIdsPlugin } from '@soldy-ui/plugins'
+import type { IField, TAria, TControlEvents } from '@soxa-ui/core'
+import type { IListenable, TFieldIdsPlugin } from '@soxa-ui/plugins'
 import type { TElevatorFactory } from '../../../protected/adapter/elevator'
 
 /**

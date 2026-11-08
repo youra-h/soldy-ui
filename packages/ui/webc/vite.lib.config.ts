@@ -2,7 +2,7 @@
 import { libConfig } from '../../../tools/vite/lib.config.ts'
 
 /**
- * Библиотечная сборка @soldy-ui/webc: Custom Elements на headless-моделях ядра.
+ * Библиотечная сборка @soxa-ui/webc: Custom Elements на headless-моделях ядра.
  *
  * Фреймворка у пакета нет — только TS и DOM, поэтому плагинов нет. Сверх
  * соседей по скоупу внешний — полифил встроенных элементов: он ставит глобальный
@@ -11,10 +11,10 @@ import { libConfig } from '../../../tools/vite/lib.config.ts'
  * `tsc -p tsconfig.build.json` вторым шагом скрипта `build`.
  */
 export default libConfig({
-	name: '@soldy-ui/webc',
+	name: '@soxa-ui/webc',
 	root: import.meta.dirname,
 	entry: 'src/index.ts',
-	// The entries of the elements (`@soldy-ui/webc/button`) are entries of the
+	// The entries of the elements (`@soxa-ui/webc/button`) are entries of the
 	// build: the modules of the root, each keeping every export of its own
 	subpaths: true,
 	external: ['@ungap/custom-elements'],

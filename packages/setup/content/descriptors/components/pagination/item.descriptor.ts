@@ -15,7 +15,7 @@
  */
 
 import { defineComponent, defineDescriptor, defineType } from '../../../../protected/define'
-import { TPaginationItem } from '@soldy-ui/core'
+import { TPaginationItem } from '@soxa-ui/core'
 import { OWNER_STYLE_PROPS, StylableDescriptor } from '../stylable.descriptor'
 
 export const PaginationItemDescriptor = defineDescriptor(() =>

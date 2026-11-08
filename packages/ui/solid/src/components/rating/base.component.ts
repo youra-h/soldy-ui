@@ -1,5 +1,5 @@
-import type { IRating } from '@soldy-ui/core'
-import type { RatingDescriptor } from '@soldy-ui/setup'
+import type { IRating } from '@soxa-ui/core'
+import type { RatingDescriptor } from '@soxa-ui/setup'
 import type { EventProps, UseDomProps } from '../../types'
 
 /** События слоя Rating (core + плагины), выведены из дескриптора автоматически. */

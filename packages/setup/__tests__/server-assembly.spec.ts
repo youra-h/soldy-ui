@@ -39,8 +39,8 @@ import {
 	TSelectKeyboardPlugin,
 	TTabsActiveTabPlugin,
 	TTextareaAutoresizePlugin,
-} from '@soldy-ui/plugins'
-import { FRAME_LAYER_ATTRIBUTE, menuOf } from '@soldy-ui/core'
+} from '@soxa-ui/plugins'
+import { FRAME_LAYER_ATTRIBUTE, menuOf } from '@soxa-ui/core'
 import {
 	CalendarCollectionDescriptor,
 	CalendarDescriptor,

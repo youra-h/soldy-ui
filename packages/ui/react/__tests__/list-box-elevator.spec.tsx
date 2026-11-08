@@ -24,7 +24,7 @@ import { describe, it, expect, vi } from 'vitest'
 import { Activity, StrictMode, act, type ReactElement, type ReactNode } from 'react'
 import { hydrateRoot } from 'react-dom/client'
 import { renderToString } from 'react-dom/server'
-import { ListBox } from '@soldy-ui/react'
+import { ListBox } from '@soxa-ui/react'
 import { mount, track } from './mount'
 
 /** Движок так, как его видит тест: состав элементов по значениям. */

@@ -15,5 +15,5 @@ import type { IItemGroupLink } from './types'
  * выше до них не доходит.
  */
 export const ITEM_GROUP_ELEVATOR: IElevatorKey<IItemGroupLink | null> = {
-	name: 'soldy:item-group',
+	name: 'soxa:item-group',
 }

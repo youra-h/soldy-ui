@@ -4,8 +4,8 @@
  * с панелями. Модуль регистрирует таб и панель. docs/architecture.md, Layer 8d, «Коллекция».
  */
 
-import { TabsCollectionDescriptor, TabsDescriptor } from '@soldy-ui/setup'
-import type { ITabs, TTabsCollectionFacade } from '@soldy-ui/core'
+import { TabsCollectionDescriptor, TabsDescriptor } from '@soxa-ui/setup'
+import type { ITabs, TTabsCollectionFacade } from '@soxa-ui/core'
 import { ElementBase, defineElement } from '../../adapter'
 import type { TElementClassOf, TElementType } from '../../adapter'
 import { TTabsContentElement } from './content'

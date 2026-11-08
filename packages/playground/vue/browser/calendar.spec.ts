@@ -23,12 +23,12 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { render, cleanup } from './render'
 import { commands, page, userEvent } from 'vitest/browser'
 import { defineComponent, h, nextTick } from 'vue'
-import { Button, Calendar, LocaleProvider } from '@soldy-ui/vue'
-import { createEngineCalendar } from '@soldy-ui/core'
-import type { TSwipe } from '@soldy-ui/core'
-import { enUS, extendLocale } from '@soldy-ui/plugins'
-import type { TLocale } from '@soldy-ui/plugins'
-import { COMPONENT_SIZES } from '@soldy-ui/playground-shared'
+import { Button, Calendar, LocaleProvider } from '@soxa-ui/vue'
+import { createEngineCalendar } from '@soxa-ui/core'
+import type { TSwipe } from '@soxa-ui/core'
+import { enUS, extendLocale } from '@soxa-ui/plugins'
+import type { TLocale } from '@soxa-ui/plugins'
+import { COMPONENT_SIZES } from '@soxa-ui/playground-shared'
 import { loadHost } from '../src/hosts'
 
 import { find, lightness, outlined, pixel, settled, style, systemColor } from './colors'
@@ -37,7 +37,7 @@ import { forcedColors } from './media'
 import { forcedColorsRepaint } from './engine'
 import { expectHidesWhenFaded, whileLeaving } from './transitions'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 /** Tolerance for subpixel rounding of coordinates. */
 const EPSILON = 0.5

@@ -2,8 +2,8 @@
  * Contracts of the adapter context, its options and extension constructors.
  */
 
-import type { TEvented } from '@soldy-ui/core'
-import type { ILocaleSource, IPluginBundle } from '@soldy-ui/plugins'
+import type { TEvented } from '@soxa-ui/core'
+import type { ILocaleSource, IPluginBundle } from '@soxa-ui/plugins'
 import type { IComponentContract, IComponentDescriptor, IPluginsContract } from '../../define'
 import type { IAdapterProfile } from '../../naming'
 import type { TExchange } from '../exchange/exchange.class'

@@ -13,8 +13,8 @@
  */
 
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
-import { TTable } from '@soldy-ui/core'
-import { TElementPlugin, TPluginBundle } from '@soldy-ui/plugins'
+import { TTable } from '@soxa-ui/core'
+import { TElementPlugin, TPluginBundle } from '@soxa-ui/plugins'
 import { TTableHeadPlugin } from '../setup'
 import { expectObserved, resize, stubResizeObserver } from './resize-observer'
 

@@ -22,17 +22,17 @@
 import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { render, cleanup } from './render'
 import { defineComponent, h } from 'vue'
-import { TProgressLinear } from '@soldy-ui/core'
-import type { IProgressLinearProps } from '@soldy-ui/core'
-import { ProgressLinear } from '@soldy-ui/vue'
-import { COMPONENT_SIZES } from '@soldy-ui/playground-shared'
+import { TProgressLinear } from '@soxa-ui/core'
+import type { IProgressLinearProps } from '@soxa-ui/core'
+import { ProgressLinear } from '@soxa-ui/vue'
+import { COMPONENT_SIZES } from '@soxa-ui/playground-shared'
 
 import { find, pixel, systemColor } from './colors'
 import { DIRECTION_CASES, setDir, sidesOf, type TLine } from './directions'
 import { forcedColors, reducedMotion } from './media'
 import { animatedProperties, settled, transitionEvents, transitionRuns } from './transitions'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 /** Допуск на субпиксельное округление длины, px. */
 const EPSILON = 0.5

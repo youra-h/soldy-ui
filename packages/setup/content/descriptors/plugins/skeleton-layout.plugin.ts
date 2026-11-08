@@ -5,7 +5,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TSkeletonLayoutPlugin } from '@soldy-ui/plugins'
+import { TSkeletonLayoutPlugin } from '@soxa-ui/plugins'
 
 export const SkeletonLayoutPluginDescriptor = definePlugin({
 	ctor: TSkeletonLayoutPlugin,

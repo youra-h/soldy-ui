@@ -3,7 +3,7 @@ import {
 	MenuRadioItemDescriptor,
 	TCollectionItemExtension,
 	TMenuRadioItemExtension,
-} from '@soldy-ui/setup'
+} from '@soxa-ui/setup'
 import { useAdapter, useAdapterContext, useCollectionAdapter } from '../../../adapter'
 import type { MenuRadioItemProps } from './base.component'
 

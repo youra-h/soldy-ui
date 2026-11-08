@@ -20,11 +20,11 @@ import { describe, it, expect, beforeEach } from 'vitest'
 import { render } from './render'
 import { userEvent } from 'vitest/browser'
 import { defineComponent, h } from 'vue'
-import { Tags } from '@soldy-ui/vue'
+import { Tags } from '@soxa-ui/vue'
 
 import { expectRingInsideHorizontally, expectRingInsideVertically } from './focus-ring'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 /** Тегов заведомо больше, чем влезает в узкий ряд. */
 const TAGS = ['Москва', 'Санкт-Петербург', 'Екатеринбург', 'Новосибирск', 'Владивосток']

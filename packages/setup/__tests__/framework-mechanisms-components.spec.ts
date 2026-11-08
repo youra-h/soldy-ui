@@ -7,7 +7,7 @@ import { join, resolve, relative } from 'node:path'
  * (см. AGENTS.md). В `packages/ui/<fw>/src/components/**` не должно быть
  * внутренних механизмов реактивности/жизненного цикла фреймворка — они живут
  * только в `src/adapter/**`. Vue стережёт eslint-блок
- * `soldy/vue-components-no-framework`; здесь — Solid, Svelte, Angular и Web
+ * `soxa/vue-components-no-framework`; здесь — Solid, Svelte, Angular и Web
  * Components, для которых такого блока нет.
  *
  * Сканируется исходный текст файлов `src/components/**` каждого пакета на
@@ -106,7 +106,7 @@ const GUARDS: TGuard[] = [
 			// Сборка мимо `createSolidAdapterContext` теряет id монтирования
 			// (`createUniqueId`) и локаль поддерева — как мимо
 			// `createVueAdapterContext` у Vue
-			if (importedNames(source, /^@soldy-ui\/setup$/).has('createAdapterContext')) {
+			if (importedNames(source, /^@soxa-ui\/setup$/).has('createAdapterContext')) {
 				found.push('createAdapterContext (сборка — createSolidAdapterContext)')
 			}
 
@@ -127,7 +127,7 @@ const GUARDS: TGuard[] = [
 			// Сборка мимо `createSvelteAdapterContext` теряет id монтирования
 			// (`$props.id()`) и локаль поддерева — как мимо
 			// `createVueAdapterContext` у Vue
-			if (importedNames(source, /^@soldy-ui\/setup$/).has('createAdapterContext')) {
+			if (importedNames(source, /^@soxa-ui\/setup$/).has('createAdapterContext')) {
 				found.push('createAdapterContext (сборка — createSvelteAdapterContext)')
 			}
 
@@ -146,7 +146,7 @@ const GUARDS: TGuard[] = [
 
 			// Сборка мимо `createAngularAdapterContext` теряет локаль поддерева — как
 			// мимо `createVueAdapterContext` у Vue
-			if (importedNames(source, /^@soldy-ui\/setup$/).has('createAdapterContext')) {
+			if (importedNames(source, /^@soxa-ui\/setup$/).has('createAdapterContext')) {
 				found.push('createAdapterContext (сборка — createAngularAdapterContext)')
 			}
 
@@ -160,7 +160,7 @@ const GUARDS: TGuard[] = [
 		test(source) {
 			// Сборка мимо `createWebcAdapterContext` теряет локаль поддерева — как
 			// мимо `createVueAdapterContext` у Vue
-			return importedNames(source, /^@soldy-ui\/setup$/).has('createAdapterContext')
+			return importedNames(source, /^@soxa-ui\/setup$/).has('createAdapterContext')
 				? ['createAdapterContext (сборка — createWebcAdapterContext)']
 				: []
 		},

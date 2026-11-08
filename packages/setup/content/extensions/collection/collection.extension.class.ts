@@ -13,9 +13,9 @@
  * members are detached by the owner's `detach` (`TCollectionMembers`).
  */
 
-import { batchOf, plainOf } from '@soldy-ui/core'
-import type { TCollectionEngine } from '@soldy-ui/core'
-import { TCollectionBundlesPlugin } from '@soldy-ui/plugins'
+import { batchOf, plainOf } from '@soxa-ui/core'
+import type { TCollectionEngine } from '@soxa-ui/core'
+import { TCollectionBundlesPlugin } from '@soxa-ui/plugins'
 import { applyRegisteredExtensions } from '../../../protected/registry'
 import type { TInstanceContext } from '../../../protected/adapter/context'
 import type { TElevatorFactory } from '../../../protected/adapter/elevator'

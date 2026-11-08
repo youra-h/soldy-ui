@@ -6,7 +6,7 @@ type TItem = (typeof COLLECTION_ITEMS)[number]
 
 /**
  * Select with typing and filtering — `p-autocomplete` with its dropdown
- * button, as the soldy `editable` preview; the filter is the docs' one
+ * button, as the soxa `editable` preview; the filter is the docs' one
  * (`completeMethod`): options whose text contains the typed one.
  */
 @Component({

@@ -10,7 +10,7 @@
  */
 
 import { inject } from '@angular/core'
-import { TElevator } from '@soldy-ui/setup'
+import { TElevator } from '@soxa-ui/setup'
 import { ELEVATOR_LAYER } from './layer'
 
 export class TAngularElevator<T = unknown> extends TElevator<T> {

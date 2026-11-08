@@ -1,6 +1,6 @@
 # Установка
 
-Продакшен-сборка чистого проекта, в который пакеты soldy поставлены так, как их ставит
+Продакшен-сборка чистого проекта, в который пакеты soxa поставлены так, как их ставит
 пользователь: сколько весит начальная загрузка страницы, из каких пакетов она складывается и
 проходит ли бюджет инструмента проекта. Здесь — стенд и методика, общие для журналов платформ
 ([`angular.md`](angular.md)).
@@ -28,9 +28,9 @@ node summary.mjs <папка>/angular                      # сводка — с
   байт, как у бюджета: `"1MB"` — 1 000 000 байт. Рядом — gzip (9) каждого файла и оценка передачи
   из таблицы `ng build` (brotli).
 - **JS по пакетам** — `bytesInOutput` входов начальных выходов JS, сложенные по пакету из пути
-  `node_modules/<пакет>/…`: `@angular/*`, `@soldy-ui/angular`, `@soldy-ui/core`,
-  `@soldy-ui/setup`, `@soldy-ui/plugins`, поведение темы (`./setup` пакетов `@soldy-ui/theme-oren`
-  и `@soldy-ui/theme-base`), иконки (`@soldy-ui/icons-material`), `rxjs`; приложение — `src/`.
+  `node_modules/<пакет>/…`: `@angular/*`, `@soxa-ui/angular`, `@soxa-ui/core`,
+  `@soxa-ui/setup`, `@soxa-ui/plugins`, поведение темы (`./setup` пакетов `@soxa-ui/theme-oren`
+  и `@soxa-ui/theme-base`), иконки (`@soxa-ui/icons-material`), `rxjs`; приложение — `src/`.
   Лист темы — отдельный выход CSS, в сводку JS он не входит.
 
 ```js
@@ -64,7 +64,7 @@ const packageOf = (input) => {
 
   if (name === undefined) return input.startsWith('src/') ? 'приложение' : input
   if (name.startsWith('@angular/')) return '@angular/*'
-  if (/^@soldy-ui\/theme-/.test(name)) return 'поведение темы'
+  if (/^@soxa-ui\/theme-/.test(name)) return 'поведение темы'
 
   return name
 }

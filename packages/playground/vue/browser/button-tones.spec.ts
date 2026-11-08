@@ -19,11 +19,11 @@
 import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { render, cleanup } from './render'
 import { defineComponent, h, nextTick } from 'vue'
-import { Button, ListBox, ListBoxItem } from '@soldy-ui/vue'
+import { Button, ListBox, ListBoxItem } from '@soxa-ui/vue'
 
 import { find, settled, style } from './colors'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 const SCHEMES = ['oren', 'oren-dark'] as const
 

@@ -19,8 +19,8 @@
 
 import { describe, it, expect, afterEach, vi } from 'vitest'
 import { flushSync, type ComponentProps } from 'svelte'
-import { TEvented, TListBox, createEngineListBox } from '@soldy-ui/core'
-import type { TListBoxCollection } from '@soldy-ui/core'
+import { TEvented, TListBox, createEngineListBox } from '@soxa-ui/core'
+import type { TListBoxCollection } from '@soxa-ui/core'
 import EngineMove from './EngineMove.test.svelte'
 import { mount } from './mount'
 import { reactiveProps } from './reactive-props.svelte'

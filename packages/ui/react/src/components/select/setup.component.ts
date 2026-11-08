@@ -4,7 +4,7 @@ import {
 	TCollectionExtension,
 	TFieldControlExtension,
 	TVirtualCollectionExtension,
-} from '@soldy-ui/setup'
+} from '@soxa-ui/setup'
 import { useAdapter, useAdapterContext, useCollectionAdapter, useRootElement } from '../../adapter'
 import type { SelectProps } from './base.component'
 

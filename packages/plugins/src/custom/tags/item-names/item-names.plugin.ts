@@ -1,4 +1,4 @@
-import type { ITagsItem } from '@soldy-ui/core'
+import type { ITagsItem } from '@soxa-ui/core'
 import { formatName } from '../../../locale/locale'
 import { TNamesPlugin } from '../../../locale/names.plugin'
 import type { TTranslations } from '../../../locale/types'

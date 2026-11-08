@@ -13,8 +13,8 @@
  */
 
 import { describe, it, expect, afterEach, vi } from 'vitest'
-import { TRating } from '@soldy-ui/core'
-import type { IRatingProps } from '@soldy-ui/core'
+import { TRating } from '@soxa-ui/core'
+import type { IRatingProps } from '@soxa-ui/core'
 import {
 	TElementPlugin,
 	TPluginBundle,

@@ -5,7 +5,7 @@
 	 * компонента, новое значение — новый элемент. Смена `items` или `list` в
 	 * `reactiveProps` — перерисовка родителя.
 	 */
-	import { ListBox, type ListBoxItemProps, type ListBoxProps } from '@soldy-ui/svelte'
+	import { ListBox, type ListBoxItemProps, type ListBoxProps } from '@soxa-ui/svelte'
 
 	type THarnessProps = {
 		/** Пропсы списка. */

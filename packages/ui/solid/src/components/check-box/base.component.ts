@@ -1,5 +1,5 @@
-import type { ICheckBox } from '@soldy-ui/core'
-import type { CheckBoxDescriptor } from '@soldy-ui/setup'
+import type { ICheckBox } from '@soxa-ui/core'
+import type { CheckBoxDescriptor } from '@soxa-ui/setup'
 import type { EventProps, TDomAttributes, TFieldAttributes, UseDomProps } from '../../types'
 
 /** События слоя CheckBox (core + плагины), выведены из дескриптора автоматически. */

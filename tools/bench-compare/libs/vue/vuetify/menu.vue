@@ -6,7 +6,7 @@ import { VList, VListItem, VListSubheader } from 'vuetify/components/VList'
 import { VMenu } from 'vuetify/components/VMenu'
 
 /**
- * The soldy menu preview in Vuetify: `VMenu` with a `VList`. Vuetify has no
+ * The soxa menu preview in Vuetify: `VMenu` with a `VList`. Vuetify has no
  * checkbox or radio items: they are list items with `role`, a mark and the
  * state kept by the page; a submenu is a nested `VMenu` on its item — the
  * way the Vuetify docs build them.

@@ -11,7 +11,7 @@
  */
 
 import { describe, it, expect } from 'vitest'
-import { Skeleton } from '@soldy-ui/react'
+import { Skeleton } from '@soxa-ui/react'
 import { mount } from './mount'
 
 const variantClasses = (el: HTMLElement) =>

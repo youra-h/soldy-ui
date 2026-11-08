@@ -8,7 +8,7 @@
  * (`toastSample`).
  */
 
-import type { IToastOptions, TToastsItemType } from '@soldy-ui/core'
+import type { IToastOptions, TToastsItemType } from '@soxa-ui/core'
 
 /** Образец тоста: что он сообщает и есть ли у него своё содержимое — кнопка «Отменить». */
 export type TToastSample = {

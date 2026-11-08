@@ -2,7 +2,7 @@ import {
 	PaginationCollectionDescriptor,
 	PaginationDescriptor,
 	TCollectionExtension,
-} from '@soldy-ui/setup'
+} from '@soxa-ui/setup'
 import { useAdapter, useAdapterContext, useCollectionAdapter } from '../../adapter'
 import type { PaginationProps } from './base.component'
 

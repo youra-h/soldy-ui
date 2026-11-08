@@ -1,7 +1,7 @@
 import { TBasePlugin } from '../../base'
 import type { IPluginContext } from '../../base'
 import { TElementPlugin } from '../element'
-import type { IComponentView } from '@soldy-ui/core'
+import type { IComponentView } from '@soxa-ui/core'
 
 /**
  * Reports component availability through IComponentView.ready: the instance

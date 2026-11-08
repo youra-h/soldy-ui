@@ -1,4 +1,4 @@
-import { ProgressLinearDescriptor } from '@soldy-ui/setup'
+import { ProgressLinearDescriptor } from '@soxa-ui/setup'
 import { createSolidAdapterContext, useAdapter } from '../../adapter'
 import type { ProgressLinearProps } from './base.component'
 

@@ -25,9 +25,9 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { render, cleanup } from './render'
 import { userEvent } from 'vitest/browser'
 import { defineComponent, h, nextTick, ref, type VNode } from 'vue'
-import { createEngineTable, createEngineToasts } from '@soldy-ui/core'
-import { useMotion } from '@soldy-ui/plugins'
-import type { TMotionMode } from '@soldy-ui/plugins'
+import { createEngineTable, createEngineToasts } from '@soxa-ui/core'
+import { useMotion } from '@soxa-ui/plugins'
+import type { TMotionMode } from '@soxa-ui/plugins'
 import {
 	Accordion,
 	AccordionItem,
@@ -50,12 +50,12 @@ import {
 	Tabs,
 	TabsItem,
 	Toasts,
-} from '@soldy-ui/vue'
+} from '@soxa-ui/vue'
 
 import { reducedMotion } from './media'
 import { settled } from './transitions'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 const nextFrame = () => new Promise<void>((resolve) => requestAnimationFrame(() => resolve()))
 

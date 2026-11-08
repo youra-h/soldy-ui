@@ -175,7 +175,7 @@ export type TAttributeLayer = (typeof ATTRIBUTE_LAYERS)[number]
  * `WeakMap` растёт до самого большого числа элементов разом (ячеек таблицы) и
  * не сжимается, когда они уходят.
  */
-const LAID_OUT = Symbol('soldy.laidOut')
+const LAID_OUT = Symbol('soxa.laidOut')
 
 /**
  * Атрибуты элемента от всех, кто на него пишет, — одной памятью: две раскладки

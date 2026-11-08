@@ -1,4 +1,4 @@
-import { InteractiveDescriptor } from '@soldy-ui/setup'
+import { InteractiveDescriptor } from '@soxa-ui/setup'
 import { createSvelteAdapterContext, useAdapter } from '../../adapter'
 import type { InteractiveProps } from './base.component'
 

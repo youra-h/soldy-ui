@@ -1,6 +1,6 @@
 import { createRenderEffect, untrack, type JSX } from 'solid-js'
-import { TLocaleSource } from '@soldy-ui/plugins'
-import type { TLocale } from '@soldy-ui/plugins'
+import { TLocaleSource } from '@soxa-ui/plugins'
+import type { TLocale } from '@soxa-ui/plugins'
 import { LocaleContext } from './context'
 
 export type TLocaleProviderProps = {

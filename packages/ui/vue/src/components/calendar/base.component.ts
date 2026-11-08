@@ -1,7 +1,7 @@
 import { useEmits, useProps } from '../../adapter'
 import type { TEmits, TProps, UseProps } from '../../types/common'
-import { CalendarDescriptor, CalendarCollectionDescriptor } from '@soldy-ui/setup'
-import type { ICalendar } from '@soldy-ui/core'
+import { CalendarDescriptor, CalendarCollectionDescriptor } from '@soxa-ui/setup'
+import type { ICalendar } from '@soxa-ui/core'
 
 export const emitsCalendar: TEmits = [
 	...useEmits(CalendarDescriptor()),

@@ -1,7 +1,7 @@
 import { useEmits, useProps } from '../../adapter'
 import type { TEmits, TProps, UseProps } from '../../types/common'
-import { RatingDescriptor } from '@soldy-ui/setup'
-import type { IRating } from '@soldy-ui/core'
+import { RatingDescriptor } from '@soxa-ui/setup'
+import type { IRating } from '@soxa-ui/core'
 
 export const emitsRating: TEmits = useEmits(RatingDescriptor())
 

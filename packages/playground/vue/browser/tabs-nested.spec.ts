@@ -23,14 +23,14 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { render, cleanup } from './render'
 import { userEvent } from 'vitest/browser'
 import { defineComponent, h, type VNodeChild } from 'vue'
-import type { ITabsProps, TTabsOrientation, TTabsView } from '@soldy-ui/core'
-import { Tabs, TabsContent, TabsItem } from '@soldy-ui/vue'
-import { TABS_ALIGNMENTS, TABS_ORIENTATIONS, TABS_VIEWS } from '@soldy-ui/playground-shared'
+import type { ITabsProps, TTabsOrientation, TTabsView } from '@soxa-ui/core'
+import { Tabs, TabsContent, TabsItem } from '@soxa-ui/vue'
+import { TABS_ALIGNMENTS, TABS_ORIENTATIONS, TABS_VIEWS } from '@soxa-ui/playground-shared'
 
 import { find, style } from './colors'
 import { forcedColors } from './media'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 /** Оформление набора — всё, от чего тема рисует его вид. */
 type TTabsLook = Pick<ITabsProps, 'view' | 'orientation' | 'variant' | 'alignment' | 'position'>

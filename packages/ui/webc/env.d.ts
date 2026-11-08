@@ -1,3 +1,3 @@
 /// <reference types="vite/client" />
 
-declare module '@soldy-ui/theme-oren'
+declare module '@soxa-ui/theme-oren'

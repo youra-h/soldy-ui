@@ -38,7 +38,7 @@ import { describe, it, expect } from 'vitest'
 import { StrictMode } from 'react'
 import type { ReactElement } from 'react'
 import { queryObjects } from 'node:v8'
-import { ButtonDescriptor } from '@soldy-ui/setup'
+import { ButtonDescriptor } from '@soxa-ui/setup'
 import { useAdapter, useAdapterContext } from '../src/adapter/runtime'
 import { mount } from './mount'
 

@@ -7,7 +7,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TPopoverNamesPlugin } from '@soldy-ui/plugins'
+import { TPopoverNamesPlugin } from '@soxa-ui/plugins'
 
 export const PopoverNamesPluginDescriptor = definePlugin({
 	ctor: TPopoverNamesPlugin,

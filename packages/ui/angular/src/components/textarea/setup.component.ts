@@ -1,5 +1,5 @@
-import { TextareaDescriptor, TFieldControlExtension } from '@soldy-ui/setup'
-import type { ITextarea } from '@soldy-ui/core'
+import { TextareaDescriptor, TFieldControlExtension } from '@soxa-ui/setup'
+import type { ITextarea } from '@soxa-ui/core'
 import { AngularElevatorFactory, createAngularAdapterContext, useAdapter } from '../../adapter'
 import type { TBinding } from '../../adapter'
 

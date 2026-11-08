@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest'
-import { TPopover, isSwipeable, type TValuePayload } from '@soldy-ui/core'
+import { TPopover, isSwipeable, type TValuePayload } from '@soxa-ui/core'
 
 /**
  * Модель Popover: состояние панели и то, что из него следует для разметки.

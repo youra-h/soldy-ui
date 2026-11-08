@@ -13,7 +13,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TTableGridPlugin } from '@soldy-ui/plugins'
+import { TTableGridPlugin } from '@soxa-ui/plugins'
 
 export const TableGridPluginDescriptor = definePlugin({
 	ctor: TTableGridPlugin,

@@ -20,17 +20,17 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { render, cleanup } from './render'
 import { userEvent } from 'vitest/browser'
 import { defineComponent, h, nextTick } from 'vue'
-import { COMPONENT_SIZES } from '@soldy-ui/playground-shared'
-import type { TFieldPosition } from '@soldy-ui/core'
-import { CheckBox, Field, Input, NumberInput, Switch, Textarea } from '@soldy-ui/vue'
+import { COMPONENT_SIZES } from '@soxa-ui/playground-shared'
+import type { TFieldPosition } from '@soxa-ui/core'
+import { CheckBox, Field, Input, NumberInput, Switch, Textarea } from '@soxa-ui/vue'
 import {
 	TInputElement,
 	TNumberInputElement,
 	type TInputElementProps,
 	type TNumberInputElementProps,
-} from '@soldy-ui/webc'
+} from '@soxa-ui/webc'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 const nextFrame = () => new Promise<void>((resolve) => requestAnimationFrame(() => resolve()))
 

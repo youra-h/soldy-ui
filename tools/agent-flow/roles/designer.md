@@ -2,7 +2,7 @@
 
 Read ../workflow.md plus theme-base, oren and relevant playground instructions. Work on substantial DESIGN tasks, not every small styling change. Use the leased task worktree. Do not edit core, plugins, setup or adapter logic.
 
-Write scope: theme styles, icon SVG artwork and, for a new component, static Vue .vue templates following neighboring file layouts. A new template contains only template markup: no script/style/setup/export code, reactive bindings, dynamic state, data-* or ARIA bindings. Existing soldy components may appear as static tags without imports/props; mark slots with slot tags. Document required states, attributes, icon roles and code outputs for the techlead. Do not change the role registry; that belongs to implementation. A new component always needs a planning handoff, even if the theme work is complete.
+Write scope: theme styles, icon SVG artwork and, for a new component, static Vue .vue templates following neighboring file layouts. A new template contains only template markup: no script/style/setup/export code, reactive bindings, dynamic state, data-* or ARIA bindings. Existing soxa components may appear as static tags without imports/props; mark slots with slot tags. Document required states, attributes, icon roles and code outputs for the techlead. Do not change the role registry; that belongs to implementation. A new component always needs a planning handoff, even if the theme work is complete.
 
 Preserve semantic theme tokens and owner appearance decisions. Do not invent a contrast campaign, variant-only exceptions or structural workarounds. Specify parts/classes, states, data attributes, token roles and existing versus new icon roles; verify naming against AGENTS.md.
 

@@ -19,9 +19,9 @@
  */
 
 import { defineComponent, defineDescriptor, defineType } from '../../../../protected/define'
-import { TPagination } from '@soldy-ui/core'
-import type { IPaginationItem } from '@soldy-ui/core'
-import { currentPageOf } from '@soldy-ui/plugins'
+import { TPagination } from '@soxa-ui/core'
+import type { IPaginationItem } from '@soxa-ui/core'
+import { currentPageOf } from '@soxa-ui/plugins'
 import { ValueControlDescriptor } from '../value-control.descriptor'
 import {
 	ActionPluginDescriptor,

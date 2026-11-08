@@ -1,5 +1,5 @@
-import type { IRadioGroupItem } from '@soldy-ui/core'
-import type { RadioGroupCollectionItemDescriptor, RadioGroupItemDescriptor } from '@soldy-ui/setup'
+import type { IRadioGroupItem } from '@soxa-ui/core'
+import type { RadioGroupCollectionItemDescriptor, RadioGroupItemDescriptor } from '@soxa-ui/setup'
 import type { EventProps, TDomAttributes, TFieldAttributes, UseDomProps } from '../../../types'
 
 /** События радио — свои (ядро и плагины) и фасада: отметка и порядок. */

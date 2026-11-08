@@ -1,4 +1,4 @@
-import type { ICalendarItem } from '@soldy-ui/core'
+import type { ICalendarItem } from '@soxa-ui/core'
 
 /** Кнопка листания календаря: «предыдущий месяц» или «следующий». */
 export type TCalendarPager = 'prev' | 'next'

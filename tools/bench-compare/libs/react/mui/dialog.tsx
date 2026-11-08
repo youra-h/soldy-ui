@@ -6,7 +6,7 @@ import DialogContent from '@mui/material/DialogContent'
 import DialogTitle from '@mui/material/DialogTitle'
 import TextField from '@mui/material/TextField'
 
-/** A button opens a dialog with a field inside, as the soldy preview. */
+/** A button opens a dialog with a field inside, as the soxa preview. */
 export default function Page() {
 	const [open, setOpen] = useState(false)
 

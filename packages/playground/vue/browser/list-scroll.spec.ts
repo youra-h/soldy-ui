@@ -16,10 +16,10 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { render, cleanup } from './render'
 import { commands, userEvent } from 'vitest/browser'
 import { defineComponent, h, ref } from 'vue'
-import { Button, ListBox, Menu, Select } from '@soldy-ui/vue'
-import type { DescriptorSlots, MenuDescriptor } from '@soldy-ui/setup'
+import { Button, ListBox, Menu, Select } from '@soxa-ui/vue'
+import type { DescriptorSlots, MenuDescriptor } from '@soxa-ui/setup'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 type TTriggerScope = DescriptorSlots<typeof MenuDescriptor>['trigger']
 

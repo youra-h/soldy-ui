@@ -19,7 +19,7 @@ import {
 } from 'reka-ui'
 
 /**
- * The soldy menu preview in Reka: everything is the library's own part —
+ * The soxa menu preview in Reka: everything is the library's own part —
  * checkbox and radio items, group labels, submenus within submenus, a
  * disabled item. A destructive item and shortcuts are markup, as in shadcn-vue.
  */

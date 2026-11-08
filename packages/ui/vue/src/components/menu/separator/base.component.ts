@@ -1,7 +1,7 @@
 import { useEmits, useProps } from '../../../adapter'
 import type { TEmits, TProps, UseProps } from '../../../types/common'
-import { MenuSeparatorDescriptor } from '@soldy-ui/setup'
-import type { TMenuSeparator } from '@soldy-ui/core'
+import { MenuSeparatorDescriptor } from '@soxa-ui/setup'
+import type { TMenuSeparator } from '@soxa-ui/core'
 
 export const emitsMenuSeparator: TEmits = useEmits(MenuSeparatorDescriptor())
 

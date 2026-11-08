@@ -17,8 +17,8 @@
  */
 
 import { describe, it, expect, afterAll, afterEach, beforeAll, vi } from 'vitest'
-import { TTags } from '@soldy-ui/core'
-import type { TTagsOverflow } from '@soldy-ui/core'
+import { TTags } from '@soxa-ui/core'
+import type { TTagsOverflow } from '@soxa-ui/core'
 import { TElementPlugin, TPluginBundle, TTagsScrollPlugin } from '../src'
 import { nearestShift } from '../src/utils'
 import type { TInlineSpan } from '../src/utils'

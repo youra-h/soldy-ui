@@ -8,8 +8,8 @@
 import { describe, it, expect, afterEach } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { defineComponent, h, nextTick, ref } from 'vue'
-import { createEngineTabs } from '@soldy-ui/core'
-import { RadioGroup, Tabs, TabsItem, TabsContent, Tags } from '@soldy-ui/vue'
+import { createEngineTabs } from '@soxa-ui/core'
+import { RadioGroup, Tabs, TabsItem, TabsContent, Tags } from '@soxa-ui/vue'
 import Harness from './TabsContent.test.vue'
 
 const render = () => mount(Harness, { attachTo: document.body })

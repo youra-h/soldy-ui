@@ -17,9 +17,9 @@
 
 import { describe, it, expect, vi } from 'vitest'
 import { createSignal, type JSX } from 'solid-js'
-import { TTooltip, type TTooltipType } from '@soldy-ui/core'
-import type { DescriptorSlots, PopoverDescriptor, TooltipDescriptor } from '@soldy-ui/setup'
-import { Button, Popover, Tooltip, type TooltipProps } from '@soldy-ui/solid'
+import { TTooltip, type TTooltipType } from '@soxa-ui/core'
+import type { DescriptorSlots, PopoverDescriptor, TooltipDescriptor } from '@soxa-ui/setup'
+import { Button, Popover, Tooltip, type TooltipProps } from '@soxa-ui/solid'
 import { find, mount, nextFrame } from './mount'
 
 type TTriggerScope = DescriptorSlots<typeof TooltipDescriptor>['trigger']

@@ -1,5 +1,5 @@
-import type { ITable } from '@soldy-ui/core'
-import type { TableCollectionDescriptor, TableDescriptor } from '@soldy-ui/setup'
+import type { ITable } from '@soxa-ui/core'
+import type { TableCollectionDescriptor, TableDescriptor } from '@soxa-ui/setup'
 import type { EventProps, UseDomProps } from '../../types'
 
 export type TableEventProps = EventProps<typeof TableDescriptor> &

@@ -4,7 +4,7 @@ import { join, resolve, relative } from 'node:path'
 
 /**
  * Сторож: исходник ядра не импортирует в рантайме собственный пакет
- * (`@soldy-ui/core`).
+ * (`@soxa-ui/core`).
  *
  * Имя пакета ведёт в бочку `src/index.ts`, и такой импорт изнутри замыкает
  * цикл через все компоненты ядра: `base-item-extension.class.ts` брал
@@ -23,8 +23,7 @@ const ROOT = resolve(__dirname, '../../..')
 const SRC = resolve(__dirname, '../src')
 
 /** Импорт или реэкспорт из пакета ядра, кроме `import type` / `export type`. */
-const SELF_IMPORT =
-	/(?:^|\n)\s*(?:import|export)\s+(?!type\s)[^;]*?\bfrom\s+['"]@soldy-ui\/core['"]/
+const SELF_IMPORT = /(?:^|\n)\s*(?:import|export)\s+(?!type\s)[^;]*?\bfrom\s+['"]@soxa-ui\/core['"]/
 
 function collectSourceFiles(dir: string, files: string[] = []): string[] {
 	for (const name of readdirSync(dir)) {
@@ -43,15 +42,15 @@ function toRelative(file: string): string {
 
 describe('ядро не импортирует собственный пакет', () => {
 	it.each([
-		["import { TEvented } from '@soldy-ui/core'", true],
-		["export { TEvented } from '@soldy-ui/core'", true],
-		["import type { TEvented } from '@soldy-ui/core'", false],
+		["import { TEvented } from '@soxa-ui/core'", true],
+		["export { TEvented } from '@soxa-ui/core'", true],
+		["import type { TEvented } from '@soxa-ui/core'", false],
 		["import { TEvented } from '../../common/event'", false],
 	])('%s — %s', (source, expected) => {
 		expect(SELF_IMPORT.test(source)).toBe(expected)
 	})
 
-	it('в src нет рантайм-импорта из @soldy-ui/core', () => {
+	it('в src нет рантайм-импорта из @soxa-ui/core', () => {
 		const files = collectSourceFiles(SRC)
 
 		expect(files.length, 'не найдено ни одного исходника ядра').toBeGreaterThan(0)

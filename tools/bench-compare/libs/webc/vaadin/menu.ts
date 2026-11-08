@@ -2,7 +2,7 @@ import '@vaadin/menu-bar/vaadin-menu-bar.js'
 import { h } from '../dom'
 
 /**
- * The soldy menu preview in Vaadin: one root button of a menu bar whose
+ * The soxa menu preview in Vaadin: one root button of a menu bar whose
  * submenu holds the items. Checkable items are built in (`checked`); radio
  * items are checkable items the application keeps exclusive, group labels are
  * disabled items, shortcuts are a span in the item's component — as the

@@ -7,7 +7,7 @@
 
 import { describe, it, expect } from 'vitest'
 import { renderToString } from 'solid-js/web'
-import { CheckBox, Switch } from '@soldy-ui/solid'
+import { CheckBox, Switch } from '@soxa-ui/solid'
 
 /** Открывающий тег поля в серверной разметке, без меток гидратации. */
 function fieldOf(body: string): string {

@@ -11,8 +11,8 @@ import {
 	TCollectionExtension,
 	TCollectionItemExtension,
 	type DescriptorPluginOutputs,
-} from '@soldy-ui/setup'
-import type { IMenuSubmenu, TMenuCollectionFacade, TMenuItemCollectionFacade } from '@soldy-ui/core'
+} from '@soxa-ui/setup'
+import type { IMenuSubmenu, TMenuCollectionFacade, TMenuItemCollectionFacade } from '@soxa-ui/core'
 import {
 	createWebcAdapterContext,
 	joinBindings,

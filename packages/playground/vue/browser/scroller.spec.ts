@@ -18,12 +18,12 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { render, cleanup } from './render'
 import { userEvent } from 'vitest/browser'
 import { defineComponent, h } from 'vue'
-import { Scroller } from '@soldy-ui/vue'
+import { Scroller } from '@soxa-ui/vue'
 
 import { DIRECTION_CASES, pointing, setDir, sidesOf, type TLine } from './directions'
 import { expectClearOfFades, expectFocusedClearOfFades, fades } from './fades'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 /** Содержимое заведомо шире узкой ленты и заведомо уже широкой. */
 const ITEMS = ['Первый', 'Второй', 'Третий', 'Четвёртый', 'Пятый', 'Шестой']

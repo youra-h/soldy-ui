@@ -18,9 +18,9 @@
  */
 
 import { describe, it, expect, afterEach } from 'vitest'
-import { TCheckBox, createEngineAccordion } from '@soldy-ui/core'
-import { getIcon } from '@soldy-ui/setup'
-import { COLLECTION_ITEMS, TABLE_ROWS, TABLE_SCROLL_ROWS } from '@soldy-ui/playground-shared'
+import { TCheckBox, createEngineAccordion } from '@soxa-ui/core'
+import { getIcon } from '@soxa-ui/setup'
+import { COLLECTION_ITEMS, TABLE_ROWS, TABLE_SCROLL_ROWS } from '@soxa-ui/playground-shared'
 import { loadHost } from '../src/hosts'
 
 /** Рендер элемента коалесцируется в микротаске — ждём её перед проверкой. */

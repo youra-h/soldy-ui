@@ -7,7 +7,7 @@
  *
  * - `@ owner → node .edge` — internal nodes (arrays, closure contexts,
  *   property stores) by their first strong owner;
- * - `# host` — the whole JS heap by the nearest dominating host: a soldy class,
+ * - `# host` — the whole JS heap by the nearest dominating host: a soxa class,
  *   a Vue instance or node, a DOM element — like retained size, without
  *   overlaps;
  * - `% host :: node` — what each host consists of;
@@ -106,7 +106,7 @@ export function group(snap) {
 		byOwner.set(key, g)
 	}
 	// Dominator tree (Cooper–Harvey–Kennedy): every node goes to its nearest
-	// dominating host — a soldy class, a Vue instance or node, a DOM element.
+	// dominating host — a soxa class, a Vue instance or node, a DOM element.
 	// So the whole weight is split without overlaps, like retained size
 	const count = nodes.length / nf
 	const first = new Uint32Array(count + 1)

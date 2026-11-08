@@ -12,8 +12,8 @@
  */
 
 import { describe, it, expect, afterEach, vi } from 'vitest'
-import { TEvented, TTabs, createEngine, createEngineTabs } from '@soldy-ui/core'
-import type { TCollectionEngine } from '@soldy-ui/core'
+import { TEvented, TTabs, createEngine, createEngineTabs } from '@soxa-ui/core'
+import type { TCollectionEngine } from '@soxa-ui/core'
 import {
 	TAccordionElement,
 	TListBoxElement,
@@ -29,7 +29,7 @@ import {
 	type TSelectElementProps,
 	type TTabsElementProps,
 	type TTagsElementProps,
-} from '@soldy-ui/webc'
+} from '@soxa-ui/webc'
 
 /** Отрисовка коалесцируется в микротаске — ждём её перед проверкой. */
 const flush = () => new Promise<void>((resolve) => queueMicrotask(() => resolve()))

@@ -1,5 +1,5 @@
-import { ComponentViewDescriptor } from '@soldy-ui/setup'
-import type { IComponentView } from '@soldy-ui/core'
+import { ComponentViewDescriptor } from '@soxa-ui/setup'
+import type { IComponentView } from '@soxa-ui/core'
 import { createAngularAdapterContext, useAdapter } from '../../adapter'
 import type { TBinding } from '../../adapter'
 

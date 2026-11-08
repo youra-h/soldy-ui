@@ -14,7 +14,7 @@ import {
 	selectOf,
 	selectionOf,
 	tagsOf,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 // Одноимённый охранник календаря: в этом файле рядом стандартный `selectionOf`,
 // и различает их алиас в импорте
 import { selectionOf as calendarSelectionOf } from '../src/components/custom/calendar/collection/extensions/guards'

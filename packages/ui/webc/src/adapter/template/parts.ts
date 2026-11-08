@@ -32,14 +32,14 @@ export function createItem<T extends HTMLElement>(owner: Document, part: TPartCl
 	const registration = registrationOf(part)
 
 	if (!registration) {
-		throw new Error('[soldy] Класс элемента не зарегистрирован: модуль элемента не загружен')
+		throw new Error('[soxa] Класс элемента не зарегистрирован: модуль элемента не загружен')
 	}
 
 	const element = owner.createElement(registration.tag, { is: registration.name })
 
 	if (!(element instanceof part)) {
 		throw new Error(
-			`[soldy] <${registration.tag} is="${registration.name}"> не элемент своего класса`,
+			`[soxa] <${registration.tag} is="${registration.name}"> не элемент своего класса`,
 		)
 	}
 

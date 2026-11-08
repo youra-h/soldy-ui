@@ -14,16 +14,9 @@
 
 import { describe, it, expect } from 'vitest'
 import { flushSync } from 'svelte'
-import { TInput } from '@soldy-ui/core'
-import {
-	enUS,
-	extendLocale,
-	ruRU,
-	zhCN,
-	TPluginBundle,
-	type ILocaleSource,
-} from '@soldy-ui/plugins'
-import { Button, Input, type ButtonProps } from '@soldy-ui/svelte'
+import { TInput } from '@soxa-ui/core'
+import { enUS, extendLocale, ruRU, zhCN, TPluginBundle, type ILocaleSource } from '@soxa-ui/plugins'
+import { Button, Input, type ButtonProps } from '@soxa-ui/svelte'
 import Harness from './Locale.test.svelte'
 import LocaleInput from './LocaleInput.test.svelte'
 import Surround from './Surround.test.svelte'

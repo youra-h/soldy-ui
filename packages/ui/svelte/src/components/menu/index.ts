@@ -1,4 +1,4 @@
-import { withParts } from '@soldy-ui/setup'
+import { withParts } from '@soxa-ui/setup'
 import MenuComponent from './Menu.svelte'
 import { MenuItem } from './item'
 import { MenuCheckboxItem } from './checkbox-item'

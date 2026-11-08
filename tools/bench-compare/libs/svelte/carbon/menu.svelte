@@ -9,10 +9,10 @@
 </script>
 
 <!--
-	The soldy menu preview in Carbon: a group of checkboxes, a group of radios,
+	The soxa menu preview in Carbon: a group of checkboxes, a group of radios,
 	actions with shortcuts, a submenu with a submenu inside, a disabled action
 	and a destructive one (`kind="danger"`) — all native to `MenuButton`. The
-	item with a calendar panel of soldy has no counterpart and is left out.
+	item with a calendar panel of soxa has no counterpart and is left out.
 -->
 <MenuButton labelText="Действия">
 	<MenuItemGroup labelText="Вид">

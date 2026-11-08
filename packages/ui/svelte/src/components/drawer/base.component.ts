@@ -1,5 +1,5 @@
-import type { IDrawer } from '@soldy-ui/core'
-import type { DrawerDescriptor } from '@soldy-ui/setup'
+import type { IDrawer } from '@soxa-ui/core'
+import type { DrawerDescriptor } from '@soxa-ui/setup'
 import type { EventProps, UseDomProps } from '../../types'
 
 export type DrawerEventProps = EventProps<typeof DrawerDescriptor>

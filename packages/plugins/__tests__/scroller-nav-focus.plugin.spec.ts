@@ -13,7 +13,7 @@
  */
 
 import { describe, it, expect, afterAll, afterEach, beforeAll, vi } from 'vitest'
-import { TScroller } from '@soldy-ui/core'
+import { TScroller } from '@soxa-ui/core'
 import { TElementPlugin, TPluginBundle, TScrollerViewportPlugin } from '../src'
 
 const nextFrame = () => new Promise((resolve) => requestAnimationFrame(resolve))

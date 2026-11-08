@@ -7,7 +7,7 @@ import { participantName, q, startBench } from './bench'
  * страницы Vue.
  */
 const libs = {
-	soldy: () => import('./libs/react/soldy'),
+	soxa: () => import('./libs/react/soxa'),
 	plain: () => import('./libs/react/plain'),
 	shadcn: () => import('./libs/react/shadcn'),
 	mui: () => import('./libs/react/mui'),

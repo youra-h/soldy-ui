@@ -8,7 +8,7 @@ import {
 	type IPreviewHost,
 	type TComponentEntry,
 	type TPreviewEventSink,
-} from '@soldy-ui/playground-shared'
+} from '@soxa-ui/playground-shared'
 import PreviewStage from './PreviewStage.vue'
 import CodeView from './CodeView.vue'
 

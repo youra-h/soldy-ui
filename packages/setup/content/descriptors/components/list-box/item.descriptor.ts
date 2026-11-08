@@ -7,8 +7,8 @@
  */
 
 import { defineComponent, defineDescriptor, defineType } from '../../../../protected/define'
-import { TListBoxItem } from '@soldy-ui/core'
-import { rowIn } from '@soldy-ui/plugins'
+import { TListBoxItem } from '@soxa-ui/core'
+import { rowIn } from '@soxa-ui/plugins'
 import { ValueControlDescriptor } from '../value-control.descriptor'
 import { OWNER_STYLE_PROPS } from '../stylable.descriptor'
 import {

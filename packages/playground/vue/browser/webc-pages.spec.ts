@@ -12,14 +12,14 @@
  */
 
 import { expect, it, onTestFinished, vi } from 'vitest'
-import { useIcons } from '@soldy-ui/setup'
-import * as material from '@soldy-ui/icons-material'
+import { useIcons } from '@soxa-ui/setup'
+import * as material from '@soxa-ui/icons-material'
 import { availableOf } from '../src/catalog'
 import { loadHost } from '../src/hosts'
 import { router } from '../src/router'
 import { renderStand } from './stand'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 import '../src/styles.css'
 
 // The icon pack of the stand's entry point: previews draw icons by role

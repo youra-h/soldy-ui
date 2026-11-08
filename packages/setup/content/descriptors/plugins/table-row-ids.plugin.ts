@@ -7,7 +7,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TTableRowIdsPlugin } from '@soldy-ui/plugins'
+import { TTableRowIdsPlugin } from '@soxa-ui/plugins'
 
 export const TableRowIdsPluginDescriptor = definePlugin({
 	ctor: TTableRowIdsPlugin,

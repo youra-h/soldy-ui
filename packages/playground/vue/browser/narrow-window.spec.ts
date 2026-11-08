@@ -48,8 +48,8 @@
 
 import { afterEach, describe, it, expect } from 'vitest'
 import { page, userEvent } from 'vitest/browser'
-import { useIcons, useTheme } from '@soldy-ui/setup'
-import * as material from '@soldy-ui/icons-material'
+import { useIcons, useTheme } from '@soxa-ui/setup'
+import * as material from '@soxa-ui/icons-material'
 import { loadHost } from '../src/hosts'
 import { router } from '../src/router'
 import { renderStand } from './stand'
@@ -57,8 +57,8 @@ import { renderStand } from './stand'
 import { reducedMotion } from './media'
 import { settled } from './transitions'
 
-import '@soldy-ui/theme-oren'
-import oren from '@soldy-ui/theme-oren/setup'
+import '@soxa-ui/theme-oren'
+import oren from '@soxa-ui/theme-oren/setup'
 import '../src/styles.css'
 
 useIcons(material)
@@ -489,8 +489,8 @@ describe('шапка в узком окне', () => {
 				throw new Error('в полоске нет меню, названия с версией или настроек')
 			}
 
-			expect(name.textContent?.replace(/\s+/g, ' ').trim()).toBe('soldy-ui · playground')
-			expect(version.textContent?.trim()).toBe(`v${__SOLDY_VERSION__}`)
+			expect(name.textContent?.replace(/\s+/g, ' ').trim()).toBe('soxa-ui · playground')
+			expect(version.textContent?.trim()).toBe(`v${__SOXA_VERSION__}`)
 			expect(
 				version.getBoundingClientRect().top,
 				'версия — под названием',

@@ -1,4 +1,4 @@
-import type { IPopover } from '@soldy-ui/core'
+import type { IPopover } from '@soxa-ui/core'
 import { TBasePlugin } from '../../../base'
 import type { IPluginContext } from '../../../base'
 

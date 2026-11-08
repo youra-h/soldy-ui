@@ -15,8 +15,8 @@
  * тегом (AGENTS.md, «Элемент Web Components на другом теге»).
  */
 
-import { ItemRowDescriptor } from '@soldy-ui/setup'
-import type { IButton } from '@soldy-ui/core'
+import { ItemRowDescriptor } from '@soxa-ui/setup'
+import type { IButton } from '@soxa-ui/core'
 import { ElementBase, defineElement } from '../../adapter'
 import type { TElementClassOf, TElementOf } from '../../adapter'
 import { buttonTemplate } from '../button/button.template'

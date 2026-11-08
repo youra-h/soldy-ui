@@ -26,8 +26,8 @@ import {
 	type ITagsItem,
 	type TComponentVariant,
 	type TTagsOverflow,
-} from '@soldy-ui/core'
-import { Tags, TagsItem, type TagsItemProps, type TagsProps } from '@soldy-ui/svelte'
+} from '@soxa-ui/core'
+import { Tags, TagsItem, type TagsItemProps, type TagsProps } from '@soxa-ui/svelte'
 import Harness from './Tags.test.svelte'
 import Slots from './TagsSlots.test.svelte'
 import { find, mount, nextFrame } from './mount'

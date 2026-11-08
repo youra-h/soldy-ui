@@ -1,5 +1,5 @@
-import type { ITagsItem } from '@soldy-ui/core'
-import type { TagsCollectionItemDescriptor, TagsItemDescriptor } from '@soldy-ui/setup'
+import type { ITagsItem } from '@soxa-ui/core'
+import type { TagsCollectionItemDescriptor, TagsItemDescriptor } from '@soxa-ui/setup'
 import type { EventProps, TDomAttributes, UseDomProps } from '../../../types'
 
 /** События тега — свои (ядро и плагины) и фасада: выбор, порядок, закрываемость. */

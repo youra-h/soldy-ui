@@ -3,7 +3,7 @@ import { Button } from 'primeng/button'
 import { Dialog } from 'primeng/dialog'
 import { InputText } from 'primeng/inputtext'
 
-/** A button opens a modal dialog with a field inside, as the soldy preview. */
+/** A button opens a modal dialog with a field inside, as the soxa preview. */
 @Component({
 	selector: 'bench-dialog',
 	imports: [Button, Dialog, InputText],

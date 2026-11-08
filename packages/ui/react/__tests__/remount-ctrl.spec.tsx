@@ -26,9 +26,9 @@ import { describe, it, expect, vi } from 'vitest'
 import { Suspense, act, use } from 'react'
 import type { ReactNode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { TPopover, TTabsItem } from '@soldy-ui/core'
-import type { TActionEvent, TEvented } from '@soldy-ui/core'
-import { Popover, Tabs } from '@soldy-ui/react'
+import { TPopover, TTabsItem } from '@soxa-ui/core'
+import type { TActionEvent, TEvented } from '@soxa-ui/core'
+import { Popover, Tabs } from '@soxa-ui/react'
 import { find, mount, nextFrame, track } from './mount'
 
 /** Сколько обработчиков, слушателей и перехватчиков держит шина: снятие возвращает к нулю. */

@@ -18,8 +18,8 @@
  */
 
 import { describe, it, expect, afterEach } from 'vitest'
-import { TSelect, TSelectCollectionFacade, TWindowStrategy } from '@soldy-ui/core'
-import type { ISelectItem } from '@soldy-ui/core'
+import { TSelect, TSelectCollectionFacade, TWindowStrategy } from '@soxa-ui/core'
+import type { ISelectItem } from '@soxa-ui/core'
 import {
 	TCollectionBundlesPlugin,
 	TCollectionElements,

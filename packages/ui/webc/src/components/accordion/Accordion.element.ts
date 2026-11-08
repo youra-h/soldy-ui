@@ -3,8 +3,8 @@
  * и секцию. docs/architecture.md, Layer 8d, «Коллекция».
  */
 
-import { AccordionCollectionDescriptor, AccordionDescriptor } from '@soldy-ui/setup'
-import type { IAccordion, TAccordionCollectionFacade } from '@soldy-ui/core'
+import { AccordionCollectionDescriptor, AccordionDescriptor } from '@soxa-ui/setup'
+import type { IAccordion, TAccordionCollectionFacade } from '@soxa-ui/core'
 import { ElementBase, defineElement } from '../../adapter'
 import type { TElementClassOf, TElementType } from '../../adapter'
 import { accordionTemplate } from './accordion.template'

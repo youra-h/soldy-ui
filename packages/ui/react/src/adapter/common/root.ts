@@ -6,7 +6,7 @@
  */
 
 import type { CSSProperties } from 'react'
-import type { TAttributesMap } from '@soldy-ui/core'
+import type { TAttributesMap } from '@soxa-ui/core'
 import { toAriaProps } from './aria'
 
 /** Стиль, как его отдают плагины и ядро: имена — как в CSS (`z-index`, `--*`). */

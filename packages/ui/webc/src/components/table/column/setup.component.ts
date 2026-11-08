@@ -1,7 +1,7 @@
 /** Фасада нет: лифт отдаёт движок строк, и расширение элемента записало бы колонку строкой. */
 
-import { TableColumnDescriptor } from '@soldy-ui/setup'
-import type { ITableColumn } from '@soldy-ui/core'
+import { TableColumnDescriptor } from '@soxa-ui/setup'
+import type { ITableColumn } from '@soxa-ui/core'
 import { createWebcAdapterContext, useAdapter } from '../../../adapter'
 import type { TBinding, TUpdateListener } from '../../../adapter'
 

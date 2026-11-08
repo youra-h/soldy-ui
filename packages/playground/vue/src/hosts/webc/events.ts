@@ -1,6 +1,6 @@
-import { TSurface, type IComponentDescriptor } from '@soldy-ui/setup'
+import { TSurface, type IComponentDescriptor } from '@soxa-ui/setup'
 import { WebcProfile } from '../../../../../ui/webc/src/adapter/common/profile'
-import type { TPreviewEventSink } from '@soldy-ui/playground-shared'
+import type { TPreviewEventSink } from '@soxa-ui/playground-shared'
 
 /** A listener of an element's event: the DOM event's name and the handler. */
 export type TElementListener = {

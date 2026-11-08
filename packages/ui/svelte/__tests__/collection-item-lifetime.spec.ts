@@ -12,9 +12,9 @@
 
 import { describe, it, expect, afterEach, vi } from 'vitest'
 import { flushSync } from 'svelte'
-import { TEvented, TListBox, createEngine, createEngineListBox } from '@soldy-ui/core'
-import type { TCollectionEngine } from '@soldy-ui/core'
-import { Accordion, ListBox, Menu, RadioGroup, Select, Tabs, Tags } from '@soldy-ui/svelte'
+import { TEvented, TListBox, createEngine, createEngineListBox } from '@soxa-ui/core'
+import type { TCollectionEngine } from '@soxa-ui/core'
+import { Accordion, ListBox, Menu, RadioGroup, Select, Tabs, Tags } from '@soxa-ui/svelte'
 import { mount } from './mount'
 
 afterEach(() => {

@@ -7,9 +7,9 @@
  */
 
 import { defineComponent, defineDescriptor, defineType } from '../../../../protected/define'
-import { TSelect } from '@soldy-ui/core'
-import type { IInput, ISelectItem, ITags, TTagsCollection } from '@soldy-ui/core'
-import { TSelectKeyboardPlugin, fieldOf } from '@soldy-ui/plugins'
+import { TSelect } from '@soxa-ui/core'
+import type { IInput, ISelectItem, ITags, TTagsCollection } from '@soxa-ui/core'
+import { TSelectKeyboardPlugin, fieldOf } from '@soxa-ui/plugins'
 import { InputControlDescriptor } from '../input-control.descriptor'
 import {
 	ActionPluginDescriptor,

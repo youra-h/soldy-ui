@@ -58,7 +58,7 @@ export function getIcon(role: string): TIconSource {
 
 	if (!reported.has(role)) {
 		reported.add(role)
-		console.warn(`[soldy] Иконка «${role}» не зарегистрирована. Вызовите useIcons().`)
+		console.warn(`[soxa] Иконка «${role}» не зарегистрирована. Вызовите useIcons().`)
 	}
 
 	return MISSING_ICON

@@ -12,14 +12,14 @@
  */
 
 import { reflectComponentType, ɵgetDirectiveDef, type Type } from '@angular/core'
-import * as angular from '@soldy-ui/angular'
+import * as angular from '@soxa-ui/angular'
 import { TComponentBase } from '../src/adapter/runtime/component.base'
 
 /** Вход объявления — как его видит шаблон потребителя. */
 export type TDeclaredInput = {
 	/** Имя в шаблоне: `[text]`, `[ctrl]`. */
 	readonly templateName: string
-	/** Есть — вход с transform: у компонентов soldy это булев вход (`booleanInput`). */
+	/** Есть — вход с transform: у компонентов soxa это булев вход (`booleanInput`). */
 	readonly transform?: (value: unknown) => unknown
 }
 
@@ -29,14 +29,14 @@ export type TDeclaration = {
 	readonly type: Type<unknown>
 	/**
 	 * Компонент Angular — со своим элементом и шаблоном — или директива. Компонент
-	 * soldy без корня (`so-virtual`) — директива: её пишут на `<ng-container>`.
+	 * soxa без корня (`so-virtual`) — директива: её пишут на `<ng-container>`.
 	 */
 	readonly kind: 'component' | 'directive'
-	/** Компонент soldy — наследник `TComponentBase`, а не директива адаптера (`so-attributes`). */
-	readonly soldy: boolean
+	/** Компонент soxa — наследник `TComponentBase`, а не директива адаптера (`so-attributes`). */
+	readonly soxa: boolean
 	/** Селектор, как в декораторе: части через запятую. */
 	readonly selector: string
-	/** Все входы — с `ctrl` базы у компонентов soldy. */
+	/** Все входы — с `ctrl` базы у компонентов soxa. */
 	readonly inputs: readonly TDeclaredInput[]
 	/** Выходы — имена свойств экземпляра: под ними геттеры выходов. */
 	readonly outputs: readonly string[]
@@ -51,8 +51,8 @@ function isConstructor(value: unknown): value is Type<unknown> {
 	return typeof value === 'function' && typeof value.prototype === 'object'
 }
 
-/** Наследник `TComponentBase` — компонент soldy. */
-function isSoldy(type: Type<unknown>): boolean {
+/** Наследник `TComponentBase` — компонент soxa. */
+function isSoxa(type: Type<unknown>): boolean {
 	return type.prototype instanceof TComponentBase
 }
 
@@ -95,7 +95,7 @@ function declarationOf(name: string, type: Type<unknown>): TDeclaration | null {
 			name,
 			type,
 			kind: 'component',
-			soldy: isSoldy(type),
+			soxa: isSoxa(type),
 			selector: mirror.selector,
 			inputs: mirror.inputs.map(({ templateName, transform }) => ({
 				templateName,
@@ -115,7 +115,7 @@ function declarationOf(name: string, type: Type<unknown>): TDeclaration | null {
 		name,
 		type,
 		kind: 'directive',
-		soldy: isSoldy(type),
+		soxa: isSoxa(type),
 		selector: selectorText(def.selectors),
 		inputs: Object.entries(def.inputs).map(([templateName, [, , transform]]) => ({
 			templateName,

@@ -1,4 +1,4 @@
-import type { TTableGridColumn, TTableGridRow } from '@soldy-ui/core'
+import type { TTableGridColumn, TTableGridRow } from '@soxa-ui/core'
 import type { TPluginEvents } from '../../../base'
 
 /**

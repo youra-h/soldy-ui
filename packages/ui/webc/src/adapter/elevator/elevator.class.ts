@@ -5,7 +5,7 @@
  * элемент находит нового владельца.
  */
 
-import { TElevator } from '@soldy-ui/setup'
+import { TElevator } from '@soxa-ui/setup'
 import { TPlaceContext } from '../context'
 
 /** Тип значения у ключа один, а карта общая — в ней он стёрт. */

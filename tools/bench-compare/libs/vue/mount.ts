@@ -10,12 +10,12 @@ export interface IVueSetup {
 	Root?: Component
 }
 
-/** Monotonic id prefix: every app of the page gets its own, as in the soldy host. */
+/** Monotonic id prefix: every app of the page gets its own, as in the soxa host. */
 let apps = 0
 
 /**
  * `count` copies of a page under one Vue app wrapped in the library's
- * provider, mounted synchronously — as the soldy host does it. Returns the
+ * provider, mounted synchronously — as the soxa host does it. Returns the
  * unmount.
  */
 export function mountPage(

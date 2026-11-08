@@ -1,1 +1,1 @@
-export { RatingDescriptor as descriptor } from '@soldy-ui/setup'
+export { RatingDescriptor as descriptor } from '@soxa-ui/setup'

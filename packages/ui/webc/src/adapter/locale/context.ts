@@ -1,4 +1,4 @@
-import type { ILocaleSource } from '@soldy-ui/plugins'
+import type { ILocaleSource } from '@soxa-ui/plugins'
 import { TPlaceContext } from '../context'
 
 const LOCALE = new TPlaceContext<ILocaleSource>()

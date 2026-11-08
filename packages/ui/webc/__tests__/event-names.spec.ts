@@ -9,14 +9,14 @@
  * потребителю не нужно знать, у каких событий он есть. Разделитель — `:`, как
  * между частями имени ядра.
  *
- * Перебираются дескрипторы экспорта `@soldy-ui/setup`, а не элементы адаптера:
+ * Перебираются дескрипторы экспорта `@soxa-ui/setup`, а не элементы адаптера:
  * под проверку сразу попадают и непортированные — поля с `input`, Select с
  * `open` и `close`, коллекции с `reset`.
  */
 
 import { describe, it, expect, afterEach } from 'vitest'
-import { TButton } from '@soldy-ui/core'
-import * as setup from '@soldy-ui/setup'
+import { TButton } from '@soxa-ui/core'
+import * as setup from '@soxa-ui/setup'
 import {
 	ButtonDescriptor,
 	InputDescriptor,
@@ -24,8 +24,8 @@ import {
 	SelectDescriptor,
 	TSurface,
 	type IComponentDescriptor,
-} from '@soldy-ui/setup'
-import { TButtonElement, type TButtonElementProps } from '@soldy-ui/webc'
+} from '@soxa-ui/setup'
+import { TButtonElement, type TButtonElementProps } from '@soxa-ui/webc'
 import { WebcProfile } from '../src/adapter/common/profile'
 
 /** `TElementPlugin` объявляет узел через кадр — после него ядро шлёт `ready`. */
@@ -36,7 +36,7 @@ function isComponentDescriptor(value: unknown): value is IComponentDescriptor {
 }
 
 /**
- * Дескрипторы компонентов из экспорта `@soldy-ui/setup` — не ручным списком:
+ * Дескрипторы компонентов из экспорта `@soxa-ui/setup` — не ручным списком:
  * новый попадёт под проверку сам. Фабрика дескриптора — `<Имя>Descriptor` с
  * заглавной; определения плагинов отсеиваются — у них нет `getProps`.
  */
@@ -83,7 +83,7 @@ function isButton(node: Element): node is TButtonElementProps {
 	return node instanceof TButtonElement
 }
 
-/** Кнопка soldy, ещё не подключённая; `ctrl` — до подключения. */
+/** Кнопка soxa, ещё не подключённая; `ctrl` — до подключения. */
 function createButton(ctrl?: TButton): TButtonElementProps {
 	const node = document.createElement('button', { is: 'so-button' })
 

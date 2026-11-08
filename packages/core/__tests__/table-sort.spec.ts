@@ -7,7 +7,7 @@ import {
 	TTableSortExtension,
 	createEngine,
 	createEngineTable,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 import type {
 	ITableColumn,
 	ITableRow,
@@ -17,7 +17,7 @@ import type {
 	TTableRecord,
 	TTableSortDirection,
 	TTableSortMode,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 
 /**
  * Сортировка строк таблицы — расширение `sort` коллекции строк.

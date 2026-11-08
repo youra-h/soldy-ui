@@ -1,5 +1,5 @@
-import type { IFrame } from '@soldy-ui/core'
-import type { FrameDescriptor } from '@soldy-ui/setup'
+import type { IFrame } from '@soxa-ui/core'
+import type { FrameDescriptor } from '@soxa-ui/setup'
 import type { EventProps, UseDomProps } from '../../types'
 
 export type FrameEventProps = EventProps<typeof FrameDescriptor>

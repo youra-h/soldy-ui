@@ -4,8 +4,8 @@
  * у одной даты `aria` уходит полю. docs/architecture.md, Layer 8d, «Даты».
  */
 
-import { DatePickerDescriptor } from '@soldy-ui/setup'
-import type { IDatePicker } from '@soldy-ui/core'
+import { DatePickerDescriptor } from '@soxa-ui/setup'
+import type { IDatePicker } from '@soxa-ui/core'
 import { ElementBase, defineElement } from '../../adapter'
 import type { TElementClassOf, TElementType } from '../../adapter'
 import { datePickerTemplate } from './date-picker.template'

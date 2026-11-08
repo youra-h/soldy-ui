@@ -5,8 +5,8 @@ import {
 	TBatchExtension,
 	TSelectionExtension,
 	TBatchCollectionFacade,
-} from '@soldy-ui/core'
-import type { IBatchCollectionProps } from '@soldy-ui/core'
+} from '@soxa-ui/core'
+import type { IBatchCollectionProps } from '@soxa-ui/core'
 
 type Item = { id: number; name: string }
 type Extensions = { plain: TPlainExtension<Item>; batch: TBatchExtension<Item> }

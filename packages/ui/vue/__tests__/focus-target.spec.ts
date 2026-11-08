@@ -52,7 +52,7 @@ import {
 	TTextarea,
 	createEngineCalendar,
 	createEngineTabs,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 import {
 	Accordion,
 	AccordionItem,
@@ -85,7 +85,7 @@ import {
 	Tags,
 	TagsItem,
 	Textarea,
-} from '@soldy-ui/vue'
+} from '@soxa-ui/vue'
 
 /**
  * Кадр: плагин действия встаёт по `ready` корня, а `TElementPlugin`

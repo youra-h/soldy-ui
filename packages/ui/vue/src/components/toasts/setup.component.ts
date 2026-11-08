@@ -3,7 +3,7 @@ import {
 	TToastsApiExtension,
 	ToastsDescriptor,
 	ToastsCollectionDescriptor,
-} from '@soldy-ui/setup'
+} from '@soxa-ui/setup'
 import {
 	exposeRoot,
 	joinBindings,

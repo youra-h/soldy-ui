@@ -26,9 +26,9 @@
  */
 
 import { defineComponent, defineDescriptor, defineType } from '../../../protected/define'
-import { TDatePicker } from '@soldy-ui/core'
-import type { ICalendarItem } from '@soldy-ui/core'
-import { fieldSegmentOf } from '@soldy-ui/plugins'
+import { TDatePicker } from '@soxa-ui/core'
+import type { ICalendarItem } from '@soxa-ui/core'
+import { fieldSegmentOf } from '@soxa-ui/plugins'
 import {
 	ActionPluginDescriptor,
 	DatePickerFocusPluginDescriptor,

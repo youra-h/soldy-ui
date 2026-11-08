@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core'
-import type { ITextarea } from '@soldy-ui/core'
+import type { ITextarea } from '@soxa-ui/core'
 import { AttributesDirective, FieldTextDirective, provideElevator } from '../../adapter'
 import { TTextareaSurface } from '../../generated/textarea.metadata'
 import { setupTextarea } from './setup.component'

@@ -16,10 +16,10 @@
  */
 
 import { describe, it, expect, vi, afterEach } from 'vitest'
-import type { TTableColumnSource, TTableRecord } from '@soldy-ui/core'
-import { ButtonDescriptor, createAdapterContext } from '@soldy-ui/setup'
-import type { IAdapterContext } from '@soldy-ui/setup'
-import { Button, Popover, Table } from '@soldy-ui/react'
+import type { TTableColumnSource, TTableRecord } from '@soxa-ui/core'
+import { ButtonDescriptor, createAdapterContext } from '@soxa-ui/setup'
+import type { IAdapterContext } from '@soxa-ui/setup'
+import { Button, Popover, Table } from '@soxa-ui/react'
 import { mount, nextFrame } from './mount'
 
 /** Ref узла: так React зовёт его — с узлом и с `null`. */

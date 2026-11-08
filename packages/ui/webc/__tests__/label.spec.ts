@@ -14,8 +14,8 @@ import { propertyDetail } from './property-detail'
  */
 
 import { describe, it, expect, afterEach } from 'vitest'
-import { LabelDescriptor } from '@soldy-ui/setup'
-import { TLabelElement, type TLabelElementProps } from '@soldy-ui/webc'
+import { LabelDescriptor } from '@soxa-ui/setup'
+import { TLabelElement, type TLabelElementProps } from '@soxa-ui/webc'
 import { labelTemplate } from '../src/components/label/label.template'
 import { bareContext } from './template-context'
 

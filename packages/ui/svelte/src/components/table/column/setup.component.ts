@@ -1,4 +1,4 @@
-import { TableColumnDescriptor } from '@soldy-ui/setup'
+import { TableColumnDescriptor } from '@soxa-ui/setup'
 import { createSvelteAdapterContext, useAdapter, type TRootReceiver } from '../../../adapter'
 import type { TableColumnProps } from './base.component'
 

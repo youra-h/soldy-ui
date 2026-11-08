@@ -1,4 +1,4 @@
-import type { INumberInput, TNumberInputEdge } from '@soldy-ui/core'
+import type { INumberInput, TNumberInputEdge } from '@soxa-ui/core'
 import { TBasePlugin } from '../../../base'
 import type { IPluginContext } from '../../../base'
 import { TElementPlugin } from '../../element'

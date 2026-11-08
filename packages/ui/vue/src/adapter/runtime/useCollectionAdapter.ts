@@ -1,5 +1,5 @@
-import type { IAdapterContext, IComponentContract } from '@soldy-ui/setup'
-import type { IPluginBundle } from '@soldy-ui/plugins'
+import type { IAdapterContext, IComponentContract } from '@soxa-ui/setup'
+import type { IPluginBundle } from '@soxa-ui/plugins'
 import { toBindingState, useAdapterParts, type TBindingState } from './useAdapter'
 import { bindingOf } from './view'
 

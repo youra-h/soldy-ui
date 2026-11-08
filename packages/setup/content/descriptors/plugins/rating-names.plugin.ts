@@ -7,7 +7,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TRatingNamesPlugin } from '@soldy-ui/plugins'
+import { TRatingNamesPlugin } from '@soxa-ui/plugins'
 
 export const RatingNamesPluginDescriptor = definePlugin({
 	ctor: TRatingNamesPlugin,

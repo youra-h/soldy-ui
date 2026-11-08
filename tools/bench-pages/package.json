@@ -2,7 +2,7 @@
   "name": "bench-pages",
   "private": true,
   "type": "module",
-  "description": "Замер страниц компонентов soldy: вес страницы и утечки памяти по циклам и за долгую сессию, см. benchmarks/pages/README.md в корне; сверка платформ — benchmarks/parity/README.md; отклик на действие — benchmarks/interaction/README.md",
+  "description": "Замер страниц компонентов soxa: вес страницы и утечки памяти по циклам и за долгую сессию, см. benchmarks/pages/README.md в корне; сверка платформ — benchmarks/parity/README.md; отклик на действие — benchmarks/interaction/README.md",
   "scripts": {
     "bench": "node run.mjs",
     "soak": "node soak.mjs",

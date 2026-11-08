@@ -1,5 +1,5 @@
 import type { Component } from 'vue'
-import type { IToastsItem } from '@soldy-ui/core'
+import type { IToastsItem } from '@soxa-ui/core'
 
 /**
  * Своё содержимое тоста во Vue (`render`) — компонент, которому тост приходит

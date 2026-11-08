@@ -19,8 +19,8 @@
  */
 
 import { defineComponent, defineDescriptor, defineType } from '../../../../protected/define'
-import { TTagsItem } from '@soldy-ui/core'
-import { tagStopIn } from '@soldy-ui/plugins'
+import { TTagsItem } from '@soxa-ui/core'
+import { tagStopIn } from '@soxa-ui/plugins'
 import { ValueControlDescriptor } from '../value-control.descriptor'
 import { ActionPluginDescriptor, TagsItemNamesPluginDescriptor } from '../../plugins'
 

@@ -6,7 +6,7 @@
  */
 
 import { defineComponent, defineDescriptor } from '../../../../protected/define'
-import { TMenuSeparator } from '@soldy-ui/core'
+import { TMenuSeparator } from '@soxa-ui/core'
 import { ComponentViewDescriptor } from '../component-view.descriptor'
 
 export const MenuSeparatorDescriptor = defineDescriptor(() =>

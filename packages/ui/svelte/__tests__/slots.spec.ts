@@ -21,7 +21,7 @@ import {
 	type DialogDescriptor,
 	type InputDescriptor,
 	type TabsDescriptor,
-} from '@soldy-ui/setup'
+} from '@soxa-ui/setup'
 import {
 	Button,
 	type CalendarItemProps,
@@ -33,7 +33,7 @@ import {
 	type InputProps,
 	type LabelProps,
 	type SwitchProps,
-} from '@soldy-ui/svelte'
+} from '@soxa-ui/svelte'
 import { type UseDomProps } from '../src/types'
 import Harness from './Slots.test.svelte'
 import { mount as mountComponent } from './mount'

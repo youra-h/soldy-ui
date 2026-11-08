@@ -1,7 +1,7 @@
 import { useEmits, useProps } from '../../../adapter'
 import type { TEmits, TProps, UseProps } from '../../../types/common'
-import { MenuRadioGroupDescriptor } from '@soldy-ui/setup'
-import type { IMenuRadioGroup } from '@soldy-ui/core'
+import { MenuRadioGroupDescriptor } from '@soxa-ui/setup'
+import type { IMenuRadioGroup } from '@soxa-ui/core'
 
 export const emitsMenuRadioGroup: TEmits = useEmits(MenuRadioGroupDescriptor())
 

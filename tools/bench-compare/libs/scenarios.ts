@@ -1,7 +1,7 @@
 import { escape, frames, press } from '../../bench-pages/scenarios'
 
 /**
- * Helpers for the neighbors' scenarios on top of the soldy ones
+ * Helpers for the neighbors' scenarios on top of the soxa ones
  * (`tools/bench-pages/scenarios.ts`): the same pointer chain, keys and typing,
  * only the panel of an overlay is found by the library's own selector rather
  * than by `data-open`.

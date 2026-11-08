@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { createScale, TListScale, TStepScale } from '@soldy-ui/core'
+import { createScale, TListScale, TStepScale } from '@soxa-ui/core'
 
 /**
  * Шкала хода — чистая математика перетаскивания: границы, шаг числом или

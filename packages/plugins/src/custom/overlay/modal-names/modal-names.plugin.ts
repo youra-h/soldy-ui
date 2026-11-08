@@ -1,4 +1,4 @@
-import type { IModalLayer } from '@soldy-ui/core'
+import type { IModalLayer } from '@soxa-ui/core'
 import { TNamesPlugin } from '../../../locale/names.plugin'
 import type { TTranslations } from '../../../locale/types'
 

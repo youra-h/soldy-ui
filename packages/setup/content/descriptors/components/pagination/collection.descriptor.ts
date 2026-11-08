@@ -13,7 +13,7 @@
  */
 
 import { defineComponent, defineDescriptor } from '../../../../protected/define'
-import { TPaginationCollectionFacade, TPaginationItemCollectionFacade } from '@soldy-ui/core'
+import { TPaginationCollectionFacade, TPaginationItemCollectionFacade } from '@soxa-ui/core'
 
 export const PaginationCollectionDescriptor = defineDescriptor(() =>
 	defineComponent({

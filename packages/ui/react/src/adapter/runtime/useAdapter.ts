@@ -13,15 +13,15 @@ import {
 	useReducer,
 	useSyncExternalStore,
 } from 'react'
-import { toInstanceState } from '@soldy-ui/setup'
+import { toInstanceState } from '@soxa-ui/setup'
 import type {
 	IAdapterContext,
 	TExchange,
 	IComponentContract,
 	TAdapterState,
 	TStateSnapshot,
-} from '@soldy-ui/setup'
-import type { IPluginBundle } from '@soldy-ui/plugins'
+} from '@soxa-ui/setup'
+import type { IPluginBundle } from '@soxa-ui/plugins'
 import { ReactProfile } from '../common'
 import { TEventCallbacks } from './event-callbacks.class'
 import { TRootRef, consumerRefOf, type TRootSource } from './root-ref.class'

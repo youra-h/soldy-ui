@@ -12,8 +12,8 @@
 
 import { describe, it, expect } from 'vitest'
 import { flushSync } from 'svelte'
-import { TSlider, type TSliderValue, type TValuePayload } from '@soldy-ui/core'
-import { Slider, type SliderProps } from '@soldy-ui/svelte'
+import { TSlider, type TSliderValue, type TValuePayload } from '@soxa-ui/core'
+import { Slider, type SliderProps } from '@soxa-ui/svelte'
 import Surround from './Surround.test.svelte'
 import { contentOf, find, mount, nextFrame } from './mount'
 import { reactiveProps } from './reactive-props.svelte'

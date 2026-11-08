@@ -10,7 +10,7 @@
 	 * Без табов разметки содержимого у набора нет, и он рисует табы из своих
 	 * данных (`tabs.items`).
 	 */
-	import { Tabs, type TabsItemProps, type TabsProps } from '@soldy-ui/svelte'
+	import { Tabs, type TabsItemProps, type TabsProps } from '@soxa-ui/svelte'
 
 	/** Панель разметки: `id` — свой `id` панели, вход её `TIdPlugin`. */
 	type TPanel = { value: string; text: string; id?: string }

@@ -29,10 +29,10 @@
  *   adapter.use(TVirtualExtension, { elevator: VueElevatorFactory })
  */
 
-import { TWindowStrategy, drawOf } from '@soldy-ui/core'
-import type { IVirtual, TCollectionEngine, TDrawable, TValuePayload } from '@soldy-ui/core'
-import { TVirtualPlugin } from '@soldy-ui/plugins'
-import type { IPluginBundle } from '@soldy-ui/plugins'
+import { TWindowStrategy, drawOf } from '@soxa-ui/core'
+import type { IVirtual, TCollectionEngine, TDrawable, TValuePayload } from '@soxa-ui/core'
+import { TVirtualPlugin } from '@soxa-ui/plugins'
+import type { IPluginBundle } from '@soxa-ui/plugins'
 import type { TInstanceContext } from '../../../protected/adapter/context'
 import { VIRTUAL_ELEVATOR } from './keys'
 import type { IVirtualConnection, IVirtualExtensionOptions } from './types'

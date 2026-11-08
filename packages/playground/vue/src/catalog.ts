@@ -1,4 +1,4 @@
-import type { TGroup } from '@soldy-ui/core'
+import type { TGroup } from '@soxa-ui/core'
 import {
 	COMPONENTS,
 	COMPONENT_GROUPS,
@@ -8,12 +8,12 @@ import {
 	type TComponentEntry,
 	type TScenario,
 	type TTopic,
-} from '@soldy-ui/playground-shared'
+} from '@soxa-ui/playground-shared'
 
 /**
  * Что хост фреймворка умеет показать.
  *
- * Реестр в `@soldy-ui/playground-shared` — каталог **библиотеки**, он одинаков
+ * Реестр в `@soxa-ui/playground-shared` — каталог **библиотеки**, он одинаков
  * для всех фреймворков. Но адаптеры дорастают до него по очереди: компоненты
  * сначала пишутся на Vue, обкатываются, и только потом переносятся дальше — у
  * React их пока четырнадцать.

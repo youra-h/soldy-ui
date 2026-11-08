@@ -14,8 +14,8 @@
  */
 
 import { describe, it, expect, afterEach, vi } from 'vitest'
-import { TTabs, TTabsItem, createEngineTabs } from '@soldy-ui/core'
-import type { ITabsProps, ITabsItem, ITabsItemProps, TTabsCollection } from '@soldy-ui/core'
+import { TTabs, TTabsItem, createEngineTabs } from '@soxa-ui/core'
+import type { ITabsProps, ITabsItem, ITabsItemProps, TTabsCollection } from '@soxa-ui/core'
 import {
 	TCollectionBundlesPlugin,
 	TCollectionElements,

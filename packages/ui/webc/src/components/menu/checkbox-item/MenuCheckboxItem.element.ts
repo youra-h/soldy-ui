@@ -4,8 +4,8 @@
  * `multiple`. Корень и строка — как у пункта (`MenuItem.element.ts`).
  */
 
-import { MenuCheckboxItemDescriptor, MenuCollectionCheckboxItemDescriptor } from '@soldy-ui/setup'
-import type { IMenuCheckboxItem, TMenuItemCollectionFacade } from '@soldy-ui/core'
+import { MenuCheckboxItemDescriptor, MenuCollectionCheckboxItemDescriptor } from '@soxa-ui/setup'
+import type { IMenuCheckboxItem, TMenuItemCollectionFacade } from '@soxa-ui/core'
 import { ElementBase } from '../../../adapter'
 import type { TElementClassOf, TElementType } from '../../../adapter'
 import { menuCheckboxItemTemplate } from './menu-checkbox-item.template'

@@ -1,12 +1,12 @@
-# @soldy-ui/plugins
+# @soxa-ui/plugins
 
 **Runtime behavior installed into a plugin bundle: DOM, focus, keyboard, overlay.**
 
-Part of [Soldy UI](https://github.com/youra-h/soldy-ui) — UI components with the logic written once: a
+Part of [Soxa UI](https://github.com/youra-h/soxa-ui) — UI components with the logic written once: a
 framework-agnostic core and thin adapters that render it in Vue, React, Angular, Svelte, Solid and
 Web Components.
 
-Models in `@soldy-ui/core` have no access to the DOM. Everything that needs a live node — listening
+Models in `@soxa-ui/core` have no access to the DOM. Everything that needs a live node — listening
 for events, moving focus, measuring and positioning an overlay, normalizing keyboard activation —
 is a plugin here, written once for all six adapters.
 
@@ -27,7 +27,7 @@ The `element:` prefix is the public plugin namespace. Inside a plugin, subscribe
 The model's `ready` event carries a boolean rather than a DOM node:
 
 ```ts
-import { TButton } from '@soldy-ui/core'
+import { TButton } from '@soxa-ui/core'
 
 const button = new TButton({ text: 'Save' })
 
@@ -54,11 +54,11 @@ component is available; on the server or without an announced root, its exposed 
 ## Install
 
 ```bash
-npm install @soldy-ui/plugins
+npm install @soxa-ui/plugins
 ```
 
 An adapter assembles the bundle for you, so you rarely install this package on its own — it comes
-with `@soldy-ui/setup`.
+with `@soxa-ui/setup`.
 
 ## Usage
 
@@ -66,8 +66,8 @@ Reach a plugin of a mounted component from its instance — the bundle announces
 event bus the template uses:
 
 ```ts
-import { TButton } from '@soldy-ui/core'
-import { TActionPlugin, TPluginBundle } from '@soldy-ui/plugins'
+import { TButton } from '@soxa-ui/core'
+import { TActionPlugin, TPluginBundle } from '@soxa-ui/plugins'
 
 const button = new TButton({ text: 'Save' })
 
@@ -80,11 +80,11 @@ button.events.on('bundle:create', (bundle: unknown) => {
 ```
 
 Add a plugin of your own to every component of a type — see
-[Plugins and extensions from outside](https://github.com/youra-h/soldy-ui/blob/main/AGENTS.md):
+[Plugins and extensions from outside](https://github.com/youra-h/soxa-ui/blob/main/AGENTS.md):
 
 ```ts
-import { usePlugins } from '@soldy-ui/setup'
-import { TButton } from '@soldy-ui/core'
+import { usePlugins } from '@soxa-ui/setup'
+import { TButton } from '@soxa-ui/core'
 
 usePlugins(TButton, [TRipplePlugin])
 ```
@@ -93,7 +93,7 @@ Set the motion mode of the whole library at the entry point of the application. 
 follows the system's reduced-motion setting:
 
 ```ts
-import { useMotion } from '@soldy-ui/plugins'
+import { useMotion } from '@soxa-ui/plugins'
 
 useMotion('full') // motion even when the system asks to reduce it; 'reduce' — never
 ```
@@ -105,8 +105,8 @@ server one too — is already in the subtree's language. This package ships the 
 to make your own:
 
 ```ts
-import { enUS, esES, ruRU, extendLocale, formatName } from '@soldy-ui/plugins'
-import type { TLocale } from '@soldy-ui/plugins'
+import { enUS, esES, ruRU, extendLocale, formatName } from '@soxa-ui/plugins'
+import type { TLocale } from '@soxa-ui/plugins'
 
 const esMX = extendLocale(esES, { tag: 'es-MX' }) // another region of a ready language
 const mn: TLocale = extendLocale(enUS, { tag: 'mn-MN', translations: { modal: { close: 'Хаах' } } })
@@ -116,11 +116,11 @@ formatName(ruRU.translations.tabs.close, 'Почта') // 'Закрыть Поч
 
 ## Documentation
 
-- [Soldy UI README](https://github.com/youra-h/soldy-ui#readme) — what the library is and how it is
+- [Soxa UI README](https://github.com/youra-h/soxa-ui#readme) — what the library is and how it is
   put together.
-- [Architecture overview](https://github.com/youra-h/soldy-ui/blob/main/docs/architecture.md) —
+- [Architecture overview](https://github.com/youra-h/soxa-ui/blob/main/docs/architecture.md) —
   layers, descriptors, plugins, collections, adapters.
 
 ## License
 
-[MIT](https://github.com/youra-h/soldy-ui/blob/main/LICENSE)
+[MIT](https://github.com/youra-h/soxa-ui/blob/main/LICENSE)

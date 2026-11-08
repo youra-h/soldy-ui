@@ -1,4 +1,4 @@
-import { TextareaDescriptor, TFieldControlExtension } from '@soldy-ui/setup'
+import { TextareaDescriptor, TFieldControlExtension } from '@soxa-ui/setup'
 import {
 	createSvelteAdapterContext,
 	useAdapter,

@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core'
 import { NgTemplateOutlet } from '@angular/common'
-import type { IRadioGroupItem } from '@soldy-ui/core'
+import type { IRadioGroupItem } from '@soxa-ui/core'
 import { AttributesDirective } from '../../../adapter'
 import { TRadioGroupItemSurface } from '../../../generated/radio-group-item.metadata'
 import { setupRadioGroupItem } from './setup.component'

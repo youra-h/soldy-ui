@@ -1,4 +1,4 @@
-import { TCollectionExtension, TagsDescriptor, TagsCollectionDescriptor } from '@soldy-ui/setup'
+import { TCollectionExtension, TagsDescriptor, TagsCollectionDescriptor } from '@soxa-ui/setup'
 import {
 	useAdapter,
 	joinBindings,

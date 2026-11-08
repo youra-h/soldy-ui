@@ -13,10 +13,10 @@
 import { describe, it, expect, afterEach, beforeEach, vi } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { defineComponent, h, nextTick, ref, type VNode } from 'vue'
-import { Calendar, LocaleProvider } from '@soldy-ui/vue'
-import { TCalendar, createEngineCalendar } from '@soldy-ui/core'
-import { ruRU } from '@soldy-ui/plugins'
-import type { ICalendarItem, TCalendarValue, TCalendarDate, TValuePayload } from '@soldy-ui/core'
+import { Calendar, LocaleProvider } from '@soxa-ui/vue'
+import { TCalendar, createEngineCalendar } from '@soxa-ui/core'
+import { ruRU } from '@soxa-ui/plugins'
+import type { ICalendarItem, TCalendarValue, TCalendarDate, TValuePayload } from '@soxa-ui/core'
 
 const nextFrame = () => new Promise((resolve) => requestAnimationFrame(resolve))
 
@@ -95,7 +95,7 @@ function press(from: Element, key: string, init: KeyboardEventInit = {}): Keyboa
 	return event
 }
 
-/** Последний класс узла — его часть: у компонента soldy первым идёт блок. */
+/** Последний класс узла — его часть: у компонента soxa первым идёт блок. */
 const partsOf = (node: Element) =>
 	[...node.children].map((child) => child.classList[child.classList.length - 1])
 

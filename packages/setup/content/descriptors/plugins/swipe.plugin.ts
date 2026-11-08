@@ -11,7 +11,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TSwipePlugin } from '@soldy-ui/plugins'
+import { TSwipePlugin } from '@soxa-ui/plugins'
 
 export const SwipePluginDescriptor = definePlugin({
 	ctor: TSwipePlugin,

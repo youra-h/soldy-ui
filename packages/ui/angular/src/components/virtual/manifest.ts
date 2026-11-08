@@ -1,1 +1,1 @@
-export { VirtualDescriptor as descriptor } from '@soldy-ui/setup'
+export { VirtualDescriptor as descriptor } from '@soxa-ui/setup'

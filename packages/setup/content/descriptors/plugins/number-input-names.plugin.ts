@@ -8,7 +8,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TNumberInputNamesPlugin } from '@soldy-ui/plugins'
+import { TNumberInputNamesPlugin } from '@soxa-ui/plugins'
 
 export const NumberInputNamesPluginDescriptor = definePlugin({
 	ctor: TNumberInputNamesPlugin,

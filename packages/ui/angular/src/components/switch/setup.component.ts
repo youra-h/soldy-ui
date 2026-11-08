@@ -1,5 +1,5 @@
-import { SwitchDescriptor, TFieldControlExtension } from '@soldy-ui/setup'
-import type { ISwitch } from '@soldy-ui/core'
+import { SwitchDescriptor, TFieldControlExtension } from '@soxa-ui/setup'
+import type { ISwitch } from '@soxa-ui/core'
 import { AngularElevatorFactory, createAngularAdapterContext, useAdapter } from '../../adapter'
 import type { TBinding } from '../../adapter'
 

@@ -1,6 +1,6 @@
 ---
 name: week
-description: Summarize soldy-ui releases and merged PRs without changes. Use when the owner explicitly invokes this command; not for unrelated coding work.
+description: Summarize soxa-ui releases and merged PRs without changes. Use when the owner explicitly invokes this command; not for unrelated coding work.
 ---
 
 Read [commands](../../../tools/agent-flow/commands.md) for the week entry and [shared workflow](../../../tools/agent-flow/workflow.md). Apply the invocation's task ID or owner instruction.

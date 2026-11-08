@@ -1,4 +1,4 @@
-import type { ISlidable } from '@soldy-ui/core'
+import type { ISlidable } from '@soxa-ui/core'
 
 /**
  * Части перетаскивания в разметке владельца — по его классам, а не строкой в

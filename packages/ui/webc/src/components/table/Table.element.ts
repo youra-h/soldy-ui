@@ -5,8 +5,8 @@
  * «Коллекция»; AGENTS.md (Web Components), «Корень».
  */
 
-import { TableCollectionDescriptor, TableDescriptor } from '@soldy-ui/setup'
-import type { ITable, TTableCollectionFacade } from '@soldy-ui/core'
+import { TableCollectionDescriptor, TableDescriptor } from '@soxa-ui/setup'
+import type { ITable, TTableCollectionFacade } from '@soxa-ui/core'
 import { ElementBase, defineElement } from '../../adapter'
 import type { TElementClassOf, TElementType } from '../../adapter'
 import { TTableColumnElement } from './column'

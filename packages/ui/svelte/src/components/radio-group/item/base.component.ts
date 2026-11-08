@@ -1,5 +1,5 @@
-import type { IRadioGroupItem } from '@soldy-ui/core'
-import type { RadioGroupCollectionItemDescriptor, RadioGroupItemDescriptor } from '@soldy-ui/setup'
+import type { IRadioGroupItem } from '@soxa-ui/core'
+import type { RadioGroupCollectionItemDescriptor, RadioGroupItemDescriptor } from '@soxa-ui/setup'
 import type { EventProps, TDomAttributes, TFieldAttributes, UseDomProps } from '../../../types'
 
 export type RadioGroupItemEventProps = EventProps<typeof RadioGroupItemDescriptor> &

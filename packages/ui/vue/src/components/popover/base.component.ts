@@ -1,7 +1,7 @@
 import { useEmits, useProps } from '../../adapter'
 import type { TEmits, TProps, UseProps } from '../../types/common'
-import { PopoverDescriptor } from '@soldy-ui/setup'
-import type { IPopover } from '@soldy-ui/core'
+import { PopoverDescriptor } from '@soxa-ui/setup'
+import type { IPopover } from '@soxa-ui/core'
 
 export const emitsPopover: TEmits = useEmits(PopoverDescriptor())
 

@@ -1,4 +1,4 @@
-import { TPluginBundle } from '@soldy-ui/plugins'
+import { TPluginBundle } from '@soxa-ui/plugins'
 /**
  * `anchor_anchor` у Frame, который объявлен разметкой.
  *
@@ -15,8 +15,8 @@ import { TPluginBundle } from '@soldy-ui/plugins'
 import { describe, it, expect, afterEach } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { h, nextTick, ref } from 'vue'
-import { Frame } from '@soldy-ui/vue'
-import { TAnchorPlugin } from '@soldy-ui/plugins'
+import { Frame } from '@soxa-ui/vue'
+import { TAnchorPlugin } from '@soxa-ui/plugins'
 
 afterEach(() => {
 	document.body.innerHTML = ''

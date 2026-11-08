@@ -7,7 +7,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TDialogNamesPlugin } from '@soldy-ui/plugins'
+import { TDialogNamesPlugin } from '@soxa-ui/plugins'
 
 export const DialogNamesPluginDescriptor = definePlugin({
 	ctor: TDialogNamesPlugin,

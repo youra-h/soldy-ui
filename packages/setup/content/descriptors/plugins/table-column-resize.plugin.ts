@@ -10,7 +10,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TTableColumnResizePlugin } from '@soldy-ui/plugins'
+import { TTableColumnResizePlugin } from '@soxa-ui/plugins'
 
 export const TableColumnResizePluginDescriptor = definePlugin({
 	ctor: TTableColumnResizePlugin,

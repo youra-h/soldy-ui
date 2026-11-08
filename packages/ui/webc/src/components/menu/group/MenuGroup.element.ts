@@ -3,8 +3,8 @@
  * берёт при сборке её ключ. docs/architecture.md, Layer 8d, «Меню».
  */
 
-import { MenuGroupDescriptor } from '@soldy-ui/setup'
-import type { IItemGroup } from '@soldy-ui/core'
+import { MenuGroupDescriptor } from '@soxa-ui/setup'
+import type { IItemGroup } from '@soxa-ui/core'
 import { ElementBase } from '../../../adapter'
 import type { TElementClassOf, TElementType } from '../../../adapter'
 import { menuGroupTemplate } from './menu-group.template'

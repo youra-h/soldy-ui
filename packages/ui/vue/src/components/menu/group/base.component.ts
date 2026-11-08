@@ -1,7 +1,7 @@
 import { useEmits, useProps } from '../../../adapter'
 import type { TEmits, TProps, UseProps } from '../../../types/common'
-import { MenuGroupDescriptor } from '@soldy-ui/setup'
-import type { IItemGroup } from '@soldy-ui/core'
+import { MenuGroupDescriptor } from '@soxa-ui/setup'
+import type { IItemGroup } from '@soxa-ui/core'
 
 export const emitsMenuGroup: TEmits = useEmits(MenuGroupDescriptor())
 

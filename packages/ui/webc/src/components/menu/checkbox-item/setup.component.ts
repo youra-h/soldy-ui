@@ -2,8 +2,8 @@ import {
 	MenuCheckboxItemDescriptor,
 	MenuCollectionCheckboxItemDescriptor,
 	TCollectionItemExtension,
-} from '@soldy-ui/setup'
-import type { IMenuCheckboxItem, TMenuItemCollectionFacade } from '@soldy-ui/core'
+} from '@soxa-ui/setup'
+import type { IMenuCheckboxItem, TMenuItemCollectionFacade } from '@soxa-ui/core'
 import {
 	createWebcAdapterContext,
 	joinBindings,

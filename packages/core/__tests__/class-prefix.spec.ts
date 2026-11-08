@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import * as core from '@soldy-ui/core'
+import * as core from '@soxa-ui/core'
 
 /**
  * Сторож правила «Префикс — только в глобальном пространстве имён» (AGENTS.md):

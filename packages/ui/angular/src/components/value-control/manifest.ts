@@ -1,1 +1,1 @@
-export { ValueControlDescriptor as descriptor } from '@soldy-ui/setup'
+export { ValueControlDescriptor as descriptor } from '@soxa-ui/setup'

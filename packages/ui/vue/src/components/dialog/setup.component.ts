@@ -1,4 +1,4 @@
-import { DialogDescriptor } from '@soldy-ui/setup'
+import { DialogDescriptor } from '@soxa-ui/setup'
 import {
 	exposeRoot,
 	extendBinding,

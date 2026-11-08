@@ -1,11 +1,11 @@
-import type { ITabs, ITabsItem, TTabsCollection } from '@soldy-ui/core'
+import type { ITabs, ITabsItem, TTabsCollection } from '@soxa-ui/core'
 import {
 	TBasePlugin,
 	TCollectionBundlesPlugin,
 	TElementPlugin,
 	TTabsActiveTabPlugin,
-} from '@soldy-ui/plugins'
-import type { IPluginContext, TActiveTabOffset } from '@soldy-ui/plugins'
+} from '@soxa-ui/plugins'
+import type { IPluginContext, TActiveTabOffset } from '@soxa-ui/plugins'
 import { afterPseudoTransitions } from './transitions'
 
 /** Признак переезда на ряду: пока он стоит, тема ведёт геометрию переходом. */

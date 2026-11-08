@@ -1,5 +1,5 @@
-import { TooltipDescriptor } from '@soldy-ui/setup'
-import type { ITooltip } from '@soldy-ui/core'
+import { TooltipDescriptor } from '@soxa-ui/setup'
+import type { ITooltip } from '@soxa-ui/core'
 import { createAngularAdapterContext, useAdapter } from '../../adapter'
 import type { TBinding } from '../../adapter'
 

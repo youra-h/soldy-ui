@@ -5,7 +5,7 @@
  * имён SVG; источник доверенный — пакет иконок приложения.
  */
 
-import { getIcon, type TIconSource } from '@soldy-ui/setup'
+import { getIcon, type TIconSource } from '@soxa-ui/setup'
 
 const SVG = 'http://www.w3.org/2000/svg'
 

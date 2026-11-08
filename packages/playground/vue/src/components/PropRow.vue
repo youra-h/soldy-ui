@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, onUnmounted, shallowRef, watch } from 'vue'
-import { createEngine, isEventSource } from '@soldy-ui/core'
-import { TPluginBundle } from '@soldy-ui/plugins'
-import { Field } from '@soldy-ui/vue'
+import { createEngine, isEventSource } from '@soxa-ui/core'
+import { TPluginBundle } from '@soxa-ui/plugins'
+import { Field } from '@soxa-ui/vue'
 import {
 	createInstance,
 	isEmptyField,
@@ -13,7 +13,7 @@ import {
 	type TInstanceProps,
 	type TPreviewEventSink,
 	type TPropControl,
-} from '@soldy-ui/playground-shared'
+} from '@soxa-ui/playground-shared'
 import PropControl from './PropControl.vue'
 import PreviewColumns from './PreviewColumns.vue'
 import CodeView from './CodeView.vue'

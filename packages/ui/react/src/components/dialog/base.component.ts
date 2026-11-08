@@ -1,5 +1,5 @@
-import type { IDialog } from '@soldy-ui/core'
-import type { DialogDescriptor } from '@soldy-ui/setup'
+import type { IDialog } from '@soxa-ui/core'
+import type { DialogDescriptor } from '@soxa-ui/setup'
 import type { EventProps, UseDomProps } from '../../types'
 
 export type DialogEventProps = EventProps<typeof DialogDescriptor>

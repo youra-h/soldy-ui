@@ -1,7 +1,7 @@
 import { useEmits, useProps } from '../../../adapter'
 import type { TEmits, TProps, UseProps } from '../../../types/common'
-import { TabsItemDescriptor, TabsCollectionItemDescriptor } from '@soldy-ui/setup'
-import type { ITabsItem } from '@soldy-ui/core'
+import { TabsItemDescriptor, TabsCollectionItemDescriptor } from '@soxa-ui/setup'
+import type { ITabsItem } from '@soxa-ui/core'
 
 export const emitsTabsItem: TEmits = [
 	...useEmits(TabsItemDescriptor()),

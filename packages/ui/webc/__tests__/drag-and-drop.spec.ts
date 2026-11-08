@@ -27,15 +27,15 @@
  */
 
 import { describe, it, expect, expectTypeOf, afterEach } from 'vitest'
-import { TDragAndDropMoveEvent } from '@soldy-ui/core'
-import type { IDragAndDrop, IDragAndDropMove } from '@soldy-ui/core'
-import { DragAndDropDescriptor } from '@soldy-ui/setup'
+import { TDragAndDropMoveEvent } from '@soxa-ui/core'
+import type { IDragAndDrop, IDragAndDropMove } from '@soxa-ui/core'
+import { DragAndDropDescriptor } from '@soxa-ui/setup'
 import {
 	TDragAndDropElement,
 	TListBoxElement,
 	type TDragAndDropElementProps,
 	type TListBoxElementProps,
-} from '@soldy-ui/webc'
+} from '@soxa-ui/webc'
 import { dragAndDropTemplate } from '../src/components/drag-and-drop/drag-and-drop.template'
 import { bareContext } from './template-context'
 

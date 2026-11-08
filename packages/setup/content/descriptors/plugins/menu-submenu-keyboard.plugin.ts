@@ -13,7 +13,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TMenuSubmenuKeyboardPlugin } from '@soldy-ui/plugins'
+import { TMenuSubmenuKeyboardPlugin } from '@soxa-ui/plugins'
 
 export const MenuSubmenuKeyboardPluginDescriptor = definePlugin({
 	ctor: TMenuSubmenuKeyboardPlugin,

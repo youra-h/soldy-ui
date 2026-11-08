@@ -21,8 +21,8 @@
  */
 
 import { describe, it, expect, afterEach, vi } from 'vitest'
-import { TDragAndDrop, TListBox, TListBoxCollectionFacade } from '@soldy-ui/core'
-import type { IDragAndDropMove, IListBoxItem } from '@soldy-ui/core'
+import { TDragAndDrop, TListBox, TListBoxCollectionFacade } from '@soxa-ui/core'
+import type { IDragAndDropMove, IListBoxItem } from '@soxa-ui/core'
 import {
 	TCollectionBundlesPlugin,
 	TCollectionElements,

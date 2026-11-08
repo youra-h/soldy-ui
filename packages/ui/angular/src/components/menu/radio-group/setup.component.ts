@@ -2,8 +2,8 @@ import {
 	MenuRadioGroupDescriptor,
 	TItemGroupExtension,
 	TMenuRadioGroupExtension,
-} from '@soldy-ui/setup'
-import type { IMenuRadioGroup } from '@soldy-ui/core'
+} from '@soxa-ui/setup'
+import type { IMenuRadioGroup } from '@soxa-ui/core'
 import { AngularElevatorFactory, createAngularAdapterContext, useAdapter } from '../../../adapter'
 import type { TBinding } from '../../../adapter'
 

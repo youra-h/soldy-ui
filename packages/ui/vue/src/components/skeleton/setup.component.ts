@@ -1,4 +1,4 @@
-import { SkeletonDescriptor } from '@soldy-ui/setup'
+import { SkeletonDescriptor } from '@soxa-ui/setup'
 import { useAdapter, useExpose, createVueAdapterContext, type SetupContext } from '../../adapter'
 import BaseSkeleton, { type SkeletonProps } from './base.component'
 

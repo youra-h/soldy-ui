@@ -49,17 +49,17 @@ import { describe, it, expect, beforeEach, afterEach, onTestFinished } from 'vit
 import { render, cleanup } from './render'
 import { commands, page, userEvent } from 'vitest/browser'
 import { defineComponent, h, nextTick } from 'vue'
-import { createEngineToasts } from '@soldy-ui/core'
+import { createEngineToasts } from '@soxa-ui/core'
 import type {
 	IToastsItem,
 	IToastsProps,
 	TToastInput,
 	TToastsItemType,
 	TToastsPlacement,
-} from '@soldy-ui/core'
-import { Button, Toasts } from '@soldy-ui/vue'
-import type { TToastRender } from '@soldy-ui/vue'
-import { BUTTON_VIEWS, TOASTS_ITEM_TYPES } from '@soldy-ui/playground-shared'
+} from '@soxa-ui/core'
+import { Button, Toasts } from '@soxa-ui/vue'
+import type { TToastRender } from '@soxa-ui/vue'
+import { BUTTON_VIEWS, TOASTS_ITEM_TYPES } from '@soxa-ui/playground-shared'
 
 import {
 	contrast,
@@ -85,7 +85,7 @@ import {
 	transitioning,
 } from './transitions'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 /**
  * The region's inset from the window's edges in oren: `--so-toasts-offset` of

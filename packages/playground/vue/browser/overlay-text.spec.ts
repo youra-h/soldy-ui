@@ -22,11 +22,11 @@
 import { describe, it, expect, afterEach } from 'vitest'
 import { render, cleanup } from './render'
 import { defineComponent, h, nextTick } from 'vue'
-import { Button, DatePicker, Menu, Popover, Select } from '@soldy-ui/vue'
+import { Button, DatePicker, Menu, Popover, Select } from '@soxa-ui/vue'
 
 import { find, shift, style } from './colors'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 const nextFrame = () => new Promise<void>((resolve) => requestAnimationFrame(() => resolve()))
 

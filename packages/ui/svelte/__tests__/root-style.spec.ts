@@ -15,7 +15,7 @@
 import { describe, it, expect, vi } from 'vitest'
 import { flushSync, type Component } from 'svelte'
 import { createAttachmentKey, type Attachment } from 'svelte/attachments'
-import { TButton } from '@soldy-ui/core'
+import { TButton } from '@soxa-ui/core'
 import {
 	Button,
 	Frame,
@@ -26,7 +26,7 @@ import {
 	type FrameProps,
 	type IconProps,
 	type ProgressSpinnerProps,
-} from '@soldy-ui/svelte'
+} from '@soxa-ui/svelte'
 import Link from './Link.test.svelte'
 import { find, mount } from './mount'
 import { reactiveProps } from './reactive-props.svelte'

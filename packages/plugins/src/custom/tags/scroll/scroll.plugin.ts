@@ -1,4 +1,4 @@
-import type { ITags } from '@soldy-ui/core'
+import type { ITags } from '@soxa-ui/core'
 import { TBasePlugin } from '../../../base'
 import type { IPluginContext } from '../../../base'
 import { TElementPlugin } from '../../element'

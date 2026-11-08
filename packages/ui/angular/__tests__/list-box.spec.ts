@@ -32,13 +32,13 @@ import {
 	type TListIndicator,
 	type TSelectionMode,
 	type TValuePayload,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 import {
 	SlotDirective,
 	TListBoxComponent,
 	TListBoxGroupComponent,
 	TListBoxItemComponent,
-} from '@soldy-ui/angular'
+} from '@soxa-ui/angular'
 import { find, findIn, mountHost, nextFrame } from './mount'
 
 type TItem = { value: string; text: string }

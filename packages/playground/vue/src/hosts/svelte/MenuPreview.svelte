@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { DescriptorSlots, MenuDescriptor } from '@soldy-ui/setup'
-	import { Button, Calendar, Menu } from '@soldy-ui/svelte'
+	import type { DescriptorSlots, MenuDescriptor } from '@soxa-ui/setup'
+	import { Button, Calendar, Menu } from '@soxa-ui/svelte'
 	import type { TPreviewProps } from './previews'
 	import { getParts } from './events'
 

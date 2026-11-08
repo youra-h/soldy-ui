@@ -16,14 +16,14 @@
  */
 
 import { describe, it, expect, afterEach } from 'vitest'
-import { TButton, TPagination, TPaginationItem, type IPaginationItem } from '@soldy-ui/core'
-import { TBasePlugin, arEG, ruRU, type IPluginContext } from '@soldy-ui/plugins'
-import { PaginationDescriptor, PaginationItemDescriptor, usePlugins } from '@soldy-ui/setup'
+import { TButton, TPagination, TPaginationItem, type IPaginationItem } from '@soxa-ui/core'
+import { TBasePlugin, arEG, ruRU, type IPluginContext } from '@soxa-ui/plugins'
+import { PaginationDescriptor, PaginationItemDescriptor, usePlugins } from '@soxa-ui/setup'
 import {
 	TLocaleProviderElement,
 	TPaginationElement,
 	type TPaginationElementProps,
-} from '@soldy-ui/webc'
+} from '@soxa-ui/webc'
 import { paginationTemplate } from '../src/components/pagination/pagination.template'
 import {
 	TPaginationItemElement,
@@ -50,7 +50,7 @@ function isPage(node: Element | null): node is TPaginationItemElementProps {
 	return node instanceof TPaginationItemElement
 }
 
-/** Пагинация soldy в разметке. */
+/** Пагинация soxa в разметке. */
 function paginationOf(root: ParentNode): TPaginationElementProps {
 	const node = root.querySelector('[is="so-pagination"]')
 

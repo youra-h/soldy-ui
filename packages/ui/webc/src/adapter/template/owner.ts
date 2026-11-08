@@ -6,7 +6,7 @@
  * поэтому несколько наборов на один узел кладутся одним вызовом.
  */
 
-import type { TAttributesMap } from '@soldy-ui/core'
+import type { TAttributesMap } from '@soxa-ui/core'
 import { TElementAttributes, TPaint, stylesOf } from '../runtime/paint'
 
 /** У детали с полем набор уходит на поле: `aria` Select — на `<input>` детали Input. */

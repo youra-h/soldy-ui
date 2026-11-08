@@ -8,8 +8,8 @@
  */
 
 import { describe, it, expect } from 'vitest'
-import { TAccordion, TAccordionItem, TAccordionCollectionFacade } from '@soldy-ui/core'
-import type { IAccordionItem } from '@soldy-ui/core'
+import { TAccordion, TAccordionItem, TAccordionCollectionFacade } from '@soxa-ui/core'
+import type { IAccordionItem } from '@soxa-ui/core'
 
 function createAccordion(values: string[]) {
 	const owner = new TAccordion({ mode: 'multiple' })

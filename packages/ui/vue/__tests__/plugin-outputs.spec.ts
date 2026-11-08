@@ -18,16 +18,16 @@
  */
 
 import { describe, it, expect, expectTypeOf } from 'vitest'
-import { SelectDescriptor, toInstanceState } from '@soldy-ui/setup'
-import type { IAdapterContext, IComponentContract, TAdapterState } from '@soldy-ui/setup'
-import { TDismissPlugin } from '@soldy-ui/plugins'
+import { SelectDescriptor, toInstanceState } from '@soxa-ui/setup'
+import type { IAdapterContext, IComponentContract, TAdapterState } from '@soxa-ui/setup'
+import { TDismissPlugin } from '@soxa-ui/plugins'
 import type {
 	TEditablePlugin,
 	TFrameLayoutPlugin,
 	TIconLayoutPlugin,
 	TSelectKeyboardPlugin,
 	TSkeletonLayoutPlugin,
-} from '@soldy-ui/plugins'
+} from '@soxa-ui/plugins'
 import { VueProfile, createVueAdapterContext } from '../src/adapter'
 import type SetupSelect from '../src/components/select/setup.component'
 import type SetupFrame from '../src/components/frame/setup.component'

@@ -13,10 +13,10 @@
 import { describe, it, expect, afterEach, vi } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { h, nextTick } from 'vue'
-import { TNumberInput } from '@soldy-ui/core'
-import type { INumberInputProps } from '@soldy-ui/core'
-import { ruRU, zhCN } from '@soldy-ui/plugins'
-import { LocaleProvider, NumberInput } from '@soldy-ui/vue'
+import { TNumberInput } from '@soxa-ui/core'
+import type { INumberInputProps } from '@soxa-ui/core'
+import { ruRU, zhCN } from '@soxa-ui/plugins'
+import { LocaleProvider, NumberInput } from '@soxa-ui/vue'
 
 /** Плагины цепляют слушатели по `element:ready`, а оно приходит кадром. */
 const nextFrame = () => new Promise((resolve) => requestAnimationFrame(resolve))

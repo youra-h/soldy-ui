@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { ListBox } from '@soldy-ui/vue'
+import { ListBox } from '@soxa-ui/vue'
 import { MENU_GROUPS, menuOf } from '../catalog'
 import { hostOf } from '../hosts'
 import { frameworkOf } from '../navigation'

@@ -21,8 +21,8 @@
  */
 
 import { describe, it, expect, afterEach } from 'vitest'
-import { TField, TSlider } from '@soldy-ui/core'
-import { FieldDescriptor } from '@soldy-ui/setup'
+import { TField, TSlider } from '@soxa-ui/core'
+import { FieldDescriptor } from '@soxa-ui/setup'
 import {
 	TFieldElement,
 	TIconElement,
@@ -31,7 +31,7 @@ import {
 	type TFieldElementProps,
 	type TInputElementProps,
 	type TSliderElementProps,
-} from '@soldy-ui/webc'
+} from '@soxa-ui/webc'
 import { fieldTemplate } from '../src/components/field/field.template'
 import { bareContext } from './template-context'
 
@@ -72,7 +72,7 @@ function mount(html: string): TFieldElementProps {
 function mountOver(ctrl: TField, content: string): TFieldElementProps {
 	const node = document.createElement('div', { is: 'so-field' })
 
-	if (!isField(node)) throw new Error('<div is="so-field"> не элемент soldy')
+	if (!isField(node)) throw new Error('<div is="so-field"> не элемент soxa')
 
 	node.ctrl = ctrl
 	node.innerHTML = content
@@ -444,7 +444,7 @@ describe('Slider с несколькими ручками в поле', () => {
 		const slider = new TSlider({ value: 30 })
 		const el = document.createElement('span', { is: 'so-slider' })
 
-		if (!isSlider(el)) throw new Error('<span is="so-slider"> не элемент soldy')
+		if (!isSlider(el)) throw new Error('<span is="so-slider"> не элемент soxa')
 
 		el.ctrl = slider
 

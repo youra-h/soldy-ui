@@ -3,7 +3,7 @@ import {
 	TMenuRadioItemExtension,
 	MenuRadioItemDescriptor,
 	MenuCollectionRadioItemDescriptor,
-} from '@soldy-ui/setup'
+} from '@soxa-ui/setup'
 import {
 	useAdapter,
 	extendBinding,

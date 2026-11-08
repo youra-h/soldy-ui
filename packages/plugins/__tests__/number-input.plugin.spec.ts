@@ -14,8 +14,8 @@
  */
 
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import { TNumberInput } from '@soldy-ui/core'
-import type { INumberInputProps } from '@soldy-ui/core'
+import { TNumberInput } from '@soxa-ui/core'
+import type { INumberInputProps } from '@soxa-ui/core'
 import {
 	TElementPlugin,
 	TNumberInputKeyboardPlugin,

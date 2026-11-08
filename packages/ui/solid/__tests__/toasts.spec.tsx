@@ -24,11 +24,11 @@
 
 import { describe, it, expect } from 'vitest'
 import type { JSX } from 'solid-js'
-import { createEngineListBox, createEngineToasts } from '@soldy-ui/core'
-import type { IToastsItem, TToastsItemType } from '@soldy-ui/core'
-import { ruRU } from '@soldy-ui/plugins'
-import { getIcon } from '@soldy-ui/setup'
-import type { TIconRole } from '@soldy-ui/setup'
+import { createEngineListBox, createEngineToasts } from '@soxa-ui/core'
+import type { IToastsItem, TToastsItemType } from '@soxa-ui/core'
+import { ruRU } from '@soxa-ui/plugins'
+import { getIcon } from '@soxa-ui/setup'
+import type { TIconRole } from '@soxa-ui/setup'
 import {
 	Dialog,
 	ListBox,
@@ -37,7 +37,7 @@ import {
 	useToasts,
 	type TToastRender,
 	type ToastsProps,
-} from '@soldy-ui/solid'
+} from '@soxa-ui/solid'
 import { find, mount, nextFrame, type TMounted } from './mount'
 
 /** Узел по селектору; нет его — тест падает здесь, а не на чтении свойства. */

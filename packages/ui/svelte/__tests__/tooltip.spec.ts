@@ -14,8 +14,8 @@
 
 import { describe, it, expect } from 'vitest'
 import { flushSync } from 'svelte'
-import { TTooltip } from '@soldy-ui/core'
-import type { TooltipProps } from '@soldy-ui/svelte'
+import { TTooltip } from '@soxa-ui/core'
+import type { TooltipProps } from '@soxa-ui/svelte'
 import Harness from './Tooltip.test.svelte'
 import Popover from './Popover.test.svelte'
 import { find, mount, nextFrame } from './mount'

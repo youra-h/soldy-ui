@@ -1,4 +1,4 @@
-import { ValueControlDescriptor } from '@soldy-ui/setup'
+import { ValueControlDescriptor } from '@soxa-ui/setup'
 import { createSolidAdapterContext, useAdapter } from '../../adapter'
 import type { ValueControlProps } from './base.component'
 

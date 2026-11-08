@@ -52,13 +52,13 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { render, cleanup } from './render'
 import { userEvent } from 'vitest/browser'
 import { defineComponent, h, nextTick, type VNode } from 'vue'
-import { DateInput, DatePicker, Input, NumberInput, Select, SelectItem } from '@soldy-ui/vue'
+import { DateInput, DatePicker, Input, NumberInput, Select, SelectItem } from '@soxa-ui/vue'
 
 import { find, settled } from './colors'
 import { sidesOf, type TLine } from './directions'
 import { pseudoBox } from './pseudo-box'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 const nextFrame = () => new Promise<void>((resolve) => requestAnimationFrame(() => resolve()))
 

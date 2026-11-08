@@ -11,7 +11,7 @@
 	 * Пропсы обёртки — `virtual`; `listed: false` снимает коллекцию, оставляя
 	 * обёртку.
 	 */
-	import type { IListBoxItem } from '@soldy-ui/core'
+	import type { IListBoxItem } from '@soxa-ui/core'
 	import {
 		ListBox,
 		Select,
@@ -21,7 +21,7 @@
 		type SelectProps,
 		type TableProps,
 		type VirtualProps,
-	} from '@soldy-ui/svelte'
+	} from '@soxa-ui/svelte'
 
 	type THarnessProps = {
 		kind?: 'list' | 'table' | 'nested' | 'select'

@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core'
-import type { IProgressLinear } from '@soldy-ui/core'
+import type { IProgressLinear } from '@soxa-ui/core'
 import { TProgressLinearSurface } from '../../generated/progress-linear.metadata'
 import { setupProgressLinear } from './setup.component'
 

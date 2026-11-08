@@ -1,5 +1,5 @@
-import { activationOf, batchOf } from '@soldy-ui/core'
-import type { IRadioGroupItem } from '@soldy-ui/core'
+import { activationOf, batchOf } from '@soxa-ui/core'
+import type { IRadioGroupItem } from '@soxa-ui/core'
 import type { IPluginContext } from '../../base'
 import { TCollectionElements } from '../collection'
 import { isReachable } from '../collection/reachable'

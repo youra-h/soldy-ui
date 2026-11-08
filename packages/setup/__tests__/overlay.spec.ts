@@ -32,9 +32,9 @@ import {
 	TElementPlugin,
 	TFrameLayoutPlugin,
 	TPluginBundle,
-} from '@soldy-ui/plugins'
-import type { IDismissPluginOptions, TFramePlacement } from '@soldy-ui/plugins'
-import { FRAME_LAYER_ATTRIBUTE, TFrame, TPopover } from '@soldy-ui/core'
+} from '@soxa-ui/plugins'
+import type { IDismissPluginOptions, TFramePlacement } from '@soxa-ui/plugins'
+import { FRAME_LAYER_ATTRIBUTE, TFrame, TPopover } from '@soxa-ui/core'
 
 /** Узел встаёт в заданный прямоугольник: jsdom сам ничего не раскладывает. */
 function placeAt(element: HTMLElement, rect: Partial<DOMRect>): void {

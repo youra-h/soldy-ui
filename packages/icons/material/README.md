@@ -1,8 +1,8 @@
-# @soldy-ui/icons-material
+# @soxa-ui/icons-material
 
-**Material icons implementing the Soldy UI icon-role contract.**
+**Material icons implementing the Soxa UI icon-role contract.**
 
-Part of [Soldy UI](https://github.com/youra-h/soldy-ui) — UI components with the logic written once: a
+Part of [Soxa UI](https://github.com/youra-h/soxa-ui) — UI components with the logic written once: a
 framework-agnostic core and thin adapters that render it in Vue, React, Angular, Svelte, Solid and
 Web Components.
 
@@ -16,7 +16,7 @@ of the `<svg>`. The root element is built by the adapter, so it can set the size
 ## Install
 
 ```bash
-npm install @soldy-ui/icons-material
+npm install @soxa-ui/icons-material
 ```
 
 ## Usage
@@ -24,8 +24,8 @@ npm install @soldy-ui/icons-material
 The application registers the pack once, in its entry point:
 
 ```ts
-import { useIcons } from '@soldy-ui/setup'
-import * as material from '@soldy-ui/icons-material'
+import { useIcons } from '@soxa-ui/setup'
+import * as material from '@soxa-ui/icons-material'
 
 useIcons(material)
 useIcons({ close: myCloseIcon }) // a single role, on top of the pack
@@ -47,14 +47,14 @@ Content Security Policy without `'unsafe-inline'` styles does not strip it. An i
 
 ## Documentation
 
-- [Soldy UI README](https://github.com/youra-h/soldy-ui#readme) — what the library is and how it is
+- [Soxa UI README](https://github.com/youra-h/soxa-ui#readme) — what the library is and how it is
   put together.
-- [Architecture overview](https://github.com/youra-h/soldy-ui/blob/main/docs/architecture.md) —
+- [Architecture overview](https://github.com/youra-h/soxa-ui/blob/main/docs/architecture.md) —
   layers, descriptors, plugins, collections, adapters.
 
 ## License
 
-The code of the package is [MIT](https://github.com/youra-h/soldy-ui/blob/main/LICENSE).
+The code of the package is [MIT](https://github.com/youra-h/soxa-ui/blob/main/LICENSE).
 
 The icons are [Material Symbols](https://fonts.google.com/icons) by Google, © Google, licensed
 under the [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0); its text

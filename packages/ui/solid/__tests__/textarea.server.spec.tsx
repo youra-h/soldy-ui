@@ -9,7 +9,7 @@
 
 import { describe, it, expect } from 'vitest'
 import { renderToString } from 'solid-js/web'
-import { Field, Textarea, type TextareaProps } from '@soldy-ui/solid'
+import { Field, Textarea, type TextareaProps } from '@soxa-ui/solid'
 
 /**
  * Разметка сервера без меток гидратации: ключи узлов (`data-hk`) и

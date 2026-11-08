@@ -1,18 +1,18 @@
-# @soldy-ui/theme-base
+# @soxa-ui/theme-base
 
-**The shared layer of Soldy UI themes: what the components need in any theme — a reset of the
+**The shared layer of Soxa UI themes: what the components need in any theme — a reset of the
 library's own nodes, the writing-direction sign, the structure of the components with its numbers
 in variables, and the layout plugins that measure what CSS cannot. The CSS is plain CSS, no
 preprocessor, no Tailwind.**
 
-Part of [Soldy UI](https://github.com/youra-h/soldy-ui) — UI components with the logic written once: a
+Part of [Soxa UI](https://github.com/youra-h/soxa-ui) — UI components with the logic written once: a
 framework-agnostic core and thin adapters that render it in Vue, React, Angular, Svelte, Solid and
 Web Components.
 
 ## Who needs it
 
 Theme authors — [Make your own theme](#make-your-own-theme) below walks through it. If you use a
-ready theme such as [`@soldy-ui/theme-oren`](https://www.npmjs.com/package/@soldy-ui/theme-oren),
+ready theme such as [`@soxa-ui/theme-oren`](https://www.npmjs.com/package/@soxa-ui/theme-oren),
 you do not install this package yourself: the theme depends on it, its stylesheet carries the CSS
 of this package, and its behavior installs the plugins of this package.
 
@@ -46,7 +46,7 @@ of this package, and its behavior installs the plugins of this package.
 - **The size scales** — heights, paddings, gaps and font sizes per size — as variables on the
   document root with defaults, such as `--so-button-height-sm` or `--so-caption-gap-lg`. A theme
   sets its own numbers there, an application on an ancestor of its area.
-- **The layout plugins** (`@soldy-ui/theme-base/setup`) — data any theme needs and CSS cannot
+- **The layout plugins** (`@soxa-ui/theme-base/setup`) — data any theme needs and CSS cannot
   compute: the place of the active tab, the height of a sticky table head and of the front toast in
   a stack. They write it into CSS variables; a theme installs them with its behavior.
 
@@ -76,7 +76,7 @@ proves it is done.
 
 ### 1. The package
 
-The library — `@soldy-ui/core`, `@soldy-ui/setup` and the rest — shares one version, and this
+The library — `@soxa-ui/core`, `@soxa-ui/setup` and the rest — shares one version, and this
 package has a version of its own. A theme depends on the library by a range, `^` and the library
 version it is built against: the `so-*` classes, the `data-*` attributes and the `--so-*`
 variables are what a theme is written against, and a release that breaks them falls outside that
@@ -96,10 +96,10 @@ dependency, not a dev dependency: the behavior of the theme imports its plugins 
     "./setup": { "types": "./dist/setup/index.d.ts", "default": "./dist/setup/index.js" }
   },
   "files": ["dist", "index.d.ts"],
-  "dependencies": { "@soldy-ui/theme-base": "<theme-base version>" },
+  "dependencies": { "@soxa-ui/theme-base": "<theme-base version>" },
   "peerDependencies": {
-    "@soldy-ui/core": "^<library version>",
-    "@soldy-ui/setup": "^<library version>"
+    "@soxa-ui/core": "^<library version>",
+    "@soxa-ui/setup": "^<library version>"
   }
 }
 ```
@@ -107,7 +107,7 @@ dependency, not a dev dependency: the behavior of the theme imports its plugins 
 The application plugs the theme in as one stylesheet and one behavior object:
 
 ```ts
-import { useTheme } from '@soldy-ui/setup'
+import { useTheme } from '@soxa-ui/setup'
 import theme from 'my-theme/setup'
 
 import 'my-theme'
@@ -126,7 +126,7 @@ Import this package first in the theme's stylesheet and build the stylesheet int
 the CSS of this package inside it:
 
 ```css
-@import '@soldy-ui/theme-base';
+@import '@soxa-ui/theme-base';
 ```
 
 Its rules live in the cascade layer `so`, each part of it in a sub-layer of its own named after its
@@ -143,7 +143,7 @@ utilities — and imports Tailwind in parts, without preflight, which would rese
 @layer theme, base, components, utilities;
 @import 'tailwindcss/theme.css' layer(theme);
 @import 'tailwindcss/utilities.css' layer(utilities) source(none);
-@import '@soldy-ui/theme-base' layer(base);
+@import '@soxa-ui/theme-base' layer(base);
 ```
 
 Done when everything that works on a page with this package alone still works with your
@@ -151,7 +151,7 @@ stylesheet: your rules add the look and take no mechanics away.
 
 ### 3. The variables
 
-[`theme-variables.json`](https://github.com/youra-h/soldy-ui/blob/main/packages/themes/base/theme-variables.json)
+[`theme-variables.json`](https://github.com/youra-h/soxa-ui/blob/main/packages/themes/base/theme-variables.json)
 is the contract, with the meaning of every variable, in two sections.
 
 `base-reads` — every variable this package reads. Four kinds:
@@ -269,13 +269,13 @@ without a modifier is the default look.
 ### 5. The values of the look: `index.d.ts`
 
 The library declares no `variant`, `view`, `shape` or `animation` values: the theme does, by
-augmenting the registries of `@soldy-ui/core`, and the props of every component take exactly these
+augmenting the registries of `@soxa-ui/core`, and the props of every component take exactly these
 names. A registry the theme leaves empty gives its prop the type `never`.
 
 ```ts
 export {}
 
-declare module '@soldy-ui/core' {
+declare module '@soxa-ui/core' {
   interface IComponentVariants {
     accent: true
   }
@@ -308,9 +308,9 @@ plugins of this package in its object:
 ```ts
 /// <reference types="my-theme" preserve="true" />
 
-import { TTable, TTabs, TToasts } from '@soldy-ui/core'
-import { defineTheme } from '@soldy-ui/setup'
-import { TTableHeadPlugin, TTabsViewPlugin, TToastsFrontPlugin } from '@soldy-ui/theme-base/setup'
+import { TTable, TTabs, TToasts } from '@soxa-ui/core'
+import { defineTheme } from '@soxa-ui/setup'
+import { TTableHeadPlugin, TTabsViewPlugin, TToastsFrontPlugin } from '@soxa-ui/theme-base/setup'
 
 export default defineTheme({
   name: 'my-theme',
@@ -357,9 +357,9 @@ A plugin whose data only your own look needs belongs to your theme, in the same 
 ### 7. Check it
 
 The checks of this package run on the built CSS of every theme in the
-[repository](https://github.com/youra-h/soldy-ui): a package in `packages/themes/` with a
+[repository](https://github.com/youra-h/soxa-ui): a package in `packages/themes/` with a
 `vite.config.ts` that builds its stylesheet — the file `style` of its manifest names, with every
-rule of the theme — is picked up by `npm run test --workspace=@soldy-ui/theme-base` by itself. Outside the repository the same rules
+rule of the theme — is picked up by `npm run test --workspace=@soxa-ui/theme-base` by itself. Outside the repository the same rules
 hold — each check is a rule of step 3 or 4:
 
 - `theme-reads` — every `--so-*` variable your stylesheet reads is your own or in the contract;
@@ -373,7 +373,7 @@ hold — each check is a rule of step 3 or 4:
   radio item;
 - `table-reorder` — per-cell rules of Table under the gesture attribute, no `:has()` on its root.
 
-[`@soldy-ui/theme-oren`](https://github.com/youra-h/soldy-ui/tree/main/packages/themes/oren) is a
+[`@soxa-ui/theme-oren`](https://github.com/youra-h/soxa-ui/tree/main/packages/themes/oren) is a
 complete theme built on these steps: Tailwind and Sass inside, two color schemes, its own values.
 
 ## Layer order next to Tailwind
@@ -389,12 +389,12 @@ the application uses Tailwind, name the order before any stylesheet loads, so th
 
 ## Documentation
 
-- [Soldy UI README](https://github.com/youra-h/soldy-ui#readme) — what the library is and how it is
+- [Soxa UI README](https://github.com/youra-h/soxa-ui#readme) — what the library is and how it is
   put together.
-- [The package's own notes](https://github.com/youra-h/soldy-ui/blob/main/packages/themes/base/AGENTS.md)
+- [The package's own notes](https://github.com/youra-h/soxa-ui/blob/main/packages/themes/base/AGENTS.md)
   — layers, the reset, the direction sign, the variable contract, the layout plugins and the checks
   every theme passes (in Russian).
 
 ## License
 
-[MIT](https://github.com/youra-h/soldy-ui/blob/main/LICENSE)
+[MIT](https://github.com/youra-h/soxa-ui/blob/main/LICENSE)

@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest'
-import { TComponentView, TInput, TProgress } from '@soldy-ui/core'
+import { TComponentView, TInput, TProgress } from '@soxa-ui/core'
 
 describe('property change payloads', () => {
 	it('reports both sides of primitive changes and suppresses equal writes', () => {

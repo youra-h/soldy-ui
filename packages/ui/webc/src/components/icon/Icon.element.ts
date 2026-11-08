@@ -4,8 +4,8 @@
  * Layer 8d, «Иконка».
  */
 
-import { IconDescriptor } from '@soldy-ui/setup'
-import type { IIcon } from '@soldy-ui/core'
+import { IconDescriptor } from '@soxa-ui/setup'
+import type { IIcon } from '@soxa-ui/core'
 import { ElementBase, defineElement } from '../../adapter'
 import type { TElementClassOf, TElementType } from '../../adapter'
 import { iconTemplate } from './icon.template'

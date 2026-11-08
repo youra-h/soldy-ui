@@ -24,7 +24,7 @@ import {
 	TScroller,
 	createEngineCalendar,
 	createEngineTabs,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 import {
 	TAccordionElement,
 	TAccordionItemElement,
@@ -49,7 +49,7 @@ import {
 	TTagsElement,
 	TTagsItemElement,
 	TTextareaElement,
-} from '@soldy-ui/webc'
+} from '@soxa-ui/webc'
 
 /** Отрисовка коалесцируется в микротаске — ждём её перед проверкой. */
 const flush = () => new Promise<void>((resolve) => queueMicrotask(() => resolve()))
@@ -80,7 +80,7 @@ function nodeOf(selector: string): Element {
 	return node
 }
 
-/** Инстанс элемента soldy — его `ctrl`; нет инстанса контрола — тест падает здесь. */
+/** Инстанс элемента soxa — его `ctrl`; нет инстанса контрола — тест падает здесь. */
 function ctrlOf(node: Element): TControl {
 	const ctrl = 'ctrl' in node ? node.ctrl : undefined
 

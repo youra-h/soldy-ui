@@ -8,9 +8,9 @@
  */
 
 import { describe, it, expect, afterEach } from 'vitest'
-import { TButton, TEvented, TTabs, TTags, createEngine } from '@soldy-ui/core'
-import type { IExtension, IExtensionContext } from '@soldy-ui/core'
-import { applyRegisteredExtensions, useExtensions } from '@soldy-ui/setup'
+import { TButton, TEvented, TTabs, TTags, createEngine } from '@soxa-ui/core'
+import type { IExtension, IExtensionContext } from '@soxa-ui/core'
+import { applyRegisteredExtensions, useExtensions } from '@soxa-ui/setup'
 
 class TProbeExtension implements IExtension<object> {
 	readonly name: string = 'probe'

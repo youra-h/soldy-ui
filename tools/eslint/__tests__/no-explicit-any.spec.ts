@@ -5,7 +5,7 @@ import plugin from '../plugin'
 
 const linter = new TSESLint.Linter({ configType: 'flat' })
 
-/** Сообщения правила `soldy/no-explicit-any` для фрагмента кода. */
+/** Сообщения правила `soxa/no-explicit-any` для фрагмента кода. */
 function lint(code: string) {
 	return linter.verify(
 		code,
@@ -13,15 +13,15 @@ function lint(code: string) {
 			{
 				files: ['**/*.ts'],
 				languageOptions: { parser: tsParser },
-				plugins: { soldy: plugin },
-				rules: { 'soldy/no-explicit-any': 'error' },
+				plugins: { soxa: plugin },
+				rules: { 'soxa/no-explicit-any': 'error' },
 			},
 		],
 		'fixture.ts',
 	)
 }
 
-describe('soldy/no-explicit-any', () => {
+describe('soxa/no-explicit-any', () => {
 	describe('пропускает any, который стирает инвариантность', () => {
 		it.each([
 			[
@@ -91,7 +91,7 @@ describe('soldy/no-explicit-any', () => {
 			const messages = lint(code)
 
 			expect(messages).toHaveLength(count)
-			expect(messages.every((m) => m.ruleId === 'soldy/no-explicit-any')).toBe(true)
+			expect(messages.every((m) => m.ruleId === 'soxa/no-explicit-any')).toBe(true)
 		})
 	})
 })

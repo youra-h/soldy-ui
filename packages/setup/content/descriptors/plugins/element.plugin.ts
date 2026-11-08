@@ -5,7 +5,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TElementPlugin } from '@soldy-ui/plugins'
+import { TElementPlugin } from '@soxa-ui/plugins'
 
 export const ElementPluginDescriptor = definePlugin({
 	ctor: TElementPlugin,

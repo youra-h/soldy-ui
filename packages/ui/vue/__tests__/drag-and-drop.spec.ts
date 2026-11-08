@@ -17,8 +17,8 @@
 import { describe, it, expect, afterEach } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { defineComponent, h, nextTick, type VNode } from 'vue'
-import { Accordion, DragAndDrop, ListBox, Tabs } from '@soldy-ui/vue'
-import type { IDragAndDropMove, TDragAndDropMoveEvent } from '@soldy-ui/core'
+import { Accordion, DragAndDrop, ListBox, Tabs } from '@soxa-ui/vue'
+import type { IDragAndDropMove, TDragAndDropMoveEvent } from '@soxa-ui/core'
 
 const nextFrame = () => new Promise((resolve) => requestAnimationFrame(resolve))
 

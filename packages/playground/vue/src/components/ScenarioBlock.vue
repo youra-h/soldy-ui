@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, useTemplateRef } from 'vue'
-import { Button } from '@soldy-ui/vue'
-import type { TScenario, TScenarioState, TScenarioStatus } from '@soldy-ui/playground-shared'
+import { Button } from '@soxa-ui/vue'
+import type { TScenario, TScenarioState, TScenarioStatus } from '@soxa-ui/playground-shared'
 import type { TScenarioBench } from '../composables/useScenarios'
 
 const props = defineProps<{ scenario: TScenario; bench: TScenarioBench }>()

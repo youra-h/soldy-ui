@@ -15,7 +15,7 @@ import {
 	TIconComponent,
 	TItemRowComponent,
 	TListBoxItemComponent,
-} from '@soldy-ui/angular'
+} from '@soxa-ui/angular'
 import { TComponentBase } from '../src/adapter/runtime/component.base'
 import { exportedDeclarations } from './declarations'
 
@@ -42,7 +42,7 @@ describe('запрос слотов', () => {
 	})
 
 	it('запрос слотов есть только у поверхностей, которые читают слоты', () => {
-		const declarations = exportedDeclarations().filter(({ soldy }) => soldy)
+		const declarations = exportedDeclarations().filter(({ soxa }) => soxa)
 
 		expect(declarations.length).toBeGreaterThan(0)
 

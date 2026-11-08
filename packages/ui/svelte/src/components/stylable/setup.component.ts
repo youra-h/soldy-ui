@@ -1,4 +1,4 @@
-import { StylableDescriptor } from '@soldy-ui/setup'
+import { StylableDescriptor } from '@soxa-ui/setup'
 import { createSvelteAdapterContext, useAdapter } from '../../adapter'
 import type { StylableProps } from './base.component'
 

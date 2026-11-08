@@ -14,8 +14,8 @@ import type {
 	TCalendarPicker,
 	TCalendarPickerList,
 	TCalendarWeekday,
-} from '@soldy-ui/core'
-import { DEFAULT_SLOT } from '@soldy-ui/setup'
+} from '@soxa-ui/core'
+import { DEFAULT_SLOT } from '@soxa-ui/setup'
 import {
 	TKeyedLoop,
 	bind,

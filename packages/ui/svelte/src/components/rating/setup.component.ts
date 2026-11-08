@@ -1,4 +1,4 @@
-import { RatingDescriptor, TFieldControlExtension } from '@soldy-ui/setup'
+import { RatingDescriptor, TFieldControlExtension } from '@soxa-ui/setup'
 import {
 	createSvelteAdapterContext,
 	useAdapter,

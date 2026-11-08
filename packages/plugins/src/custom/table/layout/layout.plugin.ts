@@ -1,4 +1,4 @@
-import type { ITable, TTableCollection } from '@soldy-ui/core'
+import type { ITable, TTableCollection } from '@soxa-ui/core'
 import { TBasePlugin } from '../../../base'
 import type { IPluginContext } from '../../../base'
 import { TElementPlugin } from '../../element'

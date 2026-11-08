@@ -1,5 +1,5 @@
 import type { ReactElement } from 'react'
-import type { IListBoxItem, TDrawnEntry, TDrawnSection } from '@soldy-ui/core'
+import type { IListBoxItem, TDrawnEntry, TDrawnSection } from '@soxa-ui/core'
 import {
 	Elevate,
 	hasSlot,

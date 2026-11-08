@@ -16,14 +16,14 @@ import { propertyDetail } from './property-detail'
  */
 
 import { describe, it, expect, afterEach } from 'vitest'
-import { TSlider, type TValuePayload } from '@soldy-ui/core'
-import { SliderDescriptor } from '@soldy-ui/setup'
+import { TSlider, type TValuePayload } from '@soxa-ui/core'
+import { SliderDescriptor } from '@soxa-ui/setup'
 import {
 	TLabelElement,
 	TSliderElement,
 	type TLabelElementProps,
 	type TSliderElementProps,
-} from '@soldy-ui/webc'
+} from '@soxa-ui/webc'
 import { sliderTemplate } from '../src/components/slider/slider.template'
 import { bareContext } from './template-context'
 
@@ -54,7 +54,7 @@ function markup(html: string): HTMLElement {
 	return host
 }
 
-/** Ползунок soldy в разметке. */
+/** Ползунок soxa в разметке. */
 function sliderOf(root: ParentNode): TSliderElementProps {
 	const node = root.querySelector('[is="so-slider"]')
 

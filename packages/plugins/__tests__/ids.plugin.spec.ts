@@ -36,8 +36,8 @@ import {
 	TTabsItem,
 	TTextarea,
 	TTooltip,
-} from '@soldy-ui/core'
-import type { IRadioGroupItem } from '@soldy-ui/core'
+} from '@soxa-ui/core'
+import type { IRadioGroupItem } from '@soxa-ui/core'
 import {
 	TAccordionItemIdsPlugin,
 	TAriaPlugin,

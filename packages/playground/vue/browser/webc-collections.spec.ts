@@ -24,8 +24,8 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { render, cleanup } from './render'
 import { userEvent } from 'vitest/browser'
 import { defineComponent, h, nextTick, type VNode } from 'vue'
-import { COMPONENT_SIZES } from '@soldy-ui/playground-shared'
-import type { DescriptorSlots, MenuDescriptor } from '@soldy-ui/setup'
+import { COMPONENT_SIZES } from '@soxa-ui/playground-shared'
+import type { DescriptorSlots, MenuDescriptor } from '@soxa-ui/setup'
 import {
 	Accordion,
 	AccordionItem,
@@ -41,11 +41,11 @@ import {
 	TabsItem,
 	Tags,
 	TagsItem,
-} from '@soldy-ui/vue'
-import { TRadioGroupElement, type TRadioGroupElementProps } from '@soldy-ui/webc'
+} from '@soxa-ui/vue'
+import { TRadioGroupElement, type TRadioGroupElementProps } from '@soxa-ui/webc'
 import { measure, type TBox } from './panel-boxes'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 const nextFrame = () => new Promise<void>((resolve) => requestAnimationFrame(() => resolve()))
 

@@ -1,4 +1,4 @@
-import type { IDialog } from '@soldy-ui/core'
+import type { IDialog } from '@soxa-ui/core'
 import { TModalNamesPlugin } from '../../overlay/modal-names'
 import type { TTranslations } from '../../../locale/types'
 

@@ -1,5 +1,5 @@
 import { propertyDetail } from './property-detail'
-import type { TValuePayload } from '@soldy-ui/core'
+import type { TValuePayload } from '@soxa-ui/core'
 /**
  * `<span is="so-popover">` — Popover в Web Components, проводка целиком, на
  * настоящей разметке.
@@ -29,9 +29,9 @@ import type { TValuePayload } from '@soldy-ui/core'
  */
 
 import { describe, it, expect, expectTypeOf, afterEach, vi } from 'vitest'
-import { TButton, TComponentView, TFrame, TPopover } from '@soldy-ui/core'
-import { TBasePlugin, ruRU, zhCN, type IPluginContext } from '@soldy-ui/plugins'
-import { PopoverDescriptor, usePlugins } from '@soldy-ui/setup'
+import { TButton, TComponentView, TFrame, TPopover } from '@soxa-ui/core'
+import { TBasePlugin, ruRU, zhCN, type IPluginContext } from '@soxa-ui/plugins'
+import { PopoverDescriptor, usePlugins } from '@soxa-ui/setup'
 import {
 	TComponentViewElement,
 	TDialogElement,
@@ -41,7 +41,7 @@ import {
 	type TComponentViewElementProps,
 	type TDialogElementProps,
 	type TPopoverElementProps,
-} from '@soldy-ui/webc'
+} from '@soxa-ui/webc'
 import { popoverTemplate } from '../src/components/popover/popover.template'
 import { TELEPORT_ANCHOR } from '../src/adapter/runtime/teleport'
 import { bareContext } from './template-context'

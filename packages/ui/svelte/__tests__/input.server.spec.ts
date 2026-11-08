@@ -10,8 +10,8 @@
 
 import { describe, it, expect } from 'vitest'
 import { render } from 'svelte/server'
-import { Input } from '@soldy-ui/svelte'
-import type { InputProps } from '@soldy-ui/svelte'
+import { Input } from '@soxa-ui/svelte'
+import type { InputProps } from '@soxa-ui/svelte'
 
 /**
  * Открывающий тег поля в серверной разметке. Комментарии — метки гидратации

@@ -5,7 +5,7 @@
  * `tabindex` (`rowIn`). docs/architecture.md, Layer 8d, «Меню».
  */
 
-import type { IMenuItem, TComponentSize } from '@soldy-ui/core'
+import type { IMenuItem, TComponentSize } from '@soxa-ui/core'
 import { bind, createDetail, ownerAttributes, type ITemplateBinding, patch } from '../../adapter'
 import { registerItemRowTag, type TItemRowElementProps } from '../item-row'
 import { TIconElement, type TIconElementProps } from '../icon'

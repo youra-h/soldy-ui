@@ -18,7 +18,7 @@ function listOf(field: Element | null): HTMLElement | null {
 	return id ? document.getElementById(id) : null
 }
 
-/** Mantine scenarios: the soldy ones step by step, on Mantine's own markup. */
+/** Mantine scenarios: the soxa ones step by step, on Mantine's own markup. */
 export const SCENARIOS: Record<string, TScenario> = {
 	button: each('.mantine-Button-root', press),
 	input: each('.mantine-TextInput-root input', (field) => type(field, 'abc')),

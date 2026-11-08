@@ -9,8 +9,8 @@ import {
 	TEvented,
 	TCollectionStorageDriver,
 	createEngine,
-} from '@soldy-ui/core'
-import type { TCollectionStorageDriverEvents, ICommandContext } from '@soldy-ui/core'
+} from '@soxa-ui/core'
+import type { TCollectionStorageDriverEvents, ICommandContext } from '@soxa-ui/core'
 
 type Item = { id: number; name: string }
 

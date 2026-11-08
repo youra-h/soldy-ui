@@ -24,9 +24,9 @@ import {
 	getCurrentInstance,
 	type Ref,
 } from 'vue'
-import { TElementPlugin } from '@soldy-ui/plugins'
-import { type IAdapterContext, type IComponentContract, type TInstanceState } from '@soldy-ui/setup'
-import type { IPluginBundle } from '@soldy-ui/plugins'
+import { TElementPlugin } from '@soxa-ui/plugins'
+import { type IAdapterContext, type IComponentContract, type TInstanceState } from '@soxa-ui/setup'
+import type { IPluginBundle } from '@soxa-ui/plugins'
 import { VueProfile } from '../common'
 import { bindingOf } from './view'
 

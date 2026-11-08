@@ -1,7 +1,7 @@
 import { Button, Menu, Text } from '@mantine/core'
 
 /**
- * The soldy menu preview in Mantine: a group of checkboxes, a group of radios,
+ * The soxa menu preview in Mantine: a group of checkboxes, a group of radios,
  * actions with shortcuts, a submenu with a submenu inside, a disabled action
  * and a destructive one — all of them Mantine's own `Menu` parts.
  */

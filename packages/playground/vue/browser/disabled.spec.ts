@@ -20,8 +20,8 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { render, cleanup } from './render'
 import { userEvent } from 'vitest/browser'
 import { defineComponent, h, nextTick, type VNode } from 'vue'
-import { createEngineTable } from '@soldy-ui/core'
-import type { TTableCollection, TTableRecord } from '@soldy-ui/core'
+import { createEngineTable } from '@soxa-ui/core'
+import type { TTableCollection, TTableRecord } from '@soxa-ui/core'
 import {
 	Button,
 	Calendar,
@@ -45,11 +45,11 @@ import {
 	TagsItem,
 	Textarea,
 	roleIcon,
-} from '@soldy-ui/vue'
+} from '@soxa-ui/vue'
 
 import { find, settled, style } from './colors'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 type TProps = Record<string, unknown>
 

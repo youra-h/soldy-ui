@@ -28,7 +28,7 @@ import { propertyDetail } from './property-detail'
  */
 
 import { describe, it, expect, expectTypeOf, afterEach } from 'vitest'
-import { TTable, createEngineTable } from '@soldy-ui/core'
+import { TTable, createEngineTable } from '@soxa-ui/core'
 import type {
 	ITableColumn,
 	ITableRow,
@@ -38,9 +38,9 @@ import type {
 	TTableColumnSource,
 	TTableRecord,
 	TTableReorderPreview,
-} from '@soldy-ui/core'
-import { enUS, ruRU } from '@soldy-ui/plugins'
-import { TableColumnDescriptor, TableDescriptor, TableRowDescriptor } from '@soldy-ui/setup'
+} from '@soxa-ui/core'
+import { enUS, ruRU } from '@soxa-ui/plugins'
+import { TableColumnDescriptor, TableDescriptor, TableRowDescriptor } from '@soxa-ui/setup'
 import {
 	TLocaleProviderElement,
 	TTableColumnElement,
@@ -50,7 +50,7 @@ import {
 	type TTableColumnElementProps,
 	type TTableElementProps,
 	type TTableRowElementProps,
-} from '@soldy-ui/webc'
+} from '@soxa-ui/webc'
 import { type ITemplate } from '../src/adapter/template/types'
 import { tableTemplate } from '../src/components/table/table.template'
 import { tableColumnTemplate } from '../src/components/table/column/table-column.template'

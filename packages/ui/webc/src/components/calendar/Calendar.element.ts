@@ -3,8 +3,8 @@
  * нет. Модуль регистрирует и день. docs/architecture.md, Layer 8d, «Даты».
  */
 
-import { CalendarCollectionDescriptor, CalendarDescriptor } from '@soldy-ui/setup'
-import type { ICalendar, TCalendarCollectionFacade } from '@soldy-ui/core'
+import { CalendarCollectionDescriptor, CalendarDescriptor } from '@soxa-ui/setup'
+import type { ICalendar, TCalendarCollectionFacade } from '@soxa-ui/core'
 import { ElementBase, defineElement } from '../../adapter'
 import type { TElementClassOf, TElementType } from '../../adapter'
 import { calendarTemplate } from './calendar.template'

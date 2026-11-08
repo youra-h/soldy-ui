@@ -1,4 +1,4 @@
-import { TextableDescriptor } from '@soldy-ui/setup'
+import { TextableDescriptor } from '@soxa-ui/setup'
 import { createSvelteAdapterContext, useAdapter } from '../../adapter'
 import type { TextableProps } from './base.component'
 

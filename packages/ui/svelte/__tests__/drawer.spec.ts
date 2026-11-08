@@ -16,9 +16,9 @@
 
 import { describe, it, expect, afterEach, vi } from 'vitest'
 import { flushSync } from 'svelte'
-import { TDrawer } from '@soldy-ui/core'
-import type { TCloseEvent, TCloseReason } from '@soldy-ui/core'
-import type { DialogProps, DrawerProps } from '@soldy-ui/svelte'
+import { TDrawer } from '@soxa-ui/core'
+import type { TCloseEvent, TCloseReason } from '@soxa-ui/core'
+import type { DialogProps, DrawerProps } from '@soxa-ui/svelte'
 import Harness from './Drawer.test.svelte'
 import { find, mount, nextFrame } from './mount'
 import { reactiveProps } from './reactive-props.svelte'

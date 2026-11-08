@@ -27,12 +27,12 @@
 
 import { describe, it, expect, vi } from 'vitest'
 import { createSignal, type JSX } from 'solid-js'
-import { TDialog } from '@soldy-ui/core'
-import type { TCloseEvent, TCloseReason, TValuePayload } from '@soldy-ui/core'
-import { TPluginBundle, ruRU, type TDialogOffsetEvent } from '@soldy-ui/plugins'
-import type { DescriptorSlots, PopoverDescriptor } from '@soldy-ui/setup'
-import * as material from '@soldy-ui/icons-material'
-import { Button, Dialog, LocaleProvider, Popover, type DialogProps } from '@soldy-ui/solid'
+import { TDialog } from '@soxa-ui/core'
+import type { TCloseEvent, TCloseReason, TValuePayload } from '@soxa-ui/core'
+import { TPluginBundle, ruRU, type TDialogOffsetEvent } from '@soxa-ui/plugins'
+import type { DescriptorSlots, PopoverDescriptor } from '@soxa-ui/setup'
+import * as material from '@soxa-ui/icons-material'
+import { Button, Dialog, LocaleProvider, Popover, type DialogProps } from '@soxa-ui/solid'
 import { find, mount, nextFrame, type TMounted } from './mount'
 
 type TPopoverTriggerScope = DescriptorSlots<typeof PopoverDescriptor>['trigger']

@@ -7,7 +7,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TActionPlugin } from '@soldy-ui/plugins'
+import { TActionPlugin } from '@soxa-ui/plugins'
 
 export const ActionPluginDescriptor = definePlugin({
 	ctor: TActionPlugin,

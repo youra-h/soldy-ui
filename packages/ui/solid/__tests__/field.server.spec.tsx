@@ -22,7 +22,7 @@
 import { describe, it, expect } from 'vitest'
 import type { JSX } from 'solid-js'
 import { renderToString } from 'solid-js/web'
-import { DateInput, Field, Input, RadioGroup, Rating, Slider } from '@soldy-ui/solid'
+import { DateInput, Field, Input, RadioGroup, Rating, Slider } from '@soxa-ui/solid'
 
 /** Открывающий тег разметки: имя и атрибуты; атрибут без значения — пустая строка. */
 type TTag = {

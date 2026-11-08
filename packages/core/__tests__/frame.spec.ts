@@ -1,6 +1,6 @@
 import type { TValuePayload } from '../src/common'
 import { describe, it, expect, beforeEach, vi } from 'vitest'
-import { TFrame, TLayer, FRAME_LAYER_ATTRIBUTE } from '@soldy-ui/core'
+import { TFrame, TLayer, FRAME_LAYER_ATTRIBUTE } from '@soxa-ui/core'
 
 /**
  * Слой с узлом. Номер места в стеке (`zIndex`, `data-layer`) открыт только у

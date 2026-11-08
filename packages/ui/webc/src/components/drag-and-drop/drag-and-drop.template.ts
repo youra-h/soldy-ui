@@ -1,6 +1,6 @@
 /** Шаблон DragAndDrop: структуры и коробки нет (`displayContents`); экземпляр опускает сборка. */
 
-import type { IDragAndDrop } from '@soldy-ui/core'
+import type { IDragAndDrop } from '@soxa-ui/core'
 import type { ITemplate } from '../../adapter'
 import { displayContents } from '../../adapter/runtime/display-contents'
 

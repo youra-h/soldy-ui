@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { previewProps } from '@soldy-ui/playground-shared'
+import { previewProps } from '@soxa-ui/playground-shared'
 import { showcaseOf } from '../catalog'
 import { frameworkLabel, hostOf } from '../hosts'
 import PreviewStage from '../components/PreviewStage.vue'

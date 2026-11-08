@@ -16,8 +16,8 @@
 import { describe, it, expect } from 'vitest'
 import { Component } from '@angular/core'
 import { TestBed, type ComponentFixture } from '@angular/core/testing'
-import { TProgressLinear } from '@soldy-ui/core'
-import { TProgressLinearComponent } from '@soldy-ui/angular'
+import { TProgressLinear } from '@soxa-ui/core'
+import { TProgressLinearComponent } from '@soxa-ui/angular'
 import { findIn, mountHost } from './mount'
 
 /** ProgressLinear сам по себе: корень — `<span>`, тег первого селектора. */

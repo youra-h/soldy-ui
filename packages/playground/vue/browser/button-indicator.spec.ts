@@ -27,15 +27,15 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { render, cleanup } from './render'
 import { userEvent } from 'vitest/browser'
 import { defineComponent, h, type VNode } from 'vue'
-import type { TButtonView, TComponentVariant } from '@soldy-ui/core'
-import { Button, ProgressLinear, ProgressSpinner } from '@soldy-ui/vue'
-import { BUTTON_VIEWS, COMPONENT_VARIANTS } from '@soldy-ui/playground-shared'
+import type { TButtonView, TComponentVariant } from '@soxa-ui/core'
+import { Button, ProgressLinear, ProgressSpinner } from '@soxa-ui/vue'
+import { BUTTON_VIEWS, COMPONENT_VARIANTS } from '@soxa-ui/playground-shared'
 
 import { find, lightness, pixel, style } from './colors'
 import { forcedColors } from './media'
 import { transitionEvents } from './transitions'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 /** Обе схемы: заливка с вариантом в них разная, а правило одно. */
 const SCHEMES = ['oren', 'oren-dark'] as const

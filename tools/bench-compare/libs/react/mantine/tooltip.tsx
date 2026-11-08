@@ -1,6 +1,6 @@
 import { Button, Tooltip } from '@mantine/core'
 
-/** Opens on hover and on focus, as the soldy tooltip: focus is opt-in in Mantine. */
+/** Opens on hover and on focus, as the soxa tooltip: focus is opt-in in Mantine. */
 export default function Page() {
 	return (
 		<Tooltip

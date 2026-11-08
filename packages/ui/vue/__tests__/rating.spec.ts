@@ -12,11 +12,11 @@
 import { describe, it, expect, afterEach, vi } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { h, nextTick } from 'vue'
-import { TRating } from '@soldy-ui/core'
-import type { IRatingProps } from '@soldy-ui/core'
-import { ruRU } from '@soldy-ui/plugins'
-import type { DescriptorSlots, RatingDescriptor } from '@soldy-ui/setup'
-import { Label, LocaleProvider, Rating } from '@soldy-ui/vue'
+import { TRating } from '@soxa-ui/core'
+import type { IRatingProps } from '@soxa-ui/core'
+import { ruRU } from '@soxa-ui/plugins'
+import type { DescriptorSlots, RatingDescriptor } from '@soxa-ui/setup'
+import { Label, LocaleProvider, Rating } from '@soxa-ui/vue'
 
 type TIconScope = DescriptorSlots<typeof RatingDescriptor>['icon']
 

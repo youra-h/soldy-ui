@@ -1,11 +1,11 @@
 import { useRef, useState, type ReactNode } from 'react'
-import type { TToastsItemType, TValuePayload } from '@soldy-ui/core'
+import type { TToastsItemType, TValuePayload } from '@soxa-ui/core'
 import type {
 	DescriptorSlots,
 	MenuDescriptor,
 	PopoverDescriptor,
 	TooltipDescriptor,
-} from '@soldy-ui/setup'
+} from '@soxa-ui/setup'
 import {
 	COLLECTION_ITEMS,
 	COLLECTION_MANY_ITEMS,
@@ -16,7 +16,7 @@ import {
 	TOASTS_ITEM_TYPES,
 	TOAST_SAVING,
 	toastSample,
-} from '@soldy-ui/playground-shared'
+} from '@soxa-ui/playground-shared'
 import {
 	Accordion,
 	Button,
@@ -55,7 +55,7 @@ import {
 	roleIcon,
 	useToasts,
 	type TToastRender,
-} from '@soldy-ui/react'
+} from '@soxa-ui/react'
 import type { TParts } from './events'
 
 /**

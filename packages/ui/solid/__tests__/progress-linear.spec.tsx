@@ -11,8 +11,8 @@
 
 import { describe, it, expect } from 'vitest'
 import { createSignal } from 'solid-js'
-import { TProgressLinear, type TProgressLinearOrientation } from '@soldy-ui/core'
-import { ProgressLinear } from '@soldy-ui/solid'
+import { TProgressLinear, type TProgressLinearOrientation } from '@soxa-ui/core'
+import { ProgressLinear } from '@soxa-ui/solid'
 import { mount } from './mount'
 
 /** Доля готового на корне; пустая строка — переменной нет. */

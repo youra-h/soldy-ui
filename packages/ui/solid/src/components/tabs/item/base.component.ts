@@ -1,5 +1,5 @@
-import type { ITabsItem } from '@soldy-ui/core'
-import type { TabsCollectionItemDescriptor, TabsItemDescriptor } from '@soldy-ui/setup'
+import type { ITabsItem } from '@soxa-ui/core'
+import type { TabsCollectionItemDescriptor, TabsItemDescriptor } from '@soxa-ui/setup'
 import type { EventProps, TDomAttributes, UseDomProps } from '../../../types'
 
 /** События таба — свои и фасада: активность, порядок, закрываемость. */

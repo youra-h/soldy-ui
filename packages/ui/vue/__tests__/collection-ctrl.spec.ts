@@ -17,8 +17,8 @@
 import { describe, it, expect, afterEach } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { defineComponent, h, nextTick, shallowRef, type Component } from 'vue'
-import { TAccordion, TListBox, TSelect, TTabs } from '@soldy-ui/core'
-import { Accordion, ListBox, Select, Tabs } from '@soldy-ui/vue'
+import { TAccordion, TListBox, TSelect, TTabs } from '@soxa-ui/core'
+import { Accordion, ListBox, Select, Tabs } from '@soxa-ui/vue'
 
 let wrapper: { unmount(): void } | null = null
 

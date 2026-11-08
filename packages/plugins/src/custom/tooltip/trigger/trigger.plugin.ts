@@ -1,4 +1,4 @@
-import type { ITooltip } from '@soldy-ui/core'
+import type { ITooltip } from '@soxa-ui/core'
 import { TBasePlugin } from '../../../base'
 import type { IPluginContext } from '../../../base'
 import { TElementPlugin } from '../../element'

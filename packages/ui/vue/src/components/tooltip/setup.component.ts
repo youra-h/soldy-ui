@@ -1,4 +1,4 @@
-import { TooltipDescriptor } from '@soldy-ui/setup'
+import { TooltipDescriptor } from '@soxa-ui/setup'
 import { useAdapter, useExpose, createVueAdapterContext, type SetupContext } from '../../adapter'
 import BaseTooltip, { type TooltipProps } from './base.component'
 

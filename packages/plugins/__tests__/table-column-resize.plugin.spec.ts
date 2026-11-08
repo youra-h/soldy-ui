@@ -13,8 +13,8 @@
  */
 
 import { describe, it, expect, afterEach, vi } from 'vitest'
-import { TTableColumn } from '@soldy-ui/core'
-import type { ITableColumnProps } from '@soldy-ui/core'
+import { TTableColumn } from '@soxa-ui/core'
+import type { ITableColumnProps } from '@soxa-ui/core'
 import { TElementPlugin, TPluginBundle, TTableColumnResizePlugin } from '../src'
 import type { IPlugin, IPluginConstructor, ITableColumnResizePluginOptions } from '../src'
 

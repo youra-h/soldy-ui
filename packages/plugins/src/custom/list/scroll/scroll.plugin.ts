@@ -1,11 +1,11 @@
-import { LIST_DEFAULTS, drawOf, selectionOf } from '@soldy-ui/core'
+import { LIST_DEFAULTS, drawOf, selectionOf } from '@soxa-ui/core'
 import type {
 	IControl,
 	IDrawExtension,
 	TCollectionEngine,
 	TScrollBehavior,
 	TValuePayload,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 import { TBasePlugin } from '../../../base'
 import type { IPluginContext } from '../../../base'
 import { smoothScrollBehavior } from '../../../motion'

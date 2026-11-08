@@ -13,7 +13,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TMenuPopoverItemFocusPlugin } from '@soldy-ui/plugins'
+import { TMenuPopoverItemFocusPlugin } from '@soxa-ui/plugins'
 
 export const MenuPopoverItemFocusPluginDescriptor = definePlugin({
 	ctor: TMenuPopoverItemFocusPlugin,

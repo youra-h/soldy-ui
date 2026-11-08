@@ -30,8 +30,8 @@ import {
 	type ITagsItem,
 	type TComponentVariant,
 	type TTagsOverflow,
-} from '@soldy-ui/core'
-import { Tags, TagsItem, type TagsItemProps, type TagsProps } from '@soldy-ui/solid'
+} from '@soxa-ui/core'
+import { Tags, TagsItem, type TagsItemProps, type TagsProps } from '@soxa-ui/solid'
 import { find, mount, nextFrame } from './mount'
 
 afterEach(() => {

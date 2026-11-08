@@ -1,4 +1,4 @@
-import type { ISelect } from '@soldy-ui/core'
+import type { ISelect } from '@soxa-ui/core'
 import { TSelectKeyboardStrategy } from './base.strategy'
 import { isPrintableKey } from '../../../../utils'
 import type { ISelectKeyboardHost } from './types'

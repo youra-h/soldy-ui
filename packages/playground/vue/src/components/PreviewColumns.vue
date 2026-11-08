@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { IPreviewHost, TPreviewEventSink } from '@soldy-ui/playground-shared'
+import type { IPreviewHost, TPreviewEventSink } from '@soxa-ui/playground-shared'
 import PreviewStage from './PreviewStage.vue'
 
 /**

@@ -1,7 +1,7 @@
 import { useEmits, useProps } from '../../adapter'
 import type { TEmits, TProps, UseProps } from '../../types/common'
-import { DateInputDescriptor } from '@soldy-ui/setup'
-import type { IDateInput } from '@soldy-ui/core'
+import { DateInputDescriptor } from '@soxa-ui/setup'
+import type { IDateInput } from '@soxa-ui/core'
 
 export const emitsDateInput: TEmits = useEmits(DateInputDescriptor())
 

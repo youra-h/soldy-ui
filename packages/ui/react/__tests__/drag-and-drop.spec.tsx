@@ -27,8 +27,8 @@ import { describe, it, expect, vi } from 'vitest'
 import { StrictMode, act, type ReactElement } from 'react'
 import { hydrateRoot } from 'react-dom/client'
 import { renderToString } from 'react-dom/server'
-import type { IDragAndDropMove, TDragAndDropMoveEvent } from '@soldy-ui/core'
-import { Accordion, DragAndDrop, ListBox, Tabs } from '@soldy-ui/react'
+import type { IDragAndDropMove, TDragAndDropMoveEvent } from '@soxa-ui/core'
+import { Accordion, DragAndDrop, ListBox, Tabs } from '@soxa-ui/react'
 import { mount, nextFrame, track } from './mount'
 
 const ITEMS = ['a', 'b', 'c'].map((value) => ({ value, text: value.toUpperCase() }))

@@ -1,5 +1,5 @@
 import type { JSX } from 'solid-js'
-import type { IEntity } from '@soldy-ui/core'
+import type { IEntity } from '@soxa-ui/core'
 import type {
 	IComponentDescriptor,
 	DescriptorAllProps,
@@ -8,7 +8,7 @@ import type {
 	DescriptorSlots,
 	TContractOf,
 	TSlotProps,
-} from '@soldy-ui/setup'
+} from '@soxa-ui/setup'
 import type { TConsumerRef } from './adapter'
 
 /** Событийные пропы компонента из дескриптора (core + плагины). */

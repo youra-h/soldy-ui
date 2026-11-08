@@ -19,8 +19,8 @@
  */
 
 import { describe, it, expect, afterEach, vi } from 'vitest'
-import { TDialog, TPopover } from '@soldy-ui/core'
-import type { IDialogProps, TCloseReason } from '@soldy-ui/core'
+import { TDialog, TPopover } from '@soxa-ui/core'
+import type { IDialogProps, TCloseReason } from '@soxa-ui/core'
 import { TDismissPlugin, TElementPlugin, TModalFocusPlugin, TPluginBundle } from '../src'
 import type { IPlugin, IPluginConstructor } from '../src'
 

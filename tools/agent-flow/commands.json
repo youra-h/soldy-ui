@@ -1,61 +1,61 @@
 {
   "analyze": {
-    "summary": "Research a soldy-ui ClickUp task",
+    "summary": "Research a soxa-ui ClickUp task",
     "status": "analysis",
     "role": "analyst"
   },
   "plan": {
-    "summary": "Plan a soldy-ui ClickUp task",
+    "summary": "Plan a soxa-ui ClickUp task",
     "status": "planning",
     "role": "techlead"
   },
   "design": {
-    "summary": "Design a soldy-ui ClickUp task in an existing pool worktree",
+    "summary": "Design a soxa-ui ClickUp task in an existing pool worktree",
     "status": "design",
     "role": "designer"
   },
   "dev": {
-    "summary": "Implement a soldy-ui ClickUp task in an existing pool worktree",
+    "summary": "Implement a soxa-ui ClickUp task in an existing pool worktree",
     "status": "in progress",
     "role": "developer"
   },
   "manage": {
-    "summary": "Coordinate soldy-ui ClickUp priorities and dependencies",
+    "summary": "Coordinate soxa-ui ClickUp priorities and dependencies",
     "role": "manager"
   },
   "drive": {
-    "summary": "Route one soldy-ui ClickUp task through roles until owner review"
+    "summary": "Route one soxa-ui ClickUp task through roles until owner review"
   },
   "analyze-all": {
-    "summary": "Research the available soldy-ui ClickUp queue sequentially",
+    "summary": "Research the available soxa-ui ClickUp queue sequentially",
     "status": "analysis",
     "role": "analyst"
   },
   "plan-all": {
-    "summary": "Plan the available soldy-ui ClickUp queue sequentially",
+    "summary": "Plan the available soxa-ui ClickUp queue sequentially",
     "status": "planning",
     "role": "techlead"
   },
   "design-all": {
-    "summary": "Design the available soldy-ui ClickUp queue sequentially",
+    "summary": "Design the available soxa-ui ClickUp queue sequentially",
     "status": "design",
     "role": "designer"
   },
   "dev-all": {
-    "summary": "Implement the available soldy-ui ClickUp queue sequentially",
+    "summary": "Implement the available soxa-ui ClickUp queue sequentially",
     "status": "in progress",
     "role": "developer"
   },
   "pool": {
-    "summary": "Inspect the existing soldy-ui worktree pool without changing it"
+    "summary": "Inspect the existing soxa-ui worktree pool without changing it"
   },
   "unlock": {
-    "summary": "Recover a stopped soldy-ui role run when explicitly requested"
+    "summary": "Recover a stopped soxa-ui role run when explicitly requested"
   },
   "week": {
-    "summary": "Summarize soldy-ui releases and merged PRs without changes"
+    "summary": "Summarize soxa-ui releases and merged PRs without changes"
   },
   "release": {
-    "summary": "Prepare a soldy-ui release PR only on an explicit release request"
+    "summary": "Prepare a soxa-ui release PR only on an explicit release request"
   }
 }

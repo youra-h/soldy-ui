@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { LocaleProvider } from '@soldy-ui/svelte'
+	import { LocaleProvider } from '@soxa-ui/svelte'
 	import { language, type TLive } from './live.svelte'
 	import type { TPreview, TPreviewProps } from './previews'
 	import { setParts, type TParts } from './events'

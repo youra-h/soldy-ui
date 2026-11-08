@@ -25,18 +25,18 @@ import { propertyDetail } from './property-detail'
  */
 
 import { describe, it, expect, afterEach, beforeEach } from 'vitest'
-import { TButton, TComponentView, TDialog } from '@soldy-ui/core'
-import type { TCloseEvent, TCloseReason } from '@soldy-ui/core'
+import { TButton, TComponentView, TDialog } from '@soxa-ui/core'
+import type { TCloseEvent, TCloseReason } from '@soxa-ui/core'
 import {
 	TBasePlugin,
 	ruRU,
 	zhCN,
 	type IPluginContext,
 	type TDialogOffsetEvent,
-} from '@soldy-ui/plugins'
-import { DialogDescriptor, usePlugins } from '@soldy-ui/setup'
-import * as material from '@soldy-ui/icons-material'
-import { TDialogElement, TLocaleProviderElement, type TDialogElementProps } from '@soldy-ui/webc'
+} from '@soxa-ui/plugins'
+import { DialogDescriptor, usePlugins } from '@soxa-ui/setup'
+import * as material from '@soxa-ui/icons-material'
+import { TDialogElement, TLocaleProviderElement, type TDialogElementProps } from '@soxa-ui/webc'
 import { dialogTemplate } from '../src/components/dialog/dialog.template'
 import { TELEPORT_ANCHOR } from '../src/adapter/runtime/teleport'
 import { bareContext } from './template-context'

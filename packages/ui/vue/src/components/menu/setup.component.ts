@@ -1,4 +1,4 @@
-import { TCollectionExtension, MenuDescriptor, MenuCollectionDescriptor } from '@soldy-ui/setup'
+import { TCollectionExtension, MenuDescriptor, MenuCollectionDescriptor } from '@soxa-ui/setup'
 import {
 	useAdapter,
 	joinBindings,

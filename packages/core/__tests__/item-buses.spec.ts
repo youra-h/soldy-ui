@@ -49,7 +49,7 @@ import {
 	createEngineListBox,
 	createEngineSelect,
 	createEngineTable,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 
 /** Items per measurement; the larger set of items holds twice as many. */
 const COUNT = 200

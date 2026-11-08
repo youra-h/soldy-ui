@@ -1,4 +1,4 @@
-import { withParts } from '@soldy-ui/setup'
+import { withParts } from '@soxa-ui/setup'
 import { Tags as TagsComponent } from './Tags'
 import { TagsItem } from './item'
 

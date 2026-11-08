@@ -13,8 +13,8 @@
  */
 
 import { describe, it, expect } from 'vitest'
-import { TMenu, TMenuRadioGroup, TMenuRadioItem } from '@soldy-ui/core'
-import type { IMenuItem, TCollectionEngine } from '@soldy-ui/core'
+import { TMenu, TMenuRadioGroup, TMenuRadioItem } from '@soxa-ui/core'
+import type { IMenuItem, TCollectionEngine } from '@soxa-ui/core'
 import {
 	MenuCollectionDescriptor,
 	MenuCollectionRadioItemDescriptor,

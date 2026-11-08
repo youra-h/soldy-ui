@@ -3,7 +3,7 @@ import { Button } from '@kobalte/core/button'
 import { Dialog } from '@kobalte/core/dialog'
 import { TextField } from '@kobalte/core/text-field'
 
-/** A button opens a dialog with a field inside, as the soldy preview. */
+/** A button opens a dialog with a field inside, as the soxa preview. */
 export default function Page() {
 	const [open, setOpen] = createSignal(false)
 

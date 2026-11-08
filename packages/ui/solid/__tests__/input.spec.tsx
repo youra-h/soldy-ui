@@ -16,9 +16,9 @@
 
 import { describe, it, expect, expectTypeOf, vi, afterEach } from 'vitest'
 import { createSignal } from 'solid-js'
-import { TInput, type IInput, type TValuePayload } from '@soldy-ui/core'
-import { ruRU } from '@soldy-ui/plugins'
-import { Input, LocaleProvider, type InputProps } from '@soldy-ui/solid'
+import { TInput, type IInput, type TValuePayload } from '@soxa-ui/core'
+import { ruRU } from '@soxa-ui/plugins'
+import { Input, LocaleProvider, type InputProps } from '@soxa-ui/solid'
 import { find, mount, nextFrame } from './mount'
 
 afterEach(() => {

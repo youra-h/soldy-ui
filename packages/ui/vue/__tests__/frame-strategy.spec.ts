@@ -1,7 +1,7 @@
 import { afterEach, expect, it, vi } from 'vitest'
 import { mount } from '@vue/test-utils'
-import { TFrame } from '@soldy-ui/core'
-import { Frame } from '@soldy-ui/vue'
+import { TFrame } from '@soxa-ui/core'
+import { Frame } from '@soxa-ui/vue'
 
 afterEach(() => {
 	document.body.innerHTML = ''

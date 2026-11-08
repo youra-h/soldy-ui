@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core'
 import { NgComponentOutlet, NgTemplateOutlet } from '@angular/common'
-import type { IToastsItem, TToastsItemType } from '@soldy-ui/core'
-import type { TIconRole } from '@soldy-ui/setup'
+import type { IToastsItem, TToastsItemType } from '@soxa-ui/core'
+import type { TIconRole } from '@soxa-ui/setup'
 import {
 	AttributesDirective,
 	RoleIconDirective,

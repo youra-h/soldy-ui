@@ -21,14 +21,14 @@ import { describe, it, expect, beforeEach, afterEach, onTestFinished } from 'vit
 import { render, cleanup } from './render'
 import { userEvent } from 'vitest/browser'
 import { defineComponent, h, nextTick, type VNode } from 'vue'
-import { TTextarea } from '@soldy-ui/core'
-import type { ITextareaProps } from '@soldy-ui/core'
-import { COMPONENT_SIZES } from '@soldy-ui/playground-shared'
-import { Button, Input, Textarea } from '@soldy-ui/vue'
+import { TTextarea } from '@soxa-ui/core'
+import type { ITextareaProps } from '@soxa-ui/core'
+import { COMPONENT_SIZES } from '@soxa-ui/playground-shared'
+import { Button, Input, Textarea } from '@soxa-ui/vue'
 
 import { find } from './colors'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 const nextFrame = () => new Promise<void>((resolve) => requestAnimationFrame(() => resolve()))
 

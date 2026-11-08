@@ -11,10 +11,10 @@
 import { describe, it, expect } from 'vitest'
 import { StrictMode } from 'react'
 import { renderToString } from 'react-dom/server'
-import { TInput } from '@soldy-ui/core'
-import { enUS, extendLocale, ruRU, zhCN } from '@soldy-ui/plugins'
-import type { TLocale } from '@soldy-ui/plugins'
-import { Input, LocaleProvider } from '@soldy-ui/react'
+import { TInput } from '@soxa-ui/core'
+import { enUS, extendLocale, ruRU, zhCN } from '@soxa-ui/plugins'
+import type { TLocale } from '@soxa-ui/plugins'
+import { Input, LocaleProvider } from '@soxa-ui/react'
 import { find, mount } from './mount'
 
 /** Кнопка очистки поля — её имя собирается из шаблона локали и имени поля. */

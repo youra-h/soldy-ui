@@ -9,7 +9,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TDrawerLayoutPlugin } from '@soldy-ui/plugins'
+import { TDrawerLayoutPlugin } from '@soxa-ui/plugins'
 
 export const DrawerLayoutPluginDescriptor = definePlugin({
 	ctor: TDrawerLayoutPlugin,

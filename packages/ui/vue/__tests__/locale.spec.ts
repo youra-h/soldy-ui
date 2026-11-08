@@ -17,10 +17,10 @@ import { describe, it, expect, afterEach } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { createSSRApp, defineComponent, h, nextTick, ref, type VNode } from 'vue'
 import { renderToString } from 'vue/server-renderer'
-import { TTable } from '@soldy-ui/core'
-import { enUS, extendLocale, ruRU, zhCN } from '@soldy-ui/plugins'
-import type { TLocale } from '@soldy-ui/plugins'
-import { Calendar, LocaleProvider, Table, Tabs, TabsItem } from '@soldy-ui/vue'
+import { TTable } from '@soxa-ui/core'
+import { enUS, extendLocale, ruRU, zhCN } from '@soxa-ui/plugins'
+import type { TLocale } from '@soxa-ui/plugins'
+import { Calendar, LocaleProvider, Table, Tabs, TabsItem } from '@soxa-ui/vue'
 
 const nextFrame = () => new Promise((resolve) => requestAnimationFrame(resolve))
 

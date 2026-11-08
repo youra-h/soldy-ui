@@ -17,8 +17,8 @@
  */
 
 import { defineComponent, defineDescriptor, defineType } from '../../../../protected/define'
-import { TTableRow } from '@soldy-ui/core'
-import type { ITableColumn, ITableRow } from '@soldy-ui/core'
+import { TTableRow } from '@soxa-ui/core'
+import type { ITableColumn, ITableRow } from '@soxa-ui/core'
 import { OWNER_STYLE_PROPS, StylableDescriptor } from '../stylable.descriptor'
 import { TableRowIdsPluginDescriptor } from '../../plugins'
 

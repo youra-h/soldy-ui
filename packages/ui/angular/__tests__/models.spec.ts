@@ -1,8 +1,8 @@
 import { describe, it, expect, expectTypeOf } from 'vitest'
 import { Component, signal, viewChild, type EventEmitter } from '@angular/core'
 import { TestBed } from '@angular/core/testing'
-import { TInput, TCheckBox, type TListBoxValue, type TValuePayload } from '@soldy-ui/core'
-import { TInputComponent, TCheckBoxComponent, TListBoxComponent } from '@soldy-ui/angular'
+import { TInput, TCheckBox, type TListBoxValue, type TValuePayload } from '@soxa-ui/core'
+import { TInputComponent, TCheckBoxComponent, TListBoxComponent } from '@soxa-ui/angular'
 
 @Component({
 	standalone: true,

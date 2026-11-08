@@ -5,7 +5,7 @@ import TieredMenu from 'primevue/tieredmenu'
 import type { MenuItem } from 'primevue/menuitem'
 
 /**
- * The soldy menu preview in PrimeVue: `TieredMenu` as a popup — it has
+ * The soxa menu preview in PrimeVue: `TieredMenu` as a popup — it has
  * submenus within submenus, separators and disabled items. Checkbox and radio
  * items and group labels it has not: they are items drawn by the `item` slot
  * with a mark and the state kept by the page, group labels are disabled

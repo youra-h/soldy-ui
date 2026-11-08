@@ -4,8 +4,8 @@
 	 * берёт API тостов (`useToasts()`) и отдаёт его тесту — так его берёт
 	 * потомок менеджера в приложении. Без менеджера выше `useToasts()` бросает.
 	 */
-	import type { IToastsApi } from '@soldy-ui/core'
-	import { useToasts, type TToastRender } from '@soldy-ui/svelte'
+	import type { IToastsApi } from '@soxa-ui/core'
+	import { useToasts, type TToastRender } from '@soxa-ui/svelte'
 
 	type THarnessProps = {
 		onApi?: (api: IToastsApi<TToastRender>) => void

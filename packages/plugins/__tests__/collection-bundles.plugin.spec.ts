@@ -12,8 +12,8 @@
  */
 
 import { describe, it, expect } from 'vitest'
-import { TListBox, TListBoxCollectionFacade } from '@soldy-ui/core'
-import type { IListBoxItem } from '@soldy-ui/core'
+import { TListBox, TListBoxCollectionFacade } from '@soxa-ui/core'
+import type { IListBoxItem } from '@soxa-ui/core'
 import { TCollectionBundlesPlugin, TPluginBundle } from '../src'
 
 /** Реестр над списком из трёх элементов, у каждого — свой набор. */

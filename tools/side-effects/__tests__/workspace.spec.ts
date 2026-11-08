@@ -94,23 +94,23 @@ const WEBC = 'packages/ui/webc'
  * a target in `dist` is built from the same path in `src`.
  */
 const SOURCES: Readonly<Record<string, string>> = {
-	'@soldy-ui/core': 'packages/core/src/index.ts',
-	'@soldy-ui/plugins': 'packages/plugins/src/index.ts',
-	'@soldy-ui/setup': 'packages/setup/index.ts',
-	'@soldy-ui/icons-material': 'packages/icons/material/src/index.ts',
-	'@soldy-ui/icons-lucide': 'packages/icons/lucide/src/index.ts',
-	'@soldy-ui/theme-base/setup': 'packages/themes/base/setup/index.ts',
-	'@soldy-ui/theme-oren/setup': 'packages/themes/oren/setup/index.ts',
-	'@soldy-ui/vue': 'packages/ui/vue/src/index.ts',
-	'@soldy-ui/react': 'packages/ui/react/src/index.ts',
-	'@soldy-ui/solid': 'packages/ui/solid/src/index.ts',
-	'@soldy-ui/svelte': 'packages/ui/svelte/src/index.ts',
-	'@soldy-ui/angular': 'packages/ui/angular/src/index.ts',
-	'@soldy-ui/webc': `${WEBC}/src/index.ts`,
+	'@soxa-ui/core': 'packages/core/src/index.ts',
+	'@soxa-ui/plugins': 'packages/plugins/src/index.ts',
+	'@soxa-ui/setup': 'packages/setup/index.ts',
+	'@soxa-ui/icons-material': 'packages/icons/material/src/index.ts',
+	'@soxa-ui/icons-lucide': 'packages/icons/lucide/src/index.ts',
+	'@soxa-ui/theme-base/setup': 'packages/themes/base/setup/index.ts',
+	'@soxa-ui/theme-oren/setup': 'packages/themes/oren/setup/index.ts',
+	'@soxa-ui/vue': 'packages/ui/vue/src/index.ts',
+	'@soxa-ui/react': 'packages/ui/react/src/index.ts',
+	'@soxa-ui/solid': 'packages/ui/solid/src/index.ts',
+	'@soxa-ui/svelte': 'packages/ui/svelte/src/index.ts',
+	'@soxa-ui/angular': 'packages/ui/angular/src/index.ts',
+	'@soxa-ui/webc': `${WEBC}/src/index.ts`,
 	...Object.fromEntries(
 		Object.entries(
 			subpathSources({
-				name: '@soldy-ui/webc',
+				name: '@soxa-ui/webc',
 				root: join(ROOT, WEBC),
 				entry: 'src/index.ts',
 			}),
@@ -129,12 +129,12 @@ function named(path: string, name: string): string {
  * root of that package defines every element.
  */
 const BUTTONS: Readonly<Record<string, string>> = {
-	'@soldy-ui/vue': named('@soldy-ui/vue', 'Button'),
-	'@soldy-ui/react': named('@soldy-ui/react', 'Button'),
-	'@soldy-ui/solid': named('@soldy-ui/solid', 'Button'),
-	'@soldy-ui/svelte': named('@soldy-ui/svelte', 'Button'),
-	'@soldy-ui/angular': named('@soldy-ui/angular', 'TButtonComponent'),
-	'@soldy-ui/webc/button': "import '@soldy-ui/webc/button'",
+	'@soxa-ui/vue': named('@soxa-ui/vue', 'Button'),
+	'@soxa-ui/react': named('@soxa-ui/react', 'Button'),
+	'@soxa-ui/solid': named('@soxa-ui/solid', 'Button'),
+	'@soxa-ui/svelte': named('@soxa-ui/svelte', 'Button'),
+	'@soxa-ui/angular': named('@soxa-ui/angular', 'TButtonComponent'),
+	'@soxa-ui/webc/button': "import '@soxa-ui/webc/button'",
 }
 
 /** Every string target of an `exports` value, however deep the conditions go. */
@@ -346,7 +346,7 @@ const POLYFILL = '@ungap/custom-elements'
 
 /** Entry points of Web Components: the root and the entries of the elements. */
 const WEBC_ENTRIES = Object.keys(SOURCES).filter(
-	(path) => path === '@soldy-ui/webc' || path.startsWith('@soldy-ui/webc/'),
+	(path) => path === '@soxa-ui/webc' || path.startsWith('@soxa-ui/webc/'),
 )
 
 /** Components of Web Components whose module of an element defines elements on import. */
@@ -401,7 +401,7 @@ describe('входы элементов Web Components', () => {
 	it('вход — у каждого компонента, чей модуль элемента определяет элементы при импорте, и у провайдера локали', () => {
 		expect(
 			Object.fromEntries(
-				WEBC_ENTRIES.filter((path) => path !== '@soldy-ui/webc').map((path) => [
+				WEBC_ENTRIES.filter((path) => path !== '@soxa-ui/webc').map((path) => [
 					path,
 					SOURCES[path],
 				]),
@@ -409,11 +409,11 @@ describe('входы элементов Web Components', () => {
 		).toEqual({
 			...Object.fromEntries(
 				definingComponents().map((name) => [
-					`@soldy-ui/webc/${name}`,
+					`@soxa-ui/webc/${name}`,
 					`${WEBC}/src/components/${name}/index.ts`,
 				]),
 			),
-			'@soldy-ui/webc/locale-provider': `${WEBC}/src/adapter/locale/index.ts`,
+			'@soxa-ui/webc/locale-provider': `${WEBC}/src/adapter/locale/index.ts`,
 		})
 	})
 

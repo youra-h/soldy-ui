@@ -1,4 +1,4 @@
-import { Button, DatePicker, Input, Select, Table, Tabs } from '@soldy-ui/react'
+import { Button, DatePicker, Input, Select, Table, Tabs } from '@soxa-ui/react'
 import { DialogDemo } from './dialog-demo'
 
 const cities = [

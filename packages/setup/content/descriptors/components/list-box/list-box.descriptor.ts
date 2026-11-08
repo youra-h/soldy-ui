@@ -15,9 +15,9 @@
  */
 
 import { defineComponent, defineDescriptor, defineType } from '../../../../protected/define'
-import { TListBox } from '@soldy-ui/core'
-import type { IListBoxItem } from '@soldy-ui/core'
-import { TListKeyboardPlugin, listOf } from '@soldy-ui/plugins'
+import { TListBox } from '@soxa-ui/core'
+import type { IListBoxItem } from '@soxa-ui/core'
+import { TListKeyboardPlugin, listOf } from '@soxa-ui/plugins'
 import { ValueControlDescriptor } from '../value-control.descriptor'
 import {
 	ActionPluginDescriptor,

@@ -6,7 +6,7 @@
  */
 
 import { defineComponent, defineDescriptor } from '../../../protected/define'
-import { TIcon } from '@soldy-ui/core'
+import { TIcon } from '@soxa-ui/core'
 import { IconLayoutPluginDescriptor, AriaPluginDescriptor } from '../plugins'
 import { ComponentViewDescriptor } from './component-view.descriptor'
 

@@ -19,10 +19,10 @@
 import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { render, cleanup } from './render'
 import { defineComponent, h } from 'vue'
-import { COMPONENT_SIZES } from '@soldy-ui/playground-shared'
-import { Icon, roleIcon } from '@soldy-ui/vue'
+import { COMPONENT_SIZES } from '@soxa-ui/playground-shared'
+import { Icon, roleIcon } from '@soxa-ui/vue'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 /** Глиф строится один раз: новый компонент на каждый рендер пересоздавал бы узел. */
 const CLOSE = roleIcon('close')

@@ -1,9 +1,9 @@
 import { ref } from 'vue'
-import { useIcons } from '@soldy-ui/setup'
-import type { TIconSource } from '@soldy-ui/setup'
-import { ICON_PACKS } from '@soldy-ui/playground-shared'
-import * as lucide from '@soldy-ui/icons-lucide'
-import * as material from '@soldy-ui/icons-material'
+import { useIcons } from '@soxa-ui/setup'
+import type { TIconSource } from '@soxa-ui/setup'
+import { ICON_PACKS } from '@soxa-ui/playground-shared'
+import * as lucide from '@soxa-ui/icons-lucide'
+import * as material from '@soxa-ui/icons-material'
 
 /** Пакеты по идентификатору из общего реестра. */
 const PACKS: Record<string, Record<string, TIconSource>> = {

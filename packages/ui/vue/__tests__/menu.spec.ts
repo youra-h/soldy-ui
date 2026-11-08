@@ -13,15 +13,15 @@
 import { describe, it, expect, afterEach } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { defineComponent, h, nextTick, ref, type VNode } from 'vue'
-import { Button, Menu } from '@soldy-ui/vue'
-import { createEngineMenu } from '@soldy-ui/core'
+import { Button, Menu } from '@soxa-ui/vue'
+import { createEngineMenu } from '@soxa-ui/core'
 import type {
 	IMenuItem,
 	IMenuItemSource,
 	TCollectionEngineItemSource,
 	TMenuCollection,
-} from '@soldy-ui/core'
-import type { DescriptorSlots, MenuDescriptor } from '@soldy-ui/setup'
+} from '@soxa-ui/core'
+import type { DescriptorSlots, MenuDescriptor } from '@soxa-ui/setup'
 
 const nextFrame = () => new Promise((resolve) => requestAnimationFrame(resolve))
 

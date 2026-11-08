@@ -12,8 +12,8 @@
 
 import { describe, it, expect } from 'vitest'
 import { renderToString } from 'solid-js/web'
-import { enUS, ruRU, zhCN, type TLocale } from '@soldy-ui/plugins'
-import { Calendar, DateInput, Input, LocaleProvider } from '@soldy-ui/solid'
+import { enUS, ruRU, zhCN, type TLocale } from '@soxa-ui/plugins'
+import { Calendar, DateInput, Input, LocaleProvider } from '@soxa-ui/solid'
 
 /** Страница запроса — поле под провайдером его языка. */
 const page = async (locale: TLocale) =>

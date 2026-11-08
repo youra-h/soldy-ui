@@ -7,13 +7,13 @@ import {
 	type Component,
 	type FunctionalComponent,
 } from 'vue'
-import type { TToastsItemType } from '@soldy-ui/core'
+import type { TToastsItemType } from '@soxa-ui/core'
 import type {
 	DescriptorSlots,
 	MenuDescriptor,
 	PopoverDescriptor,
 	TooltipDescriptor,
-} from '@soldy-ui/setup'
+} from '@soxa-ui/setup'
 import {
 	COLLECTION_ITEMS,
 	COLLECTION_MANY_ITEMS,
@@ -24,7 +24,7 @@ import {
 	TOASTS_ITEM_TYPES,
 	TOAST_SAVING,
 	toastSample,
-} from '@soldy-ui/playground-shared'
+} from '@soxa-ui/playground-shared'
 import {
 	Accordion,
 	Button,
@@ -64,7 +64,7 @@ import {
 	roleIcon,
 	useToasts,
 	type TToastRender,
-} from '@soldy-ui/vue'
+} from '@soxa-ui/vue'
 import type { TParts } from './events'
 
 /**

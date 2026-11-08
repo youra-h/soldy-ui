@@ -19,9 +19,9 @@ import { describe, it, expect, vi, afterEach } from 'vitest'
 import { StrictMode, act, type ReactElement, type ReactNode } from 'react'
 import { hydrateRoot } from 'react-dom/client'
 import { renderToString } from 'react-dom/server'
-import { TTooltip } from '@soldy-ui/core'
-import type { DescriptorSlots, PopoverDescriptor, TooltipDescriptor } from '@soldy-ui/setup'
-import { Button, Popover, Tooltip, type TooltipProps } from '@soldy-ui/react'
+import { TTooltip } from '@soxa-ui/core'
+import type { DescriptorSlots, PopoverDescriptor, TooltipDescriptor } from '@soxa-ui/setup'
+import { Button, Popover, Tooltip, type TooltipProps } from '@soxa-ui/react'
 import { find, mount, nextFrame, track } from './mount'
 
 type TTriggerScope = DescriptorSlots<typeof TooltipDescriptor>['trigger']

@@ -1,4 +1,4 @@
-import type { IDateInput, TDateFieldPart, TDateInputPart } from '@soldy-ui/core'
+import type { IDateInput, TDateFieldPart, TDateInputPart } from '@soxa-ui/core'
 import type { IPluginContext } from '../../base'
 import type { TDateInputSegmentNode } from './types'
 

@@ -148,8 +148,8 @@ jobs:
                 }' | head -12
             done
           ) > "$RUNNER_TEMP/memory.log" 2>&1 &
-          npm run build:css --workspace=@soldy-ui/theme-oren
-          npm run test:browser --workspace=@soldy-ui/playground-vue -- --project "layout (${{ matrix.browser }})"
+          npm run build:css --workspace=@soxa-ui/theme-oren
+          npm run test:browser --workspace=@soxa-ui/playground-vue -- --project "layout (${{ matrix.browser }})"
 
       # The same user scenario on all six platforms: the component's events and
       # the accessibility tree after every step, compared with Vue
@@ -253,7 +253,7 @@ jobs:
         run: npx tsc --noEmit -p packages/ui/react/tsconfig.json
 
       - name: Типы — Svelte
-        run: npm run check --workspace=@soldy-ui/svelte
+        run: npm run check --workspace=@soxa-ui/svelte
 
       - name: Типы — Solid
         run: npx tsc --noEmit -p packages/ui/solid/tsconfig.json
@@ -273,7 +273,7 @@ jobs:
       # silently drift apart from its component.
       - name: Angular — дрейф сгенерированных метаданных
         run: |
-          npm run generate --workspace=@soldy-ui/angular
+          npm run generate --workspace=@soxa-ui/angular
           git diff --exit-code packages/ui/angular/src/generated
 
       # The icon list is committed ready too: the generator builds it from the
@@ -283,8 +283,8 @@ jobs:
       # build.
       - name: Иконки — дрейф сгенерированного списка
         run: |
-          npm run generate --workspace=@soldy-ui/icons-material
-          npm run generate --workspace=@soldy-ui/icons-lucide
+          npm run generate --workspace=@soxa-ui/icons-material
+          npm run generate --workspace=@soxa-ui/icons-lucide
           git diff --exit-code packages/icons/material/src/index.ts packages/icons/lucide/src/index.ts
 
       # The stand is one: a Vue shell with framework hosts for previews, and the
@@ -297,7 +297,7 @@ jobs:
       # theme's build:css would wipe its own `dist/setup` — the CSS build has
       # `emptyOutDir`.
       - name: Сборка стенда
-        run: npm run build --workspace=@soldy-ui/playground-vue
+        run: npm run build --workspace=@soxa-ui/playground-vue
 
   # Lower bounds of the adapters' peers (docs/agents/build.md, «Версии пакетов»):
   # «Тесты — <адаптер>» runs the specs on the lock's versions, and without this
@@ -332,12 +332,12 @@ jobs:
       # derives the list from the adapter's manifest; no version is written out
       # by hand.
       - name: Нижние границы peer
-        run: node tools/min-peers/cli.ts pin @soldy-ui/${{ matrix.adapter }}
+        run: node tools/min-peers/cli.ts pin @soxa-ui/${{ matrix.adapter }}
 
       # A copy of another version left in the tree would be picked up by the
       # specs or the test tools, and the run would be green for nothing.
       - name: Проверка дерева
-        run: node tools/min-peers/cli.ts verify @soldy-ui/${{ matrix.adapter }}
+        run: node tools/min-peers/cli.ts verify @soxa-ui/${{ matrix.adapter }}
 
       # Specs only: the build, types and the browser run go in jobs of their own.
       - name: Спеки
@@ -485,7 +485,7 @@ jobs:
           node-version: 22
 
       - name: Changeset
-        run: node tools/english/changesets.mjs
+        run: node --test tools/english/*.test.mjs && node tools/english/changesets.mjs
 
       - name: Комментарии
         run: node tools/english/comments.mjs "$BASE"

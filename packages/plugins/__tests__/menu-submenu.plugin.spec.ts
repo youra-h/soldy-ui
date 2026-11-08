@@ -15,8 +15,8 @@
  */
 
 import { describe, it, expect, afterEach, vi } from 'vitest'
-import { TMenu, TMenuItem, TMenuSubmenu, createEngineMenu } from '@soldy-ui/core'
-import type { IMenuItem, IMenuItemProps } from '@soldy-ui/core'
+import { TMenu, TMenuItem, TMenuSubmenu, createEngineMenu } from '@soxa-ui/core'
+import type { IMenuItem, IMenuItemProps } from '@soxa-ui/core'
 import {
 	TCollectionBundlesPlugin,
 	TCollectionElements,

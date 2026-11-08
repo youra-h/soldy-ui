@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { TDialog, TFrame, TLayer, TCloseEvent, FRAME_LAYER_ATTRIBUTE } from '@soldy-ui/core'
-import type { TCloseReason } from '@soldy-ui/core'
+import { TDialog, TFrame, TLayer, TCloseEvent, FRAME_LAYER_ATTRIBUTE } from '@soxa-ui/core'
+import type { TCloseReason } from '@soxa-ui/core'
 
 /**
  * Модель модального окна: состояние и то, что из него следует для разметки.

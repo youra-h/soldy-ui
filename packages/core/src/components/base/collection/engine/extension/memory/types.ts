@@ -1,6 +1,6 @@
 import type { IExtension } from '../types'
 import type { IQueryStrategy } from '../../types'
-import type { TNoEvents } from '@soldy-ui/core'
+import type { TNoEvents } from '@soxa-ui/core'
 
 /** Событий у расширения нет — см. `TNoEvents`. */
 export type TMemoryEvents = TNoEvents

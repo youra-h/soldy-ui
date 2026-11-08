@@ -34,7 +34,7 @@ async function key(
 /** The open panel of a select: closed ones stay mounted, hidden. */
 const shown = (selector: string) => last(`${selector}:not(${selector}-hidden)`)
 
-/** antd scenarios: the soldy ones step by step, on antd's own markup. */
+/** antd scenarios: the soxa ones step by step, on antd's own markup. */
 export const SCENARIOS: Record<string, TScenario> = {
 	button: each('.ant-btn', press),
 	input: each('input.ant-input', (field) => type(field, 'abc')),

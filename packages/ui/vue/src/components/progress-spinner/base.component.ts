@@ -1,7 +1,7 @@
 import { useEmits, useProps } from '../../adapter'
 import type { TEmits, TProps, UseProps } from '../../types/common'
-import { ProgressSpinnerDescriptor } from '@soldy-ui/setup'
-import type { IProgressSpinner } from '@soldy-ui/core'
+import { ProgressSpinnerDescriptor } from '@soxa-ui/setup'
+import type { IProgressSpinner } from '@soxa-ui/core'
 
 export const emitsProgressSpinner: TEmits = useEmits(ProgressSpinnerDescriptor())
 

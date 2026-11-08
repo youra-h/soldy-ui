@@ -17,7 +17,7 @@ import {
 	isMenuRadioItem,
 	isMenuSubmenu,
 	menuOf,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 import type {
 	IMenuItem,
 	IMenuItemSource,
@@ -30,7 +30,7 @@ import type {
 	TMenuSubmenuEntry,
 	TUpdateEvent,
 	TValuePayload,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 
 /**
  * Модель Menu: состояние меню и то, что из него следует для разметки, и

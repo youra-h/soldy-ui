@@ -1,4 +1,4 @@
-import { withParts } from '@soldy-ui/setup'
+import { withParts } from '@soxa-ui/setup'
 import AccordionComponent from './Accordion.svelte'
 import { AccordionItem } from './item'
 

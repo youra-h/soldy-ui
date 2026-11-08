@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core'
 import { NgTemplateOutlet } from '@angular/common'
-import type { IMenuPopoverItem } from '@soldy-ui/core'
+import type { IMenuPopoverItem } from '@soxa-ui/core'
 import { AttributesDirective, RoleIconDirective } from '../../../adapter'
 import { TItemRowComponent } from '../../item-row'
 import { TFrameComponent } from '../../frame'

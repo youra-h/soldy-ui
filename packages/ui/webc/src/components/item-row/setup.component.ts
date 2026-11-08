@@ -1,5 +1,5 @@
-import { ItemRowDescriptor } from '@soldy-ui/setup'
-import type { IButton } from '@soldy-ui/core'
+import { ItemRowDescriptor } from '@soxa-ui/setup'
+import type { IButton } from '@soxa-ui/core'
 import { createWebcAdapterContext, useAdapter } from '../../adapter'
 import type { TBinding, TUpdateListener } from '../../adapter'
 

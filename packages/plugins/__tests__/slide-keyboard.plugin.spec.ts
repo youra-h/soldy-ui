@@ -10,8 +10,8 @@
  */
 
 import { describe, it, expect, afterEach } from 'vitest'
-import { TSlider } from '@soldy-ui/core'
-import type { ISliderProps } from '@soldy-ui/core'
+import { TSlider } from '@soxa-ui/core'
+import type { ISliderProps } from '@soxa-ui/core'
 import { TElementPlugin, TPluginBundle, TSlideKeyboardPlugin } from '../src'
 import type { IPlugin, IPluginConstructor } from '../src'
 

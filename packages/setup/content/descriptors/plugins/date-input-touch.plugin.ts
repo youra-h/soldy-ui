@@ -10,7 +10,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TDateInputTouchPlugin } from '@soldy-ui/plugins'
+import { TDateInputTouchPlugin } from '@soxa-ui/plugins'
 
 export const DateInputTouchPluginDescriptor = definePlugin({
 	ctor: TDateInputTouchPlugin,

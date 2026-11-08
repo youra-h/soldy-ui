@@ -1,13 +1,13 @@
 /**
  * TVueElevator — реализация IContextElevator через Vue provide/inject.
  *
- * Наследует TElevator из @soldy-ui/setup (кэширование ключей).
+ * Наследует TElevator из @soxa-ui/setup (кэширование ключей).
  * Ключевое ограничение: up()/down() должны вызываться синхронно
  * внутри setup() UI-компонента.
  */
 
 import { provide, inject } from 'vue'
-import { TElevator } from '@soldy-ui/setup'
+import { TElevator } from '@soxa-ui/setup'
 
 export class TVueElevator<T = any> extends TElevator<T> {
 	down(value: T): void {

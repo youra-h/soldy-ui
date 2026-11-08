@@ -7,7 +7,7 @@ import {
 	type Signal,
 	type Type,
 } from '@angular/core'
-import type { IButton, ILabel } from '@soldy-ui/core'
+import type { IButton, ILabel } from '@soxa-ui/core'
 import {
 	RoleIconDirective,
 	SlotDirective,
@@ -18,7 +18,7 @@ import {
 	TRadioGroupComponent,
 	TRadioGroupItemComponent,
 	TSwitchComponent,
-} from '@soldy-ui/angular'
+} from '@soxa-ui/angular'
 import { CopyDirective } from './copy.directive'
 
 /**

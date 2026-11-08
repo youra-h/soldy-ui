@@ -1,5 +1,5 @@
 /* ─── The shared layer of themes ─────────────────────────────
- * What the parts of soldy need in any theme, not the look of one: a reset of
+ * What the parts of soxa need in any theme, not the look of one: a reset of
  * the library's nodes (`reset.css`), the writing-direction sign
  * (`direction.css`), the fading of a disabled part (`disabled.css`) and the
  * structure of the parts — layout and mechanics (`components/`), whose numbers
@@ -36,9 +36,9 @@
  * DatePicker, which holds it, stand after Popover and ListBox.
  *
  * A theme takes this layer by the name of the package: `@import
- * '@soldy-ui/theme-base';` — the layer `so` stands where it was imported. A
+ * '@soxa-ui/theme-base';` — the layer `so` stands where it was imported. A
  * theme on Tailwind puts it into Tailwind's layer `base`, in place of
- * preflight (`@import '@soldy-ui/theme-base' layer(base);`, as oren does): its
+ * preflight (`@import '@soxa-ui/theme-base' layer(base);`, as oren does): its
  * order against the utilities of the application's Tailwind is the one of
  * preflight. The layer order of an application that loads this layer itself —
  * the README of the package. */

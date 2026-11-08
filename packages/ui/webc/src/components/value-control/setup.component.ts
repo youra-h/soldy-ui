@@ -1,5 +1,5 @@
-import { ValueControlDescriptor } from '@soldy-ui/setup'
-import type { IValueControl } from '@soldy-ui/core'
+import { ValueControlDescriptor } from '@soxa-ui/setup'
+import type { IValueControl } from '@soxa-ui/core'
 import { createWebcAdapterContext, useAdapter } from '../../adapter'
 import type { TBinding, TUpdateListener } from '../../adapter'
 

@@ -6,7 +6,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TListItemPlugin } from '@soldy-ui/plugins'
+import { TListItemPlugin } from '@soxa-ui/plugins'
 
 export const ListItemPluginDescriptor = definePlugin({
 	ctor: TListItemPlugin,

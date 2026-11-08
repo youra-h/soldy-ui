@@ -184,9 +184,9 @@ describe('fresh pinned lock', () => {
 			},
 			'packages/ui/angular/node_modules/@angular/forms': { version: '22.2.3' },
 			'node_modules/@angular/forms-extra': { version: '1.0.0' },
-			'node_modules/@soldy-ui/angular': { resolved: 'packages/ui/angular', link: true },
+			'node_modules/@soxa-ui/angular': { resolved: 'packages/ui/angular', link: true },
 			'packages/ui/angular': {
-				name: '@soldy-ui/angular',
+				name: '@soxa-ui/angular',
 				peerDependencies: { '@angular/core': '^22.2.0' },
 			},
 			'node_modules/rxjs': { version: '7.8.2' },
@@ -201,7 +201,7 @@ describe('fresh pinned lock', () => {
 			packages: {
 				'': packages[''],
 				'node_modules/@angular/forms-extra': packages['node_modules/@angular/forms-extra'],
-				'node_modules/@soldy-ui/angular': packages['node_modules/@soldy-ui/angular'],
+				'node_modules/@soxa-ui/angular': packages['node_modules/@soxa-ui/angular'],
 				'packages/ui/angular': packages['packages/ui/angular'],
 				'node_modules/rxjs': packages['node_modules/rxjs'],
 			},

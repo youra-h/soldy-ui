@@ -47,7 +47,7 @@ import {
 	TSwitch,
 	TTextarea,
 	type TTableColumnSource,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 import {
 	Accordion,
 	Button,
@@ -124,7 +124,7 @@ import {
 	type TagsProps,
 	type ToastsProps,
 	type TooltipProps,
-} from '@soldy-ui/react'
+} from '@soxa-ui/react'
 import {
 	toControlAttrs,
 	toRootForward,

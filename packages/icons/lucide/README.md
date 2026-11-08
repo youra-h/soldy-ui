@@ -1,8 +1,8 @@
-# @soldy-ui/icons-lucide
+# @soxa-ui/icons-lucide
 
-**Lucide icons implementing the Soldy UI icon-role contract.**
+**Lucide icons implementing the Soxa UI icon-role contract.**
 
-Part of [Soldy UI](https://github.com/youra-h/soldy-ui) — UI components with the logic written once: a
+Part of [Soxa UI](https://github.com/youra-h/soxa-ui) — UI components with the logic written once: a
 framework-agnostic core and thin adapters that render it in Vue, React, Angular, Svelte, Solid and
 Web Components.
 
@@ -20,7 +20,7 @@ that: it colors a Lucide icon the same way it colors any other pack (see [Color]
 ## Install
 
 ```bash
-npm install @soldy-ui/icons-lucide
+npm install @soxa-ui/icons-lucide
 ```
 
 ## Usage
@@ -28,8 +28,8 @@ npm install @soldy-ui/icons-lucide
 The application registers the pack once, in its entry point:
 
 ```ts
-import { useIcons } from '@soldy-ui/setup'
-import * as lucide from '@soldy-ui/icons-lucide'
+import { useIcons } from '@soxa-ui/setup'
+import * as lucide from '@soxa-ui/icons-lucide'
 
 useIcons(lucide)
 useIcons({ close: myCloseIcon }) // a single role, on top of the pack
@@ -51,14 +51,14 @@ without `'unsafe-inline'` styles does not strip it. An icon of your own
 
 ## Documentation
 
-- [Soldy UI README](https://github.com/youra-h/soldy-ui#readme) — what the library is and how it is
+- [Soxa UI README](https://github.com/youra-h/soxa-ui#readme) — what the library is and how it is
   put together.
-- [Architecture overview](https://github.com/youra-h/soldy-ui/blob/main/docs/architecture.md) —
+- [Architecture overview](https://github.com/youra-h/soxa-ui/blob/main/docs/architecture.md) —
   layers, descriptors, plugins, collections, adapters.
 
 ## License
 
-The code of the package is [MIT](https://github.com/youra-h/soldy-ui/blob/main/LICENSE).
+The code of the package is [MIT](https://github.com/youra-h/soxa-ui/blob/main/LICENSE).
 
 The icons are [Lucide](https://lucide.dev), © Lucide Icons and Contributors, licensed under the
 ISC License; the icons Lucide derives from [Feather](https://feathericons.com) are © Cole Bemis,

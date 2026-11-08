@@ -33,16 +33,16 @@
 import { describe, it, expect, afterEach } from 'vitest'
 import { cleanup, render } from './render'
 import { defineComponent, h, nextTick, type VNode } from 'vue'
-import { TButton, TComponentView, TFrame, createEngineToasts } from '@soldy-ui/core'
-import { TBasePlugin, ruRU, zhCN, type IPluginContext, type TLocale } from '@soldy-ui/plugins'
+import { TButton, TComponentView, TFrame, createEngineToasts } from '@soxa-ui/core'
+import { TBasePlugin, ruRU, zhCN, type IPluginContext, type TLocale } from '@soxa-ui/plugins'
 import {
 	useIcons,
 	usePlugins,
 	type DescriptorSlots,
 	type PopoverDescriptor,
 	type TooltipDescriptor,
-} from '@soldy-ui/setup'
-import * as material from '@soldy-ui/icons-material'
+} from '@soxa-ui/setup'
+import * as material from '@soxa-ui/icons-material'
 import {
 	Button,
 	Dialog,
@@ -52,14 +52,14 @@ import {
 	Toasts,
 	Tooltip,
 	type TToastRender,
-} from '@soldy-ui/vue'
+} from '@soxa-ui/vue'
 import {
 	TFrameElement,
 	TLocaleProviderElement,
 	TToastsElement,
 	type TFrameElementProps,
 	type TToastRender as TElementToastRender,
-} from '@soldy-ui/webc'
+} from '@soxa-ui/webc'
 import {
 	BOX,
 	DIALOG_PARTS,
@@ -71,7 +71,7 @@ import {
 	type TBox,
 } from './panel-boxes'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 useIcons(material)
 

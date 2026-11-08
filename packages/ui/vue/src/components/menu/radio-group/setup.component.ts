@@ -2,7 +2,7 @@ import {
 	MenuRadioGroupDescriptor,
 	TItemGroupExtension,
 	TMenuRadioGroupExtension,
-} from '@soldy-ui/setup'
+} from '@soxa-ui/setup'
 import {
 	useAdapter,
 	useExpose,

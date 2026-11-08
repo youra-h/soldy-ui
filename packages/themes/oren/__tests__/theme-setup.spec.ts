@@ -1,13 +1,13 @@
 import { describe, it, expect, afterEach } from 'vitest'
-import { TButton, TTable, TTabs, TToasts } from '@soldy-ui/core'
-import { resolveRegisteredPlugins, useTheme } from '@soldy-ui/setup'
-import { TTableHeadPlugin, TTabsViewPlugin, TToastsFrontPlugin } from '@soldy-ui/theme-base/setup'
+import { TButton, TTable, TTabs, TToasts } from '@soxa-ui/core'
+import { resolveRegisteredPlugins, useTheme } from '@soxa-ui/setup'
+import { TTableHeadPlugin, TTabsViewPlugin, TToastsFrontPlugin } from '@soxa-ui/theme-base/setup'
 import * as setup from '../setup'
 
 /**
- * Поведение темы: `@soldy-ui/theme-oren/setup` ставит плагины, данные которых
+ * Поведение темы: `@soxa-ui/theme-oren/setup` ставит плагины, данные которых
  * читает её CSS, — плагины раскладки общего слоя тем
- * (`@soldy-ui/theme-base/setup`): своего `useTheme` у общего слоя нет. Полосу
+ * (`@soxa-ui/theme-base/setup`): своего `useTheme` у общего слоя нет. Полосу
  * под активным табом рисует `_tabs.scss` по переменным `TTabsViewPlugin` — без
  * регистрации её нет. Отступ прокрутки к фокусу под закреплённой шапкой Table
  * общий слой тем (`components/table.css`) берёт из высоты шапки, которую пишет

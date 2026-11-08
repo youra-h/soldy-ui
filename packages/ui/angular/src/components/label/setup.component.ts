@@ -1,5 +1,5 @@
-import { LabelDescriptor } from '@soldy-ui/setup'
-import type { ILabel } from '@soldy-ui/core'
+import { LabelDescriptor } from '@soxa-ui/setup'
+import type { ILabel } from '@soxa-ui/core'
 import { createAngularAdapterContext, useAdapter } from '../../adapter'
 import type { TBinding } from '../../adapter'
 

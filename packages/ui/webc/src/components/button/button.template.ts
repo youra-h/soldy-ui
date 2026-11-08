@@ -4,7 +4,7 @@
  * темы.
  */
 
-import type { IButton } from '@soldy-ui/core'
+import type { IButton } from '@soxa-ui/core'
 import { bind, type ITemplate } from '../../adapter'
 
 export const buttonTemplate: ITemplate<IButton> = {

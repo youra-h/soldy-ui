@@ -2,8 +2,8 @@ import { mkdirSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
 import { parseArgs } from 'node:util'
 import { queryObjects } from 'node:v8'
-import { TButton, TComponent, TEventEmitter } from '@soldy-ui/core'
-import { arEG, enUS, ruRU, zhCN, type TLocale } from '@soldy-ui/plugins'
+import { TButton, TComponent, TEventEmitter } from '@soxa-ui/core'
+import { arEG, enUS, ruRU, zhCN, type TLocale } from '@soxa-ui/plugins'
 import { pageComponents, type TServerPage } from './page'
 
 /**

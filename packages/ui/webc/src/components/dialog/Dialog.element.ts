@@ -5,8 +5,8 @@
  * «Модальный слой и тосты».
  */
 
-import { DialogDescriptor } from '@soldy-ui/setup'
-import type { IDialog } from '@soldy-ui/core'
+import { DialogDescriptor } from '@soxa-ui/setup'
+import type { IDialog } from '@soxa-ui/core'
 import { ElementBase, defineElement } from '../../adapter'
 import type { TElementClassOf, TElementType } from '../../adapter'
 import { dialogTemplate } from './dialog.template'

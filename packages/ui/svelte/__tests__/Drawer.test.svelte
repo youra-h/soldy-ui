@@ -9,7 +9,7 @@
 	 * рядом с его кнопкой `so-test-in-dialog`, а в панели — кнопка
 	 * `so-test-in-drawer`.
 	 */
-	import { Dialog, Drawer, type DialogProps, type DrawerProps } from '@soldy-ui/svelte'
+	import { Dialog, Drawer, type DialogProps, type DrawerProps } from '@soxa-ui/svelte'
 
 	type THarnessProps = {
 		drawer?: DrawerProps

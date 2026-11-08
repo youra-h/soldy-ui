@@ -4,8 +4,8 @@
  * (`fractionStyle`) база кладёт на корень стиль-выходом.
  */
 
-import { ProgressSpinnerDescriptor } from '@soldy-ui/setup'
-import type { IProgressSpinner } from '@soldy-ui/core'
+import { ProgressSpinnerDescriptor } from '@soxa-ui/setup'
+import type { IProgressSpinner } from '@soxa-ui/core'
 import { ElementBase, defineElement } from '../../adapter'
 import type { TElementClassOf, TElementType } from '../../adapter'
 import { progressSpinnerTemplate } from './progress-spinner.template'

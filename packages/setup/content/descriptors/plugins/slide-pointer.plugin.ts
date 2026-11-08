@@ -10,7 +10,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TSlidePointerPlugin } from '@soldy-ui/plugins'
+import { TSlidePointerPlugin } from '@soxa-ui/plugins'
 
 export const SlidePointerPluginDescriptor = definePlugin({
 	ctor: TSlidePointerPlugin,

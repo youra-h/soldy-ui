@@ -1,4 +1,4 @@
-import type { ITabs } from '@soldy-ui/core'
+import type { ITabs } from '@soxa-ui/core'
 
 /**
  * Узлы набора — один поиск на плагины раскладки Tabs: место активного таба

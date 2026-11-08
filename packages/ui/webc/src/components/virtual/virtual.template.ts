@@ -1,6 +1,6 @@
 /** Шаблон Virtual: структуры и коробки нет (`displayContents`); окно коллекциям опускает сборка. */
 
-import type { IVirtual } from '@soldy-ui/core'
+import type { IVirtual } from '@soxa-ui/core'
 import type { ITemplate } from '../../adapter'
 import { displayContents } from '../../adapter/runtime/display-contents'
 

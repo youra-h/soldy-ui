@@ -16,16 +16,16 @@ import { propertyDetail } from './property-detail'
  */
 
 import { describe, it, expect, afterEach, vi } from 'vitest'
-import { TRating, type TValuePayload } from '@soldy-ui/core'
-import { ruRU } from '@soldy-ui/plugins'
-import { RatingDescriptor } from '@soldy-ui/setup'
+import { TRating, type TValuePayload } from '@soxa-ui/core'
+import { ruRU } from '@soxa-ui/plugins'
+import { RatingDescriptor } from '@soxa-ui/setup'
 import {
 	TLabelElement,
 	TLocaleProviderElement,
 	TRatingElement,
 	type TLabelElementProps,
 	type TRatingElementProps,
-} from '@soldy-ui/webc'
+} from '@soxa-ui/webc'
 import { ratingTemplate } from '../src/components/rating/rating.template'
 import { bareContext } from './template-context'
 
@@ -48,7 +48,7 @@ function isLabel(node: Element | null): node is TLabelElementProps {
 	return node instanceof TLabelElement
 }
 
-/** Оценка soldy в разметке. */
+/** Оценка soxa в разметке. */
 function ratingOf(root: ParentNode): TRatingElementProps {
 	const node = root.querySelector('[is="so-rating"]')
 

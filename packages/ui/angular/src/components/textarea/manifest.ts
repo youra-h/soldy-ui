@@ -1,1 +1,1 @@
-export { TextareaDescriptor as descriptor } from '@soldy-ui/setup'
+export { TextareaDescriptor as descriptor } from '@soxa-ui/setup'

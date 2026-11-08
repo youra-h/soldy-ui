@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
-import { Input, Select, Switch } from '@soldy-ui/vue'
-import { parseNumber, parseNumberOrText, type TPropControl } from '@soldy-ui/playground-shared'
+import { Input, Select, Switch } from '@soxa-ui/vue'
+import { parseNumber, parseNumberOrText, type TPropControl } from '@soxa-ui/playground-shared'
 
 /**
  * Редактор одного пропа.
  *
  * Тип контрола приходит из общего манифеста, а не выбирается здесь: логика
  * «есть список значений — значит Select, иначе по типу» — данные стенда, а не
- * его отрисовка, и живёт в `@soldy-ui/playground-shared`. Здесь остаётся только
- * отрисовка — компонентами soldy на Vue, оболочкой стенда. Превью на
+ * его отрисовка, и живёт в `@soxa-ui/playground-shared`. Здесь остаётся только
+ * отрисовка — компонентами soxa на Vue, оболочкой стенда. Превью на
  * выбранном фреймворке строка получает от хоста, а редактор у неё один.
  */
 const props = defineProps<{ control: TPropControl; modelValue: unknown }>()

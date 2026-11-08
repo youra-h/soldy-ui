@@ -2,8 +2,8 @@
  * Контракты окна: подключение коллекции к окну обёртки `Virtual` и опции расширений.
  */
 
-import type { TCollectionEngine } from '@soldy-ui/core'
-import type { IPluginBundle } from '@soldy-ui/plugins'
+import type { TCollectionEngine } from '@soxa-ui/core'
+import type { IPluginBundle } from '@soxa-ui/plugins'
 import type { TElevatorFactory } from '../../../protected/adapter/elevator'
 
 /**

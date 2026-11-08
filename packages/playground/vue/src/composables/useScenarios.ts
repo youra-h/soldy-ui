@@ -15,7 +15,7 @@ import {
 	type TScenarioState,
 	type TSceneNodes,
 	type TTopic,
-} from '@soldy-ui/playground-shared'
+} from '@soxa-ui/playground-shared'
 import { scenariosOf, topicsOf } from '../catalog'
 import { hostOf } from '../hosts'
 

@@ -1,4 +1,4 @@
-import type { IControl } from '@soldy-ui/core'
+import type { IControl } from '@soxa-ui/core'
 
 /**
  * Элемент коллекции, на который можно перевести фокус: не выключен, видим и

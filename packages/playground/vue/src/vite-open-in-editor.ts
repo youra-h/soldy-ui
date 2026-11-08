@@ -15,7 +15,7 @@ const SCRATCH = path.resolve(import.meta.dirname, '../scratch')
  *
  * Зачем сервер вообще: браузер не может ни записать файл, ни запустить
  * редактор. Он шлёт сюда текст, сервер кладёт его в `scratch/` **внутри
- * пакета** — только там сработают алиасы на `@soldy-ui/*`, то есть код в редакторе
+ * пакета** — только там сработают алиасы на `@soxa-ui/*`, то есть код в редакторе
  * будет не картинкой, а рабочим.
  *
  * Расширение файла — хоста, написавшего код (`vue`, `tsx`). Оно приходит из
@@ -28,7 +28,7 @@ const SCRATCH = path.resolve(import.meta.dirname, '../scratch')
  */
 export function openInEditor(): Plugin {
 	return {
-		name: 'soldy-open-in-editor',
+		name: 'soxa-open-in-editor',
 		apply: 'serve',
 		configureServer(server) {
 			server.middlewares.use('/__playground/open', (req, res) => {

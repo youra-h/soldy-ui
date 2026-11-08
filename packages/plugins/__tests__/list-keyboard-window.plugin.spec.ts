@@ -16,8 +16,8 @@
  */
 
 import { describe, it, expect, afterEach } from 'vitest'
-import { TListBox, TListBoxCollectionFacade, TWindowStrategy } from '@soldy-ui/core'
-import type { IListBoxItem } from '@soldy-ui/core'
+import { TListBox, TListBoxCollectionFacade, TWindowStrategy } from '@soxa-ui/core'
+import type { IListBoxItem } from '@soxa-ui/core'
 import {
 	TCollectionBundlesPlugin,
 	TCollectionElements,

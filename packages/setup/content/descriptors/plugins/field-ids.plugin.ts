@@ -10,7 +10,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TFieldIdsPlugin } from '@soldy-ui/plugins'
+import { TFieldIdsPlugin } from '@soxa-ui/plugins'
 
 export const FieldIdsPluginDescriptor = definePlugin({
 	ctor: TFieldIdsPlugin,

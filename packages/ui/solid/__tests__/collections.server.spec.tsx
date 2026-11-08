@@ -40,8 +40,8 @@ import {
 	createEngineToasts,
 	type ITagsItem,
 	type TTableColumnSource,
-} from '@soldy-ui/core'
-import { ruRU } from '@soldy-ui/plugins'
+} from '@soxa-ui/core'
+import { ruRU } from '@soxa-ui/plugins'
 import {
 	Accordion,
 	Calendar,
@@ -60,7 +60,7 @@ import {
 	type AccordionItemProps,
 	type RadioGroupItemProps,
 	type TabsItemProps,
-} from '@soldy-ui/solid'
+} from '@soxa-ui/solid'
 
 /** Открывающий тег разметки: имя и атрибуты; атрибут без значения — пустая строка. */
 type TTag = {

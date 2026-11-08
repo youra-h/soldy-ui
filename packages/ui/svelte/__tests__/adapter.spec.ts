@@ -13,9 +13,9 @@
 
 import { describe, it, expect, expectTypeOf } from 'vitest'
 import { flushSync } from 'svelte'
-import { TButton } from '@soldy-ui/core'
-import { TPluginBundle } from '@soldy-ui/plugins'
-import { Button, roleIcon } from '@soldy-ui/svelte'
+import { TButton } from '@soxa-ui/core'
+import { TPluginBundle } from '@soxa-ui/plugins'
+import { Button, roleIcon } from '@soxa-ui/svelte'
 import { isTagComponent } from '../src/adapter/runtime/tag'
 import { type TSvelteAdapterContextOptions } from '../src/adapter/common/createSvelteAdapterContext'
 import Link from './Link.test.svelte'

@@ -1,5 +1,5 @@
 interface:
   display_name: 'analyze'
-  short_description: 'Research a soldy-ui ClickUp task'
+  short_description: 'Research a soxa-ui ClickUp task'
 policy:
   allow_implicit_invocation: false

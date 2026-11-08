@@ -8,7 +8,7 @@ import {
 	createEngine,
 	createEngineTags,
 	factoryOf,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 
 interface ITestItem {
 	id: number

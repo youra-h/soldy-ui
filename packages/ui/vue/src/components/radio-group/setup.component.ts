@@ -3,7 +3,7 @@ import {
 	TFieldControlExtension,
 	RadioGroupDescriptor,
 	RadioGroupCollectionDescriptor,
-} from '@soldy-ui/setup'
+} from '@soxa-ui/setup'
 import {
 	useAdapter,
 	joinBindings,

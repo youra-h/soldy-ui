@@ -19,7 +19,7 @@ import { describe, it, expect } from 'vitest'
 import { TListBox, TSelect, LIST_DEFAULTS } from '../src'
 import type { IList, TDataset } from '../src'
 import type { TListEvents, IListProps } from '../src/components/custom/list/types'
-import type { TValuePayload } from '@soldy-ui/core'
+import type { TValuePayload } from '@soxa-ui/core'
 
 /**
  * Контракт инстанса для параметризованных проверок ниже: собственно `IList`
@@ -118,7 +118,7 @@ describe.each(IMPLEMENTATIONS)('%s несёт контракт IList', (_name, C
 
 	/**
 	 * Свойства принимаются конструктором — то, ради чего они и вернулись в
-	 * ядро из плагина. Голый инстанс должен быть полноценным: `@soldy-ui/core`
+	 * ядро из плагина. Голый инстанс должен быть полноценным: `@soxa-ui/core`
 	 * заявлен как headless-модель, и адаптера у него может не быть вовсе.
 	 */
 	it.each(PROPERTIES)('%s принимается конструктором', (prop, _event, value) => {

@@ -4,8 +4,8 @@
  * его модуль. docs/architecture.md, Layer 8d, «Даты».
  */
 
-import { CalendarCollectionItemDescriptor, CalendarItemDescriptor } from '@soldy-ui/setup'
-import type { ICalendarItem, TCalendarItemCollectionFacade } from '@soldy-ui/core'
+import { CalendarCollectionItemDescriptor, CalendarItemDescriptor } from '@soxa-ui/setup'
+import type { ICalendarItem, TCalendarItemCollectionFacade } from '@soxa-ui/core'
 import { ElementBase } from '../../../adapter'
 import type { TElementClassOf, TElementType } from '../../../adapter'
 import { calendarItemTemplate } from './calendar-item.template'

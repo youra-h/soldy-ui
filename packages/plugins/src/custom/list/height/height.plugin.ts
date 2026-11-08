@@ -1,5 +1,5 @@
-import { batchOf, frameDebounce } from '@soldy-ui/core'
-import type { IList, TCollectionEngine, TListEvents } from '@soldy-ui/core'
+import { batchOf, frameDebounce } from '@soxa-ui/core'
+import type { IList, TCollectionEngine, TListEvents } from '@soxa-ui/core'
 import { TBasePlugin } from '../../../base'
 import type { IListenable, IPluginContext } from '../../../base'
 import { TElementPlugin } from '../../element'

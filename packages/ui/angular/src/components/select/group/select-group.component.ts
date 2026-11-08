@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core'
-import type { IItemGroup } from '@soldy-ui/core'
+import type { IItemGroup } from '@soxa-ui/core'
 import { AttributesDirective, provideElevator } from '../../../adapter'
 import { TSelectGroupSurface } from '../../../generated/select-group.metadata'
 import { setupSelectGroup } from './setup.component'

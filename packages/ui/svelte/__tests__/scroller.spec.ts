@@ -11,9 +11,9 @@
 
 import { describe, it, expect } from 'vitest'
 import { flushSync } from 'svelte'
-import { TScroller } from '@soldy-ui/core'
-import { enUS, extendLocale, ruRU } from '@soldy-ui/plugins'
-import { Scroller, type ScrollerProps } from '@soldy-ui/svelte'
+import { TScroller } from '@soxa-ui/core'
+import { enUS, extendLocale, ruRU } from '@soxa-ui/plugins'
+import { Scroller, type ScrollerProps } from '@soxa-ui/svelte'
 import Surround from './Surround.test.svelte'
 import { find, mount, nextFrame } from './mount'
 import { reactiveProps } from './reactive-props.svelte'

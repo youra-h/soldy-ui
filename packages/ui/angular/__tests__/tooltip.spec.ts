@@ -23,14 +23,14 @@
 import { describe, it, expect, afterEach, vi } from 'vitest'
 import { Component, signal, type Type } from '@angular/core'
 import { TestBed, type ComponentFixture } from '@angular/core/testing'
-import { TTooltip, type TTooltipPlacement, type TTooltipType } from '@soldy-ui/core'
+import { TTooltip, type TTooltipPlacement, type TTooltipType } from '@soxa-ui/core'
 import {
 	AttributesDirective,
 	SlotDirective,
 	TButtonComponent,
 	TPopoverComponent,
 	TTooltipComponent,
-} from '@soldy-ui/angular'
+} from '@soxa-ui/angular'
 import { find, nextFrame } from './mount'
 
 /**

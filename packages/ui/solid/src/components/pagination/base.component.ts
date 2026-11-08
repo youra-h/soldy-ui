@@ -1,5 +1,5 @@
-import type { IPagination } from '@soldy-ui/core'
-import type { PaginationCollectionDescriptor, PaginationDescriptor } from '@soldy-ui/setup'
+import type { IPagination } from '@soxa-ui/core'
+import type { PaginationCollectionDescriptor, PaginationDescriptor } from '@soxa-ui/setup'
 import type { EventProps, UseDomProps } from '../../types'
 
 /** События Pagination — свои и фасада коллекции. */

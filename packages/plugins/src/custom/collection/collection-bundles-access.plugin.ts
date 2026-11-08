@@ -1,8 +1,8 @@
-import { batchOf } from '@soldy-ui/core'
+import { batchOf } from '@soxa-ui/core'
 import { TBasePlugin } from '../../base'
 import type { IPluginContext, IPluginBundle } from '../../base'
 import { TCollectionBundlesPlugin } from './bundles.plugin'
-import type { IComponentView, TCollectionEngine } from '@soldy-ui/core'
+import type { IComponentView, TCollectionEngine } from '@soxa-ui/core'
 
 /**
  * TCollectionBundlesAccess — базовый плагин доступа к bundles элементов коллекции.

@@ -876,7 +876,7 @@ describe('сторож манифестов', () => {
 	const library = (overrides: TManifest): TWorkspacePackage => ({
 		dir: 'packages/example',
 		manifest: {
-			name: '@soldy-ui/example',
+			name: '@soxa-ui/example',
 			version: VERSION,
 			description: 'Пакет для проверки сторожа',
 			license: 'MIT',
@@ -891,7 +891,7 @@ describe('сторож манифестов', () => {
 		dir: 'packages/other',
 		manifest: {
 			...library({}).manifest,
-			name: '@soldy-ui/other',
+			name: '@soxa-ui/other',
 			version,
 			repository: { type: 'git', directory: 'packages/other' },
 		},
@@ -902,7 +902,7 @@ describe('сторож манифестов', () => {
 		dir: 'packages/themes/example',
 		manifest: {
 			...library({}).manifest,
-			name: '@soldy-ui/theme-example',
+			name: '@soxa-ui/theme-example',
 			version: '0.4.0',
 			repository: { type: 'git', directory: 'packages/themes/example' },
 			...overrides,
@@ -911,18 +911,18 @@ describe('сторож манифестов', () => {
 
 	const playground: TWorkspacePackage = {
 		dir: 'packages/playground/vue',
-		manifest: { name: '@soldy-ui/playground-vue', version: '0.0.0' },
+		manifest: { name: '@soxa-ui/playground-vue', version: '0.0.0' },
 	}
 
 	const config = (overrides: Partial<TChangesetConfig>): TChangesetConfig => ({
-		fixed: [['@soldy-ui/example', '@soldy-ui/other']],
-		ignore: ['@soldy-ui/playground-vue'],
+		fixed: [['@soxa-ui/example', '@soxa-ui/other']],
+		ignore: ['@soxa-ui/playground-vue'],
 		...overrides,
 	})
 
 	const changeset = (type: string): TChangeset => ({
 		id: 'brave-dogs-sing',
-		releases: [{ name: '@soldy-ui/example', type }],
+		releases: [{ name: '@soxa-ui/example', type }],
 	})
 
 	it('заполненный пакет — без нарушений', () => {
@@ -1078,7 +1078,7 @@ describe('сторож манифестов', () => {
 		const LICENSE = 'MIT License\n\nCopyright (c) 2026 Yuri Soldatov\n'
 
 		it('оба файла на месте, лицензия — копия корневой — без нарушений', () => {
-			const files = { 'README.md': '# @soldy-ui/example\n', LICENSE }
+			const files = { 'README.md': '# @soxa-ui/example\n', LICENSE }
 
 			expect(checkShippedFiles(files, LICENSE)).toEqual([])
 		})
@@ -1097,7 +1097,7 @@ describe('сторож манифестов', () => {
 		})
 
 		it('лицензия расходится с корневой — нарушение', () => {
-			const files = { 'README.md': '# @soldy-ui/example\n', LICENSE: 'ISC License\n' }
+			const files = { 'README.md': '# @soxa-ui/example\n', LICENSE: 'ISC License\n' }
 
 			expect(checkShippedFiles(files, LICENSE)).toEqual([
 				'LICENSE расходится с корневым — это его копия, а не своя лицензия',
@@ -1107,14 +1107,14 @@ describe('сторож манифестов', () => {
 		// git normalizes line breaks (.gitattributes), and in a Windows working
 		// copy neighbouring files differ in them on their own
 		it('та же лицензия с другим переводом строки — без нарушений', () => {
-			const files = { 'README.md': '# @soldy-ui/example\n', LICENSE }
+			const files = { 'README.md': '# @soxa-ui/example\n', LICENSE }
 
 			expect(checkShippedFiles(files, LICENSE.replace(/\n/g, '\r\n'))).toEqual([])
 		})
 
 		describe('текст чужой лицензии', () => {
 			const others = ['Apache-2.0']
-			const files = { 'README.md': '# @soldy-ui/example\n', LICENSE }
+			const files = { 'README.md': '# @soxa-ui/example\n', LICENSE }
 
 			it('лежит рядом — без нарушений', () => {
 				const apache = { ...files, 'LICENSE-Apache-2.0': 'Apache License\nVersion 2.0\n' }
@@ -1139,7 +1139,7 @@ describe('сторож манифестов', () => {
 			const files = readShippedFiles('packages/setup')
 			const root = readFileSync(join(ROOT, 'LICENSE'), 'utf-8')
 
-			expect(files['README.md']).toContain('@soldy-ui/setup')
+			expect(files['README.md']).toContain('@soxa-ui/setup')
 			expect(checkShippedFiles(files, root)).toEqual([])
 			expect(readShippedFiles('packages/example', ['Apache-2.0'])).toEqual({
 				'README.md': undefined,
@@ -1150,12 +1150,12 @@ describe('сторож манифестов', () => {
 	})
 
 	describe('диапазоны на соседей', () => {
-		/** Depends on `@soldy-ui/example` — in the given field, by the given range. */
+		/** Depends on `@soxa-ui/example` — in the given field, by the given range. */
 		const dependent = (field: string, range: unknown): TWorkspacePackage => ({
 			dir: 'packages/other',
 			manifest: {
 				...other(VERSION).manifest,
-				[field]: { '@soldy-ui/example': range, vue: '^3.5.32' },
+				[field]: { '@soxa-ui/example': range, vue: '^3.5.32' },
 			},
 		})
 
@@ -1170,7 +1170,7 @@ describe('сторож манифестов', () => {
 
 		it('"*" на соседе — нарушение: выпуск такой диапазон не переписывает', () => {
 			expect(checkInternalRanges([library({}), dependent('dependencies', '*')])).toEqual([
-				'packages/other: dependencies["@soldy-ui/example"] "*", ожидается "1.2.0"',
+				'packages/other: dependencies["@soxa-ui/example"] "*", ожидается "1.2.0"',
 			])
 		})
 
@@ -1178,7 +1178,7 @@ describe('сторож манифестов', () => {
 			expect(
 				checkInternalRanges([library({}), dependent('peerDependencies', 'workspace:^')]),
 			).toEqual([
-				'packages/other: peerDependencies["@soldy-ui/example"] "workspace:^", ожидается "1.2.0"',
+				'packages/other: peerDependencies["@soxa-ui/example"] "workspace:^", ожидается "1.2.0"',
 			])
 		})
 
@@ -1186,7 +1186,7 @@ describe('сторож манифестов', () => {
 			expect(
 				checkInternalRanges([library({}), dependent('dependencies', `^${VERSION}`)]),
 			).toEqual([
-				'packages/other: dependencies["@soldy-ui/example"] "^1.2.0", ожидается "1.2.0"',
+				'packages/other: dependencies["@soxa-ui/example"] "^1.2.0", ожидается "1.2.0"',
 			])
 		})
 
@@ -1194,17 +1194,17 @@ describe('сторож манифестов', () => {
 			expect(
 				checkInternalRanges([library({}), dependent('devDependencies', '1.1.0')]),
 			).toEqual([
-				'packages/other: devDependencies["@soldy-ui/example"] "1.1.0", ожидается "1.2.0"',
+				'packages/other: devDependencies["@soxa-ui/example"] "1.1.0", ожидается "1.2.0"',
 			])
 		})
 
 		describe('тема и иконки — библиотеку диапазоном', () => {
-			/** A theme depending on `@soldy-ui/example` of the group by the given range. */
+			/** A theme depending on `@soxa-ui/example` of the group by the given range. */
 			const dependentTheme = (field: string, range: unknown): TWorkspacePackage =>
-				theme({ [field]: { '@soldy-ui/example': range, vue: '^3.5.32' } })
+				theme({ [field]: { '@soxa-ui/example': range, vue: '^3.5.32' } })
 
 			const caretExpected = (dir: string, field: string, range: string): string =>
-				`${dir}: ${field}["@soldy-ui/example"] ${JSON.stringify(range)}, ожидается диапазон "^<версия>" — тема и иконки зависят от библиотеки диапазоном`
+				`${dir}: ${field}["@soxa-ui/example"] ${JSON.stringify(range)}, ожидается диапазон "^<версия>" — тема и иконки зависят от библиотеки диапазоном`
 
 			it('^ от версии — без нарушений, и версия диапазона не обязана быть текущей', () => {
 				for (const field of DEPENDENCY_FIELDS) {
@@ -1253,26 +1253,26 @@ describe('сторож манифестов', () => {
 					dir: 'packages/themes/derived',
 					manifest: {
 						...theme().manifest,
-						name: '@soldy-ui/theme-derived',
+						name: '@soxa-ui/theme-derived',
 						repository: { type: 'git', directory: 'packages/themes/derived' },
-						dependencies: { '@soldy-ui/theme-example': range },
+						dependencies: { '@soxa-ui/theme-example': range },
 					},
 				})
 
 				expect(checkInternalRanges([theme(), derived('0.4.0')])).toEqual([])
 				expect(checkInternalRanges([theme(), derived('^0.4.0')])).toEqual([
-					'packages/themes/derived: dependencies["@soldy-ui/theme-example"] "^0.4.0", ожидается "0.4.0"',
+					'packages/themes/derived: dependencies["@soxa-ui/theme-example"] "^0.4.0", ожидается "0.4.0"',
 				])
 			})
 
 			// The adapters test against the theme of the workspace
 			it('пакет группы объявляет тему точной версией', () => {
 				const adapter = (range: string): TWorkspacePackage =>
-					library({ devDependencies: { '@soldy-ui/theme-example': range } })
+					library({ devDependencies: { '@soxa-ui/theme-example': range } })
 
 				expect(checkInternalRanges([adapter('0.4.0'), theme()])).toEqual([])
 				expect(checkInternalRanges([adapter('^0.4.0'), theme()])).toEqual([
-					'packages/example: devDependencies["@soldy-ui/theme-example"] "^0.4.0", ожидается "0.4.0"',
+					'packages/example: devDependencies["@soxa-ui/theme-example"] "^0.4.0", ожидается "0.4.0"',
 				])
 			})
 		})
@@ -1285,21 +1285,21 @@ describe('сторож манифестов', () => {
 	})
 
 	it('одна версия и корень без version — без нарушений', () => {
-		expect(checkVersions({ name: 'soldy' }, [library({}), other(VERSION)])).toEqual([])
+		expect(checkVersions({ name: 'soxa' }, [library({}), other(VERSION)])).toEqual([])
 	})
 
 	it('версии пакетов группы fixed разошлись — нарушение с их списком', () => {
-		expect(checkVersions({ name: 'soldy' }, [library({}), other('1.3.0')])).toEqual([
+		expect(checkVersions({ name: 'soxa' }, [library({}), other('1.3.0')])).toEqual([
 			'версии пакетов группы fixed разошлись: "1.2.0" — packages/example; "1.3.0" — packages/other',
 		])
 	})
 
 	it('тема своей версией — без нарушений', () => {
-		expect(checkVersions({ name: 'soldy' }, [library({}), other(VERSION), theme()])).toEqual([])
+		expect(checkVersions({ name: 'soxa' }, [library({}), other(VERSION), theme()])).toEqual([])
 	})
 
 	it('version у корня — нарушение', () => {
-		expect(checkVersions({ name: 'soldy', version: VERSION }, [library({})])).toEqual([
+		expect(checkVersions({ name: 'soxa', version: VERSION }, [library({})])).toEqual([
 			'корневой package.json: version "1.2.0" — версия у пакетов, у корня её нет',
 		])
 	})
@@ -1313,43 +1313,43 @@ describe('сторож манифестов', () => {
 				...overrides,
 			})
 
-		/** Depends on `@soldy-ui/example`, so it is built after it. */
+		/** Depends on `@soxa-ui/example`, so it is built after it. */
 		const dependent: TWorkspacePackage = {
 			dir: 'packages/other',
 			manifest: {
 				...built().manifest,
-				name: '@soldy-ui/other',
+				name: '@soxa-ui/other',
 				repository: { type: 'git', directory: 'packages/other' },
-				dependencies: { '@soldy-ui/example': '*' },
+				dependencies: { '@soxa-ui/example': '*' },
 			},
 		}
 
 		const script = (...names: string[]): TManifest => ({
-			name: 'soldy',
+			name: 'soxa',
 			scripts: {
 				build: names.map((name) => `npm run build --workspace=${name}`).join(' && '),
 			},
 		})
 
 		it('зависимость впереди зависящего — без нарушений', () => {
-			const root = script('@soldy-ui/example', '@soldy-ui/other')
+			const root = script('@soxa-ui/example', '@soxa-ui/other')
 
 			expect(checkBuildOrder(root, [built(), dependent])).toEqual([])
 		})
 
 		it('зависимость позади зависящего — нарушение', () => {
-			const root = script('@soldy-ui/other', '@soldy-ui/example')
+			const root = script('@soxa-ui/other', '@soxa-ui/example')
 
 			expect(checkBuildOrder(root, [built(), dependent])).toEqual([
-				'build: "@soldy-ui/other" собирается раньше "@soldy-ui/example", от которого зависит',
+				'build: "@soxa-ui/other" собирается раньше "@soxa-ui/example", от которого зависит',
 			])
 		})
 
 		it('пакет со сборкой наружу вне корневого build — нарушение', () => {
-			const root = script('@soldy-ui/example')
+			const root = script('@soxa-ui/example')
 
 			expect(checkBuildOrder(root, [built(), dependent])).toEqual([
-				'build: нет "@soldy-ui/other" (packages/other) — пакет отдаёт наружу сборку, а корневой build её не делает',
+				'build: нет "@soxa-ui/other" (packages/other) — пакет отдаёт наружу сборку, а корневой build её не делает',
 			])
 		})
 
@@ -1358,21 +1358,21 @@ describe('сторож манифестов', () => {
 		it('пакет со скриптом build, отдающий исходники, — без нарушений', () => {
 			const sources = built({ main: './src/index.ts' })
 
-			expect(checkBuildOrder(script('@soldy-ui/example'), [built(), sources])).toEqual([])
+			expect(checkBuildOrder(script('@soxa-ui/example'), [built(), sources])).toEqual([])
 		})
 
 		// A package without a `build` script has nothing to build with: its name in
 		// the root build would fail it
 		it('пакет без скрипта build в корневом build — нарушение', () => {
-			const root = script('@soldy-ui/example', '@soldy-ui/other')
+			const root = script('@soxa-ui/example', '@soxa-ui/other')
 
 			expect(checkBuildOrder(root, [built()])).toEqual([
-				'build: "@soldy-ui/other" — не библиотечный пакет со скриптом build',
+				'build: "@soxa-ui/other" — не библиотечный пакет со скриптом build',
 			])
 		})
 
 		it('корень без скрипта build — сторож падает, а не молчит', () => {
-			expect(() => checkBuildOrder({ name: 'soldy' }, [built()])).toThrow(
+			expect(() => checkBuildOrder({ name: 'soxa' }, [built()])).toThrow(
 				'В корневом package.json нет скрипта build',
 			)
 		})
@@ -1391,8 +1391,8 @@ describe('сторож манифестов', () => {
 
 	it('пакет вне fixed — нарушение', () => {
 		expect(
-			checkFixed(config({ fixed: [['@soldy-ui/example']] }), [library({}), other(VERSION)]),
-		).toEqual(['fixed: нет "@soldy-ui/other" (packages/other) — пакет вне общей версии'])
+			checkFixed(config({ fixed: [['@soxa-ui/example']] }), [library({}), other(VERSION)]),
+		).toEqual(['fixed: нет "@soxa-ui/other" (packages/other) — пакет вне общей версии'])
 	})
 
 	it('тема вне fixed — без нарушений', () => {
@@ -1401,36 +1401,36 @@ describe('сторож манифестов', () => {
 
 	it('тема или иконки в fixed — нарушение', () => {
 		const icons = {
-			...theme({ name: '@soldy-ui/icons-example' }),
+			...theme({ name: '@soxa-ui/icons-example' }),
 			dir: 'packages/icons/example',
 		}
 		const fixed = [
 			[
-				'@soldy-ui/example',
-				'@soldy-ui/other',
-				'@soldy-ui/theme-example',
-				'@soldy-ui/icons-example',
+				'@soxa-ui/example',
+				'@soxa-ui/other',
+				'@soxa-ui/theme-example',
+				'@soxa-ui/icons-example',
 			],
 		]
 
 		expect(
 			checkFixed(config({ fixed }), [library({}), other(VERSION), theme(), icons]),
 		).toEqual([
-			'fixed: "@soldy-ui/theme-example" (packages/themes/example) — у тем и иконок своя версия, в группе их нет',
-			'fixed: "@soldy-ui/icons-example" (packages/icons/example) — у тем и иконок своя версия, в группе их нет',
+			'fixed: "@soxa-ui/theme-example" (packages/themes/example) — у тем и иконок своя версия, в группе их нет',
+			'fixed: "@soxa-ui/icons-example" (packages/icons/example) — у тем и иконок своя версия, в группе их нет',
 		])
 	})
 
 	it('стенд в fixed — нарушение', () => {
-		const fixed = [['@soldy-ui/example', '@soldy-ui/other', '@soldy-ui/playground-vue']]
+		const fixed = [['@soxa-ui/example', '@soxa-ui/other', '@soxa-ui/playground-vue']]
 
 		expect(checkFixed(config({ fixed }), [library({}), other(VERSION)])).toEqual([
-			'fixed: "@soldy-ui/playground-vue" — не библиотечный пакет',
+			'fixed: "@soxa-ui/playground-vue" — не библиотечный пакет',
 		])
 	})
 
 	it('fixed из двух групп — нарушение', () => {
-		const fixed = [['@soldy-ui/example'], ['@soldy-ui/other']]
+		const fixed = [['@soxa-ui/example'], ['@soxa-ui/other']]
 
 		expect(checkFixed(config({ fixed }), [library({}), other(VERSION)])).toEqual([
 			'fixed: групп 2, ожидается одна',
@@ -1438,16 +1438,16 @@ describe('сторож манифестов', () => {
 	})
 
 	it('имя из ignore без пакета — нарушение', () => {
-		const ignore = ['@soldy-ui/playground-vue', '@soldy-ui/playground-react']
+		const ignore = ['@soxa-ui/playground-vue', '@soxa-ui/playground-react']
 
 		expect(checkIgnore(config({ ignore }), [library({}), playground])).toEqual([
-			'ignore: "@soldy-ui/playground-react" — нет такого пакета в воркспейсе',
+			'ignore: "@soxa-ui/playground-react" — нет такого пакета в воркспейсе',
 		])
 	})
 
 	it('major при версии 0.x — нарушение', () => {
 		expect(checkChangesets([changeset('major')], [library({ version: '0.3.0' })])).toEqual([
-			'.changeset/brave-dogs-sing.md: major у "@soldy-ui/example" при версии 0.3.0 — до 1.0 ломающее изменение поднимает minor',
+			'.changeset/brave-dogs-sing.md: major у "@soxa-ui/example" при версии 0.3.0 — до 1.0 ломающее изменение поднимает minor',
 		])
 	})
 

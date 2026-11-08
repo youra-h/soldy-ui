@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core'
 import { NgTemplateOutlet } from '@angular/common'
-import type { ITableRow } from '@soldy-ui/core'
+import type { ITableRow } from '@soxa-ui/core'
 import { AttributesDirective, RunsPipe } from '../../../adapter'
 import { TCheckBoxComponent } from '../../check-box'
 import { TTableRowSurface } from '../../../generated/table-row.metadata'

@@ -1,10 +1,10 @@
 import { render } from 'solid-js/web'
-import { useIcons, useTheme } from '@soldy-ui/setup'
-import * as material from '@soldy-ui/icons-material'
-import oren from '@soldy-ui/theme-oren/setup'
+import { useIcons, useTheme } from '@soxa-ui/setup'
+import * as material from '@soxa-ui/icons-material'
+import oren from '@soxa-ui/theme-oren/setup'
 import { App } from './App.tsx'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 useIcons(material)
 useTheme(oren)

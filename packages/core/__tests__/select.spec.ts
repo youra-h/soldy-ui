@@ -20,13 +20,13 @@ import {
 	TInput,
 	createEngineSelection,
 	isSwipeable,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 import type {
 	ISelectItem,
 	ISelectProps,
 	TSelectPanelPlacement,
 	TSelectPlacement,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 
 function createSelect(values: string[], props: Partial<ISelectProps> = {}) {
 	const owner = new TSelect(props)

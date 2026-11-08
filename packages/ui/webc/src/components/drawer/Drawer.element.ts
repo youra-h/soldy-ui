@@ -4,8 +4,8 @@
  * docs/architecture.md, Layer 8d, «Модальный слой и тосты».
  */
 
-import { DrawerDescriptor } from '@soldy-ui/setup'
-import type { IDrawer } from '@soldy-ui/core'
+import { DrawerDescriptor } from '@soxa-ui/setup'
+import type { IDrawer } from '@soxa-ui/core'
 import { ElementBase, defineElement } from '../../adapter'
 import type { TElementClassOf, TElementType } from '../../adapter'
 import { drawerTemplate } from './drawer.template'

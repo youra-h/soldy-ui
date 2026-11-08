@@ -9,7 +9,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TDateInputKeyboardPlugin } from '@soldy-ui/plugins'
+import { TDateInputKeyboardPlugin } from '@soxa-ui/plugins'
 
 export const DateInputKeyboardPluginDescriptor = definePlugin({
 	ctor: TDateInputKeyboardPlugin,

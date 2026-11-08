@@ -1,5 +1,5 @@
 import type { Accessor, JSX } from 'solid-js'
-import type { ISelectItem, TDrawnEntry, TDrawnSection } from '@soldy-ui/core'
+import type { ISelectItem, TDrawnEntry, TDrawnSection } from '@soxa-ui/core'
 import {
 	Elevate,
 	KeyedFor,

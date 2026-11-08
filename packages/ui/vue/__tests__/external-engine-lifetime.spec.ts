@@ -18,9 +18,9 @@
 import { describe, it, expect, afterEach, vi } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { defineComponent, nextTick, ref } from 'vue'
-import { TEvented, TListBox, createEngineListBox } from '@soldy-ui/core'
-import type { TListBoxCollection } from '@soldy-ui/core'
-import { ListBox } from '@soldy-ui/vue'
+import { TEvented, TListBox, createEngineListBox } from '@soxa-ui/core'
+import type { TListBoxCollection } from '@soxa-ui/core'
+import { ListBox } from '@soxa-ui/vue'
 
 const ITEMS = [
 	{ value: 'a', text: 'Первый' },

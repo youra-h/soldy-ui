@@ -1,5 +1,5 @@
-import { FRAME_LAYER_ATTRIBUTE, isSwipeable } from '@soldy-ui/core'
-import type { TSwipeSide } from '@soldy-ui/core'
+import { FRAME_LAYER_ATTRIBUTE, isSwipeable } from '@soxa-ui/core'
+import type { TSwipeSide } from '@soxa-ui/core'
 import { TBasePlugin } from '../../../base'
 import type { IPluginContext } from '../../../base'
 import { TElementPlugin } from '../../element'

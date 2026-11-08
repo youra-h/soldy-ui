@@ -1,9 +1,9 @@
 {
-  "name": "@soldy-ui/plugins",
+  "name": "@soxa-ui/plugins",
   "version": "0.3.0-beta.0",
   "description": "Плагины поведения в рантайме, ставятся в TPluginBundle: DOM, фокус, клавиатура, оверлей",
   "keywords": [
-    "soldy",
+    "soxa",
     "headless",
     "ui",
     "plugins"
@@ -12,12 +12,12 @@
   "author": "Yuri Soldatov",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/youra-h/soldy-ui.git",
+    "url": "git+https://github.com/youra-h/soxa-ui.git",
     "directory": "packages/plugins"
   },
-  "homepage": "https://github.com/youra-h/soldy-ui",
+  "homepage": "https://github.com/youra-h/soxa-ui",
   "bugs": {
-    "url": "https://github.com/youra-h/soldy-ui/issues"
+    "url": "https://github.com/youra-h/soxa-ui/issues"
   },
   "publishConfig": {
     "access": "public"
@@ -36,7 +36,7 @@
     "dist"
   ],
   "dependencies": {
-    "@soldy-ui/core": "0.3.0-beta.0"
+    "@soxa-ui/core": "0.3.0-beta.0"
   },
   "scripts": {
     "build": "vite build -c vite.lib.config.ts && tsc -p tsconfig.build.json",

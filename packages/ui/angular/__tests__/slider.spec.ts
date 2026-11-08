@@ -30,8 +30,8 @@ import {
 	type TSliderTooltip,
 	type TSliderValue,
 	type TValuePayload,
-} from '@soldy-ui/core'
-import { SlotDirective, TLabelComponent, TSliderComponent } from '@soldy-ui/angular'
+} from '@soxa-ui/core'
+import { SlotDirective, TLabelComponent, TSliderComponent } from '@soxa-ui/angular'
 import { find, findIn, mountHost, nextFrame } from './mount'
 
 /** Входы ползунка, которые задают сценарии, кроме значения. */

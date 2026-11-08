@@ -1,5 +1,5 @@
 import { renderToString } from 'solid-js/web'
-import { LocaleProvider } from '@soldy-ui/solid'
+import { LocaleProvider } from '@soxa-ui/solid'
 import { PREVIEWS } from '../../../packages/playground/vue/src/hosts/solid/previews'
 import { measure } from './measure'
 

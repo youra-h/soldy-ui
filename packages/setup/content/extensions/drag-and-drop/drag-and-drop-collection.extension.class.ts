@@ -19,7 +19,7 @@
  *     .use(TDragAndDropCollectionExtension, { elevator: VueElevatorFactory })
  */
 
-import { TDragPlugin } from '@soldy-ui/plugins'
+import { TDragPlugin } from '@soxa-ui/plugins'
 import type { TInstanceContext } from '../../../protected/adapter/context'
 import type { TCollectionOwner } from '../collection'
 import { DRAG_AND_DROP_ELEVATOR } from './keys'

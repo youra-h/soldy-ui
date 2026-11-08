@@ -7,7 +7,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TRadioGroupNamePlugin } from '@soldy-ui/plugins'
+import { TRadioGroupNamePlugin } from '@soxa-ui/plugins'
 
 export const RadioGroupNamePluginDescriptor = definePlugin({
 	ctor: TRadioGroupNamePlugin,

@@ -7,7 +7,7 @@ import {
 	viewChild,
 	viewChildren,
 } from '@angular/core'
-import type { IToastsItem, TToastsItemType } from '@soldy-ui/core'
+import type { IToastsItem, TToastsItemType } from '@soxa-ui/core'
 import {
 	AttributesDirective,
 	SlotDirective,
@@ -40,7 +40,7 @@ import {
 	TVirtualComponent,
 	useToasts,
 	type TToastRender,
-} from '@soldy-ui/angular'
+} from '@soxa-ui/angular'
 import {
 	COLLECTION_ITEMS,
 	COLLECTION_MANY_ITEMS,
@@ -49,7 +49,7 @@ import {
 	TOASTS_ITEM_TYPES,
 	TOAST_SAVING,
 	toastSample,
-} from '@soldy-ui/playground-shared'
+} from '@soxa-ui/playground-shared'
 import { CopyDirective } from './copy.directive'
 import { PartDirective } from './part.directive'
 import type { TFixture } from './fixtures'

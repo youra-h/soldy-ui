@@ -36,11 +36,11 @@ function Action(props: { text: string; shortcut: string; color?: string }) {
 }
 
 /**
- * The soldy menu preview in Kobalte: a group of checkboxes, a group of radios,
+ * The soxa menu preview in Kobalte: a group of checkboxes, a group of radios,
  * actions with shortcuts, a submenu with a submenu inside, a disabled action
  * and a destructive one. Kobalte has all of these parts; a shortcut is a hint
  * next to the label and the destructive action is colored by the page, since
- * Kobalte is unstyled. The soldy item with a calendar panel has no
+ * Kobalte is unstyled. The soxa item with a calendar panel has no
  * counterpart (Kobalte has no calendar), as with the other neighbors.
  */
 export default function Page() {

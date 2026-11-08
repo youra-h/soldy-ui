@@ -1,4 +1,4 @@
-import { TVirtualExtension, VirtualDescriptor } from '@soldy-ui/setup'
+import { TVirtualExtension, VirtualDescriptor } from '@soxa-ui/setup'
 import { createSolidAdapterContext, useAdapter, useElevator } from '../../adapter'
 import type { VirtualProps } from './base.component'
 

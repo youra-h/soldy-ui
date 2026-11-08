@@ -15,13 +15,13 @@
  */
 
 import { describe, it, expect, beforeEach } from 'vitest'
-import { useIcons, useTheme } from '@soldy-ui/setup'
-import * as material from '@soldy-ui/icons-material'
+import { useIcons, useTheme } from '@soxa-ui/setup'
+import * as material from '@soxa-ui/icons-material'
 import { router } from '../src/router'
 import { renderStand } from './stand'
 
-import '@soldy-ui/theme-oren'
-import oren from '@soldy-ui/theme-oren/setup'
+import '@soxa-ui/theme-oren'
+import oren from '@soxa-ui/theme-oren/setup'
 import '../src/styles.css'
 
 useIcons(material)

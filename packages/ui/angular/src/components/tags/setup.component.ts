@@ -1,5 +1,5 @@
-import { TCollectionExtension, TagsCollectionDescriptor, TagsDescriptor } from '@soldy-ui/setup'
-import type { ITags, ITagsProps, TTagsCollectionFacade } from '@soldy-ui/core'
+import { TCollectionExtension, TagsCollectionDescriptor, TagsDescriptor } from '@soxa-ui/setup'
+import type { ITags, ITagsProps, TTagsCollectionFacade } from '@soxa-ui/core'
 import {
 	AngularElevatorFactory,
 	createAngularAdapterContext,

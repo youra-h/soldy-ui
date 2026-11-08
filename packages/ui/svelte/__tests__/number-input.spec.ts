@@ -19,9 +19,9 @@
 
 import { describe, it, expect, expectTypeOf, vi, afterEach, type Mock } from 'vitest'
 import { createRawSnippet, flushSync } from 'svelte'
-import { TNumberInput, type INumberInput, type TValuePayload } from '@soldy-ui/core'
-import { ruRU } from '@soldy-ui/plugins'
-import { NumberInput, type NumberInputProps } from '@soldy-ui/svelte'
+import { TNumberInput, type INumberInput, type TValuePayload } from '@soxa-ui/core'
+import { ruRU } from '@soxa-ui/plugins'
+import { NumberInput, type NumberInputProps } from '@soxa-ui/svelte'
 import LocaleNumberInput from './LocaleNumberInput.test.svelte'
 import { find, mount, nextFrame } from './mount'
 import { reactiveProps } from './reactive-props.svelte'

@@ -5,8 +5,8 @@
  * покрывают и крестик.
  */
 
-import type { ITagsItem, TTagsItemCollectionFacade } from '@soldy-ui/core'
-import { DEFAULT_SLOT } from '@soldy-ui/setup'
+import type { ITagsItem, TTagsItemCollectionFacade } from '@soxa-ui/core'
+import { DEFAULT_SLOT } from '@soxa-ui/setup'
 import { bind, createDetail, lend, ownerAttributes, type ITemplate, patch } from '../../../adapter'
 import { TButtonElement, type TButtonElementProps } from '../../button'
 import { registerItemRowTag, type TItemRowElementProps } from '../../item-row'

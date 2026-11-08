@@ -1,8 +1,8 @@
-# @soldy-ui/react
+# @soxa-ui/react
 
-**The React adapter: Soldy UI components rendered on the headless models of the core.**
+**The React adapter: Soxa UI components rendered on the headless models of the core.**
 
-Part of [Soldy UI](https://github.com/youra-h/soldy-ui) — UI components with the logic written once: a
+Part of [Soxa UI](https://github.com/youra-h/soxa-ui) — UI components with the logic written once: a
 framework-agnostic core and thin adapters that render it in Vue, React, Angular, Svelte, Solid and
 Web Components.
 
@@ -45,16 +45,16 @@ arrive as callback props (`element:ready` → `onElementReady`), and the default
 > (`<DragAndDrop onMove={…}><ListBox items={…} /></DragAndDrop>`, `onMoveBefore` can cancel) are
 > ported, the rest of the set is on its way. Icon renders the `tag` it is given; `roleIcon(role)`
 > makes that tag from the registered icon pack. See
-> [the adapter table](https://github.com/youra-h/soldy-ui#components).
+> [the adapter table](https://github.com/youra-h/soxa-ui#components).
 
 ## Install
 
 ```bash
-npm install @soldy-ui/react @soldy-ui/setup @soldy-ui/theme-oren @soldy-ui/icons-material
+npm install @soxa-ui/react @soxa-ui/setup @soxa-ui/theme-oren @soxa-ui/icons-material
 ```
 
-Install `@soldy-ui/setup` as a direct dependency for the `useIcons` and `useTheme` imports below.
-Keep it on the same version as `@soldy-ui/react`.
+Install `@soxa-ui/setup` as a direct dependency for the `useIcons` and `useTheme` imports below.
+Keep it on the same version as `@soxa-ui/react`.
 
 React and React DOM `^19.3` are peer dependencies. A theme and an icon pack are separate packages —
 pick the ones you want.
@@ -62,7 +62,7 @@ pick the ones you want.
 ## Usage
 
 ```tsx
-import { Button } from '@soldy-ui/react'
+import { Button } from '@soxa-ui/react'
 
 export function Toolbar() {
   return <Button text="Save" onActionPress={() => console.log('pressed')} />
@@ -73,8 +73,8 @@ The same component can be driven from code — pass a core instance as `ctrl`, a
 same state and events:
 
 ```tsx
-import { TButton } from '@soldy-ui/core'
-import { Button } from '@soldy-ui/react'
+import { TButton } from '@soxa-ui/core'
+import { Button } from '@soxa-ui/react'
 
 const btn = new TButton({ text: 'Save' })
 
@@ -88,7 +88,7 @@ slot scope — `triggerAria` and `triggerDataset`. Choosing an action closes the
 `onChoose`; a checkbox item and a radio item are checked in place, and the menu stays open:
 
 ```tsx
-import { Button, Menu } from '@soldy-ui/react'
+import { Button, Menu } from '@soxa-ui/react'
 
 export function Actions() {
   return (
@@ -116,7 +116,7 @@ content of a toast is a React component with a `toast` prop (`memo` and `forward
 well):
 
 ```tsx
-import { Button, Toasts, useToasts, type TToastRender } from '@soldy-ui/react'
+import { Button, Toasts, useToasts, type TToastRender } from '@soxa-ui/react'
 
 const Undo: TToastRender = ({ toast }) => <Button text="Undo" onClick={() => toast.close()} />
 
@@ -142,20 +142,20 @@ The API belongs to the manager's assembly: a manager that React sets up again (S
 The application plugs in a theme and an icon pack once, in its entry point:
 
 ```ts
-import { useIcons, useTheme } from '@soldy-ui/setup'
-import * as material from '@soldy-ui/icons-material'
-import oren from '@soldy-ui/theme-oren/setup'
+import { useIcons, useTheme } from '@soxa-ui/setup'
+import * as material from '@soxa-ui/icons-material'
+import oren from '@soxa-ui/theme-oren/setup'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 useIcons(material)
 useTheme(oren)
 ```
 
-`@soldy-ui/theme-oren` is the stylesheet of every component. To take only the components your
-pages use, import their stylesheets instead — `@soldy-ui/theme-oren/button.css`,
-`@soldy-ui/theme-oren/select.css`, one per component, each with the shared part of the theme
-(the theme's README, [Only the components you use](https://github.com/youra-h/soldy-ui/tree/main/packages/themes/oren#only-the-components-you-use)).
+`@soxa-ui/theme-oren` is the stylesheet of every component. To take only the components your
+pages use, import their stylesheets instead — `@soxa-ui/theme-oren/button.css`,
+`@soxa-ui/theme-oren/select.css`, one per component, each with the shared part of the theme
+(the theme's README, [Only the components you use](https://github.com/youra-h/soxa-ui/tree/main/packages/themes/oren#only-the-components-you-use)).
 
 ## Server Components
 
@@ -169,7 +169,7 @@ Client Component does — the flat names (`TabsItem`) work in both:
 
 ```tsx
 // app/page.tsx — a Server Component
-import { Tabs } from '@soldy-ui/react'
+import { Tabs } from '@soxa-ui/react'
 
 export default function Page() {
   return (
@@ -191,7 +191,7 @@ export default function Page() {
 
 In the App Router, call `useIcons` and `useTheme` in a client module — a file with `'use client'`
 that the root layout imports — and not in the layout itself. A Server Component runs with its own
-copy of `@soldy-ui/setup`, and what it registers never reaches the Client Components; a client
+copy of `@soxa-ui/setup`, and what it registers never reaches the Client Components; a client
 module runs where they do — on the server for the HTML, and in the browser:
 
 ```tsx
@@ -199,9 +199,9 @@ module runs where they do — on the server for the HTML, and in the browser:
 'use client'
 
 import type { ReactNode } from 'react'
-import { useIcons, useTheme } from '@soldy-ui/setup'
-import * as material from '@soldy-ui/icons-material'
-import oren from '@soldy-ui/theme-oren/setup'
+import { useIcons, useTheme } from '@soxa-ui/setup'
+import * as material from '@soxa-ui/icons-material'
+import oren from '@soxa-ui/theme-oren/setup'
 
 useIcons(material)
 useTheme(oren)
@@ -216,7 +216,7 @@ export function Providers({ children }: { children: ReactNode }) {
 import type { ReactNode } from 'react'
 import { Providers } from './providers'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
@@ -231,9 +231,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 
 ## Documentation
 
-- [Soldy UI README](https://github.com/youra-h/soldy-ui#readme) — the component set and what each
+- [Soxa UI README](https://github.com/youra-h/soxa-ui#readme) — the component set and what each
   adapter implements so far.
-- [Architecture overview](https://github.com/youra-h/soldy-ui/blob/main/docs/architecture.md) —
+- [Architecture overview](https://github.com/youra-h/soxa-ui/blob/main/docs/architecture.md) —
   layers, descriptors, plugins, collections, adapters.
 
 ## Public API
@@ -241,14 +241,14 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 The package entry exports application components, their consumer types, the locale provider,
 and the supported icon and toast helpers. Component props, slots, events, refs and core models
 passed through `ctrl` remain the supported ways to customize the UI. Models come from
-`@soldy-ui/core`; theme, icon and external-plugin registration comes from `@soldy-ui/setup`.
+`@soxa-ui/core`; theme, icon and external-plugin registration comes from `@soxa-ui/setup`.
 
 Assembly functions, adapter profiles, bindings, generated metadata and rendering templates
 are private implementation details. They are no longer exported from the package entry, and
 there is no public `/internal` entry. Code that imported them must use the component contract
-instead. Building a new adapter component from Soldy's assembly helpers is not a supported
+instead. Building a new adapter component from Soxa's assembly helpers is not a supported
 public SDK.
 
 ## License
 
-[MIT](https://github.com/youra-h/soldy-ui/blob/main/LICENSE)
+[MIT](https://github.com/youra-h/soxa-ui/blob/main/LICENSE)

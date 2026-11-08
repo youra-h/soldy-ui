@@ -1,4 +1,4 @@
-import type { IRating } from '@soldy-ui/core'
+import type { IRating } from '@soxa-ui/core'
 import { TNamesPlugin } from '../../../locale/names.plugin'
 import type { IPluginContext } from '../../../base'
 import type { ILocaleSource, TTranslations } from '../../../locale/types'

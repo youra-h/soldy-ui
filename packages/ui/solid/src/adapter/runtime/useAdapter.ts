@@ -27,8 +27,8 @@ import {
 	runWithOwner,
 	type Accessor,
 } from 'solid-js'
-import { toInstanceState } from '@soldy-ui/setup'
-import type { IAdapterContext, IComponentContract, TAdapterState, TExchange } from '@soldy-ui/setup'
+import { toInstanceState } from '@soxa-ui/setup'
+import type { IAdapterContext, IComponentContract, TAdapterState, TExchange } from '@soxa-ui/setup'
 import { SolidProfile } from '../common'
 import { createShallowState, joinState, type TJoinedState } from './state'
 

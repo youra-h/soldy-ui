@@ -1,4 +1,4 @@
-import { DatePickerDescriptor, TFieldControlExtension } from '@soldy-ui/setup'
+import { DatePickerDescriptor, TFieldControlExtension } from '@soxa-ui/setup'
 import {
 	createSvelteAdapterContext,
 	useAdapter,

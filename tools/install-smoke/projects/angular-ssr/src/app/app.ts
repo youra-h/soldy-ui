@@ -6,7 +6,7 @@ import {
 	TInputComponent,
 	TSelectComponent,
 	TTableComponent,
-} from '@soldy-ui/angular'
+} from '@soxa-ui/angular'
 
 @Component({
 	selector: 'app-root',

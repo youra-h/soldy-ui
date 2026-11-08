@@ -12,7 +12,7 @@ import {
 import { COLLECTION_ITEMS } from '../../../data'
 
 /**
- * Select with typing and filtering — `Combobox`, as the soldy `editable`
+ * Select with typing and filtering — `Combobox`, as the soxa `editable`
  * preview; it filters the items by their text itself.
  */
 defineOptions({ name: 'RekaSelectPage' })

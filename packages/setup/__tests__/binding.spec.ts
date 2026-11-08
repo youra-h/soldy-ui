@@ -11,9 +11,9 @@
  */
 
 import { describe, it, expect, vi } from 'vitest'
-import { TButton, TFrame, TIcon, TSelect, TSlider, TTabsItem } from '@soldy-ui/core'
-import { TAnchorPlugin, TAriaPlugin, TBasePlugin, TIconLayoutPlugin } from '@soldy-ui/plugins'
-import type { TPluginEvents } from '@soldy-ui/plugins'
+import { TButton, TFrame, TIcon, TSelect, TSlider, TTabsItem } from '@soxa-ui/core'
+import { TAnchorPlugin, TAriaPlugin, TBasePlugin, TIconLayoutPlugin } from '@soxa-ui/plugins'
+import type { TPluginEvents } from '@soxa-ui/plugins'
 import {
 	ButtonDescriptor,
 	CommonProfile,
@@ -26,8 +26,8 @@ import {
 	defineComponent,
 	definePlugin,
 	TSurface,
-} from '@soldy-ui/setup'
-import type { IAdapterProfile, TEventSink, TStateListener } from '@soldy-ui/setup'
+} from '@soxa-ui/setup'
+import type { IAdapterProfile, TEventSink, TStateListener } from '@soxa-ui/setup'
 import { CallbackProfile, installResizeObserverStub, required } from './helpers'
 
 /** Дескриптор с одним пропом — чтобы проверить конфиг статического слоя. */

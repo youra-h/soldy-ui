@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Label, RadioGroup } from '@soldy-ui/svelte'
+	import { Label, RadioGroup } from '@soxa-ui/svelte'
 	import type { TPreviewProps } from './previews'
 
 	const bind: TPreviewProps = $props()

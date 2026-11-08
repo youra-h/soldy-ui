@@ -1,7 +1,7 @@
 import { useEmits, useProps } from '../../adapter'
 import type { TEmits, TProps, UseProps } from '../../types/common'
-import { PaginationDescriptor, PaginationCollectionDescriptor } from '@soldy-ui/setup'
-import type { IPagination } from '@soldy-ui/core'
+import { PaginationDescriptor, PaginationCollectionDescriptor } from '@soxa-ui/setup'
+import type { IPagination } from '@soxa-ui/core'
 
 export const emitsPagination: TEmits = [
 	...useEmits(PaginationDescriptor()),

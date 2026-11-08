@@ -13,11 +13,11 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { render, cleanup } from './render'
 import { userEvent } from 'vitest/browser'
 import { defineComponent, h, nextTick } from 'vue'
-import { Button, Tooltip } from '@soldy-ui/vue'
-import type { ITooltipProps } from '@soldy-ui/core'
-import type { DescriptorSlots, TooltipDescriptor } from '@soldy-ui/setup'
+import { Button, Tooltip } from '@soxa-ui/vue'
+import type { ITooltipProps } from '@soxa-ui/core'
+import type { DescriptorSlots, TooltipDescriptor } from '@soxa-ui/setup'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 type TTriggerScope = DescriptorSlots<typeof TooltipDescriptor>['trigger']
 

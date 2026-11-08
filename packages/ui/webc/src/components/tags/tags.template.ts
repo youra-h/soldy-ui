@@ -4,8 +4,8 @@
  * отбором тег снимается, но из коллекции не уходит.
  */
 
-import type { ITags, ITagsItem, TTagsCollectionFacade } from '@soldy-ui/core'
-import { DEFAULT_SLOT } from '@soldy-ui/setup'
+import type { ITags, ITagsItem, TTagsCollectionFacade } from '@soxa-ui/core'
+import { DEFAULT_SLOT } from '@soxa-ui/setup'
 import {
 	TKeyedLoop,
 	bind,

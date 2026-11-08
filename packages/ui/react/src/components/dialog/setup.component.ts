@@ -1,4 +1,4 @@
-import { DialogDescriptor } from '@soldy-ui/setup'
+import { DialogDescriptor } from '@soxa-ui/setup'
 import { useComponent } from '../../adapter'
 import type { DialogProps } from './base.component'
 

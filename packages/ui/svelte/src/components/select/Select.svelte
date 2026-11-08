@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { ISelectItem, TDrawnEntry } from '@soldy-ui/core'
+	import type { ISelectItem, TDrawnEntry } from '@soxa-ui/core'
 	import {
 		Dynamic,
 		roleIcon,

@@ -15,7 +15,7 @@
 	 * - `date-input` — поле даты, `date-picker` и `date-picker-range` —
 	 *   DatePicker одной даты и диапазона: его поля — детали его разметки.
 	 */
-	import type { TField, TSlider } from '@soldy-ui/core'
+	import type { TField, TSlider } from '@soxa-ui/core'
 	import {
 		CheckBox,
 		DateInput,
@@ -29,7 +29,7 @@
 		Select,
 		Slider,
 		Switch,
-	} from '@soldy-ui/svelte'
+	} from '@soxa-ui/svelte'
 
 	type TControl =
 		| 'input'

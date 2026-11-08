@@ -1,4 +1,4 @@
-import { TPluginBundle } from '@soldy-ui/plugins'
+import { TPluginBundle } from '@soxa-ui/plugins'
 /**
  * ComponentView — стратегия `'host'` из `TComponentBase`, как у Button.
  *
@@ -13,9 +13,9 @@ import { TPluginBundle } from '@soldy-ui/plugins'
 import { describe, it, expect } from 'vitest'
 import { Component, signal } from '@angular/core'
 import { TestBed, type ComponentFixture } from '@angular/core/testing'
-import { TComponentView } from '@soldy-ui/core'
-import { TElementPlugin } from '@soldy-ui/plugins'
-import { TButtonComponent, TComponentViewComponent } from '@soldy-ui/angular'
+import { TComponentView } from '@soxa-ui/core'
+import { TElementPlugin } from '@soxa-ui/plugins'
+import { TButtonComponent, TComponentViewComponent } from '@soxa-ui/angular'
 import { announced, elementPlugin } from './element-plugin'
 import { findIn } from './mount'
 

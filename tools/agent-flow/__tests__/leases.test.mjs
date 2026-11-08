@@ -8,7 +8,7 @@ import { acquireLease, leaseWorkspace, releaseLease, unlockTask } from '../lease
 import { poolSnapshot } from '../pool.mjs'
 
 test('absent pool stops writer before claiming or creating task locks; no worktree is created', (t) => {
-	const root = mkdtempSync(join(tmpdir(), 'soldy-flow-'))
+	const root = mkdtempSync(join(tmpdir(), 'soxa-flow-'))
 	t.after(() => rmSync(root, { recursive: true, force: true }))
 	execFileSync('git', ['init', '--initial-branch=main', root], { stdio: 'pipe' })
 	const before = execFileSync('git', ['-C', root, 'worktree', 'list', '--porcelain'], {
@@ -26,7 +26,7 @@ test('absent pool stops writer before claiming or creating task locks; no worktr
 })
 
 test('local leases exclude a second runner and release only the owner token', (t) => {
-	const root = mkdtempSync(join(tmpdir(), 'soldy-flow-'))
+	const root = mkdtempSync(join(tmpdir(), 'soxa-flow-'))
 	t.after(() => rmSync(root, { recursive: true, force: true }))
 	execFileSync('git', ['init', '--initial-branch=main', root], { stdio: 'pipe' })
 	const first = acquireLease(root, 'task1')
@@ -40,7 +40,7 @@ test('local leases exclude a second runner and release only the owner token', (t
 	assert.equal(existsSync(first.taskLock), false)
 	assert.equal(existsSync(other.taskLock), true)
 	assert.equal(readFileSync(join(corrupted, 'lease.json'), 'utf8'), '{interrupted')
-	const folder = join(poolSnapshot(root).locks, 'soldy-a')
+	const folder = join(poolSnapshot(root).locks, 'soxa-a')
 	mkdirSync(folder)
 	writeFileSync(join(folder, 'lease.json'), readFileSync(join(other.taskLock, 'lease.json')))
 	writeFileSync(join(folder, 'task'), 'task2')
@@ -50,7 +50,7 @@ test('local leases exclude a second runner and release only the owner token', (t
 })
 
 test('unknown lock content and invalid IDs are preserved rather than recursively removed', (t) => {
-	const root = mkdtempSync(join(tmpdir(), 'soldy-flow-'))
+	const root = mkdtempSync(join(tmpdir(), 'soxa-flow-'))
 	t.after(() => rmSync(root, { recursive: true, force: true }))
 	execFileSync('git', ['init', '--initial-branch=main', root], { stdio: 'pipe' })
 	assert.throws(() => acquireLease(root, '../escape'), /valid task ID/)

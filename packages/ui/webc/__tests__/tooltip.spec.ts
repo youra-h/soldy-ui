@@ -19,16 +19,16 @@ import { propertyDetail } from './property-detail'
  */
 
 import { describe, it, expect, afterEach } from 'vitest'
-import { TComponentView, TFrame, TTooltip } from '@soldy-ui/core'
-import { TBasePlugin, ruRU, zhCN, type IPluginContext } from '@soldy-ui/plugins'
-import { TooltipDescriptor, usePlugins } from '@soldy-ui/setup'
+import { TComponentView, TFrame, TTooltip } from '@soxa-ui/core'
+import { TBasePlugin, ruRU, zhCN, type IPluginContext } from '@soxa-ui/plugins'
+import { TooltipDescriptor, usePlugins } from '@soxa-ui/setup'
 import {
 	TLocaleProviderElement,
 	TPopoverElement,
 	TTooltipElement,
 	type TPopoverElementProps,
 	type TTooltipElementProps,
-} from '@soldy-ui/webc'
+} from '@soxa-ui/webc'
 import { tooltipTemplate } from '../src/components/tooltip/tooltip.template'
 import { TELEPORT_ANCHOR } from '../src/adapter/runtime/teleport'
 import { bareContext } from './template-context'

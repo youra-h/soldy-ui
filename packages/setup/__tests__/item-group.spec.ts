@@ -16,13 +16,13 @@
  */
 
 import { describe, it, expect, vi } from 'vitest'
-import { TListBox, TMenu, TMenuSubmenu, createEngineListBox } from '@soldy-ui/core'
+import { TListBox, TMenu, TMenuSubmenu, createEngineListBox } from '@soxa-ui/core'
 import type {
 	IListBoxItem,
 	TGroupSection,
 	TListBoxCollection,
 	TMenuCollectionFacade,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 import {
 	ListBoxCollectionDescriptor,
 	ListBoxCollectionItemDescriptor,

@@ -9,7 +9,7 @@
 	 * код потребителя, который пишет `ref`, вправе читать своё состояние, и
 	 * смена прочитанного узел корня не перепривязывает.
 	 */
-	import { Button, Input } from '@soldy-ui/svelte'
+	import { Button, Input } from '@soxa-ui/svelte'
 
 	type THarnessProps = {
 		/** Значения переменных `button` и `input`. */

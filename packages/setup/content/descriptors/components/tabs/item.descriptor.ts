@@ -7,8 +7,8 @@
  */
 
 import { defineComponent, defineDescriptor, defineType } from '../../../../protected/define'
-import { TTabsItem } from '@soldy-ui/core'
-import { tabIn } from '@soldy-ui/plugins'
+import { TTabsItem } from '@soxa-ui/core'
+import { tabIn } from '@soxa-ui/plugins'
 import { ValueControlDescriptor } from '../value-control.descriptor'
 import { OWNER_STYLE_PROPS } from '../stylable.descriptor'
 import {

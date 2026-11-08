@@ -9,8 +9,8 @@
 	 * от этого не меняется — движок пуст, и табы разметки входят в него в том
 	 * же порядке.
 	 */
-	import type { TTabsCollection } from '@soldy-ui/core'
-	import { Tabs } from '@soldy-ui/svelte'
+	import type { TTabsCollection } from '@soxa-ui/core'
+	import { Tabs } from '@soxa-ui/svelte'
 
 	type TPageProps = {
 		/** Движок табов — только у гидратации. */

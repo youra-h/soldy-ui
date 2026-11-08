@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Pagination } from '@soldy-ui/svelte'
+	import { Pagination } from '@soxa-ui/svelte'
 	import type { TPreviewProps } from './previews'
 
 	const bind: TPreviewProps = $props()

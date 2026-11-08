@@ -7,7 +7,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TToastsTimerPlugin } from '@soldy-ui/plugins'
+import { TToastsTimerPlugin } from '@soxa-ui/plugins'
 
 export const ToastsTimerPluginDescriptor = definePlugin({
 	ctor: TToastsTimerPlugin,

@@ -16,14 +16,10 @@ import { propertyDetail } from './property-detail'
  */
 
 import { describe, it, expect, afterEach, vi } from 'vitest'
-import { TTextarea } from '@soldy-ui/core'
-import { ruRU, zhCN } from '@soldy-ui/plugins'
-import { TextareaDescriptor } from '@soldy-ui/setup'
-import {
-	TLocaleProviderElement,
-	TTextareaElement,
-	type TTextareaElementProps,
-} from '@soldy-ui/webc'
+import { TTextarea } from '@soxa-ui/core'
+import { ruRU, zhCN } from '@soxa-ui/plugins'
+import { TextareaDescriptor } from '@soxa-ui/setup'
+import { TLocaleProviderElement, TTextareaElement, type TTextareaElementProps } from '@soxa-ui/webc'
 import { textareaTemplate } from '../src/components/textarea/textarea.template'
 import { bareContext } from './template-context'
 
@@ -51,7 +47,7 @@ function markup(html: string): HTMLElement {
 	return host
 }
 
-/** Поле soldy в разметке. */
+/** The Soxa field rendered in markup. */
 function textareaOf(root: ParentNode): TTextareaElementProps {
 	const node = root.querySelector('[is="so-textarea"]')
 
@@ -60,7 +56,7 @@ function textareaOf(root: ParentNode): TTextareaElementProps {
 	return node
 }
 
-/** Поле soldy из разметки, подключённое к документу; узел другой — тест падает здесь. */
+/** Mount the Soxa field; fail here if the resulting node has the wrong type. */
 function mount(html: string): TTextareaElementProps {
 	const host = markup(html)
 

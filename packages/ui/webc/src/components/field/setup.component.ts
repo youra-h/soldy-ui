@@ -1,5 +1,5 @@
-import { FieldDescriptor, TFieldExtension } from '@soldy-ui/setup'
-import type { IField } from '@soldy-ui/core'
+import { FieldDescriptor, TFieldExtension } from '@soxa-ui/setup'
+import type { IField } from '@soxa-ui/core'
 import { createWebcAdapterContext, useAdapter } from '../../adapter'
 import type { TBinding, TUpdateListener } from '../../adapter'
 import { createWebcElevator } from '../../adapter/elevator'

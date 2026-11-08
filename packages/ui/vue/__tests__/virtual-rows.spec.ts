@@ -18,9 +18,9 @@
 import { describe, it, expect } from 'vitest'
 import { createApp, h, nextTick, type VNode } from 'vue'
 import { queryObjects } from 'node:v8'
-import { TItemRow, createEngineListBox, createEngineSelect } from '@soldy-ui/core'
-import type { TDrawViewport } from '@soldy-ui/core'
-import { ListBox, Select, Virtual } from '@soldy-ui/vue'
+import { TItemRow, createEngineListBox, createEngineSelect } from '@soxa-ui/core'
+import type { TDrawViewport } from '@soxa-ui/core'
+import { ListBox, Select, Virtual } from '@soxa-ui/vue'
 
 const nextFrame = () => new Promise((resolve) => requestAnimationFrame(resolve))
 

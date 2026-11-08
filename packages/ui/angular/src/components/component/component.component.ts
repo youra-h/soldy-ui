@@ -1,5 +1,5 @@
 import { Directive } from '@angular/core'
-import type { IComponent } from '@soldy-ui/core'
+import type { IComponent } from '@soxa-ui/core'
 import { TComponentSurface } from '../../generated/component.metadata'
 import { setupComponent } from './setup.component'
 

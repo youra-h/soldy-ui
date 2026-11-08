@@ -9,11 +9,11 @@
 
 import { describe, it, expect, vi, afterEach } from 'vitest'
 import { createSignal } from 'solid-js'
-import { TButton } from '@soldy-ui/core'
-import { TBasePlugin, TPluginBundle } from '@soldy-ui/plugins'
-import type { TPluginEvents } from '@soldy-ui/plugins'
-import { definePlugin, usePlugins, type TExternalPluginProps } from '@soldy-ui/setup'
-import { Button } from '@soldy-ui/solid'
+import { TButton } from '@soxa-ui/core'
+import { TBasePlugin, TPluginBundle } from '@soxa-ui/plugins'
+import type { TPluginEvents } from '@soxa-ui/plugins'
+import { definePlugin, usePlugins, type TExternalPluginProps } from '@soxa-ui/setup'
+import { Button } from '@soxa-ui/solid'
 import { mount } from './mount'
 
 type TStepEvents = TPluginEvents & {

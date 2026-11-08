@@ -32,7 +32,7 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { render, cleanup } from './render'
 import { userEvent } from 'vitest/browser'
 import { defineComponent, h, nextTick, ref } from 'vue'
-import { Tabs, TabsItem } from '@soldy-ui/vue'
+import { Tabs, TabsItem } from '@soxa-ui/vue'
 
 import { find, style } from './colors'
 import { reducedMotion } from './media'
@@ -45,7 +45,7 @@ import {
 	transitionEvents,
 } from './transitions'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 /**
  * Допуск на округление, px. Место и длину таба `TTabsActiveTabPlugin` берёт в

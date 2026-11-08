@@ -5,8 +5,8 @@
  * docs/architecture.md, Layer 8d, «Модальный слой и тосты».
  */
 
-import { ToastsCollectionDescriptor, ToastsDescriptor } from '@soldy-ui/setup'
-import type { IToasts, TToastsCollectionFacade } from '@soldy-ui/core'
+import { ToastsCollectionDescriptor, ToastsDescriptor } from '@soxa-ui/setup'
+import type { IToasts, TToastsCollectionFacade } from '@soxa-ui/core'
 import { ElementBase, defineElement } from '../../adapter'
 import type { TElementClassOf, TElementType } from '../../adapter'
 import { defineAutonomousElement } from '../../adapter/runtime/defineElement'

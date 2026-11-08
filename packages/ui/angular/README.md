@@ -1,8 +1,8 @@
-# @soldy-ui/angular
+# @soxa-ui/angular
 
-**The Angular adapter: Soldy UI components rendered on the headless models of the core.**
+**The Angular adapter: Soxa UI components rendered on the headless models of the core.**
 
-Part of [Soldy UI](https://github.com/youra-h/soldy-ui) — UI components with the logic written once: a
+Part of [Soxa UI](https://github.com/youra-h/soxa-ui) — UI components with the logic written once: a
 framework-agnostic core and thin adapters that render it in Vue, React, Angular, Svelte, Solid and
 Web Components.
 
@@ -45,16 +45,16 @@ render on the server (`@angular/platform-server`) and hydrate in the browser
 > backdrop placed before them. Toasts (`<div so-toasts>` around the application, a toast from code
 > with `useToasts().show(…)`) show notifications at an edge of the window. `so-locale-provider`
 > gives a subtree its language and library strings. See
-> [the adapter table](https://github.com/youra-h/soldy-ui#components).
+> [the adapter table](https://github.com/youra-h/soxa-ui#components).
 
 ## Install
 
 ```bash
-npm install @angular/forms @soldy-ui/angular @soldy-ui/setup @soldy-ui/theme-oren @soldy-ui/icons-material
+npm install @angular/forms @soxa-ui/angular @soxa-ui/setup @soxa-ui/theme-oren @soxa-ui/icons-material
 ```
 
-Install `@soldy-ui/setup` as a direct dependency for the `useIcons` and `useTheme` imports below.
-Keep it on the same version as `@soldy-ui/angular`.
+Install `@soxa-ui/setup` as a direct dependency for the `useIcons` and `useTheme` imports below.
+Keep it on the same version as `@soxa-ui/angular`.
 
 `@angular/core`, `@angular/common` and `@angular/platform-browser` (Angular 22.2+) are peer
 dependencies. A theme and an icon pack are separate packages — pick the ones you want.
@@ -64,7 +64,7 @@ the server:
 
 ```ts
 import { ApplicationConfig } from '@angular/core'
-import { provideAttrs } from '@soldy-ui/angular'
+import { provideAttrs } from '@soxa-ui/angular'
 
 export const appConfig: ApplicationConfig = {
   providers: [provideAttrs()],
@@ -80,7 +80,7 @@ of a route or a component — there it cannot replace the renderer of the applic
 
 ```ts
 import { Component } from '@angular/core'
-import { TButtonComponent } from '@soldy-ui/angular'
+import { TButtonComponent } from '@soxa-ui/angular'
 
 @Component({
   selector: 'app-toolbar',
@@ -508,9 +508,9 @@ template: `<ng-container so-locale-provider [locale]="locale()"><router-outlet /
 The application plugs in a theme and an icon pack once, in its entry point:
 
 ```ts
-import { useIcons, useTheme } from '@soldy-ui/setup'
-import * as material from '@soldy-ui/icons-material'
-import oren from '@soldy-ui/theme-oren/setup'
+import { useIcons, useTheme } from '@soxa-ui/setup'
+import * as material from '@soxa-ui/icons-material'
+import oren from '@soxa-ui/theme-oren/setup'
 
 useIcons(material)
 useTheme(oren)
@@ -520,37 +520,37 @@ The theme's stylesheet goes into the global styles, `src/styles.css` — the fil
 of `angular.json`:
 
 ```css
-@import '@soldy-ui/theme-oren';
+@import '@soxa-ui/theme-oren';
 ```
 
 Not an `import` in `main.ts`: Angular CLI puts CSS imported from a module into a chunk the page
 never loads, and the components stay unstyled. The values of the theme, such as
-`variant="accent"`, reach the template type check with `@soldy-ui/theme-oren/setup`.
+`variant="accent"`, reach the template type check with `@soxa-ui/theme-oren/setup`.
 
 The `initial` budget of Angular CLI counts the raw bytes of the initial JavaScript and the global
-styles, and a project made by `ng new` fails the build above 1 MB. `@soldy-ui/theme-oren` holds the
+styles, and a project made by `ng new` fails the build above 1 MB. `@soxa-ui/theme-oren` holds the
 CSS of every component — 361 kB raw, 36 kB gzip — and a page with a Button, an Input, a Select, a
 Dialog, a Table and a DatePicker adds 677 kB of JavaScript (169 kB gzip): over the threshold. Import
 the stylesheets of the components your pages use instead — each one with the shared part of the
 theme:
 
 ```css
-@import '@soldy-ui/theme-oren/button.css';
-@import '@soldy-ui/theme-oren/dialog.css';
-@import '@soldy-ui/theme-oren/input.css';
-@import '@soldy-ui/theme-oren/select.css';
-@import '@soldy-ui/theme-oren/table.css';
-@import '@soldy-ui/theme-oren/date-picker.css';
+@import '@soxa-ui/theme-oren/button.css';
+@import '@soxa-ui/theme-oren/dialog.css';
+@import '@soxa-ui/theme-oren/input.css';
+@import '@soxa-ui/theme-oren/select.css';
+@import '@soxa-ui/theme-oren/table.css';
+@import '@soxa-ui/theme-oren/date-picker.css';
 ```
 
 The same page then loads 205 kB of CSS, 882 kB in all, within the budget (the theme's README,
-[Only the components you use](https://github.com/youra-h/soldy-ui/tree/main/packages/themes/oren#only-the-components-you-use)).
+[Only the components you use](https://github.com/youra-h/soxa-ui/tree/main/packages/themes/oren#only-the-components-you-use)).
 
 ## Documentation
 
-- [Soldy UI README](https://github.com/youra-h/soldy-ui#readme) — the component set and what each
+- [Soxa UI README](https://github.com/youra-h/soxa-ui#readme) — the component set and what each
   adapter implements so far.
-- [Architecture overview](https://github.com/youra-h/soldy-ui/blob/main/docs/architecture.md) —
+- [Architecture overview](https://github.com/youra-h/soxa-ui/blob/main/docs/architecture.md) —
   layers, descriptors, plugins, collections, adapters.
 
 ## Public API
@@ -558,12 +558,12 @@ The same page then loads 205 kB of CSS, 882 kB in all, within the budget (the th
 The package entry exports application components, their consumer types, the locale provider,
 and the supported icon and toast helpers. Component props, slots, events, refs and core models
 passed through `ctrl` remain the supported ways to customize the UI. Models come from
-`@soldy-ui/core`; theme, icon and external-plugin registration comes from `@soldy-ui/setup`.
+`@soxa-ui/core`; theme, icon and external-plugin registration comes from `@soxa-ui/setup`.
 
 Assembly functions, adapter profiles, bindings, generated metadata and rendering templates
 are private implementation details. They are no longer exported from the package entry, and
 there is no public `/internal` entry. Code that imported them must use the component contract
-instead. Building a new adapter component from Soldy's assembly helpers is not a supported
+instead. Building a new adapter component from Soxa's assembly helpers is not a supported
 public SDK.
 
 `SlotDirective`, `AttributesDirective`, `RoleIconDirective`, `TextPipe`, `LocaleProviderDirective` and `provideAttrs` are application
@@ -572,7 +572,7 @@ and are private; applications must not import them.
 
 ## License
 
-[MIT](https://github.com/youra-h/soldy-ui/blob/main/LICENSE)
+[MIT](https://github.com/youra-h/soxa-ui/blob/main/LICENSE)
 
 ## Two-way bindings
 
@@ -593,7 +593,7 @@ payload: `(valueChange)="text = $event"` receives the value, while `(soChangeVal
 
 All components with a writable `value` input support Angular Forms automatically. Install
 `@angular/forms` at the same version as `@angular/core`. Import `FormsModule` for `ngModel`,
-or `ReactiveFormsModule` for `formControl` and `formControlName`, alongside the Soldy components:
+or `ReactiveFormsModule` for `formControl` and `formControlName`, alongside the Soxa components:
 
 ```html
 <div so-input [(ngModel)]="name"></div>

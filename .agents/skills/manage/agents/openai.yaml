@@ -1,5 +1,5 @@
 interface:
   display_name: 'manage'
-  short_description: 'Coordinate soldy-ui ClickUp priorities and dependencies'
+  short_description: 'Coordinate soxa-ui ClickUp priorities and dependencies'
 policy:
   allow_implicit_invocation: false

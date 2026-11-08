@@ -17,9 +17,9 @@ export default defineConfig({
 	},
 	resolve: {
 		alias: {
-			'@soldy-ui/core': path.resolve(import.meta.dirname, '../../core/src'),
-			'@soldy-ui/plugins': path.resolve(import.meta.dirname, '../../plugins/src'),
-			'@soldy-ui/setup': path.resolve(import.meta.dirname, '../../setup/index.ts'),
+			'@soxa-ui/core': path.resolve(import.meta.dirname, '../../core/src'),
+			'@soxa-ui/plugins': path.resolve(import.meta.dirname, '../../plugins/src'),
+			'@soxa-ui/setup': path.resolve(import.meta.dirname, '../../setup/index.ts'),
 		},
 	},
 })

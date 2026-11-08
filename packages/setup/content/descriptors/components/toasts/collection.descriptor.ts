@@ -7,7 +7,7 @@
  */
 
 import { defineComponent, defineDescriptor } from '../../../../protected/define'
-import { TToastsCollectionFacade, TToastsItemCollectionFacade } from '@soldy-ui/core'
+import { TToastsCollectionFacade, TToastsItemCollectionFacade } from '@soxa-ui/core'
 import { CollectionDescriptor } from '../collection'
 
 export const ToastsCollectionDescriptor = defineDescriptor(() =>

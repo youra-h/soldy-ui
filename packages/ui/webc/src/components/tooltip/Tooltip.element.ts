@@ -4,8 +4,8 @@
  * Layer 8d, «Панель у триггера».
  */
 
-import { TooltipDescriptor } from '@soldy-ui/setup'
-import type { ITooltip } from '@soldy-ui/core'
+import { TooltipDescriptor } from '@soxa-ui/setup'
+import type { ITooltip } from '@soxa-ui/core'
 import { ElementBase, defineElement } from '../../adapter'
 import type { TElementClassOf, TElementType } from '../../adapter'
 import { tooltipTemplate } from './tooltip.template'

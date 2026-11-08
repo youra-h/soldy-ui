@@ -1,5 +1,5 @@
 import type { ReactElement } from 'react'
-import type { ITableRow, TAriaAttributes, TTableCell } from '@soldy-ui/core'
+import type { ITableRow, TAriaAttributes, TTableCell } from '@soxa-ui/core'
 import { renderSlot, toAriaProps, withRenderBoundary } from '../../../adapter'
 import type { TableRowProps } from './base.component'
 

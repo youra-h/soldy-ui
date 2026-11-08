@@ -12,7 +12,7 @@
 
 import { describe, it, expect } from 'vitest'
 import { createRawSnippet, flushSync } from 'svelte'
-import { Skeleton, type SkeletonProps } from '@soldy-ui/svelte'
+import { Skeleton, type SkeletonProps } from '@soxa-ui/svelte'
 import { mount } from './mount'
 import { reactiveProps } from './reactive-props.svelte'
 

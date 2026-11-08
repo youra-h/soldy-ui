@@ -1,5 +1,5 @@
-import { useIcons } from '@soldy-ui/setup'
-import * as material from '@soldy-ui/icons-material'
+import { useIcons } from '@soxa-ui/setup'
+import * as material from '@soxa-ui/icons-material'
 
 /**
  * Заглушки браузерных API, которых нет в jsdom.

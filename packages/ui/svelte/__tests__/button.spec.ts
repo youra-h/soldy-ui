@@ -1,9 +1,9 @@
-import { TPluginBundle } from '@soldy-ui/plugins'
+import { TPluginBundle } from '@soxa-ui/plugins'
 import { describe, it, expect, afterEach, vi } from 'vitest'
 import { mount, unmount, flushSync, type ComponentProps } from 'svelte'
-import { TButton, type TValuePayload } from '@soldy-ui/core'
-import { TActionPlugin } from '@soldy-ui/plugins'
-import { Button } from '@soldy-ui/svelte'
+import { TButton, type TValuePayload } from '@soxa-ui/core'
+import { TActionPlugin } from '@soxa-ui/plugins'
+import { Button } from '@soxa-ui/svelte'
 import { reactiveProps } from './reactive-props.svelte'
 
 let target: HTMLElement

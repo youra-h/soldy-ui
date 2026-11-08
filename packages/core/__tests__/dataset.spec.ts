@@ -21,7 +21,7 @@ import {
 	TTabsItem,
 	TTabsCollectionFacade,
 } from '../src'
-import type { ISelectItem, ITabsItem } from '@soldy-ui/core'
+import type { ISelectItem, ITabsItem } from '@soxa-ui/core'
 
 describe('TDataset · сам набор', () => {
 	it('подставляет префикс data-', () => {

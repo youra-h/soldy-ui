@@ -8,8 +8,8 @@
  */
 
 import { useContext, useEffect, useEffectEvent, useId, useMemo, useReducer, useRef } from 'react'
-import { createAdapterContext } from '@soldy-ui/setup'
-import type { IAdapterContext, TElevatorFactory } from '@soldy-ui/setup'
+import { createAdapterContext } from '@soxa-ui/setup'
+import type { IAdapterContext, TElevatorFactory } from '@soxa-ui/setup'
 import { ElevatorContext, type TElevatorLayer } from '../elevator/layer'
 import { LocaleContext } from '../locale/context'
 import { TReactElevatorScope } from '../elevator/scope.class'

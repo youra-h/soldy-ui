@@ -20,7 +20,7 @@ export interface IPageRoot {
 /**
  * The library's setup module: the application providers (renderer, theme,
  * locale of the library) and, if a library needs one in the tree, the root
- * component the copies are placed in — soldy's locale provider.
+ * component the copies are placed in — soxa's locale provider.
  */
 export interface IAngularSetup {
 	providers: (Provider | EnvironmentProviders)[]
@@ -39,7 +39,7 @@ class PlainRoot implements IPageRoot {
 }
 
 /**
- * One application per setup, without Zone.js — as the soldy host: a mount id
+ * One application per setup, without Zone.js — as the soxa host: a mount id
  * is a build number within the application, and two applications on a page
  * would give parts equal ids.
  */
@@ -58,7 +58,7 @@ function applicationOf(setup: IAngularSetup): Promise<ApplicationRef> {
 
 /**
  * `count` copies of a page under one root component of the application —
- * as the soldy host puts a preview into its root: the root on its own element
+ * as the soxa host puts a preview into its root: the root on its own element
  * in the node, the copies in its place, checked synchronously. Returns the
  * unmount.
  */

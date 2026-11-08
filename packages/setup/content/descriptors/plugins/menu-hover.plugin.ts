@@ -10,7 +10,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TMenuHoverPlugin } from '@soldy-ui/plugins'
+import { TMenuHoverPlugin } from '@soxa-ui/plugins'
 
 export const MenuHoverPluginDescriptor = definePlugin({
 	ctor: TMenuHoverPlugin,

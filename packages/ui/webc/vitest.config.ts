@@ -8,18 +8,18 @@ export default defineConfig({
 			// The entries of the elements, before the package root: an alias is
 			// matched by prefix
 			...subpathSources({
-				name: '@soldy-ui/webc',
+				name: '@soxa-ui/webc',
 				root: import.meta.dirname,
 				entry: 'src/index.ts',
 			}),
-			'@soldy-ui/core': path.resolve(import.meta.dirname, '../../core/src'),
-			'@soldy-ui/icons-material': path.resolve(
+			'@soxa-ui/core': path.resolve(import.meta.dirname, '../../core/src'),
+			'@soxa-ui/icons-material': path.resolve(
 				import.meta.dirname,
 				'../../icons/material/src',
 			),
-			'@soldy-ui/plugins': path.resolve(import.meta.dirname, '../../plugins/src'),
-			'@soldy-ui/setup': path.resolve(import.meta.dirname, '../../setup/index.ts'),
-			'@soldy-ui/webc': path.resolve(import.meta.dirname, 'src/index.ts'),
+			'@soxa-ui/plugins': path.resolve(import.meta.dirname, '../../plugins/src'),
+			'@soxa-ui/setup': path.resolve(import.meta.dirname, '../../setup/index.ts'),
+			'@soxa-ui/webc': path.resolve(import.meta.dirname, 'src/index.ts'),
 		},
 	},
 	test: {

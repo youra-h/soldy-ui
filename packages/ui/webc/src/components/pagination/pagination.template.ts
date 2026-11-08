@@ -5,8 +5,8 @@
  * с неё не слетает. docs/architecture.md, Layer 8d, «Коллекция».
  */
 
-import type { IPagination, TPaginationCell, TPaginationCollectionFacade } from '@soldy-ui/core'
-import { DEFAULT_SLOT } from '@soldy-ui/setup'
+import type { IPagination, TPaginationCell, TPaginationCollectionFacade } from '@soxa-ui/core'
+import { DEFAULT_SLOT } from '@soxa-ui/setup'
 import {
 	TKeyedLoop,
 	bind,

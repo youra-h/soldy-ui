@@ -6,7 +6,7 @@
  */
 
 import { defineComponent, defineDescriptor } from '../../../protected/define'
-import { TFrame } from '@soldy-ui/core'
+import { TFrame } from '@soxa-ui/core'
 import {
 	FrameLayoutPluginDescriptor,
 	AnchorPluginDescriptor,

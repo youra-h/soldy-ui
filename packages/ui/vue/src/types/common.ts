@@ -1,5 +1,5 @@
-import type { IEntity } from '@soldy-ui/core'
-import type { IComponentDescriptor, DescriptorComponentProps } from '@soldy-ui/setup'
+import type { IEntity } from '@soxa-ui/core'
+import type { IComponentDescriptor, DescriptorComponentProps } from '@soxa-ui/setup'
 
 export type TEmits = readonly string[]
 export type TProps = Readonly<Record<string, unknown>>

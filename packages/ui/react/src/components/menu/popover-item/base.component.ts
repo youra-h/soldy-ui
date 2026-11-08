@@ -1,6 +1,6 @@
 import type { HTMLAttributes } from 'react'
-import type { IMenuPopoverItem } from '@soldy-ui/core'
-import type { MenuCollectionItemDescriptor, MenuPopoverItemDescriptor } from '@soldy-ui/setup'
+import type { IMenuPopoverItem } from '@soxa-ui/core'
+import type { MenuCollectionItemDescriptor, MenuPopoverItemDescriptor } from '@soxa-ui/setup'
 import type { EventProps, TDomAttributes, UseDomProps } from '../../../types'
 
 export type MenuPopoverItemEventProps = EventProps<typeof MenuPopoverItemDescriptor> &

@@ -1,4 +1,4 @@
-import type { IToasts } from '@soldy-ui/core'
+import type { IToasts } from '@soxa-ui/core'
 import { TBasePlugin } from '../../../base'
 import type { IPluginContext } from '../../../base'
 import type { TToastsLayoutPluginEvents } from './types'

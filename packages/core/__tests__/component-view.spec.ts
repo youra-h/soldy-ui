@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
-import { TComponentView } from '@soldy-ui/core'
-import type { IComponentViewProps } from '@soldy-ui/core'
+import { TComponentView } from '@soxa-ui/core'
+import type { IComponentViewProps } from '@soxa-ui/core'
 
 describe('TComponentView', () => {
 	beforeEach(() => {

@@ -16,7 +16,7 @@
  */
 
 import { describe, it, expect, afterEach, beforeEach, vi } from 'vitest'
-import { TButton } from '@soldy-ui/core'
+import { TButton } from '@soxa-ui/core'
 import {
 	TBasePlugin,
 	TLocaleSource,
@@ -26,9 +26,9 @@ import {
 	zhCN,
 	type ILocaleSource,
 	type IPluginContext,
-} from '@soldy-ui/plugins'
-import { ButtonDescriptor, usePlugins } from '@soldy-ui/setup'
-import { TButtonElement, TLocaleProviderElement, type TButtonElementProps } from '@soldy-ui/webc'
+} from '@soxa-ui/plugins'
+import { ButtonDescriptor, usePlugins } from '@soxa-ui/setup'
+import { TButtonElement, TLocaleProviderElement, type TButtonElementProps } from '@soxa-ui/webc'
 import { createWebcAdapterContext } from '../src/adapter/common/createWebcAdapterContext'
 
 /** Набор объявляется на микрозадаче — см. `TOwnBundle._announce`. */
@@ -88,7 +88,7 @@ function provider(root: ParentNode, selector = 'so-locale-provider'): TLocalePro
 function button(root: ParentNode, selector = 'button'): TButtonElementProps {
 	const node = find(root, selector)
 
-	if (!isButton(node)) throw new Error(`${selector}: кнопки soldy нет`)
+	if (!isButton(node)) throw new Error(`${selector}: кнопки soxa нет`)
 
 	return node
 }

@@ -5,7 +5,7 @@ import { COLLECTION_ITEMS } from '../../../data'
 
 /**
  * Select with typing and filtering — `AutoComplete` with the dropdown button,
- * as the soldy `editable` preview; the suggestions are filtered by the page,
+ * as the soxa `editable` preview; the suggestions are filtered by the page,
  * as the PrimeVue docs do it.
  */
 defineOptions({ name: 'PrimeSelectPage' })

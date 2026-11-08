@@ -2,8 +2,8 @@
  * Контракты проводки группы элементов: что группа опускает по лифту, какой её видит проводка, и опции расширения.
  */
 
-import type { TCollectionEngine, TItemGroupEvents } from '@soldy-ui/core'
-import type { IListenable } from '@soldy-ui/plugins'
+import type { TCollectionEngine, TItemGroupEvents } from '@soxa-ui/core'
+import type { IListenable } from '@soxa-ui/plugins'
 import type { TElevatorFactory } from '../../../protected/adapter/elevator'
 
 /**

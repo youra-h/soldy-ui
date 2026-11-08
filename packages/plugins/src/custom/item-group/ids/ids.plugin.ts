@@ -1,4 +1,4 @@
-import type { IItemGroup } from '@soldy-ui/core'
+import type { IItemGroup } from '@soxa-ui/core'
 import { TBasePlugin } from '../../../base'
 import type { IPluginContext } from '../../../base'
 

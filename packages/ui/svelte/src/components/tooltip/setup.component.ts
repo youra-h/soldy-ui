@@ -1,4 +1,4 @@
-import { TooltipDescriptor } from '@soldy-ui/setup'
+import { TooltipDescriptor } from '@soxa-ui/setup'
 import { createSvelteAdapterContext, useAdapter, type TRootReceiver } from '../../adapter'
 import type { TooltipProps } from './base.component'
 

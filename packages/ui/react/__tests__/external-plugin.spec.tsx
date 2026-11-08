@@ -12,11 +12,11 @@ import { describe, it, expect, vi, afterEach } from 'vitest'
 import { act } from 'react'
 import type { ReactElement } from 'react'
 import { createRoot, type Root } from 'react-dom/client'
-import { TButton } from '@soldy-ui/core'
-import { TBasePlugin, TPluginBundle } from '@soldy-ui/plugins'
-import type { TPluginEvents } from '@soldy-ui/plugins'
-import { definePlugin, usePlugins } from '@soldy-ui/setup'
-import { Button } from '@soldy-ui/react'
+import { TButton } from '@soxa-ui/core'
+import { TBasePlugin, TPluginBundle } from '@soxa-ui/plugins'
+import type { TPluginEvents } from '@soxa-ui/plugins'
+import { definePlugin, usePlugins } from '@soxa-ui/setup'
+import { Button } from '@soxa-ui/react'
 
 type TStepEvents = TPluginEvents & {
 	'change:size': (size: number) => void

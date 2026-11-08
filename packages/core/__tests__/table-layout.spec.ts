@@ -1,11 +1,11 @@
 import { describe, it, expect, vi } from 'vitest'
-import { TTable, createEngineTable } from '@soldy-ui/core'
+import { TTable, createEngineTable } from '@soxa-ui/core'
 import type {
 	ITableColumn,
 	TTableCollection,
 	TTableColumnFit,
 	TTableColumnSource,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 import { layoutColumns } from '../src/components/custom/table/collection/extensions/columns/layout'
 
 /**

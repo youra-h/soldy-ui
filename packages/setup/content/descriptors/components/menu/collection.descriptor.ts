@@ -7,7 +7,7 @@
  */
 
 import { defineComponent, defineDescriptor } from '../../../../protected/define'
-import { TMenuCollectionFacade, TMenuItemCollectionFacade } from '@soldy-ui/core'
+import { TMenuCollectionFacade, TMenuItemCollectionFacade } from '@soxa-ui/core'
 import { CollectionDescriptor } from '../collection'
 import { GROUP_PROPS } from '../list'
 

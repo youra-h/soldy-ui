@@ -1,5 +1,5 @@
 import { h, type Component } from 'vue'
-import { Button, CheckBox, Icon, Label, RadioGroup, Switch, roleIcon } from '@soldy-ui/vue'
+import { Button, CheckBox, Icon, Label, RadioGroup, Switch, roleIcon } from '@soxa-ui/vue'
 import type { TPreview } from './previews'
 
 /** Glyphs as `roleIcon` components, made once: Icon's `tag` is the root, not a role. */

@@ -1,5 +1,5 @@
-import type { IProgressSpinner } from '@soldy-ui/core'
-import type { ProgressSpinnerDescriptor } from '@soldy-ui/setup'
+import type { IProgressSpinner } from '@soxa-ui/core'
+import type { ProgressSpinnerDescriptor } from '@soxa-ui/setup'
 import type { EventProps, UseDomProps } from '../../types'
 
 /** События слоя ProgressSpinner (core + плагины), выведены из дескриптора автоматически. */

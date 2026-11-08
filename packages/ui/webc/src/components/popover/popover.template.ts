@@ -4,8 +4,8 @@
  * docs/architecture.md, Layer 8d, «Панель у триггера».
  */
 
-import type { IPopover } from '@soldy-ui/core'
-import { DEFAULT_SLOT } from '@soldy-ui/setup'
+import type { IPopover } from '@soxa-ui/core'
+import { DEFAULT_SLOT } from '@soxa-ui/setup'
 import { bind, createDetail, lend, ownerAttributes, type ITemplate, patch } from '../../adapter'
 import { lendRoleIcon } from '../common/icon-button'
 import { TButtonElement, type TButtonElementProps } from '../button'

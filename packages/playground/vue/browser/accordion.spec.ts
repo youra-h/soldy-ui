@@ -17,9 +17,9 @@
 import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { render, cleanup } from './render'
 import { defineComponent, h, nextTick, type VNodeChild } from 'vue'
-import { Accordion, AccordionItem } from '@soldy-ui/vue'
+import { Accordion, AccordionItem } from '@soxa-ui/vue'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 const nextFrame = () => new Promise<void>((resolve) => requestAnimationFrame(() => resolve()))
 

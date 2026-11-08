@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core'
 import { NgTemplateOutlet } from '@angular/common'
-import type { ITable } from '@soldy-ui/core'
+import type { ITable } from '@soxa-ui/core'
 import { AttributesDirective, SlotDirective, provideElevator } from '../../adapter'
 import { TCheckBoxComponent } from '../check-box'
 import { TTableColumnComponent } from './column'

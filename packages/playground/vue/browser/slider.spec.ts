@@ -21,17 +21,17 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { render, cleanup } from './render'
 import { commands, page, userEvent } from 'vitest/browser'
 import { defineComponent, h } from 'vue'
-import { TSlider } from '@soldy-ui/core'
-import type { ISliderProps, TComponentVariant, TSliderValue } from '@soldy-ui/core'
-import { COMPONENT_VARIANTS } from '@soldy-ui/playground-shared'
-import { Button, Label, Slider, Switch } from '@soldy-ui/vue'
+import { TSlider } from '@soxa-ui/core'
+import type { ISliderProps, TComponentVariant, TSliderValue } from '@soxa-ui/core'
+import { COMPONENT_VARIANTS } from '@soxa-ui/playground-shared'
+import { Button, Label, Slider, Switch } from '@soxa-ui/vue'
 
 import { opacity, pixel } from './colors'
 import { reducedMotion } from './media'
 import { captureMovesHover } from './engine'
 import { settled, transitionEvents, transitionRuns } from './transitions'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 const nextFrame = () => new Promise<void>((resolve) => requestAnimationFrame(() => resolve()))
 

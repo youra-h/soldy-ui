@@ -1,5 +1,5 @@
 import type { Accessor, JSX } from 'solid-js'
-import type { IMenuItem, TGroupSection, TMenuSubmenuEntries } from '@soldy-ui/core'
+import type { IMenuItem, TGroupSection, TMenuSubmenuEntries } from '@soxa-ui/core'
 import {
 	Elevate,
 	KeyedFor,

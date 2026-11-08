@@ -49,8 +49,8 @@ import {
 	ToastsItemDescriptor,
 	TooltipDescriptor,
 	VirtualDescriptor,
-} from '@soldy-ui/setup'
-import type { IComponentDescriptor } from '@soldy-ui/setup'
+} from '@soxa-ui/setup'
+import type { IComponentDescriptor } from '@soxa-ui/setup'
 import { useEmits, VueProfile } from '../src/adapter'
 
 const DESCRIPTORS: Array<[string, () => IComponentDescriptor]> = [

@@ -21,11 +21,11 @@
 import { describe, it, expect, afterEach } from 'vitest'
 import { render, cleanup } from './render'
 import { defineComponent, h, nextTick, type VNode } from 'vue'
-import { CheckBox, DateInput, Input, NumberInput, Switch } from '@soldy-ui/vue'
+import { CheckBox, DateInput, Input, NumberInput, Switch } from '@soxa-ui/vue'
 
 import { find, style } from './colors'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 const nextFrame = () => new Promise<void>((resolve) => requestAnimationFrame(() => resolve()))
 

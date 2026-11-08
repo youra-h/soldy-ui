@@ -2,7 +2,7 @@ import {
 	TCollectionItemExtension,
 	TagsCollectionItemDescriptor,
 	TagsItemDescriptor,
-} from '@soldy-ui/setup'
+} from '@soxa-ui/setup'
 import { useAdapter, useAdapterContext, useCollectionAdapter } from '../../../adapter'
 import type { TagsItemProps } from './base.component'
 

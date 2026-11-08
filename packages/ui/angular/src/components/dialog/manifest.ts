@@ -1,1 +1,1 @@
-export { DialogDescriptor as descriptor } from '@soldy-ui/setup'
+export { DialogDescriptor as descriptor } from '@soxa-ui/setup'

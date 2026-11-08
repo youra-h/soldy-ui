@@ -13,9 +13,9 @@
 
 import { describe, it, expect } from 'vitest'
 import { compileScript, parse } from 'vue/compiler-sfc'
-import type { IPreviewSnippets, TPropControl, TPropOwner } from '@soldy-ui/playground-shared'
-import { COMPONENTS, presetForProp, valuesForProp } from '@soldy-ui/playground-shared'
-import { TAriaPlugin } from '@soldy-ui/plugins'
+import type { IPreviewSnippets, TPropControl, TPropOwner } from '@soxa-ui/playground-shared'
+import { COMPONENTS, presetForProp, valuesForProp } from '@soxa-ui/playground-shared'
+import { TAriaPlugin } from '@soxa-ui/plugins'
 import { loadHost } from '../src/hosts'
 
 /** Код колонок хоста; без него проверять нечего. */
@@ -145,7 +145,7 @@ describe('Vue: instanceSnippet', () => {
 			'range',
 		)
 
-		expect(code).toContain("import { createEngineCalendar } from '@soldy-ui/core'")
+		expect(code).toContain("import { createEngineCalendar } from '@soxa-ui/core'")
 		expect(code).toContain('const engine = createEngineCalendar()')
 		expect(code).toContain("engine.extensions.selection.mode = 'range'")
 		expect(code).toContain('<Calendar :engine="engine" />')
@@ -169,7 +169,7 @@ describe('Vue: instanceSnippet', () => {
 		)
 
 		expect(code).toContain('const instance = new TButton()')
-		expect(code).toContain("import { TPluginBundle, TAriaPlugin } from '@soldy-ui/plugins'")
+		expect(code).toContain("import { TPluginBundle, TAriaPlugin } from '@soxa-ui/plugins'")
 		expect(code).toContain("instance.events.on('bundle:create'")
 		expect(code).toContain('const plugin = bundle.get(TAriaPlugin)')
 		expect(code).toContain("plugin.label = 'Закрыть'")
@@ -286,8 +286,8 @@ describe.each([
 		expect(code).toBe(
 			[
 				'<script setup lang="ts">',
-				"import { Button } from '@soldy-ui/vue'",
-				"import { TButton } from '@soldy-ui/core'",
+				"import { Button } from '@soxa-ui/vue'",
+				"import { TButton } from '@soxa-ui/core'",
 				'',
 				'const instance = new TButton()',
 				'</script>',
@@ -373,8 +373,8 @@ describe('React: instanceSnippet', () => {
 		expect(code).toBe(
 			[
 				"import { useState } from 'react'",
-				"import { Accordion } from '@soldy-ui/react'",
-				"import { TAccordion } from '@soldy-ui/core'",
+				"import { Accordion } from '@soxa-ui/react'",
+				"import { TAccordion } from '@soxa-ui/core'",
 				'',
 				'export function Example() {',
 				'\tconst [instance] = useState(() => {',
@@ -412,7 +412,7 @@ describe('React: instanceSnippet', () => {
 			'range',
 		)
 
-		expect(code).toContain("import { createEngineCalendar } from '@soldy-ui/core'")
+		expect(code).toContain("import { createEngineCalendar } from '@soxa-ui/core'")
 		expect(code).toContain('const engine = createEngineCalendar()')
 		expect(code).toContain("engine.extensions.selection.mode = 'range'")
 		expect(code).toContain('<Calendar engine={engine} />')
@@ -432,7 +432,7 @@ describe('React: instanceSnippet', () => {
 		)
 
 		expect(code).toContain('\t\tconst instance = new TButton()')
-		expect(code).toContain("import { TPluginBundle, TAriaPlugin } from '@soldy-ui/plugins'")
+		expect(code).toContain("import { TPluginBundle, TAriaPlugin } from '@soxa-ui/plugins'")
 		expect(code).toContain("\t\tinstance.events.on('bundle:create', (bundle: unknown) => {")
 		expect(code).toContain('\t\t\tconst plugin = bundle.get(TAriaPlugin)')
 		expect(code).toContain("\t\t\tif (plugin) plugin.label = 'Закрыть'")
@@ -456,7 +456,7 @@ describe('React: propSnippet', () => {
 	it('пример — компонент с JSX: импорт из адаптера, проп атрибутом', () => {
 		expect(react.propSnippet(entryOf('button'), 'view', 'plain')).toBe(
 			[
-				"import { Button } from '@soldy-ui/react'",
+				"import { Button } from '@soxa-ui/react'",
 				'',
 				'export function Example() {',
 				'\treturn <Button view="plain" />',
@@ -586,8 +586,8 @@ describe.each([
 		expect(code).toBe(
 			[
 				"import { useState } from 'react'",
-				"import { Button } from '@soldy-ui/react'",
-				"import { TButton } from '@soldy-ui/core'",
+				"import { Button } from '@soxa-ui/react'",
+				"import { TButton } from '@soxa-ui/core'",
 				'',
 				'export function Example() {',
 				'\tconst [instance] = useState(() => new TButton())',
@@ -616,8 +616,8 @@ describe('Svelte: instanceSnippet', () => {
 		expect(code).toBe(
 			[
 				'<script lang="ts">',
-				"\timport { Accordion } from '@soldy-ui/svelte'",
-				"\timport { TAccordion } from '@soldy-ui/core'",
+				"\timport { Accordion } from '@soxa-ui/svelte'",
+				"\timport { TAccordion } from '@soxa-ui/core'",
 				'',
 				'\tconst instance = new TAccordion()',
 				'',
@@ -650,7 +650,7 @@ describe('Svelte: instanceSnippet', () => {
 			'range',
 		)
 
-		expect(code).toContain("\timport { createEngineCalendar } from '@soldy-ui/core'")
+		expect(code).toContain("\timport { createEngineCalendar } from '@soxa-ui/core'")
 		expect(code).toContain('\tconst engine = createEngineCalendar()')
 		expect(code).toContain("\tengine.extensions.selection.mode = 'range'")
 		expect(code).toContain('<Calendar engine={engine} />')
@@ -669,7 +669,7 @@ describe('Svelte: instanceSnippet', () => {
 		)
 
 		expect(code).toContain('\tconst instance = new TButton()')
-		expect(code).toContain("\timport { TPluginBundle, TAriaPlugin } from '@soldy-ui/plugins'")
+		expect(code).toContain("\timport { TPluginBundle, TAriaPlugin } from '@soxa-ui/plugins'")
 		expect(code).toContain("\tinstance.events.on('bundle:create', (bundle: unknown) => {")
 		expect(code).toContain('\t\tconst plugin = bundle.get(TAriaPlugin)')
 		expect(code).toContain("\t\tif (plugin) plugin.label = 'Закрыть'")
@@ -694,7 +694,7 @@ describe('Svelte: propSnippet', () => {
 		expect(svelte.propSnippet(entryOf('button'), 'view', 'plain')).toBe(
 			[
 				'<script lang="ts">',
-				"\timport { Button } from '@soldy-ui/svelte'",
+				"\timport { Button } from '@soxa-ui/svelte'",
 				'</script>',
 				'',
 				'<Button view="plain" />',
@@ -820,8 +820,8 @@ describe.each([
 		expect(code).toBe(
 			[
 				'<script lang="ts">',
-				"\timport { Button } from '@soldy-ui/svelte'",
-				"\timport { TButton } from '@soldy-ui/core'",
+				"\timport { Button } from '@soxa-ui/svelte'",
+				"\timport { TButton } from '@soxa-ui/core'",
 				'',
 				'\tconst instance = new TButton()',
 				'</script>',
@@ -849,8 +849,8 @@ describe('Solid: instanceSnippet', () => {
 
 		expect(code).toBe(
 			[
-				"import { Accordion } from '@soldy-ui/solid'",
-				"import { TAccordion } from '@soldy-ui/core'",
+				"import { Accordion } from '@soxa-ui/solid'",
+				"import { TAccordion } from '@soxa-ui/core'",
 				'',
 				'export function Example() {',
 				'\tconst instance = new TAccordion()',
@@ -885,7 +885,7 @@ describe('Solid: instanceSnippet', () => {
 			'range',
 		)
 
-		expect(code).toContain("import { createEngineCalendar } from '@soldy-ui/core'")
+		expect(code).toContain("import { createEngineCalendar } from '@soxa-ui/core'")
 		expect(code).toContain('\tconst engine = createEngineCalendar()')
 		expect(code).toContain("\tengine.extensions.selection.mode = 'range'")
 		expect(code).toContain('<Calendar engine={engine} />')
@@ -904,7 +904,7 @@ describe('Solid: instanceSnippet', () => {
 		)
 
 		expect(code).toContain('\tconst instance = new TButton()')
-		expect(code).toContain("import { TPluginBundle, TAriaPlugin } from '@soldy-ui/plugins'")
+		expect(code).toContain("import { TPluginBundle, TAriaPlugin } from '@soxa-ui/plugins'")
 		expect(code).toContain("\tinstance.events.on('bundle:create', (bundle: unknown) => {")
 		expect(code).toContain('\t\tconst plugin = bundle.get(TAriaPlugin)')
 		expect(code).toContain("\t\tif (plugin) plugin.label = 'Закрыть'")
@@ -928,7 +928,7 @@ describe('Solid: propSnippet', () => {
 	it('пример — компонент с JSX: импорт из адаптера, проп атрибутом', () => {
 		expect(solid.propSnippet(entryOf('button'), 'view', 'plain')).toBe(
 			[
-				"import { Button } from '@soldy-ui/solid'",
+				"import { Button } from '@soxa-ui/solid'",
 				'',
 				'export function Example() {',
 				'\treturn <Button view="plain" />',
@@ -1053,8 +1053,8 @@ describe.each([
 
 		expect(code).toBe(
 			[
-				"import { Button } from '@soldy-ui/solid'",
-				"import { TButton } from '@soldy-ui/core'",
+				"import { Button } from '@soxa-ui/solid'",
+				"import { TButton } from '@soxa-ui/core'",
 				'',
 				'export function Example() {',
 				'\tconst instance = new TButton()',
@@ -1078,7 +1078,7 @@ describe('Web Components: propSnippet', () => {
 		expect(webc.propSnippet(entryOf('button'), 'view', 'plain')).toBe(
 			[
 				'<script type="module">',
-				"\timport '@soldy-ui/webc'",
+				"\timport '@soxa-ui/webc'",
 				'</script>',
 				'',
 				'<button is="so-button" view="plain"></button>',
@@ -1113,7 +1113,7 @@ describe('Web Components: propSnippet', () => {
 		expect(webc.propSnippet(spinner, 'indeterminate', false)).toBe(
 			[
 				'<script type="module">',
-				"\timport '@soldy-ui/webc'",
+				"\timport '@soxa-ui/webc'",
 				'',
 				'\tconst element = document.querySelector(\'span[is="so-progress-spinner"]\')',
 				'',
@@ -1169,7 +1169,7 @@ describe('Web Components: propSnippet', () => {
 		expect(webc.propSnippet(icon, 'size', 'lg')).toBe(
 			[
 				'<script type="module">',
-				"\timport '@soldy-ui/webc'",
+				"\timport '@soxa-ui/webc'",
 				'</script>',
 				'',
 				'<span is="so-icon" icon="arrowDown" size="lg"></span>',
@@ -1192,8 +1192,8 @@ describe('Web Components: instanceSnippet', () => {
 		expect(code).toBe(
 			[
 				'<script type="module">',
-				"\timport '@soldy-ui/webc'",
-				"\timport { TButton } from '@soldy-ui/core'",
+				"\timport '@soxa-ui/webc'",
+				"\timport { TButton } from '@soxa-ui/core'",
 				'',
 				'\tconst instance = new TButton()',
 				'',
@@ -1220,7 +1220,7 @@ describe('Web Components: instanceSnippet', () => {
 		)
 
 		expect(code).toContain('\tconst instance = new TButton()')
-		expect(code).toContain("\timport { TPluginBundle, TAriaPlugin } from '@soldy-ui/plugins'")
+		expect(code).toContain("\timport { TPluginBundle, TAriaPlugin } from '@soxa-ui/plugins'")
 		expect(code).toContain("\tinstance.events.on('bundle:create', (bundle) => {")
 		expect(code).toContain('\t\tconst plugin = bundle.get(TAriaPlugin)')
 		expect(code).toContain("\t\tif (plugin) plugin.label = 'Закрыть'")
@@ -1276,8 +1276,8 @@ describe('Web Components: instanceSnippet', () => {
 		expect(code).toBe(
 			[
 				'<script type="module">',
-				"\timport '@soldy-ui/webc'",
-				"\timport { createEngineAccordion } from '@soldy-ui/core'",
+				"\timport '@soxa-ui/webc'",
+				"\timport { createEngineAccordion } from '@soxa-ui/core'",
 				'',
 				'\tconst engine = createEngineAccordion()',
 				'',
@@ -1337,7 +1337,7 @@ describe.each([
 		)
 
 		expect(code).not.toContain('bundle')
-		expect(code).not.toContain('@soldy-ui/plugins')
+		expect(code).not.toContain('@soxa-ui/plugins')
 		expect(code).toContain('\telement.ctrl = instance')
 	})
 })

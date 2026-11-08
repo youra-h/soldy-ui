@@ -12,7 +12,7 @@
 
 import { describe, it, expect } from 'vitest'
 import { flushSync } from 'svelte'
-import { TButton } from '@soldy-ui/core'
+import { TButton } from '@soxa-ui/core'
 import StateReads from './StateReads.test.svelte'
 import { mount } from './mount'
 

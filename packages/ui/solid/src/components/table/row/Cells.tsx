@@ -1,5 +1,5 @@
 import type { Accessor, JSX } from 'solid-js'
-import type { ITableRow, TAriaAttributes, TTableCell } from '@soldy-ui/core'
+import type { ITableRow, TAriaAttributes, TTableCell } from '@soxa-ui/core'
 import {
 	KeyedFor,
 	createPartNode,

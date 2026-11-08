@@ -19,15 +19,15 @@ import {
 	required,
 	triggerResize,
 } from './helpers'
-import { TListBox, TListBoxItem, TListBoxCollectionFacade } from '@soldy-ui/core'
-import type { IListBoxItem } from '@soldy-ui/core'
+import { TListBox, TListBoxItem, TListBoxCollectionFacade } from '@soxa-ui/core'
+import type { IListBoxItem } from '@soxa-ui/core'
 import {
 	TListHeightPlugin,
 	TElementPlugin,
 	TCollectionElements,
 	TCollectionBundlesPlugin,
 	TPluginBundle,
-} from '@soldy-ui/plugins'
+} from '@soxa-ui/plugins'
 
 const ROW_HEIGHT = 20
 const nextFrame = () => new Promise((resolve) => requestAnimationFrame(resolve))

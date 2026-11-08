@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core'
 import { NgTemplateOutlet } from '@angular/common'
-import type { IPaginationItem } from '@soldy-ui/core'
+import type { IPaginationItem } from '@soxa-ui/core'
 import { AttributesDirective } from '../../../adapter'
 import { TButtonComponent } from '../../button'
 import { TPaginationItemSurface } from '../../../generated/pagination-item.metadata'

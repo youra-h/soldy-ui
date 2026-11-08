@@ -2,7 +2,7 @@ import { Combobox } from '@kobalte/core/combobox'
 import { COLLECTION_ITEMS } from '../../../data'
 
 /**
- * Select with typing and filtering — `Combobox`, as the soldy `editable`
+ * Select with typing and filtering — `Combobox`, as the soxa `editable`
  * preview: the options filter by the typed text (Kobalte's default
  * «contains»), the arrow opens the list.
  */

@@ -1,4 +1,4 @@
-import type { ITableColumn } from '@soldy-ui/core'
+import type { ITableColumn } from '@soxa-ui/core'
 import { TBasePlugin } from '../../../base'
 import type { IPluginContext } from '../../../base'
 

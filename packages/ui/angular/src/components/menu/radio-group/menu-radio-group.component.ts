@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core'
-import type { IMenuRadioGroup } from '@soldy-ui/core'
+import type { IMenuRadioGroup } from '@soxa-ui/core'
 import { AttributesDirective, provideElevator } from '../../../adapter'
 import { TMenuRadioGroupSurface } from '../../../generated/menu-radio-group.metadata'
 import { setupMenuRadioGroup } from './setup.component'

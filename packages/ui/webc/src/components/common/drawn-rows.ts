@@ -6,7 +6,7 @@
  * слот по умолчанию, когда группа собирается.
  */
 
-import type { TDrawable, TDrawnEntry, TDrawnSection } from '@soldy-ui/core'
+import type { TDrawable, TDrawnEntry, TDrawnSection } from '@soxa-ui/core'
 import {
 	TKeyedLoop,
 	createItem,

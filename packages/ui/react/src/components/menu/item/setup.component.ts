@@ -2,7 +2,7 @@ import {
 	MenuCollectionItemDescriptor,
 	MenuItemDescriptor,
 	TCollectionItemExtension,
-} from '@soldy-ui/setup'
+} from '@soxa-ui/setup'
 import { useAdapter, useAdapterContext, useCollectionAdapter } from '../../../adapter'
 import type { MenuItemProps } from './base.component'
 

@@ -12,8 +12,8 @@
 
 import { describe, it, expect } from 'vitest'
 import { createRawSnippet, flushSync } from 'svelte'
-import { TProgressSpinner } from '@soldy-ui/core'
-import { ProgressSpinner, type ProgressSpinnerProps } from '@soldy-ui/svelte'
+import { TProgressSpinner } from '@soxa-ui/core'
+import { ProgressSpinner, type ProgressSpinnerProps } from '@soxa-ui/svelte'
 import { mount } from './mount'
 import { reactiveProps } from './reactive-props.svelte'
 

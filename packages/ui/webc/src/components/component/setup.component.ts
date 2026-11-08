@@ -1,5 +1,5 @@
-import { ComponentDescriptor } from '@soldy-ui/setup'
-import type { IComponent } from '@soldy-ui/core'
+import { ComponentDescriptor } from '@soxa-ui/setup'
+import type { IComponent } from '@soxa-ui/core'
 import { createWebcAdapterContext, useAdapter } from '../../adapter'
 import type { TBinding, TUpdateListener } from '../../adapter'
 

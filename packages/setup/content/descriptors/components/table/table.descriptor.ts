@@ -29,8 +29,8 @@
  */
 
 import { defineComponent, defineDescriptor, defineType } from '../../../../protected/define'
-import { TTable } from '@soldy-ui/core'
-import type { ITableColumn, ITableRow } from '@soldy-ui/core'
+import { TTable } from '@soxa-ui/core'
+import type { ITableColumn, ITableRow } from '@soxa-ui/core'
 import { ControlDescriptor } from '../control.descriptor'
 import {
 	CollectionBundlesPluginDescriptor,

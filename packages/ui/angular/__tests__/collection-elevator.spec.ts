@@ -19,7 +19,7 @@
 import { describe, it, expect } from 'vitest'
 import { Component, signal } from '@angular/core'
 import { TestBed, type ComponentFixture } from '@angular/core/testing'
-import type { IElevatorKey } from '@soldy-ui/setup'
+import type { IElevatorKey } from '@soxa-ui/setup'
 import {
 	TAccordionComponent,
 	TAccordionItemComponent,
@@ -28,7 +28,7 @@ import {
 	TTabsComponent,
 	TTabsContentComponent,
 	TTabsItemComponent,
-} from '@soldy-ui/angular'
+} from '@soxa-ui/angular'
 import { AngularElevatorFactory } from '../src/adapter/elevator/factory'
 import { provideElevator } from '../src/adapter/elevator/layer'
 import { mountHost } from './mount'

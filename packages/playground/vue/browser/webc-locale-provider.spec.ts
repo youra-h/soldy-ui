@@ -12,7 +12,7 @@
 
 import { describe, it, expect, afterEach } from 'vitest'
 
-import { TLocaleProviderElement } from '@soldy-ui/webc'
+import { TLocaleProviderElement } from '@soxa-ui/webc'
 
 /** Узел разметки теста — снимается после каждого. */
 let stage: HTMLElement | null = null

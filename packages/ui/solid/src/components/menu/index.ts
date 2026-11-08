@@ -1,4 +1,4 @@
-import { withParts } from '@soldy-ui/setup'
+import { withParts } from '@soxa-ui/setup'
 import { Menu as MenuComponent } from './Menu'
 import { MenuItem } from './item'
 import { MenuCheckboxItem } from './checkbox-item'

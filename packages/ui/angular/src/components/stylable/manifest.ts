@@ -1,1 +1,1 @@
-export { StylableDescriptor as descriptor } from '@soldy-ui/setup'
+export { StylableDescriptor as descriptor } from '@soxa-ui/setup'

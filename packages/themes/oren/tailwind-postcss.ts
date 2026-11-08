@@ -22,7 +22,7 @@ import { Polyfills } from 'tailwindcss'
  * и самой темы — в нём даёт только полифил. Сторож — `__tests__/color-mix.spec.ts`.
  */
 
-const NAME = 'soldy-theme-tailwind'
+const NAME = 'soxa-theme-tailwind'
 
 export function tailwind(): Plugin {
 	return {

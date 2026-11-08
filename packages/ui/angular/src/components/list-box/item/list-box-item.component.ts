@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core'
 import { NgTemplateOutlet } from '@angular/common'
-import type { IListBoxItem } from '@soldy-ui/core'
+import type { IListBoxItem } from '@soxa-ui/core'
 import { AttributesDirective, RoleIconDirective } from '../../../adapter'
 import { TItemRowComponent } from '../../item-row'
 import { TIconComponent } from '../../icon'

@@ -28,13 +28,13 @@ import { propertyDetail } from './property-detail'
  */
 
 import { describe, it, expect, expectTypeOf, afterEach } from 'vitest'
-import { TMenu, createEngineMenu } from '@soldy-ui/core'
+import { TMenu, createEngineMenu } from '@soxa-ui/core'
 import type {
 	IMenuItem,
 	IMenuItemSource,
 	TCollectionEngineItemSource,
 	TMenuCollection,
-} from '@soldy-ui/core'
+} from '@soxa-ui/core'
 import {
 	MenuCheckboxItemDescriptor,
 	MenuDescriptor,
@@ -46,7 +46,7 @@ import {
 	MenuSeparatorDescriptor,
 	MenuSubmenuDescriptor,
 	type IComponentDescriptor,
-} from '@soldy-ui/setup'
+} from '@soxa-ui/setup'
 import {
 	TMenuCheckboxItemElement,
 	TMenuElement,
@@ -63,7 +63,7 @@ import {
 	type TMenuRadioGroupElementProps,
 	type TMenuRadioItemElementProps,
 	type TMenuSubmenuElementProps,
-} from '@soldy-ui/webc'
+} from '@soxa-ui/webc'
 import { defineElement } from '../src/adapter/runtime/defineElement'
 import { type ITemplate } from '../src/adapter/template/types'
 import { menuTemplate } from '../src/components/menu/menu.template'

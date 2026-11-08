@@ -6,8 +6,8 @@ import {
 	TSelectionExtension,
 	createEngine,
 	createEngineSelection,
-} from '@soldy-ui/core'
-import type { TSelectEvent, TSelectionMode } from '@soldy-ui/core'
+} from '@soxa-ui/core'
+import type { TSelectEvent, TSelectionMode } from '@soxa-ui/core'
 
 type Item = { id: number; name: string }
 

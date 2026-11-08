@@ -1,4 +1,4 @@
-import type { INumberInput } from '@soldy-ui/core'
+import type { INumberInput } from '@soxa-ui/core'
 import type { TNumberInputButton } from './types'
 
 /**

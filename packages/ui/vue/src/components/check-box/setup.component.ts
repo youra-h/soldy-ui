@@ -1,4 +1,4 @@
-import { CheckBoxDescriptor, TFieldControlExtension } from '@soldy-ui/setup'
+import { CheckBoxDescriptor, TFieldControlExtension } from '@soxa-ui/setup'
 import {
 	useAdapter,
 	extendBinding,

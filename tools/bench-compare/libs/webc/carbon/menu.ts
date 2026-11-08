@@ -3,10 +3,10 @@ import '@carbon/web-components/es/components/menu-button/index.js'
 import { h } from '../dom'
 
 /**
- * The soldy menu preview in Carbon: `cds-menu-button` with a group of
+ * The soxa menu preview in Carbon: `cds-menu-button` with a group of
  * selectable items, a radio group, actions with shortcuts, a submenu with a
  * submenu inside (`cds-menu slot="submenu"`), a disabled action and a danger
- * one. Carbon has no popover item: the soldy «Срок» item has no pair here.
+ * one. Carbon has no popover item: the soxa «Срок» item has no pair here.
  */
 const item = (
 	label: string,

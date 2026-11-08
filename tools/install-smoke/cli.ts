@@ -513,7 +513,7 @@ async function main(): Promise<number> {
 		allowPositionals: true,
 		options: {
 			registry: { type: 'string' },
-			dir: { type: 'string', default: join(tmpdir(), 'soldy-install-smoke') },
+			dir: { type: 'string', default: join(tmpdir(), 'soxa-install-smoke') },
 		},
 	})
 	const unknown = positionals.filter((name) => !PROJECTS.some((project) => project.name === name))

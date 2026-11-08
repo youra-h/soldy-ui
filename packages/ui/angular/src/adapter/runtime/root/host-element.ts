@@ -50,14 +50,14 @@ function isElement(node: Node): node is Element {
 export function assertTemplateHost(node: Node): asserts node is Element {
 	if (!isElement(node)) {
 		throw new Error(
-			`@soldy-ui/angular: компонент на <ng-container> — у контейнера нет своего узла, а корню компонента нужен элемент: на него ложится всё, что написано на компоненте. Пишите компонент на элементе: по умолчанию это тег из селектора компонента (<div so-toasts>, <button so-button>).`,
+			`@soxa-ui/angular: компонент на <ng-container> — у контейнера нет своего узла, а корню компонента нужен элемент: на него ложится всё, что написано на компоненте. Пишите компонент на элементе: по умолчанию это тег из селектора компонента (<div so-toasts>, <button so-button>).`,
 		)
 	}
 
 	if (!NO_TEMPLATE_HOSTS.has(node.localName)) return
 
 	throw new Error(
-		`@soldy-ui/angular: <${node.localName}> не может быть корнем компонента — его шаблон в этот элемент не отрисуется. Пишите компонент на элементе, который держит содержимое: по умолчанию это тег из селектора компонента (<div so-input>, <span so-check-box>).`,
+		`@soxa-ui/angular: <${node.localName}> не может быть корнем компонента — его шаблон в этот элемент не отрисуется. Пишите компонент на элементе, который держит содержимое: по умолчанию это тег из селектора компонента (<div so-input>, <span so-check-box>).`,
 	)
 }
 
@@ -81,7 +81,7 @@ export function forwardRegistry(host: Element): TForwardRegistry {
 	if (registry?.served) return registry
 
 	throw new Error(
-		`@soldy-ui/angular: компонент на <${host.localName}> отдаёт привязки ([attr.x], [title]) и слушатели ((focus)) своему внутреннему узлу, а донести их может только provideAttrs(). Подключите provideAttrs() из @soldy-ui/angular в providers приложения (appConfig) — и в браузере, и на сервере: в провайдерах маршрута или компонента он рендерер не подменит.`,
+		`@soxa-ui/angular: компонент на <${host.localName}> отдаёт привязки ([attr.x], [title]) и слушатели ((focus)) своему внутреннему узлу, а донести их может только provideAttrs(). Подключите provideAttrs() из @soxa-ui/angular в providers приложения (appConfig) — и в браузере, и на сервере: в провайдерах маршрута или компонента он рендерер не подменит.`,
 	)
 }
 

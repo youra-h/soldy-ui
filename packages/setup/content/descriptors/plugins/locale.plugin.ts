@@ -11,7 +11,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TLocalePlugin } from '@soldy-ui/plugins'
+import { TLocalePlugin } from '@soxa-ui/plugins'
 
 export const LocalePluginDescriptor = definePlugin({
 	ctor: TLocalePlugin,

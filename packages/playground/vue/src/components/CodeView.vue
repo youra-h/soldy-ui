@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Button } from '@soldy-ui/vue'
-import type { TSnippetExtension } from '@soldy-ui/playground-shared'
+import { Button } from '@soxa-ui/vue'
+import type { TSnippetExtension } from '@soxa-ui/playground-shared'
 
 const props = defineProps<{
 	code: string
@@ -35,7 +35,7 @@ async function copy(): Promise<void> {
  *
  * Файл пишет dev-сервер: браузер не умеет ни записать его, ни запустить
  * редактор. Сервер кладёт сниппет внутрь воркспейса — только там разрешатся
- * алиасы на `@soldy-ui/*`, то есть в редакторе окажется рабочий код, а не текст.
+ * алиасы на `@soxa-ui/*`, то есть в редакторе окажется рабочий код, а не текст.
  * Расширение файла — хоста: в `.vue` код React для редактора был бы текстом.
  *
  * `code -g` может не найтись (VS Code не в PATH), поэтому ответ всегда несёт

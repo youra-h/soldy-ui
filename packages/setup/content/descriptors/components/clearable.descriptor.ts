@@ -21,7 +21,7 @@
  */
 
 import { defineComponent, defineDescriptor } from '../../../protected/define'
-import { TClearable } from '@soldy-ui/core'
+import { TClearable } from '@soxa-ui/core'
 import { InputControlDescriptor } from './input-control.descriptor'
 
 export const ClearableDescriptor = defineDescriptor(() =>

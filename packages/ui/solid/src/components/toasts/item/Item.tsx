@@ -1,6 +1,6 @@
 import type { Component, JSX } from 'solid-js'
 import { Dynamic } from 'solid-js/web'
-import type { TToastsItemType } from '@soldy-ui/core'
+import type { TToastsItemType } from '@soxa-ui/core'
 import {
 	Root,
 	clickAction,

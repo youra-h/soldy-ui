@@ -33,9 +33,9 @@
  * collection facade and a component without extensions have none.
  */
 
-import { TEvented } from '@soldy-ui/core'
-import { TElementPlugin } from '@soldy-ui/plugins'
-import type { IPluginBundle } from '@soldy-ui/plugins'
+import { TEvented } from '@soxa-ui/core'
+import { TElementPlugin } from '@soxa-ui/plugins'
+import type { IPluginBundle } from '@soxa-ui/plugins'
 import type { IComponentContract, IComponentDescriptor } from '../../define'
 import type { IAdapterProfile } from '../../naming'
 import { TExchange } from '../exchange/exchange.class'

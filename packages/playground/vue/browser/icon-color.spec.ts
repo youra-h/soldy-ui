@@ -31,15 +31,15 @@
 import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { render, cleanup } from './render'
 import { defineComponent, h, nextTick } from 'vue'
-import { useIcons } from '@soldy-ui/setup'
-import * as lucide from '@soldy-ui/icons-lucide'
-import * as material from '@soldy-ui/icons-material'
-import { Accordion, AccordionItem, CheckBox, Icon, Select, roleIcon } from '@soldy-ui/vue'
-import { TIconElement } from '@soldy-ui/webc'
+import { useIcons } from '@soxa-ui/setup'
+import * as lucide from '@soxa-ui/icons-lucide'
+import * as material from '@soxa-ui/icons-material'
+import { Accordion, AccordionItem, CheckBox, Icon, Select, roleIcon } from '@soxa-ui/vue'
+import { TIconElement } from '@soxa-ui/webc'
 
 import { iconPaint, pixel, settled, style } from './colors'
 
-import '@soldy-ui/theme-oren'
+import '@soxa-ui/theme-oren'
 
 const nextFrame = () => new Promise<void>((resolve) => requestAnimationFrame(() => resolve()))
 

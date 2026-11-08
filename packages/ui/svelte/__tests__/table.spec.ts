@@ -27,7 +27,7 @@
 
 import { describe, it, expect, expectTypeOf, vi } from 'vitest'
 import { flushSync, type Component, type Snippet } from 'svelte'
-import { TTable, createEngineTable } from '@soldy-ui/core'
+import { TTable, createEngineTable } from '@soxa-ui/core'
 import type {
 	ITableColumn,
 	ITableRow,
@@ -35,9 +35,9 @@ import type {
 	TTableCollection,
 	TTableColumnSource,
 	TTableRecord,
-} from '@soldy-ui/core'
-import { enUS, ruRU } from '@soldy-ui/plugins'
-import { Table, TableColumn, TableRow, type TableProps } from '@soldy-ui/svelte'
+} from '@soxa-ui/core'
+import { enUS, ruRU } from '@soxa-ui/plugins'
+import { Table, TableColumn, TableRow, type TableProps } from '@soxa-ui/svelte'
 import Slots from './TableSlots.test.svelte'
 import Localized from './TableLocale.test.svelte'
 import Windowed from './Virtual.test.svelte'

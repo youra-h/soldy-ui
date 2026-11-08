@@ -1,5 +1,5 @@
 interface:
   display_name: 'analyze-all'
-  short_description: 'Research the available soldy-ui ClickUp queue sequentially'
+  short_description: 'Research the available soxa-ui ClickUp queue sequentially'
 policy:
   allow_implicit_invocation: false

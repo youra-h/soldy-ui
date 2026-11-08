@@ -1,5 +1,5 @@
 interface:
   display_name: 'plan'
-  short_description: 'Plan a soldy-ui ClickUp task'
+  short_description: 'Plan a soxa-ui ClickUp task'
 policy:
   allow_implicit_invocation: false

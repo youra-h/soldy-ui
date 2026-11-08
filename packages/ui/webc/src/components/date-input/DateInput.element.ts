@@ -5,8 +5,8 @@
  * Layer 8d, «Даты».
  */
 
-import { DateInputDescriptor } from '@soldy-ui/setup'
-import type { IDateInput } from '@soldy-ui/core'
+import { DateInputDescriptor } from '@soxa-ui/setup'
+import type { IDateInput } from '@soxa-ui/core'
 import { ElementBase, defineElement } from '../../adapter'
 import type { TElementClassOf, TElementType } from '../../adapter'
 import { dateInputTemplate } from './date-input.template'

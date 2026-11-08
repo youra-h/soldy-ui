@@ -1,5 +1,5 @@
-import type { IField } from '@soldy-ui/core'
-import type { FieldDescriptor } from '@soldy-ui/setup'
+import type { IField } from '@soxa-ui/core'
+import type { FieldDescriptor } from '@soxa-ui/setup'
 import type { EventProps, UseDomProps } from '../../types'
 
 export type FieldEventProps = EventProps<typeof FieldDescriptor>

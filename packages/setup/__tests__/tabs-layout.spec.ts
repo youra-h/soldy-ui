@@ -12,9 +12,9 @@
  */
 
 import { describe, it, expect, beforeEach, afterEach } from 'vitest'
-import { TTabs } from '@soldy-ui/core'
+import { TTabs } from '@soxa-ui/core'
 import { createPluginContext, installResizeObserverStub, observerCount } from './helpers'
-import { TElementPlugin, TTabsLayoutPlugin } from '@soldy-ui/plugins'
+import { TElementPlugin, TTabsLayoutPlugin } from '@soxa-ui/plugins'
 
 const nextFrame = () => new Promise((resolve) => requestAnimationFrame(resolve))
 

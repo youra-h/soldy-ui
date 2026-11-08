@@ -13,8 +13,8 @@
 import { describe, it, expect, afterEach, vi } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { nextTick } from 'vue'
-import { TEvented, createEngine } from '@soldy-ui/core'
-import { Accordion, ListBox, Tabs, Tags } from '@soldy-ui/vue'
+import { TEvented, createEngine } from '@soxa-ui/core'
+import { Accordion, ListBox, Tabs, Tags } from '@soxa-ui/vue'
 
 let wrapper: ReturnType<typeof mount> | null = null
 

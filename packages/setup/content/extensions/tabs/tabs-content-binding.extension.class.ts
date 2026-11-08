@@ -62,15 +62,15 @@
  *   is torn down too: it has no subscriptions, but what assembly took goes.
  */
 
-import { TItemContext, TTabsExtension } from '@soldy-ui/core'
+import { TItemContext, TTabsExtension } from '@soxa-ui/core'
 import type {
 	ITabsItem,
 	TCollectionEngine,
 	TTabsCollection,
 	TTabsCollectionExtensions,
-} from '@soldy-ui/core'
-import { TIdPlugin, TTabsItemIdsPlugin } from '@soldy-ui/plugins'
-import type { TCollectionBundlesPlugin } from '@soldy-ui/plugins'
+} from '@soxa-ui/core'
+import { TIdPlugin, TTabsItemIdsPlugin } from '@soxa-ui/plugins'
+import type { TCollectionBundlesPlugin } from '@soxa-ui/plugins'
 import type { TInstanceContext } from '../../../protected/adapter/context'
 import { ITEM_CONTEXT_ELEVATOR } from '../../../protected/adapter/elevator/keys'
 import type { TCollectionItemFacade } from '../collection'

@@ -4,7 +4,7 @@
 	 * года — поповер с `contained`, и сервер рисует её на месте, скрытой.
 	 * Расхождений у сервера и браузера нет — пропсов у страницы нет.
 	 */
-	import { Calendar } from '@soldy-ui/svelte'
+	import { Calendar } from '@soxa-ui/svelte'
 </script>
 
 <Calendar value="2026-09-10" timeZone="UTC" />

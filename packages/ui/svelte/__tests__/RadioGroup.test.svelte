@@ -4,7 +4,7 @@
 	 * ключ — значение; подпись — текст из `labels` по значению радио, без него
 	 * у радио содержимого нет вовсе. `shown: false` снимает группу целиком.
 	 */
-	import { RadioGroup, type RadioGroupItemProps, type RadioGroupProps } from '@soldy-ui/svelte'
+	import { RadioGroup, type RadioGroupItemProps, type RadioGroupProps } from '@soxa-ui/svelte'
 
 	type THarnessProps = {
 		/** Пропсы группы. */

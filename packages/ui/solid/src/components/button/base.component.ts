@@ -1,6 +1,6 @@
 import type { JSX } from 'solid-js'
-import type { IButton } from '@soldy-ui/core'
-import type { ButtonDescriptor } from '@soldy-ui/setup'
+import type { IButton } from '@soxa-ui/core'
+import type { ButtonDescriptor } from '@soxa-ui/setup'
 import type { EventProps, UseDomProps } from '../../types'
 
 /** События слоя Button (core + плагины), выведены из дескриптора автоматически. */

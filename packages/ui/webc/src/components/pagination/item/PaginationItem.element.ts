@@ -4,8 +4,8 @@
  * `aria` страницы (`aria-current`) шаблон кладёт на строку.
  */
 
-import { PaginationCollectionItemDescriptor, PaginationItemDescriptor } from '@soldy-ui/setup'
-import type { IPaginationItem, TPaginationItemCollectionFacade } from '@soldy-ui/core'
+import { PaginationCollectionItemDescriptor, PaginationItemDescriptor } from '@soxa-ui/setup'
+import type { IPaginationItem, TPaginationItemCollectionFacade } from '@soxa-ui/core'
 import { ElementBase } from '../../../adapter'
 import type { TElementClassOf, TElementType } from '../../../adapter'
 import { paginationItemTemplate } from './pagination-item.template'
