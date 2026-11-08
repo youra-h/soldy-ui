@@ -1,4 +1,4 @@
-# @soldy-ui/svelte
+# @soxa-ui/svelte
 
 ## 0.3.0-beta.0
 
@@ -13,7 +13,7 @@
 ### Patch Changes
 
 - a491c3f: README: the stylesheets of the theme per component, next to the whole one; Angular — the page of the six components fits the budget of a new project with them.
-- 3cb5c3c: Document the explicit @soldy-ui/setup dependency required by application theme and icon registration.
+- 3cb5c3c: Document the explicit @soxa-ui/setup dependency required by application theme and icon registration.
 - 13101c7: Hide detached overlay panels when their owning component is hidden. Preserve the panel's open state while pausing overlay focus, dismissal and scroll behavior until the owner is shown again.
 - Updated dependencies [2d81d06]
 - Updated dependencies [7327698]
@@ -27,9 +27,9 @@
 - Updated dependencies [203edd0]
 - Updated dependencies [cfffb4b]
 - Updated dependencies [0690162]
-  - @soldy-ui/core@0.3.0-beta.0
-  - @soldy-ui/plugins@0.3.0-beta.0
-  - @soldy-ui/setup@0.3.0-beta.0
+  - @soxa-ui/core@0.3.0-beta.0
+  - @soxa-ui/plugins@0.3.0-beta.0
+  - @soxa-ui/setup@0.3.0-beta.0
 
 ## 0.3.0-alpha.7
 
@@ -50,9 +50,9 @@
 - Updated dependencies [d278f0f]
 - Updated dependencies [1a322fe]
 - Updated dependencies [843f9ef]
-  - @soldy-ui/setup@0.3.0-alpha.7
-  - @soldy-ui/core@0.3.0-alpha.7
-  - @soldy-ui/plugins@0.3.0-alpha.7
+  - @soxa-ui/setup@0.3.0-alpha.7
+  - @soxa-ui/core@0.3.0-alpha.7
+  - @soxa-ui/plugins@0.3.0-alpha.7
 
 ## 0.3.0-alpha.6
 
@@ -71,9 +71,9 @@
 - 2969a80: Svelte components keep fewer markup blocks per copy: the root mounts by `rendered` without an `{#if}` around it, slots that owners always hand render by a call, and the spaces between parts no longer become text nodes. A list box copy is about 9% lighter.
 - 90f3931: Lighter collection items and closers: Vue components pass changed props to the core before a parent-driven render instead of a watch over every prop (Select and ListBox pages are 14% lighter, a button 15%); the close buttons of Tabs, Tags, Toasts, Popover, Dialog and Drawer are mounted only when shown instead of assembling a hidden button
 - 23d30b2: Svelte: a binding property gets its own rune only once a tracking context reads it; a property the markup never reads no longer costs a rune. A button copy holds 8 runes instead of 18, a ListBox copy 112 instead of 252.
-- a6a77f8: Every package declares `sideEffects`, so the application's bundler drops the modules a page does not use: a page with one button no longer pulls every component of the core, every plugin and every component of the adapter (React: 184 → 82 KB gzip of JS). The core, plugins, icons and adapters are `false`, the themes keep their stylesheets (`["*.css"]`), and `@soldy-ui/webc` is `true`: importing it defines every element, as before.
+- a6a77f8: Every package declares `sideEffects`, so the application's bundler drops the modules a page does not use: a page with one button no longer pulls every component of the core, every plugin and every component of the adapter (React: 184 → 82 KB gzip of JS). The core, plugins, icons and adapters are `false`, the themes keep their stylesheets (`["*.css"]`), and `@soxa-ui/webc` is `true`: importing it defines every element, as before.
 - 0576069: Angular and Svelte adapters keep less memory per mounted component: fewer signals, computeds and effects in the adapter wiring. In Angular, `state()`, `instance()`, `facade()` and `rootElement()` of the component base are methods now, called the same way, and only components that read slots query slot templates.
-- 2dec183: The repository moved to github.com/youra-h/soldy-ui: package repository, homepage and issue links point there
+- 2dec183: The repository moved to github.com/youra-h/soxa-ui: package repository, homepage and issue links point there
 - Updated dependencies [101269c]
 - Updated dependencies [a73c5bf]
 - Updated dependencies [7ac5495]
@@ -84,18 +84,18 @@
 - Updated dependencies [54f5b1d]
 - Updated dependencies [5429a39]
 - Updated dependencies [604ae77]
-  - @soldy-ui/core@0.3.0-alpha.6
-  - @soldy-ui/setup@0.3.0-alpha.6
-  - @soldy-ui/plugins@0.3.0-alpha.6
+  - @soxa-ui/core@0.3.0-alpha.6
+  - @soxa-ui/setup@0.3.0-alpha.6
+  - @soxa-ui/plugins@0.3.0-alpha.6
 
 ## 0.3.0-alpha.5
 
 ### Patch Changes
 
 - 596decd: Table на Svelte держит на четверть меньше памяти и рисуется быстрее: ветка th/td — на серию ячеек, а не в каждой ячейке, состояние связки — одно прокси над рунами вместо геттера на свойство; память таблицы на 5000 строк — 497 → 369 МБ, рендер — 2,46 → 2,12 с
-- @soldy-ui/core@0.3.0-alpha.5
-  - @soldy-ui/plugins@0.3.0-alpha.5
-  - @soldy-ui/setup@0.3.0-alpha.5
+- @soxa-ui/core@0.3.0-alpha.5
+  - @soxa-ui/plugins@0.3.0-alpha.5
+  - @soxa-ui/setup@0.3.0-alpha.5
 
 ## 0.3.0-alpha.4
 
@@ -106,9 +106,9 @@
 - Updated dependencies [8eb76c2]
 - Updated dependencies [1c703ad]
 - Updated dependencies [8bb9bdc]
-  - @soldy-ui/core@0.3.0-alpha.4
-  - @soldy-ui/setup@0.3.0-alpha.4
-  - @soldy-ui/plugins@0.3.0-alpha.4
+  - @soxa-ui/core@0.3.0-alpha.4
+  - @soxa-ui/setup@0.3.0-alpha.4
+  - @soxa-ui/plugins@0.3.0-alpha.4
 
 ## 0.3.0-alpha.3
 
@@ -141,9 +141,9 @@
 - Updated dependencies [b5a5d78]
 - Updated dependencies [ad1de00]
 - Updated dependencies [53a3fe6]
-  - @soldy-ui/plugins@0.3.0-alpha.3
-  - @soldy-ui/core@0.3.0-alpha.3
-  - @soldy-ui/setup@0.3.0-alpha.3
+  - @soxa-ui/plugins@0.3.0-alpha.3
+  - @soxa-ui/core@0.3.0-alpha.3
+  - @soxa-ui/setup@0.3.0-alpha.3
 
 ## 0.3.0-alpha.2
 
@@ -154,9 +154,9 @@
 
 ### Patch Changes
 
-- @soldy-ui/core@0.3.0-alpha.2
-  - @soldy-ui/plugins@0.3.0-alpha.2
-  - @soldy-ui/setup@0.3.0-alpha.2
+- @soxa-ui/core@0.3.0-alpha.2
+  - @soxa-ui/plugins@0.3.0-alpha.2
+  - @soxa-ui/setup@0.3.0-alpha.2
 
 ## 0.3.0-alpha.1
 
@@ -212,9 +212,9 @@
 - Updated dependencies [2b5f080]
 - Updated dependencies [8d55e75]
 - Updated dependencies [2036526]
-  - @soldy-ui/plugins@0.3.0-alpha.1
-  - @soldy-ui/setup@0.3.0-alpha.1
-  - @soldy-ui/core@0.3.0-alpha.1
+  - @soxa-ui/plugins@0.3.0-alpha.1
+  - @soxa-ui/setup@0.3.0-alpha.1
+  - @soxa-ui/core@0.3.0-alpha.1
 
 ## 0.3.0-alpha.0
 
@@ -223,7 +223,7 @@
 - 3f19e5e: Table: атрибуты, которые приложение пишет на компонент, кроме класса и стиля, — `aria-label`, `id`, `data-*`, в Vue, React, Solid и Svelte и обработчики, у Svelte attachment-ы, в Angular и Web Components статические атрибуты разметки — теперь на `table`, где её роль и имя, а не на окне прокрутки `.so-table__viewport`; класс, стиль, скрытие и `ref` — по-прежнему окно. Angular: `<so-table>` вместо `<div so-table>`. Тема oren делает окно таблицы блоком сама (`display: block`) — и на незнакомом браузеру теге `<so-table>`.
 - 2e3950e: ListBox и Tabs: атрибуты, которые приложение пишет на компонент, кроме класса и стиля, — `aria-*`, `id`, `tabindex`, `data-*`, в Vue, React, Solid и Svelte и обработчики — теперь на узле списка (`[role=listbox]`, `[role=tablist]`), а не на корне; `ref` — по-прежнему корень. Angular: `<so-list-box>` и `<so-tabs>` вместо `<div so-list-box>` и `<div so-tabs>`.
 - 8e2e31e: ListBox и Select: группы пунктов из данных, как у Menu (`_: { group }`, `groupBy`, `groups`), части `ListBox.Group` и `Select.Group`. `TMenuGroupIdsPlugin` заменён общим плагином имени группы `TItemGroupIdsPlugin` (описание — `ItemGroupIdsPluginDescriptor` вместо `MenuGroupIdsPluginDescriptor`), типы `IMenuGroup`, `IMenuGroupProps`, `TMenuGroupEvents` — общими `IItemGroup`, `IItemGroupProps`, `TItemGroupEvents` — замените импорт. Рисование отдаёт разметке ListBox и Select секции: в поверхности компонента `drawnSections` вместо `drawn` (событие `change:drawnSections`). Список с группами окно `Virtual` не рисует.
-- a61b6a5: Ячейка таблицы отдаёт готовый текст значения (`cell.text`) — одним правилом во всех адаптерах. Удалён помощник `toText` адаптеров: вместо `toText(cell.value)` читайте `cell.text`, а в своём слоте `cell` — `toText(value)` из `@soldy-ui/core` (в шаблоне Angular — пайп `soText`, он теперь зовёт её).
+- a61b6a5: Ячейка таблицы отдаёт готовый текст значения (`cell.text`) — одним правилом во всех адаптерах. Удалён помощник `toText` адаптеров: вместо `toText(cell.value)` читайте `cell.text`, а в своём слоте `cell` — `toText(value)` из `@soxa-ui/core` (в шаблоне Angular — пайп `soText`, он теперь зовёт её).
 - 6408875: ListBox объявляет себя списком для скринридера: корень — `role="listbox"` (в `mode="multiple"` — ещё `aria-multiselectable="true"`), пункт — `role="option"` вместо `role="button"`, плитка панели выбора месяца и года Calendar — тоже. Обновление: эти пункты ищите по роли `option`, а не `button`.
 - 958c866: ListBox: список — свой узел `.so-list-box__list` внутри корня, шапка и подвал — вне его. Роль, имя и остановка Tab — на этом узле, и прокручивается тоже он: в пределе `maxRows` ровно строки, а шапка и подвал при прокрутке стоят на месте. Стили фокуса и прокрутки и селекторы по `role` и `tabindex` корня ListBox переносите на него. `focused = true` из кода фокус в список пока не ставит — как у Input и Tabs, корень которых фокус не держит.
 
@@ -263,39 +263,39 @@
 - Updated dependencies [b810fa0]
 - Updated dependencies [4429cbc]
 - Updated dependencies [f256e0f]
-  - @soldy-ui/plugins@0.3.0-alpha.0
-  - @soldy-ui/core@0.3.0-alpha.0
-  - @soldy-ui/setup@0.3.0-alpha.0
+  - @soxa-ui/plugins@0.3.0-alpha.0
+  - @soxa-ui/core@0.3.0-alpha.0
+  - @soxa-ui/setup@0.3.0-alpha.0
 
 ## 0.2.0
 
 ### Minor Changes
 
-- c124dad: Общий слой адаптеров переписан: пакета `@soldy-ui/accessor` больше нет, всё общее живёт в `@soldy-ui/setup`. Компоненты, дескрипторы и API приложения (`usePlugins`, `useExtensions`, `useTheme`, `setIcons`, `createAdapterContext`, `withParts`) не изменились.
+- c124dad: Общий слой адаптеров переписан: пакета `@soxa-ui/accessor` больше нет, всё общее живёт в `@soxa-ui/setup`. Компоненты, дескрипторы и API приложения (`usePlugins`, `useExtensions`, `useTheme`, `setIcons`, `createAdapterContext`, `withParts`) не изменились.
   
   Ломающее — для тех, кто пишет свой адаптер или читает метаданные дескриптора:
   
   - `bindComponent(adapter, profile)` заменён на `adapter.connect(profile)`. Вместо методов связки — три порта: `state.subscribe` / `state.getSnapshot`, `inputs.full` / `inputs.delta` и `offer` у одного входа, `events.listen`; спред несъеденных пропсов — `forward`. Слушатель состояния получает имя свойства во фреймворке, а не запись поверхности.
   - `surfaceOf(descriptor, profile)` заменён на `TSurface.of(descriptor, profile)`. Записи поверхности ссылаются на описание пропа (`prop.spec`), полей `key`, `protected`, `triggers` у них больше нет; список `inputs` убран — входы отдаёт обмен.
   - `IPropDeclaration` заменён классом `TPropSpec`: те же поля `name`, `type`, `protected`, `triggers`, `default` (ключ есть, только если умолчание объявлено) плюс `hasDefault`, `read(owner)`, `assign(owner, value)`.
-  - `TName`, `INamingStrategy`, `IContribution`, `IPropDefinition`, `ISlotDefinition`, `ISlotDeclaration`, `IContextElevator` импортируются из `@soldy-ui/setup`.
+  - `TName`, `INamingStrategy`, `IContribution`, `IPropDefinition`, `ISlotDefinition`, `ISlotDeclaration`, `IContextElevator` импортируются из `@soxa-ui/setup`.
   - Контекст адаптера больше не отдаёт `accessor` и `writePluginProps`: `pluginProps` — обычный вход обмена.
   - О двух пропах или событиях с одним полным именем в составе компонента дескриптор сообщает в консоль при построении (`console.error`); раньше на этом падало монтирование.
   
-  Пакет `@soldy-ui/setup` объявлен `"sideEffects": false`: приложение с одной кнопкой больше не тянет дескрипторы и плагины остальных компонентов (бандл одного `ButtonDescriptor` — 159 KiB вместо 466). Плагин с объявленным контрактом (`definePlugin`) ставьте снаружи определением, а не классом — `usePlugins(TButton, [AnchorPluginDescriptor])`, можно с `.with(options)`: импорт определения держит в бандле модуль, где записан контракт, иначе `pluginProps` до плагина в продакшен-сборке не дойдут.
+  Пакет `@soxa-ui/setup` объявлен `"sideEffects": false`: приложение с одной кнопкой больше не тянет дескрипторы и плагины остальных компонентов (бандл одного `ButtonDescriptor` — 159 KiB вместо 466). Плагин с объявленным контрактом (`definePlugin`) ставьте снаружи определением, а не классом — `usePlugins(TButton, [AnchorPluginDescriptor])`, можно с `.with(options)`: импорт определения держит в бандле модуль, где записан контракт, иначе `pluginProps` до плагина в продакшен-сборке не дойдут.
   
   Поведение обмена значениями не менялось: прежние тесты связки, внешних плагинов и сборки проходят на новом ядре без правок ожиданий.
-- 7c9d5c6: Пакеты переехали в скоуп `@soldy-ui`: прежний скоуп занят в npm чужой учётной записью. Адаптеры названы по фреймворку, без повторения слова ui — `@soldy-ui/vue`, `@soldy-ui/react`, `@soldy-ui/angular`, `@soldy-ui/svelte`, `@soldy-ui/solid`, `@soldy-ui/webc`. Остальные пакеты сохранили прежние имена в новом скоупе: `@soldy-ui/core`, `@soldy-ui/setup`, `@soldy-ui/plugins`, `@soldy-ui/theme-oren`, `@soldy-ui/icons-material`. Как обновиться: сменить скоуп в импортах и в манифесте, у адаптеров дополнительно убрать из имени пакета префикс `ui-`.
+- 7c9d5c6: Пакеты переехали в скоуп `@soxa-ui`: прежний скоуп занят в npm чужой учётной записью. Адаптеры названы по фреймворку, без повторения слова ui — `@soxa-ui/vue`, `@soxa-ui/react`, `@soxa-ui/angular`, `@soxa-ui/svelte`, `@soxa-ui/solid`, `@soxa-ui/webc`. Остальные пакеты сохранили прежние имена в новом скоупе: `@soxa-ui/core`, `@soxa-ui/setup`, `@soxa-ui/plugins`, `@soxa-ui/theme-oren`, `@soxa-ui/icons-material`. Как обновиться: сменить скоуп в импортах и в манифесте, у адаптеров дополнительно убрать из имени пакета префикс `ui-`.
 - bf6a08c: Плагин объявляется один раз, константой: `XPluginDescriptor` — определение, а не фабрика. Вызовы `XPluginDescriptor()` заменить на `XPluginDescriptor`, опции установки — `XPluginDescriptor.with(options)`; у `definePlugin` поля `options` больше нет. У дескриптора снят `getSlots()` — слоты читаются полем `slots`; декларации дескриптора `readonly` и заморожены.
 - 7876446: CSS-классы — с префиксом `so-`, тем же, что у Custom Elements, селекторов Angular и событий: `class="so-button"`, `.so-tabs__list`, `.so-input--clearable`. Тот же префикс у кадров анимаций темы (`@keyframes so-progress-pulse`) и у запасного id монтирования, от которого набор плагинов строит id в разметке без адаптера (`so-<n>`).
 - 7cea82e: Из типов пропсов компонентов снят `plugins`: такого пропа нет, готовый бандл снаружи не принимается, доступ к плагинам даёт событие `bundle:create`. React, Solid и Svelte больше не поглощают `plugins`: переданный, он уходит в атрибуты корня, как любой необъявленный проп.
 - 3c38d3d: Связывание компонента с фреймворком — одно на все шесть адаптеров.
   
-  Публичная поверхность компонента в именах фреймворка — `surfaceOf(descriptor, profile)` из `@soldy-ui/setup`: экспортные имена пропов и событий, умолчания и типы для статического слоя, список съеденных пропсов. Считается один раз на пару «дескриптор × профиль» и заменяет `TDescriptorInspector`, который пересчитывал то же самое на каждом монтировании и в двух режимах. Профиль (`IAdapterProfile`) — стратегия имён и слот по умолчанию, одна константа на адаптер: `VueProfile`, `ReactProfile`, `SolidProfile`, `SvelteProfile`, `WebcProfile`, `AngularProfile`.
+  Публичная поверхность компонента в именах фреймворка — `surfaceOf(descriptor, profile)` из `@soxa-ui/setup`: экспортные имена пропов и событий, умолчания и типы для статического слоя, список съеденных пропсов. Считается один раз на пару «дескриптор × профиль» и заменяет `TDescriptorInspector`, который пересчитывал то же самое на каждом монтировании и в двух режимах. Профиль (`IAdapterProfile`) — стратегия имён и слот по умолчанию, одна константа на адаптер: `VueProfile`, `ReactProfile`, `SolidProfile`, `SvelteProfile`, `WebcProfile`, `AngularProfile`.
   
   На монтирование адаптер берёт связку `bindComponent(adapter, profile)`: стартовое состояние, подписки на триггеры, проброс событий с дедупликацией, чтение и запись пропсов с guard'ом, спред несъеденных пропсов. Своих циклов по аксессору у адаптеров больше нет — остаётся только то, куда писать значение и как отдать событие.
   
-  Удалены: `TDescriptorInspector` из `@soldy-ui/accessor`; `createInspectorFactory`, `collectEventBindings`, `collectForwardProps` из `@soldy-ui/setup`; `createInspector`, `useSyncProps`, `useSyncEvents` и их опции из адаптеров, а также `bindOutput`/`bindInput`/`buildInitialState`/`bindEvents` из Angular. Как обновиться: вместо `createInspector(descriptor).getExportEvents()` — `surfaceOf(descriptor, VueProfile).exportEvents`, вместо `getExportProps()` — `.exportProps`.
+  Удалены: `TDescriptorInspector` из `@soxa-ui/accessor`; `createInspectorFactory`, `collectEventBindings`, `collectForwardProps` из `@soxa-ui/setup`; `createInspector`, `useSyncProps`, `useSyncEvents` и их опции из адаптеров, а также `bindOutput`/`bindInput`/`buildInitialState`/`bindEvents` из Angular. Как обновиться: вместо `createInspector(descriptor).getExportEvents()` — `surfaceOf(descriptor, VueProfile).exportEvents`, вместо `getExportProps()` — `.exportProps`.
 - f7b4492: Spinner удалён: компонент Vue и React, класс ядра `TSpinner` с типами `ISpinner`, `ISpinnerProps` и `TSpinnerEvents`, плагин `TSpinnerLayoutPlugin`, дескрипторы `SpinnerDescriptor` и `SpinnerLayoutPluginDescriptor` и стили Spinner в теме oren. Замена — ProgressSpinner с `indeterminate`: строчное кольцо той же шкалы размеров, которое бежит по кругу, пока доля неизвестна. Как обновиться: `<Spinner />` → `<ProgressSpinner indeterminate />`, имя — тем же `aria_label`. Отличия: роль кольца — `progressbar` без `aria-valuenow`, а не живая область `status`; содержимого у кольца нет — текст ставят рядом и связывают через `aria_labelledBy`; толщину кольца задаёт тема долей диаметра, пропа `borderWidth` и переменной толщины кольца больше нет. В React ProgressSpinner пока нет — его перенос идёт отдельно.
 - 496dc31: `ref` потребителя получает корень компонента — узел, на который ложатся его класс и атрибуты, — у всех компонентов React, Solid и Svelte, у полей тоже: у Input, CheckBox, Switch и RadioGroup.Item это корень, а не `<input>` (до поля — `ref.querySelector('input')`), у таблицы React — её окно `div.so-table__viewport`. React: `ref` — проп компонентов (`Ref<Element>`), его отдают так же, как узлу: функции — узлом, при снятии — её очисткой или `null`, объекту — в `current`; сменившийся между рендерами `ref` корень к `TElementPlugin` не перепривязывает. Ломающее для Solid: `ref` поля раньше получал `<input>`, теперь — корень поля; тип `TFieldRef` и второй аргумент `fieldText` удалены. Svelte: новый связываемый проп `ref` — `<Button bind:ref={button} />` (`bind:this` у компонента даёт экземпляр, а не узел), при снятии — `null`; setup-функции компонентов принимают третьим аргументом приёмник корня.
 - 1b8b606: Переменные CSS, которые пишут ядро и плагины, а читает тема, названы одной схемой `--so-…` — с префиксом классов, и одноимённая переменная приложения у предка их не подменяет: `--so-dialog-width`, `--so-dialog-height`, `--so-dialog-offset-{top,bottom,start,end}`, `--so-drawer-width`, `--so-drawer-height`, `--so-swipe-offset`, `--so-filler-height`, `--so-slider-position`, `--so-slider-range-start`, `--so-slider-range-end`, `--so-progress-linear-percent`, `--so-progress-spinner-fraction`, `--so-table-column-width`, `--so-table-column-drag`, `--so-table-column-shift`, `--so-table-column-ghost` и `--so-table-column-ghost-size`. Тема oren читает их под этими именами.
@@ -303,18 +303,18 @@
 
 ### Patch Changes
 
-- fe0551e: Плагины и расширения коллекций подключаются снаружи. Одному компоненту — из `bundle:create` / `engine:create`: плагин, поставленный в `bundle:create`, объявляется вместе с плагинами компонента. Всем компонентам типа — `usePlugins(TButton, [TTimerPlugin])` и `useExtensions(TTags, [(owner) => new TExt()])` из `@soldy-ui/setup`; по умолчанию только компонентам пользователя, `{ scope: 'all' }` — и деталям разметки других компонентов (строка и крестик тега), которые библиотека помечает пропом `embedded`. Контракт компонента — пропсы, события и слоты — объявляет только дескриптор: внешний плагин его не расширяет. `usePlugins` принимает класс или класс с опциями (`{ ctor, options }`), настраивается плагин опциями регистрации, а обращаются к нему через его собственный API — из `bundle:create` или по ссылке, которую он сам о себе оставил.
+- fe0551e: Плагины и расширения коллекций подключаются снаружи. Одному компоненту — из `bundle:create` / `engine:create`: плагин, поставленный в `bundle:create`, объявляется вместе с плагинами компонента. Всем компонентам типа — `usePlugins(TButton, [TTimerPlugin])` и `useExtensions(TTags, [(owner) => new TExt()])` из `@soxa-ui/setup`; по умолчанию только компонентам пользователя, `{ scope: 'all' }` — и деталям разметки других компонентов (строка и крестик тега), которые библиотека помечает пропом `embedded`. Контракт компонента — пропсы, события и слоты — объявляет только дескриптор: внешний плагин его не расширяет. `usePlugins` принимает класс или класс с опциями (`{ ctor, options }`), настраивается плагин опциями регистрации, а обращаются к нему через его собственный API — из `bundle:create` или по ссылке, которую он сам о себе оставил.
   
   Плагины уничтожаются при размонтировании: `destroy()` плагинов раньше не вызывался ни в одном адаптере. У `IPluginBundle` появились `created()` и `destroy()`, у `IAdapterContext` — `embedded`.
   
-  Тема объявляет своё поведение: `defineTheme` / `useTheme` в `@soldy-ui/setup`, объект темы oren — `@soldy-ui/theme-oren/setup`. `TTabsViewPlugin` переехал из `@soldy-ui/plugins` в тему и снят с Tabs, событие `view:create` у Tabs пропало. Как обновиться: в точке входа приложения рядом с `import "@soldy-ui/theme-oren"` подключить `useTheme(oren)` из `@soldy-ui/theme-oren/setup`, иначе полосы под активным табом нет; импорт `TTabsViewPlugin` брать из `@soldy-ui/theme-oren/setup`.
+  Тема объявляет своё поведение: `defineTheme` / `useTheme` в `@soxa-ui/setup`, объект темы oren — `@soxa-ui/theme-oren/setup`. `TTabsViewPlugin` переехал из `@soxa-ui/plugins` в тему и снят с Tabs, событие `view:create` у Tabs пропало. Как обновиться: в точке входа приложения рядом с `import "@soxa-ui/theme-oren"` подключить `useTheme(oren)` из `@soxa-ui/theme-oren/setup`, иначе полосы под активным табом нет; импорт `TTabsViewPlugin` брать из `@soxa-ui/theme-oren/setup`.
 - 6061b13: Svelte: коллекции ListBox, Tabs, Accordion и RadioGroup — по разметке Vue, с тестами один к одному с React. Части — через точку (`ListBox.Item`, `Tabs.Item`, `Tabs.Content`, `Accordion.Item`, `RadioGroup.Item`), плоские имена (`ListBoxItem` и соседи) тоже в экспорте; элементы — разметкой или данными (`items`). Контекстов у коллекции два — свой и фасада (`useCollectionAdapter` в адаптере, состояние обоих одним видом — `joinState`); движок и регистратор элементам опускает контекст Svelte, и элемент входит в коллекцию при инициализации, на сервере тоже: табы, секции и радио разметки сервер рисует с тем, что пишет им коллекция, — активностью, раскрытостью, отметкой и общим `name`, — а панель активного таба со связкой. `id` табов и секций и `name` радио — от `$props.id()`. ListBox на сервере без `requestAnimationFrame` пока падает, как и в остальных адаптерах: плагины списка планируют кадр уже при сборке. Атрибуты потребителя элемента: класс и стиль — корню, остальное — строке (у радио — полю). Слоты элементов из данных — сниппеты владельца `item-<слот>` со scope элемента и самим элементом; заданный рисуется у каждого элемента вместо своего — сниппет непрозрачен. Монтирование любого компонента Svelte в разработке стало в разы быстрее: начальное состояние ложится в руну одним объектом, и Svelte не снимает стек на каждое новое свойство.
 - 45aea8b: Адаптер Svelte уезжает сборкой в dist, а не исходниками: компоненты `.svelte` — как написаны, их компилирует приложение, модули — ESM, рядом декларации. Svelte в peerDependencies — от 5.29, где появился `{@attach}`
 - 5efeeb0: React, Solid и Svelte: перерисовка родителя больше не откатывает состояние компонента к разметке. Раньше в ядро заново писались все переданные пропсы, и смена любого из них возвращала к значению из разметки то, что с тех пор поменяли сам компонент или код через инстанс: текст, выставленный через инстанс, пропадал от смены `disabled`. Теперь пишется только проп, сменившийся с прошлого рендера, — как во Vue, Angular и Web Components.
-- 7b387fb: Пакеты soldy зависят друг от друга точной версией: набор у потребителя всегда собран из одного выпуска.
+- 7b387fb: Пакеты soxa зависят друг от друга точной версией: набор у потребителя всегда собран из одного выпуска.
 - d88ab2e: У плагина, поставленного снаружи, появились пропсы и события — одинаково во всех адаптерах.
   
-  Контракт плагина описывает `definePlugin` один раз, рядом с классом. Значения его пропсов компонент принимает одним пропом `pluginProps` (`{ timer_ms: 500 }`), события отдаёт одним конвертом `plugin:event` (`{ name: 'timer:tick', args }`): `:plugin-props` и `@plugin:event` во Vue, `pluginProps` и `onPluginEvent` в React, Solid и Svelte, `[pluginProps]` и `(soPluginEvent)` в Angular, свойство `pluginProps` и событие `so:plugin:event` у Web Components. Работает для плагина из `usePlugins` и для поставленного позже через `bundle.use` — значения, пришедшие раньше плагина, ждут его. Правила те же, что у пропсов компонента: пишется только значение, отличное от умолчания, пропавший ключ возвращает умолчание. Типы ключей — дополнением интерфейса `IExternalPluginProps` из `@soldy-ui/setup`.
+  Контракт плагина описывает `definePlugin` один раз, рядом с классом. Значения его пропсов компонент принимает одним пропом `pluginProps` (`{ timer_ms: 500 }`), события отдаёт одним конвертом `plugin:event` (`{ name: 'timer:tick', args }`): `:plugin-props` и `@plugin:event` во Vue, `pluginProps` и `onPluginEvent` в React, Solid и Svelte, `[pluginProps]` и `(soPluginEvent)` в Angular, свойство `pluginProps` и событие `so:plugin:event` у Web Components. Работает для плагина из `usePlugins` и для поставленного позже через `bundle.use` — значения, пришедшие раньше плагина, ждут его. Правила те же, что у пропсов компонента: пишется только значение, отличное от умолчания, пропавший ключ возвращает умолчание. Типы ключей — дополнением интерфейса `IExternalPluginProps` из `@soxa-ui/setup`.
   
   У `TPluginBundle` появилась шина `events` с событиями `use` и `remove`. В ядре — тип `TPluginEvent` и событие `plugin:event` в `TComponentEvents`.
 - ae4d4d9: Svelte: attachment, который потребитель вешает на компонент (`<Button {@attach tooltip}>`), ложится на корень компонента вместе с остальными атрибутами потребителя — на элемент, `<svg>` иконки по роли, компонент из `tag`, у Frame — на узел в цели телепорта. Раньше он молча терялся. Смена тега снимает attachment с прежнего узла и ставит на новый; привязку корня библиотеки (`element:ready`) он не перекрывает.
@@ -324,7 +324,7 @@
   
   Расширения `TPluginsBindingExtension` и `TPluginPropsExtension` удалены вместе с `resolveDefaultExtensions` и полем `defaultExtensions` в конфиге контекста. Начальные значения плагинных пропсов пишет сборка, а корневой узел привязывается методом контекста `adapter.bindElement(el)` — у компонента без `TElementPlugin` он ничего не делает. Как обновиться: `adapter.get(TPluginsBindingExtension)?.bindElement(el)` заменить на `adapter.bindElement(el)`, `{ defaultExtensions: [] }` из вызовов `createAdapterContext` убрать.
   
-  `IAdapterContextOptions` и `IAdapterContextConfig` теперь экспортируются из `@soldy-ui/setup`.
+  `IAdapterContextOptions` и `IAdapterContextConfig` теперь экспортируются из `@soxa-ui/setup`.
 - 9bd4f95: Svelte: Icon, Frame, ProgressSpinner и Skeleton. Корень компонента рисуется по `tag` любого вида: имя элемента, компонент Svelte (атрибуты корня и привязку он получает пропсами и кладёт на свой корень) или метка иконки по роли `roleIcon(role)` — `<svg>` иконки из пакета иконок. Frame уводит панель в цель `target` (`Teleport` адаптера — отдельным корнем со всеми контекстами места), на сервере её нет, с `contained` она на месте — и на сервере. `LocaleProvider` — локаль поддерева, смена пропа доходит до компонентов без перемонтирования. Id монтирования — от `$props.id()` компонента: `id` частей совпадают на сервере и при гидратации; setup-функции компонентов (`setupButton` и соседи) принимают его вторым аргументом. Атрибуты потребителя ложатся на корень поверх наборов ядра, как во Vue и React: `tabindex`, `role` и `dir` снаружи перекрывают поставленные ядром. Тип пропсов вычитает из атрибутов DOM ещё защищённые имена, слоты и события: слот `title` окна больше не сужается до строки атрибута.
 - 73f1851: Svelte: стиль корня ставится на узел по свойствам, как во Vue и React. Раньше каждая смена стиля корня — раскладки, видимости, стиля потребителя — переписывала атрибут `style` целиком и стирала то, что плагины ставят на узел сами: сдвиг панели во время жеста, предел высоты списка, отметки перетаскивания колонок таблицы. Теперь в браузере стиль ставит attachment корня: сменившиеся свойства ставит, пропавшие снимает, чужих не трогает, стиль потребителя разбирает сам браузер; в серверную разметку стиль уходит строкой атрибута, как раньше. Раскладка корня (`toRootLayout`, `toRootProps`) отдаёт стиль слоями (`TRootStyleLayers`), а не строкой. Компонент в `tag` получает стиль корня в браузере attachment-ом среди пропсов, строкой `style` — только на сервере: пропсы, как и прежде, кладите на корень спредом. Новая зависимость пакета — `esm-env`.
 - c37e233: Кнопки, которые компоненты рисуют сами, — очистка полей, крестики окна, панели, поповера, табов и тегов, листание календаря и ленты, кнопки DatePicker, строка таба, заголовок секции Accordion, сортировка колонки таблицы — получили `type="button"`. У `<button>` без `type` тип `submit`: в форме клик по очистке поля отправлял форму, а Enter в поле нажимал первую такую кнопку, и поле очищалось вместо отправки. Button, который ставит приложение, остаётся кнопкой отправки, как нативная `<button>`. В React, Solid и Svelte пропсы Button несут атрибуты кнопки: `type`, `form`, `name` и `value` типизированы.
@@ -337,7 +337,7 @@
   Как обновиться, если вы пишете свой адаптер: `binding.state()` и `binding.bindOutput(write)` заменены на `binding.subscribe(write)` (он же отдаёт начальное состояние) и `binding.getSnapshot()`; у `bindComponent` больше нет третьего параметра `previous`.
 - 9aa7f6f: Один файл на компонент: контракт объявляется прямо в дескрипторе. Отдельных файлов contribution больше нет — их читал только свой дескриптор, а компонент приходилось собирать по двум местам. Дескриптор теперь целиком описывает компонент: наследование, пропсы, события, слоты и плагины. Плагины устроены так же — `definePlugin({ ctor, namespace, contribution: { … } })`.
   
-  Из `@soldy-ui/setup` удалены фабрики `*Contribution` (`ButtonContribution` и ещё 53) и `LIST_PROPS`. `defineType`, `TPropType` и `TEmptySlotScope` переехали в `define` и экспортируются оттуда.
+  Из `@soxa-ui/setup` удалены фабрики `*Contribution` (`ButtonContribution` и ещё 53) и `LIST_PROPS`. `defineType`, `TPropType` и `TEmptySlotScope` переехали в `define` и экспортируются оттуда.
   
   Служебные пропсы адаптера — `TAdapterProps` (`ctrl`, `embedded`), пропсы компонента из дескриптора — `DescriptorComponentProps`, колбэк-события — `DescriptorCallbackEvents`. Раньше то же было объявлено в каждом адаптере отдельно (`TBaseComponentProps` во Vue, `TReactComponentProps`, `TSolidComponentProps`, `TSvelteComponentProps` — удалены).
 - 2788652: Пакеты открыты к публикации: сняты private, добавлены publishConfig, files, README и LICENSE. Фреймворк адаптера стал peer-зависимостью, тема и иконки — devDependency: приложение выбирает их само, и второй копии Vue, React или Angular в нём больше не появится. Соседи по скоупу объявлены диапазоном ^0.1.0 вместо "любая версия".
@@ -530,6 +530,6 @@
 - Updated dependencies [55eccf2]
 - Updated dependencies [83dd6f6]
 - Updated dependencies [0886ef3]
-  - @soldy-ui/core@0.2.0
-  - @soldy-ui/plugins@0.2.0
-  - @soldy-ui/setup@0.2.0
+  - @soxa-ui/core@0.2.0
+  - @soxa-ui/plugins@0.2.0
+  - @soxa-ui/setup@0.2.0

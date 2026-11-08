@@ -1,10 +1,10 @@
 # Страницы компонентов на Svelte
 
-Страницы компонентов soldy на адаптере Svelte: сколько весят десятки копий компонента и всё ли уходит из памяти со снятием страницы. Стенд и методика — [`README.md`](README.md).
+Страницы компонентов soxa на адаптере Svelte: сколько весят десятки копий компонента и всё ли уходит из памяти со снятием страницы. Стенд и методика — [`README.md`](README.md).
 
 ## 2026-10-26 — первый замер
 
-[869fhddjf](https://app.clickup.com/t/869fhddjf). soldy — ветка `task/869fhddjf-pages-memory-bench` на `c90c4c916`; 34 компонентов.
+[869fhddjf](https://app.clickup.com/t/869fhddjf). soxa — ветка `task/869fhddjf-pages-memory-bench` на `c90c4c916`; 34 компонентов.
 
 ```bash
 npm run bench -- --fw svelte
@@ -76,7 +76,7 @@ Chromium 156.0.8078.4, 50 копий на страницу, сценарий —
 
 ## 2026-10-26 — элемент коллекции без своих шин
 
-[869fmdb8b](https://app.clickup.com/t/869fmdb8b). soldy — ветка `task/869fmdb8b-item-buses` на `5429a3968`; «до» — её основа `2dec183ca` (`main`), тем же прогоном подряд. Страницы — те, где в копии есть элементы коллекции: `virtual` (ListBox, Select и Table по 1000 элементов под окном) и `list-box`, `select`, `table`. Из чего состоит элемент под окном — в журнале Vue ([`vue.md`](vue.md)): элемент коллекции — экземпляр ядра, одинаковый на всех платформах.
+[869fmdb8b](https://app.clickup.com/t/869fmdb8b). soxa — ветка `task/869fmdb8b-item-buses` на `5429a3968`; «до» — её основа `2dec183ca` (`main`), тем же прогоном подряд. Страницы — те, где в копии есть элементы коллекции: `virtual` (ListBox, Select и Table по 1000 элементов под окном) и `list-box`, `select`, `table`. Из чего состоит элемент под окном — в журнале Vue ([`vue.md`](vue.md)): элемент коллекции — экземпляр ядра, одинаковый на всех платформах.
 
 ```bash
 npm run bench -- --pages virtual,list-box,select,table
@@ -110,7 +110,7 @@ Chromium 156.0.8078.4, 50 копий на страницу, сценарий —
 
 ## 2026-10-27 — проводка адаптера: стиль корня и связка — меньше эффектов и `$derived`
 
-[869fmhuak](https://app.clickup.com/t/869fmhuak). soldy — ветка `task/869fmhuak-adapter-weight`, код на `9984850ca`; «до» — её основа `3b0a66cd1` (`main`). Прогоны «до» и «после» шли подряд, одной командой, вместе с Angular; React и Solid — в каждом для сравнения: их код не менялся, и вес у них сдвинулся не больше чем на 1 %.
+[869fmhuak](https://app.clickup.com/t/869fmhuak). soxa — ветка `task/869fmhuak-adapter-weight`, код на `9984850ca`; «до» — её основа `3b0a66cd1` (`main`). Прогоны «до» и «после» шли подряд, одной командой, вместе с Angular; React и Solid — в каждом для сравнения: их код не менялся, и вес у них сдвинулся не больше чем на 1 %.
 
 ```bash
 npm run bench -- --fw react,solid,svelte,angular --pages button,check-box,list-box,tabs,menu,all
@@ -170,7 +170,7 @@ JS-куча на копию, КБ (`npm run heap`, N = 50 → 100):
 
 ## 2026-10-27 — блоки разметки: корень без `{#if}`, слоты вызовом, части вплотную
 
-[869fmjpg8](https://app.clickup.com/t/869fmjpg8). soldy — ветка `task/869fmjpg8-svelte-blocks`, код на `55f706673`; «до» — её основа `2f5047845` (`main`). Прогоны «до» и «после» шли подряд, вместе с React: его код не менялся, и вес у него сдвинулся не больше чем на 0,2 %.
+[869fmjpg8](https://app.clickup.com/t/869fmjpg8). soxa — ветка `task/869fmjpg8-svelte-blocks`, код на `55f706673`; «до» — её основа `2f5047845` (`main`). Прогоны «до» и «после» шли подряд, вместе с React: его код не менялся, и вес у него сдвинулся не больше чем на 0,2 %.
 
 ```bash
 npm run heap -- --fw svelte --pages button,list-box,tabs,table     # снимок на каждом шаге
@@ -220,7 +220,7 @@ JS-куча на копию, КБ; в скобках — менеджеров в
 
 ## 2026-10-27 — руна только у прочитанного свойства
 
-[869fmjpgj](https://app.clickup.com/t/869fmjpgj). soldy — ветка `task/869fmjpgj-svelte-lazy-runes`, код на `f5561f6fa`; «до» — её основа `daa76de73` (`main`). Прогоны «до» и «после» шли подряд, вместе с React: его код не менялся, и вес у него сдвинулся не больше чем на 0,7 %.
+[869fmjpgj](https://app.clickup.com/t/869fmjpgj). soxa — ветка `task/869fmjpgj-svelte-lazy-runes`, код на `f5561f6fa`; «до» — её основа `daa76de73` (`main`). Прогоны «до» и «после» шли подряд, вместе с React: его код не менялся, и вес у него сдвинулся не больше чем на 0,7 %.
 
 ```bash
 npm run heap -- --fw svelte --pages button,list-box,table,select,tabs
@@ -267,7 +267,7 @@ JS-куча на копию, КБ; в скобках — рун свойств (
 
 ## 2026-10-29 — долгая сессия
 
-[869fmdbem](https://app.clickup.com/t/869fmdbem). soldy — ветка `task/869fmdbem-pages-soak` на `48d985bd9`; методика — [`README.md`](README.md), «Долгая сессия». Шесть платформ шли одним прогоном, параллельно, своим браузером каждая, с одним зерном: переходы и решения в них у платформ одни и те же.
+[869fmdbem](https://app.clickup.com/t/869fmdbem). soxa — ветка `task/869fmdbem-pages-soak` на `48d985bd9`; методика — [`README.md`](README.md), «Долгая сессия». Шесть платформ шли одним прогоном, параллельно, своим браузером каждая, с одним зерном: переходы и решения в них у платформ одни и те же.
 
 ```bash
 npm run soak -- --minutes 60 --seed 20261029

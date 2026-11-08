@@ -1,34 +1,33 @@
-# Migrating from Soldy UI to Soxa UI
+# Migrating to the Soxa UI npm scope
 
-Soxa UI is the new name of Soldy UI. All 13 public packages move from
-`@soldy-ui` to `@soxa-ui`. This guide applies once the Soxa packages are
+All 13 public packages now use the `@soxa-ui` npm scope. Replace the previous
+scope while keeping each package suffix. This guide applies once the Soxa packages are
 published; the rename PR itself does not publish packages or deprecate the old ones.
 
 ## Replace dependencies
 
 Keep each package suffix and replace its scope:
 
-| Previous package           | New package               |
-| -------------------------- | ------------------------- |
-| `@soldy-ui/core`           | `@soxa-ui/core`           |
-| `@soldy-ui/plugins`        | `@soxa-ui/plugins`        |
-| `@soldy-ui/setup`          | `@soxa-ui/setup`          |
-| `@soldy-ui/vue`            | `@soxa-ui/vue`            |
-| `@soldy-ui/react`          | `@soxa-ui/react`          |
-| `@soldy-ui/angular`        | `@soxa-ui/angular`        |
-| `@soldy-ui/solid`          | `@soxa-ui/solid`          |
-| `@soldy-ui/svelte`         | `@soxa-ui/svelte`         |
-| `@soldy-ui/webc`           | `@soxa-ui/webc`           |
-| `@soldy-ui/theme-base`     | `@soxa-ui/theme-base`     |
-| `@soldy-ui/theme-oren`     | `@soxa-ui/theme-oren`     |
-| `@soldy-ui/icons-material` | `@soxa-ui/icons-material` |
-| `@soldy-ui/icons-lucide`   | `@soxa-ui/icons-lucide`   |
+| Package suffix   | New package               |
+| ---------------- | ------------------------- |
+| `core`           | `@soxa-ui/core`           |
+| `plugins`        | `@soxa-ui/plugins`        |
+| `setup`          | `@soxa-ui/setup`          |
+| `vue`            | `@soxa-ui/vue`            |
+| `react`          | `@soxa-ui/react`          |
+| `angular`        | `@soxa-ui/angular`        |
+| `solid`          | `@soxa-ui/solid`          |
+| `svelte`         | `@soxa-ui/svelte`         |
+| `webc`           | `@soxa-ui/webc`           |
+| `theme-base`     | `@soxa-ui/theme-base`     |
+| `theme-oren`     | `@soxa-ui/theme-oren`     |
+| `icons-material` | `@soxa-ui/icons-material` |
+| `icons-lucide`   | `@soxa-ui/icons-lucide`   |
 
 Remove the old direct dependencies from your application and install their
 new counterparts. For example, a Vue application with Oren and Material icons:
 
 ```sh
-npm uninstall @soldy-ui/vue @soldy-ui/setup @soldy-ui/theme-oren @soldy-ui/icons-material
 npm install @soxa-ui/vue @soxa-ui/setup @soxa-ui/theme-oren @soxa-ui/icons-material
 ```
 
@@ -53,8 +52,8 @@ useTheme(oren)
 
 Replace the scope in every import/export and any package subpath. Update CSS
 `@import`, framework configuration, aliases, and TypeScript declarations such
-as `declare module '@soldy-ui/core'` and `declare module '@soldy-ui/setup'`
-to their corresponding `@soxa-ui` modules. Third-party integrations must also
+so module augmentations target `@soxa-ui/core` or `@soxa-ui/setup` instead
+of the previous scope. Third-party integrations must also
 switch their peer dependencies and module augmentations.
 
 ## Preserved contracts
@@ -70,6 +69,6 @@ package dependencies are updated.
 The target repository address is `https://github.com/youra-h/soxa-ui`.
 The repository rename is a separate step; it is not performed by this PR.
 The existing local worktree directories and private credential paths stay in
-place. Published changelog entries and benchmark results keep the original
-names because they describe earlier releases. Old npm packages remain available;
+place. Package names in changelogs and benchmark journals are normalized to
+Soxa; release versions, dates and measured results are unchanged. Old npm packages remain available;
 their deprecation is a separate step after the new packages are verified.

@@ -1,16 +1,16 @@
 # Таблица на Solid
 
-Таблица soldy на адаптере Solid рядом с таблицами библиотек Solid. Стенд, условия сравнения и
+Таблица soxa на адаптере Solid рядом с таблицами библиотек Solid. Стенд, условия сравнения и
 методика — [`README.md`](README.md).
 
 ## 2026-10-25 — Solid, первый замер
 
-[869fhddhx](https://app.clickup.com/t/869fhddhx). soldy — `main` на `c3e7d275c`, в условиях
-сравнения: `solid:soldy+fit=none+width=3248+track`. solid-js 1.9.17. 5000 строк × 20 колонок, 3
+[869fhddhx](https://app.clickup.com/t/869fhddhx). soxa — `main` на `c3e7d275c`, в условиях
+сравнения: `solid:soxa+fit=none+width=3248+track`. solid-js 1.9.17. 5000 строк × 20 колонок, 3
 прогона, медиана; время — в секундах до успокоения кадров.
 
 ```bash
-npm run bench -- 5000 5 solid:soldy+fit=none+width=3248+track,solid:aggrid,solid:plain,solid:tanstack,solid:kobalte
+npm run bench -- 5000 5 solid:soxa+fit=none+width=3248+track,solid:aggrid,solid:plain,solid:tanstack,solid:kobalte
 ```
 
 ### Библиотеки
@@ -21,7 +21,7 @@ npm run bench -- 5000 5 solid:soldy+fit=none+width=3248+track,solid:aggrid,solid
 DOM. Остался AG Grid — официальный адаптер `ag-grid-solid`, заброшенный с 2024 года, на ядре
 31.1.1.
 
-|                      | **soldy**   | AG Grid 31.1 (`ag-grid-solid`) |
+|                      | **soxa**    | AG Grid 31.1 (`ag-grid-solid`) |
 | -------------------- | ----------- | ------------------------------ |
 | Первый рендер        | **3,42**    | 5,68                           |
 | Память после рендера | **1,28 ГБ** | 1,69 ГБ                        |
@@ -40,18 +40,18 @@ AG Grid — один прогон: на замене данных Solid брос
 
 ### Ориентиры
 
-|                      | голый Solid | TanStack 9.3 | solid-ui: TanStack + Kobalte 0.13 | **soldy** |
-| -------------------- | ----------- | ------------ | --------------------------------- | --------- |
-| Первый рендер        | 0,81        | 0,78         | 1,12                              | 3,42      |
-| Память после рендера | 77 МБ       | 69 МБ        | 208 МБ                            | 1,28 ГБ   |
-| DOM-узлов            | 115 тыс.    | 115 тыс.     | 125 тыс.                          | 125 тыс.  |
-| Выделить все         | 0,06        | 0,05         | 0,95                              | 0,72      |
-| Снять выделение      | 0,05        | 0,05         | 0,92                              | 0,62      |
-| Сортировка ↑         | 0,72        | 0,70         | 0,62                              | 1,25      |
-| Сортировка ↓         | 0,70        | 0,70         | 0,58                              | 0,97      |
-| Замена данных        | 0,93        | 0,97         | 1,26                              | 3,07      |
-| Размонтирование      | 0,09        | 0,08         | 0,12                              | 0,47      |
-| Память после снятия  | 0,3 МБ      | 0,5 МБ       | 1,1 МБ                            | 1,8 МБ    |
+|                      | голый Solid | TanStack 9.3 | solid-ui: TanStack + Kobalte 0.13 | **soxa** |
+| -------------------- | ----------- | ------------ | --------------------------------- | -------- |
+| Первый рендер        | 0,81        | 0,78         | 1,12                              | 3,42     |
+| Память после рендера | 77 МБ       | 69 МБ        | 208 МБ                            | 1,28 ГБ  |
+| DOM-узлов            | 115 тыс.    | 115 тыс.     | 125 тыс.                          | 125 тыс. |
+| Выделить все         | 0,06        | 0,05         | 0,95                              | 0,72     |
+| Снять выделение      | 0,05        | 0,05         | 0,92                              | 0,62     |
+| Сортировка ↑         | 0,72        | 0,70         | 0,62                              | 1,25     |
+| Сортировка ↓         | 0,70        | 0,70         | 0,58                              | 0,97     |
+| Замена данных        | 0,93        | 0,97         | 1,26                              | 3,07     |
+| Размонтирование      | 0,09        | 0,08         | 0,12                              | 0,47     |
+| Память после снятия  | 0,3 МБ      | 0,5 МБ       | 1,1 МБ                            | 1,8 МБ   |
 
 У голого Solid записи сверяются с прежними по `id` (`reconcile`), как ключ строки у Vue и React.
 
@@ -59,19 +59,19 @@ AG Grid — один прогон: на замене данных Solid брос
 
 - **Адаптер Solid — провал по памяти и рендеру, худший из адаптеров.** Та же таблица на Vue —
   296 МБ и 1,68 с (`vue.md`), на Solid — 1,28 ГБ и 3,42 с, замена данных — 3,07 с против
-  1,22 с. Голый Solid на этой разметке — 77 МБ, ядро soldy без проводки — 56 МБ: проводка строки
+  1,22 с. Голый Solid на этой разметке — 77 МБ, ядро soxa без проводки — 56 МБ: проводка строки
   на Solid стоит около 245 КБ против 48 КБ на Vue.
-- Выделение у soldy — как у Vue, 0,72 с: провал не в действиях, а в сборке строк.
+- Выделение у soxa — как у Vue, 0,72 с: провал не в действиях, а в сборке строк.
 
 ## 2026-10-25 — Solid, состояние без стора и ячейка без `Dynamic`
 
-[869fmcau9](https://app.clickup.com/t/869fmcau9). soldy — ветка `task/869fmcau9-solid-table-memory`
-от `main` на `d3519299a`, условия те же: `solid:soldy+fit=none+width=3248+track`, 5000 строк × 20
+[869fmcau9](https://app.clickup.com/t/869fmcau9). soxa — ветка `task/869fmcau9-solid-table-memory`
+от `main` на `d3519299a`, условия те же: `solid:soxa+fit=none+width=3248+track`, 5000 строк × 20
 колонок, 3 прогона, медиана.
 
 ```bash
-npm run bench -- 5000 5 solid:soldy+fit=none+width=3248+track
-npm run heap -- 500 mounted solid:soldy+fit=none+width=3248+track 0
+npm run bench -- 5000 5 solid:soxa+fit=none+width=3248+track
+npm run heap -- 500 mounted solid:soxa+fit=none+width=3248+track 0
 ```
 
 Причины — по снимку кучи на 500 строк (`heap.mjs`, режим `mounted`) и профилю CPU рендера.
@@ -116,13 +116,13 @@ npm run heap -- 500 mounted solid:soldy+fit=none+width=3248+track 0
 
 [869fmckzg](https://app.clickup.com/t/869fmckzg). Правка общего слоя — обмена setup
 (`packages/setup/protected/`) и эмиттера ядра, — одна для всех адаптеров; разбор по куче —
-`webc.md`, раздел этого дня. soldy — `main` на `80f66138f` и ветка
+`webc.md`, раздел этого дня. soxa — `main` на `80f66138f` и ветка
 `task/869fmckzg-exchange-memory`; замеры подряд, в одних условиях:
-`solid:soldy+fit=none+width=3248+track`, 5000 строк × 20 колонок, 5 прогонов, медиана; время — в
+`solid:soxa+fit=none+width=3248+track`, 5000 строк × 20 колонок, 5 прогонов, медиана; время — в
 секундах до успокоения.
 
 ```bash
-npm run bench -- 5000 5 solid:soldy+fit=none+width=3248+track
+npm run bench -- 5000 5 solid:soxa+fit=none+width=3248+track
 ```
 
 - **Обмен setup:** линия свойства — знание типа, одна на все монтирования; состояние и входы —
@@ -154,12 +154,12 @@ npm run bench -- 5000 5 solid:soldy+fit=none+width=3248+track
 ## 2026-10-25 — Solid, слушатель шины снимается по ссылке
 
 [869fmcrp8](https://app.clickup.com/t/869fmcrp8). Правка шины ядра и обмена setup
-(`packages/setup/protected/`), одна для всех адаптеров; разбор по куче — `webc.md`, раздел этого дня. soldy — `main` на `ddf80c3f6` и
-ветка `task/869fmcrp8-unlisten`; замеры подряд, в одних условиях: `soldy+fit=none+width=3248+track`,
+(`packages/setup/protected/`), одна для всех адаптеров; разбор по куче — `webc.md`, раздел этого дня. soxa — `main` на `ddf80c3f6` и
+ветка `task/869fmcrp8-unlisten`; замеры подряд, в одних условиях: `soxa+fit=none+width=3248+track`,
 5000 строк × 20 колонок, 3 прогона, медиана; время — в секундах до успокоения.
 
 ```bash
-npm run bench -- 5000 3 solid:soldy+fit=none+width=3248+track
+npm run bench -- 5000 3 solid:soxa+fit=none+width=3248+track
 ```
 
 - **Шина ядра:** `TEvented.listen` не возвращает функцию отписки, слушателя снимает
@@ -189,15 +189,15 @@ npm run bench -- 5000 3 solid:soldy+fit=none+width=3248+track
 
 ## 2026-10-25 — Solid, корень без `Dynamic`, ячейки строки одним мемо
 
-[869fmcmb7](https://app.clickup.com/t/869fmcmb7). Правка адаптерного слоя Solid. soldy — `main` на
+[869fmcmb7](https://app.clickup.com/t/869fmcmb7). Правка адаптерного слоя Solid. soxa — `main` на
 `65656dd17` и ветка `task/869fmcmb7-solid-table-cells`; замеры подряд, в одних условиях:
-`solid:soldy+fit=none+width=3248+track`, 5000 строк × 20 колонок, 5 прогонов, медиана; время — в
+`solid:soxa+fit=none+width=3248+track`, 5000 строк × 20 колонок, 5 прогонов, медиана; время — в
 секундах до успокоения.
 
 ```bash
-npm run bench -- 5000 5 solid:soldy+fit=none+width=3248+track
-npm run heap -- 500 mounted solid:soldy+fit=none+width=3248+track 0
-npm run heap -- 500 mounted solid:soldy+fit=none+width=3248+track+mode=none 0
+npm run bench -- 5000 5 solid:soxa+fit=none+width=3248+track
+npm run heap -- 500 mounted solid:soxa+fit=none+width=3248+track 0
+npm run heap -- 500 mounted solid:soxa+fit=none+width=3248+track+mode=none 0
 ```
 
 Причины — по снимку кучи на 500 строк. На строку у `main` — 95 КБ JS-кучи, 140 вычислений Solid
@@ -232,7 +232,7 @@ npm run heap -- 500 mounted solid:soldy+fit=none+width=3248+track+mode=none 0
 | + `Root` у строки и чекбокса, поле флажка — узлом | 65,4     |
 | + `Root` у всех компонентов, петля без фрагмента  | 65,0     |
 | + ячейки строки одним мемо, ячейка выбора — узлом | **50,0** |
-| Vue (`soldy+fit=none+width=3248+track`)           | 53,7     |
+| Vue (`soxa+fit=none+width=3248+track`)            | 53,7     |
 
 Вычислений на строку — 47 вместо 140, сигналов — 34 вместо 83.
 
@@ -253,12 +253,12 @@ npm run heap -- 500 mounted solid:soldy+fit=none+width=3248+track+mode=none 0
 Сортировка ↑ у обеих — двувершинная, 0,95 или 1,25 с: лишний долгий кадр после отрисовки, как в
 разделе «Solid, обмен setup и эмиттер ядра». Память после снятия на 0,1 МБ выше — код новых
 функций: снимок кучи после размонтирования (`npm run heap -- 5000 unmount …`) не находит на
-строку ни классов soldy, ни записей, только скомпилированный код.
+строку ни классов soxa, ни записей, только скомпилированный код.
 
 ### Вывод
 
 - Память после рендера — вдвое меньше, 229 МБ против 460, и меньше, чем у той же таблицы на Vue;
-  рендер и замена данных — быстрее Vue. До голого Solid (77 МБ) остаётся ядро soldy (56 МБ без
+  рендер и замена данных — быстрее Vue. До голого Solid (77 МБ) остаётся ядро soxa (56 МБ без
   проводки) и проводка строки и чекбокса: их обмен, ветки `Show` и корни.
 - Сторожат `ui/solid/__tests__/hydration/part-nodes.hydration.spec.tsx` (узлы сервера и запись
   после гидратации), «узлы записей» в `structure.hydration.spec.tsx`, «состояние связки» и
@@ -267,7 +267,7 @@ npm run heap -- 500 mounted solid:soldy+fit=none+width=3248+track+mode=none 0
 ## 2026-10-27 — Solid, `change:items` со снимком состава
 
 [869fmqma6](https://app.clickup.com/t/869fmqma6). Тот же прогон, что в журнале Vue ([`vue.md`](vue.md),
-«`change:items` со снимком состава»): `solid:soldy+fit=none+width=3248+track`, 5000 строк × 20
+«`change:items` со снимком состава»): `solid:soxa+fit=none+width=3248+track`, 5000 строк × 20
 колонок, 3 прогона, медиана; время — в секундах до успокоения. «До» — `main` на `00384ab0e`.
 
 |                      | до     | после  |

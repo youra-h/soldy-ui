@@ -1357,7 +1357,7 @@ Proxy над инстансом библиотека не запрещает, н
   методика и журнал на платформу. Устройство и как завести новый замер — в
   `benchmarks/README.md`.
 
-For the owner-approved Soldy to Soxa mechanical rename (task 869fpbftq), existing
+For the owner-approved mechanical brand substitution (task 869fpbftq), existing
 comments may retain their language when the entire file changes only by the
 case-preserving brand substitution. Any additional edit still follows the
 English-comment rule. This exception does not permit new Russian comments.

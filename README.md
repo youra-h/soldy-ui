@@ -4,7 +4,7 @@
 
 # Soxa UI
 
-Previously Soldy UI. See the [migration guide](docs/migration-to-soxa.md) for the scope change.
+See the [migration guide](docs/migration-to-soxa.md) for the npm scope change.
 
 **UI components with the logic written once: a framework-agnostic core and thin adapters that
 render it in Vue, React, Angular, Svelte, Solid and Web Components.**

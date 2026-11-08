@@ -1,10 +1,10 @@
 # Серверный рендер на React
 
-Страница со всеми компонентами soldy, тысячи раз подряд отрисованная на сервере адаптером React: всё ли уходит из памяти после каждого рендера и не смешиваются ли языки соседних запросов. Стенд и методика — [`README.md`](README.md).
+Страница со всеми компонентами soxa, тысячи раз подряд отрисованная на сервере адаптером React: всё ли уходит из памяти после каждого рендера и не смешиваются ли языки соседних запросов. Стенд и методика — [`README.md`](README.md).
 
 ## 2026-10-27 — первый замер
 
-[869fmdbeg](https://app.clickup.com/t/869fmdbeg). soldy — ветка `task/869fmdbeg-ssr-memory` на `112b87b94`; 34 компонента, рендер — `renderToString` из `react-dom/server` (React 19.3.1).
+[869fmdbeg](https://app.clickup.com/t/869fmdbeg). soxa — ветка `task/869fmdbeg-ssr-memory` на `112b87b94`; 34 компонента, рендер — `renderToString` из `react-dom/server` (React 19.3.1).
 
 ```bash
 npm run bench -- --dump
