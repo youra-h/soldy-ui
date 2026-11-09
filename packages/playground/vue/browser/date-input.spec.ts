@@ -35,7 +35,7 @@ import { COMPONENT_SIZES } from '@soxa-ui/playground-shared'
 import { DateInput, LocaleProvider } from '@soxa-ui/vue'
 
 import { expectClearSquare } from './clear-button'
-import { touchInput } from './engine'
+import { tapInput, imeComposition } from './engine'
 
 import '@soxa-ui/theme-oren'
 
@@ -476,7 +476,7 @@ describe('время', () => {
 	})
 })
 
-describe.runIf(touchInput)('сенсорный режим', () => {
+describe.runIf(tapInput)('сенсорный режим', () => {
 	/** Селектор части — касание ищет узел в рамке теста. */
 	const part = (type: string) => `.so-date-input__segment[data-type="${type}"]`
 
@@ -534,19 +534,22 @@ describe.runIf(touchInput)('сенсорный режим', () => {
 		expect(document.activeElement).toBe(segment('year'))
 	})
 
-	it('композиция: набранное в ней — в ядро, часть показывает текст ядра', async () => {
-		const ctrl = await show({ value: '2026-01-12' })
+	it.runIf(imeComposition)(
+		'композиция: набранное в ней — в ядро, часть показывает текст ядра',
+		async () => {
+			const ctrl = await show({ value: '2026-01-12' })
 
-		await commands.tap(part('month'))
-		await commands.compose('０')
-		await commands.compose('０５')
-		await commands.insertText('０５')
+			await commands.tap(part('month'))
+			await commands.compose('０')
+			await commands.compose('０５')
+			await commands.insertText('０５')
 
-		await expect.poll(() => ctrl.value).toBe('2026-05-12')
-		expect(segment('month').textContent).toBe('05')
-	})
+			await expect.poll(() => ctrl.value).toBe('2026-05-12')
+			expect(segment('month').textContent).toBe('05')
+		},
+	)
 
-	it('композиция не цифр — в части остаётся текст ядра', async () => {
+	it.runIf(imeComposition)('композиция не цифр — в части остаётся текст ядра', async () => {
 		const ctrl = await show()
 
 		await commands.tap(part('month'))

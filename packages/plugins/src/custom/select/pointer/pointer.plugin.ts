@@ -57,6 +57,8 @@ export class TSelectPointerPlugin extends TBasePlugin<any, TSelectPointerPluginE
 	/** Корень Select: на нём слушатели, в нём ищутся остановка под нажатием и поле. */
 	private _root: Element | null = null
 	private _editable = false
+	/** WebKit retargets a touch on the label's arrow to its associated input. */
+	private _touchArrow = false
 
 	override install(ctx: IPluginContext): void {
 		super.install(ctx)
@@ -90,13 +92,18 @@ export class TSelectPointerPlugin extends TBasePlugin<any, TSelectPointerPluginE
 		const previous: IDomEventTarget | null = this._root
 
 		previous?.removeEventListener('click', this._onClick)
+		previous?.removeEventListener('pointerdown', this._onPointerDown)
+		previous?.removeEventListener('pointercancel', this._onPointerCancel)
 		previous?.removeEventListener('mousedown', this._onMouseDown)
 
+		this._touchArrow = false
 		this._root = root
 
 		const target: IDomEventTarget | null = root
 
 		target?.addEventListener('click', this._onClick)
+		target?.addEventListener('pointerdown', this._onPointerDown)
+		target?.addEventListener('pointercancel', this._onPointerCancel)
 		target?.addEventListener('mousedown', this._onMouseDown)
 	}
 
@@ -104,10 +111,21 @@ export class TSelectPointerPlugin extends TBasePlugin<any, TSelectPointerPluginE
 		return target instanceof Element && !!target.closest(ARROW_SELECTOR)
 	}
 
-	/** select-only: клик по полю тумблит панель. editable: только по стрелке. */
+	/** Preserve the physical target before WebKit label activation retargets the click. */
+	private readonly _onPointerDown = (event: PointerEvent): void => {
+		this._touchArrow = event.pointerType === 'touch' && this._isArrow(event.target)
+	}
+
+	private readonly _onPointerCancel = (): void => {
+		this._touchArrow = false
+	}
+
+	/** Toggle by the original arrow target in editable mode, or anywhere in select-only mode. */
 	private readonly _onClick = (event: MouseEvent): void => {
+		const arrow = this._isArrow(event.target) || (this._touchArrow && event.detail > 0)
+		this._touchArrow = false
 		if (this._editable) {
-			if (this._isArrow(event.target)) this._owner?.toggleOpen()
+			if (arrow) this._owner?.toggleOpen()
 
 			return
 		}

@@ -29,7 +29,7 @@ import { DIRECTION_CASES, setDir, sidesOf, type TLine } from './directions'
 import { reducedMotion } from './media'
 import { durationOf, settled, transitionOf, transitioning, whileLeaving } from './transitions'
 import { expectClassicScrollbar } from './viewport'
-import { classicScrollbars, touchInput } from './engine'
+import { classicScrollbars, continuousTouch } from './engine'
 
 import '@soxa-ui/theme-oren'
 
@@ -745,7 +745,7 @@ describe('жест', () => {
 	 * doesn't apply, and the browser takes the touch for scrolling. The drag is a
 	 * DevTools protocol command (`commands.touchDrag`).
 	 */
-	describe.runIf(touchInput)('пальцем', () => {
+	describe.runIf(continuousTouch)('пальцем', () => {
 		/** A paragraph in the body to pull the whole panel by, and two Tab stops. */
 		const text = (): VNode[] => [
 			h('p', { class: 'so-test-text', style: 'width: 120px' }, 'Текст тела'),

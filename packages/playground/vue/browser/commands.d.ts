@@ -23,7 +23,7 @@ declare module 'vitest/browser' {
 		) => Promise<void>
 		/**
 		 * Touch the node's centre with a finger `count` times in a row — a CSS
-		 * selector in the test frame. Chromium only (`browser/engine.ts`)
+		 * selector in the test frame. Both mobile engines; desktop Chromium via CDP
 		 */
 		tap: (selector: string, count?: number) => Promise<void>
 		/**

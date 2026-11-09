@@ -11,7 +11,7 @@ import { readFileSync } from 'node:fs'
 import { createRequire } from 'node:module'
 import path from 'node:path'
 import { describe, expect, it } from 'vitest'
-import { dockerRunArgs, serverImage, type TLock } from '../browser-server/server.ts'
+import { dockerRunArgs, serverImage, webkitProjects, type TLock } from '../browser-server/server.ts'
 
 const ROOT = path.resolve(import.meta.dirname, '..')
 
@@ -81,5 +81,18 @@ describe('запуск контейнера', () => {
 
 	it('остановленный контейнер удаляется', () => {
 		expect(args.slice(0, 3)).toEqual(['run', '-d', '--rm'])
+	})
+})
+
+describe('WebKit project selection', () => {
+	it('runs both desktop and mobile by default', () => {
+		expect(webkitProjects()).toEqual(['layout (webkit)', 'layout mobile (webkit)'])
+	})
+	it('preserves an explicit mobile-only filter', () => {
+		expect(webkitProjects(['layout mobile (webkit)'])).toEqual(['layout mobile (webkit)'])
+		expect(webkitProjects('layout mobile (webkit)')).toEqual(['layout mobile (webkit)'])
+	})
+	it('rejects another engine instead of silently dropping mobile coverage', () => {
+		expect(() => webkitProjects(['layout (chromium)'])).toThrow('Not a WebKit project')
 	})
 })

@@ -152,7 +152,7 @@ jobs:
             done
           ) > "$RUNNER_TEMP/memory.log" 2>&1 &
           npm run build:css --workspace=@soxa-ui/theme-oren
-          npm run test:browser --workspace=@soxa-ui/playground-vue -- --project "layout (${{ matrix.browser }})"
+          npm run test:browser --workspace=@soxa-ui/playground-vue -- --project "layout (${{ matrix.browser }})" --project "layout mobile (${{ matrix.browser }})"
 
       # The same user scenario on all six platforms: the component's events and
       # the accessibility tree after every step, compared with Vue

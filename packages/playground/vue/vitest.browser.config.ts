@@ -158,13 +158,33 @@ async function touch(
  * touches in a row, without pauses between them: two make a double touch.
  */
 const tap = defineBrowserCommand<[selector: string, count?: number]>(
-	(context, selector, count = 1) =>
-		touch(context, selector, (point) =>
+	async (context, selector, count = 1) => {
+		if (context.project.name.includes('mobile')) {
+			const node = (await context.frame()).locator(selector)
+			await node.scrollIntoViewIfNeeded()
+			const box = await node.boundingBox()
+			if (!box) throw new Error(selector + ': no rendered node')
+			const pause = lastTap + DOUBLE_TAP_PAUSE - Date.now()
+			if (pause > 0) await context.page.waitForTimeout(pause)
+			try {
+				for (let index = 0; index < count; index++) {
+					await context.page.touchscreen.tap(
+						box.x + box.width / 2,
+						box.y + box.height / 2,
+					)
+				}
+			} finally {
+				lastTap = Date.now()
+			}
+			return
+		}
+		await touch(context, selector, (point) =>
 			Array.from({ length: count }, (): TTouchEvent[] => [
 				{ type: 'touchStart', touchPoints: [point] },
 				{ type: 'touchEnd', touchPoints: [] },
 			]).flat(),
-		),
+		)
+	},
 )
 
 /**
@@ -248,11 +268,17 @@ function webkit(): BrowserInstanceOption[] {
 
 	if (server) {
 		return [
-			{ browser: 'webkit', provider: playwright({ connectOptions: { wsEndpoint: server } }) },
+			{
+				browser: 'webkit',
+				exclude: ['browser/mobile-*.spec.ts'],
+				provider: playwright({ connectOptions: { wsEndpoint: server } }),
+			},
 		]
 	}
 
-	return process.platform === 'win32' ? [] : [{ browser: 'webkit', provider: playwright() }]
+	return process.platform === 'win32'
+		? []
+		: [{ browser: 'webkit', exclude: ['browser/mobile-*.spec.ts'], provider: playwright() }]
 }
 
 /**
@@ -310,6 +336,7 @@ export default defineConfig({
 			instances: [
 				{
 					browser: 'chromium',
+					exclude: ['browser/mobile-*.spec.ts'],
 					// Real scrollbars. In headless Playwright starts Chromium with
 					// `--hide-scrollbars`: the bar isn't drawn and takes no space,
 					// and `innerWidth === documentElement.clientWidth ===
@@ -325,6 +352,24 @@ export default defineConfig({
 					}),
 				},
 				...webkit(),
+				...(['chromium', 'webkit'] as const)
+					.filter((browser) => browser === 'chromium' || webkit().length > 0)
+					.map((browser): BrowserInstanceOption => ({
+						browser,
+						name: `layout mobile (${browser})`,
+						include: ['browser/mobile-*.spec.ts'],
+						viewport: { width: 390, height: 844 },
+						provider: playwright({
+							contextOptions: {
+								isMobile: true,
+								hasTouch: true,
+								deviceScaleFactor: 3,
+							},
+							...(browser === 'webkit' && process.env.WEBKIT_SERVER
+								? { connectOptions: { wsEndpoint: process.env.WEBKIT_SERVER } }
+								: { launchOptions: { ignoreDefaultArgs: ['--hide-scrollbars'] } }),
+						}),
+					})),
 			],
 			commands: {
 				mouseDown,

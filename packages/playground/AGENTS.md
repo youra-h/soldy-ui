@@ -69,10 +69,10 @@ Playwright (конфиг `vitest.browser.config.ts`).
   ядра при падении»; вывод самого браузера и код его выхода даёт
   `DEBUG=pw:browser`.
 - **Чего у движка нет по природе, спек пропускает явно** — флагом из
-  `browser/engine.ts` (`describe.runIf(touchInput)`), а причину называет
-  комментарий флага: протокол DevTools (касания `tap`, `touchDrag` и
+  `browser/engine.ts` (`describe.runIf(continuousTouch)`), а причину называет
+  комментарий флага: протокол DevTools (desktop `tap`, непрерывный `touchDrag` и
   композиция IME `compose` — только у Chromium; касания в WebKit — мобильный
-  прогон, задача 869fjcb0p), накладная полоса прокрутки, перекраска страницы
+  прогон, см. «Мобильный браузерный набор»), накладная полоса прокрутки, перекраска страницы
   браузером в режиме принудительных цветов (у Safari режима нет, эмуляция
   WebKit отвечает только медиазапросу), `:hover`, который захват указателя
   уводит на захватившего (WebKit, как Safari, держит его на узле под
@@ -110,8 +110,8 @@ Playwright (конфиг `vitest.browser.config.ts`).
   `mouseUp` из `commands` (`vitest.browser.config.ts`, типы —
   `browser/commands.d.ts`), а мышь двигает `userEvent.hover` с `position`.
 - Касаться и вводить без клавиш `userEvent` не умеет. Касание пальцем — команда
-  `tap` (протоколом DevTools, только Chromium: `hasTouch` контекста сменил бы
-  устройство всем спекам); оно всегда одиночное — команда выжидает окно двойного касания от
+  `tap` (native touchscreen обоих mobile-проектов, CDP desktop Chromium);
+  оно всегда одиночное — команда выжидает окно двойного касания от
   прошлого, а двойное даёт `count`. Протяжка пальцем — `touchDrag`: от центра
   узла на `dx`, `dy` шагами, тем же протоколом. Окно двойного касания у неё с
   `tap` общее и выжидается так же: протяжка сразу за касанием — двойное
@@ -894,3 +894,38 @@ v-model Vue: в журнал он попадает только у Vue, и сц�
 - `playground/vue/browser/tests-sidebar.spec.ts` — колонки меню тем и
   компонентов не наезжают друг на друга (минимальная ширина списка темы шире
   узкой колонки).
+
+### Мобильный браузерный набор
+
+В том же `test:layout` идут отдельные проекты `layout mobile (chromium)` и
+`layout mobile (webkit)`: 390×844 CSS px, `isMobile`, `hasTouch`, масштаб 3.
+Desktop сохраняет свои контексты и исключает `browser/mobile-*.spec.ts`;
+mobile запускает только эти спеки. CI выбирает оба проекта своего движка,
+Windows Docker — оба WebKit проекта; явный `--project` сохраняется.
+
+`browser/mobile-layout.spec.ts` сверяет явный инвентарь с каждым id текущего
+реестра и измеряет все компоненты при 360/390/414 px, включая RTL и oren-dark.
+Базовые слои проверяются также через их потребителей: Frame — панели Select,
+Popover и DatePicker; Control/Interactive/ValueControl/InputControl — поля
+и переключатели; Stylable/Textable/ComponentView — кнопки и отображение.
+Virtual использует мобильную фикстуру списка из 1000 элементов: широкая
+составная витрина не служит мобильным потребительским шаблоном.
+
+`tap` в мобильных проектах вызывает настоящий Playwright touchscreen обоих
+движков: координаты берутся из узла test iframe. На desktop Chromium сохранён
+CDP. Общее окно двойного касания остаётся у `tap` и `touchDrag`. Клики
+`userEvent.click` касаниями не становятся. Возможности разнесены:
+`tapInput`, `continuousTouch` и `imeComposition` в `browser/engine.ts`.
+Linux WebKit сообщает `maxTouchPoints === 0` даже с `hasTouch`; сторож
+проверяет также touch API, coarse pointer/hover media и реальные события touch
+pointerdown/up/click. Значение navigator не подменяется.
+
+`mobile-controls.spec.ts` проверяет native tap, одиночную активацию,
+двойное касание, ввод без keydown, readonly/disabled, подпись, выбор коллекций,
+даты, открытие/закрытие панелей, уведомления, размеры целей и внутренний scroll
+таблицы. `mobile-gestures.spec.ts` проверяет native continuous touch Chromium:
+Slider, Drawer, Scroller, Tags, Tabs, Virtual, перестановку списка и колонок.
+WebKit пропускает только этот continuous набор: публичный touchscreen API
+Playwright даёт tap, но не протяжку. Synthetic dispatchEvent не доказывает
+прокрутку и захват. Эмуляция также не доказывает экранную клавиатуру и работу
+физического iPhone.
