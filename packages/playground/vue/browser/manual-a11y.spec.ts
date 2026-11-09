@@ -108,6 +108,19 @@ describe('screen-reader activation and live announcements', () => {
 			.toBe(0)
 	})
 
+	it('keeps every typed character when editable Select opens and highlights options', async () => {
+		render(ManualAudit)
+		await userEvent.click(page.getByRole('button', { name: /Select — поиск/ }))
+		await userEvent.click(page.getByRole('button', { name: 'К началу примера', exact: true }))
+		await userEvent.keyboard('{Tab}')
+		const input = page.getByRole('combobox', { name: 'Несколько вариантов', exact: true })
+		await expect.poll(() => document.activeElement).toBe(input.element())
+		await userEvent.keyboard('Втор')
+		await expect.element(input).toHaveValue('Втор')
+		await expect.element(input).toHaveAttribute('aria-expanded', 'true')
+		await userEvent.keyboard('{Escape}')
+		await expect.element(input).toHaveAttribute('aria-expanded', 'false')
+	})
 	it('enters the first menu item and submenu item on click-only activation', async () => {
 		render(ManualAudit)
 		await userEvent.click(page.getByRole('button', { name: /Menu — меню/ }))

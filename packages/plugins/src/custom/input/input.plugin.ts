@@ -24,7 +24,8 @@ export class TInputPlugin extends TBasePlugin<any, TInputPluginEvents> {
 			if (!(input instanceof HTMLInputElement || input instanceof HTMLTextAreaElement)) return
 
 			this._input = input
-			input.addEventListener('input', this._onInput)
+			// Save native text before parent controls react and render the field again.
+			input.addEventListener('input', this._onInput, true)
 		})
 
 		elementPlugin?.events.on('removed', () => {
@@ -58,7 +59,7 @@ export class TInputPlugin extends TBasePlugin<any, TInputPluginEvents> {
 
 	private _removeInputListener(): void {
 		if (this._input) {
-			this._input.removeEventListener('input', this._onInput)
+			this._input.removeEventListener('input', this._onInput, true)
 		}
 	}
 }
