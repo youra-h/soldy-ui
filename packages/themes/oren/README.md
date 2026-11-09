@@ -78,6 +78,51 @@ The bundler puts a file several stylesheets share once, and the order of the imp
 matter: the shared part declares the order of the cascade layers before any rule. A component you
 put into a slot of another — a Button in the footer of a Dialog — is yours to import as well.
 
+### Tailwind CSS 4
+
+Put Preflight in a separate `reset` layer before Oren's `base` layer. Use one CSS entry:
+
+```css
+@layer theme, reset, base, components, utilities;
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/preflight.css' layer(reset);
+@import 'tailwindcss/utilities.css' layer(utilities);
+@import '@soxa-ui/theme-oren';
+```
+
+For component stylesheets, replace the last import with the components you use:
+
+```css
+@import '@soxa-ui/theme-oren/button.css';
+@import '@soxa-ui/theme-oren/input.css';
+@import '@soxa-ui/theme-oren/select.css';
+```
+
+Keep `useTheme(oren)` in your application setup as shown above. With Vite and the official
+`@tailwindcss/vite` plugin, import this entry once from your entry module, for example
+`import './styles.css'`. With Nuxt and that plugin, register the same entry:
+
+```ts
+import tailwindcss from '@tailwindcss/vite'
+
+export default defineNuxtConfig({
+  css: ['~/assets/css/styles.css'],
+  vite: { plugins: [tailwindcss()] },
+})
+```
+
+Remove any other full `@import 'tailwindcss'` entry: it places Preflight directly in `base`,
+where its `padding: 0` outranks the nested `base.so.button` and `base.so.select` rules. Moving
+imports around does not change that layer priority. The separate `reset` layer preserves Oren's
+control sizes and Select option padding, while `utilities` still overrides the theme.
+
+Set the page font on `html` or `body`. Avoid an unlayered global `button, input { font: inherit }`:
+it overrides the component font-size scale, including Input. This recipe covers layer ordering;
+arbitrary global rules and conflicting Tailwind theme tokens can still change the result.
+
+The [Vite + Vue consumer example](https://github.com/youra-h/soxa-ui/tree/main/tools/install-smoke/projects/vue-tailwind) builds both
+full and component stylesheets independently, with Preflight and Tailwind utilities.
+
 ### Your CSS wins
 
 Every rule of the theme lives in a cascade layer: the structure in Tailwind's layer `base`, the

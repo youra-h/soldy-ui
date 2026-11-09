@@ -1,0 +1,11 @@
+@layer theme, reset, base, components, utilities;
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/preflight.css' layer(reset);
+@import 'tailwindcss/utilities.css' layer(utilities);
+@import '@soxa-ui/theme-oren';
+
+html {
+	font-family: system-ui, sans-serif;
+	font-size: 16px;
+	line-height: 1.5;
+}

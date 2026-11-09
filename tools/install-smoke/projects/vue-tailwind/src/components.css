@@ -1,0 +1,16 @@
+@layer theme, reset, base, components, utilities;
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/preflight.css' layer(reset);
+@import 'tailwindcss/utilities.css' layer(utilities);
+@import '@soxa-ui/theme-oren/button.css';
+@import '@soxa-ui/theme-oren/input.css';
+@import '@soxa-ui/theme-oren/select.css';
+@import '@soxa-ui/theme-oren/dialog.css';
+@import '@soxa-ui/theme-oren/table.css';
+@import '@soxa-ui/theme-oren/date-picker.css';
+
+html {
+	font-family: system-ui, sans-serif;
+	font-size: 16px;
+	line-height: 1.5;
+}

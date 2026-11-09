@@ -1,4 +1,5 @@
 import { chromium } from 'playwright'
+import { tailwindProblems } from './tailwind-browser.ts'
 import type { Browser, ConsoleMessage, Page } from 'playwright'
 
 /**
@@ -238,6 +239,20 @@ export async function pageProblems(url: string, ssr: boolean): Promise<string[]>
 		return [
 			...(ssr ? await serverProblems(browser, url) : []),
 			...(await livePageProblems(browser, url)),
+		]
+	} finally {
+		await browser.close()
+	}
+}
+
+/** Both isolated CSS entries run the common smoke and the Tailwind geometry matrix. */
+export async function tailwindPageProblems(url: string): Promise<string[]> {
+	const browser = await chromium.launch()
+	try {
+		return [
+			...(await livePageProblems(browser, url)),
+			...(await livePageProblems(browser, new URL('components.html', url).href)),
+			...(await tailwindProblems(browser, url)),
 		]
 	} finally {
 		await browser.close()

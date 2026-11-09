@@ -621,7 +621,9 @@ npm run check:install -- --registry latest  # из реестра npm, а не �
 **Проекты** — `tools/install-smoke/projects/`, по одному на цель: Vite с
 каждым адаптером (`vue`, `react`, `svelte`, `solid`, `webc` — шаблон
 `vanilla-ts`), Angular CLI (`angular`), Nuxt, Next.js на App Router,
-SvelteKit с `adapter-node`, SolidStart и Angular SSR. Каждый — стартовый
+SvelteKit с `adapter-node`, SolidStart и Angular SSR. Отдельный `vue-tailwind` —
+Vite + Vue с официальным плагином Tailwind 4: независимые страницы полного и
+покомпонентного CSS Oren, Preflight в слое `reset` перед `base`. Каждый — стартовый
 проект официального генератора (`npm create vite`, `ng new`, `nuxi init`,
 `create-next-app`, `sv create`, шаблон `bare` SolidStart) с его диапазонами
 версий и без lock: прогон ставит свежие версии фреймворков внутри диапазонов,
@@ -704,6 +706,11 @@ SvelteKit с `adapter-node`, SolidStart и Angular SSR. Каждый — ста�
    гидратации клик повторяется), выбор доходит до поля, кнопка открывает
    Dialog, у корня `color-scheme` темы oren, у стрелки Select — иконка.
 
+У `vue-tailwind` Chromium дополнительно проверяет light/dark × LTR/RTL ×
+пять размеров Button/Input/Select: шрифт, высоту, поля и text-indent против
+Oren без Tailwind; приоритет utilities, сброс обычного HTML и выбор Select.
+Полный и покомпонентный CSS загружаются на разных страницах.
+
 Упавшая проверка типов сборку и страницу не останавливает — сборщик от неё не
 зависит, а дефект типов спрятал бы дефекты страницы; упавшие установка и
 сборка останавливают: запускать нечего.
@@ -712,8 +719,8 @@ SvelteKit с `adapter-node`, SolidStart и Angular SSR. Каждый — ста�
 `fail-fast: false`, Node 24 (его требует SolidStart 2). Пакеты задача
 собирает сама. Идёт на каждый PR и push в `main`, как остальные: проекты
 параллельны, и PR выпуска проходит её тоже — с тарболлами будущего выпуска.
-После публикации `.github/workflows/release.yml` отдельно гоняет все 11
-проектов с `--registry latest`: это проверка уже выложенных npm-пакетов.
+После публикации `.github/workflows/release.yml` отдельно гоняет все
+проекты с `--registry latest`: это проверка уже выложенных npm-пакетов.
 Ей не нужна сборка библиотеки; проект, его типы, сборка, сервер и Chromium
 проверяются тем же инструментом на Node 24.
 
