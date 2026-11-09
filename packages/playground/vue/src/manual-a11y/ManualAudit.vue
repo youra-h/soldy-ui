@@ -179,6 +179,25 @@ function download() {
 				Формулировки диктора могут отличаться: важны смысл, доступность управления и
 				сохранение контекста. Ничего не отмечается пройденным автоматически.
 			</p>
+			<p>
+				<strong>Повторная проверка, протокол 2.</strong> Для Select и Menu выключите
+				сканирование: Caps Lock + Space (или Insert + Space), пока не услышите «Сканирование
+				выключено». Для чтения ячеек Table используются команды диктора: Ctrl + Alt +
+				стрелки. В Table сначала включите сканирование и найдите таблицу клавишей T. Сайт не
+				может определить режим автоматически — запишите его в замечаниях.
+			</p>
+			<p>
+				<a
+					href="https://support.microsoft.com/ru-ru/accessibility/windows/narrator/appendix-b-narrator-keyboard-commands-and-touch-gestures"
+					target="_blank"
+					rel="noopener noreferrer"
+					>Команды Windows Narrator (руководство Microsoft, новая вкладка)</a
+				>
+			</p>
+			<p>
+				Это новый прогон: прежний отчёт сохранён отдельно. Ответы старого протокола не
+				подставляются как уже пройденные проверки.
+			</p>
 		</details>
 
 		<div class="audit-body">

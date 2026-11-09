@@ -31,7 +31,8 @@ export class TMenuPressStrategy implements IMenuOpenStrategy {
 		this._root.removeEventListener('click', this._onClick)
 	}
 
-	private readonly _onClick = (): void => {
-		this._host.toggle()
+	/** Keyboard and assistive-technology clicks have no physical click count. */
+	private readonly _onClick = (event: MouseEvent): void => {
+		this._host.toggle(event.detail === 0)
 	}
 }

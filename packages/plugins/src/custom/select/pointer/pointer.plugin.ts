@@ -122,6 +122,15 @@ export class TSelectPointerPlugin extends TBasePlugin<any, TSelectPointerPluginE
 
 	/** Toggle by the original arrow target in editable mode, or anywhere in select-only mode. */
 	private readonly _onClick = (event: MouseEvent): void => {
+		const root = this._root
+		if (event.detail === 0 && root && event.target instanceof Element) {
+			const field = fieldOf(root)
+			const stop = closestTabStop(event.target, root)
+			// Click-only activation has no pointerdown to move DOM focus into the field.
+			if ((!stop || stop === field) && isFocusableElement(field)) {
+				field.focus({ preventScroll: true })
+			}
+		}
 		const arrow = this._isArrow(event.target) || (this._touchArrow && event.detail > 0)
 		this._touchArrow = false
 		if (this._editable) {

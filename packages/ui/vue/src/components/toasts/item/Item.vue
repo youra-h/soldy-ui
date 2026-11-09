@@ -25,19 +25,13 @@ export default { ...SetupToastsItem, components: { Icon, Button, ProgressSpinner
 		v-bind="{ ...attrs, ...aria, ...dataset }"
 	>
 		<!--
-			Корень — место тоста в списке: высота места, сдвиг жеста, уход и
-			прозрачность (тема). На нём: вид сообщения — модификатор
-			`so-toasts-item--type-*` (нет вида — обычное сообщение), `data-open`
-			(с первой отрисовки; `false` — тост закрыт и гаснет), `data-swiping`
-			(тянут), роль `status` или `alert` для срочного, `tabindex` — фокус по
-			F8 и Escape на тосте под фокусом. Сдвиг во время жеста
-			(`--so-swipe-offset`) плагин жеста пишет сюда сам. Глубина в стопке
-			(`--so-toasts-depth`) — место тоста в составе, `order` фасада: в
-			стопке передний — первый.
+			The root carries the toast's position, animation and data-open state.
+			The ordinary list item inherits the manager's already mounted polite live
+			region; an urgent item has role="alert". Tabindex supports F8 focus and
+			Escape dismissal. The swipe plugin writes its offset here.
 
-			Плашка — то, что видно: поверхность, кромка, тень и кольцо фокуса
-			корня. Отдельный узел, а не корень: место растёт и схлопывается
-			переходом высоты без замеров, а плашка своего размера не меняет.
+			The card is a separate surface: the outer item's space can expand and
+			collapse while the card keeps its own dimensions.
 		-->
 		<div class="so-toasts-item__card">
 			<!--

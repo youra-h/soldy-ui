@@ -336,9 +336,13 @@ export default class TToastsItem<
 		return this._closeAria
 	}
 
-	/** Роль живой области: срочное — `alert`, остальное — `status`. */
+	/**
+	 * Polite additions belong to the manager's already mounted live region.
+	 * A new nested status can miss its initial announcement; urgent alerts
+	 * retain their implicit assertive announcement on insertion.
+	 */
 	protected _syncRole(): void {
-		this._aria.add('role', this._alert ? 'alert' : 'status')
+		this._aria.add('role', this._alert ? 'alert' : 'listitem')
 	}
 
 	protected _setSwiping(value: boolean): void {

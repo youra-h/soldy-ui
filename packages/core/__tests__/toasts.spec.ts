@@ -173,10 +173,10 @@ describe('тост (TToastsItem)', () => {
 		expect('variant' in toast).toBe(false)
 	})
 
-	it('роль status, у срочного — alert; смена alert меняет роль', () => {
+	it('ordinary item inherits polite announcements and alert toggles its role', () => {
 		const toast = new TToastsItem({ text: 'Сохранено' })
 
-		expect(toast.aria.get('role')).toBe('status')
+		expect(toast.aria.get('role')).toBe('listitem')
 
 		toast.alert = true
 

@@ -60,18 +60,18 @@ and how to report a barrier.
   names, for every component, in the core, the plugins and the adapters.
 - **Server rendering tests** check that `id` relations rendered on the server match those after
   hydration.
-- **Browser tests** run in real Chromium (Playwright): keyboard activation, focus management in
+- **Browser tests** run in real Chromium and WebKit (Playwright): keyboard activation, focus management in
   overlays, reduced motion, right-to-left layouts and forced colors (Windows high contrast) mode.
 - Every change goes through these tests in CI.
 
 ## Supported environments
 
-| Area               | Status                                                                                                                                    |
-| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| Browsers           | Current versions of evergreen browsers. Automated tests run in Chromium only.                                                             |
-| Framework adapters | Vue implements every component. React, Angular, Svelte, Solid and Web Components are in progress; see the [README](README.md#components). |
-| Screen readers     | Not covered by automated tests. Some behavior is tuned for VoiceOver on iOS, checked by hand.                                             |
-| Forced colors      | Supported by the `oren` theme and covered by browser tests.                                                                               |
+| Area               | Status                                                                                                                              |
+| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------- |
+| Browsers           | Automated tests run in Chromium and WebKit. This does not certify every browser or assistive-technology combination.                |
+| Framework adapters | Released components are available in all six adapters; see the [README](README.md#components).                                      |
+| Screen readers     | An owner-run Narrator + Chrome check is recorded below. Fixes await manual retesting; this run does not cover other screen readers. |
+| Forced colors      | Supported by the `oren` theme and covered by browser tests.                                                                         |
 
 ## Known limitations
 
@@ -82,13 +82,22 @@ Soxa UI is in early development (`0.x`), and the following is known today:
   is still to come.
 - **No automated screen reader testing.** Behavior with NVDA, JAWS, VoiceOver and TalkBack is not
   checked in CI.
-- **Browser tests run only in Chromium.** Firefox and Safari are not covered by automated tests.
-- **Adapters other than Vue are incomplete.** React has a subset of the components; Angular,
-  Svelte, Solid and Web Components have only Button so far.
-- **Locales and stable server `id`s are Vue- and React-only.** The other adapters do not provide
-  `LocaleProvider` yet and fall back to English strings, and they do not yet produce `id`s that
-  match between server and client.
-- **Menu is not implemented yet.**
+- **Screen-reader coverage is limited.** A recorded Narrator run covers Vue with a Russian locale on Windows 11. It does not establish behavior for other adapters, locales or screen readers.
+- **Automated browser coverage has limits.** Chromium and WebKit tests check behavior and semantics; they do not run a screen reader or replace testing Safari on an actual Apple device.
+
+## Recorded manual observations
+
+On 2026-11-09 the project owner tested 36 steps using Windows Narrator and
+Chrome 157.0.8103.38 on Windows 11, with Russian speech and the Vue adapter:
+26 steps were marked passed and 10 failed. The Narrator version and Windows
+build were not recorded. [Original observations and triage](benchmarks/ai/manual-narrator-2026-11-09.md)
+retain the failed results, including ambiguous successful marks.
+
+Follow-up fixes address click-only activation in Select and Menu and the
+initial insertion of ordinary toasts into a live region. Protocol v2 supplies
+explicit Narrator scan-mode and table-reading commands. These fixes have
+automated regression coverage, but their audible results are **awaiting
+manual retest**. No WCAG conformance claim follows from this run.
 
 ## Reporting a barrier
 

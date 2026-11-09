@@ -1,4 +1,4 @@
-export const PROTOCOL_VERSION = 1
+export const PROTOCOL_VERSION = 2
 
 export type Outcome = 'not-run' | 'passed' | 'failed' | 'unclear'
 export type Answer = { outcome: Outcome; speech: string; notes: string }
@@ -76,7 +76,7 @@ export const CASES: TestCase[] = [
 		steps: [
 			{
 				id: 'name',
-				action: 'Клавишей Tab войдите в поле выбора. Дождитесь речи.',
+				action: 'Отключите режим сканирования: Caps Lock + Space (или Insert + Space), до сообщения «Сканирование выключено». Клавишей Tab войдите в поле выбора. Дождитесь речи.',
 				expected:
 					'Понятны имя поля «Выбор варианта», его назначение и свёрнутое состояние.',
 			},
@@ -109,7 +109,7 @@ export const CASES: TestCase[] = [
 		steps: [
 			{
 				id: 'search',
-				action: 'Войдите Tab в поле. Напечатайте «Перв». Стрелкой вниз перейдите к варианту и нажмите Enter.',
+				action: 'Отключите режим сканирования: Caps Lock + Space (или Insert + Space), до сообщения «Сканирование выключено». Войдите Tab в поле. Напечатайте «Перв». Стрелкой вниз перейдите к варианту и нажмите Enter.',
 				expected:
 					'Имя поля и найденный вариант понятны на слух; после Enter появляется выбранное значение «Первый».',
 			},
@@ -142,7 +142,7 @@ export const CASES: TestCase[] = [
 		steps: [
 			{
 				id: 'open',
-				action: 'Перейдите Tab к кнопке «Действия», нажмите Enter. Пройдите пункты стрелками вниз/вверх.',
+				action: 'Отключите режим сканирования (Caps Lock + Space или Insert + Space, до сообщения «Сканирование выключено»). Перейдите Tab к кнопке «Действия», нажмите Enter. Пройдите пункты стрелками вниз/вверх.',
 				expected:
 					'Объявляется меню; названия и типы пунктов понятны, перемещение озвучивается.',
 			},
@@ -154,7 +154,7 @@ export const CASES: TestCase[] = [
 			},
 			{
 				id: 'submenu',
-				action: 'Найдите «Поделиться». Откройте ArrowRight, пройдите пункты, вернитесь ArrowLeft.',
+				action: 'При выключенном сканировании найдите «Поделиться». В этом примере письмо слева направо: ArrowRight открывает подменю, ArrowLeft возвращает к «Поделиться». Пройдите несколько пунктов подменю и вернитесь.',
 				expected:
 					'Понятно наличие подменю; его пункты озвучиваются. Возврат приводит к «Поделиться», а не теряет фокус.',
 			},
@@ -208,15 +208,15 @@ export const CASES: TestCase[] = [
 		steps: [
 			{
 				id: 'read',
-				action: 'Командами чтения диктора найдите таблицу «Сотрудники» и прочитайте заголовки и две строки.',
+				action: 'Включите сканирование (Caps Lock + Space или Insert + Space, до сообщения «Сканирование включено»). Найдите таблицу клавишей T. Используйте Ctrl + Alt + ArrowRight/ArrowLeft для ячеек строки, Ctrl + Alt + ArrowDown/ArrowUp для строк. Прочитайте заголовки и две строки; Tab здесь только для кнопок и флажков.',
 				expected:
 					'Понятны имя таблицы, заголовки и значения. При перемещении между ячейками сохраняется контекст строки и колонки.',
 			},
 			{
 				id: 'sort',
-				action: 'Клавишей Tab найдите сортируемый заголовок и активируйте Enter дважды, каждый раз дожидаясь речи.',
+				action: 'Выключите сканирование для управления кнопкой. Клавишей Tab найдите кнопку сортировки и активируйте Enter дважды, дожидаясь речи. Запишите направление и язык объявления; ascending означает «по возрастанию», descending — «по убыванию».',
 				expected:
-					'Можно понять название сортируемой колонки и направление сортировки после изменения.',
+					'Можно понять название колонки и направление после каждого изменения. Слова ascending/descending — стандартные состояния ARIA: язык их озвучивания зависит от диктора/браузера. Если направление остаётся непонятным, отметьте проблему и запишите фразу.',
 			},
 			{
 				id: 'row',
@@ -309,7 +309,7 @@ export const emptyEnvironment = (): Environment => ({
 })
 export const emptyAnswer = (): Answer => ({ outcome: 'not-run', speech: '', notes: '' })
 export const answerKey = (caseId: string, stepId: string): string => `${caseId}/${stepId}`
-export const STORAGE_KEY = 'soxa-manual-a11y-v1'
+export const STORAGE_KEY = 'soxa-manual-a11y-v2'
 
 export function restoreDraft(text: string | null): {
 	environment: Environment

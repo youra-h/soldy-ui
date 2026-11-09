@@ -558,7 +558,7 @@ describe('Toasts · ARIA', () => {
 		expect(region().style.zIndex).toBe(region().dataset.layer)
 	})
 
-	it('тост — status, срочный — alert; фокусируемый; крестик назван текстом', async () => {
+	it('ordinary toast is a list item; urgent toast is an alert; focus and close name are preserved', async () => {
 		const { show } = render()
 
 		show('Сохранено')
@@ -568,7 +568,7 @@ describe('Toasts · ARIA', () => {
 		const [urgent, polite] = toasts()
 
 		expect(urgent?.getAttribute('role')).toBe('alert')
-		expect(polite?.getAttribute('role')).toBe('status')
+		expect(polite?.getAttribute('role')).toBe('listitem')
 		expect(polite?.getAttribute('tabindex')).toBe('0')
 		expect(polite?.dataset.open).toBe('true')
 		expect(polite?.dataset.swiping).toBe('false')

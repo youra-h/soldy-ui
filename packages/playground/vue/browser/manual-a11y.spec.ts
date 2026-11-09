@@ -84,3 +84,59 @@ describe('manual accessibility worksheet', () => {
 		await expect.poll(() => document.activeElement?.textContent?.trim()).toBe('Открыть окно')
 	})
 })
+
+describe('screen-reader activation and live announcements', () => {
+	it.each([
+		['Select — выбор одного значения', 'Выбор варианта'],
+		['Select — поиск и несколько значений', 'Несколько вариантов'],
+	])('focuses %s when activation has no pointerdown or keydown', async (title, name) => {
+		render(ManualAudit)
+		await userEvent.click(page.getByRole('button', { name: new RegExp(title) }))
+		await userEvent.click(page.getByRole('button', { name: 'К началу примера', exact: true }))
+		const input = page.getByRole('combobox', { name, exact: true }).element()
+		await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()))
+		// AT activation is delivered as a click without the browser's pointer focus action.
+		input.dispatchEvent(new MouseEvent('click', { bubbles: true, detail: 0 }))
+		await expect.poll(() => document.activeElement).toBe(input)
+		await userEvent.keyboard('{ArrowDown}')
+		await expect
+			.element(page.getByRole('option', { name: 'Первый', exact: true }))
+			.toBeVisible()
+		await userEvent.keyboard('{Escape}')
+		await expect
+			.poll(() => document.querySelector('.so-select__panel')?.getClientRects().length ?? 0)
+			.toBe(0)
+	})
+
+	it('enters the first menu item and submenu item on click-only activation', async () => {
+		render(ManualAudit)
+		await userEvent.click(page.getByRole('button', { name: /Menu — меню/ }))
+		const trigger = page.getByRole('button', { name: 'Действия', exact: true }).element()
+		await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()))
+		trigger.dispatchEvent(new MouseEvent('click', { bubbles: true, detail: 0 }))
+		await expect
+			.poll(() => document.activeElement?.getAttribute('role'))
+			.toBe('menuitemcheckbox')
+		const submenu = page.getByRole('menuitem', { name: 'Поделиться', exact: true }).element()
+		submenu.dispatchEvent(new MouseEvent('click', { bubbles: true, detail: 0 }))
+		await expect.poll(() => document.activeElement?.textContent?.trim()).toBe('Ссылка')
+		await userEvent.keyboard('{ArrowLeft}')
+		await expect.poll(() => document.activeElement?.textContent?.trim()).toBe('Поделиться')
+	})
+
+	it('adds polite content to the existing live region instead of inserting a new live region', async () => {
+		render(ManualAudit)
+		await userEvent.click(page.getByRole('button', { name: /Toasts — уведомления/ }))
+		const region = document.querySelector('.so-toasts')
+		expect(region?.getAttribute('aria-live')).toBe('polite')
+		await userEvent.click(page.getByRole('button', { name: 'обычное', exact: true }))
+		const toast = document.querySelector('.so-toasts-item')
+		expect(toast?.getAttribute('role')).toBe('listitem')
+		expect(toast?.closest('[aria-live]')).toBe(region)
+		expect(region?.querySelector('[role="status"]')).toBeNull()
+		await userEvent.click(page.getByRole('button', { name: 'error', exact: true }))
+		await expect
+			.poll(() => document.querySelector('.so-toasts [role="alert"]')?.textContent)
+			.toContain('Нет сети')
+	})
+})
