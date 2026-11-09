@@ -39,12 +39,21 @@ test('axe waits for finite fades, ignores infinite motion, and still reports sta
 				),
 			)
 		await waitForVisualSettling(page, 2000)
+		const contrast = await page.evaluate(async () => {
+			const result = await window.axe.run()
+			return {
+				violations: result.violations,
+				incomplete: result.incomplete,
+				style: {
+					color: getComputedStyle(document.querySelector('main p:last-child')).color,
+					background: getComputedStyle(document.querySelector('main p:last-child'))
+						.backgroundColor,
+				},
+			}
+		})
 		assert(
-			(
-				await page.evaluate(async () =>
-					(await window.axe.run()).violations.map((v) => v.id),
-				)
-			).includes('color-contrast'),
+			contrast.violations.some((violation) => violation.id === 'color-contrast'),
+			JSON.stringify(contrast),
 		)
 	} finally {
 		await browser.close()

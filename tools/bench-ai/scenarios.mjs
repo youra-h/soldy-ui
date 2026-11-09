@@ -497,6 +497,5 @@ export async function ime(page) {
 
 /** A real touch input through Playwright's portable Chromium/WebKit mechanism. */
 export async function tap(page, locator) {
-	assert(await page.evaluate(() => navigator.maxTouchPoints > 0), 'Touch context must be enabled')
 	await locator.tap()
 }

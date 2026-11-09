@@ -42,7 +42,6 @@ jobs:
       - name: Исследовательский baseline — failed cells сохраняются
         run: node tools/bench-ai/ci.mjs
       - name: Сохранённые AI samples — failed cells сохраняются
-        if: ${{ !cancelled() }}
         run: node tools/bench-ai/ci.mjs benchmarks/ai/inputs/cli-2026-11-09-v1
       - uses: actions/upload-artifact@v4
         if: always()
