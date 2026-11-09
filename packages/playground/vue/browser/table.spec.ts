@@ -49,7 +49,7 @@ import {
 	systemColor,
 } from './colors'
 import { forcedColors } from './media'
-import { forcedColorsRepaint, hoverAfterCapture, touchInput } from './engine'
+import { forcedColorsRepaint, hoverAfterCapture, continuousTouch } from './engine'
 import {
 	delayOf,
 	pausedPseudoTransition,
@@ -1163,28 +1163,31 @@ describe('перестановка колонок', () => {
 	 * the root. The drag is a DevTools protocol command (`commands.touchDrag`), from
 	 * the header's middle past the neighbour's middle.
 	 */
-	it.runIf(touchInput)('пальцем — колонка на новом месте, column:move один раз', async () => {
-		const engine = moveEngine()
-		const moves: string[][] = []
+	it.runIf(continuousTouch)(
+		'пальцем — колонка на новом месте, column:move один раз',
+		async () => {
+			const engine = moveEngine()
+			const moves: string[][] = []
 
-		engine.extensions.columns.events.on('column:move', ({ order }) => moves.push(order))
-		await mount(engine, PLACE)
-		await laidOut()
+			engine.extensions.columns.events.on('column:move', ({ order }) => moves.push(order))
+			await mount(engine, PLACE)
+			await laidOut()
 
-		const [name, city] = headers()
+			const [name, city] = headers()
 
-		await commands.touchDrag(
-			'.so-table-column:first-child',
-			middleOf(city).x + 10 - middleOf(name).x,
-			0,
-		)
+			await commands.touchDrag(
+				'.so-table-column:first-child',
+				middleOf(city).x + 10 - middleOf(name).x,
+				0,
+			)
 
-		await expect.poll(() => fieldsOf(engine)).toEqual(['city', 'name', 'age'])
-		expect(moves).toEqual([['city', 'name', 'age']])
-		await expect
-			.poll(() => headers().map((header) => header.textContent?.trim()))
-			.toEqual(['Город', 'Имя', 'Возраст'])
-	})
+			await expect.poll(() => fieldsOf(engine)).toEqual(['city', 'name', 'age'])
+			expect(moves).toEqual([['city', 'name', 'age']])
+			await expect
+				.poll(() => headers().map((header) => header.textContent?.trim()))
+				.toEqual(['Город', 'Имя', 'Возраст'])
+		},
+	)
 
 	/**
 	 * While a header is carried — the "grabbing" cursor and no selection over the

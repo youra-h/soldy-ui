@@ -43,8 +43,16 @@
 }
 
 .so-tabs {
+	min-width: 0;
 	display: flex;
 	width: 100%;
+}
+
+/* Keep a long tab row reachable inside its own viewport on narrow screens. */
+.so-tabs--orientation-horizontal > .so-tabs__bar {
+	min-width: 0;
+	overflow-x: auto;
+	overflow-y: hidden;
 }
 
 .so-tabs--orientation-horizontal {

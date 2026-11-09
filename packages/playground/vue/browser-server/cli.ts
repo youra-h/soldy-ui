@@ -5,7 +5,7 @@ import { createServer } from 'node:net'
 import { dirname, resolve } from 'node:path'
 import { setTimeout as wait } from 'node:timers/promises'
 import { parseCLI, startVitest } from 'vitest/node'
-import { dockerRunArgs, LISTENING, serverEndpoint, serverImage } from './server.ts'
+import { dockerRunArgs, LISTENING, serverEndpoint, serverImage, webkitProjects } from './server.ts'
 import type { TLock } from './server.ts'
 
 /**
@@ -25,9 +25,6 @@ import type { TLock } from './server.ts'
 const ROOT = resolve(import.meta.dirname, '..')
 const CONFIG = resolve(ROOT, 'vitest.browser.config.ts')
 const LOCK = resolve(ROOT, '../../../package-lock.json')
-
-/** The WebKit project of the config: `<test.name> (<browser>)`. */
-const PROJECT = 'layout (webkit)'
 
 /** How long the server may take to start, ms. */
 const START_TIMEOUT = 60_000
@@ -103,7 +100,7 @@ try {
 		root: ROOT,
 		config: CONFIG,
 		watch: false,
-		project: [PROJECT],
+		project: webkitProjects(options.project),
 		// The pages are opened at this address, and in the container it leads to
 		// the proxy (`proxy.ts`). An IPv4 address, not `localhost`: Node takes
 		// `localhost` for `::1` here, and Docker Desktop delivers to `127.0.0.1`

@@ -99,3 +99,14 @@ export function serverEndpoint(port: number): string {
 
 /** The line the server prints once it accepts connections. */
 export const LISTENING = 'Listening on '
+
+/** Keep the Windows Docker run aligned with the engine's desktop and mobile projects. */
+export function webkitProjects(requested?: string | readonly string[]): string[] {
+	const projects = ['layout (webkit)', 'layout mobile (webkit)']
+	if (typeof requested === 'string') requested = [requested]
+	if (!requested?.length) return projects
+	for (const name of requested) {
+		if (!projects.includes(name)) throw new Error('Not a WebKit project: ' + name)
+	}
+	return [...requested]
+}

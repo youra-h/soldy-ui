@@ -29,7 +29,7 @@ import { COLLECTION_ITEMS } from '@soxa-ui/playground-shared'
 import { FRAMEWORKS } from '../src/hosts'
 import { router } from '../src/router'
 import { renderStand } from './stand'
-import { touchInput } from './engine'
+import { continuousTouch } from './engine'
 
 import '@soxa-ui/theme-oren'
 import '../src/styles.css'
@@ -174,7 +174,7 @@ describe('перестановка мышью', () => {
  * нажатие (`TDragPlugin`, 450 мс). Касание, сразу ушедшее в сторону, —
  * прокрутка, и элемент остаётся на месте.
  */
-describe.runIf(touchInput)('перестановка пальцем', () => {
+describe.runIf(continuousTouch)('перестановка пальцем', () => {
 	/** Сколько палец стоит до первого шага: дольше долгого нажатия плагина. */
 	const HOLD = 700
 

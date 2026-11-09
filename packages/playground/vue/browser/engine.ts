@@ -4,7 +4,7 @@
  * Every spec runs in Chromium and in WebKit, the engine of Safari and of
  * every browser on iOS (`vitest.browser.config.ts`). A check of what an engine
  * doesn't have by its nature is skipped there explicitly, by one of the names
- * below — `describe.runIf(touchInput)(…)`, or `context.skip(!touchInput)`
+ * below — `describe.runIf(continuousTouch)(…)`, or `context.skip(!continuousTouch)`
  * inside a test — and the name's comment says why.
  * What an engine has but the library gets wrong there is not skipped: it is
  * fixed, and until then it is skipped with the task that fixes it
@@ -16,14 +16,14 @@ import { server } from 'vitest/browser'
 const chromium = server.browser === 'chromium'
 const webkit = server.browser === 'webkit'
 
-/**
- * A finger and an IME composition: the `tap`, `touchDrag` and `compose`
- * commands go through the DevTools protocol, which only Chromium has.
- * Playwright touches WebKit only in a context with `hasTouch`, and that would
- * turn every spec into a touch device: touch in WebKit is the mobile run's
- * (task 869fjcb0p).
- */
-export const touchInput = chromium
+/** Native tap in mobile contexts; CDP on desktop Chromium. */
+export const tapInput = chromium || 'ontouchstart' in window
+
+/** Continuous gestures require CDP: WebKit touchscreen exposes tap only. */
+export const continuousTouch = chromium
+
+/** IME composition requires CDP independently of touch support. */
+export const imeComposition = chromium
 
 /**
  * Scrollbars that take room on the page. Chromium draws classic ones in the

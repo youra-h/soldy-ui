@@ -16,7 +16,7 @@
 import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { render, cleanup } from './render'
 import { commands, userEvent } from 'vitest/browser'
-import { touchInput } from './engine'
+import { imeComposition } from './engine'
 import { defineComponent, h, nextTick } from 'vue'
 import { COMPONENT_SIZES } from '@soxa-ui/playground-shared'
 import { ListBox, ListBoxItem, Select, SelectItem } from '@soxa-ui/vue'
@@ -617,7 +617,7 @@ describe('выключенная опция', () => {
 	})
 })
 
-describe.runIf(touchInput)('IME composition', () => {
+describe.runIf(imeComposition)('IME composition', () => {
 	it.each([
 		['multiple', 'filter'],
 		['multiple', 'search'],
