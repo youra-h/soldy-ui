@@ -60,18 +60,19 @@ and how to report a barrier.
   names, for every component, in the core, the plugins and the adapters.
 - **Server rendering tests** check that `id` relations rendered on the server match those after
   hydration.
-- **Browser tests** run in real Chromium and WebKit (Playwright): keyboard activation, focus management in
-  overlays, reduced motion, right-to-left layouts and forced colors (Windows high contrast) mode.
+- **Browser tests** run in real Chromium and WebKit (Playwright): keyboard activation, focus
+  management in overlays, reduced motion and right-to-left layouts. Forced colors (Windows high
+  contrast) repaint checks run in Chromium.
 - Every change goes through these tests in CI.
 
 ## Supported environments
 
-| Area               | Status                                                                                                                              |
-| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------- |
-| Browsers           | Automated tests run in Chromium and WebKit. This does not certify every browser or assistive-technology combination.                |
-| Framework adapters | Released components are available in all six adapters; see the [README](README.md#components).                                      |
-| Screen readers     | An owner-run Narrator + Chrome check is recorded below. Fixes await manual retesting; this run does not cover other screen readers. |
-| Forced colors      | Supported by the `oren` theme and covered by browser tests.                                                                         |
+| Area               | Status                                                                                                                                                                                                 |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Browsers           | Current evergreen browsers; see the [support policy](README.md#supported-environments). Automated tests run in Chromium and WebKit; these tests do not certify every assistive-technology combination. |
+| Framework adapters | Released components are available in all six adapters; see the [README](README.md#components).                                                                                                         |
+| Screen readers     | An owner-run Narrator + Chrome check is recorded below. Fixes await manual retesting; this run does not cover other screen readers.                                                                    |
+| Forced colors      | Supported by the `oren` theme and covered by browser tests.                                                                                                                                            |
 
 ## Known limitations
 
@@ -83,7 +84,7 @@ Soxa UI is in early development (`0.x`), and the following is known today:
 - **No automated screen reader testing.** Behavior with NVDA, JAWS, VoiceOver and TalkBack is not
   checked in CI.
 - **Screen-reader coverage is limited.** A recorded Narrator run covers Vue with a Russian locale on Windows 11. It does not establish behavior for other adapters, locales or screen readers.
-- **Automated browser coverage has limits.** Chromium and WebKit tests check behavior and semantics; they do not run a screen reader or replace testing Safari on an actual Apple device.
+- **Automated browser coverage has limits.** Firefox is not in the automated matrix. Chromium and WebKit tests check behavior and semantics, with engine-specific skips; they do not run a screen reader or replace testing Safari on a physical device.
 
 ## Recorded manual observations
 
