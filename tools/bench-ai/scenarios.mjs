@@ -23,6 +23,22 @@ export function calendarDayName(language, day) {
 }
 export const tableWidget = (page) =>
 	page.getByRole('table', { name: 'Records' }).or(page.getByRole('grid', { name: 'Records' }))
+
+/** Column semantics stay the same when the declared locale translates their names. */
+export function tableColumnName(field, language = 'en') {
+	const translations = {
+		ar: { name: ['الاسم', 'اسم'], score: ['النتيجة', 'الدرجة', 'النقاط'] },
+		ru: { name: ['Имя', 'Название'], score: ['Баллы', 'Оценка', 'Счёт'] },
+	}
+	const english = { name: 'Name', score: 'Score' }
+	const names = [english[field], ...(translations[language.split('-')[0]]?.[field] ?? [])]
+	return new RegExp(names.join('|'), 'iu')
+}
+
+const tableLanguage = (page) =>
+	page.evaluate(
+		() => document.querySelector('main')?.lang || document.documentElement.lang || 'en',
+	)
 async function calendarOpened(page) {
 	await page.getByRole('dialog').waitFor({ state: 'visible' })
 	await page.getByRole('grid').waitFor({ state: 'visible' })
@@ -335,12 +351,15 @@ export async function scenario(component, page, count = 100) {
 		)
 	} else if (component === 'table') {
 		const table = tableWidget(page)
+		const language = await tableLanguage(page)
 		assert(
-			await table.getByRole('columnheader', { name: /Score/ }).isVisible(),
+			await table
+				.getByRole('columnheader', { name: tableColumnName('score', language) })
+				.isVisible(),
 			'Table must include the Score column',
 		)
 		if ((await table.getAttribute('role')) === 'grid') await gridKeyboard(page, table)
-		const heading = table.getByRole('columnheader', { name: /Name/ })
+		const heading = table.getByRole('columnheader', { name: tableColumnName('name', language) })
 		const controls = heading.getByRole('button')
 		const sort = (await controls.count()) ? controls.first() : heading
 		await sort.click()
@@ -432,7 +451,9 @@ async function scrollToEnd(page) {
 }
 export async function lastTableRecord(page) {
 	const table = tableWidget(page)
-	const heading = table.getByRole('columnheader', { name: /Name/ })
+	const heading = table.getByRole('columnheader', {
+		name: tableColumnName('name', await tableLanguage(page)),
+	})
 	const direction = await heading.getAttribute('aria-sort')
 	assert(
 		['ascending', 'descending'].includes(direction),
@@ -440,7 +461,7 @@ export async function lastTableRecord(page) {
 	)
 	const expected = direction === 'ascending' ? 'Record 10000' : 'Record 00001'
 	await scrollToEnd(page)
-	const last = table.getByRole('row').filter({ hasText: expected })
+	const last = table.getByRole('row').filter({ has: page.getByText(expected, { exact: true }) })
 	await eventually(
 		() => last.isVisible(),
 		'Last logical record must remain reachable in the current sort direction',

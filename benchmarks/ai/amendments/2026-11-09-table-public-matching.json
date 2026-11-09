@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-09T10:17:14.671Z",
+  "type": "post-observation-public-table-matching-repair",
+  "previousAmendment": "2026-11-09-linux-touch-diagnostic.json",
+  "beforeCandidateSourceInspection": true,
+  "beforeCandidateResultInspection": false,
+  "evidence": {
+    "cohort": "../runs/linux-ci-42595947092",
+    "duplicateRows": [
+      "Select Record 00001, record 10000 Record 00001 0",
+      "Select Record 10000, record 1 Record 10000 0"
+    ],
+    "localizedHeaders": {
+      "model1": [
+        "?????",
+        "???????"
+      ],
+      "model2": [
+        "?????",
+        "??????"
+      ]
+    }
+  },
+  "reason": "Actual DOM/accessibility evidence exposed two matcher faults. Case-insensitive substring hasText matched a hidden row ordinal as if it were the record name. English-only header locators rejected semantic Arabic Name/Score translations under the declared locale prop. These observations do not prove component defects.",
+  "matchingChanges": [
+    "Find the row containing exact record data text; keep unique row, selection, sort and logical-size assertions unchanged",
+    "Recognize public semantic column names using a visible en/ru/ar glossary with English fallback; keep required Name and Score columns, sort effects and select-all checks"
+  ],
+  "glossary": {
+    "en": {
+      "name": [
+        "Name"
+      ],
+      "score": [
+        "Score"
+      ]
+    },
+    "ar": {
+      "name": [
+        "?????",
+        "???"
+      ],
+      "score": [
+        "???????",
+        "??????",
+        "??????"
+      ]
+    },
+    "ru": {
+      "name": [
+        "???",
+        "????????"
+      ],
+      "score": [
+        "?????",
+        "??????",
+        "????"
+      ]
+    }
+  },
+  "oldHashes": {
+    "tools/bench-ai/run.mjs": "7350df825e247cca4c718ff77138861ae4180fd0138542b24fe6fe414101681c",
+    "tools/bench-ai/scenarios.mjs": "d8b9bd1679ce90ee4e776a6e4f2be13f863a041f28149d4526eee46db00cbadb",
+    "tools/bench-ai/Page.vue": "d8b1ea11983263f8061c35ab44626c233a9dec088e1ed1132dcc7698b9499a10",
+    "tools/bench-ai/Soxa.vue": "0f38dad51907e7babfd85c1292ab52388a10c698aa2aab2f755383cf1609138e",
+    "tools/bench-ai/data.mjs": "e1cd0c74fd00706db44626dde49fd4c85baa5dd5f3d12e7a5a2b8f7e120bb722",
+    "tools/bench-ai/vite.config.ts": "2cb97aeed2875cfc20a7809e861fe093a1306f3627b9c65a89aae584948c9f93",
+    "tools/bench-ai/client.mjs": "fbdee049c6ddda286f7efb02509086c76406dac143bd992a01bcf761a2a27d94",
+    "tools/bench-ai/server.mjs": "5e68c69fb351b096f2d89a93b6ee0153fe2dce76e8efa930fd4f73bb7c1c170e",
+    "tools/bench-ai/setup.mjs": "ce7d2a8b8f99e63a9e406f9b0e6d72778d70a9948fd0438467deb1291cbd01b6",
+    "tools/bench-ai/protocol.mjs": "c64de0455c9d48ec8b8f2ba09b82f03bc0203d1ccb349ea3c253048c248c4851",
+    "tools/bench-ai/environment.mjs": "037ab34a339bbaae662b039085d771f1272d54136c84b86c2718e4f8f85120fa",
+    "tools/bench-ai/batch.mjs": "3cb40bf90bcbe18afbaffdc41beb95c3e0c4fea9b41f60720cf27787faf1d112",
+    "tools/bench-ai/ci.mjs": "6fd3b0212ea0f1679bd9b517816b9b1817dddd6114be14d13b1f593f96e54a42",
+    ".github/workflows/bench-validation.yml": "e6e7a7ef0a041becd279036421a0de455552ed161ce82b8a3e9dddd1543b2f0a",
+    "tools/bench-ai/document.mjs": "4c0fcfc62b9a41968044ed6888fe62ed3dd9c3dd5e1f98939b01e62446a6cff0",
+    "tools/bench-ai/settle.mjs": "f77a150ba36391788ecc2305a6da6178eaa98e8adca8abce62f82dd9f364b0c6",
+    "tools/bench-ai/export.mjs": "dade781aca4a15cdeb033aa0ffc536a8e29eed1c7f5836e514c5933c92fc02b6",
+    "tools/bench-ai/integrity.mjs": "a84be7b5e4be8ae40a12f846d83c5c7823da56f558675441dac43af5c1276f9d"
+  },
+  "newHashes": {
+    "tools/bench-ai/run.mjs": "7350df825e247cca4c718ff77138861ae4180fd0138542b24fe6fe414101681c",
+    "tools/bench-ai/scenarios.mjs": "b911d28cbaf29a156c0854d4842dc8c1a1a18824b94e252e9485c5fbedfda47a",
+    "tools/bench-ai/Page.vue": "d8b1ea11983263f8061c35ab44626c233a9dec088e1ed1132dcc7698b9499a10",
+    "tools/bench-ai/Soxa.vue": "0f38dad51907e7babfd85c1292ab52388a10c698aa2aab2f755383cf1609138e",
+    "tools/bench-ai/data.mjs": "e1cd0c74fd00706db44626dde49fd4c85baa5dd5f3d12e7a5a2b8f7e120bb722",
+    "tools/bench-ai/vite.config.ts": "2cb97aeed2875cfc20a7809e861fe093a1306f3627b9c65a89aae584948c9f93",
+    "tools/bench-ai/client.mjs": "fbdee049c6ddda286f7efb02509086c76406dac143bd992a01bcf761a2a27d94",
+    "tools/bench-ai/server.mjs": "5e68c69fb351b096f2d89a93b6ee0153fe2dce76e8efa930fd4f73bb7c1c170e",
+    "tools/bench-ai/setup.mjs": "ce7d2a8b8f99e63a9e406f9b0e6d72778d70a9948fd0438467deb1291cbd01b6",
+    "tools/bench-ai/protocol.mjs": "c64de0455c9d48ec8b8f2ba09b82f03bc0203d1ccb349ea3c253048c248c4851",
+    "tools/bench-ai/environment.mjs": "037ab34a339bbaae662b039085d771f1272d54136c84b86c2718e4f8f85120fa",
+    "tools/bench-ai/batch.mjs": "3cb40bf90bcbe18afbaffdc41beb95c3e0c4fea9b41f60720cf27787faf1d112",
+    "tools/bench-ai/ci.mjs": "6fd3b0212ea0f1679bd9b517816b9b1817dddd6114be14d13b1f593f96e54a42",
+    ".github/workflows/bench-validation.yml": "e6e7a7ef0a041becd279036421a0de455552ed161ce82b8a3e9dddd1543b2f0a",
+    "tools/bench-ai/document.mjs": "4c0fcfc62b9a41968044ed6888fe62ed3dd9c3dd5e1f98939b01e62446a6cff0",
+    "tools/bench-ai/settle.mjs": "f77a150ba36391788ecc2305a6da6178eaa98e8adca8abce62f82dd9f364b0c6",
+    "tools/bench-ai/export.mjs": "dade781aca4a15cdeb033aa0ffc536a8e29eed1c7f5836e514c5933c92fc02b6",
+    "tools/bench-ai/integrity.mjs": "a84be7b5e4be8ae40a12f846d83c5c7823da56f558675441dac43af5c1276f9d"
+  },
+  "test": {
+    "file": "tools/bench-ai/__tests__/table-selectors.test.mjs",
+    "sha256": "cd6150ec43f69fd5e5b2e787a842a3a51154d763bd5104b0ba5215c4459c2af9",
+    "scope": "Exact data vs hidden ordinal with selection negative control; real RTL scenario with all glossary variants; missing score still rejected"
+  },
+  "validation": "Node syntax and targeted ESLint passed. Browser fixtures will execute on Linux CI; no local browser/build/test was run during performance timing.",
+  "limits": "This is a documented protocol matching amendment after prior results were observed, not a claim that every final matcher was fixed before generation. No generated source, prompt, process bound or model selection changed.",
+  "rerun": "All 11 subjects in both engines under this same amended harness. Earlier cohorts remain intact for diagnostics; the final report uses the new complete cohort rather than mixing selected cells."
+}
