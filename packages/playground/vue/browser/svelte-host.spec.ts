@@ -192,7 +192,8 @@ async function openedBoxesOf(
 		throw new Error(`${framework}/${component}: в сцене нет: ${opener.name}`)
 	}
 
-	target.click()
+	// Measure the pointer path: click-only AT activation now focuses and may scroll the page.
+	target.dispatchEvent(new MouseEvent('click', { bubbles: true, detail: 1 }))
 	await settle()
 	await Promise.all(document.getAnimations().map((animation) => animation.finished))
 
