@@ -47,7 +47,12 @@
     "test:layout:webkit": "npm run build:css --workspace=@soxa-ui/theme-oren && npm run test:browser:webkit --workspace=@soxa-ui/playground-vue --",
     "test:parity": "npm run build:css --workspace=@soxa-ui/theme-oren && node tools/bench-pages/parity.mjs && node tools/bench-pages/parity-report.mjs",
     "compare:styles": "npm run compare:styles --workspace=@soxa-ui/playground-vue --",
-    "check:public-api": "vitest run --root tools/public-api"
+    "check:public-api": "vitest run --root tools/public-api",
+    "generate:api": "tsx --tsconfig packages/setup/tsconfig.json tools/api-docs/cli.ts",
+    "check:api-docs": "npm run generate:api -- --check",
+    "test:api-docs": "vitest run --root tools/api-docs",
+    "typecheck:api-docs": "tsc --noEmit -p tools/api-docs/tsconfig.json",
+    "check:api-package": "npm run generate:api -- --check-package"
   },
   "devDependencies": {
     "@changesets/cli": "^3.0.3",
@@ -70,6 +75,7 @@
     "prettier": "3.9.10",
     "semver": "^7.8.5",
     "svelte-eslint-parser": "^1.8.1",
+    "tsx": "^4.23.15",
     "typescript": "~6.0.2",
     "vite": "^8.2.2",
     "vite-svg-loader": "^5.1.3",

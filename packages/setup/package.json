@@ -30,7 +30,8 @@
     ".": {
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
-    }
+    },
+    "./api.json": "./dist/api.json"
   },
   "files": [
     "dist"
@@ -40,7 +41,7 @@
     "@soxa-ui/plugins": "0.3.0-beta.1"
   },
   "scripts": {
-    "build": "vite build -c vite.lib.config.ts && tsc -p tsconfig.build.json",
+    "build": "vite build -c vite.lib.config.ts && tsc -p tsconfig.build.json && tsx --tsconfig tsconfig.json ../../tools/api-docs/cli.ts --package",
     "test": "vitest run"
   }
 }
