@@ -2,6 +2,8 @@ import type { IMenuSubmenu } from '@soxa-ui/core'
 import type { IPluginContext } from '../../../base'
 import { TElementPlugin } from '../../element'
 import { rowIn } from '../../list/row'
+import { isFocusableElement } from '../../../utils'
+import type { IDomEventTarget } from '../../../utils'
 import { TMenuNavigationPlugin } from '../navigation'
 import type { TMenuSubmenuKeyboardPluginEvents } from './types'
 
@@ -45,21 +47,45 @@ export class TMenuSubmenuKeyboardPlugin extends TMenuNavigationPlugin<TMenuSubme
 		const elementPlugin = ctx.get(TElementPlugin)
 
 		elementPlugin?.events.on('ready', (element) => {
-			this._root = element
+			this._bindRoot(element)
 		})
 		elementPlugin?.events.on('removed', () => {
-			this._root = null
+			this._bindRoot(null)
 		})
 	}
 
 	override destroy(): void {
 		this._submenu = null
-		this._root = null
+		this._bindRoot(null)
 
 		super.destroy()
 	}
 
-	/** Клавиши строки пункта: открыть подменю на первом пункте. */
+	/** A screen reader can activate the row without sending a keydown. */
+	private readonly _onClick = (event: MouseEvent): void => {
+		const row = this._root && rowIn(this._root)
+
+		if (event.detail !== 0 || this._submenu?.disabled || !row) return
+		if (event.target !== row) return
+
+		if (isFocusableElement(row)) row.focus({ preventScroll: true })
+
+		this.openAt('first')
+	}
+
+	private _bindRoot(root: Element | null): void {
+		const previous: IDomEventTarget | null = this._root
+
+		previous?.removeEventListener('click', this._onClick, true)
+
+		this._root = root
+
+		const target: IDomEventTarget | null = root
+
+		target?.addEventListener('click', this._onClick, true)
+	}
+
+	/** Keys on the row open the submenu at its first item. */
 	protected override onKeyDown(e: KeyboardEvent): void {
 		const root = this._root
 

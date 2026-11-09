@@ -10,8 +10,8 @@ import type { TMenuPoint } from '@soxa-ui/core'
 export interface IMenuOpenHost {
 	/** Открыто ли меню. */
 	readonly isOpen: boolean
-	/** Переключить меню — нажатие кнопки. */
-	toggle(): void
+	/** Toggle the menu; click-only activation enters its first item. */
+	toggle(byKeyboard?: boolean): void
 	/**
 	 * Вызвать меню у точки окна, открытое — переставить к ней. Вызвали
 	 * клавишей (`byKeyboard`) — подсвечен первый пункт, и фокус на нём, как у

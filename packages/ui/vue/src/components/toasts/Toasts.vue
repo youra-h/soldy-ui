@@ -25,14 +25,14 @@ export default { ...SetupToasts, inheritAttrs: false, components: { ToastsItem }
 
 	<teleport :to="target">
 		<!--
-			The region always stands, empty too: a live region has to be in the
-			document before the first toast. It takes no place and catches no
+			The region always stands, empty too: text-only live announcers must be in the
+			document before their first message. The shared plugin mounts them here. It takes no place and catches no
 			presses past the toasts — that is the theme's (`toasts/_toasts.scss`).
 
 			On it: the place — the `so-toasts--placement-*` modifier, and the layout
 			— `so-toasts--layout-*` (both always there), the layer's number —
 			`z-index` (`layout_styles`) and `data-layer`, `role="region"`,
-			`aria-live` and the name from the locale ("Notifications (F8)"), `dir`.
+			`aria-live="off"` and the name from the locale ("Notifications (F8)"), `dir`.
 			The consumer's attributes go over the sets. The stack plugin listens to
 			the wheel and the arrows on it.
 		-->

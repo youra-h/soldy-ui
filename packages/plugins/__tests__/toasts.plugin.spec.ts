@@ -30,6 +30,7 @@ import {
 	TToastsLayoutPlugin,
 	TToastsRemovalPlugin,
 	TToastsTimerPlugin,
+	TToastsAnnouncePlugin,
 } from '../src'
 import type { IPlugin, IPluginConstructor } from '../src'
 
@@ -905,5 +906,98 @@ describe('TToastsLayoutPlugin — слой в стилях', () => {
 
 		expect(owner.zIndex).toBeGreaterThan(0)
 		expect(layout.styles).toEqual({ 'z-index': owner.zIndex })
+	})
+})
+
+describe('text-only toast announcements', () => {
+	const announcer = (region: Element, priority = 'polite') =>
+		region.querySelector(`[data-so-toasts-announcer="${priority}"]`)
+
+	it('mounts empty live regions before announcing a pending first message', async () => {
+		const { region, show, outside } = mount({ plugins: [TToastsAnnouncePlugin] })
+		outside.focus()
+		show({ text: 'Saving', description: 'Please wait', loading: true })
+		await nextFrame()
+		expect(announcer(region)?.textContent).toBe('')
+		await nextFrame()
+		expect(announcer(region)?.textContent).toBe('Saving. Please wait')
+		expect(announcer(region)?.children.length).toBe(0)
+		expect(document.activeElement).toBe(outside)
+	})
+
+	it('coalesces a synchronous result update and ignores visual changes', async () => {
+		const { region, show } = mount({ plugins: [TToastsAnnouncePlugin] })
+		await nextFrame()
+		const toast = show({ text: 'Saving', loading: true })
+		await nextFrame()
+		const message = announcer(region)?.firstChild
+		toast.type = 'info'
+		toast.loading = false
+		await nextFrame()
+		expect(announcer(region)?.firstChild).toBe(message)
+		toast.type = 'success'
+		toast.text = 'Saved'
+		toast.description = 'All done'
+		await nextFrame()
+		expect(announcer(region)?.textContent).toBe('Saved. All done')
+	})
+
+	it('routes urgent messages separately and repeats a new identical message', async () => {
+		const { region, show } = mount({ plugins: [TToastsAnnouncePlugin] })
+		await nextFrame()
+		show({ text: 'No connection', alert: true })
+		await nextFrame()
+		expect(announcer(region, 'assertive')?.textContent).toBe('No connection')
+		expect(announcer(region)?.textContent).toBe('')
+		const before = announcer(region, 'assertive')?.firstChild
+		show({ text: 'No connection', alert: true })
+		await nextFrame()
+		expect(announcer(region, 'assertive')?.textContent).toBe('No connection')
+		expect(announcer(region, 'assertive')?.firstChild).not.toBe(before)
+	})
+
+	it('ignores changes to queued items and announces them when shown', async () => {
+		const { region, show, owner } = mount({
+			owner: { max: 1 },
+			plugins: [TToastsAnnouncePlugin],
+		})
+		await nextFrame()
+		const first = show('First')
+		await nextFrame()
+		show('Second')
+		await nextFrame()
+		expect(announcer(region)?.textContent).toBe('Second')
+		first.text = 'Queued update'
+		await nextFrame()
+		expect(announcer(region)?.textContent).toBe('Second')
+		owner.max = 2
+		await nextFrame()
+		expect(announcer(region)?.textContent).toBe('Queued update')
+	})
+	it('keeps concurrent messages without adding list or control metadata', async () => {
+		const { region, show } = mount({ plugins: [TToastsAnnouncePlugin] })
+		await nextFrame()
+		show('First')
+		show('Second')
+		await nextFrame()
+		expect(announcer(region)?.textContent).toBe('First\nSecond')
+	})
+	it('does not announce a toast closed before its pending update', async () => {
+		const { region, show } = mount({ plugins: [TToastsAnnouncePlugin] })
+		await nextFrame()
+		const toast = show('Gone')
+		toast.close()
+		await nextFrame()
+		expect(announcer(region)?.textContent).toBe('')
+	})
+
+	it('removes regions and cancels pending work on destroy', async () => {
+		const { region, show, bundle } = mount({ plugins: [TToastsAnnouncePlugin] })
+		await nextFrame()
+		const toast = show('Saving')
+		bundle.destroy()
+		toast.text = 'Saved'
+		await nextFrame()
+		expect(region.querySelector('[data-so-toasts-announcer]')).toBeNull()
 	})
 })

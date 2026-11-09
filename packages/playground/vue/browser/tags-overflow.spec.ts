@@ -98,7 +98,14 @@ const arrowOntoCutTag = async (area: () => HTMLElement, side: 'start' | 'end') =
 
 	await userEvent.keyboard('{Tab}')
 
-	if (!forward) await userEvent.keyboard('{End}')
+	if (!forward) {
+		await userEvent.keyboard('{End}')
+		// WebKit finishes the focus-driven scroll after the keyboard command returns.
+		// Locate the clipped tag only once the row has reached its final position.
+		await expect
+			.poll(() => area().scrollWidth - area().clientWidth - area().scrollLeft)
+			.toBeLessThan(1)
+	}
 
 	// Ближайший к фокусу тег, видимый частично: у конца — первый, у начала —
 	// последний

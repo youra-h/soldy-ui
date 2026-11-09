@@ -35,3 +35,6 @@ benchmarks/ai/amendments
 benchmarks/ai/prompts
 # This structured summary is written by tools/bench-ai/export.mjs.
 benchmarks/ai/results.v1.json
+
+# Owner-exported screen reader observations are immutable evidence.
+benchmarks/ai/manual-runs

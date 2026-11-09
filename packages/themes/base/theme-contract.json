@@ -3154,6 +3154,14 @@
       "presence": "TDataset serializes false as \"false\"; null/undefined removes the attribute. See scope for the bound DOM node."
     },
     {
+      "name": "data-so-toasts-announcer",
+      "sources": ["packages/plugins/src/custom/toasts/announce/announce.plugin.ts"],
+      "description": "Identifies the persistent text-only toast announcement region.",
+      "scope": "Visually hidden live region inside the Toasts manager",
+      "values": "polite | assertive",
+      "presence": "Present while the Toasts manager is mounted; the value selects announcement priority."
+    },
+    {
       "name": "data-sort",
       "sources": [
         "packages/core/src/components/custom/table/collection/extensions/sort/sort.extension.ts"

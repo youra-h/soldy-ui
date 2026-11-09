@@ -635,7 +635,7 @@ describe('модель фокуса', () => {
 		const { trigger, panel, highlighted } = await setup()
 
 		trigger.focus()
-		trigger.click()
+		trigger.dispatchEvent(new MouseEvent('click', { bubbles: true, detail: 1 }))
 		await nextFrame()
 
 		expect(document.activeElement).toBe(panel)
@@ -646,7 +646,7 @@ describe('модель фокуса', () => {
 		const { trigger, panel, press, focused } = await setup()
 
 		trigger.focus()
-		trigger.click()
+		trigger.dispatchEvent(new MouseEvent('click', { bubbles: true, detail: 1 }))
 		await nextFrame()
 		press(panel, 'ArrowDown')
 

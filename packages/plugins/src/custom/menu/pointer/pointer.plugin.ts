@@ -77,11 +77,16 @@ export class TMenuPointerPlugin
 		return this._owner?.open ?? false
 	}
 
-	/** Переключить меню — нажатие кнопки. */
-	toggle(): void {
+	/** Toggle the menu, preserving the keyboard entry path for click-only activation. */
+	toggle(byKeyboard = false): void {
 		const owner = this._owner
 
-		if (owner) owner.open = !owner.open
+		if (!owner) return
+		if (!owner.open && byKeyboard && this._keyboard) {
+			this._keyboard.openAt('first')
+		} else {
+			owner.open = !owner.open
+		}
 	}
 
 	/**

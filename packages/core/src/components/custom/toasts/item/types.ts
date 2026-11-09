@@ -71,10 +71,7 @@ export interface IToastsItemProps extends IComponentViewProps {
 	 * `0` — держится, пока его не закроют
 	 */
 	duration?: number
-	/**
-	 * Срочное сообщение: `role="alert"`, скринридер прерывает речь. Без него —
-	 * `role="status"`, вежливое объявление
-	 */
+	/** Urgency controls the alert role and the shared announcer priority. */
 	alert?: boolean
 	/**
 	 * Своё содержимое тоста — под текстом: кнопка «Отменить» и подобное. Ядро
@@ -101,7 +98,7 @@ export interface IToastsItem<
 	closable: boolean
 	/** Своя длительность, мс; `undefined` — как у владельца, `0` — не закрывается сам */
 	duration: number | undefined
-	/** Срочное сообщение: `role="alert"` вместо `role="status"` */
+	/** Urgency controls the alert role and the shared announcer priority. */
 	alert: boolean
 	/** Своё содержимое — его рисует адаптер, ядро значение не читает */
 	render: unknown
