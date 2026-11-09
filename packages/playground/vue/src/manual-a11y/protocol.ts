@@ -1,4 +1,4 @@
-export const PROTOCOL_VERSION = 3
+export const PROTOCOL_VERSION = 4
 
 export type Outcome = 'not-run' | 'passed' | 'failed' | 'unclear'
 export type Answer = { outcome: Outcome; speech: string; notes: string }
@@ -287,7 +287,7 @@ export const CASES: TestCase[] = [
 				id: 'update',
 				action: 'Выйдите из области уведомлений. Один раз кратко нажмите Enter на «загрузка → готово» и отпустите клавишу. Не трогайте клавиатуру до результата. Запишите, сколько раз услышали «Сохраняем» и «Сохранено», включая слова кнопки закрытия, если они звучат.',
 				expected:
-					'Понятны начало операции и результат «Сохранено». Обновление не требует вручную искать уведомление.',
+					'Автоматически озвучиваются только начало «Сохраняем» и итог «Сохранено» (в примере перед ними есть номер). Объявление не перечисляет список, группы или кнопку «Закрыть»; фокус остаётся на кнопке запуска.',
 			},
 			{
 				id: 'close',
@@ -309,7 +309,7 @@ export const emptyEnvironment = (): Environment => ({
 })
 export const emptyAnswer = (): Answer => ({ outcome: 'not-run', speech: '', notes: '' })
 export const answerKey = (caseId: string, stepId: string): string => `${caseId}/${stepId}`
-export const STORAGE_KEY = 'soxa-manual-a11y-v3'
+export const STORAGE_KEY = 'soxa-manual-a11y-v4'
 
 export function restoreDraft(text: string | null): {
 	environment: Environment

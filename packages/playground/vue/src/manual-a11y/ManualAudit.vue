@@ -31,7 +31,12 @@ try {
 }
 const environment = reactive(initial.environment)
 const answers = reactive<Record<string, ReturnType<typeof emptyAnswer>>>(initial.answers)
-const activeCase = ref(initial.activeCase)
+const requestedCase = new URLSearchParams(location.search).get('case')
+const activeCase = ref(
+	CASES.some((test) => test.id === requestedCase)
+		? (requestedCase ?? initial.activeCase)
+		: initial.activeCase,
+)
 for (const test of CASES)
 	for (const step of test.steps) answers[answerKey(test.id, step.id)] ??= emptyAnswer()
 
@@ -143,7 +148,7 @@ function download() {
 			{{ total }} шагов. Можно прерваться и продолжить.
 		</p>
 		<p class="scope">
-			<strong>Протокол {{ PROTOCOL_VERSION }} · повтор после отчёта 16:49</strong>
+			<strong>Протокол {{ PROTOCOL_VERSION }} · повтор Toasts после отчёта 17:21</strong>
 		</p>
 		<p class="scope">Vue · русская локаль · тема oren · версия {{ source.libraryVersion }}</p>
 	</header>
@@ -184,7 +189,7 @@ function download() {
 				сохранение контекста. Ничего не отмечается пройденным автоматически.
 			</p>
 			<p>
-				<strong>Повторная проверка, протокол 3.</strong> Для Select и Menu выключите
+				<strong>Повторная проверка, протокол 4.</strong> Для Select и Menu выключите
 				сканирование: Caps Lock + Space (или Insert + Space), пока не услышите «Сканирование
 				выключено». Для чтения ячеек Table используются команды диктора: Ctrl + Alt +
 				стрелки. В Table сначала включите сканирование и найдите таблицу клавишей T. Сайт не
@@ -199,9 +204,9 @@ function download() {
 				>
 			</p>
 			<p>
-				Проверяем оставшиеся замечания: описание всех тегов Select, состояния флажков Menu и
-				повторы Toasts. Оба прежних отчёта сохранены отдельно. Ответы старого протокола не
-				подставляются как уже пройденные проверки.
+				Select и Menu прошли в протоколе 3. Сейчас проверяем только избыточную речь Toasts.
+				Три прежних отчёта сохранены отдельно. Ответы старого протокола не подставляются как
+				уже пройденные проверки.
 			</p>
 		</details>
 

@@ -26,8 +26,8 @@ export default { ...SetupToastsItem, components: { Icon, Button, ProgressSpinner
 	>
 		<!--
 			The root carries the toast's position, animation and data-open state.
-			The ordinary list item inherits the manager's already mounted polite live
-			region; an urgent item has role="alert". Tabindex supports F8 focus and
+			The card has aria-live="off": only message text is sent to the shared live
+			announcers; an urgent card retains role="alert" for navigation. Tabindex supports F8 focus and
 			Escape dismissal. The swipe plugin writes its offset here.
 
 			The card is a separate surface: the outer item's space can expand and

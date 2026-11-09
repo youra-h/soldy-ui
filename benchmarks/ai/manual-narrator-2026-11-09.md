@@ -101,3 +101,37 @@ for literal phrases on the three remaining findings. The original JSON files
 stay unchanged. Audible effects of the new changes remain **awaiting manual
 retest**. The previous PR commit `76160d35f` passed all 31 CI checks before this
 second round of changes; that is not a result for the new implementation.
+
+## Third owner run (protocol 3)
+
+The [third immutable report](manual-runs/2026-11-09-narrator-chrome-v3.json)
+was exported at 2026-11-09T17:21:32.366Z from clean commit `d7cd56904`.
+Two targeted steps passed (multiple Select description and Menu checkbox
+state); Toasts update failed; 33 other steps were not repeated. The Menu mark
+does not contain the separate reference-control phrases, so it records owner
+acceptance in this run without establishing why the earlier phrase occurred.
+
+The toast note reports list/group/position and close-button speech around
+both Saving and Saved. Suppressing only close-button label updates did not
+remove that noise. The root live region was announcing insertion of an entire
+interactive subtree; the observed phrase includes its list, card and control.
+
+### Text-only announcement change
+
+The named manager and each card now use `aria-live=off` for navigation. A shared
+`TToastsAnnouncePlugin`, wired through an unprotected content descriptor,
+creates empty polite/assertive text regions before the first message. Only
+model `text` and `description` from shown, open toasts enter those regions.
+Cards, icons, custom content and close controls stay independently accessible;
+custom renderers should still supply `text`/`description` for automatic speech.
+Synchronous result changes are coalesced into one frame. Hidden queued items,
+visual changes, card reordering and control-label updates are not messages.
+New toasts with identical text still create a new announcement mutation;
+destruction cancels pending work and removes the live nodes.
+
+Browser regressions observe exactly `1. Сохраняем…` then `1. Сохранено` in
+the polite text region, with the trigger retaining focus. Urgent message text
+uses the separate assertive region. No control, list or group nodes are
+inside these live messages. This checks the delivered DOM content, not the
+actual number or wording of Narrator utterances. Protocol 4 repeats only the
+Toasts step with the new clean build. Audible confirmation is still pending.

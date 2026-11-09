@@ -55,7 +55,7 @@ describe('регион (TToasts)', () => {
 		const owner = new TToasts()
 
 		expect(owner.aria.get('role')).toBe('region')
-		expect(owner.aria.get('aria-live')).toBe('polite')
+		expect(owner.aria.get('aria-live')).toBe('off')
 	})
 
 	it('класс so-toasts и модификатор места — с первой записи, смена меняет его', () => {

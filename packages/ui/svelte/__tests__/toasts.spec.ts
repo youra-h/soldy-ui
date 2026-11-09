@@ -482,11 +482,11 @@ describe('Toasts · значок', () => {
 })
 
 describe('Toasts · ARIA', () => {
-	it('регион — region с живой областью и именем от локали', async () => {
+	it('named interactive region mounts separate live announcers', async () => {
 		mount(Harness, { locale: ruRU })
 
 		expect(region().getAttribute('role')).toBe('region')
-		expect(region().getAttribute('aria-live')).toBe('polite')
+		expect(region().getAttribute('aria-live')).toBe('off')
 		expect(region().getAttribute('aria-label')).toBe('Уведомления (F8)')
 
 		// Номер слоя открыт только у слоя с узлом: его даёт кадр узла
@@ -494,6 +494,7 @@ describe('Toasts · ARIA', () => {
 
 		expect(region().dataset.layer).toBeDefined()
 		expect(region().style.zIndex).toBe(region().dataset.layer)
+		expect(region().querySelectorAll('[data-so-toasts-announcer]').length).toBe(2)
 	})
 
 	it('ordinary toast is a list item; urgent toast is an alert; focus and close name are preserved', () => {

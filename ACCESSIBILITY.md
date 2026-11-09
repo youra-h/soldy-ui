@@ -120,3 +120,10 @@ Remaining findings concern the description of all selected tags, Narrator's
 checkbox-menu state, and repeated loading speech. Protocol 3 and its follow-up
 changes are documented in the same [manual-run analysis](benchmarks/ai/manual-narrator-2026-11-09.md);
 their audible effects await another manual check.
+
+The protocol-3 owner repeat accepted the multiple-Select description and Menu
+checkbox state. The remaining Toasts finding was excessive automatic speech:
+list/card structure and close controls were read around the saving/result text.
+Protocol 4 separates persistent text-only announcement regions from the named
+interactive cards. Its actual Narrator speech remains awaiting owner retest;
+see the [third-run analysis](benchmarks/ai/manual-narrator-2026-11-09.md#third-owner-run-protocol-3).

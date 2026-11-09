@@ -71,7 +71,7 @@ export interface IToastsItemProps extends IComponentViewProps {
 	 * `0` — держится, пока его не закроют
 	 */
 	duration?: number
-	/** Urgent messages use role="alert"; ordinary list items inherit the existing polite region. */
+	/** Urgency controls the alert role and the shared announcer priority. */
 	alert?: boolean
 	/**
 	 * Своё содержимое тоста — под текстом: кнопка «Отменить» и подобное. Ядро
@@ -98,7 +98,7 @@ export interface IToastsItem<
 	closable: boolean
 	/** Своя длительность, мс; `undefined` — как у владельца, `0` — не закрывается сам */
 	duration: number | undefined
-	/** Urgent messages use role="alert"; ordinary messages inherit the manager's polite region. */
+	/** Urgency controls the alert role and the shared announcer priority. */
 	alert: boolean
 	/** Своё содержимое — его рисует адаптер, ядро значение не читает */
 	render: unknown

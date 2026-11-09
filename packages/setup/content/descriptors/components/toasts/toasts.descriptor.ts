@@ -20,6 +20,7 @@ import {
 	CollectionBundlesPluginDescriptor,
 	CollectionElementsPluginDescriptor,
 	ToastsCascadePluginDescriptor,
+	ToastsAnnouncePluginDescriptor,
 	ToastsKeyboardPluginDescriptor,
 	ToastsLayoutPluginDescriptor,
 	ToastsNamesPluginDescriptor,
@@ -75,6 +76,8 @@ export const ToastsDescriptor = defineDescriptor(() =>
 			// Коллекция: реестр bundles + доступ к DOM-узлам тостов
 			CollectionBundlesPluginDescriptor,
 			CollectionElementsPluginDescriptor,
+			// Announce message text separately from the interactive cards.
+			ToastsAnnouncePluginDescriptor,
 			// Отсчёт тостов с паузой на указатель, фокус и скрытую вкладку
 			ToastsTimerPluginDescriptor,
 			// Закрытый тост уходит из коллекции, когда догас

@@ -6,49 +6,14 @@ import type { TEventSink } from '../../../../common'
 import type { IToastsItem, IToastsItemProps, TToastsItemEvents, TToastsItemType } from './types'
 
 /**
- * Тост — элемент коллекции Toasts.
- *
- * База — `TComponentView`, а не `TStylable`: ни размера, ни варианта у тоста
- * нет. Что случилось, говорит вид сообщения, а не цвет темы.
- *
- * **Вид** (`type`: `info`, `success`, `warning`, `error`; не задан — обычное
- * сообщение) — модификатор `--type-<v>`, без вида модификатора нет. Значок по
- * виду выбирает разметка — роль иконки, своя у каждого вида, — а цвет значка
- * и плашки решает тема. Это union ядра, а не реестр темы: смысл у вида один в
- * любой теме, а по имени варианта темы библиотека значок выбрать не смогла бы.
- *
- * **Ожидание** (`loading`) — тост сообщает о работе, которая ещё идёт
- * («Сохраняем…»): на месте значка разметка рисует бегущее кольцо, при любом
- * виде и любом значке, и сам тост не закрывается — длительность ожидающего у
- * коллекции `0` (`durationOf`), а снятое ожидание начинает отсчёт заново.
- * Флаг, а не пятый вид: ждать может сообщение любого вида. ARIA ожидание не
- * меняет: коробка значка — декор, а что происходит, говорит текст; `aria-busy`
- * на живой области отложил бы объявление «Сохраняем…».
- *
- * **Закрытие окончательное.** `open` только для чтения, закрывает `close()`:
- * закрытый тост гаснет переходом темы и уходит из коллекции, когда доиграл
- * переходы, а открытым снова не становится. Поэтому отменять закрытие и
- * перезапускать тост плагинам нечего — пользователь закрывает его крестиком,
- * жестом и Escape, а таймер — по истечении времени, и всё это один `close()`.
- * Запрос закрытия (`ICloseRequestable`) тост принимает всегда: так жест,
- * общий со слоями (`TSwipePlugin`), закрывает и тост.
- *
- * **Жест** — за всю плашку (`swipe` всегда `panel`), к стороне, которую пишет
- * коллекция по месту региона (`swipeSide`): у боковых мест — к своему краю
- * строки, у мест по центру — вверх или вниз. Закрытый тост не тянут.
- *
- * **ARIA.** Тост — живая область своей роли: `status` — вежливое объявление,
- * `alert` (`alert: true`) — срочное, как `alert` у Dialog. Фокус тост не
- * забирает: к нему ведёт F8, и `tabindex="0"` делает его фокусируемым, у
- * закрытого — `-1`. Кнопка закрытия — отдельный набор `closeAria`: имя с
- * текстом тоста пишет плагин имён.
- *
- * Теме ядро отдаёт `data-open` (`true` с первой отрисовки, `false` — тост
- * закрыт и гаснет) и `data-swiping` (тянут).
- *
- * **Своё содержимое** (`render`) ядро не читает: что это и как его
- * нарисовать, знает адаптер — во Vue компонент, которому тост приходит
- * пропом `toast`, и кнопка внутри может его закрыть.
+ * One toast in the manager's collection. Its type supplies the visual icon
+ * and color; loading prevents expiry while work is pending. Message text
+ * and description belong to the model, custom content to the renderer.
+ * Closing is final: the item fades out and the removal plugin drops it.
+ * The card remains keyboard accessible (F8, Escape, close action) and can
+ * be swiped, but aria-live=off keeps its interactive subtree out of automatic
+ * speech. TToastsAnnouncePlugin sends text/description to persistent polite
+ * or assertive regions according to alert; roles remain useful in navigation.
  */
 export default class TToastsItem<
 	TProps extends IToastsItemProps = IToastsItemProps,
@@ -114,6 +79,8 @@ export default class TToastsItem<
 
 		this._classes.swap({ prefix: '--type-', newValue: this._type })
 		this._syncRole()
+		// The shared announcer delivers the message; this subtree is for navigation.
+		this._aria.add('aria-live', 'off')
 		this._aria.add('tabindex', '0')
 		this._dataset.add('open', true)
 		this._dataset.add('swiping', false)
@@ -339,9 +306,9 @@ export default class TToastsItem<
 	}
 
 	/**
-	 * Polite additions belong to the manager's already mounted live region.
-	 * A new nested status can miss its initial announcement; urgent alerts
-	 * retain their implicit assertive announcement on insertion.
+	 * Roles describe the cards during navigation; automatic messages are separate.
+	 * The explicit aria-live=off keeps names and controls out of live speech; alerts
+	 * are delivered through the shared assertive announcer.
 	 */
 	protected _syncRole(): void {
 		this._aria.add('role', this._alert ? 'alert' : 'listitem')
