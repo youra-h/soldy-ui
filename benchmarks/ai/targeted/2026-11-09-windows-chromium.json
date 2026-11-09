@@ -1,0 +1,740 @@
+{
+  "schemaVersion": 1,
+  "note": "Separate targeted observations; not a historical cohort rerun or comparative performance measurement. Snapshots omitted; findings, stages and provenance retained.",
+  "tableDiagnosis": "Historical Linux page.goto timeout not reproduced. Local Windows Chromium stages completed; Linux cause and WebKit unresolved.",
+  "runs": [
+    {
+      "name": "table-large",
+      "date": "2026-11-09T12:59:22.782Z",
+      "sourceHash": "0f38dad51907e7babfd85c1292ab52388a10c698aa2aab2f755383cf1609138e",
+      "commit": "80f626577b7f2fd5ef6b7d7291bf5c2d3934e8d7",
+      "lockHash": "bf37e0071aa997bd973d16b7dcda126d3aebbb56ab5e929c23cb1f5e38c32a4c",
+      "harnessSourceHashes": {
+        "tools/bench-ai/batch.mjs": "3cb40bf90bcbe18afbaffdc41beb95c3e0c4fea9b41f60720cf27787faf1d112",
+        "tools/bench-ai/ci.mjs": "6fd3b0212ea0f1679bd9b517816b9b1817dddd6114be14d13b1f593f96e54a42",
+        "tools/bench-ai/client.mjs": "fbdee049c6ddda286f7efb02509086c76406dac143bd992a01bcf761a2a27d94",
+        "tools/bench-ai/data.mjs": "e1cd0c74fd00706db44626dde49fd4c85baa5dd5f3d12e7a5a2b8f7e120bb722",
+        "tools/bench-ai/document.mjs": "4c0fcfc62b9a41968044ed6888fe62ed3dd9c3dd5e1f98939b01e62446a6cff0",
+        "tools/bench-ai/environment.mjs": "037ab34a339bbaae662b039085d771f1272d54136c84b86c2718e4f8f85120fa",
+        "tools/bench-ai/export.mjs": "8efceec26eab82b910139c4fb4621efd92d68607f1aaf62af7bed86bec7c65a8",
+        "tools/bench-ai/generate-cli.mjs": "b859f59eb17c1688437ca43244c897621938bbe34995599535835fe8f5336b6c",
+        "tools/bench-ai/generate.mjs": "d29a1c7492f3e27b2c45f0dda68b382251b404d2a460492039dcd2d20d6d91f5",
+        "tools/bench-ai/index.html": "c77263fd74bdfe7c5b3396a534901858fb5b864d217d45922dc23e7224cd6375",
+        "tools/bench-ai/integrity.mjs": "a84be7b5e4be8ae40a12f846d83c5c7823da56f558675441dac43af5c1276f9d",
+        "tools/bench-ai/observations.mjs": "f94aec401297c03363363d1596eb397149684197916332c2a720ab02fd1ecf5e",
+        "tools/bench-ai/Page.vue": "d8b1ea11983263f8061c35ab44626c233a9dec088e1ed1132dcc7698b9499a10",
+        "tools/bench-ai/protocol.mjs": "c64de0455c9d48ec8b8f2ba09b82f03bc0203d1ccb349ea3c253048c248c4851",
+        "tools/bench-ai/run.mjs": "c2bd9a40cb94078b76090afe93728974aa1c3f6d56e2de8434ffeda4a196b04c",
+        "tools/bench-ai/scenarios.mjs": "bff2a5c72df858dfe1a7673b0d696c06b7402e4fce90255e6648daab7e8aa56f",
+        "tools/bench-ai/server.mjs": "5e68c69fb351b096f2d89a93b6ee0153fe2dce76e8efa930fd4f73bb7c1c170e",
+        "tools/bench-ai/settle.mjs": "f77a150ba36391788ecc2305a6da6178eaa98e8adca8abce62f82dd9f364b0c6",
+        "tools/bench-ai/setup.mjs": "ce7d2a8b8f99e63a9e406f9b0e6d72778d70a9948fd0438467deb1291cbd01b6",
+        "tools/bench-ai/Soxa.vue": "0f38dad51907e7babfd85c1292ab52388a10c698aa2aab2f755383cf1609138e",
+        "tools/bench-ai/vite.config.ts": "2cb97aeed2875cfc20a7809e861fe093a1306f3627b9c65a89aae584948c9f93"
+      },
+      "os": {
+        "platform": "win32",
+        "release": "10.0.26300",
+        "arch": "x64",
+        "cpu": "AMD Ryzen 9 9950X3D 16-Core Processor          "
+      },
+      "runtimeVersions": {
+        "vue": "3.5.44",
+        "vite": "8.3.4",
+        "playwright": "1.64.1",
+        "axe-core": "4.14.0"
+      },
+      "limits": {
+        "actionTimeoutMs": 10000,
+        "cellTimeoutMs": 120000,
+        "note": "Common infrastructure completion bounds, not a comparative latency score"
+      },
+      "filters": {
+        "component": "table",
+        "mode": "large",
+        "engine": "chromium"
+      },
+      "cells": [
+        {
+          "engine": "chromium",
+          "browser": "156.0.8078.4",
+          "component": "table",
+          "mode": "large",
+          "status": "passed",
+          "stages": [
+            {
+              "name": "ssr-request",
+              "status": "completed",
+              "durationMs": 1594.8674
+            },
+            {
+              "name": "static-navigation",
+              "status": "completed",
+              "durationMs": 3269.9925
+            },
+            {
+              "name": "static-accessibility-snapshot",
+              "status": "completed",
+              "durationMs": 1728.2014
+            },
+            {
+              "name": "navigation",
+              "status": "completed",
+              "durationMs": 5781.341899999999
+            },
+            {
+              "name": "hydration",
+              "status": "completed",
+              "durationMs": 13.080599999999322
+            },
+            {
+              "name": "accessibility-snapshot",
+              "status": "completed",
+              "durationMs": 1603.5582999999988
+            },
+            {
+              "name": "audit-initial",
+              "status": "completed",
+              "durationMs": 14102.9136
+            },
+            {
+              "name": "audit-open",
+              "status": "completed",
+              "durationMs": 13511.198199999999
+            },
+            {
+              "name": "navigation",
+              "status": "completed",
+              "durationMs": 5794.569599999995
+            },
+            {
+              "name": "hydration",
+              "status": "completed",
+              "durationMs": 451.22230000000127
+            },
+            {
+              "name": "audit-after",
+              "status": "completed",
+              "durationMs": 19176.02769999999
+            },
+            {
+              "name": "accessibility-snapshot",
+              "status": "completed",
+              "durationMs": 1444.6668000000063
+            }
+          ],
+          "lastStage": "accessibility-snapshot",
+          "serverTiming": "ssr;dur=1362.9126",
+          "axe": {
+            "initial": {
+              "violations": [],
+              "incomplete": [
+                {
+                  "id": "th-has-data-cells",
+                  "impact": "serious"
+                }
+              ]
+            },
+            "open": {
+              "violations": [],
+              "incomplete": [
+                {
+                  "id": "th-has-data-cells",
+                  "impact": "serious"
+                }
+              ]
+            },
+            "after": {
+              "violations": [],
+              "incomplete": [
+                {
+                  "id": "th-has-data-cells",
+                  "impact": "serious"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "datepicker",
+      "date": "2026-11-09T13:01:14.567Z",
+      "sourceHash": "0f38dad51907e7babfd85c1292ab52388a10c698aa2aab2f755383cf1609138e",
+      "commit": "80f626577b7f2fd5ef6b7d7291bf5c2d3934e8d7",
+      "lockHash": "bf37e0071aa997bd973d16b7dcda126d3aebbb56ab5e929c23cb1f5e38c32a4c",
+      "harnessSourceHashes": {
+        "tools/bench-ai/batch.mjs": "3cb40bf90bcbe18afbaffdc41beb95c3e0c4fea9b41f60720cf27787faf1d112",
+        "tools/bench-ai/ci.mjs": "6fd3b0212ea0f1679bd9b517816b9b1817dddd6114be14d13b1f593f96e54a42",
+        "tools/bench-ai/classification.mjs": "bde4976bc941c9dd6cd7789babb8ca62a53e03b9bc9109c15a0b879586cef9f3",
+        "tools/bench-ai/client.mjs": "fbdee049c6ddda286f7efb02509086c76406dac143bd992a01bcf761a2a27d94",
+        "tools/bench-ai/data.mjs": "e1cd0c74fd00706db44626dde49fd4c85baa5dd5f3d12e7a5a2b8f7e120bb722",
+        "tools/bench-ai/document.mjs": "4c0fcfc62b9a41968044ed6888fe62ed3dd9c3dd5e1f98939b01e62446a6cff0",
+        "tools/bench-ai/environment.mjs": "037ab34a339bbaae662b039085d771f1272d54136c84b86c2718e4f8f85120fa",
+        "tools/bench-ai/export.mjs": "2fe52593c922f435d895a40a71fb73565107ae4ad397103e9df8d8c97087c4c8",
+        "tools/bench-ai/generate-cli.mjs": "b859f59eb17c1688437ca43244c897621938bbe34995599535835fe8f5336b6c",
+        "tools/bench-ai/generate.mjs": "d29a1c7492f3e27b2c45f0dda68b382251b404d2a460492039dcd2d20d6d91f5",
+        "tools/bench-ai/index.html": "c77263fd74bdfe7c5b3396a534901858fb5b864d217d45922dc23e7224cd6375",
+        "tools/bench-ai/integrity.mjs": "a84be7b5e4be8ae40a12f846d83c5c7823da56f558675441dac43af5c1276f9d",
+        "tools/bench-ai/observations.mjs": "f94aec401297c03363363d1596eb397149684197916332c2a720ab02fd1ecf5e",
+        "tools/bench-ai/Page.vue": "d8b1ea11983263f8061c35ab44626c233a9dec088e1ed1132dcc7698b9499a10",
+        "tools/bench-ai/protocol.mjs": "c64de0455c9d48ec8b8f2ba09b82f03bc0203d1ccb349ea3c253048c248c4851",
+        "tools/bench-ai/run.mjs": "c2bd9a40cb94078b76090afe93728974aa1c3f6d56e2de8434ffeda4a196b04c",
+        "tools/bench-ai/scenarios.mjs": "710d0a6404d2c63b024c78618c0a326ada5bdf3817e3f6e6c067cbb592e98b20",
+        "tools/bench-ai/server.mjs": "5e68c69fb351b096f2d89a93b6ee0153fe2dce76e8efa930fd4f73bb7c1c170e",
+        "tools/bench-ai/settle.mjs": "f77a150ba36391788ecc2305a6da6178eaa98e8adca8abce62f82dd9f364b0c6",
+        "tools/bench-ai/setup.mjs": "ce7d2a8b8f99e63a9e406f9b0e6d72778d70a9948fd0438467deb1291cbd01b6",
+        "tools/bench-ai/Soxa.vue": "0f38dad51907e7babfd85c1292ab52388a10c698aa2aab2f755383cf1609138e",
+        "tools/bench-ai/vite.config.ts": "2cb97aeed2875cfc20a7809e861fe093a1306f3627b9c65a89aae584948c9f93"
+      },
+      "os": {
+        "platform": "win32",
+        "release": "10.0.26300",
+        "arch": "x64",
+        "cpu": "AMD Ryzen 9 9950X3D 16-Core Processor          "
+      },
+      "runtimeVersions": {
+        "vue": "3.5.44",
+        "vite": "8.3.4",
+        "playwright": "1.64.1",
+        "axe-core": "4.14.0"
+      },
+      "limits": {
+        "actionTimeoutMs": 10000,
+        "cellTimeoutMs": 120000,
+        "note": "Common infrastructure completion bounds, not a comparative latency score"
+      },
+      "filters": {
+        "component": "date-picker",
+        "mode": "default",
+        "engine": "chromium"
+      },
+      "cells": [
+        {
+          "engine": "chromium",
+          "browser": "156.0.8078.4",
+          "component": "date-picker",
+          "mode": "default",
+          "status": "passed",
+          "stages": [
+            {
+              "name": "ssr-request",
+              "status": "completed",
+              "durationMs": 45.35490000000004
+            },
+            {
+              "name": "static-navigation",
+              "status": "completed",
+              "durationMs": 18.22739999999999
+            },
+            {
+              "name": "static-accessibility-snapshot",
+              "status": "completed",
+              "durationMs": 5.905999999999949
+            },
+            {
+              "name": "navigation",
+              "status": "completed",
+              "durationMs": 55.96330000000012
+            },
+            {
+              "name": "hydration",
+              "status": "completed",
+              "durationMs": 40.52629999999999
+            },
+            {
+              "name": "accessibility-snapshot",
+              "status": "completed",
+              "durationMs": 5.248000000000047
+            },
+            {
+              "name": "audit-initial",
+              "status": "completed",
+              "durationMs": 28.66890000000012
+            },
+            {
+              "name": "audit-open",
+              "status": "completed",
+              "durationMs": 37.14740000000029
+            },
+            {
+              "name": "navigation",
+              "status": "completed",
+              "durationMs": 28.830999999999676
+            },
+            {
+              "name": "hydration",
+              "status": "completed",
+              "durationMs": 28.971900000000005
+            },
+            {
+              "name": "audit-after",
+              "status": "completed",
+              "durationMs": 22.002400000000307
+            },
+            {
+              "name": "accessibility-snapshot",
+              "status": "completed",
+              "durationMs": 4.363600000000133
+            }
+          ],
+          "lastStage": "accessibility-snapshot",
+          "serverTiming": "ssr;dur=22.4529",
+          "axe": {
+            "initial": {
+              "violations": [],
+              "incomplete": [
+                {
+                  "id": "aria-valid-attr-value",
+                  "impact": "critical"
+                }
+              ]
+            },
+            "open": {
+              "violations": [],
+              "incomplete": [
+                {
+                  "id": "aria-hidden-focus",
+                  "impact": "serious"
+                },
+                {
+                  "id": "aria-valid-attr-value",
+                  "impact": "critical"
+                },
+                {
+                  "id": "color-contrast",
+                  "impact": "serious"
+                }
+              ]
+            },
+            "after": {
+              "violations": [],
+              "incomplete": [
+                {
+                  "id": "aria-valid-attr-value",
+                  "impact": "critical"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "select-touch",
+      "date": "2026-11-09T13:02:06.297Z",
+      "sourceHash": "0f38dad51907e7babfd85c1292ab52388a10c698aa2aab2f755383cf1609138e",
+      "commit": "80f626577b7f2fd5ef6b7d7291bf5c2d3934e8d7",
+      "lockHash": "bf37e0071aa997bd973d16b7dcda126d3aebbb56ab5e929c23cb1f5e38c32a4c",
+      "harnessSourceHashes": {
+        "tools/bench-ai/batch.mjs": "3cb40bf90bcbe18afbaffdc41beb95c3e0c4fea9b41f60720cf27787faf1d112",
+        "tools/bench-ai/ci.mjs": "6fd3b0212ea0f1679bd9b517816b9b1817dddd6114be14d13b1f593f96e54a42",
+        "tools/bench-ai/classification.mjs": "bde4976bc941c9dd6cd7789babb8ca62a53e03b9bc9109c15a0b879586cef9f3",
+        "tools/bench-ai/client.mjs": "fbdee049c6ddda286f7efb02509086c76406dac143bd992a01bcf761a2a27d94",
+        "tools/bench-ai/data.mjs": "e1cd0c74fd00706db44626dde49fd4c85baa5dd5f3d12e7a5a2b8f7e120bb722",
+        "tools/bench-ai/document.mjs": "4c0fcfc62b9a41968044ed6888fe62ed3dd9c3dd5e1f98939b01e62446a6cff0",
+        "tools/bench-ai/environment.mjs": "037ab34a339bbaae662b039085d771f1272d54136c84b86c2718e4f8f85120fa",
+        "tools/bench-ai/export.mjs": "4b297d624beb9e08a02b3ad41890dfe88e0c9227be5ce35d45c7dddd403c4b2a",
+        "tools/bench-ai/generate-cli.mjs": "b859f59eb17c1688437ca43244c897621938bbe34995599535835fe8f5336b6c",
+        "tools/bench-ai/generate.mjs": "d29a1c7492f3e27b2c45f0dda68b382251b404d2a460492039dcd2d20d6d91f5",
+        "tools/bench-ai/index.html": "c77263fd74bdfe7c5b3396a534901858fb5b864d217d45922dc23e7224cd6375",
+        "tools/bench-ai/integrity.mjs": "a84be7b5e4be8ae40a12f846d83c5c7823da56f558675441dac43af5c1276f9d",
+        "tools/bench-ai/observations.mjs": "df0a433d6e3da10db3615fd77f9e3f3b0d0bcfdfa061d51faade9f8f59d9fb60",
+        "tools/bench-ai/Page.vue": "d8b1ea11983263f8061c35ab44626c233a9dec088e1ed1132dcc7698b9499a10",
+        "tools/bench-ai/protocol.mjs": "c64de0455c9d48ec8b8f2ba09b82f03bc0203d1ccb349ea3c253048c248c4851",
+        "tools/bench-ai/run.mjs": "01a4a3421164f63da7dd8ce77543da1083505699e75ca4ba39ef124db34acc07",
+        "tools/bench-ai/scenarios.mjs": "710d0a6404d2c63b024c78618c0a326ada5bdf3817e3f6e6c067cbb592e98b20",
+        "tools/bench-ai/server.mjs": "5e68c69fb351b096f2d89a93b6ee0153fe2dce76e8efa930fd4f73bb7c1c170e",
+        "tools/bench-ai/settle.mjs": "f77a150ba36391788ecc2305a6da6178eaa98e8adca8abce62f82dd9f364b0c6",
+        "tools/bench-ai/setup.mjs": "ce7d2a8b8f99e63a9e406f9b0e6d72778d70a9948fd0438467deb1291cbd01b6",
+        "tools/bench-ai/Soxa.vue": "0f38dad51907e7babfd85c1292ab52388a10c698aa2aab2f755383cf1609138e",
+        "tools/bench-ai/vite.config.ts": "2cb97aeed2875cfc20a7809e861fe093a1306f3627b9c65a89aae584948c9f93"
+      },
+      "os": {
+        "platform": "win32",
+        "release": "10.0.26300",
+        "arch": "x64",
+        "cpu": "AMD Ryzen 9 9950X3D 16-Core Processor          "
+      },
+      "runtimeVersions": {
+        "vue": "3.5.44",
+        "vite": "8.3.4",
+        "playwright": "1.64.1",
+        "axe-core": "4.14.0"
+      },
+      "limits": {
+        "actionTimeoutMs": 10000,
+        "cellTimeoutMs": 120000,
+        "note": "Common infrastructure completion bounds, not a comparative latency score"
+      },
+      "filters": {
+        "component": "select",
+        "mode": "narrow-touch",
+        "engine": "chromium"
+      },
+      "cells": [
+        {
+          "engine": "chromium",
+          "browser": "156.0.8078.4",
+          "component": "select",
+          "mode": "narrow-touch",
+          "status": "failed",
+          "failure": "axe violations in recorded states",
+          "touch": "passed",
+          "stages": [
+            {
+              "name": "ssr-request",
+              "status": "completed",
+              "durationMs": 40.44470000000001
+            },
+            {
+              "name": "static-navigation",
+              "status": "completed",
+              "durationMs": 17.655099999999948
+            },
+            {
+              "name": "static-accessibility-snapshot",
+              "status": "completed",
+              "durationMs": 6.302899999999909
+            },
+            {
+              "name": "navigation",
+              "status": "completed",
+              "durationMs": 48.73890000000006
+            },
+            {
+              "name": "hydration",
+              "status": "completed",
+              "durationMs": 31.24420000000009
+            },
+            {
+              "name": "accessibility-snapshot",
+              "status": "completed",
+              "durationMs": 4.949200000000019
+            },
+            {
+              "name": "audit-initial",
+              "status": "completed",
+              "durationMs": 25.788999999999987
+            },
+            {
+              "name": "audit-open",
+              "status": "completed",
+              "durationMs": 55.83249999999998
+            },
+            {
+              "name": "navigation",
+              "status": "completed",
+              "durationMs": 33.54419999999982
+            },
+            {
+              "name": "hydration",
+              "status": "completed",
+              "durationMs": 36.64289999999983
+            },
+            {
+              "name": "navigation",
+              "status": "completed",
+              "durationMs": 34.07089999999971
+            },
+            {
+              "name": "hydration",
+              "status": "completed",
+              "durationMs": 37.891299999999774
+            },
+            {
+              "name": "audit-after",
+              "status": "completed",
+              "durationMs": 19.940000000000055
+            },
+            {
+              "name": "accessibility-snapshot",
+              "status": "completed",
+              "durationMs": 4.086499999999887
+            }
+          ],
+          "lastStage": "accessibility-snapshot",
+          "serverTiming": "ssr;dur=16.674199999999928",
+          "axe": {
+            "initial": {
+              "violations": [],
+              "incomplete": [
+                {
+                  "id": "aria-required-children",
+                  "impact": "critical"
+                },
+                {
+                  "id": "aria-valid-attr-value",
+                  "impact": "critical"
+                }
+              ]
+            },
+            "open": {
+              "violations": [
+                {
+                  "id": "region",
+                  "tags": ["cat.keyboard", "best-practice", "RGAAv4", "RGAA-9.2.1"],
+                  "nodes": [
+                    {
+                      "target": [".so-frame"],
+                      "html": "<div style=\"position: absolute; left: 16px; top: 187.875px; width: 328px; height: auto; z-index: 1001;\" class=\"so-frame so-select__panel\" data-open=\"true\" data-contained=\"false\" data-swiping=\"false\" data-owner=\"v-0-owner\" data-layer=\"1001\" data-placement=\"bottom-start\">",
+                      "outsideLandmark": true
+                    }
+                  ]
+                }
+              ],
+              "incomplete": [
+                {
+                  "id": "aria-required-children",
+                  "impact": "critical"
+                },
+                {
+                  "id": "aria-valid-attr-value",
+                  "impact": "critical"
+                },
+                {
+                  "id": "color-contrast",
+                  "impact": "serious"
+                }
+              ]
+            },
+            "after": {
+              "violations": [
+                {
+                  "id": "aria-required-children",
+                  "tags": [
+                    "cat.aria",
+                    "wcag2a",
+                    "wcag131",
+                    "EN-301-549",
+                    "EN-9.1.3.1",
+                    "RGAAv4",
+                    "RGAA-9.3.1"
+                  ],
+                  "nodes": [
+                    {
+                      "target": [".so-tags"],
+                      "html": "<div class=\"so-tags so-tags--size-normal so-select__tags\" role=\"list\" data-disabled=\"false\" data-overflow=\"wrap\" style=\"\">",
+                      "outsideLandmark": false
+                    }
+                  ]
+                }
+              ],
+              "incomplete": [
+                {
+                  "id": "aria-valid-attr-value",
+                  "impact": "critical"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "dialog-reduce",
+      "date": "2026-11-09T13:02:09.297Z",
+      "sourceHash": "0f38dad51907e7babfd85c1292ab52388a10c698aa2aab2f755383cf1609138e",
+      "commit": "80f626577b7f2fd5ef6b7d7291bf5c2d3934e8d7",
+      "lockHash": "bf37e0071aa997bd973d16b7dcda126d3aebbb56ab5e929c23cb1f5e38c32a4c",
+      "harnessSourceHashes": {
+        "tools/bench-ai/batch.mjs": "3cb40bf90bcbe18afbaffdc41beb95c3e0c4fea9b41f60720cf27787faf1d112",
+        "tools/bench-ai/ci.mjs": "6fd3b0212ea0f1679bd9b517816b9b1817dddd6114be14d13b1f593f96e54a42",
+        "tools/bench-ai/classification.mjs": "bde4976bc941c9dd6cd7789babb8ca62a53e03b9bc9109c15a0b879586cef9f3",
+        "tools/bench-ai/client.mjs": "fbdee049c6ddda286f7efb02509086c76406dac143bd992a01bcf761a2a27d94",
+        "tools/bench-ai/data.mjs": "e1cd0c74fd00706db44626dde49fd4c85baa5dd5f3d12e7a5a2b8f7e120bb722",
+        "tools/bench-ai/document.mjs": "4c0fcfc62b9a41968044ed6888fe62ed3dd9c3dd5e1f98939b01e62446a6cff0",
+        "tools/bench-ai/environment.mjs": "037ab34a339bbaae662b039085d771f1272d54136c84b86c2718e4f8f85120fa",
+        "tools/bench-ai/export.mjs": "4b297d624beb9e08a02b3ad41890dfe88e0c9227be5ce35d45c7dddd403c4b2a",
+        "tools/bench-ai/generate-cli.mjs": "b859f59eb17c1688437ca43244c897621938bbe34995599535835fe8f5336b6c",
+        "tools/bench-ai/generate.mjs": "d29a1c7492f3e27b2c45f0dda68b382251b404d2a460492039dcd2d20d6d91f5",
+        "tools/bench-ai/index.html": "c77263fd74bdfe7c5b3396a534901858fb5b864d217d45922dc23e7224cd6375",
+        "tools/bench-ai/integrity.mjs": "a84be7b5e4be8ae40a12f846d83c5c7823da56f558675441dac43af5c1276f9d",
+        "tools/bench-ai/observations.mjs": "df0a433d6e3da10db3615fd77f9e3f3b0d0bcfdfa061d51faade9f8f59d9fb60",
+        "tools/bench-ai/Page.vue": "d8b1ea11983263f8061c35ab44626c233a9dec088e1ed1132dcc7698b9499a10",
+        "tools/bench-ai/protocol.mjs": "c64de0455c9d48ec8b8f2ba09b82f03bc0203d1ccb349ea3c253048c248c4851",
+        "tools/bench-ai/run.mjs": "01a4a3421164f63da7dd8ce77543da1083505699e75ca4ba39ef124db34acc07",
+        "tools/bench-ai/scenarios.mjs": "710d0a6404d2c63b024c78618c0a326ada5bdf3817e3f6e6c067cbb592e98b20",
+        "tools/bench-ai/server.mjs": "5e68c69fb351b096f2d89a93b6ee0153fe2dce76e8efa930fd4f73bb7c1c170e",
+        "tools/bench-ai/settle.mjs": "f77a150ba36391788ecc2305a6da6178eaa98e8adca8abce62f82dd9f364b0c6",
+        "tools/bench-ai/setup.mjs": "ce7d2a8b8f99e63a9e406f9b0e6d72778d70a9948fd0438467deb1291cbd01b6",
+        "tools/bench-ai/Soxa.vue": "0f38dad51907e7babfd85c1292ab52388a10c698aa2aab2f755383cf1609138e",
+        "tools/bench-ai/vite.config.ts": "2cb97aeed2875cfc20a7809e861fe093a1306f3627b9c65a89aae584948c9f93"
+      },
+      "os": {
+        "platform": "win32",
+        "release": "10.0.26300",
+        "arch": "x64",
+        "cpu": "AMD Ryzen 9 9950X3D 16-Core Processor          "
+      },
+      "runtimeVersions": {
+        "vue": "3.5.44",
+        "vite": "8.3.4",
+        "playwright": "1.64.1",
+        "axe-core": "4.14.0"
+      },
+      "limits": {
+        "actionTimeoutMs": 10000,
+        "cellTimeoutMs": 120000,
+        "note": "Common infrastructure completion bounds, not a comparative latency score"
+      },
+      "filters": {
+        "component": "dialog",
+        "mode": "reduce",
+        "engine": "chromium"
+      },
+      "cells": [
+        {
+          "engine": "chromium",
+          "browser": "156.0.8078.4",
+          "component": "dialog",
+          "mode": "reduce",
+          "status": "passed",
+          "reducedMotion": {
+            "status": "passed-observed-states",
+            "states": {
+              "initial": {
+                "media": true,
+                "animations": [],
+                "status": "passed-observed-states",
+                "scope": "Immediate active keyframes only; completed/untriggered animation and programmatic smooth scrolling are not covered"
+              },
+              "open": {
+                "media": true,
+                "animations": [
+                  {
+                    "properties": ["opacity"],
+                    "activeDurationMs": 200,
+                    "timing": {
+                      "delay": 0,
+                      "direction": "normal",
+                      "duration": 200,
+                      "easing": "linear",
+                      "endDelay": 0,
+                      "fill": "backwards",
+                      "iterationStart": 0,
+                      "iterations": 1
+                    },
+                    "playState": "running",
+                    "moving": [],
+                    "appearance": ["opacity"],
+                    "unknown": []
+                  },
+                  {
+                    "properties": ["opacity"],
+                    "activeDurationMs": 200,
+                    "timing": {
+                      "delay": 0,
+                      "direction": "normal",
+                      "duration": 200,
+                      "easing": "linear",
+                      "endDelay": 0,
+                      "fill": "backwards",
+                      "iterationStart": 0,
+                      "iterations": 1
+                    },
+                    "playState": "running",
+                    "moving": [],
+                    "appearance": ["opacity"],
+                    "unknown": []
+                  }
+                ],
+                "status": "passed-observed-states",
+                "scope": "Immediate active keyframes only; completed/untriggered animation and programmatic smooth scrolling are not covered"
+              },
+              "after": {
+                "media": true,
+                "animations": [],
+                "status": "passed-observed-states",
+                "scope": "Immediate active keyframes only; completed/untriggered animation and programmatic smooth scrolling are not covered"
+              }
+            }
+          },
+          "stages": [
+            {
+              "name": "ssr-request",
+              "status": "completed",
+              "durationMs": 36.281799999999976
+            },
+            {
+              "name": "static-navigation",
+              "status": "completed",
+              "durationMs": 16.51369999999997
+            },
+            {
+              "name": "static-accessibility-snapshot",
+              "status": "completed",
+              "durationMs": 5.616199999999935
+            },
+            {
+              "name": "navigation",
+              "status": "completed",
+              "durationMs": 40.22370000000001
+            },
+            {
+              "name": "hydration",
+              "status": "completed",
+              "durationMs": 30.798999999999978
+            },
+            {
+              "name": "accessibility-snapshot",
+              "status": "completed",
+              "durationMs": 4.046600000000126
+            },
+            {
+              "name": "audit-initial",
+              "status": "completed",
+              "durationMs": 25.633499999999913
+            },
+            {
+              "name": "audit-open",
+              "status": "completed",
+              "durationMs": 14.77539999999999
+            },
+            {
+              "name": "navigation",
+              "status": "completed",
+              "durationMs": 27.094900000000052
+            },
+            {
+              "name": "hydration",
+              "status": "completed",
+              "durationMs": 33.08549999999968
+            },
+            {
+              "name": "audit-after",
+              "status": "completed",
+              "durationMs": 11.555499999999938
+            },
+            {
+              "name": "accessibility-snapshot",
+              "status": "completed",
+              "durationMs": 3.490099999999984
+            }
+          ],
+          "lastStage": "accessibility-snapshot",
+          "serverTiming": "ssr;dur=10.779099999999971",
+          "axe": {
+            "initial": {
+              "violations": [],
+              "incomplete": []
+            },
+            "open": {
+              "violations": [],
+              "incomplete": [
+                {
+                  "id": "aria-hidden-focus",
+                  "impact": "serious"
+                }
+              ]
+            },
+            "after": {
+              "violations": [],
+              "incomplete": []
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
