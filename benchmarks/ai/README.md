@@ -7,8 +7,9 @@ Dialog, Tabs и Table. [Текущий статус](report.md), [версион
 
 ## Генерация без подгонки
 
-Две доступные сильные модели выбираются до генерации. Actual model IDs не назначены до
-подтверждения доступного провайдера; слоты model-1/model-2 в экспорте не являются именами моделей.
+До генерации выбраны CLI model IDs `gpt-6.1-sol` и `gpt-6-astra`; provider model ID и
+неизменяемый snapshot CLI не раскрывает. Слоты model-1/model-2 в экспорте связываются с
+зафиксированными invocation и generation manifests, а не подменяют собой имена моделей.
 Используется [один английский шаблон](../../tools/bench-ai/protocol.mjs), параметризованный
 компонентом; точные тексты сохранены в [prompts/](prompts/), hashes — в экспорте. Требования,
 runtime, requested budget 12000 output tokens, данные, локали, viewport и build одинаковы.
@@ -67,6 +68,16 @@ Prompt hashes заморожены до первого CLI запроса 2026-1
 кадров; reduced-motion наблюдается отдельно сразу после действий. Стабильные нарушения остаются.
 SSR snapshots хранятся как `.html.txt`: байты не меняются, у старых файлов есть archive index,
 у новых — путь и SHA256 в cell. Это данные, не поддерживаемый HTML source; source comment guard не менялся.
+Четыре крупных baseline Table snapshots по 52 MB сохранены только внутри исходных exact ZIP,
+без дублирования expanded копий в Git. Исходный путь, ZIP entry, размер и SHA256 записаны
+в [индексе основной матрицы](runs/linux-ci-42600605491/large-html-archive-index.json) и
+[индексе предыдущей матрицы](runs/linux-ci-42595947092/large-html-archive-index.json).
+Raw `results.json` не меняется. Для восстановления исходных путей распакуйте соответствующий
+`observations.zip` в его run directory; остальные snapshots уже доступны отдельными файлами:
+
+```powershell
+Expand-Archive -LiteralPath benchmarks/ai/runs/linux-ci-42600605491/observations.zip -DestinationPath benchmarks/ai/runs/linux-ci-42600605491 -Force
+```
 
 ```powershell
 # Credential is read from the process environment and never printed or persisted.
@@ -128,6 +139,10 @@ runtime-failed и behavioral failure различаются. SSR HTML каждо
 
 axe запускается на начальной, открытой и конечной разметке; нарушение initial axe не
 отменяет поведенческий прогон. Дерево — `locator.ariaSnapshot()`, без устаревшего API.
+`passed` означает прохождение выполненных assertions без записанных violations, а не
+полную проверку доступности. Записи `axe.incomplete` в raw требуют ручной проверки:
+отсутствие violations при incomplete не подтверждает прохождение соответствующего правила.
+Эти записи сохраняются и не превращаются автоматически ни в passed rule, ни в failure.
 Дополнительно: RTL/ar, 360px и реальное касание контрола через Playwright `locator.tap`
 в touch context обоих движков; незавершённая IME-композиция и Enter, reduced-motion media.
 Путь IME через CDP соответствует
@@ -172,7 +187,22 @@ browser versions. Смешанная среда даёт `invalid`, клетки
 Linux CI проверяет инструмент/negative controls и запускает Soxa baseline и все 10 сохранённых
 образцов в Chromium/WebKit с сохранением результатов. Ошибки компонентов остаются явными
 findings; неполный или повреждённый результат роняет проверку инструмента. Raw-only commits
-не запускают длительный job повторно; он реагирует на инструменты, input dataset и lockfile.
+в уже открытом PR тоже могут запустить длительный job: `pull_request.paths` проверяет весь
+трёхточечный diff PR, включая ранее добавленные инструменты, input dataset и lockfile.
 Платные генерации и длительные performance benches вручную запускаются отдельно от CI.
 Неуспех Soxa публикуется наравне с неуспехом AI. Будущая страница сайта получает этот export,
 показывает источники/методику/пробелы и потребляет published пакеты; текущий PR сайт не меняет.
+
+Основное сравнение — [полная Linux CI матрица 42600605491](runs/linux-ci-42600605491/integrity.json):
+11 участников, Chromium и WebKit, одинаковое окружение и завершённые процессы. Первый Linux
+запуск без baseline сохранён только как диагностика инструмента и в эту матрицу не входит.
+Windows-прогоны также не смешиваются с Linux. [Execution completeness amendment](amendments/2026-11-09-execution-completeness.json)
+сохраняет исходный exit, signal и timeout каждого процесса: даже записанные passed клетки
+не принимаются при незавершённом процессе.
+
+[Исправление сопоставления Table после наблюдения результатов](amendments/2026-11-09-table-public-matching.json)
+принимает локализованные en/ru/ar заголовки и ищет точный текст record в ячейке, не его
+порядковый номер в скрытой подписи checkbox. Эта правка выполнена **после просмотра результатов**;
+полный окончательный harness нельзя считать зарегистрированным до ответов. Все 11 участников
+повторно проверены симметрично, исходники и первые ответы не изменялись. Предыдущая полная
+Linux матрица сохранена, но её затронутые выводы не используются в основном сравнении.

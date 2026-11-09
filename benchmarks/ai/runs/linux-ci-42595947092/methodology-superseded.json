@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-09T10:17:14.671Z",
+  "physicalIntegrity": "valid",
+  "methodologyStatus": "superseded-for-final-comparison",
+  "amendment": "../../amendments/2026-11-09-table-public-matching.json",
+  "reason": "Actual DOM/accessibility evidence exposed two matcher faults. Case-insensitive substring hasText matched a hidden row ordinal as if it were the record name. English-only header locators rejected semantic Arabic Name/Score translations under the declared locale prop. These observations do not prove component defects.",
+  "rawBytes": "Unchanged; do not treat the affected locator failures as component defects",
+  "replacement": "A full common-cohort rerun will replace this cohort in the main export"
+}

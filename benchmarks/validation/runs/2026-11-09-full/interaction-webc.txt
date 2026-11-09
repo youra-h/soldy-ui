@@ -1,0 +1,32 @@
+webc select ×1 open 15/64, close 15/65, type 7/56
+webc select ×4 open 18/64, close 16/63, type 16/55
+webc select ×6 open 23/63, close 18/62, type 24/58
+webc menu ×1 open 16/65, close 15/65
+webc menu ×4 open 17/63, close 17/63
+webc menu ×6 open 22/63, close 19/64
+webc date-picker ×1 open 16/65, close 15/64, locale ru 19/65, locale en 19/66
+webc date-picker ×4 open 21/64, close 16/63, locale ru 73/96, locale en 64/98
+webc date-picker ×6 open 42/91, close 28/63, locale ru 121/154, locale en 104/134
+webc dialog ×1 open 15/65, close 15/64
+webc dialog ×4 open 17/63, close 15/64
+webc dialog ×6 open 22/64, close 19/64
+webc input ×1 type 13/63
+webc input ×4 type 12/60
+webc input ×6 type 12/58
+webc tabs ×1 tab 2 16/66, tab 1 16/66
+webc tabs ×4 tab 2 20/65, tab 1 21/66
+webc tabs ×6 tab 2 44/95, tab 1 35/83
+webc calendar ×1 locale ru 100/132, locale en 98/131
+webc calendar ×4 locale ru 768/848, locale en 779/815
+webc calendar ×6 locale ru 1845/1907, locale en 1816/1848
+webc number-input ×1 locale ru 17/66, locale en 17/66
+webc number-input ×4 locale ru 25/65, locale en 27/66
+webc number-input ×6 locale ru 30/65, locale en 29/65
+webc select перерисовки open 0/0 чужим 0, close 0/0 чужим 0, type 0/0 чужим 0
+webc menu перерисовки open 0/0 чужим 0, close 0/0 чужим 0
+webc date-picker перерисовки open 0/0 чужим 0, close 0/0 чужим 0, locale ru 0/0 чужим 686, locale en 0/0 чужим 686
+webc dialog перерисовки open 0/0 чужим 0, close 0/0 чужим 0
+webc input перерисовки type 0/0 чужим 0
+webc tabs перерисовки tab 2 0/0 чужим 0, tab 1 0/0 чужим 0
+webc calendar перерисовки locale ru 0/0 чужим 23373, locale en 0/0 чужим 23373
+webc number-input перерисовки locale ru 0/0 чужим 196, locale en 0/0 чужим 196

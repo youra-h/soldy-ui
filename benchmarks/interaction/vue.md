@@ -160,3 +160,7 @@ Tags, Accordion, RadioGroup, Pagination, Toasts), отдаёт элементу 
 | ------------------- | -------- | --------- | ---------- |
 | calendar: locale ru | 120 → 76 | 716 → 392 | 1150 → 560 |
 | calendar: locale en | 141 → 78 | 788 → 351 | 1239 → 554 |
+
+## 2026-11-09 — проверяемый запуск 2026-11-09-full
+
+Новый собственный замер — [итоговый отчёт](../validation/report.md), [условия и команды](../validation/README.md), [manifest](../validation/runs/2026-11-09-full/manifest.json), [raw interaction](../validation/runs/2026-11-09-full/interaction-vue.json), [машинная сводка](../validation/runs/2026-11-09-full/summary.json). Статус данных: **measured**. Параметры и каждый повтор сохранены; исторические числа выше не переписаны.

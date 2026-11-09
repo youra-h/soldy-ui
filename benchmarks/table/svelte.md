@@ -275,3 +275,7 @@ npm run heap -- 500 mounted svelte:soxa+fit=none+width=3248+track 0
   спред Svelte `textContent` не пишет, свести текст с атрибутами нельзя. Корень `Dynamic` у строки
   и чекбокса держит ветку по виду `tag` — строка, компонент или метка роли: это возможность
   компонента, а не лишнее. Чекбокс строки — ~20 КБ, как у Vue (18) и Solid (23).
+
+## 2026-11-09 — проверяемый запуск 2026-11-09-full
+
+Новый собственный замер — [итоговый отчёт](../validation/report.md), [условия и команды](../validation/README.md), [manifest](../validation/runs/2026-11-09-full/manifest.json), [raw table](../validation/runs/2026-11-09-full/table-svelte.json), [машинная сводка](../validation/runs/2026-11-09-full/summary.json). Статус данных: **measured**. Параметры и каждый повтор сохранены; исторические числа выше не переписаны.

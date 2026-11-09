@@ -1,0 +1,3 @@
+react    empty  clean      heap 9.35 MB, 5 B/render, components +0, emitters +0, mismatches 0, 5 s
+react    all    clean      heap 16.00 MB, 35 B/render, components +0, emitters +0, mismatches 0, 81 s
+react    leak   leak       heap 141.05 MB, 219867 B/render, components +450, emitters +450, mismatches 0, 18 s

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-09T10:42:52.634Z",
+  "run": 42600605491,
+  "head": "4ec4acc1bd104400252466b0c90b95c5caaebf60",
+  "artifactId": 13666257532,
+  "artifact": "observations.zip",
+  "sha256": "c43a8a60405cc176b4fdcd7345725bb779a2af7a2e961cf332974f5cf48bf278",
+  "bytes": 2619931,
+  "cohort": "Soxa plus all 10 untouched model inputs; Chromium and WebKit; same Linux runner and amended matching protocol",
+  "toolChecks": {
+    "audit": {
+      "passed": 17,
+      "failed": 0
+    },
+    "ai": {
+      "passed": 41,
+      "failed": 0
+    }
+  },
+  "status": "downloaded-for-integrity-review",
+  "extractionTiming": "Downloaded after the entire local performance loop finished at 10:40:59 UTC"
+}

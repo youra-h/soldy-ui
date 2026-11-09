@@ -265,12 +265,13 @@ if (baseline || inputsPath) {
 						component: 'baseline',
 						mode: baseline.status,
 						failure: baseline.error ?? baseline.reason,
+						raw: result.baseline.source,
 					},
 				]
 			: []),
 		...result.baseline.results
 			.filter((cell) => cell.status === 'failed')
-			.map((cell) => ({ participant: 'Soxa', ...cell })),
+			.map((cell) => ({ participant: 'Soxa', raw: result.baseline.source, ...cell })),
 		...participants.flatMap((participant) =>
 			participant.components
 				.filter((entry) =>
@@ -288,6 +289,7 @@ if (baseline || inputsPath) {
 					component: entry.component,
 					mode: entry.status,
 					failure: entry.reason ?? entry.diagnostic,
+					raw: entry.run ?? entry.generationManifest,
 				})),
 		),
 		...participants.flatMap((participant) =>
@@ -296,6 +298,7 @@ if (baseline || inputsPath) {
 					.filter((cell) => cell.status === 'failed')
 					.map((cell) => ({
 						participant: participant.actualModel ?? participant.slot,
+						raw: entry.run,
 						...cell,
 					})),
 			),
@@ -322,13 +325,15 @@ if (baseline || inputsPath) {
 		'| --- | --- | --- | --- |',
 		...rows,
 		'',
+		'`passed` означает прохождение выполненных автоматических assertions, а не полную доступность. Записи `axe.incomplete` в raw требуют ручной проверки: отсутствие violations при incomplete не подтверждает прохождение соответствующего правила.',
+		'',
 		'**Failed observations:**',
 		'',
 		...(failures.length
-			? failures.map(
-					(cell) =>
-						`- ${cell.participant} / ${cell.engine} / ${cell.component} / ${cell.mode}: ${cell.failure}`,
-				)
+			? failures.map((cell) => {
+					const headline = String(cell.failure ?? 'See raw diagnostic').split(/\r?\n/)[0]
+					return `- ${cell.participant} / ${cell.engine} / ${cell.component} / ${cell.mode}: ${headline}${cell.raw ? ` ([raw](${cell.raw}))` : ''}`
+				})
 			: [
 					'Нет записанных failed cells. Отсутствующие inputs/движки и непройденные ручные проверки остаются not-run.',
 				]),

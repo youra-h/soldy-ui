@@ -283,3 +283,7 @@ npm run heap -- 500 mounted solid:soxa+fit=none+width=3248+track+mode=none 0
 | Память после снятия  | 2,1 МБ | 2,1 МБ |
 
 - Разницы нет: всё в пределах разброса прогона.
+
+## 2026-11-09 — проверяемый запуск 2026-11-09-full
+
+Новый собственный замер — [итоговый отчёт](../validation/report.md), [условия и команды](../validation/README.md), [manifest](../validation/runs/2026-11-09-full/manifest.json), [raw table](../validation/runs/2026-11-09-full/table-solid.json), [машинная сводка](../validation/runs/2026-11-09-full/summary.json). Статус данных: **measured**. Параметры и каждый повтор сохранены; исторические числа выше не переписаны.

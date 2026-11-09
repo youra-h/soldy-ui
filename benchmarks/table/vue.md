@@ -198,3 +198,7 @@ npm run bench -- 5000 3 soxa+fit=none+width=3248+track,solid:soxa+fit=none+width
 
 - Разницы нет: время и память — в пределах разброса прогона (память после рендера 209,9–210,1 МБ
   у обеих сборок, после снятия 3,1–3,3).
+
+## 2026-11-09 — проверяемый запуск 2026-11-09-full
+
+Новый собственный замер — [итоговый отчёт](../validation/report.md), [условия и команды](../validation/README.md), [manifest](../validation/runs/2026-11-09-full/manifest.json), [raw table](../validation/runs/2026-11-09-full/table-vue.json), [машинная сводка](../validation/runs/2026-11-09-full/summary.json). Статус данных: **measured**. Параметры и каждый повтор сохранены; исторические числа выше не переписаны.

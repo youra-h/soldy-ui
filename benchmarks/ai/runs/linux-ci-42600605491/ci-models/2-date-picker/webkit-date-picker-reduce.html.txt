@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Component validation</title>
+		<script type="module" crossorigin src="/assets/index-DYtu0TzL.js"></script>
+		<link rel="stylesheet" crossorigin href="/assets/index-DUNDhQu_.css">
+	</head>
+	<body>
+		<div id="app"><main lang="en" dir="ltr"><h1>Component validation</h1><button type="button">Before component</button><section aria-label="Candidate"><div class="date-picker" dir="ltr" data-v-f1789b3b><button class="choose-button" type="button" aria-haspopup="dialog" aria-expanded="false" data-v-f1789b3b> Choose date <span aria-hidden="true" data-v-f1789b3b>▦</span></button><div class="selection" data-v-f1789b3b><span class="selection-label" data-v-f1789b3b>Selected date</span><output aria-label="Selected date" aria-live="polite" aria-atomic="true" data-v-f1789b3b><span data-v-f1789b3b>No date selected</span></output></div><!----></div></section><button type="button">After component</button></main></div>
+		<script id="input" type="application/json">{"component":"date-picker","baseline":false,"locale":"en","dir":"ltr","count":20}</script>
+	</body>
+</html>

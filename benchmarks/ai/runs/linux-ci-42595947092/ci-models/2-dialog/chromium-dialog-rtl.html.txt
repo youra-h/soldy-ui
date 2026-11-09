@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Component validation</title>
+		<script type="module" crossorigin src="/assets/index-BTlZcRqn.js"></script>
+		<link rel="stylesheet" crossorigin href="/assets/index-3S_KAKso.css">
+	</head>
+	<body>
+		<div id="app"><main lang="ar" dir="rtl"><h1>Component validation</h1><button type="button">Before component</button><section aria-label="Candidate"><div class="settings" dir="rtl" lang="en" data-v-341a6051><button type="button" data-v-341a6051> Open dialog </button><dialog aria-label="Settings" aria-modal="true" data-v-341a6051><form data-v-341a6051><h2 data-v-341a6051>Settings</h2><label class="field" data-v-341a6051><span data-v-341a6051>Name</span><input value="" type="text" name="name" autocomplete="name" autofocus data-v-341a6051></label><div class="actions" data-v-341a6051><button type="button" data-v-341a6051> Cancel </button><button class="primary" type="submit" data-v-341a6051> Save </button></div></form></dialog></div></section><button type="button">After component</button></main></div>
+		<script id="input" type="application/json">{"component":"dialog","baseline":false,"locale":"ar","dir":"rtl","count":20}</script>
+	</body>
+</html>

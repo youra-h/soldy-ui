@@ -1,0 +1,3 @@
+svelte   empty  clean      heap 7.87 MB, 5 B/render, components +0, emitters +0, mismatches 0, 5 s
+svelte   all    clean      heap 14.60 MB, 23 B/render, components +0, emitters +0, mismatches 0, 96 s
+svelte   leak   leak       heap 192.05 MB, 311640 B/render, components +450, emitters +450, mismatches 0, 21 s
