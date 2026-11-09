@@ -1067,3 +1067,50 @@ describe('жест', () => {
 		expect(select.findComponent(Select).emitted('update:open')).toEqual([[true], [false]])
 	})
 })
+
+describe('selected values as a combobox description', () => {
+	it('links all selected tags and preserves the consumer description', async () => {
+		const view = render({ mode: 'multiple', value: ['msk', 'tver'], aria_describedBy: 'help' })
+		await nextTick()
+		const input = view.find('input')
+		const tags = view.find('.so-select__tags')
+		expect(tags.attributes('aria-label')).toContain('Москва')
+		expect(tags.attributes('aria-label')).toContain('Тверь')
+		expect(input.attributes('aria-describedby')?.split(' ')).toEqual([
+			tags.attributes('id'),
+			'help',
+		])
+		await view.setProps({ value: ['tver'] })
+		expect(tags.attributes('aria-label')).toBe('Тверь')
+		await view.setProps({ value: [] })
+		expect(input.attributes('aria-describedby')).toBe('help')
+		await view.setProps({ mode: 'single', value: 'msk' })
+		expect(input.attributes('aria-describedby')).toBe('help')
+	})
+})
+
+it('updates the selected description when a selected option is renamed', async () => {
+	const firstText = ref('Alpha')
+	wrapper = mount(
+		defineComponent({
+			setup: () => () =>
+				h(
+					Select,
+					{ mode: 'multiple', value: ['a', 'b'] },
+					{
+						default: () => [
+							h(SelectItem, { value: 'a', text: firstText.value }),
+							h(SelectItem, { value: 'b', text: 'Beta' }),
+						],
+					},
+				),
+		}),
+		{ attachTo: document.body },
+	)
+	await nextTick()
+	const tags = wrapper.find('.so-select__tags')
+	expect(tags.attributes('aria-label')).toBe('Alpha, Beta')
+	firstText.value = 'Renamed'
+	await nextTick()
+	expect(tags.attributes('aria-label')).toBe('Renamed, Beta')
+})

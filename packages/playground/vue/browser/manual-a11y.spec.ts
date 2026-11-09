@@ -137,6 +137,48 @@ describe('screen-reader activation and live announcements', () => {
 		await expect.poll(() => document.activeElement?.textContent?.trim()).toBe('Поделиться')
 	})
 
+	it('describes both selected values and updates the description after tag removal', async () => {
+		render(ManualAudit)
+		await userEvent.click(page.getByRole('button', { name: /Select — поиск/ }))
+		const field = page.getByRole('combobox', { name: 'Несколько вариантов', exact: true })
+		await userEvent.click(field)
+		await userEvent.keyboard('{ArrowDown}')
+		await userEvent.click(page.getByRole('option', { name: 'Первый', exact: true }))
+		await userEvent.click(page.getByRole('option', { name: 'Второй', exact: true }))
+		const described = () =>
+			document.getElementById(field.element().getAttribute('aria-describedby') ?? '')
+		await expect.poll(() => described()?.getAttribute('aria-label')).toBe('Первый, Второй')
+		const close = document.querySelector('.so-select__tags .so-tags-item__close') as HTMLElement
+		close.click()
+		await expect.poll(() => described()?.getAttribute('aria-label')).toBe('Второй')
+	})
+
+	it('exposes true/false menu states and offers independent HTML and ARIA reference controls', async () => {
+		render(ManualAudit)
+		await userEvent.click(page.getByRole('button', { name: /Menu — меню/ }))
+		await userEvent.click(page.getByRole('button', { name: 'Действия', exact: true }))
+		const item = page.getByRole('menuitemcheckbox', { name: 'Линейка', exact: true })
+		await expect.element(item).toHaveAttribute('aria-checked', 'false')
+		;(item.element() as HTMLElement).focus()
+		await userEvent.keyboard(' ')
+		await expect.element(item).toHaveAttribute('aria-checked', 'true')
+		await userEvent.keyboard(' ')
+		await expect.element(item).toHaveAttribute('aria-checked', 'false')
+		await userEvent.keyboard('{Escape}')
+		await userEvent.click(
+			page.getByText('Сравнение флажков Narrator — без Soxa', { exact: true }),
+		)
+		const native = page.getByRole('checkbox', { name: 'Обычный флажок HTML', exact: true })
+		await userEvent.click(native)
+		await expect.element(native).toBeChecked()
+		const reference = page.getByRole('menuitemcheckbox', {
+			name: 'Эталонный пункт ARIA',
+			exact: true,
+		})
+		await expect.element(reference).toHaveAttribute('aria-checked', 'false')
+		await userEvent.click(reference)
+		await expect.element(reference).toHaveAttribute('aria-checked', 'true')
+	})
 	it('adds polite content to the existing live region instead of inserting a new live region', async () => {
 		render(ManualAudit)
 		await userEvent.click(page.getByRole('button', { name: /Toasts — уведомления/ }))
@@ -151,5 +193,13 @@ describe('screen-reader activation and live announcements', () => {
 		await expect
 			.poll(() => document.querySelector('.so-toasts [role="alert"]')?.textContent)
 			.toContain('Нет сети')
+		await userEvent.click(page.getByRole('button', { name: 'загрузка → готово', exact: true }))
+		const pending = document.querySelector('.so-toasts-item [aria-label*="Сохраняем"]')
+		expect(pending?.getAttribute('aria-live')).toBe('off')
+		await expect
+			.poll(() => pending?.getAttribute('aria-label'), { timeout: 5000 })
+			.toContain('Сохранено')
+		expect(pending?.getAttribute('aria-live')).toBe('off')
+		expect(pending?.closest('.so-toasts-item')?.textContent).toContain('Сохранено')
 	})
 })

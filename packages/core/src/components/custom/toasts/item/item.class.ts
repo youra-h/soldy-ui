@@ -106,6 +106,8 @@ export default class TToastsItem<
 		this._render = own.render ?? ctor.defaultValues.render
 
 		this._closeAria = new TAria()
+		// The close control remains discoverable, but its changing name is not a status message.
+		this._closeAria.add('aria-live', 'off')
 		this._closeAria.subscribe((_set, oldValue) =>
 			this._sink.emit('change:closeAria', { newValue: this._closeAria.toObject(), oldValue }),
 		)

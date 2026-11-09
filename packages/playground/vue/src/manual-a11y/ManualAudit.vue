@@ -55,6 +55,7 @@ const start = ref<HTMLButtonElement | null>(null)
 const heading = ref<HTMLElement | null>(null)
 const fixtureError = ref('')
 const exportNotice = ref('')
+const referenceChecked = ref(false)
 let mounted: IPreviewHandle | undefined
 
 function mountFixture() {
@@ -138,8 +139,11 @@ function download() {
 		<p class="eyebrow">SOXA · РУЧНАЯ ПРОВЕРКА</p>
 		<h1>Проверим то, что слышно</h1>
 		<p>
-			Один пример, несколько действий и ваши наблюдения. Всего 9 тестов, 36 шагов. Можно
-			прерваться и продолжить.
+			Один пример, несколько действий и ваши наблюдения. Всего {{ CASES.length }} тестов,
+			{{ total }} шагов. Можно прерваться и продолжить.
+		</p>
+		<p class="scope">
+			<strong>Протокол {{ PROTOCOL_VERSION }} · повтор после отчёта 16:49</strong>
 		</p>
 		<p class="scope">Vue · русская локаль · тема oren · версия {{ source.libraryVersion }}</p>
 	</header>
@@ -180,7 +184,7 @@ function download() {
 				сохранение контекста. Ничего не отмечается пройденным автоматически.
 			</p>
 			<p>
-				<strong>Повторная проверка, протокол 2.</strong> Для Select и Menu выключите
+				<strong>Повторная проверка, протокол 3.</strong> Для Select и Menu выключите
 				сканирование: Caps Lock + Space (или Insert + Space), пока не услышите «Сканирование
 				выключено». Для чтения ячеек Table используются команды диктора: Ctrl + Alt +
 				стрелки. В Table сначала включите сканирование и найдите таблицу клавишей T. Сайт не
@@ -195,7 +199,8 @@ function download() {
 				>
 			</p>
 			<p>
-				Это новый прогон: прежний отчёт сохранён отдельно. Ответы старого протокола не
+				Проверяем оставшиеся замечания: описание всех тегов Select, состояния флажков Menu и
+				повторы Toasts. Оба прежних отчёта сохранены отдельно. Ответы старого протокола не
 				подставляются как уже пройденные проверки.
 			</p>
 		</details>
@@ -294,6 +299,30 @@ function download() {
 						скопируйте ошибку в замечания.
 					</p>
 
+					<details v-if="current.id === 'menu'" class="panel">
+						<summary>Сравнение флажков Narrator — без Soxa</summary>
+						<p>
+							Если «Сетка» или «Линейка» звучат как «не определено», выключите
+							сканирование и проверьте два эталона ниже. На каждом нажмите Space
+							дважды. Запишите в замечаниях шага 2 три строки: Soxa / обычный флажок /
+							эталон ARIA — и точные фразы для включённого и выключенного состояния.
+						</p>
+						<label><input type="checkbox" /> Обычный флажок HTML</label>
+						<div role="menu" aria-label="Эталон ARIA без Soxa">
+							<button
+								type="button"
+								role="menuitemcheckbox"
+								:aria-checked="referenceChecked"
+								@click="referenceChecked = !referenceChecked"
+							>
+								Эталонный пункт ARIA
+							</button>
+						</div>
+						<p>
+							Состояние эталона: {{ referenceChecked ? 'отмечен' : 'не отмечен' }}.
+							Это диагностика сочетания браузера и диктора, а не проверка библиотеки.
+						</p>
+					</details>
 					<fieldset
 						v-for="(step, index) in current.steps"
 						:key="answerKey(current.id, step.id)"

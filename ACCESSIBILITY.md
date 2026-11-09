@@ -113,3 +113,10 @@ accessible one, please tell us:
   [GitHub's private reporting form](https://github.com/youra-h/soxa-ui/security/advisories/new).
 
 Accessibility barriers are treated as bugs, not as feature requests.
+
+The owner's protocol-2 repeat recorded 17 passed steps, two failed and 17 not
+repeated. Table reading/sorting and the initial toast announcements passed.
+Remaining findings concern the description of all selected tags, Narrator's
+checkbox-menu state, and repeated loading speech. Protocol 3 and its follow-up
+changes are documented in the same [manual-run analysis](benchmarks/ai/manual-narrator-2026-11-09.md);
+their audible effects await another manual check.

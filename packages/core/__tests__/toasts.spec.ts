@@ -177,6 +177,7 @@ describe('тост (TToastsItem)', () => {
 		const toast = new TToastsItem({ text: 'Сохранено' })
 
 		expect(toast.aria.get('role')).toBe('listitem')
+		expect(toast.closeAria.get('aria-live')).toBe('off')
 
 		toast.alert = true
 
