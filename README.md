@@ -65,14 +65,14 @@ depends on the core packages (`@soxa-ui/core`, `@soxa-ui/plugins`, `@soxa-ui/set
 you import directly must also be direct dependencies of your application. The entry point below
 imports `useIcons` and `useTheme` from `@soxa-ui/setup`, so install it explicitly.
 
-| Framework      | Install                                       | Requires        |
-| -------------- | --------------------------------------------- | --------------- |
-| Vue            | `npm install @soxa-ui/vue @soxa-ui/setup`     | Vue 3.5.21+     |
-| React          | `npm install @soxa-ui/react @soxa-ui/setup`   | React 19.3+     |
-| Angular        | `npm install @soxa-ui/angular @soxa-ui/setup` | Angular 22.2+   |
-| Svelte         | `npm install @soxa-ui/svelte @soxa-ui/setup`  | Svelte 5.55.10+ |
-| Solid          | `npm install @soxa-ui/solid @soxa-ui/setup`   | Solid 1.9.13+   |
-| Web Components | `npm install @soxa-ui/webc @soxa-ui/setup`    | —               |
+| Framework      | Install                                       | Requires                    |
+| -------------- | --------------------------------------------- | --------------------------- |
+| Vue            | `npm install @soxa-ui/vue @soxa-ui/setup`     | Vue `^3.5.21`               |
+| React          | `npm install @soxa-ui/react @soxa-ui/setup`   | React / React DOM `^19.3.0` |
+| Angular        | `npm install @soxa-ui/angular @soxa-ui/setup` | Angular `^22.2.0`           |
+| Svelte         | `npm install @soxa-ui/svelte @soxa-ui/setup`  | Svelte `^5.55.10`           |
+| Solid          | `npm install @soxa-ui/solid @soxa-ui/setup`   | Solid `^1.9.13`             |
+| Web Components | `npm install @soxa-ui/webc @soxa-ui/setup`    | —                           |
 
 The theme and the icon pack are the same for every adapter.
 
@@ -94,6 +94,70 @@ The adapter and the core packages it brings share one version; keep your direct 
 dependency on that same version. A theme and an icon pack have versions of their own and declare
 the range of library versions they work with, which npm checks on install. Then plug in the theme
 and the icons at the application entry point, as shown below.
+
+## Compatibility and support
+
+The first stable release is **`0.3.0`**. The public API is already frozen from the first beta;
+`0.x` does not mean that an update may silently break an application or a custom theme.
+
+### Versions and the public contract
+
+Compatible fixes and additions use a **patch** release (`0.3.0` to `0.3.1`). An incompatible
+change uses a **minor** release (`0.3.x` to `0.4.0`) and requires a separate maintainer decision
+for that change. Its changelog must explain what breaks and how to update. Raising a minimum
+supported framework version or dropping a supported browser is also an incompatible change.
+These rules apply to releases starting at `0.3.0`.
+
+The public contract includes:
+
+- exports and types from the package's supported entry points, including the programmatic core API;
+- component props, events, slots and their documented behavior and defaults;
+- theme-facing `so-*` classes, `data-*` attributes and `--so-*` CSS custom properties, including
+  their meaning and the parts they describe.
+
+Removing or renaming one of these, narrowing accepted values or changing its meaning is a
+breaking change. For example, a custom theme using `.so-button` must not lose its styling in a
+patch update. Changing private implementation details is compatible only while the public
+contract and behavior remain intact. Files outside supported package entry points are internal;
+deep imports into source files are not supported. Internal markup is not a separate customization
+API, but changing it must still preserve public parts, styling hooks and behavior.
+
+Core, setup, plugins and adapters share one version: keep directly installed packages from that
+group on the same version. Themes and icon packs have independent versions; their declared
+library dependency ranges specify compatibility. Check the changelog of each package you update.
+
+### Deprecation and migration
+
+A deprecation notice names the replacement, shows how to migrate and states the release planned
+for removal in the documentation and changelog; applicable TypeScript APIs also use `@deprecated`.
+For example, a notice about a renamed prop must show both the old and the replacement usage.
+Deprecation by itself does not remove an API.
+
+There is no automatic compatibility alias or mandatory number of transitional releases. The
+maintainer decides whether a transition is needed, and its duration, with each breaking change.
+Removal follows the minor-release rule above and includes migration instructions. No calendar-based
+LTS or maintenance period for older release lines is promised.
+
+### Supported environments
+
+The framework ranges in the installation table are the adapter's `peerDependencies`, not an
+open-ended promise about future major framework versions. React requires matching React and React
+DOM ranges; Angular requires the listed range for `common`, `core`, `forms` and `platform-browser`.
+CI checks the lower bounds in its minimum-version jobs, and installation tests exercise built
+packages in clean framework projects.
+
+The browser target is current evergreen Chrome, Edge, Firefox and Safari, including mobile
+browsers. Automated layout and interaction tests run in Playwright Chromium and WebKit, with
+mobile viewport and touch scenarios where the engine supports them. Firefox is not part of the
+automated browser matrix. Engine-specific skips remain, and WebKit emulation is not a test on a
+physical iPhone or a guarantee for every historical Safari version. See the
+[accessibility coverage and limitations](ACCESSIBILITY.md#supported-environments).
+
+Oren requires modern CSS, including `color-mix()` and `oklch()`. Individual CSS feature thresholds
+are not minimum browser versions verified for the whole library; older browsers are not covered
+by the current-browser policy. A custom theme does not by itself extend runtime browser support.
+The Web Components adapter includes the customized built-in elements polyfill needed by Safari;
+see its [runtime notes](packages/ui/webc/README.md).
 
 ## What it looks like
 
