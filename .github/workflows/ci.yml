@@ -366,6 +366,7 @@ jobs:
         project:
           [
             vue,
+            vue-tailwind,
             react,
             svelte,
             solid,

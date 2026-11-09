@@ -106,5 +106,5 @@ jobs:
 
       # Registry mode installs the published latest packages without packing
       # or resolving any library source from this checkout.
-      - name: Установка из npm в 11 чистых проектов
+      - name: Установка из npm в чистые проекты
         run: npm run check:install -- --registry latest

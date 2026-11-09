@@ -41,6 +41,11 @@ export type TProject = {
  */
 export const PROJECTS: readonly TProject[] = [
 	{ name: 'vue', title: 'Vite + Vue', serve: { kind: 'static', dir: 'dist' } },
+	{
+		name: 'vue-tailwind',
+		title: 'Vite + Vue + Tailwind 4',
+		serve: { kind: 'static', dir: 'dist' },
+	},
 	{ name: 'react', title: 'Vite + React', serve: { kind: 'static', dir: 'dist' } },
 	{ name: 'svelte', title: 'Vite + Svelte', serve: { kind: 'static', dir: 'dist' } },
 	{ name: 'solid', title: 'Vite + Solid', serve: { kind: 'static', dir: 'dist' } },

@@ -1,0 +1,7 @@
+@import '@soxa-ui/theme-oren';
+
+html {
+	font-family: system-ui, sans-serif;
+	font-size: 16px;
+	line-height: 1.5;
+}

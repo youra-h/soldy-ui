@@ -14,7 +14,7 @@ import type { Server } from 'node:http'
 import { tmpdir } from 'node:os'
 import { extname, join, relative, resolve, sep } from 'node:path'
 import { parseArgs } from 'node:util'
-import { pageProblems } from './browser.ts'
+import { pageProblems, tailwindPageProblems } from './browser.ts'
 import {
 	PROJECTS,
 	libraryClosure,
@@ -463,7 +463,10 @@ async function browse(project: TProject, cwd: string): Promise<void> {
 			: await serveStart(cwd)
 
 	try {
-		const problems = await pageProblems(serving.url, project.serve.kind === 'server')
+		const problems =
+			project.name === 'vue-tailwind'
+				? await tailwindPageProblems(serving.url)
+				: await pageProblems(serving.url, project.serve.kind === 'server')
 
 		if (problems.length > 0) {
 			throw new Error(`страница в Chromium:\n${problems.join('\n')}`)
