@@ -23,3 +23,15 @@ CHANGELOG.md
 tools/bench-pages/results
 tools/bench-compare/results
 tools/bench-ssr/results
+
+# Benchmark evidence is preserved exactly, including compact JSON and model responses.
+tools/bench-table/results
+benchmarks/validation/runs
+benchmarks/ai/runs
+benchmarks/ai/inputs
+# Frozen protocol records and prompts are append-only experiment evidence.
+benchmarks/ai/protocol.v1.json
+benchmarks/ai/amendments
+benchmarks/ai/prompts
+# This structured summary is written by tools/bench-ai/export.mjs.
+benchmarks/ai/results.v1.json

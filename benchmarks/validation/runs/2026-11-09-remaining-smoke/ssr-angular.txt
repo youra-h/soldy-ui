@@ -1,0 +1,3 @@
+angular  empty  clean      heap 13.68 MB, 5208 B/render, components +0, emitters +0, mismatches 0, 2 s
+angular  all    clean      heap 24.94 MB, 8871 B/render, components +0, emitters +0, mismatches 0, 5 s
+angular  leak   leak       heap 29.71 MB, 325437 B/render, components +12, emitters +12, mismatches 0, 7 s

@@ -1,0 +1,278 @@
+{
+	"schemaVersion": 1,
+	"date": "2026-11-09T08:44:16.345Z",
+	"candidate": "soxa",
+	"sourceHash": "0f38dad51907e7babfd85c1292ab52388a10c698aa2aab2f755383cf1609138e",
+	"status": "pending",
+	"cells": [
+		{
+			"engine": "chromium",
+			"browser": "156.0.8078.4",
+			"component": "select",
+			"mode": "default",
+			"status": "failed",
+			"errors": [
+				"Hydration completed but contains mismatches.",
+				"Hydration completed but contains mismatches."
+			],
+			"ssr": {
+				"status": "passed",
+				"snapshot": "- main:\n  - heading \"Component validation\" [level=1]\n  - button \"Before component\"\n  - region \"Candidate\":\n    - list\n    - combobox \"Choose items\"\n  - button \"After component\""
+			},
+			"before": "- main:\n  - heading \"Component validation\" [level=1]\n  - button \"Before component\"\n  - region \"Candidate\"\n  - button \"After component\"",
+			"axe": {
+				"initial": {
+					"violations": [],
+					"incomplete": []
+				}
+			},
+			"openStateFailure": "locator.focus: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('combobox', { name: 'Choose items' })\u001b[22m\n",
+			"failure": "locator.focus: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('combobox', { name: 'Choose items' })\u001b[22m\n"
+		},
+		{
+			"engine": "chromium",
+			"browser": "156.0.8078.4",
+			"component": "select",
+			"mode": "rtl",
+			"status": "failed",
+			"errors": [
+				"Hydration completed but contains mismatches.",
+				"Failed to load resource: net::ERR_NO_BUFFER_SPACE",
+				"Hydration completed but contains mismatches."
+			],
+			"ssr": {
+				"status": "passed",
+				"snapshot": "- main:\n  - heading \"Component validation\" [level=1]\n  - button \"Before component\"\n  - region \"Candidate\":\n    - list\n    - combobox \"Choose items\"\n  - button \"After component\""
+			},
+			"before": "- main:\n  - heading \"Component validation\" [level=1]\n  - button \"Before component\"\n  - region \"Candidate\"\n  - button \"After component\"",
+			"axe": {
+				"initial": {
+					"violations": [],
+					"incomplete": []
+				}
+			},
+			"openStateFailure": "locator.focus: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('combobox', { name: 'Choose items' })\u001b[22m\n",
+			"failure": "locator.focus: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('combobox', { name: 'Choose items' })\u001b[22m\n"
+		},
+		{
+			"engine": "chromium",
+			"browser": "156.0.8078.4",
+			"component": "select",
+			"mode": "narrow-touch",
+			"status": "failed",
+			"errors": [
+				"Hydration completed but contains mismatches.",
+				"Hydration completed but contains mismatches."
+			],
+			"ssr": {
+				"status": "passed",
+				"snapshot": "- main:\n  - heading \"Component validation\" [level=1]\n  - button \"Before component\"\n  - region \"Candidate\":\n    - list\n    - combobox \"Choose items\"\n  - button \"After component\""
+			},
+			"before": "- main:\n  - heading \"Component validation\" [level=1]\n  - button \"Before component\"\n  - region \"Candidate\"\n  - button \"After component\"",
+			"axe": {
+				"initial": {
+					"violations": [],
+					"incomplete": []
+				}
+			},
+			"openStateFailure": "locator.focus: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('combobox', { name: 'Choose items' })\u001b[22m\n",
+			"failure": "locator.tap: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('combobox', { name: 'Choose items' })\u001b[22m\n"
+		},
+		{
+			"engine": "chromium",
+			"browser": "156.0.8078.4",
+			"component": "select",
+			"mode": "reduce",
+			"status": "failed",
+			"errors": [
+				"Hydration completed but contains mismatches.",
+				"Hydration completed but contains mismatches."
+			],
+			"ssr": {
+				"status": "passed",
+				"snapshot": "- main:\n  - heading \"Component validation\" [level=1]\n  - button \"Before component\"\n  - region \"Candidate\":\n    - list\n    - combobox \"Choose items\"\n  - button \"After component\""
+			},
+			"before": "- main:\n  - heading \"Component validation\" [level=1]\n  - button \"Before component\"\n  - region \"Candidate\"\n  - button \"After component\"",
+			"reducedMotion": {
+				"status": "passed-observed-states",
+				"states": {
+					"initial": {
+						"media": true,
+						"activeDurations": []
+					}
+				},
+				"limitMs": 100,
+				"scope": "Immediate initial/open/after observations only; completed or untriggered animations are not covered"
+			},
+			"axe": {
+				"initial": {
+					"violations": [],
+					"incomplete": []
+				}
+			},
+			"openStateFailure": "locator.focus: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('combobox', { name: 'Choose items' })\u001b[22m\n",
+			"failure": "locator.focus: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('combobox', { name: 'Choose items' })\u001b[22m\n"
+		},
+		{
+			"engine": "chromium",
+			"browser": "156.0.8078.4",
+			"component": "select",
+			"mode": "ime",
+			"status": "failed",
+			"errors": [
+				"Hydration completed but contains mismatches.",
+				"Hydration completed but contains mismatches."
+			],
+			"ssr": {
+				"status": "passed",
+				"snapshot": "- main:\n  - heading \"Component validation\" [level=1]\n  - button \"Before component\"\n  - region \"Candidate\":\n    - list\n    - combobox \"Choose items\"\n  - button \"After component\""
+			},
+			"before": "- main:\n  - heading \"Component validation\" [level=1]\n  - button \"Before component\"\n  - region \"Candidate\"\n  - button \"After component\"",
+			"axe": {
+				"initial": {
+					"violations": [],
+					"incomplete": []
+				}
+			},
+			"openStateFailure": "locator.focus: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('combobox', { name: 'Choose items' })\u001b[22m\n",
+			"failure": "locator.focus: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('combobox', { name: 'Choose items' })\u001b[22m\n"
+		},
+		{
+			"engine": "chromium",
+			"browser": "156.0.8078.4",
+			"component": "select",
+			"mode": "large",
+			"status": "failed",
+			"errors": [
+				"Hydration completed but contains mismatches.",
+				"Hydration completed but contains mismatches."
+			],
+			"ssr": {
+				"status": "passed",
+				"snapshot": "- main:\n  - heading \"Component validation\" [level=1]\n  - button \"Before component\"\n  - region \"Candidate\":\n    - list\n    - combobox \"Choose items\"\n  - button \"After component\""
+			},
+			"before": "- main:\n  - heading \"Component validation\" [level=1]\n  - button \"Before component\"\n  - region \"Candidate\"\n  - button \"After component\"",
+			"axe": {
+				"initial": {
+					"violations": [],
+					"incomplete": []
+				}
+			},
+			"openStateFailure": "locator.focus: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('combobox', { name: 'Choose items' })\u001b[22m\n",
+			"failure": "locator.focus: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('combobox', { name: 'Choose items' })\u001b[22m\n"
+		},
+		{
+			"engine": "chromium",
+			"browser": "156.0.8078.4",
+			"component": "date-picker",
+			"mode": "default",
+			"status": "failed",
+			"errors": [
+				"Hydration completed but contains mismatches.",
+				"Hydration completed but contains mismatches."
+			],
+			"ssr": {
+				"status": "passed",
+				"snapshot": "- main:\n  - heading \"Component validation\" [level=1]\n  - button \"Before component\"\n  - region \"Candidate\":\n    - group \"Choose date\":\n      - spinbutton \"month\": \"11\"\n      - spinbutton \"day\": \"09\"\n      - spinbutton \"year\": \"2026\"\n      - button \"Choose date\"\n    - status \"Selected date\": 2026-11-09\n  - button \"After component\""
+			},
+			"before": "- main:\n  - heading \"Component validation\" [level=1]\n  - button \"Before component\"\n  - region \"Candidate\"\n  - button \"After component\"",
+			"axe": {
+				"initial": {
+					"violations": [],
+					"incomplete": []
+				}
+			},
+			"openStateFailure": "locator.click: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button').and(locator('[aria-haspopup=\"dialog\"], [aria-haspopup=\"grid\"]')).or(getByRole('button', { name: /calendar|choose date|اختيار التاريخ/i })).first()\u001b[22m\n",
+			"failure": "locator.click: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button').and(locator('[aria-haspopup=\"dialog\"], [aria-haspopup=\"grid\"]')).or(getByRole('button', { name: /calendar|choose date|اختيار التاريخ/i })).first()\u001b[22m\n"
+		},
+		{
+			"engine": "chromium",
+			"browser": "156.0.8078.4",
+			"component": "date-picker",
+			"mode": "rtl",
+			"status": "failed",
+			"errors": [
+				"Hydration completed but contains mismatches.",
+				"Hydration completed but contains mismatches."
+			],
+			"ssr": {
+				"status": "passed",
+				"snapshot": "- main:\n  - heading \"Component validation\" [level=1]\n  - button \"Before component\"\n  - region \"Candidate\":\n    - group \"Choose date\":\n      - spinbutton \"يوم\": ٠٩\n      - spinbutton \"الشهر\": ١١\n      - spinbutton \"السنة\": ٢٠٢٦\n      - button \"اختيار التاريخ\"\n    - status \"Selected date\": 2026-11-09\n  - button \"After component\""
+			},
+			"before": "- main:\n  - heading \"Component validation\" [level=1]\n  - button \"Before component\"\n  - region \"Candidate\"\n  - button \"After component\"",
+			"axe": {
+				"initial": {
+					"violations": [],
+					"incomplete": []
+				}
+			},
+			"openStateFailure": "locator.click: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button').and(locator('[aria-haspopup=\"dialog\"], [aria-haspopup=\"grid\"]')).or(getByRole('button', { name: /calendar|choose date|اختيار التاريخ/i })).first()\u001b[22m\n",
+			"failure": "locator.click: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button').and(locator('[aria-haspopup=\"dialog\"], [aria-haspopup=\"grid\"]')).or(getByRole('button', { name: /calendar|choose date|اختيار التاريخ/i })).first()\u001b[22m\n"
+		},
+		{
+			"engine": "chromium",
+			"browser": "156.0.8078.4",
+			"component": "date-picker",
+			"mode": "narrow-touch",
+			"status": "failed",
+			"errors": [
+				"Hydration completed but contains mismatches.",
+				"Hydration completed but contains mismatches."
+			],
+			"ssr": {
+				"status": "passed",
+				"snapshot": "- main:\n  - heading \"Component validation\" [level=1]\n  - button \"Before component\"\n  - region \"Candidate\":\n    - group \"Choose date\":\n      - spinbutton \"month\": \"11\"\n      - spinbutton \"day\": \"09\"\n      - spinbutton \"year\": \"2026\"\n      - button \"Choose date\"\n    - status \"Selected date\": 2026-11-09\n  - button \"After component\""
+			},
+			"before": "- main:\n  - heading \"Component validation\" [level=1]\n  - button \"Before component\"\n  - region \"Candidate\"\n  - button \"After component\"",
+			"axe": {
+				"initial": {
+					"violations": [],
+					"incomplete": []
+				}
+			},
+			"openStateFailure": "locator.click: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button').and(locator('[aria-haspopup=\"dialog\"], [aria-haspopup=\"grid\"]')).or(getByRole('button', { name: /calendar|choose date|اختيار التاريخ/i })).first()\u001b[22m\n",
+			"failure": "locator.tap: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button').and(locator('[aria-haspopup=\"dialog\"], [aria-haspopup=\"grid\"]')).or(getByRole('button', { name: /calendar|choose date|اختيار التاريخ/i })).first()\u001b[22m\n"
+		}
+	],
+	"limits": {
+		"actionTimeoutMs": 10000,
+		"cellTimeoutMs": 120000,
+		"note": "Common infrastructure completion bounds, not a comparative latency score"
+	},
+	"commit": "71bcbaa01bf3ea83050168b833cb56d023ca38ec",
+	"libraryDirtyState": "",
+	"node": "v24.20.0",
+	"os": {
+		"platform": "win32",
+		"release": "10.0.26300",
+		"arch": "x64",
+		"cpu": "AMD Ryzen 9 9950X3D 16-Core Processor          "
+	},
+	"lockHash": "bf37e0071aa997bd973d16b7dcda126d3aebbb56ab5e929c23cb1f5e38c32a4c",
+	"runtimeVersions": {
+		"vue": "3.5.44",
+		"vite": "8.3.4",
+		"playwright": "1.64.1",
+		"axe-core": "4.14.0"
+	},
+	"harnessSourceHashes": {
+		"tools/bench-ai/batch.mjs": "f04f9084cf7f0f47b0e714658b8b465912968cb6622868bc55303d195429dbef",
+		"tools/bench-ai/ci.mjs": "5c457e7af68689d19c9d4c25838247ecbba95d9bf719401d7a93dd9d9685f911",
+		"tools/bench-ai/client.mjs": "fbdee049c6ddda286f7efb02509086c76406dac143bd992a01bcf761a2a27d94",
+		"tools/bench-ai/data.mjs": "e1cd0c74fd00706db44626dde49fd4c85baa5dd5f3d12e7a5a2b8f7e120bb722",
+		"tools/bench-ai/environment.mjs": "037ab34a339bbaae662b039085d771f1272d54136c84b86c2718e4f8f85120fa",
+		"tools/bench-ai/export.mjs": "2104e368f5be861530104b53f21768a4234cf7bbb647b039bafb888700d3183d",
+		"tools/bench-ai/generate-cli.mjs": "b859f59eb17c1688437ca43244c897621938bbe34995599535835fe8f5336b6c",
+		"tools/bench-ai/generate.mjs": "d29a1c7492f3e27b2c45f0dda68b382251b404d2a460492039dcd2d20d6d91f5",
+		"tools/bench-ai/index.html": "c77263fd74bdfe7c5b3396a534901858fb5b864d217d45922dc23e7224cd6375",
+		"tools/bench-ai/integrity.mjs": "b6b377bfc2569764bac5113171277e28e6af52853ed6725780e0f9ca7d7271be",
+		"tools/bench-ai/Page.vue": "d8b1ea11983263f8061c35ab44626c233a9dec088e1ed1132dcc7698b9499a10",
+		"tools/bench-ai/protocol.mjs": "c64de0455c9d48ec8b8f2ba09b82f03bc0203d1ccb349ea3c253048c248c4851",
+		"tools/bench-ai/run.mjs": "b9116326ae723abee478875fc0e173b8ff65411073003a7a8783aa6d99d43321",
+		"tools/bench-ai/scenarios.mjs": "0b83b4cb60273cacfa6d2b072e06860f15a550c8de17454bd315c0b313e8599f",
+		"tools/bench-ai/server.mjs": "462342b6306e03775b8c1ccbeec51d05e1af1d9530b497025752bf82fc927f89",
+		"tools/bench-ai/setup.mjs": "ce7d2a8b8f99e63a9e406f9b0e6d72778d70a9948fd0438467deb1291cbd01b6",
+		"tools/bench-ai/Soxa.vue": "0f38dad51907e7babfd85c1292ab52388a10c698aa2aab2f755383cf1609138e",
+		"tools/bench-ai/vite.config.ts": "2cb97aeed2875cfc20a7809e861fe093a1306f3627b9c65a89aae584948c9f93"
+	}
+}

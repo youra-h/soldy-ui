@@ -1,0 +1,16 @@
+react select ×1 open 16/66, close 14/63, type 8/57
+react menu ×1 open 16/66, close 14/63
+react date-picker ×1 open 18/64, close 15/64, locale ru 16/65, locale en 18/66
+react dialog ×1 open 16/66, close 14/65
+react input ×1 type 13/63
+react tabs ×1 tab 2 16/65, tab 1 16/66
+react calendar ×1 locale ru 18/65, locale en 18/66
+react number-input ×1 locale ru 17/66, locale en 15/66
+react select перерисовки open 12/12 чужим 0, close 12/12 чужим 0, type 18/18 чужим 0
+react menu перерисовки open 8/8 чужим 0, close 7/7 чужим 0
+react date-picker перерисовки open 91/91 чужим 0, close 23/23 чужим 0, locale ru 87/69 чужим 20, locale en 66/48 чужим 20
+react dialog перерисовки open 19/19 чужим 0, close 11/11 чужим 0
+react input перерисовки type 2/2 чужим 0
+react tabs перерисовки tab 2 18/18 чужим 0, tab 1 18/18 чужим 0
+react calendar перерисовки locale ru 59/30 чужим 76, locale en 59/30 чужим 76
+react number-input перерисовки locale ru 33/17 чужим 16, locale en 33/17 чужим 16

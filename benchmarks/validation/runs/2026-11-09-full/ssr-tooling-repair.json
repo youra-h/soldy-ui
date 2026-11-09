@@ -1,0 +1,11 @@
+{
+  "date": "2026-11-09T08:19:29.304Z",
+  "type": "benchmark-consumer-repair-before-SSR-measurement",
+  "file": "tools/bench-ssr/src/vue.ts",
+  "reason": "Existing SSR stand imported removed playground PREVIEW_COMPONENTS export. Use current PREVIEWS/toComponent host contract with stable wrappers; no library or playground source changes.",
+  "oldHash": "60af1490ea857b904112b87a7731b9b5bff89bf5a3edbfc0bd11375172ddc86e",
+  "newHash": "4f08eb0a5a333c9ba9d47f75104d2358d058c727ecc35741099b41c0997ae965",
+  "failedBuild": "prepare-ssr-build.txt",
+  "oldExit": 1,
+  "SSRMeasurementsBeforeRepair": 0
+}

@@ -1,0 +1,6 @@
+﻿{
+    "date":  "2026-11-09T08:47:34.1279654Z",
+    "pid":  48324,
+    "reason":  "Harness input JSON injection failed after HTML formatting; candidate removed during hydration. Original diagnostics retained, replacement baseline will use repaired injector.",
+    "verifiedOwnedCommand":  "\"C:\\Program Files\\nodejs\\node.exe\" tools/bench-ai/run.mjs soxa benchmarks/ai/runs/soxa-windows-2026-11-09-v1"
+}

@@ -1,0 +1,12 @@
+{
+  "originalExitCode": 1,
+  "signal": null,
+  "error": null,
+  "limitMs": 600000,
+  "started": "2026-11-09T09:14:19.288Z",
+  "finished": "2026-11-09T09:16:55.648Z",
+  "captured": "2026-11-09T09:29:28.681Z",
+  "lateMetadata": true,
+  "source": "../soxa-windows-2026-11-09-v4.execution.json",
+  "note": "Copied from the recorded outer process result; not inferred from component cells."
+}

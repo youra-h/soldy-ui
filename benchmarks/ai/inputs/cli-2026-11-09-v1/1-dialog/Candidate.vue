@@ -1,0 +1,243 @@
+<script setup>
+import { ref } from 'vue'
+
+const props = defineProps({
+  items: {
+    type: Array,
+    default: () => [],
+  },
+  rows: {
+    type: Array,
+    default: () => [],
+  },
+  locale: {
+    type: String,
+    default: 'en',
+    validator: (value) => ['en', 'ru', 'ar'].includes(value),
+  },
+  dir: {
+    type: String,
+    default: 'ltr',
+    validator: (value) => ['ltr', 'rtl'].includes(value),
+  },
+})
+
+const dialog = ref(null)
+const opener = ref(null)
+const nameInput = ref(null)
+const cancelButton = ref(null)
+const saveButton = ref(null)
+
+const savedName = ref('')
+const draftName = ref('')
+
+function openDialog() {
+  if (!dialog.value || dialog.value.open) return
+
+  draftName.value = savedName.value
+  dialog.value.showModal()
+  nameInput.value?.focus()
+}
+
+function closeDialog() {
+  if (!dialog.value?.open) return
+
+  dialog.value.close()
+  opener.value?.focus()
+}
+
+function cancel() {
+  draftName.value = savedName.value
+  closeDialog()
+}
+
+function save() {
+  savedName.value = draftName.value
+  closeDialog()
+}
+
+function trapTab(event) {
+  if (event.key !== 'Tab') return
+
+  const controls = [
+    nameInput.value,
+    cancelButton.value,
+    saveButton.value,
+  ].filter(Boolean)
+
+  if (!controls.length) return
+
+  const activeElement = event.currentTarget.ownerDocument.activeElement
+  const currentIndex = controls.indexOf(activeElement)
+  const nextIndex =
+    currentIndex === -1
+      ? event.shiftKey
+        ? controls.length - 1
+        : 0
+      : (currentIndex + (event.shiftKey ? -1 : 1) + controls.length) %
+        controls.length
+
+  event.preventDefault()
+  controls[nextIndex].focus()
+}
+</script>
+
+<template>
+  <div class="settings" :dir="props.dir" lang="en">
+    <button ref="opener" type="button" @click="openDialog">
+      Open dialog
+    </button>
+
+    <dialog
+      ref="dialog"
+      class="dialog"
+      aria-label="Settings"
+      aria-modal="true"
+      @cancel.prevent="cancel"
+      @keydown="trapTab"
+    >
+      <form class="form" @submit.prevent="save">
+        <h2>Settings</h2>
+
+        <label class="field">
+          <span>Name</span>
+          <input
+            ref="nameInput"
+            v-model="draftName"
+            :lang="props.locale"
+            type="text"
+            name="name"
+            autocomplete="name"
+          />
+        </label>
+
+        <div class="actions">
+          <button ref="cancelButton" type="button" @click="cancel">
+            Cancel
+          </button>
+          <button ref="saveButton" class="primary" type="submit">
+            Save
+          </button>
+        </div>
+      </form>
+    </dialog>
+  </div>
+</template>
+
+<style scoped>
+.settings {
+  font-family: system-ui, sans-serif;
+  color: #172033;
+}
+
+.settings,
+.settings * {
+  box-sizing: border-box;
+}
+
+button,
+input {
+  font: inherit;
+  font-size: 1rem;
+}
+
+button {
+  min-block-size: 44px;
+  min-inline-size: 44px;
+  padding: 0.625rem 1rem;
+  border: 1px solid #64748b;
+  border-radius: 0.5rem;
+  background: #fff;
+  color: #172033;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+button:hover {
+  background: #edf2f7;
+}
+
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid #0759cc;
+  outline-offset: 3px;
+}
+
+.dialog {
+  inline-size: min(26rem, calc(100vw - 2rem));
+  max-inline-size: calc(100vw - 2rem);
+  max-block-size: calc(100vh - 2rem);
+  max-block-size: calc(100dvh - 2rem);
+  margin: auto;
+  padding: 0;
+  overflow: auto;
+  border: 1px solid #64748b;
+  border-radius: 0.75rem;
+  background: #fff;
+  color: #172033;
+  box-shadow: 0 1rem 3rem rgb(0 0 0 / 25%);
+  text-align: start;
+}
+
+.dialog::backdrop {
+  background: rgb(15 23 42 / 65%);
+}
+
+.form {
+  display: grid;
+  gap: 1.5rem;
+  padding: 1.5rem;
+}
+
+h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  line-height: 1.3;
+}
+
+.field {
+  display: grid;
+  gap: 0.5rem;
+  min-inline-size: 0;
+  font-weight: 600;
+}
+
+input {
+  inline-size: 100%;
+  min-inline-size: 0;
+  min-block-size: 44px;
+  padding: 0.625rem 0.75rem;
+  border: 1px solid #64748b;
+  border-radius: 0.375rem;
+  background: #fff;
+  color: #172033;
+  font-weight: 400;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}
+
+.primary {
+  border-color: #174ea6;
+  background: #174ea6;
+  color: #fff;
+}
+
+.primary:hover {
+  background: #103d85;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .settings,
+  .settings * ,
+  .dialog::backdrop {
+    animation: none;
+    transition: none;
+    scroll-behavior: auto;
+  }
+}
+</style>

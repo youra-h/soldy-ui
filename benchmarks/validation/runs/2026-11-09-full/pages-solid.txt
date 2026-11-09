@@ -1,0 +1,41 @@
+solid прогрев 34 с
+solid button {"weightKB":760,"mountMs":11,"heapSlopeKB":0.5,"nodes":0,"listeners":0,"components":0,"emitters":0}
+solid input {"weightKB":1196,"mountMs":12,"heapSlopeKB":0.3,"nodes":0,"listeners":0,"components":0,"emitters":0}
+solid number-input {"weightKB":4206,"mountMs":28,"heapSlopeKB":0.3,"nodes":0,"listeners":0,"components":0,"emitters":0}
+solid textarea {"weightKB":1123,"mountMs":18,"heapSlopeKB":0.3,"nodes":0,"listeners":0,"components":0,"emitters":0}
+solid check-box {"weightKB":1536,"mountMs":10,"heapSlopeKB":-0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+solid switch {"weightKB":1526,"mountMs":16,"heapSlopeKB":0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+solid label {"weightKB":1530,"mountMs":11,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+solid field {"weightKB":2392,"mountMs":16,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+solid slider {"weightKB":1760,"mountMs":15,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+solid rating {"weightKB":2985,"mountMs":30,"heapSlopeKB":0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+solid radio-group {"weightKB":6505,"mountMs":45,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+solid select {"weightKB":6009,"mountMs":39,"heapSlopeKB":0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+solid calendar {"weightKB":33353,"mountMs":160,"heapSlopeKB":0.9,"nodes":0,"listeners":0,"components":0,"emitters":0}
+solid date-input {"weightKB":2429,"mountMs":17,"heapSlopeKB":-0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+solid date-picker {"weightKB":6830,"mountMs":42,"heapSlopeKB":-0.4,"nodes":0,"listeners":0,"components":0,"emitters":0}
+solid popover {"weightKB":4806,"mountMs":24,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+solid menu {"weightKB":3611,"mountMs":21,"heapSlopeKB":-0.5,"nodes":0,"listeners":0,"components":0,"emitters":0}
+solid tooltip {"weightKB":2422,"mountMs":15,"heapSlopeKB":0.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+solid dialog {"weightKB":5919,"mountMs":26,"heapSlopeKB":-0.4,"nodes":0,"listeners":0,"components":0,"emitters":0}
+solid drawer {"weightKB":5873,"mountMs":27,"heapSlopeKB":0.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+solid toasts {"weightKB":5587,"mountMs":28,"heapSlopeKB":0.3,"nodes":0,"listeners":0,"components":0,"emitters":0}
+solid scroller {"weightKB":3629,"mountMs":21,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+solid list-box {"weightKB":11634,"mountMs":67,"heapSlopeKB":-0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+solid pagination {"weightKB":11907,"mountMs":59,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+solid table {"weightKB":14738,"mountMs":91,"heapSlopeKB":-3.6,"nodes":0,"listeners":0,"components":0,"emitters":0}
+solid tabs {"weightKB":14725,"mountMs":84,"heapSlopeKB":-3.5,"nodes":0,"listeners":0,"components":0,"emitters":0}
+solid tags {"weightKB":10580,"mountMs":47,"heapSlopeKB":-0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+solid accordion {"weightKB":14523,"mountMs":98,"heapSlopeKB":-0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+solid icon {"weightKB":656,"mountMs":17,"heapSlopeKB":-0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+solid progress-linear {"weightKB":616,"mountMs":5,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+solid progress-spinner {"weightKB":591,"mountMs":11,"heapSlopeKB":-0.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+solid skeleton {"weightKB":570,"mountMs":6,"heapSlopeKB":-0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+solid drag-and-drop {"weightKB":40816,"mountMs":228,"heapSlopeKB":-0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+solid virtual {"weightKB":98839,"mountMs":1354,"heapSlopeKB":0.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+solid all {"weightKB":7099,"mountMs":76,"heapSlopeKB":-0.5,"nodes":0,"listeners":0,"components":0,"emitters":0}
+solid empty {"weightKB":6,"mountMs":10,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+solid обход 1 {"heap":10600016,"nodes":388,"listeners":14,"components":103,"emitters":0}
+solid обход 2 {"heap":10601444,"nodes":388,"listeners":14,"components":103,"emitters":0}
+solid обход 3 {"heap":10601324,"nodes":388,"listeners":14,"components":103,"emitters":0}
+solid leak {"weightKB":768,"mountMs":9,"heapSlopeKB":31.3,"nodes":3000,"listeners":1000,"components":1000,"emitters":1000}

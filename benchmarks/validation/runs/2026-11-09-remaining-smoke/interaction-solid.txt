@@ -1,0 +1,16 @@
+solid select ×1 open 14/64, close 15/65, type 7/57
+solid menu ×1 open 15/64, close 16/65
+solid date-picker ×1 open 16/65, close 16/64, locale ru 16/66, locale en 16/65
+solid dialog ×1 open 16/66, close 15/64
+solid input ×1 type 13/63
+solid tabs ×1 tab 2 17/66, tab 1 15/65
+solid calendar ×1 locale ru 17/65, locale en 19/65
+solid number-input ×1 locale ru 15/66, locale en 16/66
+solid select перерисовки open 5/5 чужим 0, close 5/5 чужим 0, type 9/9 чужим 0
+solid menu перерисовки open 4/4 чужим 0, close 4/4 чужим 0
+solid date-picker перерисовки open 5/5 чужим 0, close 5/5 чужим 0, locale ru 68/48 чужим 14, locale en 68/48 чужим 14
+solid dialog перерисовки open 4/4 чужим 0, close 5/5 чужим 0
+solid input перерисовки type 0/0 чужим 0
+solid tabs перерисовки tab 2 8/8 чужим 0, tab 1 8/8 чужим 0
+solid calendar перерисовки locale ru 55/28 чужим 81, locale en 55/28 чужим 76
+solid number-input перерисовки locale ru 9/5 чужим 4, locale en 9/5 чужим 4

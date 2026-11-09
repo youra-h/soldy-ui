@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "component": "date-picker",
+  "date": "2026-11-09T05:59:35.015Z",
+  "requestedModel": "gpt-6-astra",
+  "effectiveCliModel": "gpt-6-astra",
+  "actualModel": null,
+  "modelVersionImmutability": "CLI does not expose the returned provider model or immutable snapshot; requested catalog alias and client version are recorded",
+  "route": "codex-cli-chatgpt-first-response",
+  "status": "generated",
+  "promptHash": "09300dc7c02d574f1d74a9e17eca403052164da7c7dc3688879813e76a2cd0f7",
+  "sourceHash": "a8d315d63bd7009e80e68c6fc6b696b4ed5025b543101fd1c784e6c734678810",
+  "settings": {
+    "reasoningEffort": "medium",
+    "outputBudget": {
+      "requestedInPrompt": 12000,
+      "enforcedHardCap": null,
+      "reason": "No supported CLI hard output-token cap was established; this is not equivalent to Responses max_output_tokens"
+    },
+    "clientConfig": [
+      "project_doc_max_bytes=0",
+      "memories.use_memories=false",
+      "memories.generate_memories=false",
+      "features.memories=false",
+      "features.shell_tool=false",
+      "features.apps=false",
+      "features.plugins=false",
+      "features.multi_agent=false",
+      "features.browser_use=false",
+      "features.computer_use=false",
+      "features.view_image=false",
+      "features.skill_search=false",
+      "features.hooks=false",
+      "features.workspace_dependencies=false",
+      "features.unbounded_connection_retries=false",
+      "skills.include_instructions=false",
+      "skills.bundled.enabled=false",
+      "web_search=\"disabled\"",
+      "mcp_servers={}",
+      "model_reasoning_effort=\"medium\""
+    ]
+  },
+  "isolation": {
+    "emptyWorkingDirectory": true,
+    "freshClientHome": true,
+    "ownerConfigUnchanged": true,
+    "memoriesAndSkillsDisabled": true,
+    "renderedPromptHash": "0333a62e2192c1d6f4ba5316d0f0c8f35130aea5d285aedbc279f6883c87ea29",
+    "renderedItems": [
+      {
+        "type": "additional_tools",
+        "role": "developer"
+      },
+      {
+        "type": "message",
+        "role": "developer"
+      },
+      {
+        "type": "message",
+        "role": "developer"
+      },
+      {
+        "type": "message",
+        "role": "developer"
+      },
+      {
+        "type": "message",
+        "role": "developer"
+      },
+      {
+        "type": "message",
+        "role": "user"
+      },
+      {
+        "type": "message",
+        "role": "user"
+      }
+    ],
+    "declaredTools": [
+      "functions",
+      "clock",
+      "collaboration"
+    ],
+    "toolPolicy": "Generic client tools remain declared. Any tool execution invalidates the sample and terminates the run. No repository instructions or files are supplied."
+  },
+  "attemptedAt": "2026-11-09T05:59:36.452Z",
+  "finished": "2026-11-09T06:01:11.655Z",
+  "exitCode": 0,
+  "signal": null,
+  "toolExecutionRejected": false,
+  "usage": {
+    "input_tokens": 10247,
+    "cached_input_tokens": 0,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 4519,
+    "reasoning_output_tokens": 516
+  },
+  "eventHash": "a30f8dd1e96a62769883e9e5e83910a195ec6be7cbd76da44c6fbb0b9e7fb19f",
+  "answerHash": "4bc2b914414e0aefba02615bd7409c7c3635dd332bb6e2ab2e4d313012792fe4",
+  "extraction": "Exact bytes inside sole fenced vue block; no repairs",
+  "assistantMessages": 1
+}

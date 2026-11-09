@@ -1,0 +1,16 @@
+webc select ×1 open 15/66, close 14/64, type 7/56
+webc menu ×1 open 14/64, close 14/63
+webc date-picker ×1 open 16/64, close 15/64, locale ru 16/65, locale en 16/64
+webc dialog ×1 open 15/65, close 15/64
+webc input ×1 type 13/63
+webc tabs ×1 tab 2 14/65, tab 1 16/66
+webc calendar ×1 locale ru 19/66, locale en 19/66
+webc number-input ×1 locale ru 17/66, locale en 16/66
+webc select перерисовки open 0/0 чужим 0, close 0/0 чужим 0, type 0/0 чужим 0
+webc menu перерисовки open 0/0 чужим 0, close 0/0 чужим 0
+webc date-picker перерисовки open 0/0 чужим 0, close 0/0 чужим 0, locale ru 0/0 чужим 14, locale en 0/0 чужим 14
+webc dialog перерисовки open 0/0 чужим 0, close 0/0 чужим 0
+webc input перерисовки type 0/0 чужим 0
+webc tabs перерисовки tab 2 0/0 чужим 0, tab 1 0/0 чужим 0
+webc calendar перерисовки locale ru 0/0 чужим 477, locale en 0/0 чужим 477
+webc number-input перерисовки locale ru 0/0 чужим 4, locale en 0/0 чужим 4

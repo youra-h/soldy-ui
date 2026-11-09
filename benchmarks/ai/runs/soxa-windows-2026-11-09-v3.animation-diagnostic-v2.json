@@ -1,0 +1,836 @@
+{
+  "date": "2026-11-09T09:08:13.307Z",
+  "sourceRun": "soxa-windows-2026-11-09-v3",
+  "browser": "156.0.8078.4",
+  "delayMs": 1000,
+  "immediate": {
+    "animations": [
+      {
+        "state": "running",
+        "currentTime": 16.69300000802615,
+        "timing": {
+          "duration": 140,
+          "endTime": 140
+        }
+      },
+      {
+        "state": "running",
+        "currentTime": 49.972000000000016,
+        "timing": {
+          "duration": 150,
+          "endTime": 150
+        }
+      },
+      {
+        "state": "running",
+        "currentTime": 16.69300000802615,
+        "timing": {
+          "duration": 200,
+          "endTime": 200
+        }
+      }
+    ],
+    "violations": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "tags": [
+          "cat.color",
+          "wcag2aa",
+          "wcag143",
+          "TTv5",
+          "TT13.c",
+          "EN-301-549",
+          "EN-9.1.4.3",
+          "ACT",
+          "RGAAv4",
+          "RGAA-3.2.1"
+        ],
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+        "nodes": [
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "fgColor": "#e4e5e7",
+                  "bgColor": "#fefefe",
+                  "contrastRatio": 1.24,
+                  "fontSize": "12.0pt (16px)",
+                  "fontWeight": "normal",
+                  "messageKey": null,
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<span class=\"so-button so-button--size-normal\" data-disabled=\"false\" role=\"option\" tabindex=\"-1\" aria-selected=\"false\" id=\"v-7-option\" data-selected=\"false\" data-content-fit=\"truncate\" data-indicator=\"none\" data-highlighted=\"true\"><span class=\"so-button__text\">Alpha 1</span></span>",
+                    "target": [
+                      "#v-7-option"
+                    ]
+                  },
+                  {
+                    "html": "<div style=\"position: absolute; left: 16px; top: 144.875px; width: 1248px; height: auto; z-index: 1001;\" class=\"so-frame so-select__panel\" data-open=\"true\" data-contained=\"false\" data-swiping=\"false\" data-owner=\"v-0-owner\" data-layer=\"1001\" data-placement=\"bottom-start\">",
+                    "target": [
+                      ".so-frame"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element has insufficient color contrast of 1.24 (foreground color: #e4e5e7, background color: #fefefe, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<span class=\"so-button__text\">Alpha 1</span>",
+            "target": [
+              "#v-7-option > .so-button__text"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.24 (foreground color: #e4e5e7, background color: #fefefe, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "fgColor": "#e4e5e7",
+                  "bgColor": "#ffffff",
+                  "contrastRatio": 1.26,
+                  "fontSize": "12.0pt (16px)",
+                  "fontWeight": "normal",
+                  "messageKey": null,
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<div style=\"position: absolute; left: 16px; top: 144.875px; width: 1248px; height: auto; z-index: 1001;\" class=\"so-frame so-select__panel\" data-open=\"true\" data-contained=\"false\" data-swiping=\"false\" data-owner=\"v-0-owner\" data-layer=\"1001\" data-placement=\"bottom-start\">",
+                    "target": [
+                      ".so-frame"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element has insufficient color contrast of 1.26 (foreground color: #e4e5e7, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<span class=\"so-button__text\">Beta 2</span>",
+            "target": [
+              "#v-10-option > .so-button__text"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.26 (foreground color: #e4e5e7, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "fgColor": "#e4e5e7",
+                  "bgColor": "#ffffff",
+                  "contrastRatio": 1.26,
+                  "fontSize": "12.0pt (16px)",
+                  "fontWeight": "normal",
+                  "messageKey": null,
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<div style=\"position: absolute; left: 16px; top: 144.875px; width: 1248px; height: auto; z-index: 1001;\" class=\"so-frame so-select__panel\" data-open=\"true\" data-contained=\"false\" data-swiping=\"false\" data-owner=\"v-0-owner\" data-layer=\"1001\" data-placement=\"bottom-start\">",
+                    "target": [
+                      ".so-frame"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element has insufficient color contrast of 1.26 (foreground color: #e4e5e7, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<span class=\"so-button__text\">Gamma 3</span>",
+            "target": [
+              "#v-13-option > .so-button__text"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.26 (foreground color: #e4e5e7, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "fgColor": "#e4e5e7",
+                  "bgColor": "#ffffff",
+                  "contrastRatio": 1.26,
+                  "fontSize": "12.0pt (16px)",
+                  "fontWeight": "normal",
+                  "messageKey": null,
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<div style=\"position: absolute; left: 16px; top: 144.875px; width: 1248px; height: auto; z-index: 1001;\" class=\"so-frame so-select__panel\" data-open=\"true\" data-contained=\"false\" data-swiping=\"false\" data-owner=\"v-0-owner\" data-layer=\"1001\" data-placement=\"bottom-start\">",
+                    "target": [
+                      ".so-frame"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element has insufficient color contrast of 1.26 (foreground color: #e4e5e7, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<span class=\"so-button__text\">Delta 4</span>",
+            "target": [
+              "#v-16-option > .so-button__text"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.26 (foreground color: #e4e5e7, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "fgColor": "#e4e5e7",
+                  "bgColor": "#ffffff",
+                  "contrastRatio": 1.26,
+                  "fontSize": "12.0pt (16px)",
+                  "fontWeight": "normal",
+                  "messageKey": null,
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<div style=\"position: absolute; left: 16px; top: 144.875px; width: 1248px; height: auto; z-index: 1001;\" class=\"so-frame so-select__panel\" data-open=\"true\" data-contained=\"false\" data-swiping=\"false\" data-owner=\"v-0-owner\" data-layer=\"1001\" data-placement=\"bottom-start\">",
+                    "target": [
+                      ".so-frame"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element has insufficient color contrast of 1.26 (foreground color: #e4e5e7, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<span class=\"so-button__text\">Epsilon 5</span>",
+            "target": [
+              "#v-19-option > .so-button__text"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.26 (foreground color: #e4e5e7, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "fgColor": "#e4e5e7",
+                  "bgColor": "#ffffff",
+                  "contrastRatio": 1.26,
+                  "fontSize": "12.0pt (16px)",
+                  "fontWeight": "normal",
+                  "messageKey": null,
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<div style=\"position: absolute; left: 16px; top: 144.875px; width: 1248px; height: auto; z-index: 1001;\" class=\"so-frame so-select__panel\" data-open=\"true\" data-contained=\"false\" data-swiping=\"false\" data-owner=\"v-0-owner\" data-layer=\"1001\" data-placement=\"bottom-start\">",
+                    "target": [
+                      ".so-frame"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element has insufficient color contrast of 1.26 (foreground color: #e4e5e7, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<span class=\"so-button__text\">Alpha 6</span>",
+            "target": [
+              "#v-22-option > .so-button__text"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.26 (foreground color: #e4e5e7, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "fgColor": "#e4e5e7",
+                  "bgColor": "#ffffff",
+                  "contrastRatio": 1.26,
+                  "fontSize": "12.0pt (16px)",
+                  "fontWeight": "normal",
+                  "messageKey": null,
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<div style=\"position: absolute; left: 16px; top: 144.875px; width: 1248px; height: auto; z-index: 1001;\" class=\"so-frame so-select__panel\" data-open=\"true\" data-contained=\"false\" data-swiping=\"false\" data-owner=\"v-0-owner\" data-layer=\"1001\" data-placement=\"bottom-start\">",
+                    "target": [
+                      ".so-frame"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element has insufficient color contrast of 1.26 (foreground color: #e4e5e7, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<span class=\"so-button__text\">Beta 7</span>",
+            "target": [
+              "#v-25-option > .so-button__text"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.26 (foreground color: #e4e5e7, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+          }
+        ]
+      },
+      {
+        "id": "region",
+        "impact": "moderate",
+        "tags": [
+          "cat.keyboard",
+          "best-practice",
+          "RGAAv4",
+          "RGAA-9.2.1"
+        ],
+        "description": "Ensure all page content is contained by landmarks",
+        "help": "All page content should be contained by landmarks",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/region?application=axeAPI",
+        "nodes": [
+          {
+            "any": [
+              {
+                "id": "region",
+                "data": {
+                  "isIframe": false
+                },
+                "relatedNodes": [],
+                "impact": "moderate",
+                "message": "Some page content is not contained by landmarks"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "moderate",
+            "html": "<div style=\"position: absolute; left: 16px; top: 144.875px; width: 1248px; height: auto; z-index: 1001;\" class=\"so-frame so-select__panel\" data-open=\"true\" data-contained=\"false\" data-swiping=\"false\" data-owner=\"v-0-owner\" data-layer=\"1001\" data-placement=\"bottom-start\">",
+            "target": [
+              ".so-frame"
+            ],
+            "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+          }
+        ]
+      }
+    ]
+  },
+  "settled": {
+    "animations": [],
+    "violations": [
+      {
+        "id": "region",
+        "impact": "moderate",
+        "tags": [
+          "cat.keyboard",
+          "best-practice",
+          "RGAAv4",
+          "RGAA-9.2.1"
+        ],
+        "description": "Ensure all page content is contained by landmarks",
+        "help": "All page content should be contained by landmarks",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/region?application=axeAPI",
+        "nodes": [
+          {
+            "any": [
+              {
+                "id": "region",
+                "data": {
+                  "isIframe": false
+                },
+                "relatedNodes": [],
+                "impact": "moderate",
+                "message": "Some page content is not contained by landmarks"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "moderate",
+            "html": "<div style=\"position: absolute; left: 16px; top: 144.875px; width: 1248px; height: auto; z-index: 1001;\" class=\"so-frame so-select__panel\" data-open=\"true\" data-contained=\"false\" data-swiping=\"false\" data-owner=\"v-0-owner\" data-layer=\"1001\" data-placement=\"bottom-start\">",
+            "target": [
+              ".so-frame"
+            ],
+            "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+          }
+        ]
+      }
+    ]
+  },
+  "afterImmediate": {
+    "animations": [
+      {
+        "state": "running",
+        "currentTime": 0,
+        "timing": {
+          "duration": 105,
+          "endTime": 105
+        }
+      },
+      {
+        "state": "running",
+        "currentTime": 33.334,
+        "timing": {
+          "duration": 50.059500008618684,
+          "endTime": 50.059500008618684
+        }
+      },
+      {
+        "state": "running",
+        "currentTime": 0,
+        "timing": {
+          "duration": 200,
+          "endTime": 200
+        }
+      },
+      {
+        "state": "running",
+        "currentTime": 100.08000001149159,
+        "timing": {
+          "duration": 150,
+          "endTime": 150
+        }
+      },
+      {
+        "state": "running",
+        "currentTime": 33.334,
+        "timing": {
+          "duration": 91.65845876109007,
+          "endTime": 91.65845876109007
+        }
+      }
+    ],
+    "violations": [
+      {
+        "id": "aria-required-children",
+        "impact": "critical",
+        "tags": [
+          "cat.aria",
+          "wcag2a",
+          "wcag131",
+          "EN-301-549",
+          "EN-9.1.3.1",
+          "RGAAv4",
+          "RGAA-9.3.1"
+        ],
+        "description": "Ensure elements with an ARIA role that require child roles contain them",
+        "help": "Certain ARIA roles must contain particular children",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-required-children?application=axeAPI",
+        "nodes": [
+          {
+            "any": [
+              {
+                "id": "aria-required-children",
+                "data": {
+                  "messageKey": "unallowed",
+                  "values": "button[aria-label]"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<button class=\"so-button so-button--size-normal so-tags-item__close\" data-disabled=\"false\" type=\"button\" aria-label=\"Close Alpha 1\">",
+                    "target": [
+                      "button[aria-label=\"Close Alpha 1\"]"
+                    ]
+                  },
+                  {
+                    "html": "<button class=\"so-button so-button--size-normal so-tags-item__close\" data-disabled=\"false\" type=\"button\" aria-label=\"Close Gamma 3\">",
+                    "target": [
+                      "button[aria-label=\"Close Gamma 3\"]"
+                    ]
+                  }
+                ],
+                "impact": "critical",
+                "message": "Element has children which are not allowed: button[aria-label]"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "critical",
+            "html": "<div class=\"so-tags so-tags--size-normal so-select__tags\" role=\"list\" data-disabled=\"false\" data-overflow=\"wrap\" style=\"\">",
+            "target": [
+              ".so-tags"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element has children which are not allowed: button[aria-label]"
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "tags": [
+          "cat.color",
+          "wcag2aa",
+          "wcag143",
+          "TTv5",
+          "TT13.c",
+          "EN-301-549",
+          "EN-9.1.4.3",
+          "ACT",
+          "RGAAv4",
+          "RGAA-3.2.1"
+        ],
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+        "nodes": [
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "fgColor": "#dbdddf",
+                  "bgColor": "#fdfdfd",
+                  "contrastRatio": 1.33,
+                  "fontSize": "12.0pt (16px)",
+                  "fontWeight": "normal",
+                  "messageKey": null,
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<span class=\"so-button so-button--size-normal\" data-disabled=\"false\" role=\"option\" tabindex=\"-1\" aria-selected=\"false\" id=\"v-374-option\" data-selected=\"false\" data-content-fit=\"truncate\" data-indicator=\"none\" data-highlighted=\"false\"><span class=\"so-button__text\">Beta 2</span></span>",
+                    "target": [
+                      "#v-374-option"
+                    ]
+                  },
+                  {
+                    "html": "<div style=\"position: absolute; left: 16px; top: 144.875px; width: 1248px; height: auto; z-index: 1001; display: none;\" class=\"so-frame so-select__panel\" data-open=\"false\" data-contained=\"false\" data-swiping=\"false\" data-owner=\"v-0-owner\" data-layer=\"1001\" data-placement=\"bottom-start\">",
+                    "target": [
+                      ".so-frame"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element has insufficient color contrast of 1.33 (foreground color: #dbdddf, background color: #fdfdfd, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<span class=\"so-button__text\">Beta 2</span>",
+            "target": [
+              "#v-374-option > .so-button__text"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.33 (foreground color: #dbdddf, background color: #fdfdfd, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "fgColor": "#dbdddf",
+                  "bgColor": "#ffffff",
+                  "contrastRatio": 1.36,
+                  "fontSize": "12.0pt (16px)",
+                  "fontWeight": "normal",
+                  "messageKey": null,
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<div style=\"position: absolute; left: 16px; top: 144.875px; width: 1248px; height: auto; z-index: 1001; display: none;\" class=\"so-frame so-select__panel\" data-open=\"false\" data-contained=\"false\" data-swiping=\"false\" data-owner=\"v-0-owner\" data-layer=\"1001\" data-placement=\"bottom-start\">",
+                    "target": [
+                      ".so-frame"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element has insufficient color contrast of 1.36 (foreground color: #dbdddf, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<span class=\"so-button__text\">Beta 7</span>",
+            "target": [
+              "#v-371-option > .so-button__text"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.36 (foreground color: #dbdddf, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "fgColor": "#dbdddf",
+                  "bgColor": "#ffffff",
+                  "contrastRatio": 1.36,
+                  "fontSize": "12.0pt (16px)",
+                  "fontWeight": "normal",
+                  "messageKey": null,
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<div style=\"position: absolute; left: 16px; top: 144.875px; width: 1248px; height: auto; z-index: 1001; display: none;\" class=\"so-frame so-select__panel\" data-open=\"false\" data-contained=\"false\" data-swiping=\"false\" data-owner=\"v-0-owner\" data-layer=\"1001\" data-placement=\"bottom-start\">",
+                    "target": [
+                      ".so-frame"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element has insufficient color contrast of 1.36 (foreground color: #dbdddf, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<span class=\"so-button__text\">Beta 12</span>",
+            "target": [
+              "#v-368-option > .so-button__text"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.36 (foreground color: #dbdddf, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "fgColor": "#dbdddf",
+                  "bgColor": "#ffffff",
+                  "contrastRatio": 1.36,
+                  "fontSize": "12.0pt (16px)",
+                  "fontWeight": "normal",
+                  "messageKey": null,
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<div style=\"position: absolute; left: 16px; top: 144.875px; width: 1248px; height: auto; z-index: 1001; display: none;\" class=\"so-frame so-select__panel\" data-open=\"false\" data-contained=\"false\" data-swiping=\"false\" data-owner=\"v-0-owner\" data-layer=\"1001\" data-placement=\"bottom-start\">",
+                    "target": [
+                      ".so-frame"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element has insufficient color contrast of 1.36 (foreground color: #dbdddf, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<span class=\"so-button__text\">Beta 17</span>",
+            "target": [
+              "#v-365-option > .so-button__text"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.36 (foreground color: #dbdddf, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "fgColor": "#dbdddf",
+                  "bgColor": "#ffffff",
+                  "contrastRatio": 1.36,
+                  "fontSize": "12.0pt (16px)",
+                  "fontWeight": "normal",
+                  "messageKey": null,
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<div style=\"position: absolute; left: 16px; top: 144.875px; width: 1248px; height: auto; z-index: 1001; display: none;\" class=\"so-frame so-select__panel\" data-open=\"false\" data-contained=\"false\" data-swiping=\"false\" data-owner=\"v-0-owner\" data-layer=\"1001\" data-placement=\"bottom-start\">",
+                    "target": [
+                      ".so-frame"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element has insufficient color contrast of 1.36 (foreground color: #dbdddf, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<span class=\"so-button__text\">Beta 22</span>",
+            "target": [
+              "#v-362-option > .so-button__text"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.36 (foreground color: #dbdddf, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "fgColor": "#dbdddf",
+                  "bgColor": "#ffffff",
+                  "contrastRatio": 1.36,
+                  "fontSize": "12.0pt (16px)",
+                  "fontWeight": "normal",
+                  "messageKey": null,
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<div style=\"position: absolute; left: 16px; top: 144.875px; width: 1248px; height: auto; z-index: 1001; display: none;\" class=\"so-frame so-select__panel\" data-open=\"false\" data-contained=\"false\" data-swiping=\"false\" data-owner=\"v-0-owner\" data-layer=\"1001\" data-placement=\"bottom-start\">",
+                    "target": [
+                      ".so-frame"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element has insufficient color contrast of 1.36 (foreground color: #dbdddf, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<span class=\"so-button__text\">Beta 27</span>",
+            "target": [
+              "#v-359-option > .so-button__text"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.36 (foreground color: #dbdddf, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "fgColor": "#dbdddf",
+                  "bgColor": "#ffffff",
+                  "contrastRatio": 1.36,
+                  "fontSize": "12.0pt (16px)",
+                  "fontWeight": "normal",
+                  "messageKey": null,
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<div style=\"position: absolute; left: 16px; top: 144.875px; width: 1248px; height: auto; z-index: 1001; display: none;\" class=\"so-frame so-select__panel\" data-open=\"false\" data-contained=\"false\" data-swiping=\"false\" data-owner=\"v-0-owner\" data-layer=\"1001\" data-placement=\"bottom-start\">",
+                    "target": [
+                      ".so-frame"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element has insufficient color contrast of 1.36 (foreground color: #dbdddf, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<span class=\"so-button__text\">Beta 32</span>",
+            "target": [
+              "#v-356-option > .so-button__text"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.36 (foreground color: #dbdddf, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+          }
+        ]
+      },
+      {
+        "id": "region",
+        "impact": "moderate",
+        "tags": [
+          "cat.keyboard",
+          "best-practice",
+          "RGAAv4",
+          "RGAA-9.2.1"
+        ],
+        "description": "Ensure all page content is contained by landmarks",
+        "help": "All page content should be contained by landmarks",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/region?application=axeAPI",
+        "nodes": [
+          {
+            "any": [
+              {
+                "id": "region",
+                "data": {
+                  "isIframe": false
+                },
+                "relatedNodes": [],
+                "impact": "moderate",
+                "message": "Some page content is not contained by landmarks"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "moderate",
+            "html": "<div style=\"position: absolute; left: 16px; top: 144.875px; width: 1248px; height: auto; z-index: 1001; display: none;\" class=\"so-frame so-select__panel\" data-open=\"false\" data-contained=\"false\" data-swiping=\"false\" data-owner=\"v-0-owner\" data-layer=\"1001\" data-placement=\"bottom-start\">",
+            "target": [
+              ".so-frame"
+            ],
+            "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+          }
+        ]
+      }
+    ]
+  },
+  "afterSettled": {
+    "animations": [],
+    "violations": [
+      {
+        "id": "aria-required-children",
+        "impact": "critical",
+        "tags": [
+          "cat.aria",
+          "wcag2a",
+          "wcag131",
+          "EN-301-549",
+          "EN-9.1.3.1",
+          "RGAAv4",
+          "RGAA-9.3.1"
+        ],
+        "description": "Ensure elements with an ARIA role that require child roles contain them",
+        "help": "Certain ARIA roles must contain particular children",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-required-children?application=axeAPI",
+        "nodes": [
+          {
+            "any": [
+              {
+                "id": "aria-required-children",
+                "data": {
+                  "messageKey": "unallowed",
+                  "values": "button[aria-label]"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<button class=\"so-button so-button--size-normal so-tags-item__close\" data-disabled=\"false\" type=\"button\" aria-label=\"Close Alpha 1\">",
+                    "target": [
+                      "button[aria-label=\"Close Alpha 1\"]"
+                    ]
+                  },
+                  {
+                    "html": "<button class=\"so-button so-button--size-normal so-tags-item__close\" data-disabled=\"false\" type=\"button\" aria-label=\"Close Gamma 3\">",
+                    "target": [
+                      "button[aria-label=\"Close Gamma 3\"]"
+                    ]
+                  }
+                ],
+                "impact": "critical",
+                "message": "Element has children which are not allowed: button[aria-label]"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "critical",
+            "html": "<div class=\"so-tags so-tags--size-normal so-select__tags\" role=\"list\" data-disabled=\"false\" data-overflow=\"wrap\" style=\"\">",
+            "target": [
+              ".so-tags"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element has children which are not allowed: button[aria-label]"
+          }
+        ]
+      }
+    ]
+  }
+}

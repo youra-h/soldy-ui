@@ -1,0 +1,41 @@
+svelte прогрев 36 с
+svelte button {"weightKB":985,"mountMs":12,"heapSlopeKB":0.5,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte input {"weightKB":1123,"mountMs":19,"heapSlopeKB":0.4,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte number-input {"weightKB":4206,"mountMs":56,"heapSlopeKB":0.4,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte textarea {"weightKB":1146,"mountMs":17,"heapSlopeKB":0.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte check-box {"weightKB":1650,"mountMs":20,"heapSlopeKB":-0.3,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte switch {"weightKB":1649,"mountMs":15,"heapSlopeKB":-0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte label {"weightKB":1659,"mountMs":18,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte field {"weightKB":2083,"mountMs":20,"heapSlopeKB":-0.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte slider {"weightKB":1846,"mountMs":20,"heapSlopeKB":-0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte rating {"weightKB":3112,"mountMs":37,"heapSlopeKB":0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte radio-group {"weightKB":6782,"mountMs":60,"heapSlopeKB":0.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte select {"weightKB":5777,"mountMs":49,"heapSlopeKB":-0.3,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte calendar {"weightKB":38935,"mountMs":237,"heapSlopeKB":1.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte date-input {"weightKB":2086,"mountMs":22,"heapSlopeKB":-0.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte date-picker {"weightKB":6469,"mountMs":65,"heapSlopeKB":-0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte popover {"weightKB":5378,"mountMs":43,"heapSlopeKB":-0.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte menu {"weightKB":4047,"mountMs":31,"heapSlopeKB":-0.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte tooltip {"weightKB":2980,"mountMs":27,"heapSlopeKB":0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte dialog {"weightKB":6122,"mountMs":43,"heapSlopeKB":0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte drawer {"weightKB":6123,"mountMs":44,"heapSlopeKB":0.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte toasts {"weightKB":6253,"mountMs":51,"heapSlopeKB":0.3,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte scroller {"weightKB":4037,"mountMs":32,"heapSlopeKB":-0.3,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte list-box {"weightKB":13162,"mountMs":124,"heapSlopeKB":-0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte pagination {"weightKB":13330,"mountMs":102,"heapSlopeKB":0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte table {"weightKB":17380,"mountMs":136,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte tabs {"weightKB":15868,"mountMs":127,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte tags {"weightKB":11535,"mountMs":94,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte accordion {"weightKB":16142,"mountMs":128,"heapSlopeKB":-3.9,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte icon {"weightKB":763,"mountMs":9,"heapSlopeKB":-0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte progress-linear {"weightKB":801,"mountMs":10,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte progress-spinner {"weightKB":794,"mountMs":10,"heapSlopeKB":0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte skeleton {"weightKB":835,"mountMs":9,"heapSlopeKB":-0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte drag-and-drop {"weightKB":44487,"mountMs":332,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte virtual {"weightKB":100384,"mountMs":1855,"heapSlopeKB":-1.5,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte all {"weightKB":7753,"mountMs":110,"heapSlopeKB":-0.6,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte empty {"weightKB":15,"mountMs":16,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte обход 1 {"heap":10889824,"nodes":661,"listeners":13,"components":103,"emitters":0}
+svelte обход 2 {"heap":10889856,"nodes":661,"listeners":13,"components":103,"emitters":0}
+svelte обход 3 {"heap":10884348,"nodes":661,"listeners":13,"components":103,"emitters":0}
+svelte leak {"weightKB":971,"mountMs":14,"heapSlopeKB":41.7,"nodes":8000,"listeners":1000,"components":1000,"emitters":1000}

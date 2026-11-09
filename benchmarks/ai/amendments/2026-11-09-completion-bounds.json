@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-09T06:46:11.462Z",
+  "type": "completion-resource-bounds",
+  "parentProtocol": "../protocol.v1.json",
+  "previousAmendment": "2026-11-09-environment.json",
+  "reason": "Bound all participants equally for a finite Windows/Linux browser evaluation. API/keyboard/axe assertions unchanged; limits are infrastructure completion guards, not latency scores. No generated candidate source or answer inspected or modified.",
+  "beforeCandidateSourceInspection": true,
+  "limits": {
+    "actionTimeoutMs": 10000,
+    "cellTimeoutMs": 120000,
+    "candidateProcessTimeoutMs": 600000,
+    "ciJobTimeoutMinutes": 60
+  },
+  "oldHashes": {
+    "tools/bench-ai/run.mjs": "812ec0de17bd5f51c2da0908c8a4dcee38276293eb10293b0b588c8da4f413a3",
+    "tools/bench-ai/scenarios.mjs": "fbbe8489f420076d94ba47012b474fa1616e2f84ca233d5f56e07d9a9dafba55",
+    "tools/bench-ai/Page.vue": "ef67a5bdefffd1902ca61f9141cc0b3770833f2a01b81e3feb4f213da4d35603",
+    "tools/bench-ai/Soxa.vue": "641a31303bfa1dde0880abbf394fae13141f5991cf3dd6de8b838392bf29d45c",
+    "tools/bench-ai/data.mjs": "2abba6e7b05d645bca776b0aca03296a0fd799a72bdddfa334f624fd4a5440bc",
+    "tools/bench-ai/vite.config.ts": "0426809be890b50a659e62b7288f3d37bc7cf95ac30d480d7c6f6ad5d7635bf9",
+    "tools/bench-ai/client.mjs": "721cd35c298830205841e1b67e24b9c0ff226547cea4b4bda1f169d7d5778482",
+    "tools/bench-ai/server.mjs": "462342b6306e03775b8c1ccbeec51d05e1af1d9530b497025752bf82fc927f89",
+    "tools/bench-ai/setup.mjs": "ce7d2a8b8f99e63a9e406f9b0e6d72778d70a9948fd0438467deb1291cbd01b6",
+    "tools/bench-ai/protocol.mjs": "20737ace99a30bf57923b348141c738f3dfe49dbbb99a0f0205f826568d86b4e",
+    "tools/bench-ai/environment.mjs": "715ea60173b608f7c421df6ee2b8d1961beb033f457153c7299c826674f8cd02"
+  },
+  "newHashes": {
+    "tools/bench-ai/run.mjs": "d405ac58ad4351b19b68611c82f17bf07db6d07d6faf46f817a9a174cd69e4ee",
+    "tools/bench-ai/scenarios.mjs": "fbbe8489f420076d94ba47012b474fa1616e2f84ca233d5f56e07d9a9dafba55",
+    "tools/bench-ai/Page.vue": "ef67a5bdefffd1902ca61f9141cc0b3770833f2a01b81e3feb4f213da4d35603",
+    "tools/bench-ai/Soxa.vue": "641a31303bfa1dde0880abbf394fae13141f5991cf3dd6de8b838392bf29d45c",
+    "tools/bench-ai/data.mjs": "2abba6e7b05d645bca776b0aca03296a0fd799a72bdddfa334f624fd4a5440bc",
+    "tools/bench-ai/vite.config.ts": "0426809be890b50a659e62b7288f3d37bc7cf95ac30d480d7c6f6ad5d7635bf9",
+    "tools/bench-ai/client.mjs": "721cd35c298830205841e1b67e24b9c0ff226547cea4b4bda1f169d7d5778482",
+    "tools/bench-ai/server.mjs": "462342b6306e03775b8c1ccbeec51d05e1af1d9530b497025752bf82fc927f89",
+    "tools/bench-ai/setup.mjs": "ce7d2a8b8f99e63a9e406f9b0e6d72778d70a9948fd0438467deb1291cbd01b6",
+    "tools/bench-ai/protocol.mjs": "20737ace99a30bf57923b348141c738f3dfe49dbbb99a0f0205f826568d86b4e",
+    "tools/bench-ai/environment.mjs": "715ea60173b608f7c421df6ee2b8d1961beb033f457153c7299c826674f8cd02",
+    "tools/bench-ai/batch.mjs": "c7b9ce91df0c8654b9c3bd5431db88deca9b19b5d8430dd65f83878df403140d",
+    "tools/bench-ai/ci.mjs": "7651e24f75e1d4a883ce0f95decbac042571f3f15ecb8e1fda7ce480eda7b8d9",
+    ".github/workflows/bench-validation.yml": "cc2d6e8883452cb0e8bdd8b588061165e82d6a246a07c02ffe91ed1b08a90675"
+  },
+  "interpretation": "Timeouts retain original process exits/observations and explicit failures; missing/incomplete observations cannot become passes. All ten sources and the baseline use the same completion bounds."
+}

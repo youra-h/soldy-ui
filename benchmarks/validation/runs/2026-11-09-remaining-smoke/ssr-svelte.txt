@@ -1,0 +1,37 @@
+svelte   empty  clean      heap 7.83 MB, 3776 B/render, components +0, emitters +0, mismatches 0, 1 s
+file:///D:/projects/soxa-a/tools/bench-ssr/dist/svelte.js:242
+	throw new Error(`https://svelte.dev/e/missing_context`);
+	      ^
+
+Error: https://svelte.dev/e/missing_context
+    at missing_context (file:///D:/projects/soxa-a/tools/bench-ssr/dist/svelte.js:242:8)
+    at file:///D:/projects/soxa-a/tools/bench-ssr/dist/svelte.js:268:27
+    at file:///D:/projects/soxa-a/tools/bench-ssr/dist/svelte.js:8597:17
+    at file:///D:/projects/soxa-a/tools/bench-ssr/dist/svelte.js:1438:11
+    at Renderer.child (file:///D:/projects/soxa-a/tools/bench-ssr/dist/svelte.js:1359:18)
+    at Renderer.component (file:///D:/projects/soxa-a/tools/bench-ssr/dist/svelte.js:1436:8)
+    at RadioGroupPreview (file:///D:/projects/soxa-a/tools/bench-ssr/dist/svelte.js:8595:13)
+    at Object.children (file:///D:/projects/soxa-a/tools/bench-ssr/dist/svelte.js:8935:6)
+    at file:///D:/projects/soxa-a/tools/bench-ssr/dist/svelte.js:2699:19
+    at file:///D:/projects/soxa-a/tools/bench-ssr/dist/svelte.js:1438:11
+
+Node.js v24.20.0
+svelte   all    [bench-ssr] svelte all: exit 1
+file:///D:/projects/soxa-a/tools/bench-ssr/dist/svelte.js:242
+	throw new Error(`https://svelte.dev/e/missing_context`);
+	      ^
+
+Error: https://svelte.dev/e/missing_context
+    at missing_context (file:///D:/projects/soxa-a/tools/bench-ssr/dist/svelte.js:242:8)
+    at file:///D:/projects/soxa-a/tools/bench-ssr/dist/svelte.js:268:27
+    at file:///D:/projects/soxa-a/tools/bench-ssr/dist/svelte.js:8597:17
+    at file:///D:/projects/soxa-a/tools/bench-ssr/dist/svelte.js:1438:11
+    at Renderer.child (file:///D:/projects/soxa-a/tools/bench-ssr/dist/svelte.js:1359:18)
+    at Renderer.component (file:///D:/projects/soxa-a/tools/bench-ssr/dist/svelte.js:1436:8)
+    at RadioGroupPreview (file:///D:/projects/soxa-a/tools/bench-ssr/dist/svelte.js:8595:13)
+    at Object.children (file:///D:/projects/soxa-a/tools/bench-ssr/dist/svelte.js:8935:6)
+    at file:///D:/projects/soxa-a/tools/bench-ssr/dist/svelte.js:2699:19
+    at file:///D:/projects/soxa-a/tools/bench-ssr/dist/svelte.js:1438:11
+
+Node.js v24.20.0
+svelte   leak   [bench-ssr] svelte leak: exit 1

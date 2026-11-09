@@ -26,6 +26,9 @@ export default defineConfigWithVueTs(
 	// `.angular` объявлен в `packages/ui/angular/.gitignore`: корневой файл о
 	// нём не знает, а `includeIgnoreFile` читает ровно один файл.
 	globalIgnores(['**/.angular/**']),
+	// Generated benchmark inputs are immutable experimental evidence, not maintained source.
+	// Their syntax, runtime, console and behavior are checked by the comparison harness.
+	globalIgnores(['benchmarks/ai/inputs/**', 'benchmarks/ai/runs/**']),
 
 	pluginVue.configs['flat/essential'],
 	vueTsConfigs.recommended,

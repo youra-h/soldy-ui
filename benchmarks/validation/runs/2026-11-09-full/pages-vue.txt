@@ -1,0 +1,41 @@
+vue прогрев 34 с
+vue button {"weightKB":640,"mountMs":7,"heapSlopeKB":0.5,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue input {"weightKB":829,"mountMs":12,"heapSlopeKB":0.9,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue number-input {"weightKB":3038,"mountMs":34,"heapSlopeKB":-0.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue textarea {"weightKB":930,"mountMs":16,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue check-box {"weightKB":1201,"mountMs":14,"heapSlopeKB":-0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue switch {"weightKB":1192,"mountMs":13,"heapSlopeKB":-0.3,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue label {"weightKB":1198,"mountMs":13,"heapSlopeKB":-0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue field {"weightKB":1477,"mountMs":16,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue slider {"weightKB":1272,"mountMs":16,"heapSlopeKB":0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue rating {"weightKB":2289,"mountMs":33,"heapSlopeKB":0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue radio-group {"weightKB":5126,"mountMs":47,"heapSlopeKB":0.3,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue select {"weightKB":4122,"mountMs":53,"heapSlopeKB":-0.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue calendar {"weightKB":23627,"mountMs":174,"heapSlopeKB":0.7,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue date-input {"weightKB":1235,"mountMs":20,"heapSlopeKB":-0.4,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue date-picker {"weightKB":4259,"mountMs":57,"heapSlopeKB":-0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue popover {"weightKB":3509,"mountMs":34,"heapSlopeKB":-0.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue menu {"weightKB":2702,"mountMs":28,"heapSlopeKB":-0.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue tooltip {"weightKB":1857,"mountMs":20,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue dialog {"weightKB":4321,"mountMs":36,"heapSlopeKB":0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue drawer {"weightKB":4306,"mountMs":39,"heapSlopeKB":0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue toasts {"weightKB":4309,"mountMs":36,"heapSlopeKB":-7.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue scroller {"weightKB":2746,"mountMs":27,"heapSlopeKB":-0.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue list-box {"weightKB":8330,"mountMs":78,"heapSlopeKB":-0.3,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue pagination {"weightKB":8703,"mountMs":68,"heapSlopeKB":-0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue table {"weightKB":11304,"mountMs":98,"heapSlopeKB":-0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue tabs {"weightKB":10782,"mountMs":121,"heapSlopeKB":-0.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue tags {"weightKB":7988,"mountMs":58,"heapSlopeKB":-0.4,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue accordion {"weightKB":10468,"mountMs":104,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue icon {"weightKB":592,"mountMs":7,"heapSlopeKB":-0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue progress-linear {"weightKB":575,"mountMs":15,"heapSlopeKB":-0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue progress-spinner {"weightKB":588,"mountMs":14,"heapSlopeKB":-0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue skeleton {"weightKB":519,"mountMs":10,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue drag-and-drop {"weightKB":28967,"mountMs":249,"heapSlopeKB":-0.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue virtual {"weightKB":92342,"mountMs":1184,"heapSlopeKB":-0.3,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue all {"weightKB":6107,"mountMs":80,"heapSlopeKB":-1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue empty {"weightKB":20,"mountMs":5,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue обход 1 {"heap":11629216,"nodes":30,"listeners":13,"components":103,"emitters":0}
+vue обход 2 {"heap":11629900,"nodes":30,"listeners":13,"components":103,"emitters":0}
+vue обход 3 {"heap":11616428,"nodes":30,"listeners":13,"components":103,"emitters":0}
+vue leak {"weightKB":637,"mountMs":13,"heapSlopeKB":38.2,"nodes":9000,"listeners":1000,"components":1000,"emitters":1000}

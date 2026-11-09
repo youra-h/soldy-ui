@@ -1,0 +1,230 @@
+<script setup>
+import { ref } from 'vue'
+
+const props = defineProps({
+  items: { type: Array, default: () => [] },
+  rows: { type: Array, default: () => [] },
+  locale: { type: String, default: 'en' },
+  dir: { type: String, default: 'ltr' },
+})
+
+const dialog = ref(null)
+const opener = ref(null)
+const nameInput = ref(null)
+const cancelButton = ref(null)
+const saveButton = ref(null)
+const savedName = ref('')
+const draftName = ref('')
+
+function openDialog() {
+  if (!dialog.value || dialog.value.open) return
+  draftName.value = savedName.value
+  dialog.value.showModal()
+  nameInput.value?.focus()
+}
+
+function restoreFocus() {
+  // A queued close event must not steal focus from a reopened dialog.
+  if (!dialog.value?.open && opener.value?.isConnected) {
+    opener.value.focus({ preventScroll: true })
+  }
+}
+
+function closeDialog() {
+  if (!dialog.value?.open) return
+  dialog.value.close()
+  restoreFocus()
+}
+
+function save() {
+  savedName.value = draftName.value
+  closeDialog()
+}
+
+function handleKeydown(event) {
+  if (event.key !== 'Tab') return
+
+  const controls = [
+    nameInput.value,
+    cancelButton.value,
+    saveButton.value,
+  ].filter(Boolean)
+
+  const active = dialog.value.ownerDocument.activeElement
+  const index = controls.indexOf(active)
+  const lastIndex = controls.length - 1
+
+  if (index === -1) {
+    event.preventDefault()
+    controls[event.shiftKey ? lastIndex : 0]?.focus()
+  } else if (event.shiftKey && index === 0) {
+    event.preventDefault()
+    controls[lastIndex]?.focus()
+  } else if (!event.shiftKey && index === lastIndex) {
+    event.preventDefault()
+    controls[0]?.focus()
+  }
+}
+</script>
+
+<template>
+  <div class="settings" :dir="props.dir" lang="en">
+    <button ref="opener" type="button" @click="openDialog">
+      Open dialog
+    </button>
+
+    <dialog
+      ref="dialog"
+      aria-label="Settings"
+      aria-modal="true"
+      @keydown="handleKeydown"
+      @cancel.prevent="closeDialog"
+      @close="restoreFocus"
+    >
+      <form @submit.prevent="save">
+        <h2>Settings</h2>
+
+        <label class="field">
+          <span>Name</span>
+          <input
+            ref="nameInput"
+            v-model="draftName"
+            type="text"
+            name="name"
+            autocomplete="name"
+            autofocus
+          />
+        </label>
+
+        <div class="actions">
+          <button ref="cancelButton" type="button" @click="closeDialog">
+            Cancel
+          </button>
+          <button ref="saveButton" class="primary" type="submit">
+            Save
+          </button>
+        </div>
+      </form>
+    </dialog>
+  </div>
+</template>
+
+<style scoped>
+.settings {
+  font-family: system-ui, sans-serif;
+  color: #172033;
+  line-height: 1.5;
+}
+
+.settings,
+.settings * {
+  box-sizing: border-box;
+}
+
+dialog {
+  width: calc(100% - 2rem);
+  max-width: 28rem;
+  max-height: calc(100dvh - 2rem);
+  margin: auto;
+  padding: 1.5rem;
+  overflow: auto;
+  color: #172033;
+  background: #ffffff;
+  border: 1px solid #68758a;
+  border-radius: 0.75rem;
+  box-shadow: 0 1rem 3rem rgb(0 0 0 / 25%);
+}
+
+dialog::backdrop {
+  background: rgb(15 23 42 / 65%);
+}
+
+form {
+  display: grid;
+  gap: 1.5rem;
+  min-width: 0;
+}
+
+h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  line-height: 1.25;
+}
+
+.field {
+  display: grid;
+  gap: 0.5rem;
+  min-width: 0;
+  font-weight: 600;
+}
+
+input,
+button {
+  min-height: 44px;
+  font: inherit;
+}
+
+input {
+  width: 100%;
+  min-width: 0;
+  padding: 0.625rem 0.75rem;
+  color: #172033;
+  background: #ffffff;
+  border: 1px solid #68758a;
+  border-radius: 0.375rem;
+}
+
+button {
+  padding: 0.625rem 1rem;
+  color: #172033;
+  background: #ffffff;
+  border: 1px solid #68758a;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+button:hover {
+  background: #edf1f7;
+}
+
+.primary {
+  color: #ffffff;
+  background: #174ea6;
+  border-color: #174ea6;
+}
+
+.primary:hover {
+  background: #123e85;
+  border-color: #123e85;
+}
+
+input:focus-visible,
+button:focus-visible {
+  outline: 3px solid #174ea6;
+  outline-offset: 3px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .settings,
+  .settings * {
+    animation: none;
+    transition: none;
+    scroll-behavior: auto;
+  }
+}
+
+@media (forced-colors: active) {
+  input:focus-visible,
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+}
+</style>

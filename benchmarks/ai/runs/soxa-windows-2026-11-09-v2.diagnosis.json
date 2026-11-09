@@ -1,0 +1,7 @@
+{
+  "date": "2026-11-09T08:54:45.034Z",
+  "reason": "Standard Vue SSR teleport context was omitted by the host, causing body teleport hydration to consume the app container. Completed diagnostic is excluded from component-quality comparisons; unchanged subjects will run in the corrected shared host.",
+  "status": "tested-with-failures",
+  "completedCells": 24,
+  "originalExit": 1
+}

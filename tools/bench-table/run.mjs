@@ -25,6 +25,14 @@ const browser = await chromium.launch({
 })
 const MB = (x) => Math.round(x / 1e5) / 10
 const table = {}
+const raw = {
+	schemaVersion: 1,
+	date: new Date().toISOString(),
+	browser: browser.version(),
+	n: N,
+	runs: RUNS,
+	participants: {},
+}
 // Потолок участника: все его прогоны — не дольше 10 минут. Не уложился — итог
 // `fail`, без цифр: таблица, которая меряется дольше, — уже провал, и soxa тоже.
 // Страница закрывается посреди сценария, и прогон идёт к следующему участнику.
@@ -34,6 +42,8 @@ class TOverLimit extends Error {}
 
 for (const lib of LIBS) {
 	const results = {}
+	const errors = []
+	const repetitions = []
 	const push = (k, v) => (results[k] ??= []).push(v)
 	const deadline = Date.now() + LIMIT_MIN * 60_000
 	let over = false
@@ -43,7 +53,14 @@ for (const lib of LIBS) {
 	let failed = null
 	for (let run = 0; run < RUNS && !failed; run++) {
 		const page = await browser.newPage({ viewport: { width: 1600, height: 1000 } })
-		page.on('pageerror', (e) => console.error(lib, 'pageerror', e.message))
+		page.on('pageerror', (e) => {
+			errors.push({ run, type: 'pageerror', message: e.message })
+			console.error(lib, 'pageerror', e.message)
+		})
+		page.on('console', (message) => {
+			if (message.type() === 'error')
+				errors.push({ run, type: 'console.error', message: message.text() })
+		})
 		try {
 			await page.goto(base + urlOf(lib))
 			await page.waitForFunction(() => 'bench' in window)
@@ -88,6 +105,15 @@ for (const lib of LIBS) {
 			const i4 = await b(() => bench.info())
 			push('Сортировка ↓', await b(() => bench.sort()))
 			const i5 = await b(() => bench.info())
+			repetitions.push({
+				run,
+				heap0,
+				mounted: i1,
+				selected: i2,
+				deselected: i3,
+				ascending: i4,
+				descending: i5,
+			})
 			// С перестановкой (`reorder`) — жест по заголовку второй колонки: взять,
 			// шаг на соседа, отпустить. После сортировок: окно — у верха таблицы
 			const reordering = lib.includes('+reorder')
@@ -148,6 +174,17 @@ for (const lib of LIBS) {
 	)
 	if (over) table[lib] = { Итог: `fail: ${failed}` }
 	else if (failed) table[lib]['Ошибка'] = failed
+	raw.participants[lib] = {
+		values: results,
+		repetitions,
+		errors,
+		failure: failed,
+		overLimit: over,
+	}
+	if (process.env.BENCH_JSON_OUT) {
+		fs.mkdirSync(path.dirname(process.env.BENCH_JSON_OUT), { recursive: true })
+		fs.writeFileSync(process.env.BENCH_JSON_OUT, JSON.stringify(raw) + '\n')
+	}
 	// Строка участника — сразу: зависший следующий не съест уже снятые цифры
 	console.log(lib, JSON.stringify(table[lib]))
 }

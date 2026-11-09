@@ -1,0 +1,145 @@
+{
+    "schemaVersion":  1,
+    "date":  "2026-11-09T09:08:11.2844863Z",
+    "reason":  "SSR HTML is immutable experimental data, including existing library comments. Archive as .html.txt without changing bytes; maintained source comment checks remain unchanged.",
+    "files":  [
+                  {
+                      "original":  "chromium-date-picker-default.html",
+                      "archived":  "chromium-date-picker-default.html.txt",
+                      "sha256":  "d26653cf8d147f37ec98f8fc625935092c8af6546bb6c923b994dee67caea2e9",
+                      "bytes":  15646
+                  },
+                  {
+                      "original":  "chromium-date-picker-narrow-touch.html",
+                      "archived":  "chromium-date-picker-narrow-touch.html.txt",
+                      "sha256":  "d26653cf8d147f37ec98f8fc625935092c8af6546bb6c923b994dee67caea2e9",
+                      "bytes":  15646
+                  },
+                  {
+                      "original":  "chromium-date-picker-reduce.html",
+                      "archived":  "chromium-date-picker-reduce.html.txt",
+                      "sha256":  "d26653cf8d147f37ec98f8fc625935092c8af6546bb6c923b994dee67caea2e9",
+                      "bytes":  15646
+                  },
+                  {
+                      "original":  "chromium-date-picker-rtl.html",
+                      "archived":  "chromium-date-picker-rtl.html.txt",
+                      "sha256":  "ae71a7b1729b940b32a0ceafc3a2efa32a55f59f94c6a3ab4977a12db47443e7",
+                      "bytes":  15714
+                  },
+                  {
+                      "original":  "chromium-dialog-default.html",
+                      "archived":  "chromium-dialog-default.html.txt",
+                      "sha256":  "2eb00c83e06b9ffbd9c6e459288b47f8d7990cebdfdf110e33aff054702883eb",
+                      "bytes":  7414
+                  },
+                  {
+                      "original":  "chromium-dialog-narrow-touch.html",
+                      "archived":  "chromium-dialog-narrow-touch.html.txt",
+                      "sha256":  "2eb00c83e06b9ffbd9c6e459288b47f8d7990cebdfdf110e33aff054702883eb",
+                      "bytes":  7414
+                  },
+                  {
+                      "original":  "chromium-dialog-reduce.html",
+                      "archived":  "chromium-dialog-reduce.html.txt",
+                      "sha256":  "2eb00c83e06b9ffbd9c6e459288b47f8d7990cebdfdf110e33aff054702883eb",
+                      "bytes":  7414
+                  },
+                  {
+                      "original":  "chromium-dialog-rtl.html",
+                      "archived":  "chromium-dialog-rtl.html.txt",
+                      "sha256":  "fd118a1dd7104305ebdb18a0ebf59ad37628998146c8fb3d0973c129480a8ae4",
+                      "bytes":  7419
+                  },
+                  {
+                      "original":  "chromium-select-default.html",
+                      "archived":  "chromium-select-default.html.txt",
+                      "sha256":  "1d058c47ccb97f116a26cb817d6beaebff79f8e21e28a05b2fb8d6fda336c631",
+                      "bytes":  13140
+                  },
+                  {
+                      "original":  "chromium-select-ime.html",
+                      "archived":  "chromium-select-ime.html.txt",
+                      "sha256":  "1d058c47ccb97f116a26cb817d6beaebff79f8e21e28a05b2fb8d6fda336c631",
+                      "bytes":  13140
+                  },
+                  {
+                      "original":  "chromium-select-large.html",
+                      "archived":  "chromium-select-large.html.txt",
+                      "sha256":  "41e371ca3696b966513b648435539e41f9f0956b4d7c01b537b6684f9dd9b485",
+                      "bytes":  13143
+                  },
+                  {
+                      "original":  "chromium-select-narrow-touch.html",
+                      "archived":  "chromium-select-narrow-touch.html.txt",
+                      "sha256":  "1d058c47ccb97f116a26cb817d6beaebff79f8e21e28a05b2fb8d6fda336c631",
+                      "bytes":  13140
+                  },
+                  {
+                      "original":  "chromium-select-reduce.html",
+                      "archived":  "chromium-select-reduce.html.txt",
+                      "sha256":  "1d058c47ccb97f116a26cb817d6beaebff79f8e21e28a05b2fb8d6fda336c631",
+                      "bytes":  13140
+                  },
+                  {
+                      "original":  "chromium-select-rtl.html",
+                      "archived":  "chromium-select-rtl.html.txt",
+                      "sha256":  "ace332fda10b6e456da03d8953809d95d4d397269dce472668164a429574747e",
+                      "bytes":  13140
+                  },
+                  {
+                      "original":  "chromium-table-default.html",
+                      "archived":  "chromium-table-default.html.txt",
+                      "sha256":  "5ad138666e7d10911b7b7214ef5cf52ed47ae30a8f9fc41bb594e1a772f695e4",
+                      "bytes":  127842
+                  },
+                  {
+                      "original":  "chromium-table-large.html",
+                      "archived":  "chromium-table-large.html.txt",
+                      "sha256":  "7d84916498d84256ba76a02817a0b92e0ad50c61884ba099d08c5fa4681f7a9b",
+                      "bytes":  52035651
+                  },
+                  {
+                      "original":  "chromium-table-narrow-touch.html",
+                      "archived":  "chromium-table-narrow-touch.html.txt",
+                      "sha256":  "5ad138666e7d10911b7b7214ef5cf52ed47ae30a8f9fc41bb594e1a772f695e4",
+                      "bytes":  127842
+                  },
+                  {
+                      "original":  "chromium-table-reduce.html",
+                      "archived":  "chromium-table-reduce.html.txt",
+                      "sha256":  "5ad138666e7d10911b7b7214ef5cf52ed47ae30a8f9fc41bb594e1a772f695e4",
+                      "bytes":  127842
+                  },
+                  {
+                      "original":  "chromium-table-rtl.html",
+                      "archived":  "chromium-table-rtl.html.txt",
+                      "sha256":  "c8b15a6b7857a96b54dacf9a991b1168097f164930d34354268528a044c2a30b",
+                      "bytes":  127863
+                  },
+                  {
+                      "original":  "chromium-tabs-default.html",
+                      "archived":  "chromium-tabs-default.html.txt",
+                      "sha256":  "d04285f8f3460dde6987c2ece33446726cb7706f67e908bd66ebccfda975e510",
+                      "bytes":  12038
+                  },
+                  {
+                      "original":  "chromium-tabs-narrow-touch.html",
+                      "archived":  "chromium-tabs-narrow-touch.html.txt",
+                      "sha256":  "d04285f8f3460dde6987c2ece33446726cb7706f67e908bd66ebccfda975e510",
+                      "bytes":  12038
+                  },
+                  {
+                      "original":  "chromium-tabs-reduce.html",
+                      "archived":  "chromium-tabs-reduce.html.txt",
+                      "sha256":  "d04285f8f3460dde6987c2ece33446726cb7706f67e908bd66ebccfda975e510",
+                      "bytes":  12038
+                  },
+                  {
+                      "original":  "chromium-tabs-rtl.html",
+                      "archived":  "chromium-tabs-rtl.html.txt",
+                      "sha256":  "6afc325869258877c026a79c65aa8f35724d5e42567c2a931e1f43c378beeb9c",
+                      "bytes":  12038
+                  }
+              ]
+}

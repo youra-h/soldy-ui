@@ -1,0 +1,635 @@
+```vue
+<script setup>
+import { computed, ref, watch } from 'vue'
+
+const props = defineProps({
+  items: { type: Array, default: () => [] },
+  rows: { type: Array, default: () => [] },
+  locale: { type: String, default: 'en' },
+  dir: { type: String, default: 'ltr' }
+})
+
+const translations = {
+  en: {
+    name: 'Name',
+    score: 'Score',
+    selection: 'Selection',
+    selectAll: 'Select all records across all pages',
+    selectRow: 'Select record',
+    id: 'ID',
+    ascending: 'Ascending',
+    descending: 'Descending',
+    unsorted: 'Not sorted',
+    sortAscending: 'Sort ascending',
+    sortDescending: 'Sort descending',
+    selected: 'Selected',
+    clear: 'Clear selection',
+    first: 'First',
+    previous: 'Previous',
+    next: 'Next',
+    last: 'Last',
+    pagination: 'Records pagination',
+    page: 'Page',
+    of: 'of',
+    showing: 'Showing',
+    empty: 'No records',
+    scroll: 'Records table, scrollable',
+    help: '100 records per page. Scroll within the table to view the current page.'
+  },
+  ru: {
+    name: 'Имя',
+    score: 'Баллы',
+    selection: 'Выбор',
+    selectAll: 'Выбрать все записи на всех страницах',
+    selectRow: 'Выбрать запись',
+    id: 'ID',
+    ascending: 'По возрастанию',
+    descending: 'По убыванию',
+    unsorted: 'Без сортировки',
+    sortAscending: 'Сортировать по возрастанию',
+    sortDescending: 'Сортировать по убыванию',
+    selected: 'Выбрано',
+    clear: 'Снять выделение',
+    first: 'Первая',
+    previous: 'Назад',
+    next: 'Вперёд',
+    last: 'Последняя',
+    pagination: 'Страницы записей',
+    page: 'Страница',
+    of: 'из',
+    showing: 'Показано',
+    empty: 'Нет записей',
+    scroll: 'Таблица Records с прокруткой',
+    help: '100 записей на странице. Прокрутите таблицу для просмотра текущей страницы.'
+  },
+  ar: {
+    name: 'الاسم',
+    score: 'النتيجة',
+    selection: 'التحديد',
+    selectAll: 'تحديد جميع السجلات في جميع الصفحات',
+    selectRow: 'تحديد السجل',
+    id: 'المعرّف',
+    ascending: 'تصاعدي',
+    descending: 'تنازلي',
+    unsorted: 'غير مرتب',
+    sortAscending: 'ترتيب تصاعدي',
+    sortDescending: 'ترتيب تنازلي',
+    selected: 'المحدد',
+    clear: 'مسح التحديد',
+    first: 'الأولى',
+    previous: 'السابقة',
+    next: 'التالية',
+    last: 'الأخيرة',
+    pagination: 'صفحات السجلات',
+    page: 'الصفحة',
+    of: 'من',
+    showing: 'عرض',
+    empty: 'لا توجد سجلات',
+    scroll: 'جدول Records قابل للتمرير',
+    help: '100 سجل لكل صفحة. مرّر داخل الجدول لعرض الصفحة الحالية.'
+  }
+}
+
+const language = computed(() =>
+  Object.prototype.hasOwnProperty.call(translations, props.locale)
+    ? props.locale
+    : 'en'
+)
+const t = computed(() => translations[language.value])
+const direction = computed(() => props.dir === 'rtl' ? 'rtl' : 'ltr')
+
+const pageSize = 100
+const requestedPage = ref(1)
+const sortKey = ref('name')
+const sortDirection = ref('ascending')
+const selectedIds = ref(new Set())
+const scrollArea = ref(null)
+
+const availableIds = computed(() => new Set(props.rows.map(row => row.id)))
+
+watch(availableIds, ids => {
+  const remaining = new Set([...selectedIds.value].filter(id => ids.has(id)))
+  if (remaining.size !== selectedIds.value.size) {
+    selectedIds.value = remaining
+  }
+}, { flush: 'sync' })
+
+// Copy before sorting. Code-point comparison avoids server/client ICU differences.
+const sortedRows = computed(() => {
+  const multiplier = sortDirection.value === 'ascending' ? 1 : -1
+
+  return props.rows
+    .map((row, index) => ({ row, index }))
+    .sort((a, b) => {
+      const left = a.row[sortKey.value]
+      const right = b.row[sortKey.value]
+      const comparison = left < right ? -1 : left > right ? 1 : 0
+      return comparison * multiplier || a.index - b.index
+    })
+    .map(entry => entry.row)
+})
+
+const total = computed(() => props.rows.length)
+const pageCount = computed(() => Math.max(1, Math.ceil(total.value / pageSize)))
+const page = computed(() => Math.min(requestedPage.value, pageCount.value))
+const start = computed(() => total.value ? (page.value - 1) * pageSize + 1 : 0)
+const end = computed(() => Math.min(page.value * pageSize, total.value))
+const visibleRows = computed(() =>
+  sortedRows.value.slice((page.value - 1) * pageSize, page.value * pageSize)
+)
+
+const selectedCount = computed(() => selectedIds.value.size)
+const allSelected = computed(() =>
+  availableIds.value.size > 0 &&
+  selectedCount.value === availableIds.value.size
+)
+const partlySelected = computed(() =>
+  selectedCount.value > 0 && !allSelected.value
+)
+
+function resetScroll() {
+  if (scrollArea.value) scrollArea.value.scrollTop = 0
+}
+
+function changePage(nextPage) {
+  requestedPage.value = Math.max(1, Math.min(nextPage, pageCount.value))
+  resetScroll()
+}
+
+function sortBy(key) {
+  if (sortKey.value === key) {
+    sortDirection.value =
+      sortDirection.value === 'ascending' ? 'descending' : 'ascending'
+  } else {
+    sortKey.value = key
+    sortDirection.value = 'ascending'
+  }
+  requestedPage.value = 1
+  resetScroll()
+}
+
+function ariaSort(key) {
+  return sortKey.value === key ? sortDirection.value : 'none'
+}
+
+function sortState(key) {
+  return sortKey.value === key
+    ? t.value[sortDirection.value]
+    : t.value.unsorted
+}
+
+function sortButtonName(key) {
+  const action =
+    sortKey.value === key && sortDirection.value === 'ascending'
+      ? t.value.sortDescending
+      : t.value.sortAscending
+  return `${t.value[key]}: ${action}`
+}
+
+function toggleRow(id, checked) {
+  const next = new Set(selectedIds.value)
+  if (checked) next.add(id)
+  else next.delete(id)
+  selectedIds.value = next
+}
+
+function toggleAll(checked) {
+  selectedIds.value = checked ? new Set(availableIds.value) : new Set()
+}
+
+function clearSelection() {
+  selectedIds.value = new Set()
+}
+
+function rowCheckboxName(row) {
+  return `${t.value.selectRow}: ${row.name}; ${t.value.id}: ${row.id}`
+}
+</script>
+
+<template>
+  <section class="records" :lang="language" :dir="direction" aria-label="Records">
+    <p class="help">{{ t.help }}</p>
+
+    <div class="selection-toolbar">
+      <p class="selection-summary">
+        {{ t.selected }}: {{ selectedCount }} {{ t.of }} {{ total }}
+      </p>
+      <button
+        class="action"
+        type="button"
+        :disabled="selectedCount === 0"
+        @click="clearSelection"
+      >
+        {{ t.clear }}
+      </button>
+    </div>
+
+    <div
+      ref="scrollArea"
+      class="table-scroll"
+      role="region"
+      :aria-label="t.scroll"
+      tabindex="0"
+    >
+      <table>
+        <caption>Records</caption>
+        <colgroup>
+          <col class="selection-column" />
+          <col />
+          <col class="score-column" />
+        </colgroup>
+        <thead>
+          <tr>
+            <th scope="col" class="checkbox-cell">
+              <span class="sr-only">{{ t.selection }}</span>
+              <label class="checkbox-target">
+                <input
+                  type="checkbox"
+                  :checked="allSelected"
+                  :indeterminate="partlySelected"
+                  :disabled="total === 0"
+                  @change="toggleAll($event.target.checked)"
+                />
+                <span class="sr-only">{{ t.selectAll }}</span>
+              </label>
+            </th>
+            <th scope="col" :aria-sort="ariaSort('name')">
+              <button
+                type="button"
+                class="sort-button"
+                :aria-label="sortButtonName('name')"
+                @click="sortBy('name')"
+              >
+                <span>{{ t.name }}</span>
+                <span class="sort-state" aria-hidden="true">
+                  {{ sortState('name') }}
+                  <span v-if="sortKey === 'name'">
+                    {{ sortDirection === 'ascending' ? '↑' : '↓' }}
+                  </span>
+                </span>
+              </button>
+            </th>
+            <th scope="col" :aria-sort="ariaSort('score')">
+              <button
+                type="button"
+                class="sort-button"
+                :aria-label="sortButtonName('score')"
+                @click="sortBy('score')"
+              >
+                <span>{{ t.score }}</span>
+                <span class="sort-state" aria-hidden="true">
+                  {{ sortState('score') }}
+                  <span v-if="sortKey === 'score'">
+                    {{ sortDirection === 'ascending' ? '↑' : '↓' }}
+                  </span>
+                </span>
+              </button>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-if="visibleRows.length === 0">
+            <td colspan="3" class="empty">{{ t.empty }}</td>
+          </tr>
+          <tr
+            v-for="row in visibleRows"
+            :key="row.id"
+            :class="{ selected: selectedIds.has(row.id) }"
+          >
+            <td class="checkbox-cell">
+              <label class="checkbox-target">
+                <input
+                  type="checkbox"
+                  :checked="selectedIds.has(row.id)"
+                  @change="toggleRow(row.id, $event.target.checked)"
+                />
+                <span class="sr-only">{{ rowCheckboxName(row) }}</span>
+              </label>
+            </td>
+            <th scope="row" class="record-name">
+              <bdi>{{ row.name }}</bdi>
+            </th>
+            <td class="score"><bdi>{{ row.score }}</bdi></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="page-summary">
+      {{ t.showing }} {{ start }}–{{ end }} {{ t.of }} {{ total }}.
+      {{ t.page }} {{ page }} {{ t.of }} {{ pageCount }}.
+    </p>
+
+    <nav class="pagination" :aria-label="t.pagination">
+      <button
+        type="button"
+        class="action"
+        :disabled="page === 1"
+        @click="changePage(1)"
+      >
+        {{ t.first }}
+      </button>
+      <button
+        type="button"
+        class="action"
+        :disabled="page === 1"
+        @click="changePage(page - 1)"
+      >
+        {{ t.previous }}
+      </button>
+      <button
+        type="button"
+        class="action"
+        :disabled="page === pageCount"
+        @click="changePage(page + 1)"
+      >
+        {{ t.next }}
+      </button>
+      <button
+        type="button"
+        class="action"
+        :disabled="page === pageCount"
+        @click="changePage(pageCount)"
+      >
+        {{ t.last }}
+      </button>
+    </nav>
+
+    <p class="sr-only" role="status" aria-atomic="true">
+      {{ t.showing }} {{ start }}–{{ end }} {{ t.of }} {{ total }}.
+      {{ t.page }} {{ page }} {{ t.of }} {{ pageCount }}.
+      {{ t.selected }}: {{ selectedCount }}.
+      {{ t[sortKey] }}: {{ t[sortDirection] }}.
+    </p>
+  </section>
+</template>
+
+<style scoped>
+.records,
+.records * {
+  box-sizing: border-box;
+}
+
+.records {
+  inline-size: 100%;
+  min-inline-size: 0;
+  max-inline-size: 60rem;
+  padding: 0.75rem;
+  color: #182230;
+  background: #ffffff;
+  font-family: system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.help,
+.selection-summary,
+.page-summary {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.help {
+  margin-block-end: 0.75rem;
+  color: #465568;
+  font-size: 0.875rem;
+}
+
+.selection-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-block-end: 0.75rem;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  touch-action: manipulation;
+}
+
+.action {
+  min-inline-size: 2.75rem;
+  min-block-size: 2.75rem;
+  max-inline-size: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #66758a;
+  border-radius: 0.375rem;
+  color: #182230;
+  background: #ffffff;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+
+.action:disabled {
+  color: #596475;
+  background: #edf0f4;
+  border-color: #a8b1bf;
+  cursor: default;
+}
+
+.table-scroll {
+  inline-size: 100%;
+  max-block-size: 28rem;
+  overflow: auto;
+  border: 1px solid #788698;
+  border-radius: 0.375rem;
+  scrollbar-gutter: stable;
+  scroll-behavior: auto;
+}
+
+table {
+  inline-size: 100%;
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 0;
+  text-align: start;
+}
+
+caption {
+  padding: 0.75rem;
+  color: #182230;
+  background: #ffffff;
+  font-size: 1.125rem;
+  font-weight: 700;
+  text-align: start;
+}
+
+.selection-column {
+  inline-size: 3.5rem;
+}
+
+.score-column {
+  inline-size: 34%;
+}
+
+thead th {
+  position: sticky;
+  inset-block-start: 0;
+  z-index: 1;
+  background: #edf2f7;
+  border-block-start: 1px solid #a8b1bf;
+  border-block-end: 2px solid #788698;
+  vertical-align: middle;
+}
+
+.sort-button {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.125rem;
+  inline-size: 100%;
+  min-block-size: 4rem;
+  padding: 0.5rem;
+  border: 0;
+  color: #182230;
+  background: transparent;
+  font-weight: 700;
+  text-align: start;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+
+.sort-state {
+  color: #465568;
+  font-size: 0.75rem;
+  font-weight: 400;
+}
+
+th,
+td {
+  padding: 0;
+  overflow-wrap: anywhere;
+}
+
+tbody th,
+tbody td {
+  border-block-end: 1px solid #cbd2dc;
+  background: #ffffff;
+}
+
+tbody tr:last-child > * {
+  border-block-end: 0;
+}
+
+.record-name,
+.score {
+  padding: 0.625rem 0.5rem;
+  vertical-align: middle;
+}
+
+.record-name {
+  font-weight: 400;
+}
+
+.score {
+  font-variant-numeric: tabular-nums;
+}
+
+.checkbox-cell {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.checkbox-target {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 2.75rem;
+  min-block-size: 2.75rem;
+  cursor: pointer;
+}
+
+input[type="checkbox"] {
+  inline-size: 1.25rem;
+  block-size: 1.25rem;
+  margin: 0;
+  accent-color: #1757a6;
+  cursor: pointer;
+}
+
+input:disabled {
+  cursor: default;
+}
+
+.selected > * {
+  background: #e5efff;
+}
+
+.selected > .checkbox-cell {
+  box-shadow: inset 0 -3px 0 #1757a6;
+}
+
+.empty {
+  padding: 1.5rem 0.75rem;
+  text-align: center;
+}
+
+.page-summary {
+  margin-block: 0.75rem;
+  font-size: 0.875rem;
+}
+
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+button:focus-visible,
+input:focus-visible,
+.table-scroll:focus-visible {
+  outline: 3px solid #0046a8;
+  outline-offset: 3px;
+}
+
+.sort-button:focus-visible {
+  outline-offset: -4px;
+}
+
+@media (hover: hover) {
+  .action:not(:disabled):hover,
+  .sort-button:hover {
+    background: #dce8f7;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .records,
+  .records * {
+    scroll-behavior: auto;
+    animation: none;
+    transition: none;
+  }
+}
+
+@media (forced-colors: active) {
+  .selected > * {
+    border-block-end: 2px solid Highlight;
+  }
+
+  .selected > .checkbox-cell {
+    box-shadow: none;
+  }
+}
+
+.sr-only {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+</style>
+```

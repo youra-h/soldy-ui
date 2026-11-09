@@ -1,0 +1,37 @@
+(!) Your Vite config uses features that are unsupported by `configLoader: 'native'`, which is planned to become the default in a future major version of Vite:
+  - import "../../packages/playground/vue/vite.base" without a file extension (tools/bench-ai/vite.config.ts:4:25). Add the file extension
+Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.
+vite v8.3.4 building client environment for production...
+transforming...
+✓ 1604 modules transformed.
+
+(!) outDir D:\projects\soxa-a\benchmarks\ai\runs\soxa-windows-2026-11-09-v2\dist is not inside project root and will not be emptied.
+Use --emptyOutDir to override.
+
+rendering chunks...
+computing gzip size...
+benchmarks/ai/runs/soxa-windows-2026-11-09-v2/dist/index.html                   0.46 kB │ gzip:   0.30 kB
+benchmarks/ai/runs/soxa-windows-2026-11-09-v2/dist/assets/index-B604dx7E.css  361.79 kB │ gzip:  37.10 kB
+benchmarks/ai/runs/soxa-windows-2026-11-09-v2/dist/assets/index-CBCqcOFG.js   605.21 kB │ gzip: 163.06 kB
+
+✓ built in 246ms
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+(!) Your Vite config uses features that are unsupported by `configLoader: 'native'`, which is planned to become the default in a future major version of Vite:
+  - import "../../packages/playground/vue/vite.base" without a file extension (tools/bench-ai/vite.config.ts:4:25). Add the file extension
+Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.
+vite v8.3.4 building ssr environment for production...
+transforming...
+✓ 1629 modules transformed.
+
+(!) outDir D:\projects\soxa-a\benchmarks\ai\runs\soxa-windows-2026-11-09-v2\dist-ssr is not inside project root and will not be emptied.
+Use --emptyOutDir to override.
+
+rendering chunks...
+computing gzip size...
+benchmarks/ai/runs/soxa-windows-2026-11-09-v2/dist-ssr/server.js  3,379.52 kB │ gzip: 798.25 kB
+
+✓ built in 269ms
