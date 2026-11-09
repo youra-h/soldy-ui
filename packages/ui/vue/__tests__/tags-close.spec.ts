@@ -1,21 +1,13 @@
 /**
- * Кнопка закрытия тега — сосед строки, а не её потомок.
- *
- * Пока у набора включён выбор, строка тега — `role="option"`. Потомки опции
- * для скринридера презентационны, а имя опции считается из содержимого. Пока
- * крестик лежал внутри строки, скринридер не видел его кнопкой, а подпись
- * приклеивал к названию: вместо «Настройки» звучало «Настройки Close
- * Настройки». Разметка одна на все режимы, поэтому и в `mode="none"`
- * (`role="listitem"`) крестик — сосед строки.
- *
- * Что вид закрываемого тега остался прежним, проверяет браузерный прогон
- * (`playground/vue/browser/tags-close.spec.ts`): в jsdom раскладки нет.
+ * The remove button stays beside the row. Without selection the encompassing
+ * root is the list item; with selection only the row is an option, keeping
+ * the remove button's label out of its accessible name.
  */
 
 import { describe, it, expect, afterEach } from 'vitest'
 import { mount } from '@vue/test-utils'
-import { nextTick } from 'vue'
-import { Tags, TagsItem } from '@soxa-ui/vue'
+import { h, nextTick } from 'vue'
+import { Select, SelectItem, Tags, TagsItem } from '@soxa-ui/vue'
 
 let wrapper: ReturnType<typeof mount> | null = null
 
@@ -50,7 +42,7 @@ const CLOSABLE = {
 	`,
 }
 
-const ROLES = { multiple: 'option', none: 'listitem' } as const
+const ROLES = { multiple: 'option', none: null } as const
 
 const MODES = ['multiple', 'none'] as const
 
@@ -92,6 +84,9 @@ describe.each(MODES)('разметка, mode="%s"', (mode) => {
 
 		for (const row of rows()) {
 			expect(row.getAttribute('role')).toBe(ROLES[mode])
+			expect(row.parentElement?.getAttribute('role')).toBe(
+				mode === 'none' ? 'listitem' : null,
+			)
 			expect(
 				row.querySelector('button, a[href], input, select, textarea, [tabindex]'),
 			).toBeNull()
@@ -303,5 +298,34 @@ describe('снятый closable тега возвращает значение �
 		await mounted.setProps({ own: undefined })
 
 		expect(item('A').querySelector('.so-tags-item__close')).not.toBeNull()
+	})
+})
+
+describe('selected tags keep remove buttons inside list items', () => {
+	it.each([1, 2])('Select multiple with %i selected values', async (count) => {
+		wrapper = mount(Select, {
+			props: { editable: true, mode: 'multiple', value: ['a', 'b'].slice(0, count) },
+			slots: {
+				default: () => [
+					h(SelectItem, { value: 'a', text: 'Alpha 1' }),
+					h(SelectItem, { value: 'b', text: 'Beta 2' }),
+				],
+			},
+			attachTo: document.body,
+		})
+		await nextTick()
+		const list = document.querySelector('.so-tags')
+		expect(list?.getAttribute('role')).toBe('list')
+		const items = [...document.querySelectorAll('.so-tags-item')]
+		expect(items).toHaveLength(count)
+		for (const tag of items) {
+			expect(tag.getAttribute('role')).toBe('listitem')
+			const row = tag.firstElementChild
+			expect(row?.hasAttribute('role')).toBe(false)
+			expect(tag.querySelector('button')?.closest('[role="listitem"]')).toBe(tag)
+			expect(tag.querySelector('button')?.getAttribute('aria-label')).toBe(
+				'Close ' + row?.textContent?.trim(),
+			)
+		}
 	})
 })

@@ -73,7 +73,8 @@ describe('режим выбора по умолчанию — none', () => {
 		const { owner, items } = createTags(['a'])
 
 		expect(owner.aria.get('role')).toBe('list')
-		expect(items[0].aria.get('role')).toBe('listitem')
+		expect(items[0].rootAria.get('role')).toBe('listitem')
+		expect(items[0].aria.get('role')).toBeUndefined()
 		expect(items[0].aria.get('aria-selected')).toBeUndefined()
 	})
 })
@@ -88,6 +89,7 @@ describe('value ↔ выбор', () => {
 		expect(facade.selected).toEqual([items[1]])
 		expect(owner.aria.get('role')).toBe('listbox')
 		expect(items[1].aria.get('role')).toBe('option')
+		expect(items[1].rootAria.get('role')).toBeUndefined()
 		expect(items[1].aria.get('aria-selected')).toBe('true')
 		expect(items[0].aria.get('aria-selected')).toBe('false')
 	})
@@ -110,7 +112,8 @@ describe('value ↔ выбор', () => {
 		facade.mode = 'none'
 
 		expect(owner.aria.get('role')).toBe('list')
-		expect(items[0].aria.get('role')).toBe('listitem')
+		expect(items[0].rootAria.get('role')).toBe('listitem')
+		expect(items[0].aria.get('role')).toBeUndefined()
 		expect(items[0].aria.get('aria-selected')).toBeUndefined()
 	})
 })
@@ -736,7 +739,7 @@ describe('остановка Tab — один тег с tabindex="0"', () => {
 		a.events.on('change:aria', ({ newValue: value }) => seen.push(value))
 		selection.mode = 'none'
 
-		expect(seen.at(-1)).toEqual({ role: 'listitem' })
+		expect(seen.at(-1)).toEqual({})
 	})
 
 	it('добавленный в none — без tabindex', () => {

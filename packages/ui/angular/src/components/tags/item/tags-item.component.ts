@@ -29,7 +29,8 @@ export class TTagsItemComponent extends TTagsItemSurface<ITagsItem> {
 	constructor() {
 		super(setupTagsItem, {
 			strategy: 'host',
-			sets: ['attrs', 'dataset'],
+			sets: ['aria', 'attrs', 'dataset'],
+			aria: 'rootAria',
 			control: true,
 			order: 'order',
 		})

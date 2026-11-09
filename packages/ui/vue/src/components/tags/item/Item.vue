@@ -5,50 +5,11 @@ import { ItemRow } from '../../item-row'
 import SetupTagsItem from './setup.component'
 
 /**
- * Разметка — по образцу Tabs.Item: в корне два соседа — строка тега
- * (`ItemRow`) и кнопка закрытия со своим `aria-label` (`closeAria`).
- *
- * ARIA тега (`role`, `aria-selected`) приходит одним набором `aria` — пишет
- * его `TTagsExtension` в зависимости от режима выбора коллекции (`list`/
- * `listitem`, пока `mode === 'none'`, иначе `listbox`/`option`), шаблону об
- * этом знать незачем.
- *
- * `dataset` — на корне: пилюлю тега рисует он (см. ниже), и выбранный тег
- * тема красит по `data-selected` корня. `TSelectionExtension` пишет его всем
- * элементам коллекции.
- *
- * Вид набора (`TTags.view`) рисует корень, а не строка: фон, рамка, наведение
- * и выбор обязаны покрывать и кнопку закрытия, а она стоит рядом со строкой.
- * Тема читает вид с класса набора. Строке и крестику вид в разметке не
- * передаётся — значения вида объявляет тема, и части тега она красит по
- * контексту (`.so-tags-item`).
- *
- * `direction` — своё направление письма тега; на корне уже стоит `dir`, но
- * строка — интерактивный элемент со своим DOM-узлом, и для него направление
- * передаётся явно, а не только через наследование `dir` от родителя.
- *
- * `embedded` — имя места у строки, крестика и иконки: это детали тега, и
- * плагины приложения на Button (`usePlugins`) их по умолчанию не трогают.
- *
- * Тег строки фиксирован (`tag="div"`), а не берётся из `tag` элемента:
- * `tag` — тег корня (`TComponentView`), и рисует по нему корень
- * `<component :is>`. Под фиксированный тег строки написан и
- * `TTagsItem._ariaTag` — он решает, писать ли `aria-disabled`.
- *
- * Выбор — по `action:press` строки, а не по `click`. Строка — `div`, и клик
- * из Enter и пробела на ней, пока она держит фокус, делает её
- * `TActionPlugin`. `press` приходит из этого клика и не приходит на
- * выключенный тег.
- * `TSelectionExtension.toggle` выключенность не проверяет — программный выбор
- * выключенного элемента остаётся правом приложения, — и на `click`
- * выключенный тег выбирался.
- *
- * Роль и `tabindex` строки приходят в том же наборе `aria`, а сама строка их
- * себе не пишет (`ItemRow`, `TItemRow`): с выбором весь набор — одна
- * остановка Tab (`tabindex="0"` у одного тега, у остальных `-1`, между тегами
- * — стрелки), без выбора `tabindex` у строк нет, и фокус от клика строка не
- * берёт. Пишет его `TTagsExtension`, шаблон ничего не вычисляет. Экземпляр
- * строки создаёт её монтирование, а не тег.
+ * The root contains the row and its remove button. Core supplies rootAria
+ * for list semantics without selection and aria for the selectable row.
+ * The close button stays outside the option so its label cannot enter the
+ * option's accessible name or become presentational. Dataset and styling
+ * remain on the root; ItemRow owns neither a role nor a tab stop of its own.
  */
 export default { ...SetupTagsItem, components: { Icon, Button, ItemRow } }
 </script>
@@ -61,7 +22,7 @@ export default { ...SetupTagsItem, components: { Icon, Button, ItemRow } }
 		v-show="visible"
 		:class="classes"
 		:style="{ order: order }"
-		v-bind="{ ...dataset, ...containerAttrs, ...attrs }"
+		v-bind="{ ...rootAria, ...dataset, ...containerAttrs, ...attrs }"
 	>
 		<ItemRow
 			embedded="tags.row"

@@ -136,9 +136,9 @@ describe('без выбора строки Tab не ловят, крестик �
 
 		expect(rowTabindex(['A', 'B', 'C'])).toEqual([null, null, null])
 		expect(['A', 'B', 'C'].map((text) => row(text).getAttribute('role'))).toEqual([
-			'listitem',
-			'listitem',
-			'listitem',
+			null,
+			null,
+			null,
 		])
 		expect(['A', 'B', 'C'].map((text) => close(text).hasAttribute('tabindex'))).toEqual([
 			false,
@@ -179,7 +179,8 @@ describe('без выбора строки Tab не ловят, крестик �
 
 		expect(rowTabindex(['Москва', 'Тверь'], field)).toEqual([null, null])
 		expect(close('Москва', field).hasAttribute('tabindex')).toBe(false)
-		expect(row('Москва', field).getAttribute('role')).toBe('listitem')
+		expect(row('Москва', field).getAttribute('role')).toBeNull()
+		expect(row('Москва', field).parentElement?.getAttribute('role')).toBe('listitem')
 	})
 
 	it('включили выбор — остановка появилась, выключили — ушла', async () => {
@@ -205,7 +206,8 @@ describe('без выбора строки Tab не ловят, крестик �
 		await mounted.setProps({ mode: 'none' })
 
 		expect(rowTabindex(['A', 'B', 'C'])).toEqual([null, null, null])
-		expect(row('A').getAttribute('role')).toBe('listitem')
+		expect(row('A').getAttribute('role')).toBeNull()
+		expect(row('A').parentElement?.getAttribute('role')).toBe('listitem')
 		expect(close('A').hasAttribute('tabindex')).toBe(false)
 	})
 })

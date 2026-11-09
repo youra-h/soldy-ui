@@ -1056,7 +1056,14 @@ describe('множественный выбор', () => {
 		]
 
 		expect(rows.map((row) => row.getAttribute('tabindex'))).toEqual([null, null])
-		expect(rows.map((row) => row.getAttribute('role'))).toEqual(['listitem', 'listitem'])
+		expect(rows.map((row) => row.getAttribute('role'))).toEqual([null, null])
+		for (const row of rows) {
+			const item = row.parentElement
+			expect(item?.getAttribute('role')).toBe('listitem')
+			expect(item?.querySelector('.so-tags-item__close')?.closest('[role="listitem"]')).toBe(
+				item,
+			)
+		}
 		expect(
 			document
 				.querySelector('.so-select__tags .so-tags-item__close')

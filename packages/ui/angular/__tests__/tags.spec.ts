@@ -191,7 +191,7 @@ class ClosableHost {
 	readonly mode = signal<TSelectionMode>('multiple')
 }
 
-const ROLES = { multiple: 'option', none: 'listitem' } as const
+const ROLES = { multiple: 'option', none: null } as const
 
 const MODES = ['multiple', 'none'] as const
 
@@ -225,6 +225,9 @@ describe.each(MODES)('кнопка закрытия: разметка, mode="%s"
 
 		for (const row of rows()) {
 			expect(row.getAttribute('role')).toBe(ROLES[mode])
+			expect(row.parentElement?.getAttribute('role')).toBe(
+				mode === 'none' ? 'listitem' : null,
+			)
 			expect(
 				row.querySelector('button, a[href], input, select, textarea, [tabindex]'),
 			).toBeNull()
@@ -533,7 +536,8 @@ describe('без выбора строки Tab не ловят, крестик �
 		mountWith(AbcHost, (page) => page.closable.set(true))
 
 		expect(rowTabindex(['A', 'B', 'C'])).toEqual([null, null, null])
-		expect(rowOf('A').getAttribute('role')).toBe('listitem')
+		expect(rowOf('A').getAttribute('role')).toBeNull()
+		expect(rowOf('A').parentElement?.getAttribute('role')).toBe('listitem')
 		expect(['A', 'B', 'C'].map((text) => closeOf(text).hasAttribute('tabindex'))).toEqual([
 			false,
 			false,
@@ -558,7 +562,8 @@ describe('без выбора строки Tab не ловят, крестик �
 		fixture.detectChanges()
 
 		expect(rowTabindex(['A', 'B', 'C'])).toEqual([null, null, null])
-		expect(rowOf('A').getAttribute('role')).toBe('listitem')
+		expect(rowOf('A').getAttribute('role')).toBeNull()
+		expect(rowOf('A').parentElement?.getAttribute('role')).toBe('listitem')
 		expect(closeOf('A').hasAttribute('tabindex')).toBe(false)
 	})
 })
@@ -1220,7 +1225,8 @@ describe('Tags.Item · корень и строка', () => {
 
 		expect(rowOf('A').classList.contains('so-button--size-lg')).toBe(true)
 		expect(rowOf('A').getAttribute('data-disabled')).toBe('true')
-		expect(rowOf('A').getAttribute('role')).toBe('listitem')
+		expect(rowOf('A').getAttribute('role')).toBeNull()
+		expect(rowOf('A').parentElement?.getAttribute('role')).toBe('listitem')
 		expect(rowOf('A').hasAttribute('tabindex')).toBe(false)
 	})
 

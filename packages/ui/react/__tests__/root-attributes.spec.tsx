@@ -356,7 +356,7 @@ const ITEMS: ReadonlyArray<readonly [string, ComponentType<TItemProbeProps>, str
 	['Menu.RadioItem', MenuRadioItemProbe, '.so-menu-item', MENU_ROW],
 	['Menu.Submenu', MenuSubmenuProbe, '.so-menu-item', MENU_ROW],
 	['Menu.PopoverItem', MenuPopoverItemProbe, '.so-menu-item', MENU_ROW],
-	['Tags.Item', TagsItemProbe, '.so-tags-item', '.so-tags-item [role="listitem"]'],
+	['Tags.Item', TagsItemProbe, '.so-tags-item', '.so-tags-item > .so-button:first-child'],
 	['Select.Item', SelectItemProbe, '.so-select-item', '.so-select-item [role="option"]'],
 ]
 

@@ -44,6 +44,7 @@ export const TagsItem = withRenderBoundary(function TagsItem(
 		selected,
 		tag_closable,
 		closeAria,
+		rootAria,
 		aria,
 		dataset,
 		attrs,
@@ -54,7 +55,7 @@ export const TagsItem = withRenderBoundary(function TagsItem(
 	const Tag = tag as ElementType
 
 	return (
-		<Tag {...toRootProps(ref, state, [dataset, attrs], toRootForward(forwardProps))}>
+		<Tag {...toRootProps(ref, state, [rootAria, dataset, attrs], toRootForward(forwardProps))}>
 			<ItemRow
 				embedded="tags.row"
 				tag="div"

@@ -5,32 +5,18 @@ import type { TEventSink } from '../../../../common'
 import type { ITagsItem, ITagsItemProps, TTagsItemEvents } from './types'
 
 /**
- * Элемент Tags — тег.
+ * A tag identified by its value in the owner's collection.
  *
- * `TValueControl`, где `value` — ключ тега: по нему коллекция находит, что
- * выделить, когда набору задали значение.
+ * The encompassing root holds rootAria: without selection it is the list item
+ * containing both the row and its remove button. The collection moves the
+ * option role and selection state to aria on the row when selection is enabled.
+ * ItemRow supplies neither a role nor a tab stop of its own and its lifetime
+ * belongs to its rendering, independently of the tag's collection lifetime.
  *
- * Закрытие — копия `TTabsItem`: явное значение элемента приоритетнее
- * глобального `closable` компонента. Что выключенный тег не закрывается,
- * решает item-адаптер коллекции (`TTagsItemExtension.closable`), а не элемент.
- *
- * Размер тегу диктует набор, а вариант (`variant`) у тега свой: набор его не
- * пишет. Тег без своего варианта тема красит вариантом набора — по классу
- * набора, а не по значению на теге.
- *
- * **Строка** — деталь разметки тега, `ItemRow` на `div` (`TItemRow`): кнопка,
- * которая роль и остановку Tab себе не пишет. Их пишет набор `aria` тега,
- * который разметка кладёт на неё же: роль — тег, `tabindex` — `TTagsExtension`
- * по режиму выбора. Без выбора `tabindex` у строки нет вовсе, и фокус от клика
- * она не принимает: действия у `listitem` нет. Экземпляр строки создаёт её
- * монтирование и отпускает размонтирование — у тега ни строки, ни подписок
- * для неё нет.
- *
- * Кнопка закрытия, в отличие от таба, — живой набор `closeAria`, а не
- * вычисляемый снимок: её `tabindex` зависит от режима выбора коллекции, о
- * котором тег не знает. Имя от локали пишет плагин имён
- * (`TTagsItemNamesPlugin`), `tabindex` — `TTagsExtension`, как у `aria`
- * строки роль пишет тег, а `aria-selected` — коллекция.
+ * The collection inherits size and disabled from the owner; variant stays local.
+ * Own closable overrides the owner's value, and the item extension prevents
+ * closing disabled tags. The names plugin writes the localized closeAria label;
+ * the collection controls the close button's tab stop according to selection mode.
  */
 export default class TTagsItem<
 	TProps extends ITagsItemProps = ITagsItemProps,
@@ -50,6 +36,8 @@ export default class TTagsItem<
 		tag: 'div',
 	}
 
+	protected _rootAria: TAria
+
 	protected _closeAria: TAria
 
 	protected _text: string
@@ -65,6 +53,11 @@ export default class TTagsItem<
 
 		this._closable = customProps.closable ?? ctor.defaultValues.closable
 
+		this._rootAria = new TAria()
+		this._rootAria.subscribe((_set, oldValue) =>
+			this._sink.emit('change:rootAria', { newValue: this._rootAria.toObject(), oldValue }),
+		)
+
 		this._closeAria = new TAria()
 		this._closeAria.subscribe((_set, oldValue) =>
 			this._sink.emit('change:closeAria', { newValue: this._closeAria.toObject(), oldValue }),
@@ -72,10 +65,9 @@ export default class TTagsItem<
 
 		this._dataset.add('closable', !!this._closable)
 
-		// Только то, что тег знает о себе сам: он — элемент набора. Роль
-		// меняется на `option`, когда у коллекции включён выбор — об этом
-		// знает `TTagsExtension`, не элемент.
-		this._aria.add('role', 'listitem')
+		// The list item includes both its row and remove button. The collection
+		// moves selection semantics to the row when selection is enabled.
+		this._rootAria.add('role', 'listitem')
 	}
 
 	/**
@@ -153,6 +145,11 @@ export default class TTagsItem<
 	 */
 	get closeAria(): TAria {
 		return this._closeAria
+	}
+
+	/** Attributes of the container around the row and remove button. */
+	get rootAria(): TAria {
+		return this._rootAria
 	}
 
 	override getProps(): TProps {

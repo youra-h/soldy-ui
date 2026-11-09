@@ -21,7 +21,13 @@ export const TTagsItemElement: TElementClassOf<
 	descriptor: TagsItemDescriptor,
 	facade: TagsCollectionItemDescriptor,
 	template: tagsItemTemplate,
-	root: { strategy: 'host', sets: ['attrs', 'dataset'], order: true, control: true },
+	root: {
+		strategy: 'host',
+		sets: ['aria', 'attrs', 'dataset'],
+		aria: 'rootAria',
+		order: true,
+		control: true,
+	},
 	setup: setupTagsItem,
 })
 

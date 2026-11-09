@@ -307,7 +307,7 @@ const ITEMS: ReadonlyArray<readonly [string, TItemDraw, string, string]> = [
 		'Tags.Item',
 		(props) => mount(ItemProbe, { kind: 'tags', ...props }),
 		'.so-tags-item',
-		'.so-tags-item [role="listitem"]',
+		'.so-tags-item > .so-button:first-child',
 	],
 	[
 		'Select.Item',
