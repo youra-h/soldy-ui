@@ -38,7 +38,7 @@
 	tag={state.tag}
 	attributes={toRootProps(
 		state,
-		[state.dataset, state.attrs],
+		[state.rootAria, state.dataset, state.attrs],
 		toRootForward(binding.forwardProps),
 	)}
 	attach={binding.attachElement}

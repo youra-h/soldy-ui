@@ -31,7 +31,7 @@ export function TagsItem(props: TagsItemProps): JSX.Element {
 	const context = binding.context
 	const root = createRootProps(() => ({
 		state,
-		sets: [state.dataset, state.attrs],
+		sets: [state.rootAria, state.dataset, state.attrs],
 		forward: toRootForward(binding.forwardProps()),
 	}))
 	const content = resolveSlot(

@@ -243,13 +243,15 @@ export class TTagsExtension<TOwner extends ITags = ITags, TItem extends ITagsIte
 	 */
 	private _applyItemRole(item: TItem, selection: ISelectionExtension<TItem>): void {
 		if (selection.mode === 'none') {
-			item.aria.add('role', 'listitem')
+			item.rootAria.add('role', 'listitem')
+			item.aria.add('role', null)
 			item.aria.add('aria-selected', null)
 			item.closeAria.add('tabindex', null)
 
 			return
 		}
 
+		item.rootAria.add('role', null)
 		item.aria.add('role', 'option')
 		item.aria.add('aria-selected', selection.isSelected(item) ? 'true' : 'false')
 		item.closeAria.add('tabindex', '-1')

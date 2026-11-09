@@ -51,13 +51,13 @@ export const TagsItemDescriptor = defineDescriptor(() =>
 				size: { protected: true },
 				text: { type: String, triggers: ['change:text'] },
 				closable: { type: Boolean, triggers: ['change:closable'] },
-				/**
-				 * Атрибуты кнопки закрытия. Отдельный набор, а не часть `aria`:
-				 * `aria` описывает сам тег, а это — кнопка рядом с ним. Набор
-				 * живой, как `aria`: имя от локали пишет плагин имён, `tabindex` —
-				 * коллекция по режиму выбора, и триггер один — набор сам
-				 * сообщает, что изменился.
-				 */
+				/** The list container includes both the row and remove button. */
+				rootAria: {
+					type: Object,
+					protected: true,
+					triggers: ['change:rootAria'],
+				},
+				/** The remove button name and its mode-dependent tab stop. */
 				closeAria: {
 					type: Object,
 					protected: true,

@@ -281,6 +281,7 @@ function webkit(): BrowserInstanceOption[] {
 export default defineConfig({
 	plugins: plugins(),
 	define: constants(),
+	optimizeDeps: { include: ['axe-core'] },
 	test: {
 		name: 'layout',
 		include: ['browser/**/*.spec.ts'],

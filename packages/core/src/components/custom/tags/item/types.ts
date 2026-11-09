@@ -17,6 +17,8 @@ export type TTagsItemEvents = TValueControlEvents<string | number> & {
 	'change:closable:before': (e: TChangeEvent<boolean | undefined>) => void
 	/** change:closeAria — набор атрибутов кнопки закрытия изменился */
 	'change:closeAria': (payload: TValuePayload<TAriaAttributes>) => void
+	/** The encompassing tag container attributes changed. */
+	'change:rootAria': (payload: TValuePayload<TAriaAttributes>) => void
 }
 
 export interface ITagsItemProps
@@ -40,4 +42,6 @@ export interface ITagsItem<
 	 * тега от локали пишет плагин имён, `tabindex` — коллекция
 	 */
 	readonly closeAria: TAria
+	/** Attributes of the container around the row and remove button. */
+	readonly rootAria: TAria
 }
