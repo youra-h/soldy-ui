@@ -74,7 +74,7 @@ out(
 )
 out()
 out(
-	`Исходные повторения и ошибки: [raw и manifest](${relative}/manifest.json), [машинная сводка](${relative}/summary.json). [Методика и воспроизведение](README.md). Исторические данные чужих библиотек приведены [отдельно](historical.md); они не образуют рейтинг с новым запуском.`,
+	`Исходные повторения и ошибки: [raw и manifest](${relative}/manifest.json), [машинная сводка](${relative}/summary.json). [Методика и воспроизведение](README.md). Сопоставление свежей Soxa и сохранённых конкурентов с датами обеих сторон приведено в начале отчёта; [источники конкурентов](historical.md) описывают происхождение старых чисел.`,
 )
 out()
 out('## Покрытие')
@@ -333,7 +333,16 @@ out()
 out(
 	'Табличный стенд резолвит фреймворки из собственного окружения: его фактические runtime versions записаны у каждой Table/Virtual команды. Source/build/lock snapshots сохраняются отдельно для каждого следующего этапа; ранние страницы используют явно датированную late attestation, без заявления о предварительно снятых build hashes.',
 )
-fs.writeFileSync(path.join(root, 'benchmarks/validation/report.md'), lines.join('\n') + '\n')
+const reportFile = path.join(root, 'benchmarks/validation/report.md')
+const previousReport = fs.existsSync(reportFile) ? fs.readFileSync(reportFile, 'utf8') : ''
+const editorial = previousReport.match(
+	/<!-- article-summary:start -->[\s\S]*?<!-- article-summary:end -->/,
+)?.[0]
+// Dated editorial comparisons are maintained separately from generated measurements.
+// Preserve them only for their original run; a different run needs a new review.
+if (editorial && manifest.id === '2026-11-09-full')
+	lines.splice(2, 0, editorial, '', '## Подробные результаты и проверка данных', '')
+fs.writeFileSync(reportFile, lines.join('\n') + '\n')
 
 if (process.argv.includes('--journals'))
 	for (const fw of frameworks)

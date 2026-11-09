@@ -1,6 +1,12 @@
 name: Benchmark tools and research observations
 
 on:
+  workflow_dispatch:
+    inputs:
+      observations:
+        description: Run the full saved Soxa and AI observation matrix
+        type: boolean
+        default: false
   pull_request:
     paths:
       - 'tools/bench-ai/**'
@@ -40,11 +46,13 @@ jobs:
       # This is an observational dataset, not a passing component quality gate.
       # The wrapper preserves the original exit and lists every failed cell prominently.
       - name: Исследовательский baseline — failed cells сохраняются
+        if: github.event_name == 'workflow_dispatch' && inputs.observations
         run: node tools/bench-ai/ci.mjs
       - name: Сохранённые AI samples — failed cells сохраняются
+        if: github.event_name == 'workflow_dispatch' && inputs.observations
         run: node tools/bench-ai/ci.mjs benchmarks/ai/inputs/cli-2026-11-09-v1
       - uses: actions/upload-artifact@v4
-        if: always()
+        if: always() && github.event_name == 'workflow_dispatch' && inputs.observations
         with:
           name: soxa-research-observations
           path: |
