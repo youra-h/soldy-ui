@@ -1,8 +1,9 @@
 # Contributing to Soxa UI
 
-Thank you for your interest in Soxa UI. The project is in early development (`0.x`): the API
-still changes, and the architecture rules below are enforced strictly. This page explains how to
-report problems, how to propose changes, and what a pull request needs to be merged.
+Thank you for your interest in Soxa UI. The public API is frozen from the first beta, and the
+first stable release is `0.3.0`. Read the [compatibility and support policy](README.md#compatibility-and-support)
+for versioning, deprecation, the public theme contract and supported environments. This page
+explains how to report problems, propose changes and prepare a pull request.
 
 By taking part you agree to follow the [Code of Conduct](CODE_OF_CONDUCT.md).
 
@@ -21,7 +22,9 @@ By taking part you agree to follow the [Code of Conduct](CODE_OF_CONDUCT.md).
 ## Before you start on a change
 
 For anything larger than a typo or an obvious bug fix, **open an issue first** and wait for
-agreement on the approach. Most of the code is shared by six framework adapters, and a change
+agreement on the approach. Every breaking public API change needs a separate maintainer decision
+and migration instructions; approval to release does not authorize a new breaking change. Most of
+the code is shared by six framework adapters, and a change
 that looks local often is not. Agreeing up front saves you from rewriting a finished pull request.
 
 Changes to `packages/setup/protected/` — the mechanics shared by all adapters (`define`,
@@ -102,7 +105,8 @@ CI must be green: tests of every package, type checks, the build, lint and Prett
 
 Commit messages follow the [Conventional Commits](https://www.conventionalcommits.org/) form,
 with the affected packages as the scope: `feat(core, vue): …`, `fix(plugins): …`, `docs: …`.
-English or Russian are both fine.
+Commit messages, new or changed code comments, and changeset text must be in English. Pull request
+titles and descriptions are written in Russian.
 
 ## License
 
