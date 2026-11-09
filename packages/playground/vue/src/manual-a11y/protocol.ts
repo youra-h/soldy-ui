@@ -10,6 +10,7 @@ export type Environment = {
 	readerVersion: string
 	speechLanguage: string
 }
+
 export type Step = { id: string; action: string; expected: string }
 export type TestCase = {
 	id: string
@@ -307,8 +308,10 @@ export const emptyEnvironment = (): Environment => ({
 	readerVersion: '',
 	speechLanguage: 'Русский',
 })
+
 export const emptyAnswer = (): Answer => ({ outcome: 'not-run', speech: '', notes: '' })
 export const answerKey = (caseId: string, stepId: string): string => `${caseId}/${stepId}`
+
 export const STORAGE_KEY = 'soxa-manual-a11y-v4'
 
 export function restoreDraft(text: string | null): {
@@ -321,26 +324,35 @@ export function restoreDraft(text: string | null): {
 		answers: {} as Record<string, Answer>,
 		activeCase: CASES[0].id,
 	}
+
 	if (!text) return defaults
+
 	const draft = JSON.parse(text)
+
 	if (!draft || draft.protocolVersion !== PROTOCOL_VERSION)
 		throw new Error('Несовместимый черновик')
+
 	for (const key of Object.keys(defaults.environment) as (keyof Environment)[])
 		if (typeof draft.environment?.[key] === 'string')
 			defaults.environment[key] = draft.environment[key]
+
 	for (const test of CASES)
 		for (const step of test.steps) {
 			const key = answerKey(test.id, step.id)
 			const value = draft.answers?.[key]
+
 			if (!value || !['not-run', 'passed', 'failed', 'unclear'].includes(value.outcome))
 				continue
+
 			defaults.answers[key] = {
 				outcome: value.outcome,
 				speech: typeof value.speech === 'string' ? value.speech : '',
 				notes: typeof value.notes === 'string' ? value.notes : '',
 			}
 		}
+
 	if (CASES.some((test) => test.id === draft.activeCase)) defaults.activeCase = draft.activeCase
+
 	return defaults
 }
 
@@ -361,6 +373,7 @@ export function makeReport(
 			...answers[answerKey(test.id, step.id)],
 		})),
 	}))
+
 	const all = tests.flatMap((test) => test.steps)
 	const counts = Object.fromEntries(
 		(['not-run', 'passed', 'failed', 'unclear'] as const).map((outcome) => [
@@ -368,6 +381,7 @@ export function makeReport(
 			all.filter((step) => step.outcome === outcome).length,
 		]),
 	)
+
 	return {
 		schemaVersion: 1,
 		protocolVersion: PROTOCOL_VERSION,

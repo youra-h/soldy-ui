@@ -64,17 +64,24 @@ export class TMenuSubmenuKeyboardPlugin extends TMenuNavigationPlugin<TMenuSubme
 	/** A screen reader can activate the row without sending a keydown. */
 	private readonly _onClick = (event: MouseEvent): void => {
 		const row = this._root && rowIn(this._root)
+
 		if (event.detail !== 0 || this._submenu?.disabled || !row) return
 		if (event.target !== row) return
+
 		if (isFocusableElement(row)) row.focus({ preventScroll: true })
+
 		this.openAt('first')
 	}
 
 	private _bindRoot(root: Element | null): void {
 		const previous: IDomEventTarget | null = this._root
+
 		previous?.removeEventListener('click', this._onClick, true)
+
 		this._root = root
+
 		const target: IDomEventTarget | null = root
+
 		target?.addEventListener('click', this._onClick, true)
 	}
 

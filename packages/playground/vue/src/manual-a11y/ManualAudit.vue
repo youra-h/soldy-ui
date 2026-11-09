@@ -18,25 +18,32 @@ import {
 const storageWarning = ref('')
 let initial = { environment: emptyEnvironment(), answers: {}, activeCase: CASES[0].id }
 let startedAt = new Date().toISOString()
+
 try {
 	const saved = localStorage.getItem(STORAGE_KEY)
+
 	initial = restoreDraft(saved)
+
 	if (saved) {
 		const date = JSON.parse(saved).startedAt
+
 		if (typeof date === 'string' && Number.isFinite(Date.parse(date))) startedAt = date
 	}
 } catch {
 	storageWarning.value =
 		'Не удалось восстановить черновик. Ответы можно заполнить и скачать; автосохранение может быть недоступно.'
 }
+
 const environment = reactive(initial.environment)
 const answers = reactive<Record<string, ReturnType<typeof emptyAnswer>>>(initial.answers)
+
 const requestedCase = new URLSearchParams(location.search).get('case')
 const activeCase = ref(
 	CASES.some((test) => test.id === requestedCase)
 		? (requestedCase ?? initial.activeCase)
 		: initial.activeCase,
 )
+
 for (const test of CASES)
 	for (const step of test.steps) answers[answerKey(test.id, step.id)] ??= emptyAnswer()
 
@@ -50,11 +57,13 @@ const source = {
 	page: location.href,
 	userAgent: navigator.userAgent,
 }
+
 const report = computed(() => makeReport(environment, answers, source, startedAt))
 const completed = computed(
 	() => report.value.tests.flatMap((test) => test.steps).length - report.value.counts['not-run'],
 )
 const total = CASES.reduce((sum, test) => sum + test.steps.length, 0)
+
 const fixture = ref<HTMLElement | null>(null)
 const start = ref<HTMLButtonElement | null>(null)
 const heading = ref<HTMLElement | null>(null)
@@ -67,7 +76,9 @@ function mountFixture() {
 	mounted?.unmount()
 	mounted = undefined
 	fixtureError.value = ''
+
 	if (!fixture.value) return
+
 	try {
 		host.setLocale(ruRU)
 		mounted = host.mount(fixture.value, {
@@ -78,23 +89,29 @@ function mountFixture() {
 		fixtureError.value = error instanceof Error ? error.message : String(error)
 	}
 }
+
 async function selectCase(id: string) {
 	activeCase.value = id
 	await nextTick()
+
 	heading.value?.focus()
 }
 async function resetFixture() {
 	mountFixture()
 	await nextTick()
+
 	start.value?.focus()
 }
+
 function countOf(id: string) {
 	const test = CASES.find((item) => item.id === id)
+
 	return (
 		test?.steps.filter((step) => answers[answerKey(id, step.id)].outcome !== 'not-run')
 			.length ?? 0
 	)
 }
+
 function persist() {
 	try {
 		localStorage.setItem(
@@ -107,12 +124,14 @@ function persist() {
 				activeCase: activeCase.value,
 			}),
 		)
+
 		storageWarning.value = ''
 	} catch {
 		storageWarning.value =
 			'Браузер не сохраняет черновик. Не закрывайте вкладку до скачивания отчёта.'
 	}
 }
+
 watch([environment, answers, activeCase], persist, { deep: true })
 watch(activeCase, mountFixture, { flush: 'post' })
 onMounted(mountFixture)
@@ -123,13 +142,17 @@ function download() {
 	const blob = new Blob([JSON.stringify(data, null, 2)], {
 		type: 'application/json;charset=utf-8',
 	})
+
 	const url = URL.createObjectURL(blob)
 	const link = document.createElement('a')
+
 	link.href = url
 	link.download = `soxa-accessibility-${new Date().toISOString().replace(/[:.]/g, '-')}.json`
+
 	document.body.append(link)
 	link.click()
 	link.remove()
+
 	setTimeout(() => URL.revokeObjectURL(url), 30_000)
 	exportNotice.value =
 		data.completion === 'partial'
