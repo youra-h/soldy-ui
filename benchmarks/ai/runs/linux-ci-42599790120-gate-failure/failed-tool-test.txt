@@ -1,0 +1,24 @@
+2026-11-09T10:19:07.0769113Z ✖ failing tests:
+2026-11-09T10:19:07.0769359Z 
+2026-11-09T10:19:07.0769782Z test at tools/bench-ai/__tests__/settle.test.mjs:7:1
+2026-11-09T10:19:07.0772087Z ✖ axe waits for finite fades, ignores infinite motion, and still reports stable bad contrast (666.204551ms)
+2026-11-09T10:19:07.0787763Z   AssertionError [ERR_ASSERTION]: {"violations":[],"incomplete":[{"id":"color-contrast","impact":"serious","tags":["cat.color","wcag2aa","wcag143","TTv5","TT13.c","EN-301-549","EN-9.1.4.3","ACT","RGAAv4","RGAA-3.2.1"],"description":"Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds","help":"Elements must meet minimum color contrast ratio thresholds","helpUrl":"https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI","nodes":[{"any":[{"id":"color-contrast","data":{"contrastRatio":0,"fontSize":"24.0pt (32px)","fontWeight":"bold","messageKey":"bgOverlap","expectedContrastRatio":"3:1"},"relatedNodes":[],"impact":"serious","message":"Element's background color could not be determined because it is overlapped by another element"}],"all":[],"none":[],"impact":"serious","html":"<h1>Fixture</h1>","target":["h1"],"failureSummary":"Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"},{"any":[{"id":"color-contrast","data":{"contrastRatio":0,"fontSize":"12.0pt (16px)","fontWeight":"normal","messageKey":"bgOverlap","expectedContrastRatio":"4.5:1"},"relatedNodes":[],"impact":"serious","message":"Element's background color could not be determined because it is overlapped by another element"}],"all":[],"none":[],"impact":"serious","html":"<p id=\"fade\">Readable text after a finite fade</p>","target":["#fade"],"failureSummary":"Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"},{"any":[{"id":"color-contrast","data":{"contrastRatio":0,"fontSize":"12.0pt (16px)","fontWeight":"normal","messageKey":"bgOverlap","expectedContrastRatio":"4.5:1"},"relatedNodes":[],"impact":"serious","message":"Element's background color could not be determined because it is overlapped by another element"}],"all":[],"none":[],"impact":"serious","html":"<p style=\"color:#aaa;background:white\">Persistent bad contrast</p>","target":["p:nth-child(4)"],"failureSummary":"Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"}]}],"style":{"color":"rgb(170, 170, 170)","background":"rgb(255, 255, 255)"}}
+2026-11-09T10:19:07.0802149Z       at TestContext.<anonymous> (file:///home/runner/work/soxa-ui/soxa-ui/tools/bench-ai/__tests__/settle.test.mjs:54:3)
+2026-11-09T10:19:07.0803335Z       at async Test.run (node:internal/test_runner/test:1409:7)
+2026-11-09T10:19:07.0804398Z       at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+2026-11-09T10:19:07.0805214Z     generatedMessage: false,
+2026-11-09T10:19:07.0805687Z     code: 'ERR_ASSERTION',
+2026-11-09T10:19:07.0806116Z     actual: false,
+2026-11-09T10:19:07.0806511Z     expected: true,
+2026-11-09T10:19:07.0806914Z     operator: '==',
+2026-11-09T10:19:07.0807308Z     diff: 'simple'
+2026-11-09T10:19:07.0807676Z   }
+2026-11-09T10:19:07.0948663Z ##[error]Process completed with exit code 1.
+2026-11-09T10:19:07.1046452Z ##[group]Run actions/upload-artifact@v4
+2026-11-09T10:19:07.1046756Z with:
+2026-11-09T10:19:07.1046967Z   name: soxa-research-observations
+2026-11-09T10:19:07.1048295Z   path: benchmarks/ai/runs/ci-soxa/results.json
+benchmarks/ai/runs/ci-soxa/ci-execution.json
+benchmarks/ai/runs/ci-soxa/*.html.txt
+benchmarks/ai/runs/ci-models/**/results.json
+benchmarks/ai/runs/ci-models/**/execution.json
