@@ -9,6 +9,47 @@ export const calendarTrigger = (page) => {
 		.first()
 }
 
+/** The segmented field is the documented Soxa return target; other candidates use their opener. */
+export async function calendarFocusReturned(page) {
+	const candidate = page.getByRole('region', { name: 'Candidate', exact: true })
+	const segments = candidate.locator('.so-date-input__segment[role="spinbutton"]')
+	const target = (await segments.count()) ? segments.first() : calendarTrigger(page)
+	await eventually(
+		() => target.evaluateAll((nodes) => nodes.includes(document.activeElement)),
+		'Escape must restore focus to the documented date field or opener',
+	)
+}
+
+export async function selectTouch(page) {
+	const combo = page.getByRole('combobox', { name: 'Choose items' })
+	const arrow = page.locator('.so-select__arrow')
+	await tap(page, combo)
+	if ((await arrow.count()) && (await combo.getAttribute('readonly')) === null) {
+		assert(
+			await combo.evaluate((node) => node === document.activeElement),
+			'Touch must focus editable text',
+		)
+		assert.equal(
+			await combo.getAttribute('aria-expanded'),
+			'false',
+			'Text touch must preserve editing without opening',
+		)
+	}
+	const opener = (await arrow.count()) ? arrow : combo
+	if ((await combo.getAttribute('aria-expanded')) !== 'true') await tap(page, opener)
+	await page.getByRole('listbox').waitFor({ state: 'visible' })
+	const option = page.getByRole('option', { name: 'Alpha 1', exact: true })
+	await tap(page, option)
+	if ((await combo.getAttribute('aria-expanded')) === 'false') {
+		await tap(page, opener)
+		await page.getByRole('listbox').waitFor({ state: 'visible' })
+	}
+	await eventually(
+		async () => (await option.getAttribute('aria-selected')) === 'true',
+		'Touch must select Alpha 1',
+	)
+}
+
 export function calendarDayName(language, day) {
 	const numerals = [
 		...new Set(
@@ -345,10 +386,7 @@ export async function scenario(component, page, count = 100) {
 		await trigger.click()
 		await page.keyboard.press('Escape')
 		await grid.waitFor({ state: 'hidden' })
-		await eventually(
-			() => trigger.evaluate((node) => node === document.activeElement),
-			'Escape must restore calendar trigger focus',
-		)
+		await calendarFocusReturned(page)
 	} else if (component === 'table') {
 		const table = tableWidget(page)
 		const language = await tableLanguage(page)
@@ -417,19 +455,7 @@ export async function touchScenario(component, page) {
 			'Touch must activate Beta tab',
 		)
 	} else if (component === 'select') {
-		const combo = page.getByRole('combobox', { name: 'Choose items' })
-		await tap(page, combo)
-		await page.getByRole('listbox').waitFor({ state: 'visible' })
-		const option = page.getByRole('option', { name: 'Alpha 1', exact: true })
-		await tap(page, option)
-		if ((await combo.getAttribute('aria-expanded')) === 'false') {
-			await tap(page, combo)
-			await page.getByRole('listbox').waitFor({ state: 'visible' })
-		}
-		await eventually(
-			async () => (await option.getAttribute('aria-selected')) === 'true',
-			'Touch must select option',
-		)
+		await selectTouch(page)
 	} else if (component === 'table') {
 		const table = tableWidget(page)
 		const checkbox = table.getByRole('checkbox').first()

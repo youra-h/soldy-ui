@@ -173,6 +173,9 @@ export class TSelectKeyboardPlugin
 		// Клавиша всплыла с другого элемента под корнем: она не комбобокса
 		if (e.target !== this._input) return
 
+		// IME owns its keys, including the final keydown reported with code 229.
+		if (e.isComposing || e.keyCode === 229) return
+
 		const owner = this._owner
 
 		if (!owner) return

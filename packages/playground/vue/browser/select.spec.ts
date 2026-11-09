@@ -15,7 +15,8 @@
 
 import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { render, cleanup } from './render'
-import { userEvent } from 'vitest/browser'
+import { commands, userEvent } from 'vitest/browser'
+import { imeComposition } from './engine'
 import { defineComponent, h, nextTick } from 'vue'
 import { COMPONENT_SIZES } from '@soxa-ui/playground-shared'
 import { ListBox, ListBoxItem, Select, SelectItem } from '@soxa-ui/vue'
@@ -613,5 +614,63 @@ describe('выключенная опция', () => {
 			visibleOpacity(find('.so-button__text', option('Тверь'))),
 			'опция Select',
 		).toBeCloseTo(sample, 2)
+	})
+})
+
+describe.runIf(imeComposition)('IME composition', () => {
+	it.each([
+		['multiple', 'filter'],
+		['multiple', 'search'],
+		['single', 'filter'],
+		['single', 'search'],
+	] as const)('%s / %s: composing Enter preserves selection', async (mode, editableMode) => {
+		render(
+			defineComponent({
+				render: () =>
+					h(
+						Select,
+						{ editable: true, mode, editableMode },
+						{
+							default: () =>
+								['Alpha 1', 'Alpha 2'].map((text) =>
+									h(SelectItem, { value: text, text }),
+								),
+						},
+					),
+			}),
+		)
+		await nextTick()
+		await nextFrame()
+		await nextFrame()
+		await userEvent.click(field())
+		await userEvent.keyboard('{ArrowDown}')
+		await commands.compose('Alpha')
+		await expect.poll(highlighted).toBe('Alpha 1')
+		const selected = () =>
+			options()
+				.filter((node) => node.querySelector('[aria-selected="true"]') !== null)
+				.map((node) => node.textContent?.trim())
+		const events: { key: string; isComposing: boolean; prevented: boolean }[] = []
+		document.addEventListener(
+			'keydown',
+			(event) =>
+				events.push({
+					key: event.key,
+					isComposing: event.isComposing,
+					prevented: event.defaultPrevented,
+				}),
+			{ once: true },
+		)
+		expect(selected()).toEqual([])
+		expect(panel().dataset.open).toBe('true')
+		await userEvent.keyboard('{Enter}')
+		expect(events[0]?.isComposing).toBe(true)
+		expect(selected()).toEqual([])
+		expect(events).toEqual([{ key: 'Enter', isComposing: true, prevented: false }])
+		expect(panel().dataset.open).toBe('true')
+		await commands.insertText('Alpha')
+		await userEvent.keyboard('{Enter}')
+		await expect.poll(selected).toEqual(['Alpha 1'])
+		expect(panel().dataset.open).toBe(mode === 'multiple' ? 'true' : 'false')
 	})
 })

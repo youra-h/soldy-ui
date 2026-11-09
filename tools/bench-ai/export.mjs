@@ -2,6 +2,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 import crypto from 'node:crypto'
 import { fileURLToPath } from 'node:url'
+import { classifyCell, groupCauses } from './classification.mjs'
 import { components, prompt } from './protocol.mjs'
 import { acceptObservation, checkCohort, checkExecution } from './integrity.mjs'
 
@@ -152,7 +153,7 @@ if (comparisonValidity.status === 'invalid')
 		}
 	}
 const result = {
-	schemaVersion: 1,
+	schemaVersion: 2,
 	date: new Date().toISOString(),
 	scope: 'Vue only; no cross-framework AI conclusions',
 	comparisonValidity,
@@ -207,11 +208,11 @@ const result = {
 			'10000 logical records/options',
 			'DatePicker PageUp/PageDown month navigation',
 			'Editable Select typed-prefix activation',
-			'reduced-motion active durations in observed states',
+			'Historical duration-only reduced-motion observations (superseded criterion)',
 		],
 		limitedCoverage: {
 			reducedMotion:
-				'Only observed states; protocol threshold 100ms includes color/focus transitions and is not a WCAG motion violation verdict',
+				'Historical observations recorded durations only; properties cannot be recovered; not a motion verdict',
 			datePicker:
 				'Day/month keyboard navigation; year-specific shortcut outside this protocol',
 			select: 'Editable search/multiple mode; noneditable typeahead is not applicable to the generated target',
@@ -227,7 +228,37 @@ const result = {
 		reason: 'Data handoff now; public SSG page and translations remain in the original task; deployment separate',
 	},
 }
-fs.writeFileSync(path.join(directory, 'results.v1.json'), JSON.stringify(result, null, '  ') + '\n')
+result.interpretation = {
+	historicalProtocol: 'protocol.v1.json',
+	correctedMethodology: {
+		status: 'not-retroactively-executed',
+		motion: 'Active changed keyframe properties; geometry is movement, appearance separate, unknown incomplete',
+		axe: 'WCAG and best practice separate; region integration needs live DOM landmark context',
+		targetedEvidence: 'targeted/2026-11-09-windows-chromium.json',
+	},
+	categoriesAreNotBugCounts: true,
+	behavior: 'Assertions and cause groups only; no overall ranking from cells',
+	accessibility:
+		'WCAG and best practice findings retain rule IDs and raw contexts; manual screen readers not run',
+	speedAndMemory:
+		'../validation/report.md; only common historical cohorts support comparisons. This AI protocol does not measure latency or retained memory.',
+	workload:
+		'AI large: 10000 rows x 2 data columns with SSR/hydration/audit; performance Table: 5000 x 20. Different workloads.',
+	groups: groupCauses([
+		...result.baseline.results.flatMap((cell) =>
+			classifyCell(cell, { participant: 'Soxa', raw: result.baseline.source }),
+		),
+		...participants.flatMap((p) =>
+			p.components.flatMap((entry) =>
+				entry.results.flatMap((cell) =>
+					classifyCell(cell, { participant: p.displayLabel, raw: entry.run }),
+				),
+			),
+		),
+	]),
+}
+const exportFile = path.join(directory, 'results.v2.json')
+fs.writeFileSync(exportFile, JSON.stringify(result, null, '  ') + '\n')
 
 if (baseline || inputsPath) {
 	const compact = (cells) => {
@@ -306,7 +337,28 @@ if (baseline || inputsPath) {
 	]
 	const validationPending =
 		!baseline && participants.every((p) => p.components.every((entry) => !entry.run))
+	const causeRows = result.interpretation.groups.map(
+		(group) =>
+			'- ' +
+			group.participant +
+			' / ' +
+			group.category +
+			' / ' +
+			group.cause +
+			': ' +
+			group.observations.length +
+			' observations' +
+			(group.task ? ' (' + group.task + ')' : ''),
+	)
 	const text = [
+		'# Cause interpretation (v2)',
+		'',
+		'Historical cells below retain their original status; they are not independent bugs or a ranking. Corrected methodology does not retroactively turn failed cells into passed.',
+		'',
+		...causeRows,
+		'',
+		'Behavior, accessibility, speed and memory are separate dimensions. Speed/memory evidence: [common historical validation cohorts](../validation/report.md). New Soxa observations are platform-specific and separate. AI large is 10000 x 2 plus SSR/audit; performance Table is 5000 x 20.',
+		'',
 		'# AI и Soxa: результаты проверки Vue',
 		'',
 		participants.every((p) => p.status === 'blocked-input')
@@ -315,7 +367,7 @@ if (baseline || inputsPath) {
 				? '**Реальные ответы получены; одинаковая проверка ещё не запущена.** Вывод о преимуществе участника до validation делать нельзя.'
 				: 'Результаты ограничены этими первыми ответами, Vue и перечисленными сценариями. Неудачи сохранены наравне с успехами; общий вывод о любых AI компонентах из этой выборки не следует.',
 		'',
-		'[Протокол и ограничения](README.md), [версионированные данные](results.v1.json), [performance/memory отчёт](../validation/report.md).',
+		'[Протокол и ограничения](README.md), [версионированные данные](results.v2.json), [performance/memory отчёт](../validation/report.md).',
 		'',
 		dataset
 			? `Генерация: ${dataset.route ?? 'direct Responses'}, ${dataset.cliVersion ?? 'CLI не используется'}. Exact prompts и неизменённые исходники — в [dataset](${link(datasetFile)}). Provider model/snapshot в CLI не раскрыт, configured model ID указан явно. CLI budget 12000 запрошен в prompt; hard cap не подтверждён. Generic tools объявлены, выполнения не наблюдалось. Это отдельный Codex first-response experiment.`
@@ -353,7 +405,7 @@ if (baseline || inputsPath) {
 				? `**Автоматическая матрица неполная.** ${comparisonValidity.incomplete.join('; ')}. Это отдельный статус от качества компонентов.`
 				: '**Целостность происхождения данных: valid.** Все 11 записей имеют общие commit, library state, OS, runtime/lock/harness hashes и согласованные наблюдённые версии браузеров. Это не означает отсутствие компонентных ошибок или прохождение ручных проверок.'
 	fs.writeFileSync(
-		path.join(directory, 'report.md'),
+		path.join(directory, 'report.v2.md'),
 		text.replace('\n\n[Протокол', `\n\n${integrityNotice}\n\n[Протокол`),
 	)
 }
