@@ -52,6 +52,26 @@ export const ButtonDescriptor = defineDescriptor(() =>
 )
 ```
 
+## API metadata
+
+The static JSON export `@soxa-ui/setup/api.json` describes the public component API, including
+props, defaults, events, model bindings and slots for all six adapters. It includes
+`schemaVersion` and the exact `libraryVersion`; read it at documentation build time without
+importing a framework runtime:
+
+```js
+import { readFileSync } from 'node:fs'
+
+const api = JSON.parse(
+  readFileSync(new URL(import.meta.resolve('@soxa-ui/setup/api.json')), 'utf8'),
+)
+const button = api.contracts[api.components.find((component) => component.id === 'button').contract]
+console.log(button.frameworks.vue.events['change:text']) // @change:text
+```
+
+See the [API documentation guide](https://github.com/youra-h/soxa-ui/blob/main/docs/api/README.md)
+for the schema, theme-dependent types, plugin transport and website integration.
+
 ## Documentation
 
 - [Soxa UI README](https://github.com/youra-h/soxa-ui#readme) — what the library is and how it is

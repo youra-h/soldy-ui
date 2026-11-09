@@ -595,6 +595,15 @@ npm run build --workspace=@soxa-ui/angular      # ng-packagr: частичная
 один файл сворачивает сам `ng-packagr`, и путей без расширений в его `.d.ts`
 нет — но он импортирует соседей, и через них предел действует и на него.
 
+### API metadata in setup
+
+After JavaScript and declarations, the setup build generates `dist/api.json` from the current
+source contract and stamps the current setup version. The public JSON export is
+`@soxa-ui/setup/api.json`; it executes no framework code. The checked-in source artifact is
+`docs/api/generated/contract.json`, without a release version. Run `npm run generate:api` after
+contract changes; CI runs `check:api-docs`, `test:api-docs`, `typecheck:api-docs` and, after the
+package build, `check:api-package`. See [the API guide](../api/README.md) for schema and delivery.
+
 ## Прогон установки
 
 Тесты и стенд ходят в соседей исходниками, и того, что видит только

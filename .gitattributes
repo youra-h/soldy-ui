@@ -24,3 +24,4 @@
 *.pdf   binary
 *.mp4   binary
 *.webm  binary
+docs/api/generated/*.json linguist-generated=true

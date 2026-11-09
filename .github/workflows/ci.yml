@@ -34,6 +34,9 @@ jobs:
           npm run test:eslint
           npm run test:min-peers
           npm run test:release-notes
+          npm run test:api-docs
+          npm run typecheck:api-docs
+          npm run check:api-docs
           npm run test:agent-flow
           npm run test:install-smoke
           npm run test:side-effects
@@ -267,6 +270,9 @@ jobs:
       # also excludes dist from the program — «Сборка пакетов» above built it.
       - name: Типы — Angular
         run: npx ngc -p packages/ui/angular/tsconfig.json
+
+      - name: API metadata in setup package
+        run: npm run check:api-package
 
       # The generated metadata is committed: Angular AOT needs static inputs and
       # outputs arrays. A descriptor changed without running generate would

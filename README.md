@@ -317,6 +317,8 @@ On the way there:
 
 ## Documentation
 
+- [Component API metadata](docs/api/README.md) - generated props, events, slots and framework bindings for documentation websites.
+
 - [docs/architecture.md](docs/architecture.md) — architecture overview: layers, descriptors,
   plugins, collections, adapters (English and Russian).
 - [AGENTS.md](AGENTS.md) — project rules and conventions, mostly in Russian.
