@@ -1,0 +1,32 @@
+vue select ×1 open 16/65, close 15/64, type 7/56
+vue select ×4 open 18/63, close 17/63, type 15/56
+vue select ×6 open 26/64, close 18/62, type 26/57
+vue menu ×1 open 16/65, close 15/64
+vue menu ×4 open 19/64, close 16/64
+vue menu ×6 open 36/80, close 26/64
+vue date-picker ×1 open 16/65, close 15/65, locale ru 19/65, locale en 19/66
+vue date-picker ×4 open 25/64, close 16/64, locale ru 109/143, locale en 104/133
+vue date-picker ×6 open 49/95, close 27/65, locale ru 196/243, locale en 202/231
+vue dialog ×1 open 16/65, close 15/64
+vue dialog ×4 open 18/65, close 15/62
+vue dialog ×6 open 25/64, close 23/65
+vue input ×1 type 14/63
+vue input ×4 type 13/60
+vue input ×6 type 12/59
+vue tabs ×1 tab 2 15/65, tab 1 16/65
+vue tabs ×4 tab 2 21/65, tab 1 22/66
+vue tabs ×6 tab 2 35/83, tab 1 37/82
+vue calendar ×1 locale ru 126/150, locale en 122/149
+vue calendar ×4 locale ru 944/982, locale en 975/1031
+vue calendar ×6 locale ru 1751/1780, locale en 1716/1815
+vue number-input ×1 locale ru 17/65, locale en 18/66
+vue number-input ×4 locale ru 40/82, locale en 43/82
+vue number-input ×6 locale ru 75/115, locale en 77/116
+vue select перерисовки open 3/3 чужим 0, close 3/3 чужим 0, type 6/6 чужим 0
+vue menu перерисовки open 17/17 чужим 0, close 17/17 чужим 0
+vue date-picker перерисовки open 10/10 чужим 0, close 10/10 чужим 0, locale ru 213/17 чужим 1078, locale en 213/17 чужим 1078
+vue dialog перерисовки open 6/6 чужим 0, close 6/6 чужим 0
+vue input перерисовки type 1/1 чужим 0
+vue tabs перерисовки tab 2 6/6 чужим 0, tab 1 6/6 чужим 0
+vue calendar перерисовки locale ru 552/13 чужим 9653, locale en 552/13 чужим 9653
+vue number-input перерисовки locale ru 152/5 чужим 294, locale en 152/5 чужим 294

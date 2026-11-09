@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Component validation</title>
+		<script type="module" crossorigin src="/assets/index-CBCqcOFG.js"></script>
+		<link rel="stylesheet" crossorigin href="/assets/index-B604dx7E.css">
+	</head>
+	<body><!--teleport start anchor--><div style="display:none;position:fixed;left:0px;top:0px;width:auto;height:auto;z-index:0;" class="so-frame so-date-picker__panel" data-open="false" data-contained="false" tabindex="-1" role="dialog" aria-modal="true" id="v-0-panel" aria-label="اختيار التاريخ" data-swiping="false" data-owner="v-0-owner"><!--[--><!--
+				Полоса, за которую панель тянут, — пока жест включён. Она говорит,
+				что панель можно смахнуть, и сама ничего не делает: потребитель её
+				не адресует, скринридеру она не нужна (`aria-hidden`). Стоит она у
+				края со стороны поля (`data-placement`), ставит её тема. Закрыть без
+				перетаскивания — Escape, выбор и нажатие мимо.
+			--><!--v-if--><!--
+				Содержимое — обёртка календаря, и прокручивается она, а не панель:
+				пока жест включён, плагин жеста отдаёт касание вдоль оси панели
+				жесту (`touch-action`), и прокручиваемую саму панель палец бы не
+				прокрутил. Своя прокрутка у содержимого касание оставляет себе.
+
+				Календарь — готовый Calendar над экземпляром и движком ядра
+				DatePicker. Своей поверхности у него нет, её даёт панель. Содержимое
+				дня — слот `item` DatePicker, отданный календарю под тем же именем,
+				с его scope `{ item, text }`.
+			--><!--
+				The calendar is mounted from the panel's first opening on
+				(`contentRendered`): a picker nobody opened is a field with a
+				button. Closing hides the panel and keeps the calendar.
+			--><div class="so-date-picker__content"><!--v-if--></div><!--]--></div><!--teleport anchor-->
+		<div id="app"><main lang="ar" dir="rtl"><h1>Component validation</h1><button type="button">Before component</button><section aria-label="Candidate"><!--[--><!--[--><div class="so-date-picker so-date-picker--size-normal so-date-picker--mode-single" data-disabled="false" data-readonly="false" data-required="false" data-clearable="false" data-open="false" style=""><!--
+			DatePicker combines a date field with a calendar panel, anchored to the
+			root. The panel starts below it and flips above near the viewport edge.
+			Single mode has no root field frame; --mode-range makes the root that frame.
+
+			The root receives the DatePicker id, consumer attributes and rootAria. In
+			range mode it is the named group of endpoint fields; in single mode the
+			field itself is the group and rootAria is empty. Dataset carries the states.
+
+			Only the current mode renders. Fields, calendar and engine are core-owned
+			instances passed via ctrl/engine. Core distributes size, variant, disabled,
+			locale, limits and value; markup only binds the resulting context.
+		--><!--
+			Одна дата. Поле — готовый DateInput: коробка, части, кольцо фокуса и
+			ошибка — его. Кнопки очистки и календаря — в его слотах `clear` и
+			`trailing`, в этом порядке: обёртку слотов у конца поля держит тема
+			DateInput.
+
+			Поле и есть группа частей, поэтому имя DatePicker (`aria_label`,
+			`aria_labelledBy`, `aria_describedBy`) уходит ему: так оно дойдёт и до
+			частей там, где группы скринридер не объявляет.
+
+			Набор `aria` DatePicker ложится на поле атрибутами, поверх его
+			собственного: в нём ещё и то, что DatePicker'у даёт поле формы
+			`Field`, — ссылки на подпись и справку и ошибка (`aria-invalid`).
+		--><div style="" class="so-date-input so-date-input--size-normal so-date-picker__field" role="group" aria-label="Choose date" data-disabled="false" data-readonly="false" data-required="false" data-clearable="false"><!--
+			DateInput renders localized date/time segments in the order and with the
+			separators from Intl.DateTimeFormat.formatToParts. The root is an Input-family
+			frame rendered by tag (div by default). It receives attrs (including dir),
+			ARIA (group role and accessible name), size/variant classes and dataset
+			states: readonly, required, clearable, disabled and invalid.
+
+			Only the clear button has a markup handler. Plugins on the root handle
+			keyboard input, clipboard, selection and context menus. Consumer attributes
+			fall through to the root.
+		--><!--
+			Слот `leading` — перед датой, со scope `{ ctrl }`, как у Input. Обёртка
+			рисуется, только когда слот задан.
+		--><!--v-if--><!--
+			Ряд частей. Каждая часть и каждый разделитель — своя коробка: ряд —
+			флекс, а не строка текста. В строчной раскладке Chrome переносит
+			начало выделения от левого края части в соседний текст, и протяжка
+			мышью с края дня ничего не выделяет.
+
+			Направление и язык ряда — набор ядра `segmentsAttrs`: `dir` по дате в
+			локали (`ar-EG` — справа налево, `he-IL` — слева направо и на странице
+			справа налево; не `dir="auto"`: подсказки из букв иврита перевернули
+			бы ряд, когда дату наберут) и `lang` формата. Направление поля
+			(`direction` компонента) ставит слоты и сам ряд у начала поля, а не
+			части внутри ряда.
+
+			Части и разделители — перебор выхода ядра `segments` в порядке формата.
+			Ключ части — её тип: при смене локали часть меняет место, а узел
+			остаётся тем же; ключ разделителя — место в формате.
+
+			Часть — день, месяц, год, час, минута, секунда или период суток:
+			текст — набранное в цифрах локали (у периода — его имя) или
+			подсказка пустой части. Наборы части: `attrs` (на сенсорном устройстве
+			— `contenteditable` и `inputmode`), `aria` (`role="spinbutton"`, имя
+			части, `aria-value*`, `aria-invalid`, `tabindex` — у каждой части своя
+			остановка Tab, у выключенного поля ни одной; `id` части) и `dataset`
+			(`data-type`, `data-placeholder`). Сервер и компьютер рисуют часть
+			нередактируемой: дату выделяют протяжкой мышью, а в редактируемой части
+			выделение застревает. Редактируемой её делает касание пальцем или
+			пером — ради экранной клавиатуры; набор пишет плагин, а текст части
+			всё равно пишет ядро.
+
+			Разделитель — литерал `formatToParts` как есть: с пробелами
+			(`ko-KR` — «. ») и метками направления (`ar-EG` — RLM). Скрыт от
+			скринридера (`aria-hidden` в его наборе): дату объявляют части.
+		--><span class="so-date-input__segments" dir="rtl" lang="ar-EG"><!--[--><!--[--><span class="so-date-input__segment" role="spinbutton" aria-label="يوم" aria-valuenow="9" aria-valuetext="٠٩" aria-valuemin="1" aria-valuemax="30" tabindex="0" id="v-1-day" data-type="day" data-placeholder="false">٠٩</span><!--]--><!--[--><span class="so-date-input__literal" aria-hidden="true">‏/</span><!--]--><!--[--><span class="so-date-input__segment" role="spinbutton" aria-label="الشهر" aria-valuenow="11" aria-valuetext="١١" aria-valuemin="1" aria-valuemax="12" tabindex="0" id="v-1-month" data-type="month" data-placeholder="false">١١</span><!--]--><!--[--><span class="so-date-input__literal" aria-hidden="true">‏/</span><!--]--><!--[--><span class="so-date-input__segment" role="spinbutton" aria-label="السنة" aria-valuenow="2026" aria-valuetext="٢٠٢٦" aria-valuemin="1" aria-valuemax="9999" tabindex="0" id="v-1-year" data-type="year" data-placeholder="false">٢٠٢٦</span><!--]--><!--]--></span><!--
+			Обёртка у конца поля — по кнопке очистки, по своей кнопке в слоте
+			`clear` или по слоту `trailing`; тема ставит её у конца поля. Кнопка
+			очистки стоит в ней первой, перед содержимым `trailing`.
+		--><div class="so-date-input__trailing"><!--
+				Кнопка очистки — та же, что у Input: по `clearable`, выключена
+				вместе с полем, `readonly` её не гасит. Имя ядро собирает с именем
+				поля (`clearAria`), очищает команда поля `clear` — все части, и
+				скрытые форматом тоже. Клик не всплывает до корня. Своя кнопка —
+				слот `clear`: заменяет встроенную целиком и рисуется, когда задана.
+
+				У кнопки нет `view`: значения вида объявляет тема, и разметка
+				библиотеки их не знает. Кнопку тема красит по контексту
+				(`.so-date-input__clear`).
+			--><!--[--><!--v-if--><!--]--><!--
+				Слот `trailing` — после даты и кнопки очистки, со scope
+				`{ ctrl }`: сюда DatePicker поставит кнопку календаря.
+			--><!--[--><!--
+					Кнопка календаря. Вида нет: тема красит её по контексту, как
+					очистку Select. Пока панель открыта, она нажата (`data-selected`).
+					Связку с панелью (`aria-haspopup`, `aria-expanded`,
+					`aria-controls`) и имя кнопка получает набором `triggerAria`, а
+					выключена она, когда открыть панель нельзя — у выключенного и
+					только для чтения. Нажатие ловит плагин открытия на корне.
+					Значок — слот `trigger-icon`, по умолчанию иконка роли
+					`calendar` — без своего размера: по кеглю кнопки.
+				--><button style="" class="so-button so-button--size-normal so-date-picker__trigger" data-disabled="false" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="v-0-panel" aria-label="اختيار التاريخ" data-selected="false"><!--[--><!--]--><span class="so-button__text"><!--[--><!--[--><svg viewBox="0 -960 960 960" style="width:;height:;" class="so-icon so-icon--size-normal" aria-hidden="true"><g fill="var(--so-icon-color, #1f1f1f)"><path d="M200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-40q0-17 11.5-28.5T280-880q17 0 28.5 11.5T320-840v40h320v-40q0-17 11.5-28.5T680-880q17 0 28.5 11.5T720-840v40h40q33 0 56.5 23.5T840-720v560q0 33-23.5 56.5T760-80H200Zm0-80h560v-400H200v400Zm0-480h560v-80H200v80Zm0 0v-80 80Zm280 240q-17 0-28.5-11.5T440-440q0-17 11.5-28.5T480-480q17 0 28.5 11.5T520-440q0 17-11.5 28.5T480-400Zm-188.5-11.5Q280-423 280-440t11.5-28.5Q303-480 320-480t28.5 11.5Q360-457 360-440t-11.5 28.5Q337-400 320-400t-28.5-11.5ZM640-400q-17 0-28.5-11.5T600-440q0-17 11.5-28.5T640-480q17 0 28.5 11.5T680-440q0 17-11.5 28.5T640-400ZM480-240q-17 0-28.5-11.5T440-280q0-17 11.5-28.5T480-320q17 0 28.5 11.5T520-280q0 17-11.5 28.5T480-240Zm-188.5-11.5Q280-263 280-280t11.5-28.5Q303-320 320-320t28.5 11.5Q360-297 360-280t-11.5 28.5Q337-240 320-240t-28.5-11.5ZM640-240q-17 0-28.5-11.5T600-280q0-17 11.5-28.5T640-320q17 0 28.5 11.5T680-280q0 17-11.5 28.5T640-240Z"/></g></svg><!--]--><!--]--></span><!--[--><!--]--></button><!--]--></div><!--
+			Значение для формы: `name` и `value` — дата строкой `YYYY-MM-DD`, у
+			поля даты и времени — `YYYY-MM-DDTHH:mm`, с точностью до секунды —
+			`YYYY-MM-DDTHH:mm:ss`; пустая, пока значение не собрано целиком.
+			Выключенное поле в форму не уходит, как любое выключенное поле.
+		--><input type="hidden" name value="2026-11-09"></div><!--
+			Панель — Frame, телепорт в `body`: поверхность, кромка и тень — как у
+			панелей Select и Popover. Открытость — `visible` панели, как у Select:
+			закрытая панель прячется, а не размонтируется. Подложки и крестика нет
+			— нажатие мимо закрывает панель. Подвал — только при `confirmable`, и
+			рисует его календарь (ниже).
+
+			Якорь — корень: панель встаёт под ним от его начала, а у нижнего края
+			окна — над ним (сторону выбирает `TAnchorPlugin`). Панель
+			телепортирована, поэтому `dismiss_ownerAttribute` помечает её
+			владельцем — иначе нажатие в календарь считалось бы нажатием мимо.
+
+			На панель ложится набор `panelAria`: `role="dialog"`, `aria-modal`,
+			имя и `id`, на который ссылается `aria-controls` кнопки. `tabindex="-1"`
+			— фокус встаёт на саму панель, когда внутри нечего фокусировать.
+
+			`panelDataset` — `data-*` панели: признак «тянут» (`data-swiping`), по
+			которому тема снимает переход, пока панель идёт за пальцем. Набор
+			отдельный от `panelAria`: ARIA и `data-*` не смешиваются. Открытость
+			(`data-open`) Frame пишет сам, сторону после flip (`data-placement`) —
+			плагин якоря, сдвиг во время жеста (`--so-swipe-offset`) — плагин жеста.
+		--><!--teleport start--><!--teleport end--></div><output aria-label="Selected date">2026-11-09</output><!--]--><!--]--></section><button type="button">After component</button></main></div>
+		<script id="input" type="application/json">{"component":"date-picker","baseline":true,"locale":"ar","dir":"rtl","count":20}</script>
+	</body>
+</html>

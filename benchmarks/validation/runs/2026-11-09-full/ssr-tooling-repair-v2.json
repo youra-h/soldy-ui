@@ -1,0 +1,24 @@
+{
+  "date": "2026-11-09T08:32:45.348Z",
+  "previous": "ssr-tooling-repair.json",
+  "reason": "Current host contracts require parts for React/Solid previews and initialized Svelte parts context. Only SSR consumer files changed; original failed smoke preserved.",
+  "files": [
+    {
+      "file": "tools/bench-ssr/src/react.tsx",
+      "oldHash": "2e7756e567c1baa81d50ae05d939c366276ac54b0ee196b7d6533f8081730f51",
+      "newHash": "af598a2cab41fbe63aa8e43807ffdf4b7674058c1ac8a91b81f98899608cdb0f"
+    },
+    {
+      "file": "tools/bench-ssr/src/solid.tsx",
+      "oldHash": "8bdb588b530abefd764cb22fbbeea0fd67e94ef665565d4cf1dc56c60997ec26",
+      "newHash": "2ef417b8c4ad50f905a82022204133c832818a541fcd11c742c924cc19b34a5a"
+    },
+    {
+      "file": "tools/bench-ssr/src/Page.svelte",
+      "oldHash": "a136f7ee063a7f9fdbf371f374f879670d98c0fd14fb7e32cd7874e41b5f9dbb",
+      "newHash": "4af73c87cde5e3f6c35d0b743f3b0021d1054062a1a16b0698f072d241f8d963"
+    }
+  ],
+  "previousSmoke": "../2026-11-09-remaining-smoke",
+  "auditCorrection": "Empty component list legitimately has no language/date marker or zero markup size; require all three locale reference arrays/sizes, complete samples, zero mismatches and clean empty control. Foreign content/language problems remain failures; all/leak strict unchanged."
+}

@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-09T09:14:05.916Z",
+  "type": "runtime-selector-and-observation-repair",
+  "previousAmendment": "2026-11-09-ssr-teleports.json",
+  "reason": "Actual v3 diagnostics showed a lazy global DatePicker locator selecting the portaled Calendar title instead of its opener, Node Intl(ar) producing Latin digits while UI used Arabic digits, and axe sampling finite fades. Scope opener to the shared Candidate region; accept explicit Intl latn/arab/arabext representations of the same day15; wait finite animations and two stable frames before axe, while immediate reduced-motion observations remain unchanged. Stable aria-required-children findings remain present. Archive SSR snapshots as exact-byte html.txt data with per-cell file/hash and workflow globs, preserving earlier snapshots via archive indexes without weakening source-comment guards.",
+  "beforeCandidateSourceInspection": true,
+  "diagnosticRun": "../runs/soxa-windows-2026-11-09-v3",
+  "diagnosticDisposition": "Completed; excluded from comparative component conclusions because selectors/observation sampling were defective. Original findings retained.",
+  "samplingEvidence": "../runs/soxa-windows-2026-11-09-v3.animation-diagnostic-v2.json",
+  "samplingResult": {
+    "openImmediate": [
+      "color-contrast",
+      "region"
+    ],
+    "openAfter1000ms": [
+      "region"
+    ],
+    "afterImmediate": [
+      "aria-required-children",
+      "color-contrast",
+      "region"
+    ],
+    "after1000ms": [
+      "aria-required-children"
+    ]
+  },
+  "oldHashes": {
+    "tools/bench-ai/run.mjs": "d5ec803b24a758a31b3e0be312e14f55f4c319395a96925dd56f5e8f11a7b701",
+    "tools/bench-ai/scenarios.mjs": "0b83b4cb60273cacfa6d2b072e06860f15a550c8de17454bd315c0b313e8599f",
+    "tools/bench-ai/Page.vue": "d8b1ea11983263f8061c35ab44626c233a9dec088e1ed1132dcc7698b9499a10",
+    "tools/bench-ai/Soxa.vue": "0f38dad51907e7babfd85c1292ab52388a10c698aa2aab2f755383cf1609138e",
+    "tools/bench-ai/data.mjs": "e1cd0c74fd00706db44626dde49fd4c85baa5dd5f3d12e7a5a2b8f7e120bb722",
+    "tools/bench-ai/vite.config.ts": "2cb97aeed2875cfc20a7809e861fe093a1306f3627b9c65a89aae584948c9f93",
+    "tools/bench-ai/client.mjs": "fbdee049c6ddda286f7efb02509086c76406dac143bd992a01bcf761a2a27d94",
+    "tools/bench-ai/server.mjs": "5e68c69fb351b096f2d89a93b6ee0153fe2dce76e8efa930fd4f73bb7c1c170e",
+    "tools/bench-ai/setup.mjs": "ce7d2a8b8f99e63a9e406f9b0e6d72778d70a9948fd0438467deb1291cbd01b6",
+    "tools/bench-ai/protocol.mjs": "c64de0455c9d48ec8b8f2ba09b82f03bc0203d1ccb349ea3c253048c248c4851",
+    "tools/bench-ai/environment.mjs": "037ab34a339bbaae662b039085d771f1272d54136c84b86c2718e4f8f85120fa",
+    "tools/bench-ai/batch.mjs": "f04f9084cf7f0f47b0e714658b8b465912968cb6622868bc55303d195429dbef",
+    "tools/bench-ai/ci.mjs": "5c457e7af68689d19c9d4c25838247ecbba95d9bf719401d7a93dd9d9685f911",
+    ".github/workflows/bench-validation.yml": "cc2d6e8883452cb0e8bdd8b588061165e82d6a246a07c02ffe91ed1b08a90675",
+    "tools/bench-ai/document.mjs": "4c0fcfc62b9a41968044ed6888fe62ed3dd9c3dd5e1f98939b01e62446a6cff0"
+  },
+  "newHashes": {
+    "tools/bench-ai/run.mjs": "7350df825e247cca4c718ff77138861ae4180fd0138542b24fe6fe414101681c",
+    "tools/bench-ai/scenarios.mjs": "d82a7db5c42339fc98e75e7929749fe57e448ec8c15ea959759545a72d85c6cf",
+    "tools/bench-ai/Page.vue": "d8b1ea11983263f8061c35ab44626c233a9dec088e1ed1132dcc7698b9499a10",
+    "tools/bench-ai/Soxa.vue": "0f38dad51907e7babfd85c1292ab52388a10c698aa2aab2f755383cf1609138e",
+    "tools/bench-ai/data.mjs": "e1cd0c74fd00706db44626dde49fd4c85baa5dd5f3d12e7a5a2b8f7e120bb722",
+    "tools/bench-ai/vite.config.ts": "2cb97aeed2875cfc20a7809e861fe093a1306f3627b9c65a89aae584948c9f93",
+    "tools/bench-ai/client.mjs": "fbdee049c6ddda286f7efb02509086c76406dac143bd992a01bcf761a2a27d94",
+    "tools/bench-ai/server.mjs": "5e68c69fb351b096f2d89a93b6ee0153fe2dce76e8efa930fd4f73bb7c1c170e",
+    "tools/bench-ai/setup.mjs": "ce7d2a8b8f99e63a9e406f9b0e6d72778d70a9948fd0438467deb1291cbd01b6",
+    "tools/bench-ai/protocol.mjs": "c64de0455c9d48ec8b8f2ba09b82f03bc0203d1ccb349ea3c253048c248c4851",
+    "tools/bench-ai/environment.mjs": "037ab34a339bbaae662b039085d771f1272d54136c84b86c2718e4f8f85120fa",
+    "tools/bench-ai/batch.mjs": "f04f9084cf7f0f47b0e714658b8b465912968cb6622868bc55303d195429dbef",
+    "tools/bench-ai/ci.mjs": "5c457e7af68689d19c9d4c25838247ecbba95d9bf719401d7a93dd9d9685f911",
+    ".github/workflows/bench-validation.yml": "8cecb14e5eb29d9ee0ac62abf1cc95cfb09613a1fd42bcf637a12abd46cd24d9",
+    "tools/bench-ai/document.mjs": "4c0fcfc62b9a41968044ed6888fe62ed3dd9c3dd5e1f98939b01e62446a6cff0",
+    "tools/bench-ai/settle.mjs": "f77a150ba36391788ecc2305a6da6178eaa98e8adca8abce62f82dd9f364b0c6"
+  },
+  "symmetricalEvaluation": "All unchanged model samples and Soxa will use the corrected shared probes and stable axe observation. No prompt, response or library change."
+}

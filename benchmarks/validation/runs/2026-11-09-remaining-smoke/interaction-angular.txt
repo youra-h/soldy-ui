@@ -1,0 +1,16 @@
+angular select ×1 open 18/66, close 14/63, type 8/56
+angular menu ×1 open 17/64, close 16/64
+angular date-picker ×1 open 18/66, close 16/64, locale ru 16/65, locale en 15/65
+angular dialog ×1 open 16/64, close 15/63
+angular input ×1 type 13/62
+angular tabs ×1 tab 2 15/65, tab 1 16/65
+angular calendar ×1 locale ru 18/66, locale en 17/65
+angular number-input ×1 locale ru 16/65, locale en 17/66
+angular select перерисовки open 3/3 чужим 0, close 3/3 чужим 0, type 5/5 чужим 0
+angular menu перерисовки open 4/4 чужим 0, close 3/3 чужим 0
+angular date-picker перерисовки open 8/8 чужим 0, close 6/6 чужим 0, locale ru 20/16 чужим 22, locale en 18/14 чужим 22
+angular dialog перерисовки open 6/6 чужим 0, close 5/5 чужим 0
+angular input перерисовки type 1/1 чужим 0
+angular tabs перерисовки tab 2 9/9 чужим 0, tab 1 9/9 чужим 0
+angular calendar перерисовки locale ru 19/10 чужим 630, locale en 19/10 чужим 632
+angular number-input перерисовки locale ru 7/4 чужим 4, locale en 7/4 чужим 4

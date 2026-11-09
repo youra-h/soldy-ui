@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Component validation</title>
+		<script type="module" crossorigin src="/assets/index-C5X82NYs.js"></script>
+		<link rel="stylesheet" crossorigin href="/assets/index-BNQSbVlv.css">
+	</head>
+	<body>
+		<div id="app"><main lang="en" dir="ltr"><h1>Component validation</h1><button type="button">Before component</button><section aria-label="Candidate"><div class="settings" dir="ltr" lang="en" data-v-ab21310e><button type="button" data-v-ab21310e> Open dialog </button><dialog class="dialog" aria-label="Settings" aria-modal="true" data-v-ab21310e><form class="form" data-v-ab21310e><h2 data-v-ab21310e>Settings</h2><label class="field" data-v-ab21310e><span data-v-ab21310e>Name</span><input value="" lang="en" type="text" name="name" autocomplete="name" data-v-ab21310e></label><div class="actions" data-v-ab21310e><button type="button" data-v-ab21310e> Cancel </button><button class="primary" type="submit" data-v-ab21310e> Save </button></div></form></dialog></div></section><button type="button">After component</button></main></div>
+		<script id="input" type="application/json">{"component":"dialog","baseline":false,"locale":"en","dir":"ltr","count":20}</script>
+	</body>
+</html>

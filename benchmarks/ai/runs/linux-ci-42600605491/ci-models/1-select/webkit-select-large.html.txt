@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Component validation</title>
+		<script type="module" crossorigin src="/assets/index-DJkoieu9.js"></script>
+		<link rel="stylesheet" crossorigin href="/assets/index-CdIR6V7l.css">
+	</head>
+	<body>
+		<div id="app"><main lang="en" dir="ltr"><h1>Component validation</h1><button type="button">Before component</button><section aria-label="Candidate"><div class="select" dir="ltr" lang="en" data-v-21b3c699><label class="label" for="v-0-input" data-v-21b3c699>Choose items</label><!----><!--[--><!--]--><div class="field" data-v-21b3c699><input id="v-0-input" class="search" type="text" role="combobox" aria-autocomplete="list" aria-haspopup="listbox" aria-expanded="false" aria-describedby="v-0-hint" value="" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Search items…" data-v-21b3c699><button type="button" class="toggle" aria-label="Open options" aria-expanded="false" data-v-21b3c699><svg viewBox="0 0 20 20" width="20" height="20" fill="none" aria-hidden="true" class="" data-v-21b3c699><path d="m5 7.5 5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" data-v-21b3c699></path></svg></button></div><!----><p id="v-0-hint" class="hint" data-v-21b3c699> Type to filter. Use ↑ and ↓ to browse, Enter to select or deselect, and Escape to close. </p><p class="selection-status" role="status" aria-live="polite" aria-atomic="true" data-v-21b3c699>0 items selected.</p></div></section><button type="button">After component</button></main></div>
+		<script id="input" type="application/json">{"component":"select","baseline":false,"locale":"en","dir":"ltr","count":10000}</script>
+	</body>
+</html>

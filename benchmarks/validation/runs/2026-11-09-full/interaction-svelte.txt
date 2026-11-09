@@ -1,0 +1,32 @@
+svelte select ×1 open 16/65, close 15/64, type 8/56
+svelte select ×4 open 18/64, close 16/63, type 15/56
+svelte select ×6 open 25/65, close 19/62, type 28/58
+svelte menu ×1 open 16/65, close 15/64
+svelte menu ×4 open 19/64, close 16/64
+svelte menu ×6 open 23/63, close 22/63
+svelte date-picker ×1 open 16/65, close 15/65, locale ru 19/65, locale en 19/65
+svelte date-picker ×4 open 23/64, close 16/64, locale ru 99/129, locale en 89/114
+svelte date-picker ×6 open 40/81, close 25/64, locale ru 182/226, locale en 174/212
+svelte dialog ×1 open 16/65, close 15/65
+svelte dialog ×4 open 18/64, close 15/64
+svelte dialog ×6 open 23/63, close 21/63
+svelte input ×1 type 13/62
+svelte input ×4 type 13/61
+svelte input ×6 type 12/59
+svelte tabs ×1 tab 2 15/65, tab 1 15/65
+svelte tabs ×4 tab 2 24/66, tab 1 28/77
+svelte tabs ×6 tab 2 54/99, tab 1 54/98
+svelte calendar ×1 locale ru 151/182, locale en 148/181
+svelte calendar ×4 locale ru 1198/1231, locale en 1244/1280
+svelte calendar ×6 locale ru 2225/2258, locale en 2172/2214
+svelte number-input ×1 locale ru 17/66, locale en 18/66
+svelte number-input ×4 locale ru 29/66, locale en 30/66
+svelte number-input ×6 locale ru 69/115, locale en 78/115
+svelte select перерисовки open 4/4 чужим 0, close 4/4 чужим 0, type 6/6 чужим 0
+svelte menu перерисовки open 4/4 чужим 0, close 4/4 чужим 0
+svelte date-picker перерисовки open 4/4 чужим 0, close 4/4 чужим 0, locale ru 518/28 чужим 1470, locale en 518/28 чужим 1470
+svelte dialog перерисовки open 3/3 чужим 0, close 2/2 чужим 0
+svelte input перерисовки type 0/0 чужим 0
+svelte tabs перерисовки tab 2 4/4 чужим 0, tab 1 4/4 чужим 0
+svelte calendar перерисовки locale ru 900/18 чужим 24010, locale en 900/18 чужим 24010
+svelte number-input перерисовки locale ru 150/3 чужим 196, locale en 150/3 чужим 196

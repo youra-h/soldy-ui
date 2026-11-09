@@ -1,0 +1,229 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-09T10:03:47.019Z",
+  "cohort": {
+    "status": "valid",
+    "reference": "Soxa",
+    "expectedCount": 11,
+    "observedCount": 11,
+    "browsers": {
+      "chromium": "156.0.8078.4",
+      "webkit": "27.2"
+    },
+    "findings": [],
+    "incomplete": []
+  },
+  "records": [
+    {
+      "name": "Soxa",
+      "status": "tested-with-failures",
+      "exit": 1,
+      "completion": {
+        "status": "complete",
+        "findings": []
+      },
+      "counts": {
+        "passed": 19,
+        "failed": 26,
+        "not-applicable": 1,
+        "not-run": 0
+      }
+    },
+    {
+      "name": "1-select",
+      "status": "tested-with-gaps",
+      "exit": 0,
+      "completion": {
+        "status": "complete",
+        "findings": []
+      },
+      "counts": {
+        "passed": 11,
+        "failed": 0,
+        "not-applicable": 1,
+        "not-run": 0
+      }
+    },
+    {
+      "name": "1-date-picker",
+      "status": "tested-with-gaps",
+      "exit": 0,
+      "completion": {
+        "status": "complete",
+        "findings": []
+      },
+      "counts": {
+        "passed": 8,
+        "failed": 0,
+        "not-applicable": 0,
+        "not-run": 0
+      }
+    },
+    {
+      "name": "1-dialog",
+      "status": "tested-with-gaps",
+      "exit": 0,
+      "completion": {
+        "status": "complete",
+        "findings": []
+      },
+      "counts": {
+        "passed": 8,
+        "failed": 0,
+        "not-applicable": 0,
+        "not-run": 0
+      }
+    },
+    {
+      "name": "1-tabs",
+      "status": "tested-with-gaps",
+      "exit": 0,
+      "completion": {
+        "status": "complete",
+        "findings": []
+      },
+      "counts": {
+        "passed": 8,
+        "failed": 0,
+        "not-applicable": 0,
+        "not-run": 0
+      }
+    },
+    {
+      "name": "1-table",
+      "status": "tested-with-failures",
+      "exit": 1,
+      "completion": {
+        "status": "complete",
+        "findings": []
+      },
+      "counts": {
+        "passed": 0,
+        "failed": 10,
+        "not-applicable": 0,
+        "not-run": 0
+      }
+    },
+    {
+      "name": "2-select",
+      "status": "tested-with-gaps",
+      "exit": 0,
+      "completion": {
+        "status": "complete",
+        "findings": []
+      },
+      "counts": {
+        "passed": 11,
+        "failed": 0,
+        "not-applicable": 1,
+        "not-run": 0
+      }
+    },
+    {
+      "name": "2-date-picker",
+      "status": "tested-with-gaps",
+      "exit": 0,
+      "completion": {
+        "status": "complete",
+        "findings": []
+      },
+      "counts": {
+        "passed": 8,
+        "failed": 0,
+        "not-applicable": 0,
+        "not-run": 0
+      }
+    },
+    {
+      "name": "2-dialog",
+      "status": "tested-with-gaps",
+      "exit": 0,
+      "completion": {
+        "status": "complete",
+        "findings": []
+      },
+      "counts": {
+        "passed": 8,
+        "failed": 0,
+        "not-applicable": 0,
+        "not-run": 0
+      }
+    },
+    {
+      "name": "2-tabs",
+      "status": "tested-with-gaps",
+      "exit": 0,
+      "completion": {
+        "status": "complete",
+        "findings": []
+      },
+      "counts": {
+        "passed": 8,
+        "failed": 0,
+        "not-applicable": 0,
+        "not-run": 0
+      }
+    },
+    {
+      "name": "2-table",
+      "status": "tested-with-failures",
+      "exit": 1,
+      "completion": {
+        "status": "complete",
+        "findings": []
+      },
+      "counts": {
+        "passed": 0,
+        "failed": 10,
+        "not-applicable": 0,
+        "not-run": 0
+      }
+    }
+  ],
+  "inputs": [
+    {
+      "name": "1-select",
+      "valid": true
+    },
+    {
+      "name": "1-date-picker",
+      "valid": true
+    },
+    {
+      "name": "1-dialog",
+      "valid": true
+    },
+    {
+      "name": "1-tabs",
+      "valid": true
+    },
+    {
+      "name": "1-table",
+      "valid": true
+    },
+    {
+      "name": "2-select",
+      "valid": true
+    },
+    {
+      "name": "2-date-picker",
+      "valid": true
+    },
+    {
+      "name": "2-dialog",
+      "valid": true
+    },
+    {
+      "name": "2-tabs",
+      "valid": true
+    },
+    {
+      "name": "2-table",
+      "valid": true
+    }
+  ],
+  "html": {
+    "checked": 135,
+    "invalid": []
+  }
+}

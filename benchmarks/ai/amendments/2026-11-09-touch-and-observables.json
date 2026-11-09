@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-09T07:49:23.507Z",
+  "type": "portable-touch-and-declared-observables",
+  "parentProtocol": "../protocol.v1.json",
+  "previousAmendment": "2026-11-09-table-boundary.json",
+  "reason": "Complete existing narrow-touch mode in both engines using hasTouch and portable locator.tap; only real CDP IME remains WebKit not-applicable. Add presence assertions for existing literal prompt requirements: Dialog Name/Cancel/Save; Tabs Alpha/Beta/Gamma and initial Alpha panel; Table Score header; DatePicker visible calendar dialog and grid. No new component features or prompt changes.",
+  "references": [
+    "https://playwright.dev/docs/api/class-touchscreen",
+    "https://playwright.dev/docs/emulation"
+  ],
+  "beforeCandidateSourceInspection": true,
+  "criteriaFrozenUntilConcreteRuntimeHarnessBug": true,
+  "symmetricalEvaluationRequired": true,
+  "oldHashes": {
+    "tools/bench-ai/run.mjs": "2ac15ccbef0abbaf39933da56ec98db5cbad71dbeebba7984f09b75d12d8ce6e",
+    "tools/bench-ai/scenarios.mjs": "0ab9c9442134f334b736a222ef0a4785ba069d26a62eed4c6959bb42ed9a9391",
+    "tools/bench-ai/Page.vue": "ef67a5bdefffd1902ca61f9141cc0b3770833f2a01b81e3feb4f213da4d35603",
+    "tools/bench-ai/Soxa.vue": "641a31303bfa1dde0880abbf394fae13141f5991cf3dd6de8b838392bf29d45c",
+    "tools/bench-ai/data.mjs": "2abba6e7b05d645bca776b0aca03296a0fd799a72bdddfa334f624fd4a5440bc",
+    "tools/bench-ai/vite.config.ts": "0426809be890b50a659e62b7288f3d37bc7cf95ac30d480d7c6f6ad5d7635bf9",
+    "tools/bench-ai/client.mjs": "fbdee049c6ddda286f7efb02509086c76406dac143bd992a01bcf761a2a27d94",
+    "tools/bench-ai/server.mjs": "462342b6306e03775b8c1ccbeec51d05e1af1d9530b497025752bf82fc927f89",
+    "tools/bench-ai/setup.mjs": "ce7d2a8b8f99e63a9e406f9b0e6d72778d70a9948fd0438467deb1291cbd01b6",
+    "tools/bench-ai/protocol.mjs": "20737ace99a30bf57923b348141c738f3dfe49dbbb99a0f0205f826568d86b4e",
+    "tools/bench-ai/environment.mjs": "715ea60173b608f7c421df6ee2b8d1961beb033f457153c7299c826674f8cd02",
+    "tools/bench-ai/batch.mjs": "c7b9ce91df0c8654b9c3bd5431db88deca9b19b5d8430dd65f83878df403140d",
+    "tools/bench-ai/ci.mjs": "7651e24f75e1d4a883ce0f95decbac042571f3f15ecb8e1fda7ce480eda7b8d9",
+    ".github/workflows/bench-validation.yml": "cc2d6e8883452cb0e8bdd8b588061165e82d6a246a07c02ffe91ed1b08a90675"
+  },
+  "newHashes": {
+    "tools/bench-ai/run.mjs": "bfee6fee269ea9f5685ab800348a7876671986a5c6cdd6a143218048e3a29c17",
+    "tools/bench-ai/scenarios.mjs": "4ea53d65abb4f149eb57bde7fafa2adb1c301e9d6f9bd5fb3ea7f6c3f566a471",
+    "tools/bench-ai/Page.vue": "ef67a5bdefffd1902ca61f9141cc0b3770833f2a01b81e3feb4f213da4d35603",
+    "tools/bench-ai/Soxa.vue": "641a31303bfa1dde0880abbf394fae13141f5991cf3dd6de8b838392bf29d45c",
+    "tools/bench-ai/data.mjs": "2abba6e7b05d645bca776b0aca03296a0fd799a72bdddfa334f624fd4a5440bc",
+    "tools/bench-ai/vite.config.ts": "0426809be890b50a659e62b7288f3d37bc7cf95ac30d480d7c6f6ad5d7635bf9",
+    "tools/bench-ai/client.mjs": "fbdee049c6ddda286f7efb02509086c76406dac143bd992a01bcf761a2a27d94",
+    "tools/bench-ai/server.mjs": "462342b6306e03775b8c1ccbeec51d05e1af1d9530b497025752bf82fc927f89",
+    "tools/bench-ai/setup.mjs": "ce7d2a8b8f99e63a9e406f9b0e6d72778d70a9948fd0438467deb1291cbd01b6",
+    "tools/bench-ai/protocol.mjs": "20737ace99a30bf57923b348141c738f3dfe49dbbb99a0f0205f826568d86b4e",
+    "tools/bench-ai/environment.mjs": "715ea60173b608f7c421df6ee2b8d1961beb033f457153c7299c826674f8cd02",
+    "tools/bench-ai/batch.mjs": "c7b9ce91df0c8654b9c3bd5431db88deca9b19b5d8430dd65f83878df403140d",
+    "tools/bench-ai/ci.mjs": "837fd4fda4d8a763aa3a8f9294142582f38db10046aa2b06c89a66ce163988bc",
+    ".github/workflows/bench-validation.yml": "cc2d6e8883452cb0e8bdd8b588061165e82d6a246a07c02ffe91ed1b08a90675"
+  },
+  "candidateSources": "All generated SFCs and answers remain untouched and unreviewed. Future formatting is recorded separately without semantic changes."
+}

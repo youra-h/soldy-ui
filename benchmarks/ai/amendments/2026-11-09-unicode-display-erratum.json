@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-09T11:04:44.857Z",
+  "type": "display-metadata-unicode-erratum",
+  "previousAmendment": "2026-11-09-contrast-fixture-layout.json",
+  "corrects": "2026-11-09-table-public-matching.json",
+  "reason": "The PowerShell-to-Node stdin transport used to write the earlier amendment replaced non-ASCII display strings with question marks. Only the explanatory glossary/header fields were affected. The runtime module, tests, fixed prompts, generated sources, measured data and their hashes were never changed by that encoding loss.",
+  "source": {
+    "file": "tools/bench-ai/scenarios.mjs",
+    "sha256": "b911d28cbaf29a156c0854d4842dc8c1a1a18824b94e252e9485c5fbedfda47a",
+    "matchesRecordedAmendment": true
+  },
+  "correctedGlossaryIncludingEnglishFallback": {
+    "en": {
+      "name": [
+        "Name"
+      ],
+      "score": [
+        "Score"
+      ]
+    },
+    "ru": {
+      "name": [
+        "Name",
+        "Имя",
+        "Название"
+      ],
+      "score": [
+        "Score",
+        "Баллы",
+        "Оценка",
+        "Счёт"
+      ]
+    },
+    "ar": {
+      "name": [
+        "Name",
+        "الاسم",
+        "اسم"
+      ],
+      "score": [
+        "Score",
+        "النتيجة",
+        "الدرجة",
+        "النقاط"
+      ]
+    }
+  },
+  "correctedLocalizedHeaders": {
+    "model1": [
+      "الاسم",
+      "النتيجة"
+    ],
+    "model2": [
+      "الاسم",
+      "الدرجة"
+    ]
+  },
+  "authority": "Glossary derived from the tested public matcher module; observed headers read from retained UTF-8 accessibility snapshots. No candidate code was inspected or rewritten.",
+  "effect": "Display metadata correction only. Earlier append-only record retained. No runtime, acceptance criterion, experimental input, measurement or result changed."
+}

@@ -1,0 +1,33 @@
+react    empty  clean      heap 9.31 MB, 4157 B/render, components +0, emitters +0, mismatches 0, 1 s
+file:///D:/projects/soxa-a/tools/bench-ssr/dist/react.js:14092
+			...parts.Item,
+			         ^
+
+TypeError: Cannot read properties of undefined (reading 'Item')
+    at file:///D:/projects/soxa-a/tools/bench-ssr/dist/react.js:14092:13
+    at Array.map (<anonymous>)
+    at radio-group (file:///D:/projects/soxa-a/tools/bench-ssr/dist/react.js:14090:19)
+    at file:///D:/projects/soxa-a/tools/bench-ssr/dist/react.js:14296:139
+    at Array.map (<anonymous>)
+    at Object.render (file:///D:/projects/soxa-a/tools/bench-ssr/dist/react.js:14296:25)
+    at measure (file:///D:/projects/soxa-a/tools/bench-ssr/dist/assets/measure-BUiTaXkP.js:57548:39)
+    at async file:///D:/projects/soxa-a/tools/bench-ssr/dist/react.js:14291:1
+
+Node.js v24.20.0
+react    all    [bench-ssr] react all: exit 1
+file:///D:/projects/soxa-a/tools/bench-ssr/dist/react.js:14092
+			...parts.Item,
+			         ^
+
+TypeError: Cannot read properties of undefined (reading 'Item')
+    at file:///D:/projects/soxa-a/tools/bench-ssr/dist/react.js:14092:13
+    at Array.map (<anonymous>)
+    at radio-group (file:///D:/projects/soxa-a/tools/bench-ssr/dist/react.js:14090:19)
+    at file:///D:/projects/soxa-a/tools/bench-ssr/dist/react.js:14296:139
+    at Array.map (<anonymous>)
+    at Object.render (file:///D:/projects/soxa-a/tools/bench-ssr/dist/react.js:14296:25)
+    at measure (file:///D:/projects/soxa-a/tools/bench-ssr/dist/assets/measure-BUiTaXkP.js:57548:39)
+    at async file:///D:/projects/soxa-a/tools/bench-ssr/dist/react.js:14291:1
+
+Node.js v24.20.0
+react    leak   [bench-ssr] react leak: exit 1

@@ -1,0 +1,5 @@
+[33m[PLUGIN_TIMINGS] [0mJavaScript callbacks ran for 4.7s of this 4.9s build (96%).
+1 callback is listed without a time. Its calls overlapped, so the time inside one call includes work from other calls. To find its cost, profile the build with `node --cpu-prof`:
+  - plugin playground:angular transform (3264 calls)
+See https://rolldown.rs/reference/InputOptions.checks#bundlertimings for more details.
+

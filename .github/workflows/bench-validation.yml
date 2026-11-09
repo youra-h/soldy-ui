@@ -1,0 +1,67 @@
+name: Benchmark tools and research observations
+
+on:
+  workflow_dispatch:
+    inputs:
+      observations:
+        description: Run the full saved Soxa and AI observation matrix
+        type: boolean
+        default: false
+  pull_request:
+    paths:
+      - 'tools/bench-ai/**'
+      - 'tools/bench-validation/**'
+      - 'benchmarks/ai/inputs/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/bench-validation.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'tools/bench-ai/**'
+      - 'tools/bench-validation/**'
+      - 'benchmarks/ai/inputs/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/bench-validation.yml'
+
+jobs:
+  tools:
+    name: Инструменты и исследовательские наблюдения Soxa
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium webkit
+      - run: npm run build:css --workspace=@soxa-ui/theme-oren
+      - name: Auditor and negative controls
+        run: npm run test:bench-validation && npm run test:bench-ai
+      # This is an observational dataset, not a passing component quality gate.
+      # The wrapper preserves the original exit and lists every failed cell prominently.
+      - name: Исследовательский baseline — failed cells сохраняются
+        if: github.event_name == 'workflow_dispatch' && inputs.observations
+        run: node tools/bench-ai/ci.mjs
+      - name: Сохранённые AI samples — failed cells сохраняются
+        if: github.event_name == 'workflow_dispatch' && inputs.observations
+        run: node tools/bench-ai/ci.mjs benchmarks/ai/inputs/cli-2026-11-09-v1
+      - uses: actions/upload-artifact@v4
+        if: always() && github.event_name == 'workflow_dispatch' && inputs.observations
+        with:
+          name: soxa-research-observations
+          path: |
+            benchmarks/ai/runs/ci-soxa/results.json
+            benchmarks/ai/runs/ci-soxa/ci-execution.json
+            benchmarks/ai/runs/ci-soxa/*.html.txt
+            benchmarks/ai/runs/ci-models/**/results.json
+            benchmarks/ai/runs/ci-models/**/execution.json
+            benchmarks/ai/runs/ci-models/**/*.html.txt
+            benchmarks/ai/runs/ci-models/execution.json
+            benchmarks/ai/runs/ci-models/ci-execution.json
+          if-no-files-found: warn

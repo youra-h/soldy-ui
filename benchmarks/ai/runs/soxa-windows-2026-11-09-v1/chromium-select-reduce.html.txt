@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Component validation</title>
+		<script type="module" crossorigin src="/assets/index-CBCqcOFG.js"></script>
+		<link rel="stylesheet" crossorigin href="/assets/index-B604dx7E.css">
+	</head>
+	<body>
+		<div id="app"><main lang="en" dir="ltr"><h1>Component validation</h1><button type="button">Before component</button><section aria-label="Candidate"><!--[--><div class="so-select so-select--size-normal" data-disabled="false" data-readonly="false" data-required="false" data-content-fit="truncate" data-indicator="none" data-editable="true" data-open="false" style=""><!--
+				The field is a ready `Input`, not an `<input>` of its own: it has the
+				`leading`/`trailing` slots for icons, and the styles. The whole ARIA
+				set of the combobox (`role="combobox"`, `aria-expanded`,
+				`aria-controls`, `aria-activedescendant`, `aria-autocomplete`) lives
+				in `field.aria` (`TSelect`, `TSelectExtension`,
+				`TSelectKeyboardPlugin`), and `Input.vue` puts it on its inner
+				`<input>` itself.
+
+				`:ctrl="field"`, not a set of props: the text, the placeholder and the
+				combobox ARIA belong to the separate `TInput` instance (`field`) that
+				Select owns (`TSelect.field`, `TSelectExtension`). No `:value` or
+				`:placeholder` next to it — they would be second copies. `disabled`,
+				`size`, `variant`, `readonly`, `required`, `name`, `clearable` and
+				the error (`invalid`) are carried by the instance too: Select keeps them
+				in sync itself. The clear button gets its name from the field's names
+				plugin. `id` is a prop of `TIdPlugin`, not of the core: Select hands
+				its own `id` (the app's or the form field's) to the field, and `Input`
+				puts it on its `<input>`.
+
+				Select's own `aria` set — the name (`aria_label`, `aria_labelledBy`),
+				the description, `aria-invalid` — goes as attributes to `Input`, which
+				hands them to its `<input>` over the combobox set: the name and the
+				description belong to the focused element. The consumer's attributes go
+				over both.
+
+				The field draws the clear button — first in its end slot, before the
+				arrow. Its `clear` command clears the field, and `TSelectExtension`
+				drops the choice by its event: there is no button here.
+
+				The nested `Input`'s `readonly` is Select's, driven by `editable`.
+				Select-only (`editable: false`, the default) keeps the field readonly;
+				`editable: true` lifts it and lets the user type. What typing does is
+				`editableMode`'s, decided whole in `TEditablePlugin`: the markup knows
+				nothing of highlighting and filtering, so all adapters behave the same.
+
+				`readonly` turns off the native `required` of the nested `<input>`
+				(the browser does not validate a readonly field), so `TInput` sets
+				`aria-required` in `field.aria` explicitly — otherwise the screen
+				reader would not hear the state (`TInput._syncInputAccessibility()`).
+			--><!--[--><div style="" class="so-input so-input--size-normal so-select__field" data-disabled="false" data-readonly="false" data-required="false" data-clearable="false"><!--
+			Корень рисуется по `tag`, по умолчанию `div`: `tag` — всегда тег
+			корня, и по нему же ядро решает, есть ли у корня нативный
+			`disabled`. На корне — `dataset` (`data-disabled`, `data-invalid`):
+			тема красит коробку поля и подпись поля формы по корню, а `aria` —
+			у вложенного `<input>`.
+		--><div class="so-input__leading"><!--[--><!--
+						The tags are a second component with its own collection, not
+						markup: "option ⇄ tag" lives whole in `TSelectTagsExtension`. Only
+						in `multiple` — in `single` `tags` is empty, and the slot gets the
+						same field.
+
+						The `tags` slot hands over the tags instance and its collection —
+						what the built-in `Tags` takes as `:ctrl` and `:engine`: a row of
+						one's own gets the link ready and lays out the tags as it needs.
+					--><!--[--><div class="so-tags so-tags--size-normal so-select__tags" role="list" data-disabled="false" data-overflow="wrap" style=""><!--
+			`dataset` next to `aria`: the overflow mode goes to the theme through
+			`data-overflow`, and the row's layout (wrapping, scrolling) is all its
+			business.
+
+			The `default` slot gets the shown tags (`shown`): markup of one's own
+			lays them out as it needs — in a strip, in a row with a tail in a panel.
+			Each tag is drawn there exactly once, as here: a second drawing would
+			overwrite its record in the bundles' registry.
+		--><!--[--><!--
+				The items' slots are static and get the item through the scope —
+				dynamic names resolve only in Vue (see ListBox/Tabs). The relay is
+				whole: each tag slot has its `item-<slot>`, whose scope is the tag
+				slot's scope plus the tag. The tag draws its close icon itself while
+				the slot is not given — so the icon's slot goes to it only when the set
+				has it.
+
+				`shown`, not `items`: what the filter left. A hidden item unmounts but
+				stays in the collection — the data own the composition, not the markup
+				(`owned` in `TCollectionExtension`). Dropping the filter brings it back.
+
+				The slots are relayed only when the set has any of them: the relay
+				refers to the loop's `item`, and Vue redraws an item with such slots on
+				every redraw of its owner (AGENTS.md, Pitfalls).
+			--><!--[--><!--]--><!--]--></div><!--]--><!--[--><!--]--><!--]--></div><input type="text" value name placeholder aria-autocomplete="list" aria-expanded="false" role="combobox" aria-haspopup="listbox" aria-controls="v-0-list" aria-label="Choose items"><!--
+			Обёртка у конца поля — по кнопке очистки, по своей кнопке в слоте
+			`clear` или по слоту `trailing`. Кнопка очистки стоит в ней первой,
+			перед содержимым `trailing`.
+		--><div class="so-input__trailing"><!--
+				Кнопка очистки — по `clearable`, выключена вместе с полем.
+				`readonly` её не гасит: select-only Select и есть `readonly`, а
+				очистка там работает. Имя ядро собирает с именем поля
+				(`clearAria`), очищает команда поля `clear`. Клик не всплывает:
+				предок, который слушает клик по полю (select-only Select
+				открывает по нему панель), его не получит.
+
+				Своя кнопка — слот `clear`: заменяет встроенную целиком и
+				рисуется, когда задана. Команду очистки получает в scope.
+
+				У кнопки нет `view`: значения вида объявляет тема, и разметка
+				библиотеки их не знает. Кнопку тема красит по контексту
+				(`.so-input__clear`).
+			--><!--[--><!--v-if--><!--]--><!--[--><!--
+						The arrow is decorative: `aria-expanded` on the field already says
+						the panel's state. Icon is hidden from the screen reader by default.
+
+						The class is on the wrapper, not on the icon: the theme turns the
+						arrow by `.so-select[data-open] .so-select__arrow`. On `Icon` an
+						icon replaced through the slot would silently stop turning.
+					--><span class="so-select__arrow"><!--[--><svg viewBox="0 -960 960 960" style="width:;height:;" class="so-icon so-icon--size-normal" aria-hidden="true"><g fill="var(--so-icon-color, #1f1f1f)"><g transform="rotate(90 480 -480)"><path d="M504-480 348-636q-11-11-11-28t11-28q11-11 28-11t28 11l184 184q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L404-268q-11 11-28 11t-28-11q-11-11-11-28t11-28l156-156Z"/></g></g></svg><!--]--></span><!--[--><!--]--><!--]--></div></div><!--]--><!--
+			The panel is teleported, so it lies outside the field's subtree. Two
+			consequences: its anchor is Select's root, and `dismiss_ownerAttribute`
+			marks Select as its owner — otherwise a press inside the panel would count
+			as a press outside and close it.
+
+			Openness is `visible` (v-show), not `rendered` (v-if), and it matters:
+			the options join the collection on mounting and leave it on unmounting.
+			Hidden by `v-if`, the panel would empty the collection on closing, and
+			the choice with it — the field's value. `v-show` sets `display: none`,
+			which also takes the panel out of the accessibility tree.
+
+			The template does not compute the panel's side: the core turns Select's
+			`placement` into `panelPlacement` and `panelFlip`, and at the window's
+			edge `TAnchorPlugin` picks the side, unless `placement` forbade the flip.
+
+			`panelDataset` — the panel's `data-*` from Select: "being pulled"
+			(`data-swiping`), by which the theme drops the transition while the panel
+			follows the finger. Openness (`data-open`) Frame writes itself — it is
+			its layer's visibility — and the side after a flip (`data-placement`) the
+			anchor plugin. The gesture plugin writes the offset during the gesture
+			(`--so-swipe-offset`) into the panel itself.
+		--><!--teleport start--><!--teleport end--></div><!--]--></section><button type="button">After component</button></main></div>
+		<script id="input" type="application/json">
+			null
+		</script>
+	</body>
+</html>

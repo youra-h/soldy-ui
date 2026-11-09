@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-09T10:23:58.105Z",
+  "type": "contrast-negative-control-fixture-layout-repair",
+  "previousAmendment": "2026-11-09-table-public-matching.json",
+  "evidence": "../runs/linux-ci-42599790120-gate-failure/failed-tool-test.txt",
+  "reason": "Actual Linux axe diagnostics reported color-contrast incomplete with messageKey bgOverlap on every text node. The fixture used an empty rotating block of automatic width and zero height, whose transformed bounding box overlapped the text. Bound it to 8x8px at the viewport bottom/right, preserving its infinite animation away from the contrast samples.",
+  "changes": "Test fixture only. The existing bad-contrast violation assertion is preserved and strengthened by requiring no color-contrast incomplete for the controlled good/bad samples. Production settling, component assertions, prompts and candidate bytes are unchanged.",
+  "beforeCandidateResultInspection": false,
+  "testFile": {
+    "file": "tools/bench-ai/__tests__/settle.test.mjs",
+    "sha256": "27539957cbb29c95f68381e8e0d65618bca5d9b8b602cc0164b1924bd38e8c4f"
+  },
+  "validation": "Node syntax and focused ESLint passed; real browser validation is required in Linux CI. Local browsers/tests/builds remain stopped during performance timing.",
+  "rerun": "Full common-cohort validation after all tool controls pass; CI3 never ran candidate observations because the gate failed."
+}

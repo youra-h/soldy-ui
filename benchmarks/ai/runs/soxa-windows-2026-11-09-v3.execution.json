@@ -1,0 +1,14 @@
+{
+  "started": "2026-11-09T08:58:58.497Z",
+  "executable": "C:\\Program Files\\nodejs\\node.exe",
+  "args": [
+    "tools/bench-ai/run.mjs",
+    "soxa",
+    "benchmarks/ai/runs/soxa-windows-2026-11-09-v3"
+  ],
+  "pid": 42644,
+  "log": "benchmarks/ai/runs/soxa-windows-2026-11-09-v3.execution.txt",
+  "signal": null,
+  "finished": "2026-11-09T09:01:37.502Z",
+  "exitCode": 1
+}

@@ -1,0 +1,113 @@
+{
+  "date": "2026-11-09T09:04:51.455Z",
+  "sourceRun": "soxa-windows-2026-11-09-v3",
+  "browser": "156.0.8078.4",
+  "delayMs": 1000,
+  "immediate": {
+    "animations": [
+      {
+        "state": "running",
+        "currentTime": 0,
+        "timing": {
+          "duration": 140,
+          "endTime": 140
+        }
+      },
+      {
+        "state": "running",
+        "currentTime": 33.332,
+        "timing": {
+          "duration": 150,
+          "endTime": 150
+        }
+      },
+      {
+        "state": "running",
+        "currentTime": 0,
+        "timing": {
+          "duration": 200,
+          "endTime": 200
+        }
+      }
+    ],
+    "violations": [
+      {
+        "id": "region",
+        "impact": "moderate",
+        "tags": [
+          "cat.keyboard",
+          "best-practice",
+          "RGAAv4",
+          "RGAA-9.2.1"
+        ],
+        "description": "Ensure all page content is contained by landmarks",
+        "help": "All page content should be contained by landmarks",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/region?application=axeAPI",
+        "nodes": [
+          {
+            "any": [
+              {
+                "id": "region",
+                "data": {
+                  "isIframe": false
+                },
+                "relatedNodes": [],
+                "impact": "moderate",
+                "message": "Some page content is not contained by landmarks"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "moderate",
+            "html": "<div style=\"position: absolute; left: 16px; top: 144.875px; width: 1248px; height: auto; z-index: 1001;\" class=\"so-frame so-select__panel\" data-open=\"true\" data-contained=\"false\" data-swiping=\"false\" data-owner=\"v-0-owner\" data-layer=\"1001\" data-placement=\"bottom-start\">",
+            "target": [
+              ".so-frame"
+            ],
+            "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+          }
+        ]
+      }
+    ]
+  },
+  "settled": {
+    "animations": [],
+    "violations": [
+      {
+        "id": "region",
+        "impact": "moderate",
+        "tags": [
+          "cat.keyboard",
+          "best-practice",
+          "RGAAv4",
+          "RGAA-9.2.1"
+        ],
+        "description": "Ensure all page content is contained by landmarks",
+        "help": "All page content should be contained by landmarks",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/region?application=axeAPI",
+        "nodes": [
+          {
+            "any": [
+              {
+                "id": "region",
+                "data": {
+                  "isIframe": false
+                },
+                "relatedNodes": [],
+                "impact": "moderate",
+                "message": "Some page content is not contained by landmarks"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "moderate",
+            "html": "<div style=\"position: absolute; left: 16px; top: 144.875px; width: 1248px; height: auto; z-index: 1001;\" class=\"so-frame so-select__panel\" data-open=\"true\" data-contained=\"false\" data-swiping=\"false\" data-owner=\"v-0-owner\" data-layer=\"1001\" data-placement=\"bottom-start\">",
+            "target": [
+              ".so-frame"
+            ],
+            "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+          }
+        ]
+      }
+    ]
+  }
+}

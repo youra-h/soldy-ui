@@ -1,0 +1,127 @@
+{
+  "commands": [
+    {
+      "name": "root-install",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "args": [
+        "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+        "install",
+        "--no-audit",
+        "--no-fund"
+      ],
+      "started": "2026-11-09T08:15:59.503Z",
+      "finished": "2026-11-09T08:16:01.365Z",
+      "exitCode": 0,
+      "error": null,
+      "log": "prepare-root-install.txt"
+    },
+    {
+      "name": "table-install",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "args": [
+        "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+        "install",
+        "--no-audit",
+        "--no-fund"
+      ],
+      "cwd": "tools/bench-table",
+      "started": "2026-11-09T08:16:32.146Z",
+      "finished": "2026-11-09T08:17:32.064Z",
+      "exitCode": 0,
+      "error": null,
+      "log": "prepare-table-install.txt"
+    },
+    {
+      "name": "count-build",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "args": [
+        "node_modules/vite/bin/vite.js",
+        "build",
+        "--config",
+        "tools/bench-pages/vite.config.ts",
+        "--mode",
+        "count"
+      ],
+      "started": "2026-11-09T08:17:51.957Z",
+      "finished": "2026-11-09T08:17:58.826Z",
+      "exitCode": 0,
+      "error": null,
+      "log": "prepare-count-build.txt"
+    },
+    {
+      "name": "ssr-build",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "args": [
+        "node_modules/vite/bin/vite.js",
+        "build",
+        "--config",
+        "tools/bench-ssr/vite.config.ts"
+      ],
+      "started": "2026-11-09T08:18:15.282Z",
+      "finished": "2026-11-09T08:18:21.202Z",
+      "exitCode": 1,
+      "error": null,
+      "log": "prepare-ssr-build.txt"
+    },
+    {
+      "name": "ssr-build-v2",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "args": [
+        "node_modules/vite/bin/vite.js",
+        "build",
+        "--config",
+        "tools/bench-ssr/vite.config.ts"
+      ],
+      "started": "2026-11-09T08:19:48.949Z",
+      "finished": "2026-11-09T08:19:54.207Z",
+      "exitCode": 0,
+      "error": null,
+      "log": "prepare-ssr-build-v2.txt"
+    },
+    {
+      "name": "table-build",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "args": [
+        "node_modules/vite/bin/vite.js",
+        "build",
+        "--config",
+        "tools/bench-table/vite.config.ts"
+      ],
+      "started": "2026-11-09T08:20:46.168Z",
+      "finished": "2026-11-09T08:20:54.972Z",
+      "exitCode": 0,
+      "error": null,
+      "log": "prepare-table-build.txt"
+    },
+    {
+      "name": "ssr-build-v3",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "args": [
+        "node_modules/vite/bin/vite.js",
+        "build",
+        "--config",
+        "tools/bench-ssr/vite.config.ts"
+      ],
+      "started": "2026-11-09T08:32:45.349Z",
+      "finished": "2026-11-09T08:32:51.057Z",
+      "exitCode": 0,
+      "error": null,
+      "log": "prepare-ssr-build-v3.txt"
+    },
+    {
+      "name": "ssr-build-v4-after-format",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "args": [
+        "node_modules/vite/bin/vite.js",
+        "build",
+        "--config",
+        "tools/bench-ssr/vite.config.ts"
+      ],
+      "started": "2026-11-09T08:49:02.658Z",
+      "finished": "2026-11-09T08:49:08.310Z",
+      "exitCode": 0,
+      "error": null,
+      "log": "prepare-ssr-build-v4.txt"
+    }
+  ]
+}

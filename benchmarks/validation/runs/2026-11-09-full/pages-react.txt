@@ -1,0 +1,41 @@
+react прогрев 34 с
+react button {"weightKB":491,"mountMs":7,"heapSlopeKB":0.3,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react input {"weightKB":643,"mountMs":10,"heapSlopeKB":0.4,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react number-input {"weightKB":2268,"mountMs":22,"heapSlopeKB":0.6,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react textarea {"weightKB":704,"mountMs":10,"heapSlopeKB":0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react check-box {"weightKB":926,"mountMs":9,"heapSlopeKB":-0.8,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react switch {"weightKB":930,"mountMs":14,"heapSlopeKB":0.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react label {"weightKB":924,"mountMs":14,"heapSlopeKB":-0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react field {"weightKB":1109,"mountMs":12,"heapSlopeKB":-0.4,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react slider {"weightKB":1020,"mountMs":12,"heapSlopeKB":-0.4,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react rating {"weightKB":1391,"mountMs":23,"heapSlopeKB":-0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react radio-group {"weightKB":5514,"mountMs":36,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react select {"weightKB":4114,"mountMs":40,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react calendar {"weightKB":21037,"mountMs":149,"heapSlopeKB":1.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react date-input {"weightKB":1008,"mountMs":12,"heapSlopeKB":-0.8,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react date-picker {"weightKB":4266,"mountMs":38,"heapSlopeKB":-0.7,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react popover {"weightKB":3371,"mountMs":22,"heapSlopeKB":-0.9,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react menu {"weightKB":2916,"mountMs":22,"heapSlopeKB":-0.8,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react tooltip {"weightKB":1975,"mountMs":24,"heapSlopeKB":-0.5,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react dialog {"weightKB":3568,"mountMs":29,"heapSlopeKB":-5.3,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react drawer {"weightKB":3587,"mountMs":31,"heapSlopeKB":0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react toasts {"weightKB":4029,"mountMs":37,"heapSlopeKB":0.3,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react scroller {"weightKB":2165,"mountMs":21,"heapSlopeKB":-0.3,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react list-box {"weightKB":8334,"mountMs":54,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react pagination {"weightKB":7002,"mountMs":46,"heapSlopeKB":-0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react table {"weightKB":10413,"mountMs":103,"heapSlopeKB":-0.3,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react tabs {"weightKB":10706,"mountMs":97,"heapSlopeKB":-0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react tags {"weightKB":6422,"mountMs":54,"heapSlopeKB":-0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react accordion {"weightKB":10483,"mountMs":114,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react icon {"weightKB":431,"mountMs":8,"heapSlopeKB":-0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react progress-linear {"weightKB":450,"mountMs":14,"heapSlopeKB":-0.4,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react progress-spinner {"weightKB":473,"mountMs":17,"heapSlopeKB":-0.4,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react skeleton {"weightKB":446,"mountMs":9,"heapSlopeKB":-0.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react drag-and-drop {"weightKB":27784,"mountMs":203,"heapSlopeKB":0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react virtual {"weightKB":92077,"mountMs":1155,"heapSlopeKB":-0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react all {"weightKB":5786,"mountMs":108,"heapSlopeKB":-1.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react empty {"weightKB":16,"mountMs":11,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react обход 1 {"heap":10820784,"nodes":31,"listeners":15,"components":103,"emitters":0}
+react обход 2 {"heap":10821916,"nodes":31,"listeners":15,"components":103,"emitters":0}
+react обход 3 {"heap":10821640,"nodes":31,"listeners":15,"components":103,"emitters":0}
+react leak {"weightKB":490,"mountMs":5,"heapSlopeKB":43.4,"nodes":3000,"listeners":1000,"components":1000,"emitters":1000}

@@ -15,7 +15,7 @@ await measure(
 			return renderToString(
 				<LocaleProvider locale={locale}>
 					{components.map(({ id, props }) => (
-						<Fragment key={id}>{PREVIEWS[id](props)}</Fragment>
+						<Fragment key={id}>{PREVIEWS[id](props, {})}</Fragment>
 					))}
 				</LocaleProvider>,
 			)

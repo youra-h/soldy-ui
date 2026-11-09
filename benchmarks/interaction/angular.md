@@ -78,3 +78,7 @@
 | ------------------- | -------- | --------- | ---------- |
 | calendar: locale ru | 122 → 55 | 693 → 290 | 1140 → 488 |
 | calendar: locale en | 119 → 56 | 685 → 281 | 1137 → 496 |
+
+## 2026-11-09 — проверяемый запуск 2026-11-09-full
+
+Новый собственный замер — [итоговый отчёт](../validation/report.md), [условия и команды](../validation/README.md), [manifest](../validation/runs/2026-11-09-full/manifest.json), [raw interaction](../validation/runs/2026-11-09-full/interaction-angular.json), [машинная сводка](../validation/runs/2026-11-09-full/summary.json). Статус данных: **measured**. Параметры и каждый повтор сохранены; исторические числа выше не переписаны.

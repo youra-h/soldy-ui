@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-09T09:46:09.165Z",
+  "run": 42594315950,
+  "head": "ca5b167df8468b0001099faab4a8ee11d31f5d0a",
+  "artifactId": 13662353596,
+  "artifact": "observations.zip",
+  "sha256": "cc55c8486e7a99e1ebe7a893ee597a0c69b6cd66833f473c03b49c39127b3e92",
+  "bytes": 899186,
+  "status": "diagnostic-only",
+  "reason": "A tool negative control failed and Soxa baseline was skipped. Root cancelled this own research run to retrieve logs; always-upload saved observations. No model response generation occurred. Partial observations are excluded from the final common comparison cohort.",
+  "knownInstrumentationIssue": "The navigator.maxTouchPoints precondition rejected all WebKit touch cases before performing the supported Playwright tap; this is not a candidate quality conclusion."
+}

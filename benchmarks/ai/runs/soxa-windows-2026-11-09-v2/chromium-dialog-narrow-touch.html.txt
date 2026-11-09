@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Component validation</title>
+		<script type="module" crossorigin src="/assets/index-CBCqcOFG.js"></script>
+		<link rel="stylesheet" crossorigin href="/assets/index-B604dx7E.css">
+	</head>
+	<body>
+		<div id="app"><main lang="en" dir="ltr"><h1>Component validation</h1><button type="button">Before component</button><section aria-label="Candidate"><!--[--><!--[--><button type="button">Open dialog</button><!--teleport start--><!--teleport end--><!--]--><!--]--></section><button type="button">After component</button></main></div>
+		<script id="input" type="application/json">{"component":"dialog","baseline":true,"locale":"en","dir":"ltr","count":20}</script>
+	</body>
+</html>

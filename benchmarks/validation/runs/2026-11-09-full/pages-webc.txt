@@ -1,0 +1,41 @@
+webc прогрев 34 с
+webc button {"weightKB":440,"mountMs":6,"heapSlopeKB":0.4,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc input {"weightKB":569,"mountMs":8,"heapSlopeKB":0.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc number-input {"weightKB":2119,"mountMs":28,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc textarea {"weightKB":637,"mountMs":13,"heapSlopeKB":0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc check-box {"weightKB":808,"mountMs":15,"heapSlopeKB":-0.3,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc switch {"weightKB":787,"mountMs":15,"heapSlopeKB":0.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc label {"weightKB":807,"mountMs":14,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc field {"weightKB":1029,"mountMs":14,"heapSlopeKB":-0.3,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc slider {"weightKB":919,"mountMs":17,"heapSlopeKB":0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc rating {"weightKB":1065,"mountMs":26,"heapSlopeKB":-0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc radio-group {"weightKB":3717,"mountMs":44,"heapSlopeKB":0.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc select {"weightKB":3245,"mountMs":39,"heapSlopeKB":-0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc calendar {"weightKB":18373,"mountMs":160,"heapSlopeKB":0.9,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc date-input {"weightKB":905,"mountMs":13,"heapSlopeKB":-0.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc date-picker {"weightKB":3382,"mountMs":40,"heapSlopeKB":-0.6,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc popover {"weightKB":2509,"mountMs":28,"heapSlopeKB":-0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc menu {"weightKB":3822,"mountMs":37,"heapSlopeKB":-0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc tooltip {"weightKB":1315,"mountMs":18,"heapSlopeKB":0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc dialog {"weightKB":3249,"mountMs":41,"heapSlopeKB":-0.5,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc drawer {"weightKB":3029,"mountMs":32,"heapSlopeKB":0.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc toasts {"weightKB":3224,"mountMs":35,"heapSlopeKB":0.5,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc scroller {"weightKB":1952,"mountMs":24,"heapSlopeKB":-0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc list-box {"weightKB":6837,"mountMs":73,"heapSlopeKB":-0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc pagination {"weightKB":6332,"mountMs":61,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc table {"weightKB":8253,"mountMs":89,"heapSlopeKB":-1.7,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc tabs {"weightKB":9358,"mountMs":104,"heapSlopeKB":0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc tags {"weightKB":6808,"mountMs":55,"heapSlopeKB":-0.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc accordion {"weightKB":7552,"mountMs":101,"heapSlopeKB":-0.4,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc icon {"weightKB":379,"mountMs":8,"heapSlopeKB":-0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc progress-linear {"weightKB":407,"mountMs":6,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc progress-spinner {"weightKB":392,"mountMs":13,"heapSlopeKB":-0.3,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc skeleton {"weightKB":361,"mountMs":6,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc drag-and-drop {"weightKB":23311,"mountMs":230,"heapSlopeKB":-0.3,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc virtual {"weightKB":87713,"mountMs":1360,"heapSlopeKB":-0.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc all {"weightKB":4887,"mountMs":77,"heapSlopeKB":-0.8,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc empty {"weightKB":2,"mountMs":6,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc обход 1 {"heap":11561320,"nodes":29,"listeners":13,"components":103,"emitters":0}
+webc обход 2 {"heap":11562376,"nodes":29,"listeners":13,"components":103,"emitters":0}
+webc обход 3 {"heap":11554316,"nodes":29,"listeners":13,"components":103,"emitters":0}
+webc leak {"weightKB":418,"mountMs":5,"heapSlopeKB":191.5,"nodes":3100,"listeners":1000,"components":2000,"emitters":2000}

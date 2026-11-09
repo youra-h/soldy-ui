@@ -1,0 +1,209 @@
+<script setup>
+import { ref, useId } from 'vue'
+
+const props = defineProps({
+  items: {
+    type: Array,
+    default: () => []
+  },
+  rows: {
+    type: Array,
+    default: () => []
+  },
+  locale: {
+    type: String,
+    default: 'en',
+    validator: value => ['en', 'ru', 'ar'].includes(value)
+  },
+  dir: {
+    type: String,
+    default: 'ltr',
+    validator: value => ['ltr', 'rtl'].includes(value)
+  }
+})
+
+// Vue's instance IDs remain consistent between server rendering and hydration.
+const instanceId = useId()
+const tabs = [
+  { value: 'alpha', text: 'Alpha', panel: 'Alpha panel' },
+  { value: 'beta', text: 'Beta', panel: 'Beta panel' },
+  { value: 'gamma', text: 'Gamma', panel: 'Gamma panel' }
+]
+
+const activeIndex = ref(0)
+const tabElements = []
+
+const tabId = value => `${instanceId}-tab-${value}`
+const panelId = value => `${instanceId}-panel-${value}`
+
+function activate(index) {
+  activeIndex.value = index
+}
+
+function onKeydown(event, index) {
+  let nextIndex
+  const forward = props.dir === 'rtl' ? -1 : 1
+
+  switch (event.key) {
+    case 'ArrowRight':
+      nextIndex = (index + forward + tabs.length) % tabs.length
+      break
+    case 'ArrowLeft':
+      nextIndex = (index - forward + tabs.length) % tabs.length
+      break
+    case 'Home':
+      nextIndex = 0
+      break
+    case 'End':
+      nextIndex = tabs.length - 1
+      break
+    default:
+      return
+  }
+
+  event.preventDefault()
+  activate(nextIndex)
+  tabElements[nextIndex]?.focus()
+}
+</script>
+
+<template>
+  <div class="tabs" :dir="props.dir" lang="en">
+    <div
+      class="tab-list"
+      role="tablist"
+      aria-label="Sections"
+      aria-orientation="horizontal"
+    >
+      <button
+        v-for="(tab, index) in tabs"
+        :id="tabId(tab.value)"
+        :key="tab.value"
+        :ref="element => { tabElements[index] = element }"
+        class="tab"
+        type="button"
+        role="tab"
+        :aria-selected="activeIndex === index"
+        :aria-controls="panelId(tab.value)"
+        :tabindex="activeIndex === index ? 0 : -1"
+        @focus="activate(index)"
+        @click="activate(index)"
+        @keydown="onKeydown($event, index)"
+      >
+        {{ tab.text }}
+      </button>
+    </div>
+
+    <div
+      v-for="(tab, index) in tabs"
+      :id="panelId(tab.value)"
+      :key="tab.value"
+      class="panel"
+      role="tabpanel"
+      :aria-labelledby="tabId(tab.value)"
+      :hidden="activeIndex !== index"
+      tabindex="0"
+    >
+      <p>{{ tab.panel }}</p>
+    </div>
+  </div>
+</template>
+
+<style scoped>
+.tabs {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 36rem;
+  min-width: 0;
+  padding: 8px;
+  color: #172033;
+  background: #ffffff;
+  font-family: system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.tabs *,
+.tabs *::before,
+.tabs *::after {
+  box-sizing: border-box;
+}
+
+.tab-list {
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid #697386;
+  border-radius: 10px;
+  background: #f1f4f8;
+}
+
+.tab {
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 44px;
+  padding: 10px 8px;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  color: #26334a;
+  background: transparent;
+  font: inherit;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.tab[aria-selected='true'] {
+  border-color: #174ea6;
+  color: #ffffff;
+  background: #174ea6;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.tab:focus-visible,
+.panel:focus-visible {
+  outline: 3px solid #111827;
+  outline-offset: 3px;
+}
+
+.panel {
+  min-height: 120px;
+  margin-block-start: 12px;
+  padding: 20px;
+  border: 1px solid #697386;
+  border-radius: 8px;
+  overflow-wrap: anywhere;
+}
+
+.panel[hidden] {
+  display: none;
+}
+
+.panel p {
+  margin: 0;
+}
+
+@media (forced-colors: active) {
+  .tab[aria-selected='true'] {
+    border-color: Highlight;
+    color: HighlightText;
+    background: Highlight;
+  }
+
+  .tab:focus-visible,
+  .panel:focus-visible {
+    outline-color: CanvasText;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tabs,
+  .tabs * {
+    animation: none;
+    transition: none;
+    scroll-behavior: auto;
+  }
+}
+</style>

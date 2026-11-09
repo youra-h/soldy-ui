@@ -1,0 +1,67 @@
+{
+    "schemaVersion":  1,
+    "date":  "2026-11-09T09:08:10.9963798Z",
+    "reason":  "SSR HTML is immutable experimental data, including existing library comments. Archive as .html.txt without changing bytes; maintained source comment checks remain unchanged.",
+    "files":  [
+                  {
+                      "original":  "chromium-date-picker-default.html",
+                      "archived":  "chromium-date-picker-default.html.txt",
+                      "sha256":  "eebdc6e9c170701e712a6e5abb7884b7658a71db3f55dd50091c23303cea21f1",
+                      "bytes":  13506
+                  },
+                  {
+                      "original":  "chromium-date-picker-narrow-touch.html",
+                      "archived":  "chromium-date-picker-narrow-touch.html.txt",
+                      "sha256":  "eebdc6e9c170701e712a6e5abb7884b7658a71db3f55dd50091c23303cea21f1",
+                      "bytes":  13506
+                  },
+                  {
+                      "original":  "chromium-date-picker-reduce.html",
+                      "archived":  "chromium-date-picker-reduce.html.txt",
+                      "sha256":  "eebdc6e9c170701e712a6e5abb7884b7658a71db3f55dd50091c23303cea21f1",
+                      "bytes":  13506
+                  },
+                  {
+                      "original":  "chromium-date-picker-rtl.html",
+                      "archived":  "chromium-date-picker-rtl.html.txt",
+                      "sha256":  "84b8b253d171e0070ba01a66c8b9f2e472c9c30657d1dea62acf403ab3e43a68",
+                      "bytes":  13558
+                  },
+                  {
+                      "original":  "chromium-select-default.html",
+                      "archived":  "chromium-select-default.html.txt",
+                      "sha256":  "0f45a03282065cef8e4b0235c936006f168d4ac730a14e505e6a805822cb5e8e",
+                      "bytes":  9510
+                  },
+                  {
+                      "original":  "chromium-select-ime.html",
+                      "archived":  "chromium-select-ime.html.txt",
+                      "sha256":  "0f45a03282065cef8e4b0235c936006f168d4ac730a14e505e6a805822cb5e8e",
+                      "bytes":  9510
+                  },
+                  {
+                      "original":  "chromium-select-large.html",
+                      "archived":  "chromium-select-large.html.txt",
+                      "sha256":  "0f45a03282065cef8e4b0235c936006f168d4ac730a14e505e6a805822cb5e8e",
+                      "bytes":  9510
+                  },
+                  {
+                      "original":  "chromium-select-narrow-touch.html",
+                      "archived":  "chromium-select-narrow-touch.html.txt",
+                      "sha256":  "0f45a03282065cef8e4b0235c936006f168d4ac730a14e505e6a805822cb5e8e",
+                      "bytes":  9510
+                  },
+                  {
+                      "original":  "chromium-select-reduce.html",
+                      "archived":  "chromium-select-reduce.html.txt",
+                      "sha256":  "0f45a03282065cef8e4b0235c936006f168d4ac730a14e505e6a805822cb5e8e",
+                      "bytes":  9510
+                  },
+                  {
+                      "original":  "chromium-select-rtl.html",
+                      "archived":  "chromium-select-rtl.html.txt",
+                      "sha256":  "3c709170287da33b82f8e19da97f262e9cdccc919987b22546f818327c087811",
+                      "bytes":  9510
+                  }
+              ]
+}

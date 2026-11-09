@@ -1,0 +1,32 @@
+react select ×1 open 16/65, close 14/64, type 7/56
+react select ×4 open 18/64, close 17/64, type 18/54
+react select ×6 open 26/65, close 20/62, type 28/58
+react menu ×1 open 16/65, close 15/65
+react menu ×4 open 19/63, close 17/64
+react menu ×6 open 28/73, close 24/63
+react date-picker ×1 open 16/65, close 15/65, locale ru 17/65, locale en 20/66
+react date-picker ×4 open 32/81, close 17/64, locale ru 106/128, locale en 89/117
+react date-picker ×6 open 55/98, close 27/63, locale ru 184/222, locale en 160/199
+react dialog ×1 open 16/65, close 15/64
+react dialog ×4 open 24/65, close 19/63
+react dialog ×6 open 47/95, close 39/77
+react input ×1 type 13/62
+react input ×4 type 13/59
+react input ×6 type 15/57
+react tabs ×1 tab 2 16/66, tab 1 15/66
+react tabs ×4 tab 2 32/81, tab 1 34/80
+react tabs ×6 tab 2 51/98, tab 1 50/95
+react calendar ×1 locale ru 91/116, locale en 87/116
+react calendar ×4 locale ru 638/673, locale en 659/681
+react calendar ×6 locale ru 1214/1247, locale en 1192/1235
+react number-input ×1 locale ru 18/66, locale en 17/66
+react number-input ×4 locale ru 40/82, locale en 41/82
+react number-input ×6 locale ru 72/115, locale en 74/115
+react select перерисовки open 12/12 чужим 0, close 12/12 чужим 0, type 18/18 чужим 0
+react menu перерисовки open 8/8 чужим 0, close 7/7 чужим 0
+react date-picker перерисовки open 91/91 чужим 0, close 23/23 чужим 0, locale ru 951/69 чужим 980, locale en 930/48 чужим 980
+react dialog перерисовки open 19/19 чужим 0, close 11/11 чужим 0
+react input перерисовки type 2/2 чужим 0
+react tabs перерисовки tab 2 18/18 чужим 0, tab 1 18/18 чужим 0
+react calendar перерисовки locale ru 1451/30 чужим 3724, locale en 1451/30 чужим 3724
+react number-input перерисовки locale ru 801/17 чужим 784, locale en 801/17 чужим 784

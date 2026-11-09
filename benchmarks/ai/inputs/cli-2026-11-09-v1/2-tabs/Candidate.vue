@@ -1,0 +1,212 @@
+<script setup>
+import { ref, useId } from 'vue'
+
+const props = defineProps({
+  items: {
+    type: Array,
+    default: () => [],
+  },
+  rows: {
+    type: Array,
+    default: () => [],
+  },
+  locale: {
+    type: String,
+    default: 'en',
+    validator: (value) => ['en', 'ru', 'ar'].includes(value),
+  },
+  dir: {
+    type: String,
+    default: 'ltr',
+    validator: (value) => ['ltr', 'rtl'].includes(value),
+  },
+})
+
+const tabs = [
+  { value: 'alpha', text: 'Alpha', panel: 'Alpha panel' },
+  { value: 'beta', text: 'Beta', panel: 'Beta panel' },
+  { value: 'gamma', text: 'Gamma', panel: 'Gamma panel' },
+]
+
+const instanceId = useId()
+const activeIndex = ref(0)
+const tabElements = []
+
+const tabId = (value) => `${instanceId}-tab-${value}`
+const panelId = (value) => `${instanceId}-panel-${value}`
+
+function onKeydown(event, index) {
+  if (event.altKey || event.ctrlKey || event.metaKey) return
+
+  let nextIndex
+  const forward = props.dir === 'rtl' ? -1 : 1
+
+  switch (event.key) {
+    case 'ArrowRight':
+      nextIndex = (index + forward + tabs.length) % tabs.length
+      break
+    case 'ArrowLeft':
+      nextIndex = (index - forward + tabs.length) % tabs.length
+      break
+    case 'Home':
+      nextIndex = 0
+      break
+    case 'End':
+      nextIndex = tabs.length - 1
+      break
+    default:
+      return
+  }
+
+  event.preventDefault()
+  activeIndex.value = nextIndex
+  tabElements[nextIndex]?.focus()
+}
+</script>
+
+<template>
+  <div class="tabs" :dir="props.dir" lang="en">
+    <div
+      class="tab-list"
+      role="tablist"
+      aria-label="Example panels"
+      aria-orientation="horizontal"
+    >
+      <button
+        v-for="(tab, index) in tabs"
+        :id="tabId(tab.value)"
+        :key="tab.value"
+        :ref="(element) => (tabElements[index] = element)"
+        class="tab"
+        type="button"
+        role="tab"
+        :aria-selected="activeIndex === index"
+        :aria-controls="panelId(tab.value)"
+        :tabindex="activeIndex === index ? 0 : -1"
+        @focus="activeIndex = index"
+        @click="activeIndex = index"
+        @keydown="onKeydown($event, index)"
+      >
+        {{ tab.text }}
+      </button>
+    </div>
+
+    <div
+      v-for="(tab, index) in tabs"
+      :id="panelId(tab.value)"
+      :key="tab.value"
+      :hidden="activeIndex !== index"
+      class="tab-panel"
+      role="tabpanel"
+      :aria-labelledby="tabId(tab.value)"
+      tabindex="0"
+    >
+      <p>{{ tab.panel }}</p>
+    </div>
+  </div>
+</template>
+
+<style scoped>
+.tabs {
+  box-sizing: border-box;
+  inline-size: 100%;
+  max-inline-size: 36rem;
+  min-inline-size: 0;
+  padding: 0.5rem;
+  color: #172033;
+  background: #ffffff;
+  font-family: system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.tabs *,
+.tabs *::before,
+.tabs *::after {
+  box-sizing: inherit;
+}
+
+.tab-list {
+  display: flex;
+  gap: 0.25rem;
+  border-block-end: 2px solid #687386;
+}
+
+.tab {
+  flex: 1 1 0;
+  min-inline-size: 0;
+  min-block-size: 48px;
+  margin: 0;
+  padding: 0.625rem 0.5rem;
+  border: 2px solid transparent;
+  border-block-end: 4px solid transparent;
+  border-radius: 0.375rem 0.375rem 0 0;
+  color: #28354a;
+  background: #f0f3f8;
+  font: inherit;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.tab[aria-selected='true'] {
+  border-block-end-color: #174db5;
+  color: #123d91;
+  background: #e4edff;
+}
+
+@media (hover: hover) {
+  .tab:hover {
+    background: #dce7fa;
+  }
+}
+
+.tab-panel {
+  min-block-size: 8rem;
+  margin-block-start: 0.5rem;
+  padding: 1rem;
+  border: 1px solid #687386;
+  border-radius: 0.375rem;
+  overflow-wrap: anywhere;
+}
+
+.tab-panel[hidden] {
+  display: none;
+}
+
+.tab-panel p {
+  margin: 0;
+}
+
+.tab:focus-visible,
+.tab-panel:focus-visible {
+  outline: 3px solid #172033;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tabs,
+  .tabs * {
+    animation: none;
+    transition: none;
+    scroll-behavior: auto;
+  }
+}
+
+@media (forced-colors: active) {
+  .tab {
+    border-color: ButtonText;
+  }
+
+  .tab[aria-selected='true'] {
+    border-block-end-color: Highlight;
+    color: Highlight;
+  }
+
+  .tab:focus-visible,
+  .tab-panel:focus-visible {
+    outline-color: Highlight;
+  }
+}
+</style>

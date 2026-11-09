@@ -1,0 +1,32 @@
+angular select ×1 open 17/65, close 15/64, type 8/56
+angular select ×4 open 23/64, close 19/64, type 15/54
+angular select ×6 open 34/80, close 23/62, type 26/56
+angular menu ×1 open 17/65, close 16/64
+angular menu ×4 open 23/64, close 19/65
+angular menu ×6 open 34/78, close 25/64
+angular date-picker ×1 open 18/65, close 16/65, locale ru 19/64, locale en 19/65
+angular date-picker ×4 open 29/64, close 22/65, locale ru 88/113, locale en 74/99
+angular date-picker ×6 open 43/80, close 27/65, locale ru 139/179, locale en 135/179
+angular dialog ×1 open 16/65, close 15/64
+angular dialog ×4 open 23/64, close 19/64
+angular dialog ×6 open 25/63, close 21/64
+angular input ×1 type 13/63
+angular input ×4 type 13/61
+angular input ×6 type 12/59
+angular tabs ×1 tab 2 17/65, tab 1 17/65
+angular tabs ×4 tab 2 28/77, tab 1 30/79
+angular tabs ×6 tab 2 66/116, tab 1 57/111
+angular calendar ×1 locale ru 112/137, locale en 113/142
+angular calendar ×4 locale ru 918/947, locale en 925/958
+angular calendar ×6 locale ru 1624/1664, locale en 1723/1769
+angular number-input ×1 locale ru 17/66, locale en 17/66
+angular number-input ×4 locale ru 25/66, locale en 25/65
+angular number-input ×6 locale ru 39/82, locale en 39/82
+angular select перерисовки open 3/3 чужим 0, close 3/3 чужим 0, type 5/5 чужим 0
+angular menu перерисовки open 4/4 чужим 0, close 3/3 чужим 0
+angular date-picker перерисовки open 8/8 чужим 0, close 6/6 чужим 0, locale ru 212/16 чужим 1078, locale en 210/14 чужим 1078
+angular dialog перерисовки open 6/6 чужим 0, close 5/5 чужим 0
+angular input перерисовки type 1/1 чужим 0
+angular tabs перерисовки tab 2 9/9 чужим 0, tab 1 9/9 чужим 0
+angular calendar перерисовки locale ru 451/10 чужим 30870, locale en 451/10 чужим 30968
+angular number-input перерисовки locale ru 151/4 чужим 196, locale en 151/4 чужим 196

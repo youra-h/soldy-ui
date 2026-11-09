@@ -1,0 +1,199 @@
+13:20:46 [vite-plugin-svelte] no Svelte config found at D:/projects/soxa-a/tools/bench-table - using default configuration.
+vite v8.3.4 building client environment for production...
+transforming...
+discarding unknown file input sourcemap Error: ENOENT: no such file or directory, open 'D:\projects\soxa-a\tools\bench-table\node_modules\@tanstack\angular-table\dist\fesm2022\tanstack-angular-table.mjs.map'
+    at Object.readFileSync (node:fs:484:20)
+    at readInputSourceMapFile (file:///D:/projects/soxa-a/node_modules/@babel/core/lib/transformation/read-input-source-map-file.js:29:32)
+    at normalizeFile (file:///D:/projects/soxa-a/node_modules/@babel/core/lib/index-shared.js:2696:24)
+    at normalizeFile.next (<anonymous>)
+    at run (file:///D:/projects/soxa-a/node_modules/@babel/core/lib/index-shared.js:2773:23)
+    at run.next (<anonymous>)
+    at transform (file:///D:/projects/soxa-a/node_modules/@babel/core/lib/index-shared.js:2841:17)
+    at transform.next (<anonymous>)
+    at step (D:\projects\soxa-a\node_modules\gensync\index.js:261:32)
+    at evaluateAsync (D:\projects\soxa-a\node_modules\gensync\index.js:291:5)
+    at D:\projects\soxa-a\node_modules\gensync\index.js:93:9
+    at new Promise (<anonymous>)
+    at async (D:\projects\soxa-a\node_modules\gensync\index.js:92:14)
+    at stopHiding - secret - don't use this - v1 (file:///D:/projects/soxa-a/node_modules/@babel/core/lib/errors/rewrite-stack-trace.js:37:12)
+    at transformAsync (file:///D:/projects/soxa-a/node_modules/@babel/core/lib/index-shared.js:2863:53)
+    at TransformPluginContextImpl.link (file:///D:/projects/soxa-a/tools/bench-table/node_modules/.vite-temp/vite.config.ts.timestamp-1794212446308-f282a732de7e98.mjs:57:23)
+    at TransformPluginContextImpl.handler (file:///D:/projects/soxa-a/node_modules/vite/dist/node/chunks/node.js:34958:13)
+    at plugin (file:///D:/projects/soxa-a/node_modules/rolldown/dist/shared/bindingify-input-options-UCGox0BH.mjs:1730:30)
+    at file:///D:/projects/soxa-a/node_modules/rolldown/dist/shared/bindingify-input-options-UCGox0BH.mjs:2122:21
+    at plugin.<computed> (file:///D:/projects/soxa-a/node_modules/rolldown/dist/shared/bindingify-input-options-UCGox0BH.mjs:2320:18) {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\projects\\soxa-a\\tools\\bench-table\\node_modules\\@tanstack\\angular-table\\dist\\fesm2022\\tanstack-angular-table.mjs.map'
+}
+✓ 12044 modules transformed.
+rendering chunks...
+computing gzip size...
+tools/bench-table/dist/webc.html                                         0.45 kB │ gzip:   0.24 kB
+tools/bench-table/dist/solid.html                                        0.52 kB │ gzip:   0.25 kB
+tools/bench-table/dist/index.html                                        0.53 kB │ gzip:   0.27 kB
+tools/bench-table/dist/svelte.html                                       0.61 kB │ gzip:   0.28 kB
+tools/bench-table/dist/react.html                                        0.77 kB │ gzip:   0.31 kB
+tools/bench-table/dist/angular.html                                      0.94 kB │ gzip:   0.34 kB
+tools/bench-table/dist/assets/SvGridChartView-B1X7_1VZ.css               0.10 kB │ gzip:   0.10 kB
+tools/bench-table/dist/assets/SvGridChartPanel-yy9ak3Bc.css              0.30 kB │ gzip:   0.20 kB
+tools/bench-table/dist/assets/PinSplitter-Do6LD-Ht.css                   1.38 kB │ gzip:   0.47 kB
+tools/bench-table/dist/assets/SvChartMenu-qpjsUfo8.css                   1.84 kB │ gzip:   0.70 kB
+tools/bench-table/dist/assets/SvDateRangeInput-dUbExZp6.css              1.90 kB │ gzip:   0.68 kB
+tools/bench-table/dist/assets/SvGridDropdown-DqO-0cO8.css                3.60 kB │ gzip:   1.01 kB
+tools/bench-table/dist/assets/GridMenus-ChCpqu0I.css                     3.78 kB │ gzip:   1.10 kB
+tools/bench-table/dist/assets/SvField-ryPQibm_.css                       4.89 kB │ gzip:   1.27 kB
+tools/bench-table/dist/assets/SvDateTimePicker-CbeEt3sa.css              5.22 kB │ gzip:   1.37 kB
+tools/bench-table/dist/assets/material-b5P5JLEa.css                      6.48 kB │ gzip:   1.26 kB
+tools/bench-table/dist/assets/date-format-CnSqugAa.css                   7.79 kB │ gzip:   1.70 kB
+tools/bench-table/dist/assets/SvGridChartBuilder-CEzeHMR8.css            9.59 kB │ gzip:   2.19 kB
+tools/bench-table/dist/assets/SvGridChart-lMwWYmmW.css                  23.17 kB │ gzip:   3.58 kB
+tools/bench-table/dist/assets/svgrid-CuLtu8YO.css                       68.31 kB │ gzip:  11.52 kB
+tools/bench-table/dist/assets/mantine-DY6xIP-b.css                     247.52 kB │ gzip:  35.89 kB
+tools/bench-table/dist/assets/aggrid-ngAV9ivm.css                      282.81 kB │ gzip:  39.77 kB
+tools/bench-table/dist/assets/soxa-setup-_J1IiK__.css                  361.72 kB │ gzip:  37.05 kB
+tools/bench-table/dist/assets/zorro-CQqgMtKQ.css                       548.24 kB │ gzip:  68.32 kB
+tools/bench-table/dist/assets/carbon-BHWJ1N6h.css                      558.01 kB │ gzip:  65.83 kB
+tools/bench-table/dist/assets/state-Dfvzj6n2.js                          0.03 kB │ gzip:   0.05 kB
+tools/bench-table/dist/assets/legacy-CE9pgoZJ.js                         0.05 kB │ gzip:   0.07 kB
+tools/bench-table/dist/assets/parts-CEaVbKf8.js                          0.05 kB │ gzip:   0.07 kB
+tools/bench-table/dist/assets/conditional-formatting-DKAtp0Kd.js         0.18 kB │ gzip:   0.15 kB
+tools/bench-table/dist/assets/shadow-Cbkabs5B.js                         0.20 kB │ gzip:   0.19 kB
+tools/bench-table/dist/assets/kobalte-DVIA7B8l.js                        0.25 kB │ gzip:   0.21 kB
+tools/bench-table/dist/assets/tanstack-DRaxgo_8.js                       0.25 kB │ gzip:   0.22 kB
+tools/bench-table/dist/assets/tanstack-t6JCIZuK.js                       0.25 kB │ gzip:   0.21 kB
+tools/bench-table/dist/assets/shadcn-AVemzBsT.js                         0.25 kB │ gzip:   0.22 kB
+tools/bench-table/dist/assets/sort-wCOtmck9.js                           0.27 kB │ gzip:   0.21 kB
+tools/bench-table/dist/assets/reka-ICEq2E-F.js                           0.29 kB │ gzip:   0.24 kB
+tools/bench-table/dist/assets/tanstack-DV-1dXve.js                       0.30 kB │ gzip:   0.24 kB
+tools/bench-table/dist/assets/editor-registry-BjP16H0v.js                0.31 kB │ gzip:   0.18 kB
+tools/bench-table/dist/assets/clsx-DB0hHKMi.js                           0.36 kB │ gzip:   0.23 kB
+tools/bench-table/dist/assets/aggrid-CKhn71_z.js                         0.40 kB │ gzip:   0.23 kB
+tools/bench-table/dist/assets/grid-extension.svelte-D-HzK4--.js          0.47 kB │ gzip:   0.30 kB
+tools/bench-table/dist/assets/editor-contract-Bpoa7A5g.js                0.47 kB │ gzip:   0.29 kB
+tools/bench-table/dist/assets/data-Bw2mS6-r.js                           0.57 kB │ gzip:   0.41 kB
+tools/bench-table/dist/assets/keyed-Dv5Pw5yI.js                          0.61 kB │ gzip:   0.35 kB
+tools/bench-table/dist/assets/_xhr-chunk-PHHRTmSS.js                     0.65 kB │ gzip:   0.41 kB
+tools/bench-table/dist/assets/shallow-Dun7x-SF.js                        0.68 kB │ gzip:   0.32 kB
+tools/bench-table/dist/assets/rolldown-runtime-XKyaHtl9.js               0.72 kB │ gzip:   0.42 kB
+tools/bench-table/dist/assets/defineProperty-C01n5JZH.js                 0.73 kB │ gzip:   0.40 kB
+tools/bench-table/dist/assets/if-defined-5Z39mIUu.js                     0.80 kB │ gzip:   0.47 kB
+tools/bench-table/dist/assets/SvGridChartView-3lAf4j5j.js                0.94 kB │ gzip:   0.50 kB
+tools/bench-table/dist/assets/dismissable-ChWRPkoa.js                    0.96 kB │ gzip:   0.51 kB
+tools/bench-table/dist/assets/plain-f2bkg-IO.js                          1.04 kB │ gzip:   0.51 kB
+tools/bench-table/dist/assets/rxjs-interop-DQGQBqsr.js                   1.12 kB │ gzip:   0.60 kB
+tools/bench-table/dist/assets/list-option-C-FUL_Fk.js                    1.23 kB │ gzip:   0.67 kB
+tools/bench-table/dist/assets/index-client-CYXApBKA.js                   1.27 kB │ gzip:   0.61 kB
+tools/bench-table/dist/assets/chart-trend-_gDVw3bP.js                    1.31 kB │ gzip:   0.67 kB
+tools/bench-table/dist/assets/webc-DjGnc9Z4.js                           1.34 kB │ gzip:   0.62 kB
+tools/bench-table/dist/assets/solid-DhuKACQk.js                          1.38 kB │ gzip:   0.66 kB
+tools/bench-table/dist/assets/takeUntil-DUA3bTJU.js                      1.38 kB │ gzip:   0.67 kB
+tools/bench-table/dist/assets/extends-DocfZcVo.js                        1.38 kB │ gzip:   0.61 kB
+tools/bench-table/dist/assets/decorators-DyHLKihF.js                     1.40 kB │ gzip:   0.72 kB
+tools/bench-table/dist/assets/plain-Dp98yIDt.js                          1.40 kB │ gzip:   0.77 kB
+tools/bench-table/dist/assets/plain-BX2cR2kt.js                          1.43 kB │ gzip:   0.70 kB
+tools/bench-table/dist/assets/index-BLKzyJgf.js                          1.48 kB │ gzip:   0.66 kB
+tools/bench-table/dist/assets/plain-D-7IZcy1.js                          1.49 kB │ gzip:   0.78 kB
+tools/bench-table/dist/assets/popover-Diz6NsdH.js                        1.51 kB │ gzip:   0.76 kB
+tools/bench-table/dist/assets/preload-helper-BLdHbfdN.js                 1.51 kB │ gzip:   0.79 kB
+tools/bench-table/dist/assets/focus-trap-0713VPZR.js                     1.55 kB │ gzip:   0.74 kB
+tools/bench-table/dist/assets/react-gXwIv2ns.js                          1.58 kB │ gzip:   0.73 kB
+tools/bench-table/dist/assets/sparkline-hudHGHYu.js                      1.73 kB │ gzip:   0.85 kB
+tools/bench-table/dist/assets/core-6wbl_uq-.js                           1.76 kB │ gzip:   0.89 kB
+tools/bench-table/dist/assets/plain-CNsuG-Xm.js                          1.90 kB │ gzip:   0.92 kB
+tools/bench-table/dist/assets/chart-c9cyOTH0.js                          2.10 kB │ gzip:   1.06 kB
+tools/bench-table/dist/assets/svelte-pA8uZx_G.js                         2.24 kB │ gzip:   1.06 kB
+tools/bench-table/dist/assets/merges-Bk7GJYbQ.js                         2.35 kB │ gzip:   0.91 kB
+tools/bench-table/dist/assets/row-drag-touch-cL7_GfpM.js                 2.52 kB │ gzip:   1.05 kB
+tools/bench-table/dist/assets/cell-formatting-JoxA0t65.js                2.68 kB │ gzip:   0.94 kB
+tools/bench-table/dist/assets/innerFrom-Dq2cgQMQ.js                      2.80 kB │ gzip:   1.15 kB
+tools/bench-table/dist/assets/async-directive-BemcIKbq.js                2.98 kB │ gzip:   1.40 kB
+tools/bench-table/dist/assets/column-resize-2TqlOJ19.js                  3.13 kB │ gzip:   1.18 kB
+tools/bench-table/dist/assets/platform-browser-rZaqgrpz.js               3.35 kB │ gzip:   1.41 kB
+tools/bench-table/dist/assets/row-resize-Dl0Vhksw.js                     3.54 kB │ gzip:   1.36 kB
+tools/bench-table/dist/assets/react-dom-qxh4IBEZ.js                      3.59 kB │ gzip:   1.36 kB
+tools/bench-table/dist/assets/conditional-formatting-BouCrWI9.js         3.61 kB │ gzip:   1.66 kB
+tools/bench-table/dist/assets/atom-Beym6Moe.js                           3.69 kB │ gzip:   1.48 kB
+tools/bench-table/dist/assets/export-format-C9wg0qHX.js                  3.97 kB │ gzip:   1.70 kB
+tools/bench-table/dist/assets/chart-export-pdf-CtO1fEY1.js               3.99 kB │ gzip:   2.20 kB
+tools/bench-table/dist/assets/bench-BxrkjjDO.js                          4.05 kB │ gzip:   1.85 kB
+tools/bench-table/dist/assets/PinSplitter-DT8YrbIp.js                    4.05 kB │ gzip:   1.84 kB
+tools/bench-table/dist/assets/row-drag-BUJ3vjow.js                       4.11 kB │ gzip:   1.66 kB
+tools/bench-table/dist/assets/SvField-BZ1-VgdK.js                        4.19 kB │ gzip:   1.58 kB
+tools/bench-table/dist/assets/validate-sJiz41uU.js                       4.21 kB │ gzip:   1.82 kB
+tools/bench-table/dist/assets/SvDateRangeInput-DyY1YikG.js               4.80 kB │ gzip:   2.34 kB
+tools/bench-table/dist/assets/SvGrid.helpers-BF2QRcNt.js                 4.86 kB │ gzip:   1.76 kB
+tools/bench-table/dist/assets/registry-DSQl9cd7.js                       4.92 kB │ gzip:   1.76 kB
+tools/bench-table/dist/assets/chart-summary-3np3fowZ.js                  5.07 kB │ gzip:   2.26 kB
+tools/bench-table/dist/assets/chart-export-DG-I0JRU.js                   5.15 kB │ gzip:   2.04 kB
+tools/bench-table/dist/assets/_common_module-chunk-BDcT08jV.js           5.33 kB │ gzip:   1.90 kB
+tools/bench-table/dist/assets/GridFooter-DLPjWEO1.js                     5.78 kB │ gzip:   2.21 kB
+tools/bench-table/dist/assets/_location-chunk-B47SrCxY.js                5.98 kB │ gzip:   1.82 kB
+tools/bench-table/dist/assets/plain-A8Bc7Jvq.js                          6.69 kB │ gzip:   2.74 kB
+tools/bench-table/dist/assets/en-US-CvUh4rD1.js                          6.86 kB │ gzip:   2.30 kB
+tools/bench-table/dist/assets/tanstack-BGRJNSX0.js                       7.03 kB │ gzip:   2.70 kB
+tools/bench-table/dist/assets/svelte-virtualizer.svelte-CFZQeywJ.js      7.68 kB │ gzip:   2.86 kB
+tools/bench-table/dist/assets/jsx-runtime-75ovkuds.js                    7.89 kB │ gzip:   2.99 kB
+tools/bench-table/dist/assets/SvGridDropdown-DC93P7jI.js                 8.29 kB │ gzip:   3.17 kB
+tools/bench-table/dist/assets/SvChartMenu-D051i7EQ.js                    8.47 kB │ gzip:   3.68 kB
+tools/bench-table/dist/assets/chart-validate-B-m9qLFA.js                 8.55 kB │ gzip:   3.37 kB
+tools/bench-table/dist/assets/sv-grid-scrollbar-nscaUuWn.js              8.85 kB │ gzip:   2.83 kB
+tools/bench-table/dist/assets/angular-uxM11cvV.js                        9.05 kB │ gzip:   3.57 kB
+tools/bench-table/dist/assets/soxa-B9fvAu8_.js                          12.02 kB │ gzip:   4.09 kB
+tools/bench-table/dist/assets/flow-SthcuBkX.js                          12.78 kB │ gzip:   3.24 kB
+tools/bench-table/dist/assets/soxa-COH4MEbG.js                          13.96 kB │ gzip:   5.08 kB
+tools/bench-table/dist/assets/TanstackTable-B4LUDlaf.js                 14.53 kB │ gzip:   5.25 kB
+tools/bench-table/dist/assets/_dom_renderer-chunk-DevyW7Rn.js           16.22 kB │ gzip:   5.54 kB
+tools/bench-table/dist/assets/soxa-CAHnsF8z.js                          16.33 kB │ gzip:   5.71 kB
+tools/bench-table/dist/assets/SvGridCellEditor-B7yv57OW.js              16.46 kB │ gzip:   4.56 kB
+tools/bench-table/dist/assets/soxa-LR-KRG5I.js                          16.48 kB │ gzip:   5.43 kB
+tools/bench-table/dist/assets/SvDateTimePicker-BnxyayE5.js              16.51 kB │ gzip:   6.20 kB
+tools/bench-table/dist/assets/TanstackTable-BqPX7E4M.js                 19.16 kB │ gzip:   7.33 kB
+tools/bench-table/dist/assets/if-defined-hxkf7S3q.js                    22.35 kB │ gzip:   6.68 kB
+tools/bench-table/dist/assets/reactivity.esm-bundler-sHxEhQbQ.js        22.77 kB │ gzip:   8.62 kB
+tools/bench-table/dist/assets/date-format-CI1UPxvK.js                   23.96 kB │ gzip:   8.23 kB
+tools/bench-table/dist/assets/web-Cm9-cRwh.js                           24.09 kB │ gzip:   9.33 kB
+tools/bench-table/dist/assets/SvGridChartPanel-BDE_m_i9.js              24.51 kB │ gzip:   7.60 kB
+tools/bench-table/dist/assets/chart-panel-messages-DReVYIe4.js          27.30 kB │ gzip:   7.61 kB
+tools/bench-table/dist/assets/SvGridChartBuilder-DJVHYvwr.js            32.32 kB │ gzip:   9.96 kB
+tools/bench-table/dist/assets/createSortedRowModel-CFUtkmRY.js          33.99 kB │ gzip:   9.96 kB
+tools/bench-table/dist/assets/GridMenus-DT1cOtum.js                     39.25 kB │ gzip:  12.78 kB
+tools/bench-table/dist/assets/soxa-Z76f_Bfm.js                          42.66 kB │ gzip:  11.61 kB
+tools/bench-table/dist/assets/carbon-CgNOuDnZ.js                        48.27 kB │ gzip:  13.97 kB
+tools/bench-table/dist/assets/scrolling-BT9lVg5h.js                     48.69 kB │ gzip:  14.10 kB
+tools/bench-table/dist/assets/shadcn-BmTdwwMb.js                        55.34 kB │ gzip:  17.39 kB
+tools/bench-table/dist/assets/disclose-version-CfQ5uMwh.js              59.09 kB │ gzip:  22.57 kB
+tools/bench-table/dist/assets/forms-ByCC9Emi.js                         60.55 kB │ gzip:  13.46 kB
+tools/bench-table/dist/assets/TanstackTable-CPCMSzQr.js                 65.24 kB │ gzip:  21.09 kB
+tools/bench-table/dist/assets/facade.class-Bk0U4GLZ.js                  79.71 kB │ gzip:  20.43 kB
+tools/bench-table/dist/assets/mantine-C25er4vs.js                       85.81 kB │ gzip:  25.52 kB
+tools/bench-table/dist/assets/runtime-dom.esm-bundler-BGRr_rbi.js       92.24 kB │ gzip:  36.06 kB
+tools/bench-table/dist/assets/chart-un4d8dFl.js                         93.11 kB │ gzip:  32.35 kB
+tools/bench-table/dist/assets/soxa-setup-B-_3wW4f.js                   101.52 kB │ gzip:  28.69 kB
+tools/bench-table/dist/assets/mui-eyzHwsSu.js                          111.93 kB │ gzip:  38.46 kB
+tools/bench-table/dist/assets/SvGridChart-4KPb137r.js                  112.09 kB │ gzip:  32.18 kB
+tools/bench-table/dist/assets/material-BlCfj-9j.js                     114.36 kB │ gzip:  26.84 kB
+tools/bench-table/dist/assets/client-C8arKrQ9.js                       178.24 kB │ gzip:  56.30 kB
+tools/bench-table/dist/assets/vaadin-D_lF-Ts9.js                       221.50 kB │ gzip:  56.67 kB
+tools/bench-table/dist/assets/core-BMauPakb.js                         262.35 kB │ gzip:  87.09 kB
+tools/bench-table/dist/assets/svgrid-DJXAqJMW.js                       272.39 kB │ gzip:  81.64 kB
+tools/bench-table/dist/assets/chevron-right-DEFU1CJL.js                279.74 kB │ gzip:  52.27 kB
+tools/bench-table/dist/assets/ui5-HEnQKDvY.js                          342.89 kB │ gzip:  71.54 kB
+tools/bench-table/dist/assets/prime-Br3r2lUX.js                        365.39 kB │ gzip:  78.74 kB
+tools/bench-table/dist/assets/naive-CQ-35S_Y.js                        403.76 kB │ gzip: 114.52 kB
+tools/bench-table/dist/assets/carbon-BPzZbA7r.js                       424.57 kB │ gzip:  55.97 kB
+tools/bench-table/dist/assets/spectrum-Djg8tJ9v.js                     444.51 kB │ gzip:  55.45 kB
+tools/bench-table/dist/assets/zorro-DPs60w2B.js                        495.99 kB │ gzip: 129.85 kB
+tools/bench-table/dist/assets/soxa-CF_u_7Fu.js                         520.20 kB │ gzip: 119.47 kB
+tools/bench-table/dist/assets/prime-BCn5QiPN.js                        561.46 kB │ gzip: 121.34 kB
+tools/bench-table/dist/assets/antd-Bg4GB930.js                         576.86 kB │ gzip: 184.86 kB
+tools/bench-table/dist/assets/aggrid-B8OzmIEV.js                     1,170.02 kB │ gzip: 322.06 kB
+tools/bench-table/dist/assets/aggrid-DSTbNGsf.js                     1,311.83 kB │ gzip: 282.89 kB
+
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 7.87s

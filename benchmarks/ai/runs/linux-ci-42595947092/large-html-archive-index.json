@@ -1,0 +1,25 @@
+{
+    "schemaVersion":  1,
+    "date":  "2026-11-09T10:53:30.9112454Z",
+    "storage":  "Original exact artifact ZIP; expanded copies omitted from Git",
+    "reason":  "Each 52 MB expanded snapshot duplicates an exact verified entry in the retained artifact",
+    "archive":  "observations.zip",
+    "archiveSha256":  "bd4740e7bece67cb048935247d0b949c2b2ef3affa4f77c44cd2545156706ad1",
+    "restore":  "Extract observations.zip into this run directory to restore original paths. Original results.json and its hashes are unchanged.",
+    "entries":  [
+                    {
+                        "original":  "ci-soxa/chromium-table-large.html.txt",
+                        "archive":  "observations.zip",
+                        "entry":  "ci-soxa/chromium-table-large.html.txt",
+                        "bytes":  52035651,
+                        "sha256":  "7d84916498d84256ba76a02817a0b92e0ad50c61884ba099d08c5fa4681f7a9b"
+                    },
+                    {
+                        "original":  "ci-soxa/webkit-table-large.html.txt",
+                        "archive":  "observations.zip",
+                        "entry":  "ci-soxa/webkit-table-large.html.txt",
+                        "bytes":  52035651,
+                        "sha256":  "7d84916498d84256ba76a02817a0b92e0ad50c61884ba099d08c5fa4681f7a9b"
+                    }
+                ]
+}

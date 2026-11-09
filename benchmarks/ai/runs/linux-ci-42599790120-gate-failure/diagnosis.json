@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-09T10:23:58.105Z",
+  "run": 42599790120,
+  "head": "717341dd5da87fb34df9746dbfa0380398509041",
+  "status": "tool-gate-failed-no-subject-observations",
+  "auditTests": {
+    "passed": 17,
+    "failed": 0
+  },
+  "aiTests": {
+    "passed": 40,
+    "failed": 1
+  },
+  "newTableFixtures": "All three passed",
+  "rootCause": "Contrast negative-control fixture overlap; axe incomplete bgOverlap, not an accepted contrast violation or a component defect",
+  "amendment": "../../amendments/2026-11-09-contrast-fixture-layout.json"
+}

@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Component validation</title>
+		<script type="module" crossorigin src="/assets/index-Dham872B.js"></script>
+		<link rel="stylesheet" crossorigin href="/assets/index-BsY3jImv.css">
+	</head>
+	<body>
+		<div id="app"><main lang="ar" dir="rtl"><h1>Component validation</h1><button type="button">Before component</button><section aria-label="Candidate"><div class="tabs" dir="rtl" lang="en" data-v-ad694361><div class="tab-list" role="tablist" aria-label="Example panels" aria-orientation="horizontal" data-v-ad694361><!--[--><button id="v-0-tab-alpha" class="tab" type="button" role="tab" aria-selected="true" aria-controls="v-0-panel-alpha" tabindex="0" data-v-ad694361>Alpha</button><button id="v-0-tab-beta" class="tab" type="button" role="tab" aria-selected="false" aria-controls="v-0-panel-beta" tabindex="-1" data-v-ad694361>Beta</button><button id="v-0-tab-gamma" class="tab" type="button" role="tab" aria-selected="false" aria-controls="v-0-panel-gamma" tabindex="-1" data-v-ad694361>Gamma</button><!--]--></div><!--[--><div id="v-0-panel-alpha" class="tab-panel" role="tabpanel" aria-labelledby="v-0-tab-alpha" tabindex="0" data-v-ad694361><p data-v-ad694361>Alpha panel</p></div><div id="v-0-panel-beta" hidden class="tab-panel" role="tabpanel" aria-labelledby="v-0-tab-beta" tabindex="0" data-v-ad694361><p data-v-ad694361>Beta panel</p></div><div id="v-0-panel-gamma" hidden class="tab-panel" role="tabpanel" aria-labelledby="v-0-tab-gamma" tabindex="0" data-v-ad694361><p data-v-ad694361>Gamma panel</p></div><!--]--></div></section><button type="button">After component</button></main></div>
+		<script id="input" type="application/json">{"component":"tabs","baseline":false,"locale":"ar","dir":"rtl","count":20}</script>
+	</body>
+</html>

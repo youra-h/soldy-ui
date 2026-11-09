@@ -1,0 +1,16 @@
+vue select ×1 open 15/65, close 15/64, type 6/55
+vue menu ×1 open 16/65, close 15/64
+vue date-picker ×1 open 16/66, close 15/65, locale ru 15/63, locale en 16/65
+vue dialog ×1 open 16/65, close 14/64
+vue input ×1 type 14/65
+vue tabs ×1 tab 2 15/65, tab 1 16/66
+vue calendar ×1 locale ru 18/66, locale en 18/67
+vue number-input ×1 locale ru 15/65, locale en 16/66
+vue select перерисовки open 3/3 чужим 0, close 3/3 чужим 0, type 6/6 чужим 0
+vue menu перерисовки open 17/17 чужим 0, close 17/17 чужим 0
+vue date-picker перерисовки open 10/10 чужим 0, close 10/10 чужим 0, locale ru 21/17 чужим 22, locale en 21/17 чужим 22
+vue dialog перерисовки open 6/6 чужим 0, close 6/6 чужим 0
+vue input перерисовки type 1/1 чужим 0
+vue tabs перерисовки tab 2 6/6 чужим 0, tab 1 6/6 чужим 0
+vue calendar перерисовки locale ru 24/13 чужим 197, locale en 24/13 чужим 197
+vue number-input перерисовки locale ru 8/5 чужим 6, locale en 8/5 чужим 6

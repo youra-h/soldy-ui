@@ -1,0 +1,508 @@
+{
+	"schemaVersion": 1,
+	"date": "2026-11-09T09:58:11.801Z",
+	"candidate": "/home/runner/work/soxa-ui/soxa-ui/benchmarks/ai/inputs/cli-2026-11-09-v1/2-dialog/Candidate.vue",
+	"sourceHash": "6bad532b912f471a73b29b82a787530101b8545d5d8e2bf96fc56d14e096352d",
+	"status": "tested-with-gaps",
+	"cells": [
+		{
+			"engine": "chromium",
+			"browser": "156.0.8078.4",
+			"component": "dialog",
+			"mode": "default",
+			"status": "passed",
+			"errors": [],
+			"ssrHtml": {
+				"file": "chromium-dialog-default.html.txt",
+				"sha256": "8919ba78ba5041b8124f5c9f5351d00c0ef4eec83916ffd4ee64a1e1fe740b9e"
+			},
+			"ssr": {
+				"status": "passed",
+				"snapshot": "- main:\n  - heading \"Component validation\" [level=1]\n  - button \"Before component\"\n  - region \"Candidate\":\n    - button \"Open dialog\"\n  - button \"After component\""
+			},
+			"before": "- main:\n  - heading \"Component validation\" [level=1]\n  - button \"Before component\"\n  - region \"Candidate\":\n    - button \"Open dialog\"\n  - button \"After component\"",
+			"axe": {
+				"initial": {
+					"violations": [],
+					"incomplete": [],
+					"settling": {
+						"status": "settled-finite-animations",
+						"elapsedMs": 12,
+						"timeoutMs": 10000,
+						"ignoredInfiniteAnimations": 0
+					}
+				},
+				"open": {
+					"violations": [],
+					"incomplete": [],
+					"settling": {
+						"status": "settled-finite-animations",
+						"elapsedMs": 10,
+						"timeoutMs": 10000,
+						"ignoredInfiniteAnimations": 0
+					}
+				},
+				"after": {
+					"violations": [],
+					"incomplete": [],
+					"settling": {
+						"status": "settled-finite-animations",
+						"elapsedMs": 12,
+						"timeoutMs": 10000,
+						"ignoredInfiniteAnimations": 0
+					}
+				}
+			},
+			"after": "- main:\n  - heading \"Component validation\" [level=1]\n  - button \"Before component\"\n  - region \"Candidate\":\n    - button \"Open dialog\"\n  - button \"After component\""
+		},
+		{
+			"engine": "chromium",
+			"browser": "156.0.8078.4",
+			"component": "dialog",
+			"mode": "rtl",
+			"status": "passed",
+			"errors": [],
+			"ssrHtml": {
+				"file": "chromium-dialog-rtl.html.txt",
+				"sha256": "029efe6947c07f887cd4e21fc211eb557ae35e9086021b4e26d1bc123a8a9692"
+			},
+			"ssr": {
+				"status": "passed",
+				"snapshot": "- main:\n  - heading \"Component validation\" [level=1]\n  - button \"Before component\"\n  - region \"Candidate\":\n    - button \"Open dialog\"\n  - button \"After component\""
+			},
+			"before": "- main:\n  - heading \"Component validation\" [level=1]\n  - button \"Before component\"\n  - region \"Candidate\":\n    - button \"Open dialog\"\n  - button \"After component\"",
+			"axe": {
+				"initial": {
+					"violations": [],
+					"incomplete": [],
+					"settling": {
+						"status": "settled-finite-animations",
+						"elapsedMs": 12,
+						"timeoutMs": 10000,
+						"ignoredInfiniteAnimations": 0
+					}
+				},
+				"open": {
+					"violations": [],
+					"incomplete": [],
+					"settling": {
+						"status": "settled-finite-animations",
+						"elapsedMs": 12,
+						"timeoutMs": 10000,
+						"ignoredInfiniteAnimations": 0
+					}
+				},
+				"after": {
+					"violations": [],
+					"incomplete": [],
+					"settling": {
+						"status": "settled-finite-animations",
+						"elapsedMs": 16,
+						"timeoutMs": 10000,
+						"ignoredInfiniteAnimations": 0
+					}
+				}
+			},
+			"after": "- main:\n  - heading \"Component validation\" [level=1]\n  - button \"Before component\"\n  - region \"Candidate\":\n    - button \"Open dialog\"\n  - button \"After component\""
+		},
+		{
+			"engine": "chromium",
+			"browser": "156.0.8078.4",
+			"component": "dialog",
+			"mode": "narrow-touch",
+			"status": "passed",
+			"errors": [],
+			"ssrHtml": {
+				"file": "chromium-dialog-narrow-touch.html.txt",
+				"sha256": "8919ba78ba5041b8124f5c9f5351d00c0ef4eec83916ffd4ee64a1e1fe740b9e"
+			},
+			"ssr": {
+				"status": "passed",
+				"snapshot": "- main:\n  - heading \"Component validation\" [level=1]\n  - button \"Before component\"\n  - region \"Candidate\":\n    - button \"Open dialog\"\n  - button \"After component\""
+			},
+			"before": "- main:\n  - heading \"Component validation\" [level=1]\n  - button \"Before component\"\n  - region \"Candidate\":\n    - button \"Open dialog\"\n  - button \"After component\"",
+			"axe": {
+				"initial": {
+					"violations": [],
+					"incomplete": [],
+					"settling": {
+						"status": "settled-finite-animations",
+						"elapsedMs": 13,
+						"timeoutMs": 10000,
+						"ignoredInfiniteAnimations": 0
+					}
+				},
+				"open": {
+					"violations": [],
+					"incomplete": [],
+					"settling": {
+						"status": "settled-finite-animations",
+						"elapsedMs": 13,
+						"timeoutMs": 10000,
+						"ignoredInfiniteAnimations": 0
+					}
+				},
+				"after": {
+					"violations": [],
+					"incomplete": [],
+					"settling": {
+						"status": "settled-finite-animations",
+						"elapsedMs": 16,
+						"timeoutMs": 10000,
+						"ignoredInfiniteAnimations": 0
+					}
+				}
+			},
+			"touch": "passed",
+			"after": "- main:\n  - heading \"Component validation\" [level=1]\n  - button \"Before component\"\n  - region \"Candidate\":\n    - button \"Open dialog\"\n  - button \"After component\""
+		},
+		{
+			"engine": "chromium",
+			"browser": "156.0.8078.4",
+			"component": "dialog",
+			"mode": "reduce",
+			"status": "passed",
+			"errors": [],
+			"ssrHtml": {
+				"file": "chromium-dialog-reduce.html.txt",
+				"sha256": "8919ba78ba5041b8124f5c9f5351d00c0ef4eec83916ffd4ee64a1e1fe740b9e"
+			},
+			"ssr": {
+				"status": "passed",
+				"snapshot": "- main:\n  - heading \"Component validation\" [level=1]\n  - button \"Before component\"\n  - region \"Candidate\":\n    - button \"Open dialog\"\n  - button \"After component\""
+			},
+			"before": "- main:\n  - heading \"Component validation\" [level=1]\n  - button \"Before component\"\n  - region \"Candidate\":\n    - button \"Open dialog\"\n  - button \"After component\"",
+			"reducedMotion": {
+				"status": "passed-observed-states",
+				"states": {
+					"initial": {
+						"media": true,
+						"activeDurations": []
+					},
+					"open": {
+						"media": true,
+						"activeDurations": []
+					},
+					"after": {
+						"media": true,
+						"activeDurations": []
+					}
+				},
+				"limitMs": 100,
+				"scope": "Immediate initial/open/after observations only; completed or untriggered animations are not covered"
+			},
+			"axe": {
+				"initial": {
+					"violations": [],
+					"incomplete": [],
+					"settling": {
+						"status": "settled-finite-animations",
+						"elapsedMs": 11,
+						"timeoutMs": 10000,
+						"ignoredInfiniteAnimations": 0
+					}
+				},
+				"open": {
+					"violations": [],
+					"incomplete": [],
+					"settling": {
+						"status": "settled-finite-animations",
+						"elapsedMs": 11,
+						"timeoutMs": 10000,
+						"ignoredInfiniteAnimations": 0
+					}
+				},
+				"after": {
+					"violations": [],
+					"incomplete": [],
+					"settling": {
+						"status": "settled-finite-animations",
+						"elapsedMs": 6,
+						"timeoutMs": 10000,
+						"ignoredInfiniteAnimations": 0
+					}
+				}
+			},
+			"after": "- main:\n  - heading \"Component validation\" [level=1]\n  - button \"Before component\"\n  - region \"Candidate\":\n    - button \"Open dialog\"\n  - button \"After component\""
+		},
+		{
+			"engine": "webkit",
+			"browser": "27.2",
+			"component": "dialog",
+			"mode": "default",
+			"status": "passed",
+			"errors": [],
+			"ssrHtml": {
+				"file": "webkit-dialog-default.html.txt",
+				"sha256": "8919ba78ba5041b8124f5c9f5351d00c0ef4eec83916ffd4ee64a1e1fe740b9e"
+			},
+			"ssr": {
+				"status": "passed",
+				"snapshot": "- main:\n  - heading \"Component validation\" [level=1]\n  - button \"Before component\"\n  - region \"Candidate\":\n    - button \"Open dialog\"\n  - button \"After component\""
+			},
+			"before": "- main:\n  - heading \"Component validation\" [level=1]\n  - button \"Before component\"\n  - region \"Candidate\":\n    - button \"Open dialog\"\n  - button \"After component\"",
+			"axe": {
+				"initial": {
+					"violations": [],
+					"incomplete": [],
+					"settling": {
+						"status": "settled-finite-animations",
+						"elapsedMs": 10,
+						"timeoutMs": 10000,
+						"ignoredInfiniteAnimations": 0
+					}
+				},
+				"open": {
+					"violations": [],
+					"incomplete": [],
+					"settling": {
+						"status": "settled-finite-animations",
+						"elapsedMs": 8,
+						"timeoutMs": 10000,
+						"ignoredInfiniteAnimations": 0
+					}
+				},
+				"after": {
+					"violations": [],
+					"incomplete": [],
+					"settling": {
+						"status": "settled-finite-animations",
+						"elapsedMs": 5,
+						"timeoutMs": 10000,
+						"ignoredInfiniteAnimations": 0
+					}
+				}
+			},
+			"after": "- main:\n  - heading \"Component validation\" [level=1]\n  - button \"Before component\"\n  - region \"Candidate\":\n    - button \"Open dialog\"\n  - button \"After component\""
+		},
+		{
+			"engine": "webkit",
+			"browser": "27.2",
+			"component": "dialog",
+			"mode": "rtl",
+			"status": "passed",
+			"errors": [],
+			"ssrHtml": {
+				"file": "webkit-dialog-rtl.html.txt",
+				"sha256": "029efe6947c07f887cd4e21fc211eb557ae35e9086021b4e26d1bc123a8a9692"
+			},
+			"ssr": {
+				"status": "passed",
+				"snapshot": "- main:\n  - heading \"Component validation\" [level=1]\n  - button \"Before component\"\n  - region \"Candidate\":\n    - button \"Open dialog\"\n  - button \"After component\""
+			},
+			"before": "- main:\n  - heading \"Component validation\" [level=1]\n  - button \"Before component\"\n  - region \"Candidate\":\n    - button \"Open dialog\"\n  - button \"After component\"",
+			"axe": {
+				"initial": {
+					"violations": [],
+					"incomplete": [],
+					"settling": {
+						"status": "settled-finite-animations",
+						"elapsedMs": 10,
+						"timeoutMs": 10000,
+						"ignoredInfiniteAnimations": 0
+					}
+				},
+				"open": {
+					"violations": [],
+					"incomplete": [],
+					"settling": {
+						"status": "settled-finite-animations",
+						"elapsedMs": 8,
+						"timeoutMs": 10000,
+						"ignoredInfiniteAnimations": 0
+					}
+				},
+				"after": {
+					"violations": [],
+					"incomplete": [],
+					"settling": {
+						"status": "settled-finite-animations",
+						"elapsedMs": 6,
+						"timeoutMs": 10000,
+						"ignoredInfiniteAnimations": 0
+					}
+				}
+			},
+			"after": "- main:\n  - heading \"Component validation\" [level=1]\n  - button \"Before component\"\n  - region \"Candidate\":\n    - button \"Open dialog\"\n  - button \"After component\""
+		},
+		{
+			"engine": "webkit",
+			"browser": "27.2",
+			"component": "dialog",
+			"mode": "narrow-touch",
+			"status": "passed",
+			"errors": [],
+			"ssrHtml": {
+				"file": "webkit-dialog-narrow-touch.html.txt",
+				"sha256": "8919ba78ba5041b8124f5c9f5351d00c0ef4eec83916ffd4ee64a1e1fe740b9e"
+			},
+			"ssr": {
+				"status": "passed",
+				"snapshot": "- main:\n  - heading \"Component validation\" [level=1]\n  - button \"Before component\"\n  - region \"Candidate\":\n    - button \"Open dialog\"\n  - button \"After component\""
+			},
+			"before": "- main:\n  - heading \"Component validation\" [level=1]\n  - button \"Before component\"\n  - region \"Candidate\":\n    - button \"Open dialog\"\n  - button \"After component\"",
+			"axe": {
+				"initial": {
+					"violations": [],
+					"incomplete": [],
+					"settling": {
+						"status": "settled-finite-animations",
+						"elapsedMs": 11,
+						"timeoutMs": 10000,
+						"ignoredInfiniteAnimations": 0
+					}
+				},
+				"open": {
+					"violations": [],
+					"incomplete": [],
+					"settling": {
+						"status": "settled-finite-animations",
+						"elapsedMs": 9,
+						"timeoutMs": 10000,
+						"ignoredInfiniteAnimations": 0
+					}
+				},
+				"after": {
+					"violations": [],
+					"incomplete": [],
+					"settling": {
+						"status": "settled-finite-animations",
+						"elapsedMs": 8,
+						"timeoutMs": 10000,
+						"ignoredInfiniteAnimations": 0
+					}
+				}
+			},
+			"touch": "passed",
+			"after": "- main:\n  - heading \"Component validation\" [level=1]\n  - button \"Before component\"\n  - region \"Candidate\":\n    - button \"Open dialog\"\n  - button \"After component\""
+		},
+		{
+			"engine": "webkit",
+			"browser": "27.2",
+			"component": "dialog",
+			"mode": "reduce",
+			"status": "passed",
+			"errors": [],
+			"ssrHtml": {
+				"file": "webkit-dialog-reduce.html.txt",
+				"sha256": "8919ba78ba5041b8124f5c9f5351d00c0ef4eec83916ffd4ee64a1e1fe740b9e"
+			},
+			"ssr": {
+				"status": "passed",
+				"snapshot": "- main:\n  - heading \"Component validation\" [level=1]\n  - button \"Before component\"\n  - region \"Candidate\":\n    - button \"Open dialog\"\n  - button \"After component\""
+			},
+			"before": "- main:\n  - heading \"Component validation\" [level=1]\n  - button \"Before component\"\n  - region \"Candidate\":\n    - button \"Open dialog\"\n  - button \"After component\"",
+			"reducedMotion": {
+				"status": "passed-observed-states",
+				"states": {
+					"initial": {
+						"media": true,
+						"activeDurations": []
+					},
+					"open": {
+						"media": true,
+						"activeDurations": []
+					},
+					"after": {
+						"media": true,
+						"activeDurations": []
+					}
+				},
+				"limitMs": 100,
+				"scope": "Immediate initial/open/after observations only; completed or untriggered animations are not covered"
+			},
+			"axe": {
+				"initial": {
+					"violations": [],
+					"incomplete": [],
+					"settling": {
+						"status": "settled-finite-animations",
+						"elapsedMs": 9,
+						"timeoutMs": 10000,
+						"ignoredInfiniteAnimations": 0
+					}
+				},
+				"open": {
+					"violations": [],
+					"incomplete": [],
+					"settling": {
+						"status": "settled-finite-animations",
+						"elapsedMs": 7,
+						"timeoutMs": 10000,
+						"ignoredInfiniteAnimations": 0
+					}
+				},
+				"after": {
+					"violations": [],
+					"incomplete": [],
+					"settling": {
+						"status": "settled-finite-animations",
+						"elapsedMs": 7,
+						"timeoutMs": 10000,
+						"ignoredInfiniteAnimations": 0
+					}
+				}
+			},
+			"after": "- main:\n  - heading \"Component validation\" [level=1]\n  - button \"Before component\"\n  - region \"Candidate\":\n    - button \"Open dialog\"\n  - button \"After component\""
+		}
+	],
+	"limits": {
+		"actionTimeoutMs": 10000,
+		"cellTimeoutMs": 120000,
+		"note": "Common infrastructure completion bounds, not a comparative latency score"
+	},
+	"commit": "4200a67ea1cc2ffc336c17cdc46e934b6ae46f3a",
+	"libraryDirtyState": "",
+	"node": "v24.22.2",
+	"os": {
+		"platform": "linux",
+		"release": "7.0.0-1017-azure",
+		"arch": "x64",
+		"cpu": "AMD EPYC 9V74 80-Core Processor"
+	},
+	"lockHash": "bf37e0071aa997bd973d16b7dcda126d3aebbb56ab5e929c23cb1f5e38c32a4c",
+	"runtimeVersions": {
+		"vue": "3.5.44",
+		"vite": "8.3.4",
+		"playwright": "1.64.1",
+		"axe-core": "4.14.0"
+	},
+	"harnessSourceHashes": {
+		"tools/bench-ai/Page.vue": "d8b1ea11983263f8061c35ab44626c233a9dec088e1ed1132dcc7698b9499a10",
+		"tools/bench-ai/Soxa.vue": "0f38dad51907e7babfd85c1292ab52388a10c698aa2aab2f755383cf1609138e",
+		"tools/bench-ai/batch.mjs": "3cb40bf90bcbe18afbaffdc41beb95c3e0c4fea9b41f60720cf27787faf1d112",
+		"tools/bench-ai/ci.mjs": "6fd3b0212ea0f1679bd9b517816b9b1817dddd6114be14d13b1f593f96e54a42",
+		"tools/bench-ai/client.mjs": "fbdee049c6ddda286f7efb02509086c76406dac143bd992a01bcf761a2a27d94",
+		"tools/bench-ai/data.mjs": "e1cd0c74fd00706db44626dde49fd4c85baa5dd5f3d12e7a5a2b8f7e120bb722",
+		"tools/bench-ai/document.mjs": "4c0fcfc62b9a41968044ed6888fe62ed3dd9c3dd5e1f98939b01e62446a6cff0",
+		"tools/bench-ai/environment.mjs": "037ab34a339bbaae662b039085d771f1272d54136c84b86c2718e4f8f85120fa",
+		"tools/bench-ai/export.mjs": "dade781aca4a15cdeb033aa0ffc536a8e29eed1c7f5836e514c5933c92fc02b6",
+		"tools/bench-ai/generate-cli.mjs": "b859f59eb17c1688437ca43244c897621938bbe34995599535835fe8f5336b6c",
+		"tools/bench-ai/generate.mjs": "d29a1c7492f3e27b2c45f0dda68b382251b404d2a460492039dcd2d20d6d91f5",
+		"tools/bench-ai/index.html": "c77263fd74bdfe7c5b3396a534901858fb5b864d217d45922dc23e7224cd6375",
+		"tools/bench-ai/integrity.mjs": "a84be7b5e4be8ae40a12f846d83c5c7823da56f558675441dac43af5c1276f9d",
+		"tools/bench-ai/protocol.mjs": "c64de0455c9d48ec8b8f2ba09b82f03bc0203d1ccb349ea3c253048c248c4851",
+		"tools/bench-ai/run.mjs": "7350df825e247cca4c718ff77138861ae4180fd0138542b24fe6fe414101681c",
+		"tools/bench-ai/scenarios.mjs": "d8b9bd1679ce90ee4e776a6e4f2be13f863a041f28149d4526eee46db00cbadb",
+		"tools/bench-ai/server.mjs": "5e68c69fb351b096f2d89a93b6ee0153fe2dce76e8efa930fd4f73bb7c1c170e",
+		"tools/bench-ai/settle.mjs": "f77a150ba36391788ecc2305a6da6178eaa98e8adca8abce62f82dd9f364b0c6",
+		"tools/bench-ai/setup.mjs": "ce7d2a8b8f99e63a9e406f9b0e6d72778d70a9948fd0438467deb1291cbd01b6",
+		"tools/bench-ai/vite.config.ts": "2cb97aeed2875cfc20a7809e861fe093a1306f3627b9c65a89aae584948c9f93"
+	},
+	"environment": {
+		"status": "within-declared-runtime",
+		"imports": [
+			{
+				"kind": "static",
+				"specifier": "vue"
+			}
+		],
+		"violations": [],
+		"parseErrors": [],
+		"scope": "Authored script import/export/require, SFC block src and CSS @import only; no claim of a complete Node security sandbox or arbitrary runtime-network enforcement"
+	},
+	"manualScreenReader": {
+		"status": "not-run",
+		"reason": "axe and ariaSnapshot do not prove audible NVDA/VoiceOver announcements"
+	}
+}

@@ -14,7 +14,7 @@ await measure(
 		async render(locale, components) {
 			return renderToString(() => (
 				<LocaleProvider locale={locale}>
-					{components.map(({ id, props }) => PREVIEWS[id](() => props))}
+					{components.map(({ id, props }) => PREVIEWS[id](() => props, {}))}
 				</LocaleProvider>
 			))
 		},

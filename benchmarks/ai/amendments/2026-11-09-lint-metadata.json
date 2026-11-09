@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-09T08:41:54.974Z",
+  "type": "maintained-vue-lint-metadata",
+  "previousAmendment": "2026-11-09-format-only.json",
+  "reason": "Add script lang=ts and explicit multi-word Vue option names to the common wrapper and own baseline, satisfying existing repository lint rules without exemptions. No acceptance probes, props, render markup, generated sources or prompts changed.",
+  "beforeCandidateSourceInspection": true,
+  "oldHashes": {
+    "tools/bench-ai/run.mjs": "b9116326ae723abee478875fc0e173b8ff65411073003a7a8783aa6d99d43321",
+    "tools/bench-ai/scenarios.mjs": "0b83b4cb60273cacfa6d2b072e06860f15a550c8de17454bd315c0b313e8599f",
+    "tools/bench-ai/Page.vue": "f3f304915f365cfa5ca1575811eca0f09d5febef18aedcf094b25af58e215f72",
+    "tools/bench-ai/Soxa.vue": "7c77e21c8b37d0fb981566cd3a2166af8d596a49faa3dbb09cb78d8bfa166b6f",
+    "tools/bench-ai/data.mjs": "e1cd0c74fd00706db44626dde49fd4c85baa5dd5f3d12e7a5a2b8f7e120bb722",
+    "tools/bench-ai/vite.config.ts": "2cb97aeed2875cfc20a7809e861fe093a1306f3627b9c65a89aae584948c9f93",
+    "tools/bench-ai/client.mjs": "fbdee049c6ddda286f7efb02509086c76406dac143bd992a01bcf761a2a27d94",
+    "tools/bench-ai/server.mjs": "462342b6306e03775b8c1ccbeec51d05e1af1d9530b497025752bf82fc927f89",
+    "tools/bench-ai/setup.mjs": "ce7d2a8b8f99e63a9e406f9b0e6d72778d70a9948fd0438467deb1291cbd01b6",
+    "tools/bench-ai/protocol.mjs": "c64de0455c9d48ec8b8f2ba09b82f03bc0203d1ccb349ea3c253048c248c4851",
+    "tools/bench-ai/environment.mjs": "037ab34a339bbaae662b039085d771f1272d54136c84b86c2718e4f8f85120fa",
+    "tools/bench-ai/batch.mjs": "f04f9084cf7f0f47b0e714658b8b465912968cb6622868bc55303d195429dbef",
+    "tools/bench-ai/ci.mjs": "5c457e7af68689d19c9d4c25838247ecbba95d9bf719401d7a93dd9d9685f911",
+    ".github/workflows/bench-validation.yml": "cc2d6e8883452cb0e8bdd8b588061165e82d6a246a07c02ffe91ed1b08a90675"
+  },
+  "newHashes": {
+    "tools/bench-ai/run.mjs": "b9116326ae723abee478875fc0e173b8ff65411073003a7a8783aa6d99d43321",
+    "tools/bench-ai/scenarios.mjs": "0b83b4cb60273cacfa6d2b072e06860f15a550c8de17454bd315c0b313e8599f",
+    "tools/bench-ai/Page.vue": "d8b1ea11983263f8061c35ab44626c233a9dec088e1ed1132dcc7698b9499a10",
+    "tools/bench-ai/Soxa.vue": "0f38dad51907e7babfd85c1292ab52388a10c698aa2aab2f755383cf1609138e",
+    "tools/bench-ai/data.mjs": "e1cd0c74fd00706db44626dde49fd4c85baa5dd5f3d12e7a5a2b8f7e120bb722",
+    "tools/bench-ai/vite.config.ts": "2cb97aeed2875cfc20a7809e861fe093a1306f3627b9c65a89aae584948c9f93",
+    "tools/bench-ai/client.mjs": "fbdee049c6ddda286f7efb02509086c76406dac143bd992a01bcf761a2a27d94",
+    "tools/bench-ai/server.mjs": "462342b6306e03775b8c1ccbeec51d05e1af1d9530b497025752bf82fc927f89",
+    "tools/bench-ai/setup.mjs": "ce7d2a8b8f99e63a9e406f9b0e6d72778d70a9948fd0438467deb1291cbd01b6",
+    "tools/bench-ai/protocol.mjs": "c64de0455c9d48ec8b8f2ba09b82f03bc0203d1ccb349ea3c253048c248c4851",
+    "tools/bench-ai/environment.mjs": "037ab34a339bbaae662b039085d771f1272d54136c84b86c2718e4f8f85120fa",
+    "tools/bench-ai/batch.mjs": "f04f9084cf7f0f47b0e714658b8b465912968cb6622868bc55303d195429dbef",
+    "tools/bench-ai/ci.mjs": "5c457e7af68689d19c9d4c25838247ecbba95d9bf719401d7a93dd9d9685f911",
+    ".github/workflows/bench-validation.yml": "cc2d6e8883452cb0e8bdd8b588061165e82d6a246a07c02ffe91ed1b08a90675"
+  }
+}

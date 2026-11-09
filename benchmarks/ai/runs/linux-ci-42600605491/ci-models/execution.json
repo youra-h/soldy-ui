@@ -1,0 +1,72 @@
+[
+	{
+		"cell": "1-select",
+		"originalExitCode": 0,
+		"signal": null,
+		"error": null,
+		"limitMs": 600000
+	},
+	{
+		"cell": "1-date-picker",
+		"originalExitCode": 0,
+		"signal": null,
+		"error": null,
+		"limitMs": 600000
+	},
+	{
+		"cell": "1-dialog",
+		"originalExitCode": 0,
+		"signal": null,
+		"error": null,
+		"limitMs": 600000
+	},
+	{
+		"cell": "1-tabs",
+		"originalExitCode": 0,
+		"signal": null,
+		"error": null,
+		"limitMs": 600000
+	},
+	{
+		"cell": "1-table",
+		"originalExitCode": 1,
+		"signal": null,
+		"error": null,
+		"limitMs": 600000
+	},
+	{
+		"cell": "2-select",
+		"originalExitCode": 0,
+		"signal": null,
+		"error": null,
+		"limitMs": 600000
+	},
+	{
+		"cell": "2-date-picker",
+		"originalExitCode": 0,
+		"signal": null,
+		"error": null,
+		"limitMs": 600000
+	},
+	{
+		"cell": "2-dialog",
+		"originalExitCode": 0,
+		"signal": null,
+		"error": null,
+		"limitMs": 600000
+	},
+	{
+		"cell": "2-tabs",
+		"originalExitCode": 0,
+		"signal": null,
+		"error": null,
+		"limitMs": 600000
+	},
+	{
+		"cell": "2-table",
+		"originalExitCode": 1,
+		"signal": null,
+		"error": null,
+		"limitMs": 600000
+	}
+]

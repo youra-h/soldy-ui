@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "registeredAt": "2026-11-09T05:53:21.145Z",
+  "phase": "Frozen before candidate output review; first CLI generation request has already started",
+  "candidateOutputReview": "No generated candidate source or answer reviewed before this registration",
+  "plannedLibraryCommit": "71bcbaa01bf3ea83050168b833cb56d023ca38ec",
+  "harnessHashes": {
+    "tools/bench-ai/run.mjs": "ec0dd4021769ec9a26780d7b461d1dc08cd40477b14e8918160622bca14e6f99",
+    "tools/bench-ai/scenarios.mjs": "fbbe8489f420076d94ba47012b474fa1616e2f84ca233d5f56e07d9a9dafba55",
+    "tools/bench-ai/Page.vue": "ef67a5bdefffd1902ca61f9141cc0b3770833f2a01b81e3feb4f213da4d35603",
+    "tools/bench-ai/Soxa.vue": "641a31303bfa1dde0880abbf394fae13141f5991cf3dd6de8b838392bf29d45c",
+    "tools/bench-ai/data.mjs": "2abba6e7b05d645bca776b0aca03296a0fd799a72bdddfa334f624fd4a5440bc",
+    "tools/bench-ai/vite.config.ts": "0426809be890b50a659e62b7288f3d37bc7cf95ac30d480d7c6f6ad5d7635bf9",
+    "tools/bench-ai/client.mjs": "721cd35c298830205841e1b67e24b9c0ff226547cea4b4bda1f169d7d5778482",
+    "tools/bench-ai/server.mjs": "462342b6306e03775b8c1ccbeec51d05e1af1d9530b497025752bf82fc927f89",
+    "tools/bench-ai/setup.mjs": "ce7d2a8b8f99e63a9e406f9b0e6d72778d70a9948fd0438467deb1291cbd01b6",
+    "tools/bench-ai/protocol.mjs": "20737ace99a30bf57923b348141c738f3dfe49dbbb99a0f0205f826568d86b4e"
+  },
+  "promptHashes": {
+    "date-picker.txt": "09300dc7c02d574f1d74a9e17eca403052164da7c7dc3688879813e76a2cd0f7",
+    "dialog.txt": "7cf29aa8498b518f6d4500cbcc9ecd7ccfe90e329dcc01245d1bf1d698f24bf2",
+    "select.txt": "c4ae6f4cbcaaaaf460e575dddd96f977bfeda50764bca10e24e5e50cd7a83d8c",
+    "table.txt": "271564bece6b24e33461466b004542e65584ff5c0ffa664aa632fd69436d9929",
+    "tabs.txt": "f1a46bd61ff0d8ab6f1c95908855831b7b6b1ed9a785f8dd40a7f154bf2e0899"
+  },
+  "amendmentRule": "Preserve this registration. Any harness defect correction gets a dated amendment with reason and old/new hashes, followed by symmetric validation of every participant without changing generated sources."
+}

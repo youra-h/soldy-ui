@@ -1,0 +1,37 @@
+solid    empty  clean      heap 8.03 MB, 1284 B/render, components +0, emitters +0, mismatches 0, 1 s
+file:///D:/projects/soxa-a/tools/bench-ssr/dist/solid.js:10533
+			} }, () => parts.Item, { get children() {
+			                 ^
+
+TypeError: Cannot read properties of undefined (reading 'Item')
+    at mergeProps.children (file:///D:/projects/soxa-a/tools/bench-ssr/dist/solid.js:10533:21)
+    at mergeProps (file:///D:/projects/soxa-a/tools/bench-ssr/dist/solid.js:220:46)
+    at children (file:///D:/projects/soxa-a/tools/bench-ssr/dist/solid.js:10531:57)
+    at file:///D:/projects/soxa-a/tools/bench-ssr/dist/solid.js:265:43
+    at simpleMap (file:///D:/projects/soxa-a/tools/bench-ssr/dist/solid.js:259:45)
+    at For$1 (file:///D:/projects/soxa-a/tools/bench-ssr/dist/solid.js:265:9)
+    at createComponent (file:///D:/projects/soxa-a/tools/bench-ssr/dist/solid.js:210:13)
+    at get children (file:///D:/projects/soxa-a/tools/bench-ssr/dist/solid.js:10529:10)
+    at Object.get [as children] (file:///D:/projects/soxa-a/tools/bench-ssr/dist/solid.js:231:21)
+    at get content (file:///D:/projects/soxa-a/tools/bench-ssr/dist/solid.js:7269:23)
+
+Node.js v24.20.0
+solid    all    [bench-ssr] solid all: exit 1
+file:///D:/projects/soxa-a/tools/bench-ssr/dist/solid.js:10533
+			} }, () => parts.Item, { get children() {
+			                 ^
+
+TypeError: Cannot read properties of undefined (reading 'Item')
+    at mergeProps.children (file:///D:/projects/soxa-a/tools/bench-ssr/dist/solid.js:10533:21)
+    at mergeProps (file:///D:/projects/soxa-a/tools/bench-ssr/dist/solid.js:220:46)
+    at children (file:///D:/projects/soxa-a/tools/bench-ssr/dist/solid.js:10531:57)
+    at file:///D:/projects/soxa-a/tools/bench-ssr/dist/solid.js:265:43
+    at simpleMap (file:///D:/projects/soxa-a/tools/bench-ssr/dist/solid.js:259:45)
+    at For$1 (file:///D:/projects/soxa-a/tools/bench-ssr/dist/solid.js:265:9)
+    at createComponent (file:///D:/projects/soxa-a/tools/bench-ssr/dist/solid.js:210:13)
+    at get children (file:///D:/projects/soxa-a/tools/bench-ssr/dist/solid.js:10529:10)
+    at Object.get [as children] (file:///D:/projects/soxa-a/tools/bench-ssr/dist/solid.js:231:21)
+    at get content (file:///D:/projects/soxa-a/tools/bench-ssr/dist/solid.js:7269:23)
+
+Node.js v24.20.0
+solid    leak   [bench-ssr] solid leak: exit 1

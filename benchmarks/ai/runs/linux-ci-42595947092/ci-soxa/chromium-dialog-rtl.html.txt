@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Component validation</title>
+		<script type="module" crossorigin src="/assets/index-CBCqcOFG.js"></script>
+		<link rel="stylesheet" crossorigin href="/assets/index-B604dx7E.css">
+	</head>
+	<body><!--teleport start anchor--><!--
+			Окно телепортировано целиком: подложка и панель — соседи, а не
+			обёртка и содержимое. Подложка стоит в DOM раньше панели: слой у
+			них один (одно число `z-index` инлайном), и панель рисуется поверх
+			просто порядком.
+
+			Подложка обязательна и закрывает весь экран: фон под окном скрыт
+			от скринридера, но не от указателя, и к странице его не пускает
+			только она. Нажатие по ней для плагинов слоя — нажатие мимо корня.
+
+			Открытость — `visible`: закрытое окно спрятано, а не размонтировано,
+			и состояние содержимого переживает закрытие. Появление и
+			исчезание — переход темы: `data-open` у панели и подложки говорит
+			ей, проявляться или гаснуть.
+		--><!--[--><!--
+				Номер слоя у подложки тот же, что у окна: для окна под этим
+				она — слой выше, и нажатие по ней его не закрывает. Открытость
+				— тоже: подложка гаснет вместе с окном. Пометки владельцем у неё
+				нет — для своего окна она мимо.
+			--><div class="so-dialog__backdrop" style="z-index:0;display:none;" data-open="false"></div><!--
+				Корень — сама панель: на ней слой (`data-layer`), пометка
+				владельцем, место (`so-dialog--placement-*`), размер
+				(`--so-dialog-width`, `--so-dialog-height`), `data-open` и
+				`data-maximized`.
+				Без пометки плагины не нашли бы слой окна, и нажатие в список
+				Select внутри закрыло бы окно. `tabindex="-1"` — фокус встаёт
+				на саму панель, когда внутри нечего фокусировать.
+
+				Порядок в DOM — заголовок, тело, подвал, потом кнопки. В строку
+				заголовка кнопки переносит тема, областями сетки. Поэтому фокус
+				при открытии попадает на первый контрол содержимого, а не на
+				«развернуть», а крестик остаётся последней остановкой Tab.
+				Обёртки, которая собрала бы заголовок с кнопками, нет: она
+				вернула бы кнопки в начало.
+			--><div style="display:none;z-index:0;" class="so-dialog so-dialog--placement-center" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="v-0-title" data-open="false" data-maximized="false" data-owner="v-0-owner"><!--
+					Заголовок рисуется всегда: на него окно ссылается
+					`aria-labelledby`, и `id` для этой ссылки он берёт из
+					`titleAria`. Вокруг слота нет пробелов: пустой заголовок
+					тема сворачивает по `:empty`.
+				--><h2 class="so-dialog__title" id="v-0-title"><!--[-->Settings<!--]--></h2><!--
+					Тело — прокручивается оно, шапка и подвал остаются на месте.
+					`id` — для `aria-describedby` предупреждения.
+				--><div class="so-dialog__body" id="v-0-body"><!--[--><div style="" class="so-input so-input--size-normal" data-disabled="false" data-readonly="false" data-required="false" data-clearable="false"><!--
+			Корень рисуется по `tag`, по умолчанию `div`: `tag` — всегда тег
+			корня, и по нему же ядро решает, есть ли у корня нативный
+			`disabled`. На корне — `dataset` (`data-disabled`, `data-invalid`):
+			тема красит коробку поля и подпись поля формы по корню, а `aria` —
+			у вложенного `<input>`.
+		--><!--v-if--><input type="text" name placeholder aria-label="Name"><!--
+			Обёртка у конца поля — по кнопке очистки, по своей кнопке в слоте
+			`clear` или по слоту `trailing`. Кнопка очистки стоит в ней первой,
+			перед содержимым `trailing`.
+		--><!--v-if--></div><!--]--></div><!-- Подвал — ряд действий. Пустой тема сворачивает по `:empty` --><div class="so-dialog__footer"><!--[--><button type="button">Cancel</button><button type="button">Save</button><!--]--></div><!--
+					The maximize button is a toggle: one name, the state in
+					`aria-pressed`. Two icons, one shown — by the window state,
+					like the CheckBox mark: "maximize" while the window is not
+					maximized, and "restore size" once it is.
+
+					The header buttons are mounted only while on (`v-if`), not
+					hidden with `visible`: the theme relies on their absence from
+					the DOM, and a hidden button would still assemble its instance
+					and plugins in every dialog. They have no view and no size —
+					the theme paints them by context.
+				--><!--v-if--><!--
+					Кнопка закрытия — в углу шапки со стороны конца строки. Она
+					просит окно закрыться: отменить закрытие может подписчик
+					`close:before`. Куда вернуть фокус, решает плагин фокуса.
+				--><button style="" class="so-button so-button--size-normal so-dialog__close" data-disabled="false" type="button" aria-label="إغلاق"><!--[--><!--]--><span class="so-button__text"><!--[--><!--[--><svg viewBox="0 -960 960 960" style="width:;height:;" class="so-icon so-icon--size-normal" aria-hidden="true"><g fill="var(--so-icon-color, #1f1f1f)"><path d="M480-424 284-228q-11 11-28 11t-28-11q-11-11-11-28t11-28l196-196-196-196q-11-11-11-28t11-28q11-11 28-11t28 11l196 196 196-196q11-11 28-11t28 11q11 11 11 28t-11 28L536-480l196 196q11 11 11 28t-11 28q-11 11-28 11t-28-11L480-424Z"/></g></svg><!--]--><!--]--></span><!--[--><!--]--></button></div><!--]--><!--teleport anchor-->
+		<div id="app"><main lang="ar" dir="rtl"><h1>Component validation</h1><button type="button">Before component</button><section aria-label="Candidate"><!--[--><!--[--><button type="button">Open dialog</button><!--teleport start--><!--teleport end--><!--]--><!--]--></section><button type="button">After component</button></main></div>
+		<script id="input" type="application/json">{"component":"dialog","baseline":true,"locale":"ar","dir":"rtl","count":20}</script>
+	</body>
+</html>

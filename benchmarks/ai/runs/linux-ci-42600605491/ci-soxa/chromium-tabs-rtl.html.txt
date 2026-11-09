@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Component validation</title>
+		<script type="module" crossorigin src="/assets/index-CBCqcOFG.js"></script>
+		<link rel="stylesheet" crossorigin href="/assets/index-B604dx7E.css">
+	</head>
+	<body>
+		<div id="app"><main lang="ar" dir="rtl"><h1>Component validation</h1><button type="button">Before component</button><section aria-label="Candidate"><!--[--><div class="so-tabs so-tabs--size-normal so-tabs--orientation-horizontal" data-disabled="false" style=""><!--
+			The owner's `aria` set is the tab list: the core writes `role="tablist"`
+			and `aria-orientation`, TAriaPlugin the name from `aria_label`. The root
+			does not get it: the panels lie there next to the list. The root has
+			`attrs` and `dataset`: the theme dims a disabled set by the root, with
+			the panels (`data-disabled`).
+
+			The consumer's attributes split as a field's: class and style — to the
+			root (`containerAttrs`), the rest — to the tab list (`controlAttrs`), over
+			its `aria`: the consumer's `aria-label` and `id` name the list, not the
+			root without a role.
+
+			The list stands in a row (`so-tabs__bar`), and the `leading` and
+			`trailing` slots next to it, at the row's edges: ARIA lets only `tab`
+			into `[role=tablist]`, and a button in a slot would be a forbidden child.
+			The row is plain markup: no set, no consumer attributes.
+		--><div class="so-tabs__bar"><!----><div class="so-tabs__list" role="tablist" aria-orientation="horizontal" aria-label="Sections"><!--[--><!--[--><div style="order:0;" class="so-tabs-item so-tabs-item--size-normal" data-disabled="false" data-closable="false" data-selected="true"><!--
+			Вся ARIA таба — на элементе, который и есть таб. Раньше
+			`aria-selected` стоял на внешней обёртке без роли, а `role="tab"` —
+			здесь: для скринридера таб не был выбран никогда.
+
+			Набор один. В него пишут ядро (`role`), расширение коллекции
+			(`aria-selected`) и проводка панели (`id`, `aria-controls`) — но
+			шаблону об этом знать незачем. `controlAttrs` рядом — это сквозные
+			атрибуты Vue, чужая сущность.
+
+			`dataset` на обёртке — то же состояние для CSS: тема красит активный
+			таб по `data-selected`. ARIA — для скринридера, `data-*` — для
+			стилей; смешивать нельзя, иначе правка ARIA ломает вид.
+
+			Имя `selected` при состоянии `active` — не описка: `data-*` описывает
+			вид, а «выделенный элемент» тема красит одинаково у таба, секции и
+			опции. Пишет его расширение активации, шаблон ничего не вычисляет.
+		--><button style="" class="so-button so-button--size-normal" data-disabled="false" type="button" role="tab" id="v-2-tab" aria-controls="v-2-panel" aria-selected="true" tabindex="0"><!--[--><!--]--><span class="so-button__text"><!--[--><!--[-->Alpha<!--]--><!--]--></span><!--[--><!--]--></button><!--
+			Кнопка закрытия — сосед строки, а не её часть. Строка — это
+			`<button role="tab">`: интерактивный потомок у кнопки HTML запрещает,
+			потомки таба для скринридера презентационны, а имя таба считается из
+			содержимого. Внутри строки крестик не был кнопкой, и его подпись
+			приклеивалась к названию: «Настройки Close Настройки».
+
+			Имя кнопки приходит из ядра вместе с текстом таба («Close Настройки»).
+			Без него у кнопки нет имени вообще, а с одним лишь «Close» все кнопки
+			набора неразличимы в списке элементов скринридера.
+
+			`size` и `disabled` — явно: от строки кнопка их больше не наследует.
+			От размера зависит кегль, от кегля — иконка; выключенный таб
+			выключает и свою кнопку. Место рядом со строкой держит тема
+			(`.so-tabs-item`).
+
+			`view` нет ни у крестика, ни у строки: значения вида объявляет тема,
+			и разметка библиотеки их не знает. Обе части тема красит по контексту.
+		--><!--v-if--></div><div style="order:1;" class="so-tabs-item so-tabs-item--size-normal" data-disabled="false" data-closable="false" data-selected="false"><!--
+			Вся ARIA таба — на элементе, который и есть таб. Раньше
+			`aria-selected` стоял на внешней обёртке без роли, а `role="tab"` —
+			здесь: для скринридера таб не был выбран никогда.
+
+			Набор один. В него пишут ядро (`role`), расширение коллекции
+			(`aria-selected`) и проводка панели (`id`, `aria-controls`) — но
+			шаблону об этом знать незачем. `controlAttrs` рядом — это сквозные
+			атрибуты Vue, чужая сущность.
+
+			`dataset` на обёртке — то же состояние для CSS: тема красит активный
+			таб по `data-selected`. ARIA — для скринридера, `data-*` — для
+			стилей; смешивать нельзя, иначе правка ARIA ломает вид.
+
+			Имя `selected` при состоянии `active` — не описка: `data-*` описывает
+			вид, а «выделенный элемент» тема красит одинаково у таба, секции и
+			опции. Пишет его расширение активации, шаблон ничего не вычисляет.
+		--><button style="" class="so-button so-button--size-normal" data-disabled="false" type="button" role="tab" id="v-5-tab" aria-controls="v-5-panel" aria-selected="false" tabindex="-1"><!--[--><!--]--><span class="so-button__text"><!--[--><!--[-->Beta<!--]--><!--]--></span><!--[--><!--]--></button><!--
+			Кнопка закрытия — сосед строки, а не её часть. Строка — это
+			`<button role="tab">`: интерактивный потомок у кнопки HTML запрещает,
+			потомки таба для скринридера презентационны, а имя таба считается из
+			содержимого. Внутри строки крестик не был кнопкой, и его подпись
+			приклеивалась к названию: «Настройки Close Настройки».
+
+			Имя кнопки приходит из ядра вместе с текстом таба («Close Настройки»).
+			Без него у кнопки нет имени вообще, а с одним лишь «Close» все кнопки
+			набора неразличимы в списке элементов скринридера.
+
+			`size` и `disabled` — явно: от строки кнопка их больше не наследует.
+			От размера зависит кегль, от кегля — иконка; выключенный таб
+			выключает и свою кнопку. Место рядом со строкой держит тема
+			(`.so-tabs-item`).
+
+			`view` нет ни у крестика, ни у строки: значения вида объявляет тема,
+			и разметка библиотеки их не знает. Обе части тема красит по контексту.
+		--><!--v-if--></div><div style="order:2;" class="so-tabs-item so-tabs-item--size-normal" data-disabled="false" data-closable="false" data-selected="false"><!--
+			Вся ARIA таба — на элементе, который и есть таб. Раньше
+			`aria-selected` стоял на внешней обёртке без роли, а `role="tab"` —
+			здесь: для скринридера таб не был выбран никогда.
+
+			Набор один. В него пишут ядро (`role`), расширение коллекции
+			(`aria-selected`) и проводка панели (`id`, `aria-controls`) — но
+			шаблону об этом знать незачем. `controlAttrs` рядом — это сквозные
+			атрибуты Vue, чужая сущность.
+
+			`dataset` на обёртке — то же состояние для CSS: тема красит активный
+			таб по `data-selected`. ARIA — для скринридера, `data-*` — для
+			стилей; смешивать нельзя, иначе правка ARIA ломает вид.
+
+			Имя `selected` при состоянии `active` — не описка: `data-*` описывает
+			вид, а «выделенный элемент» тема красит одинаково у таба, секции и
+			опции. Пишет его расширение активации, шаблон ничего не вычисляет.
+		--><button style="" class="so-button so-button--size-normal" data-disabled="false" type="button" role="tab" id="v-8-tab" aria-controls="v-8-panel" aria-selected="false" tabindex="-1"><!--[--><!--]--><span class="so-button__text"><!--[--><!--[-->Gamma<!--]--><!--]--></span><!--[--><!--]--></button><!--
+			Кнопка закрытия — сосед строки, а не её часть. Строка — это
+			`<button role="tab">`: интерактивный потомок у кнопки HTML запрещает,
+			потомки таба для скринридера презентационны, а имя таба считается из
+			содержимого. Внутри строки крестик не был кнопкой, и его подпись
+			приклеивалась к названию: «Настройки Close Настройки».
+
+			Имя кнопки приходит из ядра вместе с текстом таба («Close Настройки»).
+			Без него у кнопки нет имени вообще, а с одним лишь «Close» все кнопки
+			набора неразличимы в списке элементов скринридера.
+
+			`size` и `disabled` — явно: от строки кнопка их больше не наследует.
+			От размера зависит кегль, от кегля — иконка; выключенный таб
+			выключает и свою кнопку. Место рядом со строкой держит тема
+			(`.so-tabs-item`).
+
+			`view` нет ни у крестика, ни у строки: значения вида объявляет тема,
+			и разметка библиотеки их не знает. Обе части тема красит по контексту.
+		--><!--v-if--></div><!--]--><!--]--></div><!----></div><!--[--><!--[--><div style="" class="so-tabs-content" role="tabpanel" tabindex="0" id="v-2-panel" aria-labelledby="v-2-tab"><!--[-->Alpha panel<!--]--></div><!----><!----><!--]--><!--]--></div><!--]--></section><button type="button">After component</button></main></div>
+		<script id="input" type="application/json">{"component":"tabs","baseline":true,"locale":"ar","dir":"rtl","count":20}</script>
+	</body>
+</html>

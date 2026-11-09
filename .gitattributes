@@ -25,3 +25,11 @@
 *.mp4   binary
 *.webm  binary
 docs/api/generated/*.json linguist-generated=true
+
+# Experimental evidence must keep exact bytes across commits and checkouts.
+benchmarks/ai/inputs/** -text -eol
+benchmarks/ai/runs/** -text -eol
+benchmarks/ai/prompts/** -text -eol
+benchmarks/ai/protocol.v1.json -text -eol
+benchmarks/ai/amendments/** -text -eol
+benchmarks/validation/runs/** -text -eol
