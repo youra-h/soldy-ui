@@ -7,6 +7,13 @@ import { spawnSync } from 'node:child_process'
 import { pathToFileURL, fileURLToPath } from 'node:url'
 import { build } from 'vite'
 import { chromium, webkit } from 'playwright'
+import {
+	motionSummary,
+	observeMotion,
+	partitionAxe,
+	parseFilters,
+	annotateAxe,
+} from './observations.mjs'
 import { components } from './protocol.mjs'
 import { auditEnvironment } from './environment.mjs'
 import { renderDocument, DocumentIntegrationError } from './document.mjs'
@@ -25,12 +32,14 @@ import {
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..')
 const stand = path.join(root, 'tools/bench-ai')
 const [candidate = 'soxa', destination = 'benchmarks/ai/runs/local'] = process.argv.slice(2)
+const filters = parseFilters(process.argv.slice(4))
 const out = path.resolve(root, destination)
 if (fs.existsSync(out)) throw new Error('Refusing to overwrite an earlier result')
 fs.mkdirSync(out, { recursive: true })
 const source = candidate === 'soxa' ? path.join(stand, 'Soxa.vue') : path.resolve(candidate)
 const record = {
-	schemaVersion: 1,
+	schemaVersion: 2,
+	filters,
 	date: new Date().toISOString(),
 	candidate,
 	sourceHash: fs.existsSync(source)
@@ -148,7 +157,9 @@ const server = http.createServer(async (request, response) => {
 				dir: url.searchParams.get('dir') ?? 'ltr',
 				count: Number(url.searchParams.get('count') ?? 20),
 			}
+			const renderStart = performance.now()
 			const { html, teleports } = await render(props)
+			response.setHeader('server-timing', `ssr;dur=${performance.now() - renderStart}`)
 			response.setHeader('content-type', 'text/html; charset=utf-8')
 			response.end(renderDocument(template, html, props, teleports))
 		} else {
@@ -199,6 +210,7 @@ try {
 		['chromium', chromium],
 		['webkit', webkit],
 	]) {
+		if (filters.engine && filters.engine !== engineName) continue
 		let browser
 		if (engineName === 'webkit' && process.platform === 'win32') {
 			record.cells.push({
@@ -231,6 +243,8 @@ try {
 					...(component === 'select' ? ['ime'] : []),
 					...(['table', 'select'].includes(component) ? ['large'] : []),
 				]) {
+					if (filters.component && filters.component !== component) continue
+					if (filters.mode && filters.mode !== mode) continue
 					if (engineName === 'webkit' && mode === 'ime') {
 						record.cells.push({
 							engine: engineName,
@@ -261,59 +275,71 @@ try {
 						status: 'failed',
 						errors,
 					}
+					record.cells.push(cell)
+					cell.stages = []
+					const phase = async (name, operation) => {
+						cell.lastStage = name
+						const entry = { name, status: 'running' }
+						cell.stages.push(entry)
+						save()
+						const started = performance.now()
+						try {
+							const result = await operation()
+							entry.status = 'completed'
+							return result
+						} catch (error) {
+							entry.status = 'failed'
+							entry.error = error.message
+							throw error
+						} finally {
+							entry.durationMs = performance.now() - started
+							save()
+						}
+					}
 					const timeout = setTimeout(() => {
 						cell.timedOut = true
 						page.close().catch(() => {})
 					}, record.limits.cellTimeoutMs)
 					const scan = async (state) => {
-						const settling = await waitForVisualSettling(
-							page,
-							record.limits.actionTimeoutMs,
+						const settling = await phase(`settling-${state}`, () =>
+							waitForVisualSettling(page, record.limits.actionTimeoutMs),
 						)
 						await page.addScriptTag({ content: axe })
-						const result = await page.evaluate(async () => {
-							const result = await window.axe.run()
-							return {
-								violations: result.violations,
-								incomplete: result.incomplete.map((r) => ({
-									id: r.id,
-									impact: r.impact,
-								})),
-							}
-						})
-						;(cell.axe ??= {})[state] = { ...result, settling }
+						let result = await phase(`audit-${state}`, () =>
+							page.evaluate(async () => {
+								const result = await window.axe.run()
+								return {
+									violations: result.violations,
+									incomplete: result.incomplete.map((r) => ({
+										id: r.id,
+										impact: r.impact,
+									})),
+								}
+							}),
+						)
+						result = await page.evaluate(annotateAxe, result)
+						;(cell.axe ??= {})[state] = { ...partitionAxe(result), settling }
 					}
 					const motion = async (state) => {
 						if (mode !== 'reduce') return
-						const durations = await page.evaluate(() => ({
-							media: matchMedia('(prefers-reduced-motion: reduce)').matches,
-							activeDurations: document
-								.getAnimations()
-								.map((animation) =>
-									Number(
-										animation.effect?.getComputedTiming().activeDuration ?? 0,
-									),
-								),
-						}))
-						cell.reducedMotion ??= {
-							status: 'passed-observed-states',
-							states: {},
-							limitMs: 100,
-							scope: 'Immediate initial/open/after observations only; completed or untriggered animations are not covered',
-						}
-						cell.reducedMotion.states[state] = durations
-						if (
-							!durations.media ||
-							durations.activeDurations.some(
-								(duration) => !Number.isFinite(duration) || duration > 100,
-							)
-						)
+						const observation = motionSummary(await page.evaluate(observeMotion))
+						cell.reducedMotion ??= { status: 'passed-observed-states', states: {} }
+						cell.reducedMotion.states[state] = observation
+						if (observation.status === 'movement-observed')
 							cell.reducedMotion.status = 'failed'
+						else if (
+							observation.status === 'incomplete' &&
+							cell.reducedMotion.status !== 'failed'
+						)
+							cell.reducedMotion.status = 'incomplete'
 					}
 					try {
-						const response = await page.request.get(url, {
-							timeout: record.limits.actionTimeoutMs,
-						})
+						const response = await phase('ssr-request', () =>
+							page.request.get(url, {
+								timeout: record.limits.actionTimeoutMs,
+							}),
+						)
+						cell.serverTiming = response.headers()['server-timing']
 						if (response.status() !== 200)
 							throw new Error(`SSR HTTP ${response.status()}`)
 						const html = await response.text()
@@ -326,7 +352,7 @@ try {
 						const staticPage = await browser.newPage({ javaScriptEnabled: false })
 						staticPage.setDefaultTimeout(record.limits.actionTimeoutMs)
 						try {
-							await staticPage.goto(url)
+							await phase('static-navigation', () => staticPage.goto(url))
 							if (component === 'select')
 								await staticPage
 									.getByRole('combobox', { name: 'Choose items' })
@@ -349,15 +375,19 @@ try {
 									.waitFor({ state: 'visible' })
 							cell.ssr = {
 								status: 'passed',
-								snapshot: await staticPage.locator('body').ariaSnapshot(),
+								snapshot: await phase('static-accessibility-snapshot', () =>
+									staticPage.locator('body').ariaSnapshot(),
+								),
 							}
 						} finally {
 							await staticPage.close()
 						}
-						await page.goto(url)
+						await phase('navigation', () => page.goto(url))
 						await page.getByRole('heading', { name: 'Component validation' }).waitFor()
-						await hydrated(page)
-						cell.before = await page.locator('body').ariaSnapshot()
+						await phase('hydration', () => hydrated(page))
+						cell.before = await phase('accessibility-snapshot', () =>
+							page.locator('body').ariaSnapshot(),
+						)
 						await motion('initial')
 						await scan('initial')
 						try {
@@ -367,15 +397,15 @@ try {
 						} catch (error) {
 							cell.openStateFailure = error.message
 						}
-						await page.goto(url)
-						await hydrated(page)
+						await phase('navigation', () => page.goto(url))
+						await phase('hydration', () => hydrated(page))
 						if (mode === 'narrow-touch') {
-							await touchScenario(component, page)
+							await phase('touch-scenario', () => touchScenario(component, page))
 							cell.touch = 'passed'
-							await page.goto(url)
-							await hydrated(page)
+							await phase('navigation', () => page.goto(url))
+							await phase('hydration', () => hydrated(page))
 						}
-						if (mode === 'ime') await ime(page)
+						if (mode === 'ime') await phase('ime-scenario', () => ime(page))
 						else if (mode === 'rtl' && component === 'tabs') {
 							const tabs = page.getByRole('tab')
 							await tabs.first().focus()
@@ -386,10 +416,12 @@ try {
 								'RTL ArrowLeft must activate next tab',
 							)
 						} else
-							await scenario(
-								component,
-								page,
-								mode === 'large' && component === 'select' ? 10000 : 100,
+							await phase('behavior-scenario', () =>
+								scenario(
+									component,
+									page,
+									mode === 'large' && component === 'select' ? 10000 : 100,
+								),
 							)
 						if (mode === 'narrow-touch') {
 							const overflow = await page.evaluate(
@@ -398,15 +430,26 @@ try {
 							if (overflow && component !== 'table')
 								throw new Error('Narrow viewport overflows horizontally')
 						}
-						if (mode === 'large' && component === 'table') await lastTableRecord(page)
+						if (mode === 'large' && component === 'table')
+							await phase('large-table-boundary', () => lastTableRecord(page))
 						await motion('after')
 						if (cell.reducedMotion?.status === 'failed')
 							throw new Error(
-								'Reduced-motion active animation exceeds 100ms in an observed state',
+								'Reduced-motion spatial movement detected in an observed state',
 							)
 						await scan('after')
-						cell.after = await page.locator('body').ariaSnapshot()
-						if (Object.values(cell.axe).some((result) => result.violations.length))
+						cell.after = await phase('accessibility-snapshot', () =>
+							page.locator('body').ariaSnapshot(),
+						)
+						if (
+							Object.values(cell.axe).some(
+								(result) =>
+									result.wcag.length ||
+									result.bestPractice.some(
+										(v) => !result.documentIntegration.includes(v),
+									),
+							)
+						)
 							throw new Error('axe violations in recorded states')
 						if (cell.openStateFailure) throw new Error('Open-state coverage failed')
 						if (errors.length) throw new Error('Console/page/hydration errors')
@@ -418,7 +461,7 @@ try {
 					} finally {
 						clearTimeout(timeout)
 					}
-					record.cells.push(cell)
+
 					await page.close()
 					save()
 				}
