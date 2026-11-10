@@ -1,4 +1,8 @@
-import { BREADCRUMBS_ITEMS } from '@soxa-ui/playground-shared'
+import {
+	BREADCRUMBS_ITEMS,
+	EDITOR_ALIGNMENT_ITEMS,
+	editorAlignmentPath,
+} from '@soxa-ui/playground-shared'
 import {
 	For,
 	Show,
@@ -356,7 +360,26 @@ export const PREVIEWS: Record<string, TPreview> = {
 	// slot overrides the prop, and the `text` row would change nothing visible
 	button: (bind) => <Button {...bind()} />,
 	'toggle-button': (bind) => <ToggleButton {...bind()} />,
-	'toggle-group': (bind) => <ToggleGroup items={ITEMS} {...bind()} />,
+	'toggle-group': (bind) => (
+		<ToggleGroup
+			items={EDITOR_ALIGNMENT_ITEMS}
+			{...bind()}
+			item-leading={({ item }) => (
+				<svg
+					width="16"
+					height="16"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width={1.5}
+					stroke-linecap="round"
+					aria-hidden="true"
+				>
+					<path d={editorAlignmentPath(item.text)} />
+				</svg>
+			)}
+		/>
+	),
 
 	input: (bind) => <Input {...bind()} />,
 	'number-input': (bind) => <NumberInput {...bind()} />,

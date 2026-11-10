@@ -1,4 +1,8 @@
-import { BREADCRUMBS_ITEMS } from '@soxa-ui/playground-shared'
+import {
+	BREADCRUMBS_ITEMS,
+	EDITOR_ALIGNMENT_ITEMS,
+	editorAlignmentPath,
+} from '@soxa-ui/playground-shared'
 import type { TToastsItemType } from '@soxa-ui/core'
 import {
 	COLLECTION_ITEMS,
@@ -514,7 +518,50 @@ export const PREVIEWS: Record<string, TPreview> = {
 	// slot overrides the prop, and the `text` row would change nothing visible
 	button: { tag: 'button', is: 'so-button' },
 	'toggle-button': { tag: 'button', is: 'so-toggle-button' },
-	'toggle-group': { tag: 'div', is: 'so-toggle-group', props: { items: ITEMS } },
+	'toggle-group': {
+		tag: 'div',
+		is: 'so-toggle-group',
+		rebuild: ['items'],
+		slots: (bind) =>
+			bind.items
+				? {}
+				: {
+						default: EDITOR_ALIGNMENT_ITEMS.map((item) => ({
+							tag: 'button',
+							is: 'so-toggle-group-item',
+							props: { ...item },
+							part: 'Item',
+							slots: {
+								leading: [
+									() => {
+										const svg = document.createElementNS(
+											'http://www.w3.org/2000/svg',
+											'svg',
+										)
+										for (const [name, value] of Object.entries({
+											width: '16',
+											height: '16',
+											viewBox: '0 0 24 24',
+											fill: 'none',
+											stroke: 'currentColor',
+											'stroke-width': '1.5',
+											'stroke-linecap': 'round',
+											'aria-hidden': 'true',
+										}))
+											svg.setAttribute(name, value)
+										const path = document.createElementNS(
+											'http://www.w3.org/2000/svg',
+											'path',
+										)
+										path.setAttribute('d', editorAlignmentPath(item.text))
+										svg.append(path)
+										return svg
+									},
+								],
+							},
+						})),
+					},
+	},
 
 	input: { tag: 'div', is: 'so-input' },
 	'number-input': { tag: 'div', is: 'so-number-input' },
