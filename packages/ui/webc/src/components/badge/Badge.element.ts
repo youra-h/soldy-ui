@@ -16,4 +16,5 @@ export const TBadgeElement: TElementClassOf<
 	setup: setupBadge,
 })
 defineElement('so-badge', TBadgeElement, 'span')
+
 export type TBadgeElementProps = TElementType<typeof TBadgeElement>

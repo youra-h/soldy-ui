@@ -22,10 +22,14 @@ export const BADGE_SLOTS: readonly TScenario[] = [
 		...rest,
 		run: async (ctx) => {
 			await ctx.frame()
+
 			const indicator = ctx.scene.querySelector('.so-badge__indicator')
+
 			ctx.check(indicator?.textContent === text, 'Indicator text matches the value')
+
 			if (key === 'overlay') {
 				const button = ctx.scene.querySelector('button')
+
 				ctx.check(button?.textContent === 'Inbox', 'Anchor keeps its own label')
 			}
 		},

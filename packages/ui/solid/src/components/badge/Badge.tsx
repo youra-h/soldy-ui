@@ -7,12 +7,14 @@ import type { BadgeProps } from './base.component'
 export function Badge(props: BadgeProps): JSX.Element {
 	const binding = setupBadge(props)
 	const state = binding.state
+
 	const root = createRootProps(() => ({
 		state,
 		sets: [state.attrs, state.dataset],
 		forward: binding.forwardProps(),
 	}))
 	const indicatorAria = createPartProps(() => state.aria)
+
 	return (
 		<Show when={state.rendered}>
 			<Root tag={state.tag} attributes={root} ref={binding.ref}>

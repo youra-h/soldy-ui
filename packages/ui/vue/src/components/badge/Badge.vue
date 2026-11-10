@@ -1,5 +1,6 @@
 <script lang="ts">
 import SetupBadge from './setup.component'
+
 export default { ...SetupBadge }
 </script>
 

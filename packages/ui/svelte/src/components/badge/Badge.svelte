@@ -5,6 +5,7 @@
 
 	let { ref = $bindable(), ...props }: BadgeProps = $props()
 	const mountId = $props.id()
+
 	const binding = setupBadge(() => props, mountId, (node) => (ref = node))
 	const state = binding.state
 </script>

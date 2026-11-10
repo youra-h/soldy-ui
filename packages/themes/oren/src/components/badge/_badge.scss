@@ -20,6 +20,7 @@
 		&--variant-#{$color} > #{$this}__indicator {
 			background-color: var(--so-#{$color}-500);
 		}
+
 		&--variant-#{$color}#{$this}--view-outlined > #{$this}__indicator {
 			background-color: transparent;
 			color: var(--so-#{$color}-800);

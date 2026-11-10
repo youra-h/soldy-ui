@@ -6,6 +6,7 @@ export default {
 	name: '_Badge',
 	extends: BaseBadge,
 	expose: useExpose(),
+
 	setup(props: BadgeProps, { emit }: SetupContext) {
 		const adapter = createVueAdapterContext(BadgeDescriptor(), {
 			ctrl: props.ctrl,
