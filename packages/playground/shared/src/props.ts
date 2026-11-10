@@ -513,6 +513,7 @@ const OPTIONS: Record<string, Record<string, readonly string[]>> = {
  * Icon её снимает `NON_EDITABLE_BY_COMPONENT`), а глиф — компонент фреймворка.
  */
 export const PREVIEW_PROPS: Readonly<Record<string, Readonly<Record<string, unknown>>>> = {
+	badge: { value: 8 },
 	// Подпись — пропом `text`, а не слотом: заданный слот перекрывает проп, и
 	// строка `text` не меняла бы ничего видимого
 	button: { text: 'Кнопка' },
