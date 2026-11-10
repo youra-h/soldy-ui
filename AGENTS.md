@@ -343,6 +343,57 @@ README) правило тоже не затрагивает.
 Сказать, что упёрлись, и получить решение: сузить задачу или расширить. Тихо
 поставленный костыль хуже и невыполненной задачи, и прямого отказа.
 
+## Code layout and logical blocks (critical)
+
+Follow nearby code and the repository's EditorConfig/Prettier settings. Separate
+meaningful steps with blank lines: reading state, guard checks, preparing and
+emitting cancellable events, state mutation, binding/unbinding listeners, and
+cleanup. Separate methods and accessors, but keep closely related declarations,
+assignments and assertions together; do not add a blank line after every statement.
+
+For example, keep the guard, cancellable notification and accepted update distinct:
+
+```ts
+if (value === this._value) return
+
+const event = new TChangeEvent(value, this._value)
+this.events.emit('change:value:before', event)
+
+if (event.defaultPrevented) return
+
+this._value = event.value
+this.events.emit('change:value', { newValue: event.value, oldValue: event.oldValue })
+```
+
+Apply this to implementation, tests and examples. Prettier does not establish
+logical boundaries: review readability manually before committing, and carry this
+requirement into delegated work and the review of its result.
+
+## Comments and JSDoc (critical)
+
+Aim for moderate comment density in new or modified code. Use the cleaned
+[Button model](packages/core/src/components/custom/button/button.class.ts) and
+[descriptor](packages/setup/content/descriptors/components/button.descriptor.ts)
+as references: explain meaningful decisions, not every line or method.
+
+Add concise comments for non-obvious reasons, invariants, lifecycle/ownership
+constraints, framework or accessibility pitfalls, and choices whose rationale
+would otherwise be lost. Use short JSDoc for classes, functions and public
+contracts when it adds useful purpose, behavior, limits or side effects beyond
+the name and TypeScript signature; do not require it on every symbol.
+
+For example, a Badge note should explain why the wrapper stays neutral:
+
+```ts
+// Keep image semantics on the indicator so the interactive anchor stays accessible.
+```
+
+Keep straightforward getters, setters and standard adapter wiring uncluttered.
+Avoid restating code or types, long block-by-block narration, duplicate explanations
+across layers, and invented historical rationale; link to the authoritative rule
+when needed. Follow the English-comment rule and update affected explanations
+with the code. Include this balance in delegated instructions and manual review.
+
 ## Layer boundaries (critical)
 
 | Package            | Responsibility                                                                                                                |

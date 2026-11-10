@@ -22,6 +22,7 @@ export { A11Y_EXCEPTIONS } from './exceptions'
 
 export function validateExceptions(exceptions: readonly TAuditException[]): void {
 	const keys = new Set<string>()
+
 	for (const entry of exceptions) {
 		if (
 			!['chromium', 'webkit'].includes(entry.browser) ||
@@ -40,6 +41,7 @@ export function validateExceptions(exceptions: readonly TAuditException[]): void
 			)
 		if (!/^[.#][a-zA-Z]/.test(entry.selector) || /[*,]/.test(entry.selector))
 			throw new Error('Exception needs one exact node selector')
+
 		const key = JSON.stringify([
 			entry.browser,
 			entry.adapter,
@@ -47,34 +49,42 @@ export function validateExceptions(exceptions: readonly TAuditException[]): void
 			entry.rule,
 			entry.selector,
 		])
+
 		if (keys.has(key)) throw new Error('Duplicate exception')
 		keys.add(key)
 	}
 }
 
-/** Classify without modifying any original axe finding. Unused exemptions are errors. */
+/** Original targets and unique selectors must resolve to the same node; mount ids are not exemptions. */
 export function auditGate(
 	violations: readonly Result[],
 	context: TAuditContext,
 	exceptions: readonly TAuditException[] = A11Y_EXCEPTIONS,
 ) {
 	validateExceptions(exceptions)
+
 	const scoped = exceptions.filter(
 		(entry) =>
 			entry.browser === context.browser &&
 			entry.adapter === context.adapter &&
 			entry.case === context.case,
 	)
+
 	const used = new Set<TAuditException>()
 	const identities = new Map<TAuditException, Element>()
+
 	for (const entry of scoped) {
 		const nodes = document.querySelectorAll(entry.selector)
+
 		if (nodes.length > 1) throw new Error('Ambiguous exception node: ' + entry.selector)
+
 		const node = nodes[0]
 		if (node) identities.set(entry, node)
 	}
+
 	const failures: { rule: string; impact: string | null | undefined; target: unknown }[] = []
 	const waived: { exception: TAuditException; rule: string; target: unknown }[] = []
+
 	for (const violation of violations) {
 		for (const node of violation.nodes) {
 			const target = node.target[0]
@@ -89,6 +99,7 @@ export function auditGate(
 							entry.rule === violation.id && identities.get(entry) === original,
 					)
 				: undefined
+
 			if (exception) {
 				used.add(exception)
 				waived.push({ exception, rule: violation.id, target: node.target })
@@ -96,6 +107,8 @@ export function auditGate(
 				failures.push({ rule: violation.id, impact: violation.impact, target: node.target })
 		}
 	}
+
 	const stale = scoped.filter((entry) => !used.has(entry))
+
 	return { failures, waived, stale }
 }

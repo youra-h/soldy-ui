@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, input, viewChild, viewChildren } from '@angular/core'
 import {
 	RoleIconDirective,
+	TBadgeComponent,
 	TButtonComponent,
 	TCalendarComponent,
 	TCheckBoxComponent,
@@ -1071,4 +1072,46 @@ export class SkeletonPreview implements TFixture {
 	readonly height = input<TSkeletonComponent['height']>()
 	readonly copy = viewChild.required(CopyDirective)
 	readonly subjects = viewChildren(TSkeletonComponent)
+}
+
+@Component({
+	selector: 'pg-badge-preview',
+	imports: [TBadgeComponent, CopyDirective],
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	host: { style: 'display: contents' },
+	template: `<ng-template pg-copy
+		><span
+			so-badge
+			[ctrl]="ctrl()"
+			[rendered]="rendered()"
+			[visible]="visible()"
+			[direction]="direction()"
+			[size]="size()"
+			[variant]="variant()"
+			[value]="value()"
+			[max]="max()"
+			[dot]="dot()"
+			[view]="view()"
+			[aria_label]="aria_label()"
+			[aria_labelledBy]="aria_labelledBy()"
+			[aria_describedBy]="aria_describedBy()"
+		></span
+	></ng-template>`,
+})
+export class BadgePreview implements TFixture {
+	readonly ctrl = input<TBadgeComponent['ctrl']>()
+	readonly rendered = input<TBadgeComponent['rendered']>()
+	readonly visible = input<TBadgeComponent['visible']>()
+	readonly direction = input<TBadgeComponent['direction']>()
+	readonly size = input<TBadgeComponent['size']>()
+	readonly variant = input<TBadgeComponent['variant']>()
+	readonly value = input<TBadgeComponent['value']>()
+	readonly max = input<TBadgeComponent['max']>()
+	readonly dot = input<TBadgeComponent['dot']>()
+	readonly view = input<TBadgeComponent['view']>()
+	readonly aria_label = input<TBadgeComponent['aria_label']>()
+	readonly aria_labelledBy = input<TBadgeComponent['aria_labelledBy']>()
+	readonly aria_describedBy = input<TBadgeComponent['aria_describedBy']>()
+	readonly copy = viewChild.required(CopyDirective)
+	readonly subjects = viewChildren(TBadgeComponent)
 }

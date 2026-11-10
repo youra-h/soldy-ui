@@ -16,6 +16,7 @@ export const saveA11yReport = defineBrowserCommand<[report: Readonly<Record<stri
 	async ({ page, project }, report) => {
 		const adapter = report.adapter
 		const auditCase = report.case
+
 		if (typeof adapter !== 'string' || !A11Y_ADAPTERS.some((id) => id === adapter))
 			throw new Error('Unknown audit adapter')
 		if (
@@ -23,8 +24,10 @@ export const saveA11yReport = defineBrowserCommand<[report: Readonly<Record<stri
 			(!A11Y_CASES.some((entry) => entry.id === auditCase) && !GATE_CASES.includes(auditCase))
 		)
 			throw new Error('Unknown audit case')
+
 		const browser = project.config.browser.name
 		if (browser !== 'chromium' && browser !== 'webkit') throw new Error('Unknown audit browser')
+
 		const directory = resolve(
 			import.meta.dirname,
 			'../..',
@@ -38,6 +41,7 @@ export const saveA11yReport = defineBrowserCommand<[report: Readonly<Record<stri
 			directory,
 			auditCase.replace('/', '--') + (report.setupError ? '.setup.json' : '.json'),
 		)
+
 		const commit = execFileSync('git', ['rev-parse', 'HEAD'], {
 			cwd: import.meta.dirname,
 			encoding: 'utf8',
@@ -48,6 +52,7 @@ export const saveA11yReport = defineBrowserCommand<[report: Readonly<Record<stri
 		}).trim()
 			? 'modified'
 			: 'clean'
+
 		const output = {
 			...report,
 			runId: RUN_ID,
@@ -57,7 +62,9 @@ export const saveA11yReport = defineBrowserCommand<[report: Readonly<Record<stri
 			workingTree,
 			recordedAt: new Date().toISOString(),
 		}
+
 		await mkdir(directory, { recursive: true })
+
 		let manifest = manifests.get(browser)
 		if (!manifest) {
 			manifest = writeFile(
@@ -79,8 +86,10 @@ export const saveA11yReport = defineBrowserCommand<[report: Readonly<Record<stri
 			)
 			manifests.set(browser, manifest)
 		}
+
 		await manifest
 		await writeFile(file, JSON.stringify(output, null, 2) + '\n', 'utf8')
+
 		return readFile(file, 'utf8')
 	},
 )

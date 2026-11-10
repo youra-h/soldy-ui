@@ -29,6 +29,7 @@ import type { ReactNode } from 'react'
 import { createRoot } from 'react-dom/client'
 import {
 	TAccordion,
+	TBadge,
 	TButton,
 	TItemRow,
 	TCalendar,
@@ -86,6 +87,7 @@ import type {
 } from '@soxa-ui/core'
 import {
 	Accordion,
+	Badge,
 	Button,
 	Calendar,
 	CheckBox,
@@ -380,6 +382,12 @@ const COMPONENTS: Readonly<Record<string, Readonly<Record<string, TCase>>>> = {
 				buses: engineBuses(engine),
 			}
 		},
+	},
+	Badge: {
+		ctrl: overCtrl(
+			() => new TBadge(),
+			(ctrl) => <Badge ctrl={ctrl} />,
+		),
 	},
 	Button: {
 		ctrl: overCtrl(

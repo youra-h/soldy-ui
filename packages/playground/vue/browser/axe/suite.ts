@@ -43,6 +43,41 @@ async function settled() {
 }
 
 async function confirmState(entry: TAuditCase) {
+	if (entry.component === 'badge') {
+		const badge = document.querySelector('.so-badge')
+		const indicator = badge?.querySelector('.so-badge__indicator')
+		if (!badge || !indicator) throw new Error(entry.id + ': missing actual badge parts')
+
+		expect(badge.getAttribute('role'), 'anchor wrapper stays neutral').toBeNull()
+		expect(badge.getAttribute('aria-label'), 'name belongs to the indicator').toBeNull()
+		expect(badge.getAttribute('aria-hidden'), 'anchor is not hidden').toBeNull()
+
+		const text =
+			entry.state === 'text'
+				? 'New'
+				: entry.state === 'zero'
+					? '0'
+					: entry.state === 'capped'
+						? '99+'
+						: entry.state.endsWith('dot')
+							? ''
+							: '5'
+		expect(indicator.textContent?.trim(), entry.id + ': actual display value').toBe(text)
+		if (typeof entry.props.aria_label === 'string')
+			expect(indicator.getAttribute('aria-label')).toBe(entry.props.aria_label)
+
+		if (entry.state === 'anchor') {
+			const anchor = badge.querySelector('.so-badge__anchor button')
+			if (!(anchor instanceof HTMLButtonElement))
+				throw new Error('Badge anchor is not a native button')
+
+			expect(anchor.textContent).toContain('Inbox')
+			expect(anchor.disabled).toBe(false)
+			expect(anchor.tabIndex).toBe(0)
+			expect(anchor.closest('[aria-hidden="true"]')).toBeNull()
+		}
+	}
+
 	for (const selector of entry.exists ?? [])
 		expect(
 			document.querySelector(selector),
@@ -165,6 +200,7 @@ export function auditSuite(adapter: string) {
 	let paddingBody = ''
 	beforeAll(async () => {
 		host = await loadHost(adapter)
+
 		host.setLocale(ruRU)
 	})
 	beforeEach(() => {
@@ -182,6 +218,7 @@ export function auditSuite(adapter: string) {
 			handle?.unmount()
 			handle = undefined
 			await settled()
+
 			expect(
 				document.querySelector(
 					'.so-select__panel, .so-dialog, .so-drawer, .so-toasts, .so-menu__panel, .so-menu-item__panel, .so-popover__panel, .so-tooltip__panel, .so-date-picker__panel',
@@ -198,6 +235,7 @@ export function auditSuite(adapter: string) {
 		} finally {
 			scene?.remove()
 			scene = undefined
+
 			document.title = originalTitle
 			for (const [name, value] of [
 				['lang', originalLang],
@@ -207,6 +245,7 @@ export function auditSuite(adapter: string) {
 				if (value === null) document.documentElement.removeAttribute(name)
 				else document.documentElement.setAttribute(name, value)
 			}
+
 			if (previousFocus instanceof HTMLElement && previousFocus.isConnected)
 				previousFocus.focus()
 		}
@@ -239,10 +278,12 @@ export function auditSuite(adapter: string) {
 					const heading = document.createElement('h1')
 					heading.textContent = 'Component accessibility audit'
 					scene.append(heading)
+					// Hosts replace their mount target's children; the document heading stays outside it.
 					const mountPoint = document.createElement('div')
 					mountPoint.style.display = 'contents'
 					scene.append(mountPoint)
 					document.body.append(scene)
+
 					const context = {
 						locale: ruRU.tag,
 						theme: 'oren',
@@ -255,6 +296,7 @@ export function auditSuite(adapter: string) {
 						state: entry.state,
 						axe: axe.version,
 					}
+
 					let reported = false
 					try {
 						const engine =
@@ -270,8 +312,10 @@ export function auditSuite(adapter: string) {
 								...(engine ? { engine } : {}),
 							},
 						})
+
 						await frame()
 						await frame()
+
 						if (engine) {
 							const toast = engine.extensions.toasts.show({
 								text: 'Сохраняем…',
@@ -281,6 +325,7 @@ export function auditSuite(adapter: string) {
 							if (!toast)
 								throw new Error('Persistent loading fixture did not create a toast')
 						}
+
 						for (const selector of entry.click ?? []) {
 							if (selector.startsWith('text:'))
 								await userEvent.click(
@@ -311,7 +356,9 @@ export function auditSuite(adapter: string) {
 							document.querySelector('.pg__header, #vitest-ui'),
 							'audit scope excludes the shell and runner UI',
 						).toBeNull()
+
 						const result = await axe.run(document, { absolutePaths: true, xpath: true })
+
 						const classification = (() => {
 							try {
 								return {
@@ -325,6 +372,7 @@ export function auditSuite(adapter: string) {
 								return { gateError: String(error) }
 							}
 						})()
+
 						// Persist the original findings and checks before any assertion can fail.
 						await commands.saveA11yReport({
 							...context,
@@ -335,6 +383,7 @@ export function auditSuite(adapter: string) {
 							...classification,
 						})
 						reported = true
+
 						try {
 							await confirmState(entry)
 						} catch (error) {
@@ -346,8 +395,10 @@ export function auditSuite(adapter: string) {
 							})
 							throw error
 						}
+
 						if (!classification.gate)
 							throw new Error(classification.gateError ?? 'Axe classification failed')
+
 						const gate = classification.gate
 						expect(gate.stale, 'stale scoped axe exceptions').toEqual([])
 						expect(

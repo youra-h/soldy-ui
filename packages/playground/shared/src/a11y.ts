@@ -2,6 +2,7 @@ import type { IPreviewHost } from './host.ts'
 
 export const A11Y_COMPONENTS = [
 	'button',
+	'badge',
 	'input',
 	'number-input',
 	'textarea',
@@ -89,6 +90,40 @@ function audit(
 
 /** Explicit consumer inventory; inheritance layers never mount decorative layer previews. */
 export const A11Y_CASES: readonly TAuditCase[] = [
+	audit('badge', 'text', '.so-badge', { value: 'New' }, [
+		'.so-badge__indicator:not([aria-hidden])',
+	]),
+	audit('badge', 'named-count', '.so-badge', { value: 5, aria_label: '5 unread messages' }, [
+		'.so-badge__indicator[role="img"][aria-label="5 unread messages"]',
+	]),
+	audit('badge', 'zero', '.so-badge', { value: 0 }, ['.so-badge__indicator:not([aria-hidden])']),
+	audit(
+		'badge',
+		'capped',
+		'.so-badge',
+		{ value: 120, max: 99, aria_label: '120 unread messages' },
+		['.so-badge__indicator[role="img"][aria-label="120 unread messages"]'],
+	),
+	audit(
+		'badge',
+		'named-dot',
+		'.so-badge',
+		{ value: 5, dot: true, aria_label: '5 unread messages' },
+		['.so-badge[data-dot="true"]', '.so-badge__indicator[role="img"]'],
+	),
+	audit('badge', 'decorative-dot', '.so-badge', { value: 5, dot: true }, [
+		'.so-badge[data-dot="true"]',
+		'.so-badge__indicator[aria-hidden="true"]',
+	]),
+	audit(
+		'badge',
+		'anchor',
+		'.so-badge',
+		{ value: 5, aria_label: '5 unread messages' },
+		['.so-badge__anchor button', '.so-badge__indicator[role="img"]'],
+		{ fixture: 'badge-anchor' },
+	),
+
 	audit(
 		'input',
 		'invalid',

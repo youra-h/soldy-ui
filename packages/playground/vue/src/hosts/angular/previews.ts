@@ -13,6 +13,7 @@ import {
 	TagsPreview,
 } from './collections'
 import {
+	BadgePreview,
 	ButtonPreview,
 	CalendarPreview,
 	CheckBoxPreview,
@@ -76,6 +77,7 @@ export type TPreview =
 	| { readonly templateFor: (props: TProps) => Type<TFixture> }
 
 export const PREVIEWS: Record<string, TPreview> = {
+	badge: { template: BadgePreview },
 	button: { template: ButtonPreview },
 	input: { template: InputPreview },
 	'number-input': { template: NumberInputPreview },

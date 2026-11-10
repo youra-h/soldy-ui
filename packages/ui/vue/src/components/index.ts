@@ -41,3 +41,5 @@ export * from './toasts'
 export * from './tooltip'
 export * from './value-control'
 export * from './virtual'
+
+export * from './badge'

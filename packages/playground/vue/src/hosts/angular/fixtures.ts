@@ -1,11 +1,21 @@
-import { TToastsComponent } from '@soxa-ui/angular'
 import {
-	TFieldComponent,
-	TInputComponent,
-	TNumberInputComponent,
-	TTextareaComponent,
+	RoleIconDirective,
+	SlotDirective,
+	TBadgeComponent,
+	TButtonComponent,
+	TCheckBoxComponent,
 	TDateInputComponent,
 	TDatePickerComponent,
+	TFieldComponent,
+	TIconComponent,
+	TInputComponent,
+	TLabelComponent,
+	TNumberInputComponent,
+	TRadioGroupComponent,
+	TRadioGroupItemComponent,
+	TSwitchComponent,
+	TTextareaComponent,
+	TToastsComponent,
 } from '@soxa-ui/angular'
 import {
 	ChangeDetectionStrategy,
@@ -17,17 +27,7 @@ import {
 	type Type,
 } from '@angular/core'
 import type { IButton, ILabel } from '@soxa-ui/core'
-import {
-	RoleIconDirective,
-	SlotDirective,
-	TButtonComponent,
-	TCheckBoxComponent,
-	TIconComponent,
-	TLabelComponent,
-	TRadioGroupComponent,
-	TRadioGroupItemComponent,
-	TSwitchComponent,
-} from '@soxa-ui/angular'
+
 import { CopyDirective } from './copy.directive'
 
 /**
@@ -271,7 +271,51 @@ class A11yPersistentToasts implements TFixture {
 	readonly subjects = viewChildren(TToastsComponent)
 }
 
+@Component({
+	selector: 'pg-badge-anchor',
+	imports: [TBadgeComponent, TButtonComponent, CopyDirective],
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	host: { style: 'display: contents' },
+	template: `<ng-template pg-copy
+		><span
+			so-badge
+			[ctrl]="ctrl()"
+			[rendered]="rendered()"
+			[visible]="visible()"
+			[direction]="direction()"
+			[size]="size()"
+			[variant]="variant()"
+			[value]="value()"
+			[max]="max()"
+			[dot]="dot()"
+			[view]="view()"
+			[aria_label]="aria_label()"
+			[aria_labelledBy]="aria_labelledBy()"
+			[aria_describedBy]="aria_describedBy()"
+			><button so-button slot="anchor">Inbox</button></span
+		></ng-template
+	>`,
+})
+class BadgeAnchor implements TFixture {
+	readonly ctrl = input<TBadgeComponent['ctrl']>()
+	readonly rendered = input<TBadgeComponent['rendered']>()
+	readonly visible = input<TBadgeComponent['visible']>()
+	readonly direction = input<TBadgeComponent['direction']>()
+	readonly size = input<TBadgeComponent['size']>()
+	readonly variant = input<TBadgeComponent['variant']>()
+	readonly value = input<TBadgeComponent['value']>()
+	readonly max = input<TBadgeComponent['max']>()
+	readonly dot = input<TBadgeComponent['dot']>()
+	readonly view = input<TBadgeComponent['view']>()
+	readonly aria_label = input<TBadgeComponent['aria_label']>()
+	readonly aria_labelledBy = input<TBadgeComponent['aria_labelledBy']>()
+	readonly aria_describedBy = input<TBadgeComponent['aria_describedBy']>()
+	readonly copy = viewChild.required(CopyDirective)
+	readonly subjects = viewChildren(TBadgeComponent)
+}
+
 export const FIXTURES: Record<string, Type<TFixture>> = {
+	'badge-anchor': BadgeAnchor,
 	'a11y-persistent-toasts': A11yPersistentToasts,
 	'a11y-invalid-input': A11yInvalidInput,
 	'a11y-invalid-number-input': A11yInvalidNumberInput,

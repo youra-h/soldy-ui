@@ -1,3 +1,4 @@
+import BadgeAnchor from './BadgeAnchor.svelte'
 import A11yPersistentToasts from './A11yPersistentToasts.svelte'
 import A11yInvalidInput from './A11yInvalidInput.svelte'
 import A11yInvalidNumberInput from './A11yInvalidNumberInput.svelte'
@@ -21,6 +22,7 @@ import type { TPreview } from './previews'
  * именами.
  */
 export const FIXTURES: Record<string, TPreview> = {
+	'badge-anchor': BadgeAnchor,
 	'a11y-persistent-toasts': A11yPersistentToasts,
 	'a11y-invalid-input': A11yInvalidInput,
 	'a11y-invalid-number-input': A11yInvalidNumberInput,

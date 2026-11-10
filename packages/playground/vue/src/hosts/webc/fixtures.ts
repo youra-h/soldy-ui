@@ -15,6 +15,11 @@ import type { TPreview } from './previews'
  * (`slotScope: false`).
  */
 export const FIXTURES: Record<string, TPreview> = {
+	'badge-anchor': {
+		tag: 'span',
+		is: 'so-badge',
+		slots: { anchor: [{ tag: 'button', is: 'so-button', props: { text: 'Inbox' } }] },
+	},
 	'a11y-persistent-toasts': { tag: 'so-toasts' },
 	'a11y-invalid-input': {
 		tag: 'div',

@@ -20,6 +20,12 @@
       "scope": "so-accordion-item"
     },
     {
+      "name": "so-badge",
+      "sources": ["packages/core/src/components/custom/badge/badge.class.ts"],
+      "description": "Noninteractive badge wrapper.",
+      "scope": "Badge"
+    },
+    {
       "name": "so-button",
       "sources": ["packages/core/src/components/custom/button/button.class.ts"],
       "description": "Root of button. Inherited component classes use the concrete component's base name.",
@@ -366,6 +372,32 @@
       ],
       "description": "header part of accordion item. Availability follows the rendered component structure.",
       "scope": "so-accordion-item"
+    },
+    {
+      "name": "so-badge__anchor",
+      "sources": [
+        "packages/ui/angular/src/components/badge/badge.component.html",
+        "packages/ui/react/src/components/badge/Badge.tsx",
+        "packages/ui/solid/src/components/badge/Badge.tsx",
+        "packages/ui/svelte/src/components/badge/Badge.svelte",
+        "packages/ui/vue/src/components/badge/Badge.vue",
+        "packages/ui/webc/src/components/badge/badge.template.ts"
+      ],
+      "description": "Arbitrary anchor content.",
+      "scope": "Badge"
+    },
+    {
+      "name": "so-badge__indicator",
+      "sources": [
+        "packages/ui/angular/src/components/badge/badge.component.html",
+        "packages/ui/react/src/components/badge/Badge.tsx",
+        "packages/ui/solid/src/components/badge/Badge.tsx",
+        "packages/ui/svelte/src/components/badge/Badge.svelte",
+        "packages/ui/vue/src/components/badge/Badge.vue",
+        "packages/ui/webc/src/components/badge/badge.template.ts"
+      ],
+      "description": "Badge text or dot; receives the Badge ARIA set.",
+      "scope": "Badge"
     },
     {
       "name": "so-button__text",
@@ -2707,6 +2739,7 @@
       "name": "--view-",
       "sources": [
         "packages/core/src/components/custom/accordion/accordion.class.ts",
+        "packages/core/src/components/custom/badge/badge.class.ts",
         "packages/core/src/components/custom/button/button.class.ts",
         "packages/core/src/components/custom/check-box/check-box.class.ts",
         "packages/core/src/components/custom/list-box/list-box.class.ts",
@@ -2807,6 +2840,14 @@
       "scope": "TControl descendants and collection items",
       "values": "true | false",
       "presence": "TDataset serializes false as \"false\"; null/undefined removes the attribute. See scope for the bound DOM node."
+    },
+    {
+      "name": "data-dot",
+      "sources": ["packages/core/src/components/custom/badge/badge.class.ts"],
+      "description": "Indicator is a dot.",
+      "scope": "Badge root",
+      "values": "true | false",
+      "presence": "Always present, including false."
     },
     {
       "name": "data-dragging",

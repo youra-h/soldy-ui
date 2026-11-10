@@ -23,6 +23,11 @@
 export {}
 
 declare module '@soxa-ui/core' {
+	interface IBadgeViews {
+		filled: true
+		outlined: true
+	}
+
 	/**
 	 * The color by meaning. Without a variant — the neutral; `accent` for
 	 * ProgressLinear and ProgressSpinner, which inside a button take the color

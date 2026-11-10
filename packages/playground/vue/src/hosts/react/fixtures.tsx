@@ -1,6 +1,20 @@
-import { Toasts } from '@soxa-ui/react'
-import { Field, Input, NumberInput, Textarea, DateInput, DatePicker } from '@soxa-ui/react'
-import { Button, CheckBox, Icon, Label, RadioGroup, Switch, roleIcon } from '@soxa-ui/react'
+import {
+	Badge,
+	Button,
+	CheckBox,
+	DateInput,
+	DatePicker,
+	Field,
+	Icon,
+	Input,
+	Label,
+	NumberInput,
+	RadioGroup,
+	Switch,
+	Textarea,
+	Toasts,
+	roleIcon,
+} from '@soxa-ui/react'
 import type { TPreview } from './previews'
 
 /**
@@ -18,6 +32,16 @@ const CHECK = roleIcon('check')
 const ARROW_RIGHT = roleIcon('arrowRight')
 
 export const FIXTURES: Record<string, TPreview> = {
+	'badge-anchor': (bind) => (
+		<Badge
+			{...bind}
+			anchor={
+				<Button onClick={() => document.dispatchEvent(new Event('badge-anchor-click'))}>
+					Inbox
+				</Button>
+			}
+		/>
+	),
 	'a11y-persistent-toasts': (bind) => <Toasts {...bind} />,
 	'a11y-invalid-input': (bind) => (
 		<Field label="Account" invalid error="Enter a valid email">

@@ -44,7 +44,8 @@
       "@soxa-ui/webc/textarea": ["./src/components/textarea/index.ts"],
       "@soxa-ui/webc/toasts": ["./src/components/toasts/index.ts"],
       "@soxa-ui/webc/tooltip": ["./src/components/tooltip/index.ts"],
-      "@soxa-ui/webc/virtual": ["./src/components/virtual/index.ts"]
+      "@soxa-ui/webc/virtual": ["./src/components/virtual/index.ts"],
+      "@soxa-ui/webc/badge": ["./src/components/badge/index.ts"]
     }
   },
   "include": ["env.d.ts", "src/**/*", "__tests__/**/*"]

@@ -1,7 +1,22 @@
-import { Toasts } from '@soxa-ui/vue'
-import { Field, Input, NumberInput, Textarea, DateInput, DatePicker } from '@soxa-ui/vue'
+import {
+	Badge,
+	Button,
+	CheckBox,
+	DateInput,
+	DatePicker,
+	Field,
+	Icon,
+	Input,
+	Label,
+	NumberInput,
+	RadioGroup,
+	Switch,
+	Textarea,
+	Toasts,
+	roleIcon,
+} from '@soxa-ui/vue'
 import { h, type Component } from 'vue'
-import { Button, CheckBox, Icon, Label, RadioGroup, Switch, roleIcon } from '@soxa-ui/vue'
+
 import type { TPreview } from './previews'
 
 /** Glyphs as `roleIcon` components, made once: Icon's `tag` is the root, not a role. */
@@ -24,6 +39,15 @@ const ARROW_RIGHT = roleIcon('arrowRight')
  * `__tests__/scenarios.spec.ts`).
  */
 export const FIXTURES: Record<string, TPreview> = {
+	'badge-anchor': (bind) =>
+		h(Badge, bind, {
+			anchor: () =>
+				h(
+					Button,
+					{ onClick: () => document.dispatchEvent(new Event('badge-anchor-click')) },
+					() => 'Inbox',
+				),
+		}),
 	'a11y-persistent-toasts': (bind) => h(Toasts, bind),
 	'a11y-invalid-input': (bind) =>
 		h(Field, { label: 'Account', invalid: true, error: 'Enter a valid email' }, () =>
