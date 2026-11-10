@@ -48,3 +48,5 @@ export * from './table'
 export * from './date-input'
 export * from './calendar'
 export * from './date-picker'
+
+export * from './badge'

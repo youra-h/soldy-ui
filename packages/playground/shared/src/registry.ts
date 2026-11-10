@@ -3,6 +3,7 @@ import {
 	AccordionCollectionDescriptor,
 	AccordionCollectionItemDescriptor,
 	AccordionItemDescriptor,
+	BadgeDescriptor,
 	ButtonDescriptor,
 	CalendarDescriptor,
 	CalendarCollectionDescriptor,
@@ -106,6 +107,14 @@ export const COMPONENT_GROUPS: Readonly<Record<TComponentGroup, string>> = {
  * levels of the contract, not components.
  */
 export const COMPONENTS: readonly TComponentEntry[] = [
+	{
+		id: 'badge',
+		label: 'Badge',
+		descriptor: BadgeDescriptor,
+		group: 'display',
+		span: 1,
+		description: 'Метка, числовой счётчик с пределом или точка поверх элемента',
+	},
 	{
 		id: 'button',
 		label: 'Button',

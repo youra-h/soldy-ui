@@ -1,3 +1,4 @@
+import BadgePreview from './BadgePreview.svelte'
 import type { Component } from 'svelte'
 import AccordionPreview from './AccordionPreview.svelte'
 import ButtonPreview from './ButtonPreview.svelte'
@@ -63,6 +64,7 @@ export const PREVIEWS: Record<string, TPreview> = {
 	textarea: TextareaPreview,
 	'check-box': CheckBoxPreview,
 	switch: SwitchPreview,
+	badge: BadgePreview,
 	label: LabelPreview,
 	field: FieldPreview,
 	slider: SliderPreview,

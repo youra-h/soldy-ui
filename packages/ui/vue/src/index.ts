@@ -194,3 +194,6 @@ export { useToasts } from './adapter/toasts'
 export type { TToastRender } from './adapter/toasts'
 
 export type { LocaleProviderProps } from './adapter/locale'
+
+export { Badge } from './components/badge'
+export type { BadgeProps } from './components/badge/base.component'

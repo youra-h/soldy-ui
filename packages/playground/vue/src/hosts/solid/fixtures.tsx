@@ -1,4 +1,4 @@
-import { Button, CheckBox, Icon, Label, RadioGroup, Switch, roleIcon } from '@soxa-ui/solid'
+import { Badge, Button, CheckBox, Icon, Label, RadioGroup, Switch, roleIcon } from '@soxa-ui/solid'
 import type { TPreview } from './previews'
 
 /**
@@ -16,6 +16,16 @@ const CHECK = roleIcon('check')
 const ARROW_RIGHT = roleIcon('arrowRight')
 
 export const FIXTURES: Record<string, TPreview> = {
+	'badge-anchor': (bind) => (
+		<Badge
+			{...bind()}
+			anchor={
+				<Button onClick={() => document.dispatchEvent(new Event('badge-anchor-click'))}>
+					Inbox
+				</Button>
+			}
+		/>
+	),
 	// Метки во всех трёх слотах: сценарий ищет их по `data-probe` и сверяет
 	// порядок, а в `default` печатает то, что пришло в scope
 	'button-slot-labels': (bind) => (

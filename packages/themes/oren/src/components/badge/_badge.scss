@@ -1,0 +1,28 @@
+@use '../../mixins/on-signal';
+
+.so-badge {
+	$this: &;
+
+	&__indicator {
+		border-radius: 9999px;
+		background-color: var(--so-neutral-500);
+		color: on-signal.$text;
+		border: 1px solid transparent;
+	}
+
+	&--view-outlined > #{$this}__indicator {
+		background-color: transparent;
+		color: var(--so-neutral-800);
+		border-color: currentColor;
+	}
+
+	@each $color in 'accent', 'positive', 'negative', 'caution' {
+		&--variant-#{$color} > #{$this}__indicator {
+			background-color: var(--so-#{$color}-500);
+		}
+		&--variant-#{$color}#{$this}--view-outlined > #{$this}__indicator {
+			background-color: transparent;
+			color: var(--so-#{$color}-800);
+		}
+	}
+}

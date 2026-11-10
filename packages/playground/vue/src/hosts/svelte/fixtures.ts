@@ -1,3 +1,4 @@
+import BadgeAnchor from './BadgeAnchor.svelte'
 import ButtonSlotIcons from './ButtonSlotIcons.svelte'
 import ButtonSlotLabels from './ButtonSlotLabels.svelte'
 import LabelCheckBox from './LabelCheckBox.svelte'
@@ -15,6 +16,7 @@ import type { TPreview } from './previews'
  * именами.
  */
 export const FIXTURES: Record<string, TPreview> = {
+	'badge-anchor': BadgeAnchor,
 	'button-slot-labels': ButtonSlotLabels,
 	'button-slot-icons': ButtonSlotIcons,
 	'label-check-box': LabelCheckBox,
