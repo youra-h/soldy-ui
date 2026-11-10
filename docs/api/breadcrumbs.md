@@ -74,6 +74,14 @@ All six adapters expose Breadcrumbs and its item part. Angular uses
 the `@soxa-ui/webc/breadcrumbs` entry. Oren supplies both the full stylesheet and
 `@soxa-ui/theme-oren/breadcrumbs.css`.
 
+In Oren, `variant` sets the color of navigable links and the overflow button.
+The default and `normal` variant use neutral colors; `accent`, `positive`,
+`negative` and `caution` use their theme color families. The current location,
+text-only locations and separators remain neutral. The overflow button uses
+the transparent `plain` view, with feedback on hover and press. For example,
+`<Breadcrumbs :items="items" variant="accent" />` colors the trail links and
+the overflow control with the accent family.
+
 The theme controls the separator and current/focus appearance. Shared geometry
 uses root defaults `--so-breadcrumbs-gap-sm`, `--so-breadcrumbs-gap-normal`,
 `--so-breadcrumbs-gap-lg`, `--so-breadcrumbs-gap-xl`, `--so-breadcrumbs-gap-2xl`

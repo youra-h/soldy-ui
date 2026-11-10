@@ -309,9 +309,9 @@ release planned to include the component in at least one adapter. `0.3.0` is the
 | Textarea        | Multi-line text field that grows with its content                                              | *          | 0.3.0   |
 | Field           | Field wrapper: description, error message and invalid state linked to the control              | *          | 0.3.0   |
 | Alert           | Inline message by severity: info, success, warning, error                                      | -          | future  |
-| Badge           | Counter or status mark, on its own or over another element                                     | -          | future  |
+| Badge           | Counter or status mark, on its own or over another element                                     | *          | 0.3.0   |
 | Avatar          | User picture with a fallback to initials or an icon                                            | -          | future  |
-| Breadcrumbs     | Path to the current page, collapsing a long trail                                              | -          | future  |
+| Breadcrumbs     | Path to the current page, collapsing a long trail                                              | *          | 0.3.0   |
 | Separator       | Horizontal or vertical divider, semantic or decorative                                         | -          | future  |
 | ToggleGroup     | Toggle button and a group of them with single or multiple selection                            | -          | future  |
 | Tree            | Hierarchy with expandable branches, selection and keyboard navigation by level                 | -          | future  |
