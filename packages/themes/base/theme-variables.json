@@ -290,7 +290,8 @@
     "--so-breadcrumbs-gap-lg": "Breadcrumbs gap scale, size lg; defaults to the shared Button gap. Override on :root or an ancestor of a trail.",
     "--so-breadcrumbs-gap-xl": "Breadcrumbs gap scale, size xl; defaults to the shared Button gap. Override on :root or an ancestor of a trail.",
     "--so-breadcrumbs-gap-2xl": "Breadcrumbs gap scale, size 2xl; defaults to the shared Button gap. Override on :root or an ancestor of a trail.",
-    "--so-toggle-group-gap": "Gap between ToggleGroup buttons on either orientation; default: 0.25rem."
+    "--so-toggle-group-gap": "Gap between ToggleGroup buttons on either orientation; default: 0.25rem.",
+    "--so-toggle-group-bleed": "Space for the buttons' outer focus rings inside the horizontal ToggleGroup scroll viewport; default: 0.25rem."
   },
   "theme-reads": {
     "--so-dir-sign": "Writing direction sign from the nearest dir: 1 for left-to-right, -1 for right-to-left. Written by the base layer dir rules; themes multiply mirroring transforms (scale, gradient angle or offset) by it.",

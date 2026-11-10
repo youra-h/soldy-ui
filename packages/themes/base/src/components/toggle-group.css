@@ -1,12 +1,27 @@
 /* A group of buttons, laid out on one axis. The buttons keep the Button scale. */
 :root {
 	--so-toggle-group-gap: 0.25rem;
+	--so-toggle-group-bleed: 0.25rem;
 }
 
 .so-toggle-group {
 	display: inline-flex;
+	min-inline-size: 0;
+	max-inline-size: 100%;
 	align-items: center;
 	gap: var(--so-toggle-group-gap);
+}
+
+/* Keep every action reachable without widening the page. Padding preserves
+ * the buttons' outer focus rings inside the scroll viewport. */
+.so-toggle-group--orientation-horizontal {
+	overflow-x: auto;
+	padding: var(--so-toggle-group-bleed);
+	scroll-padding-inline: var(--so-toggle-group-bleed);
+}
+
+.so-toggle-group--orientation-horizontal > .so-toggle-group-item {
+	flex-shrink: 0;
 }
 
 .so-toggle-group--orientation-vertical {

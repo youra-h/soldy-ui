@@ -148,3 +148,34 @@ it('preserves an explicit submit type, submitter and form attributes', async () 
 	expect(element.value).toBe('bold')
 	expect(element.formMethod).toBe('post')
 })
+
+it('keeps the focused action and its focus ring inside an overflowing group', async () => {
+	render(
+		defineComponent({
+			render: () =>
+				h('div', { style: 'width:180px' }, [
+					h(ToggleGroup, {
+						aria_label: 'Formatting',
+						items: Array.from({ length: 6 }, (_, index) => ({
+							text: 'Action ' + index,
+						})),
+					}),
+				]),
+		}),
+	)
+	await frame()
+	const group = document.querySelector('.so-toggle-group')
+	if (!(group instanceof HTMLElement)) throw new Error('Toggle group is missing')
+
+	button(0).focus()
+	await userEvent.keyboard('{End}')
+	expect(document.activeElement).toBe(button(5))
+	expect(button(5).getAttribute('aria-pressed')).toBe('false')
+	await expect.poll(() => group.scrollLeft).toBeGreaterThan(0)
+	const box = button(5).getBoundingClientRect()
+	const viewport = group.getBoundingClientRect()
+	const bleed = parseFloat(getComputedStyle(group).paddingInlineEnd)
+
+	expect(box.left).toBeGreaterThanOrEqual(viewport.left + bleed - 1)
+	expect(box.right).toBeLessThanOrEqual(viewport.right - bleed + 1)
+})
