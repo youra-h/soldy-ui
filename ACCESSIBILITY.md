@@ -101,6 +101,17 @@ separate currently unused core branch, not an ancestor of Button: its named case
 of the standalone TInteractive class or adapter. Every report carries direct/consumer/semantic-reference
 coverage metadata. Decorative inheritance previews are not counted as actual consumer coverage.
 
+### Breadcrumbs addition
+
+The current mandatory inventory also includes Breadcrumbs: 44 registry entries and 114 named
+cases per adapter. The 43-entry totals above remain the recorded baseline before this addition.
+Breadcrumbs adds full, collapsed, open overflow and disabled-item cases. These 24 cases passed
+on each engine across all six adapters, using source `8b5a02d6c` with the new inventory present
+as working-tree changes. No serious/critical findings or scoped exceptions were added.
+Each adapter retains one moderate `region` finding in the open overflow case because the
+standard Menu teleports its panel outside the navigation landmark; incomplete checks remain
+in the saved reports. This addition does not claim a complete audit of the other 110 cases.
+
 ### Findings and temporary exceptions
 
 | Finding                       | Reproduced scope                                                                                                 | Remediation                                                                                                                    |
