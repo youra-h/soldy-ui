@@ -1,5 +1,17 @@
 @use '../button/mixins' as button;
 
+// The overflow control takes its transparent view from the theme context.
+:where(.so-breadcrumbs__trigger) {
+	@include button.button-view('plain');
+}
+
+// The item already carries the owner variant; the trigger has no own variant.
+@each $variant in button.$variants {
+	:where(.so-breadcrumbs-item--variant-#{$variant} .so-breadcrumbs__trigger) {
+		@include button.button-variant-tones($variant);
+	}
+}
+
 :where(.so-breadcrumbs__link) {
 	@include button.button-view('none');
 }
@@ -9,7 +21,7 @@
 	border-radius: 0.125rem;
 }
 .so-breadcrumbs__link[href] {
-	@apply text-so-accent-800;
+	color: var(--so-tone-800);
 	&:hover {
 		text-decoration: underline;
 	}

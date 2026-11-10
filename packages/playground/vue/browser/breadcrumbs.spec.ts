@@ -1,13 +1,13 @@
 import { afterEach, describe, it, expect } from 'vitest'
 import { userEvent, commands } from 'vitest/browser'
 import { defineComponent, h, nextTick, ref, shallowRef } from 'vue'
-import { Breadcrumbs, LocaleProvider } from '@soxa-ui/vue'
-import { COMPONENT_SIZES } from '@soxa-ui/playground-shared'
+import { Breadcrumbs, Button, LocaleProvider } from '@soxa-ui/vue'
+import { COMPONENT_SIZES, COMPONENT_VARIANTS } from '@soxa-ui/playground-shared'
 import { enUS, ruRU } from '@soxa-ui/plugins'
 import type { BreadcrumbsDescriptor, DescriptorSlots } from '@soxa-ui/setup'
 import type { IBreadcrumbsProps } from '@soxa-ui/core'
 import { render, cleanup } from './render'
-import { find } from './colors'
+import { find, settled } from './colors'
 import '@soxa-ui/theme-oren'
 
 const frame = () => new Promise<void>((resolve) => requestAnimationFrame(() => resolve()))
@@ -44,6 +44,56 @@ async function open() {
 	await expect.poll(() => trigger().getAttribute('aria-expanded')).toBe('true')
 }
 describe('Breadcrumbs native navigation', () => {
+	it.each(['oren', 'oren-dark'])(
+		'%s: variants color links and the transparent overflow control',
+		async (scheme) => {
+			document.documentElement.dataset.soTheme = scheme
+			const variant = ref<IBreadcrumbsProps['variant']>('normal')
+
+			render(
+				defineComponent({
+					render: () =>
+						h('div', {}, [
+							h(Breadcrumbs, { items, maxItems: 3, variant: variant.value }),
+							h(
+								Button,
+								{ class: 'reference', view: 'plain', variant: variant.value },
+								() => 'Reference',
+							),
+						]),
+				}),
+			)
+			await nextTick()
+			await frame()
+			const current = find('.so-breadcrumbs__link[aria-current="page"]')
+			const neutral = getComputedStyle(current).color
+			const colors = new Set<string>()
+
+			for (const value of COMPONENT_VARIANTS) {
+				variant.value = value
+				await nextTick()
+				await frame()
+				const link = find('.so-breadcrumbs__link[href]')
+				const reference = find('.reference')
+				await Promise.all([settled(link), settled(trigger()), settled(reference)])
+
+				const color = getComputedStyle(reference).color
+				colors.add(getComputedStyle(link).color)
+				expect(getComputedStyle(link).color).toBe(color)
+				expect(getComputedStyle(trigger()).color).toBe(color)
+				expect(getComputedStyle(trigger()).backgroundColor).toBe('rgba(0, 0, 0, 0)')
+				expect(getComputedStyle(trigger()).backgroundImage).toBe('none')
+				expect(getComputedStyle(current).color).toBe(neutral)
+			}
+			expect(colors.size).toBe(COMPONENT_VARIANTS.length)
+
+			await userEvent.hover(trigger())
+			await settled(trigger())
+			expect(getComputedStyle(trigger()).backgroundColor).not.toBe('rgba(0, 0, 0, 0)')
+			await userEvent.unhover(trigger())
+		},
+	)
+
 	it.each(['oren', 'oren-dark'])(
 		'%s: visible positions, decorative separators and current state',
 		async (scheme) => {
