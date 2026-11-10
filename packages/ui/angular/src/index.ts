@@ -82,3 +82,4 @@ export { TBadgeComponent } from './components/badge'
 
 export { TToggleButtonComponent } from './components/toggle-button'
 export { TToggleGroupComponent, TToggleGroupItemComponent } from './components/toggle-group'
+export { TCodeBlockComponent } from './components/code-block'

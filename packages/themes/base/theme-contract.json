@@ -62,6 +62,12 @@
       "scope": "so-check-box"
     },
     {
+      "name": "so-code-block",
+      "sources": ["packages/core/src/components/custom/code-block/code-block.class.ts"],
+      "description": "Read-only source display containing an optional title, Tabs-backed snippets and a copy action.",
+      "scope": "CodeBlock"
+    },
+    {
       "name": "so-component-view",
       "sources": ["packages/core/src/components/base/component-view/component-view.class.ts"],
       "description": "Root of the public base visual component; concrete subclasses normally replace its base class.",
@@ -805,6 +811,149 @@
       ],
       "description": "mark part of check box. Availability follows the rendered component structure.",
       "scope": "so-check-box"
+    },
+    {
+      "name": "so-code-block__code",
+      "sources": [
+        "packages/ui/angular/src/components/code-block/code-block.component.html",
+        "packages/ui/react/src/components/code-block/CodeBlock.tsx",
+        "packages/ui/solid/src/components/code-block/CodeBlock.tsx",
+        "packages/ui/svelte/src/components/code-block/CodeBlock.svelte",
+        "packages/ui/vue/src/components/code-block/CodeBlock.vue",
+        "packages/ui/webc/src/components/code-block/code-block.template.ts"
+      ],
+      "description": "Native code container with normalized programming-language metadata; source is rendered as text.",
+      "scope": "CodeBlock"
+    },
+    {
+      "name": "so-code-block__content",
+      "sources": [
+        "packages/ui/angular/src/components/code-block/code-block.component.html",
+        "packages/ui/react/src/components/code-block/CodeBlock.tsx",
+        "packages/ui/solid/src/components/code-block/CodeBlock.tsx",
+        "packages/ui/svelte/src/components/code-block/CodeBlock.svelte",
+        "packages/ui/vue/src/components/code-block/CodeBlock.vue",
+        "packages/ui/webc/src/components/code-block/code-block.template.ts"
+      ],
+      "description": "Single-source body or a Tabs.Content panel belonging to one snippet.",
+      "scope": "CodeBlock"
+    },
+    {
+      "name": "so-code-block__copy",
+      "sources": [
+        "packages/ui/angular/src/components/code-block/code-block.component.html",
+        "packages/ui/react/src/components/code-block/CodeBlock.tsx",
+        "packages/ui/solid/src/components/code-block/CodeBlock.tsx",
+        "packages/ui/svelte/src/components/code-block/CodeBlock.svelte",
+        "packages/ui/vue/src/components/code-block/CodeBlock.vue",
+        "packages/ui/webc/src/components/code-block/code-block.template.ts"
+      ],
+      "description": "Embedded native Button for copying the clicked source snapshot; disabled for empty source or a pending write.",
+      "scope": "CodeBlock"
+    },
+    {
+      "name": "so-code-block__gutter",
+      "sources": [
+        "packages/ui/angular/src/components/code-block/code-block.component.html",
+        "packages/ui/react/src/components/code-block/CodeBlock.tsx",
+        "packages/ui/solid/src/components/code-block/CodeBlock.tsx",
+        "packages/ui/svelte/src/components/code-block/CodeBlock.svelte",
+        "packages/ui/vue/src/components/code-block/CodeBlock.vue",
+        "packages/ui/webc/src/components/code-block/code-block.template.ts"
+      ],
+      "description": "Optional logical line number, hidden from assistive technology and excluded from text selection.",
+      "scope": "CodeBlock"
+    },
+    {
+      "name": "so-code-block__header",
+      "sources": [
+        "packages/ui/angular/src/components/code-block/code-block.component.html",
+        "packages/ui/react/src/components/code-block/CodeBlock.tsx",
+        "packages/ui/solid/src/components/code-block/CodeBlock.tsx",
+        "packages/ui/svelte/src/components/code-block/CodeBlock.svelte",
+        "packages/ui/vue/src/components/code-block/CodeBlock.vue",
+        "packages/ui/webc/src/components/code-block/code-block.template.ts"
+      ],
+      "description": "Optional title row; absent without a title or active filename. Its copy action uses intrinsic width.",
+      "scope": "CodeBlock"
+    },
+    {
+      "name": "so-code-block__line",
+      "sources": [
+        "packages/ui/angular/src/components/code-block/code-block.component.html",
+        "packages/ui/react/src/components/code-block/CodeBlock.tsx",
+        "packages/ui/solid/src/components/code-block/CodeBlock.tsx",
+        "packages/ui/svelte/src/components/code-block/CodeBlock.svelte",
+        "packages/ui/vue/src/components/code-block/CodeBlock.vue",
+        "packages/ui/webc/src/components/code-block/code-block.template.ts"
+      ],
+      "description": "One logical source line, preserving its original ending and optional highlighted state.",
+      "scope": "CodeBlock"
+    },
+    {
+      "name": "so-code-block__pre",
+      "sources": [
+        "packages/ui/angular/src/components/code-block/code-block.component.html",
+        "packages/ui/react/src/components/code-block/CodeBlock.tsx",
+        "packages/ui/solid/src/components/code-block/CodeBlock.tsx",
+        "packages/ui/svelte/src/components/code-block/CodeBlock.svelte",
+        "packages/ui/vue/src/components/code-block/CodeBlock.vue",
+        "packages/ui/webc/src/components/code-block/code-block.template.ts"
+      ],
+      "description": "Labelled, focusable LTR scroll region. Its maximum height affects code rather than the title or Tabs bar.",
+      "scope": "CodeBlock"
+    },
+    {
+      "name": "so-code-block__status",
+      "sources": [
+        "packages/ui/angular/src/components/code-block/code-block.component.html",
+        "packages/ui/react/src/components/code-block/CodeBlock.tsx",
+        "packages/ui/solid/src/components/code-block/CodeBlock.tsx",
+        "packages/ui/svelte/src/components/code-block/CodeBlock.svelte",
+        "packages/ui/vue/src/components/code-block/CodeBlock.vue",
+        "packages/ui/webc/src/components/code-block/code-block.template.ts"
+      ],
+      "description": "Polite live region for localized copy success or failure feedback.",
+      "scope": "CodeBlock"
+    },
+    {
+      "name": "so-code-block__tabs",
+      "sources": [
+        "packages/ui/angular/src/components/code-block/code-block.component.html",
+        "packages/ui/react/src/components/code-block/CodeBlock.tsx",
+        "packages/ui/solid/src/components/code-block/CodeBlock.tsx",
+        "packages/ui/svelte/src/components/code-block/CodeBlock.svelte",
+        "packages/ui/vue/src/components/code-block/CodeBlock.vue",
+        "packages/ui/webc/src/components/code-block/code-block.template.ts"
+      ],
+      "description": "Embedded Tabs root; its trailing slot holds Copy when there is no separate title row.",
+      "scope": "CodeBlock"
+    },
+    {
+      "name": "so-code-block__text",
+      "sources": [
+        "packages/ui/angular/src/components/code-block/code-block.component.html",
+        "packages/ui/react/src/components/code-block/CodeBlock.tsx",
+        "packages/ui/solid/src/components/code-block/CodeBlock.tsx",
+        "packages/ui/svelte/src/components/code-block/CodeBlock.svelte",
+        "packages/ui/vue/src/components/code-block/CodeBlock.vue",
+        "packages/ui/webc/src/components/code-block/code-block.template.ts"
+      ],
+      "description": "Exact source text of a logical line, separate from the decorative line number.",
+      "scope": "CodeBlock"
+    },
+    {
+      "name": "so-code-block__title",
+      "sources": [
+        "packages/ui/angular/src/components/code-block/code-block.component.html",
+        "packages/ui/react/src/components/code-block/CodeBlock.tsx",
+        "packages/ui/solid/src/components/code-block/CodeBlock.tsx",
+        "packages/ui/svelte/src/components/code-block/CodeBlock.svelte",
+        "packages/ui/vue/src/components/code-block/CodeBlock.vue",
+        "packages/ui/webc/src/components/code-block/code-block.template.ts"
+      ],
+      "description": "Visible file title or the filename of the active snippet, rendered as text.",
+      "scope": "CodeBlock"
     },
     {
       "name": "so-date-input__clear",
@@ -2943,6 +3092,14 @@
       "presence": "Written when the list extension is attached; removed on disposal."
     },
     {
+      "name": "data-copyable",
+      "sources": ["packages/core/src/components/custom/code-block/code-block.class.ts"],
+      "description": "CodeBlock shows its built-in copy action; actual disabled state belongs to the embedded Button.",
+      "scope": "CodeBlock",
+      "values": ["true", "false"],
+      "presence": "Present with an explicit boolean string for the corresponding CodeBlock feature."
+    },
+    {
       "name": "data-current",
       "sources": ["packages/core/src/components/custom/slider/slider.class.ts"],
       "description": "Whether a Slider mark represents the current value.",
@@ -3014,10 +3171,21 @@
       "presence": "TDataset serializes false as \"false\"; null/undefined removes the attribute. See scope for the bound DOM node."
     },
     {
+      "name": "data-header",
+      "sources": ["packages/core/src/components/custom/code-block/code-block.class.ts"],
+      "description": "CodeBlock has an upper title or Tabs bar. It is false only in the basic single-source mode without a title.",
+      "scope": "CodeBlock",
+      "values": ["true", "false"],
+      "presence": "Present with an explicit boolean string for the corresponding CodeBlock feature."
+    },
+    {
       "name": "data-highlighted",
-      "sources": ["packages/plugins/src/custom/list/item/item.plugin.ts"],
+      "sources": [
+        "packages/core/src/components/custom/code-block/code-block.class.ts",
+        "packages/plugins/src/custom/list/item/item.plugin.ts"
+      ],
       "description": "Current keyboard or pointer navigation target.",
-      "scope": "ListBox/Select item row and Menu item root",
+      "scope": "ListBox/Select item row and Menu item root; CodeBlock logical source lines",
       "values": "true | false",
       "presence": "TDataset serializes false as \"false\"; null/undefined removes the attribute. See scope for the bound DOM node."
     },
@@ -3072,6 +3240,28 @@
       "presence": "Gesture flag: written as true, removed with null when inactive."
     },
     {
+      "name": "data-language",
+      "sources": ["packages/core/src/components/custom/code-block/code-block.class.ts"],
+      "description": "Normalized CodeBlock programming language on code. Aliases resolve to full names; unknown languages use text.",
+      "scope": "CodeBlock",
+      "values": [
+        "text",
+        "javascript",
+        "typescript",
+        "jsx",
+        "tsx",
+        "html",
+        "css",
+        "json",
+        "bash",
+        "vue",
+        "svelte",
+        "python",
+        "yaml"
+      ],
+      "presence": "Present on the code element with the normalized supported language."
+    },
+    {
       "name": "data-layer",
       "sources": ["packages/core/src/components/base/layer/types.ts"],
       "description": "Layer ordering index.",
@@ -3086,6 +3276,14 @@
       "scope": "Textarea root",
       "values": "reached | exceeded; absent below the limit or without maxlength",
       "presence": "Present only when text length reaches or exceeds maxlength."
+    },
+    {
+      "name": "data-line-numbers",
+      "sources": ["packages/core/src/components/custom/code-block/code-block.class.ts"],
+      "description": "CodeBlock renders decorative logical line numbers without adding them to copied source.",
+      "scope": "CodeBlock",
+      "values": ["true", "false"],
+      "presence": "Present with an explicit boolean string for the corresponding CodeBlock feature."
     },
     {
       "name": "data-maximized",
@@ -3373,6 +3571,14 @@
       "presence": "TDataset serializes false as \"false\"; null/undefined removes the attribute. See scope for the bound DOM node."
     },
     {
+      "name": "data-tabbed",
+      "sources": ["packages/core/src/components/custom/code-block/code-block.class.ts"],
+      "description": "CodeBlock uses snippet mode. An explicitly empty snippets array still sets this to true.",
+      "scope": "CodeBlock",
+      "values": ["true", "false"],
+      "presence": "Present with an explicit boolean string for the corresponding CodeBlock feature."
+    },
+    {
       "name": "data-today",
       "sources": [
         "packages/core/src/components/custom/calendar/collection/extensions/view/view.extension.ts"
@@ -3410,6 +3616,14 @@
       "scope": "Table root",
       "values": "true | false",
       "presence": "TDataset serializes false as \"false\"; null/undefined removes the attribute. See scope for the bound DOM node."
+    },
+    {
+      "name": "data-wrap",
+      "sources": ["packages/core/src/components/custom/code-block/code-block.class.ts"],
+      "description": "CodeBlock allows long logical lines to wrap within its own code region.",
+      "scope": "CodeBlock",
+      "values": ["true", "false"],
+      "presence": "Present with an explicit boolean string for the corresponding CodeBlock feature."
     }
   ],
   "dynamic": [

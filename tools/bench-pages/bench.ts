@@ -7,6 +7,7 @@ import { enUS, ruRU } from '@soxa-ui/plugins'
 import {
 	COLLECTION_ITEMS,
 	COMPONENTS,
+	EDITOR_ALIGNMENT_ITEMS,
 	isPreviewHostModule,
 	previewProps,
 	type IPreviewHandle,
@@ -379,6 +380,10 @@ function comparable(value: unknown, depth = 0): unknown {
  * change what its journals measure.
  */
 function recordedPropsOf(id: string): Readonly<Record<string, unknown>> {
+	// Match the data-backed groups of the other hosts: markup children have
+	// their own observable mount events, so they are a different scenario.
+	if (id === 'toggle-group') return { ...propsOf(id), items: EDITOR_ALIGNMENT_ITEMS }
+
 	return id === 'date-picker' ? { ...propsOf(id), confirmable: true } : propsOf(id)
 }
 

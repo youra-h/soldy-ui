@@ -199,6 +199,16 @@ The Windows WebKit command uses the repository's Docker Playwright browser serve
 installed Playwright version. On Linux, WebKit runs in the existing layout project directly.
 Axe does not prove audible speech, physical-device behavior or WCAG conformance.
 
+### CodeBlock addition
+
+CodeBlock adds three named cases per adapter: basic source, numbered/highlighted lines,
+and snippets backed by Tabs. All 18 additional cases passed the existing axe gate in
+both Chromium and WebKit on the task branch. The 24 behavior scenarios per browser
+cover keyboard activation/copying, source preservation, dynamic Tabs, scroll/wrap,
+optional headers/actions, large sizing and clipboard failure feedback. These runs
+extend the inventory; they do not replace the historical full-suite totals above.
+See the [CodeBlock guide](docs/api/code-block.md) for semantics and the first-version scope.
+
 ## Supported environments
 
 | Area               | Status                                                                                                                                                                                                 |

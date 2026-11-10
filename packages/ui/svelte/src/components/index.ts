@@ -47,3 +47,4 @@ export * from './badge'
 
 export * from './toggle-button'
 export * from './toggle-group'
+export * from './code-block'

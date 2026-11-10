@@ -522,7 +522,7 @@ export const PREVIEWS: Record<string, TPreview> = {
 		tag: 'div',
 		is: 'so-toggle-group',
 		rebuild: ['items'],
-		slots: (bind) =>
+		slots: (bind): Readonly<Record<string, readonly TContent[]>> =>
 			bind.items
 				? {}
 				: {
@@ -602,6 +602,7 @@ export const PREVIEWS: Record<string, TPreview> = {
 	// The text is the `text` prop from the preview props, the control a slot. The
 	// page rows edit the label itself: side, text size, variant
 	badge: { tag: 'span', is: 'so-badge' },
+	'code-block': { tag: 'div', is: 'so-code-block' },
 	label: {
 		tag: 'label',
 		is: 'so-label',

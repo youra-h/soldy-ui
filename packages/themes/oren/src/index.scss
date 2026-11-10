@@ -161,6 +161,10 @@
 	@include meta.load-css('components/tooltip/tooltip');
 }
 
+@layer components.so.code-block {
+	@include meta.load-css('components/code-block/code-block');
+}
+
 @layer components.so.modifiers.button {
 	@include meta.load-css('components/button/modifiers');
 }

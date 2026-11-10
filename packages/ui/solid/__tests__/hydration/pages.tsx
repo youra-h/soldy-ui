@@ -31,6 +31,7 @@ import type {
 } from '@soxa-ui/core'
 import {
 	Badge,
+	CodeBlock,
 	Accordion,
 	Dialog,
 	Field,
@@ -514,4 +515,18 @@ export function IslandEntry(props: { readonly enter: () => void }): JSX.Element 
 /** A named counter with an independently accessible anchor. */
 export function BadgePage(): JSX.Element {
 	return <Badge value={120} aria_label="120 unread" anchor={<button>Inbox</button>} />
+}
+
+/** Tabs and inert source share one structure between the server and the browser. */
+export function CodeBlockPage(): JSX.Element {
+	return (
+		<CodeBlock
+			snippets={[
+				{ value: 'first', label: 'First', code: 'one' },
+				{ value: 'second', label: 'Second', code: '<img src=x>\n' },
+			]}
+			value="second"
+			lineNumbers
+		/>
+	)
 }

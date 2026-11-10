@@ -9,6 +9,12 @@ import { freezeLocale } from '../locale'
 export const enUS = freezeLocale({
 	tag: 'en-US',
 	translations: {
+		codeBlock: {
+			region: 'Code',
+			copy: 'Copy code',
+			copied: 'Copied',
+			error: 'Unable to copy code',
+		},
 		breadcrumbs: { navigation: 'Breadcrumbs', overflow: 'Show hidden breadcrumbs' },
 		modal: { close: 'Close' },
 		dialog: { maximize: 'Maximize' },

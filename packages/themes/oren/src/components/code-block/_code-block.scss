@@ -1,0 +1,39 @@
+@use '../button/mixins' as button;
+
+.so-code-block {
+	background: var(--so-code-block-background);
+	color: var(--so-code-block-color);
+	border: 1px solid var(--so-code-block-border-color);
+	border-radius: var(--so-code-block-radius);
+}
+.so-code-block__header {
+	border-block-end: 1px solid var(--so-code-block-border-color);
+}
+.so-code-block__pre {
+	border-radius: var(--so-code-block-radius);
+}
+.so-code-block__pre:focus-visible {
+	@include button.button-focus-ring;
+}
+.so-code-block__gutter {
+	color: var(--so-code-block-muted-color);
+}
+.so-code-block__line[data-highlighted='true'] {
+	background: var(--so-code-block-highlight-background);
+	box-shadow: inset 2px 0 currentcolor;
+}
+:where(.so-code-block__copy) {
+	@include button.button-view('plain');
+}
+.so-code-block__status {
+	color: var(--so-code-block-muted-color);
+	font-size: var(--so-code-block-font-size);
+}
+@media (forced-colors: active) {
+	.so-code-block {
+		border-color: CanvasText;
+	}
+	.so-code-block__line[data-highlighted='true'] {
+		outline: 1px solid Highlight;
+	}
+}

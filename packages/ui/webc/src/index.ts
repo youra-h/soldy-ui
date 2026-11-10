@@ -150,3 +150,5 @@ export type {
 	TToggleGroupElementProps,
 	TToggleGroupItemElementProps,
 } from './components/toggle-group'
+export { TCodeBlockElement } from './components/code-block'
+export type { TCodeBlockElementProps } from './components/code-block'

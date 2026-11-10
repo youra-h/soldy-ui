@@ -31,6 +31,7 @@ import type { JSX } from 'solid-js'
 import { renderToStream, renderToString } from 'solid-js/web'
 import {
 	BadgePage,
+	CodeBlockPage,
 	AccordionLayerStreamed,
 	FieldControlStreamed,
 	FieldGroup,
@@ -88,6 +89,7 @@ export async function renderServerMarkup() {
 	return {
 		// Страница целиком (`renderToString`)
 		badge: renderToString(() => <BadgePage />),
+		'code-block': renderToString(() => <CodeBlockPage />),
 		'tabs-active-second': renderToString(() => <TabsActiveSecond />),
 		'tabs-active-first': renderToString(() => <TabsActiveFirst />),
 		'tabs-content-own-id': renderToString(() => <TabsContentOwnId />),

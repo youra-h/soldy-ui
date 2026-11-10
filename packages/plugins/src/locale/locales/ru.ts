@@ -4,6 +4,12 @@ import { freezeLocale } from '../locale'
 export const ruRU = freezeLocale({
 	tag: 'ru-RU',
 	translations: {
+		codeBlock: {
+			region: 'Код',
+			copy: 'Копировать код',
+			copied: 'Скопировано',
+			error: 'Не удалось скопировать код',
+		},
 		breadcrumbs: { navigation: 'Навигационная цепочка', overflow: 'Показать скрытые звенья' },
 		modal: { close: 'Закрыть' },
 		dialog: { maximize: 'Развернуть' },

@@ -9,6 +9,7 @@ import '@soxa-ui/theme-oren'
 /** Explicit audit inventory: registry additions must receive a mobile scenario. */
 export const MOBILE_COMPONENTS = [
 	'badge',
+	'code-block',
 	'button',
 	'toggle-button',
 	'toggle-group',

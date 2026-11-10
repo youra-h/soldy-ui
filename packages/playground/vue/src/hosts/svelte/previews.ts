@@ -1,3 +1,4 @@
+import CodeBlockPreview from './CodeBlockPreview.svelte'
 import ToggleButtonPreview from './ToggleButtonPreview.svelte'
 import ToggleGroupPreview from './ToggleGroupPreview.svelte'
 import BadgePreview from './BadgePreview.svelte'
@@ -70,6 +71,7 @@ export const PREVIEWS: Record<string, TPreview> = {
 	'check-box': CheckBoxPreview,
 	switch: SwitchPreview,
 	badge: BadgePreview,
+	'code-block': CodeBlockPreview,
 	label: LabelPreview,
 	field: FieldPreview,
 	slider: SliderPreview,

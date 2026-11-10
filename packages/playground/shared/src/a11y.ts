@@ -5,6 +5,7 @@ export const A11Y_COMPONENTS = [
 	'toggle-button',
 	'toggle-group',
 	'badge',
+	'code-block',
 	'breadcrumbs',
 	'input',
 	'number-input',
@@ -101,6 +102,60 @@ const breadcrumbItems = [
 
 /** Explicit consumer inventory; inheritance layers never mount decorative layer previews. */
 export const A11Y_CASES: readonly TAuditCase[] = [
+	audit('code-block', 'basic', '.so-code-block', { code: 'const x = 1;\n' }, [
+		'.so-code-block__pre',
+		'.so-code-block__copy',
+	]),
+	audit(
+		'code-block',
+		'lines',
+		'.so-code-block',
+		{
+			code: '<script>\n  text\n</script>\n',
+			title: 'main.ts',
+			lineNumbers: true,
+			highlightLines: [2],
+			wrap: true,
+			maxHeight: 90,
+		},
+		['.so-code-block__pre', '.so-code-block__gutter'],
+	),
+	audit(
+		'code-block',
+		'tabs',
+		'.so-code-block',
+		{
+			code: '',
+			snippets: [
+				{
+					value: 'vue',
+					label: 'Vue',
+					code: '<script setup>\nconst title = "Soxa UI"\n</script>\n',
+					language: 'vue',
+					filename: 'App.vue',
+				},
+				{
+					value: 'react',
+					label: 'React',
+					code: 'export const title = "Soxa UI";\n',
+					language: 'tsx',
+					filename: 'App.tsx',
+				},
+				{
+					value: 'svelte',
+					label: 'Svelte',
+					code: '<h1>Soxa UI</h1>\n',
+					language: 'svelte',
+					filename: 'App.svelte',
+				},
+			],
+		},
+		[
+			'.so-code-block__tabs [role=tab]',
+			'.so-code-block__tabs [role=tabpanel]',
+			'.so-code-block__copy',
+		],
+	),
 	audit('breadcrumbs', 'full', '.so-breadcrumbs', { items: breadcrumbItems, maxItems: 0 }, [
 		'.so-breadcrumbs__list',
 		'.so-breadcrumbs__link[href="#home"]',

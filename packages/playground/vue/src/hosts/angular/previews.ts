@@ -14,6 +14,7 @@ import {
 } from './collections'
 import {
 	BadgePreview,
+	CodeBlockPreview,
 	ButtonPreview,
 	ToggleButtonPreview,
 	ToggleGroupPreview,
@@ -81,6 +82,7 @@ export type TPreview =
 
 export const PREVIEWS: Record<string, TPreview> = {
 	badge: { template: BadgePreview },
+	'code-block': { template: CodeBlockPreview },
 	button: { template: ButtonPreview },
 	'toggle-button': { template: ToggleButtonPreview },
 	'toggle-group': { template: ToggleGroupPreview },

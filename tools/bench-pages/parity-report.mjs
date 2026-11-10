@@ -366,5 +366,5 @@ report.splice(
 const out = values.out ?? path.join(results, 'parity-report.md')
 
 fs.writeFileSync(out, report.join('\n'))
-console.log(report.slice(0, 8 + summary.length).join('\n'))
+console.log(report.join('\n'))
 process.exitCode = summary.filter((row) => row.divergences).length + (own.length ? 1 : 0)
