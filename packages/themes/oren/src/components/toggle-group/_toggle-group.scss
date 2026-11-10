@@ -2,7 +2,7 @@
 
 // Segments share one frame: no inset or rounded tiles between actions.
 .so-toggle-group {
-	@apply rounded-md border bg-so-component-surface shadow-xs;
+	@apply rounded-md border bg-so-component-surface;
 	border-color: var(--so-neutral-300);
 	gap: 0;
 	padding: 0;
