@@ -44,6 +44,8 @@ export type TToastsItemEvents = TComponentViewEvents &
 		'change:render': (payload: TValuePayload<unknown>) => void
 		/** change:open — тост закрыли. Закрытие окончательное: открытым тост больше не станет */
 		'change:open': (payload: TValuePayload<boolean>) => void
+		/** The card's ARIA attributes changed. */
+		'change:cardAria': (payload: TValuePayload<TAriaAttributes>) => void
 		/** change:closeAria — набор атрибутов кнопки закрытия изменился */
 		'change:closeAria': (payload: TValuePayload<TAriaAttributes>) => void
 	}
@@ -108,6 +110,8 @@ export interface IToastsItem<
 	swipeSide: TSwipeSide
 	/** Атрибуты кнопки закрытия — живой набор: имя с текстом тоста пишет плагин имён */
 	readonly closeAria: TAria
+	/** ARIA of the existing card: urgent messages remain discoverable as alerts. */
+	readonly cardAria: TAria
 	/** Закрыть тост. Закрытый гаснет и уходит из коллекции, когда доиграл переходы */
 	close(): void
 }

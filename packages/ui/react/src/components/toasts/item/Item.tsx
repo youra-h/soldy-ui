@@ -50,6 +50,7 @@ export const ToastsItem = withRenderBoundary(function ToastsItem(
 		description,
 		closable,
 		closeAria,
+		cardAria,
 		render,
 	} = state
 
@@ -69,7 +70,7 @@ export const ToastsItem = withRenderBoundary(function ToastsItem(
 				order === undefined ? undefined : { '--so-toasts-depth': order },
 			)}
 		>
-			<div className="so-toasts-item__card">
+			<div className="so-toasts-item__card" {...toAriaProps(cardAria)}>
 				<span className="so-toasts-item__icon" aria-hidden="true">
 					{loading ? (
 						<ProgressSpinner embedded="toasts.spinner" indeterminate />

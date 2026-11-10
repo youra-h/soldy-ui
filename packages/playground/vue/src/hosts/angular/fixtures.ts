@@ -1,4 +1,23 @@
 import {
+	RoleIconDirective,
+	SlotDirective,
+	TBadgeComponent,
+	TButtonComponent,
+	TCheckBoxComponent,
+	TDateInputComponent,
+	TDatePickerComponent,
+	TFieldComponent,
+	TIconComponent,
+	TInputComponent,
+	TLabelComponent,
+	TNumberInputComponent,
+	TRadioGroupComponent,
+	TRadioGroupItemComponent,
+	TSwitchComponent,
+	TTextareaComponent,
+	TToastsComponent,
+} from '@soxa-ui/angular'
+import {
 	ChangeDetectionStrategy,
 	Component,
 	input,
@@ -8,18 +27,7 @@ import {
 	type Type,
 } from '@angular/core'
 import type { IButton, ILabel } from '@soxa-ui/core'
-import {
-	RoleIconDirective,
-	SlotDirective,
-	TBadgeComponent,
-	TButtonComponent,
-	TCheckBoxComponent,
-	TIconComponent,
-	TLabelComponent,
-	TRadioGroupComponent,
-	TRadioGroupItemComponent,
-	TSwitchComponent,
-} from '@soxa-ui/angular'
+
 import { CopyDirective } from './copy.directive'
 
 /**
@@ -165,6 +173,105 @@ class LabelRadio implements TFixture {
 }
 
 @Component({
+	selector: 'pg-a11y-invalid-input',
+	imports: [TFieldComponent, TInputComponent, CopyDirective],
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	host: { style: 'display:contents' },
+	template: `<ng-template pg-copy
+		><div so-field label="Account" [invalid]="true" error="Enter a valid email">
+			<div so-input [aria_label]="aria_label()" [placeholder]="placeholder()"></div></div
+	></ng-template>`,
+})
+class A11yInvalidInput implements TFixture {
+	readonly aria_label = input<TInputComponent['aria_label']>()
+	readonly placeholder = input<TInputComponent['placeholder']>()
+	readonly copy = viewChild.required(CopyDirective)
+	readonly subjects = viewChildren(TInputComponent)
+}
+
+@Component({
+	selector: 'pg-a11y-invalid-number-input',
+	imports: [TFieldComponent, TNumberInputComponent, CopyDirective],
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	host: { style: 'display:contents' },
+	template: `<ng-template pg-copy
+		><div so-field label="Account" [invalid]="true" error="Enter a valid email">
+			<div so-number-input [aria_label]="aria_label()" [value]="value()"></div></div
+	></ng-template>`,
+})
+class A11yInvalidNumberInput implements TFixture {
+	readonly aria_label = input<TNumberInputComponent['aria_label']>()
+	readonly value = input<TNumberInputComponent['value']>()
+	readonly copy = viewChild.required(CopyDirective)
+	readonly subjects = viewChildren(TNumberInputComponent)
+}
+
+@Component({
+	selector: 'pg-a11y-invalid-textarea',
+	imports: [TFieldComponent, TTextareaComponent, CopyDirective],
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	host: { style: 'display:contents' },
+	template: `<ng-template pg-copy
+		><div so-field label="Account" [invalid]="true" error="Enter a valid email">
+			<div so-textarea [aria_label]="aria_label()" [placeholder]="placeholder()"></div></div
+	></ng-template>`,
+})
+class A11yInvalidTextarea implements TFixture {
+	readonly aria_label = input<TTextareaComponent['aria_label']>()
+	readonly placeholder = input<TTextareaComponent['placeholder']>()
+	readonly copy = viewChild.required(CopyDirective)
+	readonly subjects = viewChildren(TTextareaComponent)
+}
+
+@Component({
+	selector: 'pg-a11y-invalid-date-input',
+	imports: [TFieldComponent, TDateInputComponent, CopyDirective],
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	host: { style: 'display:contents' },
+	template: `<ng-template pg-copy
+		><div so-field label="Account" [invalid]="true" error="Enter a valid email">
+			<div so-date-input [aria_label]="aria_label()"></div></div
+	></ng-template>`,
+})
+class A11yInvalidDateInput implements TFixture {
+	readonly aria_label = input<TDateInputComponent['aria_label']>()
+	readonly copy = viewChild.required(CopyDirective)
+	readonly subjects = viewChildren(TDateInputComponent)
+}
+
+@Component({
+	selector: 'pg-a11y-invalid-date-picker',
+	imports: [TFieldComponent, TDatePickerComponent, CopyDirective],
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	host: { style: 'display:contents' },
+	template: `<ng-template pg-copy
+		><div so-field label="Account" [invalid]="true" error="Enter a valid email">
+			<div so-date-picker [aria_label]="aria_label()"></div></div
+	></ng-template>`,
+})
+class A11yInvalidDatePicker implements TFixture {
+	readonly aria_label = input<TDatePickerComponent['aria_label']>()
+	readonly copy = viewChild.required(CopyDirective)
+	readonly subjects = viewChildren(TDatePickerComponent)
+}
+
+@Component({
+	selector: 'pg-a11y-persistent-toasts',
+	imports: [TToastsComponent, CopyDirective],
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	host: { style: 'display:contents' },
+	template: `<ng-template pg-copy
+		><div so-toasts [engine]="engine()" [duration]="duration()"></div
+	></ng-template>`,
+})
+class A11yPersistentToasts implements TFixture {
+	readonly engine = input<TToastsComponent['engine']>()
+	readonly duration = input<TToastsComponent['duration']>()
+	readonly copy = viewChild.required(CopyDirective)
+	readonly subjects = viewChildren(TToastsComponent)
+}
+
+@Component({
 	selector: 'pg-badge-anchor',
 	imports: [TBadgeComponent, TButtonComponent, CopyDirective],
 	changeDetection: ChangeDetectionStrategy.OnPush,
@@ -209,6 +316,12 @@ class BadgeAnchor implements TFixture {
 
 export const FIXTURES: Record<string, Type<TFixture>> = {
 	'badge-anchor': BadgeAnchor,
+	'a11y-persistent-toasts': A11yPersistentToasts,
+	'a11y-invalid-input': A11yInvalidInput,
+	'a11y-invalid-number-input': A11yInvalidNumberInput,
+	'a11y-invalid-textarea': A11yInvalidTextarea,
+	'a11y-invalid-date-input': A11yInvalidDateInput,
+	'a11y-invalid-date-picker': A11yInvalidDatePicker,
 	'button-slot-labels': ButtonSlotLabels,
 	'button-slot-icons': ButtonSlotIcons,
 	'label-check-box': LabelCheckBox,

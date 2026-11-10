@@ -152,18 +152,18 @@ it('shows every size, view and semantic color in both schemes', async () => {
 					},
 					[
 						h('h2', 'Badge'),
-						...['filled', 'outlined'].map((view) =>
+						...(['filled', 'outlined'] as const).map((view) =>
 							h('div', { style: 'display:flex;gap:24px;align-items:center' }, [
 								h('span', view),
-								...['normal', 'accent', 'positive', 'negative', 'caution'].map(
-									(variant) => h(Badge, { value: 'New', view, variant }),
-								),
+								...(
+									['normal', 'accent', 'positive', 'negative', 'caution'] as const
+								).map((variant) => h(Badge, { value: 'New', view, variant })),
 							]),
 						),
 						h(
 							'div',
 							{ style: 'display:flex;gap:24px;align-items:center' },
-							['sm', 'normal', 'lg', 'xl', '2xl'].map((size) =>
+							(['sm', 'normal', 'lg', 'xl', '2xl'] as const).map((size) =>
 								h(Badge, { value: 120, size, variant: 'accent' }),
 							),
 						),

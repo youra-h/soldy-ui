@@ -1,16 +1,7 @@
 /**
- * Дескриптор тоста (TToastsItem).
- *
- * Наследует `ComponentViewDescriptor`: ни размера, ни варианта у тоста нет —
- * что случилось, говорит вид сообщения (`type`), а не цвет темы. Добавляет
- * текст, описание, вид, ожидание, кнопку закрытия, длительность, срочность,
- * своё содержимое (`render`) и набор `closeAria`.
- *
- * Тост приходит из кода (`show`), а не из разметки: частью `Toasts.Item` он
- * не стал (см. «Часть или слот»), и его рисует только регион владельца.
- *
- * Слотов описания нет: имя совпало бы с пропом `description`. Описание —
- * текстом пропа, а разметку кладут в `content`.
+ * Toast metadata: message, appearance, urgency and the card/close attribute sets.
+ * Toasts are created through show(), and only their manager renders them.
+ * Description remains a text prop; custom markup belongs to the content slot.
  */
 
 import { defineComponent, defineDescriptor, defineType } from '../../../../protected/define'
@@ -64,11 +55,12 @@ export const ToastsItemDescriptor = defineDescriptor(() =>
 				 * его нарисовать, знает адаптер (во Vue — компонент с пропом `toast`)
 				 */
 				render: { type: [Object, Function], triggers: ['change:render'] },
-				/**
-				 * Атрибуты кнопки закрытия. Отдельный набор, а не часть `aria`: `aria`
-				 * описывает тост, а это кнопка в нём. Имя от локали пишет плагин имён,
-				 * и триггер один — набор сам сообщает, что изменился.
-				 */
+				/** Attribute sets are outputs: the model owns semantics, adapters only bind them. */
+				cardAria: {
+					type: Object,
+					protected: true,
+					triggers: ['change:cardAria'],
+				},
 				closeAria: {
 					type: Object,
 					protected: true,

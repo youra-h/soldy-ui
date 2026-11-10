@@ -1,4 +1,20 @@
-import { Badge, Button, CheckBox, Icon, Label, RadioGroup, Switch, roleIcon } from '@soxa-ui/react'
+import {
+	Badge,
+	Button,
+	CheckBox,
+	DateInput,
+	DatePicker,
+	Field,
+	Icon,
+	Input,
+	Label,
+	NumberInput,
+	RadioGroup,
+	Switch,
+	Textarea,
+	Toasts,
+	roleIcon,
+} from '@soxa-ui/react'
 import type { TPreview } from './previews'
 
 /**
@@ -25,6 +41,32 @@ export const FIXTURES: Record<string, TPreview> = {
 				</Button>
 			}
 		/>
+	),
+	'a11y-persistent-toasts': (bind) => <Toasts {...bind} />,
+	'a11y-invalid-input': (bind) => (
+		<Field label="Account" invalid error="Enter a valid email">
+			<Input {...bind} />
+		</Field>
+	),
+	'a11y-invalid-number-input': (bind) => (
+		<Field label="Account" invalid error="Enter a valid email">
+			<NumberInput {...bind} />
+		</Field>
+	),
+	'a11y-invalid-textarea': (bind) => (
+		<Field label="Account" invalid error="Enter a valid email">
+			<Textarea {...bind} />
+		</Field>
+	),
+	'a11y-invalid-date-input': (bind) => (
+		<Field label="Account" invalid error="Enter a valid email">
+			<DateInput {...bind} />
+		</Field>
+	),
+	'a11y-invalid-date-picker': (bind) => (
+		<Field label="Account" invalid error="Enter a valid email">
+			<DatePicker {...bind} />
+		</Field>
 	),
 	// Метки во всех трёх слотах: сценарий ищет их по `data-probe` и сверяет
 	// порядок, а в `default` печатает то, что пришло в scope

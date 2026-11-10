@@ -20,6 +20,52 @@ export const FIXTURES: Record<string, TPreview> = {
 		is: 'so-badge',
 		slots: { anchor: [{ tag: 'button', is: 'so-button', props: { text: 'Inbox' } }] },
 	},
+	'a11y-persistent-toasts': { tag: 'so-toasts' },
+	'a11y-invalid-input': {
+		tag: 'div',
+		is: 'so-input',
+		wrapper: {
+			tag: 'div',
+			is: 'so-field',
+			props: { label: 'Account', invalid: true, error: 'Enter a valid email' },
+		},
+	},
+	'a11y-invalid-number-input': {
+		tag: 'div',
+		is: 'so-number-input',
+		wrapper: {
+			tag: 'div',
+			is: 'so-field',
+			props: { label: 'Account', invalid: true, error: 'Enter a valid email' },
+		},
+	},
+	'a11y-invalid-textarea': {
+		tag: 'div',
+		is: 'so-textarea',
+		wrapper: {
+			tag: 'div',
+			is: 'so-field',
+			props: { label: 'Account', invalid: true, error: 'Enter a valid email' },
+		},
+	},
+	'a11y-invalid-date-input': {
+		tag: 'div',
+		is: 'so-date-input',
+		wrapper: {
+			tag: 'div',
+			is: 'so-field',
+			props: { label: 'Account', invalid: true, error: 'Enter a valid email' },
+		},
+	},
+	'a11y-invalid-date-picker': {
+		tag: 'div',
+		is: 'so-date-picker',
+		wrapper: {
+			tag: 'div',
+			is: 'so-field',
+			props: { label: 'Account', invalid: true, error: 'Enter a valid email' },
+		},
+	},
 	// Иконки по краям — подпись длинная, из пропа `text` сценария
 	'button-slot-icons': {
 		tag: 'button',

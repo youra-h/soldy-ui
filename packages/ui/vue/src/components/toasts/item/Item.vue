@@ -33,7 +33,7 @@ export default { ...SetupToastsItem, components: { Icon, Button, ProgressSpinner
 			The card is a separate surface: the outer item's space can expand and
 			collapse while the card keeps its own dimensions.
 		-->
-		<div class="so-toasts-item__card">
+		<div class="so-toasts-item__card" v-bind="cardAria">
 			<!--
 				Коробка значка стоит всегда, и в ней одно из трёх:
 				- тост ждёт (`loading`) — бегущее кольцо, при любом виде и что бы ни

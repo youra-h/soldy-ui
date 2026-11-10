@@ -46,7 +46,7 @@
 	)}
 	attach={binding.attachElement}
 >
-	<div class="so-toasts-item__card">
+	<div class="so-toasts-item__card" {...state.cardAria}>
 		<span class="so-toasts-item__icon" aria-hidden="true">
 			{#if state.loading}
 				<ProgressSpinner embedded="toasts.spinner" indeterminate />

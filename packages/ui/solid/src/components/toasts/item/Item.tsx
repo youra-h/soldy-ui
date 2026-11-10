@@ -5,6 +5,7 @@ import {
 	Root,
 	clickAction,
 	createRootProps,
+	createPartProps,
 	isToastRender,
 	resolveSlot,
 	roleIcon,
@@ -41,6 +42,7 @@ export function ToastsItem(props: ToastsItemProps): JSX.Element {
 	const state = binding.state
 	const ctrl = binding.ctrl
 	const close = clickAction(() => ctrl.close())
+	const card = createPartProps(() => state.cardAria)
 	// Состояние — поимённо, без `order` фасада; глубина — стиль-выходом
 	const root = createRootProps(() => ({
 		state: { classes: state.classes, visible: state.visible },
@@ -72,7 +74,7 @@ export function ToastsItem(props: ToastsItemProps): JSX.Element {
 	return (
 		<Show when={state.rendered}>
 			<Root tag={state.tag} attributes={root} ref={binding.ref}>
-				<div class="so-toasts-item__card">
+				<div class="so-toasts-item__card" {...card()}>
 					<span class="so-toasts-item__icon" aria-hidden="true">
 						<Show
 							when={!state.loading}

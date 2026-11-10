@@ -1,5 +1,22 @@
+import {
+	Badge,
+	Button,
+	CheckBox,
+	DateInput,
+	DatePicker,
+	Field,
+	Icon,
+	Input,
+	Label,
+	NumberInput,
+	RadioGroup,
+	Switch,
+	Textarea,
+	Toasts,
+	roleIcon,
+} from '@soxa-ui/vue'
 import { h, type Component } from 'vue'
-import { Badge, Button, CheckBox, Icon, Label, RadioGroup, Switch, roleIcon } from '@soxa-ui/vue'
+
 import type { TPreview } from './previews'
 
 /** Glyphs as `roleIcon` components, made once: Icon's `tag` is the root, not a role. */
@@ -31,6 +48,27 @@ export const FIXTURES: Record<string, TPreview> = {
 					() => 'Inbox',
 				),
 		}),
+	'a11y-persistent-toasts': (bind) => h(Toasts, bind),
+	'a11y-invalid-input': (bind) =>
+		h(Field, { label: 'Account', invalid: true, error: 'Enter a valid email' }, () =>
+			h(Input, bind),
+		),
+	'a11y-invalid-number-input': (bind) =>
+		h(Field, { label: 'Account', invalid: true, error: 'Enter a valid email' }, () =>
+			h(NumberInput, bind),
+		),
+	'a11y-invalid-textarea': (bind) =>
+		h(Field, { label: 'Account', invalid: true, error: 'Enter a valid email' }, () =>
+			h(Textarea, bind),
+		),
+	'a11y-invalid-date-input': (bind) =>
+		h(Field, { label: 'Account', invalid: true, error: 'Enter a valid email' }, () =>
+			h(DateInput, bind),
+		),
+	'a11y-invalid-date-picker': (bind) =>
+		h(Field, { label: 'Account', invalid: true, error: 'Enter a valid email' }, () =>
+			h(DatePicker, bind),
+		),
 	// Probes in all three slots: the scenario finds them by `data-probe` and
 	// checks their order; `default` prints what came in the scope
 	'button-slot-labels': (bind) =>
