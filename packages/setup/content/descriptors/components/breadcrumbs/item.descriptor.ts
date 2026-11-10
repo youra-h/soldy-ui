@@ -32,6 +32,7 @@ export const BreadcrumbsItemDescriptor = defineDescriptor(() =>
 			},
 			events: ['change:href', 'change:target', 'change:rel'],
 		},
+		// Programmatic focus belongs to the native row, while the li remains structural.
 		plugins: [ActionPluginDescriptor.with({ focusTarget: rowIn })],
 	}),
 )

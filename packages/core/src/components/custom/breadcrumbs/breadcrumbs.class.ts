@@ -3,6 +3,10 @@ import type { TDefaultValues } from '../../base/component'
 import { TAria, TChangeEvent } from '../../../common'
 import type { IBreadcrumbs, IBreadcrumbsProps, TBreadcrumbsEvents } from './types'
 
+/**
+ * Navigation landmark and display limit for a breadcrumb collection.
+ * Membership, ordering and the current location belong to the collection extensions.
+ */
 export default class TBreadcrumbs
 	extends TStylable<IBreadcrumbsProps, TBreadcrumbsEvents>
 	implements IBreadcrumbs
@@ -25,6 +29,8 @@ export default class TBreadcrumbs
 		const ctor = new.target as typeof TBreadcrumbs
 
 		this._maxItems = this._limit(props.maxItems ?? ctor.defaultValues.maxItems)
+
+		// Focus repair can return to an empty trail without adding a normal Tab stop.
 		this._attrs.add('tabindex', '-1')
 		this._aria.add('role', 'navigation')
 		this._overflowAria.subscribe((_set, oldValue) =>
@@ -59,6 +65,7 @@ export default class TBreadcrumbs
 		return this._overflowAria
 	}
 
+	// An overflowing trail needs room for the first item, the menu and the final item.
 	private _limit(value: number): number {
 		return value === 0
 			? 0

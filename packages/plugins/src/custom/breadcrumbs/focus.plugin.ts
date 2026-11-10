@@ -16,7 +16,11 @@ type TFocusPlace = {
 	readonly index: number
 }
 
-/** Repair a changed trail by collection identity, after its markup has settled. */
+/**
+ * Restore focus after trail membership or overflow changes, using collection identity.
+ * A surviving crumb keeps focus; a collapsed one routes to the trigger, and an empty trail
+ * falls back to its landmark. Deliberate focus moves always take precedence.
+ */
 export class TBreadcrumbsFocusPlugin extends TBasePlugin<IBreadcrumbs> {
 	private _element: TElementPlugin | null = null
 	private _elements: TCollectionElements | null = null
@@ -50,6 +54,7 @@ export class TBreadcrumbsFocusPlugin extends TBasePlugin<IBreadcrumbs> {
 		super.destroy()
 	}
 
+	/** Cancel old DOM work and subscriptions when an adapter binds another external engine. */
 	private _bindEngine(engine: TBreadcrumbsCollection | null): void {
 		this._cancel()
 		this._unbind?.()
@@ -148,6 +153,7 @@ export class TBreadcrumbsFocusPlugin extends TBasePlugin<IBreadcrumbs> {
 
 		if (!view) return
 
+		// Coalesce the collection update, then let the adapter draw before consulting its registry.
 		this._view = view
 		this._frame = view.requestAnimationFrame(() => {
 			this._frame = null
@@ -183,6 +189,8 @@ export class TBreadcrumbsFocusPlugin extends TBasePlugin<IBreadcrumbs> {
 			item.rendered &&
 			item.visible &&
 			!extension.isCollapsed(item)
+
+		// Collapsed crumbs route to the trigger; removed or unavailable crumbs use the nearest link.
 		const targetItem =
 			current && available(current)
 				? current

@@ -17,6 +17,8 @@ export const BreadcrumbsCollectionDescriptor = defineDescriptor(() =>
 		},
 	}),
 )
+
+/** Expose computed item-window outputs to adapters while retaining standard active/order inputs. */
 export const BreadcrumbsCollectionItemDescriptor = defineDescriptor(() =>
 	defineComponent({
 		ctor: TBreadcrumbsItemCollectionFacade,
@@ -29,6 +31,7 @@ export const BreadcrumbsCollectionItemDescriptor = defineDescriptor(() =>
 					protected: true,
 					triggers: ['change:window'],
 				},
+				// Presentation-only: collapsed items stay mounted and registered in the collection.
 				breadcrumbs_shown: { type: Boolean, protected: true, triggers: ['change:window'] },
 				breadcrumbs_menu: { type: Object, protected: true, triggers: ['change:window'] },
 				breadcrumbs_overflowEntries: {

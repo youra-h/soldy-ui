@@ -4,12 +4,14 @@ import type { IBreadcrumbsItem } from '../../../item/types'
 import type { IMenu, IMenuItem } from '../../../../menu'
 import type { IBreadcrumbsItemExtension } from './item'
 
+/** Retained source/proxy pair; native link attributes remain on the breadcrumb item. */
 export type TBreadcrumbsOverflowEntry<TItem extends IBreadcrumbsItem = IBreadcrumbsItem> = {
 	readonly item: TItem
 	readonly menuItem: IMenuItem
 }
 
 export type TBreadcrumbsExtensionEvents = {
+	/** Presentation changed: hidden membership, order, labels or the first drawn item. */
 	'change:window': () => void
 	'change:overflowAria': () => void
 }

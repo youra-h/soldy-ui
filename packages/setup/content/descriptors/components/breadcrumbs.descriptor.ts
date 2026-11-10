@@ -42,6 +42,7 @@ export const BreadcrumbsDescriptor = defineDescriptor(() =>
 			},
 			events: ['change:maxItems'],
 		},
+		// Focus repair resolves item DOM through the collection registry, including external engines.
 		plugins: [
 			CollectionBundlesPluginDescriptor,
 			CollectionElementsPluginDescriptor,

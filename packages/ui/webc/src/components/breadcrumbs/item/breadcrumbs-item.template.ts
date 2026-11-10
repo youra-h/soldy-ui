@@ -21,6 +21,8 @@ import {
 	TBreadcrumbsOverflowItemElement,
 	type TBreadcrumbsOverflowItemElementProps,
 } from '../OverflowItem.element'
+
+// Keep one native anchor for the template lifetime; href presence controls link semantics.
 const Row = registerItemRowTag('a')
 type TParts = {
 	row: TItemRowElementProps<HTMLAnchorElement>
@@ -105,6 +107,7 @@ export const breadcrumbsItemTemplate: ITemplate<
 					})
 					trigger.className = 'so-breadcrumbs__trigger'
 					trigger.text = String.fromCodePoint(8230)
+					// Lend the proxy list through Menu's slot so its normal panel lifecycle owns the nodes.
 					const list = root.ownerDocument.createElement('div')
 					lend(menu, 'trigger', trigger)
 					lend(menu, DEFAULT_SLOT, list)

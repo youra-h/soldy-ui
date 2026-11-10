@@ -6,6 +6,10 @@ import type {
 } from '../../collection/types'
 import type { IBreadcrumbsItem } from '../types'
 
+/**
+ * Adapter-facing activation and presentation for one registered breadcrumb.
+ * The window outputs are derived from the collection; collapsing never writes item visibility.
+ */
 export class TBreadcrumbsItemCollectionFacade extends TActivationItemFacade<
 	IBreadcrumbsItem,
 	TBreadcrumbsCollectionExtensions,

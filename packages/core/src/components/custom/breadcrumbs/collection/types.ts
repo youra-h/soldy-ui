@@ -31,18 +31,24 @@ export type TBreadcrumbsCollectionExtensions<TItem extends IBreadcrumbsItem = IB
 	breadcrumbs: TBreadcrumbsExtension<IBreadcrumbs, TItem>
 }
 
+/** Owns breadcrumb membership and activation, including ancestors collapsed into the menu. */
 export type TBreadcrumbsCollection = TCollectionEngine<
 	IBreadcrumbsItem,
 	TBreadcrumbsCollectionExtensions,
 	TBreadcrumbsEngineOptions
 >
 
+/** Existing engines are accepted and completed with any missing Breadcrumbs extensions. */
 export type TBreadcrumbsCollectionFacadeEngine = TCollectionEngine<any, any>
 
 export type TBreadcrumbsEngineOptions<TOwner extends IBreadcrumbs = IBreadcrumbs> = {
 	owner: TOwner
 }
 
+/**
+ * Standard items/engine/trackBy input. Data items use `_: { active: true }` for the current page;
+ * declarative items register through their own facade and use its active property.
+ */
 export interface IBreadcrumbsCollectionProps
 	extends
 		ICollectionProps<TBreadcrumbsCollectionFacadeEngine>,

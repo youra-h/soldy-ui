@@ -18,6 +18,8 @@ import type { BreadcrumbsItemAttributes, BreadcrumbsItemProps } from './base.com
 export function BreadcrumbsItem(props: BreadcrumbsItemProps): JSX.Element {
 	const binding = setupBreadcrumbsItem(props),
 		state = binding.state
+
+	// State fields are proxy-backed; list root fields explicitly when overriding only visibility.
 	const rootState: TRootState = state
 	const root = createRootProps(() => ({
 		state: {

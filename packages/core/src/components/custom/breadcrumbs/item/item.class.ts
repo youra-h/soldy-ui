@@ -3,6 +3,10 @@ import type { TDefaultValues } from '../../../base/component'
 import { TChangeEvent } from '../../../../common'
 import type { IBreadcrumbsItem, IBreadcrumbsItemProps, TBreadcrumbsItemEvents } from './types'
 
+/**
+ * Text and native link attributes for one location.
+ * Its collection facade supplies activation; an omitted href presents a text-only location.
+ */
 export default class TBreadcrumbsItem
 	extends TTextable<IBreadcrumbsItemProps, TBreadcrumbsItemEvents>
 	implements IBreadcrumbsItem
@@ -32,6 +36,7 @@ export default class TBreadcrumbsItem
 		this._syncLink()
 	}
 
+	// Control ARIA belongs to the inner anchor; the item's structural root is an li.
 	protected override get _ariaTag(): string {
 		return 'a'
 	}
@@ -95,6 +100,7 @@ export default class TBreadcrumbsItem
 		this._syncLink()
 	}
 
+	/** Suppress native navigation while disabled, retaining href for a later re-enable. */
 	private _syncLink(): void {
 		for (const name of ['href', 'target', 'rel'] as const) {
 			const value = name === 'href' && this.disabled ? undefined : this[name]

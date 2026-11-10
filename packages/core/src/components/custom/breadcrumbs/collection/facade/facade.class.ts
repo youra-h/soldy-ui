@@ -14,6 +14,10 @@ import type {
 import type { IBreadcrumbsItem } from '../../item/types'
 import type { IBreadcrumbs } from '../../types'
 
+/**
+ * Complete and expose a breadcrumb engine through the standard activation facade.
+ * An external engine remains caller-owned and can be rebound by a later mounting.
+ */
 export class TBreadcrumbsCollectionFacade extends TActivationCollectionFacade<
 	IBreadcrumbsItem,
 	TBreadcrumbsCollectionExtensions,
@@ -33,6 +37,8 @@ export class TBreadcrumbsCollectionFacade extends TActivationCollectionFacade<
 				owner: options.owner,
 			},
 		)
+
+		// The mounted adapter scopes owner binding for external engines to its own lifetime.
 		if (!options.engine) this.bindOwner()
 
 		this.events.relayAll(this.extensions.breadcrumbs.events)

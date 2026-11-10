@@ -14,8 +14,11 @@ import type {
 } from './types'
 import { TBreadcrumbsItemExtension, type IBreadcrumbsItemExtension } from './item'
 
-/** The collapsed window never changes membership or activation. */
-
+/**
+ * Derive the visible trail and its overflow Menu from the collection's drawn items.
+ * Collapsing changes presentation only: source membership, order and activation stay intact.
+ * Menu proxies have their own collection and retain identity while their source stays hidden.
+ */
 export class TBreadcrumbsExtension<
 	TOwner extends IBreadcrumbs = IBreadcrumbs,
 	TItem extends IBreadcrumbsItem = IBreadcrumbsItem,
@@ -83,6 +86,7 @@ export class TBreadcrumbsExtension<
 			this._syncProxies()
 		})
 
+		// External engines can outlive a mounting; rebinding drops the previous owner's listeners.
 		ctx.options.watch('owner', (owner, scope) => {
 			this.menu.open = false
 
@@ -120,26 +124,32 @@ export class TBreadcrumbsExtension<
 		item.variant = owner.variant
 	}
 
+	/** Translate shared activation into the Breadcrumbs-specific current-page ARIA state. */
 	private _applyCurrent(item: TItem): void {
 		if (activationOf(this._ctx)?.isActive(item)) item.aria.add('aria-current', 'page')
 		else item.aria.remove('aria-current')
 	}
 
+	/** Reconcile the displayed window without removing or hiding any source collection item. */
 	private _syncWindow(): void {
+		// Separators and overflow follow the collection's rendering policy and item presence.
 		const items = (batchOf(this._ctx)?.shown ?? []).filter((item) => item.present)
 		this._firstItem = items[0]
 
 		const limit = this._ctx.options.get('owner')?.maxItems ?? 5
+		// Reserve one position for the first crumb and one for the overflow trigger.
 		const hidden =
 			limit > 0 && items.length > limit ? items.slice(1, items.length - limit + 2) : []
 		const changed =
 			hidden.length !== this._overflowEntries.length ||
 			hidden.some((item, index) => this._overflowEntries[index]?.item !== item)
 		if (!changed) {
+			// The first item and its separators can change even when hidden identities do not.
 			this.events.emit('change:window')
 			return
 		}
 
+		// Close before releasing proxies so focus repair can still identify their source item.
 		this.menu.open = false
 		const current = new Set(hidden)
 
@@ -169,6 +179,7 @@ export class TBreadcrumbsExtension<
 		this.events.emit('change:window')
 	}
 
+	/** Mirror accessible menu content; breadcrumb activation remains owned by the source engine. */
 	private _syncProxies(): void {
 		for (const { item, menuItem } of this._overflowEntries) {
 			menuItem.text = item.text

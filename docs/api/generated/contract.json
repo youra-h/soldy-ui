@@ -3817,6 +3817,7 @@
           "type": "string | undefined",
           "declaredType": "string",
           "required": false,
+          "description": "Omit for a text-only location. Being active does not suppress an explicitly supplied link.",
           "hasDefault": true,
           "default": "undefined"
         },
@@ -4475,7 +4476,7 @@
           "type": "number | undefined",
           "declaredType": "number",
           "required": false,
-          "description": "Maximum visible positions, including overflow. Zero shows all.",
+          "description": "Maximum visible positions, including the overflow trigger. Defaults to 5; 0 shows all.\nPositive limits are rounded down and clamped to 3; invalid limits fall back to 5.",
           "hasDefault": true,
           "default": "5"
         },

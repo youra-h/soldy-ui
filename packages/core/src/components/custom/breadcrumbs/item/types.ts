@@ -2,7 +2,9 @@ import type { ITextable, ITextableProps, TTextableEvents } from '../../../base/t
 import type { TChangeEvent, TValuePayload } from '../../../../common'
 import type { IActivationCollectionItemProps } from '../../../base/collection'
 
+/** Location content, native link attributes and the standard item activation input. */
 export interface IBreadcrumbsItemProps extends ITextableProps, IActivationCollectionItemProps {
+	/** Omit for a text-only location. Being active does not suppress an explicitly supplied link. */
 	href?: string
 	target?: string
 	rel?: string

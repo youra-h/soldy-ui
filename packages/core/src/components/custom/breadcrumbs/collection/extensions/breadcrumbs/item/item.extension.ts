@@ -3,6 +3,7 @@ import type { IBreadcrumbsItem } from '../../../../item/types'
 import type { IBreadcrumbsExtension } from '../types'
 import type { IBreadcrumbsItemExtension, TBreadcrumbsItemExtensionEvents } from './types'
 
+/** Derive an item's separator, overflow host and display state from its collection position. */
 export class TBreadcrumbsItemExtension<TItem extends IBreadcrumbsItem = IBreadcrumbsItem>
 	extends TBaseItemExtension<TItem, IBreadcrumbsExtension<TItem>, TBreadcrumbsItemExtensionEvents>
 	implements IBreadcrumbsItemExtension<TItem>
