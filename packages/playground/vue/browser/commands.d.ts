@@ -12,6 +12,7 @@ declare module 'vitest/browser' {
 			selector: string,
 			action: 'primary' | 'middle' | 'modified' | 'enter' | 'cancel',
 		) => Promise<string>
+		saveA11yReport: (report: Readonly<Record<string, unknown>>) => Promise<string>
 		/** Press the main mouse button where the mouse is */
 		mouseDown: () => Promise<void>
 		/** Release the main mouse button */

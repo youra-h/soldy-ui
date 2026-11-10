@@ -2,15 +2,8 @@ import { defineConfig } from 'vitest/config'
 import type { BrowserCommandContext, BrowserInstanceOption } from 'vitest/node'
 import { defineBrowserCommand, playwright } from '@vitest/browser-playwright'
 import { aliases, constants, plugins } from './vite.base.ts'
+import { saveA11yReport } from './browser/axe/report-command.ts'
 
-/**
- * The mouse button apart from movement. `userEvent` presses and releases it
- * only together with movement (`click`, `dragAndDrop`), while a gesture may
- * need a pause with the button held — the slider thumb resting on a mark
- * (`browser/slider.spec.ts`). The mouse is still moved by `userEvent.hover`:
- * it turns a point in the test frame into page coordinates. Command types —
- * `browser/commands.d.ts`.
- */
 /** Observe a real native link activation and close any browser-created page. */
 const activateNativeLink = defineBrowserCommand<
 	[selector: string, action: 'primary' | 'middle' | 'modified' | 'enter' | 'cancel']
@@ -46,6 +39,14 @@ const activateNativeLink = defineBrowserCommand<
 	}
 })
 
+/**
+ * The mouse button apart from movement. `userEvent` presses and releases it
+ * only together with movement (`click`, `dragAndDrop`), while a gesture may
+ * need a pause with the button held — the slider thumb resting on a mark
+ * (`browser/slider.spec.ts`). The mouse is still moved by `userEvent.hover`:
+ * it turns a point in the test frame into page coordinates. Command types —
+ * `browser/commands.d.ts`.
+ */
 const mouseDown = defineBrowserCommand(async ({ page }) => {
 	await page.mouse.down()
 })
@@ -409,6 +410,7 @@ export default defineConfig({
 			],
 			commands: {
 				activateNativeLink,
+				saveA11yReport,
 				mouseDown,
 				mouseUp,
 				quickDrag,

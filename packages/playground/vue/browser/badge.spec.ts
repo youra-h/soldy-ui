@@ -1,4 +1,3 @@
-import { BADGE_VIEWS, COMPONENT_VARIANTS, COMPONENT_SIZES } from '@soxa-ui/playground-shared'
 import { afterEach, describe, expect, it } from 'vitest'
 import { page, userEvent } from 'vitest/browser'
 import { loadHost, FRAMEWORKS } from '../src/hosts'
@@ -153,18 +152,18 @@ it('shows every size, view and semantic color in both schemes', async () => {
 					},
 					[
 						h('h2', 'Badge'),
-						...BADGE_VIEWS.map((view) =>
+						...(['filled', 'outlined'] as const).map((view) =>
 							h('div', { style: 'display:flex;gap:24px;align-items:center' }, [
 								h('span', view),
-								...COMPONENT_VARIANTS.map((variant) =>
-									h(Badge, { value: 'New', view, variant }),
-								),
+								...(
+									['normal', 'accent', 'positive', 'negative', 'caution'] as const
+								).map((variant) => h(Badge, { value: 'New', view, variant })),
 							]),
 						),
 						h(
 							'div',
 							{ style: 'display:flex;gap:24px;align-items:center' },
-							COMPONENT_SIZES.map((size) =>
+							(['sm', 'normal', 'lg', 'xl', '2xl'] as const).map((size) =>
 								h(Badge, { value: 120, size, variant: 'accent' }),
 							),
 						),

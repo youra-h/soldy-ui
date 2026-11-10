@@ -29,7 +29,7 @@ export interface IToastOptions<TRender = unknown> {
 	closable?: boolean
 	/** Сколько тост держится, мс. Не задано — как у владельца, `0` — пока не закроют */
 	duration?: number
-	/** Срочное сообщение: `role="alert"` вместо `role="status"` */
+	/** Urgency exposes the existing card as an alert and selects assertive announcements. */
 	alert?: boolean
 	/** Своё содержимое под текстом: кнопка «Отменить» и подобное */
 	render?: TRender

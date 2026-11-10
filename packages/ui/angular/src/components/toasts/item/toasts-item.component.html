@@ -2,7 +2,7 @@
 	Плашка — отдельный узел, а не корень: место растёт и схлопывается переходом
 	высоты без замеров, а плашка своего размера не меняет.
 -->
-<div class="so-toasts-item__card">
+<div class="so-toasts-item__card" [so-attributes]="state()['cardAria']">
 	<!-- Коробка значка — декор: что случилось, говорит текст, поэтому она скрыта от скринридера. -->
 	<span class="so-toasts-item__icon" aria-hidden="true">
 		@if (state()['loading']) {
