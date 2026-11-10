@@ -1091,7 +1091,7 @@ export class SkeletonPreview implements TFixture {
 			[direction]="direction()"
 			[size]="size()"
 			[variant]="variant()"
-			[items]="items()"
+			[items]="items() ?? entries"
 			[engine]="engine()"
 			[maxItems]="maxItems()"
 		></nav
@@ -1104,11 +1104,14 @@ export class BreadcrumbsPreview implements TFixture {
 	readonly direction = input<TBreadcrumbsComponent['direction']>()
 	readonly size = input<TBreadcrumbsComponent['size']>()
 	readonly variant = input<TBreadcrumbsComponent['variant']>()
-	readonly items = input<TBreadcrumbsComponent['items']>(BREADCRUMBS_ITEMS)
+	readonly items = input<TBreadcrumbsComponent['items']>()
 	readonly engine = input<TBreadcrumbsComponent['engine']>()
 	readonly maxItems = input<TBreadcrumbsComponent['maxItems']>()
 	readonly copy = viewChild.required(CopyDirective)
 	readonly subjects = viewChildren(TBreadcrumbsComponent)
+
+	// The host writes undefined for absent props; choose fixture data when reading the input.
+	protected readonly entries = BREADCRUMBS_ITEMS
 }
 
 @Component({
