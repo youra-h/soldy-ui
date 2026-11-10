@@ -3,7 +3,7 @@
 	import { ItemRow } from '../../item-row'
 	import { Button } from '../../button'
 	import { Menu } from '../../menu'
-	import BreadcrumbsOverflowItem from '../OverflowItem.svelte'
+	import { BreadcrumbsOverflowItem } from '../overflow-item'
 	import { setupBreadcrumbsItem } from './setup.component'
 	import type { BreadcrumbsItemAttributes, BreadcrumbsItemProps } from './base.component'
 

@@ -3,10 +3,14 @@ import { Elevate, hasSlot, relaySlot, renderSlot, toRootProps } from '../../adap
 import { BreadcrumbsItem } from './item'
 import { useSetupBreadcrumbs } from './setup.component'
 import type { BreadcrumbsProps } from './base.component'
+
 export function Breadcrumbs(props: BreadcrumbsProps): ReactElement | null {
 	const { ref, forwardProps, state, layer } = useSetupBreadcrumbs(props)
+
 	if (!state.rendered) return null
+
 	const Tag = state.tag as ElementType
+
 	return (
 		<Tag {...toRootProps(ref, state, [state.attrs, state.aria, state.dataset], forwardProps)}>
 			<Elevate layer={layer}>

@@ -128,7 +128,7 @@ import {
 	Tooltip,
 	Virtual,
 } from '@soxa-ui/react'
-import { BreadcrumbsOverflowItem } from '../src/components/breadcrumbs/OverflowItem'
+import { BreadcrumbsOverflowItem } from '../src/components/breadcrumbs/overflow-item'
 import { ItemRow } from '../src/components/item-row'
 import { nextFrame, track } from './mount'
 
@@ -421,10 +421,7 @@ const COMPONENTS: Readonly<Record<string, Readonly<Record<string, TCase>>>> = {
 				buses: engineBuses(engine),
 			}
 		},
-	},
-
-	OverflowItem: {
-		ctrl: overCtrl(
+		'overflow proxy over external ctrl': overCtrl(
 			() => new TMenuItem({ text: 'Hidden' }),
 			(ctrl) => (
 				<Menu open>

@@ -3,6 +3,7 @@ import type { IBreadcrumbsItem, TBreadcrumbsItemCollectionFacade } from '@soxa-u
 import { ElementBase, type TElementClassOf, type TElementType } from '../../../adapter'
 import { setupBreadcrumbsItem } from './setup.component'
 import { breadcrumbsItemTemplate } from './breadcrumbs-item.template'
+
 export const TBreadcrumbsItemElement: TElementClassOf<
 	typeof HTMLLIElement,
 	typeof BreadcrumbsItemDescriptor,

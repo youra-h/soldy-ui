@@ -20,7 +20,7 @@ import { TButtonElement, type TButtonElementProps } from '../../button'
 import {
 	TBreadcrumbsOverflowItemElement,
 	type TBreadcrumbsOverflowItemElementProps,
-} from '../OverflowItem.element'
+} from '../overflow-item'
 
 // Keep one native anchor for the template lifetime; href presence controls link semantics.
 const Row = registerItemRowTag('a')
@@ -37,8 +37,10 @@ function separator(doc: Document): HTMLSpanElement {
 	const node = doc.createElement('span')
 	node.className = 'so-breadcrumbs__separator'
 	node.setAttribute('aria-hidden', 'true')
+
 	return node
 }
+
 export const breadcrumbsItemTemplate: ITemplate<
 	IBreadcrumbsItem,
 	TBreadcrumbsItemCollectionFacade
@@ -55,6 +57,7 @@ export const breadcrumbsItemTemplate: ITemplate<
 			trigger: null,
 			loop: null,
 		})
+
 		return {
 			control: row,
 			slots: {
@@ -70,6 +73,7 @@ export const breadcrumbsItemTemplate: ITemplate<
 			({ root, state, hasSlot }) => {
 				const own = parts.get(root)
 				if (!own) return
+
 				patch(own.row, {
 					size: state.size,
 					variant: state.variant,
@@ -82,6 +86,7 @@ export const breadcrumbsItemTemplate: ITemplate<
 		bind('breadcrumbs_separator', ({ root, state }) => {
 			const own = parts.get(root)
 			if (!own) return
+
 			if (state.breadcrumbs_separator) own.row.before(own.separator)
 			else own.separator.remove()
 		}),
@@ -90,6 +95,7 @@ export const breadcrumbsItemTemplate: ITemplate<
 			({ root, state }) => {
 				const own = parts.get(root)
 				if (!own) return
+
 				if (!state.breadcrumbs_menu) {
 					own.menu?.remove()
 					own.overflowSeparator.remove()

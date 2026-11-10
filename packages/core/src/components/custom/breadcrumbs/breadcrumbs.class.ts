@@ -47,15 +47,18 @@ export default class TBreadcrumbs
 
 	set maxItems(value: number) {
 		const normalized = this._limit(value)
-		if (normalized === this._maxItems) return
-		const event = new TChangeEvent(normalized, this._maxItems)
 
+		if (normalized === this._maxItems) return
+
+		const event = new TChangeEvent(normalized, this._maxItems)
 		this.events.emit('change:maxItems:before', event)
 
 		if (event.defaultPrevented) return
 
 		const next = this._limit(event.value)
+
 		if (next === this._maxItems) return
+
 		const oldValue = this._maxItems
 		this._maxItems = next
 		this.events.emit('change:maxItems', { newValue: next, oldValue })

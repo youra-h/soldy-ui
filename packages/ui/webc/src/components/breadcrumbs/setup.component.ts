@@ -13,6 +13,7 @@ import {
 import type { TBinding, TUpdateListener } from '../../adapter'
 import { createWebcElevator } from '../../adapter/elevator'
 
+/** Share one bundle between the landmark model and the standard collection facade. */
 export function setupBreadcrumbs(
 	host: HTMLElement,
 	ctrl: IBreadcrumbs | undefined,
@@ -25,7 +26,10 @@ export function setupBreadcrumbs(
 	const collectionAdapter = createWebcAdapterContext(
 		host,
 		BreadcrumbsCollectionDescriptor(),
-		{ props, options: { owner: adapter.instance, engine: props['engine'] } },
+		{
+			props,
+			options: { owner: adapter.instance, engine: props['engine'] },
+		},
 		{ bundle: adapter.bundle },
 	).use(TCollectionExtension, { elevator })
 

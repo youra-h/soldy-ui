@@ -5,7 +5,7 @@ import { AttributesDirective, SlotDirective } from '../../../adapter'
 import { TItemRowComponent } from '../../item-row'
 import { TButtonComponent } from '../../button'
 import { TMenuComponent } from '../../menu'
-import { TBreadcrumbsOverflowItemComponent } from '../overflow-item.component'
+import { TBreadcrumbsOverflowItemComponent } from '../overflow-item'
 import { TBreadcrumbsItemSurface } from '../../../generated/breadcrumbs-item.metadata'
 import { setupBreadcrumbsItem } from './setup.component'
 @Component({

@@ -49,7 +49,6 @@ export default class TBreadcrumbsItem
 		if (value === this._href) return
 
 		const event = new TChangeEvent(value, this._href)
-
 		this.events.emit('change:href:before', event)
 
 		if (event.defaultPrevented || event.value === this._href) return
@@ -67,7 +66,6 @@ export default class TBreadcrumbsItem
 		if (value === this._target) return
 
 		const event = new TChangeEvent(value, this._target)
-
 		this.events.emit('change:target:before', event)
 
 		if (event.defaultPrevented || event.value === this._target) return
@@ -85,7 +83,6 @@ export default class TBreadcrumbsItem
 		if (value === this._rel) return
 
 		const event = new TChangeEvent(value, this._rel)
-
 		this.events.emit('change:rel:before', event)
 
 		if (event.defaultPrevented || event.value === this._rel) return

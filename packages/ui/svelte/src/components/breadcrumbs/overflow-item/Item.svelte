@@ -1,14 +1,16 @@
 <script lang="ts">
-	import { clickAction, Dynamic, toControlAttrs, toRootForward, toRootProps } from '../../adapter'
-	import { ItemRow } from '../item-row'
-	import { setupMenuItem } from '../menu/item/setup.component'
-	import type { MenuItemAttributes, MenuItemProps } from '../menu/item/base.component'
+	import { clickAction, Dynamic, toControlAttrs, toRootForward, toRootProps } from '../../../adapter'
+	import { ItemRow } from '../../item-row'
+	import { setupBreadcrumbsOverflowItem } from './setup.component'
+	import type {
+		BreadcrumbsOverflowItemAttributes,
+		BreadcrumbsOverflowItemProps,
+	} from './base.component'
 
-	type BreadcrumbsOverflowItemProps = MenuItemProps & { href?: string; target?: string; rel?: string }
 	let { ref = $bindable(), ...props }: BreadcrumbsOverflowItemProps = $props()
 	const mountId = $props.id()
 
-	const binding = setupMenuItem(() => props, mountId, (node) => (ref = node))
+	const binding = setupBreadcrumbsOverflowItem(() => props, mountId, (node) => (ref = node))
 	const state = binding.state
 	const context = binding.context
 	const choose = clickAction((event) => {
@@ -32,7 +34,7 @@
 		size={state.size}
 		disabled={state.disabled}
 		{...state.aria}
-		{...toControlAttrs<MenuItemAttributes>(binding.forwardProps)}
+		{...toControlAttrs<BreadcrumbsOverflowItemAttributes>(binding.forwardProps)}
 		{@attach choose}
 	>
 		{#snippet leading()}

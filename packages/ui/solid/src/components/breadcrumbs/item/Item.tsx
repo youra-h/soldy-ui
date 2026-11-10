@@ -12,9 +12,10 @@ import { For, Show } from '../../../adapter/runtime/flow'
 import { ItemRow } from '../../item-row'
 import { Button } from '../../button'
 import { Menu } from '../../menu'
-import { BreadcrumbsOverflowItem } from '../OverflowItem'
+import { BreadcrumbsOverflowItem } from '../overflow-item'
 import { setupBreadcrumbsItem } from './setup.component'
 import type { BreadcrumbsItemAttributes, BreadcrumbsItemProps } from './base.component'
+
 export function BreadcrumbsItem(props: BreadcrumbsItemProps): JSX.Element {
 	const binding = setupBreadcrumbsItem(props),
 		state = binding.state
@@ -31,15 +32,18 @@ export function BreadcrumbsItem(props: BreadcrumbsItemProps): JSX.Element {
 		sets: [state.dataset],
 		forward: toRootForward(binding.forwardProps()),
 	}))
+
 	const row = () => ({
 		...state.attrs,
 		...state.aria,
 		...toControlAttrs<BreadcrumbsItemAttributes>(binding.forwardProps()),
 	})
+
 	const content = resolveSlot(
 		() => props.children,
 		() => ({ text: state.text ?? '', active: state.active ?? false }),
 	)
+
 	return (
 		<Show when={state.rendered}>
 			<Root tag={state.tag} attributes={root} ref={binding.ref}>

@@ -2,6 +2,7 @@ import { afterEach, describe, it, expect } from 'vitest'
 import { userEvent, commands } from 'vitest/browser'
 import { defineComponent, h, nextTick, ref, shallowRef } from 'vue'
 import { Breadcrumbs, LocaleProvider } from '@soxa-ui/vue'
+import { COMPONENT_SIZES } from '@soxa-ui/playground-shared'
 import { enUS, ruRU } from '@soxa-ui/plugins'
 import type { BreadcrumbsDescriptor, DescriptorSlots } from '@soxa-ui/setup'
 import type { IBreadcrumbsProps } from '@soxa-ui/core'
@@ -73,6 +74,58 @@ describe('Breadcrumbs native navigation', () => {
 			expect(root.width).toBeLessThanOrEqual(380)
 		},
 	)
+
+	it('inherits theme geometry from root defaults and a scoped ancestor', async () => {
+		const size = ref<IBreadcrumbsProps['size']>('normal')
+		const overrides = document.createElement('style')
+
+		overrides.textContent =
+			':root {' +
+			COMPONENT_SIZES.map(
+				(step, index) => '--so-breadcrumbs-gap-' + step + ':' + (index + 11) + 'px;',
+			).join('') +
+			'--so-breadcrumbs-separator-size:7px;}'
+		document.head.append(overrides)
+
+		try {
+			render(
+				defineComponent({
+					render: () =>
+						h('section', {}, h(Breadcrumbs, { items, maxItems: 0, size: size.value })),
+				}),
+			)
+
+			for (const [index, step] of COMPONENT_SIZES.entries()) {
+				size.value = step
+				await nextTick()
+				await frame()
+
+				const gap = index + 11 + 'px'
+				expect(getComputedStyle(find('.so-breadcrumbs__list')).columnGap).toBe(gap)
+				expect(getComputedStyle(find('.so-breadcrumbs-item')).columnGap).toBe(gap)
+				expect(getComputedStyle(find('.so-breadcrumbs__separator')).width).toBe('7px')
+			}
+
+			const root = find('.so-breadcrumbs')
+			const ancestor = root.parentElement
+			if (!ancestor) throw new Error('Missing trail ancestor')
+
+			ancestor.style.setProperty('--so-breadcrumbs-gap-2xl', '23px')
+			ancestor.style.setProperty('--so-breadcrumbs-separator-size', '9px')
+			await frame()
+
+			expect(getComputedStyle(find('.so-breadcrumbs__list')).columnGap).toBe('23px')
+			expect(getComputedStyle(find('.so-breadcrumbs-item')).columnGap).toBe('23px')
+			expect(getComputedStyle(find('.so-breadcrumbs__separator')).width).toBe('9px')
+			expect(
+				getComputedStyle(document.documentElement)
+					.getPropertyValue('--so-breadcrumbs-gap-2xl')
+					.trim(),
+			).toBe('15px')
+		} finally {
+			overrides.remove()
+		}
+	})
 
 	it('keeps a disabled native crumb unavailable for navigation', async () => {
 		await show({

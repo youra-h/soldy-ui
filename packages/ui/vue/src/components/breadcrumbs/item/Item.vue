@@ -2,8 +2,9 @@
 import { ItemRow } from '../../item-row'
 import { Menu } from '../../menu'
 import { Button } from '../../button'
-import BreadcrumbsOverflowItem from '../OverflowItem.vue'
+import { BreadcrumbsOverflowItem } from '../overflow-item'
 import SetupBreadcrumbsItem from './setup.component'
+
 export default {
 	...SetupBreadcrumbsItem,
 	components: { ItemRow, Menu, Button, BreadcrumbsOverflowItem },

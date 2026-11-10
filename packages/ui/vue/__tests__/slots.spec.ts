@@ -102,7 +102,7 @@ const DESCRIPTORS: Readonly<Record<string, () => IComponentDescriptor>> = {
 	'accordion/item/Item.vue': AccordionItemDescriptor,
 	'breadcrumbs/Breadcrumbs.vue': BreadcrumbsDescriptor,
 	'breadcrumbs/item/Item.vue': BreadcrumbsItemDescriptor,
-	'breadcrumbs/OverflowItem.vue': MenuItemDescriptor,
+	'breadcrumbs/overflow-item/Item.vue': MenuItemDescriptor,
 	'button/Button.vue': ButtonDescriptor,
 	'item-row/ItemRow.vue': ItemRowDescriptor,
 	'calendar/Calendar.vue': CalendarDescriptor,

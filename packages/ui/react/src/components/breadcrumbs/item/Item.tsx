@@ -10,14 +10,17 @@ import {
 import { ItemRow } from '../../item-row'
 import { Button } from '../../button'
 import { Menu } from '../../menu'
-import { BreadcrumbsOverflowItem } from '../OverflowItem'
+import { BreadcrumbsOverflowItem } from '../overflow-item'
 import { useSetupBreadcrumbsItem } from './setup.component'
 import type { BreadcrumbsItemAttributes, BreadcrumbsItemProps } from './base.component'
+
 export const BreadcrumbsItem = withRenderBoundary(function BreadcrumbsItem(
 	props: BreadcrumbsItemProps,
 ): ReactElement | null {
 	const { ref, forwardProps, state } = useSetupBreadcrumbsItem(props)
+
 	if (!state.rendered) return null
+
 	const Tag = state.tag as ElementType
 	const row = {
 		...toAriaProps(state.attrs),
@@ -27,6 +30,7 @@ export const BreadcrumbsItem = withRenderBoundary(function BreadcrumbsItem(
 	const content =
 		renderSlot(props.children, { text: state.text ?? '', active: state.active ?? false }) ??
 		state.text
+
 	return (
 		<Tag
 			{...toRootProps(

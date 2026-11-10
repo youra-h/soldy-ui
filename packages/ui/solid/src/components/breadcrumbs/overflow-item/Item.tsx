@@ -7,29 +7,32 @@ import {
 	resolveSlot,
 	toControlAttrs,
 	toRootForward,
-} from '../../adapter'
-import { Show } from '../../adapter/runtime/flow'
-import { ItemRow } from '../item-row'
-import { setupMenuItem } from '../menu/item/setup.component'
-import type { MenuItemAttributes, MenuItemProps } from '../menu/item/base.component'
+} from '../../../adapter'
+import { Show } from '../../../adapter/runtime/flow'
+import { ItemRow } from '../../item-row'
+import { setupBreadcrumbsOverflowItem } from './setup.component'
+import type {
+	BreadcrumbsOverflowItemAttributes,
+	BreadcrumbsOverflowItemProps,
+} from './base.component'
 
-export function BreadcrumbsOverflowItem(
-	props: MenuItemProps & { href?: string; target?: string; rel?: string },
-): JSX.Element {
-	const binding = setupMenuItem(props)
+export function BreadcrumbsOverflowItem(props: BreadcrumbsOverflowItemProps): JSX.Element {
+	const binding = setupBreadcrumbsOverflowItem(props)
 	const state = binding.state
 	const context = binding.context
+
 	const root = createRootProps(() => ({
 		state,
 		sets: [state.dataset, state.attrs],
 		forward: toRootForward(binding.forwardProps()),
 	}))
+
 	const content = resolveSlot(
 		() => props.children,
 		() => ({ text: state.text ?? '' }),
 	)
 
-	const row = () => toControlAttrs<MenuItemAttributes>(binding.forwardProps())
+	const row = () => toControlAttrs<BreadcrumbsOverflowItemAttributes>(binding.forwardProps())
 	const choose = clickAction((event) => {
 		if (!event.defaultPrevented) context?.adapters.menu.choose()
 	})

@@ -1,0 +1,18 @@
+<a
+	so-item-row
+	#control
+	embedded="menu.row"
+	[size]="state()['size']"
+	[disabled]="state()['disabled']"
+	[so-attributes]="state()['aria']"
+	(click)="!$event.defaultPrevented && facade()?.context?.adapters.menu.choose()"
+>
+	@if (slot('default'); as content) {
+		<ng-container
+			[ngTemplateOutlet]="content"
+			[ngTemplateOutletContext]="{ text: state()['text'] ?? '' }"
+		/>
+	} @else {
+		<ng-content>{{ state()['text'] }}</ng-content>
+	}
+</a>

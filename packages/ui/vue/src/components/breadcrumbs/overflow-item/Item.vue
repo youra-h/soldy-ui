@@ -1,7 +1,11 @@
 <script lang="ts">
-import { ItemRow } from '../item-row'
-import SetupMenuItem from '../menu/item/setup.component'
-export default { ...SetupMenuItem, name: '_BreadcrumbsOverflowItem', components: { ItemRow } }
+import { ItemRow } from '../../item-row'
+import SetupBreadcrumbsOverflowItem from './setup.component'
+
+export default {
+	...SetupBreadcrumbsOverflowItem,
+	components: { ItemRow },
+}
 </script>
 <template>
 	<component

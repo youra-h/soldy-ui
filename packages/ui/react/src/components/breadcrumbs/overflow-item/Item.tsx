@@ -7,17 +7,19 @@ import {
 	toRootProps,
 	useClickAction,
 	withRenderBoundary,
-} from '../../adapter'
-import { ItemRow } from '../item-row'
-import { useSetupMenuItem } from '../menu/item/setup.component'
-import type { MenuItemAttributes, MenuItemProps } from '../menu/item/base.component'
+} from '../../../adapter'
+import { ItemRow } from '../../item-row'
+import { useSetupBreadcrumbsOverflowItem } from './setup.component'
+import type {
+	BreadcrumbsOverflowItemAttributes,
+	BreadcrumbsOverflowItemProps,
+} from './base.component'
 
-type BreadcrumbsOverflowItemProps = MenuItemProps & { href?: string; target?: string; rel?: string }
 export const BreadcrumbsOverflowItem: NamedExoticComponent<BreadcrumbsOverflowItemProps> =
 	withRenderBoundary(function BreadcrumbsOverflowItem(
 		props: BreadcrumbsOverflowItemProps,
 	): ReactElement | null {
-		const { ref, forwardProps, state, context } = useSetupMenuItem(props)
+		const { ref, forwardProps, state, context } = useSetupBreadcrumbsOverflowItem(props)
 		const choose = useClickAction((event) => {
 			if (!event.defaultPrevented) context?.adapters.menu.choose()
 		})
@@ -27,7 +29,7 @@ export const BreadcrumbsOverflowItem: NamedExoticComponent<BreadcrumbsOverflowIt
 		if (!rendered) return null
 
 		const Tag = tag as ElementType
-		const row = toControlAttrs<MenuItemAttributes>(forwardProps)
+		const row = toControlAttrs<BreadcrumbsOverflowItemAttributes>(forwardProps)
 
 		return (
 			<Tag {...toRootProps(ref, state, [dataset, attrs], toRootForward(forwardProps))}>

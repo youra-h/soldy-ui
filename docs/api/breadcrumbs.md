@@ -75,5 +75,9 @@ the `@soxa-ui/webc/breadcrumbs` entry. Oren supplies both the full stylesheet an
 `@soxa-ui/theme-oren/breadcrumbs.css`.
 
 The theme controls the separator and current/focus appearance. Shared geometry
-uses `--so-breadcrumbs-gap` and `--so-breadcrumbs-separator-size`. Activation writes
+uses root defaults `--so-breadcrumbs-gap-sm`, `--so-breadcrumbs-gap-normal`,
+`--so-breadcrumbs-gap-lg`, `--so-breadcrumbs-gap-xl`, `--so-breadcrumbs-gap-2xl`
+and `--so-breadcrumbs-separator-size`. The gap steps follow Button by default and
+can be overridden on `:root` or an ancestor of a trail. Each component resolves
+its current step into `--so-breadcrumbs-gap`. Activation writes
 the standard `data-selected` state used by themes.

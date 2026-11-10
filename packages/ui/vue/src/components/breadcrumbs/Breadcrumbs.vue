@@ -1,6 +1,7 @@
 <script lang="ts">
 import { BreadcrumbsItem } from './item'
 import SetupBreadcrumbs from './setup.component'
+
 export default { ...SetupBreadcrumbs, components: { BreadcrumbsItem } }
 </script>
 <template>

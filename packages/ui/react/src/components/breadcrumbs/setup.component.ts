@@ -6,6 +6,7 @@ import {
 import { useAdapter, useAdapterContext, useCollectionAdapter } from '../../adapter'
 import type { BreadcrumbsProps } from './base.component'
 
+/** Share one bundle between the landmark model and the standard collection facade. */
 export function useSetupBreadcrumbs(props: BreadcrumbsProps) {
 	const {
 		contexts: [adapter, collectionAdapter],

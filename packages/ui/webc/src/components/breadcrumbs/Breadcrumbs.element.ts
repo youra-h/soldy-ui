@@ -4,6 +4,7 @@ import { ElementBase, defineElement, type TElementClassOf, type TElementType } f
 import { TBreadcrumbsItemElement } from './item'
 import { breadcrumbsTemplate } from './breadcrumbs.template'
 import { setupBreadcrumbs } from './setup.component'
+
 export const TBreadcrumbsElement: TElementClassOf<
 	typeof HTMLElement,
 	typeof BreadcrumbsDescriptor,

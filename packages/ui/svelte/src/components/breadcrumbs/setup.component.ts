@@ -13,6 +13,7 @@ import {
 } from '../../adapter'
 import type { BreadcrumbsProps } from './base.component'
 
+/** Share one bundle between the landmark model and the standard collection facade. */
 export function setupBreadcrumbs(
 	getProps: () => BreadcrumbsProps,
 	mountId: string,

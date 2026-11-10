@@ -60,6 +60,7 @@ export class TBreadcrumbsExtension<
 	get firstItem() {
 		return this._firstItem
 	}
+
 	isCollapsed(item: TItem): boolean {
 		return this._proxies.has(item)
 	}
@@ -143,6 +144,7 @@ export class TBreadcrumbsExtension<
 		const changed =
 			hidden.length !== this._overflowEntries.length ||
 			hidden.some((item, index) => this._overflowEntries[index]?.item !== item)
+
 		if (!changed) {
 			// The first item and its separators can change even when hidden identities do not.
 			this.events.emit('change:window')

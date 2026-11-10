@@ -12,6 +12,7 @@ import {
 } from '../../adapter'
 import type { BreadcrumbsProps } from './base.component'
 
+/** Share one bundle between the landmark model and the standard collection facade. */
 export function setupBreadcrumbs(props: BreadcrumbsProps) {
 	const { elevator, layer } = useElevator()
 	const adapter = createSolidAdapterContext(BreadcrumbsDescriptor(), { ctrl: props.ctrl, props })

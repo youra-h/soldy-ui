@@ -13,6 +13,7 @@ import {
 } from '../../adapter'
 import type { TBinding } from '../../adapter'
 
+/** Share one bundle between the landmark model and the standard collection facade. */
 export function setupBreadcrumbs(
 	ctrl: IBreadcrumbs | undefined,
 	props: object,
@@ -23,9 +24,14 @@ export function setupBreadcrumbs(
 
 	const collectionAdapter = createAngularAdapterContext(
 		BreadcrumbsCollectionDescriptor(),
-		{ props, options: { owner: adapter.instance, engine } },
+		{
+			props,
+			options: { owner: adapter.instance, engine },
+		},
 		{ bundle: adapter.bundle },
 	).use(TCollectionExtension, { elevator: AngularElevatorFactory })
 
-	return joinBindings(owner, useCollectionAdapter(collectionAdapter))
+	const collectionBinding = useCollectionAdapter(collectionAdapter)
+
+	return joinBindings(owner, collectionBinding)
 }

@@ -283,8 +283,13 @@
     "--so-badge-font-size": "Badge indicator font size; default: 0.75rem (normal), 0.625rem (sm), 0.875rem (lg), 1rem (xl), 1.125rem (2xl).",
     "--so-badge-padding": "Badge indicator inline padding; default: 0.375rem (normal), 0.25rem (sm), 0.4375rem (lg), 0.5rem (xl), 0.625rem (2xl).",
     "--so-badge-dot-size": "Badge dot side length; default: 0.5rem (normal), 0.375rem (sm), 0.625rem (lg), 0.75rem (xl), 0.875rem (2xl).",
-    "--so-breadcrumbs-gap": "Inline spacing between locations and decorative separators; default: Button gap at the current size.",
-    "--so-breadcrumbs-separator-size": "Inline size of a decorative breadcrumb separator; default: 0.5em."
+    "--so-breadcrumbs-gap": "Resolved gap for the current Breadcrumbs size, shared by its list and item parts.",
+    "--so-breadcrumbs-separator-size": "Inline size of a decorative breadcrumb separator; default: 0.5em.",
+    "--so-breadcrumbs-gap-sm": "Breadcrumbs gap scale, size sm; defaults to the shared Button gap. Override on :root or an ancestor of a trail.",
+    "--so-breadcrumbs-gap-normal": "Breadcrumbs gap scale, size normal; defaults to the shared Button gap. Override on :root or an ancestor of a trail.",
+    "--so-breadcrumbs-gap-lg": "Breadcrumbs gap scale, size lg; defaults to the shared Button gap. Override on :root or an ancestor of a trail.",
+    "--so-breadcrumbs-gap-xl": "Breadcrumbs gap scale, size xl; defaults to the shared Button gap. Override on :root or an ancestor of a trail.",
+    "--so-breadcrumbs-gap-2xl": "Breadcrumbs gap scale, size 2xl; defaults to the shared Button gap. Override on :root or an ancestor of a trail."
   },
   "theme-reads": {
     "--so-dir-sign": "Writing direction sign from the nearest dir: 1 for left-to-right, -1 for right-to-left. Written by the base layer dir rules; themes multiply mirroring transforms (scale, gradient angle or offset) by it.",
