@@ -130,19 +130,18 @@
 	justify-content: center;
 }
 
-/* Выключенный набор гаснет корнем целиком — табы вместе с панелями
- * (`disabled.css`): набор читается выключенным весь, а выключить поля в
- * панелях — дело приложения. Нажатия гаснут у всего набора, в панелях тоже.
- * Состояние — `data-disabled` корня: ядро пишет его на любом теге, а
- * модификатора `--disabled` у блока нет. Табы выключены вместе с набором — их
- * `disabled` распространяется от владельца — и под погасшим корнем второй раз
- * не гаснут. */
+/* Keep panel content readable when the set is disabled. Only the tab bar
+ * dims; its disabled descendants must not dim a second time. Interaction
+ * stays disabled for the whole set, including its panels. */
 .so-tabs[data-disabled='true'] {
-	opacity: var(--so-disabled-opacity);
 	pointer-events: none;
 }
 
-.so-tabs[data-disabled='true'] > * {
+.so-tabs[data-disabled='true'] > .so-tabs__bar {
+	opacity: var(--so-disabled-opacity);
+}
+
+.so-tabs[data-disabled='true'] > .so-tabs__bar > * {
 	--so-disabled-opacity: 1;
 }
 

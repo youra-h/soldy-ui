@@ -207,8 +207,8 @@ const CASES: readonly TCase[] = [
 				],
 				content: () => h(TabsContent, { value: 'a' }, () => h('p', 'Панель')),
 			}),
-		box: '.so-tabs',
-		parts: ['.so-tabs-item[data-selected="true"] > .so-button', '.so-tabs-content p'],
+		box: '.so-tabs__bar',
+		parts: ['.so-tabs-item[data-selected="true"] > .so-button'],
 	},
 	{
 		name: 'Tags',
@@ -325,6 +325,19 @@ afterEach(() => {
 describe.each(SCHEMES)('схема %s', (scheme) => {
 	beforeEach(() => {
 		document.documentElement.dataset.soTheme = scheme
+	})
+
+	it('disabled Tabs keep panel content readable and tab buttons disabled', async () => {
+		const tabs = CASES.find((item) => item.name === 'Tabs')
+		if (!tabs) throw new Error('Missing Tabs fixture')
+
+		await show(tabs)
+
+		expect(visible(inCase('off', '.so-tabs-content p'))).toBe(1)
+		expect(style(inCase('off', '.so-tabs')).pointerEvents).toBe('none')
+		for (const button of allOff('.so-tabs-item > .so-button')) {
+			expect((button as HTMLButtonElement).disabled).toBe(true)
+		}
 	})
 
 	describe.each(CASES)('$name', (item) => {
