@@ -23,6 +23,7 @@ import { join, resolve, sep } from 'node:path'
 import { parse, type SFCDescriptor } from 'vue/compiler-sfc'
 import { mount } from '@vue/test-utils'
 import {
+	BreadcrumbsDescriptor,
 	AccordionDescriptor,
 	AccordionItemDescriptor,
 	ButtonDescriptor,
@@ -97,6 +98,8 @@ const COMPONENTS = resolve(import.meta.dirname, '../src/components')
 const DESCRIPTORS: Readonly<Record<string, () => IComponentDescriptor>> = {
 	'accordion/Accordion.vue': AccordionDescriptor,
 	'accordion/item/Item.vue': AccordionItemDescriptor,
+	'breadcrumbs/Breadcrumbs.vue': BreadcrumbsDescriptor,
+	'breadcrumbs/OverflowItem.vue': MenuItemDescriptor,
 	'button/Button.vue': ButtonDescriptor,
 	'item-row/ItemRow.vue': ItemRowDescriptor,
 	'calendar/Calendar.vue': CalendarDescriptor,

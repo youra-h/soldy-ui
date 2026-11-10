@@ -132,3 +132,6 @@ export { TLocaleProviderElement } from './adapter/locale'
 export { toastsOf } from './adapter/toasts'
 
 export type { TToastRender } from './adapter/toasts'
+
+export { TBreadcrumbsElement } from './components/breadcrumbs'
+export type { TBreadcrumbsElementProps } from './components/breadcrumbs'

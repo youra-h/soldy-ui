@@ -621,3 +621,8 @@ with that entry. Importing an entry still registers its elements and required pa
 ## License
 
 [MIT](https://github.com/youra-h/soxa-ui/blob/main/LICENSE)
+
+## Breadcrumbs
+
+Breadcrumbs provides an ordered navigation trail with native links, localized accessible names
+and an overflow menu. See the [API and examples](../../../docs/api/breadcrumbs.md).

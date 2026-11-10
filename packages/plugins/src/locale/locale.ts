@@ -1,5 +1,11 @@
 import type { TLocale, TLocalePatch, TPartialTranslations, TTranslations } from './types'
 
+/** Defaults for locales written before Breadcrumbs was introduced. */
+export const BREADCRUMBS_NAMES = Object.freeze({
+	navigation: 'Breadcrumbs',
+	overflow: 'Show hidden breadcrumbs',
+})
+
 /** Место для имени части в строке-шаблоне. */
 const NAME = '{name}'
 
@@ -58,6 +64,11 @@ export function freezeLocale(locale: TLocale): TLocale {
  */
 function overlay(base: TTranslations, patch: TPartialTranslations): TTranslations {
 	return Object.freeze({
+		breadcrumbs: Object.freeze({
+			...BREADCRUMBS_NAMES,
+			...base.breadcrumbs,
+			...defined(patch.breadcrumbs),
+		}),
 		modal: section(base, patch, 'modal'),
 		dialog: section(base, patch, 'dialog'),
 		popover: section(base, patch, 'popover'),

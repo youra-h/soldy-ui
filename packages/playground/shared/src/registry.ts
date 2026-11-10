@@ -3,6 +3,7 @@ import {
 	AccordionCollectionDescriptor,
 	AccordionCollectionItemDescriptor,
 	AccordionItemDescriptor,
+	BreadcrumbsDescriptor,
 	ButtonDescriptor,
 	CalendarDescriptor,
 	CalendarCollectionDescriptor,
@@ -106,6 +107,15 @@ export const COMPONENT_GROUPS: Readonly<Record<TComponentGroup, string>> = {
  * levels of the contract, not components.
  */
 export const COMPONENTS: readonly TComponentEntry[] = [
+	{
+		id: 'breadcrumbs',
+		label: 'Breadcrumbs',
+		descriptor: BreadcrumbsDescriptor,
+		group: 'collections',
+		span: 2,
+		description:
+			'Навигационный путь: ссылки на предков, текущая страница и меню скрытых звеньев',
+	},
 	{
 		id: 'button',
 		label: 'Button',

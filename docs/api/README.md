@@ -194,3 +194,7 @@ Inspected on 2026-11-09:
 The recommendation for Soxa combines structured data with authored pages because the library
 has six adapters and an independently versioned website. It does not depend on the website
 choosing VitePress, Nuxt or another renderer.
+
+## Component guides
+
+- [Breadcrumbs](breadcrumbs.md): native navigation links, overflow, localization and slots.

@@ -11,6 +11,41 @@ import { aliases, constants, plugins } from './vite.base.ts'
  * it turns a point in the test frame into page coordinates. Command types —
  * `browser/commands.d.ts`.
  */
+/** Observe a real native link activation and close any browser-created page. */
+const activateNativeLink = defineBrowserCommand<
+	[selector: string, action: 'primary' | 'middle' | 'modified' | 'enter' | 'cancel']
+>(async ({ page, frame }, selector, action) => {
+	const link = (await frame()).locator(selector).first()
+	const opened = page
+		.context()
+		.waitForEvent('page', { timeout: action === 'cancel' ? 500 : 5000 })
+		.catch((error) => {
+			if (action === 'cancel' && error instanceof Error && error.name === 'TimeoutError')
+				return null
+			throw error
+		})
+	try {
+		if (action === 'enter') await link.press('Enter')
+		else
+			await link.click({
+				button: action === 'middle' ? 'middle' : 'left',
+				modifiers: action === 'modified' ? ['ControlOrMeta'] : [],
+			})
+		const popup = await opened
+		if (!popup) return 'no-page'
+		try {
+			await popup.waitForLoadState()
+			return popup.url()
+		} finally {
+			await popup.close()
+		}
+	} finally {
+		await page.keyboard.up('Control')
+		await page.keyboard.up('Meta')
+		await page.bringToFront()
+	}
+})
+
 const mouseDown = defineBrowserCommand(async ({ page }) => {
 	await page.mouse.down()
 })
@@ -373,6 +408,7 @@ export default defineConfig({
 					})),
 			],
 			commands: {
+				activateNativeLink,
 				mouseDown,
 				mouseUp,
 				quickDrag,

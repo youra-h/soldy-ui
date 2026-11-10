@@ -194,3 +194,6 @@ export { useToasts } from './adapter/toasts'
 export type { TToastRender } from './adapter/toasts'
 
 export type { LocaleProviderProps } from './adapter/locale'
+
+export { Breadcrumbs } from './components/breadcrumbs'
+export type { BreadcrumbsProps } from './components/breadcrumbs'

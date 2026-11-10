@@ -1,0 +1,38 @@
+@use '../button/mixins' as button;
+
+.so-breadcrumbs__link {
+	@apply text-so-neutral-800;
+	text-decoration: none;
+	border-radius: 0.125rem;
+}
+.so-breadcrumbs__link[href] {
+	@apply text-so-accent-800;
+	cursor: pointer;
+	&:hover {
+		text-decoration: underline;
+	}
+	&:focus-visible {
+		@include button.button-focus-ring;
+	}
+}
+.so-breadcrumbs__link[data-current='true'] {
+	@apply text-so-neutral-900;
+	font-weight: 500;
+}
+.so-breadcrumbs__separator {
+	@apply text-so-neutral-500;
+	&::before {
+		content: '/';
+	}
+}
+@media (forced-colors: active) {
+	.so-breadcrumbs__link[href] {
+		color: LinkText;
+	}
+	.so-breadcrumbs__link[data-current='true'] {
+		color: CanvasText;
+	}
+	.so-breadcrumbs__separator {
+		color: CanvasText;
+	}
+}

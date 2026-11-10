@@ -82,3 +82,8 @@ of `<input type="date">` in Chrome and Firefox, © 2020 Adobe, licensed under th
 [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0); its text ships with the
 package as `LICENSE-Apache-2.0`. The package keeps only the table of the year, month and day
 placeholders.
+
+## Breadcrumbs
+
+Breadcrumbs provides an ordered navigation trail with native links, localized accessible names
+and an overflow menu. See the [API and examples](../../docs/api/breadcrumbs.md).

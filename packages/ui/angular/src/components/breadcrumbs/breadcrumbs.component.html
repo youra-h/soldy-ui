@@ -1,0 +1,96 @@
+<ng-content select="ng-template[slot]" />
+<ng-template #content let-entry>
+	@if (slot('item-leading'); as leading) {
+		<ng-container [ngTemplateOutlet]="leading" [ngTemplateOutletContext]="entry" />
+	}
+	@if (slot('item'); as item) {
+		<ng-container [ngTemplateOutlet]="item" [ngTemplateOutletContext]="entry" />
+	} @else {
+		{{ entry.item.text }}
+	}
+	@if (slot('item-trailing'); as trailing) {
+		<ng-container [ngTemplateOutlet]="trailing" [ngTemplateOutletContext]="entry" />
+	}
+</ng-template>
+<ol class="so-breadcrumbs__list">
+	@for (entry of state()['entries'] ?? []; track entry.index; let position = $index) {
+		@if (position === 1 && state()['hiddenEntries']?.length) {
+			<li class="so-breadcrumbs__item">
+				<span class="so-breadcrumbs__separator" aria-hidden="true"></span>
+				<span
+					so-menu
+					embedded="breadcrumbs.menu"
+					[ctrl]="menu"
+					[size]="state()['size']"
+					[variant]="state()['variant']"
+					class="so-breadcrumbs__overflow"
+				>
+					<ng-template
+						slot="trigger"
+						let-triggerAria="triggerAria"
+						let-triggerDataset="triggerDataset"
+					>
+						<button
+							so-button
+							embedded="breadcrumbs.trigger"
+							type="button"
+							class="so-breadcrumbs__trigger"
+							[size]="state()['size']"
+							[so-attributes]="triggerAria"
+							[attr.data-selected]="triggerDataset['data-selected']"
+							[attr.aria-label]="state()['overflowAria']?.['aria-label']"
+						>
+							…
+						</button>
+					</ng-template>
+					@for (hidden of state()['hiddenEntries'] ?? []; track hidden.index) {
+						<div
+							so-breadcrumbs-overflow-item
+							[text]="hidden.item.text"
+							[disabled]="hidden.item.href === undefined"
+							[attr.href]="hidden.item.href"
+							[attr.target]="hidden.item.target"
+							[attr.rel]="hidden.item.rel"
+							[attr.data-breadcrumb-index]="hidden.index"
+						>
+							<ng-template slot="default" ngProjectAs="ng-template[slot]"
+								><ng-container
+									[ngTemplateOutlet]="content"
+									[ngTemplateOutletContext]="{ $implicit: hidden }"
+							/></ng-template>
+						</div>
+					}
+				</span>
+			</li>
+		}
+		<li class="so-breadcrumbs__item">
+			@if (position > 0) {
+				<span class="so-breadcrumbs__separator" aria-hidden="true"></span>
+			}
+			@if (entry.item.href !== undefined) {
+				<a
+					class="so-breadcrumbs__link"
+					[so-attributes]="entry.aria"
+					[attr.href]="entry.item.href"
+					[attr.target]="entry.item.target"
+					[attr.rel]="entry.item.rel"
+					[attr.data-current]="entry.dataset['data-current']"
+					[attr.data-breadcrumb-index]="entry.index"
+					><ng-container
+						[ngTemplateOutlet]="content"
+						[ngTemplateOutletContext]="{ $implicit: entry }"
+				/></a>
+			} @else {
+				<span
+					class="so-breadcrumbs__link"
+					[so-attributes]="entry.aria"
+					[attr.data-current]="entry.dataset['data-current']"
+					[attr.data-breadcrumb-index]="entry.index"
+					><ng-container
+						[ngTemplateOutlet]="content"
+						[ngTemplateOutletContext]="{ $implicit: entry }"
+				/></span>
+			}
+		</li>
+	}
+</ol>

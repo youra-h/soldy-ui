@@ -7,6 +7,7 @@ import { freezeLocale } from '../locale'
 export const arEG = freezeLocale({
 	tag: 'ar-EG',
 	translations: {
+		breadcrumbs: { navigation: 'مسار التنقل', overflow: 'إظهار عناصر التنقل المخفية' },
 		modal: { close: 'إغلاق' },
 		dialog: { maximize: 'تكبير' },
 		popover: { close: 'إغلاق' },

@@ -1,3 +1,4 @@
+import { BREADCRUMBS_SCENARIOS } from './breadcrumbs/window'
 import { findComponent } from '../registry'
 import { BUTTON_EVENTS } from './button/events'
 import { BUTTON_SLOTS } from './button/slots'
@@ -32,6 +33,7 @@ function polled(id: string) {
  * не сломанная сборка. Стенд стерегут только тесты целостности реестра.
  */
 export const SCENARIOS: readonly TScenario[] = [
+	...BREADCRUMBS_SCENARIOS,
 	...BUTTON_EVENTS,
 	...POLLED.flatMap((id) => eventsPoll(polled(id))),
 	...BUTTON_SLOTS,

@@ -29,6 +29,8 @@ import type { ReactNode } from 'react'
 import { createRoot } from 'react-dom/client'
 import {
 	TAccordion,
+	TBreadcrumbs,
+	TMenuItem,
 	TButton,
 	TItemRow,
 	TCalendar,
@@ -86,6 +88,7 @@ import type {
 } from '@soxa-ui/core'
 import {
 	Accordion,
+	Breadcrumbs,
 	Button,
 	Calendar,
 	CheckBox,
@@ -122,6 +125,7 @@ import {
 	Tooltip,
 	Virtual,
 } from '@soxa-ui/react'
+import { BreadcrumbsOverflowItem } from '../src/components/breadcrumbs/OverflowItem'
 import { ItemRow } from '../src/components/item-row'
 import { nextFrame, track } from './mount'
 
@@ -380,6 +384,29 @@ const COMPONENTS: Readonly<Record<string, Readonly<Record<string, TCase>>>> = {
 				buses: engineBuses(engine),
 			}
 		},
+	},
+	Breadcrumbs: {
+		ctrl: overCtrl(
+			() =>
+				new TBreadcrumbs({
+					items: [
+						{ text: 'Home', href: '#home' },
+						{ text: 'Catalog', href: '#catalog' },
+						{ text: 'Page' },
+					],
+				}),
+			(ctrl) => <Breadcrumbs ctrl={ctrl} />,
+		),
+	},
+	OverflowItem: {
+		ctrl: overCtrl(
+			() => new TMenuItem({ text: 'Hidden' }),
+			(ctrl) => (
+				<Menu open>
+					<BreadcrumbsOverflowItem ctrl={ctrl} href="#hidden" />
+				</Menu>
+			),
+		),
 	},
 	Button: {
 		ctrl: overCtrl(

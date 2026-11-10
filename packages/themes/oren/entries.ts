@@ -60,6 +60,7 @@ const CALENDAR = [...POPOVER, 'list-box', 'calendar']
 export const COMPONENTS: Readonly<Record<string, readonly string[]>> = {
 	accordion: ['icon', 'button', 'accordion'],
 	button: ['button'],
+	breadcrumbs: ['icon', 'button', 'group', 'anchored', 'place', 'menu', 'breadcrumbs'],
 	calendar: CALENDAR,
 	'check-box': ['icon', 'check-box'],
 	'date-input': ['icon', 'button', 'date-input'],

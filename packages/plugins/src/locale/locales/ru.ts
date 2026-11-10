@@ -4,6 +4,7 @@ import { freezeLocale } from '../locale'
 export const ruRU = freezeLocale({
 	tag: 'ru-RU',
 	translations: {
+		breadcrumbs: { navigation: 'Навигационная цепочка', overflow: 'Показать скрытые звенья' },
 		modal: { close: 'Закрыть' },
 		dialog: { maximize: 'Развернуть' },
 		popover: { close: 'Закрыть' },

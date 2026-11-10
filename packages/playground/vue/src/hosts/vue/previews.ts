@@ -1,3 +1,4 @@
+import { BREADCRUMBS_ITEMS } from '@soxa-ui/playground-shared'
 import {
 	defineComponent,
 	h,
@@ -27,6 +28,7 @@ import {
 } from '@soxa-ui/playground-shared'
 import {
 	Accordion,
+	Breadcrumbs,
 	Button,
 	Calendar,
 	CheckBox,
@@ -545,6 +547,7 @@ export const PREVIEWS: Record<string, TPreview> = {
 	 * Pagination has no content: it puts the window's pages into the collection
 	 * itself. The language of numbers and arrow names comes from the header.
 	 */
+	breadcrumbs: (bind) => h(Breadcrumbs as Component, { items: BREADCRUMBS_ITEMS, ...bind }),
 	pagination: (bind) => h(Pagination as Component, bind),
 
 	/**

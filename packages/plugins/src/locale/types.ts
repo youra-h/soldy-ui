@@ -16,6 +16,9 @@ import type { IListenable } from '../base/types'
  * языка свой, и склейка «слово + имя» навязала бы всем один (`formatName`).
  */
 export type TTranslations = {
+	/** Optional so existing complete custom locales remain compatible. */
+	readonly breadcrumbs?: { readonly navigation: string; readonly overflow: string }
+
 	/** Модальный слой — окно и выезжающая панель */
 	readonly modal: {
 		/** Имя кнопки закрытия */

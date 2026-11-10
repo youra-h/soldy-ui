@@ -73,6 +73,10 @@
 	@include meta.load-css('components/menu/menu');
 }
 
+@layer components.so.breadcrumbs {
+	@include meta.load-css('components/breadcrumbs/breadcrumbs');
+}
+
 @layer components.so.number-input {
 	@include meta.load-css('components/number-input/number-input');
 }

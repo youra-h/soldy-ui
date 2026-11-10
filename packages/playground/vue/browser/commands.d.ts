@@ -7,6 +7,11 @@ import 'vitest/browser'
 
 declare module 'vitest/browser' {
 	interface BrowserCommands {
+		/** Observe actual native navigation into a new browser page. */
+		activateNativeLink: (
+			selector: string,
+			action: 'primary' | 'middle' | 'modified' | 'enter' | 'cancel',
+		) => Promise<string>
 		/** Press the main mouse button where the mouse is */
 		mouseDown: () => Promise<void>
 		/** Release the main mouse button */

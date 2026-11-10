@@ -1,18 +1,10 @@
 /**
- * Строка элемента коллекции — деталь разметки ListBox.Item, опции Select,
- * пунктов меню и тега: `<div is="so-item-row-div">`, у опции Select —
- * `<span is="so-item-row-span">`. Свойства, шаблон и разметка — Button
- * (`buttonTemplate`), сборка своя — по `ItemRowDescriptor`: её экземпляр
- * (`TItemRow`) роль и остановку Tab себе не пишет, их несёт набор `aria`
- * элемента, который разметка кладёт на строку.
- *
- * Экземпляр создаёт подключение элемента и отпускает его отключение: строка
- * живёт, пока стоит в документе, и окно `Virtual` держит их столько, сколько
- * показывает.
- *
- * Своего элемента на теге по умолчанию (`<button>`) у строки нет: на кнопке
- * выключенный элемент терял бы фокус и клик. Только теги строк, под именем с
- * тегом (AGENTS.md, «Элемент Web Components на другом теге»).
+ * Internal collection rows use Button markup with ItemRow assembly.
+ * div is used by ListBox, Tags and Menu; span by Select; a preserves native
+ * navigation for hidden Breadcrumbs locations. Each native tag is registered
+ * where its markup is first needed, with no button registration.
+ * The mounting owns the row instance; its collection supplies ARIA and the
+ * roving tab stop. See docs/architecture.md, Layer 8d.
  */
 
 import { ItemRowDescriptor } from '@soxa-ui/setup'
@@ -29,8 +21,8 @@ const ITEM_ROW = {
 	setup: setupItemRow,
 }
 
-/** `div` — строка элемента ListBox, тега и пункта меню; `span` — строка опции Select. */
-export type TItemRowTag = 'div' | 'span'
+/** Row tags: div for collections, span for Select, and a for native breadcrumb links. */
+export type TItemRowTag = 'div' | 'span' | 'a'
 
 export type TItemRowTagClass<K extends TItemRowTag> = TElementClassOf<
 	new () => HTMLElementTagNameMap[K],
@@ -64,14 +56,15 @@ function registration<K extends TItemRowTag>(
 const REGISTRATIONS: { readonly [K in TItemRowTag]: () => TItemRowTagClass<K> } = {
 	div: registration('div', HTMLDivElement),
 	span: registration('span', HTMLSpanElement),
+	a: registration('a', HTMLAnchorElement),
 }
 
-/** `<div is="so-item-row-div">`, `<span is="so-item-row-span">` — регистрирует разметка, где тег нужен. */
+/** Register the native row tag where its markup is first used. */
 export function registerItemRowTag<K extends TItemRowTag>(tag: K): TItemRowTagClass<K> {
 	return REGISTRATIONS[tag]()
 }
 
-/** Строка — на `div` или `span`: своего `disabled` у них нет, и там это свойство пропа. */
+/** Row tags have no native disabled property; it remains a component prop. */
 export type TItemRowElementProps<TNative extends HTMLElement> = TElementOf<
 	TNative,
 	typeof ItemRowDescriptor,

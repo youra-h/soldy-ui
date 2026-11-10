@@ -4,6 +4,7 @@ import { freezeLocale } from '../locale'
 export const esES = freezeLocale({
 	tag: 'es-ES',
 	translations: {
+		breadcrumbs: { navigation: 'Ruta de navegación', overflow: 'Mostrar elementos ocultos' },
 		modal: { close: 'Cerrar' },
 		dialog: { maximize: 'Maximizar' },
 		popover: { close: 'Cerrar' },

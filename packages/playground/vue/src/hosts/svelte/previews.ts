@@ -15,6 +15,7 @@ import LabelPreview from './LabelPreview.svelte'
 import ListBoxPreview from './ListBoxPreview.svelte'
 import MenuPreview from './MenuPreview.svelte'
 import NumberInputPreview from './NumberInputPreview.svelte'
+import BreadcrumbsPreview from './BreadcrumbsPreview.svelte'
 import PaginationPreview from './PaginationPreview.svelte'
 import PopoverPreview from './PopoverPreview.svelte'
 import ProgressLinearPreview from './ProgressLinearPreview.svelte'
@@ -84,6 +85,7 @@ export const PREVIEWS: Record<string, TPreview> = {
 	'drag-and-drop': DragAndDropPreview,
 	virtual: VirtualPreview,
 	scroller: ScrollerPreview,
+	breadcrumbs: BreadcrumbsPreview,
 	pagination: PaginationPreview,
 	popover: PopoverPreview,
 	tooltip: TooltipPreview,

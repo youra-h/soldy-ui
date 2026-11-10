@@ -9,6 +9,7 @@
       "@soxa-ui/setup": ["../../setup/index.ts"],
       "@soxa-ui/webc": ["./src/index.ts"],
       "@soxa-ui/webc/accordion": ["./src/components/accordion/index.ts"],
+      "@soxa-ui/webc/breadcrumbs": ["./src/components/breadcrumbs/index.ts"],
       "@soxa-ui/webc/button": ["./src/components/button/index.ts"],
       "@soxa-ui/webc/calendar": ["./src/components/calendar/index.ts"],
       "@soxa-ui/webc/check-box": ["./src/components/check-box/index.ts"],

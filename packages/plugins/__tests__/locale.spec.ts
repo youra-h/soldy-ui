@@ -47,7 +47,7 @@ function keysOf(translations: TTranslations): string[] {
 
 /** Строка локали по разделу и ключу — перебором значений раздела. */
 function stringOf(translations: TTranslations, section: keyof TTranslations, key: string): unknown {
-	return Object.entries(translations[section]).find(([name]) => name === key)?.[1]
+	return Object.entries(translations[section] ?? {}).find(([name]) => name === key)?.[1]
 }
 
 describe('готовые локали', () => {

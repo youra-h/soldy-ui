@@ -1,0 +1,61 @@
+/* Breadcrumbs: ordered locations with one overflow position.
+ * Geometry is shared by themes; links, current state and separators are painted by the theme. */
+.so-breadcrumbs {
+	--so-breadcrumbs-gap: var(--so-button-gap-normal);
+	--so-breadcrumbs-separator-size: 0.5em;
+	min-inline-size: 0;
+}
+.so-breadcrumbs__list {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: var(--so-breadcrumbs-gap);
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.so-breadcrumbs__item {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--so-breadcrumbs-gap);
+	min-inline-size: 0;
+	max-inline-size: 100%;
+}
+.so-breadcrumbs__link {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--so-breadcrumbs-gap);
+	min-inline-size: 0;
+	overflow-wrap: anywhere;
+}
+.so-breadcrumbs__separator {
+	display: inline-flex;
+	flex: none;
+	justify-content: center;
+	inline-size: var(--so-breadcrumbs-separator-size);
+	user-select: none;
+}
+.so-breadcrumbs--size-sm {
+	--so-breadcrumbs-gap: var(--so-button-gap-sm);
+}
+.so-breadcrumbs--size-sm .so-breadcrumbs__link {
+	font-size: var(--so-button-font-size-sm);
+}
+.so-breadcrumbs--size-lg {
+	--so-breadcrumbs-gap: var(--so-button-gap-lg);
+}
+.so-breadcrumbs--size-lg .so-breadcrumbs__link {
+	font-size: var(--so-button-font-size-lg);
+}
+.so-breadcrumbs--size-xl {
+	--so-breadcrumbs-gap: var(--so-button-gap-xl);
+}
+.so-breadcrumbs--size-xl .so-breadcrumbs__link {
+	font-size: var(--so-button-font-size-xl);
+}
+.so-breadcrumbs--size-2xl {
+	--so-breadcrumbs-gap: var(--so-button-gap-2xl);
+}
+.so-breadcrumbs--size-2xl .so-breadcrumbs__link {
+	font-size: var(--so-button-font-size-2xl);
+}
