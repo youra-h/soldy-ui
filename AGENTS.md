@@ -369,6 +369,31 @@ Apply this to implementation, tests and examples. Prettier does not establish
 logical boundaries: review readability manually before committing, and carry this
 requirement into delegated work and the review of its result.
 
+## Comments and JSDoc (critical)
+
+Aim for moderate comment density in new or modified code. Use the cleaned
+[Button model](packages/core/src/components/custom/button/button.class.ts) and
+[descriptor](packages/setup/content/descriptors/components/button.descriptor.ts)
+as references: explain meaningful decisions, not every line or method.
+
+Add concise comments for non-obvious reasons, invariants, lifecycle/ownership
+constraints, framework or accessibility pitfalls, and choices whose rationale
+would otherwise be lost. Use short JSDoc for classes, functions and public
+contracts when it adds useful purpose, behavior, limits or side effects beyond
+the name and TypeScript signature; do not require it on every symbol.
+
+For example, a Badge note should explain why the wrapper stays neutral:
+
+```ts
+// Keep image semantics on the indicator so the interactive anchor stays accessible.
+```
+
+Keep straightforward getters, setters and standard adapter wiring uncluttered.
+Avoid restating code or types, long block-by-block narration, duplicate explanations
+across layers, and invented historical rationale; link to the authoritative rule
+when needed. Follow the English-comment rule and update affected explanations
+with the code. Include this balance in delegated instructions and manual review.
+
 ## Layer boundaries (critical)
 
 | Package            | Responsibility                                                                                                                |
