@@ -1,3 +1,5 @@
+import { createEngineBreadcrumbs } from '@soxa-ui/core'
+import BreadcrumbsItems from './fixtures/BreadcrumbsItems.svelte'
 import { describe, it, expect } from 'vitest'
 import { flushSync } from 'svelte'
 import { Breadcrumbs, type BreadcrumbsProps } from '@soxa-ui/svelte'
@@ -9,7 +11,7 @@ const items = [
 	{ text: 'Catalog', href: '#catalog', target: '_blank', rel: 'external' },
 	{ text: 'Group' },
 	{ text: 'Phones', href: '#phones' },
-	{ text: 'Current' },
+	{ text: 'Current', _: { active: true } },
 ]
 
 describe('Breadcrumbs', () => {
@@ -19,7 +21,7 @@ describe('Breadcrumbs', () => {
 
 		await nextFrame()
 
-		expect(app.root().querySelectorAll('ol > li')).toHaveLength(3)
+		expect(app.root().querySelectorAll('ol > li')).toHaveLength(5)
 		expect(app.root().querySelectorAll('[aria-current="page"]')).toHaveLength(1)
 
 		find(app.root(), 'button', HTMLButtonElement).click()
@@ -35,5 +37,15 @@ describe('Breadcrumbs', () => {
 		flushSync()
 		expect(app.root().querySelectorAll('ol > li')).toHaveLength(5)
 		expect(app.root().querySelector('button')).toBeNull()
+	})
+	it('registers declarative Item with standard activation and releases only markup members', () => {
+		const engine = createEngineBreadcrumbs()
+		const app = mount(BreadcrumbsItems, { engine })
+		expect(engine.extensions.batch.items).toHaveLength(5)
+		expect(engine.extensions.activation.activeItem).toBe(engine.extensions.batch.items[4])
+		expect(app.root().querySelectorAll('[aria-current="page"]')).toHaveLength(1)
+		app.destroy()
+		expect(engine.extensions.batch.items).toHaveLength(0)
+		expect(engine.options.get('owner')).toBeUndefined()
 	})
 })

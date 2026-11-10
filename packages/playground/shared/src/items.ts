@@ -159,5 +159,5 @@ export const BREADCRUMBS_ITEMS = [
 	{ text: 'Электроника', href: '#electronics' },
 	{ text: 'Телефоны', href: '#phones' },
 	{ text: 'Смартфоны', href: '#smartphones' },
-	{ text: 'Товар' },
+	{ text: 'Товар', _: { active: true } },
 ]

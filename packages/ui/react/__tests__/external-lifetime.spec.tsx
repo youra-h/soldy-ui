@@ -77,6 +77,7 @@ import {
 	createEngineRadioGroup,
 	createEngineSelect,
 	createEngineTable,
+	createEngineBreadcrumbs,
 	createEngineTabs,
 	createEngineTags,
 	createEngineToasts,
@@ -388,18 +389,40 @@ const COMPONENTS: Readonly<Record<string, Readonly<Record<string, TCase>>>> = {
 		},
 	},
 	Breadcrumbs: {
-		ctrl: overCtrl(
-			() =>
-				new TBreadcrumbs({
-					items: [
-						{ text: 'Home', href: '#home' },
-						{ text: 'Catalog', href: '#catalog' },
-						{ text: 'Page' },
-					],
-				}),
-			(ctrl) => <Breadcrumbs ctrl={ctrl} />,
-		),
+		'external owner and engine with data items': () => {
+			const ctrl = new TBreadcrumbs({ maxItems: 3 })
+			const engine = createEngineBreadcrumbs({
+				items: Array.from({ length: 7 }, (_, index) => ({
+					text: String(index),
+					href: '#' + index,
+					_: { active: index === 6 },
+				})),
+			})
+			return {
+				node: <Breadcrumbs ctrl={ctrl} engine={engine} />,
+				buses: [
+					ctrl.events,
+					...engineBuses(engine),
+					engine.extensions.breadcrumbs.menu.events,
+				],
+			}
+		},
+		'external engine with declarative items': () => {
+			const engine = createEngineBreadcrumbs()
+			return {
+				node: (
+					<Breadcrumbs engine={engine} maxItems={3}>
+						<Breadcrumbs.Item text="Home" href="#home" />
+						<Breadcrumbs.Item text="Catalog" href="#catalog" />
+						<Breadcrumbs.Item text="Section" href="#section" />
+						<Breadcrumbs.Item text="Page" active />
+					</Breadcrumbs>
+				),
+				buses: engineBuses(engine),
+			}
+		},
 	},
+
 	OverflowItem: {
 		ctrl: overCtrl(
 			() => new TMenuItem({ text: 'Hidden' }),

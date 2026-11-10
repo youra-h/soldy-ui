@@ -1,9 +1,7 @@
 <script lang="ts">
-import { Menu } from '../menu'
-import { Button } from '../button'
-import BreadcrumbsOverflowItem from './OverflowItem.vue'
+import { BreadcrumbsItem } from './item'
 import SetupBreadcrumbs from './setup.component'
-export default { ...SetupBreadcrumbs, components: { Menu, Button, BreadcrumbsOverflowItem } }
+export default { ...SetupBreadcrumbs, components: { BreadcrumbsItem } }
 </script>
 <template>
 	<component
@@ -15,91 +13,23 @@ export default { ...SetupBreadcrumbs, components: { Menu, Button, BreadcrumbsOve
 		v-bind="{ ...attrs, ...aria, ...dataset }"
 	>
 		<ol class="so-breadcrumbs__list">
-			<template v-for="(entry, position) in entries" :key="entry.index">
-				<li v-if="position === 1 && hiddenEntries.length" class="so-breadcrumbs__item">
-					<span class="so-breadcrumbs__separator" aria-hidden="true"></span>
-					<Menu
-						embedded="breadcrumbs.menu"
-						:ctrl="menu"
-						:size="size"
-						:variant="variant"
-						class="so-breadcrumbs__overflow"
-					>
-						<template #trigger="{ triggerAria, triggerDataset }">
-							<Button
-								embedded="breadcrumbs.trigger"
-								type="button"
-								class="so-breadcrumbs__trigger"
-								:size="size"
-								v-bind="{ ...triggerAria, ...triggerDataset, ...overflowAria }"
-								>…</Button
-							>
-						</template>
-						<BreadcrumbsOverflowItem
-							v-for="hidden in hiddenEntries"
-							:key="hidden.index"
-							:text="hidden.item.text"
-							:disabled="hidden.item.href === undefined"
-							v-bind="hidden.attrs"
-							:data-breadcrumb-index="hidden.index"
+			<slot>
+				<template v-for="item in shown" :key="item.uid">
+					<BreadcrumbsItem
+						v-if="!($slots.item || $slots['item-leading'] || $slots['item-trailing'])"
+						:ctrl="item"
+					/>
+					<BreadcrumbsItem v-else :ctrl="item">
+						<template #leading><slot name="item-leading" :item="item" /></template>
+						<template #default="{ text, active }"
+							><slot name="item" :item="item" :text="text" :active="active">{{
+								text
+							}}</slot></template
 						>
-							<template #leading
-								><slot
-									name="item-leading"
-									:item="hidden.item"
-									:index="hidden.index"
-									:current="hidden.current"
-							/></template>
-							<slot
-								name="item"
-								:item="hidden.item"
-								:index="hidden.index"
-								:current="hidden.current"
-								>{{ hidden.item.text }}</slot
-							>
-							<template #trailing
-								><slot
-									name="item-trailing"
-									:item="hidden.item"
-									:index="hidden.index"
-									:current="hidden.current"
-							/></template>
-						</BreadcrumbsOverflowItem>
-					</Menu>
-				</li>
-				<li class="so-breadcrumbs__item">
-					<span
-						v-if="position > 0"
-						class="so-breadcrumbs__separator"
-						aria-hidden="true"
-					></span>
-					<component
-						:is="entry.item.href === undefined ? 'span' : 'a'"
-						class="so-breadcrumbs__link"
-						v-bind="{ ...entry.attrs, ...entry.aria, ...entry.dataset }"
-					>
-						<slot
-							name="item-leading"
-							:item="entry.item"
-							:index="entry.index"
-							:current="entry.current"
-						/>
-						<slot
-							name="item"
-							:item="entry.item"
-							:index="entry.index"
-							:current="entry.current"
-							>{{ entry.item.text }}</slot
-						>
-						<slot
-							name="item-trailing"
-							:item="entry.item"
-							:index="entry.index"
-							:current="entry.current"
-						/>
-					</component>
-				</li>
-			</template>
+						<template #trailing><slot name="item-trailing" :item="item" /></template>
+					</BreadcrumbsItem>
+				</template>
+			</slot>
 		</ol>
 	</component>
 </template>

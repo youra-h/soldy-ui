@@ -1,2 +1,6 @@
+import { withParts } from '@soxa-ui/setup'
+import BreadcrumbsComponent from './Breadcrumbs.svelte'
+import { BreadcrumbsItem } from './item'
 export * from './base.component'
-export { default as Breadcrumbs } from './Breadcrumbs.svelte'
+export * from './item'
+export const Breadcrumbs = withParts(BreadcrumbsComponent, { Item: BreadcrumbsItem })

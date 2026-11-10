@@ -1,5 +1,8 @@
 @use '../button/mixins' as button;
 
+:where(.so-breadcrumbs__link) {
+	@include button.button-view('none');
+}
 .so-breadcrumbs__link {
 	@apply text-so-neutral-800;
 	text-decoration: none;
@@ -7,7 +10,6 @@
 }
 .so-breadcrumbs__link[href] {
 	@apply text-so-accent-800;
-	cursor: pointer;
 	&:hover {
 		text-decoration: underline;
 	}
@@ -15,8 +17,8 @@
 		@include button.button-focus-ring;
 	}
 }
-.so-breadcrumbs__link[data-current='true'] {
-	@apply text-so-neutral-900;
+.so-breadcrumbs-item[data-selected='true'] > .so-breadcrumbs__link {
+	@apply text-so-neutral-800;
 	font-weight: 500;
 }
 .so-breadcrumbs__separator {
@@ -29,7 +31,7 @@
 	.so-breadcrumbs__link[href] {
 		color: LinkText;
 	}
-	.so-breadcrumbs__link[data-current='true'] {
+	.so-breadcrumbs-item[data-selected='true'] > .so-breadcrumbs__link {
 		color: CanvasText;
 	}
 	.so-breadcrumbs__separator {

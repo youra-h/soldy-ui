@@ -195,8 +195,8 @@ export type { TToastRender } from './adapter/toasts'
 
 export type { LocaleProviderProps } from './adapter/locale'
 
-export { Breadcrumbs } from './components/breadcrumbs'
-export type { BreadcrumbsProps } from './components/breadcrumbs'
+export { Breadcrumbs, BreadcrumbsItem } from './components/breadcrumbs'
+export type { BreadcrumbsProps, BreadcrumbsItemProps } from './components/breadcrumbs'
 
 export { Badge } from './components/badge'
 export type { BadgeProps } from './components/badge/base.component'

@@ -1,3 +1,5 @@
+import { TBreadcrumbs, createEngineBreadcrumbs } from '@soxa-ui/core'
+import { Breadcrumbs } from '@soxa-ui/solid'
 /**
  * Монтирование над движком и владельцем снаружи ничего не оставляет на их шинах.
  *
@@ -460,6 +462,34 @@ describe('Menu над движком и владельцем снаружи', ()
 			expect(document.querySelector('.so-menu__panel')).toBeNull()
 		}
 
+		expect(live()).toEqual([])
+	})
+})
+
+describe('Breadcrumbs external engine lifetime', () => {
+	it('releases subscriptions after repeated mounts', () => {
+		const owner = new TBreadcrumbs()
+		const engine = createEngineBreadcrumbs({
+			owner,
+			items: [
+				{ text: 'Home', href: '#home' },
+				{ text: 'Page', _: { active: true } },
+			],
+		})
+		const live = watchBuses([
+			owner.events,
+			engine.events,
+			...Object.values(engine.extensions).flatMap((extension) =>
+				extension ? [extension.events] : [],
+			),
+			engine.extensions.breadcrumbs.menu.events,
+		])
+
+		for (let index = 0; index < 3; index++) {
+			const app = mount(() => <Breadcrumbs ctrl={owner} engine={engine} />)
+			expect(app.root().querySelectorAll('.so-breadcrumbs-item')).toHaveLength(2)
+			app.destroy()
+		}
 		expect(live()).toEqual([])
 	})
 })

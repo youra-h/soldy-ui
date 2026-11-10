@@ -4,6 +4,9 @@ import {
 	AccordionCollectionItemDescriptor,
 	AccordionItemDescriptor,
 	BreadcrumbsDescriptor,
+	BreadcrumbsCollectionDescriptor,
+	BreadcrumbsCollectionItemDescriptor,
+	BreadcrumbsItemDescriptor,
 	BadgeDescriptor,
 	ButtonDescriptor,
 	CalendarDescriptor,
@@ -112,6 +115,10 @@ export const COMPONENTS: readonly TComponentEntry[] = [
 		id: 'breadcrumbs',
 		label: 'Breadcrumbs',
 		descriptor: BreadcrumbsDescriptor,
+		collectionDescriptor: BreadcrumbsCollectionDescriptor,
+		parts: {
+			Item: () => [BreadcrumbsItemDescriptor(), BreadcrumbsCollectionItemDescriptor()],
+		},
 		group: 'collections',
 		span: 2,
 		description:

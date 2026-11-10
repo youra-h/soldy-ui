@@ -1,21 +1,21 @@
 import { afterEach, describe, it, expect } from 'vitest'
 import { userEvent, commands } from 'vitest/browser'
-import { defineComponent, h, nextTick, ref } from 'vue'
+import { defineComponent, h, nextTick, ref, shallowRef } from 'vue'
 import { Breadcrumbs, LocaleProvider } from '@soxa-ui/vue'
 import { enUS, ruRU } from '@soxa-ui/plugins'
 import type { BreadcrumbsDescriptor, DescriptorSlots } from '@soxa-ui/setup'
-import type { TBreadcrumbsItem } from '@soxa-ui/core'
+import type { IBreadcrumbsProps } from '@soxa-ui/core'
 import { render, cleanup } from './render'
 import { find } from './colors'
 import '@soxa-ui/theme-oren'
 
 const frame = () => new Promise<void>((resolve) => requestAnimationFrame(() => resolve()))
-const items: readonly TBreadcrumbsItem[] = [
+const items: NonNullable<IBreadcrumbsProps['items']> = [
 	{ text: 'Home', href: 'about:blank#home', target: '_blank', rel: 'noopener' },
 	{ text: 'Catalog', href: 'about:blank#catalog', target: '_blank', rel: 'noopener' },
 	{ text: 'Group' },
 	{ text: 'Phones', href: 'about:blank#phones', target: '_blank', rel: 'noopener' },
-	{ text: 'Current' },
+	{ text: 'Current', _: { active: true } },
 ]
 
 afterEach(() => {
@@ -49,8 +49,20 @@ describe('Breadcrumbs native navigation', () => {
 			document.documentElement.dataset.soTheme = scheme
 			await show()
 
-			expect(document.querySelectorAll('.so-breadcrumbs__list > li')).toHaveLength(3)
+			expect(document.querySelectorAll('.so-breadcrumbs__list > li')).toHaveLength(5)
+			expect(
+				[
+					...document.querySelectorAll('.so-breadcrumbs__link, .so-breadcrumbs__trigger'),
+				].filter((node) => node.getClientRects().length > 0),
+			).toHaveLength(3)
 			expect(document.querySelectorAll('[aria-current="page"]')).toHaveLength(1)
+			const nativeLink = find('.so-breadcrumbs__link[href]')
+			expect(getComputedStyle(nativeLink).backgroundColor).toBe('rgba(0, 0, 0, 0)')
+			expect(getComputedStyle(nativeLink).paddingInlineStart).toBe('0px')
+			const current = find('.so-breadcrumbs__link[aria-current="page"]')
+
+			expect(getComputedStyle(current).fontWeight).toBe('500')
+			expect(getComputedStyle(nativeLink).fontWeight).not.toBe('500')
 
 			for (const node of document.querySelectorAll('.so-breadcrumbs__separator')) {
 				expect(node.getAttribute('aria-hidden')).toBe('true')
@@ -62,6 +74,17 @@ describe('Breadcrumbs native navigation', () => {
 		},
 	)
 
+	it('keeps a disabled native crumb unavailable for navigation', async () => {
+		await show({
+			maxItems: 0,
+			items: [{ text: 'Disabled', href: 'about:blank#disabled', disabled: true }],
+		})
+		const link = find('.so-breadcrumbs__link')
+
+		expect(link.tagName).toBe('A')
+		expect(link.hasAttribute('href')).toBe(false)
+		expect(link.getAttribute('aria-disabled')).toBe('true')
+	})
 	it('opens with keyboard, typeaheads, moves Home/End and closes with Escape and Tab', async () => {
 		await show()
 		trigger().focus()
@@ -105,12 +128,11 @@ describe('Breadcrumbs native navigation', () => {
 						{
 							item: ({
 								item,
-								index,
 							}: DescriptorSlots<typeof BreadcrumbsDescriptor>['item']) =>
 								h(
 									'b',
 									{
-										class: 'cancel-' + index,
+										class: 'cancel-' + item.text,
 										onClick: (event: MouseEvent) => event.preventDefault(),
 									},
 									item.text,
@@ -121,26 +143,28 @@ describe('Breadcrumbs native navigation', () => {
 		)
 		await nextTick()
 		await frame()
-		await open()
 		const before = location.href
 		let canceled = false
-		const content = find('a[role="menuitem"] .cancel-1')
+		const content = find('.so-breadcrumbs__link .cancel-Home')
 
 		content.addEventListener('click', (event) => {
 			queueMicrotask(() => (canceled = event.defaultPrevented))
 		})
-		const opened = await commands.activateNativeLink('a[role="menuitem"] .cancel-1', 'cancel')
+		const opened = await commands.activateNativeLink(
+			'.so-breadcrumbs__link .cancel-Home',
+			'cancel',
+		)
 
 		expect(opened).toBe('no-page')
 		expect(canceled).toBe(true)
 		expect(location.href).toBe(before)
-		expect(find('a[role="menuitem"]').querySelector('a,button')).toBeNull()
+		expect(find('.so-breadcrumbs__link').querySelector('a,button')).toBeNull()
 	})
 
 	it('repairs dynamic focus and closes overflow while preserving locale and RTL updates', async () => {
-		const trail = ref(items),
+		const trail = shallowRef(items),
 			max = ref(3),
-			locale = ref(enUS)
+			locale = shallowRef(enUS)
 
 		render(
 			defineComponent({
@@ -153,6 +177,7 @@ describe('Breadcrumbs native navigation', () => {
 		await nextTick()
 		await frame()
 		await open()
+		await expect.poll(() => document.activeElement?.getAttribute('role')).toBe('menu')
 		find('a[role="menuitem"][href="about:blank#catalog"]').focus()
 		max.value = 0
 		await nextTick()

@@ -1092,6 +1092,7 @@ export class SkeletonPreview implements TFixture {
 			[size]="size()"
 			[variant]="variant()"
 			[items]="items()"
+			[engine]="engine()"
 			[maxItems]="maxItems()"
 		></nav
 	></ng-template>`,
@@ -1104,6 +1105,7 @@ export class BreadcrumbsPreview implements TFixture {
 	readonly size = input<TBreadcrumbsComponent['size']>()
 	readonly variant = input<TBreadcrumbsComponent['variant']>()
 	readonly items = input<TBreadcrumbsComponent['items']>(BREADCRUMBS_ITEMS)
+	readonly engine = input<TBreadcrumbsComponent['engine']>()
 	readonly maxItems = input<TBreadcrumbsComponent['maxItems']>()
 	readonly copy = viewChild.required(CopyDirective)
 	readonly subjects = viewChildren(TBreadcrumbsComponent)

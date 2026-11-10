@@ -1,21 +1,36 @@
-import { BreadcrumbsDescriptor, TBreadcrumbsExtension } from '@soxa-ui/setup'
-import type { IBreadcrumbs } from '@soxa-ui/core'
-import { createWebcAdapterContext, useAdapter, type TUpdateListener } from '../../adapter'
+import {
+	TCollectionExtension,
+	BreadcrumbsCollectionDescriptor,
+	BreadcrumbsDescriptor,
+} from '@soxa-ui/setup'
+import type { IBreadcrumbs, TBreadcrumbsCollectionFacade } from '@soxa-ui/core'
+import {
+	createWebcAdapterContext,
+	joinBindings,
+	useAdapter,
+	useCollectionAdapter,
+} from '../../adapter'
+import type { TBinding, TUpdateListener } from '../../adapter'
+import { createWebcElevator } from '../../adapter/elevator'
 
-const wiring = new WeakMap<HTMLElement, TBreadcrumbsExtension>()
-export function breadcrumbsMenuOf(host: HTMLElement) {
-	return wiring.get(host)?.menu
-}
 export function setupBreadcrumbs(
 	host: HTMLElement,
 	ctrl: IBreadcrumbs | undefined,
 	props: Record<string, unknown>,
 	onUpdate: TUpdateListener,
-) {
+): TBinding<IBreadcrumbs, TBreadcrumbsCollectionFacade> {
 	const adapter = createWebcAdapterContext(host, BreadcrumbsDescriptor(), { ctrl, props })
+	const elevator = createWebcElevator(host)
 
-	wiring.set(host, new TBreadcrumbsExtension(adapter))
-	adapter.events.on('destroy', () => wiring.delete(host))
+	const collectionAdapter = createWebcAdapterContext(
+		host,
+		BreadcrumbsCollectionDescriptor(),
+		{ props, options: { owner: adapter.instance, engine: props['engine'] } },
+		{ bundle: adapter.bundle },
+	).use(TCollectionExtension, { elevator })
 
-	return useAdapter(adapter, host, onUpdate)
+	const facade = useCollectionAdapter(collectionAdapter, host, onUpdate)
+	const owner = useAdapter(adapter, host, onUpdate)
+
+	return joinBindings(owner, facade)
 }

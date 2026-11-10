@@ -219,8 +219,15 @@ export type { TLocaleProviderProps } from './adapter/locale'
 
 export type { TRoleIcon } from './adapter/common'
 
-export { Breadcrumbs } from './components/breadcrumbs'
-export type { BreadcrumbsProps, BreadcrumbsEventProps } from './components/breadcrumbs'
+export { Breadcrumbs, BreadcrumbsItem } from './components/breadcrumbs'
+export type {
+	BreadcrumbsProps,
+	BreadcrumbsEventProps,
+	BreadcrumbsAttributes,
+	BreadcrumbsItemProps,
+	BreadcrumbsItemEventProps,
+	BreadcrumbsItemAttributes,
+} from './components/breadcrumbs'
 
 export { Badge } from './components/badge'
 export type { BadgeProps, BadgeEventProps } from './components/badge/base.component'

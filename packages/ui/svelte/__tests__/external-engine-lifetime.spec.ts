@@ -1,3 +1,5 @@
+import { TBreadcrumbs, createEngineBreadcrumbs } from '@soxa-ui/core'
+import { Breadcrumbs } from '@soxa-ui/svelte'
 /**
  * Список над движком снаружи без `ctrl`, перенесённый за одну перерисовку.
  *
@@ -237,6 +239,34 @@ describe('ListBox над движком снаружи без ctrl, перене
 		destroy()
 
 		expect(engine.options.get('owner')).toBeUndefined()
+		expect(live()).toEqual([])
+	})
+})
+
+describe('Breadcrumbs external engine lifetime', () => {
+	it('releases subscriptions after repeated mounts', () => {
+		const owner = new TBreadcrumbs()
+		const engine = createEngineBreadcrumbs({
+			owner,
+			items: [
+				{ text: 'Home', href: '#home' },
+				{ text: 'Page', _: { active: true } },
+			],
+		})
+		const live = watchBuses([
+			owner.events,
+			engine.events,
+			...Object.values(engine.extensions).flatMap((extension) =>
+				extension ? [extension.events] : [],
+			),
+			engine.extensions.breadcrumbs.menu.events,
+		])
+
+		for (let index = 0; index < 3; index++) {
+			const app = mount(Breadcrumbs, { ctrl: owner, engine })
+			expect(app.root().querySelectorAll('.so-breadcrumbs-item')).toHaveLength(2)
+			app.destroy()
+		}
 		expect(live()).toEqual([])
 	})
 })

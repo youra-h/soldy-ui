@@ -25,6 +25,9 @@ import {
 	TAccordion,
 	TAccordionCollectionFacade,
 	TAccordionItemCollectionFacade,
+	TBreadcrumbs,
+	TBreadcrumbsCollectionFacade,
+	TBreadcrumbsItemCollectionFacade,
 	TCalendar,
 	TCalendarCollectionFacade,
 	TCalendarItemCollectionFacade,
@@ -155,6 +158,16 @@ const COLLECTIONS: Readonly<Record<string, readonly [string | null, () => TMount
 	],
 	// Состав дней кладёт вид календаря сам, а выбор и фокус дню пишут
 	// расширения — у фасада дня входов нет
+	BreadcrumbsCollectionDescriptor: [
+		'BreadcrumbsCollectionItemDescriptor',
+		() => {
+			const facade = new TBreadcrumbsCollectionFacade({}, { owner: new TBreadcrumbs() })
+
+			facade.items = SOURCES
+
+			return withItem(facade, new TBreadcrumbsItemCollectionFacade())
+		},
+	],
 	CalendarCollectionDescriptor: [
 		null,
 		() => {

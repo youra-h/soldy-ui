@@ -1,1 +1,4 @@
-export { BreadcrumbsDescriptor as descriptor } from '@soxa-ui/setup'
+export {
+	BreadcrumbsDescriptor as descriptor,
+	BreadcrumbsCollectionDescriptor as facade,
+} from '@soxa-ui/setup'

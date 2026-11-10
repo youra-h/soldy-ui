@@ -1,48 +1,57 @@
 /**
- * Breadcrumbs descriptor: ordered locations, projected overflow window and content slots.
+ * Breadcrumbs navigation, content slots and shared collection DOM plugins.
  */
 
 import { defineComponent, defineDescriptor, defineType } from '../../../protected/define'
 import { TBreadcrumbs } from '@soxa-ui/core'
-import type { TBreadcrumbsItem } from '@soxa-ui/core'
+import type { IBreadcrumbsItem } from '@soxa-ui/core'
 import { StylableDescriptor } from './stylable.descriptor'
-import { BreadcrumbsNamesPluginDescriptor, BreadcrumbsFocusPluginDescriptor } from '../plugins'
-
-const scope = {
-	item: defineType<TBreadcrumbsItem>(Object),
-	index: defineType<number>(Number),
-	current: defineType<boolean>(Boolean),
-}
+import {
+	BreadcrumbsNamesPluginDescriptor,
+	BreadcrumbsFocusPluginDescriptor,
+	CollectionBundlesPluginDescriptor,
+	CollectionElementsPluginDescriptor,
+} from '../plugins'
 export const BreadcrumbsDescriptor = defineDescriptor(() =>
 	defineComponent({
 		ctor: TBreadcrumbs,
 		extends: StylableDescriptor(),
 		contribution: {
 			slots: {
+				default: { description: 'Declarative Breadcrumbs.Item children' },
 				item: {
-					scope,
-					description: 'Location content inside its native link or text wrapper',
+					scope: {
+						item: defineType<IBreadcrumbsItem>(Object),
+						text: defineType<string>(String),
+						active: defineType<boolean>(Boolean),
+					},
+					description: 'Location content',
 				},
-				'item-leading': { scope, description: 'Content before the location text' },
-				'item-trailing': { scope, description: 'Content after the location text' },
+				'item-leading': {
+					scope: { item: defineType<IBreadcrumbsItem>(Object) },
+					description: 'Before location text',
+				},
+				'item-trailing': {
+					scope: { item: defineType<IBreadcrumbsItem>(Object) },
+					description: 'After location text',
+				},
 			},
 			props: {
-				items: { type: Array, triggers: ['change:items'] },
 				maxItems: { type: Number, triggers: ['change:maxItems'] },
-				entries: {
-					type: Array,
-					protected: true,
-					triggers: ['change:items', 'change:maxItems'],
-				},
-				hiddenEntries: {
-					type: Array,
-					protected: true,
-					triggers: ['change:items', 'change:maxItems'],
-				},
 				overflowAria: { type: Object, protected: true, triggers: ['change:overflowAria'] },
 			},
-			events: ['change:items', 'change:maxItems'],
+			events: ['change:maxItems'],
 		},
-		plugins: [BreadcrumbsNamesPluginDescriptor, BreadcrumbsFocusPluginDescriptor],
+		plugins: [
+			CollectionBundlesPluginDescriptor,
+			CollectionElementsPluginDescriptor,
+			BreadcrumbsNamesPluginDescriptor,
+			BreadcrumbsFocusPluginDescriptor,
+		],
 	}),
 )
+export {
+	BreadcrumbsCollectionDescriptor,
+	BreadcrumbsCollectionItemDescriptor,
+} from './breadcrumbs/collection.descriptor'
+export { BreadcrumbsItemDescriptor } from './breadcrumbs/item.descriptor'

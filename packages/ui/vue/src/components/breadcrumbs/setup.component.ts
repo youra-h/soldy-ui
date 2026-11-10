@@ -1,13 +1,18 @@
-import { BreadcrumbsDescriptor, TBreadcrumbsExtension } from '@soxa-ui/setup'
+import {
+	BreadcrumbsDescriptor,
+	BreadcrumbsCollectionDescriptor,
+	TCollectionExtension,
+} from '@soxa-ui/setup'
 import {
 	useAdapter,
-	extendBinding,
+	joinBindings,
+	useCollectionAdapter,
 	useExpose,
 	createVueAdapterContext,
+	VueElevatorFactory,
 	type SetupContext,
 } from '../../adapter'
 import BaseBreadcrumbs, { type BreadcrumbsProps } from './base.component'
-
 export default {
 	name: '_Breadcrumbs',
 	extends: BaseBreadcrumbs,
@@ -17,8 +22,12 @@ export default {
 			ctrl: props.ctrl,
 			props,
 		})
-		const wiring = new TBreadcrumbsExtension(adapter)
-
-		return extendBinding(useAdapter(adapter, props, emit), { menu: wiring.menu })
+		const collectionAdapter = createVueAdapterContext(
+			BreadcrumbsCollectionDescriptor(),
+			{ props, options: { owner: adapter.instance, engine: props.engine } },
+			{ bundle: adapter.bundle },
+		).use(TCollectionExtension, { elevator: VueElevatorFactory })
+		const collectionBinding = useCollectionAdapter(collectionAdapter, props, emit)
+		return joinBindings(useAdapter(adapter, props, emit), collectionBinding)
 	},
 }

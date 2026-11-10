@@ -133,8 +133,11 @@ export { toastsOf } from './adapter/toasts'
 
 export type { TToastRender } from './adapter/toasts'
 
-export { TBreadcrumbsElement } from './components/breadcrumbs'
-export type { TBreadcrumbsElementProps } from './components/breadcrumbs'
+export { TBreadcrumbsElement, TBreadcrumbsItemElement } from './components/breadcrumbs'
+export type {
+	TBreadcrumbsElementProps,
+	TBreadcrumbsItemElementProps,
+} from './components/breadcrumbs'
 
 export { TBadgeElement } from './components/badge'
 export type { TBadgeElementProps } from './components/badge'

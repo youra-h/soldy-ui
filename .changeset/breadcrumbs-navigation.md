@@ -12,4 +12,4 @@
 '@soxa-ui/theme-oren': patch
 ---
 
-Add Breadcrumbs navigation with localized accessible names, theme separators, and a collapsible trail of native links.
+Add Breadcrumbs as a collection with external engines, composable Item parts and standard activation. Include localized accessible names, theme separators and native-link overflow menus that preserve breadcrumb membership.

@@ -32,6 +32,12 @@
       "scope": "so-breadcrumbs"
     },
     {
+      "name": "so-breadcrumbs-item",
+      "sources": ["packages/core/src/components/custom/breadcrumbs/item/item.class.ts"],
+      "description": "Mounted breadcrumb collection item, retaining its identity while collapsed.",
+      "scope": "so-breadcrumbs-item"
+    },
+    {
       "name": "so-button",
       "sources": ["packages/core/src/components/custom/button/button.class.ts"],
       "description": "Root of button. Inherited component classes use the concrete component's base name.",
@@ -406,29 +412,16 @@
       "scope": "Badge"
     },
     {
-      "name": "so-breadcrumbs__item",
-      "sources": [
-        "packages/ui/angular/src/components/breadcrumbs/breadcrumbs.component.html",
-        "packages/ui/react/src/components/breadcrumbs/Breadcrumbs.tsx",
-        "packages/ui/solid/src/components/breadcrumbs/Breadcrumbs.tsx",
-        "packages/ui/svelte/src/components/breadcrumbs/Breadcrumbs.svelte",
-        "packages/ui/vue/src/components/breadcrumbs/Breadcrumbs.vue",
-        "packages/ui/webc/src/components/breadcrumbs/breadcrumbs.template.ts"
-      ],
-      "description": "A visible ordered-list position, holding one location or the overflow menu.",
-      "scope": "so-breadcrumbs__item"
-    },
-    {
       "name": "so-breadcrumbs__link",
       "sources": [
-        "packages/ui/angular/src/components/breadcrumbs/breadcrumbs.component.html",
-        "packages/ui/react/src/components/breadcrumbs/Breadcrumbs.tsx",
-        "packages/ui/solid/src/components/breadcrumbs/Breadcrumbs.tsx",
-        "packages/ui/svelte/src/components/breadcrumbs/Breadcrumbs.svelte",
-        "packages/ui/vue/src/components/breadcrumbs/Breadcrumbs.vue",
-        "packages/ui/webc/src/components/breadcrumbs/breadcrumbs.template.ts"
+        "packages/ui/angular/src/components/breadcrumbs/item/breadcrumbs-item.component.html",
+        "packages/ui/react/src/components/breadcrumbs/item/Item.tsx",
+        "packages/ui/solid/src/components/breadcrumbs/item/Item.tsx",
+        "packages/ui/svelte/src/components/breadcrumbs/item/Item.svelte",
+        "packages/ui/vue/src/components/breadcrumbs/item/Item.vue",
+        "packages/ui/webc/src/components/breadcrumbs/item/breadcrumbs-item.template.ts"
       ],
-      "description": "Native anchor or text wrapper for one location; the final location is current.",
+      "description": "Native anchor for a breadcrumb; without href it presents text, and activation determines aria-current.",
       "scope": "so-breadcrumbs__link"
     },
     {
@@ -441,18 +434,18 @@
         "packages/ui/vue/src/components/breadcrumbs/Breadcrumbs.vue",
         "packages/ui/webc/src/components/breadcrumbs/breadcrumbs.template.ts"
       ],
-      "description": "Ordered list of visible locations and the optional overflow position.",
+      "description": "Ordered list of mounted breadcrumb items; collapsed ancestors remain in the collection.",
       "scope": "so-breadcrumbs__list"
     },
     {
       "name": "so-breadcrumbs__overflow",
       "sources": [
-        "packages/ui/angular/src/components/breadcrumbs/breadcrumbs.component.html",
-        "packages/ui/react/src/components/breadcrumbs/Breadcrumbs.tsx",
-        "packages/ui/solid/src/components/breadcrumbs/Breadcrumbs.tsx",
-        "packages/ui/svelte/src/components/breadcrumbs/Breadcrumbs.svelte",
-        "packages/ui/vue/src/components/breadcrumbs/Breadcrumbs.vue",
-        "packages/ui/webc/src/components/breadcrumbs/breadcrumbs.template.ts"
+        "packages/ui/angular/src/components/breadcrumbs/item/breadcrumbs-item.component.html",
+        "packages/ui/react/src/components/breadcrumbs/item/Item.tsx",
+        "packages/ui/solid/src/components/breadcrumbs/item/Item.tsx",
+        "packages/ui/svelte/src/components/breadcrumbs/item/Item.svelte",
+        "packages/ui/vue/src/components/breadcrumbs/item/Item.vue",
+        "packages/ui/webc/src/components/breadcrumbs/item/breadcrumbs-item.template.ts"
       ],
       "description": "Internal Menu wrapper anchoring the hidden-location panel.",
       "scope": "so-breadcrumbs__overflow"
@@ -460,12 +453,12 @@
     {
       "name": "so-breadcrumbs__separator",
       "sources": [
-        "packages/ui/angular/src/components/breadcrumbs/breadcrumbs.component.html",
-        "packages/ui/react/src/components/breadcrumbs/Breadcrumbs.tsx",
-        "packages/ui/solid/src/components/breadcrumbs/Breadcrumbs.tsx",
-        "packages/ui/svelte/src/components/breadcrumbs/Breadcrumbs.svelte",
-        "packages/ui/vue/src/components/breadcrumbs/Breadcrumbs.vue",
-        "packages/ui/webc/src/components/breadcrumbs/breadcrumbs.template.ts"
+        "packages/ui/angular/src/components/breadcrumbs/item/breadcrumbs-item.component.html",
+        "packages/ui/react/src/components/breadcrumbs/item/Item.tsx",
+        "packages/ui/solid/src/components/breadcrumbs/item/Item.tsx",
+        "packages/ui/svelte/src/components/breadcrumbs/item/Item.svelte",
+        "packages/ui/vue/src/components/breadcrumbs/item/Item.vue",
+        "packages/ui/webc/src/components/breadcrumbs/item/breadcrumbs-item.template.ts"
       ],
       "description": "Decorative separator before a location; hidden from the accessibility tree.",
       "scope": "so-breadcrumbs__separator"
@@ -473,12 +466,12 @@
     {
       "name": "so-breadcrumbs__trigger",
       "sources": [
-        "packages/ui/angular/src/components/breadcrumbs/breadcrumbs.component.html",
-        "packages/ui/react/src/components/breadcrumbs/Breadcrumbs.tsx",
-        "packages/ui/solid/src/components/breadcrumbs/Breadcrumbs.tsx",
-        "packages/ui/svelte/src/components/breadcrumbs/Breadcrumbs.svelte",
-        "packages/ui/vue/src/components/breadcrumbs/Breadcrumbs.vue",
-        "packages/ui/webc/src/components/breadcrumbs/breadcrumbs.template.ts"
+        "packages/ui/angular/src/components/breadcrumbs/item/breadcrumbs-item.component.html",
+        "packages/ui/react/src/components/breadcrumbs/item/Item.tsx",
+        "packages/ui/solid/src/components/breadcrumbs/item/Item.tsx",
+        "packages/ui/svelte/src/components/breadcrumbs/item/Item.svelte",
+        "packages/ui/vue/src/components/breadcrumbs/item/Item.vue",
+        "packages/ui/webc/src/components/breadcrumbs/item/breadcrumbs-item.template.ts"
       ],
       "description": "Localized overflow Button opening the hidden-location Menu.",
       "scope": "so-breadcrumbs__trigger"
@@ -2859,24 +2852,6 @@
       "presence": "TDataset serializes false as \"false\"; null/undefined removes the attribute. See scope for the bound DOM node."
     },
     {
-      "name": "data-breadcrumb-index",
-      "sources": [
-        "packages/core/src/components/custom/breadcrumbs/types.ts",
-        "packages/core/src/components/custom/breadcrumbs/window.ts",
-        "packages/plugins/src/custom/breadcrumbs/focus.plugin.ts",
-        "packages/ui/angular/src/components/breadcrumbs/breadcrumbs.component.html",
-        "packages/ui/react/src/components/breadcrumbs/Breadcrumbs.tsx",
-        "packages/ui/solid/src/components/breadcrumbs/Breadcrumbs.tsx",
-        "packages/ui/svelte/src/components/breadcrumbs/Breadcrumbs.svelte",
-        "packages/ui/vue/src/components/breadcrumbs/Breadcrumbs.vue",
-        "packages/ui/webc/src/components/breadcrumbs/breadcrumbs.template.ts"
-      ],
-      "description": "Original zero-based position of a location in the complete input trail.",
-      "scope": "Breadcrumbs location wrapper and hidden menu row",
-      "values": "A nonnegative integer index as a decimal string",
-      "presence": "Always present on a visible location and its hidden menu row; removed with that location."
-    },
-    {
       "name": "data-can-next",
       "sources": ["packages/core/src/components/custom/scroller/scroller.class.ts"],
       "description": "More content can be scrolled forward.",
@@ -2937,14 +2912,9 @@
     },
     {
       "name": "data-current",
-      "sources": [
-        "packages/core/src/components/custom/breadcrumbs/types.ts",
-        "packages/core/src/components/custom/breadcrumbs/window.ts",
-        "packages/core/src/components/custom/slider/slider.class.ts",
-        "packages/ui/angular/src/components/breadcrumbs/breadcrumbs.component.html"
-      ],
-      "description": "Current slider mark, or the final location in a Breadcrumbs navigation trail.",
-      "scope": "Slider mark and Breadcrumbs location wrapper",
+      "sources": ["packages/core/src/components/custom/slider/slider.class.ts"],
+      "description": "Whether a Slider mark represents the current value.",
+      "scope": "Slider mark",
       "values": "true | false",
       "presence": "TDataset serializes false as \"false\"; null/undefined removes the attribute. See scope for the bound DOM node."
     },
@@ -3273,8 +3243,7 @@
         "packages/core/src/components/custom/calendar/collection/extensions/selection/selection.extension.ts",
         "packages/core/src/components/custom/date-picker/date-picker.class.ts",
         "packages/core/src/components/custom/menu/menu.class.ts",
-        "packages/core/src/components/custom/popover/popover.class.ts",
-        "packages/ui/angular/src/components/breadcrumbs/breadcrumbs.component.html"
+        "packages/core/src/components/custom/popover/popover.class.ts"
       ],
       "description": "Selected/active state; for popup triggers indicates the open popup.",
       "scope": "Selectable/activatable collection item; ListBox/Select inner row; popup triggerDataset (consumer trigger, Select arrow, DatePicker button)",

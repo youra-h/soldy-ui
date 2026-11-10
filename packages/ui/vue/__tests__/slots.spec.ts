@@ -24,6 +24,7 @@ import { parse, type SFCDescriptor } from 'vue/compiler-sfc'
 import { mount } from '@vue/test-utils'
 import {
 	BreadcrumbsDescriptor,
+	BreadcrumbsItemDescriptor,
 	AccordionDescriptor,
 	AccordionItemDescriptor,
 	ButtonDescriptor,
@@ -100,6 +101,7 @@ const DESCRIPTORS: Readonly<Record<string, () => IComponentDescriptor>> = {
 	'accordion/Accordion.vue': AccordionDescriptor,
 	'accordion/item/Item.vue': AccordionItemDescriptor,
 	'breadcrumbs/Breadcrumbs.vue': BreadcrumbsDescriptor,
+	'breadcrumbs/item/Item.vue': BreadcrumbsItemDescriptor,
 	'breadcrumbs/OverflowItem.vue': MenuItemDescriptor,
 	'button/Button.vue': ButtonDescriptor,
 	'item-row/ItemRow.vue': ItemRowDescriptor,

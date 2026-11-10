@@ -8,19 +8,20 @@ export const BREADCRUMBS_SCENARIOS: readonly TScenario[] = [
 		kind: 'auto',
 		title: 'Предел цепочки',
 		description:
-			'Предел включает многоточие; 0 показывает все звенья, текущим остаётся последнее',
+			'Предел включает многоточие; 0 показывает все звенья, текущим остаётся активный элемент',
 		props: { maxItems: 3 },
 		run: async (ctx) => {
-			ctx.check(
-				ctx.scene.querySelectorAll('ol > li').length === 3,
-				'Три видимые позиции вместе с многоточием',
-			)
+			const visiblePositions = () =>
+				[
+					...ctx.scene.querySelectorAll(
+						'.so-breadcrumbs__link, .so-breadcrumbs__trigger',
+					),
+				].filter((node) => node.getClientRects().length > 0)
+
+			ctx.check(visiblePositions().length === 3, 'Три видимые позиции вместе с многоточием')
 			ctx.instance.maxItems = 0
 			await ctx.frame()
-			ctx.check(
-				ctx.scene.querySelectorAll('ol > li').length === 6,
-				'Без предела видны все шесть звеньев',
-			)
+			ctx.check(visiblePositions().length === 6, 'Без предела видны все шесть звеньев')
 			ctx.check(
 				ctx.scene.querySelectorAll('[aria-current="page"]').length === 1,
 				'Текущая страница ровно одна',
