@@ -10,6 +10,7 @@ import type { TInstanceContext } from '../../../protected/adapter/context'
 /** Own the internal menu and close stale content before the adapters redraw it. */
 export class TBreadcrumbsExtension {
 	readonly menu = new TMenu()
+
 	constructor(context: TInstanceContext<IBreadcrumbs>) {
 		const close = (): void => {
 			this.menu.open = false

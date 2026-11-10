@@ -6,9 +6,12 @@ import { Button } from '../button'
 import { BreadcrumbsOverflowItem } from './OverflowItem'
 import { useSetupBreadcrumbs } from './setup.component'
 import type { BreadcrumbsProps } from './base.component'
+
 export function Breadcrumbs(props: BreadcrumbsProps): ReactElement | null {
 	const { ref, forwardProps, state, menu } = useSetupBreadcrumbs(props)
+
 	if (!state.rendered) return null
+
 	const Tag = state.tag as ElementType
 	const entries = state.entries ?? [],
 		hiddenEntries = state.hiddenEntries ?? []
@@ -19,6 +22,7 @@ export function Breadcrumbs(props: BreadcrumbsProps): ReactElement | null {
 			{renderSlot(props['item-trailing'], entry)}
 		</>
 	)
+
 	return (
 		<Tag {...toRootProps(ref, state, [state.attrs, state.aria, state.dataset], forwardProps)}>
 			<ol className="so-breadcrumbs__list">

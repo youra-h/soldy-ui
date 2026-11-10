@@ -8,6 +8,7 @@ import '@soxa-ui/theme-oren'
 
 /** Explicit audit inventory: registry additions must receive a mobile scenario. */
 export const MOBILE_COMPONENTS = [
+	'badge',
 	'button',
 	'input',
 	'number-input',

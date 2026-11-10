@@ -221,3 +221,6 @@ export type { TRoleIcon } from './adapter/common'
 
 export { Breadcrumbs } from './components/breadcrumbs'
 export type { BreadcrumbsProps, BreadcrumbsEventProps } from './components/breadcrumbs'
+
+export { Badge } from './components/badge'
+export type { BadgeProps, BadgeEventProps } from './components/badge/base.component'

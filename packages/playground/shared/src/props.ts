@@ -3,6 +3,7 @@ import { underscorePropNaming } from '@soxa-ui/setup'
 import {
 	COMPONENT_SIZES,
 	BUTTON_VIEWS,
+	BADGE_VIEWS,
 	CALENDAR_MODES,
 	CHECK_BOX_VIEWS,
 	COMPONENT_VARIANTS,
@@ -141,6 +142,12 @@ const PLUGIN: Record<string, string> = {
 
 /** Собственные пропы компонента — то, ради чего он и заведён. */
 const OWN: Record<string, Record<string, string>> = {
+	badge: {
+		value: 'Текст метки или числовой счётчик. Числовые строки не ограничиваются',
+		max: 'Предел числа: выше него выводится max+, исходное значение сохраняется',
+		dot: 'Точка вместо текста или числа',
+		view: 'Заливка или контур',
+	},
 	button: {
 		view: 'Оформление: заливка, только текст, контур или ничего',
 	},
@@ -443,6 +450,7 @@ const OPTIONS: Record<string, Record<string, readonly string[]>> = {
 	},
 	button: { view: BUTTON_VIEWS },
 	'check-box': { view: CHECK_BOX_VIEWS },
+	badge: { view: BADGE_VIEWS },
 	label: { position: LABEL_POSITIONS },
 	field: { position: FIELD_POSITIONS },
 	accordion: { view: BUTTON_VIEWS },

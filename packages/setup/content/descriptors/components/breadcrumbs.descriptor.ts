@@ -7,6 +7,7 @@ import { TBreadcrumbs } from '@soxa-ui/core'
 import type { TBreadcrumbsItem } from '@soxa-ui/core'
 import { StylableDescriptor } from './stylable.descriptor'
 import { BreadcrumbsNamesPluginDescriptor, BreadcrumbsFocusPluginDescriptor } from '../plugins'
+
 const scope = {
 	item: defineType<TBreadcrumbsItem>(Object),
 	index: defineType<number>(Number),

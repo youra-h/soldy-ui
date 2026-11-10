@@ -26,6 +26,7 @@
 import '../setup'
 import { install } from '@sinonjs/fake-timers'
 import { render } from 'svelte/server'
+import BadgePage from './BadgePage.test.svelte'
 import ButtonStyle from './ButtonStyle.test.svelte'
 import CalendarValue from './CalendarValue.test.svelte'
 import DateInputValue from './DateInputValue.test.svelte'
@@ -56,6 +57,7 @@ function onToday(draw: () => string): string {
  */
 export function renderServerMarkup() {
 	return {
+		badge: render(BadgePage).body,
 		'date-input-value': onToday(() => render(DateInputValue).body),
 		'date-picker-value': onToday(() => render(DatePickerValue).body),
 		'calendar-value': onToday(() => render(CalendarValue).body),

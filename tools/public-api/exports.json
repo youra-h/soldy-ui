@@ -3,6 +3,7 @@
     "values": [
       "Accordion",
       "AccordionItem",
+      "Badge",
       "Breadcrumbs",
       "Button",
       "Calendar",
@@ -65,6 +66,7 @@
     "types": [
       "AccordionItemProps",
       "AccordionProps",
+      "BadgeProps",
       "BreadcrumbsProps",
       "ButtonProps",
       "CalendarItemProps",
@@ -135,6 +137,7 @@
     "values": [
       "Accordion",
       "AccordionItem",
+      "Badge",
       "Breadcrumbs",
       "Button",
       "Calendar",
@@ -200,6 +203,8 @@
       "AccordionItemEventProps",
       "AccordionItemProps",
       "AccordionProps",
+      "BadgeEventProps",
+      "BadgeProps",
       "BreadcrumbsEventProps",
       "BreadcrumbsProps",
       "ButtonEventProps",
@@ -352,6 +357,7 @@
     "values": [
       "Accordion",
       "AccordionItem",
+      "Badge",
       "Breadcrumbs",
       "Button",
       "Calendar",
@@ -417,6 +423,8 @@
       "AccordionItemEventProps",
       "AccordionItemProps",
       "AccordionProps",
+      "BadgeEventProps",
+      "BadgeProps",
       "BreadcrumbsEventProps",
       "BreadcrumbsProps",
       "ButtonEventProps",
@@ -569,6 +577,7 @@
     "values": [
       "Accordion",
       "AccordionItem",
+      "Badge",
       "Breadcrumbs",
       "Button",
       "Calendar",
@@ -634,6 +643,8 @@
       "AccordionItemEventProps",
       "AccordionItemProps",
       "AccordionProps",
+      "BadgeEventProps",
+      "BadgeProps",
       "BreadcrumbsEventProps",
       "BreadcrumbsProps",
       "ButtonEventProps",
@@ -785,6 +796,7 @@
     "values": [
       "TAccordionElement",
       "TAccordionItemElement",
+      "TBadgeElement",
       "TBreadcrumbsElement",
       "TButtonElement",
       "TCalendarElement",
@@ -849,6 +861,7 @@
     "types": [
       "TAccordionElementProps",
       "TAccordionItemElementProps",
+      "TBadgeElementProps",
       "TBreadcrumbsElementProps",
       "TButtonElementProps",
       "TCalendarElementProps",
@@ -1080,6 +1093,10 @@
         "values": ["TVirtualElement"],
         "types": ["TVirtualElementProps"]
       },
+      "./badge": {
+        "values": ["TBadgeElement"],
+        "types": ["TBadgeElementProps"]
+      },
       "./breadcrumbs": {
         "values": ["TBreadcrumbsElement"],
         "types": ["TBreadcrumbsElementProps"]
@@ -1094,6 +1111,7 @@
       "SlotDirective",
       "TAccordionComponent",
       "TAccordionItemComponent",
+      "TBadgeComponent",
       "TBreadcrumbsComponent",
       "TButtonComponent",
       "TCalendarComponent",

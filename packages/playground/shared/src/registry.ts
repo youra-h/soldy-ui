@@ -4,6 +4,7 @@ import {
 	AccordionCollectionItemDescriptor,
 	AccordionItemDescriptor,
 	BreadcrumbsDescriptor,
+	BadgeDescriptor,
 	ButtonDescriptor,
 	CalendarDescriptor,
 	CalendarCollectionDescriptor,
@@ -115,6 +116,14 @@ export const COMPONENTS: readonly TComponentEntry[] = [
 		span: 2,
 		description:
 			'Навигационный путь: ссылки на предков, текущая страница и меню скрытых звеньев',
+	},
+	{
+		id: 'badge',
+		label: 'Badge',
+		descriptor: BadgeDescriptor,
+		group: 'display',
+		span: 1,
+		description: 'Метка, числовой счётчик с пределом или точка поверх элемента',
 	},
 	{
 		id: 'button',

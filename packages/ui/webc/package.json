@@ -181,6 +181,10 @@
       "types": "./dist/components/virtual/index.d.ts",
       "default": "./dist/components/virtual/index.js"
     },
+    "./badge": {
+      "types": "./dist/components/badge/index.d.ts",
+      "default": "./dist/components/badge/index.js"
+    },
     "./breadcrumbs": {
       "types": "./dist/components/breadcrumbs/index.d.ts",
       "default": "./dist/components/breadcrumbs/index.js"

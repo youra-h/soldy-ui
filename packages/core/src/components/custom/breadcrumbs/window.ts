@@ -3,6 +3,7 @@ import type { TBreadcrumbsEntry, TBreadcrumbsItem } from './types'
 /** Invalid limits use the default; finite positive values are integral and at least three. */
 export function breadcrumbsLimit(value: number): number {
 	if (value === 0) return 0
+
 	return Number.isFinite(value) && value > 0 ? Math.max(3, Math.floor(value)) : 5
 }
 
@@ -27,8 +28,11 @@ export function breadcrumbsWindow(
 			item.href === undefined ? {} : { href: item.href, target: item.target, rel: item.rel },
 	}))
 	const max = breadcrumbsLimit(limit)
+
 	if (max === 0 || all.length <= max) return { entries: all, hiddenEntries: [] }
+
 	const tail = all.length - max + 2
+
 	return { entries: [...all.slice(0, 1), ...all.slice(tail)], hiddenEntries: all.slice(1, tail) }
 }
 
@@ -41,6 +45,7 @@ export function sameBreadcrumbs(
 		(a.length === b.length &&
 			a.every((item, index) => {
 				const other = b[index]
+
 				return (
 					item.text === other?.text &&
 					item.href === other.href &&

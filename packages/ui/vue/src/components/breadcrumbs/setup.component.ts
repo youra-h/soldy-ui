@@ -7,6 +7,7 @@ import {
 	type SetupContext,
 } from '../../adapter'
 import BaseBreadcrumbs, { type BreadcrumbsProps } from './base.component'
+
 export default {
 	name: '_Breadcrumbs',
 	extends: BaseBreadcrumbs,
@@ -17,6 +18,7 @@ export default {
 			props,
 		})
 		const wiring = new TBreadcrumbsExtension(adapter)
+
 		return extendBinding(useAdapter(adapter, props, emit), { menu: wiring.menu })
 	},
 }

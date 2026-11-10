@@ -31,6 +31,7 @@ const INDEX_DTS = fileURLToPath(new URL('../index.d.ts', import.meta.url))
  */
 const REGISTRIES: Record<string, { modifier: string; blocks: readonly string[] | null }> = {
 	IComponentVariants: { modifier: 'variant', blocks: null },
+	IBadgeViews: { modifier: 'view', blocks: ['so-badge'] },
 	IButtonViews: {
 		modifier: 'view',
 		blocks: ['so-button', 'so-list-box', 'so-accordion', 'so-tags'],

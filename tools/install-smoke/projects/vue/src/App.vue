@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Button, DatePicker, Dialog, Input, Select, Table } from '@soxa-ui/vue'
+import { Badge, Button, DatePicker, Dialog, Input, Select, Table } from '@soxa-ui/vue'
 
 const open = ref(false)
 
@@ -20,6 +20,9 @@ const rows = [{ data: { name: 'Anna', age: 30 } }, { data: { name: 'Boris', age:
 
 <template>
 	<main>
+		<Badge :value="120" aria_label="120 unread"
+			><template #anchor><Button>Inbox</Button></template></Badge
+		>
 		<Button text="Open dialog" variant="accent" @click="open = true" />
 		<Dialog v-model:visible="open">
 			<template #title>Settings</template>

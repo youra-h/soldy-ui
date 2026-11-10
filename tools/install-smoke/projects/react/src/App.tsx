@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Button, DatePicker, Dialog, Input, Select, Table } from '@soxa-ui/react'
+import { Badge, Button, DatePicker, Dialog, Input, Select, Table } from '@soxa-ui/react'
 
 const cities = [
 	{ value: 'kzn', text: 'Kazan' },
@@ -19,6 +19,7 @@ export function App() {
 
 	return (
 		<main>
+			<Badge value={120} aria_label="120 unread" anchor={<Button>Inbox</Button>} />
 			<Button text="Open dialog" variant="accent" onClick={() => setOpen(true)} />
 			<Dialog
 				visible={open}

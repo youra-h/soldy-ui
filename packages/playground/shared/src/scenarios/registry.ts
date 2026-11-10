@@ -1,4 +1,6 @@
 import { BREADCRUMBS_SCENARIOS } from './breadcrumbs/window'
+
+import { BADGE_SLOTS } from './badge/slots'
 import { findComponent } from '../registry'
 import { BUTTON_EVENTS } from './button/events'
 import { BUTTON_SLOTS } from './button/slots'
@@ -38,6 +40,7 @@ export const SCENARIOS: readonly TScenario[] = [
 	...POLLED.flatMap((id) => eventsPoll(polled(id))),
 	...BUTTON_SLOTS,
 	...LABEL_SLOTS,
+	...BADGE_SLOTS,
 	...PROGRESS_LINEAR_MOTION,
 	...PROGRESS_SPINNER_MOTION,
 	...TOASTS_MOTION,

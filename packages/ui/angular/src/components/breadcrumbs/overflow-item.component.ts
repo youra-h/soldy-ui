@@ -6,6 +6,7 @@ import { TItemRowComponent } from '../item-row'
 import { TMenuItemSurface } from '../../generated/menu-item.metadata'
 import { setupMenuItem } from '../menu/item/setup.component'
 /** Internal Menu.Item assembly with a native anchor as its row. */
+
 @Component({
 	selector: 'div[so-breadcrumbs-overflow-item]',
 	imports: [NgTemplateOutlet, AttributesDirective, TItemRowComponent],

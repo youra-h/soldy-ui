@@ -8,6 +8,7 @@ import { Button } from '../button'
 import { BreadcrumbsOverflowItem } from './OverflowItem'
 import { setupBreadcrumbs } from './setup.component'
 import type { BreadcrumbsProps } from './base.component'
+
 function Location(props: { entry: TBreadcrumbsEntry; slots: BreadcrumbsProps }): JSX.Element {
 	const attributes = createPartProps(() => ({
 		...props.entry.attrs,
@@ -15,6 +16,7 @@ function Location(props: { entry: TBreadcrumbsEntry; slots: BreadcrumbsProps }):
 		...props.entry.dataset,
 	}))
 	const scope = liveScope(() => props.entry)
+
 	return (
 		<Dynamic
 			component={props.entry.item.href === undefined ? 'span' : 'a'}
@@ -35,6 +37,7 @@ export function Breadcrumbs(props: BreadcrumbsProps): JSX.Element {
 		sets: [state.attrs, state.aria, state.dataset],
 		forward: binding.forwardProps(),
 	}))
+
 	return (
 		<Show when={state.rendered}>
 			<Root tag={state.tag} attributes={root} ref={binding.ref}>

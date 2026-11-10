@@ -617,3 +617,27 @@ A non-nullable FormControl resets to its own initial value. Use one form binding
 
 Breadcrumbs provides an ordered navigation trail with native links, localized accessible names
 and an overflow menu. See the [API and examples](../../../docs/api/breadcrumbs.md).
+
+## Badge
+
+Badge is a noninteractive inline label, capped numeric counter or dot. Set its text with
+`value`; its only slot is `anchor`. There is no default/content slot. A numeric value above
+`max` (99 by default) displays `max+` without changing the stored value. Zero is visible,
+strings are unchanged and nonfinite numbers are empty. A negative or nonfinite limit uses 99.
+`dot` hides only the displayed value. Size, variant and view come from the theme; oren supports
+`filled` (the default) and `outlined`.
+
+```html
+<span so-badge value="New"></span>
+<span so-badge [value]="120" aria_label="120 unread"></span>
+<span so-badge [dot]="true" aria_label="Online"></span>
+<span so-badge [value]="3" aria_label="3 unread">
+  <button so-button slot="anchor">Inbox</button>
+</span>
+```
+
+The wrapper stays neutral. An indicator with `aria_label` or `aria_labelledBy` is an image
+with that accessible name; an unnamed label is ordinary text, and an unnamed dot is decorative.
+The anchor keeps its own accessible name, clicks and focus. Badge adds no live region.
+The application translates the accessible name. Placement above the anchor's logical end is CSS
+and follows RTL. Import `@soxa-ui/theme-oren/badge.css` for the standalone stylesheet.

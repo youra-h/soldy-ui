@@ -42,3 +42,5 @@ export * from './dialog'
 export * from './drawer'
 export * from './toasts'
 export * from './breadcrumbs'
+
+export * from './badge'

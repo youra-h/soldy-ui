@@ -8,6 +8,7 @@ import type { TBreadcrumbsItem } from '@soxa-ui/core'
 import { render, cleanup } from './render'
 import { find } from './colors'
 import '@soxa-ui/theme-oren'
+
 const frame = () => new Promise<void>((resolve) => requestAnimationFrame(() => resolve()))
 const items: readonly TBreadcrumbsItem[] = [
 	{ text: 'Home', href: 'about:blank#home', target: '_blank', rel: 'noopener' },
@@ -16,6 +17,7 @@ const items: readonly TBreadcrumbsItem[] = [
 	{ text: 'Phones', href: 'about:blank#phones', target: '_blank', rel: 'noopener' },
 	{ text: 'Current' },
 ]
+
 afterEach(() => {
 	cleanup()
 	document.documentElement.removeAttribute('dir')
@@ -46,16 +48,20 @@ describe('Breadcrumbs native navigation', () => {
 		async (scheme) => {
 			document.documentElement.dataset.soTheme = scheme
 			await show()
+
 			expect(document.querySelectorAll('.so-breadcrumbs__list > li')).toHaveLength(3)
 			expect(document.querySelectorAll('[aria-current="page"]')).toHaveLength(1)
+
 			for (const node of document.querySelectorAll('.so-breadcrumbs__separator')) {
 				expect(node.getAttribute('aria-hidden')).toBe('true')
 				expect(getComputedStyle(node, '::before').content).toBe('"/"')
 			}
 			const root = find('.so-breadcrumbs').getBoundingClientRect()
+
 			expect(root.width).toBeLessThanOrEqual(380)
 		},
 	)
+
 	it('opens with keyboard, typeaheads, moves Home/End and closes with Escape and Tab', async () => {
 		await show()
 		trigger().focus()
@@ -77,12 +83,15 @@ describe('Breadcrumbs native navigation', () => {
 		it('keeps native ' + action + ' activation on visible and hidden links', async () => {
 			await show()
 			const visible = await commands.activateNativeLink('.so-breadcrumbs__link[href]', action)
+
 			expect(visible).toContain('#home')
+
 			await open()
 			const hidden = await commands.activateNativeLink(
 				'a[role="menuitem"][href="about:blank#catalog"]',
 				action,
 			)
+
 			expect(hidden).toContain('#catalog')
 		})
 	}
@@ -116,19 +125,23 @@ describe('Breadcrumbs native navigation', () => {
 		const before = location.href
 		let canceled = false
 		const content = find('a[role="menuitem"] .cancel-1')
+
 		content.addEventListener('click', (event) => {
 			queueMicrotask(() => (canceled = event.defaultPrevented))
 		})
 		const opened = await commands.activateNativeLink('a[role="menuitem"] .cancel-1', 'cancel')
+
 		expect(opened).toBe('no-page')
 		expect(canceled).toBe(true)
 		expect(location.href).toBe(before)
 		expect(find('a[role="menuitem"]').querySelector('a,button')).toBeNull()
 	})
+
 	it('repairs dynamic focus and closes overflow while preserving locale and RTL updates', async () => {
 		const trail = ref(items),
 			max = ref(3),
 			locale = ref(enUS)
+
 		render(
 			defineComponent({
 				render: () =>
@@ -150,11 +163,14 @@ describe('Breadcrumbs native navigation', () => {
 		locale.value = ruRU
 		document.documentElement.dir = 'rtl'
 		await nextTick()
+
 		expect(find('.so-breadcrumbs').getAttribute('aria-label')).toBe('Навигационная цепочка')
 		expect(getComputedStyle(find('.so-breadcrumbs')).direction).toBe('rtl')
+
 		trail.value = [{ text: 'No links' }]
 		await nextTick()
 		await frame()
+
 		expect(document.activeElement).toBe(find('.so-breadcrumbs'))
 	})
 })

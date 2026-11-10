@@ -10,10 +10,13 @@ export class TBreadcrumbsFocusPlugin extends TBasePlugin<IBreadcrumbs> {
 	private _owner: IBreadcrumbs | null = null
 	private _frame: number | null = null
 	private _view: Window | null = null
+
 	override install(ctx: IPluginContext): void {
 		super.install(ctx)
+
 		this._element = ctx.get(TElementPlugin) ?? null
 		this._owner = ctx.getInstance<IBreadcrumbs>() ?? null
+
 		this._element?.events.on('removed', () => this._cancel())
 		this._listenTo(this._owner?.events, 'change:items', ({ oldValue }) =>
 			this._repair(oldValue),
@@ -22,19 +25,24 @@ export class TBreadcrumbsFocusPlugin extends TBasePlugin<IBreadcrumbs> {
 			this._repair(this._owner?.items ?? []),
 		)
 	}
+
 	override destroy(): void {
 		this._cancel()
+
 		this._frame = null
 		this._element = null
 		this._owner = null
 		this.menu = null
+
 		super.destroy()
 	}
+
 	private _cancel(): void {
 		if (this._frame !== null) this._view?.cancelAnimationFrame(this._frame)
 		this._frame = null
 		this._view = null
 	}
+
 	private _repair(previous: readonly TBreadcrumbsItem[]): void {
 		const root = this._element?.element
 		const owner = this._owner
@@ -42,6 +50,7 @@ export class TBreadcrumbsFocusPlugin extends TBasePlugin<IBreadcrumbs> {
 		const active = doc?.activeElement
 		const panelId = this.menu?.aria.get('id')
 		const panel = typeof panelId === 'string' ? doc?.getElementById(panelId) : null
+
 		if (
 			!root ||
 			!owner ||
@@ -50,20 +59,26 @@ export class TBreadcrumbsFocusPlugin extends TBasePlugin<IBreadcrumbs> {
 			(!root.contains(active) && !panel?.contains(active))
 		)
 			return
+
 		const index = Number(
 			active.closest('[data-breadcrumb-index]')?.getAttribute('data-breadcrumb-index') ?? -1,
 		)
 		const oldItem = previous[index]
 		const view = doc.defaultView
+
 		if (!view) return
+
 		this._cancel()
 		this._view = view
 		this._frame = view.requestAnimationFrame(() => {
 			this._frame = null
 			this._view = null
+
 			if (!root.isConnected) return
 			// A deliberate focus move outside the component wins over this repair.
+
 			const now = doc.activeElement
+
 			if (
 				now &&
 				now !== doc.body &&
@@ -72,6 +87,7 @@ export class TBreadcrumbsFocusPlugin extends TBasePlugin<IBreadcrumbs> {
 				!panel?.contains(now)
 			)
 				return
+
 			const stops = [...root.querySelectorAll('a[href],.so-breadcrumbs__trigger')]
 			const identity = oldItem ? owner.items.indexOf(oldItem) : -1
 			const surviving =

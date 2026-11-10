@@ -4,6 +4,7 @@ import type {
 	TComponentSize,
 	TComponentVariant,
 	TButtonView,
+	TBadgeView,
 	TCheckBoxView,
 	TLabelPosition,
 	TFieldPosition,
@@ -310,3 +311,5 @@ export const FRAME_PLACEMENTS = enumOf<TFramePlacement>()([
  * нашла бы умолчания среди значений.
  */
 export const HTML_TAGS = ['div', 'span', 'label', 'button', 'a', 'section', 'li'] as const
+
+export const BADGE_VIEWS = enumOf<TBadgeView>()(['filled', 'outlined'])

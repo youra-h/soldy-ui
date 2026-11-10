@@ -59,6 +59,26 @@
       }
     },
     {
+      "id": "badge",
+      "name": "Badge",
+      "contract": "badge",
+      "sources": [
+        {
+          "role": "descriptor",
+          "descriptor": "BadgeDescriptor",
+          "source": "packages/setup/content/descriptors/components/badge.descriptor.ts"
+        }
+      ],
+      "frameworks": {
+        "vue": { "exportName": "Badge" },
+        "react": { "exportName": "Badge" },
+        "angular": { "exportName": "TBadgeComponent", "selector": "span[so-badge], [so-badge]" },
+        "solid": { "exportName": "Badge" },
+        "svelte": { "exportName": "Badge" },
+        "webc": { "exportName": "TBadgeElement", "selector": "span[is=\"so-badge\"]" }
+      }
+    },
+    {
       "id": "breadcrumbs",
       "name": "Breadcrumbs",
       "contract": "breadcrumbs",
@@ -3107,6 +3127,556 @@
             "item-trailing": { "name": "item-trailing", "syntax": "slot=\"item-trailing\"" },
             "item-content": { "name": "item-content", "syntax": "slot=\"item-content\"" }
           }
+        }
+      }
+    },
+    "badge": {
+      "source": "packages/setup/content/descriptors/components/badge.descriptor.ts",
+      "props": [
+        {
+          "name": "ctrl",
+          "canonicalName": "ctrl",
+          "type": "import(\"@soxa-ui/core\").TBadge | undefined",
+          "declaredType": "TInstance",
+          "required": false,
+          "description": "Готовый инстанс ядра вместо собранного по пропсам. Только сам объект:\nреактивная обёртка фреймворка ему не нужна — ядро шлёт события само.",
+          "hasDefault": false
+        },
+        {
+          "name": "embedded",
+          "canonicalName": "embedded",
+          "type": "string | undefined",
+          "declaredType": "string",
+          "required": false,
+          "description": "Имя места, если компонент — деталь разметки другого компонента soxa\n(`tags.close`). Ставит разметка библиотеки, а не потребитель: по нему\n`usePlugins` со `scope: 'own'` пропускает вложенный компонент.",
+          "hasDefault": false
+        },
+        {
+          "name": "pluginProps",
+          "canonicalName": "pluginProps",
+          "type": "import(\"@soxa-ui/setup\").TExternalPluginProps | undefined",
+          "declaredType": "TExternalPluginProps",
+          "required": false,
+          "description": "Значения пропсов плагинов, поставленных снаружи (`usePlugins`,\n`bundle.use`), по имени пропа: `{ timer_ms: 500 }`. Типы ключей\nприложение дописывает в `IExternalPluginProps`.",
+          "hasDefault": false
+        },
+        {
+          "name": "rendered",
+          "canonicalName": "rendered",
+          "type": "boolean | undefined",
+          "declaredType": "boolean",
+          "required": false,
+          "description": "Отрисован ли компонент (аналог v-if)",
+          "hasDefault": true,
+          "default": "true"
+        },
+        {
+          "name": "visible",
+          "canonicalName": "visible",
+          "type": "boolean | undefined",
+          "declaredType": "boolean",
+          "required": false,
+          "description": "Виден ли компонент (логическая видимость)",
+          "hasDefault": true,
+          "default": "true"
+        },
+        {
+          "name": "tag",
+          "canonicalName": "tag",
+          "type": "string | object | undefined",
+          "declaredType": "string | object",
+          "required": false,
+          "hasDefault": true,
+          "default": "\"span\""
+        },
+        {
+          "name": "direction",
+          "canonicalName": "direction",
+          "type": "import(\"@soxa-ui/core\").TDirection | undefined",
+          "declaredType": "TDirection",
+          "values": ["ltr", "rtl", "inherit"],
+          "required": false,
+          "description": "Направление письма; по умолчанию `'inherit'` — наследуется от предка",
+          "hasDefault": true,
+          "default": "\"inherit\""
+        },
+        {
+          "name": "size",
+          "canonicalName": "size",
+          "type": "\"sm\" | \"normal\" | \"lg\" | \"xl\" | \"2xl\" | undefined",
+          "declaredType": "TComponentSize",
+          "values": ["sm", "normal", "lg", "xl", "2xl"],
+          "required": false,
+          "hasDefault": true,
+          "default": "\"normal\""
+        },
+        {
+          "name": "variant",
+          "canonicalName": "variant",
+          "type": "undefined",
+          "declaredType": "TComponentVariant",
+          "required": false,
+          "description": "Вариант темы. Не задан — модификатора нет, компонент выглядит вариантом темы по умолчанию",
+          "hasDefault": true,
+          "default": "undefined"
+        },
+        {
+          "name": "value",
+          "canonicalName": "value",
+          "type": "string | number | undefined",
+          "declaredType": "string | number",
+          "required": false,
+          "description": "Label or numeric count. Numeric strings are displayed unchanged.",
+          "hasDefault": true,
+          "default": "\"\""
+        },
+        {
+          "name": "max",
+          "canonicalName": "max",
+          "type": "number | undefined",
+          "declaredType": "number",
+          "required": false,
+          "description": "Numeric display limit; the stored value remains unchanged.",
+          "hasDefault": true,
+          "default": "99"
+        },
+        {
+          "name": "dot",
+          "canonicalName": "dot",
+          "type": "boolean | undefined",
+          "declaredType": "boolean",
+          "required": false,
+          "description": "Display a dot while retaining the value.",
+          "hasDefault": true,
+          "default": "false"
+        },
+        {
+          "name": "view",
+          "canonicalName": "view",
+          "type": "undefined",
+          "declaredType": "TBadgeView",
+          "required": false,
+          "hasDefault": true,
+          "default": "undefined"
+        },
+        {
+          "name": "aria_label",
+          "canonicalName": "aria:label",
+          "type": "string | undefined",
+          "required": false,
+          "hasDefault": true,
+          "default": "undefined"
+        },
+        {
+          "name": "aria_labelledBy",
+          "canonicalName": "aria:labelledBy",
+          "type": "string | undefined",
+          "required": false,
+          "hasDefault": true,
+          "default": "undefined"
+        },
+        {
+          "name": "aria_describedBy",
+          "canonicalName": "aria:describedBy",
+          "type": "string | undefined",
+          "required": false,
+          "hasDefault": true,
+          "default": "undefined"
+        }
+      ],
+      "events": [
+        {
+          "name": "bundle:create",
+          "type": "(bundle: unknown) => void",
+          "description": "Плагины компонента созданы при монтировании; аргумент — их bundle."
+        },
+        {
+          "name": "plugin:event",
+          "type": "(event: import(\"@soxa-ui/core\").TPluginEvent) => void",
+          "description": "Событие внешнего плагина: полное имя (`timer:tick`) и аргументы."
+        },
+        { "name": "show", "type": "() => void", "description": "show" },
+        { "name": "hide", "type": "() => void", "description": "hide" },
+        {
+          "name": "show:before",
+          "type": "(e: import(\"@soxa-ui/core\").TActionEvent) => void",
+          "description": "show:before — вызов e.preventDefault() отменяет показ"
+        },
+        {
+          "name": "hide:before",
+          "type": "(e: import(\"@soxa-ui/core\").TActionEvent) => void",
+          "description": "hide:before — вызов e.preventDefault() отменяет скрытие"
+        },
+        {
+          "name": "ready",
+          "type": "(value: boolean) => void",
+          "description": "Component availability changed: true when the instance has an announced\nroot DOM element, false when that root is removed or replaced.\nDoes not wait for other plugins' DOM handlers or asynchronous work."
+        },
+        {
+          "name": "change:rendered",
+          "type": "(payload: import(\"@soxa-ui/core\").TValuePayload<boolean>) => void",
+          "description": "change:rendered"
+        },
+        {
+          "name": "change:visible",
+          "type": "(payload: import(\"@soxa-ui/core\").TValuePayload<boolean>) => void",
+          "description": "change:visible"
+        },
+        {
+          "name": "change:tag",
+          "type": "(payload: import(\"@soxa-ui/core\").TValuePayload<string | object>) => void",
+          "description": "change:tag"
+        },
+        {
+          "name": "change:direction",
+          "type": "(payload: import(\"@soxa-ui/core\").TValuePayload<import(\"@soxa-ui/core\").TDirection>) => void",
+          "description": "change:direction"
+        },
+        {
+          "name": "change:size",
+          "type": "(payload: import(\"@soxa-ui/core\").TValuePayload<import(\"@soxa-ui/core\").TComponentSize>) => void",
+          "description": "change:size"
+        },
+        {
+          "name": "change:variant",
+          "type": "(payload: import(\"@soxa-ui/core\").TValuePayload<import(\"@soxa-ui/core\").TComponentVariant | undefined>) => void",
+          "description": "change:variant"
+        },
+        {
+          "name": "change:value",
+          "type": "(payload: import(\"@soxa-ui/core\").TValuePayload<string | number>) => void"
+        },
+        {
+          "name": "change:max",
+          "type": "(payload: import(\"@soxa-ui/core\").TValuePayload<number>) => void"
+        },
+        {
+          "name": "change:dot",
+          "type": "(payload: import(\"@soxa-ui/core\").TValuePayload<boolean>) => void"
+        },
+        {
+          "name": "change:view",
+          "type": "(payload: import(\"@soxa-ui/core\").TValuePayload<import(\"@soxa-ui/core\").TBadgeView | undefined>) => void"
+        },
+        { "name": "element:ready", "type": "(element: Element) => void" },
+        { "name": "element:removed", "type": "() => void" },
+        {
+          "name": "aria:change:label",
+          "type": "(payload: import(\"@soxa-ui/core\").TValuePayload<string | undefined>) => void"
+        },
+        {
+          "name": "aria:change:labelledBy",
+          "type": "(payload: import(\"@soxa-ui/core\").TValuePayload<string | undefined>) => void"
+        },
+        {
+          "name": "aria:change:describedBy",
+          "type": "(payload: import(\"@soxa-ui/core\").TValuePayload<string | undefined>) => void"
+        }
+      ],
+      "slots": [{ "name": "anchor", "description": "Element under the indicator", "scope": {} }],
+      "frameworks": {
+        "vue": {
+          "props": {
+            "ctrl": ":ctrl",
+            "embedded": ":embedded",
+            "pluginProps": ":pluginProps",
+            "rendered": ":rendered",
+            "visible": ":visible",
+            "tag": ":tag",
+            "direction": ":direction",
+            "size": ":size",
+            "variant": ":variant",
+            "value": ":value",
+            "max": ":max",
+            "dot": ":dot",
+            "view": ":view",
+            "aria_label": ":aria_label",
+            "aria_labelledBy": ":aria_labelledBy",
+            "aria_describedBy": ":aria_describedBy"
+          },
+          "events": {
+            "bundle:create": "@bundle:create",
+            "plugin:event": "@plugin:event",
+            "show": "@show",
+            "hide": "@hide",
+            "show:before": "@show:before",
+            "hide:before": "@hide:before",
+            "ready": "@ready",
+            "change:rendered": "@change:rendered",
+            "change:visible": "@change:visible",
+            "change:tag": "@change:tag",
+            "change:direction": "@change:direction",
+            "change:size": "@change:size",
+            "change:variant": "@change:variant",
+            "change:value": "@change:value",
+            "change:max": "@change:max",
+            "change:dot": "@change:dot",
+            "change:view": "@change:view",
+            "element:ready": "@element:ready",
+            "element:removed": "@element:removed",
+            "aria:change:label": "@aria:change:label",
+            "aria:change:labelledBy": "@aria:change:labelledBy",
+            "aria:change:describedBy": "@aria:change:describedBy"
+          },
+          "models": {
+            "rendered": "@update:rendered",
+            "visible": "@update:visible",
+            "tag": "@update:tag",
+            "direction": "@update:direction",
+            "size": "@update:size",
+            "variant": "@update:variant",
+            "value": "@update:value",
+            "max": "@update:max",
+            "dot": "@update:dot",
+            "view": "@update:view",
+            "aria_label": "@update:aria_label",
+            "aria_labelledBy": "@update:aria_labelledBy",
+            "aria_describedBy": "@update:aria_describedBy"
+          },
+          "slots": { "anchor": { "name": "anchor", "syntax": "<template #anchor>" } }
+        },
+        "react": {
+          "props": {
+            "ctrl": "ctrl",
+            "embedded": "embedded",
+            "pluginProps": "pluginProps",
+            "rendered": "rendered",
+            "visible": "visible",
+            "tag": "tag",
+            "direction": "direction",
+            "size": "size",
+            "variant": "variant",
+            "value": "value",
+            "max": "max",
+            "dot": "dot",
+            "view": "view",
+            "aria_label": "aria_label",
+            "aria_labelledBy": "aria_labelledBy",
+            "aria_describedBy": "aria_describedBy"
+          },
+          "events": {
+            "bundle:create": "onBundleCreate",
+            "plugin:event": "onPluginEvent",
+            "show": "onShow",
+            "hide": "onHide",
+            "show:before": "onShowBefore",
+            "hide:before": "onHideBefore",
+            "ready": "onReady",
+            "change:rendered": "onChangeRendered",
+            "change:visible": "onChangeVisible",
+            "change:tag": "onChangeTag",
+            "change:direction": "onChangeDirection",
+            "change:size": "onChangeSize",
+            "change:variant": "onChangeVariant",
+            "change:value": "onChangeValue",
+            "change:max": "onChangeMax",
+            "change:dot": "onChangeDot",
+            "change:view": "onChangeView",
+            "element:ready": "onElementReady",
+            "element:removed": "onElementRemoved",
+            "aria:change:label": "onAriaChangeLabel",
+            "aria:change:labelledBy": "onAriaChangeLabelledBy",
+            "aria:change:describedBy": "onAriaChangeDescribedBy"
+          },
+          "models": {},
+          "slots": { "anchor": { "name": "anchor", "syntax": "anchor" } }
+        },
+        "angular": {
+          "props": {
+            "ctrl": "[ctrl]",
+            "embedded": "[embedded]",
+            "pluginProps": "[pluginProps]",
+            "rendered": "[rendered]",
+            "visible": "[visible]",
+            "direction": "[direction]",
+            "size": "[size]",
+            "variant": "[variant]",
+            "value": "[value]",
+            "max": "[max]",
+            "dot": "[dot]",
+            "view": "[view]",
+            "aria_label": "[aria_label]",
+            "aria_labelledBy": "[aria_labelledBy]",
+            "aria_describedBy": "[aria_describedBy]"
+          },
+          "events": {
+            "bundle:create": "(soBundleCreate)",
+            "plugin:event": "(soPluginEvent)",
+            "show": "(soShow)",
+            "hide": "(soHide)",
+            "show:before": "(soShowBefore)",
+            "hide:before": "(soHideBefore)",
+            "ready": "(soReady)",
+            "change:rendered": "(soChangeRendered)",
+            "change:visible": "(soChangeVisible)",
+            "change:tag": "(soChangeTag)",
+            "change:direction": "(soChangeDirection)",
+            "change:size": "(soChangeSize)",
+            "change:variant": "(soChangeVariant)",
+            "change:value": "(soChangeValue)",
+            "change:max": "(soChangeMax)",
+            "change:dot": "(soChangeDot)",
+            "change:view": "(soChangeView)",
+            "element:ready": "(soElementReady)",
+            "element:removed": "(soElementRemoved)",
+            "aria:change:label": "(soAriaChangeLabel)",
+            "aria:change:labelledBy": "(soAriaChangeLabelledBy)",
+            "aria:change:describedBy": "(soAriaChangeDescribedBy)"
+          },
+          "models": {
+            "rendered": "(renderedChange)",
+            "visible": "(visibleChange)",
+            "tag": "(tagChange)",
+            "direction": "(directionChange)",
+            "size": "(sizeChange)",
+            "variant": "(variantChange)",
+            "value": "(valueChange)",
+            "max": "(maxChange)",
+            "dot": "(dotChange)",
+            "view": "(viewChange)",
+            "aria_label": "(aria_labelChange)",
+            "aria_labelledBy": "(aria_labelledByChange)",
+            "aria_describedBy": "(aria_describedByChange)"
+          },
+          "slots": { "anchor": { "name": "anchor", "syntax": "slot=\"anchor\"" } }
+        },
+        "solid": {
+          "props": {
+            "ctrl": "ctrl",
+            "embedded": "embedded",
+            "pluginProps": "pluginProps",
+            "rendered": "rendered",
+            "visible": "visible",
+            "tag": "tag",
+            "direction": "direction",
+            "size": "size",
+            "variant": "variant",
+            "value": "value",
+            "max": "max",
+            "dot": "dot",
+            "view": "view",
+            "aria_label": "aria_label",
+            "aria_labelledBy": "aria_labelledBy",
+            "aria_describedBy": "aria_describedBy"
+          },
+          "events": {
+            "bundle:create": "onBundleCreate",
+            "plugin:event": "onPluginEvent",
+            "show": "onShow",
+            "hide": "onHide",
+            "show:before": "onShowBefore",
+            "hide:before": "onHideBefore",
+            "ready": "onReady",
+            "change:rendered": "onChangeRendered",
+            "change:visible": "onChangeVisible",
+            "change:tag": "onChangeTag",
+            "change:direction": "onChangeDirection",
+            "change:size": "onChangeSize",
+            "change:variant": "onChangeVariant",
+            "change:value": "onChangeValue",
+            "change:max": "onChangeMax",
+            "change:dot": "onChangeDot",
+            "change:view": "onChangeView",
+            "element:ready": "onElementReady",
+            "element:removed": "onElementRemoved",
+            "aria:change:label": "onAriaChangeLabel",
+            "aria:change:labelledBy": "onAriaChangeLabelledBy",
+            "aria:change:describedBy": "onAriaChangeDescribedBy"
+          },
+          "models": {},
+          "slots": { "anchor": { "name": "anchor", "syntax": "anchor" } }
+        },
+        "svelte": {
+          "props": {
+            "ctrl": "ctrl",
+            "embedded": "embedded",
+            "pluginProps": "pluginProps",
+            "rendered": "rendered",
+            "visible": "visible",
+            "tag": "tag",
+            "direction": "direction",
+            "size": "size",
+            "variant": "variant",
+            "value": "value",
+            "max": "max",
+            "dot": "dot",
+            "view": "view",
+            "aria_label": "aria_label",
+            "aria_labelledBy": "aria_labelledBy",
+            "aria_describedBy": "aria_describedBy"
+          },
+          "events": {
+            "bundle:create": "onBundleCreate",
+            "plugin:event": "onPluginEvent",
+            "show": "onShow",
+            "hide": "onHide",
+            "show:before": "onShowBefore",
+            "hide:before": "onHideBefore",
+            "ready": "onReady",
+            "change:rendered": "onChangeRendered",
+            "change:visible": "onChangeVisible",
+            "change:tag": "onChangeTag",
+            "change:direction": "onChangeDirection",
+            "change:size": "onChangeSize",
+            "change:variant": "onChangeVariant",
+            "change:value": "onChangeValue",
+            "change:max": "onChangeMax",
+            "change:dot": "onChangeDot",
+            "change:view": "onChangeView",
+            "element:ready": "onElementReady",
+            "element:removed": "onElementRemoved",
+            "aria:change:label": "onAriaChangeLabel",
+            "aria:change:labelledBy": "onAriaChangeLabelledBy",
+            "aria:change:describedBy": "onAriaChangeDescribedBy"
+          },
+          "models": {},
+          "slots": { "anchor": { "name": "anchor", "syntax": "{#snippet anchor()}" } }
+        },
+        "webc": {
+          "props": {
+            "ctrl": "ctrl",
+            "embedded": "embedded",
+            "pluginProps": "pluginProps",
+            "rendered": "rendered",
+            "visible": "visible",
+            "tag": "tag",
+            "direction": "direction",
+            "size": "size",
+            "variant": "variant",
+            "value": "value",
+            "max": "max",
+            "dot": "dot",
+            "view": "view",
+            "aria_label": "aria_label",
+            "aria_labelledBy": "aria_labelledBy",
+            "aria_describedBy": "aria_describedBy"
+          },
+          "events": {
+            "bundle:create": "addEventListener('so:bundle:create', handler)",
+            "plugin:event": "addEventListener('so:plugin:event', handler)",
+            "show": "addEventListener('so:show', handler)",
+            "hide": "addEventListener('so:hide', handler)",
+            "show:before": "addEventListener('so:show:before', handler)",
+            "hide:before": "addEventListener('so:hide:before', handler)",
+            "ready": "addEventListener('so:ready', handler)",
+            "change:rendered": "addEventListener('so:change:rendered', handler)",
+            "change:visible": "addEventListener('so:change:visible', handler)",
+            "change:tag": "addEventListener('so:change:tag', handler)",
+            "change:direction": "addEventListener('so:change:direction', handler)",
+            "change:size": "addEventListener('so:change:size', handler)",
+            "change:variant": "addEventListener('so:change:variant', handler)",
+            "change:value": "addEventListener('so:change:value', handler)",
+            "change:max": "addEventListener('so:change:max', handler)",
+            "change:dot": "addEventListener('so:change:dot', handler)",
+            "change:view": "addEventListener('so:change:view', handler)",
+            "element:ready": "addEventListener('so:element:ready', handler)",
+            "element:removed": "addEventListener('so:element:removed', handler)",
+            "aria:change:label": "addEventListener('so:aria:change:label', handler)",
+            "aria:change:labelledBy": "addEventListener('so:aria:change:labelledBy', handler)",
+            "aria:change:describedBy": "addEventListener('so:aria:change:describedBy', handler)"
+          },
+          "models": {},
+          "slots": { "anchor": { "name": "anchor", "syntax": "slot=\"anchor\"" } }
         }
       }
     },
@@ -41670,6 +42240,20 @@
           "models": {},
           "slots": {}
         }
+      }
+    },
+    "BadgeAriaPluginDescriptor": {
+      "source": "packages/setup/content/descriptors/plugins/badge-aria.plugin.ts",
+      "props": [],
+      "events": [],
+      "slots": [],
+      "frameworks": {
+        "vue": { "props": {}, "events": {}, "models": {}, "slots": {} },
+        "react": { "props": {}, "events": {}, "models": {}, "slots": {} },
+        "angular": { "props": {}, "events": {}, "models": {}, "slots": {} },
+        "solid": { "props": {}, "events": {}, "models": {}, "slots": {} },
+        "svelte": { "props": {}, "events": {}, "models": {}, "slots": {} },
+        "webc": { "props": {}, "events": {}, "models": {}, "slots": {} }
       }
     },
     "BreadcrumbsFocusPluginDescriptor": {

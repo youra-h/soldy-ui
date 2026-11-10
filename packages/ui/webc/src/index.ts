@@ -135,3 +135,6 @@ export type { TToastRender } from './adapter/toasts'
 
 export { TBreadcrumbsElement } from './components/breadcrumbs'
 export type { TBreadcrumbsElementProps } from './components/breadcrumbs'
+
+export { TBadgeElement } from './components/badge'
+export type { TBadgeElementProps } from './components/badge'

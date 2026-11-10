@@ -44,3 +44,5 @@ export * from './table'
 export * from './virtual'
 export * from './drag-and-drop'
 export * from './breadcrumbs'
+
+export * from './badge'

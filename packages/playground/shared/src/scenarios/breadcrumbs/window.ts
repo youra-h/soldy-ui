@@ -1,4 +1,5 @@
 import type { TScenario } from '../types'
+
 export const BREADCRUMBS_SCENARIOS: readonly TScenario[] = [
 	{
 		id: 'breadcrumbs/events/window',

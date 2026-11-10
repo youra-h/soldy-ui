@@ -32,6 +32,7 @@ import {
 	Field,
 	Icon,
 	Input,
+	Badge,
 	Label,
 	ListBox,
 	Menu,
@@ -346,6 +347,7 @@ export const PREVIEWS: Record<string, TPreview> = {
 
 	// The label is the `text` prop from the preview props, the control is the
 	// slot. The page rows edit the label itself: its side, text size, variant
+	badge: (bind) => <Badge {...bind} />,
 	label: (bind) => (
 		<Label {...bind}>
 			<CheckBox />

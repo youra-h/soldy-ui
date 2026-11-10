@@ -49,3 +49,5 @@ export * from './select'
 export * from './calendar'
 export * from './table'
 export { BreadcrumbsDescriptor } from './breadcrumbs.descriptor'
+
+export { BadgeDescriptor } from './badge.descriptor'

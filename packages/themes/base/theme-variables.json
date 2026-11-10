@@ -279,6 +279,10 @@
     "--so-table-body-dragged": "Dragged Table column cell visibility in reorderPreview: column (hidden hides cells in their original positions). The theme sets it on the body using its motion, with the same column-count limit. Fallback: row visibility.",
     "--so-swipe-offset": "Layer offset during swipe-to-dismiss, in signed pixels along the viewport axis. The gesture plugin writes it on the dragged layer (Popover, Select, DatePicker, Drawer or toast); themes must not set it. The base layer uses it in translate and registers it without inheritance. Fallback: 0px.",
     "--so-table-column-drag": "Dragged Table header inline offset during column reorder. The gesture plugin writes it on the header to follow the pointer and, after release, to reach the destination. Themes must not set it. The base layer uses it in translate; the theme transitions the landing. Fallback: 0.",
+    "--so-badge-height": "Badge indicator height and minimum inline size; default: 1.25rem (normal), 1rem (sm), 1.5rem (lg), 1.75rem (xl), 2rem (2xl).",
+    "--so-badge-font-size": "Badge indicator font size; default: 0.75rem (normal), 0.625rem (sm), 0.875rem (lg), 1rem (xl), 1.125rem (2xl).",
+    "--so-badge-padding": "Badge indicator inline padding; default: 0.375rem (normal), 0.25rem (sm), 0.4375rem (lg), 0.5rem (xl), 0.625rem (2xl).",
+    "--so-badge-dot-size": "Badge dot side length; default: 0.5rem (normal), 0.375rem (sm), 0.625rem (lg), 0.75rem (xl), 0.875rem (2xl).",
     "--so-breadcrumbs-gap": "Inline spacing between locations and decorative separators; default: Button gap at the current size.",
     "--so-breadcrumbs-separator-size": "Inline size of a decorative breadcrumb separator; default: 0.5em."
   },

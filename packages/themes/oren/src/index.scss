@@ -160,3 +160,7 @@
 @layer components.so.modifiers.button {
 	@include meta.load-css('components/button/modifiers');
 }
+
+@layer components.so.badge {
+	@include meta.load-css('components/badge/badge');
+}

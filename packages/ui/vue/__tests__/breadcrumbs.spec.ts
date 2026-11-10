@@ -6,6 +6,7 @@ import { h, nextTick } from 'vue'
 import { Breadcrumbs, LocaleProvider } from '@soxa-ui/vue'
 import { enUS, ruRU, extendLocale } from '@soxa-ui/plugins'
 import type { TLocale } from '@soxa-ui/plugins'
+
 const items = [
 	{ text: 'Home', href: '#home' },
 	{ text: 'Catalog', href: '#catalog', target: '_blank', rel: 'external' },
@@ -14,6 +15,7 @@ const items = [
 	{ text: 'Current' },
 ]
 const wrappers: ReturnType<typeof mount>[] = []
+
 afterEach(() => {
 	unmountHydrated()
 	wrappers.splice(0).forEach((wrapper) => wrapper.unmount())
@@ -24,9 +26,11 @@ async function render(props: object = {}) {
 		props: { items, maxItems: 3, ...props },
 		attachTo: document.body,
 	})
+
 	wrappers.push(wrapper)
 	await nextTick()
 	await new Promise(requestAnimationFrame)
+
 	return wrapper
 }
 describe('Breadcrumbs', () => {
@@ -34,6 +38,7 @@ describe('Breadcrumbs', () => {
 		const { server, client, warnings } = await hydrate(() =>
 			h(LocaleProvider, { locale: ruRU }, () => h(Breadcrumbs, { items, maxItems: 3 })),
 		)
+
 		expect(warnings).toEqual([])
 		expect(client.querySelector('nav')?.getAttribute('aria-label')).toBe(
 			'Навигационная цепочка',
@@ -43,6 +48,7 @@ describe('Breadcrumbs', () => {
 			server.querySelector('button')?.getAttribute('aria-controls'),
 		)
 	})
+
 	it('prefers a surviving duplicate by identity over an earlier equal item', async () => {
 		const same = { text: 'Repeated', href: '#same' },
 			survivor = { text: 'Repeated', href: '#same' }
@@ -55,8 +61,10 @@ describe('Breadcrumbs', () => {
 		focused.focus()
 		await wrapper.setProps({ items: [same, survivor, { text: 'Page' }] })
 		await new Promise(requestAnimationFrame)
+
 		expect(document.activeElement?.getAttribute('data-breadcrumb-index')).toBe('1')
 	})
+
 	it('preserves locations and repairs removed focus without taking outside focus', async () => {
 		const wrapper = await render({ maxItems: 0 })
 		const focused = wrapper.element.querySelector('a[href="#phones"]')
@@ -64,17 +72,24 @@ describe('Breadcrumbs', () => {
 		focused.focus()
 		await wrapper.setProps({ items: items.slice(1) })
 		await new Promise(requestAnimationFrame)
+
 		expect(document.activeElement?.getAttribute('href')).toBe('#phones')
+
 		await wrapper.setProps({ items: [{ text: 'Home', href: '#home' }, { text: 'Current' }] })
 		await new Promise(requestAnimationFrame)
+
 		expect(document.activeElement?.getAttribute('href')).toBe('#home')
+
 		const outside = document.createElement('button')
+
 		document.body.append(outside)
 		outside.focus()
 		await wrapper.setProps({ items: [{ text: 'Other' }] })
 		await new Promise(requestAnimationFrame)
+
 		expect(document.activeElement).toBe(outside)
 	})
+
 	it('renders independent localized trails on the server', async () => {
 		const [english, russian] = await Promise.all([
 			renderToString(
@@ -84,6 +99,7 @@ describe('Breadcrumbs', () => {
 				h(LocaleProvider, { locale: ruRU }, () => h(Breadcrumbs, { items, maxItems: 3 })),
 			),
 		])
+
 		expect(english).toContain('aria-label="Breadcrumbs"')
 		expect(russian).toContain('aria-label="Навигационная цепочка')
 		expect(english).toContain('aria-current="page"')
@@ -92,6 +108,7 @@ describe('Breadcrumbs', () => {
 
 	it('renders native navigation and a single current location without a trailing separator', async () => {
 		const wrapper = await render()
+
 		expect(wrapper.element.tagName).toBe('NAV')
 		expect(wrapper.attributes('aria-label')).toBe('Breadcrumbs')
 		expect(wrapper.findAll('ol > li')).toHaveLength(3)
@@ -100,12 +117,15 @@ describe('Breadcrumbs', () => {
 		expect(wrapper.findAll('.so-breadcrumbs__separator')).toHaveLength(2)
 		expect(wrapper.get('a').attributes('href')).toBe('#home')
 	})
+
 	it('opens hidden entries as native links, with original slot indices and non-link text disabled', async () => {
 		const wrapper = await render()
+
 		await wrapper.get('button').trigger('click')
 		await nextTick()
 		await new Promise(requestAnimationFrame)
 		const links = [...document.querySelectorAll('a[role="menuitem"]')]
+
 		expect(links).toHaveLength(3)
 		expect(links[0]?.getAttribute('href')).toBe('#catalog')
 		expect(links[0]?.getAttribute('target')).toBe('_blank')
@@ -113,10 +133,13 @@ describe('Breadcrumbs', () => {
 		expect(links[1]?.hasAttribute('href')).toBe(false)
 		expect(links[1]?.getAttribute('aria-disabled')).toBe('true')
 		expect(links.every((link) => link.querySelector('a,button') === null)).toBe(true)
+
 		await wrapper.setProps({ maxItems: 0 })
+
 		expect(wrapper.find('button').exists()).toBe(false)
 		expect(wrapper.findAll('ol > li')).toHaveLength(5)
 	})
+
 	it('keeps the shell when slots replace visible and hidden contents', async () => {
 		const wrapper = mount(Breadcrumbs, {
 			props: { items, maxItems: 3 },
@@ -128,17 +151,22 @@ describe('Breadcrumbs', () => {
 			},
 			attachTo: document.body,
 		})
+
 		wrappers.push(wrapper)
 		await nextTick()
 		await new Promise(requestAnimationFrame)
+
 		expect(wrapper.get('a strong').text()).toBe('0:Home:false')
+
 		await wrapper.get('button').trigger('click')
 		await nextTick()
 		await new Promise(requestAnimationFrame)
+
 		expect(document.querySelector('a[href="#catalog"] strong')?.textContent).toBe(
 			'1:Catalog:false',
 		)
 	})
+
 	it('updates localized names and accepts old custom locales and partial new translations', async () => {
 		const { breadcrumbs: _new, ...old } = enUS.translations
 		const custom: TLocale = { tag: 'en-GB', translations: old }
@@ -146,15 +174,21 @@ describe('Breadcrumbs', () => {
 			props: { locale: custom },
 			slots: { default: () => h(Breadcrumbs, { items, maxItems: 3 }) },
 		})
+
 		wrappers.push(wrapper)
 		expect(wrapper.get('nav').attributes('aria-label')).toBe('Breadcrumbs')
+
 		await wrapper.setProps({ locale: ruRU })
+
 		expect(wrapper.get('nav').attributes('aria-label')).toBe('Навигационная цепочка')
 		expect(wrapper.get('button').attributes('aria-label')).toBe('Показать скрытые звенья')
+
 		const localized = extendLocale(custom, {
 			translations: { breadcrumbs: { overflow: 'More pages' } },
 		})
+
 		await wrapper.setProps({ locale: localized })
+
 		expect(wrapper.get('nav').attributes('aria-label')).toBe('Breadcrumbs')
 		expect(wrapper.get('button').attributes('aria-label')).toBe('More pages')
 	})

@@ -31,6 +31,7 @@ import {
 	TAccordion,
 	TBreadcrumbs,
 	TMenuItem,
+	TBadge,
 	TButton,
 	TItemRow,
 	TCalendar,
@@ -89,6 +90,7 @@ import type {
 import {
 	Accordion,
 	Breadcrumbs,
+	Badge,
 	Button,
 	Calendar,
 	CheckBox,
@@ -406,6 +408,12 @@ const COMPONENTS: Readonly<Record<string, Readonly<Record<string, TCase>>>> = {
 					<BreadcrumbsOverflowItem ctrl={ctrl} href="#hidden" />
 				</Menu>
 			),
+		),
+	},
+	Badge: {
+		ctrl: overCtrl(
+			() => new TBadge(),
+			(ctrl) => <Badge ctrl={ctrl} />,
 		),
 	},
 	Button: {
