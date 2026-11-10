@@ -29,6 +29,10 @@
 	@include meta.load-css('components/button/button');
 }
 
+@layer components.so.toggle-group {
+	@include meta.load-css('components/toggle-group/toggle-group');
+}
+
 @layer components.so.check-box {
 	@include meta.load-css('components/check-box/check-box');
 }
