@@ -2,6 +2,8 @@ import type { IPreviewHost } from './host.ts'
 
 export const A11Y_COMPONENTS = [
 	'button',
+	'toggle-button',
+	'toggle-group',
 	'badge',
 	'breadcrumbs',
 	'input',
@@ -209,6 +211,30 @@ export const A11Y_CASES: readonly TAuditCase[] = [
 		{ aria_label: 'Account' },
 		['.so-field__error', '[aria-invalid="true"][aria-describedby]'],
 		{ fixture: 'a11y-invalid-date-picker' },
+	),
+
+	...['off', 'on', 'disabled'].map((state) =>
+		audit(
+			'toggle-button',
+			state,
+			'.so-toggle-button',
+			{ text: 'Bold', pressed: state === 'on', disabled: state === 'disabled' },
+			['button[aria-pressed]'],
+		),
+	),
+	...['single', 'multiple', 'disabled'].map((state) =>
+		audit(
+			'toggle-group',
+			state,
+			'.so-toggle-group',
+			{
+				aria_label: 'Formatting',
+				mode: state === 'multiple' ? 'multiple' : 'single',
+				disabled: state === 'disabled',
+				items: [{ text: 'Bold', _: { selected: true } }, { text: 'Italic' }],
+			},
+			['button.so-toggle-group-item[aria-pressed]'],
+		),
 	),
 	audit('button', 'named', '.so-button', { text: 'Save changes' }, ['button.so-button']),
 	audit('button', 'disabled', '.so-button', { text: 'Save changes', disabled: true }, [

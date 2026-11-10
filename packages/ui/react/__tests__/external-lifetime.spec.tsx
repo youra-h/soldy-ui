@@ -29,10 +29,12 @@ import type { ReactNode } from 'react'
 import { createRoot } from 'react-dom/client'
 import {
 	TAccordion,
+	TToggleGroup,
 	TBreadcrumbs,
 	TMenuItem,
 	TBadge,
 	TButton,
+	TToggleButton,
 	TItemRow,
 	TCalendar,
 	TCheckBox,
@@ -70,6 +72,7 @@ import {
 	TTooltip,
 	TVirtual,
 	createEngineAccordion,
+	createEngineToggleGroup,
 	createEngineCalendar,
 	createEngineListBox,
 	createEngineMenu,
@@ -90,9 +93,11 @@ import type {
 } from '@soxa-ui/core'
 import {
 	Accordion,
+	ToggleGroup,
 	Breadcrumbs,
 	Badge,
 	Button,
+	ToggleButton,
 	Calendar,
 	CheckBox,
 	ComponentView,
@@ -388,6 +393,30 @@ const COMPONENTS: Readonly<Record<string, Readonly<Record<string, TCase>>>> = {
 			}
 		},
 	},
+	ToggleGroup: {
+		'ctrl и движок, элементы из данных': () => {
+			const ctrl = new TToggleGroup()
+			const engine = createEngineToggleGroup({ items: ITEMS })
+
+			return {
+				node: <ToggleGroup ctrl={ctrl} engine={engine} />,
+				buses: [ctrl.events, ...engineBuses(engine)],
+			}
+		},
+		'движок, элементы в разметке': () => {
+			const engine = createEngineToggleGroup()
+
+			return {
+				node: (
+					<ToggleGroup engine={engine}>
+						<ToggleGroup.Item value="a" text="A" />
+						<ToggleGroup.Item value="b" text="B" />
+					</ToggleGroup>
+				),
+				buses: engineBuses(engine),
+			}
+		},
+	},
 	Breadcrumbs: {
 		'external owner and engine with data items': () => {
 			const ctrl = new TBreadcrumbs({ maxItems: 3 })
@@ -440,6 +469,12 @@ const COMPONENTS: Readonly<Record<string, Readonly<Record<string, TCase>>>> = {
 		ctrl: overCtrl(
 			() => new TButton(),
 			(ctrl) => <Button ctrl={ctrl} />,
+		),
+	},
+	ToggleButton: {
+		ctrl: overCtrl(
+			() => new TToggleButton(),
+			(ctrl) => <ToggleButton ctrl={ctrl} />,
 		),
 	},
 	/** Строка элемента коллекции — деталь разметки, но над `ctrl` монтируется так же. */

@@ -86,9 +86,15 @@ export function collectSource(source: string, place: string, inventory: TInvento
 				else add('dynamic', first.getText(tree))
 			}
 			if (/(?:[cC]lasses)\??\.(?:add|toggle|swap|swapClass)$/.test(receiver) && first) {
-				if (ts.isStringLiteral(first) || ts.isNoSubstitutionTemplateLiteral(first))
-					add('modifiers', first.text)
-				else if (ts.isObjectLiteralExpression(first)) {
+				if (ts.isStringLiteral(first) || ts.isNoSubstitutionTemplateLiteral(first)) {
+					// add(name, false) emits an absolute class, without the component base.
+					if (
+						/\.add$/.test(receiver) &&
+						node.arguments[1]?.kind === ts.SyntaxKind.FalseKeyword
+					)
+						className(first.text)
+					else add('modifiers', first.text)
+				} else if (ts.isObjectLiteralExpression(first)) {
 					for (const prop of first.properties)
 						if (
 							ts.isPropertyAssignment(prop) &&

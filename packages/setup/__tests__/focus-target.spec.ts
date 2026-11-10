@@ -20,6 +20,8 @@ import { exportedDescriptors } from './helpers'
 /** Фокус держит сам корень: правило не нужно. */
 const ROOT_HOLDS_FOCUS = new Set([
 	'ButtonDescriptor',
+	'ToggleButtonDescriptor',
+	'ToggleGroupItemDescriptor',
 	// Строка элемента коллекции — корень кнопки, фокус ставят на неё элементы
 	'ItemRowDescriptor',
 	// Остановка сетки — сама таблица: фокус по ячейкам водит её плагин сетки
@@ -126,6 +128,7 @@ describe('узел фокуса у дескрипторов с TActionPlugin', (
 				'SliderDescriptor',
 				'SwitchDescriptor',
 				'TabsDescriptor',
+				'ToggleGroupDescriptor',
 				'TabsItemDescriptor',
 				'TagsDescriptor',
 				'TagsItemDescriptor',

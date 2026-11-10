@@ -79,3 +79,6 @@ export { ValueAccessorDirective as ɵValueAccessorDirective } from './adapter/ru
 export { TBreadcrumbsComponent, TBreadcrumbsItemComponent } from './components/breadcrumbs'
 
 export { TBadgeComponent } from './components/badge'
+
+export { TToggleButtonComponent } from './components/toggle-button'
+export { TToggleGroupComponent, TToggleGroupItemComponent } from './components/toggle-group'

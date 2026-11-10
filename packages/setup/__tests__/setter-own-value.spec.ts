@@ -23,8 +23,11 @@
 import { describe, it, expect } from 'vitest'
 import {
 	TAccordion,
+	TToggleGroup,
 	TAccordionCollectionFacade,
+	TToggleGroupCollectionFacade,
 	TAccordionItemCollectionFacade,
+	TToggleGroupItemCollectionFacade,
 	TBreadcrumbs,
 	TBreadcrumbsCollectionFacade,
 	TBreadcrumbsItemCollectionFacade,
@@ -154,6 +157,16 @@ const COLLECTIONS: Readonly<Record<string, readonly [string | null, () => TMount
 			facade.items = SOURCES
 
 			return withItem(facade, new TAccordionItemCollectionFacade())
+		},
+	],
+	ToggleGroupCollectionDescriptor: [
+		'ToggleGroupCollectionItemDescriptor',
+		() => {
+			const facade = new TToggleGroupCollectionFacade({}, { owner: new TToggleGroup() })
+
+			facade.items = SOURCES
+
+			return withItem(facade, new TToggleGroupItemCollectionFacade())
 		},
 	],
 	// Состав дней кладёт вид календаря сам, а выбор и фокус дню пишут

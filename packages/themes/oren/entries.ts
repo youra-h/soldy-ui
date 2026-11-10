@@ -61,6 +61,8 @@ export const COMPONENTS: Readonly<Record<string, readonly string[]>> = {
 	accordion: ['icon', 'button', 'accordion'],
 	badge: ['badge'],
 	button: ['button'],
+	'toggle-button': ['button'],
+	'toggle-group': ['button', 'toggle-group'],
 	breadcrumbs: ['icon', 'button', 'group', 'anchored', 'place', 'menu', 'breadcrumbs'],
 	calendar: CALENDAR,
 	'check-box': ['icon', 'check-box'],

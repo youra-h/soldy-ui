@@ -15,6 +15,8 @@ import {
 import {
 	BadgePreview,
 	ButtonPreview,
+	ToggleButtonPreview,
+	ToggleGroupPreview,
 	CalendarPreview,
 	CheckBoxPreview,
 	DateInputPreview,
@@ -80,6 +82,8 @@ export type TPreview =
 export const PREVIEWS: Record<string, TPreview> = {
 	badge: { template: BadgePreview },
 	button: { template: ButtonPreview },
+	'toggle-button': { template: ToggleButtonPreview },
+	'toggle-group': { template: ToggleGroupPreview },
 	input: { template: InputPreview },
 	'number-input': { template: NumberInputPreview },
 	textarea: { template: TextareaPreview },

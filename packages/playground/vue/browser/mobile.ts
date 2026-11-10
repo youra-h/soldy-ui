@@ -10,6 +10,8 @@ import '@soxa-ui/theme-oren'
 export const MOBILE_COMPONENTS = [
 	'badge',
 	'button',
+	'toggle-button',
+	'toggle-group',
 	'input',
 	'number-input',
 	'textarea',

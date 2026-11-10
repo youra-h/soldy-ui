@@ -3,6 +3,9 @@
 export {
 	Icon,
 	Button,
+	ToggleButton,
+	ToggleGroup,
+	ToggleGroupItem,
 	Calendar,
 	CalendarItem,
 	CheckBox,
@@ -200,3 +203,7 @@ export type { BreadcrumbsProps, BreadcrumbsItemProps } from './components/breadc
 
 export { Badge } from './components/badge'
 export type { BadgeProps } from './components/badge/base.component'
+
+export type { ToggleButtonProps } from './components/toggle-button/base.component'
+export type { ToggleGroupProps } from './components/toggle-group/base.component'
+export type { ToggleGroupItemProps } from './components/toggle-group/item/base.component'

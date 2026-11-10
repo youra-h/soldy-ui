@@ -228,6 +228,8 @@ it('Toasts can be created and closed by touch', async () => {
 
 it.each([
 	['button', '.so-button'],
+	['toggle-button', '.so-toggle-button'],
+	['toggle-group', '.so-toggle-group-item'],
 	['input', '.so-input'],
 	['textarea', '.so-textarea'],
 	['select', '.so-select'],
@@ -316,4 +318,59 @@ it('Table sort action is reachable by native tap', async () => {
 	const before = header?.getAttribute('aria-sort')
 	await commands.tap('[data-mobile-sort]')
 	await expect.poll(() => header?.getAttribute('aria-sort')).not.toBe(before)
+})
+
+it('ToggleButton changes pressed state exactly once per native tap', async () => {
+	let changes = 0
+	await mountMobile('toggle-button', { 'onChange:pressed': () => changes++ })
+
+	await commands.tap('.so-toggle-button')
+	await expect.poll(() => find('.so-toggle-button').getAttribute('aria-pressed')).toBe('true')
+	expect(changes).toBe(1)
+
+	await commands.tap('.so-toggle-button')
+	await expect.poll(() => find('.so-toggle-button').getAttribute('aria-pressed')).toBe('false')
+	expect(changes).toBe(2)
+})
+
+it.each(['single', 'multiple'])(
+	'ToggleGroup %s selects and deselects with native taps',
+	async (mode) => {
+		await mountMobile('toggle-group', {
+			mode,
+			items: [{ text: 'Bold' }, { text: 'Italic' }, { text: 'Disabled', disabled: true }],
+		})
+		const first = '.so-toggle-group-item:nth-child(1)'
+		const second = '.so-toggle-group-item:nth-child(2)'
+		const disabled = '.so-toggle-group-item:nth-child(3)'
+
+		await commands.tap(first)
+		await expect.poll(() => find(first).getAttribute('aria-pressed')).toBe('true')
+
+		await commands.tap(second)
+		await expect.poll(() => find(second).getAttribute('aria-pressed')).toBe('true')
+		expect(find(first).getAttribute('aria-pressed')).toBe(
+			mode === 'multiple' ? 'true' : 'false',
+		)
+
+		await commands.tap(second)
+		await expect.poll(() => find(second).getAttribute('aria-pressed')).toBe('false')
+
+		await commands.tap(disabled)
+		expect(find(disabled).getAttribute('aria-pressed')).toBe('false')
+	},
+)
+
+it('long ToggleGroup stays inside the phone and its last action remains reachable', async () => {
+	await mountMobile('toggle-group')
+	const group = find('.so-toggle-group')
+	const last = '.so-toggle-group-item:last-child'
+
+	expect(group.scrollWidth).toBeGreaterThan(group.clientWidth)
+	expect(getComputedStyle(group).overflowX).toBe('auto')
+
+	await commands.tap(last)
+	await expect.poll(() => find(last).getAttribute('aria-pressed')).toBe('true')
+	expect(Math.abs(group.scrollLeft)).toBeGreaterThan(0)
+	expect(document.documentElement.scrollWidth).toBeLessThanOrEqual(innerWidth + 1)
 })

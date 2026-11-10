@@ -23,6 +23,9 @@ export type TButtonEvents = TTextableEvents & {
 	'change:view': (payload: TValuePayload<TButtonView | undefined>) => void
 }
 
-export interface IButton extends ITextable<IButtonProps, TButtonEvents> {
+export interface IButton<
+	TProps extends IButtonProps = IButtonProps,
+	TEvents extends TButtonEvents = TButtonEvents,
+> extends ITextable<TProps, TEvents> {
 	view: TButtonView | undefined
 }

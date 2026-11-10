@@ -1,0 +1,23 @@
+@if (slot('leading'); as leading) {
+	<ng-container [ngTemplateOutlet]="leading" />
+} @else {
+	<ng-content select="[slot=leading]" />
+}
+
+<span class="so-button__text">
+	@if (slot('default'); as content) {
+		<ng-container
+			[ngTemplateOutlet]="content"
+			[ngTemplateOutletContext]="{ $implicit: state()['text'], text: state()['text'] }"
+		/>
+	} @else {
+		<ng-content>{{ state()['text'] }}</ng-content>
+	}
+</span>
+
+@if (slot('trailing'); as trailing) {
+	<ng-container [ngTemplateOutlet]="trailing" />
+} @else {
+	<ng-content select="[slot=trailing]" />
+}
+<ng-content select="ng-template[slot]" />

@@ -14,6 +14,8 @@ export type TRootSpec =
 	| { readonly strategy: 'wrapped'; readonly teleport?: TRootTeleport }
 	| {
 			readonly strategy: 'host'
+			/** Native markup defaults, applied once without replacing consumer attributes. */
+			readonly defaults?: Readonly<Record<string, string>>
 			/** Выход со стилем, который считает ядро (`fractionStyle` у ProgressSpinner). */
 			readonly style?: string
 			/** Прячут ли `visible` и `rendered` корень; нет у Skeleton. По умолчанию да. */

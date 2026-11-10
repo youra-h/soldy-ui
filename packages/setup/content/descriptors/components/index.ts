@@ -56,3 +56,6 @@ export {
 } from './breadcrumbs.descriptor'
 
 export { BadgeDescriptor } from './badge.descriptor'
+
+export { ToggleButtonDescriptor } from './toggle-button.descriptor'
+export * from './toggle-group'

@@ -66,6 +66,14 @@ export function createRoot(spec: TRootSpec, ctx: TRootContext): TRoot {
 /** Корень — сам элемент потребителя. */
 function hostRoot(spec: TRootHost, ctx: TRootContext): TRoot {
 	const host = hostElement()
+
+	// A host has no outer template node: supply omitted native defaults before painting.
+	if (spec.defaults) {
+		for (const [name, value] of Object.entries(spec.defaults)) {
+			if (!host.hasAttribute(name)) host.setAttribute(name, value)
+		}
+	}
+
 	// Без рендерера адаптера поле не собирается — до всего остального
 	const registry = spec.control ? forwardRegistry(host) : null
 	const target = (): Element => host

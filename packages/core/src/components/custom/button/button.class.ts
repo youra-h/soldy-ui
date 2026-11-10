@@ -1,9 +1,16 @@
+import type { TEventSink } from '../../../common'
 import { TTextable } from '../../base/textable'
 import type { IButton, IButtonProps, TButtonView, TButtonEvents } from './types'
 import type { TDefaultValues } from '../../base/component'
 import { NATIVE_BUTTON_TAGS } from '../../../common'
 
-export default class TButton extends TTextable<IButtonProps, TButtonEvents> implements IButton {
+export default class TButton<
+	TProps extends IButtonProps = IButtonProps,
+	TEvents extends TButtonEvents = TButtonEvents,
+>
+	extends TTextable<TProps, TEvents>
+	implements IButton<TProps, TEvents>
+{
 	static override baseClass = 'so-button'
 
 	static defaultValues: typeof TTextable.defaultValues &
@@ -15,7 +22,7 @@ export default class TButton extends TTextable<IButtonProps, TButtonEvents> impl
 
 	protected _view: TButtonView | undefined
 
-	constructor(props: Partial<IButtonProps> = {}) {
+	constructor(props: Partial<TProps> = {}) {
 		super(props)
 
 		const ctor = new.target as typeof TButton
@@ -26,6 +33,10 @@ export default class TButton extends TTextable<IButtonProps, TButtonEvents> impl
 		this.events.on('change:disabled', () => this._syncButtonAria())
 
 		this._syncButtonAria()
+	}
+
+	protected override get _sink(): TEventSink<TButtonEvents> {
+		return this.events
 	}
 
 	get view(): TButtonView | undefined {
@@ -53,7 +64,7 @@ export default class TButton extends TTextable<IButtonProps, TButtonEvents> impl
 		if (this._view === value) return
 
 		this._applyView(value, this._view)
-		this.events.emit('change:view', { newValue: value, oldValue: oldView })
+		this._sink.emit('change:view', { newValue: value, oldValue: oldView })
 	}
 
 	/**
@@ -76,10 +87,10 @@ export default class TButton extends TTextable<IButtonProps, TButtonEvents> impl
 		this._aria.add('tabindex', this.disabled ? null : '0')
 	}
 
-	getProps(): IButtonProps {
+	getProps(): TProps {
 		return {
 			...super.getProps(),
 			view: this._view,
-		}
+		} as TProps
 	}
 }

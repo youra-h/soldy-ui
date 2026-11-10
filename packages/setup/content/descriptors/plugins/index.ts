@@ -117,3 +117,7 @@ export { BreadcrumbsNamesPluginDescriptor } from './breadcrumbs-names.plugin'
 export { BreadcrumbsFocusPluginDescriptor } from './breadcrumbs-focus.plugin'
 
 export { BadgeAriaPluginDescriptor } from './badge-aria.plugin'
+
+export { ToggleButtonPluginDescriptor } from './toggle-button.plugin'
+
+export { ToggleGroupPluginDescriptor } from './toggle-group.plugin'

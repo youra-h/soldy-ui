@@ -34,6 +34,7 @@ import {
 	TBreadcrumbs,
 	createEngineBreadcrumbs,
 	TAccordion,
+	TToggleGroup,
 	TCalendar,
 	TCollectionComponent,
 	TListBox,
@@ -47,6 +48,7 @@ import {
 	TTags,
 	TToasts,
 	createEngineAccordion,
+	createEngineToggleGroup,
 	createEngineCalendar,
 	createEngineListBox,
 	createEngineMenu,
@@ -63,7 +65,9 @@ import {
 	BreadcrumbsDescriptor,
 	BreadcrumbsCollectionDescriptor,
 	AccordionCollectionDescriptor,
+	ToggleGroupCollectionDescriptor,
 	AccordionDescriptor,
+	ToggleGroupDescriptor,
 	CalendarCollectionDescriptor,
 	CalendarDescriptor,
 	ListBoxCollectionDescriptor,
@@ -189,6 +193,17 @@ const COLLECTIONS: Readonly<Record<string, TCollectionKit>> = {
 			engine,
 			mount: (ctrl) =>
 				mountOver(AccordionDescriptor(), AccordionCollectionDescriptor(), ctrl, engine),
+		}
+	},
+	ToggleGroupCollectionDescriptor: () => {
+		const owner = new TToggleGroup()
+		const engine = createEngineToggleGroup()
+
+		return {
+			owner,
+			engine,
+			mount: (ctrl) =>
+				mountOver(ToggleGroupDescriptor(), ToggleGroupCollectionDescriptor(), ctrl, engine),
 		}
 	},
 	CalendarCollectionDescriptor: () => {

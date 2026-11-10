@@ -148,6 +148,14 @@ const OWN: Record<string, Record<string, string>> = {
 		dot: 'Точка вместо текста или числа',
 		view: 'Заливка или контур',
 	},
+	'toggle-button': {
+		pressed: 'Сохранённое нажатое состояние кнопки',
+		view: 'Оформление кнопки, заданное темой',
+	},
+	'toggle-group': {
+		orientation: 'Ось группы и навигации стрелками',
+		view: 'Оформление кнопок группы, заданное темой',
+	},
 	button: {
 		view: 'Оформление: заливка, только текст, контур или ничего',
 	},
@@ -449,6 +457,12 @@ const OPTIONS: Record<string, Record<string, readonly string[]>> = {
 		anchor_placement: FRAME_PLACEMENTS,
 	},
 	button: { view: BUTTON_VIEWS },
+	'toggle-button': { view: BUTTON_VIEWS },
+	'toggle-group': {
+		view: BUTTON_VIEWS,
+		mode: SELECTION_MODES,
+		orientation: ['horizontal', 'vertical'],
+	},
 	'check-box': { view: CHECK_BOX_VIEWS },
 	badge: { view: BADGE_VIEWS },
 	label: { position: LABEL_POSITIONS },
@@ -513,6 +527,10 @@ const OPTIONS: Record<string, Record<string, readonly string[]>> = {
  * Icon её снимает `NON_EDITABLE_BY_COMPONENT`), а глиф — компонент фреймворка.
  */
 export const PREVIEW_PROPS: Readonly<Record<string, Readonly<Record<string, unknown>>>> = {
+	'toggle-button': { text: 'Жирный' },
+	'toggle-group': {
+		aria_label: 'Форматирование',
+	},
 	badge: { value: 8 },
 	// Подпись — пропом `text`, а не слотом: заданный слот перекрывает проп, и
 	// строка `text` не меняла бы ничего видимого
