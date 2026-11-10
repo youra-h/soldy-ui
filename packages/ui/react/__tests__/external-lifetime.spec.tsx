@@ -33,6 +33,7 @@ import {
 	TBreadcrumbs,
 	TMenuItem,
 	TBadge,
+	TCodeBlock,
 	TButton,
 	TToggleButton,
 	TItemRow,
@@ -96,6 +97,7 @@ import {
 	ToggleGroup,
 	Breadcrumbs,
 	Badge,
+	CodeBlock,
 	Button,
 	ToggleButton,
 	Calendar,
@@ -369,6 +371,28 @@ function overCtrl<T extends { events: TEvented<any> }>(
  * элементами в разметке.
  */
 const COMPONENTS: Readonly<Record<string, Readonly<Record<string, TCase>>>> = {
+	CodeBlock: {
+		'single source': overCtrl(
+			() => new TCodeBlock({ code: 'const x = 1;' }),
+			(ctrl) => <CodeBlock ctrl={ctrl} />,
+		),
+		'title and copy action': overCtrl(
+			() => new TCodeBlock({ code: 'const x = 1;', title: 'main.ts' }),
+			(ctrl) => <CodeBlock ctrl={ctrl} />,
+		),
+		'owned Tabs and engine': () => {
+			const ctrl = new TCodeBlock({
+				snippets: [
+					{ value: 'a', label: 'A', code: 'first' },
+					{ value: 'b', label: 'B', code: 'second' },
+				],
+			})
+			return {
+				node: <CodeBlock ctrl={ctrl} />,
+				buses: [ctrl.events, ctrl.tabs.events, ...engineBuses(ctrl.engine)],
+			}
+		},
+	},
 	Accordion: {
 		'ctrl и движок, элементы из данных': () => {
 			const ctrl = new TAccordion()
