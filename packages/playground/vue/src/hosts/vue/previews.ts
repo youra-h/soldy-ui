@@ -386,7 +386,7 @@ export const PREVIEWS: Record<string, TPreview> = {
 	// visible
 	button: (bind) => h(Button, bind),
 	'toggle-button': (bind) => h(ToggleButton, bind),
-	'toggle-group': (bind) => h(ToggleGroup, bind),
+	'toggle-group': (bind) => h(ToggleGroup, { items: ITEMS, ...bind }),
 
 	input: (bind) => h(Input, bind),
 	'number-input': (bind) => h(NumberInput, bind),

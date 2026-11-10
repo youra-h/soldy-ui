@@ -327,7 +327,7 @@ export const PREVIEWS: Record<string, TPreview> = {
 	// slot overrides the prop, and the `text` row would change nothing visible
 	button: (bind) => <Button {...bind} />,
 	'toggle-button': (bind) => <ToggleButton {...bind} />,
-	'toggle-group': (bind) => <ToggleGroup {...bind} />,
+	'toggle-group': (bind) => <ToggleGroup items={ITEMS} {...bind} />,
 
 	input: (bind) => <Input {...bind} />,
 	'number-input': (bind) => <NumberInput {...bind} />,

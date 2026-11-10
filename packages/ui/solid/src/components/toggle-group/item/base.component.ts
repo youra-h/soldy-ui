@@ -3,11 +3,11 @@ import type { IToggleGroupItem } from '@soxa-ui/core'
 import type { ToggleGroupItemDescriptor, ToggleGroupCollectionItemDescriptor } from '@soxa-ui/setup'
 import type { EventProps, UseDomProps } from '../../../types'
 
-/** События слоя Button (core + плагины), выведены из дескриптора автоматически. */
+/** Component, plugin and collection events are inferred from their descriptors. */
 export type ToggleGroupItemEventProps = EventProps<typeof ToggleGroupItemDescriptor> &
 	EventProps<typeof ToggleGroupCollectionItemDescriptor>
 
-/** Атрибуты — кнопки (корень по умолчанию `<button>`), элемент — `HTMLElement`: `tag` свободен. */
+/** Native button attributes; tag may select another HTMLElement. */
 export type ToggleGroupItemProps = UseDomProps<
 	typeof ToggleGroupItemDescriptor,
 	IToggleGroupItem,

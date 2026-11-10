@@ -1,4 +1,4 @@
-import { BREADCRUMBS_ITEMS } from '@soxa-ui/playground-shared'
+import { BREADCRUMBS_ITEMS, COLLECTION_ITEMS } from '@soxa-ui/playground-shared'
 import { ChangeDetectionStrategy, Component, input, viewChild, viewChildren } from '@angular/core'
 import {
 	RoleIconDirective,
@@ -1224,7 +1224,7 @@ export class ToggleButtonPreview implements TFixture {
 				[disabled]="disabled()"
 				[focused]="focused()"
 				[engine]="engine()"
-				[items]="items()"
+				[items]="items() ?? sampleItems"
 				[mode]="mode()"
 				[orientation]="orientation()"
 				[view]="view()"
@@ -1245,6 +1245,7 @@ export class ToggleGroupPreview implements TFixture {
 	readonly disabled = input<TToggleGroupComponent['disabled']>()
 	readonly focused = input<TToggleGroupComponent['focused']>()
 	readonly engine = input<TToggleGroupComponent['engine']>()
+	readonly sampleItems = COLLECTION_ITEMS
 	readonly items = input<TToggleGroupComponent['items']>()
 	readonly mode = input<TToggleGroupComponent['mode']>()
 	readonly orientation = input<TToggleGroupComponent['orientation']>()

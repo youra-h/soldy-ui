@@ -514,7 +514,7 @@ export const PREVIEWS: Record<string, TPreview> = {
 	// slot overrides the prop, and the `text` row would change nothing visible
 	button: { tag: 'button', is: 'so-button' },
 	'toggle-button': { tag: 'button', is: 'so-toggle-button' },
-	'toggle-group': { tag: 'div', is: 'so-toggle-group' },
+	'toggle-group': { tag: 'div', is: 'so-toggle-group', props: { items: ITEMS } },
 
 	input: { tag: 'div', is: 'so-input' },
 	'number-input': { tag: 'div', is: 'so-number-input' },
