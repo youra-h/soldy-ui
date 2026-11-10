@@ -114,10 +114,18 @@ in the saved reports. This addition does not claim a complete audit of the other
 
 ### Findings and temporary exceptions
 
-| Finding                       | Reproduced scope                                                                                                 | Remediation                                                                                                                    |
-| ----------------------------- | ---------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| `color-contrast`              | Error Toast title/description (3.75:1 and 3.49:1) and disabled Tabs panel text (2.43:1), each adapter and engine | [869fpjgvg](https://app.clickup.com/t/869fpjgvg): owner decision required by the existing theme color policy                   |
-| `scrollable-region-focusable` | Disabled Tabs bar and Table viewport, each adapter and engine                                                    | [869fpjhk9](https://app.clickup.com/t/869fpjhk9): agree keyboard access based on actual overflow and the disabled focus policy |
+| Finding                       | Reproduced scope                                                           | Remediation                                                                                                                                    |
+| ----------------------------- | -------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| `color-contrast`              | Error Toast title/description (3.75:1 and 3.49:1), each adapter and engine | [869fpjgvg](https://app.clickup.com/t/869fpjgvg): owner retained the existing Toast appearance on 2026-11-10; contrast remains an open finding |
+| `scrollable-region-focusable` | Disabled Tabs bar and Table viewport, each adapter and engine              | [869fpjhk9](https://app.clickup.com/t/869fpjhk9): agree keyboard access based on actual overflow and the disabled focus policy                 |
+
+On 2026-11-10 the owner approved keeping disabled Tabs panels readable while dimming only
+the tab bar. The implementation passed the 108 disabled-state browser checks in each engine
+(Chromium and Docker WebKit), covering both color schemes, and the targeted `tabs/disabled`
+axe case in all six adapters in each engine. The 12 Tabs panel color-contrast exceptions were
+removed. These focused results supersede that finding in the historical baseline above;
+they do not constitute a new full-inventory audit. Toast styling and its exceptions remain
+unchanged by the owner's decision.
 
 The exact browser/adapter/case/rule/node entries, reasons and tasks are checked into
 [the exception inventory](packages/playground/vue/browser/axe/exceptions.ts). A node selector must
