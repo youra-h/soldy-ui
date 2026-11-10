@@ -48,5 +48,11 @@ export * from './radio-group'
 export * from './select'
 export * from './calendar'
 export * from './table'
+export {
+	BreadcrumbsDescriptor,
+	BreadcrumbsItemDescriptor,
+	BreadcrumbsCollectionDescriptor,
+	BreadcrumbsCollectionItemDescriptor,
+} from './breadcrumbs.descriptor'
 
 export { BadgeDescriptor } from './badge.descriptor'

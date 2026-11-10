@@ -113,5 +113,7 @@ export { DatePickerNamesPluginDescriptor } from './date-picker-names.plugin'
 export { RatingNamesPluginDescriptor } from './rating-names.plugin'
 export { TextareaNamesPluginDescriptor } from './textarea-names.plugin'
 export { ToastsAnnouncePluginDescriptor } from './toasts-announce.plugin'
+export { BreadcrumbsNamesPluginDescriptor } from './breadcrumbs-names.plugin'
+export { BreadcrumbsFocusPluginDescriptor } from './breadcrumbs-focus.plugin'
 
 export { BadgeAriaPluginDescriptor } from './badge-aria.plugin'

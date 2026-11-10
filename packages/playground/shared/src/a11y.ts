@@ -3,6 +3,7 @@ import type { IPreviewHost } from './host.ts'
 export const A11Y_COMPONENTS = [
 	'button',
 	'badge',
+	'breadcrumbs',
 	'input',
 	'number-input',
 	'textarea',
@@ -88,8 +89,53 @@ function audit(
 	}
 }
 
+const breadcrumbItems = [
+	{ text: 'Home', href: '#home' },
+	{ text: 'Catalog', href: '#catalog' },
+	{ text: 'Phones', href: '#phones' },
+	{ text: 'Smartphones', href: '#smartphones' },
+	{ text: 'Current', _: { active: true } },
+]
+
 /** Explicit consumer inventory; inheritance layers never mount decorative layer previews. */
 export const A11Y_CASES: readonly TAuditCase[] = [
+	audit('breadcrumbs', 'full', '.so-breadcrumbs', { items: breadcrumbItems, maxItems: 0 }, [
+		'.so-breadcrumbs__list',
+		'.so-breadcrumbs__link[href="#home"]',
+		'.so-breadcrumbs__link[aria-current="page"]',
+	]),
+	audit('breadcrumbs', 'collapsed', '.so-breadcrumbs', { items: breadcrumbItems, maxItems: 3 }, [
+		'.so-breadcrumbs__trigger[aria-expanded="false"]',
+		'.so-breadcrumbs__link[aria-current="page"]',
+	]),
+	audit(
+		'breadcrumbs',
+		'overflow',
+		'.so-breadcrumbs',
+		{ items: breadcrumbItems, maxItems: 3 },
+		[
+			'.so-breadcrumbs__trigger[aria-expanded="true"]',
+			'[role="menu"]',
+			'[role="menuitem"][href="#catalog"]',
+		],
+		{ click: ['.so-breadcrumbs__trigger'] },
+	),
+	audit(
+		'breadcrumbs',
+		'disabled-item',
+		'.so-breadcrumbs',
+		{
+			items: [
+				{ text: 'Home', href: '#home', disabled: true },
+				{ text: 'Current', _: { active: true } },
+			],
+			maxItems: 0,
+		},
+		[
+			'.so-breadcrumbs__link[aria-disabled="true"]:not([href])',
+			'.so-breadcrumbs__link[aria-current="page"]',
+		],
+	),
 	audit('badge', 'text', '.so-badge', { value: 'New' }, [
 		'.so-badge__indicator:not([aria-hidden])',
 	]),

@@ -124,3 +124,8 @@ formatName(ruRU.translations.tabs.close, 'Почта') // 'Закрыть Поч
 ## License
 
 [MIT](https://github.com/youra-h/soxa-ui/blob/main/LICENSE)
+
+## Breadcrumbs
+
+Breadcrumbs provides an ordered navigation trail with native links, localized accessible names
+and an overflow menu. See the [API and examples](../../docs/api/breadcrumbs.md).

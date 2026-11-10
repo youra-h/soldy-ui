@@ -9,6 +9,7 @@ import { freezeLocale } from '../locale'
 export const enUS = freezeLocale({
 	tag: 'en-US',
 	translations: {
+		breadcrumbs: { navigation: 'Breadcrumbs', overflow: 'Show hidden breadcrumbs' },
 		modal: { close: 'Close' },
 		dialog: { maximize: 'Maximize' },
 		popover: { close: 'Close' },

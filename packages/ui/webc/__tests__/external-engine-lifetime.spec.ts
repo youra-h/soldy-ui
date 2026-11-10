@@ -1,3 +1,5 @@
+import { TBreadcrumbs, createEngineBreadcrumbs } from '@soxa-ui/core'
+import { TBreadcrumbsElement } from '@soxa-ui/webc'
 /**
  * Подключения над движком и владельцем снаружи ничего не оставляют на их шинах.
  *
@@ -720,5 +722,33 @@ describe('DatePicker над владельцем снаружи', () => {
 		})
 
 		expect(document.querySelector('.so-date-picker__panel')).toBeNull()
+	})
+})
+
+describe('Breadcrumbs external engine lifetime', () => {
+	it('releases subscriptions after repeated mounts', async () => {
+		const owner = new TBreadcrumbs()
+		const engine = createEngineBreadcrumbs({
+			owner,
+			items: [
+				{ text: 'Home', href: '#home' },
+				{ text: 'Page', _: { active: true } },
+			],
+		})
+		const live = watchBuses([
+			owner.events,
+			engine.events,
+			...Object.values(engine.extensions).flatMap((extension) =>
+				extension ? [extension.events] : [],
+			),
+			engine.extensions.breadcrumbs.menu.events,
+		])
+
+		const element = document.createElement('nav', { is: 'so-breadcrumbs' })
+		if (!(element instanceof TBreadcrumbsElement))
+			throw new Error('Breadcrumbs registration missing')
+		element.ctrl = owner
+		element.engine = engine
+		await moveThriceAndRemove(element, live, 'so-breadcrumbs-item')
 	})
 })

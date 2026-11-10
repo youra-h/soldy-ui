@@ -1,0 +1,103 @@
+/* Breadcrumbs is a wrapping navigation row. Each collection item keeps its li
+ * while collapsed ancestors are represented by Menu items at the overflow stop.
+ * The first visible li hosts that stop immediately after its own native anchor.
+ *
+ * Root variables expose the gap scale and separator geometry to themes. Gap
+ * defaults follow Button's shared scale; a theme can override Breadcrumbs alone.
+ * Each size resolves its step into --so-breadcrumbs-gap for the list and items.
+ * Text uses ItemRow's font scale; appearance and separator content belong to the theme. */
+
+:root {
+	--so-breadcrumbs-gap-sm: var(--so-button-gap-sm);
+	--so-breadcrumbs-gap-normal: var(--so-button-gap-normal);
+	--so-breadcrumbs-gap-lg: var(--so-button-gap-lg);
+	--so-breadcrumbs-gap-xl: var(--so-button-gap-xl);
+	--so-breadcrumbs-gap-2xl: var(--so-button-gap-2xl);
+
+	--so-breadcrumbs-separator-size: 0.5em;
+}
+
+/* Resolve the normal step locally so ancestor overrides of the scale are inherited. */
+.so-breadcrumbs,
+.so-breadcrumbs-item {
+	--so-breadcrumbs-gap: var(--so-breadcrumbs-gap-normal);
+	min-inline-size: 0;
+}
+
+.so-breadcrumbs__list {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: var(--so-breadcrumbs-gap);
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.so-breadcrumbs-item {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--so-breadcrumbs-gap);
+	max-inline-size: 100%;
+}
+
+/* The link keeps ItemRow's slots and font, with inline navigation geometry. */
+.so-breadcrumbs__link {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--so-breadcrumbs-gap);
+	min-inline-size: 0;
+	height: auto;
+	padding-inline: 0;
+	cursor: default;
+	overflow-wrap: anywhere;
+}
+
+.so-breadcrumbs__link[href] {
+	cursor: pointer;
+}
+
+/* Long labels wrap with the trail instead of inheriting Button's ellipsis. */
+.so-breadcrumbs__link > .so-button__text {
+	white-space: normal;
+	overflow: visible;
+	text-overflow: clip;
+	text-align: start;
+}
+
+.so-breadcrumbs__separator {
+	display: inline-flex;
+	flex: none;
+	justify-content: center;
+	inline-size: var(--so-breadcrumbs-separator-size);
+	user-select: none;
+}
+
+.so-breadcrumbs--size-sm,
+.so-breadcrumbs-item--size-sm {
+	--so-breadcrumbs-gap: var(--so-breadcrumbs-gap-sm);
+}
+
+.so-breadcrumbs--size-lg,
+.so-breadcrumbs-item--size-lg {
+	--so-breadcrumbs-gap: var(--so-breadcrumbs-gap-lg);
+}
+
+.so-breadcrumbs--size-xl,
+.so-breadcrumbs-item--size-xl {
+	--so-breadcrumbs-gap: var(--so-breadcrumbs-gap-xl);
+}
+
+.so-breadcrumbs--size-2xl,
+.so-breadcrumbs-item--size-2xl {
+	--so-breadcrumbs-gap: var(--so-breadcrumbs-gap-2xl);
+}
+
+/* Fade the source item once; embedded controls inherit the reset opacity. */
+.so-breadcrumbs-item[data-disabled='true'] {
+	opacity: var(--so-disabled-opacity);
+}
+
+.so-breadcrumbs-item[data-disabled='true'] > * {
+	--so-disabled-opacity: 1;
+}

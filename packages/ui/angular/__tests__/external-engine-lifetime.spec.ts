@@ -1,3 +1,5 @@
+import { TBreadcrumbs, createEngineBreadcrumbs } from '@soxa-ui/core'
+import { TBreadcrumbsComponent } from '@soxa-ui/angular'
 /**
  * Монтирование над движком и владельцем снаружи ничего не оставляет на их шинах.
  *
@@ -280,6 +282,44 @@ describe('ListBox над движком снаружи без ctrl, перене
 		fixture.destroy()
 
 		expect(engine.options.get('owner')).toBeUndefined()
+		expect(live()).toEqual([])
+	})
+})
+
+describe('Breadcrumbs external engine lifetime', () => {
+	it('releases subscriptions after repeated mounts', () => {
+		const owner = new TBreadcrumbs()
+		const engine = createEngineBreadcrumbs({
+			owner,
+			items: [
+				{ text: 'Home', href: '#home' },
+				{ text: 'Page', _: { active: true } },
+			],
+		})
+		const live = watchBuses([
+			owner.events,
+			engine.events,
+			...Object.values(engine.extensions).flatMap((extension) =>
+				extension ? [extension.events] : [],
+			),
+			engine.extensions.breadcrumbs.menu.events,
+		])
+
+		@Component({
+			selector: 'probe-breadcrumbs-external',
+			imports: [TBreadcrumbsComponent],
+			template: `<nav so-breadcrumbs [ctrl]="owner" [engine]="engine"></nav>`,
+		})
+		class BreadcrumbsExternalHost {
+			readonly owner = owner
+			readonly engine = engine
+		}
+		for (let index = 0; index < 3; index++) {
+			const fixture = TestBed.createComponent(BreadcrumbsExternalHost)
+			fixture.detectChanges()
+			expect(fixture.nativeElement.querySelectorAll('.so-breadcrumbs-item')).toHaveLength(2)
+			fixture.destroy()
+		}
 		expect(live()).toEqual([])
 	})
 })

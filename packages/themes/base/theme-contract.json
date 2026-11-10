@@ -26,6 +26,18 @@
       "scope": "Badge"
     },
     {
+      "name": "so-breadcrumbs",
+      "sources": ["packages/core/src/components/custom/breadcrumbs/breadcrumbs.class.ts"],
+      "description": "Navigation landmark containing an ordered trail of locations.",
+      "scope": "so-breadcrumbs"
+    },
+    {
+      "name": "so-breadcrumbs-item",
+      "sources": ["packages/core/src/components/custom/breadcrumbs/item/item.class.ts"],
+      "description": "Mounted breadcrumb collection item, retaining its identity while collapsed.",
+      "scope": "so-breadcrumbs-item"
+    },
+    {
       "name": "so-button",
       "sources": ["packages/core/src/components/custom/button/button.class.ts"],
       "description": "Root of button. Inherited component classes use the concrete component's base name.",
@@ -398,6 +410,71 @@
       ],
       "description": "Badge text or dot; receives the Badge ARIA set.",
       "scope": "Badge"
+    },
+    {
+      "name": "so-breadcrumbs__link",
+      "sources": [
+        "packages/ui/angular/src/components/breadcrumbs/item/breadcrumbs-item.component.html",
+        "packages/ui/react/src/components/breadcrumbs/item/Item.tsx",
+        "packages/ui/solid/src/components/breadcrumbs/item/Item.tsx",
+        "packages/ui/svelte/src/components/breadcrumbs/item/Item.svelte",
+        "packages/ui/vue/src/components/breadcrumbs/item/Item.vue",
+        "packages/ui/webc/src/components/breadcrumbs/item/breadcrumbs-item.template.ts"
+      ],
+      "description": "Native anchor for a breadcrumb; without href it presents text, and activation determines aria-current.",
+      "scope": "so-breadcrumbs__link"
+    },
+    {
+      "name": "so-breadcrumbs__list",
+      "sources": [
+        "packages/ui/angular/src/components/breadcrumbs/breadcrumbs.component.html",
+        "packages/ui/react/src/components/breadcrumbs/Breadcrumbs.tsx",
+        "packages/ui/solid/src/components/breadcrumbs/Breadcrumbs.tsx",
+        "packages/ui/svelte/src/components/breadcrumbs/Breadcrumbs.svelte",
+        "packages/ui/vue/src/components/breadcrumbs/Breadcrumbs.vue",
+        "packages/ui/webc/src/components/breadcrumbs/breadcrumbs.template.ts"
+      ],
+      "description": "Ordered list of mounted breadcrumb items; collapsed ancestors remain in the collection.",
+      "scope": "so-breadcrumbs__list"
+    },
+    {
+      "name": "so-breadcrumbs__overflow",
+      "sources": [
+        "packages/ui/angular/src/components/breadcrumbs/item/breadcrumbs-item.component.html",
+        "packages/ui/react/src/components/breadcrumbs/item/Item.tsx",
+        "packages/ui/solid/src/components/breadcrumbs/item/Item.tsx",
+        "packages/ui/svelte/src/components/breadcrumbs/item/Item.svelte",
+        "packages/ui/vue/src/components/breadcrumbs/item/Item.vue",
+        "packages/ui/webc/src/components/breadcrumbs/item/breadcrumbs-item.template.ts"
+      ],
+      "description": "Internal Menu wrapper anchoring the hidden-location panel.",
+      "scope": "so-breadcrumbs__overflow"
+    },
+    {
+      "name": "so-breadcrumbs__separator",
+      "sources": [
+        "packages/ui/angular/src/components/breadcrumbs/item/breadcrumbs-item.component.html",
+        "packages/ui/react/src/components/breadcrumbs/item/Item.tsx",
+        "packages/ui/solid/src/components/breadcrumbs/item/Item.tsx",
+        "packages/ui/svelte/src/components/breadcrumbs/item/Item.svelte",
+        "packages/ui/vue/src/components/breadcrumbs/item/Item.vue",
+        "packages/ui/webc/src/components/breadcrumbs/item/breadcrumbs-item.template.ts"
+      ],
+      "description": "Decorative separator before a location; hidden from the accessibility tree.",
+      "scope": "so-breadcrumbs__separator"
+    },
+    {
+      "name": "so-breadcrumbs__trigger",
+      "sources": [
+        "packages/ui/angular/src/components/breadcrumbs/item/breadcrumbs-item.component.html",
+        "packages/ui/react/src/components/breadcrumbs/item/Item.tsx",
+        "packages/ui/solid/src/components/breadcrumbs/item/Item.tsx",
+        "packages/ui/svelte/src/components/breadcrumbs/item/Item.svelte",
+        "packages/ui/vue/src/components/breadcrumbs/item/Item.vue",
+        "packages/ui/webc/src/components/breadcrumbs/item/breadcrumbs-item.template.ts"
+      ],
+      "description": "Localized overflow Button opening the hidden-location Menu.",
+      "scope": "so-breadcrumbs__trigger"
     },
     {
       "name": "so-button__text",
@@ -1388,21 +1465,25 @@
         "packages/ui/angular/src/components/menu/popover-item/menu-popover-item.component.html",
         "packages/ui/angular/src/components/menu/radio-item/menu-radio-item.component.html",
         "packages/ui/angular/src/components/menu/submenu/menu-submenu.component.html",
+        "packages/ui/react/src/components/breadcrumbs/overflow-item/Item.tsx",
         "packages/ui/react/src/components/menu/checkbox-item/CheckboxItem.tsx",
         "packages/ui/react/src/components/menu/item/Item.tsx",
         "packages/ui/react/src/components/menu/popover-item/PopoverItem.tsx",
         "packages/ui/react/src/components/menu/radio-item/RadioItem.tsx",
         "packages/ui/react/src/components/menu/submenu/Submenu.tsx",
+        "packages/ui/solid/src/components/breadcrumbs/overflow-item/Item.tsx",
         "packages/ui/solid/src/components/menu/checkbox-item/CheckboxItem.tsx",
         "packages/ui/solid/src/components/menu/item/Item.tsx",
         "packages/ui/solid/src/components/menu/popover-item/PopoverItem.tsx",
         "packages/ui/solid/src/components/menu/radio-item/RadioItem.tsx",
         "packages/ui/solid/src/components/menu/submenu/Submenu.tsx",
+        "packages/ui/svelte/src/components/breadcrumbs/overflow-item/Item.svelte",
         "packages/ui/svelte/src/components/menu/checkbox-item/CheckboxItem.svelte",
         "packages/ui/svelte/src/components/menu/item/Item.svelte",
         "packages/ui/svelte/src/components/menu/popover-item/PopoverItem.svelte",
         "packages/ui/svelte/src/components/menu/radio-item/RadioItem.svelte",
         "packages/ui/svelte/src/components/menu/submenu/Submenu.svelte",
+        "packages/ui/vue/src/components/breadcrumbs/overflow-item/Item.vue",
         "packages/ui/vue/src/components/menu/checkbox-item/CheckboxItem.vue",
         "packages/ui/vue/src/components/menu/item/Item.vue",
         "packages/ui/vue/src/components/menu/popover-item/PopoverItem.vue",
@@ -1455,15 +1536,19 @@
         "packages/ui/angular/src/components/menu/checkbox-item/menu-checkbox-item.component.html",
         "packages/ui/angular/src/components/menu/item/menu-item.component.html",
         "packages/ui/angular/src/components/menu/radio-item/menu-radio-item.component.html",
+        "packages/ui/react/src/components/breadcrumbs/overflow-item/Item.tsx",
         "packages/ui/react/src/components/menu/checkbox-item/CheckboxItem.tsx",
         "packages/ui/react/src/components/menu/item/Item.tsx",
         "packages/ui/react/src/components/menu/radio-item/RadioItem.tsx",
+        "packages/ui/solid/src/components/breadcrumbs/overflow-item/Item.tsx",
         "packages/ui/solid/src/components/menu/checkbox-item/CheckboxItem.tsx",
         "packages/ui/solid/src/components/menu/item/Item.tsx",
         "packages/ui/solid/src/components/menu/radio-item/RadioItem.tsx",
+        "packages/ui/svelte/src/components/breadcrumbs/overflow-item/Item.svelte",
         "packages/ui/svelte/src/components/menu/checkbox-item/CheckboxItem.svelte",
         "packages/ui/svelte/src/components/menu/item/Item.svelte",
         "packages/ui/svelte/src/components/menu/radio-item/RadioItem.svelte",
+        "packages/ui/vue/src/components/breadcrumbs/overflow-item/Item.vue",
         "packages/ui/vue/src/components/menu/checkbox-item/CheckboxItem.vue",
         "packages/ui/vue/src/components/menu/item/Item.vue",
         "packages/ui/vue/src/components/menu/radio-item/RadioItem.vue",
@@ -2828,7 +2913,7 @@
     {
       "name": "data-current",
       "sources": ["packages/core/src/components/custom/slider/slider.class.ts"],
-      "description": "Mark equals the current slider value.",
+      "description": "Whether a Slider mark represents the current value.",
       "scope": "Slider mark",
       "values": "true | false",
       "presence": "TDataset serializes false as \"false\"; null/undefined removes the attribute. See scope for the bound DOM node."

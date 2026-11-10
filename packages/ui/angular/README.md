@@ -613,6 +613,11 @@ undefined for Input, false for CheckBox, or zero for Slider); the form retains `
 A non-nullable FormControl resets to its own initial value. Use one form binding per control;
 `[(value)]` remains available for components managed without Angular Forms.
 
+## Breadcrumbs
+
+Breadcrumbs provides an ordered navigation trail with native links, localized accessible names
+and an overflow menu. See the [API and examples](../../../docs/api/breadcrumbs.md).
+
 ## Badge
 
 Badge is a noninteractive inline label, capped numeric counter or dot. Set its text with

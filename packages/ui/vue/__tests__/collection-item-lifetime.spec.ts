@@ -14,7 +14,7 @@ import { describe, it, expect, afterEach, vi } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { nextTick } from 'vue'
 import { TEvented, createEngine } from '@soxa-ui/core'
-import { Accordion, ListBox, Tabs, Tags } from '@soxa-ui/vue'
+import { Breadcrumbs, Accordion, ListBox, Tabs, Tags } from '@soxa-ui/vue'
 
 let wrapper: ReturnType<typeof mount> | null = null
 
@@ -56,6 +56,7 @@ function watchSubscriptions(buses: readonly unknown[]): () => number {
 describe.each([
 	['ListBox', ListBox],
 	['Tabs', Tabs],
+	['Breadcrumbs', Breadcrumbs],
 	['Accordion', Accordion],
 	['Tags', Tags],
 ] as const)('%s: фильтр прячет и показывает элемент', (_name, Component) => {
@@ -66,7 +67,10 @@ describe.each([
 
 		// Отбор без расширения фильтра — тот же механизм, что у `TFilterExtension`
 		driver.events.on('items:query:before', (e) => {
-			if (hidden) e.items = e.items.filter((item) => item.value !== 'b')
+			if (hidden)
+				e.items = e.items.filter((item) =>
+					_name === 'Breadcrumbs' ? item.text !== ITEMS[1]?.text : item.value !== 'b',
+				)
 		})
 
 		wrapper = mount(Component, { props: { engine }, attachTo: document.body })

@@ -4,6 +4,41 @@ import { defineBrowserCommand, playwright } from '@vitest/browser-playwright'
 import { aliases, constants, plugins } from './vite.base.ts'
 import { saveA11yReport } from './browser/axe/report-command.ts'
 
+/** Observe a real native link activation and close any browser-created page. */
+const activateNativeLink = defineBrowserCommand<
+	[selector: string, action: 'primary' | 'middle' | 'modified' | 'enter' | 'cancel']
+>(async ({ page, frame }, selector, action) => {
+	const link = (await frame()).locator(selector).first()
+	const opened = page
+		.context()
+		.waitForEvent('page', { timeout: action === 'cancel' ? 500 : 5000 })
+		.catch((error) => {
+			if (action === 'cancel' && error instanceof Error && error.name === 'TimeoutError')
+				return null
+			throw error
+		})
+	try {
+		if (action === 'enter') await link.press('Enter')
+		else
+			await link.click({
+				button: action === 'middle' ? 'middle' : 'left',
+				modifiers: action === 'modified' ? ['ControlOrMeta'] : [],
+			})
+		const popup = await opened
+		if (!popup) return 'no-page'
+		try {
+			await popup.waitForLoadState()
+			return popup.url()
+		} finally {
+			await popup.close()
+		}
+	} finally {
+		await page.keyboard.up('Control')
+		await page.keyboard.up('Meta')
+		await page.bringToFront()
+	}
+})
+
 /**
  * The mouse button apart from movement. `userEvent` presses and releases it
  * only together with movement (`click`, `dragAndDrop`), while a gesture may
@@ -374,6 +409,7 @@ export default defineConfig({
 					})),
 			],
 			commands: {
+				activateNativeLink,
 				saveA11yReport,
 				mouseDown,
 				mouseUp,

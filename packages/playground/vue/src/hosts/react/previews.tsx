@@ -1,3 +1,4 @@
+import { BREADCRUMBS_ITEMS } from '@soxa-ui/playground-shared'
 import { useRef, useState, type ReactNode } from 'react'
 import type { TToastsItemType, TValuePayload } from '@soxa-ui/core'
 import type {
@@ -19,6 +20,7 @@ import {
 } from '@soxa-ui/playground-shared'
 import {
 	Accordion,
+	Breadcrumbs,
 	Button,
 	Calendar,
 	CheckBox,
@@ -424,6 +426,7 @@ export const PREVIEWS: Record<string, TPreview> = {
 	// Pagination has no content: it puts the window's pages into its collection
 	// itself. The language of the numbers and the arrows' names comes from the
 	// header
+	breadcrumbs: (bind) => <Breadcrumbs items={BREADCRUMBS_ITEMS} {...bind} />,
 	pagination: (bind) => <Pagination {...bind} />,
 
 	// The scroller's content is plain markup: it has no collection. Each item is

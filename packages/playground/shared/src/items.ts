@@ -151,3 +151,13 @@ export const TABLE_COLUMNS = [
 		maxWidth: 200,
 	},
 ]
+
+/** Ordered native-link trail shared by the Breadcrumbs previews. */
+export const BREADCRUMBS_ITEMS = [
+	{ text: 'Главная', href: '#home' },
+	{ text: 'Каталог', href: '#catalog' },
+	{ text: 'Электроника', href: '#electronics' },
+	{ text: 'Телефоны', href: '#phones' },
+	{ text: 'Смартфоны', href: '#smartphones' },
+	{ text: 'Товар', _: { active: true } },
+]

@@ -25,11 +25,21 @@ import {
 	createEngineMenu,
 	createEngineRadioGroup,
 	createEngineSelect,
+	createEngineBreadcrumbs,
 	createEngineTabs,
 	createEngineTags,
 } from '@soxa-ui/core'
 import type { TCollectionEngine } from '@soxa-ui/core'
-import { Accordion, ListBox, Menu, RadioGroup, Select, Tabs, Tags } from '@soxa-ui/solid'
+import {
+	Breadcrumbs,
+	Accordion,
+	ListBox,
+	Menu,
+	RadioGroup,
+	Select,
+	Tabs,
+	Tags,
+} from '@soxa-ui/solid'
 import { mount } from './mount'
 
 afterEach(() => {
@@ -74,6 +84,7 @@ const COLLECTIONS: ReadonlyArray<
 > = [
 	['ListBox', ListBox],
 	['Tabs', Tabs],
+	['Breadcrumbs', Breadcrumbs],
 	['Accordion', Accordion],
 	['RadioGroup', RadioGroup],
 ]
@@ -86,7 +97,10 @@ describe.each(COLLECTIONS)('%s: фильтр прячет и показывае�
 
 		// Отбор без расширения фильтра — тот же механизм, что у `TFilterExtension`
 		driver.events.on('items:query:before', (e) => {
-			if (hidden) e.items = e.items.filter((item) => item.value !== 'b')
+			if (hidden)
+				e.items = e.items.filter((item) =>
+					_name === 'Breadcrumbs' ? item.text !== ITEMS[1]?.text : item.value !== 'b',
+				)
 		})
 
 		mount(() => <Collection engine={engine} />)
@@ -154,6 +168,15 @@ const MARKUP: ReadonlyArray<
 			<Select engine={engine}>
 				<Select.Item class="probe" value="a" text="A" />
 			</Select>
+		),
+	],
+	[
+		'Breadcrumbs',
+		createEngineBreadcrumbs,
+		(engine) => (
+			<Breadcrumbs engine={engine}>
+				<Breadcrumbs.Item class="probe" text="A" href="#a" />
+			</Breadcrumbs>
 		),
 	],
 	[

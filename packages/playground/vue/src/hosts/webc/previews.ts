@@ -1,3 +1,4 @@
+import { BREADCRUMBS_ITEMS } from '@soxa-ui/playground-shared'
 import type { TToastsItemType } from '@soxa-ui/core'
 import {
 	COLLECTION_ITEMS,
@@ -600,6 +601,7 @@ export const PREVIEWS: Record<string, TPreview> = {
 	// Pagination has no content: it puts the window's pages into the collection
 	// itself, and its template draws them. The language of numbers and arrow
 	// names comes from the header
+	breadcrumbs: { tag: 'nav', is: 'so-breadcrumbs', props: { items: BREADCRUMBS_ITEMS } },
 	pagination: { tag: 'nav', is: 'so-pagination' },
 
 	// The trigger is a Button in the `trigger` slot: it gets the link to the panel

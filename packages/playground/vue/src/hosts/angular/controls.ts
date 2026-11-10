@@ -1,3 +1,4 @@
+import { BREADCRUMBS_ITEMS } from '@soxa-ui/playground-shared'
 import { ChangeDetectionStrategy, Component, input, viewChild, viewChildren } from '@angular/core'
 import {
 	RoleIconDirective,
@@ -12,6 +13,7 @@ import {
 	TInputComponent,
 	TLabelComponent,
 	TNumberInputComponent,
+	TBreadcrumbsComponent,
 	TPaginationComponent,
 	TProgressLinearComponent,
 	TProgressSpinnerComponent,
@@ -1072,6 +1074,44 @@ export class SkeletonPreview implements TFixture {
 	readonly height = input<TSkeletonComponent['height']>()
 	readonly copy = viewChild.required(CopyDirective)
 	readonly subjects = viewChildren(TSkeletonComponent)
+}
+
+/** Ordered navigation trail from the shared registry fixture. */
+@Component({
+	selector: 'pg-breadcrumbs-preview',
+	imports: [TBreadcrumbsComponent, CopyDirective],
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	host: { style: 'display: contents' },
+	template: `<ng-template pg-copy
+		><nav
+			so-breadcrumbs
+			[ctrl]="ctrl()"
+			[rendered]="rendered()"
+			[visible]="visible()"
+			[direction]="direction()"
+			[size]="size()"
+			[variant]="variant()"
+			[items]="items() ?? entries"
+			[engine]="engine()"
+			[maxItems]="maxItems()"
+		></nav
+	></ng-template>`,
+})
+export class BreadcrumbsPreview implements TFixture {
+	readonly ctrl = input<TBreadcrumbsComponent['ctrl']>()
+	readonly rendered = input<TBreadcrumbsComponent['rendered']>()
+	readonly visible = input<TBreadcrumbsComponent['visible']>()
+	readonly direction = input<TBreadcrumbsComponent['direction']>()
+	readonly size = input<TBreadcrumbsComponent['size']>()
+	readonly variant = input<TBreadcrumbsComponent['variant']>()
+	readonly items = input<TBreadcrumbsComponent['items']>()
+	readonly engine = input<TBreadcrumbsComponent['engine']>()
+	readonly maxItems = input<TBreadcrumbsComponent['maxItems']>()
+	readonly copy = viewChild.required(CopyDirective)
+	readonly subjects = viewChildren(TBreadcrumbsComponent)
+
+	// The host writes undefined for absent props; choose fixture data when reading the input.
+	protected readonly entries = BREADCRUMBS_ITEMS
 }
 
 @Component({

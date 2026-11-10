@@ -4,6 +4,7 @@ import { freezeLocale } from '../locale'
 export const frFR = freezeLocale({
 	tag: 'fr-FR',
 	translations: {
+		breadcrumbs: { navigation: 'Fil d’Ariane', overflow: 'Afficher les éléments masqués' },
 		modal: { close: 'Fermer' },
 		dialog: { maximize: 'Agrandir' },
 		popover: { close: 'Fermer' },

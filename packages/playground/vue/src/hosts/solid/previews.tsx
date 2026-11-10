@@ -1,3 +1,4 @@
+import { BREADCRUMBS_ITEMS } from '@soxa-ui/playground-shared'
 import {
 	For,
 	Show,
@@ -28,6 +29,7 @@ import type {
 } from '@soxa-ui/setup'
 import {
 	Accordion,
+	Breadcrumbs,
 	Button,
 	Calendar,
 	CheckBox,
@@ -467,6 +469,7 @@ export const PREVIEWS: Record<string, TPreview> = {
 	// Pagination has no content: it puts the window's pages into its collection
 	// itself. The language of the numbers and the arrows' names comes from the
 	// header
+	breadcrumbs: (bind) => <Breadcrumbs items={BREADCRUMBS_ITEMS} {...bind()} />,
 	pagination: (bind) => <Pagination {...bind()} />,
 
 	// The trigger is a Button: it takes the binding to the panel and the pressed

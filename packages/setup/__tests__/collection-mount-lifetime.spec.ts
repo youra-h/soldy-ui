@@ -31,6 +31,8 @@
 
 import { describe, it, expect } from 'vitest'
 import {
+	TBreadcrumbs,
+	createEngineBreadcrumbs,
 	TAccordion,
 	TCalendar,
 	TCollectionComponent,
@@ -58,6 +60,8 @@ import {
 } from '@soxa-ui/core'
 import type { TCollectionEngine } from '@soxa-ui/core'
 import {
+	BreadcrumbsDescriptor,
+	BreadcrumbsCollectionDescriptor,
 	AccordionCollectionDescriptor,
 	AccordionDescriptor,
 	CalendarCollectionDescriptor,
@@ -166,6 +170,16 @@ function mountOver<TFacade extends TCollectionOwner, TPlugins extends IPluginsCo
 
 /** Коллекции экспорта — ключ по дескриптору фасада коллекции. */
 const COLLECTIONS: Readonly<Record<string, TCollectionKit>> = {
+	BreadcrumbsCollectionDescriptor: () => {
+		const owner = new TBreadcrumbs()
+		const engine = createEngineBreadcrumbs()
+		return {
+			owner,
+			engine,
+			mount: (ctrl) =>
+				mountOver(BreadcrumbsDescriptor(), BreadcrumbsCollectionDescriptor(), ctrl, engine),
+		}
+	},
 	AccordionCollectionDescriptor: () => {
 		const owner = new TAccordion()
 		const engine = createEngineAccordion()

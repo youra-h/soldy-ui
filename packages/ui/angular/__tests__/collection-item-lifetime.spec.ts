@@ -17,6 +17,7 @@ import { TEvented, TListBox, createEngine, createEngineListBox } from '@soxa-ui/
 import type { TCollectionEngine } from '@soxa-ui/core'
 import {
 	TAccordionComponent,
+	TBreadcrumbsComponent,
 	TListBoxComponent,
 	TRadioGroupComponent,
 	TTabsComponent,
@@ -105,9 +106,19 @@ class RadioGroupHost {
 }
 
 /** Коллекции адаптера: все берут движок снаружи входом `engine`. */
+@Component({
+	selector: 'probe-breadcrumbs',
+	imports: [TBreadcrumbsComponent],
+	template: `<nav so-breadcrumbs [engine]="engine"></nav>`,
+})
+class BreadcrumbsHost {
+	readonly engine = engine
+}
+
 const COLLECTIONS: ReadonlyArray<readonly [string, Type<unknown>]> = [
 	['ListBox', ListBoxHost],
 	['Tabs', TabsHost],
+	['Breadcrumbs', BreadcrumbsHost],
 	['Accordion', AccordionHost],
 	['RadioGroup', RadioGroupHost],
 ]
@@ -120,7 +131,10 @@ describe.each(COLLECTIONS)('%s: фильтр прячет и показывае�
 
 		// Отбор без расширения фильтра — тот же механизм, что у `TFilterExtension`
 		driver.events.on('items:query:before', (e) => {
-			if (hidden) e.items = e.items.filter((item) => item.value !== 'b')
+			if (hidden)
+				e.items = e.items.filter((item) =>
+					_name === 'Breadcrumbs' ? item.text !== ITEMS[1]?.text : item.value !== 'b',
+				)
 		})
 
 		engine = items

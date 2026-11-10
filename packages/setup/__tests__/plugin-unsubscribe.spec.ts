@@ -26,6 +26,7 @@
 import { describe, it, expect } from 'vitest'
 import {
 	TAccordion,
+	TBreadcrumbs,
 	TCalendar,
 	TListBox,
 	TMenu,
@@ -38,6 +39,7 @@ import {
 	TTags,
 	TToasts,
 	createEngineAccordion,
+	createEngineBreadcrumbs,
 	createEngineCalendar,
 	createEngineListBox,
 	createEngineMenu,
@@ -85,6 +87,11 @@ const ENGINES: Readonly<Record<string, () => TOwnedEngine>> = {
 		const owner = new TAccordion()
 
 		return { owner, engine: createEngineAccordion({ owner }) }
+	},
+	BreadcrumbsDescriptor: () => {
+		const owner = new TBreadcrumbs()
+
+		return { owner, engine: createEngineBreadcrumbs({ owner }) }
 	},
 	CalendarDescriptor: () => {
 		const owner = new TCalendar()

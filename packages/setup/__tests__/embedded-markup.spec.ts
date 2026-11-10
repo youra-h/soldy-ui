@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import { readFileSync, readdirSync, statSync } from 'node:fs'
 import { join, resolve, relative, sep } from 'node:path'
+import ts from 'typescript'
 import { TButton } from '@soxa-ui/core'
 
 /**
@@ -158,11 +159,53 @@ type TMarkupComponent = {
 }
 
 /** Компоненты soxa в разметке, без комментариев. */
-function* componentsOf(source: string): Generator<TMarkupComponent> {
-	const code = stripComments(source)
+/** Parse actual JSX opening nodes, excluding TypeScript type arguments. */
+function* jsxComponentsOf(source: string): Generator<TMarkupComponent> {
+	const file = ts.createSourceFile(
+		'component.tsx',
+		source,
+		ts.ScriptTarget.Latest,
+		true,
+		ts.ScriptKind.TSX,
+	)
+	const found: TMarkupComponent[] = []
+	const visit = (node: ts.Node): void => {
+		if (ts.isJsxOpeningElement(node) || ts.isJsxSelfClosingElement(node)) {
+			const element = node.tagName.getText(file),
+				opening = node.getText(file),
+				raw = componentOf(element, opening)
+			if (raw !== null)
+				found.push({
+					raw,
+					name: raw.startsWith('so-') ? pascal(raw.slice(3)) : raw,
+					element,
+					opening,
+				})
+		}
+		ts.forEachChild(node, visit)
+	}
+	visit(file)
+	yield* found
+}
 
+/** Choose the parser at the file boundary. */
+function componentsIn(file: string): Iterable<TMarkupComponent> {
+	const source = readFileSync(file, 'utf-8')
+	return file.endsWith('.tsx') ? jsxComponentsOf(source) : componentsOf(source)
+}
+
+function* componentsOf(source: string): Generator<TMarkupComponent> {
+	const code = stripComments(source).replace(/<script\b[^>]*>[\s\S]*?<\/script>/g, ' ')
 	for (const match of code.matchAll(/<([A-Za-z][\w-]*)(?=[\s/>])/g)) {
 		const opening = readTag(code, match.index)
+		const before = /[A-Za-z_$][\w$]*$/.exec(code.slice(0, match.index))?.[0]
+		if (
+			before &&
+			before !== 'return' &&
+			/^<\w+>$/.test(opening) &&
+			/^\s*\(/.test(code.slice(match.index + opening.length))
+		)
+			continue
 		const raw = componentOf(match[1], opening)
 
 		if (raw === null) continue
@@ -175,9 +218,16 @@ function* componentsOf(source: string): Generator<TMarkupComponent> {
 
 /** Вложенные компоненты soxa без признака: `тег` для отчёта. */
 function findUnmarked(source: string, owner: string, names: readonly string[]): string[] {
+	return unmarked(componentsOf(source), owner, names)
+}
+function unmarked(
+	components: Iterable<TMarkupComponent>,
+	owner: string,
+	names: readonly string[],
+): string[] {
 	const found: string[] = []
 
-	for (const { raw, name, opening } of componentsOf(source)) {
+	for (const { raw, name, opening } of components) {
 		if (!names.some((known) => name === known || name.startsWith(known))) continue
 		if (name.startsWith(owner)) continue
 
@@ -245,7 +295,13 @@ type TButtonDetail = {
 
 /** Детали-кнопки разметки: вложенные Button и ItemRow. */
 function* buttonDetails(source: string, owner: string): Generator<TButtonDetail> {
-	for (const { raw, name, element, opening } of componentsOf(source)) {
+	yield* detailsOf(componentsOf(source), owner)
+}
+function* detailsOf(
+	components: Iterable<TMarkupComponent>,
+	owner: string,
+): Generator<TButtonDetail> {
+	for (const { raw, name, element, opening } of components) {
 		if (!BUTTON_DETAILS.has(name) || owner === name) continue
 
 		const own = withoutExpressions(opening)
@@ -290,8 +346,22 @@ describe('вложенные компоненты разметки несут п
 		['<span class="so-button"></span>', 'Tags', []],
 		['<TagsItem :ctrl="item" />', 'Tags', []],
 		['<!-- <Button /> -->', 'Tags', []],
+		['<script lang="ts">const value=fn<Button>()</script><Button embedded="x" />', 'Tags', []],
+		['<ItemRow embedded="x" {...toControlAttrs<MenuItemAttributes>(props)} />', 'Tags', []],
 	])('%s в %s', (source, owner, expected) => {
 		expect(findUnmarked(source, owner, ['Button', 'Icon', 'Tags'])).toEqual(expected)
+	})
+
+	it('reads actual JSX elements and ignores generic invocations', () => {
+		expect(
+			unmarked(
+				jsxComponentsOf(
+					'const row=toControlAttrs<MenuItemAttributes>(props); const view=<Button/>',
+				),
+				'Breadcrumbs',
+				['Button', 'Menu'],
+			),
+		).toEqual(['Button'])
 	})
 
 	it('в src/components/** адаптеров вложенный компонент без признака не встречается', () => {
@@ -299,9 +369,7 @@ describe('вложенные компоненты разметки несут п
 		expect(names).toContain('Button')
 
 		const violations = markupFiles().flatMap(({ file, owner }) =>
-			findUnmarked(readFileSync(file, 'utf-8'), owner, names).map(
-				(tag) => `${shown(file)}: <${tag}>`,
-			),
+			unmarked(componentsIn(file), owner, names).map((tag) => `${shown(file)}: <${tag}>`),
 		)
 
 		expect(
@@ -359,7 +427,7 @@ describe('деталь-кнопка разметки — type="button", дета
 
 	it('в src/components/** адаптеров деталь-кнопка без type="button" не встречается', () => {
 		const details = markupFiles().flatMap(({ file, owner }) =>
-			[...buttonDetails(readFileSync(file, 'utf-8'), owner)].map((detail) => ({
+			[...detailsOf(componentsIn(file), owner)].map((detail) => ({
 				file,
 				detail,
 			})),

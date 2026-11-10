@@ -221,5 +221,15 @@ export type { TRoleIconProps } from './adapter/common'
 
 export type { TConsumerRef } from './adapter/runtime'
 
+export { Breadcrumbs, BreadcrumbsItem } from './components/breadcrumbs'
+export type {
+	BreadcrumbsProps,
+	BreadcrumbsEventProps,
+	BreadcrumbsAttributes,
+	BreadcrumbsItemProps,
+	BreadcrumbsItemEventProps,
+	BreadcrumbsItemAttributes,
+} from './components/breadcrumbs'
+
 export { Badge } from './components/badge'
 export type { BadgeProps, BadgeEventProps } from './components/badge/base.component'

@@ -184,6 +184,10 @@
     "./badge": {
       "types": "./dist/components/badge/index.d.ts",
       "default": "./dist/components/badge/index.js"
+    },
+    "./breadcrumbs": {
+      "types": "./dist/components/breadcrumbs/index.d.ts",
+      "default": "./dist/components/breadcrumbs/index.js"
     }
   },
   "files": [

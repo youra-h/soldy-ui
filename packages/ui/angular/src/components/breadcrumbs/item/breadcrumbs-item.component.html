@@ -1,0 +1,62 @@
+@if (state()['breadcrumbs_separator']) {
+	<span class="so-breadcrumbs__separator" aria-hidden="true"></span>
+}
+<a
+	so-item-row
+	#control
+	embedded="breadcrumbs.row"
+	class="so-breadcrumbs__link"
+	[disabled]="state()['disabled']"
+	[size]="state()['size']"
+	[variant]="state()['variant']"
+	[so-attributes]="{ ...state()['attrs'], ...state()['aria'] }"
+>
+	<ng-container ngProjectAs="[slot=leading]"><ng-content select="[slot=leading]" /></ng-container>
+	@if (slot('default'); as content) {
+		<ng-container
+			[ngTemplateOutlet]="content"
+			[ngTemplateOutletContext]="{
+				text: state()['text'] ?? '',
+				active: state()['active'] ?? false,
+			}"
+		/>
+	} @else {
+		<ng-content>{{ state()['text'] }}</ng-content>
+	}
+	<ng-container ngProjectAs="[slot=trailing]"
+		><ng-content select="[slot=trailing]"
+	/></ng-container>
+</a>
+@if (state()['breadcrumbs_menu']; as menu) {
+	<span class="so-breadcrumbs__separator" aria-hidden="true"></span>
+	<span so-menu embedded="breadcrumbs.menu" [ctrl]="menu" class="so-breadcrumbs__overflow">
+		<ng-template
+			slot="trigger"
+			let-triggerAria="triggerAria"
+			let-triggerDataset="triggerDataset"
+		>
+			<button
+				so-button
+				embedded="breadcrumbs.trigger"
+				type="button"
+				class="so-breadcrumbs__trigger"
+				[size]="state()['size']"
+				[so-attributes]="{
+					...triggerAria,
+					...triggerDataset,
+					...state()['breadcrumbs_overflowAria'],
+				}"
+			>
+				&#8230;
+			</button>
+		</ng-template>
+		@for (entry of state()['breadcrumbs_overflowEntries'] ?? []; track entry.item.uid) {
+			<div
+				so-breadcrumbs-overflow-item
+				[ctrl]="entry.menuItem"
+				[so-attributes]="entry.item.attrs.toObject()"
+			></div>
+		}
+	</span>
+}
+<ng-content select="ng-template[slot]" />

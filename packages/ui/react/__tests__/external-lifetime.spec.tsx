@@ -29,6 +29,8 @@ import type { ReactNode } from 'react'
 import { createRoot } from 'react-dom/client'
 import {
 	TAccordion,
+	TBreadcrumbs,
+	TMenuItem,
 	TBadge,
 	TButton,
 	TItemRow,
@@ -75,6 +77,7 @@ import {
 	createEngineRadioGroup,
 	createEngineSelect,
 	createEngineTable,
+	createEngineBreadcrumbs,
 	createEngineTabs,
 	createEngineTags,
 	createEngineToasts,
@@ -87,6 +90,7 @@ import type {
 } from '@soxa-ui/core'
 import {
 	Accordion,
+	Breadcrumbs,
 	Badge,
 	Button,
 	Calendar,
@@ -124,6 +128,7 @@ import {
 	Tooltip,
 	Virtual,
 } from '@soxa-ui/react'
+import { BreadcrumbsOverflowItem } from '../src/components/breadcrumbs/overflow-item'
 import { ItemRow } from '../src/components/item-row'
 import { nextFrame, track } from './mount'
 
@@ -382,6 +387,48 @@ const COMPONENTS: Readonly<Record<string, Readonly<Record<string, TCase>>>> = {
 				buses: engineBuses(engine),
 			}
 		},
+	},
+	Breadcrumbs: {
+		'external owner and engine with data items': () => {
+			const ctrl = new TBreadcrumbs({ maxItems: 3 })
+			const engine = createEngineBreadcrumbs({
+				items: Array.from({ length: 7 }, (_, index) => ({
+					text: String(index),
+					href: '#' + index,
+					_: { active: index === 6 },
+				})),
+			})
+			return {
+				node: <Breadcrumbs ctrl={ctrl} engine={engine} />,
+				buses: [
+					ctrl.events,
+					...engineBuses(engine),
+					engine.extensions.breadcrumbs.menu.events,
+				],
+			}
+		},
+		'external engine with declarative items': () => {
+			const engine = createEngineBreadcrumbs()
+			return {
+				node: (
+					<Breadcrumbs engine={engine} maxItems={3}>
+						<Breadcrumbs.Item text="Home" href="#home" />
+						<Breadcrumbs.Item text="Catalog" href="#catalog" />
+						<Breadcrumbs.Item text="Section" href="#section" />
+						<Breadcrumbs.Item text="Page" active />
+					</Breadcrumbs>
+				),
+				buses: engineBuses(engine),
+			}
+		},
+		'overflow proxy over external ctrl': overCtrl(
+			() => new TMenuItem({ text: 'Hidden' }),
+			(ctrl) => (
+				<Menu open>
+					<BreadcrumbsOverflowItem ctrl={ctrl} href="#hidden" />
+				</Menu>
+			),
+		),
 	},
 	Badge: {
 		ctrl: overCtrl(

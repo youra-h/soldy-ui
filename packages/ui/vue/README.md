@@ -152,6 +152,11 @@ Component props types, including `ButtonProps`, are available from the package e
 
 [MIT](https://github.com/youra-h/soxa-ui/blob/main/LICENSE)
 
+## Breadcrumbs
+
+Breadcrumbs provides an ordered navigation trail with native links, localized accessible names
+and an overflow menu. See the [API and examples](../../../docs/api/breadcrumbs.md).
+
 ## Badge
 
 Badge is a noninteractive inline label, capped numeric counter or dot. Set its text with

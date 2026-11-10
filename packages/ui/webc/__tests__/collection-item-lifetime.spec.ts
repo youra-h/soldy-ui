@@ -15,6 +15,8 @@ import { describe, it, expect, afterEach, vi } from 'vitest'
 import { TEvented, TTabs, createEngine, createEngineTabs } from '@soxa-ui/core'
 import type { TCollectionEngine } from '@soxa-ui/core'
 import {
+	TBreadcrumbsElement,
+	type TBreadcrumbsElementProps,
 	TAccordionElement,
 	TListBoxElement,
 	TMenuElement,
@@ -73,6 +75,7 @@ function watchSubscriptions(engine: TCollectionEngine<any, any>): () => number {
 
 /** Владелец коллекции, как его видит тест: движок — свойство элемента. */
 type TOwner =
+	| TBreadcrumbsElementProps
 	| TTabsElementProps
 	| TAccordionElementProps
 	| TRadioGroupElementProps
@@ -106,6 +109,13 @@ type TItemsScope = (owner: Element) => ParentNode
 const COLLECTIONS: ReadonlyArray<
 	readonly [string, string, string, (node: Element) => node is TOwner, TItemsScope]
 > = [
+	[
+		'Breadcrumbs',
+		'nav',
+		'so-breadcrumbs',
+		(node): node is TOwner => node instanceof TBreadcrumbsElement,
+		(el) => el,
+	],
 	['Tabs', 'div', 'so-tabs', (node): node is TOwner => node instanceof TTabsElement, (el) => el],
 	[
 		'Accordion',
@@ -172,7 +182,10 @@ describe.each(COLLECTIONS)(
 
 			// Отбор без расширения фильтра — тот же механизм, что у `TFilterExtension`
 			driver.events.on('items:query:before', (e) => {
-				if (hidden) e.items = e.items.filter((item) => item.value !== 'b')
+				if (hidden)
+					e.items = e.items.filter((item) =>
+						_name === 'Breadcrumbs' ? item.text !== ITEMS[1]?.text : item.value !== 'b',
+					)
 			})
 
 			const el = mountOver(tag, is, guard, items)

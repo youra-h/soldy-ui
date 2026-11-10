@@ -103,6 +103,7 @@ describe('узел фокуса у дескрипторов с TActionPlugin', (
 			[
 				'AccordionDescriptor',
 				'AccordionItemDescriptor',
+				'BreadcrumbsItemDescriptor',
 				'CalendarDescriptor',
 				'CheckBoxDescriptor',
 				'DateInputDescriptor',

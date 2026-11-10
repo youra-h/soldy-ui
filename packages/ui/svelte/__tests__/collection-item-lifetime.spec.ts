@@ -14,7 +14,16 @@ import { describe, it, expect, afterEach, vi } from 'vitest'
 import { flushSync } from 'svelte'
 import { TEvented, TListBox, createEngine, createEngineListBox } from '@soxa-ui/core'
 import type { TCollectionEngine } from '@soxa-ui/core'
-import { Accordion, ListBox, Menu, RadioGroup, Select, Tabs, Tags } from '@soxa-ui/svelte'
+import {
+	Breadcrumbs,
+	Accordion,
+	ListBox,
+	Menu,
+	RadioGroup,
+	Select,
+	Tabs,
+	Tags,
+} from '@soxa-ui/svelte'
 import { mount } from './mount'
 
 afterEach(() => {
@@ -58,6 +67,7 @@ const COLLECTIONS: ReadonlyArray<readonly [string, (engine: TCollectionEngine<an
 	[
 		['ListBox', (engine) => mount(ListBox, { engine })],
 		['Tabs', (engine) => mount(Tabs, { engine })],
+		['Breadcrumbs', (engine) => mount(Breadcrumbs, { engine })],
 		['Accordion', (engine) => mount(Accordion, { engine })],
 		['RadioGroup', (engine) => mount(RadioGroup, { engine })],
 		['Tags', (engine) => mount(Tags, { engine })],
@@ -75,7 +85,10 @@ describe.each(COLLECTIONS)('%s: фильтр прячет и показывае�
 
 		// Отбор без расширения фильтра — тот же механизм, что у `TFilterExtension`
 		driver.events.on('items:query:before', (e) => {
-			if (hidden) e.items = e.items.filter((item) => item.value !== 'b')
+			if (hidden)
+				e.items = e.items.filter((item) =>
+					_name === 'Breadcrumbs' ? item.text !== ITEMS[1]?.text : item.value !== 'b',
+				)
 		})
 
 		draw(engine)

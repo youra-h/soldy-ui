@@ -70,6 +70,11 @@ function nameIn(value: unknown): unknown {
  * пустое.
  */
 const NAMED: Record<string, Record<string, (locale: TLocale) => string>> = {
+	BreadcrumbsDescriptor: {
+		aria: ({ translations }) => translations.breadcrumbs?.navigation ?? 'Breadcrumbs',
+		overflowAria: ({ translations }) =>
+			translations.breadcrumbs?.overflow ?? 'Show hidden breadcrumbs',
+	},
 	DialogDescriptor: {
 		closeAria: ({ translations }) => translations.modal.close,
 		maximizeAria: ({ translations }) => translations.dialog.maximize,
