@@ -1,0 +1,19 @@
+@use '../button/mixins' as button;
+
+// The shared frame makes the actions one control. Keep the base gap between
+// outlined buttons and its focus-ring bleed inside the scroll viewport.
+.so-toggle-group {
+	@apply rounded-lg border bg-so-component-surface;
+	border-color: var(--so-neutral-300);
+	padding: var(--so-toggle-group-bleed);
+
+	@media (forced-colors: active) {
+		border-color: ButtonText;
+	}
+}
+
+// Quiet idle segments let the shared frame carry the group. Explicit views
+// still win from the Button modifier layer, including an inherited outlined.
+:where(.so-toggle-group > .so-toggle-group-item) {
+	@include button.button-view('plain');
+}
