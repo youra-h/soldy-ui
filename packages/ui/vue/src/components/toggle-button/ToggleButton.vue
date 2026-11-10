@@ -11,7 +11,7 @@ export default { ...SetupToggleButton }
 		v-if="rendered"
 		v-show="visible"
 		:class="classes"
-		type="button"
+		:type="tag === 'button' ? 'button' : undefined"
 		v-bind="{ ...attrs, ...aria, ...dataset }"
 	>
 		<slot name="leading"> </slot>

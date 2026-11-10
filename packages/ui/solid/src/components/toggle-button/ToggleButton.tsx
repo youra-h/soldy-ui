@@ -20,7 +20,12 @@ export function renderToggleButton(
 	const state = binding.state
 	const root = createRootProps(() => ({
 		state,
-		sets: [state.attrs, state.aria, state.dataset],
+		sets: [
+			state.tag === 'button' ? { type: 'button' } : undefined,
+			state.attrs,
+			state.aria,
+			state.dataset,
+		],
 		forward: binding.forwardProps(),
 	}))
 	const content = resolveSlot(

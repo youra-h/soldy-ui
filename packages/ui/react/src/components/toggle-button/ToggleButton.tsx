@@ -23,7 +23,10 @@ export function renderToggleButton(
 	const Tag = tag as ElementType
 
 	return (
-		<Tag {...toRootProps(ref, state, [attrs, aria, dataset], forwardProps)}>
+		<Tag
+			type={tag === 'button' ? 'button' : undefined}
+			{...toRootProps(ref, state, [attrs, aria, dataset], forwardProps)}
+		>
 			{renderSlot(props.leading)}
 			<span className="so-button__text">
 				{renderSlot(props.children, { text: text ?? '' }) ?? text}

@@ -27,6 +27,7 @@ it('renders standalone and collection buttons with pressed state', async () => {
 	fixture.detectChanges()
 
 	expect(root.getAttribute('aria-pressed')).toBe('true')
+	expect(root.type).toBe('button')
 	expect(
 		[...group.querySelectorAll('button')].map((button) => button.getAttribute('aria-pressed')),
 	).toEqual(['true', 'true'])
@@ -58,4 +59,32 @@ it('relays item slots and renders the standalone scoped default once', async () 
 
 	expect(standalone.textContent?.trim()).toBe('Bold custom')
 	expect(item.textContent?.replace(/\s+/g, ' ').trim()).toBe('StartCustom ItalicEnd')
+})
+
+@Component({
+	imports: [TToggleButtonComponent],
+	template:
+		'<form (submit)="submit($event)"><button so-toggle-button type="submit" name="action" value="bold" formmethod="post">Bold</button></form>',
+})
+class FormHost {
+	submitter: HTMLElement | null = null
+	submit(event: SubmitEvent): void {
+		event.preventDefault()
+		this.submitter = event.submitter
+	}
+}
+
+it('preserves native submit overrides and submitter', async () => {
+	const fixture = mountHost(FormHost)
+	await nextFrame()
+	const button = findIn(fixture, 'button', HTMLButtonElement)
+	button.click()
+	await Promise.resolve()
+
+	expect(fixture.componentInstance.submitter).toBe(button)
+	expect(button.type).toBe('submit')
+	expect(button.name).toBe('action')
+	expect(button.value).toBe('bold')
+	// jsdom lacks formMethod reflection; the browser spec checks the native property.
+	expect(button.getAttribute('formmethod')).toBe('post')
 })

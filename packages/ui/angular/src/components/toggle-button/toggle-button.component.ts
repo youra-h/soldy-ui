@@ -12,6 +12,6 @@ import { setupToggleButton } from './setup.component'
 })
 export class TToggleButtonComponent extends TToggleButtonSurface<IToggleButton> {
 	constructor() {
-		super(setupToggleButton, { strategy: 'host' })
+		super(setupToggleButton, { strategy: 'host', defaults: { type: 'button' } })
 	}
 }

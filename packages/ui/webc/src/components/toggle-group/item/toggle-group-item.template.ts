@@ -6,6 +6,8 @@ export const toggleGroupItemTemplate: ITemplate<
 	TToggleGroupItemCollectionFacade
 > = {
 	create: (root) => {
+		if (!root.hasAttribute('type')) root.setAttribute('type', 'button')
+
 		const text = document.createElement('span')
 
 		text.className = 'so-button__text'

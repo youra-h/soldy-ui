@@ -16,7 +16,12 @@
 	tag={state.tag}
 	attributes={toRootProps(
 		state,
-		[state.attrs, state.aria, state.dataset],
+		[
+			state.tag === 'button' ? { type: 'button' } : undefined,
+			state.attrs,
+			state.aria,
+			state.dataset,
+		],
 		binding.forwardProps,
 	)}
 	attach={binding.attachElement}

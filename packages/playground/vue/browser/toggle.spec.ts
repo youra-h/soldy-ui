@@ -111,3 +111,40 @@ it('shows persistent pressed styling and does not submit its form by default', a
 	expect(submitted).toBe(false)
 	await expect.poll(() => getComputedStyle(element).backgroundColor).not.toBe(background)
 })
+
+it('preserves an explicit submit type, submitter and form attributes', async () => {
+	let submitted: SubmitEvent | undefined
+	render(
+		defineComponent({
+			render: () =>
+				h(
+					'form',
+					{
+						onSubmit: (event: SubmitEvent) => {
+							event.preventDefault()
+							submitted = event
+						},
+					},
+					[
+						h(ToggleButton, {
+							text: 'Bold',
+							type: 'submit',
+							name: 'action',
+							value: 'bold',
+							formmethod: 'post',
+						}),
+					],
+				),
+		}),
+	)
+	await frame()
+	const element = document.querySelector('.so-toggle-button')
+	if (!(element instanceof HTMLButtonElement)) throw new Error('Toggle button is missing')
+	element.focus()
+	await userEvent.keyboard('{Enter}')
+	expect(submitted?.submitter).toBe(element)
+	expect(element.type).toBe('submit')
+	expect(element.name).toBe('action')
+	expect(element.value).toBe('bold')
+	expect(element.formMethod).toBe('post')
+})

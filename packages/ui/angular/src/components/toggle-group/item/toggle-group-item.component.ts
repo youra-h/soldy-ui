@@ -12,6 +12,6 @@ import { setupToggleGroupItem } from './setup.component'
 })
 export class TToggleGroupItemComponent extends TToggleGroupItemSurface<IToggleGroupItem> {
 	constructor() {
-		super(setupToggleGroupItem, { strategy: 'host' })
+		super(setupToggleGroupItem, { strategy: 'host', defaults: { type: 'button' } })
 	}
 }

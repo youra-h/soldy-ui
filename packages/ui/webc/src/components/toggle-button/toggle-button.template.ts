@@ -3,6 +3,8 @@ import { bind, type ITemplate } from '../../adapter'
 
 export const toggleButtonTemplate: ITemplate<IToggleButton> = {
 	create: (root) => {
+		if (!root.hasAttribute('type')) root.setAttribute('type', 'button')
+
 		const text = document.createElement('span')
 
 		text.className = 'so-button__text'
