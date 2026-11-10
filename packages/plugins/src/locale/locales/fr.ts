@@ -4,6 +4,12 @@ import { freezeLocale } from '../locale'
 export const frFR = freezeLocale({
 	tag: 'fr-FR',
 	translations: {
+		codeBlock: {
+			region: 'Code',
+			copy: 'Copier le code',
+			copied: 'Copié',
+			error: 'Impossible de copier le code',
+		},
 		breadcrumbs: { navigation: 'Fil d’Ariane', overflow: 'Afficher les éléments masqués' },
 		modal: { close: 'Fermer' },
 		dialog: { maximize: 'Agrandir' },

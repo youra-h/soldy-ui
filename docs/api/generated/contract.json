@@ -237,6 +237,29 @@
       }
     },
     {
+      "id": "code-block",
+      "name": "CodeBlock",
+      "contract": "code-block",
+      "sources": [
+        {
+          "role": "descriptor",
+          "descriptor": "CodeBlockDescriptor",
+          "source": "packages/setup/content/descriptors/components/code-block.descriptor.ts"
+        }
+      ],
+      "frameworks": {
+        "vue": { "exportName": "CodeBlock" },
+        "react": { "exportName": "CodeBlock" },
+        "angular": {
+          "exportName": "TCodeBlockComponent",
+          "selector": "div[so-code-block], [so-code-block]"
+        },
+        "solid": { "exportName": "CodeBlock" },
+        "svelte": { "exportName": "CodeBlock" },
+        "webc": { "exportName": "TCodeBlockElement", "selector": "div[is=\"so-code-block\"]" }
+      }
+    },
+    {
       "id": "component",
       "name": "Component",
       "contract": "component",
@@ -7768,6 +7791,661 @@
               "syntax": "slot=\"indeterminate-icon\""
             }
           }
+        }
+      }
+    },
+    "code-block": {
+      "source": "packages/setup/content/descriptors/components/code-block.descriptor.ts",
+      "props": [
+        {
+          "name": "ctrl",
+          "canonicalName": "ctrl",
+          "type": "import(\"@soxa-ui/core\").TCodeBlock | undefined",
+          "declaredType": "TInstance",
+          "required": false,
+          "description": "Готовый инстанс ядра вместо собранного по пропсам. Только сам объект:\nреактивная обёртка фреймворка ему не нужна — ядро шлёт события само.",
+          "hasDefault": false
+        },
+        {
+          "name": "embedded",
+          "canonicalName": "embedded",
+          "type": "string | undefined",
+          "declaredType": "string",
+          "required": false,
+          "description": "Имя места, если компонент — деталь разметки другого компонента soxa\n(`tags.close`). Ставит разметка библиотеки, а не потребитель: по нему\n`usePlugins` со `scope: 'own'` пропускает вложенный компонент.",
+          "hasDefault": false
+        },
+        {
+          "name": "pluginProps",
+          "canonicalName": "pluginProps",
+          "type": "import(\"@soxa-ui/setup\").TExternalPluginProps | undefined",
+          "declaredType": "TExternalPluginProps",
+          "required": false,
+          "description": "Значения пропсов плагинов, поставленных снаружи (`usePlugins`,\n`bundle.use`), по имени пропа: `{ timer_ms: 500 }`. Типы ключей\nприложение дописывает в `IExternalPluginProps`.",
+          "hasDefault": false
+        },
+        {
+          "name": "rendered",
+          "canonicalName": "rendered",
+          "type": "boolean | undefined",
+          "declaredType": "boolean",
+          "required": false,
+          "description": "Отрисован ли компонент (аналог v-if)",
+          "hasDefault": true,
+          "default": "true"
+        },
+        {
+          "name": "visible",
+          "canonicalName": "visible",
+          "type": "boolean | undefined",
+          "declaredType": "boolean",
+          "required": false,
+          "description": "Виден ли компонент (логическая видимость)",
+          "hasDefault": true,
+          "default": "true"
+        },
+        {
+          "name": "tag",
+          "canonicalName": "tag",
+          "type": "string | object | undefined",
+          "declaredType": "string | object",
+          "required": false,
+          "hasDefault": true,
+          "default": "\"div\""
+        },
+        {
+          "name": "direction",
+          "canonicalName": "direction",
+          "type": "import(\"@soxa-ui/core\").TDirection | undefined",
+          "declaredType": "TDirection",
+          "values": ["ltr", "rtl", "inherit"],
+          "required": false,
+          "description": "Направление письма; по умолчанию `'inherit'` — наследуется от предка",
+          "hasDefault": true,
+          "default": "\"inherit\""
+        },
+        {
+          "name": "size",
+          "canonicalName": "size",
+          "type": "\"sm\" | \"normal\" | \"lg\" | \"xl\" | \"2xl\" | undefined",
+          "declaredType": "TComponentSize",
+          "values": ["sm", "normal", "lg", "xl", "2xl"],
+          "required": false,
+          "hasDefault": true,
+          "default": "\"normal\""
+        },
+        {
+          "name": "variant",
+          "canonicalName": "variant",
+          "type": "undefined",
+          "declaredType": "TComponentVariant",
+          "required": false,
+          "description": "Вариант темы. Не задан — модификатора нет, компонент выглядит вариантом темы по умолчанию",
+          "hasDefault": true,
+          "default": "undefined"
+        },
+        {
+          "name": "code",
+          "canonicalName": "code",
+          "type": "string | undefined",
+          "declaredType": "string",
+          "required": false,
+          "description": "Exact source and original line endings; snippets takes precedence when supplied.",
+          "hasDefault": true,
+          "default": "\"\""
+        },
+        {
+          "name": "language",
+          "canonicalName": "language",
+          "type": "string | undefined",
+          "declaredType": "string",
+          "required": false,
+          "description": "Language metadata; unknown names render as plain text without requiring a highlighter.",
+          "hasDefault": true,
+          "default": "\"text\""
+        },
+        {
+          "name": "title",
+          "canonicalName": "title",
+          "type": "string | undefined",
+          "declaredType": "string",
+          "required": false,
+          "hasDefault": true,
+          "default": "\"\""
+        },
+        {
+          "name": "copyable",
+          "canonicalName": "copyable",
+          "type": "boolean | undefined",
+          "declaredType": "boolean",
+          "required": false,
+          "hasDefault": true,
+          "default": "true"
+        },
+        {
+          "name": "lineNumbers",
+          "canonicalName": "lineNumbers",
+          "type": "boolean | undefined",
+          "declaredType": "boolean",
+          "required": false,
+          "hasDefault": true,
+          "default": "false"
+        },
+        {
+          "name": "wrap",
+          "canonicalName": "wrap",
+          "type": "boolean | undefined",
+          "declaredType": "boolean",
+          "required": false,
+          "hasDefault": true,
+          "default": "false"
+        },
+        {
+          "name": "maxHeight",
+          "canonicalName": "maxHeight",
+          "type": "string | number | undefined",
+          "declaredType": "number | string",
+          "required": false,
+          "description": "Pixels as a number, or a CSS length. Only the code scrolls, never its header.",
+          "hasDefault": true,
+          "default": "undefined"
+        },
+        {
+          "name": "highlightLines",
+          "canonicalName": "highlightLines",
+          "type": "readonly number[] | undefined",
+          "declaredType": "readonly number[]",
+          "required": false,
+          "hasDefault": true,
+          "default": "[]"
+        },
+        {
+          "name": "snippets",
+          "canonicalName": "snippets",
+          "type": "readonly import(\"@soxa-ui/core\").ICodeSnippet[] | undefined",
+          "declaredType": "readonly ICodeSnippet[]",
+          "required": false,
+          "description": "Omit for a single block; an empty array is an empty tabbed block.",
+          "hasDefault": true,
+          "default": "undefined"
+        },
+        {
+          "name": "value",
+          "canonicalName": "value",
+          "type": "string | undefined",
+          "declaredType": "string",
+          "required": false,
+          "description": "The current Tabs activation, rather than a second stored selection.",
+          "hasDefault": true,
+          "default": "undefined"
+        }
+      ],
+      "events": [
+        {
+          "name": "bundle:create",
+          "type": "(bundle: unknown) => void",
+          "description": "Плагины компонента созданы при монтировании; аргумент — их bundle."
+        },
+        {
+          "name": "plugin:event",
+          "type": "(event: import(\"@soxa-ui/core\").TPluginEvent) => void",
+          "description": "Событие внешнего плагина: полное имя (`timer:tick`) и аргументы."
+        },
+        { "name": "show", "type": "() => void", "description": "show" },
+        { "name": "hide", "type": "() => void", "description": "hide" },
+        {
+          "name": "show:before",
+          "type": "(e: import(\"@soxa-ui/core\").TActionEvent) => void",
+          "description": "show:before — вызов e.preventDefault() отменяет показ"
+        },
+        {
+          "name": "hide:before",
+          "type": "(e: import(\"@soxa-ui/core\").TActionEvent) => void",
+          "description": "hide:before — вызов e.preventDefault() отменяет скрытие"
+        },
+        {
+          "name": "ready",
+          "type": "(value: boolean) => void",
+          "description": "Component availability changed: true when the instance has an announced\nroot DOM element, false when that root is removed or replaced.\nDoes not wait for other plugins' DOM handlers or asynchronous work."
+        },
+        {
+          "name": "change:rendered",
+          "type": "(payload: import(\"@soxa-ui/core\").TValuePayload<boolean>) => void",
+          "description": "change:rendered"
+        },
+        {
+          "name": "change:visible",
+          "type": "(payload: import(\"@soxa-ui/core\").TValuePayload<boolean>) => void",
+          "description": "change:visible"
+        },
+        {
+          "name": "change:tag",
+          "type": "(payload: import(\"@soxa-ui/core\").TValuePayload<string | object>) => void",
+          "description": "change:tag"
+        },
+        {
+          "name": "change:direction",
+          "type": "(payload: import(\"@soxa-ui/core\").TValuePayload<import(\"@soxa-ui/core\").TDirection>) => void",
+          "description": "change:direction"
+        },
+        {
+          "name": "change:size",
+          "type": "(payload: import(\"@soxa-ui/core\").TValuePayload<import(\"@soxa-ui/core\").TComponentSize>) => void",
+          "description": "change:size"
+        },
+        {
+          "name": "change:variant",
+          "type": "(payload: import(\"@soxa-ui/core\").TValuePayload<import(\"@soxa-ui/core\").TComponentVariant | undefined>) => void",
+          "description": "change:variant"
+        },
+        {
+          "name": "change:code",
+          "type": "(payload: import(\"@soxa-ui/core\").TValuePayload<string>) => void"
+        },
+        {
+          "name": "change:language",
+          "type": "(payload: import(\"@soxa-ui/core\").TValuePayload<string>) => void"
+        },
+        {
+          "name": "change:title",
+          "type": "(payload: import(\"@soxa-ui/core\").TValuePayload<string>) => void"
+        },
+        {
+          "name": "change:copyable",
+          "type": "(payload: import(\"@soxa-ui/core\").TValuePayload<boolean>) => void"
+        },
+        {
+          "name": "change:lineNumbers",
+          "type": "(payload: import(\"@soxa-ui/core\").TValuePayload<boolean>) => void"
+        },
+        {
+          "name": "change:wrap",
+          "type": "(payload: import(\"@soxa-ui/core\").TValuePayload<boolean>) => void"
+        },
+        {
+          "name": "change:maxHeight",
+          "type": "(payload: import(\"@soxa-ui/core\").TValuePayload<number | string | undefined>) => void"
+        },
+        {
+          "name": "change:highlightLines",
+          "type": "(payload: import(\"@soxa-ui/core\").TValuePayload<readonly number[]>) => void"
+        },
+        {
+          "name": "change:snippets",
+          "type": "(payload: import(\"@soxa-ui/core\").TValuePayload<readonly import(\"@soxa-ui/core\").ICodeSnippet[] | undefined>) => void"
+        },
+        {
+          "name": "change:value",
+          "type": "(payload: import(\"@soxa-ui/core\").TValuePayload<string | undefined>) => void"
+        },
+        { "name": "copy", "type": "(payload: import(\"@soxa-ui/core\").ICodeBlockCopy) => void" },
+        {
+          "name": "copy:error",
+          "type": "(payload: import(\"@soxa-ui/core\").ICodeBlockCopyError) => void"
+        },
+        { "name": "element:ready", "type": "(element: Element) => void" },
+        { "name": "element:removed", "type": "() => void" }
+      ],
+      "slots": [
+        { "name": "title-icon", "description": "Optional icon before the title", "scope": {} }
+      ],
+      "frameworks": {
+        "vue": {
+          "props": {
+            "ctrl": ":ctrl",
+            "embedded": ":embedded",
+            "pluginProps": ":pluginProps",
+            "rendered": ":rendered",
+            "visible": ":visible",
+            "tag": ":tag",
+            "direction": ":direction",
+            "size": ":size",
+            "variant": ":variant",
+            "code": ":code",
+            "language": ":language",
+            "title": ":title",
+            "copyable": ":copyable",
+            "lineNumbers": ":lineNumbers",
+            "wrap": ":wrap",
+            "maxHeight": ":maxHeight",
+            "highlightLines": ":highlightLines",
+            "snippets": ":snippets",
+            "value": ":value"
+          },
+          "events": {
+            "bundle:create": "@bundle:create",
+            "plugin:event": "@plugin:event",
+            "show": "@show",
+            "hide": "@hide",
+            "show:before": "@show:before",
+            "hide:before": "@hide:before",
+            "ready": "@ready",
+            "change:rendered": "@change:rendered",
+            "change:visible": "@change:visible",
+            "change:tag": "@change:tag",
+            "change:direction": "@change:direction",
+            "change:size": "@change:size",
+            "change:variant": "@change:variant",
+            "change:code": "@change:code",
+            "change:language": "@change:language",
+            "change:title": "@change:title",
+            "change:copyable": "@change:copyable",
+            "change:lineNumbers": "@change:lineNumbers",
+            "change:wrap": "@change:wrap",
+            "change:maxHeight": "@change:maxHeight",
+            "change:highlightLines": "@change:highlightLines",
+            "change:snippets": "@change:snippets",
+            "change:value": "@change:value",
+            "copy": "@copy",
+            "copy:error": "@copy:error",
+            "element:ready": "@element:ready",
+            "element:removed": "@element:removed"
+          },
+          "models": {
+            "rendered": "@update:rendered",
+            "visible": "@update:visible",
+            "tag": "@update:tag",
+            "direction": "@update:direction",
+            "size": "@update:size",
+            "variant": "@update:variant",
+            "code": "@update:code",
+            "language": "@update:language",
+            "title": "@update:title",
+            "copyable": "@update:copyable",
+            "lineNumbers": "@update:lineNumbers",
+            "wrap": "@update:wrap",
+            "maxHeight": "@update:maxHeight",
+            "highlightLines": "@update:highlightLines",
+            "snippets": "@update:snippets",
+            "value": "@update:value"
+          },
+          "slots": { "title-icon": { "name": "title-icon", "syntax": "<template #title-icon>" } }
+        },
+        "react": {
+          "props": {
+            "ctrl": "ctrl",
+            "embedded": "embedded",
+            "pluginProps": "pluginProps",
+            "rendered": "rendered",
+            "visible": "visible",
+            "tag": "tag",
+            "direction": "direction",
+            "size": "size",
+            "variant": "variant",
+            "code": "code",
+            "language": "language",
+            "title": "title",
+            "copyable": "copyable",
+            "lineNumbers": "lineNumbers",
+            "wrap": "wrap",
+            "maxHeight": "maxHeight",
+            "highlightLines": "highlightLines",
+            "snippets": "snippets",
+            "value": "value"
+          },
+          "events": {
+            "bundle:create": "onBundleCreate",
+            "plugin:event": "onPluginEvent",
+            "show": "onShow",
+            "hide": "onHide",
+            "show:before": "onShowBefore",
+            "hide:before": "onHideBefore",
+            "ready": "onReady",
+            "change:rendered": "onChangeRendered",
+            "change:visible": "onChangeVisible",
+            "change:tag": "onChangeTag",
+            "change:direction": "onChangeDirection",
+            "change:size": "onChangeSize",
+            "change:variant": "onChangeVariant",
+            "change:code": "onChangeCode",
+            "change:language": "onChangeLanguage",
+            "change:title": "onChangeTitle",
+            "change:copyable": "onChangeCopyable",
+            "change:lineNumbers": "onChangeLineNumbers",
+            "change:wrap": "onChangeWrap",
+            "change:maxHeight": "onChangeMaxHeight",
+            "change:highlightLines": "onChangeHighlightLines",
+            "change:snippets": "onChangeSnippets",
+            "change:value": "onChangeValue",
+            "copy": "onCopy",
+            "copy:error": "onCopyError",
+            "element:ready": "onElementReady",
+            "element:removed": "onElementRemoved"
+          },
+          "models": {},
+          "slots": { "title-icon": { "name": "title-icon", "syntax": "title-icon" } }
+        },
+        "angular": {
+          "props": {
+            "ctrl": "[ctrl]",
+            "embedded": "[embedded]",
+            "pluginProps": "[pluginProps]",
+            "rendered": "[rendered]",
+            "visible": "[visible]",
+            "direction": "[direction]",
+            "size": "[size]",
+            "variant": "[variant]",
+            "code": "[code]",
+            "language": "[language]",
+            "title": "[title]",
+            "copyable": "[copyable]",
+            "lineNumbers": "[lineNumbers]",
+            "wrap": "[wrap]",
+            "maxHeight": "[maxHeight]",
+            "highlightLines": "[highlightLines]",
+            "snippets": "[snippets]",
+            "value": "[value]"
+          },
+          "events": {
+            "bundle:create": "(soBundleCreate)",
+            "plugin:event": "(soPluginEvent)",
+            "show": "(soShow)",
+            "hide": "(soHide)",
+            "show:before": "(soShowBefore)",
+            "hide:before": "(soHideBefore)",
+            "ready": "(soReady)",
+            "change:rendered": "(soChangeRendered)",
+            "change:visible": "(soChangeVisible)",
+            "change:tag": "(soChangeTag)",
+            "change:direction": "(soChangeDirection)",
+            "change:size": "(soChangeSize)",
+            "change:variant": "(soChangeVariant)",
+            "change:code": "(soChangeCode)",
+            "change:language": "(soChangeLanguage)",
+            "change:title": "(soChangeTitle)",
+            "change:copyable": "(soChangeCopyable)",
+            "change:lineNumbers": "(soChangeLineNumbers)",
+            "change:wrap": "(soChangeWrap)",
+            "change:maxHeight": "(soChangeMaxHeight)",
+            "change:highlightLines": "(soChangeHighlightLines)",
+            "change:snippets": "(soChangeSnippets)",
+            "change:value": "(soChangeValue)",
+            "copy": "(soCopy)",
+            "copy:error": "(soCopyError)",
+            "element:ready": "(soElementReady)",
+            "element:removed": "(soElementRemoved)"
+          },
+          "models": {
+            "rendered": "(renderedChange)",
+            "visible": "(visibleChange)",
+            "tag": "(tagChange)",
+            "direction": "(directionChange)",
+            "size": "(sizeChange)",
+            "variant": "(variantChange)",
+            "code": "(codeChange)",
+            "language": "(languageChange)",
+            "title": "(titleChange)",
+            "copyable": "(copyableChange)",
+            "lineNumbers": "(lineNumbersChange)",
+            "wrap": "(wrapChange)",
+            "maxHeight": "(maxHeightChange)",
+            "highlightLines": "(highlightLinesChange)",
+            "snippets": "(snippetsChange)",
+            "value": "(valueChange)"
+          },
+          "slots": { "title-icon": { "name": "title-icon", "syntax": "slot=\"title-icon\"" } }
+        },
+        "solid": {
+          "props": {
+            "ctrl": "ctrl",
+            "embedded": "embedded",
+            "pluginProps": "pluginProps",
+            "rendered": "rendered",
+            "visible": "visible",
+            "tag": "tag",
+            "direction": "direction",
+            "size": "size",
+            "variant": "variant",
+            "code": "code",
+            "language": "language",
+            "title": "title",
+            "copyable": "copyable",
+            "lineNumbers": "lineNumbers",
+            "wrap": "wrap",
+            "maxHeight": "maxHeight",
+            "highlightLines": "highlightLines",
+            "snippets": "snippets",
+            "value": "value"
+          },
+          "events": {
+            "bundle:create": "onBundleCreate",
+            "plugin:event": "onPluginEvent",
+            "show": "onShow",
+            "hide": "onHide",
+            "show:before": "onShowBefore",
+            "hide:before": "onHideBefore",
+            "ready": "onReady",
+            "change:rendered": "onChangeRendered",
+            "change:visible": "onChangeVisible",
+            "change:tag": "onChangeTag",
+            "change:direction": "onChangeDirection",
+            "change:size": "onChangeSize",
+            "change:variant": "onChangeVariant",
+            "change:code": "onChangeCode",
+            "change:language": "onChangeLanguage",
+            "change:title": "onChangeTitle",
+            "change:copyable": "onChangeCopyable",
+            "change:lineNumbers": "onChangeLineNumbers",
+            "change:wrap": "onChangeWrap",
+            "change:maxHeight": "onChangeMaxHeight",
+            "change:highlightLines": "onChangeHighlightLines",
+            "change:snippets": "onChangeSnippets",
+            "change:value": "onChangeValue",
+            "copy": "onCopy",
+            "copy:error": "onCopyError",
+            "element:ready": "onElementReady",
+            "element:removed": "onElementRemoved"
+          },
+          "models": {},
+          "slots": { "title-icon": { "name": "title-icon", "syntax": "title-icon" } }
+        },
+        "svelte": {
+          "props": {
+            "ctrl": "ctrl",
+            "embedded": "embedded",
+            "pluginProps": "pluginProps",
+            "rendered": "rendered",
+            "visible": "visible",
+            "tag": "tag",
+            "direction": "direction",
+            "size": "size",
+            "variant": "variant",
+            "code": "code",
+            "language": "language",
+            "title": "title",
+            "copyable": "copyable",
+            "lineNumbers": "lineNumbers",
+            "wrap": "wrap",
+            "maxHeight": "maxHeight",
+            "highlightLines": "highlightLines",
+            "snippets": "snippets",
+            "value": "value"
+          },
+          "events": {
+            "bundle:create": "onBundleCreate",
+            "plugin:event": "onPluginEvent",
+            "show": "onShow",
+            "hide": "onHide",
+            "show:before": "onShowBefore",
+            "hide:before": "onHideBefore",
+            "ready": "onReady",
+            "change:rendered": "onChangeRendered",
+            "change:visible": "onChangeVisible",
+            "change:tag": "onChangeTag",
+            "change:direction": "onChangeDirection",
+            "change:size": "onChangeSize",
+            "change:variant": "onChangeVariant",
+            "change:code": "onChangeCode",
+            "change:language": "onChangeLanguage",
+            "change:title": "onChangeTitle",
+            "change:copyable": "onChangeCopyable",
+            "change:lineNumbers": "onChangeLineNumbers",
+            "change:wrap": "onChangeWrap",
+            "change:maxHeight": "onChangeMaxHeight",
+            "change:highlightLines": "onChangeHighlightLines",
+            "change:snippets": "onChangeSnippets",
+            "change:value": "onChangeValue",
+            "copy": "onCopy",
+            "copy:error": "onCopyError",
+            "element:ready": "onElementReady",
+            "element:removed": "onElementRemoved"
+          },
+          "models": {},
+          "slots": { "title-icon": { "name": "title-icon", "syntax": "title-icon={content}" } }
+        },
+        "webc": {
+          "props": {
+            "ctrl": "ctrl",
+            "embedded": "embedded",
+            "pluginProps": "pluginProps",
+            "rendered": "rendered",
+            "visible": "visible",
+            "tag": "tag",
+            "direction": "direction",
+            "size": "size",
+            "variant": "variant",
+            "code": "code",
+            "language": "language",
+            "title": "title",
+            "copyable": "copyable",
+            "lineNumbers": "lineNumbers",
+            "wrap": "wrap",
+            "maxHeight": "maxHeight",
+            "highlightLines": "highlightLines",
+            "snippets": "snippets",
+            "value": "value"
+          },
+          "events": {
+            "bundle:create": "addEventListener('so:bundle:create', handler)",
+            "plugin:event": "addEventListener('so:plugin:event', handler)",
+            "show": "addEventListener('so:show', handler)",
+            "hide": "addEventListener('so:hide', handler)",
+            "show:before": "addEventListener('so:show:before', handler)",
+            "hide:before": "addEventListener('so:hide:before', handler)",
+            "ready": "addEventListener('so:ready', handler)",
+            "change:rendered": "addEventListener('so:change:rendered', handler)",
+            "change:visible": "addEventListener('so:change:visible', handler)",
+            "change:tag": "addEventListener('so:change:tag', handler)",
+            "change:direction": "addEventListener('so:change:direction', handler)",
+            "change:size": "addEventListener('so:change:size', handler)",
+            "change:variant": "addEventListener('so:change:variant', handler)",
+            "change:code": "addEventListener('so:change:code', handler)",
+            "change:language": "addEventListener('so:change:language', handler)",
+            "change:title": "addEventListener('so:change:title', handler)",
+            "change:copyable": "addEventListener('so:change:copyable', handler)",
+            "change:lineNumbers": "addEventListener('so:change:lineNumbers', handler)",
+            "change:wrap": "addEventListener('so:change:wrap', handler)",
+            "change:maxHeight": "addEventListener('so:change:maxHeight', handler)",
+            "change:highlightLines": "addEventListener('so:change:highlightLines', handler)",
+            "change:snippets": "addEventListener('so:change:snippets', handler)",
+            "change:value": "addEventListener('so:change:value', handler)",
+            "copy": "addEventListener('so:copy', handler)",
+            "copy:error": "addEventListener('so:copy:error', handler)",
+            "element:ready": "addEventListener('so:element:ready', handler)",
+            "element:removed": "addEventListener('so:element:removed', handler)"
+          },
+          "models": {},
+          "slots": { "title-icon": { "name": "title-icon", "syntax": "slot=\"title-icon\"" } }
         }
       }
     },
@@ -15906,7 +16584,7 @@
           "canonicalName": "contentFit",
           "type": "import(\"@soxa-ui/core\").TListItemContentFit | undefined",
           "declaredType": "TListItemContentFit",
-          "values": ["truncate", "wrap"],
+          "values": ["wrap", "truncate"],
           "required": false,
           "description": "Что делать с не помещающимся текстом.\n\nТрёхзначен: `undefined` означает «как у списка», и это не то же самое,\nчто `truncate`. `expand` элементу недоступен — ширина у списка одна на\nвсех, и раздвинуть контейнер ради одной строки нельзя.",
           "hasDefault": true,
@@ -16647,7 +17325,7 @@
           "canonicalName": "contentFit",
           "type": "import(\"@soxa-ui/core\").TListContentFit | undefined",
           "declaredType": "TListContentFit",
-          "values": ["truncate", "wrap", "expand"],
+          "values": ["wrap", "truncate", "expand"],
           "required": false,
           "description": "Что делать с не помещающимся текстом",
           "hasDefault": true,
@@ -31118,7 +31796,7 @@
           "canonicalName": "contentFit",
           "type": "import(\"@soxa-ui/core\").TListContentFit | undefined",
           "declaredType": "TListContentFit",
-          "values": ["truncate", "wrap", "expand"],
+          "values": ["wrap", "truncate", "expand"],
           "required": false,
           "description": "Что делать с не помещающимся текстом",
           "hasDefault": true,
@@ -31258,7 +31936,7 @@
           "canonicalName": "tagsOverflow",
           "type": "import(\"@soxa-ui/core\").TTagsOverflow | undefined",
           "declaredType": "TTagsOverflow",
-          "values": ["scroll", "wrap"],
+          "values": ["wrap", "scroll"],
           "required": false,
           "description": "Что делать с тегами поля, когда они не помещаются в строку. Передаётся\nсвоему `TTags` так же, как `size` и `variant`; по умолчанию `wrap` —\nповедение поля не меняется, пока режим не задали.",
           "hasDefault": true,
@@ -39603,7 +40281,7 @@
           "canonicalName": "overflow",
           "type": "import(\"@soxa-ui/core\").TTagsOverflow | undefined",
           "declaredType": "TTagsOverflow",
-          "values": ["scroll", "wrap"],
+          "values": ["wrap", "scroll"],
           "required": false,
           "description": "Что делать с тегами, которым не хватило ширины ряда. По умолчанию `wrap`",
           "hasDefault": true,
@@ -45527,6 +46205,48 @@
     },
     "ClearableNamesPluginDescriptor": {
       "source": "packages/setup/content/descriptors/plugins/clearable-names.plugin.ts",
+      "props": [],
+      "events": [],
+      "slots": [],
+      "frameworks": {
+        "vue": { "props": {}, "events": {}, "models": {}, "slots": {} },
+        "react": { "props": {}, "events": {}, "models": {}, "slots": {} },
+        "angular": { "props": {}, "events": {}, "models": {}, "slots": {} },
+        "solid": { "props": {}, "events": {}, "models": {}, "slots": {} },
+        "svelte": { "props": {}, "events": {}, "models": {}, "slots": {} },
+        "webc": { "props": {}, "events": {}, "models": {}, "slots": {} }
+      }
+    },
+    "CodeBlockCopyPluginDescriptor": {
+      "source": "packages/setup/content/descriptors/plugins/code-block.plugin.ts",
+      "props": [],
+      "events": [],
+      "slots": [],
+      "frameworks": {
+        "vue": { "props": {}, "events": {}, "models": {}, "slots": {} },
+        "react": { "props": {}, "events": {}, "models": {}, "slots": {} },
+        "angular": { "props": {}, "events": {}, "models": {}, "slots": {} },
+        "solid": { "props": {}, "events": {}, "models": {}, "slots": {} },
+        "svelte": { "props": {}, "events": {}, "models": {}, "slots": {} },
+        "webc": { "props": {}, "events": {}, "models": {}, "slots": {} }
+      }
+    },
+    "CodeBlockNamesPluginDescriptor": {
+      "source": "packages/setup/content/descriptors/plugins/code-block.plugin.ts",
+      "props": [],
+      "events": [],
+      "slots": [],
+      "frameworks": {
+        "vue": { "props": {}, "events": {}, "models": {}, "slots": {} },
+        "react": { "props": {}, "events": {}, "models": {}, "slots": {} },
+        "angular": { "props": {}, "events": {}, "models": {}, "slots": {} },
+        "solid": { "props": {}, "events": {}, "models": {}, "slots": {} },
+        "svelte": { "props": {}, "events": {}, "models": {}, "slots": {} },
+        "webc": { "props": {}, "events": {}, "models": {}, "slots": {} }
+      }
+    },
+    "CodeBlockSourcePluginDescriptor": {
+      "source": "packages/setup/content/descriptors/plugins/code-block.plugin.ts",
       "props": [],
       "events": [],
       "slots": [],

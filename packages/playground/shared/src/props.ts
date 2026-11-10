@@ -59,6 +59,30 @@ import type {
 	TPropOwner,
 } from './types'
 
+const CODE_SNIPPETS = [
+	{
+		value: 'vue',
+		label: 'Vue',
+		code: '<script setup>\nconst title = "Soxa UI"\n</script>\n',
+		language: 'vue',
+		filename: 'App.vue',
+	},
+	{
+		value: 'react',
+		label: 'React',
+		code: 'export const title = "Soxa UI";\n',
+		language: 'tsx',
+		filename: 'App.tsx',
+	},
+	{
+		value: 'svelte',
+		label: 'Svelte',
+		code: '<h1>Soxa UI</h1>\n',
+		language: 'svelte',
+		filename: 'App.svelte',
+	},
+]
+
 /**
  * Описания пропов — то единственное, чего нет в контракте.
  *
@@ -218,6 +242,18 @@ const OWN: Record<string, Record<string, string>> = {
 		swipe: 'За что панель можно смахнуть, чтобы закрыть: ни за что, за полосу или за любое место, кроме опций и прокручиваемого списка. Смахивают от поля: под ним — вниз, над ним — вверх',
 		tagsOverflow:
 			'Что делать с тегами в поле, когда они не помещаются в строку: переносить или прокручивать. Нужен множественный выбор',
+	},
+	'code-block': {
+		code: 'Исходный текст в одиночном режиме; копируется без изменения',
+		language: 'Язык фрагмента; без движка подсветки код отображается обычным текстом',
+		title: 'Необязательное имя файла или заголовок',
+		snippets: 'Фрагменты с уникальным value: включают штатные вкладки Tabs',
+		value: 'Идентификатор активного фрагмента; выбор хранит коллекция Tabs',
+		copyable: 'Показывать кнопку копирования исходного текста',
+		lineNumbers: 'Нумеровать логические строки; номера не попадают в буфер обмена',
+		wrap: 'Переносить длинные строки по ширине блока',
+		maxHeight: 'Максимальная высота области кода: число пикселей или CSS-размер',
+		highlightLines: 'Номера логических строк, которые нужно выделить',
 	},
 	breadcrumbs: {
 		items: 'Элементы коллекции с текстом и необязательным href; текущая страница отмечается active в метаданных',
@@ -532,6 +568,7 @@ export const PREVIEW_PROPS: Readonly<Record<string, Readonly<Record<string, unkn
 		aria_label: 'Форматирование',
 	},
 	badge: { value: 8 },
+	'code-block': { code: 'const greeting = "Hello Soxa!";\nconsole.log(greeting);' },
 	// Подпись — пропом `text`, а не слотом: заданный слот перекрывает проп, и
 	// строка `text` не меняла бы ничего видимого
 	button: { text: 'Кнопка' },
@@ -634,6 +671,16 @@ const GROUPED = { items: GROUPED_ITEMS, groups: PRODUCE_GROUPS }
  * `closeOnSelect` в одиночном выборе и во множественном выглядит по-разному.
  */
 export const PRESETS: Record<string, Record<string, Record<string, unknown>>> = {
+	'code-block': {
+		snippets: { code: '' },
+		value: { code: '', snippets: CODE_SNIPPETS },
+		wrap: { code: 'const longValue = "' + 'Soxa UI '.repeat(24) + '";' },
+		maxHeight: {
+			code: Array.from({ length: 20 }, (_, index) => 'console.log(' + index + ');').join(
+				'\n',
+			),
+		},
+	},
 	field: {
 		// Ошибку видно, только пока поле невалидно: без `invalid` набранный
 		// текст не менял бы ничего
@@ -808,7 +855,12 @@ export function describeProp(componentId: string, prop: string): string | undefi
  * набрать его в поле строки нечем, а без них не видно, как поле пишет процент,
  * валюту и единицу.
  */
+
 const PRESET_VALUES: Record<string, Record<string, Readonly<Record<string, unknown>>>> = {
+	'code-block': {
+		snippets: { 'Vue / React / Svelte': CODE_SNIPPETS, Empty: [] },
+		highlightLines: { 'Second line': [2], 'First and second': [1, 2] },
+	},
 	'number-input': {
 		formatOptions: {
 			percent: { style: 'percent', maximumFractionDigits: 1 },

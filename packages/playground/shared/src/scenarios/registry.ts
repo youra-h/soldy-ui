@@ -1,3 +1,4 @@
+import { CODE_BLOCK_SCENARIOS } from './code-block/display'
 import { BREADCRUMBS_SCENARIOS } from './breadcrumbs/window'
 
 import { BADGE_SLOTS } from './badge/slots'
@@ -41,6 +42,7 @@ export const SCENARIOS: readonly TScenario[] = [
 	...BUTTON_SLOTS,
 	...LABEL_SLOTS,
 	...BADGE_SLOTS,
+	...CODE_BLOCK_SCENARIOS,
 	...PROGRESS_LINEAR_MOTION,
 	...PROGRESS_SPINNER_MOTION,
 	...TOASTS_MOTION,

@@ -1,5 +1,13 @@
 import type { TLocale, TLocalePatch, TPartialTranslations, TTranslations } from './types'
 
+/** Defaults for custom locales created before CodeBlock. */
+export const CODE_BLOCK_NAMES = Object.freeze({
+	region: 'Code',
+	copy: 'Copy code',
+	copied: 'Copied',
+	error: 'Unable to copy code',
+})
+
 /** Defaults for locales written before Breadcrumbs was introduced. */
 export const BREADCRUMBS_NAMES = Object.freeze({
 	navigation: 'Breadcrumbs',
@@ -64,6 +72,11 @@ export function freezeLocale(locale: TLocale): TLocale {
  */
 function overlay(base: TTranslations, patch: TPartialTranslations): TTranslations {
 	return Object.freeze({
+		codeBlock: Object.freeze({
+			...CODE_BLOCK_NAMES,
+			...base.codeBlock,
+			...defined(patch.codeBlock),
+		}),
 		breadcrumbs: Object.freeze({
 			...BREADCRUMBS_NAMES,
 			...base.breadcrumbs,

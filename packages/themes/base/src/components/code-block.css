@@ -1,0 +1,135 @@
+/* Geometry is shared by all themes; every configurable dimension has a public default. */
+:root {
+	--so-code-block-padding: 1em;
+	--so-code-block-gap: 0.5em;
+	--so-code-block-font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+	--so-code-block-font-size: 0.875em;
+	--so-code-block-line-height: 1.6;
+	--so-code-block-tab-size: 4;
+	--so-code-block-header-height-sm: calc(
+		var(--so-button-height-sm) + 2 * var(--so-code-block-gap)
+	);
+	--so-code-block-header-height-normal: calc(
+		var(--so-button-height-normal) + 2 * var(--so-code-block-gap)
+	);
+	--so-code-block-header-height-lg: calc(
+		var(--so-button-height-lg) + 2 * var(--so-code-block-gap)
+	);
+	--so-code-block-header-height-xl: calc(
+		var(--so-button-height-xl) + 2 * var(--so-code-block-gap)
+	);
+	--so-code-block-header-height-2xl: calc(
+		var(--so-button-height-2xl) + 2 * var(--so-code-block-gap)
+	);
+	--so-code-block-gutter-width: 4ch;
+}
+.so-code-block {
+	--so-code-block-header-height: var(--so-code-block-header-height-normal);
+	position: relative;
+	display: block;
+	min-inline-size: 0;
+	max-inline-size: 100%;
+}
+.so-code-block__header {
+	display: flex;
+	align-items: center;
+	gap: var(--so-code-block-gap);
+	min-block-size: var(--so-code-block-header-height);
+	padding-inline: var(--so-code-block-padding);
+}
+.so-code-block__title {
+	flex: 1;
+	min-inline-size: 0;
+	overflow-wrap: anywhere;
+}
+.so-code-block__tabs {
+	min-inline-size: 0;
+}
+.so-code-block__tabs > .so-tabs__bar > .so-tabs__list {
+	flex-wrap: nowrap;
+	overflow-x: auto;
+}
+.so-code-block__content {
+	position: relative;
+	min-inline-size: 0;
+}
+.so-code-block__pre {
+	margin: 0;
+	padding: var(--so-code-block-padding);
+	overflow: auto;
+	max-inline-size: 100%;
+	font-family: var(--so-code-block-font-family);
+	font-size: var(--so-code-block-font-size);
+	line-height: var(--so-code-block-line-height);
+	tab-size: var(--so-code-block-tab-size);
+	white-space: pre;
+	text-align: left;
+}
+.so-code-block[data-header='false'][data-copyable='true']
+	> .so-code-block__content
+	> .so-code-block__pre {
+	padding-block-start: var(--so-code-block-header-height);
+}
+.so-code-block__code {
+	display: block;
+	min-inline-size: max-content;
+	font: inherit;
+}
+.so-code-block__line {
+	display: flex;
+	min-block-size: 1lh;
+}
+.so-code-block__text {
+	min-inline-size: 0;
+}
+.so-code-block__gutter {
+	flex: none;
+	inline-size: var(--so-code-block-gutter-width);
+	padding-inline-end: var(--so-code-block-gap);
+	text-align: right;
+	user-select: none;
+}
+.so-code-block[data-wrap='true'] > .so-code-block__content > .so-code-block__pre,
+.so-code-block[data-wrap='true']
+	> .so-code-block__tabs
+	> .so-code-block__content
+	> .so-code-block__pre {
+	white-space: pre-wrap;
+	overflow-wrap: anywhere;
+}
+.so-code-block[data-wrap='true']
+	> .so-code-block__content
+	> .so-code-block__pre
+	> .so-code-block__code,
+.so-code-block[data-wrap='true']
+	> .so-code-block__tabs
+	> .so-code-block__content
+	> .so-code-block__pre
+	> .so-code-block__code {
+	min-inline-size: 0;
+}
+.so-code-block__copy {
+	flex: none;
+}
+.so-code-block[data-header='false'] > .so-code-block__content > .so-code-block__copy {
+	position: absolute;
+	inset-block-start: var(--so-code-block-gap);
+	inset-inline-end: var(--so-code-block-gap);
+}
+.so-code-block__status {
+	display: block;
+	padding-inline: var(--so-code-block-padding);
+}
+
+.so-code-block--size-sm {
+	--so-code-block-header-height: var(--so-code-block-header-height-sm);
+}
+.so-code-block--size-lg {
+	--so-code-block-header-height: var(--so-code-block-header-height-lg);
+}
+.so-code-block--size-xl {
+	--so-code-block-header-height: var(--so-code-block-header-height-xl);
+}
+.so-code-block--size-2xl {
+	--so-code-block-header-height: var(--so-code-block-header-height-2xl);
+}

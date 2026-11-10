@@ -196,6 +196,10 @@
     "./toggle-group": {
       "types": "./dist/components/toggle-group/index.d.ts",
       "default": "./dist/components/toggle-group/index.js"
+    },
+    "./code-block": {
+      "types": "./dist/components/code-block/index.d.ts",
+      "default": "./dist/components/code-block/index.js"
     }
   },
   "files": [

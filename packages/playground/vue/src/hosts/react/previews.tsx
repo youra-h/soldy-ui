@@ -39,6 +39,7 @@ import {
 	Icon,
 	Input,
 	Badge,
+	CodeBlock,
 	Label,
 	ListBox,
 	Menu,
@@ -374,6 +375,7 @@ export const PREVIEWS: Record<string, TPreview> = {
 
 	// The label is the `text` prop from the preview props, the control is the
 	// slot. The page rows edit the label itself: its side, text size, variant
+	'code-block': (bind) => <CodeBlock {...bind} />,
 	badge: (bind) => <Badge {...bind} />,
 	label: (bind) => (
 		<Label {...bind}>

@@ -7,6 +7,12 @@ import { freezeLocale } from '../locale'
 export const arEG = freezeLocale({
 	tag: 'ar-EG',
 	translations: {
+		codeBlock: {
+			region: 'الشيفرة',
+			copy: 'نسخ الشيفرة',
+			copied: 'تم النسخ',
+			error: 'تعذّر نسخ الشيفرة',
+		},
 		breadcrumbs: { navigation: 'مسار التنقل', overflow: 'إظهار عناصر التنقل المخفية' },
 		modal: { close: 'إغلاق' },
 		dialog: { maximize: 'تكبير' },

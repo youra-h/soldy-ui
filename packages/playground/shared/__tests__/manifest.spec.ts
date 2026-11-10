@@ -15,6 +15,7 @@ import { COMPONENTS } from '../src/registry'
 import {
 	describeProp,
 	optionsForProp,
+	valuesForProp,
 	presetForProp,
 	PRESETS,
 	PREVIEW_PROPS,
@@ -114,7 +115,12 @@ describe('пресеты строк', () => {
 				// выставил бы то, чего компонент не знает
 				const options = optionsForProp(id, name)
 
-				if (options && !options.includes(value as string)) {
+				// Composite controls store the source object, while their options contain display labels.
+				const values = valuesForProp(id, name)
+				const known = values
+					? Object.values(values).includes(value)
+					: typeof value === 'string' && options?.includes(value)
+				if (options && !known) {
 					broken.push(`${row} → ${name}=${String(value)}`)
 				}
 			}

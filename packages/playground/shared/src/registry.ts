@@ -8,6 +8,7 @@ import {
 	BreadcrumbsCollectionItemDescriptor,
 	BreadcrumbsItemDescriptor,
 	BadgeDescriptor,
+	CodeBlockDescriptor,
 	ButtonDescriptor,
 	ToggleButtonDescriptor,
 	ToggleGroupDescriptor,
@@ -116,6 +117,14 @@ export const COMPONENT_GROUPS: Readonly<Record<TComponentGroup, string>> = {
  * levels of the contract, not components.
  */
 export const COMPONENTS: readonly TComponentEntry[] = [
+	{
+		id: 'code-block',
+		label: 'CodeBlock',
+		descriptor: CodeBlockDescriptor,
+		group: 'display',
+		span: 2,
+		description: 'Исходный код с копированием, номерами строк и вкладками',
+	},
 	{
 		id: 'breadcrumbs',
 		label: 'Breadcrumbs',

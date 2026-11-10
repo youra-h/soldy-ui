@@ -198,3 +198,5 @@ choosing VitePress, Nuxt or another renderer.
 ## Component guides
 
 - [Breadcrumbs](breadcrumbs.md): native navigation links, overflow, localization and slots.
+
+- [CodeBlock](code-block.md): safe code display, snippets, copying, line numbers and themes.

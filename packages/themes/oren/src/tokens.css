@@ -224,3 +224,15 @@
 	--color-so-neutral-900: var(--so-neutral-900);
 	--color-so-neutral-950: var(--so-neutral-950);
 }
+
+/* CodeBlock tokens are resolved at each scheme boundary, including nested schemes. */
+:root,
+[data-so-theme='oren'],
+[data-so-theme='oren-dark'] {
+	--so-code-block-background: var(--so-neutral-100);
+	--so-code-block-color: var(--so-neutral-900);
+	--so-code-block-border-color: var(--so-neutral-300);
+	--so-code-block-muted-color: var(--so-neutral-600);
+	--so-code-block-highlight-background: var(--so-neutral-200);
+	--so-code-block-radius: 0.5rem;
+}

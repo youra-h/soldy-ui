@@ -16,6 +16,14 @@ import type { IListenable } from '../base/types'
  * языка свой, и склейка «слово + имя» навязала бы всем один (`formatName`).
  */
 export type TTranslations = {
+	/** Optional to preserve complete custom locales created before CodeBlock. */
+	readonly codeBlock?: {
+		readonly region: string
+		readonly copy: string
+		readonly copied: string
+		readonly error: string
+	}
+
 	/** Optional so existing complete custom locales remain compatible. */
 	readonly breadcrumbs?: { readonly navigation: string; readonly overflow: string }
 

@@ -70,6 +70,10 @@ function nameIn(value: unknown): unknown {
  * пустое.
  */
 const NAMED: Record<string, Record<string, (locale: TLocale) => string>> = {
+	CodeBlockDescriptor: {
+		contentAria: ({ translations }) => translations.codeBlock?.region ?? 'Code',
+		names_copy: ({ translations }) => translations.codeBlock?.copy ?? 'Copy code',
+	},
 	BreadcrumbsDescriptor: {
 		aria: ({ translations }) => translations.breadcrumbs?.navigation ?? 'Breadcrumbs',
 		overflowAria: ({ translations }) =>

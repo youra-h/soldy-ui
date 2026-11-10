@@ -8,6 +8,7 @@ import {
 	RoleIconDirective,
 	SlotDirective,
 	TBadgeComponent,
+	TCodeBlockComponent,
 	TButtonComponent,
 	TToggleButtonComponent,
 	TToggleGroupComponent,
@@ -1276,4 +1277,33 @@ export class ToggleGroupPreview implements TFixture {
 	readonly aria_describedBy = input<TToggleGroupComponent['aria_describedBy']>()
 	readonly copy = viewChild.required(CopyDirective)
 	readonly subjects = viewChildren(TToggleGroupComponent)
+}
+
+@Component({
+	selector: 'pg-code-block-preview',
+	imports: [TCodeBlockComponent, CopyDirective],
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	host: { style: 'display: contents' },
+	template:
+		'<ng-template pg-copy><div so-code-block [ctrl]="ctrl()" [rendered]="rendered()" [visible]="visible()" [direction]="direction()" [size]="size()" [variant]="variant()" [code]="code()" [language]="language()" [title]="title()" [snippets]="snippets()" [value]="value()" [copyable]="copyable()" [lineNumbers]="lineNumbers()" [wrap]="wrap()" [maxHeight]="maxHeight()" [highlightLines]="highlightLines()"></div></ng-template>',
+})
+export class CodeBlockPreview implements TFixture {
+	readonly ctrl = input<TCodeBlockComponent['ctrl']>()
+	readonly rendered = input<TCodeBlockComponent['rendered']>()
+	readonly visible = input<TCodeBlockComponent['visible']>()
+	readonly direction = input<TCodeBlockComponent['direction']>()
+	readonly size = input<TCodeBlockComponent['size']>()
+	readonly variant = input<TCodeBlockComponent['variant']>()
+	readonly code = input<TCodeBlockComponent['code']>()
+	readonly language = input<TCodeBlockComponent['language']>()
+	readonly title = input<TCodeBlockComponent['title']>()
+	readonly snippets = input<TCodeBlockComponent['snippets']>()
+	readonly value = input<TCodeBlockComponent['value']>()
+	readonly copyable = input<TCodeBlockComponent['copyable']>()
+	readonly lineNumbers = input<TCodeBlockComponent['lineNumbers']>()
+	readonly wrap = input<TCodeBlockComponent['wrap']>()
+	readonly maxHeight = input<TCodeBlockComponent['maxHeight']>()
+	readonly highlightLines = input<TCodeBlockComponent['highlightLines']>()
+	readonly copy = viewChild.required(CopyDirective)
+	readonly subjects = viewChildren(TCodeBlockComponent)
 }
