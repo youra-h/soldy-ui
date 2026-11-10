@@ -45,7 +45,7 @@
 
 @layer so.reset, so.direction, so.disabled, so.caption, so.required, so.target, so.group,
 	so.anchored, so.swipe, so.place, so.icon, so.button, so.check-box, so.accordion, so.date-input,
-	so.modal, so.dialog, so.drag-and-drop, so.drawer, so.input, so.label, so.field, so.list-box,
+	so.modal, so.dialog, so.drag-and-drop, so.drawer, so.input, so.badge, so.label, so.field, so.list-box,
 	so.menu, so.number-input, so.pagination, so.popover, so.calendar, so.date-picker,
 	so.progress-linear, so.progress-spinner, so.radio-group, so.rating, so.scroller, so.select,
 	so.skeleton, so.slider, so.switch, so.table, so.tabs, so.tags, so.textarea, so.toasts,
@@ -71,6 +71,7 @@
 @import './components/drag-and-drop.css' layer(so.drag-and-drop);
 @import './components/drawer.css' layer(so.drawer);
 @import './components/input.css' layer(so.input);
+@import './components/badge.css' layer(so.badge);
 @import './components/label.css' layer(so.label);
 @import './components/field.css' layer(so.field);
 @import './components/list-box.css' layer(so.list-box);

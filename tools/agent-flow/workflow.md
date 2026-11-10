@@ -2,6 +2,8 @@
 
 Read this once for an invoked role/command, then its role file. Read the repository AGENTS.md and applicable area documents before planning or editing. Use external memory selectively. Speak to the owner and write ClickUp reports/PR titles/descriptions in Russian; instructions, code comments, commits and changesets are English. Do not append AI attribution. Use the session's selected model: no provider/model/effort pins.
 
+Carry applicable repository rules into delegated writer instructions and review the resulting diff against them, including [AGENTS.md, "Code layout and logical blocks"](../../AGENTS.md#code-layout-and-logical-blocks-critical): a passing formatter does not replace a readability review.
+
 ## Select and claim
 
 Without an explicit ID, call `clickup_list_by_status` for the command's status. Keep its order: urgent, high, normal (including unset), low; oldest first within a priority. Pick the first non-busy, non-blocked task. An explicit owner-selected ID bypasses automatic priority/blocker selection, not the busy check. Manager is board-wide and does not claim tasks.

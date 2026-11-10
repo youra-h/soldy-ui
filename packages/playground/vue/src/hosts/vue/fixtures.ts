@@ -1,5 +1,5 @@
 import { h, type Component } from 'vue'
-import { Button, CheckBox, Icon, Label, RadioGroup, Switch, roleIcon } from '@soxa-ui/vue'
+import { Badge, Button, CheckBox, Icon, Label, RadioGroup, Switch, roleIcon } from '@soxa-ui/vue'
 import type { TPreview } from './previews'
 
 /** Glyphs as `roleIcon` components, made once: Icon's `tag` is the root, not a role. */
@@ -22,6 +22,15 @@ const ARROW_RIGHT = roleIcon('arrowRight')
  * `__tests__/scenarios.spec.ts`).
  */
 export const FIXTURES: Record<string, TPreview> = {
+	'badge-anchor': (bind) =>
+		h(Badge, bind, {
+			anchor: () =>
+				h(
+					Button,
+					{ onClick: () => document.dispatchEvent(new Event('badge-anchor-click')) },
+					() => 'Inbox',
+				),
+		}),
 	// Probes in all three slots: the scenario finds them by `data-probe` and
 	// checks their order; `default` prints what came in the scope
 	'button-slot-labels': (bind) =>

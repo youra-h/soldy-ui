@@ -13,6 +13,11 @@
 export {}
 
 declare module '@soxa-ui/core' {
+	interface IBadgeViews {
+		solid: true
+		hollow: true
+	}
+
 	interface IComponentVariants {
 		brand: true
 		danger: true

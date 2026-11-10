@@ -30,6 +30,7 @@ import type {
 	TTagsCollection,
 } from '@soxa-ui/core'
 import {
+	Badge,
 	Accordion,
 	Dialog,
 	Field,
@@ -508,4 +509,9 @@ export function IslandProbe(props: { readonly mark: Accessor<string> }): JSX.Ele
 /** Остров со входом, который при своей сборке меняет состояние снаружи острова (`enter`). */
 export function IslandEntry(props: { readonly enter: () => void }): JSX.Element {
 	return <ProbeEntry enter={props.enter} />
+}
+
+/** A named counter with an independently accessible anchor. */
+export function BadgePage(): JSX.Element {
+	return <Badge value={120} aria_label="120 unread" anchor={<button>Inbox</button>} />
 }

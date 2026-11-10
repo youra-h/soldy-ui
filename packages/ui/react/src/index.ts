@@ -220,3 +220,6 @@ export type { TLocaleProviderProps } from './adapter/locale'
 export type { TRoleIconProps } from './adapter/common'
 
 export type { TConsumerRef } from './adapter/runtime'
+
+export { Badge } from './components/badge'
+export type { BadgeProps, BadgeEventProps } from './components/badge/base.component'

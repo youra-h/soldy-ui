@@ -1693,7 +1693,7 @@ There is no `adapter/static/`: React takes prop names from the descriptor types,
 
 ## Layer 8: Angular Adapter (`packages/ui/angular/src`)
 
-### ✅ IMPLEMENTED (Component / ComponentView / Stylable / Control / Interactive / ValueControl / InputControl / Textable / Button / Icon / Label / Field / Frame / Popover / Tooltip / Menu / Dialog / Drawer / Toasts / ProgressSpinner / ProgressLinear / Skeleton / Input / NumberInput / DateInput / Textarea / CheckBox / Switch / Slider / Rating / RadioGroup / ListBox / Tags / Select / Calendar / DatePicker / Tabs / Accordion / Pagination / Scroller / Table / Virtual / DragAndDrop)
+### ✅ IMPLEMENTED (Component / ComponentView / Stylable / Control / Interactive / ValueControl / InputControl / Textable / Button / Icon / Badge / Label / Field / Frame / Popover / Tooltip / Menu / Dialog / Drawer / Toasts / ProgressSpinner / ProgressLinear / Skeleton / Input / NumberInput / DateInput / Textarea / CheckBox / Switch / Slider / Rating / RadioGroup / ListBox / Tags / Select / Calendar / DatePicker / Tabs / Accordion / Pagination / Scroller / Table / Virtual / DragAndDrop)
 
 **Структура** зеркалит Vue/React: `adapter/{common,runtime,locale,elevator}` + `components/*`.
 
@@ -2355,7 +2355,7 @@ DatePicker'а (одна дата или начало и конец), кнопк�
 
 ## Layer 8b: Svelte Adapter (`packages/ui/svelte/src`)
 
-### ✅ IMPLEMENTED (Component / ComponentView / Stylable / Interactive / Control / ValueControl / InputControl / Textable / Button / Icon / Label / Field / Frame / Popover / Tooltip / Menu / Dialog / Drawer / Toasts / ProgressSpinner / ProgressLinear / Skeleton / Input / NumberInput / DateInput / Textarea / CheckBox / Switch / Slider / Rating / RadioGroup / ListBox / Tabs / Accordion / Tags / Select / Calendar / DatePicker / Table / Virtual / Scroller / Pagination / DragAndDrop)
+### ✅ IMPLEMENTED (Component / ComponentView / Stylable / Interactive / Control / ValueControl / InputControl / Textable / Button / Icon / Badge / Label / Field / Frame / Popover / Tooltip / Menu / Dialog / Drawer / Toasts / ProgressSpinner / ProgressLinear / Skeleton / Input / NumberInput / DateInput / Textarea / CheckBox / Switch / Slider / Rating / RadioGroup / ListBox / Tabs / Accordion / Tags / Select / Calendar / DatePicker / Table / Virtual / Scroller / Pagination / DragAndDrop)
 
 Svelte 5 на рунах. Структура зеркалит React, потому что механика событий та же —
 колбэк-пропы:
@@ -2551,7 +2551,7 @@ Svelte 5 на рунах. Структура зеркалит React, потом�
 
 ## Layer 8c: Solid Adapter (`packages/ui/solid/src`)
 
-### ✅ IMPLEMENTED (Component / ComponentView / Stylable / Control / Interactive / ValueControl / InputControl / Textable / Button / Icon / Label / Field / Frame / Popover / Tooltip / Dialog / Drawer / Toasts / Menu / ProgressSpinner / ProgressLinear / Skeleton / Input / NumberInput / DateInput / Textarea / CheckBox / Switch / Slider / Rating / RadioGroup / ListBox / Tabs / Tags / Select / Calendar / DatePicker / Accordion / Pagination / Scroller / Table / Virtual / DragAndDrop)
+### ✅ IMPLEMENTED (Component / ComponentView / Stylable / Control / Interactive / ValueControl / InputControl / Textable / Button / Icon / Badge / Label / Field / Frame / Popover / Tooltip / Dialog / Drawer / Toasts / Menu / ProgressSpinner / ProgressLinear / Skeleton / Input / NumberInput / DateInput / Textarea / CheckBox / Switch / Slider / Rating / RadioGroup / ListBox / Tabs / Tags / Select / Calendar / DatePicker / Accordion / Pagination / Scroller / Table / Virtual / DragAndDrop)
 
 Структура зеркалит React — JSX и колбэк-пропы делают их почти близнецами, —
 а механика ближе к Vue и Svelte: тело компонента выполняется один раз, и
@@ -2872,7 +2872,7 @@ Svelte 5 на рунах. Структура зеркалит React, потом�
 
 ## Layer 8d: Web Components Adapter (`packages/ui/webc/src`)
 
-### ✅ IMPLEMENTED (Component / ComponentView / Stylable / Interactive / Control / ValueControl / InputControl / Textable / Button / Icon / Label / Field / Frame / Popover / Tooltip / Menu / Dialog / Drawer / Toasts / ProgressSpinner / ProgressLinear / Skeleton / Input / NumberInput / DateInput / Textarea / CheckBox / Switch / Slider / Rating / RadioGroup / Tabs / Accordion / ListBox / Tags / Select / Calendar / DatePicker / Pagination / Scroller / Table / Virtual / DragAndDrop)
+### ✅ IMPLEMENTED (Component / ComponentView / Stylable / Interactive / Control / ValueControl / InputControl / Textable / Button / Icon / Badge / Label / Field / Frame / Popover / Tooltip / Menu / Dialog / Drawer / Toasts / ProgressSpinner / ProgressLinear / Skeleton / Input / NumberInput / DateInput / Textarea / CheckBox / Switch / Slider / Rating / RadioGroup / Tabs / Accordion / ListBox / Tags / Select / Calendar / DatePicker / Pagination / Scroller / Table / Virtual / DragAndDrop)
 
 Единственный таргет без фреймворка — и потому самый показательный тест
 архитектуры: ядро уже событийное, а `CustomEvent` это родная модель DOM.
@@ -4109,3 +4109,10 @@ Accordion is now a 1:1 mirror of Tabs. Only differences: component props (`view`
 - Плагины: `TListItemPlugin` (только `highlighted`), `TListHeightPlugin` (высота по `maxRows`), `TListNavigationPlugin` (общая база навигации) → `TListKeyboardPlugin`, `TListScrollPlugin` (читает `scrollBehavior` у инстанса).
 - Дескрипторы: `ListItemPluginDescriptor` (namespace `listItem` → `listItem_highlighted`), `ListHeight/Keyboard/ScrollPluginDescriptor`. ListBoxDescriptor подключает CollectionBundles + CollectionElements + ListHeight + ListKeyboard + ListScroll + Drag.
 - `TListHeightPlugin` ограничивает высоту **родителя элементов**, а не корня компонента: у Select корень — поле, а список лежит в телепортированной панели.
+
+### Badge
+
+Badge derives from TStylable. Its model formats value/max/dot, and its only slot is anchor.
+The neutral wrapper carries classes and datasets; the indicator receives the ARIA set.
+TAriaPlugin owns accessible names, while TBadgeAriaPlugin owns only role/aria-hidden.
+All six adapters share this contract. Overlay positioning is CSS in theme-base; oren supplies filled/outlined appearance.

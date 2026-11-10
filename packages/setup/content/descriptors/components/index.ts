@@ -48,3 +48,5 @@ export * from './radio-group'
 export * from './select'
 export * from './calendar'
 export * from './table'
+
+export { BadgeDescriptor } from './badge.descriptor'

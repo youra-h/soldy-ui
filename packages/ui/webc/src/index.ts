@@ -132,3 +132,6 @@ export { TLocaleProviderElement } from './adapter/locale'
 export { toastsOf } from './adapter/toasts'
 
 export type { TToastRender } from './adapter/toasts'
+
+export { TBadgeElement } from './components/badge'
+export type { TBadgeElementProps } from './components/badge'

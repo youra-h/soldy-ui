@@ -1,0 +1,79 @@
+/* Inline geometry and logical overlay placement; appearance belongs to a theme. */
+.so-badge {
+	--so-badge-height: 1.25rem;
+	--so-badge-font-size: 0.75rem;
+	--so-badge-padding: 0.375rem;
+	--so-badge-dot-size: 0.5rem;
+
+	position: relative;
+	display: inline-flex;
+	vertical-align: middle;
+}
+
+.so-badge--size-sm {
+	--so-badge-height: 1rem;
+	--so-badge-font-size: 0.625rem;
+	--so-badge-padding: 0.25rem;
+	--so-badge-dot-size: 0.375rem;
+}
+
+.so-badge--size-lg {
+	--so-badge-height: 1.5rem;
+	--so-badge-font-size: 0.875rem;
+	--so-badge-padding: 0.4375rem;
+	--so-badge-dot-size: 0.625rem;
+}
+
+.so-badge--size-xl {
+	--so-badge-height: 1.75rem;
+	--so-badge-font-size: 1rem;
+	--so-badge-padding: 0.5rem;
+	--so-badge-dot-size: 0.75rem;
+}
+
+.so-badge--size-2xl {
+	--so-badge-height: 2rem;
+	--so-badge-font-size: 1.125rem;
+	--so-badge-padding: 0.625rem;
+	--so-badge-dot-size: 0.875rem;
+}
+
+.so-badge__anchor {
+	display: inline-flex;
+}
+
+.so-badge__anchor:empty {
+	display: none;
+}
+
+.so-badge__indicator {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+
+	min-inline-size: var(--so-badge-height);
+	block-size: var(--so-badge-height);
+	padding-inline: var(--so-badge-padding);
+
+	font-size: var(--so-badge-font-size);
+	line-height: 1;
+	white-space: nowrap;
+
+	pointer-events: none;
+}
+
+.so-badge[data-dot='true'] > .so-badge__indicator {
+	inline-size: var(--so-badge-dot-size);
+	min-inline-size: var(--so-badge-dot-size);
+	block-size: var(--so-badge-dot-size);
+	padding: 0;
+	border-radius: 50%;
+}
+
+.so-badge:has(> .so-badge__anchor:not(:empty)) > .so-badge__indicator {
+	position: absolute;
+	inset-block-start: 0;
+	inset-inline-end: 0;
+	translate: calc(50% * var(--so-dir-sign)) -50%;
+}

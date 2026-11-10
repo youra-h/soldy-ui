@@ -343,6 +343,32 @@ README) правило тоже не затрагивает.
 Сказать, что упёрлись, и получить решение: сузить задачу или расширить. Тихо
 поставленный костыль хуже и невыполненной задачи, и прямого отказа.
 
+## Code layout and logical blocks (critical)
+
+Follow nearby code and the repository's EditorConfig/Prettier settings. Separate
+meaningful steps with blank lines: reading state, guard checks, preparing and
+emitting cancellable events, state mutation, binding/unbinding listeners, and
+cleanup. Separate methods and accessors, but keep closely related declarations,
+assignments and assertions together; do not add a blank line after every statement.
+
+For example, keep the guard, cancellable notification and accepted update distinct:
+
+```ts
+if (value === this._value) return
+
+const event = new TChangeEvent(value, this._value)
+this.events.emit('change:value:before', event)
+
+if (event.defaultPrevented) return
+
+this._value = event.value
+this.events.emit('change:value', { newValue: event.value, oldValue: event.oldValue })
+```
+
+Apply this to implementation, tests and examples. Prettier does not establish
+logical boundaries: review readability manually before committing, and carry this
+requirement into delegated work and the review of its result.
+
 ## Layer boundaries (critical)
 
 | Package            | Responsibility                                                                                                                |

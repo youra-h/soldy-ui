@@ -218,3 +218,6 @@ export type { TToastRender } from './adapter/toasts'
 export type { TLocaleProviderProps } from './adapter/locale'
 
 export type { TRoleIcon } from './adapter/common'
+
+export { Badge } from './components/badge'
+export type { BadgeProps, BadgeEventProps } from './components/badge/base.component'

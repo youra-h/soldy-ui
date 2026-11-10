@@ -180,6 +180,10 @@
     "./virtual": {
       "types": "./dist/components/virtual/index.d.ts",
       "default": "./dist/components/virtual/index.js"
+    },
+    "./badge": {
+      "types": "./dist/components/badge/index.d.ts",
+      "default": "./dist/components/badge/index.js"
     }
   },
   "files": [
