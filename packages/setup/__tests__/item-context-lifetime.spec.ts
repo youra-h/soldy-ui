@@ -49,9 +49,13 @@ import {
 	BreadcrumbsItemDescriptor,
 	BreadcrumbsCollectionItemDescriptor,
 	AccordionCollectionDescriptor,
+	ToggleGroupCollectionDescriptor,
 	AccordionCollectionItemDescriptor,
+	ToggleGroupCollectionItemDescriptor,
 	AccordionDescriptor,
+	ToggleGroupDescriptor,
 	AccordionItemDescriptor,
+	ToggleGroupItemDescriptor,
 	CalendarCollectionDescriptor,
 	CalendarCollectionItemDescriptor,
 	CalendarDescriptor,
@@ -255,6 +259,17 @@ const COLLECTIONS: Readonly<Record<string, TCollectionKit>> = {
 			mountItem(
 				AccordionItemDescriptor(),
 				AccordionCollectionItemDescriptor(),
+				elevator,
+				source,
+			),
+	},
+	ToggleGroupCollectionItemDescriptor: {
+		list: (items) =>
+			mountList(ToggleGroupDescriptor(), ToggleGroupCollectionDescriptor(), items),
+		item: (elevator, source) =>
+			mountItem(
+				ToggleGroupItemDescriptor(),
+				ToggleGroupCollectionItemDescriptor(),
 				elevator,
 				source,
 			),

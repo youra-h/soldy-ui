@@ -4,6 +4,8 @@ import {
 	RoleIconDirective,
 	TBadgeComponent,
 	TButtonComponent,
+	TToggleButtonComponent,
+	TToggleGroupComponent,
 	TCalendarComponent,
 	TCheckBoxComponent,
 	TDateInputComponent,
@@ -1154,4 +1156,102 @@ export class BadgePreview implements TFixture {
 	readonly aria_describedBy = input<TBadgeComponent['aria_describedBy']>()
 	readonly copy = viewChild.required(CopyDirective)
 	readonly subjects = viewChildren(TBadgeComponent)
+}
+
+/** Standalone toggle preview with persistent pressed state. */
+@Component({
+	selector: 'pg-toggle-button-preview',
+	imports: [TToggleButtonComponent, CopyDirective],
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	host: { style: 'display: contents' },
+	template: `
+		<ng-template pg-copy>
+			<button
+				so-toggle-button
+				[ctrl]="ctrl()"
+				[rendered]="rendered()"
+				[visible]="visible()"
+				[direction]="direction()"
+				[size]="size()"
+				[variant]="variant()"
+				[disabled]="disabled()"
+				[focused]="focused()"
+				[text]="text()"
+				[pressed]="pressed()"
+				[view]="view()"
+				[aria_label]="aria_label()"
+				[aria_labelledBy]="aria_labelledBy()"
+				[aria_describedBy]="aria_describedBy()"
+			></button>
+		</ng-template>
+	`,
+})
+export class ToggleButtonPreview implements TFixture {
+	readonly ctrl = input<TToggleButtonComponent['ctrl']>()
+	readonly rendered = input<TToggleButtonComponent['rendered']>()
+	readonly visible = input<TToggleButtonComponent['visible']>()
+	readonly direction = input<TToggleButtonComponent['direction']>()
+	readonly size = input<TToggleButtonComponent['size']>()
+	readonly variant = input<TToggleButtonComponent['variant']>()
+	readonly disabled = input<TToggleButtonComponent['disabled']>()
+	readonly focused = input<TToggleButtonComponent['focused']>()
+	readonly text = input<TToggleButtonComponent['text']>()
+	readonly pressed = input<TToggleButtonComponent['pressed']>()
+	readonly view = input<TToggleButtonComponent['view']>()
+	readonly aria_label = input<TToggleButtonComponent['aria_label']>()
+	readonly aria_labelledBy = input<TToggleButtonComponent['aria_labelledBy']>()
+	readonly aria_describedBy = input<TToggleButtonComponent['aria_describedBy']>()
+	readonly copy = viewChild.required(CopyDirective)
+	readonly subjects = viewChildren(TToggleButtonComponent)
+}
+
+/** Collection selection and orientation are forwarded to the group. */
+@Component({
+	selector: 'pg-toggle-group-preview',
+	imports: [TToggleGroupComponent, CopyDirective],
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	host: { style: 'display: contents' },
+	template: `
+		<ng-template pg-copy>
+			<div
+				so-toggle-group
+				[ctrl]="ctrl()"
+				[rendered]="rendered()"
+				[visible]="visible()"
+				[direction]="direction()"
+				[size]="size()"
+				[variant]="variant()"
+				[disabled]="disabled()"
+				[focused]="focused()"
+				[engine]="engine()"
+				[items]="items()"
+				[mode]="mode()"
+				[orientation]="orientation()"
+				[view]="view()"
+				[aria_label]="aria_label()"
+				[aria_labelledBy]="aria_labelledBy()"
+				[aria_describedBy]="aria_describedBy()"
+			></div>
+		</ng-template>
+	`,
+})
+export class ToggleGroupPreview implements TFixture {
+	readonly ctrl = input<TToggleGroupComponent['ctrl']>()
+	readonly rendered = input<TToggleGroupComponent['rendered']>()
+	readonly visible = input<TToggleGroupComponent['visible']>()
+	readonly direction = input<TToggleGroupComponent['direction']>()
+	readonly size = input<TToggleGroupComponent['size']>()
+	readonly variant = input<TToggleGroupComponent['variant']>()
+	readonly disabled = input<TToggleGroupComponent['disabled']>()
+	readonly focused = input<TToggleGroupComponent['focused']>()
+	readonly engine = input<TToggleGroupComponent['engine']>()
+	readonly items = input<TToggleGroupComponent['items']>()
+	readonly mode = input<TToggleGroupComponent['mode']>()
+	readonly orientation = input<TToggleGroupComponent['orientation']>()
+	readonly view = input<TToggleGroupComponent['view']>()
+	readonly aria_label = input<TToggleGroupComponent['aria_label']>()
+	readonly aria_labelledBy = input<TToggleGroupComponent['aria_labelledBy']>()
+	readonly aria_describedBy = input<TToggleGroupComponent['aria_describedBy']>()
+	readonly copy = viewChild.required(CopyDirective)
+	readonly subjects = viewChildren(TToggleGroupComponent)
 }

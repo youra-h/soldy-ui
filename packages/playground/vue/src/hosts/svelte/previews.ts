@@ -1,3 +1,5 @@
+import ToggleButtonPreview from './ToggleButtonPreview.svelte'
+import ToggleGroupPreview from './ToggleGroupPreview.svelte'
 import BadgePreview from './BadgePreview.svelte'
 import type { Component } from 'svelte'
 import AccordionPreview from './AccordionPreview.svelte'
@@ -60,6 +62,8 @@ export type TPreview = Component<TPreviewProps>
 
 export const PREVIEWS: Record<string, TPreview> = {
 	button: ButtonPreview,
+	'toggle-button': ToggleButtonPreview,
+	'toggle-group': ToggleGroupPreview,
 	input: InputPreview,
 	'number-input': NumberInputPreview,
 	textarea: TextareaPreview,

@@ -326,6 +326,24 @@
       "scope": "so-toasts-item"
     },
     {
+      "name": "so-toggle-button",
+      "sources": ["packages/core/src/components/custom/toggle-button/toggle-button.class.ts"],
+      "description": "Identity class of a toggle button; the node also carries the inherited so-button surface and modifiers.",
+      "scope": "so-toggle-button"
+    },
+    {
+      "name": "so-toggle-group",
+      "sources": ["packages/core/src/components/custom/toggle-group/toggle-group.class.ts"],
+      "description": "Root of the toggle button collection; contains buttons and receives the accessible group name.",
+      "scope": "so-toggle-group"
+    },
+    {
+      "name": "so-toggle-group-item",
+      "sources": ["packages/core/src/components/custom/toggle-group/item/item.class.ts"],
+      "description": "Identity class of a toggle button; the node also carries the inherited so-button surface and modifiers.",
+      "scope": "so-toggle-group-item"
+    },
+    {
       "name": "so-tooltip",
       "sources": ["packages/core/src/components/custom/tooltip/tooltip.class.ts"],
       "description": "Root of tooltip. Inherited component classes use the concrete component's base name.",
@@ -480,13 +498,25 @@
       "name": "so-button__text",
       "sources": [
         "packages/ui/angular/src/components/button/button.component.html",
+        "packages/ui/angular/src/components/toggle-button/toggle-button.component.html",
+        "packages/ui/angular/src/components/toggle-group/item/toggle-group-item.component.html",
         "packages/ui/react/src/components/button/Button.tsx",
+        "packages/ui/react/src/components/toggle-button/ToggleButton.tsx",
+        "packages/ui/react/src/components/toggle-group/item/Item.tsx",
         "packages/ui/solid/src/components/button/Button.tsx",
+        "packages/ui/solid/src/components/toggle-button/ToggleButton.tsx",
+        "packages/ui/solid/src/components/toggle-group/item/Item.tsx",
         "packages/ui/svelte/src/components/button/Button.svelte",
         "packages/ui/svelte/src/components/item-row/ItemRow.svelte",
+        "packages/ui/svelte/src/components/toggle-button/ToggleButton.svelte",
+        "packages/ui/svelte/src/components/toggle-group/item/Item.svelte",
         "packages/ui/vue/src/components/button/Button.vue",
         "packages/ui/vue/src/components/item-row/ItemRow.vue",
-        "packages/ui/webc/src/components/button/button.template.ts"
+        "packages/ui/vue/src/components/toggle-button/ToggleButton.vue",
+        "packages/ui/vue/src/components/toggle-group/item/Item.vue",
+        "packages/ui/webc/src/components/button/button.template.ts",
+        "packages/ui/webc/src/components/toggle-button/toggle-button.template.ts",
+        "packages/ui/webc/src/components/toggle-group/item/toggle-group-item.template.ts"
       ],
       "description": "text part of button. Availability follows the rendered component structure.",
       "scope": "so-button"
@@ -2734,7 +2764,8 @@
       "sources": [
         "packages/core/src/components/custom/progress-linear/progress-linear.class.ts",
         "packages/core/src/components/custom/slider/slider.class.ts",
-        "packages/core/src/components/custom/tabs/tabs.class.ts"
+        "packages/core/src/components/custom/tabs/tabs.class.ts",
+        "packages/core/src/components/custom/toggle-group/toggle-group.class.ts"
       ],
       "pattern": "so-<block>--orientation-<value>",
       "description": "Orientation of the component layout.",
@@ -2831,7 +2862,8 @@
         "packages/core/src/components/custom/radio-group/item/item.class.ts",
         "packages/core/src/components/custom/radio-group/radio-group.class.ts",
         "packages/core/src/components/custom/tabs/tabs.class.ts",
-        "packages/core/src/components/custom/tags/tags.class.ts"
+        "packages/core/src/components/custom/tags/tags.class.ts",
+        "packages/core/src/components/custom/toggle-group/toggle-group.class.ts"
       ],
       "pattern": "so-<block>--view-<value>",
       "description": "Theme-defined visual treatment; absent when unset.",
@@ -3243,7 +3275,8 @@
         "packages/core/src/components/custom/calendar/collection/extensions/selection/selection.extension.ts",
         "packages/core/src/components/custom/date-picker/date-picker.class.ts",
         "packages/core/src/components/custom/menu/menu.class.ts",
-        "packages/core/src/components/custom/popover/popover.class.ts"
+        "packages/core/src/components/custom/popover/popover.class.ts",
+        "packages/core/src/components/custom/toggle-button/toggle-button.class.ts"
       ],
       "description": "Selected/active state; for popup triggers indicates the open popup.",
       "scope": "Selectable/activatable collection item; ListBox/Select inner row; popup triggerDataset (consumer trigger, Select arrow, DatePicker button)",

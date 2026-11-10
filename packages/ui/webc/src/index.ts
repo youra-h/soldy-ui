@@ -141,3 +141,12 @@ export type {
 
 export { TBadgeElement } from './components/badge'
 export type { TBadgeElementProps } from './components/badge'
+
+export { TToggleButtonElement } from './components/toggle-button'
+export { TToggleGroupElement, TToggleGroupItemElement } from './components/toggle-group'
+
+export type { TToggleButtonElementProps } from './components/toggle-button'
+export type {
+	TToggleGroupElementProps,
+	TToggleGroupItemElementProps,
+} from './components/toggle-group'

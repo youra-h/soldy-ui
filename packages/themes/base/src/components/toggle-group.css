@@ -1,0 +1,15 @@
+/* A group of buttons, laid out on one axis. The buttons keep the Button scale. */
+:root {
+	--so-toggle-group-gap: 0.25rem;
+}
+
+.so-toggle-group {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--so-toggle-group-gap);
+}
+
+.so-toggle-group--orientation-vertical {
+	flex-direction: column;
+	align-items: stretch;
+}

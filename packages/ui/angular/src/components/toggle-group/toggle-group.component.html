@@ -1,0 +1,42 @@
+<ng-content>
+	@for (item of state()['shown'] ?? []; track item.uid) {
+		@if (!(slot('item') || slot('item-leading') || slot('item-trailing'))) {
+			<button so-toggle-group-item [ctrl]="item"></button>
+		} @else {
+			<button so-toggle-group-item [ctrl]="item">
+				<ng-template
+					slot="default"
+					ngProjectAs="ng-template[slot]"
+					let-selected="selected"
+					let-text="text"
+				>
+					@if (slot('item'); as content) {
+						<ng-container
+							[ngTemplateOutlet]="content"
+							[ngTemplateOutletContext]="{ item, selected, text }"
+						/>
+					} @else {
+						{{ text }}
+					}
+				</ng-template>
+				@if (slot('item-leading'); as content) {
+					<ng-template slot="leading" ngProjectAs="ng-template[slot]">
+						<ng-container
+							[ngTemplateOutlet]="content"
+							[ngTemplateOutletContext]="{ item }"
+						/>
+					</ng-template>
+				}
+				@if (slot('item-trailing'); as content) {
+					<ng-template slot="trailing" ngProjectAs="ng-template[slot]">
+						<ng-container
+							[ngTemplateOutlet]="content"
+							[ngTemplateOutletContext]="{ item }"
+						/>
+					</ng-template>
+				}
+			</button>
+		}
+	}
+</ng-content>
+<ng-content select="ng-template[slot]" />

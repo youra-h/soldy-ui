@@ -30,6 +30,13 @@ function fixture(
 }
 
 describe('published theme contract', () => {
+	it('distinguishes an absolute class from a base-prefixed modifier', () => {
+		const result = fixture(
+			"this.classes.add('so-toggle-button', false); this.classes.add('--view-filled')",
+		)
+		expect(result.roots.map(({ name }) => name)).toEqual(['so-toggle-button'])
+		expect(result.modifiers.map(({ name }) => name)).toEqual(['--view-filled'])
+	})
 	it('uses prop names for class modifiers and datasets for states', () => {
 		for (const entry of inventory.modifiers) expect(entry.name).toMatch(/^--[a-z][a-z-]*-/)
 		for (const name of [

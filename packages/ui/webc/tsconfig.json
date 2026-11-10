@@ -46,7 +46,9 @@
       "@soxa-ui/webc/toasts": ["./src/components/toasts/index.ts"],
       "@soxa-ui/webc/tooltip": ["./src/components/tooltip/index.ts"],
       "@soxa-ui/webc/virtual": ["./src/components/virtual/index.ts"],
-      "@soxa-ui/webc/badge": ["./src/components/badge/index.ts"]
+      "@soxa-ui/webc/badge": ["./src/components/badge/index.ts"],
+      "@soxa-ui/webc/toggle-button": ["./src/components/toggle-button/index.ts"],
+      "@soxa-ui/webc/toggle-group": ["./src/components/toggle-group/index.ts"]
     }
   },
   "include": ["env.d.ts", "src/**/*", "__tests__/**/*"]

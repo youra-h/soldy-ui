@@ -1,0 +1,6 @@
+export * from './item/types'
+export { default as TToggleGroupItem } from './item/item.class'
+export { TToggleGroupItemCollectionFacade } from './item/facade'
+export * from './types'
+export { TToggleGroup } from './toggle-group.class'
+export * from './collection'

@@ -31,6 +31,8 @@ import {
 	Accordion,
 	Breadcrumbs,
 	Button,
+	ToggleButton,
+	ToggleGroup,
 	Calendar,
 	CheckBox,
 	DateInput,
@@ -353,6 +355,8 @@ export const PREVIEWS: Record<string, TPreview> = {
 	// The label is the `text` prop from the preview props, not a slot: a given
 	// slot overrides the prop, and the `text` row would change nothing visible
 	button: (bind) => <Button {...bind()} />,
+	'toggle-button': (bind) => <ToggleButton {...bind()} />,
+	'toggle-group': (bind) => <ToggleGroup {...bind()} />,
 
 	input: (bind) => <Input {...bind()} />,
 	'number-input': (bind) => <NumberInput {...bind()} />,

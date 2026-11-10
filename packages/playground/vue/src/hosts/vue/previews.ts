@@ -30,6 +30,8 @@ import {
 	Accordion,
 	Breadcrumbs,
 	Button,
+	ToggleButton,
+	ToggleGroup,
 	Calendar,
 	CheckBox,
 	ComponentView,
@@ -383,6 +385,8 @@ export const PREVIEWS: Record<string, TPreview> = {
 	// `default` slot overrides the prop, and the `text` row would change nothing
 	// visible
 	button: (bind) => h(Button, bind),
+	'toggle-button': (bind) => h(ToggleButton, bind),
+	'toggle-group': (bind) => h(ToggleGroup, bind),
 
 	input: (bind) => h(Input, bind),
 	'number-input': (bind) => h(NumberInput, bind),
