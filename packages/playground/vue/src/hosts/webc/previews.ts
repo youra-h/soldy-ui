@@ -522,7 +522,7 @@ export const PREVIEWS: Record<string, TPreview> = {
 		tag: 'div',
 		is: 'so-toggle-group',
 		rebuild: ['items'],
-		slots: (bind) =>
+		slots: (bind): Readonly<Record<string, readonly TContent[]>> =>
 			bind.items
 				? {}
 				: {
