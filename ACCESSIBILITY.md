@@ -65,6 +65,121 @@ and how to report a barrier.
   contrast) repaint checks run in Chromium.
 - Every change goes through these tests in CI.
 
+## Automated axe audit
+
+Recorded on 2026-11-10 with axe-core 4.14.0. Source:
+`e293bcd93006296504b3befa852810f2e239d5f3 (clean)`. The reports record the actual commit and working-tree state;
+`modified` means the task's changes were present but not yet committed during the run. A `clean` source identifies the code commit audited before this documentation-only update.
+
+The mandatory desktop suite inventories **all 43 registry entries on all 6 hosts** (Vue, React, Svelte, Solid, Web Components, Angular): 110 named cases per adapter, 660 recorded case analyses
+per browser, including 6 semantic-reference scans. The deliberately unnamed button in `gate/unnamed` is an expected negative control and is excluded from these 660 case totals. The inventory and fixture guards fail on missing components, hosts, suite entry
+files or named fixtures; coverage is never reduced to the intersection of available previews.
+
+| Engine   | Actual browser version | Case reports | Serious/critical nodes | Scoped exceptions | Incomplete nodes |
+| -------- | ---------------------- | ------------ | ---------------------- | ----------------- | ---------------- |
+| Chromium | 156.0.8078.4           | 660          | 30                     | 30                | 852              |
+| WebKit   | 27.2                   | 660          | 30                     | 30                | 852              |
+
+Both runs have zero **unresolved** serious/critical nodes and zero stale exceptions.
+The retained violations listed below are still accessibility findings. **Color contrast has
+not passed**; the theme does not make a new WCAG level or conformance commitment through this audit.
+
+Coverage includes open/closed panels, Menu submenus and item panels, month/year Calendar pickers,
+selected/unselected/disabled collections and controls, single/multiple selection, one/two Slider
+thumbs, invalid fields with visible linked errors, empty/ordinary/error/loading Toasts and their
+persistent live announcers, determinate/indeterminate Progress, and real Virtual windows over
+ListBox, Select and Table. Each scan confirms its rendered consumer, role/parts and reached state
+before axe and again after persisting the original result. The fixtures use the default oren light theme, LTR and the host's Russian locale;
+these results do not certify other theme variants, locales, every keyboard path or an application.
+
+The dispositions distinguish 35 application previews, 7 actual base consumer paths, and 1
+headless base disposition that is not directly applicable to DOM axe. ComponentView, Stylable, Textable and
+Control are exercised through Button; ValueControl and InputControl through Input; Frame through
+an open Select panel, alongside real panel cases for Popover and DatePicker. Interactive is a
+separate currently unused core branch, not an ancestor of Button: its named case is explicitly
+**semantic-reference only**, using Button's interactive semantics, and does not claim execution
+of the standalone TInteractive class or adapter. Every report carries direct/consumer/semantic-reference
+coverage metadata. Decorative inheritance previews are not counted as actual consumer coverage.
+
+### Findings and temporary exceptions
+
+| Finding                       | Reproduced scope                                                                                                 | Remediation                                                                                                                    |
+| ----------------------------- | ---------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| `color-contrast`              | Error Toast title/description (3.75:1 and 3.49:1) and disabled Tabs panel text (2.43:1), each adapter and engine | [869fpjgvg](https://app.clickup.com/t/869fpjgvg): owner decision required by the existing theme color policy                   |
+| `scrollable-region-focusable` | Disabled Tabs bar and Table viewport, each adapter and engine                                                    | [869fpjhk9](https://app.clickup.com/t/869fpjhk9): agree keyboard access based on actual overflow and the disabled focus policy |
+
+The exact browser/adapter/case/rule/node entries, reasons and tasks are checked into
+[the exception inventory](packages/playground/vue/browser/axe/exceptions.ts). A node selector must
+resolve to exactly one element and be identical to the element resolved from the original axe CSS
+target. Generated mount ids are not hardcoded. Ambiguous, unmatched or stale exceptions fail;
+new serious/critical findings fail regardless of WCAG or best-practice tags. No rule, including
+contrast, is globally disabled. Negative controls verify unnamed/named buttons, exact node matching,
+ambiguous/stale entries, missing reasons/tasks and complete incomplete-result persistence.
+
+The audit also found invalid list semantics for urgent Toasts. The compatible fix keeps the
+existing `li` as a list item and exposes `role="alert"` on its existing inner card through a shared
+ARIA set in every adapter. Separate text-only announcers retain their priority and the card keeps
+`aria-live="off"`. Audible Narrator behavior after this correction remains **pending manual retest**.
+The recorded manual history below is preserved.
+
+Other original violations remain visible and are not declared passed:
+
+| Engine   | Rule     | Impact   | Adapter/case results | Nodes |
+| -------- | -------- | -------- | -------------------- | ----- |
+| chromium | `region` | moderate | 60                   | 162   |
+| webkit   | `region` | moderate | 60                   | 162   |
+
+Review `region` findings against the application's landmark structure, including non-modal teleported content; this fixture audit does not certify application landmarks.
+
+### Incomplete checks and manual review
+
+These are **needs-review results**, including findings with critical impact, not passes or waived violations. Adapter/case counts are analysis results; case names below are deduplicated across adapters. C/W means Chromium/WebKit.
+
+| Rule                          | Adapter/case results (C/W) | Nodes (C/W) | Named cases                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| ----------------------------- | -------------------------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `aria-hidden-focus`           | 18 / 18                    | 18 / 18     | `date-picker/open`, `dialog/open`, `drawer/open`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| `aria-valid-attr-value`       | 150 / 150                  | 198 / 198   | `calendar/disabled`, `calendar/grid`, `calendar/months`, `calendar/selected`, `calendar/years`, `date-picker/closed`, `date-picker/disabled`, `date-picker/invalid`, `date-picker/open`, `frame/select-panel-consumer`, `menu/closed`, `menu/item-panel`, `menu/open`, `menu/submenu`, `popover/closed`, `popover/open`, `select/closed`, `select/disabled`, `select/disabled-option`, `select/multiple-selected`, `select/open`, `select/single-selected`, `virtual/select-window-open`, `virtual/table-window`, `virtual/window` |
+| `color-contrast`              | 18 / 18                    | 618 / 618   | `calendar/months`, `calendar/years`, `pagination/current-page`                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| `scrollable-region-focusable` | 18 / 18                    | 18 / 18     | `menu/item-panel`, `menu/open`, `menu/submenu`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+
+Required manual checks at the original report nodes:
+
+- **`aria-hidden-focus`**: Use real Tab/Shift+Tab while each listed modal or popup is open: confirm hidden background content is not tabbable and focus remains in the intended active surface. Retain the manual result for each original node.
+- **`aria-valid-attr-value`**: Open each listed popup and inspect that every retained `aria-controls` reference resolves to its intended current panel; record both closed and open states. Axe reported popup relationships as needing review.
+- **`color-contrast`**: Inspect the retained nodes in their actual visible state, check overlapping surfaces and measure foreground/background contrast using the original checks as evidence. These incomplete results do not pass contrast.
+- **`scrollable-region-focusable`**: Reach each listed scroll region through its documented keyboard path and scroll its content without a pointer; check that a negative tabindex region can actually receive focus when required.
+
+### Reports and reproduction
+
+Axe runs in the test iframe document, including teleported panels and live regions, outside the
+playground shell and Vitest UI. The document has a title, language, heading and main landmark.
+Finite transitions must settle; infinite loading motion is left running. Cleanup checks layer
+removal and scroll-lock restoration and restores document settings/focus.
+
+Original `violations` and `incomplete`, with nodes, HTML, CSS targets, XPath and checks, are written
+**before assertions**, together with case/state, engine/axe versions and source context. Classification
+errors retain the original result with `gateError`; setup/state failures get a separate setup report.
+The fixed output is `packages/playground/vue/.vitest/a11y/<browser>/<adapter>/<run-id>/`; each browser
+has a manifest. A fresh run id prevents earlier failures from mixing into current totals. Moderate,
+minor and incomplete results remain in these reports and require review; incomplete is not a pass.
+
+Recorded run ids: Chromium `bfc3194c-3692-42d6-9910-43567b64667d`; WebKit `3142fd94-32f7-44ef-a86d-215591bc17f1`.
+CI includes the suite in both desktop layout legs and always uploads the browser's reports as
+`a11y-chromium` / `a11y-webkit`, including when the checks fail. The interactive scenario registry
+is not executed by this suite. Historical benchmark/raw reports are unchanged.
+
+```sh
+npm run build:css --workspace=@soxa-ui/theme-oren
+npm run test:browser --workspace=@soxa-ui/playground-vue -- browser/axe- --project "layout (chromium)"
+npm run test:layout:webkit -- browser/axe- --project "layout (webkit)"
+node packages/playground/vue/browser/axe/summary.mjs chromium latest
+node packages/playground/vue/browser/axe/summary.mjs webkit latest
+```
+
+The Windows WebKit command uses the repository's Docker Playwright browser server, with the exact
+installed Playwright version. On Linux, WebKit runs in the existing layout project directly.
+Axe does not prove audible speech, physical-device behavior or WCAG conformance.
+
 ## Supported environments
 
 | Area               | Status                                                                                                                                                                                                 |
@@ -78,9 +193,8 @@ and how to report a barrier.
 
 Soxa UI is in early development (`0.x`), and the following is known today:
 
-- **No formal conformance claim.** The library has not been audited against WCAG, and makes no
-  WCAG conformance claim. Conformance is a property of an application, but an audit of the library
-  is still to come.
+- **No formal conformance claim.** The regular axe fixture audit above is automated component coverage. The library has not undergone a comprehensive WCAG and assistive-technology audit, and these results do not establish application or library WCAG conformance.
+
 - **No automated screen reader testing.** Behavior with NVDA, JAWS, VoiceOver and TalkBack is not
   checked in CI.
 - **Screen-reader coverage is limited.** A recorded Narrator run covers Vue with a Russian locale on Windows 11. It does not establish behavior for other adapters, locales or screen readers.
