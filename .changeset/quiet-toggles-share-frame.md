@@ -2,4 +2,4 @@
 '@soxa-ui/theme-oren': patch
 ---
 
-Give ToggleGroup a shared rounded frame and quiet default segments. Preserve spacing between outlined buttons and room for keyboard focus rings in both orientations.
+Render ToggleGroup as joined segments with square internal corners, single dividers, and rounding only at the group edges. Keep a compact gap between outlined segments and draw keyboard focus rings inside each segment in both orientations.

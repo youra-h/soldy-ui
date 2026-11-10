@@ -1,7 +1,12 @@
-import { BREADCRUMBS_ITEMS, COLLECTION_ITEMS } from '@soxa-ui/playground-shared'
+import {
+	BREADCRUMBS_ITEMS,
+	EDITOR_ALIGNMENT_ITEMS,
+	editorAlignmentPath,
+} from '@soxa-ui/playground-shared'
 import { ChangeDetectionStrategy, Component, input, viewChild, viewChildren } from '@angular/core'
 import {
 	RoleIconDirective,
+	SlotDirective,
 	TBadgeComponent,
 	TButtonComponent,
 	TToggleButtonComponent,
@@ -1208,7 +1213,7 @@ export class ToggleButtonPreview implements TFixture {
 /** Collection selection and orientation are forwarded to the group. */
 @Component({
 	selector: 'pg-toggle-group-preview',
-	imports: [TToggleGroupComponent, CopyDirective],
+	imports: [TToggleGroupComponent, SlotDirective, CopyDirective],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	host: { style: 'display: contents' },
 	template: `
@@ -1231,7 +1236,22 @@ export class ToggleButtonPreview implements TFixture {
 				[aria_label]="aria_label()"
 				[aria_labelledBy]="aria_labelledBy()"
 				[aria_describedBy]="aria_describedBy()"
-			></div>
+			>
+				<ng-template slot="item-leading" let-item="item">
+					<svg
+						width="16"
+						height="16"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="1.5"
+						stroke-linecap="round"
+						aria-hidden="true"
+					>
+						<path [attr.d]="alignmentPath(item.text)" />
+					</svg>
+				</ng-template>
+			</div>
 		</ng-template>
 	`,
 })
@@ -1245,7 +1265,8 @@ export class ToggleGroupPreview implements TFixture {
 	readonly disabled = input<TToggleGroupComponent['disabled']>()
 	readonly focused = input<TToggleGroupComponent['focused']>()
 	readonly engine = input<TToggleGroupComponent['engine']>()
-	readonly sampleItems = COLLECTION_ITEMS
+	readonly sampleItems = EDITOR_ALIGNMENT_ITEMS
+	readonly alignmentPath = editorAlignmentPath
 	readonly items = input<TToggleGroupComponent['items']>()
 	readonly mode = input<TToggleGroupComponent['mode']>()
 	readonly orientation = input<TToggleGroupComponent['orientation']>()

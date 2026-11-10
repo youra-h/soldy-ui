@@ -1,4 +1,8 @@
-import { BREADCRUMBS_ITEMS } from '@soxa-ui/playground-shared'
+import {
+	BREADCRUMBS_ITEMS,
+	EDITOR_ALIGNMENT_ITEMS,
+	editorAlignmentPath,
+} from '@soxa-ui/playground-shared'
 import {
 	defineComponent,
 	h,
@@ -386,7 +390,28 @@ export const PREVIEWS: Record<string, TPreview> = {
 	// visible
 	button: (bind) => h(Button, bind),
 	'toggle-button': (bind) => h(ToggleButton, bind),
-	'toggle-group': (bind) => h(ToggleGroup, { items: ITEMS, ...bind }),
+	'toggle-group': (bind) =>
+		h(
+			ToggleGroup,
+			{ items: EDITOR_ALIGNMENT_ITEMS, ...bind },
+			{
+				'item-leading': ({ item }: { item: { text: string } }) =>
+					h(
+						'svg',
+						{
+							width: 16,
+							height: 16,
+							viewBox: '0 0 24 24',
+							fill: 'none',
+							stroke: 'currentColor',
+							'stroke-width': 1.5,
+							'stroke-linecap': 'round',
+							'aria-hidden': 'true',
+						},
+						[h('path', { d: editorAlignmentPath(item.text) })],
+					),
+			},
+		),
 
 	input: (bind) => h(Input, bind),
 	'number-input': (bind) => h(NumberInput, bind),

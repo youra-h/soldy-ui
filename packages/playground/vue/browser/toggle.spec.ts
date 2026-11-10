@@ -15,6 +15,7 @@ function button(index: number): HTMLButtonElement {
 async function show(
 	orientation: 'horizontal' | 'vertical' = 'horizontal',
 	direction: 'ltr' | 'rtl' = 'ltr',
+	view?: 'outlined',
 ) {
 	render(
 		defineComponent({
@@ -23,6 +24,7 @@ async function show(
 				h(ToggleGroup, {
 					orientation,
 					direction,
+					view,
 					aria_label: 'Formatting',
 					items: [
 						{ text: 'Bold' },
@@ -65,7 +67,7 @@ it('follows RTL without changing selection', async () => {
 })
 
 it('lays out vertically and reads its gap from the document root', async () => {
-	await show('vertical')
+	await show('vertical', 'ltr', 'outlined')
 	const group = button(0).parentElement
 	if (!group) throw new Error('Group is missing')
 	const previous = document.documentElement.style.getPropertyValue('--so-toggle-group-gap')
@@ -183,63 +185,71 @@ it('keeps the focused action and its focus ring inside an overflowing group', as
 for (const theme of ['oren', 'oren-dark']) {
 	for (const orientation of ['horizontal', 'vertical'] as const) {
 		for (const direction of ['ltr', 'rtl'] as const) {
-			it(`frames outlined actions with separate borders and focus room: ${theme}, ${orientation}, ${direction}`, async () => {
-				const previousTheme = document.documentElement.getAttribute('data-so-theme')
-				document.documentElement.dataset.soTheme = theme
-				onTestFinished(() => {
-					if (previousTheme === null)
-						document.documentElement.removeAttribute('data-so-theme')
-					else document.documentElement.setAttribute('data-so-theme', previousTheme)
+			for (const view of [undefined, 'outlined'] as const) {
+				it(`joins segments and preserves outlined spacing: ${theme}, ${orientation}, ${direction}, ${view ?? 'default'}`, async () => {
+					const previousTheme = document.documentElement.getAttribute('data-so-theme')
+					document.documentElement.dataset.soTheme = theme
+					onTestFinished(() => {
+						if (previousTheme === null)
+							document.documentElement.removeAttribute('data-so-theme')
+						else document.documentElement.setAttribute('data-so-theme', previousTheme)
+					})
+					render(
+						defineComponent({
+							render: () =>
+								h(ToggleGroup, {
+									view,
+									orientation,
+									direction,
+									aria_label: 'Text alignment',
+									items: [
+										{ text: 'Left' },
+										{ text: 'Center' },
+										{ text: 'Right' },
+									],
+								}),
+						}),
+					)
+					await frame()
+					const group = button(0).parentElement
+					if (!group) throw new Error('Toggle group is missing')
+					const style = getComputedStyle(group)
+					const first = button(0).getBoundingClientRect()
+					const middle = button(1).getBoundingClientRect()
+					const horizontal = orientation === 'horizontal'
+					const gap = horizontal
+						? Math.max(first.left, middle.left) - Math.min(first.right, middle.right)
+						: middle.top - first.bottom
+
+					expect(style.borderTopWidth).toBe('1px')
+					expect(gap).toBeCloseTo(view === 'outlined' ? 4 : 0, 1)
+					expect(style.paddingTop).toBe(view === 'outlined' ? '2px' : '0px')
+					const segment = getComputedStyle(button(1))
+					for (const corner of [
+						segment.borderTopLeftRadius,
+						segment.borderTopRightRadius,
+						segment.borderBottomLeftRadius,
+						segment.borderBottomRightRadius,
+					])
+						expect(corner).toBe('0px')
+					expect(
+						horizontal ? segment.borderInlineStartWidth : segment.borderBlockStartWidth,
+					).toBe('1px')
+
+					button(0).focus()
+					await userEvent.keyboard(
+						horizontal
+							? direction === 'rtl'
+								? '{ArrowLeft}'
+								: '{ArrowRight}'
+							: '{ArrowDown}',
+					)
+					expect(document.activeElement).toBe(button(1))
+					const focus = getComputedStyle(button(1))
+					expect(parseFloat(focus.outlineWidth)).toBeGreaterThan(0)
+					expect(focus.outlineOffset).toBe('-2px')
 				})
-				render(
-					defineComponent({
-						render: () =>
-							h(ToggleGroup, {
-								view: 'outlined',
-								variant: 'accent',
-								orientation,
-								direction,
-								aria_label: 'Formatting',
-								items: [{ text: 'Bold' }, { text: 'Italic' }],
-							}),
-					}),
-				)
-				await frame()
-				const group = button(0).parentElement
-				if (!group) throw new Error('Toggle group is missing')
-				const style = getComputedStyle(group)
-				const first = button(0).getBoundingClientRect()
-				const second = button(1).getBoundingClientRect()
-				const viewport = group.getBoundingClientRect()
-				const horizontal = orientation === 'horizontal'
-				const gap = horizontal
-					? Math.max(first.left, second.left) - Math.min(first.right, second.right)
-					: second.top - first.bottom
-
-				expect(style.borderTopWidth).toBe('1px')
-				expect(parseFloat(style.borderTopLeftRadius)).toBeGreaterThan(0)
-				expect(style.backgroundColor).not.toBe('rgba(0, 0, 0, 0)')
-				expect(gap).toBeGreaterThan(0)
-				expect(gap).toBeCloseTo(parseFloat(style.gap), 1)
-				expect(getComputedStyle(button(0)).borderTopWidth).toBe('1px')
-
-				button(0).focus()
-				await userEvent.keyboard(
-					horizontal
-						? direction === 'rtl'
-							? '{ArrowLeft}'
-							: '{ArrowRight}'
-						: '{ArrowDown}',
-				)
-				expect(document.activeElement).toBe(button(1))
-				const focus = getComputedStyle(button(1))
-				const ring = parseFloat(focus.outlineWidth) + parseFloat(focus.outlineOffset)
-				expect(ring).toBeGreaterThan(0)
-				expect(second.left - ring).toBeGreaterThanOrEqual(viewport.left)
-				expect(second.right + ring).toBeLessThanOrEqual(viewport.right)
-				expect(second.top - ring).toBeGreaterThanOrEqual(viewport.top)
-				expect(second.bottom + ring).toBeLessThanOrEqual(viewport.bottom)
-			})
+			}
 		}
 	}
 }

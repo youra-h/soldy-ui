@@ -34,7 +34,7 @@ const REGISTRIES: Record<string, { modifier: string; blocks: readonly string[] |
 	IBadgeViews: { modifier: 'view', blocks: ['so-badge'] },
 	IButtonViews: {
 		modifier: 'view',
-		blocks: ['so-button', 'so-list-box', 'so-accordion', 'so-tags'],
+		blocks: ['so-button', 'so-list-box', 'so-accordion', 'so-tags', 'so-toggle-group'],
 	},
 	ITabsViews: { modifier: 'view', blocks: ['so-tabs'] },
 	ICheckBoxViews: { modifier: 'view', blocks: ['so-check-box'] },
