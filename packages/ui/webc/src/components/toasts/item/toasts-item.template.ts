@@ -112,6 +112,10 @@ export const toastsItemTemplate: ITemplate<IToastsItem, TToastsItemCollectionFac
 	},
 
 	bindings: [
+		bind('cardAria', ({ root, state }) => {
+			const card = parts.get(root)?.card
+			if (card) ownerAttributes(card, state.cardAria)
+		}),
 		bind('order', ({ root, state }) => {
 			ownerStyles(
 				root,

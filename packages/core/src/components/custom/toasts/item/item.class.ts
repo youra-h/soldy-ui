@@ -54,6 +54,7 @@ export default class TToastsItem<
 	protected _swipeSide: TSwipeSide = 'end'
 	protected _swiping = false
 	protected _closeAria: TAria
+	protected _cardAria: TAria
 
 	constructor(props: Partial<TProps> = {}) {
 		super(props)
@@ -70,6 +71,11 @@ export default class TToastsItem<
 		this._alert = own.alert ?? ctor.defaultValues.alert
 		this._render = own.render ?? ctor.defaultValues.render
 
+		this._cardAria = new TAria()
+		this._cardAria.add('aria-live', 'off')
+		this._cardAria.subscribe((_set, oldValue) =>
+			this._sink.emit('change:cardAria', { newValue: this._cardAria.toObject(), oldValue }),
+		)
 		this._closeAria = new TAria()
 		// The close control remains discoverable, but its changing name is not a status message.
 		this._closeAria.add('aria-live', 'off')
@@ -197,7 +203,7 @@ export default class TToastsItem<
 		this._sink.emit('change:duration', { newValue: value, oldValue: oldDuration })
 	}
 
-	/** Срочное сообщение: `role="alert"` вместо `role="status"`. */
+	/** Urgency exposes the existing card as an alert and selects assertive announcements. */
 	get alert(): boolean {
 		return this._alert
 	}
@@ -305,13 +311,20 @@ export default class TToastsItem<
 		return this._closeAria
 	}
 
+	/** The card's navigation role; automatic announcements use the shared live regions. */
+	get cardAria(): TAria {
+		return this._cardAria
+	}
+
 	/**
 	 * Roles describe the cards during navigation; automatic messages are separate.
 	 * The explicit aria-live=off keeps names and controls out of live speech; alerts
 	 * are delivered through the shared assertive announcer.
 	 */
 	protected _syncRole(): void {
-		this._aria.add('role', this._alert ? 'alert' : 'listitem')
+		// The list child keeps its native structure; urgency belongs to the existing card.
+		this._aria.add('role', 'listitem')
+		this._cardAria.add('role', this._alert ? 'alert' : null)
 	}
 
 	protected _setSwiping(value: boolean): void {

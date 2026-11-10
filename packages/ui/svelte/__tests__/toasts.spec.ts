@@ -504,7 +504,11 @@ describe('Toasts · ARIA', () => {
 
 		const [urgent, polite] = toasts()
 
-		expect(urgent?.getAttribute('role')).toBe('alert')
+		expect(urgent?.getAttribute('role')).toBe('listitem')
+		expect(urgent?.querySelector('.so-toasts-item__card')?.getAttribute('role')).toBe('alert')
+		expect(urgent?.querySelector('.so-toasts-item__card')?.getAttribute('aria-live')).toBe(
+			'off',
+		)
 		expect(polite?.getAttribute('role')).toBe('listitem')
 		expect(polite?.getAttribute('tabindex')).toBe('0')
 		expect(polite?.dataset.open).toBe('true')

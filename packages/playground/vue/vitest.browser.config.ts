@@ -2,6 +2,7 @@ import { defineConfig } from 'vitest/config'
 import type { BrowserCommandContext, BrowserInstanceOption } from 'vitest/node'
 import { defineBrowserCommand, playwright } from '@vitest/browser-playwright'
 import { aliases, constants, plugins } from './vite.base.ts'
+import { saveA11yReport } from './browser/axe/report-command.ts'
 
 /**
  * The mouse button apart from movement. `userEvent` presses and releases it
@@ -373,6 +374,7 @@ export default defineConfig({
 					})),
 			],
 			commands: {
+				saveA11yReport,
 				mouseDown,
 				mouseUp,
 				quickDrag,

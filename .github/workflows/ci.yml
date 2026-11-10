@@ -162,6 +162,14 @@ jobs:
         if: matrix.browser == 'chromium'
         run: npm run test:parity
 
+      - name: Отчёты axe
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: a11y-${{ matrix.browser }}
+          path: packages/playground/vue/.vitest/a11y/${{ matrix.browser }}/
+          if-no-files-found: warn
+
       - name: Память и журнал ядра при падении
         if: failure()
         run: |

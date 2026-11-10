@@ -173,7 +173,7 @@ describe('тост (TToastsItem)', () => {
 		expect('variant' in toast).toBe(false)
 	})
 
-	it('ordinary item inherits polite announcements and alert toggles its role', () => {
+	it('keeps list item semantics while urgency changes the existing card role', () => {
 		const toast = new TToastsItem({ text: 'Сохранено' })
 
 		expect(toast.aria.get('role')).toBe('listitem')
@@ -181,8 +181,20 @@ describe('тост (TToastsItem)', () => {
 
 		toast.alert = true
 
-		expect(toast.aria.get('role')).toBe('alert')
-		expect(new TToastsItem({ alert: true }).aria.get('role')).toBe('alert')
+		expect(toast.aria.get('role')).toBe('listitem')
+		expect(toast.cardAria.get('role')).toBe('alert')
+		expect(toast.cardAria.get('aria-live')).toBe('off')
+		expect(new TToastsItem({ alert: true }).cardAria.get('role')).toBe('alert')
+		const changed = vi.fn()
+		toast.events.on('change:cardAria', changed)
+		toast.alert = false
+		expect(toast.cardAria.get('role')).toBeUndefined()
+		expect(changed).toHaveBeenCalledTimes(1)
+		toast.alert = false
+		expect(changed).toHaveBeenCalledTimes(1)
+		toast.alert = true
+		expect(toast.cardAria.get('role')).toBe('alert')
+		expect(changed).toHaveBeenCalledTimes(2)
 	})
 
 	it('фокусируемый: tabindex 0, у закрытого — -1', () => {

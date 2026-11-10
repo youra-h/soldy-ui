@@ -7,6 +7,7 @@ import 'vitest/browser'
 
 declare module 'vitest/browser' {
 	interface BrowserCommands {
+		saveA11yReport: (report: Readonly<Record<string, unknown>>) => Promise<string>
 		/** Press the main mouse button where the mouse is */
 		mouseDown: () => Promise<void>
 		/** Release the main mouse button */

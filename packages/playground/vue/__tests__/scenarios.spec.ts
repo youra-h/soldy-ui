@@ -8,6 +8,7 @@
  * сценарии свои, из теста, — и подкладываются странице через `provide`.
  */
 
+import { A11Y_CASES, COMPONENTS, auditInventoryErrors } from '@soxa-ui/playground-shared'
 import { describe, it, expect, beforeAll, beforeEach, vi } from 'vitest'
 import { mount, flushPromises, type VueWrapper } from '@vue/test-utils'
 import { nextTick } from 'vue'
@@ -110,6 +111,15 @@ describe.each(IDS)('каталог сценариев %s', (framework) => {
 	const host = hostOf(framework)
 	const scenarios = scenariosOf(host)
 
+	it('audit cases cover the complete host inventory', () => {
+		expect(
+			auditInventoryErrors(
+				host,
+				COMPONENTS.map((entry) => entry.id),
+			),
+		).toEqual([])
+	})
+
 	it('есть хотя бы одна тема', () => {
 		expect(topicsOf(scenarios).length).toBeGreaterThan(0)
 	})
@@ -165,7 +175,10 @@ describe.each(IDS)('каталог сценариев %s', (framework) => {
 	})
 
 	it('нет фикстур, на которые не ссылается ни один сценарий', () => {
-		const used = new Set(SCENARIO_REGISTRY.map((scenario) => scenario.fixture))
+		const used = new Set([
+			...SCENARIO_REGISTRY.map((scenario) => scenario.fixture),
+			...A11Y_CASES.map((audit) => audit.fixture),
+		])
 
 		expect(host.fixtures.filter((key) => !used.has(key))).toEqual([])
 	})

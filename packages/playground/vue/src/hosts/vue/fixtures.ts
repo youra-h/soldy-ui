@@ -1,3 +1,5 @@
+import { Toasts } from '@soxa-ui/vue'
+import { Field, Input, NumberInput, Textarea, DateInput, DatePicker } from '@soxa-ui/vue'
 import { h, type Component } from 'vue'
 import { Button, CheckBox, Icon, Label, RadioGroup, Switch, roleIcon } from '@soxa-ui/vue'
 import type { TPreview } from './previews'
@@ -22,6 +24,27 @@ const ARROW_RIGHT = roleIcon('arrowRight')
  * `__tests__/scenarios.spec.ts`).
  */
 export const FIXTURES: Record<string, TPreview> = {
+	'a11y-persistent-toasts': (bind) => h(Toasts, bind),
+	'a11y-invalid-input': (bind) =>
+		h(Field, { label: 'Account', invalid: true, error: 'Enter a valid email' }, () =>
+			h(Input, bind),
+		),
+	'a11y-invalid-number-input': (bind) =>
+		h(Field, { label: 'Account', invalid: true, error: 'Enter a valid email' }, () =>
+			h(NumberInput, bind),
+		),
+	'a11y-invalid-textarea': (bind) =>
+		h(Field, { label: 'Account', invalid: true, error: 'Enter a valid email' }, () =>
+			h(Textarea, bind),
+		),
+	'a11y-invalid-date-input': (bind) =>
+		h(Field, { label: 'Account', invalid: true, error: 'Enter a valid email' }, () =>
+			h(DateInput, bind),
+		),
+	'a11y-invalid-date-picker': (bind) =>
+		h(Field, { label: 'Account', invalid: true, error: 'Enter a valid email' }, () =>
+			h(DatePicker, bind),
+		),
 	// Probes in all three slots: the scenario finds them by `data-probe` and
 	// checks their order; `default` prints what came in the scope
 	'button-slot-labels': (bind) =>
