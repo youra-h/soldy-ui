@@ -2,6 +2,8 @@
 
 Avatar displays a user image. Until it loads, or when loading fails, the component shows the supplied initials or the custom `fallback` slot. Initials are already formatted text: Avatar does not derive them from a name, change their case or trim graphemes. Without initials or a fallback slot, the placeholder is empty.
 
+In Oren, `variant` colors the fallback background and text: `accent`, `positive`, `negative` and `caution` use their color families. The default and `normal` stay neutral. Initials and custom Icon fallback content inherit this color; a loaded photo keeps its original colors.
+
 Give the root an accessible name with the standard `aria_label` or `aria_labelledBy` prop. Without a name, Avatar is decorative. The inner image has an empty alt; fallback content is hidden from assistive technology to avoid announcing the name twice.
 
 ```vue

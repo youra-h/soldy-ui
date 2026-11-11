@@ -13,6 +13,16 @@
 	);
 }
 
+@each $color in 'accent', 'positive', 'negative', 'caution' {
+	:where(.so-avatar--variant-#{$color}) {
+		color: var(--so-#{$color}-800);
+		background-image: linear-gradient(
+			veil.tint($color, var(--so-component-fill)),
+			veil.tint($color, var(--so-component-fill))
+		);
+	}
+}
+
 .so-avatar--shape-rounded {
 	@apply rounded-md;
 }
