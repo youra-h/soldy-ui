@@ -125,7 +125,7 @@ jobs:
 
       - name: Системные зависимости браузера
         run: |
-          bash .github/scripts/prepare-ubuntu-apt.sh
+          sudo --preserve-env=GITHUB_ACTIONS,RUNNER_OS "$(command -v node)" tools/ci/ubuntu-mirror.mjs
           npx playwright install-deps ${{ matrix.browser }}
 
       # A dropped connection to a tab (`VITEST_BROWSER_CONNECTION_CLOSED`)
@@ -422,7 +422,7 @@ jobs:
 
       - name: Системные зависимости Chromium
         run: |
-          bash .github/scripts/prepare-ubuntu-apt.sh
+          sudo --preserve-env=GITHUB_ACTIONS,RUNNER_OS "$(command -v node)" tools/ci/ubuntu-mirror.mjs
           npx playwright install-deps chromium
 
       # The run packs what the build left in dist.
@@ -448,7 +448,9 @@ jobs:
       - run: npm ci
 
       - name: Линт
-        run: npm run lint:ci
+        run: |
+          node --test tools/ci/ubuntu-mirror.test.mjs
+          npm run lint:ci
 
       # An unformatted file is a trap for the next one to run `npm run format`:
       # their change would drown in someone else's lines.
