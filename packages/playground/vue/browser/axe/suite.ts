@@ -203,7 +203,10 @@ export function auditSuite(adapter: string) {
 
 		host.setLocale(ruRU)
 	})
-	beforeEach(() => {
+	beforeEach(async () => {
+		// A stationary pointer can open a tooltip mounted under the previous case's cursor.
+		await userEvent.unhover(document.body)
+
 		originalTitle = document.title
 		originalLang = document.documentElement.getAttribute('lang')
 		originalTheme = document.documentElement.getAttribute('data-so-theme')
