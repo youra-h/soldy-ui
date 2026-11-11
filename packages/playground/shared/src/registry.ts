@@ -9,6 +9,8 @@ import {
 	BreadcrumbsCollectionItemDescriptor,
 	BreadcrumbsItemDescriptor,
 	BadgeDescriptor,
+	AvatarDescriptor,
+	AvatarGroupDescriptor,
 	CodeBlockDescriptor,
 	ButtonDescriptor,
 	ToggleButtonDescriptor,
@@ -127,6 +129,23 @@ export const COMPONENTS: readonly TComponentEntry[] = [
 		span: 2,
 		description:
 			'Сообщение в потоке страницы с заголовком, действием и необязательным закрытием',
+	},
+	{
+		id: 'avatar',
+		label: 'Avatar',
+		descriptor: AvatarDescriptor,
+		parts: { Group: () => [AvatarGroupDescriptor()] },
+		group: 'display',
+		span: 1,
+		description: 'Изображение пользователя с инициалами или своим запасным содержимым',
+	},
+	{
+		id: 'avatar-group',
+		label: 'AvatarGroup',
+		descriptor: AvatarGroupDescriptor,
+		group: 'display',
+		span: 1,
+		description: 'Перекрывающаяся группа с явным числом скрытых пользователей',
 	},
 	{
 		id: 'code-block',

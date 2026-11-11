@@ -25,6 +25,14 @@
 	@include meta.load-css('components/icon/icon');
 }
 
+@layer components.so.avatar {
+	@include meta.load-css('components/avatar/avatar');
+}
+
+@layer components.so.avatar-group {
+	@include meta.load-css('components/avatar-group/avatar-group');
+}
+
 @layer components.so.button {
 	@include meta.load-css('components/button/button');
 }

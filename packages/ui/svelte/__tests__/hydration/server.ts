@@ -1,4 +1,5 @@
 import AlertPage from './AlertPage.test.svelte'
+import AvatarPage from './AvatarPage.test.svelte'
 import SeparatorPage from './SeparatorPage.test.svelte'
 import CodeBlockPage from './CodeBlockPage.test.svelte'
 /**
@@ -63,6 +64,7 @@ export function renderServerMarkup() {
 		alert: render(AlertPage).body,
 		separator: render(SeparatorPage).body,
 		badge: render(BadgePage).body,
+		avatar: render(AvatarPage).body,
 		'code-block': render(CodeBlockPage).body,
 		'date-input-value': onToday(() => render(DateInputValue).body),
 		'date-picker-value': onToday(() => render(DatePickerValue).body),

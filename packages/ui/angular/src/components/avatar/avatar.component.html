@@ -1,0 +1,12 @@
+<ng-content select="ng-template[slot]" />
+@if (state()['status'] === 'loaded') {
+	<img class="so-avatar__image" [src]="state()['src'] || null" alt="" />
+} @else {
+	<span class="so-avatar__fallback" aria-hidden="true">
+		@if (slot('fallback'); as content) {
+			<ng-container [ngTemplateOutlet]="content" />
+		} @else {
+			<ng-container>{{ state()['initials'] }}</ng-container>
+		}
+	</span>
+}

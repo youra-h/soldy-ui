@@ -4,6 +4,7 @@ import {
 	COMPONENT_SIZES,
 	BUTTON_VIEWS,
 	BADGE_VIEWS,
+	AVATAR_SHAPES,
 	CALENDAR_MODES,
 	CHECK_BOX_VIEWS,
 	COMPONENT_VARIANTS,
@@ -191,6 +192,12 @@ const OWN: Record<string, Record<string, string>> = {
 		closable:
 			'Кнопка закрытия: вызывает hide(), отмена — hide:before, повторный показ — show()',
 	},
+	avatar: {
+		src: 'URL изображения; до загрузки и при ошибке показан запасной вариант',
+		initials: 'Готовые инициалы, без преобразования регистра или обрезки',
+		shape: 'Форма, заданная темой',
+	},
+	'avatar-group': { overflow: 'Число людей, которых приложение не показало; дети не обрезаются' },
 	badge: {
 		value: 'Текст метки или числовой счётчик. Числовые строки не ограничиваются',
 		max: 'Предел числа: выше него выводится max+, исходное значение сохраняется',
@@ -533,6 +540,7 @@ const OPTIONS: Record<string, Record<string, readonly string[]>> = {
 	},
 	'check-box': { view: CHECK_BOX_VIEWS },
 	badge: { view: BADGE_VIEWS },
+	avatar: { shape: AVATAR_SHAPES },
 	label: { position: LABEL_POSITIONS },
 	field: { position: FIELD_POSITIONS },
 	accordion: { view: BUTTON_VIEWS },
@@ -602,6 +610,8 @@ export const PREVIEW_PROPS: Readonly<Record<string, Readonly<Record<string, unkn
 	},
 	alert: { closable: true, variant: 'caution' },
 	badge: { value: 8 },
+	avatar: { initials: 'AL', aria_label: 'Ada Lovelace' },
+	'avatar-group': { overflow: 3 },
 	'code-block': {
 		language: 'typescript',
 		code: 'const greeting = "Hello Soxa!";\nconsole.log(greeting);',

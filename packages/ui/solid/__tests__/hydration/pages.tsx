@@ -32,6 +32,7 @@ import type {
 } from '@soxa-ui/core'
 import {
 	Alert,
+	Avatar,
 	Badge,
 	CodeBlock,
 	Accordion,
@@ -538,6 +539,14 @@ export function AlertPage(): JSX.Element {
 		<Alert closable role="status" title="Notice">
 			Content
 		</Alert>
+	)
+}
+
+export function AvatarPage(): JSX.Element {
+	return (
+		<Avatar.Group overflow={3}>
+			<Avatar src="/avatar.png" initials="AL" aria_label="Ada" />
+		</Avatar.Group>
 	)
 }
 

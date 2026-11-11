@@ -244,5 +244,12 @@ export type { CodeBlockProps, CodeBlockEventProps } from './components/code-bloc
 
 export { Alert } from './components/alert'
 export type { AlertProps, AlertEventProps } from './components/alert/base.component'
+export { Avatar, AvatarGroup } from './components/avatar'
+export type {
+	AvatarProps,
+	AvatarGroupProps,
+	AvatarEventProps,
+	AvatarGroupEventProps,
+} from './components/avatar'
 export { Separator } from './components/separator'
 export type { SeparatorProps, SeparatorEventProps } from './components/separator'

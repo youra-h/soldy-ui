@@ -1,4 +1,5 @@
 import {
+	Avatar,
 	Badge,
 	Button,
 	CheckBox,
@@ -32,6 +33,7 @@ const CHECK = roleIcon('check')
 const ARROW_RIGHT = roleIcon('arrowRight')
 
 export const FIXTURES: Record<string, TPreview> = {
+	'avatar-fallback': (bind) => <Avatar {...bind()} fallback={<Icon tag={CHECK} />} />,
 	'badge-anchor': (bind) => (
 		<Badge
 			{...bind()}

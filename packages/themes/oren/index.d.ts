@@ -23,6 +23,13 @@
 export {}
 
 declare module '@soxa-ui/core' {
+	/** The shape of an avatar. Without a shape: `circle`. */
+	interface IAvatarShapes {
+		circle: true
+		rounded: true
+		rect: true
+	}
+
 	interface IBadgeViews {
 		filled: true
 		outlined: true

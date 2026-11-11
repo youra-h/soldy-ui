@@ -2,6 +2,7 @@ import { ALERT_SAMPLE } from '@soxa-ui/playground-shared'
 import {
 	BREADCRUMBS_ITEMS,
 	EDITOR_ALIGNMENT_ITEMS,
+	AVATAR_PEOPLE,
 	editorAlignmentPath,
 } from '@soxa-ui/playground-shared'
 import type { TToastsItemType } from '@soxa-ui/core'
@@ -620,6 +621,18 @@ export const PREVIEWS: Record<string, TPreview> = {
 		},
 	},
 	badge: { tag: 'span', is: 'so-badge' },
+	avatar: { tag: 'span', is: 'so-avatar' },
+	'avatar-group': {
+		tag: 'span',
+		is: 'so-avatar-group',
+		slots: {
+			default: AVATAR_PEOPLE.map((person) => ({
+				tag: 'span',
+				is: 'so-avatar',
+				props: person,
+			})),
+		},
+	},
 	'code-block': { tag: 'div', is: 'so-code-block' },
 	label: {
 		tag: 'label',

@@ -33,6 +33,7 @@ import {
 	AlertPage,
 	SeparatorPage,
 	BadgePage,
+	AvatarPage,
 	CodeBlockPage,
 	AccordionLayerStreamed,
 	FieldControlStreamed,
@@ -91,6 +92,7 @@ export async function renderServerMarkup() {
 	return {
 		// Страница целиком (`renderToString`)
 		alert: renderToString(() => <AlertPage />),
+		avatar: renderToString(() => <AvatarPage />),
 		separator: renderToString(() => <SeparatorPage />),
 		badge: renderToString(() => <BadgePage />),
 		'code-block': renderToString(() => <CodeBlockPage />),

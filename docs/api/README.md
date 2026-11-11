@@ -197,6 +197,8 @@ choosing VitePress, Nuxt or another renderer.
 
 ## Component guides
 
+- [Avatar](avatar.md): user images, exact initials, custom fallbacks and explicit group overflow.
+
 - [Breadcrumbs](breadcrumbs.md): native navigation links, overflow, localization and slots.
 
 - [CodeBlock](code-block.md): safe code display, snippets, copying, line numbers and themes.

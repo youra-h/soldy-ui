@@ -39,6 +39,7 @@ const REGISTRIES: Record<string, { modifier: string; blocks: readonly string[] |
 	ITabsViews: { modifier: 'view', blocks: ['so-tabs'] },
 	ICheckBoxViews: { modifier: 'view', blocks: ['so-check-box'] },
 	IRadioGroupViews: { modifier: 'view', blocks: ['so-radio-group-item'] },
+	IAvatarShapes: { modifier: 'shape', blocks: ['so-avatar'] },
 	ISkeletonShapes: { modifier: 'shape', blocks: ['so-skeleton'] },
 	ISkeletonAnimations: { modifier: 'animation', blocks: ['so-skeleton'] },
 }

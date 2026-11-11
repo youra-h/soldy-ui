@@ -15,6 +15,8 @@ import {
 import {
 	AlertPreview,
 	BadgePreview,
+	AvatarPreview,
+	AvatarGroupPreview,
 	CodeBlockPreview,
 	ButtonPreview,
 	ToggleButtonPreview,
@@ -85,6 +87,8 @@ export type TPreview =
 export const PREVIEWS: Record<string, TPreview> = {
 	alert: { template: AlertPreview },
 	badge: { template: BadgePreview },
+	avatar: { template: AvatarPreview },
+	'avatar-group': { template: AvatarGroupPreview },
 	'code-block': { template: CodeBlockPreview },
 	button: { template: ButtonPreview },
 	'toggle-button': { template: ToggleButtonPreview },

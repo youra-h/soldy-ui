@@ -2,6 +2,7 @@ import { ALERT_SAMPLE } from '@soxa-ui/playground-shared'
 import {
 	BREADCRUMBS_ITEMS,
 	EDITOR_ALIGNMENT_ITEMS,
+	AVATAR_PEOPLE,
 	editorAlignmentPath,
 } from '@soxa-ui/playground-shared'
 import {
@@ -49,6 +50,8 @@ import {
 	Icon,
 	Input,
 	Alert,
+	Avatar,
+	AvatarGroup,
 	Badge,
 	CodeBlock,
 	Label,
@@ -420,6 +423,14 @@ export const PREVIEWS: Record<string, TPreview> = {
 	),
 	'code-block': (bind) => <CodeBlock {...bind()} />,
 	badge: (bind) => <Badge {...bind()} />,
+	avatar: (bind) => <Avatar {...bind()} />,
+	'avatar-group': (bind) => (
+		<AvatarGroup {...bind()}>
+			{AVATAR_PEOPLE.map((person) => (
+				<Avatar {...person} />
+			))}
+		</AvatarGroup>
+	),
 	label: (bind) => (
 		<Label {...bind()}>
 			<CheckBox />

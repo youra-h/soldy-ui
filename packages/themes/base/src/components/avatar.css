@@ -1,0 +1,75 @@
+/* Each avatar owns its size; groups never replace a child's scale. */
+:root {
+	--so-avatar-size-sm: 1.5rem;
+	--so-avatar-size-normal: 2rem;
+	--so-avatar-size-lg: 2.5rem;
+	--so-avatar-size-xl: 3rem;
+	--so-avatar-size-2xl: 4rem;
+
+	--so-avatar-font-size-sm: calc(1em - 0.125rem);
+	--so-avatar-font-size-normal: 1em;
+	--so-avatar-font-size-lg: calc(1em + 0.125rem);
+	--so-avatar-font-size-xl: calc(1em + 0.25rem);
+	--so-avatar-font-size-2xl: calc(1em + 0.5rem);
+}
+
+.so-avatar {
+	--so-avatar-size: var(--so-avatar-size-normal);
+	--so-avatar-font-size: var(--so-avatar-font-size-normal);
+
+	position: relative;
+	display: inline-grid;
+	flex: none;
+	inline-size: var(--so-avatar-size);
+	block-size: var(--so-avatar-size);
+	overflow: hidden;
+	vertical-align: middle;
+}
+
+.so-avatar--size-sm {
+	--so-avatar-size: var(--so-avatar-size-sm);
+	--so-avatar-font-size: var(--so-avatar-font-size-sm);
+}
+
+.so-avatar--size-lg {
+	--so-avatar-size: var(--so-avatar-size-lg);
+	--so-avatar-font-size: var(--so-avatar-font-size-lg);
+}
+
+.so-avatar--size-xl {
+	--so-avatar-size: var(--so-avatar-size-xl);
+	--so-avatar-font-size: var(--so-avatar-font-size-xl);
+}
+
+.so-avatar--size-2xl {
+	--so-avatar-size: var(--so-avatar-size-2xl);
+	--so-avatar-font-size: var(--so-avatar-font-size-2xl);
+}
+
+.so-avatar__image,
+.so-avatar__fallback {
+	grid-area: 1 / 1;
+	inline-size: 100%;
+	block-size: 100%;
+	min-inline-size: 0;
+}
+
+.so-avatar__image {
+	display: block;
+	object-fit: cover;
+}
+
+.so-avatar__fallback {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: var(--so-avatar-font-size);
+	line-height: 1;
+	white-space: nowrap;
+}
+
+/* Keep the fallback for idle, loading and error; an unfinished image is never visible. */
+.so-avatar:not([data-status='loaded']) > .so-avatar__image,
+.so-avatar[data-status='loaded'] > .so-avatar__fallback {
+	display: none;
+}

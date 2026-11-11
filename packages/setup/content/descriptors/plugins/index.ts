@@ -127,3 +127,4 @@ export { CodeBlockSourcePluginDescriptor } from './code-block.plugin'
 export { ScrollFocusPluginDescriptor } from './scroll-focus.plugin'
 
 export { AlertNamesPluginDescriptor } from './alert-names.plugin'
+export { AvatarImagePluginDescriptor } from './avatar-image.plugin'

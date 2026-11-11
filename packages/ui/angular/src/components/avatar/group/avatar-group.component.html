@@ -1,0 +1,14 @@
+<ng-content select="ng-template[slot]" />
+<ng-content />
+@if (state()['displayOverflow']) {
+	<span class="so-avatar-group__overflow">
+		@if (slot('overflow-content'); as content) {
+			<ng-container
+				[ngTemplateOutlet]="content"
+				[ngTemplateOutletContext]="{ count: state()['overflow'] }"
+			/>
+		} @else {
+			<span class="so-avatar-group__count">{{ state()['displayOverflow'] }}</span>
+		}
+	</span>
+}

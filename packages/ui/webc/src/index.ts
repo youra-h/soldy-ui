@@ -154,5 +154,7 @@ export { TCodeBlockElement } from './components/code-block'
 export type { TCodeBlockElementProps } from './components/code-block'
 
 export * from './components/alert'
+export { TAvatarElement, TAvatarGroupElement } from './components/avatar'
+export type { TAvatarElementProps, TAvatarGroupElementProps } from './components/avatar'
 export { TSeparatorElement } from './components/separator'
 export type { TSeparatorElementProps } from './components/separator'
