@@ -1,5 +1,57 @@
 # @soxa-ui/setup
 
+## 0.3.0
+
+### Minor Changes
+
+- 7327698: Select: rename the tags_overflow prop to tagsOverflow. Update component props and collection facade access to the new name.
+- 7335dd6: Remove public plugin creation events. Replace namespace:create handlers with bundle:create and bundle.get(PluginClass); internal plugin lifecycle hooks remain unchanged.
+- 28bcd83: Remove duplicate `input`, `input:value`, `show:after`, and `hide:after` component events. Subscribe to `change:value` for value changes and to `show` or `hide` after the corresponding lifecycle hook. Angular consumers must replace `soInput` and `soInputValue` with `soChangeValue`, and `soShowAfter`/`soHideAfter` with `soShow`/`soHide`. The `open`, `close`, `element:ready`, `element:removed`, and `ready` events remain available.
+- e682670: Publish only explicitly declared descriptor events. Internal property triggers no longer appear as component callbacks, Vue events, Angular outputs or Web Component events. Declare application notifications in contribution.events; property state refresh and two-way model updates remain driven by triggers.
+- 1c78107: Publish Soxa UI packages under the `@soxa-ui` scope. Replace the previous npm scope in every dependency and import (including theme CSS, theme setup, icons, and TypeScript module augmentations) with `@soxa-ui/<package>`. Keep the core, plugins, setup, and adapters on the same release. Component exports, props, events, and the `so-*`, `data-so-*`, and `--so-*` styling contracts are unchanged. See `docs/migration-to-soxa.md` for the package mapping and upgrade steps.
+- ac39aa9: Accordion item arrow slots are now arrow-icon and item-arrow-icon. Replace leading-icon/trailing-icon and item-leading-icon/item-trailing-icon; use arrowPlacement to choose the side.
+- cfffb4b: Standardize property change notifications to { newValue, oldValue }. Update bare-value handlers to read payload.newValue. Object values keep their references without deep cloning; collections and markup sets use shallow container snapshots. Cancelable before events, model bindings, collection operations, and invalidation signals retain their contracts.
+- 0690162: Frame: rename position to strategy and TFramePosition to TFrameStrategy. Replace the prop, controller property and change:position event with strategy and change:strategy; Angular outputs use soChangeStrategy.
+
+### Patch Changes
+
+- 53fb45f: Add Badge for inline labels, capped numeric counters and dots, with accessible names, anchored placement and theme styling across all adapters.
+- 21e6143: Announce toast text and descriptions through persistent polite and assertive regions, separately from interactive cards and controls.
+- ab9735f: Add Breadcrumbs as a collection with external engines, composable Item parts and standard activation. Include localized accessible names, theme separators and native-link overflow menus that preserve breadcrumb membership. Expose root-level gap scales and separator geometry for theme and scoped customization.
+- a15bae2: Prevent CodeBlock copy actions from covering source text, including horizontally scrolled lines. Show the copy icon by default and add the copy slot for custom button content across all adapters. Register the new copy role in both icon packs; update your icon pack or provide the copy slot when upgrading CodeBlock.
+- 0909342: Add built-in safe CodeBlock syntax highlighting, including server rendering. Use compact white layouts with a single tab toolbar, smaller copy actions and tighter line-number gutters. Clarify snippet selection and shorten copy labels.
+- ba29be7: Keep overflowing disabled Tabs and Table content reachable and scrollable by keyboard without adding tab stops when content fits or contains an available tab stop. Preserve native disabled behavior when Web Components are re-enabled.
+- db54848: Fix selected tag list semantics so each remove button belongs to its list item while preserving tag selection and keyboard behavior.
+- 1ffabcd: Add ToggleButton and ToggleGroup with persistent pressed state, collection-backed selection and accessible keyboard navigation. Preserve explicit native form attributes while defaulting toggle controls to non-submitting buttons. Keep long ToggleGroup rows reachable in their own scroll viewport on narrow screens.
+- 1bb3ea8: Add CodeBlock with accessible code display, line numbers, highlighted lines, clipboard feedback and snippets powered by Tabs across all adapters.
+- de65c13: Preserve valid list semantics for urgent toast notifications while retaining the alert role on the existing card and separate text-only announcements across all framework adapters.
+- 9c002f7: Publish descriptor-derived component API metadata for documentation consumers.
+- Updated dependencies [53fb45f]
+- Updated dependencies [21e6143]
+- Updated dependencies [ab9735f]
+- Updated dependencies [0909342]
+- Updated dependencies [8212af4]
+- Updated dependencies [c7b5a90]
+- Updated dependencies [ba29be7]
+- Updated dependencies [db54848]
+- Updated dependencies [1ffabcd]
+- Updated dependencies [6dfea13]
+- Updated dependencies [1bb3ea8]
+- Updated dependencies [de65c13]
+- Updated dependencies [2d81d06]
+- Updated dependencies [7327698]
+- Updated dependencies [7415726]
+- Updated dependencies [7335dd6]
+- Updated dependencies [13101c7]
+- Updated dependencies [28bcd83]
+- Updated dependencies [1c78107]
+- Updated dependencies [bcd5555]
+- Updated dependencies [203edd0]
+- Updated dependencies [cfffb4b]
+- Updated dependencies [0690162]
+  - @soxa-ui/core@0.3.0
+  - @soxa-ui/plugins@0.3.0
+
 ## 0.3.0-beta.1
 
 ### Minor Changes

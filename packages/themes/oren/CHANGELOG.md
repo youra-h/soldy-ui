@@ -1,5 +1,70 @@
 # @soxa-ui/theme-oren
 
+## 0.3.0
+
+### Minor Changes
+
+- a491c3f: Stylesheets per component next to the whole one: `@soxa-ui/theme-oren/<component>.css` carries the shared part — tokens, schemes, the reset and the size scales — and the parts of its component, inner ones included, and the bundler of an application puts a shared file once. Every rule of the theme moves into a cascade layer (`components`), so the CSS of an application outside layers and the utilities of its Tailwind now override the theme — drop the specificity workarounds kept against it.
+- 1c78107: Publish Soxa UI packages under the `@soxa-ui` scope. Replace the previous npm scope in every dependency and import (including theme CSS, theme setup, icons, and TypeScript module augmentations) with `@soxa-ui/<package>`. Keep the core, plugins, setup, and adapters on the same release. Component exports, props, events, and the `so-*`, `data-so-*`, and `--so-*` styling contracts are unchanged. See `docs/migration-to-soxa.md` for the package mapping and upgrade steps.
+- bcd5555: Replace boolean and state CSS modifiers with data attributes, including readonly, required, clearable, editable, closable, indeterminate and Tabs geometry readiness. Select now exposes open state only through data-open. Prefix orientation, DatePicker mode and Tabs alignment modifiers with their prop names.
+  
+  Update custom themes: replace removed state modifiers with explicit selectors such as [data-required='true']; false remains the string "false". Replace --horizontal/--vertical with --orientation-horizontal/--orientation-vertical, --single/--range with --mode-single/--mode-range, and Tabs --center/--end/--stretch with --alignment-center/--alignment-end/--alignment-stretch. Replace the Tabs --ready-animation modifier with [data-ready-animation='true']. Native HTML attributes and component props retain their behavior.
+- 203edd0: Rename the Tabs.Content root class from `so-tabs__panel` to `so-tabs-content`. Update custom theme selectors and DOM queries to use `.so-tabs-content`.
+
+### Patch Changes
+
+- 53fb45f: Add Badge for inline labels, capped numeric counters and dots, with accessible names, anchored placement and theme styling across all adapters.
+- ab9735f: Add Breadcrumbs as a collection with external engines, composable Item parts and standard activation. Include localized accessible names, theme separators and native-link overflow menus that preserve breadcrumb membership. Expose root-level gap scales and separator geometry for theme and scoped customization.
+- a15bae2: Prevent CodeBlock copy actions from covering source text, including horizontally scrolled lines. Show the copy icon by default and add the copy slot for custom button content across all adapters. Register the new copy role in both icon packs; update your icon pack or provide the copy slot when upgrading CodeBlock.
+- 0909342: Add built-in safe CodeBlock syntax highlighting, including server rendering. Use compact white layouts with a single tab toolbar, smaller copy actions and tighter line-number gutters. Clarify snippet selection and shorten copy labels.
+- 1ffabcd: Add ToggleButton and ToggleGroup with persistent pressed state, collection-backed selection and accessible keyboard navigation. Preserve explicit native form attributes while defaulting toggle controls to non-submitting buttons. Keep long ToggleGroup rows reachable in their own scroll viewport on narrow screens.
+- 12be34d: Render ToggleGroup as joined segments with square internal corners, single dividers, and rounding only at the group edges. Keep a compact gap between outlined segments and draw keyboard focus rings inside each segment in both orientations.
+- a603db9: Use a transparent plain overflow button in Breadcrumbs and apply the selected variant to navigable links and the overflow control. Keep the current location and separators neutral.
+- 1bb3ea8: Add CodeBlock with accessible code display, line numbers, highlighted lines, clipboard feedback and snippets powered by Tabs across all adapters.
+- ab7115e: Document Tailwind CSS 4 layer ordering to preserve component sizing and Select option spacing.
+- d1d4764: Versioned on their own: a theme or an icon pack no longer shares the version of the library and depends on it by a range (`^` and a library version) instead of its exact version, so it keeps working with the library releases that do not break its contract. The icon packs take `@soxa-ui/setup` as a peer dependency now.
+- fc65f24: Table in Safari and iOS: the head stays above row checkboxes, a column without a width keeps its minimum before the first measure, and rows no longer show through the rounded corners of the sticky head. A theme that draws a line under the sticky head names its thickness in `--so-table-head-border`, and the backing under the headers stops above it.
+- defba58: The values of `variant`, `view`, `shape` and `animation` now reach the types through `@soxa-ui/theme-oren/setup`, so `variant="accent"` type-checks when the stylesheet comes from Angular CLI `styles` or Nuxt `css`. README: where the stylesheet goes in each build.
+- 85e280b: Table: rows no longer show through the sticky head while a column is carried — one backing under the whole head replaces the squares under each header. Its height is the head height `TTableHeadPlugin` writes (`--so-table-head-height`): a theme that does not install the plugin gets a backing one head row high.
+- 7415726: Slider: the thumb halo shows the pressed veil while the thumb is held or dragged, also in Safari, where the pointer keeps hovering the thumb.
+- Updated dependencies [53fb45f]
+- Updated dependencies [21e6143]
+- Updated dependencies [ab9735f]
+- Updated dependencies [a15bae2]
+- Updated dependencies [0909342]
+- Updated dependencies [ba29be7]
+- Updated dependencies [db54848]
+- Updated dependencies [1ffabcd]
+- Updated dependencies [c7b5a90]
+- Updated dependencies [6dfea13]
+- Updated dependencies [ba672e1]
+- Updated dependencies [14a7c49]
+- Updated dependencies [1bb3ea8]
+- Updated dependencies [b67988b]
+- Updated dependencies [c3e42b9]
+- Updated dependencies [de65c13]
+- Updated dependencies [9c002f7]
+- Updated dependencies [2d81d06]
+- Updated dependencies [7327698]
+- Updated dependencies [d1d4764]
+- Updated dependencies [fc65f24]
+- Updated dependencies [7335dd6]
+- Updated dependencies [28bcd83]
+- Updated dependencies [e682670]
+- Updated dependencies [1c78107]
+- Updated dependencies [bcd5555]
+- Updated dependencies [ac39aa9]
+- Updated dependencies [c95d6c4]
+- Updated dependencies [85e280b]
+- Updated dependencies [203edd0]
+- Updated dependencies [cfffb4b]
+- Updated dependencies [defba58]
+- Updated dependencies [a491c3f]
+- Updated dependencies [0690162]
+  - @soxa-ui/core@0.3.0
+  - @soxa-ui/setup@0.3.0
+  - @soxa-ui/theme-base@0.3.0
+
 ## 0.3.0-beta.1
 
 ### Minor Changes
