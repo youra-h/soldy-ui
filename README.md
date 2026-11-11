@@ -272,54 +272,54 @@ component: `*` — all six, a list — only those, `-` — none yet. **Release**
 release that includes the component in at least one adapter. `0.3.0` is the first stable release;
 `next` — already in `main`, ships with the next release; `future` — queued for development.
 
-| Component                  | What it is                                                                                     | Frameworks | Release |
-| -------------------------- | ---------------------------------------------------------------------------------------------- | ---------- | ------- |
-| Button                     | Button: text, icons in slots, four views                                                       | *          | 0.3.0   |
-| Input                      | Text field with slots for icons and buttons                                                    | *          | 0.3.0   |
-| NumberInput                | Number field in the locale's format: step and bounds, arrow keys, − and + buttons with hold    | *          | 0.3.0   |
-| CheckBox                   | Checkbox with a third, indeterminate state                                                     | *          | 0.3.0   |
-| Switch                     | Switch: the same value as a checkbox, a different metaphor                                     | *          | 0.3.0   |
-| Label                      | Control label: clicking the text toggles the control, and the text is its accessible name      | *          | 0.3.0   |
-| Slider                     | Slider: a number or a range, set by dragging, with keys or with a screen reader gesture        | *          | 0.3.0   |
-| Rating                     | Rating with stars: set by click, drag or arrow keys, halves, hover preview, read-only display  | *          | 0.3.0   |
-| RadioGroup                 | One option out of several: native radio buttons sharing a `name`                               | *          | 0.3.0   |
-| Select                     | Select field: an input plus a list in an overlay, the Combobox pattern                         | *          | 0.3.0   |
-| Calendar                   | Month grids: pick a single date, several dates or a range                                      | *          | 0.3.0   |
-| DateInput                  | Date and time field typed in parts in the locale's format, selected and copied as a whole      | *          | 0.3.0   |
-| DatePicker                 | Date field and a calendar in a panel: a single date or a range                                 | *          | 0.3.0   |
-| Popover                    | Panel at a trigger with any content: a non-modal dialog                                        | *          | 0.3.0   |
-| Tooltip                    | Hint for an element, shown on hover and on keyboard focus                                      | *          | 0.3.0   |
-| Dialog                     | Modal window: centered or at an edge of the screen, can be maximized to full screen            | *          | 0.3.0   |
-| Drawer                     | Panel that slides in at an edge of the screen or a container, can be swiped away               | *          | 0.3.0   |
-| Toasts                     | Pop-up notifications shown from code: a queue, auto-dismiss with a pause, swipe to close       | *          | 0.3.0   |
-| Scroller                   | Single-row strip of any content, paged with two buttons                                        | *          | 0.3.0   |
-| ListBox                    | List with single or multiple selection                                                         | *          | 0.3.0   |
-| Table                      | Table: columns as data, sorting by column headers, row selection with checkboxes               | *          | 0.3.0   |
-| Tabs                       | Tabs: a tab list and panels linked by value                                                    | *          | 0.3.0   |
-| Tags                       | Tag set: close buttons, optional selection                                                     | *          | 0.3.0   |
-| Accordion                  | Sections that expand one at a time or several at once                                          | *          | 0.3.0   |
-| CodeBlock                  | Read-only source with syntax highlighting, file tabs, line numbers and customizable copying    | *          | 0.3.0   |
-| Icon                       | Icon from the registered pack, by role                                                         | *          | 0.3.0   |
-| ProgressLinear             | Linear progress indicator: the share done, or an indeterminate animation while it is unknown   | *          | 0.3.0   |
-| ProgressSpinner            | Circular progress indicator: the share done, or an indeterminate animation while it is unknown | *          | 0.3.0   |
-| Skeleton                   | Placeholder while content loads                                                                | *          | 0.3.0   |
-| DragAndDrop                | Drag and drop of collection items                                                              | *          | 0.3.0   |
-| Virtual                    | Window for long lists: ListBox and Table inside render only the visible items                  | *          | 0.3.0   |
-| Pagination                 | Page navigation: page numbers with gaps, previous and next, first and last                     | *          | 0.3.0   |
-| Menu                       | Action menu at a button or on right click: submenus, checkbox and radio items                  | *          | 0.3.0   |
-| Textarea                   | Multi-line text field that grows with its content                                              | *          | 0.3.0   |
-| Field                      | Field wrapper: description, error message and invalid state linked to the control              | *          | 0.3.0   |
-| [Alert](docs/api/alert.md) | Inline message with composable content, optional actions and localized dismissal               | *          | next    |
-| Badge                      | Counter or status mark, on its own or over another element                                     | *          | 0.3.0   |
-| Avatar                     | User picture with a fallback to initials or an icon                                            | -          | future  |
-| Breadcrumbs                | Path to the current page, collapsing a long trail                                              | *          | 0.3.0   |
-| Separator                  | Horizontal or vertical divider, semantic or decorative                                         | -          | future  |
-| ToggleButton               | Button with a persistent pressed state                                                         | *          | 0.3.0   |
-| ToggleGroup                | Toggle buttons with single or multiple selection                                               | *          | 0.3.0   |
-| Tree                       | Hierarchy with expandable branches, selection and keyboard navigation by level                 | -          | future  |
-| Stepper                    | Steps of a multi-step form: done, current, with an error; linear or free order                 | -          | future  |
-| FileUpload                 | File picker and drop zone with type, size and count limits                                     | -          | future  |
-| Splitter                   | Panels with a draggable border: size limits, keyboard, collapsing                              | -          | future  |
+| Component       | What it is                                                                                     | Frameworks | Release |
+| --------------- | ---------------------------------------------------------------------------------------------- | ---------- | ------- |
+| Button          | Button: text, icons in slots, four views                                                       | *          | 0.3.0   |
+| Input           | Text field with slots for icons and buttons                                                    | *          | 0.3.0   |
+| NumberInput     | Number field in the locale's format: step and bounds, arrow keys, − and + buttons with hold    | *          | 0.3.0   |
+| CheckBox        | Checkbox with a third, indeterminate state                                                     | *          | 0.3.0   |
+| Switch          | Switch: the same value as a checkbox, a different metaphor                                     | *          | 0.3.0   |
+| Label           | Control label: clicking the text toggles the control, and the text is its accessible name      | *          | 0.3.0   |
+| Slider          | Slider: a number or a range, set by dragging, with keys or with a screen reader gesture        | *          | 0.3.0   |
+| Rating          | Rating with stars: set by click, drag or arrow keys, halves, hover preview, read-only display  | *          | 0.3.0   |
+| RadioGroup      | One option out of several: native radio buttons sharing a `name`                               | *          | 0.3.0   |
+| Select          | Select field: an input plus a list in an overlay, the Combobox pattern                         | *          | 0.3.0   |
+| Calendar        | Month grids: pick a single date, several dates or a range                                      | *          | 0.3.0   |
+| DateInput       | Date and time field typed in parts in the locale's format, selected and copied as a whole      | *          | 0.3.0   |
+| DatePicker      | Date field and a calendar in a panel: a single date or a range                                 | *          | 0.3.0   |
+| Popover         | Panel at a trigger with any content: a non-modal dialog                                        | *          | 0.3.0   |
+| Tooltip         | Hint for an element, shown on hover and on keyboard focus                                      | *          | 0.3.0   |
+| Dialog          | Modal window: centered or at an edge of the screen, can be maximized to full screen            | *          | 0.3.0   |
+| Drawer          | Panel that slides in at an edge of the screen or a container, can be swiped away               | *          | 0.3.0   |
+| Toasts          | Pop-up notifications shown from code: a queue, auto-dismiss with a pause, swipe to close       | *          | 0.3.0   |
+| Scroller        | Single-row strip of any content, paged with two buttons                                        | *          | 0.3.0   |
+| ListBox         | List with single or multiple selection                                                         | *          | 0.3.0   |
+| Table           | Table: columns as data, sorting by column headers, row selection with checkboxes               | *          | 0.3.0   |
+| Tabs            | Tabs: a tab list and panels linked by value                                                    | *          | 0.3.0   |
+| Tags            | Tag set: close buttons, optional selection                                                     | *          | 0.3.0   |
+| Accordion       | Sections that expand one at a time or several at once                                          | *          | 0.3.0   |
+| CodeBlock       | Read-only source with syntax highlighting, file tabs, line numbers and customizable copying    | *          | 0.3.0   |
+| Icon            | Icon from the registered pack, by role                                                         | *          | 0.3.0   |
+| ProgressLinear  | Linear progress indicator: the share done, or an indeterminate animation while it is unknown   | *          | 0.3.0   |
+| ProgressSpinner | Circular progress indicator: the share done, or an indeterminate animation while it is unknown | *          | 0.3.0   |
+| Skeleton        | Placeholder while content loads                                                                | *          | 0.3.0   |
+| DragAndDrop     | Drag and drop of collection items                                                              | *          | 0.3.0   |
+| Virtual         | Window for long lists: ListBox and Table inside render only the visible items                  | *          | 0.3.0   |
+| Pagination      | Page navigation: page numbers with gaps, previous and next, first and last                     | *          | 0.3.0   |
+| Menu            | Action menu at a button or on right click: submenus, checkbox and radio items                  | *          | 0.3.0   |
+| Textarea        | Multi-line text field that grows with its content                                              | *          | 0.3.0   |
+| Field           | Field wrapper: description, error message and invalid state linked to the control              | *          | 0.3.0   |
+| Alert           | Inline message with composable content, optional actions and localized dismissal               | *          | next    |
+| Badge           | Counter or status mark, on its own or over another element                                     | *          | 0.3.0   |
+| Avatar          | User picture with a fallback to initials or an icon                                            | -          | future  |
+| Breadcrumbs     | Path to the current page, collapsing a long trail                                              | *          | 0.3.0   |
+| Separator       | Horizontal or vertical divider, semantic or decorative                                         | -          | future  |
+| ToggleButton    | Button with a persistent pressed state                                                         | *          | 0.3.0   |
+| ToggleGroup     | Toggle buttons with single or multiple selection                                               | *          | 0.3.0   |
+| Tree            | Hierarchy with expandable branches, selection and keyboard navigation by level                 | -          | future  |
+| Stepper         | Steps of a multi-step form: done, current, with an error; linear or free order                 | -          | future  |
+| FileUpload      | File picker and drop zone with type, size and count limits                                     | -          | future  |
+| Splitter        | Panels with a draggable border: size limits, keyboard, collapsing                              | -          | future  |
 
 A new component comes to Vue first and moves to the other adapters after that.
 
