@@ -2,6 +2,7 @@ import {
 	RoleIconDirective,
 	SlotDirective,
 	TBadgeComponent,
+	TAvatarComponent,
 	TButtonComponent,
 	TCheckBoxComponent,
 	TDateInputComponent,
@@ -314,7 +315,26 @@ class BadgeAnchor implements TFixture {
 	readonly subjects = viewChildren(TBadgeComponent)
 }
 
+@Component({
+	selector: 'pg-avatar-fallback',
+	imports: [TAvatarComponent, TIconComponent, RoleIconDirective, SlotDirective, CopyDirective],
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	host: { style: 'display: contents' },
+	template: `<ng-template pg-copy
+		><span so-avatar [ctrl]="ctrl()" [initials]="initials()" [aria_label]="aria_label()"
+			><ng-template slot="fallback"
+				><svg so-icon so-role-icon="check"></svg></ng-template></span
+	></ng-template>`,
+})
+class AvatarFallback implements TFixture {
+	readonly ctrl = input<TAvatarComponent['ctrl']>()
+	readonly initials = input<TAvatarComponent['initials']>()
+	readonly aria_label = input<TAvatarComponent['aria_label']>()
+	readonly copy = viewChild.required(CopyDirective)
+	readonly subjects = viewChildren(TAvatarComponent)
+}
 export const FIXTURES: Record<string, Type<TFixture>> = {
+	'avatar-fallback': AvatarFallback,
 	'badge-anchor': BadgeAnchor,
 	'a11y-persistent-toasts': A11yPersistentToasts,
 	'a11y-invalid-input': A11yInvalidInput,

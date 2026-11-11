@@ -8,6 +8,8 @@ import {
 	BreadcrumbsCollectionItemDescriptor,
 	BreadcrumbsItemDescriptor,
 	BadgeDescriptor,
+	AvatarDescriptor,
+	AvatarGroupDescriptor,
 	CodeBlockDescriptor,
 	ButtonDescriptor,
 	ToggleButtonDescriptor,
@@ -117,6 +119,23 @@ export const COMPONENT_GROUPS: Readonly<Record<TComponentGroup, string>> = {
  * levels of the contract, not components.
  */
 export const COMPONENTS: readonly TComponentEntry[] = [
+	{
+		id: 'avatar',
+		label: 'Avatar',
+		descriptor: AvatarDescriptor,
+		parts: { Group: () => [AvatarGroupDescriptor()] },
+		group: 'display',
+		span: 1,
+		description: 'Изображение пользователя с инициалами или своим запасным содержимым',
+	},
+	{
+		id: 'avatar-group',
+		label: 'AvatarGroup',
+		descriptor: AvatarGroupDescriptor,
+		group: 'display',
+		span: 1,
+		description: 'Перекрывающаяся группа с явным числом скрытых пользователей',
+	},
 	{
 		id: 'code-block',
 		label: 'CodeBlock',

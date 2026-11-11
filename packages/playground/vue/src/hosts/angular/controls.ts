@@ -1,6 +1,7 @@
 import {
 	BREADCRUMBS_ITEMS,
 	EDITOR_ALIGNMENT_ITEMS,
+	AVATAR_PEOPLE,
 	editorAlignmentPath,
 } from '@soxa-ui/playground-shared'
 import { ChangeDetectionStrategy, Component, input, viewChild, viewChildren } from '@angular/core'
@@ -8,6 +9,8 @@ import {
 	RoleIconDirective,
 	SlotDirective,
 	TBadgeComponent,
+	TAvatarComponent,
+	TAvatarGroupComponent,
 	TCodeBlockComponent,
 	TButtonComponent,
 	TToggleButtonComponent,
@@ -1306,4 +1309,85 @@ export class CodeBlockPreview implements TFixture {
 	readonly highlightLines = input<TCodeBlockComponent['highlightLines']>()
 	readonly copy = viewChild.required(CopyDirective)
 	readonly subjects = viewChildren(TCodeBlockComponent)
+}
+
+@Component({
+	selector: 'pg-avatar-preview',
+	imports: [TAvatarComponent, CopyDirective],
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	host: { style: 'display: contents' },
+	template: `<ng-template pg-copy
+		><span
+			so-avatar
+			[ctrl]="ctrl()"
+			[rendered]="rendered()"
+			[visible]="visible()"
+			[direction]="direction()"
+			[aria_label]="aria_label()"
+			[aria_labelledBy]="aria_labelledBy()"
+			[aria_describedBy]="aria_describedBy()"
+			[src]="src()"
+			[initials]="initials()"
+			[shape]="shape()"
+			[size]="size()"
+			[variant]="variant()"
+		></span
+	></ng-template>`,
+})
+export class AvatarPreview implements TFixture {
+	readonly ctrl = input<TAvatarComponent['ctrl']>()
+	readonly rendered = input<TAvatarComponent['rendered']>()
+	readonly visible = input<TAvatarComponent['visible']>()
+	readonly direction = input<TAvatarComponent['direction']>()
+	readonly aria_label = input<TAvatarComponent['aria_label']>()
+	readonly aria_labelledBy = input<TAvatarComponent['aria_labelledBy']>()
+	readonly aria_describedBy = input<TAvatarComponent['aria_describedBy']>()
+	readonly src = input<TAvatarComponent['src']>()
+	readonly initials = input<TAvatarComponent['initials']>()
+	readonly shape = input<TAvatarComponent['shape']>()
+	readonly size = input<TAvatarComponent['size']>()
+	readonly variant = input<TAvatarComponent['variant']>()
+
+	readonly copy = viewChild.required(CopyDirective)
+	readonly subjects = viewChildren(TAvatarComponent)
+}
+
+@Component({
+	selector: 'pg-avatar-group-preview',
+	imports: [TAvatarGroupComponent, CopyDirective, TAvatarComponent],
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	host: { style: 'display: contents' },
+	template: `<ng-template pg-copy
+		><span
+			so-avatar-group
+			[ctrl]="ctrl()"
+			[rendered]="rendered()"
+			[visible]="visible()"
+			[direction]="direction()"
+			[aria_label]="aria_label()"
+			[aria_labelledBy]="aria_labelledBy()"
+			[aria_describedBy]="aria_describedBy()"
+			[overflow]="overflow()"
+		>
+			@for (person of people; track person.initials) {
+				<span
+					so-avatar
+					[initials]="person.initials"
+					[aria_label]="person.aria_label"
+				></span>
+			}</span
+	></ng-template>`,
+})
+export class AvatarGroupPreview implements TFixture {
+	readonly ctrl = input<TAvatarGroupComponent['ctrl']>()
+	readonly rendered = input<TAvatarGroupComponent['rendered']>()
+	readonly visible = input<TAvatarGroupComponent['visible']>()
+	readonly direction = input<TAvatarGroupComponent['direction']>()
+	readonly aria_label = input<TAvatarGroupComponent['aria_label']>()
+	readonly aria_labelledBy = input<TAvatarGroupComponent['aria_labelledBy']>()
+	readonly aria_describedBy = input<TAvatarGroupComponent['aria_describedBy']>()
+	readonly overflow = input<TAvatarGroupComponent['overflow']>()
+	readonly people = AVATAR_PEOPLE
+	readonly copy = viewChild.required(CopyDirective)
+	readonly subjects = viewChildren(TAvatarGroupComponent)
 }

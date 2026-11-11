@@ -210,3 +210,6 @@ export type { ToggleGroupItemProps } from './components/toggle-group/item/base.c
 
 export { CodeBlock } from './components/code-block'
 export type { CodeBlockProps } from './components/code-block'
+
+export { Avatar, AvatarGroup } from './components/avatar'
+export type { AvatarProps, AvatarGroupProps } from './components/avatar'

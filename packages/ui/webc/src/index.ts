@@ -152,3 +152,6 @@ export type {
 } from './components/toggle-group'
 export { TCodeBlockElement } from './components/code-block'
 export type { TCodeBlockElementProps } from './components/code-block'
+
+export { TAvatarElement, TAvatarGroupElement } from './components/avatar'
+export type { TAvatarElementProps, TAvatarGroupElementProps } from './components/avatar'

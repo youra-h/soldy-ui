@@ -14,3 +14,10 @@ export function editorAlignmentPath(text: string): string {
 
 	return `M4 5h16M${shortStart} 10h${shortWidth}M4 15h16M${shortStart} 20h${shortWidth}`
 }
+
+/** The same people and initials are shown by every framework host. */
+export const AVATAR_PEOPLE = [
+	{ initials: 'AL', aria_label: 'Ada Lovelace' },
+	{ initials: 'GH', aria_label: 'Grace Hopper' },
+	{ initials: 'AT', aria_label: 'Alan Turing' },
+] as const

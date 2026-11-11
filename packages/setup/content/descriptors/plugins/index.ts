@@ -125,3 +125,5 @@ export { CodeBlockCopyPluginDescriptor, CodeBlockNamesPluginDescriptor } from '.
 export { CodeBlockSourcePluginDescriptor } from './code-block.plugin'
 
 export { ScrollFocusPluginDescriptor } from './scroll-focus.plugin'
+
+export { AvatarImagePluginDescriptor } from './avatar-image.plugin'

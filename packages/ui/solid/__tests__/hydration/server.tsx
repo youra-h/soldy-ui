@@ -31,6 +31,7 @@ import type { JSX } from 'solid-js'
 import { renderToStream, renderToString } from 'solid-js/web'
 import {
 	BadgePage,
+	AvatarPage,
 	CodeBlockPage,
 	AccordionLayerStreamed,
 	FieldControlStreamed,
@@ -88,6 +89,7 @@ function streamOf(page: (props: TStreamedPageProps) => JSX.Element): Promise<str
 export async function renderServerMarkup() {
 	return {
 		// Страница целиком (`renderToString`)
+		avatar: renderToString(() => <AvatarPage />),
 		badge: renderToString(() => <BadgePage />),
 		'code-block': renderToString(() => <CodeBlockPage />),
 		'tabs-active-second': renderToString(() => <TabsActiveSecond />),

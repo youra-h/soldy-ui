@@ -1,8 +1,22 @@
+<script lang="ts">
+import SetupAvatarGroup from './setup.component'
+export default { ...SetupAvatarGroup }
+</script>
+
 <template>
-	<span class="so-avatar-group">
+	<component
+		ref="rootElement"
+		:is="tag"
+		v-if="rendered"
+		v-show="visible"
+		:class="classes"
+		v-bind="{ ...attrs, ...aria, ...dataset }"
+	>
 		<slot />
-		<span class="so-avatar-group__overflow">
-			<slot name="overflow"><span class="so-avatar-group__count">+3</span></slot>
-		</span>
-	</span>
+		<span v-if="displayOverflow" class="so-avatar-group__overflow"
+			><slot name="overflow-content" :count="overflow"
+				><span class="so-avatar-group__count">{{ displayOverflow }}</span></slot
+			></span
+		>
+	</component>
 </template>

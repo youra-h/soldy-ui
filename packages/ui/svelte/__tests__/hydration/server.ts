@@ -1,3 +1,4 @@
+import AvatarPage from './AvatarPage.test.svelte'
 import CodeBlockPage from './CodeBlockPage.test.svelte'
 /**
  * Разметка сервера для гидратации — её рисует сервер той же версии Svelte,
@@ -59,6 +60,7 @@ function onToday(draw: () => string): string {
 export function renderServerMarkup() {
 	return {
 		badge: render(BadgePage).body,
+		avatar: render(AvatarPage).body,
 		'code-block': render(CodeBlockPage).body,
 		'date-input-value': onToday(() => render(DateInputValue).body),
 		'date-picker-value': onToday(() => render(DatePickerValue).body),

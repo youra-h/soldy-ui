@@ -1,3 +1,4 @@
+import { AVATAR_SCENARIOS } from './avatar/display'
 import { CODE_BLOCK_SCENARIOS } from './code-block/display'
 import { BREADCRUMBS_SCENARIOS } from './breadcrumbs/window'
 
@@ -42,6 +43,7 @@ export const SCENARIOS: readonly TScenario[] = [
 	...BUTTON_SLOTS,
 	...LABEL_SLOTS,
 	...BADGE_SLOTS,
+	...AVATAR_SCENARIOS,
 	...CODE_BLOCK_SCENARIOS,
 	...PROGRESS_LINEAR_MOTION,
 	...PROGRESS_SPINNER_MOTION,
