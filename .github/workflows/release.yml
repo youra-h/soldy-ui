@@ -59,29 +59,22 @@ jobs:
         name: Импорты пакетов объявлены
         run: npm run check:published-imports
 
-      # Exit pre-mode only in the runner so Changesets accepts the explicit
-      # latest tag; the committed branch stays in beta for the next version.
+      # The approved plan was validated against every unpublished package above.
       - if: steps.check.outputs.publish == 'true'
         name: Публикация
-        run: |
-          if [ -f .changeset/pre.json ]; then
-            npx changeset pre exit
-          fi
-          npx changeset publish --tag latest
+        run: npx changeset publish --tag latest
         env:
           NODE_AUTH_TOKEN: ${{ secrets.SOXA_NPM_TOKEN }}
           NPM_CONFIG_PROVENANCE: true
 
-      # One GitHub Release per release: `v<version>` of the library, and
-      # without it — on the tag of its first package. The notes read every
-      # package at its own version (tools/release-notes).
-      - if: steps.check.outputs.publish == 'true'
-        name: Теги и GitHub Release
+      # Each scope has its own GitHub history, including a coordinated stable graduation.
+      - name: Теги и GitHub Release
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           git push origin --tags
-          node tools/release-notes/cli.mjs release "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/blob/$GITHUB_SHA" "$GITHUB_SHA" < "$RUNNER_TEMP/unpublished.txt"
+          node tools/release-notes/cli.mjs planned > "$RUNNER_TEMP/planned.txt"
+          node tools/release-notes/cli.mjs release "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/blob/$GITHUB_SHA" "$GITHUB_SHA" < "$RUNNER_TEMP/planned.txt"
 
   verify:
     name: Установка опубликованного выпуска

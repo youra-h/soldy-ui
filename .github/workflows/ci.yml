@@ -34,6 +34,7 @@ jobs:
           npm run test:eslint
           npm run test:min-peers
           npm run test:release-notes
+          npm run test:release-plan
           npm run test:api-docs
           npm run typecheck:api-docs
           npm run check:api-docs

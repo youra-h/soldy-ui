@@ -1,7 +1,7 @@
 // Release steps of .github/workflows/release.yml (docs/agents/build.md,
 // «Версии пакетов»):
 //
-//   node tools/release-notes/cli.mjs unpublished         # name@version of every package npm does not have yet
+//   node tools/release-notes/cli.mjs unpublished         # approved versions missing from npm
 //   node tools/release-notes/cli.mjs notes <links>       # notes for name@version lines from stdin
 //   node tools/release-notes/cli.mjs release <links> <sha>  # the GitHub Release for them
 //
@@ -19,6 +19,10 @@ import {
 	releaseOf,
 	sharedVersion,
 	unpublishedOf,
+	releaseGroups,
+	packagesOfPlan,
+	assertPlannedUnpublished,
+	registryVersion,
 	withChangelogs,
 } from './release-notes.mjs'
 
@@ -26,6 +30,7 @@ const ROOT = resolve(import.meta.dirname, '../..')
 
 const USAGE = [
 	'node tools/release-notes/cli.mjs unpublished',
+	'node tools/release-notes/cli.mjs planned',
 	'node tools/release-notes/cli.mjs notes <links>',
 	'node tools/release-notes/cli.mjs release <links> <sha>',
 ].join('\n')
@@ -36,12 +41,12 @@ const USAGE = [
  * is a `.cmd` script, and only a shell runs it.
  */
 function view(spec) {
-	const { status, stdout } = spawnSync(`npm view ${spec} version`, {
+	const result = spawnSync(`npm view ${spec} version --json`, {
 		encoding: 'utf8',
 		shell: true,
 	})
 
-	return status === 0 ? stdout.trim() : undefined
+	return registryVersion(spec, result)
 }
 
 /**
@@ -66,9 +71,21 @@ function readPublished() {
 		})
 }
 
+function planned() {
+	const manifest = JSON.parse(readFileSync(resolve(ROOT, '.release/plan.json'), 'utf8'))
+	return packagesOfPlan(manifest, npmPackages(ROOT), sharedVersion(ROOT))
+}
+
 function run(command, args) {
+	if (command === 'planned' && args.length === 0) {
+		for (const pkg of planned()) console.log(pkg.name + '@' + pkg.version)
+		return 0
+	}
 	if (command === 'unpublished' && args.length === 0) {
-		for (const { name, version } of unpublishedOf(npmPackages(ROOT), view)) {
+		const approved = planned()
+		const missing = unpublishedOf(npmPackages(ROOT), view)
+		assertPlannedUnpublished(approved, missing)
+		for (const { name, version } of missing) {
 			console.log(`${name}@${version}`)
 		}
 
@@ -89,25 +106,45 @@ function run(command, args) {
 			return 0
 		}
 
-		const { tag, title, prerelease } = releaseOf(published, shared)
-		const { status } = spawnSync(
-			'gh',
-			[
-				'release',
-				'create',
-				tag,
-				'--title',
-				title,
-				'--target',
-				sha,
-				'--notes-file',
-				'-',
-				...(prerelease ? ['--prerelease'] : []),
-			],
-			{ input: notes, stdio: ['pipe', 'inherit', 'inherit'] },
-		)
-
-		return status ?? 1
+		for (const group of releaseGroups(published, shared)) {
+			const { tag, title, prerelease } = releaseOf(group, shared)
+			const existing = spawnSync(
+				'gh',
+				['release', 'view', tag, '--json', 'targetCommitish'],
+				{ encoding: 'utf8' },
+			)
+			if (existing.status === 0) {
+				if (JSON.parse(existing.stdout).targetCommitish !== sha)
+					throw new Error('Release tag already targets another commit: ' + tag)
+				continue
+			}
+			if (!/release not found|HTTP 404/i.test(existing.stderr ?? ''))
+				throw new Error('Cannot verify existing GitHub release: ' + tag)
+			const { status } = spawnSync(
+				'gh',
+				[
+					'release',
+					'create',
+					tag,
+					'--title',
+					title,
+					'--target',
+					sha,
+					'--notes-file',
+					'-',
+					...(prerelease ? ['--prerelease'] : []),
+					...(group.some((pkg) => shared.has(pkg.name))
+						? ['--latest']
+						: ['--latest=false']),
+				],
+				{
+					input: notesOf(withChangelogs(ROOT, group), shared, links),
+					stdio: ['pipe', 'inherit', 'inherit'],
+				},
+			)
+			if (status !== 0) return status ?? 1
+		}
+		return 0
 	}
 
 	console.error(USAGE)
