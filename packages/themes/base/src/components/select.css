@@ -86,7 +86,9 @@
 	width: 100%;
 }
 
+/* Select-only keeps keyboard focus on the input without a text caret. */
 .so-select__field input:read-only {
+	caret-color: transparent;
 	cursor: default;
 	-webkit-user-select: none;
 	user-select: none;
