@@ -1,3 +1,4 @@
+import { Separator } from '@soxa-ui/solid'
 /**
  * Страницы гидратации — одна разметка на две сборки.
  *
@@ -528,5 +529,14 @@ export function CodeBlockPage(): JSX.Element {
 			value="second"
 			lineNumbers
 		/>
+	)
+}
+
+export function SeparatorPage(): JSX.Element {
+	return (
+		<>
+			<Separator orientation="vertical" />
+			<Separator decorative />
+		</>
 	)
 }

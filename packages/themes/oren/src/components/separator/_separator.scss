@@ -1,0 +1,19 @@
+/* Borders remain visible when forced colors replace background paints. */
+.so-separator {
+	--so-separator-width: 1px;
+	border: 0 solid var(--so-neutral-300);
+}
+
+.so-separator--orientation-horizontal {
+	border-block-start-width: var(--so-separator-width);
+}
+
+.so-separator--orientation-vertical {
+	border-inline-start-width: var(--so-separator-width);
+}
+
+@media (forced-colors: active) {
+	.so-separator {
+		border-color: CanvasText;
+	}
+}

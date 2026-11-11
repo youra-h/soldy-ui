@@ -200,6 +200,10 @@
     "./code-block": {
       "types": "./dist/components/code-block/index.d.ts",
       "default": "./dist/components/code-block/index.js"
+    },
+    "./separator": {
+      "types": "./dist/components/separator/index.d.ts",
+      "default": "./dist/components/separator/index.js"
     }
   },
   "files": [

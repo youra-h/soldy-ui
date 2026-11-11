@@ -60,3 +60,5 @@ export { BadgeDescriptor } from './badge.descriptor'
 export { ToggleButtonDescriptor } from './toggle-button.descriptor'
 export * from './toggle-group'
 export { CodeBlockDescriptor } from './code-block.descriptor'
+
+export { SeparatorDescriptor } from './separator.descriptor'

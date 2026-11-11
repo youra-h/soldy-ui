@@ -239,3 +239,6 @@ export type { ToggleGroupProps } from './components/toggle-group/base.component'
 export type { ToggleGroupItemProps } from './components/toggle-group/item/base.component'
 export { CodeBlock } from './components/code-block'
 export type { CodeBlockProps, CodeBlockEventProps } from './components/code-block'
+
+export { Separator } from './components/separator'
+export type { SeparatorProps, SeparatorEventProps } from './components/separator'

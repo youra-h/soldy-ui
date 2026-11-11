@@ -210,3 +210,6 @@ export type { ToggleGroupItemProps } from './components/toggle-group/item/base.c
 
 export { CodeBlock } from './components/code-block'
 export type { CodeBlockProps } from './components/code-block'
+
+export { Separator } from './components/separator'
+export type { SeparatorProps } from './components/separator'

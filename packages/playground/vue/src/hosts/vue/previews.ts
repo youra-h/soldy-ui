@@ -61,6 +61,7 @@ import {
 	Rating,
 	Scroller,
 	Select,
+	Separator,
 	Skeleton,
 	Slider,
 	Switch,
@@ -649,6 +650,10 @@ export const PREVIEWS: Record<string, TPreview> = {
 	 */
 	'progress-spinner': (bind) => h(ProgressSpinner, bind),
 
+	separator: (bind) =>
+		h('div', { style: 'width:100%;height:120px;display:flex;align-items:center' }, [
+			h(Separator, bind),
+		]),
 	skeleton: (bind) => h(Skeleton, bind),
 
 	/**

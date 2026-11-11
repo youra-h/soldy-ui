@@ -52,6 +52,7 @@ import {
 	Rating,
 	Scroller,
 	Select,
+	Separator,
 	Skeleton,
 	Slider,
 	Switch,
@@ -601,6 +602,11 @@ export const PREVIEWS: Record<string, TPreview> = {
 	// fraction is zero, and the running look is the `indeterminate` flag
 	'progress-spinner': (bind) => <ProgressSpinner {...bind} />,
 
+	separator: (bind) => (
+		<div style={{ width: '100%', height: '120px', display: 'flex', alignItems: 'center' }}>
+			<Separator {...bind} />
+		</div>
+	),
 	skeleton: (bind) => <Skeleton {...bind} />,
 
 	// Reordering in three collections at once, on one set of items: Tabs and

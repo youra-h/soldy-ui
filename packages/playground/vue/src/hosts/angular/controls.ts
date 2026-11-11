@@ -26,6 +26,7 @@ import {
 	TProgressLinearComponent,
 	TProgressSpinnerComponent,
 	TRatingComponent,
+	TSeparatorComponent,
 	TSkeletonComponent,
 	TSliderComponent,
 	TSwitchComponent,
@@ -1306,4 +1307,34 @@ export class CodeBlockPreview implements TFixture {
 	readonly highlightLines = input<TCodeBlockComponent['highlightLines']>()
 	readonly copy = viewChild.required(CopyDirective)
 	readonly subjects = viewChildren(TCodeBlockComponent)
+}
+
+/** A fixed parent height gives the vertical boundary its available length. */
+@Component({
+	selector: 'pg-separator-preview',
+	imports: [TSeparatorComponent, CopyDirective],
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	host: { style: 'display: contents' },
+	template: `<ng-template pg-copy
+		><div style="width:100%;height:120px;display:flex;align-items:center">
+			<div
+				so-separator
+				[ctrl]="ctrl()"
+				[rendered]="rendered()"
+				[visible]="visible()"
+				[direction]="direction()"
+				[orientation]="orientation()"
+				[decorative]="decorative()"
+			></div></div
+	></ng-template>`,
+})
+export class SeparatorPreview implements TFixture {
+	readonly ctrl = input<TSeparatorComponent['ctrl']>()
+	readonly rendered = input<TSeparatorComponent['rendered']>()
+	readonly visible = input<TSeparatorComponent['visible']>()
+	readonly direction = input<TSeparatorComponent['direction']>()
+	readonly orientation = input<TSeparatorComponent['orientation']>()
+	readonly decorative = input<TSeparatorComponent['decorative']>()
+	readonly copy = viewChild.required(CopyDirective)
+	readonly subjects = viewChildren(TSeparatorComponent)
 }

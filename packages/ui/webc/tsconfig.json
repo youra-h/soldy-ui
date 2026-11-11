@@ -36,6 +36,7 @@
       "@soxa-ui/webc/rating": ["./src/components/rating/index.ts"],
       "@soxa-ui/webc/scroller": ["./src/components/scroller/index.ts"],
       "@soxa-ui/webc/select": ["./src/components/select/index.ts"],
+      "@soxa-ui/webc/separator": ["./src/components/separator/index.ts"],
       "@soxa-ui/webc/skeleton": ["./src/components/skeleton/index.ts"],
       "@soxa-ui/webc/slider": ["./src/components/slider/index.ts"],
       "@soxa-ui/webc/switch": ["./src/components/switch/index.ts"],
