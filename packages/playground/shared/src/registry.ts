@@ -123,7 +123,7 @@ export const COMPONENTS: readonly TComponentEntry[] = [
 		descriptor: CodeBlockDescriptor,
 		group: 'display',
 		span: 2,
-		description: 'Исходный код с копированием, номерами строк и вкладками',
+		description: 'Подсветка синтаксиса, копирование текста, номера строк и вкладки',
 	},
 	{
 		id: 'breadcrumbs',

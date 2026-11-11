@@ -31,6 +31,8 @@ export interface ICodeBlockCopyError extends ICodeBlockCopy {
 export interface ICodeBlockLine {
 	readonly number: number
 	readonly text: string
+	/** Safe text segments with syntax categories, available on both server and client. */
+	readonly tokens?: readonly { readonly text: string; readonly dataset: TDatasetAttributes }[]
 	readonly dataset: TDatasetAttributes
 }
 export interface ICodeBlockPanel {
@@ -41,12 +43,12 @@ export interface ICodeBlockPanel {
 export interface ICodeBlockProps extends IStylableProps {
 	/** Exact source and original line endings; snippets takes precedence when supplied. */
 	code?: string
-	/** Language metadata; unknown names render as plain text without requiring a highlighter. */
+	/** Syntax language, including aliases such as ts and sh; unknown names render as plain text. */
 	language?: string
 	title?: string
 	/** Omit for a single block; an empty array is an empty tabbed block. */
 	snippets?: readonly ICodeSnippet[]
-	/** The current Tabs activation, rather than a second stored selection. */
+	/** Selected tab: matches a snippet value. Omit to select the first snippet; unused without snippets. */
 	value?: string
 	copyable?: boolean
 	lineNumbers?: boolean

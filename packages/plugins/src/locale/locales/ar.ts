@@ -9,7 +9,7 @@ export const arEG = freezeLocale({
 	translations: {
 		codeBlock: {
 			region: 'الشيفرة',
-			copy: 'نسخ الشيفرة',
+			copy: 'نسخ',
 			copied: 'تم النسخ',
 			error: 'تعذّر نسخ الشيفرة',
 		},

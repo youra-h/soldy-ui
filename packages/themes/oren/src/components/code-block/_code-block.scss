@@ -37,3 +37,36 @@
 		outline: 1px solid Highlight;
 	}
 }
+
+/* Syntax categories come from the shared tokenizer, never from executable source HTML. */
+.so-code-block__text > [data-token~='comment'],
+.so-code-block__text > [data-token~='prolog'],
+.so-code-block__text > [data-token~='doctype'] {
+	color: var(--so-code-block-muted-color);
+}
+.so-code-block__text > [data-token~='keyword'],
+.so-code-block__text > [data-token~='tag'],
+.so-code-block__text > [data-token~='boolean'] {
+	color: var(--so-negative-700);
+}
+.so-code-block__text > [data-token~='string'],
+.so-code-block__text > [data-token~='attr-value'] {
+	color: var(--so-positive-700);
+}
+.so-code-block__text > [data-token~='function'],
+.so-code-block__text > [data-token~='class-name'],
+.so-code-block__text > [data-token~='attr-name'],
+.so-code-block__text > [data-token~='property'] {
+	color: var(--so-accent-700);
+}
+.so-code-block__text > [data-token~='number'],
+.so-code-block__text > [data-token~='operator'],
+.so-code-block__text > [data-token~='selector'],
+.so-code-block__text > [data-token~='builtin'] {
+	color: var(--so-caution-700);
+}
+@media (forced-colors: active) {
+	.so-code-block__text > [data-token] {
+		color: CanvasText;
+	}
+}

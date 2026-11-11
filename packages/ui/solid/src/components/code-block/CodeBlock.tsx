@@ -55,7 +55,16 @@ export function CodeBlock(props: CodeBlockProps): JSX.Element {
 											{line.number}
 										</span>
 									</Show>
-									<span class="so-code-block__text">{line.text}</span>
+									<span class="so-code-block__text">
+										<For each={line.tokens} fallback={line.text}>
+											{(token) => {
+												const tokenAttrs = createPartProps(
+													() => token.dataset,
+												)
+												return <span {...tokenAttrs()}>{token.text}</span>
+											}}
+										</For>
+									</span>
 								</span>
 							)
 						}}
@@ -68,7 +77,7 @@ export function CodeBlock(props: CodeBlockProps): JSX.Element {
 	return (
 		<Show when={state.rendered}>
 			<Root tag={state.tag} attributes={root} ref={binding.ref}>
-				<Show when={state.displayTitle}>
+				<Show when={state.displayTitle && !state.tabbed}>
 					<div class="so-code-block__header">
 						{renderSlot(props['title-icon'])}
 						<span class="so-code-block__title">{state.displayTitle}</span>
@@ -90,7 +99,15 @@ export function CodeBlock(props: CodeBlockProps): JSX.Element {
 					<Tabs
 						ctrl={binding.ctrl.tabs}
 						engine={binding.ctrl.engine}
-						trailing={state.displayTitle ? undefined : copyButton()}
+						trailing={
+							<>
+								<Show when={state.displayTitle}>
+									{renderSlot(props['title-icon'])}
+									<span class="so-code-block__title">{state.displayTitle}</span>
+								</Show>
+								{copyButton()}
+							</>
+						}
 						embedded="code-block.tabs"
 						class="so-code-block__tabs"
 						content={

@@ -3,7 +3,7 @@ import type { TLocale, TLocalePatch, TPartialTranslations, TTranslations } from 
 /** Defaults for custom locales created before CodeBlock. */
 export const CODE_BLOCK_NAMES = Object.freeze({
 	region: 'Code',
-	copy: 'Copy code',
+	copy: 'Copy',
 	copied: 'Copied',
 	error: 'Unable to copy code',
 })

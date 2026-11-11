@@ -229,7 +229,7 @@
 :root,
 [data-so-theme='oren'],
 [data-so-theme='oren-dark'] {
-	--so-code-block-background: var(--so-neutral-100);
+	--so-code-block-background: var(--so-component-surface);
 	--so-code-block-color: var(--so-neutral-900);
 	--so-code-block-border-color: var(--so-neutral-300);
 	--so-code-block-muted-color: var(--so-neutral-600);

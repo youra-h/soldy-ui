@@ -34,7 +34,13 @@ export function CodeBlock(props: CodeBlockProps): ReactElement | null {
 								{line.number}
 							</span>
 						) : null}
-						<span className="so-code-block__text">{line.text}</span>
+						<span className="so-code-block__text">
+							{line.tokens?.map((token, index) => (
+								<span key={index} {...token.dataset}>
+									{token.text}
+								</span>
+							)) ?? line.text}
+						</span>
 					</span>
 				))}
 			</code>
@@ -59,7 +65,7 @@ export function CodeBlock(props: CodeBlockProps): ReactElement | null {
 			<Tag
 				{...toRootProps(ref, state, [state.attrs, state.aria, state.dataset], forwardProps)}
 			>
-				{state.displayTitle ? (
+				{state.displayTitle && !state.tabbed ? (
 					<div className="so-code-block__header">
 						{renderSlot(props['title-icon'])}
 						<span className="so-code-block__title">{state.displayTitle}</span>
@@ -70,7 +76,17 @@ export function CodeBlock(props: CodeBlockProps): ReactElement | null {
 					<Tabs
 						ctrl={ctrl.tabs}
 						engine={ctrl.engine}
-						trailing={state.displayTitle ? undefined : copyButton}
+						trailing={
+							<>
+								{state.displayTitle ? renderSlot(props['title-icon']) : null}
+								{state.displayTitle ? (
+									<span className="so-code-block__title">
+										{state.displayTitle}
+									</span>
+								) : null}
+								{copyButton}
+							</>
+						}
 						embedded="code-block.tabs"
 						className="so-code-block__tabs"
 						content={state.panels?.map((panel) => (

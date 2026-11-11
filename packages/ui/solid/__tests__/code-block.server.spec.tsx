@@ -16,3 +16,12 @@ it('renders safe source and the selected Tabs panel on the server', () => {
 	expect(html).toContain('aria-label="Code"')
 	expect(html).not.toContain('<img')
 })
+
+it('renders syntax categories on the server', () => {
+	const html = renderToString(() => (
+		<CodeBlock code={'const value: string = "<img src=x>";'} language="TypeScript" />
+	))
+	expect(html).toContain('data-token="keyword"')
+	expect(html).toContain('&lt;img src=x')
+	expect(html).not.toContain('<img')
+})

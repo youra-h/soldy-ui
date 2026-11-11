@@ -52,6 +52,7 @@ export const CodeBlockDescriptor = defineDescriptor(() =>
 						'change:snippets',
 						'change:value',
 						'change:highlightLines',
+						'change:language',
 					],
 				},
 				panels: {
