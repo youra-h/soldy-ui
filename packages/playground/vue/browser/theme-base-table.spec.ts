@@ -473,9 +473,12 @@ describe('закреплённая шапка', () => {
 			await userEvent.keyboard('{ArrowUp}')
 
 			expect(document.activeElement).toBe(cellOf(19))
-			expect(box(cellOf(19)).top, 'ячейка — ниже шапки').toBeGreaterThanOrEqual(
-				box(head()).bottom - EPSILON,
-			)
+			// WebKit can move focus before it scrolls the cell below the head.
+			await expect
+				.poll(() => box(cellOf(19)).top - box(head()).bottom, {
+					message: 'ячейка — ниже шапки',
+				})
+				.toBeGreaterThanOrEqual(-EPSILON)
 		})
 	})
 })
