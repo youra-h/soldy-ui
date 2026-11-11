@@ -1,0 +1,32 @@
+@use '../../mixins/veil';
+
+:where(.so-avatar) {
+	border-radius: 50%;
+	color: var(--so-component-text);
+	font-weight: 500;
+
+	// An opaque surface keeps overlapping fallback avatars from showing through.
+	background-color: var(--so-component-surface);
+	background-image: linear-gradient(
+		veil.tint('neutral', var(--so-component-fill)),
+		veil.tint('neutral', var(--so-component-fill))
+	);
+}
+
+.so-avatar--shape-rounded {
+	@apply rounded-md;
+}
+
+.so-avatar--shape-rect {
+	border-radius: 0;
+}
+
+@media (forced-colors: active) {
+	.so-avatar {
+		background-color: Canvas;
+		background-image: none;
+		color: CanvasText;
+		outline: 1px solid CanvasText;
+		outline-offset: -1px;
+	}
+}

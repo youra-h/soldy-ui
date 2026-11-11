@@ -1,0 +1,34 @@
+@use '../../mixins/veil';
+
+.so-avatar-group__count {
+	border-radius: 9999px;
+	color: var(--so-component-text);
+	font-weight: 500;
+	font-variant-numeric: tabular-nums;
+	background-color: var(--so-component-surface);
+	background-image: linear-gradient(
+		veil.tint('neutral', var(--so-component-fill)),
+		veil.tint('neutral', var(--so-component-fill))
+	);
+}
+
+.so-avatar-group > .so-avatar,
+.so-avatar-group > .so-avatar-group__overflow > .so-avatar,
+.so-avatar-group > .so-avatar-group__overflow > .so-avatar-group__count {
+	outline: 2px solid var(--so-place-surface);
+	outline-offset: 0;
+}
+
+@media (forced-colors: active) {
+	.so-avatar-group__count {
+		background-color: Canvas;
+		background-image: none;
+		color: CanvasText;
+	}
+
+	.so-avatar-group > .so-avatar,
+	.so-avatar-group > .so-avatar-group__overflow > .so-avatar,
+	.so-avatar-group > .so-avatar-group__overflow > .so-avatar-group__count {
+		outline-color: CanvasText;
+	}
+}

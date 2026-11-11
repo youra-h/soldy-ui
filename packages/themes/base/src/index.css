@@ -44,7 +44,7 @@
  * the README of the package. */
 
 @layer so.reset, so.direction, so.disabled, so.caption, so.required, so.target, so.group,
-	so.anchored, so.swipe, so.place, so.icon, so.button, so.toggle-group, so.check-box, so.accordion, so.date-input,
+	so.anchored, so.swipe, so.place, so.icon, so.avatar, so.avatar-group, so.button, so.toggle-group, so.check-box, so.accordion, so.date-input,
 	so.modal, so.dialog, so.drag-and-drop, so.drawer, so.input, so.badge, so.label, so.field, so.list-box,
 	so.menu, so.breadcrumbs, so.number-input, so.pagination, so.popover, so.calendar, so.date-picker,
 	so.progress-linear, so.progress-spinner, so.radio-group, so.rating, so.scroller, so.select,
@@ -62,6 +62,8 @@
 @import './swipe.css' layer(so.swipe);
 @import './place.css' layer(so.place);
 @import './components/icon.css' layer(so.icon);
+@import './components/avatar.css' layer(so.avatar);
+@import './components/avatar-group.css' layer(so.avatar-group);
 @import './components/button.css' layer(so.button);
 @import './components/toggle-group.css' layer(so.toggle-group);
 @import './components/check-box.css' layer(so.check-box);

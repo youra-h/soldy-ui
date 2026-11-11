@@ -20,6 +20,18 @@
       "scope": "so-accordion-item"
     },
     {
+      "name": "so-avatar",
+      "sources": ["packages/ui/vue/src/components/avatar/Avatar.vue"],
+      "description": "Noninteractive user image or initials/custom fallback.",
+      "scope": "Avatar"
+    },
+    {
+      "name": "so-avatar-group",
+      "sources": ["packages/ui/vue/src/components/avatar/group/AvatarGroup.vue"],
+      "description": "Overlapping row of the avatars supplied by the application.",
+      "scope": "Avatar.Group"
+    },
+    {
       "name": "so-badge",
       "sources": ["packages/core/src/components/custom/badge/badge.class.ts"],
       "description": "Noninteractive badge wrapper.",
@@ -408,6 +420,30 @@
       ],
       "description": "header part of accordion item. Availability follows the rendered component structure.",
       "scope": "so-accordion-item"
+    },
+    {
+      "name": "so-avatar__fallback",
+      "sources": ["packages/ui/vue/src/components/avatar/Avatar.vue"],
+      "description": "Initials or custom fallback visible until the image is loaded.",
+      "scope": "Avatar"
+    },
+    {
+      "name": "so-avatar__image",
+      "sources": ["packages/ui/vue/src/components/avatar/Avatar.vue"],
+      "description": "Loaded decorative image cropped to the avatar box.",
+      "scope": "Avatar"
+    },
+    {
+      "name": "so-avatar-group__count",
+      "sources": ["packages/ui/vue/src/components/avatar/group/AvatarGroup.vue"],
+      "description": "Default positive overflow count, rendered as +N.",
+      "scope": "Avatar.Group"
+    },
+    {
+      "name": "so-avatar-group__overflow",
+      "sources": ["packages/ui/vue/src/components/avatar/group/AvatarGroup.vue"],
+      "description": "Custom overflow slot replacing the default hidden-people count.",
+      "scope": "Avatar.Group"
     },
     {
       "name": "so-badge__anchor",
