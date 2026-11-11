@@ -155,12 +155,25 @@ export function scrollFocusSuite(adapter: string): void {
 				// Slot DOM is deliberately framework-independent: the plugin must observe
 				// content owned by an arbitrary consumer without adapter-specific hooks.
 				const target =
-					component === 'tabs' ? viewport() : html(scene, '.so-table-row__cell')
+					component === 'tabs'
+						? document.createElement('div')
+						: html(scene, '.so-table-row__cell')
+				if (component === 'tabs') {
+					target.className = 'so-tabs__leading'
+					viewport().prepend(target)
+				}
 				target.append(button)
 				await expect.poll(() => viewport().hasAttribute('tabindex')).toBe(false)
 				before.focus()
 				await userEvent.keyboard('{Tab}')
 				expect(document.activeElement).toBe(button)
+				if (component === 'tabs') {
+					expect(getComputedStyle(viewport()).pointerEvents).toBe('auto')
+					expect(getComputedStyle(target).pointerEvents).toBe('none')
+				}
+				const start = viewport().scrollLeft
+				await userEvent.keyboard(start > 0 ? '{ArrowLeft}' : '{ArrowRight}')
+				await expect.poll(() => Math.abs(viewport().scrollLeft - start)).toBeGreaterThan(0)
 				await userEvent.keyboard('{Tab}')
 				expect(document.activeElement === following()).toBe(true)
 
