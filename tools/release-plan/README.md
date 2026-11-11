@@ -1,0 +1,35 @@
+# Independent stable releases
+
+The component library keeps its fixed version group. Themes and icon packs retain
+their own versions and can be released on their own schedules.
+
+Preview a scope without changing files:
+
+```sh
+npm run release:plan -- components
+npm run release:plan -- themes
+npm run release:plan -- icons
+```
+
+From a clean release branch, use the same scope with `release:prepare`.
+Changesets generates versions, dependency updates and changelogs; the command
+updates the lockfile and records the approved package versions in
+`.release/plan.json`. No package is published by these commands.
+
+Unrelated changesets remain pending. A mixed changeset is consumed only for the
+selected packages; its remaining entries and summary stay under the same ID.
+Prefer separate changesets per scope for new work.
+
+If dependency compatibility requires a package outside the selected scope, the
+command stops before writing files. Inspect an `all` plan to authorize the full
+dependency closure. Dependency-only edits to development manifests do not cause
+a package release.
+
+The initial transition from the repository-wide beta uses
+`npm run release:prepare -- all`. It graduates the current packages, consumes
+the archived beta changesets and removes the shared prerelease state. Subsequent
+releases are stable. A new prerelease requires a separate owner decision.
+
+The owner merges release PRs. Publication verifies that every unpublished package
+is present at its exact version in the approved manifest. Components, themes and
+icons get separate GitHub Releases even when prepared in one coordinated PR.

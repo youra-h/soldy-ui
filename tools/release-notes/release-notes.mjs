@@ -254,3 +254,74 @@ export function withChangelogs(root, published) {
 		}
 	})
 }
+
+/** Separate release histories for components, themes and icons. */
+export function releaseGroups(packages, shared) {
+	const groups = new Map()
+	for (const pkg of packages) {
+		const scope = shared.has(pkg.name)
+			? 'components'
+			: pkg.dir?.startsWith('packages/themes/')
+				? 'themes'
+				: pkg.dir?.startsWith('packages/icons/')
+					? 'icons'
+					: undefined
+		if (!scope) throw new Error('Unknown release scope: ' + pkg.name)
+		const group = groups.get(scope) ?? []
+		group.push(pkg)
+		groups.set(scope, group)
+	}
+	return [...groups.values()]
+}
+
+/** Validate the approved versions against the checkout before querying or publishing. */
+export function packagesOfPlan(plan, packages, shared) {
+	if (
+		plan?.schemaVersion !== 1 ||
+		!['components', 'themes', 'icons', 'all'].includes(plan.scope) ||
+		!Array.isArray(plan.packages) ||
+		!plan.packages.length
+	)
+		throw new Error('Invalid approved release plan')
+	const known = new Map(packages.map((pkg) => [pkg.name, pkg]))
+	const seen = new Set()
+	return plan.packages.map((entry) => {
+		const pkg = known.get(entry.name)
+		if (!pkg || pkg.version !== entry.version || seen.has(entry.name))
+			throw new Error('Approved release does not match checkout: ' + entry.name)
+		const scope = shared.has(pkg.name)
+			? 'components'
+			: pkg.dir.startsWith('packages/themes/')
+				? 'themes'
+				: pkg.dir.startsWith('packages/icons/')
+					? 'icons'
+					: undefined
+		if (scope !== entry.scope || (plan.scope !== 'all' && plan.scope !== scope))
+			throw new Error('Package is outside the approved release scope: ' + entry.name)
+		seen.add(entry.name)
+		return pkg
+	})
+}
+
+export function assertPlannedUnpublished(approved, unpublished) {
+	const allowed = new Set(approved.map((pkg) => pkg.name + '@' + pkg.version))
+	const unexpected = unpublished.filter((pkg) => !allowed.has(pkg.name + '@' + pkg.version))
+	if (unexpected.length)
+		throw new Error(
+			'Unpublished packages outside the approved release: ' +
+				unexpected.map((pkg) => pkg.name).join(', '),
+		)
+}
+
+/** Registry outages and authorization failures must never look like an unpublished version. */
+export function registryVersion(spec, result) {
+	let output
+	try {
+		output = JSON.parse(result.stdout || result.stderr || 'null')
+	} catch {
+		/* Invalid output is handled below. */
+	}
+	if (result.status === 0 && typeof output === 'string') return output
+	if (result.status !== 0 && output?.error?.code === 'E404') return undefined
+	throw new Error('Cannot verify npm version for ' + spec + ' (exit ' + result.status + ')')
+}

@@ -1,0 +1,35 @@
+import { execFileSync, spawnSync } from 'node:child_process'
+import { loadRelease, prepareRelease } from './plan.mjs'
+
+const [command, scope, ...extra] = process.argv.slice(2)
+try {
+	if (!['plan', 'prepare'].includes(command) || extra.length)
+		throw new Error('Usage: release:plan|release:prepare -- components|themes|icons|all')
+	const root = process.cwd()
+	if (
+		command === 'prepare' &&
+		execFileSync('git', ['status', '--porcelain'], { cwd: root, encoding: 'utf8' }).trim()
+	)
+		throw new Error('Prepare a release from a clean worktree')
+	const release = await loadRelease(root, scope)
+	console.log(JSON.stringify(release.manifest, null, 2))
+	if (command === 'prepare') {
+		await prepareRelease(root, release)
+		const args = [
+			'install',
+			'--package-lock-only',
+			'--ignore-scripts',
+			'--no-audit',
+			'--no-fund',
+		]
+		const npm = process.env.npm_execpath
+		const result = npm
+			? spawnSync(process.execPath, [npm, ...args], { cwd: root, stdio: 'inherit' })
+			: spawnSync('npm ' + args.join(' '), { cwd: root, stdio: 'inherit', shell: true })
+		if (result.error || result.status !== 0)
+			throw new Error('Updating the release lockfile failed')
+	}
+} catch (error) {
+	console.error(error.message)
+	process.exitCode = 1
+}
