@@ -39,6 +39,9 @@ export class TScrollFocusPlugin extends TBasePlugin<IScrollFocusOwner> {
 				characterData: true,
 				attributes: true,
 				attributeFilter: [
+					// CSS can enable scrolling without changing either node's dimensions.
+					'data-overflow',
+					'data-sticky-head',
 					'disabled',
 					'tabindex',
 					'hidden',

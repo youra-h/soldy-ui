@@ -30,6 +30,7 @@ class TMutation implements MutationObserver {
 	}
 }
 
+const NativeMutationObserver = MutationObserver
 const frames = new Map<number, FrameRequestCallback>()
 let sequence = 0
 const bundles: TPluginBundle[] = []
@@ -177,4 +178,36 @@ describe('shared scroll focus observer lifecycle', () => {
 		expect(frames.size).toBe(0)
 		expect(owner.scrollAttrs.toObject()).toEqual({})
 	})
+})
+
+it('remeasures CSS scroll enablement even when the viewport and content dimensions do not change', async () => {
+	vi.stubGlobal('MutationObserver', NativeMutationObserver)
+	const { owner, element } = install()
+	const { root, size } = viewport()
+	root.id = 'scroll-focus-css-transition'
+	root.style.overflowX = ''
+	const style = document.createElement('style')
+	style.textContent =
+		'#scroll-focus-css-transition {overflow-x:hidden} #scroll-focus-css-transition[data-overflow="true"] {overflow-x:auto} #scroll-focus-css-transition[data-sticky-head="true"] {overflow-x:hidden}'
+	document.body.append(style)
+	element.events.emit('ready', root)
+	flush()
+	expect(owner.scrollAttrs.toObject()).toEqual({})
+	expect(getComputedStyle(root).overflowX).toBe('hidden')
+	const dimensions = { ...size }
+
+	root.dataset.overflow = 'true'
+	await Promise.resolve()
+	expect(size).toEqual(dimensions)
+	expect(frames.size).toBe(1)
+	flush()
+	expect(getComputedStyle(root).overflowX).toBe('auto')
+	expect(owner.scrollAttrs.toObject()).toEqual({ tabindex: '0' })
+
+	root.dataset.stickyHead = 'true'
+	await Promise.resolve()
+	expect(size).toEqual(dimensions)
+	expect(frames.size).toBe(1)
+	flush()
+	expect(owner.scrollAttrs.toObject()).toEqual({})
 })
