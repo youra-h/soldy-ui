@@ -608,7 +608,7 @@ export const PREVIEWS: Record<string, TPreview> = {
 		slots: {
 			title: [caption(ALERT_SAMPLE.title)],
 			default: [text(ALERT_SAMPLE.message)],
-			icon: [{ tag: 'svg', is: 'so-icon', attributes: { icon: 'warning' } }],
+			icon: [{ tag: 'span', is: 'so-icon', attributes: { icon: 'warning' } }],
 			action: [
 				{
 					tag: 'button',
