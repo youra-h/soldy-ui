@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Hosted runners can lose the Azure mirror while the primary Ubuntu archive
-# remains available. Keep the package sources intact unless that DNS check fails.
+# Hosted runners can lose the Azure mirror while another official Ubuntu mirror
+# remains available. Preserve the sources unless that DNS check fails.
 azure_sources=()
 for apt_source in /etc/apt/apt-mirrors.txt /etc/apt/sources.list.d/ubuntu.sources /etc/apt/sources.list; do
   if [[ -f "$apt_source" ]]; then
@@ -22,6 +22,17 @@ if timeout 10s getent ahostsv4 azure.archive.ubuntu.com; then
   exit 0
 fi
 
-# Fail before editing sources if the official fallback is also unavailable.
-timeout 10s getent ahostsv4 archive.ubuntu.com
-sudo sed -i 's/azure\.archive\.ubuntu\.com/archive.ubuntu.com/g' "${azure_sources[@]}"
+ubuntu_codename=$(. /etc/os-release; printf '%s' "$VERSION_CODENAME")
+for ubuntu_mirror in archive.ubuntu.com mirrors.us.kernel.org; do
+  # Verify DNS and release metadata reachability; APT still verifies signatures.
+  if timeout 10s getent ahostsv4 "$ubuntu_mirror" &&
+    curl --fail --silent --show-error --location --proto '=https' --proto-redir '=https' \
+      --max-redirs 3 --output /dev/null --connect-timeout 5 --max-time 15 \
+      "https://$ubuntu_mirror/ubuntu/dists/$ubuntu_codename/InRelease"; then
+    sudo sed -i "s/azure\.archive\.ubuntu\.com/$ubuntu_mirror/g" "${azure_sources[@]}"
+    exit 0
+  fi
+done
+
+printf '%s\n' 'No verified Ubuntu mirror is available; package sources were not changed.' >&2
+exit 1
