@@ -24,10 +24,31 @@ const CATEGORIES: Readonly<Record<string, string>> = {
 	name: 'tag',
 }
 
+/** Package-manager commands belong to shell examples, though Bash does not list them as builtins. */
+function shell(hljs: Parameters<typeof bash>[0]): ReturnType<typeof bash> {
+	const grammar = bash(hljs)
+	return {
+		...grammar,
+		contains: [
+			{ scope: 'built_in', match: /\b(?:npm|npx|pnpm|yarn|bun)(?=\s)/ },
+			...(grammar.contains ?? []),
+		],
+	}
+}
+
 /** Tokenize the complete source, including multiline constructs, without creating HTML. */
 export function codeTokens(code: string, language: string): readonly (readonly TToken[])[] {
 	if (!highlighter) {
-		highlighter = createLowlight({ javascript, typescript, xml, css, json, bash, python, yaml })
+		highlighter = createLowlight({
+			javascript,
+			typescript,
+			xml,
+			css,
+			json,
+			bash: shell,
+			python,
+			yaml,
+		})
 		highlighter.registerAlias({
 			javascript: ['jsx'],
 			typescript: ['tsx'],

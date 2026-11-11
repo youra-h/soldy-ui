@@ -68,6 +68,7 @@ describe.each(FRAMEWORKS)('CodeBlock · $id', ({ id }) => {
 		]
 		await show(id, { snippets })
 		expect(container?.querySelector('.so-code-block__header')).toBeNull()
+		expect(find('[data-token="builtin"]').textContent).toBe('npm')
 		const bar = find('.so-tabs__bar').getBoundingClientRect()
 		const copy = find('.so-code-block__copy').getBoundingClientRect()
 		expect(bar.height).toBeLessThanOrEqual(44)

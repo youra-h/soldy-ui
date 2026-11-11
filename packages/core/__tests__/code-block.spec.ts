@@ -121,3 +121,14 @@ describe('CodeBlock syntax', () => {
 		).toBe(true)
 	})
 })
+
+it.each(['npm', 'npx', 'yarn', 'pnpm', 'bun'])(
+	'highlights the %s package-manager command in shell snippets',
+	(command) => {
+		const block = new TCodeBlock({ code: command + ' install @soxa-ui/vue', language: 'bash' })
+		expect(block.lines[0].tokens?.[0]).toEqual({
+			text: command,
+			dataset: { 'data-token': 'builtin' },
+		})
+	},
+)
