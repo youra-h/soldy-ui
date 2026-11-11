@@ -42,6 +42,7 @@ import {
 	ProgressSpinner,
 	Rating,
 	Scroller,
+	Separator,
 	Skeleton,
 	Slider,
 	Switch,
@@ -591,4 +592,14 @@ describe('ref потребителя · серверный рендер', () => 
 		expect(nodes).toHaveLength(0)
 		expect(body).toBe(layout(renderToString(() => draw())))
 	})
+})
+
+it('renders separator semantics on the server in both modes', () => {
+	const semantic = markup(renderToString(() => <Separator orientation="vertical" />))
+	const decorative = markup(renderToString(() => <Separator decorative />))
+
+	expect(semantic).toContain('role="separator"')
+	expect(semantic).toContain('aria-orientation="vertical"')
+	expect(decorative).toContain('role="none"')
+	expect(decorative).not.toContain('aria-orientation')
 })

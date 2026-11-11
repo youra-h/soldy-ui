@@ -87,6 +87,7 @@ export const COMPONENTS: Readonly<Record<string, readonly string[]>> = {
 	rating: ['icon', 'rating'],
 	scroller: ['icon', 'button', 'scroller'],
 	select: ['icon', 'button', 'input', 'tags', 'group', ...PANEL, 'select'],
+	separator: ['separator'],
 	skeleton: ['skeleton'],
 	slider: ['slider'],
 	switch: ['switch'],

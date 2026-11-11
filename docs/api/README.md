@@ -200,3 +200,5 @@ choosing VitePress, Nuxt or another renderer.
 - [Breadcrumbs](breadcrumbs.md): native navigation links, overflow, localization and slots.
 
 - [CodeBlock](code-block.md): safe code display, snippets, copying, line numbers and themes.
+
+- [Separator](separator.md): horizontal and vertical semantic or decorative boundaries.

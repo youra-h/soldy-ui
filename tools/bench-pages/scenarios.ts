@@ -10,7 +10,11 @@
  * and `input`). Every user action goes through `action`: a decider, if set, is
  * asked before it, an observer, if set, hears of it after.
  */
-export type TScenario = (scope: HTMLElement, act: number) => Promise<number>
+export type TScenario = (
+	scope: HTMLElement,
+	act: number,
+	update: (props: Readonly<Record<string, unknown>>) => void,
+) => Promise<number>
 
 /**
  * Observer of the scenario's steps: called after every user action with its
@@ -252,6 +256,21 @@ export async function overlay(
 }
 
 export const SCENARIOS: Record<string, TScenario> = {
+	separator: async (_scope, _act, update) => {
+		let done = await action('separator decorative', () => update({ decorative: true }))
+
+		done += await action('separator vertical decorative', () =>
+			update({ orientation: 'vertical', decorative: true }),
+		)
+		done += await action('separator vertical semantic', () =>
+			update({ orientation: 'vertical', decorative: false }),
+		)
+		done += await action('separator horizontal semantic', () =>
+			update({ orientation: 'horizontal', decorative: false }),
+		)
+
+		return done
+	},
 	button: each('.so-button', press),
 	input: each('.so-input input', (field) => type(field, 'abc')),
 	'number-input': each('.so-number-input', async (copy) => {

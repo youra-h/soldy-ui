@@ -33,6 +33,7 @@ import {
 	ProgressSpinner,
 	Rating,
 	Scroller,
+	Separator,
 	Skeleton,
 	Slider,
 	Textarea,
@@ -482,4 +483,14 @@ describe('ref потребителя · серверный рендер', () => 
 			expect(markup(withRef.body)).toBe(markup(without.body))
 		}
 	})
+})
+
+it('renders separator semantics on the server in both modes', () => {
+	const semantic = markup(render(Separator, { props: { orientation: 'vertical' } }).body)
+	const decorative = markup(render(Separator, { props: { decorative: true } }).body)
+
+	expect(semantic).toContain('role="separator"')
+	expect(semantic).toContain('aria-orientation="vertical"')
+	expect(decorative).toContain('role="none"')
+	expect(decorative).not.toContain('aria-orientation')
 })

@@ -61,6 +61,7 @@ import {
 	ScrollerDescriptor,
 	SelectDescriptor,
 	SelectCollectionDescriptor,
+	SeparatorDescriptor,
 	SkeletonDescriptor,
 	SliderDescriptor,
 	StylableDescriptor,
@@ -449,6 +450,14 @@ export const COMPONENTS: readonly TComponentEntry[] = [
 		group: 'display',
 		span: 1,
 		description: 'Индикатор выполнения кольцом: доля готового, а пока она неизвестна — бег',
+	},
+	{
+		id: 'separator',
+		label: 'Separator',
+		descriptor: SeparatorDescriptor,
+		group: 'display',
+		span: 1,
+		description: 'Горизонтальная или вертикальная граница между разделами',
 	},
 	{
 		id: 'skeleton',
