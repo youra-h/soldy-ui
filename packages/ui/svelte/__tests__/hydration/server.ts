@@ -1,4 +1,5 @@
 import AlertPage from './AlertPage.test.svelte'
+import SeparatorPage from './SeparatorPage.test.svelte'
 import CodeBlockPage from './CodeBlockPage.test.svelte'
 /**
  * Разметка сервера для гидратации — её рисует сервер той же версии Svelte,
@@ -60,6 +61,7 @@ function onToday(draw: () => string): string {
 export function renderServerMarkup() {
 	return {
 		alert: render(AlertPage).body,
+		separator: render(SeparatorPage).body,
 		badge: render(BadgePage).body,
 		'code-block': render(CodeBlockPage).body,
 		'date-input-value': onToday(() => render(DateInputValue).body),

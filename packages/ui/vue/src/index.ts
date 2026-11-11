@@ -213,3 +213,5 @@ export type { CodeBlockProps } from './components/code-block'
 
 export { Alert } from './components/alert'
 export type { AlertProps } from './components/alert'
+export { Separator } from './components/separator'
+export type { SeparatorProps } from './components/separator'

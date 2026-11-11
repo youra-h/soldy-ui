@@ -62,3 +62,4 @@ export * from './toggle-group'
 export { CodeBlockDescriptor } from './code-block.descriptor'
 
 export { AlertDescriptor } from './alert.descriptor'
+export { SeparatorDescriptor } from './separator.descriptor'

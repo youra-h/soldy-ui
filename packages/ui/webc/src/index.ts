@@ -154,3 +154,5 @@ export { TCodeBlockElement } from './components/code-block'
 export type { TCodeBlockElementProps } from './components/code-block'
 
 export * from './components/alert'
+export { TSeparatorElement } from './components/separator'
+export type { TSeparatorElementProps } from './components/separator'

@@ -45,6 +45,7 @@ export const MOBILE_COMPONENTS = [
 	'icon',
 	'progress-linear',
 	'progress-spinner',
+	'separator',
 	'skeleton',
 	'drag-and-drop',
 	'virtual',

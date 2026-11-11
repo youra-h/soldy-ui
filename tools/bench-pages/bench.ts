@@ -188,7 +188,10 @@ async function scenario(page: string, act: number, only?: string[]): Promise<num
 		const roots = [...(stage?.querySelectorAll<HTMLElement>('.bench-page') ?? [])]
 		const scope = page === 'all' ? roots[ids.indexOf(id)] : roots[0]
 
-		if (scope) done += await run(scope, page === 'all' ? 1 : act)
+		if (scope) {
+			const handle = mounted[page === 'all' ? ids.indexOf(id) : 0]
+			done += await run(scope, page === 'all' ? 1 : act, (props) => handle?.update(props))
+		}
 	}
 
 	return done

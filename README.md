@@ -313,7 +313,7 @@ release that includes the component in at least one adapter. `0.3.0` is the firs
 | Badge           | Counter or status mark, on its own or over another element                                     | *          | 0.3.0   |
 | Avatar          | User picture with a fallback to initials or an icon                                            | -          | future  |
 | Breadcrumbs     | Path to the current page, collapsing a long trail                                              | *          | 0.3.0   |
-| Separator       | Horizontal or vertical divider, semantic or decorative                                         | -          | future  |
+| Separator       | [Horizontal and vertical semantic or decorative boundary](docs/api/separator.md)               | *          | next    |
 | ToggleButton    | Button with a persistent pressed state                                                         | *          | 0.3.0   |
 | ToggleGroup     | Toggle buttons with single or multiple selection                                               | *          | 0.3.0   |
 | Tree            | Hierarchy with expandable branches, selection and keyboard navigation by level                 | -          | future  |

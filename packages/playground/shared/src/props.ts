@@ -483,6 +483,10 @@ const OWN: Record<string, Record<string, string>> = {
 		indeterminate:
 			'Доля неизвестна — кольцо бежит. Значение при этом хранится и вернётся, когда бег снимут',
 	},
+	separator: {
+		orientation: 'Направление линии',
+		decorative: 'Декоративная линия без смысловой границы',
+	},
 	skeleton: {
 		shape: 'Форма заглушки',
 		animation: 'Анимация ожидания',
@@ -548,6 +552,7 @@ const OPTIONS: Record<string, Record<string, readonly string[]>> = {
 	'date-input': { kind: DATE_INPUT_KINDS, timePrecision: TIME_PRECISIONS },
 	'date-picker': { mode: DATE_PICKER_MODES, swipe: SWIPES },
 	'progress-linear': { orientation: PROGRESS_LINEAR_ORIENTATIONS },
+	separator: { orientation: ['horizontal', 'vertical'] },
 	dialog: { placement: DIALOG_PLACEMENTS },
 	drawer: { placement: DRAWER_PLACEMENTS, swipe: SWIPES },
 	toasts: { placement: TOASTS_PLACEMENTS, layout: TOASTS_LAYOUTS },

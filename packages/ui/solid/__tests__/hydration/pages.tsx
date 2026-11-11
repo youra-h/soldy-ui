@@ -1,3 +1,4 @@
+import { Separator } from '@soxa-ui/solid'
 /**
  * Страницы гидратации — одна разметка на две сборки.
  *
@@ -537,5 +538,14 @@ export function AlertPage(): JSX.Element {
 		<Alert closable role="status" title="Notice">
 			Content
 		</Alert>
+	)
+}
+
+export function SeparatorPage(): JSX.Element {
+	return (
+		<>
+			<Separator orientation="vertical" />
+			<Separator decorative />
+		</>
 	)
 }

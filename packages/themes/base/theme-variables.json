@@ -328,7 +328,8 @@
     "--so-alert-padding": "Alert inner padding; default: 1rem.",
     "--so-alert-gap": "Alert column/action gap; default: 0.75rem.",
     "--so-alert-icon-size": "Decorative Alert icon side; default: 1.25em.",
-    "--so-alert-close-size": "Alert close button side; default: var(--so-button-height-sm)."
+    "--so-alert-close-size": "Alert close button side; default: var(--so-button-height-sm).",
+    "--so-separator-width": "Separator line thickness in either orientation; default: 1px."
   },
   "theme-reads": {
     "--so-dir-sign": "Writing direction sign from the nearest dir: 1 for left-to-right, -1 for right-to-left. Written by the base layer dir rules; themes multiply mirroring transforms (scale, gradient angle or offset) by it.",

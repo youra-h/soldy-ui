@@ -63,6 +63,7 @@ import {
 	TRating,
 	TScroller,
 	TSelect,
+	TSeparator,
 	TSkeleton,
 	TSlider,
 	TSwitch,
@@ -126,6 +127,7 @@ import {
 	Rating,
 	Scroller,
 	Select,
+	Separator,
 	Skeleton,
 	Slider,
 	Switch,
@@ -890,6 +892,12 @@ const COMPONENTS: Readonly<Record<string, Readonly<Record<string, TCase>>>> = {
 				buses: selectBuses(ctrl, engine),
 			}
 		},
+	},
+	Separator: {
+		ctrl: overCtrl(
+			() => new TSeparator(),
+			(ctrl) => <Separator ctrl={ctrl} />,
+		),
 	},
 	Skeleton: {
 		ctrl: overCtrl(

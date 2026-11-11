@@ -31,6 +31,7 @@ import type { JSX } from 'solid-js'
 import { renderToStream, renderToString } from 'solid-js/web'
 import {
 	AlertPage,
+	SeparatorPage,
 	BadgePage,
 	CodeBlockPage,
 	AccordionLayerStreamed,
@@ -90,6 +91,7 @@ export async function renderServerMarkup() {
 	return {
 		// Страница целиком (`renderToString`)
 		alert: renderToString(() => <AlertPage />),
+		separator: renderToString(() => <SeparatorPage />),
 		badge: renderToString(() => <BadgePage />),
 		'code-block': renderToString(() => <CodeBlockPage />),
 		'tabs-active-second': renderToString(() => <TabsActiveSecond />),

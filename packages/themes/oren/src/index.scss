@@ -125,6 +125,10 @@
 	@include meta.load-css('components/select/select');
 }
 
+@layer components.so.separator {
+	@include meta.load-css('components/separator/separator');
+}
+
 @layer components.so.skeleton {
 	@include meta.load-css('components/skeleton/skeleton');
 }

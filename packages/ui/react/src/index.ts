@@ -244,3 +244,5 @@ export type { CodeBlockProps, CodeBlockEventProps } from './components/code-bloc
 
 export { Alert } from './components/alert'
 export type { AlertProps, AlertEventProps } from './components/alert/base.component'
+export { Separator } from './components/separator'
+export type { SeparatorProps, SeparatorEventProps } from './components/separator'

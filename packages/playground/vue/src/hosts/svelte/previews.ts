@@ -1,4 +1,5 @@
 import AlertPreview from './AlertPreview.svelte'
+import SeparatorPreview from './SeparatorPreview.svelte'
 import CodeBlockPreview from './CodeBlockPreview.svelte'
 import ToggleButtonPreview from './ToggleButtonPreview.svelte'
 import ToggleGroupPreview from './ToggleGroupPreview.svelte'
@@ -91,6 +92,7 @@ export const PREVIEWS: Record<string, TPreview> = {
 	icon: IconPreview,
 	'progress-linear': ProgressLinearPreview,
 	'progress-spinner': ProgressSpinnerPreview,
+	separator: SeparatorPreview,
 	skeleton: SkeletonPreview,
 	'drag-and-drop': DragAndDropPreview,
 	virtual: VirtualPreview,
