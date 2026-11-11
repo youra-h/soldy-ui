@@ -311,7 +311,7 @@ release that includes the component in at least one adapter. `0.3.0` is the firs
 | Field           | Field wrapper: description, error message and invalid state linked to the control              | *          | 0.3.0   |
 | Alert           | Inline message by severity: info, success, warning, error                                      | -          | future  |
 | Badge           | Counter or status mark, on its own or over another element                                     | *          | 0.3.0   |
-| Avatar          | User picture with a fallback to initials or an icon                                            | -          | future  |
+| Avatar          | [User picture with initials or a custom fallback, plus overlapping groups](docs/api/avatar.md) | *          | next    |
 | Breadcrumbs     | Path to the current page, collapsing a long trail                                              | *          | 0.3.0   |
 | Separator       | [Horizontal and vertical semantic or decorative boundary](docs/api/separator.md)               | *          | next    |
 | ToggleButton    | Button with a persistent pressed state                                                         | *          | 0.3.0   |
