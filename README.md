@@ -13,11 +13,11 @@ render it in Vue, React, Angular, Svelte, Solid and Web Components.**
 [![npm](https://img.shields.io/npm/v/@soxa-ui/core?label=npm)](https://www.npmjs.com/org/soxa-ui)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-> **Status:** Beta, version `0.3.0-beta.1` on npm under `latest`.
+> **Status:** Stable, version `0.3.0` on npm under `latest`.
 > Every released component in [the component table](#components) is available in all six adapters:
-> Vue, React, Angular, Svelte, Solid and Web Components. The public API is frozen from this beta;
+> Vue, React, Angular, Svelte, Solid and Web Components. The public API has been frozen since the first beta;
 > breaking changes require an explicit owner decision and migration guidance.
-> The stable release will be `0.3.0`; subsequent fixes will use `0.3.1`.
+> Components, themes and icon packs have independent releases; compatible fixes use patch versions.
 
 ## What it is
 
@@ -97,7 +97,7 @@ and the icons at the application entry point, as shown below.
 
 ## Compatibility and support
 
-The first stable release is **`0.3.0`**. The public API is already frozen from the first beta;
+**`0.3.0` is the first stable release.** The public API has been frozen since the first beta;
 `0.x` does not mean that an update may silently break an application or a custom theme.
 
 ### Versions and the public contract
@@ -269,7 +269,7 @@ a ready locale: `extendLocale(enUS, { tag: 'mn-MN', translations: { modal: { clo
 
 The component set, as the playground shows it. **Frameworks** says which adapters already have the
 component: `*` — all six, a list — only those, `-` — none yet. **Release** is the first stable
-release planned to include the component in at least one adapter. `0.3.0` is the upcoming release;
+release that includes the component in at least one adapter. `0.3.0` is the first stable release;
 `next` — already in `main`, ships with the next release; `future` — queued for development.
 
 | Component       | What it is                                                                                     | Frameworks | Release |
@@ -298,6 +298,7 @@ release planned to include the component in at least one adapter. `0.3.0` is the
 | Tabs            | Tabs: a tab list and panels linked by value                                                    | *          | 0.3.0   |
 | Tags            | Tag set: close buttons, optional selection                                                     | *          | 0.3.0   |
 | Accordion       | Sections that expand one at a time or several at once                                          | *          | 0.3.0   |
+| CodeBlock       | Read-only source with syntax highlighting, file tabs, line numbers and customizable copying    | *          | 0.3.0   |
 | Icon            | Icon from the registered pack, by role                                                         | *          | 0.3.0   |
 | ProgressLinear  | Linear progress indicator: the share done, or an indeterminate animation while it is unknown   | *          | 0.3.0   |
 | ProgressSpinner | Circular progress indicator: the share done, or an indeterminate animation while it is unknown | *          | 0.3.0   |
@@ -313,7 +314,8 @@ release planned to include the component in at least one adapter. `0.3.0` is the
 | Avatar          | User picture with a fallback to initials or an icon                                            | -          | future  |
 | Breadcrumbs     | Path to the current page, collapsing a long trail                                              | *          | 0.3.0   |
 | Separator       | Horizontal or vertical divider, semantic or decorative                                         | -          | future  |
-| ToggleGroup     | Toggle button and a group of them with single or multiple selection                            | -          | future  |
+| ToggleButton    | Button with a persistent pressed state                                                         | *          | 0.3.0   |
+| ToggleGroup     | Toggle buttons with single or multiple selection                                               | *          | 0.3.0   |
 | Tree            | Hierarchy with expandable branches, selection and keyboard navigation by level                 | -          | future  |
 | Stepper         | Steps of a multi-step form: done, current, with an error; linear or free order                 | -          | future  |
 | FileUpload      | File picker and drop zone with type, size and count limits                                     | -          | future  |

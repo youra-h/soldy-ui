@@ -1,5 +1,36 @@
 # @soxa-ui/icons-material
 
+## 0.3.0
+
+### Minor Changes
+
+- 1c78107: Publish Soxa UI packages under the `@soxa-ui` scope. Replace the previous npm scope in every dependency and import (including theme CSS, theme setup, icons, and TypeScript module augmentations) with `@soxa-ui/<package>`. Keep the core, plugins, setup, and adapters on the same release. Component exports, props, events, and the `so-*`, `data-so-*`, and `--so-*` styling contracts are unchanged. See `docs/migration-to-soxa.md` for the package mapping and upgrade steps.
+
+### Patch Changes
+
+- 82d69a5: Add the copy icon for custom actions and CodeBlock.
+- d1d4764: Versioned on their own: a theme or an icon pack no longer shares the version of the library and depends on it by a range (`^` and a library version) instead of its exact version, so it keeps working with the library releases that do not break its contract. The icon packs take `@soxa-ui/setup` as a peer dependency now.
+- Updated dependencies [53fb45f]
+- Updated dependencies [21e6143]
+- Updated dependencies [ab9735f]
+- Updated dependencies [a15bae2]
+- Updated dependencies [0909342]
+- Updated dependencies [ba29be7]
+- Updated dependencies [db54848]
+- Updated dependencies [1ffabcd]
+- Updated dependencies [1bb3ea8]
+- Updated dependencies [de65c13]
+- Updated dependencies [9c002f7]
+- Updated dependencies [7327698]
+- Updated dependencies [7335dd6]
+- Updated dependencies [28bcd83]
+- Updated dependencies [e682670]
+- Updated dependencies [1c78107]
+- Updated dependencies [ac39aa9]
+- Updated dependencies [cfffb4b]
+- Updated dependencies [0690162]
+  - @soxa-ui/setup@0.3.0
+
 ## 0.3.0-beta.1
 
 ### Minor Changes

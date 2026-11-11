@@ -1,5 +1,70 @@
 # @soxa-ui/angular
 
+## 0.3.0
+
+### Minor Changes
+
+- 93b818d: Add Angular Forms support for writable value components. Install @angular/forms alongside the Angular adapter; existing model and event bindings are unchanged.
+- 7327698: Select: rename the tags_overflow prop to tagsOverflow. Update component props and collection facade access to the new name.
+- 1d2d4a0: Restrict adapter entry points to application components, helpers and consumer types. Remove assembly, profile, binding, generated metadata and template exports; use supported component props, slots, refs and core models instead. Vue now exports all component Props types. No public internal entry point is provided.
+- 7335dd6: Remove public plugin creation events. Replace namespace:create handlers with bundle:create and bundle.get(PluginClass); internal plugin lifecycle hooks remain unchanged.
+- 94263ac: Angular: outputs shared by every visual component (the events of `ComponentViewDescriptor` — `soShow`, `soChangeVisible` and the rest) are declared once, by the new abstract directive `TViewSurface` that every visual `T<Name>Surface` extends. `<Name>OutputNames` of a visual component now lists only its own outputs; the full list is `[...ViewOutputNames, ...<Name>OutputNames]`. Template bindings and output types do not change.
+- 28bcd83: Remove duplicate `input`, `input:value`, `show:after`, and `hide:after` component events. Subscribe to `change:value` for value changes and to `show` or `hide` after the corresponding lifecycle hook. Angular consumers must replace `soInput` and `soInputValue` with `soChangeValue`, and `soShowAfter`/`soHideAfter` with `soShow`/`soHide`. The `open`, `close`, `element:ready`, `element:removed`, and `ready` events remain available.
+- e682670: Publish only explicitly declared descriptor events. Internal property triggers no longer appear as component callbacks, Vue events, Angular outputs or Web Component events. Declare application notifications in contribution.events; property state refresh and two-way model updates remain driven by triggers.
+- 1c78107: Publish Soxa UI packages under the `@soxa-ui` scope. Replace the previous npm scope in every dependency and import (including theme CSS, theme setup, icons, and TypeScript module augmentations) with `@soxa-ui/<package>`. Keep the core, plugins, setup, and adapters on the same release. Component exports, props, events, and the `so-*`, `data-so-*`, and `--so-*` styling contracts are unchanged. See `docs/migration-to-soxa.md` for the package mapping and upgrade steps.
+- cfffb4b: Standardize property change notifications to { newValue, oldValue }. Update bare-value handlers to read payload.newValue. Object values keep their references without deep cloning; collections and markup sets use shallow container snapshots. Cancelable before events, model bindings, collection operations, and invalidation signals retain their contracts.
+- 0690162: Frame: rename position to strategy and TFramePosition to TFrameStrategy. Replace the prop, controller property and change:position event with strategy and change:strategy; Angular outputs use soChangeStrategy.
+
+### Patch Changes
+
+- 53fb45f: Add Badge for inline labels, capped numeric counters and dots, with accessible names, anchored placement and theme styling across all adapters.
+- ab9735f: Add Breadcrumbs as a collection with external engines, composable Item parts and standard activation. Include localized accessible names, theme separators and native-link overflow menus that preserve breadcrumb membership. Expose root-level gap scales and separator geometry for theme and scoped customization.
+- a15bae2: Prevent CodeBlock copy actions from covering source text, including horizontally scrolled lines. Show the copy icon by default and add the copy slot for custom button content across all adapters. Register the new copy role in both icon packs; update your icon pack or provide the copy slot when upgrading CodeBlock.
+- 0909342: Add built-in safe CodeBlock syntax highlighting, including server rendering. Use compact white layouts with a single tab toolbar, smaller copy actions and tighter line-number gutters. Clarify snippet selection and shorten copy labels.
+- ba29be7: Keep overflowing disabled Tabs and Table content reachable and scrollable by keyboard without adding tab stops when content fits or contains an available tab stop. Preserve native disabled behavior when Web Components are re-enabled.
+- db54848: Fix selected tag list semantics so each remove button belongs to its list item while preserving tag selection and keyboard behavior.
+- 1ffabcd: Add ToggleButton and ToggleGroup with persistent pressed state, collection-backed selection and accessible keyboard navigation. Preserve explicit native form attributes while defaulting toggle controls to non-submitting buttons. Keep long ToggleGroup rows reachable in their own scroll viewport on narrow screens.
+- 1bb3ea8: Add CodeBlock with accessible code display, line numbers, highlighted lines, clipboard feedback and snippets powered by Tabs across all adapters.
+- de65c13: Preserve valid list semantics for urgent toast notifications while retaining the alert role on the existing card and separate text-only announcements across all framework adapters.
+- a491c3f: README: the stylesheets of the theme per component, next to the whole one; Angular — the page of the six components fits the budget of a new project with them.
+- 5d2df6e: Smaller production bundle: component outputs no longer ship a generated getter each; output names, types and the emitter created on first read are unchanged
+- 31a6d13: Add native Angular two-way bindings through typed propertyChange outputs, including collection and plugin properties.
+- 4dc0de8: Fix the generated Frame model output to use strategyChange after the strategy rename.
+- 3cb5c3c: Document the explicit @soxa-ui/setup dependency required by application theme and icon registration.
+- 1eae72b: Fix the Popover and Dialog README examples to read `newValue` from property change event payloads.
+- 13101c7: Hide detached overlay panels when their owning component is hidden. Preserve the panel's open state while pausing overlay focus, dismissal and scroll behavior until the owner is shown again.
+- defba58: README: the theme stylesheet goes into `src/styles.css` (`@import '@soxa-ui/theme-oren';`): Angular CLI puts CSS imported from `main.ts` into a chunk the page never loads.
+- Updated dependencies [53fb45f]
+- Updated dependencies [21e6143]
+- Updated dependencies [ab9735f]
+- Updated dependencies [a15bae2]
+- Updated dependencies [0909342]
+- Updated dependencies [8212af4]
+- Updated dependencies [c7b5a90]
+- Updated dependencies [ba29be7]
+- Updated dependencies [db54848]
+- Updated dependencies [1ffabcd]
+- Updated dependencies [6dfea13]
+- Updated dependencies [1bb3ea8]
+- Updated dependencies [de65c13]
+- Updated dependencies [9c002f7]
+- Updated dependencies [2d81d06]
+- Updated dependencies [7327698]
+- Updated dependencies [7415726]
+- Updated dependencies [7335dd6]
+- Updated dependencies [13101c7]
+- Updated dependencies [28bcd83]
+- Updated dependencies [e682670]
+- Updated dependencies [1c78107]
+- Updated dependencies [bcd5555]
+- Updated dependencies [ac39aa9]
+- Updated dependencies [203edd0]
+- Updated dependencies [cfffb4b]
+- Updated dependencies [0690162]
+  - @soxa-ui/core@0.3.0
+  - @soxa-ui/setup@0.3.0
+  - @soxa-ui/plugins@0.3.0
+
 ## 0.3.0-beta.1
 
 ### Minor Changes
