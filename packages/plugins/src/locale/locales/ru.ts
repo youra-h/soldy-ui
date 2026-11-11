@@ -6,7 +6,7 @@ export const ruRU = freezeLocale({
 	translations: {
 		codeBlock: {
 			region: 'Код',
-			copy: 'Копировать код',
+			copy: 'Копировать',
 			copied: 'Скопировано',
 			error: 'Не удалось скопировать код',
 		},

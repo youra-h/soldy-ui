@@ -3,6 +3,7 @@ import type { TDefaultValues } from '../../base/component'
 import { TDataset, TAria, TAttributes } from '../../../common'
 import { sameValue } from '../../../common/utility/same-value'
 import { codeLanguage } from './language'
+import { codeTokens } from './highlight'
 import { TTabs, createEngineTabs } from '../tabs'
 import type {
 	ICodeBlock,
@@ -305,10 +306,15 @@ export class TCodeBlock extends TStylable<ICodeBlockProps, TCodeBlockEvents> imp
 		}
 	}
 
-	private _lines(code: string, highlighted: readonly number[]): readonly ICodeBlockLine[] {
+	private _lines(
+		code: string,
+		highlighted: readonly number[],
+		language: string,
+	): readonly ICodeBlockLine[] {
 		// Preserve the original endings and the final empty logical line.
 		const parts = code.split(/(\r\n|\r|\n)/)
 		const marked = new Set(highlighted)
+		const tokens = codeTokens(code, language)
 		const lines: ICodeBlockLine[] = []
 
 		for (let index = 0; index < parts.length; index += 2) {
@@ -318,6 +324,7 @@ export class TCodeBlock extends TStylable<ICodeBlockProps, TCodeBlockEvents> imp
 			lines.push({
 				number,
 				text: parts[index] + (parts[index + 1] ?? ''),
+				tokens: tokens[number - 1],
 				dataset: dataset.toObject(),
 			})
 		}
@@ -325,7 +332,11 @@ export class TCodeBlock extends TStylable<ICodeBlockProps, TCodeBlockEvents> imp
 	}
 
 	get lines(): readonly ICodeBlockLine[] {
-		return this._lines(this.source, this._active?.highlightLines ?? this.highlightLines)
+		return this._lines(
+			this.source,
+			this._active?.highlightLines ?? this.highlightLines,
+			this._active?.language ?? this.language,
+		)
 	}
 	private _codeDataset(language: string) {
 		const dataset = new TDataset()
@@ -341,7 +352,11 @@ export class TCodeBlock extends TStylable<ICodeBlockProps, TCodeBlockEvents> imp
 		return (this.snippets ?? []).map((snippet) => ({
 			value: snippet.value,
 			dataset: this._codeDataset(snippet.language ?? this.language),
-			lines: this._lines(snippet.code, snippet.highlightLines ?? this.highlightLines),
+			lines: this._lines(
+				snippet.code,
+				snippet.highlightLines ?? this.highlightLines,
+				snippet.language ?? this.language,
+			),
 		}))
 	}
 

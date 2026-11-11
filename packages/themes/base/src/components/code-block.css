@@ -3,25 +3,16 @@
 	--so-code-block-padding: 1em;
 	--so-code-block-gap: 0.5em;
 	--so-code-block-font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
-	--so-code-block-font-size: 0.875em;
+	--so-code-block-font-size: 0.8125em;
+	--so-code-block-toolbar-font-size: 0.75rem;
 	--so-code-block-line-height: 1.6;
 	--so-code-block-tab-size: 4;
-	--so-code-block-header-height-sm: calc(
-		var(--so-button-height-sm) + 2 * var(--so-code-block-gap)
-	);
-	--so-code-block-header-height-normal: calc(
-		var(--so-button-height-normal) + 2 * var(--so-code-block-gap)
-	);
-	--so-code-block-header-height-lg: calc(
-		var(--so-button-height-lg) + 2 * var(--so-code-block-gap)
-	);
-	--so-code-block-header-height-xl: calc(
-		var(--so-button-height-xl) + 2 * var(--so-code-block-gap)
-	);
-	--so-code-block-header-height-2xl: calc(
-		var(--so-button-height-2xl) + 2 * var(--so-code-block-gap)
-	);
-	--so-code-block-gutter-width: 4ch;
+	--so-code-block-header-height-sm: 2.25rem;
+	--so-code-block-header-height-normal: 2.5rem;
+	--so-code-block-header-height-lg: 2.75rem;
+	--so-code-block-header-height-xl: 3rem;
+	--so-code-block-header-height-2xl: 3.25rem;
+	--so-code-block-gutter-width: 2ch;
 }
 .so-code-block {
 	--so-code-block-header-height: var(--so-code-block-header-height-normal);
@@ -40,7 +31,11 @@
 .so-code-block__title {
 	flex: 1;
 	min-inline-size: 0;
-	overflow-wrap: anywhere;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	font-family: var(--so-code-block-font-family);
+	font-size: var(--so-code-block-toolbar-font-size);
 }
 .so-code-block__tabs {
 	min-inline-size: 0;
@@ -68,7 +63,7 @@
 .so-code-block[data-header='false'][data-copyable='true']
 	> .so-code-block__content
 	> .so-code-block__pre {
-	padding-block-start: var(--so-code-block-header-height);
+	padding-inline-end: calc(var(--so-code-block-padding) + 10ch);
 }
 .so-code-block__code {
 	display: block;
@@ -110,10 +105,16 @@
 }
 .so-code-block__copy {
 	flex: none;
+	font-size: var(--so-code-block-toolbar-font-size);
+	min-block-size: calc(var(--so-code-block-header-height) - 2 * var(--so-code-block-gap));
+	block-size: auto;
+	padding-block: 0;
+	padding-inline: var(--so-code-block-gap);
+	line-height: var(--so-code-block-line-height);
 }
 .so-code-block[data-header='false'] > .so-code-block__content > .so-code-block__copy {
 	position: absolute;
-	inset-block-start: var(--so-code-block-gap);
+	inset-block-start: var(--so-code-block-padding);
 	inset-inline-end: var(--so-code-block-gap);
 }
 .so-code-block__status {
@@ -121,6 +122,35 @@
 	padding-inline: var(--so-code-block-padding);
 }
 
+.so-code-block__status:empty {
+	display: none;
+}
+/* Embedded Tabs shares one compact toolbar with its copy action. */
+.so-code-block__tabs > .so-tabs__bar {
+	min-block-size: var(--so-code-block-header-height);
+	padding-inline: var(--so-code-block-padding);
+	gap: var(--so-code-block-gap);
+	overflow: visible;
+}
+.so-code-block__tabs > .so-tabs__bar > .so-tabs__list {
+	gap: 0;
+}
+.so-code-block__tabs > .so-tabs__bar > .so-tabs__list > .so-tabs-item > .so-button {
+	font-size: var(--so-code-block-toolbar-font-size);
+	min-block-size: var(--so-code-block-header-height);
+	block-size: auto;
+	padding-block: 0;
+	padding-inline: var(--so-code-block-gap);
+}
+.so-code-block__tabs > .so-tabs__bar > .so-tabs__trailing {
+	flex: none;
+	max-inline-size: 50%;
+	gap: var(--so-code-block-gap);
+	padding-inline: 0;
+}
+.so-code-block__tabs > .so-tabs-content {
+	margin-block: 0;
+}
 .so-code-block--size-sm {
 	--so-code-block-header-height: var(--so-code-block-header-height-sm);
 }

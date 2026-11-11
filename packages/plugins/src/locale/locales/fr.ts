@@ -6,7 +6,7 @@ export const frFR = freezeLocale({
 	translations: {
 		codeBlock: {
 			region: 'Code',
-			copy: 'Copier le code',
+			copy: 'Copier',
 			copied: 'Copié',
 			error: 'Impossible de copier le code',
 		},

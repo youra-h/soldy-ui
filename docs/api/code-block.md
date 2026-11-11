@@ -1,7 +1,7 @@
 # CodeBlock
 
 CodeBlock displays read-only source text with optional file titles, copy feedback,
-logical line numbers, highlighted lines and snippets switched by Soxa Tabs.
+syntax highlighting, logical line numbers, highlighted lines and snippets switched by Soxa Tabs.
 It is available in all six adapters and preserves source characters, indentation,
 blank lines and original line endings when copying.
 
@@ -88,8 +88,8 @@ Replacing `snippets` patches items by `value`, preserving surviving instances.
 Removing the active item activates the next surviving neighbour, then the
 previous one if no next item remains. Tabs supplies ARIA relationships, focus,
 arrow keys and Home/End. The strip scrolls instead of wrapping. Copy is outside
-the tab list and copies the active source only. A snippet's `filename` becomes
-the title unless the component has its own `title`; `highlightLines` on a snippet
+the tab list and copies the active source only. A snippet's `filename` appears beside the copy action in the same toolbar as the tabs,
+unless the component has its own `title`; `highlightLines` on a snippet
 overrides the component's list.
 
 ## Copy and localization
@@ -120,7 +120,7 @@ and `error`; older custom locales use English defaults. All six bundled locales
 include these strings. The button has visible text and needs no hard dependency
 on an icon pack.
 
-## Languages and the first version
+## Syntax highlighting
 
 `language` and each snippet's language produce normalized `data-language` metadata
 on `code`. The names are `text`, `javascript`, `typescript`, `jsx`, `tsx`, `html`,
@@ -128,10 +128,28 @@ on `code`. The names are `text`, `javascript`, `typescript`, `jsx`, `tsx`, `html
 `sh` and `yml` resolve to their full names, case-insensitively. Unknown languages
 use `text` while preserving the complete source.
 
-This version renders plain text and highlights requested whole lines. It ships
-no syntax engine or language grammars. Full Shiki integration, tokenized source,
-diff views, folding and editing are outside this first version. There is no
-`highlighter` prop or HTML-string rendering path to configure.
+Syntax highlighting is built in using Lowlight (Highlight.js grammars), including server rendering.
+Set `language="TypeScript"` or `language="ts"` for TypeScript. Vue and Svelte use
+the markup grammar, including embedded script and style blocks. `text` disables
+syntax colors. No highlighter setup or HTML strings are required: adapters render
+only safe text segments. Multiline comments and strings retain their syntax across lines.
+
+`value` selects the tab whose snippet has that key; it is unused without `snippets`.
+For package-manager commands, omit filenames:
+
+```vue
+<CodeBlock
+  :snippets="[
+    { value: 'npm', label: 'npm', language: 'bash', code: 'npm install @soxa-ui/vue' },
+    { value: 'yarn', label: 'yarn', language: 'bash', code: 'yarn add @soxa-ui/vue' },
+    { value: 'pnpm', label: 'pnpm', language: 'bash', code: 'pnpm add @soxa-ui/vue' },
+  ]"
+/>
+```
+
+The tabs and Copy share one toolbar with no extra file-title row. `variant` is
+inherited from the styling contract and selects the tab accent in Oren; it does
+not control syntax colors or the block background.
 
 ## Other adapters
 
@@ -172,6 +190,7 @@ visible and the scroll region has its own focus ring.
 Geometry defaults are declared on the document root and can be overridden on
 `:root` or an ancestor: `--so-code-block-padding`, `--so-code-block-gap`,
 `--so-code-block-font-family`, `--so-code-block-font-size`,
+`--so-code-block-toolbar-font-size`,
 `--so-code-block-line-height`, `--so-code-block-tab-size`, `--so-code-block-header-height-sm`,
 `--so-code-block-header-height-normal`, `--so-code-block-header-height-lg`,
 `--so-code-block-header-height-xl`, `--so-code-block-header-height-2xl`,

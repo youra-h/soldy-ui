@@ -59,6 +59,27 @@ import type {
 	TPropOwner,
 } from './types'
 
+const INSTALL_SNIPPETS = [
+	{
+		value: 'npm',
+		label: 'npm',
+		language: 'bash',
+		code: 'npm install @soxa-ui/vue @soxa-ui/setup',
+	},
+	{
+		value: 'yarn',
+		label: 'yarn',
+		language: 'bash',
+		code: 'yarn add @soxa-ui/vue @soxa-ui/setup',
+	},
+	{
+		value: 'pnpm',
+		label: 'pnpm',
+		language: 'bash',
+		code: 'pnpm add @soxa-ui/vue @soxa-ui/setup',
+	},
+]
+
 const CODE_SNIPPETS = [
 	{
 		value: 'vue',
@@ -244,11 +265,14 @@ const OWN: Record<string, Record<string, string>> = {
 			'Что делать с тегами в поле, когда они не помещаются в строку: переносить или прокручивать. Нужен множественный выбор',
 	},
 	'code-block': {
+		variant: 'Цвет активной вкладки в теме. Не меняет фон блока или цвета подсветки кода',
 		code: 'Исходный текст в одиночном режиме; копируется без изменения',
-		language: 'Язык фрагмента; без движка подсветки код отображается обычным текстом',
+		language:
+			'Язык подсветки: TypeScript или ts, JavaScript или js, html, css, json, bash и другие; text — без подсветки',
 		title: 'Необязательное имя файла или заголовок',
-		snippets: 'Фрагменты с уникальным value: включают штатные вкладки Tabs',
-		value: 'Идентификатор активного фрагмента; выбор хранит коллекция Tabs',
+		snippets:
+			'Вкладки: у каждой value (ключ), label (подпись) и code (текст); language и filename необязательны',
+		value: 'Выбранная вкладка: значение value из snippets, например react. Работает только с snippets; без value выбирается первая вкладка',
 		copyable: 'Показывать кнопку копирования исходного текста',
 		lineNumbers: 'Нумеровать логические строки; номера не попадают в буфер обмена',
 		wrap: 'Переносить длинные строки по ширине блока',
@@ -568,7 +592,10 @@ export const PREVIEW_PROPS: Readonly<Record<string, Readonly<Record<string, unkn
 		aria_label: 'Форматирование',
 	},
 	badge: { value: 8 },
-	'code-block': { code: 'const greeting = "Hello Soxa!";\nconsole.log(greeting);' },
+	'code-block': {
+		language: 'typescript',
+		code: 'const greeting = "Hello Soxa!";\nconsole.log(greeting);',
+	},
 	// Подпись — пропом `text`, а не слотом: заданный слот перекрывает проп, и
 	// строка `text` не меняла бы ничего видимого
 	button: { text: 'Кнопка' },
@@ -673,6 +700,7 @@ const GROUPED = { items: GROUPED_ITEMS, groups: PRODUCE_GROUPS }
 export const PRESETS: Record<string, Record<string, Record<string, unknown>>> = {
 	'code-block': {
 		snippets: { code: '' },
+		variant: { code: '', snippets: INSTALL_SNIPPETS },
 		value: { code: '', snippets: CODE_SNIPPETS },
 		wrap: { code: 'const longValue = "' + 'Soxa UI '.repeat(24) + '";' },
 		maxHeight: {
@@ -858,7 +886,11 @@ export function describeProp(componentId: string, prop: string): string | undefi
 
 const PRESET_VALUES: Record<string, Record<string, Readonly<Record<string, unknown>>>> = {
 	'code-block': {
-		snippets: { 'Vue / React / Svelte': CODE_SNIPPETS, Empty: [] },
+		snippets: {
+			'npm / yarn / pnpm': INSTALL_SNIPPETS,
+			'Vue / React / Svelte': CODE_SNIPPETS,
+			Empty: [],
+		},
 		highlightLines: { 'Second line': [2], 'First and second': [1, 2] },
 	},
 	'number-input': {

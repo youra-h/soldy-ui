@@ -3589,6 +3589,14 @@
       "presence": "TDataset serializes false as \"false\"; null/undefined removes the attribute. See scope for the bound DOM node."
     },
     {
+      "name": "data-token",
+      "sources": ["packages/core/src/components/custom/code-block/highlight.ts"],
+      "description": "Space-separated syntax categories of an inert CodeBlock text segment, provided by the shared grammar tokenizer.",
+      "scope": "CodeBlock text segments",
+      "values": "Syntax token categories such as keyword, string, function, comment, number, tag or an empty string.",
+      "presence": "Present on each token segment; an empty value denotes unstyled source text."
+    },
+    {
       "name": "data-type",
       "sources": [
         "packages/core/src/components/custom/date-input/date-input.class.ts",

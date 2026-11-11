@@ -34,6 +34,56 @@ function find(selector: string): HTMLElement {
 	return el
 }
 describe.each(FRAMEWORKS)('CodeBlock · $id', ({ id }) => {
+	it('highlights safely and updates syntax when language changes', async () => {
+		const code = 'const value: string = "<img src=x>";'
+		await show(id, { code, language: 'TypeScript', lineNumbers: true })
+		await expect
+			.poll(() => container?.querySelector('[data-token="keyword"]')?.textContent)
+			.toBe('const')
+		expect(container?.querySelector('img')).toBeNull()
+		expect(find('.so-code-block__text').textContent).toBe(code)
+		expect(getComputedStyle(find('[data-token="keyword"]')).color).not.toBe(
+			getComputedStyle(find('code')).color,
+		)
+		const gutter = find('.so-code-block__gutter').getBoundingClientRect()
+		expect(gutter.width).toBeLessThan(30)
+		expect(gutter.left - find('pre').getBoundingClientRect().left).toBeLessThan(20)
+
+		handle?.update({ code, language: 'text' })
+		await expect.poll(() => container?.querySelector('[data-token="keyword"]')).toBeNull()
+		expect(find('.so-code-block__text').textContent).toBe(code)
+	})
+
+	it('keeps file tabs and Copy in a single compact toolbar', async () => {
+		const snippets = [
+			{
+				value: 'npm',
+				label: 'npm',
+				code: 'npm install @soxa-ui/vue',
+				language: 'bash',
+				filename: 'install.sh',
+			},
+			{ value: 'yarn', label: 'yarn', code: 'yarn add @soxa-ui/vue', language: 'bash' },
+			{ value: 'pnpm', label: 'pnpm', code: 'pnpm add @soxa-ui/vue', language: 'bash' },
+		]
+		await show(id, { snippets })
+		expect(container?.querySelector('.so-code-block__header')).toBeNull()
+		const bar = find('.so-tabs__bar').getBoundingClientRect()
+		const copy = find('.so-code-block__copy').getBoundingClientRect()
+		expect(bar.height).toBeLessThanOrEqual(44)
+		expect(copy.height).toBeLessThanOrEqual(32)
+		expect(copy.top).toBeGreaterThanOrEqual(bar.top)
+		expect(copy.bottom).toBeLessThanOrEqual(bar.bottom)
+		expect(
+			Number.parseFloat(getComputedStyle(find('.so-code-block__copy')).fontSize),
+		).toBeLessThanOrEqual(13)
+		expect(getComputedStyle(find('.so-code-block')).backgroundColor).toBe('rgb(255, 255, 255)')
+
+		handle?.update({ snippets: snippets.map(({ filename: _filename, ...snippet }) => snippet) })
+		await expect.poll(() => container?.querySelector('.so-code-block__title')).toBeNull()
+		expect(find('.so-tabs__bar').getBoundingClientRect().height).toBe(bar.height)
+	})
+
 	it('keeps long code inside a scroll region and preserves logical line numbers when wrapping', async () => {
 		const code = '  <img src=x> ' + 'long'.repeat(70) + '\n\nlast\n'
 		await show(id, { code, title: 'main.ts', lineNumbers: true, maxHeight: 90 })
@@ -88,9 +138,7 @@ describe.each(FRAMEWORKS)('CodeBlock · $id', ({ id }) => {
 			.element(page.getByRole('region', { name: 'Code', exact: true }))
 			.toHaveTextContent('<h1>Svelte</h1>')
 		handle?.update({ snippets: [] })
-		await expect
-			.element(page.getByRole('button', { name: 'Copy code', exact: true }))
-			.toBeDisabled()
+		await expect.element(page.getByRole('button', { name: 'Copy', exact: true })).toBeDisabled()
 	})
 	it('removes optional chrome without leaving a blank header or an interactive copy button', async () => {
 		await show(id, { code: 'source', copyable: false })
@@ -117,7 +165,7 @@ describe.each(FRAMEWORKS)('CodeBlock · $id', ({ id }) => {
 		await show(id, { code: 'plain text', language: 'unknown-language', direction: 'rtl' })
 		expect(container?.querySelector('.so-code-block__header:not([hidden])')).toBeNull()
 		expect(find('pre').getAttribute('dir')).toBe('ltr')
-		await page.getByRole('button', { name: 'Copy code', exact: true }).click()
+		await page.getByRole('button', { name: 'Copy', exact: true }).click()
 		await expect.element(page.getByRole('status')).toHaveTextContent('Unable to copy code')
 	})
 })
