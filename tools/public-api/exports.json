@@ -1218,10 +1218,6 @@
         "values": ["TAvatarElement", "TAvatarGroupElement"],
         "types": ["TAvatarElementProps", "TAvatarGroupElementProps"]
       },
-      "./avatar-group": {
-        "values": ["TAvatarGroupElement"],
-        "types": ["TAvatarGroupElementProps"]
-      },
       "./separator": {
         "values": ["TSeparatorElement"],
         "types": ["TSeparatorElementProps"]
