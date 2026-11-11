@@ -41,7 +41,7 @@ export function planRelease({ packages, config, changesets, preState }, scope) {
 	)
 	const selected = changesets
 		.map((cs) => ({ ...cs, releases: cs.releases.filter((r) => included.has(r.name)) }))
-		.filter((cs) => cs.releases.length)
+		.filter((cs) => scope === 'all' || cs.releases.length)
 	const plan = assembleReleasePlan(
 		selected,
 		packages,

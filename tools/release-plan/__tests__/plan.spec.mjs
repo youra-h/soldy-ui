@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it } from 'vitest'
-import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, rmSync } from 'node:fs'
+import { existsSync, mkdtempSync, mkdirSync, writeFileSync, readFileSync, rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join, resolve, dirname, basename } from 'node:path'
 import { defaultConfig } from '@changesets/config'
@@ -156,4 +156,38 @@ describe('independent release plans', () => {
 			prepareRelease(input.packages.rootDir, { ...input, ...planRelease(input, 'icons') }),
 		).rejects.toThrow('No pending changes')
 	})
+})
+
+it('consumes empty archived changesets and removes shared prerelease state on graduation', async () => {
+	const root = mkdtempSync(join(tmpdir(), 'soxa-release-test-'))
+	roots.push(root)
+	const input = fixture('0.3.0-beta.1', root)
+	input.preState = { mode: 'pre', tag: 'beta' }
+	input.changesets = [
+		cs('pre/shipped-beta', ['core']),
+		{ id: 'pre/test-only', summary: '', releases: [] },
+	]
+	for (const pkg of input.packages.packages) {
+		mkdirSync(pkg.dir, { recursive: true })
+		writeFileSync(join(pkg.dir, 'package.json'), JSON.stringify(pkg.packageJson))
+	}
+	writeFileSync(
+		join(root, 'package.json'),
+		JSON.stringify(input.packages.rootPackage.packageJson),
+	)
+	mkdirSync(join(root, '.changeset/pre'), { recursive: true })
+	writeFileSync(join(root, '.changeset/pre.json'), JSON.stringify(input.preState))
+	writeFileSync(
+		join(root, '.changeset/pre/shipped-beta.md'),
+		'---\n"@soxa-ui/core": patch\n---\n\nA compatible fix.\n',
+	)
+	writeFileSync(join(root, '.changeset/pre/test-only.md'), '---\n---\n')
+	const release = { ...input, ...planRelease(input, 'all') }
+	await prepareRelease(root, release)
+	expect(existsSync(join(root, '.changeset/pre.json'))).toBe(false)
+	expect(existsSync(join(root, '.changeset/pre/test-only.md'))).toBe(false)
+	expect(release.manifest.packages).toHaveLength(6)
+	expect(
+		JSON.parse(readFileSync(join(root, 'packages/icons/material/package.json'))).version,
+	).toBe('0.3.0')
 })
