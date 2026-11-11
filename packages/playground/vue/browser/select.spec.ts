@@ -17,7 +17,7 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { render, cleanup } from './render'
 import { commands, userEvent } from 'vitest/browser'
 import { imeComposition } from './engine'
-import { defineComponent, h, nextTick } from 'vue'
+import { defineComponent, h, nextTick, reactive } from 'vue'
 import { COMPONENT_SIZES } from '@soxa-ui/playground-shared'
 import { ListBox, ListBoxItem, Select, SelectItem } from '@soxa-ui/vue'
 
@@ -110,6 +110,47 @@ afterEach(() => {
 	cleanup()
 	// The window a test scrolled goes back to the start
 	window.scrollTo(0, 0)
+})
+
+describe('field caret', () => {
+	it('select-only keeps keyboard focus without a text caret', async () => {
+		await show({ value: '0' })
+
+		await userEvent.click(field())
+
+		expect(field().matches(':read-only')).toBe(true)
+		expect(document.activeElement).toBe(field())
+		expect(getComputedStyle(field()).caretColor).toBe('rgba(0, 0, 0, 0)')
+
+		await userEvent.keyboard('{ArrowDown}')
+		expect(field().getAttribute('aria-activedescendant')).not.toBeNull()
+		expect(document.activeElement).toBe(field())
+	})
+
+	it('toggling editable hides and restores the caret while the field stays focused', async () => {
+		const props = reactive({ editable: true, value: '0' })
+
+		await show(props)
+		await userEvent.click(field())
+
+		const editableCaret = getComputedStyle(field()).caretColor
+
+		expect(editableCaret).not.toBe('rgba(0, 0, 0, 0)')
+
+		props.editable = false
+		await nextTick()
+
+		expect(field().matches(':read-only')).toBe(true)
+		expect(document.activeElement).toBe(field())
+		expect(getComputedStyle(field()).caretColor).toBe('rgba(0, 0, 0, 0)')
+
+		props.editable = true
+		await nextTick()
+
+		expect(field().matches(':read-write')).toBe(true)
+		expect(document.activeElement).toBe(field())
+		expect(getComputedStyle(field()).caretColor).toBe(editableCaret)
+	})
 })
 
 /**
