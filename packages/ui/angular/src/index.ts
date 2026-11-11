@@ -84,5 +84,6 @@ export { TToggleButtonComponent } from './components/toggle-button'
 export { TToggleGroupComponent, TToggleGroupItemComponent } from './components/toggle-group'
 export { TCodeBlockComponent } from './components/code-block'
 
+export { TAlertComponent } from './components/alert'
 export { TAvatarComponent, TAvatarGroupComponent } from './components/avatar'
 export { TSeparatorComponent } from './components/separator'

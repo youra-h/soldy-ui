@@ -1,3 +1,4 @@
+import { ALERT_SAMPLE } from '@soxa-ui/playground-shared'
 import {
 	BREADCRUMBS_ITEMS,
 	EDITOR_ALIGNMENT_ITEMS,
@@ -39,6 +40,7 @@ import {
 	Field,
 	Icon,
 	Input,
+	Alert,
 	Avatar,
 	AvatarGroup,
 	Badge,
@@ -99,6 +101,7 @@ export type TPreview = (bind: Readonly<Record<string, unknown>>, parts: TParts) 
 const ITEMS = COLLECTION_ITEMS
 
 /** The Icon preview's glyph is a role's component: Icon's `tag` is its root, not a role. */
+const ALERT_ICON = roleIcon('warning')
 const ARROW_DOWN = roleIcon('arrowDown')
 
 /**
@@ -379,6 +382,16 @@ export const PREVIEWS: Record<string, TPreview> = {
 
 	// The label is the `text` prop from the preview props, the control is the
 	// slot. The page rows edit the label itself: its side, text size, variant
+	alert: (bind) => (
+		<Alert
+			{...bind}
+			icon={<Icon tag={ALERT_ICON} />}
+			title={ALERT_SAMPLE.title}
+			action={<Button type="button">{ALERT_SAMPLE.action}</Button>}
+		>
+			{ALERT_SAMPLE.message}
+		</Alert>
+	),
 	'code-block': (bind) => <CodeBlock {...bind} />,
 	badge: (bind) => <Badge {...bind} />,
 	avatar: (bind) => <Avatar {...bind} />,

@@ -177,6 +177,10 @@
 	@include meta.load-css('components/code-block/code-block');
 }
 
+@layer components.so.alert {
+	@include meta.load-css('components/alert/alert');
+}
+
 @layer components.so.modifiers.button {
 	@include meta.load-css('components/button/modifiers');
 }

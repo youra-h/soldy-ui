@@ -49,7 +49,7 @@
 	so.menu, so.breadcrumbs, so.number-input, so.pagination, so.popover, so.calendar, so.date-picker,
 	so.progress-linear, so.progress-spinner, so.radio-group, so.rating, so.scroller, so.select,
 	so.separator, so.skeleton, so.slider, so.switch, so.table, so.tabs, so.tags, so.textarea, so.toasts,
-	so.tooltip, so.code-block;
+	so.tooltip, so.code-block, so.alert;
 
 @import './reset.css' layer(so.reset);
 @import './direction.css' layer(so.direction);
@@ -103,3 +103,5 @@
 @import './components/tooltip.css' layer(so.tooltip);
 
 @import './components/code-block.css' layer(so.code-block);
+
+@import './components/alert.css' layer(so.alert);

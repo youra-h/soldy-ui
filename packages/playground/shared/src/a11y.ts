@@ -4,6 +4,7 @@ export const A11Y_COMPONENTS = [
 	'button',
 	'toggle-button',
 	'toggle-group',
+	'alert',
 	'badge',
 	'avatar',
 	'avatar-group',
@@ -196,6 +197,10 @@ export const A11Y_CASES: readonly TAuditCase[] = [
 			'.so-breadcrumbs__link[aria-current="page"]',
 		],
 	),
+	audit('alert', 'closable', '.so-alert', { closable: true }, [
+		'.so-alert[role="alert"]',
+		'.so-alert__close[aria-label]',
+	]),
 	audit('avatar', 'named', '.so-avatar', { initials: 'AL', aria_label: 'Ada Lovelace' }, [
 		'.so-avatar[role="img"][aria-label="Ada Lovelace"]',
 	]),

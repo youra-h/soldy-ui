@@ -188,6 +188,10 @@ const PLUGIN: Record<string, string> = {
 
 /** Собственные пропы компонента — то, ради чего он и заведён. */
 const OWN: Record<string, Record<string, string>> = {
+	alert: {
+		closable:
+			'Кнопка закрытия: вызывает hide(), отмена — hide:before, повторный показ — show()',
+	},
 	avatar: {
 		src: 'URL изображения; до загрузки и при ошибке показан запасной вариант',
 		initials: 'Готовые инициалы, без преобразования регистра или обрезки',
@@ -604,6 +608,7 @@ export const PREVIEW_PROPS: Readonly<Record<string, Readonly<Record<string, unkn
 	'toggle-group': {
 		aria_label: 'Форматирование',
 	},
+	alert: { closable: true, variant: 'caution' },
 	badge: { value: 8 },
 	avatar: { initials: 'AL', aria_label: 'Ada Lovelace' },
 	'avatar-group': { overflow: 3 },

@@ -1,3 +1,4 @@
+import { ALERT_SAMPLE } from '@soxa-ui/playground-shared'
 import {
 	BREADCRUMBS_ITEMS,
 	EDITOR_ALIGNMENT_ITEMS,
@@ -602,6 +603,23 @@ export const PREVIEWS: Record<string, TPreview> = {
 
 	// The text is the `text` prop from the preview props, the control a slot. The
 	// page rows edit the label itself: side, text size, variant
+	alert: {
+		tag: 'div',
+		is: 'so-alert',
+		slots: {
+			title: [caption(ALERT_SAMPLE.title)],
+			default: [text(ALERT_SAMPLE.message)],
+			icon: [{ tag: 'span', is: 'so-icon', attributes: { icon: 'warning' } }],
+			action: [
+				{
+					tag: 'button',
+					is: 'so-button',
+					props: { text: ALERT_SAMPLE.action },
+					attributes: { type: 'button' },
+				},
+			],
+		},
+	},
 	badge: { tag: 'span', is: 'so-badge' },
 	avatar: { tag: 'span', is: 'so-avatar' },
 	'avatar-group': {

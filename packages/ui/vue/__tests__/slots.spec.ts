@@ -23,6 +23,7 @@ import { join, resolve, sep } from 'node:path'
 import { parse, type SFCDescriptor } from 'vue/compiler-sfc'
 import { mount } from '@vue/test-utils'
 import {
+	AlertDescriptor,
 	BreadcrumbsDescriptor,
 	BreadcrumbsItemDescriptor,
 	AccordionDescriptor,
@@ -105,6 +106,7 @@ const COMPONENTS = resolve(import.meta.dirname, '../src/components')
  * прошли бы мимо контракта.
  */
 const DESCRIPTORS: Readonly<Record<string, () => IComponentDescriptor>> = {
+	'alert/Alert.vue': AlertDescriptor,
 	'accordion/Accordion.vue': AccordionDescriptor,
 	'accordion/item/Item.vue': AccordionItemDescriptor,
 	'breadcrumbs/Breadcrumbs.vue': BreadcrumbsDescriptor,

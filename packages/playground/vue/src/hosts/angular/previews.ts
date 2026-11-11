@@ -13,6 +13,7 @@ import {
 	TagsPreview,
 } from './collections'
 import {
+	AlertPreview,
 	BadgePreview,
 	AvatarPreview,
 	AvatarGroupPreview,
@@ -84,6 +85,7 @@ export type TPreview =
 	| { readonly templateFor: (props: TProps) => Type<TFixture> }
 
 export const PREVIEWS: Record<string, TPreview> = {
+	alert: { template: AlertPreview },
 	badge: { template: BadgePreview },
 	avatar: { template: AvatarPreview },
 	'avatar-group': { template: AvatarGroupPreview },

@@ -1,0 +1,31 @@
+@use '../button/mixins' as button;
+
+.so-alert {
+	background-color: var(--so-neutral-100);
+	color: var(--so-neutral-800);
+	border: 1px solid var(--so-neutral-300);
+	border-radius: 0.5rem;
+
+	@each $color in 'accent', 'positive', 'caution', 'negative' {
+		&--variant-#{$color} {
+			background-color: var(--so-#{$color}-100);
+			color: var(--so-#{$color}-800);
+			border-color: var(--so-#{$color}-300);
+		}
+	}
+}
+
+.so-alert__title {
+	font-weight: 600;
+}
+
+:where(.so-alert__close) {
+	@include button.button-view('plain');
+	color: inherit;
+}
+
+@media (forced-colors: active) {
+	.so-alert {
+		border-color: CanvasText;
+	}
+}

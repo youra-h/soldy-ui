@@ -1,3 +1,4 @@
+import { ALERT_SCENARIOS } from './alert/display'
 import { AVATAR_SCENARIOS } from './avatar/display'
 import { SEPARATOR_SCENARIOS } from './separator/semantics'
 import { CODE_BLOCK_SCENARIOS } from './code-block/display'
@@ -43,6 +44,7 @@ export const SCENARIOS: readonly TScenario[] = [
 	...POLLED.flatMap((id) => eventsPoll(polled(id))),
 	...BUTTON_SLOTS,
 	...LABEL_SLOTS,
+	...ALERT_SCENARIOS,
 	...BADGE_SLOTS,
 	...AVATAR_SCENARIOS,
 	...CODE_BLOCK_SCENARIOS,

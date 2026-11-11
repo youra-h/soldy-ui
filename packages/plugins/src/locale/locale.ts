@@ -72,6 +72,7 @@ export function freezeLocale(locale: TLocale): TLocale {
  */
 function overlay(base: TTranslations, patch: TPartialTranslations): TTranslations {
 	return Object.freeze({
+		alert: Object.freeze({ close: base.modal.close, ...base.alert, ...defined(patch.alert) }),
 		codeBlock: Object.freeze({
 			...CODE_BLOCK_NAMES,
 			...base.codeBlock,

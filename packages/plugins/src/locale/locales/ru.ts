@@ -4,6 +4,7 @@ import { freezeLocale } from '../locale'
 export const ruRU = freezeLocale({
 	tag: 'ru-RU',
 	translations: {
+		alert: { close: 'Закрыть' },
 		codeBlock: {
 			region: 'Код',
 			copy: 'Копировать',

@@ -203,4 +203,5 @@ choosing VitePress, Nuxt or another renderer.
 
 - [CodeBlock](code-block.md): safe code display, snippets, copying, line numbers and themes.
 
+- [Alert](alert.md): inline urgency, content slots and reversible dismissal.
 - [Separator](separator.md): horizontal and vertical semantic or decorative boundaries.

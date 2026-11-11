@@ -1,3 +1,4 @@
+import AlertPreview from './AlertPreview.svelte'
 import AvatarPreview from './AvatarPreview.svelte'
 import AvatarGroupPreview from './AvatarGroupPreview.svelte'
 import SeparatorPreview from './SeparatorPreview.svelte'
@@ -73,6 +74,7 @@ export const PREVIEWS: Record<string, TPreview> = {
 	textarea: TextareaPreview,
 	'check-box': CheckBoxPreview,
 	switch: SwitchPreview,
+	alert: AlertPreview,
 	badge: BadgePreview,
 	avatar: AvatarPreview,
 	'avatar-group': AvatarGroupPreview,

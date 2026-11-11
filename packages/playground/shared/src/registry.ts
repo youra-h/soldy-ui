@@ -1,4 +1,5 @@
 import {
+	AlertDescriptor,
 	AccordionDescriptor,
 	AccordionCollectionDescriptor,
 	AccordionCollectionItemDescriptor,
@@ -120,6 +121,15 @@ export const COMPONENT_GROUPS: Readonly<Record<TComponentGroup, string>> = {
  * levels of the contract, not components.
  */
 export const COMPONENTS: readonly TComponentEntry[] = [
+	{
+		id: 'alert',
+		label: 'Alert',
+		descriptor: AlertDescriptor,
+		group: 'display',
+		span: 2,
+		description:
+			'Сообщение в потоке страницы с заголовком, действием и необязательным закрытием',
+	},
 	{
 		id: 'avatar',
 		label: 'Avatar',

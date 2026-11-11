@@ -61,6 +61,7 @@ export { ToggleButtonDescriptor } from './toggle-button.descriptor'
 export * from './toggle-group'
 export { CodeBlockDescriptor } from './code-block.descriptor'
 
+export { AlertDescriptor } from './alert.descriptor'
 export { AvatarDescriptor } from './avatar.descriptor'
 export { AvatarGroupDescriptor } from './avatar/group.descriptor'
 export { SeparatorDescriptor } from './separator.descriptor'

@@ -11,3 +11,5 @@ export * from './snippet-file'
 export * from './snippet-literal'
 export * from './scenarios'
 export * from './editor'
+
+export * from './alert'

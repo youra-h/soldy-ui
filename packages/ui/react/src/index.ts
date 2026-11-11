@@ -242,6 +242,8 @@ export type { ToggleGroupItemProps } from './components/toggle-group/item/base.c
 export { CodeBlock } from './components/code-block'
 export type { CodeBlockProps, CodeBlockEventProps } from './components/code-block'
 
+export { Alert } from './components/alert'
+export type { AlertProps, AlertEventProps } from './components/alert/base.component'
 export { Avatar, AvatarGroup } from './components/avatar'
 export type {
 	AvatarProps,

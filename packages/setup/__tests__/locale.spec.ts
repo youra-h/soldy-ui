@@ -70,6 +70,9 @@ function nameIn(value: unknown): unknown {
  * пустое.
  */
 const NAMED: Record<string, Record<string, (locale: TLocale) => string>> = {
+	AlertDescriptor: {
+		closeAria: ({ translations }) => translations.alert?.close ?? translations.modal.close,
+	},
 	CodeBlockDescriptor: {
 		contentAria: ({ translations }) => translations.codeBlock?.region ?? 'Code',
 		names_copy: ({ translations }) => translations.codeBlock?.copy ?? 'Copy code',
