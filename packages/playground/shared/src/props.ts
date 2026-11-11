@@ -187,6 +187,10 @@ const PLUGIN: Record<string, string> = {
 
 /** Собственные пропы компонента — то, ради чего он и заведён. */
 const OWN: Record<string, Record<string, string>> = {
+	alert: {
+		closable:
+			'Кнопка закрытия: вызывает hide(), отмена — hide:before, повторный показ — show()',
+	},
 	badge: {
 		value: 'Текст метки или числовой счётчик. Числовые строки не ограничиваются',
 		max: 'Предел числа: выше него выводится max+, исходное значение сохраняется',
@@ -591,6 +595,7 @@ export const PREVIEW_PROPS: Readonly<Record<string, Readonly<Record<string, unkn
 	'toggle-group': {
 		aria_label: 'Форматирование',
 	},
+	alert: { closable: true, variant: 'caution' },
 	badge: { value: 8 },
 	'code-block': {
 		language: 'typescript',

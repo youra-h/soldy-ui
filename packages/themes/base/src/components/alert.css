@@ -1,0 +1,97 @@
+/* Geometry stays independent of the theme's colors and visual variants. */
+:root {
+	--so-alert-padding: 1rem;
+	--so-alert-gap: 0.75rem;
+	--so-alert-icon-size: 1.25em;
+	--so-alert-close-size: var(--so-button-height-sm);
+}
+
+.so-alert {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr);
+	align-items: start;
+	column-gap: var(--so-alert-gap);
+	padding: var(--so-alert-padding);
+	min-inline-size: 0;
+	overflow-wrap: anywhere;
+}
+
+.so-alert:has(> .so-alert__icon:not(:empty)) {
+	grid-template-columns: auto minmax(0, 1fr);
+}
+
+.so-alert[data-closable='true'] {
+	grid-template-columns: minmax(0, 1fr) auto;
+}
+.so-alert[data-closable='true']:has(> .so-alert__icon:not(:empty)) {
+	grid-template-columns: auto minmax(0, 1fr) auto;
+}
+
+.so-alert__icon {
+	grid-column: 1;
+	grid-row: 1;
+	display: inline-flex;
+	inline-size: var(--so-alert-icon-size);
+	block-size: var(--so-alert-icon-size);
+}
+
+.so-alert__icon > .so-icon {
+	inline-size: 100%;
+	block-size: 100%;
+}
+
+.so-alert__body,
+.so-alert__action {
+	grid-column: 1;
+	min-inline-size: 0;
+}
+
+.so-alert:has(> .so-alert__icon:not(:empty)) > .so-alert__body,
+.so-alert:has(> .so-alert__icon:not(:empty)) > .so-alert__action {
+	grid-column: 2;
+}
+
+.so-alert__body {
+	grid-row: 1;
+}
+.so-alert__action {
+	grid-row: 2;
+	margin-block-start: var(--so-alert-gap);
+}
+.so-alert__title:not(:empty) + .so-alert__content:not(:empty) {
+	margin-block-start: calc(var(--so-alert-gap) / 2);
+}
+
+.so-alert__icon:empty,
+.so-alert__title:empty,
+.so-alert__content:empty,
+.so-alert__action:empty {
+	display: none;
+}
+
+.so-alert__close {
+	grid-column: -2 / -1;
+	grid-row: 1;
+	inline-size: var(--so-alert-close-size);
+	block-size: var(--so-alert-close-size);
+	min-inline-size: var(--so-target-size);
+	min-block-size: var(--so-target-size);
+	padding: 0;
+}
+
+.so-alert--size-sm {
+	font-size: var(--so-button-font-size-sm);
+	line-height: var(--so-button-line-height-sm);
+}
+.so-alert--size-lg {
+	font-size: var(--so-button-font-size-lg);
+	line-height: var(--so-button-line-height-lg);
+}
+.so-alert--size-xl {
+	font-size: var(--so-button-font-size-xl);
+	line-height: var(--so-button-line-height-xl);
+}
+.so-alert--size-2xl {
+	font-size: var(--so-button-font-size-2xl);
+	line-height: var(--so-button-line-height-2xl);
+}

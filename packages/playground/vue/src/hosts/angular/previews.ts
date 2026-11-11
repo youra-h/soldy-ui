@@ -13,6 +13,7 @@ import {
 	TagsPreview,
 } from './collections'
 import {
+	AlertPreview,
 	BadgePreview,
 	CodeBlockPreview,
 	ButtonPreview,
@@ -81,6 +82,7 @@ export type TPreview =
 	| { readonly templateFor: (props: TProps) => Type<TFixture> }
 
 export const PREVIEWS: Record<string, TPreview> = {
+	alert: { template: AlertPreview },
 	badge: { template: BadgePreview },
 	'code-block': { template: CodeBlockPreview },
 	button: { template: ButtonPreview },

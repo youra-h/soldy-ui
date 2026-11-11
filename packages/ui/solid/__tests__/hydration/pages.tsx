@@ -30,6 +30,7 @@ import type {
 	TTagsCollection,
 } from '@soxa-ui/core'
 import {
+	Alert,
 	Badge,
 	CodeBlock,
 	Accordion,
@@ -528,5 +529,13 @@ export function CodeBlockPage(): JSX.Element {
 			value="second"
 			lineNumbers
 		/>
+	)
+}
+
+export function AlertPage(): JSX.Element {
+	return (
+		<Alert closable role="status" title="Notice">
+			Content
+		</Alert>
 	)
 }

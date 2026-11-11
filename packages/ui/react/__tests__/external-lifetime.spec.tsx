@@ -32,6 +32,7 @@ import {
 	TToggleGroup,
 	TBreadcrumbs,
 	TMenuItem,
+	TAlert,
 	TBadge,
 	TCodeBlock,
 	TButton,
@@ -96,6 +97,7 @@ import {
 	Accordion,
 	ToggleGroup,
 	Breadcrumbs,
+	Alert,
 	Badge,
 	CodeBlock,
 	Button,
@@ -371,6 +373,12 @@ function overCtrl<T extends { events: TEvented<any> }>(
  * элементами в разметке.
  */
 const COMPONENTS: Readonly<Record<string, Readonly<Record<string, TCase>>>> = {
+	Alert: {
+		inline: overCtrl(
+			() => new TAlert({ closable: true }),
+			(ctrl) => <Alert ctrl={ctrl}>Message</Alert>,
+		),
+	},
 	CodeBlock: {
 		'single source': overCtrl(
 			() => new TCodeBlock({ code: 'const x = 1;' }),

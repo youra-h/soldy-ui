@@ -4,6 +4,7 @@ import { freezeLocale } from '../locale'
 export const esES = freezeLocale({
 	tag: 'es-ES',
 	translations: {
+		alert: { close: 'Cerrar' },
 		codeBlock: {
 			region: 'Código',
 			copy: 'Copiar',

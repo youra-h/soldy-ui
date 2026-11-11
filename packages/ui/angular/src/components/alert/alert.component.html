@@ -1,0 +1,49 @@
+<span class="so-alert__icon" aria-hidden="true">
+	@if (slot('icon'); as icon) {
+		<ng-container [ngTemplateOutlet]="icon" />
+	} @else {
+		<ng-content select="[slot=icon]" />
+	}
+</span>
+<div class="so-alert__body">
+	<div class="so-alert__title">
+		@if (slot('title'); as title) {
+			<ng-container [ngTemplateOutlet]="title" />
+		} @else {
+			<ng-content select="[slot=title]" />
+		}
+	</div>
+	<div class="so-alert__content">
+		@if (slot('default'); as content) {
+			<ng-container [ngTemplateOutlet]="content" />
+		} @else {
+			<ng-content />
+		}
+	</div>
+</div>
+<div class="so-alert__action">
+	@if (slot('action'); as action) {
+		<ng-container [ngTemplateOutlet]="action" />
+	} @else {
+		<ng-content select="[slot=action]" />
+	}
+</div>
+@if (state()['closable']) {
+	<button
+		so-button
+		embedded="alert.close"
+		type="button"
+		class="so-alert__close"
+		[so-attributes]="state()['closeAria']"
+		(click)="close()"
+	>
+		<span aria-hidden="true">
+			@if (slot('close-icon'); as icon) {
+				<ng-container [ngTemplateOutlet]="icon" />
+			} @else {
+				<svg so-icon embedded="alert.close-icon" so-role-icon="close"></svg>
+			}
+		</span>
+	</button>
+}
+<ng-content select="ng-template[slot]" />

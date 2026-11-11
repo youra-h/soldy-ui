@@ -284,3 +284,7 @@ list/card structure and close controls were read around the saving/result text.
 Protocol 4 separates persistent text-only announcement regions from the named
 interactive cards. Its actual Narrator speech remains awaiting owner retest;
 see the [third-run analysis](benchmarks/ai/manual-narrator-2026-11-09.md#third-owner-run-protocol-3).
+
+### Alert
+
+Inline messages default to urgent alert semantics. Applications choose status for nonurgent updates; Angular uses the existing AttributesDirective override. Dismissal is localized and cancellable, has no form-submit behavior and leaves focus management to the application. Tests cover DOM semantics, content retention and framework hydration; real screen-reader announcement behavior is not asserted. See [Alert](docs/api/alert.md).

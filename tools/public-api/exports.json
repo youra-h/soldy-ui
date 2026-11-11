@@ -3,6 +3,7 @@
     "values": [
       "Accordion",
       "AccordionItem",
+      "Alert",
       "Badge",
       "Breadcrumbs",
       "BreadcrumbsItem",
@@ -71,6 +72,7 @@
     "types": [
       "AccordionItemProps",
       "AccordionProps",
+      "AlertProps",
       "BadgeProps",
       "BreadcrumbsItemProps",
       "BreadcrumbsProps",
@@ -147,6 +149,7 @@
     "values": [
       "Accordion",
       "AccordionItem",
+      "Alert",
       "Badge",
       "Breadcrumbs",
       "BreadcrumbsItem",
@@ -218,6 +221,8 @@
       "AccordionItemEventProps",
       "AccordionItemProps",
       "AccordionProps",
+      "AlertEventProps",
+      "AlertProps",
       "BadgeEventProps",
       "BadgeProps",
       "BreadcrumbsAttributes",
@@ -381,6 +386,7 @@
     "values": [
       "Accordion",
       "AccordionItem",
+      "Alert",
       "Badge",
       "Breadcrumbs",
       "BreadcrumbsItem",
@@ -452,6 +458,8 @@
       "AccordionItemEventProps",
       "AccordionItemProps",
       "AccordionProps",
+      "AlertEventProps",
+      "AlertProps",
       "BadgeEventProps",
       "BadgeProps",
       "BreadcrumbsAttributes",
@@ -615,6 +623,7 @@
     "values": [
       "Accordion",
       "AccordionItem",
+      "Alert",
       "Badge",
       "Breadcrumbs",
       "BreadcrumbsItem",
@@ -686,6 +695,8 @@
       "AccordionItemEventProps",
       "AccordionItemProps",
       "AccordionProps",
+      "AlertEventProps",
+      "AlertProps",
       "BadgeEventProps",
       "BadgeProps",
       "BreadcrumbsAttributes",
@@ -848,6 +859,7 @@
     "values": [
       "TAccordionElement",
       "TAccordionItemElement",
+      "TAlertElement",
       "TBadgeElement",
       "TBreadcrumbsElement",
       "TBreadcrumbsItemElement",
@@ -918,6 +930,7 @@
     "types": [
       "TAccordionElementProps",
       "TAccordionItemElementProps",
+      "TAlertElementProps",
       "TBadgeElementProps",
       "TBreadcrumbsElementProps",
       "TBreadcrumbsItemElementProps",
@@ -1174,6 +1187,10 @@
       "./code-block": {
         "values": ["TCodeBlockElement"],
         "types": ["TCodeBlockElementProps"]
+      },
+      "./alert": {
+        "values": ["TAlertElement"],
+        "types": ["TAlertElementProps"]
       }
     }
   },
@@ -1185,6 +1202,7 @@
       "SlotDirective",
       "TAccordionComponent",
       "TAccordionItemComponent",
+      "TAlertComponent",
       "TBadgeComponent",
       "TBreadcrumbsComponent",
       "TBreadcrumbsItemComponent",

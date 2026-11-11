@@ -20,6 +20,12 @@
       "scope": "so-accordion-item"
     },
     {
+      "name": "so-alert",
+      "sources": ["packages/core/src/components/custom/alert/alert.class.ts"],
+      "description": "Inline message; urgency is independent of its themed appearance.",
+      "scope": "Alert"
+    },
+    {
       "name": "so-badge",
       "sources": ["packages/core/src/components/custom/badge/badge.class.ts"],
       "description": "Noninteractive badge wrapper.",
@@ -408,6 +414,84 @@
       ],
       "description": "header part of accordion item. Availability follows the rendered component structure.",
       "scope": "so-accordion-item"
+    },
+    {
+      "name": "so-alert__action",
+      "sources": [
+        "packages/ui/angular/src/components/alert/alert.component.html",
+        "packages/ui/react/src/components/alert/Alert.tsx",
+        "packages/ui/solid/src/components/alert/Alert.tsx",
+        "packages/ui/svelte/src/components/alert/Alert.svelte",
+        "packages/ui/vue/src/components/alert/Alert.vue",
+        "packages/ui/webc/src/components/alert/alert.template.ts"
+      ],
+      "description": "Alert action part.",
+      "scope": "Alert"
+    },
+    {
+      "name": "so-alert__body",
+      "sources": [
+        "packages/ui/angular/src/components/alert/alert.component.html",
+        "packages/ui/react/src/components/alert/Alert.tsx",
+        "packages/ui/solid/src/components/alert/Alert.tsx",
+        "packages/ui/svelte/src/components/alert/Alert.svelte",
+        "packages/ui/vue/src/components/alert/Alert.vue",
+        "packages/ui/webc/src/components/alert/alert.template.ts"
+      ],
+      "description": "Alert body part.",
+      "scope": "Alert"
+    },
+    {
+      "name": "so-alert__close",
+      "sources": [
+        "packages/ui/angular/src/components/alert/alert.component.html",
+        "packages/ui/react/src/components/alert/Alert.tsx",
+        "packages/ui/solid/src/components/alert/Alert.tsx",
+        "packages/ui/svelte/src/components/alert/Alert.svelte",
+        "packages/ui/vue/src/components/alert/Alert.vue",
+        "packages/ui/webc/src/components/alert/alert.template.ts"
+      ],
+      "description": "Alert close part.",
+      "scope": "Alert"
+    },
+    {
+      "name": "so-alert__content",
+      "sources": [
+        "packages/ui/angular/src/components/alert/alert.component.html",
+        "packages/ui/react/src/components/alert/Alert.tsx",
+        "packages/ui/solid/src/components/alert/Alert.tsx",
+        "packages/ui/svelte/src/components/alert/Alert.svelte",
+        "packages/ui/vue/src/components/alert/Alert.vue",
+        "packages/ui/webc/src/components/alert/alert.template.ts"
+      ],
+      "description": "Alert content part.",
+      "scope": "Alert"
+    },
+    {
+      "name": "so-alert__icon",
+      "sources": [
+        "packages/ui/angular/src/components/alert/alert.component.html",
+        "packages/ui/react/src/components/alert/Alert.tsx",
+        "packages/ui/solid/src/components/alert/Alert.tsx",
+        "packages/ui/svelte/src/components/alert/Alert.svelte",
+        "packages/ui/vue/src/components/alert/Alert.vue",
+        "packages/ui/webc/src/components/alert/alert.template.ts"
+      ],
+      "description": "Alert icon part.",
+      "scope": "Alert"
+    },
+    {
+      "name": "so-alert__title",
+      "sources": [
+        "packages/ui/angular/src/components/alert/alert.component.html",
+        "packages/ui/react/src/components/alert/Alert.tsx",
+        "packages/ui/solid/src/components/alert/Alert.tsx",
+        "packages/ui/svelte/src/components/alert/Alert.svelte",
+        "packages/ui/vue/src/components/alert/Alert.vue",
+        "packages/ui/webc/src/components/alert/alert.template.ts"
+      ],
+      "description": "Alert title part.",
+      "scope": "Alert"
     },
     {
       "name": "so-badge__anchor",
@@ -3059,11 +3143,12 @@
     {
       "name": "data-closable",
       "sources": [
+        "packages/core/src/components/custom/alert/alert.class.ts",
         "packages/core/src/components/custom/tabs/item/item.class.ts",
         "packages/core/src/components/custom/tags/item/item.class.ts"
       ],
-      "description": "Own closable flag of a collection item; inherited collection policy and disabled state still determine the effective close action.",
-      "scope": "Tabs item and Tags item roots",
+      "description": "Own closable flag of inline Alert or collection item; collection policy may further restrict the effective action.",
+      "scope": "Alert, Tabs item and Tags item roots",
       "values": "true | false",
       "presence": "Always present on applicable component instances, including the initial render; false is serialized as \"false\"."
     },

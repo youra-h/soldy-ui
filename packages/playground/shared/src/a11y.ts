@@ -4,6 +4,7 @@ export const A11Y_COMPONENTS = [
 	'button',
 	'toggle-button',
 	'toggle-group',
+	'alert',
 	'badge',
 	'code-block',
 	'breadcrumbs',
@@ -193,6 +194,10 @@ export const A11Y_CASES: readonly TAuditCase[] = [
 			'.so-breadcrumbs__link[aria-current="page"]',
 		],
 	),
+	audit('alert', 'closable', '.so-alert', { closable: true }, [
+		'.so-alert[role="alert"]',
+		'.so-alert__close[aria-label]',
+	]),
 	audit('badge', 'text', '.so-badge', { value: 'New' }, [
 		'.so-badge__indicator:not([aria-hidden])',
 	]),
