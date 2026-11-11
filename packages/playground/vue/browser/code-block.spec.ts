@@ -34,6 +34,36 @@ function find(selector: string): HTMLElement {
 	return el
 }
 describe.each(FRAMEWORKS)('CodeBlock · $id', ({ id }) => {
+	it('keeps default and wide copy content outside long code at every scroll position', async () => {
+		const code = 'const longValue = "' + 'Soxa UI '.repeat(80) + '";\nsecond line'
+		await show(id, { code, language: 'ts' })
+		const pre = find('pre')
+		const button = find('.so-code-block__copy')
+		expect(button.querySelector('svg')).not.toBeNull()
+		expect(button.getAttribute('aria-label')).toBe('Copy')
+		expect(button.textContent).toBe('')
+		const check = () => {
+			const action = button.getBoundingClientRect()
+			const source = pre.getBoundingClientRect()
+			expect(action.bottom).toBeLessThanOrEqual(source.top)
+			expect(action.width).toBeGreaterThan(0)
+			expect(find('.so-code-block').getBoundingClientRect().width).toBeLessThanOrEqual(321)
+		}
+		check()
+		for (const direction of ['ltr', 'rtl']) {
+			if (container) container.dir = direction
+			// Exercise the shared geometry with arbitrary content after each adapter supplied its button.
+			find('.so-code-block__copy .so-button__text').textContent =
+				'Copy the complete source to the clipboard'
+			for (const position of [0, pre.scrollWidth / 2, pre.scrollWidth]) {
+				pre.scrollLeft = position
+				check()
+			}
+		}
+		await handle?.update({ code, wrap: true })
+		await expect.poll(() => pre.scrollWidth <= pre.clientWidth + 1).toBe(true)
+		check()
+	})
 	it('highlights safely and updates syntax when language changes', async () => {
 		const code = 'const value: string = "<img src=x>";'
 		await show(id, { code, language: 'TypeScript', lineNumbers: true })

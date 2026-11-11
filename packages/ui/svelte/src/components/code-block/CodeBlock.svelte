@@ -1,8 +1,9 @@
 <script lang="ts">
 	import type { ICodeBlockLine, TDatasetAttributes } from '@soxa-ui/core'
-	import { Dynamic, toRootProps, clickAction } from '../../adapter'
+	import { Dynamic, toRootProps, clickAction, roleIcon } from '../../adapter'
 	import { Tabs, TabsContent } from '../tabs'
 	import { Button } from '../button'
+	import { Icon } from '../icon'
 	import { setupCodeBlock } from './setup.component'
 	import type { CodeBlockProps } from './base.component'
 
@@ -11,6 +12,7 @@
 	const binding = setupCodeBlock(() => props, mountId, (node) => (ref = node))
 	const state = binding.state
 	const copy = clickAction(() => binding.ctrl.copy())
+	const COPY_ICON = roleIcon('copy')
 </script>
 
 {#snippet pre(lines: readonly ICodeBlockLine[], dataset: TDatasetAttributes | undefined)}
@@ -34,10 +36,10 @@
 		embedded="code-block.copy"
 		class="so-code-block__copy"
 		size={state.size}
-		text={state.names_copy}
+		aria-label={state.names_copy}
 		disabled={state.copyDisabled}
 		{@attach copy}
-	/>{/if}
+	>{#if props.copy}{@render props.copy()}{:else}<Icon embedded="code-block.copy-icon" tag={COPY_ICON} size={state.size} />{/if}</Button>{/if}
 {/snippet}
 
 {#snippet toolbar()}

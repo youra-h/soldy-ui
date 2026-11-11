@@ -8087,7 +8087,12 @@
         { "name": "element:removed", "type": "() => void" }
       ],
       "slots": [
-        { "name": "title-icon", "description": "Optional icon before the title", "scope": {} }
+        { "name": "title-icon", "description": "Optional icon before the title", "scope": {} },
+        {
+          "name": "copy",
+          "description": "Copy button content; defaults to the copy icon",
+          "scope": {}
+        }
       ],
       "frameworks": {
         "vue": {
@@ -8159,7 +8164,10 @@
             "snippets": "@update:snippets",
             "value": "@update:value"
           },
-          "slots": { "title-icon": { "name": "title-icon", "syntax": "<template #title-icon>" } }
+          "slots": {
+            "title-icon": { "name": "title-icon", "syntax": "<template #title-icon>" },
+            "copy": { "name": "copy", "syntax": "<template #copy>" }
+          }
         },
         "react": {
           "props": {
@@ -8213,7 +8221,10 @@
             "element:removed": "onElementRemoved"
           },
           "models": {},
-          "slots": { "title-icon": { "name": "title-icon", "syntax": "title-icon" } }
+          "slots": {
+            "title-icon": { "name": "title-icon", "syntax": "title-icon" },
+            "copy": { "name": "copy", "syntax": "copy" }
+          }
         },
         "angular": {
           "props": {
@@ -8283,7 +8294,10 @@
             "snippets": "(snippetsChange)",
             "value": "(valueChange)"
           },
-          "slots": { "title-icon": { "name": "title-icon", "syntax": "slot=\"title-icon\"" } }
+          "slots": {
+            "title-icon": { "name": "title-icon", "syntax": "slot=\"title-icon\"" },
+            "copy": { "name": "copy", "syntax": "slot=\"copy\"" }
+          }
         },
         "solid": {
           "props": {
@@ -8337,7 +8351,10 @@
             "element:removed": "onElementRemoved"
           },
           "models": {},
-          "slots": { "title-icon": { "name": "title-icon", "syntax": "title-icon" } }
+          "slots": {
+            "title-icon": { "name": "title-icon", "syntax": "title-icon" },
+            "copy": { "name": "copy", "syntax": "copy" }
+          }
         },
         "svelte": {
           "props": {
@@ -8391,7 +8408,10 @@
             "element:removed": "onElementRemoved"
           },
           "models": {},
-          "slots": { "title-icon": { "name": "title-icon", "syntax": "title-icon={content}" } }
+          "slots": {
+            "title-icon": { "name": "title-icon", "syntax": "title-icon={content}" },
+            "copy": { "name": "copy", "syntax": "{#snippet copy()}" }
+          }
         },
         "webc": {
           "props": {
@@ -8445,7 +8465,10 @@
             "element:removed": "addEventListener('so:element:removed', handler)"
           },
           "models": {},
-          "slots": { "title-icon": { "name": "title-icon", "syntax": "slot=\"title-icon\"" } }
+          "slots": {
+            "title-icon": { "name": "title-icon", "syntax": "slot=\"title-icon\"" },
+            "copy": { "name": "copy", "syntax": "slot=\"copy\"" }
+          }
         }
       }
     },

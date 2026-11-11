@@ -6,10 +6,21 @@
 			embedded="code-block.copy"
 			class="so-code-block__copy"
 			[size]="state()['size']"
-			[text]="state()['names_copy']"
+			[attr.aria-label]="state()['names_copy']"
 			[disabled]="state()['copyDisabled']"
 			(click)="instance()?.copy()"
-		></button>
+		>
+			@if (slot('copy'); as content) {
+				<ng-container [ngTemplateOutlet]="content" />
+			} @else {
+				<svg
+					so-icon
+					embedded="code-block.copy-icon"
+					so-role-icon="copy"
+					[size]="state()['size']"
+				></svg>
+			}
+		</button>
 	}
 </ng-template>
 <ng-template #caption>
@@ -82,3 +93,5 @@
 <span class="so-code-block__status" role="status" aria-live="polite" aria-atomic="true">{{
 	state()['names_message']
 }}</span>
+
+<ng-content select="ng-template[slot]" />

@@ -109,7 +109,7 @@ with the same snapshot plus `error`. HTTPS, permissions and browser policy still
 apply. The UI reports the error through a polite live region and allows retrying;
 it does not claim success or use a deprecated document-copy fallback.
 
-The button shows a copied confirmation on success. Feedback resets when the
+The live status region announces a copied confirmation on success. Feedback resets when the
 source or activation changes and when a new copy starts. `copyable=false` hides
 the built-in button. Empty source and a pending copy disable the action.
 Unmounting cancels feedback delivery from unfinished operations.
@@ -117,8 +117,37 @@ Unmounting cancels feedback delivery from unfinished operations.
 The nearest `LocaleProvider` supplies strings, including changes after mounting.
 The optional `translations.codeBlock` section contains `region`, `copy`, `copied`
 and `error`; older custom locales use English defaults. All six bundled locales
-include these strings. The button has visible text and needs no hard dependency
-on an icon pack.
+include these strings. The button shows the registered `copy` icon and keeps a
+localized accessible name. Register the updated Material or Lucide pack with
+`useIcons`, or provide the `copy` slot. This slot replaces only the button's
+content; the built-in button still handles copying, disabled state and feedback.
+
+Without a title or tabs, the button occupies its own row above the scroll region.
+Custom content and long, horizontally scrolled lines cannot cover each other.
+
+```vue
+<script setup lang="ts">
+import { CodeBlock, Icon, roleIcon } from '@soxa-ui/vue'
+
+const copyIcon = roleIcon('copy')
+</script>
+
+<template>
+  <CodeBlock code="console.log('Hello')">
+    <template #copy>
+      <span style="display: inline-flex; align-items: center; gap: 0.5em">
+        <Icon :tag="copyIcon" /> Copy code
+      </span>
+    </template>
+  </CodeBlock>
+</template>
+```
+
+Use a `copy` node prop in React and Solid, a `copy` snippet in Svelte,
+`<ng-template slot="copy">` in Angular (import `SlotDirective`), or
+`<span slot="copy">` in Web Components. To keep visible text only,
+provide `<template #copy>Copy</template>` in Vue or the equivalent slot
+in another adapter.
 
 ## Syntax highlighting
 

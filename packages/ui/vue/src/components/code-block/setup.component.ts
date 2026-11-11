@@ -1,6 +1,7 @@
 import { CodeBlockDescriptor } from '@soxa-ui/setup'
 import {
 	useAdapter,
+	roleIcon,
 	extendBinding,
 	useExpose,
 	createVueAdapterContext,
@@ -14,6 +15,9 @@ export default {
 	expose: useExpose(),
 	setup(props: CodeBlockProps, { emit }: SetupContext) {
 		const adapter = createVueAdapterContext(CodeBlockDescriptor(), { ctrl: props.ctrl, props })
-		return extendBinding(useAdapter(adapter, props, emit), { block: adapter.instance })
+		return extendBinding(useAdapter(adapter, props, emit), {
+			block: adapter.instance,
+			copyIconTag: roleIcon('copy'),
+		})
 	},
 }

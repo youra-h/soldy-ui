@@ -17,7 +17,10 @@ export const CodeBlockDescriptor = defineDescriptor(() =>
 		ctor: TCodeBlock,
 		extends: StylableDescriptor(),
 		contribution: {
-			slots: { 'title-icon': { description: 'Optional icon before the title' } },
+			slots: {
+				'title-icon': { description: 'Optional icon before the title' },
+				copy: { description: 'Copy button content; defaults to the copy icon' },
+			},
 			props: {
 				code: { type: String, triggers: ['change:code'] },
 				language: { type: String, triggers: ['change:language'] },
