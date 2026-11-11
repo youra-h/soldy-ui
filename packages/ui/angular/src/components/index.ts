@@ -51,4 +51,5 @@ export * from './toggle-button'
 export * from './toggle-group'
 export * from './code-block'
 
+export * from './avatar'
 export * from './separator'

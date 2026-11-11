@@ -59,6 +59,8 @@ const CALENDAR = [...POPOVER, 'list-box', 'calendar']
  */
 export const COMPONENTS: Readonly<Record<string, readonly string[]>> = {
 	accordion: ['icon', 'button', 'accordion'],
+	avatar: ['avatar'],
+	'avatar-group': ['avatar', 'avatar-group'],
 	badge: ['badge'],
 	'code-block': ['icon', 'button', 'tabs', 'code-block'],
 	button: ['button'],

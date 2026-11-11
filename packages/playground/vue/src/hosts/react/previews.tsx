@@ -1,6 +1,7 @@
 import {
 	BREADCRUMBS_ITEMS,
 	EDITOR_ALIGNMENT_ITEMS,
+	AVATAR_PEOPLE,
 	editorAlignmentPath,
 } from '@soxa-ui/playground-shared'
 import { useRef, useState, type ReactNode } from 'react'
@@ -38,6 +39,8 @@ import {
 	Field,
 	Icon,
 	Input,
+	Avatar,
+	AvatarGroup,
 	Badge,
 	CodeBlock,
 	Label,
@@ -378,6 +381,14 @@ export const PREVIEWS: Record<string, TPreview> = {
 	// slot. The page rows edit the label itself: its side, text size, variant
 	'code-block': (bind) => <CodeBlock {...bind} />,
 	badge: (bind) => <Badge {...bind} />,
+	avatar: (bind) => <Avatar {...bind} />,
+	'avatar-group': (bind) => (
+		<AvatarGroup {...bind}>
+			{AVATAR_PEOPLE.map((person) => (
+				<Avatar key={person.initials} {...person} />
+			))}
+		</AvatarGroup>
+	),
 	label: (bind) => (
 		<Label {...bind}>
 			<CheckBox />

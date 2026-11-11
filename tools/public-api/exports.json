@@ -3,6 +3,8 @@
     "values": [
       "Accordion",
       "AccordionItem",
+      "Avatar",
+      "AvatarGroup",
       "Badge",
       "Breadcrumbs",
       "BreadcrumbsItem",
@@ -72,6 +74,8 @@
     "types": [
       "AccordionItemProps",
       "AccordionProps",
+      "AvatarGroupProps",
+      "AvatarProps",
       "BadgeProps",
       "BreadcrumbsItemProps",
       "BreadcrumbsProps",
@@ -149,6 +153,8 @@
     "values": [
       "Accordion",
       "AccordionItem",
+      "Avatar",
+      "AvatarGroup",
       "Badge",
       "Breadcrumbs",
       "BreadcrumbsItem",
@@ -221,6 +227,10 @@
       "AccordionItemEventProps",
       "AccordionItemProps",
       "AccordionProps",
+      "AvatarEventProps",
+      "AvatarGroupEventProps",
+      "AvatarGroupProps",
+      "AvatarProps",
       "BadgeEventProps",
       "BadgeProps",
       "BreadcrumbsAttributes",
@@ -386,6 +396,8 @@
     "values": [
       "Accordion",
       "AccordionItem",
+      "Avatar",
+      "AvatarGroup",
       "Badge",
       "Breadcrumbs",
       "BreadcrumbsItem",
@@ -458,6 +470,10 @@
       "AccordionItemEventProps",
       "AccordionItemProps",
       "AccordionProps",
+      "AvatarEventProps",
+      "AvatarGroupEventProps",
+      "AvatarGroupProps",
+      "AvatarProps",
       "BadgeEventProps",
       "BadgeProps",
       "BreadcrumbsAttributes",
@@ -623,6 +639,8 @@
     "values": [
       "Accordion",
       "AccordionItem",
+      "Avatar",
+      "AvatarGroup",
       "Badge",
       "Breadcrumbs",
       "BreadcrumbsItem",
@@ -695,6 +713,10 @@
       "AccordionItemEventProps",
       "AccordionItemProps",
       "AccordionProps",
+      "AvatarEventProps",
+      "AvatarGroupEventProps",
+      "AvatarGroupProps",
+      "AvatarProps",
       "BadgeEventProps",
       "BadgeProps",
       "BreadcrumbsAttributes",
@@ -859,6 +881,8 @@
     "values": [
       "TAccordionElement",
       "TAccordionItemElement",
+      "TAvatarElement",
+      "TAvatarGroupElement",
       "TBadgeElement",
       "TBreadcrumbsElement",
       "TBreadcrumbsItemElement",
@@ -930,6 +954,8 @@
     "types": [
       "TAccordionElementProps",
       "TAccordionItemElementProps",
+      "TAvatarElementProps",
+      "TAvatarGroupElementProps",
       "TBadgeElementProps",
       "TBreadcrumbsElementProps",
       "TBreadcrumbsItemElementProps",
@@ -1188,6 +1214,10 @@
         "values": ["TCodeBlockElement"],
         "types": ["TCodeBlockElementProps"]
       },
+      "./avatar": {
+        "values": ["TAvatarElement", "TAvatarGroupElement"],
+        "types": ["TAvatarElementProps", "TAvatarGroupElementProps"]
+      },
       "./separator": {
         "values": ["TSeparatorElement"],
         "types": ["TSeparatorElementProps"]
@@ -1202,6 +1232,8 @@
       "SlotDirective",
       "TAccordionComponent",
       "TAccordionItemComponent",
+      "TAvatarComponent",
+      "TAvatarGroupComponent",
       "TBadgeComponent",
       "TBreadcrumbsComponent",
       "TBreadcrumbsItemComponent",

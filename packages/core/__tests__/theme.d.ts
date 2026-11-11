@@ -13,6 +13,9 @@
 export {}
 
 declare module '@soxa-ui/core' {
+	interface IAvatarShapes {
+		rounded: true
+	}
 	interface IBadgeViews {
 		solid: true
 		hollow: true

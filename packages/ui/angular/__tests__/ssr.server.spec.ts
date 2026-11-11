@@ -27,6 +27,8 @@ import {
 	RoleIconDirective,
 	SlotDirective,
 	TButtonComponent,
+	TAvatarComponent,
+	TAvatarGroupComponent,
 	TDateInputComponent,
 	TDatePickerComponent,
 	TDialogComponent,
@@ -1235,5 +1237,33 @@ describe('Toasts · гидратация', () => {
 		expect(region.querySelector('.so-toasts-item__text')?.textContent).toBe('Сохранено')
 		expect(error).not.toHaveBeenCalled()
 		expect(warn).not.toHaveBeenCalled()
+	})
+})
+
+@Component({
+	selector: 'app-root',
+	imports: [TAvatarComponent, TAvatarGroupComponent],
+	template:
+		'<span so-avatar-group [overflow]="3"><span so-avatar src="/avatar.png" initials="AL" aria_label="Ada"></span></span>',
+})
+class AvatarPage {}
+describe('Avatar server hydration', () => {
+	afterEach(leavePage)
+	it('hydrates server fallback and count in place', async () => {
+		loadPage(await renderOnServer(AvatarPage))
+		const nodes = [
+			...document.querySelectorAll(
+				'.so-avatar-group,.so-avatar,.so-avatar__fallback,.so-avatar-group__count',
+			),
+		]
+		expect(document.querySelector('.so-avatar-group')?.textContent).toBe('AL+3')
+		const app = await hydrate(AvatarPage)
+		await app.whenStable()
+		expect([
+			...document.querySelectorAll(
+				'.so-avatar-group,.so-avatar,.so-avatar__fallback,.so-avatar-group__count',
+			),
+		]).toEqual(nodes)
+		expect(document.querySelector('.so-avatar img')).toBeNull()
 	})
 })

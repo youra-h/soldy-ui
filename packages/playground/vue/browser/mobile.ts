@@ -8,6 +8,8 @@ import '@soxa-ui/theme-oren'
 
 /** Explicit audit inventory: registry additions must receive a mobile scenario. */
 export const MOBILE_COMPONENTS = [
+	'avatar',
+	'avatar-group',
 	'badge',
 	'code-block',
 	'button',

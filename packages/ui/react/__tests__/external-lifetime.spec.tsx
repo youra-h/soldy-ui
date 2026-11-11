@@ -33,6 +33,8 @@ import {
 	TBreadcrumbs,
 	TMenuItem,
 	TBadge,
+	TAvatar,
+	TAvatarGroup,
 	TCodeBlock,
 	TButton,
 	TToggleButton,
@@ -97,6 +99,8 @@ import {
 	Accordion,
 	ToggleGroup,
 	Breadcrumbs,
+	Avatar,
+	AvatarGroup,
 	Badge,
 	CodeBlock,
 	Button,
@@ -483,6 +487,16 @@ const COMPONENTS: Readonly<Record<string, Readonly<Record<string, TCase>>>> = {
 					<BreadcrumbsOverflowItem ctrl={ctrl} href="#hidden" />
 				</Menu>
 			),
+		),
+	},
+	Avatar: {
+		'group ctrl': overCtrl(
+			() => new TAvatarGroup({ overflow: 3 }),
+			(ctrl) => <AvatarGroup ctrl={ctrl} />,
+		),
+		ctrl: overCtrl(
+			() => new TAvatar({ src: 'image', initials: 'AL' }),
+			(ctrl) => <Avatar ctrl={ctrl} />,
 		),
 	},
 	Badge: {

@@ -5,6 +5,8 @@ export const A11Y_COMPONENTS = [
 	'toggle-button',
 	'toggle-group',
 	'badge',
+	'avatar',
+	'avatar-group',
 	'code-block',
 	'breadcrumbs',
 	'input',
@@ -194,6 +196,13 @@ export const A11Y_CASES: readonly TAuditCase[] = [
 			'.so-breadcrumbs__link[aria-current="page"]',
 		],
 	),
+	audit('avatar', 'named', '.so-avatar', { initials: 'AL', aria_label: 'Ada Lovelace' }, [
+		'.so-avatar[role="img"][aria-label="Ada Lovelace"]',
+	]),
+	audit('avatar-group', 'group', '.so-avatar-group', { overflow: 3 }, [
+		'.so-avatar-group[role="group"]',
+		'.so-avatar-group__count',
+	]),
 	audit('badge', 'text', '.so-badge', { value: 'New' }, [
 		'.so-badge__indicator:not([aria-hidden])',
 	]),

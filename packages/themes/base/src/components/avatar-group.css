@@ -1,0 +1,36 @@
+:root {
+	--so-avatar-group-overlap: 0.25rem;
+	--so-avatar-group-count-padding: 0.375rem;
+}
+
+.so-avatar-group {
+	display: inline-flex;
+	align-items: center;
+	vertical-align: middle;
+}
+
+/* Logical margins follow the nearest writing direction, including nested LTR/RTL. */
+.so-avatar-group > .so-avatar ~ .so-avatar,
+.so-avatar-group > .so-avatar ~ .so-avatar-group__overflow {
+	margin-inline-start: calc(-1 * var(--so-avatar-group-overlap));
+}
+
+.so-avatar-group__overflow {
+	position: relative;
+	display: inline-flex;
+	flex: none;
+}
+
+.so-avatar-group__count {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-inline-size: var(--so-avatar-size-normal);
+	block-size: var(--so-avatar-size-normal);
+	padding-inline: var(--so-avatar-group-count-padding);
+	font-size: var(--so-avatar-font-size-normal);
+	line-height: 1;
+	white-space: nowrap;
+	direction: ltr;
+	unicode-bidi: isolate;
+}

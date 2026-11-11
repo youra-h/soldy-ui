@@ -1,3 +1,4 @@
+import AvatarFallback from './AvatarFallback.svelte'
 import BadgeAnchor from './BadgeAnchor.svelte'
 import A11yPersistentToasts from './A11yPersistentToasts.svelte'
 import A11yInvalidInput from './A11yInvalidInput.svelte'
@@ -23,6 +24,7 @@ import type { TPreview } from './previews'
  */
 export const FIXTURES: Record<string, TPreview> = {
 	'badge-anchor': BadgeAnchor,
+	'avatar-fallback': AvatarFallback,
 	'a11y-persistent-toasts': A11yPersistentToasts,
 	'a11y-invalid-input': A11yInvalidInput,
 	'a11y-invalid-number-input': A11yInvalidNumberInput,

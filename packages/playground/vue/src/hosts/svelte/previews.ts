@@ -1,3 +1,5 @@
+import AvatarPreview from './AvatarPreview.svelte'
+import AvatarGroupPreview from './AvatarGroupPreview.svelte'
 import SeparatorPreview from './SeparatorPreview.svelte'
 import CodeBlockPreview from './CodeBlockPreview.svelte'
 import ToggleButtonPreview from './ToggleButtonPreview.svelte'
@@ -72,6 +74,8 @@ export const PREVIEWS: Record<string, TPreview> = {
 	'check-box': CheckBoxPreview,
 	switch: SwitchPreview,
 	badge: BadgePreview,
+	avatar: AvatarPreview,
+	'avatar-group': AvatarGroupPreview,
 	'code-block': CodeBlockPreview,
 	label: LabelPreview,
 	field: FieldPreview,

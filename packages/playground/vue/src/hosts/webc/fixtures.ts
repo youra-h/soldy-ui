@@ -15,6 +15,11 @@ import type { TPreview } from './previews'
  * (`slotScope: false`).
  */
 export const FIXTURES: Record<string, TPreview> = {
+	'avatar-fallback': {
+		tag: 'span',
+		is: 'so-avatar',
+		slots: { fallback: [{ tag: 'span', is: 'so-icon', attributes: { icon: 'check' } }] },
+	},
 	'badge-anchor': {
 		tag: 'span',
 		is: 'so-badge',

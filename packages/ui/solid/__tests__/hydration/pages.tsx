@@ -31,6 +31,7 @@ import type {
 	TTagsCollection,
 } from '@soxa-ui/core'
 import {
+	Avatar,
 	Badge,
 	CodeBlock,
 	Accordion,
@@ -529,6 +530,14 @@ export function CodeBlockPage(): JSX.Element {
 			value="second"
 			lineNumbers
 		/>
+	)
+}
+
+export function AvatarPage(): JSX.Element {
+	return (
+		<Avatar.Group overflow={3}>
+			<Avatar src="/avatar.png" initials="AL" aria_label="Ada" />
+		</Avatar.Group>
 	)
 }
 

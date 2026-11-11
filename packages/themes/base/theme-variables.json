@@ -325,6 +325,18 @@
     "--so-code-block-header-height-xl": "CodeBlock toolbar height, size xl: compact toolbar scale, independent of the standalone Button height.",
     "--so-code-block-header-height-2xl": "CodeBlock toolbar height, size 2xl: compact toolbar scale, independent of the standalone Button height.",
     "--so-code-block-tab-size": "CodeBlock visual tab width, in character cells; default: 4.",
+    "--so-avatar-size-sm": "Avatar square image and fallback box, size sm. The normal step also sizes the default group overflow count.",
+    "--so-avatar-font-size-sm": "Avatar fallback font size relative to its surrounding text, size sm.",
+    "--so-avatar-size-normal": "Avatar square image and fallback box, size normal. The normal step also sizes the default group overflow count.",
+    "--so-avatar-font-size-normal": "Avatar fallback font size relative to its surrounding text, size normal.",
+    "--so-avatar-size-lg": "Avatar square image and fallback box, size lg. The normal step also sizes the default group overflow count.",
+    "--so-avatar-font-size-lg": "Avatar fallback font size relative to its surrounding text, size lg.",
+    "--so-avatar-size-xl": "Avatar square image and fallback box, size xl. The normal step also sizes the default group overflow count.",
+    "--so-avatar-font-size-xl": "Avatar fallback font size relative to its surrounding text, size xl.",
+    "--so-avatar-size-2xl": "Avatar square image and fallback box, size 2xl. The normal step also sizes the default group overflow count.",
+    "--so-avatar-font-size-2xl": "Avatar fallback font size relative to its surrounding text, size 2xl.",
+    "--so-avatar-group-overlap": "Inline overlap between sibling avatars and the overflow slot; default: 0.25rem.",
+    "--so-avatar-group-count-padding": "Inline padding of the default avatar group overflow count; default: 0.375rem.",
     "--so-separator-width": "Separator line thickness in either orientation; default: 1px."
   },
   "theme-reads": {

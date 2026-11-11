@@ -20,6 +20,18 @@
       "scope": "so-accordion-item"
     },
     {
+      "name": "so-avatar",
+      "sources": ["packages/core/src/components/custom/avatar/avatar.class.ts"],
+      "description": "Noninteractive user image or initials/custom fallback.",
+      "scope": "Avatar"
+    },
+    {
+      "name": "so-avatar-group",
+      "sources": ["packages/core/src/components/custom/avatar/group/group.class.ts"],
+      "description": "Overlapping row of the avatars supplied by the application.",
+      "scope": "Avatar.Group"
+    },
+    {
       "name": "so-badge",
       "sources": ["packages/core/src/components/custom/badge/badge.class.ts"],
       "description": "Noninteractive badge wrapper.",
@@ -414,6 +426,58 @@
       ],
       "description": "header part of accordion item. Availability follows the rendered component structure.",
       "scope": "so-accordion-item"
+    },
+    {
+      "name": "so-avatar__fallback",
+      "sources": [
+        "packages/ui/angular/src/components/avatar/avatar.component.html",
+        "packages/ui/react/src/components/avatar/Avatar.tsx",
+        "packages/ui/solid/src/components/avatar/Avatar.tsx",
+        "packages/ui/svelte/src/components/avatar/Avatar.svelte",
+        "packages/ui/vue/src/components/avatar/Avatar.vue",
+        "packages/ui/webc/src/components/avatar/avatar.template.ts"
+      ],
+      "description": "Initials or custom fallback visible until the image is loaded.",
+      "scope": "Avatar"
+    },
+    {
+      "name": "so-avatar__image",
+      "sources": [
+        "packages/ui/angular/src/components/avatar/avatar.component.html",
+        "packages/ui/react/src/components/avatar/Avatar.tsx",
+        "packages/ui/solid/src/components/avatar/Avatar.tsx",
+        "packages/ui/svelte/src/components/avatar/Avatar.svelte",
+        "packages/ui/vue/src/components/avatar/Avatar.vue",
+        "packages/ui/webc/src/components/avatar/avatar.template.ts"
+      ],
+      "description": "Loaded decorative image cropped to the avatar box.",
+      "scope": "Avatar"
+    },
+    {
+      "name": "so-avatar-group__count",
+      "sources": [
+        "packages/ui/angular/src/components/avatar/group/avatar-group.component.html",
+        "packages/ui/react/src/components/avatar/group/AvatarGroup.tsx",
+        "packages/ui/solid/src/components/avatar/group/AvatarGroup.tsx",
+        "packages/ui/svelte/src/components/avatar/group/AvatarGroup.svelte",
+        "packages/ui/vue/src/components/avatar/group/AvatarGroup.vue",
+        "packages/ui/webc/src/components/avatar/group/avatar-group.template.ts"
+      ],
+      "description": "Default positive overflow count, rendered as +N.",
+      "scope": "Avatar.Group"
+    },
+    {
+      "name": "so-avatar-group__overflow",
+      "sources": [
+        "packages/ui/angular/src/components/avatar/group/avatar-group.component.html",
+        "packages/ui/react/src/components/avatar/group/AvatarGroup.tsx",
+        "packages/ui/solid/src/components/avatar/group/AvatarGroup.tsx",
+        "packages/ui/svelte/src/components/avatar/group/AvatarGroup.svelte",
+        "packages/ui/vue/src/components/avatar/group/AvatarGroup.vue",
+        "packages/ui/webc/src/components/avatar/group/avatar-group.template.ts"
+      ],
+      "description": "Custom overflow slot replacing the default hidden-people count.",
+      "scope": "Avatar.Group"
     },
     {
       "name": "so-badge__anchor",
@@ -2961,10 +3025,13 @@
     },
     {
       "name": "--shape-",
-      "sources": ["packages/core/src/components/custom/skeleton/skeleton.class.ts"],
+      "sources": [
+        "packages/core/src/components/custom/avatar/avatar.class.ts",
+        "packages/core/src/components/custom/skeleton/skeleton.class.ts"
+      ],
       "pattern": "so-<block>--shape-<value>",
-      "description": "Theme-defined skeleton geometry.",
-      "scope": "Skeleton",
+      "description": "Theme-defined component geometry.",
+      "scope": "Skeleton and Avatar",
       "values": "<shape>; values declared by the theme"
     },
     {
@@ -3545,6 +3612,14 @@
       "scope": "Table column header",
       "values": "positive integer; absent when unsorted",
       "presence": "TDataset serializes false as \"false\"; null/undefined removes the attribute. See scope for the bound DOM node."
+    },
+    {
+      "name": "data-status",
+      "sources": ["packages/core/src/components/custom/avatar/avatar.class.ts"],
+      "description": "Image loading state; only loaded displays an image.",
+      "scope": "Avatar root",
+      "values": "idle | loading | loaded | error",
+      "presence": "Always present, including idle server markup."
     },
     {
       "name": "data-sticky-head",

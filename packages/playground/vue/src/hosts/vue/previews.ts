@@ -1,6 +1,7 @@
 import {
 	BREADCRUMBS_ITEMS,
 	EDITOR_ALIGNMENT_ITEMS,
+	AVATAR_PEOPLE,
 	editorAlignmentPath,
 } from '@soxa-ui/playground-shared'
 import {
@@ -47,6 +48,8 @@ import {
 	Field,
 	Icon,
 	Input,
+	Avatar,
+	AvatarGroup,
 	Badge,
 	CodeBlock,
 	Label,
@@ -431,6 +434,9 @@ export const PREVIEWS: Record<string, TPreview> = {
 	// page rows edit the label itself: side, text size, variant
 	'code-block': (bind) => h(CodeBlock, bind),
 	badge: (bind) => h(Badge, bind),
+	avatar: (bind) => h(Avatar, bind),
+	'avatar-group': (bind) =>
+		h(AvatarGroup, bind, () => AVATAR_PEOPLE.map((person) => h(Avatar, person))),
 	label: (bind) => h(Label, bind, () => h(CheckBox)),
 
 	// A form field around Input: the parts' texts are preview props, the control
