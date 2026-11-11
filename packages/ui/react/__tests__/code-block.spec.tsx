@@ -5,6 +5,13 @@ import { CodeBlock } from '@soxa-ui/react'
 import { TCodeBlock } from '@soxa-ui/core'
 import { mount, find } from './mount'
 describe('CodeBlock', () => {
+	it('renders custom copy content inside the accessible built-in button', () => {
+		const app = mount(<CodeBlock code="source" copy={<span>Copy source</span>} />)
+		const button = find(app.root(), '.so-code-block__copy', HTMLButtonElement)
+		expect(button.textContent).toBe('Copy source')
+		expect(button.getAttribute('aria-label')).toBe('Copy')
+		expect(button.querySelector('svg')).toBeNull()
+	})
 	it('updates active text through Tabs and copies the exact original', async () => {
 		const code = '  <script>\r\n\r\nlast\n'
 		const ctrl = new TCodeBlock({

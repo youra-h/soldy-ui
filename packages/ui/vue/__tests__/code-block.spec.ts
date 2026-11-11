@@ -12,6 +12,35 @@ afterEach(() => {
 	document.body.innerHTML = ''
 })
 describe('CodeBlock', () => {
+	it('uses an accessible icon by default and preserves custom copy content across modes', async () => {
+		const wrapper = mount(CodeBlock, { props: { code: 'source' } })
+		const button = wrapper.get('.so-code-block__copy')
+		expect(button.attributes('aria-label')).toBe('Copy')
+		expect(button.find('svg').exists()).toBe(true)
+		expect(button.text()).toBe('')
+		wrapper.unmount()
+
+		const writeText = vi.fn().mockResolvedValue(undefined)
+		vi.stubGlobal('navigator', { clipboard: { writeText } })
+		const custom = mount(CodeBlock, {
+			props: { code: 'source' },
+			slots: { copy: () => h('span', { 'data-copy-content': '' }, 'Copy source') },
+		})
+		for (const props of [
+			{ code: 'source' },
+			{ title: 'file.ts' },
+			{ snippets: [{ value: 'one', label: 'One', code: 'source' }] },
+		]) {
+			await custom.setProps(props)
+			const action = custom.get('.so-code-block__copy')
+			expect(action.get('[data-copy-content]').text()).toBe('Copy source')
+			expect(action.find('svg').exists()).toBe(false)
+			await action.trigger('click')
+			await nextTick()
+			expect(writeText).toHaveBeenLastCalledWith('source')
+		}
+		custom.unmount()
+	})
 	it('renders untrusted source as text with exact whitespace and no empty header', () => {
 		const code = '<img src=x onerror=alert(1)>\n  x\n\n'
 		const wrapper = mount(CodeBlock, { props: { code } })

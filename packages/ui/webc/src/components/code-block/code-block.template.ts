@@ -12,7 +12,8 @@ import {
 	type ITemplate,
 	type ITemplateContext,
 } from '../../adapter'
-import { TButtonElement, type TButtonElementProps } from '../button'
+import type { TButtonElementProps } from '../button'
+import { iconButton, type TIconButton } from '../common/icon-button'
 import {
 	TTabsElement,
 	TTabsContentElement,
@@ -29,6 +30,7 @@ type TParts = {
 	readonly body: HTMLElement
 	readonly pre: HTMLPreElement
 	readonly copy: TButtonElementProps
+	readonly copyAction: TIconButton
 	readonly status: HTMLElement
 	readonly trailing: Comment
 	readonly caption: HTMLElement
@@ -112,10 +114,17 @@ export const codeBlockTemplate: ITemplate<ICodeBlock, unknown, TOutputs> = {
 		const pre = preOf(doc)
 		const status = doc.createElement('span')
 		const tabs = createDetail(doc, TTabsElement, { embedded: 'code-block.tabs' })
-		const copy = createDetail(doc, TButtonElement, {
-			embedded: 'code-block.copy',
-			attributes: { type: 'button' },
-		})
+		const copyAction = iconButton(
+			doc,
+			{
+				embedded: 'code-block.copy',
+				iconEmbedded: 'code-block.copy-icon',
+				className: 'so-code-block__copy',
+				role: 'copy',
+			},
+			ctx.hasSlot('copy'),
+		)
+		const copy = copyAction.button
 
 		header.className = 'so-code-block__header'
 		title.className = 'so-code-block__title'
@@ -146,6 +155,7 @@ export const codeBlockTemplate: ITemplate<ICodeBlock, unknown, TOutputs> = {
 			body,
 			pre,
 			copy,
+			copyAction,
 			status,
 			trailing,
 			caption,
@@ -153,7 +163,12 @@ export const codeBlockTemplate: ITemplate<ICodeBlock, unknown, TOutputs> = {
 			panels,
 		})
 		root.append(header, body, copy, status)
-		return { slots: { 'title-icon': { mode: 'append', node: icon } } }
+		return {
+			slots: {
+				'title-icon': { mode: 'append', node: icon },
+				copy: { mode: 'append', node: copy, slot: 'default' },
+			},
+		}
 	},
 	bindings: [
 		bind(
@@ -177,10 +192,11 @@ export const codeBlockTemplate: ITemplate<ICodeBlock, unknown, TOutputs> = {
 				} else p.header.remove()
 				patch(p.copy, {
 					size: ctx.state.size,
-					text: ctx.state.names_copy,
 					disabled: ctx.state.copyDisabled === true,
 					rendered: ctx.state.copyable === true,
 				})
+				ownerAttributes(p.copy, { 'aria-label': ctx.state.names_copy ?? null })
+				if (p.copyAction.icon) patch(p.copyAction.icon, { size: ctx.state.size })
 				p.status.textContent = ctx.state.names_message ?? ''
 				p.caption.textContent = ctx.state.displayTitle ?? ''
 				if (ctx.state.tabbed) p.caption.prepend(p.icon)

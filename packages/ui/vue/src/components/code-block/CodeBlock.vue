@@ -2,7 +2,8 @@
 import SetupCodeBlock from './setup.component'
 import { Tabs, TabsContent } from '../tabs'
 import { Button } from '../button'
-export default { ...SetupCodeBlock, components: { Tabs, TabsContent, Button } }
+import { Icon } from '../icon'
+export default { ...SetupCodeBlock, components: { Tabs, TabsContent, Button, Icon } }
 </script>
 
 <template>
@@ -23,10 +24,14 @@ export default { ...SetupCodeBlock, components: { Tabs, TabsContent, Button } }
 				embedded="code-block.copy"
 				class="so-code-block__copy"
 				:size="size"
-				:text="names_copy"
+				:aria-label="names_copy"
 				:disabled="copyDisabled"
 				@click="block.copy()"
-			/>
+			>
+				<slot name="copy"
+					><Icon embedded="code-block.copy-icon" :tag="copyIconTag" :size="size"
+				/></slot>
+			</Button>
 		</div>
 		<Tabs
 			v-if="tabbed"
@@ -44,10 +49,14 @@ export default { ...SetupCodeBlock, components: { Tabs, TabsContent, Button } }
 					embedded="code-block.copy"
 					class="so-code-block__copy"
 					:size="size"
-					:text="names_copy"
+					:aria-label="names_copy"
 					:disabled="copyDisabled"
 					@click="block.copy()"
-				/>
+				>
+					<slot name="copy"
+						><Icon embedded="code-block.copy-icon" :tag="copyIconTag" :size="size"
+					/></slot>
+				</Button>
 			</template>
 			<template #content>
 				<TabsContent
@@ -79,10 +88,14 @@ export default { ...SetupCodeBlock, components: { Tabs, TabsContent, Button } }
 				embedded="code-block.copy"
 				class="so-code-block__copy"
 				:size="size"
-				:text="names_copy"
+				:aria-label="names_copy"
 				:disabled="copyDisabled"
 				@click="block.copy()"
-			/>
+			>
+				<slot name="copy"
+					><Icon embedded="code-block.copy-icon" :tag="copyIconTag" :size="size"
+				/></slot>
+			</Button>
 		</div>
 
 		<span class="so-code-block__status" role="status" aria-live="polite" aria-atomic="true">{{

@@ -22,6 +22,7 @@ export const ICON_ROLES = [
 	'check',
 	'checkIndeterminate',
 	'close',
+	'copy',
 	'arrowDown',
 	'arrowRight',
 	// Кнопка разворота модального окна: стрелки наружу — развернуть, внутрь —

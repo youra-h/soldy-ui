@@ -60,10 +60,16 @@
 	white-space: pre;
 	text-align: left;
 }
+/* A separate row keeps arbitrary copy content outside the code scrollport. */
+.so-code-block[data-header='false'][data-copyable='true'] > .so-code-block__content {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr);
+}
 .so-code-block[data-header='false'][data-copyable='true']
 	> .so-code-block__content
 	> .so-code-block__pre {
-	padding-inline-end: calc(var(--so-code-block-padding) + 10ch);
+	grid-row: 2;
+	min-inline-size: 0;
 }
 .so-code-block__code {
 	display: block;
@@ -113,9 +119,11 @@
 	line-height: var(--so-code-block-line-height);
 }
 .so-code-block[data-header='false'] > .so-code-block__content > .so-code-block__copy {
-	position: absolute;
-	inset-block-start: var(--so-code-block-padding);
-	inset-inline-end: var(--so-code-block-gap);
+	grid-row: 1;
+	justify-self: end;
+	max-inline-size: calc(100% - 2 * var(--so-code-block-gap));
+	margin-block-start: var(--so-code-block-gap);
+	margin-inline: var(--so-code-block-gap);
 }
 .so-code-block__status {
 	display: block;

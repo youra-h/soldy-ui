@@ -7,11 +7,15 @@ import {
 	toReactStyle,
 	toAriaProps,
 	useClickAction,
+	roleIcon,
 } from '../../adapter'
 import { Tabs, TabsContent } from '../tabs'
 import { Button } from '../button'
+import { Icon } from '../icon'
 import { useSetupCodeBlock } from './setup.component'
 import type { CodeBlockProps } from './base.component'
+
+const COPY_ICON = roleIcon('copy')
 
 export function CodeBlock(props: CodeBlockProps): ReactElement | null {
 	const { ctrl, ref, forwardProps, state, layer } = useSetupCodeBlock(props)
@@ -52,10 +56,14 @@ export function CodeBlock(props: CodeBlockProps): ReactElement | null {
 			embedded="code-block.copy"
 			className="so-code-block__copy"
 			size={state.size}
-			text={state.names_copy}
+			aria-label={state.names_copy}
 			disabled={state.copyDisabled}
 			ref={copy}
-		/>
+		>
+			{renderSlot(props.copy) ?? (
+				<Icon embedded="code-block.copy-icon" tag={COPY_ICON} size={state.size} />
+			)}
+		</Button>
 	) : null
 
 	if (!state.rendered) return null

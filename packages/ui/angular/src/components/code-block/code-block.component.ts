@@ -1,8 +1,9 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core'
 import type { ICodeBlock } from '@soxa-ui/core'
 import { NgTemplateOutlet } from '@angular/common'
-import { AttributesDirective, SlotDirective } from '../../adapter'
+import { AttributesDirective, SlotDirective, RoleIconDirective } from '../../adapter'
 import { TButtonComponent } from '../button'
+import { TIconComponent } from '../icon'
 import { TTabsComponent, TTabsContentComponent } from '../tabs'
 import { TCodeBlockSurface } from '../../generated/code-block.metadata'
 import { setupCodeBlock } from './setup.component'
@@ -13,6 +14,8 @@ import { setupCodeBlock } from './setup.component'
 		SlotDirective,
 		AttributesDirective,
 		TButtonComponent,
+		TIconComponent,
+		RoleIconDirective,
 		TTabsComponent,
 		TTabsContentComponent,
 	],
