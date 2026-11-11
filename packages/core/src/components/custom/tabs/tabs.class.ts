@@ -1,3 +1,4 @@
+import { TAttributes } from '../../../common'
 import { TControl } from '../../base/control'
 import type { TDefaultValues } from '../../base/component'
 import type {
@@ -34,8 +35,18 @@ export class TTabs extends TControl<ITabsProps, TTabsEvents> implements ITabs {
 	protected _view: TTabsView | undefined
 	protected _closable!: boolean
 
+	protected readonly _scrollAttrs: TAttributes
+
 	constructor(props: Partial<ITabsProps> = {}) {
 		super(props)
+
+		this._scrollAttrs = new TAttributes()
+		this._scrollAttrs.subscribe((_set, oldValue) =>
+			this.events.emit('change:scrollAttrs', {
+				newValue: this._scrollAttrs.toObject(),
+				oldValue,
+			}),
+		)
 
 		const ctor = new.target as typeof TTabs
 
@@ -174,6 +185,11 @@ export class TTabs extends TControl<ITabsProps, TTabsEvents> implements ITabs {
 			this._closable = value
 			this.events.emit('change:closable', { newValue: value, oldValue: oldClosable })
 		}
+	}
+
+	/** Attributes of the scrolling part; measured focusability is supplied by its plugin. */
+	get scrollAttrs(): TAttributes {
+		return this._scrollAttrs
 	}
 
 	override getProps(): ITabsProps {

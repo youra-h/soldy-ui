@@ -10,10 +10,11 @@
 import { defineComponent, defineDescriptor, defineType } from '../../../../protected/define'
 import { TTabs } from '@soxa-ui/core'
 import type { ITabsItem } from '@soxa-ui/core'
-import { tabStopOf } from '@soxa-ui/plugins'
+import { barOf, tabStopOf } from '@soxa-ui/plugins'
 import { ControlDescriptor } from '../control.descriptor'
 import {
 	ActionPluginDescriptor,
+	ScrollFocusPluginDescriptor,
 	CollectionBundlesPluginDescriptor,
 	CollectionElementsPluginDescriptor,
 	DragPluginDescriptor,
@@ -67,6 +68,7 @@ export const TabsDescriptor = defineDescriptor(() =>
 				},
 			},
 			props: {
+				scrollAttrs: { type: Object, protected: true, triggers: ['change:scrollAttrs'] },
 				orientation: { type: String, triggers: ['change:orientation'] },
 				alignment: { type: String, triggers: ['change:alignment'] },
 				position: { type: String, triggers: ['change:position'] },
@@ -92,6 +94,7 @@ export const TabsDescriptor = defineDescriptor(() =>
 		},
 
 		plugins: [
+			ScrollFocusPluginDescriptor.with({ target: barOf }),
 			// Фокус держит таб-остановка, а корень — рамка со списком и панелями:
 			// туда `focused = true` и ставит фокус, как Tab, мимо кнопки в
 			// слоте `leading`. Остановку плагин берёт у модели, через реестр

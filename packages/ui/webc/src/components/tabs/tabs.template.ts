@@ -88,6 +88,12 @@ export const tabsTemplate: ITemplate<ITabs, TTabsCollectionFacade> = {
 	},
 
 	bindings: [
+		bind('scrollAttrs', ({ root, state }) => {
+			const bar = root.querySelector(':scope > .so-tabs__bar')
+
+			if (bar) ownerAttributes(bar, state.scrollAttrs)
+		}),
+
 		bind('aria', ({ root, state }) => {
 			const list = lists.get(root)
 

@@ -1,3 +1,4 @@
+import type { TAttributes, TAttributesMap } from '../../../common'
 import type { TValuePayload } from '../../../common'
 import type { IControl, IControlProps, TControlEvents } from '../../base/control'
 import type { TThemeRegistry } from '../../../common'
@@ -20,6 +21,7 @@ export type TTabsView = Extract<keyof ITabsViews, string>
 
 export type TTabsEvents = TControlEvents &
 	TCollectionStorageDriverEvents<ITabsItem> & {
+		'change:scrollAttrs': (payload: TValuePayload<TAttributesMap>) => void
 		/** change:orientation */
 		'change:orientation': (payload: TValuePayload<TTabsOrientation>) => void
 		/** change:alignment */
@@ -69,6 +71,8 @@ export interface ITabsProps
 	extends ITabsComponentProps, ITabsCollectionProps<ITabsItemProps, ITabsItem> {}
 
 export interface ITabs extends IControl<ITabsProps, TTabsEvents> {
+	/** Native attributes of the scrolling part, separate from the semantic root. */
+	readonly scrollAttrs: TAttributes
 	/** Ориентация табов */
 	orientation: TTabsOrientation
 	/** Выравнивание табов */

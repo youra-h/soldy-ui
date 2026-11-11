@@ -42,6 +42,7 @@ import { TLight } from './light'
 import { markPlaceOwner } from './marks'
 import { TElementAttributes, TPaint, classesOf, orderOf, setOf, stylesOf } from './paint'
 import { TPropStore } from './props'
+import { NATIVE_INPUT } from './native-input'
 import { keepsBinding } from './relocation'
 import { placeOf, planOf, presenceOf, type TRootSpec } from './root'
 import { TSubtree, followAbove, provideSubtree, type TAbove } from './subtree'
@@ -349,6 +350,10 @@ export function ElementBase<
 		}
 
 		attributeChangedCallback(name: string, _old: string | null, value: string | null): void {
+			// The customized-built-in polyfill delivers callbacks later. A newer
+			// attribute value supersedes an older reflected notification.
+			if (this.getAttribute(name) !== value) return
+
 			// The field's `id` written from code (`el.id`, `setAttribute`) goes to the
 			// field, like a markup attribute. The removal from the root is the base's
 			// own, and the base skips it
@@ -375,7 +380,11 @@ export function ElementBase<
 			const attribute = attributes.get(name)
 
 			if (attribute) {
-				// `undefined` is written too: a removed attribute resets the prop to its default
+				// Core reflection is output, not a new consumer input. Feeding it back
+				// would cache inherited disabled as a prop and lose a later reset.
+				if (value !== null && value === TElementAttributes.of(this).wanted(name)) return
+
+				// A removed attribute resets the prop to its default too.
 				this._write(attribute.prop, coerceAttribute(value, attribute))
 
 				return
@@ -442,6 +451,13 @@ export function ElementBase<
 					name === ID ? idOf(raw) : coerceAttribute(raw, attribute),
 				)
 			}
+		}
+
+		[NATIVE_INPUT](name: string, value: unknown): void {
+			if (attributes.get(toAttributeName(name))?.prop !== name || !(name in Native.prototype))
+				return
+
+			this._write(name, value)
 		}
 
 		private _write(name: string, value: unknown): void {

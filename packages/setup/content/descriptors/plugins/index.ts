@@ -123,3 +123,5 @@ export { ToggleButtonPluginDescriptor } from './toggle-button.plugin'
 export { ToggleGroupPluginDescriptor } from './toggle-group.plugin'
 export { CodeBlockCopyPluginDescriptor, CodeBlockNamesPluginDescriptor } from './code-block.plugin'
 export { CodeBlockSourcePluginDescriptor } from './code-block.plugin'
+
+export { ScrollFocusPluginDescriptor } from './scroll-focus.plugin'

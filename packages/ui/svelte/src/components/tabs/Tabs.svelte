@@ -28,7 +28,7 @@
 	)}
 	attach={binding.attachElement}
 >
-	<div class="so-tabs__bar">
+	<div class="so-tabs__bar" {...state.scrollAttrs}>
 		{#if props.leading}
 			<div class="so-tabs__leading">{@render props.leading()}</div>
 		{/if}<div

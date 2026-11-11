@@ -1,5 +1,5 @@
 export { bind } from './types'
-export { ownerAttributes, ownerClasses, ownerStyles } from './owner'
+export { ownerAttributes, wrapperAttributes, ownerClasses, ownerStyles } from './owner'
 export { lend, lendMark, lendBefore, type TLendAt } from './lend'
 export {
 	createDetail,

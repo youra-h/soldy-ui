@@ -8,7 +8,12 @@ export default { ...SetupTable, components: { CheckBox, TableColumn, TableRow } 
 </script>
 
 <template>
-	<div v-if="rendered" v-show="visible" class="so-table__viewport" v-bind="containerAttrs">
+	<div
+		v-if="rendered"
+		v-show="visible"
+		class="so-table__viewport"
+		v-bind="{ ...scrollAttrs, ...containerAttrs }"
+	>
 		<!--
 			Окно таблицы — разметка вокруг неё, а не корень: корень, классы и
 			наборы — у самой `table`, плагины и тема видят корнем её. В окне

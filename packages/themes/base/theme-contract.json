@@ -3325,7 +3325,8 @@
       "name": "data-overflow",
       "sources": [
         "packages/core/src/components/custom/table/collection/extensions/columns/columns.extension.ts",
-        "packages/core/src/components/custom/tags/tags.class.ts"
+        "packages/core/src/components/custom/tags/tags.class.ts",
+        "packages/plugins/src/custom/scroll-focus/scroll-focus.plugin.ts"
       ],
       "description": "Content exceeds the available space.",
       "scope": "Table root; Tags root (layout overflow policy)",
@@ -3540,7 +3541,10 @@
     },
     {
       "name": "data-sticky-head",
-      "sources": ["packages/core/src/components/custom/table/table.class.ts"],
+      "sources": [
+        "packages/core/src/components/custom/table/table.class.ts",
+        "packages/plugins/src/custom/scroll-focus/scroll-focus.plugin.ts"
+      ],
       "description": "Table header remains visible during scrolling.",
       "scope": "Table root",
       "values": "true | false",

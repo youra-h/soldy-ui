@@ -5,7 +5,7 @@
 	Слоты таба без scope — проекцией (`ngProjectAs`), остальные — шаблонами в его слив.
 	Шаблоны слотов набора — в слив в конце: иначе сняли бы табы из данных.
 -->
-<div class="so-tabs__bar">
+<div class="so-tabs__bar" [so-attributes]="state()['scrollAttrs']">
 	@if (slot('leading'); as leading) {
 		<div class="so-tabs__leading">
 			<ng-container [ngTemplateOutlet]="leading" />

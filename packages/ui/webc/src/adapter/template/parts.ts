@@ -6,6 +6,7 @@
  * (Web Components), «Разметка владельца».
  */
 
+import { syncNativeInput } from '../runtime/native-input'
 import { isContent } from '../runtime/content'
 import { registrationOf } from '../runtime/defineElement'
 import { markOwnerMarkup } from '../runtime/marks'
@@ -112,6 +113,8 @@ export function lendTemplates(
  */
 export function patch<T extends object, K extends keyof T>(target: T, values: Pick<T, K>): void {
 	for (const key in values) {
+		syncNativeInput(target, key, values[key])
+
 		if (target[key] !== values[key]) target[key] = values[key]
 	}
 }

@@ -1,6 +1,7 @@
 import type { ITable, TTableCollection } from '@soxa-ui/core'
 import { TBasePlugin } from '../../../base'
 import type { IPluginContext } from '../../../base'
+import { tableViewportOf } from '../viewport'
 import { TElementPlugin } from '../../element'
 import { TCollectionBundlesPlugin } from '../../collection'
 import type { TTableLayoutPluginEvents } from './types'
@@ -73,7 +74,7 @@ export class TTableLayoutPlugin extends TBasePlugin<ITable, TTableLayoutPluginEv
 		this._unobserve()
 
 		this._root = root
-		this._viewport = this._viewportOf(root)
+		this._viewport = this._owner ? tableViewportOf(this._owner, root) : null
 
 		if (!this._viewport) return
 
@@ -94,16 +95,6 @@ export class TTableLayoutPlugin extends TBasePlugin<ITable, TTableLayoutPluginEv
 		this._observer?.disconnect()
 		this._cancel()
 		this._inner = 0
-	}
-
-	/** Окно — родитель корня с классом `__viewport` владельца. */
-	private _viewportOf(root: Element): Element | null {
-		const parent = root.parentElement
-		const owner = this._owner
-
-		if (!parent || !owner) return null
-
-		return parent.classList.contains(owner.classes.resolve('__viewport')) ? parent : null
 	}
 
 	/** Ячейка колонки выбора в шапке своей таблицы — прямыми детьми. */

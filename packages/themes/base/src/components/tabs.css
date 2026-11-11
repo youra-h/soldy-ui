@@ -145,6 +145,20 @@
 	--so-disabled-opacity: 1;
 }
 
+/* WebKit scrolls a focused container only when the container can receive
+ * pointer events. Restore the measured scroll surface or a focused inner stop,
+ * while its contents
+ * keep the disabled subtree's pointer policy and native disabled state. */
+.so-tabs[data-disabled='true'] > .so-tabs__bar:is([tabindex='0'], :focus-within) {
+	pointer-events: auto;
+}
+
+.so-tabs[data-disabled='true']
+	> .so-tabs__bar:is([tabindex='0'], :focus-within)
+	> :is(.so-tabs__leading, .so-tabs__list, .so-tabs__trailing) {
+	pointer-events: none;
+}
+
 /* Строка таба и кнопка закрытия — соседи в одну линию. Внутри строки кнопке
  * не место: строка — `<button role="tab">`, интерактивный потомок у кнопки
  * запрещён, а подпись крестика вошла бы в имя таба. Поэтому всё, что

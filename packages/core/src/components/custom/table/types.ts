@@ -1,3 +1,4 @@
+import type { TAttributes, TAttributesMap } from '../../../common'
 import type { TValuePayload } from '../../../common'
 import type { IControl, IControlProps, TControlEvents } from '../../base/control'
 import type { ITableCollectionProps } from './collection/types'
@@ -48,6 +49,7 @@ export type TTableColumnFit = 'none' | 'auto' | 'contain'
 export type TTableReorderPreview = 'none' | 'head' | 'column'
 
 export type TTableEvents = TControlEvents & {
+	'change:scrollAttrs': (payload: TValuePayload<TAttributesMap>) => void
 	/** change:locale */
 	'change:locale': (payload: TValuePayload<string>) => void
 	/** change:stickyHead */
@@ -114,6 +116,8 @@ export interface ITableProps extends IControlProps, ITableCollectionProps {
 }
 
 export interface ITable extends IControl<ITableProps, TTableEvents> {
+	/** Native attributes of the scrolling part, separate from the semantic root. */
+	readonly scrollAttrs: TAttributes
 	/** Язык таблицы — тег BCP 47, как задан; невалидный сортировка читает как `en-US` */
 	locale: string
 	/** Шапка закреплена у верхнего края прокрутки */
