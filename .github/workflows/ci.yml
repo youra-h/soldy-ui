@@ -124,7 +124,9 @@ jobs:
         run: npx playwright install ${{ matrix.browser }}
 
       - name: Системные зависимости браузера
-        run: npx playwright install-deps ${{ matrix.browser }}
+        run: |
+          bash .github/scripts/prepare-ubuntu-apt.sh
+          npx playwright install-deps ${{ matrix.browser }}
 
       # A dropped connection to a tab (`VITEST_BROWSER_CONNECTION_CLOSED`)
       # doesn't name its cause: whether the OOM killer took the process, the
@@ -419,7 +421,9 @@ jobs:
         run: npx playwright install chromium
 
       - name: Системные зависимости Chromium
-        run: npx playwright install-deps chromium
+        run: |
+          bash .github/scripts/prepare-ubuntu-apt.sh
+          npx playwright install-deps chromium
 
       # The run packs what the build left in dist.
       - name: Сборка пакетов
