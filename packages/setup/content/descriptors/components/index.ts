@@ -63,3 +63,4 @@ export { CodeBlockDescriptor } from './code-block.descriptor'
 
 export { AvatarDescriptor } from './avatar.descriptor'
 export { AvatarGroupDescriptor } from './avatar/group.descriptor'
+export { SeparatorDescriptor } from './separator.descriptor'

@@ -39,6 +39,7 @@ export const A11Y_COMPONENTS = [
 	'icon',
 	'progress-linear',
 	'progress-spinner',
+	'separator',
 	'skeleton',
 	'drag-and-drop',
 	'virtual',
@@ -528,6 +529,19 @@ export const A11Y_CASES: readonly TAuditCase[] = [
 		click: ['.so-accordion-item button'],
 	}),
 	audit('icon', 'decorative', '.so-icon', {}, ['.so-icon[aria-hidden="true"]']),
+	...['horizontal', 'vertical'].flatMap((orientation) => [
+		audit('separator', orientation, '.so-separator[role="separator"]', { orientation }, [
+			'.so-separator[aria-orientation="' + orientation + '"]',
+		]),
+		audit(
+			'separator',
+			orientation + '-decorative',
+			'.so-separator[role="none"]',
+			{ orientation, decorative: true },
+			[],
+			{ absent: ['.so-separator[aria-orientation]'] },
+		),
+	]),
 	...['progress-linear', 'progress-spinner'].flatMap((id) => [
 		audit(id, 'determinate', '.so-' + id, { value: 40, aria_label: 'Upload' }, [
 			'[role="progressbar"][aria-valuenow]',

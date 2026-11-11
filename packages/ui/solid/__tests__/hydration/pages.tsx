@@ -1,3 +1,4 @@
+import { Separator } from '@soxa-ui/solid'
 /**
  * Страницы гидратации — одна разметка на две сборки.
  *
@@ -537,5 +538,14 @@ export function AvatarPage(): JSX.Element {
 		<Avatar.Group overflow={3}>
 			<Avatar src="/avatar.png" initials="AL" aria_label="Ada" />
 		</Avatar.Group>
+	)
+}
+
+export function SeparatorPage(): JSX.Element {
+	return (
+		<>
+			<Separator orientation="vertical" />
+			<Separator decorative />
+		</>
 	)
 }

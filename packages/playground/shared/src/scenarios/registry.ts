@@ -1,4 +1,5 @@
 import { AVATAR_SCENARIOS } from './avatar/display'
+import { SEPARATOR_SCENARIOS } from './separator/semantics'
 import { CODE_BLOCK_SCENARIOS } from './code-block/display'
 import { BREADCRUMBS_SCENARIOS } from './breadcrumbs/window'
 
@@ -45,6 +46,7 @@ export const SCENARIOS: readonly TScenario[] = [
 	...BADGE_SLOTS,
 	...AVATAR_SCENARIOS,
 	...CODE_BLOCK_SCENARIOS,
+	...SEPARATOR_SCENARIOS,
 	...PROGRESS_LINEAR_MOTION,
 	...PROGRESS_SPINNER_MOTION,
 	...TOASTS_MOTION,

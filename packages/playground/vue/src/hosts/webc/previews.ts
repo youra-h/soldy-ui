@@ -841,6 +841,14 @@ export const PREVIEWS: Record<string, TPreview> = {
 	// fraction is zero, and running is the `indeterminate` flag
 	'progress-spinner': { tag: 'span', is: 'so-progress-spinner' },
 
+	separator: {
+		tag: 'div',
+		is: 'so-separator',
+		wrapper: {
+			tag: 'div',
+			style: () => 'width:100%;height:120px;display:flex;align-items:center',
+		},
+	},
 	skeleton: { tag: 'div', is: 'so-skeleton' },
 
 	// DragAndDrop is an autonomous box-less element with its own tag, like

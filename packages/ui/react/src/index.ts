@@ -249,3 +249,5 @@ export type {
 	AvatarEventProps,
 	AvatarGroupEventProps,
 } from './components/avatar'
+export { Separator } from './components/separator'
+export type { SeparatorProps, SeparatorEventProps } from './components/separator'

@@ -260,6 +260,12 @@
       "scope": "so-select-item"
     },
     {
+      "name": "so-separator",
+      "sources": ["packages/core/src/components/custom/separator/separator.class.ts"],
+      "description": "A non-interactive semantic or decorative content boundary.",
+      "scope": "so-separator"
+    },
+    {
       "name": "so-skeleton",
       "sources": ["packages/core/src/components/custom/skeleton/skeleton.class.ts"],
       "description": "Root of skeleton. Inherited component classes use the concrete component's base name.",
@@ -2976,13 +2982,14 @@
       "name": "--orientation-",
       "sources": [
         "packages/core/src/components/custom/progress-linear/progress-linear.class.ts",
+        "packages/core/src/components/custom/separator/separator.class.ts",
         "packages/core/src/components/custom/slider/slider.class.ts",
         "packages/core/src/components/custom/tabs/tabs.class.ts",
         "packages/core/src/components/custom/toggle-group/toggle-group.class.ts"
       ],
       "pattern": "so-<block>--orientation-<value>",
       "description": "Orientation of the component layout.",
-      "scope": "Tabs, Slider and ProgressLinear roots",
+      "scope": "Tabs, Slider, ProgressLinear, ToggleGroup and Separator roots",
       "values": "horizontal | vertical"
     },
     {
