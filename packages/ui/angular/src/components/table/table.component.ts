@@ -30,6 +30,9 @@ import { setupTable } from './setup.component'
 })
 export class TTableComponent extends TTableSurface<ITable> {
 	constructor() {
-		super((ctrl, inputs) => setupTable(ctrl, inputs, this.engine), { strategy: 'wrapped' })
+		super((ctrl, inputs) => setupTable(ctrl, inputs, this.engine), {
+			strategy: 'wrapped',
+			wrapperSets: ['scrollAttrs'],
+		})
 	}
 }

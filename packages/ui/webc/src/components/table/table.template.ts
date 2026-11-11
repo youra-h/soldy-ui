@@ -21,6 +21,7 @@ import {
 	lendSamples,
 	lendTemplates,
 	ownerAttributes,
+	wrapperAttributes,
 	ownerStyles,
 	type ITemplate,
 	type ITemplateContext,
@@ -179,6 +180,8 @@ export const tableTemplate: ITemplate<ITable, TTableCollectionFacade> = {
 	},
 
 	bindings: [
+		bind('scrollAttrs', ({ root, state }) => wrapperAttributes(root, state.scrollAttrs)),
+
 		bind('headRowAria', ({ root, state }) => {
 			const headRow = parts.get(root)?.headRow
 

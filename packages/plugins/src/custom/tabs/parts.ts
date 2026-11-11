@@ -12,7 +12,7 @@ import type { ITabs } from '@soxa-ui/core'
  */
 
 /** Ряд набора — ребёнок корня: список табов и слоты по его краям. */
-export function barOf(owner: ITabs, root: Element): Element | null {
+export function barOf(owner: Pick<ITabs, 'classes'>, root: Element): Element | null {
 	return root.querySelector(`:scope > ${owner.classes.resolve('__bar', { point: true })}`)
 }
 

@@ -29,10 +29,12 @@
  */
 
 import { defineComponent, defineDescriptor, defineType } from '../../../../protected/define'
+import { tableViewportOf } from '@soxa-ui/plugins'
 import { TTable } from '@soxa-ui/core'
 import type { ITableColumn, ITableRow } from '@soxa-ui/core'
 import { ControlDescriptor } from '../control.descriptor'
 import {
+	ScrollFocusPluginDescriptor,
 	CollectionBundlesPluginDescriptor,
 	CollectionElementsPluginDescriptor,
 	LocalePluginDescriptor,
@@ -78,6 +80,7 @@ export const TableDescriptor = defineDescriptor(() =>
 				empty: { description: 'Когда показанных строк нет' },
 			},
 			props: {
+				scrollAttrs: { type: Object, protected: true, triggers: ['change:scrollAttrs'] },
 				/**
 				 * Язык сортировки — не вход: это тег локали поддерева, и пишет его
 				 * плагин языка, как `size` элементам пишет владелец.
@@ -135,6 +138,7 @@ export const TableDescriptor = defineDescriptor(() =>
 		},
 
 		plugins: [
+			ScrollFocusPluginDescriptor.with({ target: tableViewportOf }),
 			// Язык сортировки — с первой отрисовки
 			LocalePluginDescriptor,
 			// Имя чекбокса «выбрать все» от локали

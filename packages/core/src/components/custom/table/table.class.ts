@@ -1,3 +1,4 @@
+import { TAttributes } from '../../../common'
 import { TControl } from '../../base/control'
 import type { TDefaultValues } from '../../base/component'
 import { DEFAULT_LOCALE } from '../../../common'
@@ -91,8 +92,18 @@ export class TTable extends TControl<ITableProps, TTableEvents> implements ITabl
 	protected _resizable: boolean
 	protected _reorderable: boolean
 
+	protected readonly _scrollAttrs: TAttributes
+
 	constructor(props: Partial<ITableProps> = {}) {
 		super(props)
+
+		this._scrollAttrs = new TAttributes()
+		this._scrollAttrs.subscribe((_set, oldValue) =>
+			this.events.emit('change:scrollAttrs', {
+				newValue: this._scrollAttrs.toObject(),
+				oldValue,
+			}),
+		)
 
 		const ctor = new.target as typeof TTable
 
@@ -226,6 +237,11 @@ export class TTable extends TControl<ITableProps, TTableEvents> implements ITabl
 
 		this._reorderable = value
 		this.events.emit('change:reorderable', { newValue: value, oldValue: oldReorderable })
+	}
+
+	/** Attributes of the scrolling part; measured focusability is supplied by its plugin. */
+	get scrollAttrs(): TAttributes {
+		return this._scrollAttrs
 	}
 
 	override getProps(): ITableProps {

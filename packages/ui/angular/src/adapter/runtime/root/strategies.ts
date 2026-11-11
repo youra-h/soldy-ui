@@ -5,13 +5,14 @@
  */
 
 import { computed, signal, type Signal } from '@angular/core'
-import { applyStyles, type TRootStyles } from '../root-attributes'
+import { applyStyles, attributesOf, TElementAttributes, type TRootStyles } from '../root-attributes'
 import { teleportRoot } from '../teleport'
 import { clearInputAttributes, forwardRegistry, forwardTo, hostElement } from './host-element'
 import {
 	NO_APPLIED_STYLES,
 	NO_STATE,
 	hideCompanion,
+	onNode,
 	paintRoot,
 	type TStateRead,
 	type TNode,
@@ -57,7 +58,7 @@ export function createRoot(spec: TRootSpec, ctx: TRootContext): TRoot {
 		case 'host':
 			return hostRoot(spec, ctx)
 		case 'wrapped':
-			return spec.teleport ? layeredRoot(spec.teleport, ctx) : wrappedRoot(ctx)
+			return spec.teleport ? layeredRoot(spec.teleport, ctx) : wrappedRoot(spec, ctx)
 		case 'view':
 			return viewRoot(ctx)
 	}
@@ -96,13 +97,29 @@ function hostRoot(spec: TRootHost, ctx: TRootContext): TRoot {
 }
 
 /** Корень — `#root` внутри обёртки (окно таблицы): класс и стиль — обёртке, остальное — корню. */
-function wrappedRoot(ctx: TRootContext): TRoot {
+function wrappedRoot(spec: Extract<TRootSpec, { strategy: 'wrapped' }>, ctx: TRootContext): TRoot {
 	const wrapper = hostElement()
 	const registry = forwardRegistry(wrapper)
 
 	clearInputAttributes(wrapper, ctx.own)
 	forwardTo(registry, wrapper, ctx.root, ctx.own)
 	paintRoot(ctx.root, WRAPPED_PAINT, ctx.state)
+
+	if (spec.wrapperSets) {
+		const sets = spec.wrapperSets
+
+		onNode(
+			() => wrapper,
+			(node) => {
+				const state = ctx.state()
+				const layer: Record<string, unknown> = {}
+
+				for (const name of sets) Object.assign(layer, attributesOf(state[name]))
+
+				TElementAttributes.of(node).set('plugins', layer)
+			},
+		)
+	}
 
 	return {
 		tag: undefined,

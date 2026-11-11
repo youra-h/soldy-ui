@@ -51,7 +51,7 @@ export function Table(props: TableProps): ReactElement | null {
 	const { selectAll } = facade
 
 	return (
-		<div {...wrapper}>
+		<div {...toAriaProps(state.scrollAttrs)} {...wrapper}>
 			<Tag {...root}>
 				<Elevate layer={layer}>
 					<thead className="so-table__head">

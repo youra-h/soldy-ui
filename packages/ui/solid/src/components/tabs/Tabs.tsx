@@ -29,6 +29,7 @@ export function Tabs(props: TabsProps): JSX.Element {
 		sets: [state.attrs, state.dataset],
 		forward: toRootForward(binding.forwardProps()),
 	}))
+	const scrollAttrs = createPartProps(() => state.scrollAttrs)
 	const aria = createPartProps(() => state.aria)
 	const control = createPartProps(() => toControlAttrs<TabsAttributes>(binding.forwardProps()))
 
@@ -36,7 +37,7 @@ export function Tabs(props: TabsProps): JSX.Element {
 		<Show when={state.rendered}>
 			<div {...root()} ref={binding.ref}>
 				<Elevate layer={binding.layer}>
-					<div class="so-tabs__bar">
+					<div class="so-tabs__bar" {...scrollAttrs()}>
 						<ResolvedSlot content={props.leading}>
 							{(leading) => <div class="so-tabs__leading">{leading()}</div>}
 						</ResolvedSlot>

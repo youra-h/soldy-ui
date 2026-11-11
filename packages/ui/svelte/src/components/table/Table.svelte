@@ -27,7 +27,7 @@
 		binding.forwardProps,
 		VIEWPORT,
 	)}
-	<Dynamic rendered tag="div" attributes={layout.wrapper} attach={binding.consumerRef}>
+	<Dynamic rendered tag="div" attributes={{ ...state.scrollAttrs, ...layout.wrapper }} attach={binding.consumerRef}>
 		<Dynamic rendered tag={state.tag} attributes={layout.root} attach={binding.bindRef}>
 			<thead class="so-table__head">
 				<tr class="so-table__head-row" {...state.headRowAria}>

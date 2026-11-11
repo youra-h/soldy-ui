@@ -41,6 +41,7 @@ export function Table(props: TableProps): JSX.Element {
 		forward: binding.forwardProps(),
 		wrapper: 'so-table__viewport',
 	}))
+	const scrollAttrs = createPartProps(() => state.scrollAttrs)
 	const headRowAria = createPartProps(() => state.headRowAria)
 	const cellAria = createPartProps(() => state.cellAria)
 
@@ -61,7 +62,7 @@ export function Table(props: TableProps): JSX.Element {
 
 	return (
 		<Show when={state.rendered}>
-			<div {...layout().wrapper} ref={binding.consumerRef}>
+			<div {...scrollAttrs()} {...layout().wrapper} ref={binding.consumerRef}>
 				<Root tag={state.tag} attributes={() => layout().root} ref={binding.bindRef}>
 					<Elevate layer={binding.layer}>
 						<thead class="so-table__head">

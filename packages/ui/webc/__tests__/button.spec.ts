@@ -18,6 +18,7 @@ import type { IButton } from '@soxa-ui/core'
 import { TButtonElement, type TButtonElementProps } from '@soxa-ui/webc'
 import { buttonTemplate } from '../src/components/button/button.template'
 import { bareContext } from './template-context'
+import { patch } from '../src/adapter/template/parts'
 
 /** Рендер коалесцируется в микротаске — ждём её перед проверкой. */
 const flush = () => new Promise<void>((resolve) => queueMicrotask(() => resolve()))
@@ -875,4 +876,58 @@ describe('<button is="so-button"> · слоты', () => {
 		expect(children(el)).toEqual(['L', 'Mid'])
 		expect(el.ctrl).toBeDefined()
 	})
+})
+
+describe('native attribute reflection and consumer removals', () => {
+	it('removing non-reflected props resets their defaults', async () => {
+		const el = mountButton(
+			'<button is="so-button" text="Changed" size="xl" variant="brand"></button>',
+		)
+
+		el.removeAttribute('text')
+		el.removeAttribute('size')
+		el.removeAttribute('variant')
+		await flush()
+
+		expect(ctrlOf(el).text).toBe('')
+		expect(ctrlOf(el).size).toBe('normal')
+		expect(ctrlOf(el).variant).toBeUndefined()
+	})
+
+	it('a model-owned disabled reflection does not overwrite the consumer input cache', async () => {
+		const el = createButton()
+		el.disabled = false
+		document.body.append(el)
+		ctrlOf(el).disabled = true
+		await flush()
+		expect(el.disabled).toBe(true)
+
+		el.disabled = false
+		await flush()
+		expect(ctrlOf(el).disabled).toBe(false)
+		expect(el.disabled).toBe(false)
+	})
+})
+
+it('template patch synchronizes native disabled before delayed attribute callbacks and paint', async () => {
+	const el = createButton()
+	document.body.append(el)
+	const pending: [string, string | null, string | null][] = []
+	const callbacks = vi.spyOn(el, 'attributeChangedCallback').mockImplementation((...args) => {
+		pending.push(args)
+	})
+
+	patch(el, { disabled: true })
+	await flush()
+	expect(ctrlOf(el).disabled).toBe(true)
+	patch(el, { disabled: false })
+	await flush()
+	expect(ctrlOf(el).disabled).toBe(false)
+	expect(el.disabled).toBe(false)
+
+	callbacks.mockRestore()
+	for (const args of pending) el.attributeChangedCallback(...args)
+	await flush()
+	expect(ctrlOf(el).disabled).toBe(false)
+	expect(el.disabled).toBe(false)
 })

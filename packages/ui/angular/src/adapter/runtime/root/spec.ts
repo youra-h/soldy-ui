@@ -11,7 +11,12 @@
  */
 export type TRootSpec =
 	| { readonly strategy: 'view' }
-	| { readonly strategy: 'wrapped'; readonly teleport?: TRootTeleport }
+	| {
+			readonly strategy: 'wrapped'
+			readonly teleport?: TRootTeleport
+			/** Model attribute sets belonging to the outer wrapper rather than the semantic root. */
+			readonly wrapperSets?: readonly string[]
+	  }
 	| {
 			readonly strategy: 'host'
 			/** Native markup defaults, applied once without replacing consumer attributes. */

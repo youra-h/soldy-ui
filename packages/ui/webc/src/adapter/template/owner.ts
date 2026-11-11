@@ -25,3 +25,8 @@ export function ownerStyles(
 ): void {
 	TPaint.of(element).styles('owner', stylesOf(style))
 }
+
+/** A wrapper belongs to this component; its attributes must not forward to the inner field. */
+export function wrapperAttributes(element: Element, set: TAttributesMap | undefined): void {
+	TElementAttributes.of(element).set('attrs', set ?? {})
+}

@@ -8,3 +8,5 @@ export * from './item-names'
 // в элементе. Их называют дескрипторы Tabs и Tabs.Item (`focusTarget` плагина
 // действия)
 export { tabIn, tabStopOf } from './tab'
+
+export { barOf } from './parts'

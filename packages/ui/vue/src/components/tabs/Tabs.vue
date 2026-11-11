@@ -28,9 +28,9 @@ export default { ...SetupTabs, components: { TabsItem } }
 			The list stands in a row (`so-tabs__bar`), and the `leading` and
 			`trailing` slots next to it, at the row's edges: ARIA lets only `tab`
 			into `[role=tablist]`, and a button in a slot would be a forbidden child.
-			The row is plain markup: no set, no consumer attributes.
+			The row binds its measured scroll attributes without consumer attributes.
 		-->
-		<div class="so-tabs__bar">
+		<div class="so-tabs__bar" v-bind="scrollAttrs">
 			<div class="so-tabs__leading" v-if="$slots.leading">
 				<slot name="leading"></slot>
 			</div>

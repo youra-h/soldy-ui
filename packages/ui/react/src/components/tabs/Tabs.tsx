@@ -29,7 +29,7 @@ export function Tabs(props: TabsProps): ReactElement | null {
 	return (
 		<div {...toRootProps(ref, state, [attrs, dataset], toRootForward(forwardProps))}>
 			<Elevate layer={layer}>
-				<div className="so-tabs__bar">
+				<div className="so-tabs__bar" {...toAriaProps(state.scrollAttrs)}>
 					{hasSlot(props.leading) ? (
 						<div className="so-tabs__leading">{renderSlot(props.leading)}</div>
 					) : null}
