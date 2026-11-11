@@ -1014,13 +1014,17 @@ describe('фокус ниже шапки', () => {
 		else expect(head).toBeLessThan(row)
 	}
 
-	/** The focused node is wholly below the head. */
-	function expectBelowHead(): void {
-		const active = document.activeElement
+	/** Wait for native focus scrolling: WebKit can move focus before scrolling. */
+	async function expectBelowHead(): Promise<void> {
+		await expect
+			.poll(() => {
+				const active = document.activeElement
 
-		if (!active) throw new Error('фокуса нет')
+				if (!active) throw new Error('фокуса нет')
 
-		expect(box(active).top).toBeGreaterThanOrEqual(box(headOf()).bottom - EPSILON)
+				return box(active).top - box(headOf()).bottom
+			})
+			.toBeGreaterThanOrEqual(-EPSILON)
 	}
 
 	/** A grid without the selection column in a 300 × 480 container. */
@@ -1042,7 +1046,7 @@ describe('фокус ниже шапки', () => {
 		await userEvent.keyboard('{ArrowUp}')
 
 		expect(document.activeElement).toBe(cellOf(19))
-		expectBelowHead()
+		await expectBelowHead()
 	})
 
 	it.each(LABELS)('$name: PageUp на ячейку под шапкой', async ({ columns, tall }) => {
@@ -1064,7 +1068,7 @@ describe('фокус ниже шапки', () => {
 		await userEvent.keyboard('{PageUp}')
 
 		expect(document.activeElement).toBe(cellOf(20))
-		expectBelowHead()
+		await expectBelowHead()
 	})
 
 	it.each(LABELS)('$name: Shift+Tab на чекбокс строки под шапкой', async ({ columns, tall }) => {
@@ -1081,7 +1085,7 @@ describe('фокус ниже шапки', () => {
 		await userEvent.keyboard('{Shift>}{Tab}{/Shift}')
 
 		expect(document.activeElement).toBe(fieldOf(19))
-		expectBelowHead()
+		await expectBelowHead()
 	})
 })
 
