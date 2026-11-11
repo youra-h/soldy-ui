@@ -11,7 +11,7 @@ export const enUS = freezeLocale({
 	translations: {
 		codeBlock: {
 			region: 'Code',
-			copy: 'Copy code',
+			copy: 'Copy',
 			copied: 'Copied',
 			error: 'Unable to copy code',
 		},

@@ -31,6 +31,8 @@ type TParts = {
 	readonly copy: TButtonElementProps
 	readonly status: HTMLElement
 	readonly trailing: Comment
+	readonly caption: HTMLElement
+	readonly icon: HTMLElement
 	readonly panels: TKeyedLoop<ICodeBlockPanel, string, TTabsContentElementProps>
 }
 const parts = new WeakMap<HTMLElement, TParts>()
@@ -75,7 +77,14 @@ function drawCode(
 		}
 		const text = doc.createElement('span')
 		text.className = 'so-code-block__text'
-		text.textContent = line.text
+		if (line.tokens) {
+			for (const token of line.tokens) {
+				const segment = doc.createElement('span')
+				segment.textContent = token.text
+				ownerAttributes(segment, token.dataset)
+				text.append(segment)
+			}
+		} else text.textContent = line.text
 		row.append(text)
 		code.append(row)
 	}
@@ -121,6 +130,8 @@ export const codeBlockTemplate: ITemplate<ICodeBlock, unknown, TOutputs> = {
 		body.append(pre)
 
 		const trailing = lendMark(tabs, 'trailing')
+		const caption = doc.createElement('span')
+		caption.className = 'so-code-block__title'
 		const mark = lendMark(tabs, 'content')
 		const panels = new TKeyedLoop<ICodeBlockPanel, string, TTabsContentElementProps>(
 			tabs,
@@ -128,7 +139,19 @@ export const codeBlockTemplate: ITemplate<ICodeBlock, unknown, TOutputs> = {
 			(panel) => panel.value,
 		)
 		copy.addEventListener('click', () => ctx.ctrl?.copy())
-		parts.set(root, { header, title, tabs, body, pre, copy, status, trailing, panels })
+		parts.set(root, {
+			header,
+			title,
+			tabs,
+			body,
+			pre,
+			copy,
+			status,
+			trailing,
+			caption,
+			icon,
+			panels,
+		})
 		root.append(header, body, copy, status)
 		return { slots: { 'title-icon': { mode: 'append', node: icon } } }
 	},
@@ -149,7 +172,7 @@ export const codeBlockTemplate: ITemplate<ICodeBlock, unknown, TOutputs> = {
 
 				p.title.textContent = ctx.state.displayTitle ?? ''
 				// Removing the absent header avoids an empty flex row overriding native hidden styling.
-				if (ctx.state.displayTitle) {
+				if (ctx.state.displayTitle && !ctx.state.tabbed) {
 					if (p.header.parentNode !== ctx.root) ctx.root.prepend(p.header)
 				} else p.header.remove()
 				patch(p.copy, {
@@ -159,7 +182,12 @@ export const codeBlockTemplate: ITemplate<ICodeBlock, unknown, TOutputs> = {
 					rendered: ctx.state.copyable === true,
 				})
 				p.status.textContent = ctx.state.names_message ?? ''
-				if (ctx.state.displayTitle) {
+				p.caption.textContent = ctx.state.displayTitle ?? ''
+				if (ctx.state.tabbed) p.caption.prepend(p.icon)
+				else p.header.prepend(p.icon)
+				if (ctx.state.tabbed && ctx.state.displayTitle) lendBefore(p.trailing, p.caption)
+				else p.caption.remove()
+				if (ctx.state.displayTitle && !ctx.state.tabbed) {
 					if (p.copy.parentNode !== p.header) p.header.append(p.copy)
 				} else if (ctx.state.tabbed) {
 					if (p.copy.nextSibling !== p.trailing) lendBefore(p.trailing, p.copy)

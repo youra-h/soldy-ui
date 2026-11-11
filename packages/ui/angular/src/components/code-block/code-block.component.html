@@ -12,13 +12,17 @@
 		></button>
 	}
 </ng-template>
+<ng-template #caption>
+	<ng-content select="[slot=title-icon]" /><span class="so-code-block__title">{{
+		state()['displayTitle']
+	}}</span>
+</ng-template>
 <!-- Keep pre/code descendants adjacent: template whitespace would alter the displayed source. -->
-@if (state()['displayTitle']) {
+@if (state()['displayTitle'] && !state()['tabbed']) {
 	<div class="so-code-block__header">
-		<ng-content select="[slot=title-icon]" /><span class="so-code-block__title">{{
-			state()['displayTitle']
-		}}</span
-		><ng-container [ngTemplateOutlet]="copyAction" />
+		<ng-container [ngTemplateOutlet]="caption" /><ng-container
+			[ngTemplateOutlet]="copyAction"
+		/>
 	</div>
 }
 @if (state()['tabbed']) {
@@ -30,9 +34,12 @@
 		[engine]="instance()?.engine"
 	>
 		<ng-container ngProjectAs="ng-template[slot]">
-			@if (!state()['displayTitle'] && state()['copyable']) {
-				<ng-template slot="trailing"
-					><ng-container [ngTemplateOutlet]="copyAction"
+			@if (state()['displayTitle'] || state()['copyable']) {
+				<ng-template slot="trailing">
+					@if (state()['displayTitle']) {
+						<ng-container [ngTemplateOutlet]="caption" />
+					}
+					<ng-container [ngTemplateOutlet]="copyAction"
 				/></ng-template>
 			}
 		</ng-container>
@@ -51,7 +58,7 @@
 						[attr.tabindex]="state()['contentAttrs']?.['tabindex']"
 						[attr.dir]="state()['contentAttrs']?.['dir']"
 						[style.max-height]="state()['contentStyle']?.['max-height']"
-					><code class="so-code-block__code" [so-attributes]="panel.dataset">@for(line of panel.lines; track line.number) {<span class="so-code-block__line" [so-attributes]="line.dataset">@if(state()['lineNumbers']) {<span class="so-code-block__gutter" aria-hidden="true">{{line.number}}</span>}<span class="so-code-block__text">{{line.text}}</span></span>}</code></pre>
+					><code class="so-code-block__code" [so-attributes]="panel.dataset">@for(line of panel.lines; track line.number) {<span class="so-code-block__line" [so-attributes]="line.dataset">@if(state()['lineNumbers']) {<span class="so-code-block__gutter" aria-hidden="true">{{line.number}}</span>}<span class="so-code-block__text">@if(line.tokens) {@for(token of line.tokens; track $index) {<span [so-attributes]="token.dataset">{{token.text}}</span>}} @else {{{line.text}}}</span></span>}</code></pre>
 				</div>
 			}
 		</ng-container>
@@ -65,7 +72,7 @@
 			[attr.tabindex]="state()['contentAttrs']?.['tabindex']"
 			[attr.dir]="state()['contentAttrs']?.['dir']"
 			[style.max-height]="state()['contentStyle']?.['max-height']"
-		><code class="so-code-block__code" [so-attributes]="state()['codeDataset']">@for(line of state()['lines'] ?? []; track line.number) {<span class="so-code-block__line" [so-attributes]="line.dataset">@if(state()['lineNumbers']) {<span class="so-code-block__gutter" aria-hidden="true">{{line.number}}</span>}<span class="so-code-block__text">{{line.text}}</span></span>}</code></pre>
+		><code class="so-code-block__code" [so-attributes]="state()['codeDataset']">@for(line of state()['lines'] ?? []; track line.number) {<span class="so-code-block__line" [so-attributes]="line.dataset">@if(state()['lineNumbers']) {<span class="so-code-block__gutter" aria-hidden="true">{{line.number}}</span>}<span class="so-code-block__text">@if(line.tokens) {@for(token of line.tokens; track $index) {<span [so-attributes]="token.dataset">{{token.text}}</span>}} @else {{{line.text}}}</span></span>}</code></pre>
 		@if (!state()['displayTitle']) {
 			<ng-container [ngTemplateOutlet]="copyAction" />
 		}

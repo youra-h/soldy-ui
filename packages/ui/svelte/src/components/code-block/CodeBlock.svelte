@@ -25,7 +25,7 @@
 		{...line.dataset}
 	>{#if state.lineNumbers}<span class="so-code-block__gutter" aria-hidden="true">{line.number}</span>{/if}<span
 		class="so-code-block__text"
-	>{line.text}</span></span>{/each}</code></pre>
+	>{#if line.tokens}{#each line.tokens as token}<span {...token.dataset}>{token.text}</span>{/each}{:else}{line.text}{/if}</span></span>{/each}</code></pre>
 {/snippet}
 
 {#snippet action()}
@@ -38,6 +38,12 @@
 		disabled={state.copyDisabled}
 		{@attach copy}
 	/>{/if}
+{/snippet}
+
+{#snippet toolbar()}
+	{#if state.displayTitle}{@render props['title-icon']?.()}{/if}
+	{#if state.displayTitle}<span class="so-code-block__title">{state.displayTitle}</span>{/if}
+	{@render action()}
 {/snippet}
 
 {#snippet content()}
@@ -54,12 +60,12 @@
 	attributes={toRootProps(state, [state.attrs, state.aria, state.dataset], binding.forwardProps)}
 	attach={binding.attachElement}
 >
-	{#if state.displayTitle}<div class="so-code-block__header">
+	{#if state.displayTitle && !state.tabbed}<div class="so-code-block__header">
 		{@render props['title-icon']?.()}<span class="so-code-block__title">{state.displayTitle}</span>{@render action()}
 	</div>{/if}{#if state.tabbed}<Tabs
 		ctrl={binding.ctrl.tabs}
 		engine={binding.ctrl.engine}
-		trailing={!state.displayTitle && state.copyable ? action : undefined}
+		trailing={toolbar}
 		embedded="code-block.tabs"
 		class="so-code-block__tabs"
 		{content}

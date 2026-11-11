@@ -62,3 +62,73 @@ it('normalizes known aliases and falls back to text without losing source', () =
 	expect(block.codeDataset['data-language']).toBe('text')
 	expect(block.source).toBe('<&>')
 })
+
+describe('CodeBlock syntax', () => {
+	it.each([
+		'TypeScript',
+		' ts ',
+		'javascript',
+		'tsx',
+		'jsx',
+		'html',
+		'vue',
+		'svelte',
+		'css',
+		'json',
+		'bash',
+		'python',
+		'yaml',
+		'unknown',
+		'text',
+	])('preserves exact token text and line endings for %s', (language) => {
+		const crlf = String.fromCharCode(13, 10)
+		const lf = String.fromCharCode(10)
+		const code = 'const value = "<&> Б 😀";' + crlf + crlf + '/* first' + lf + 'second */' + lf
+		const block = new TCodeBlock({ code, language })
+
+		for (const line of block.lines) {
+			expect(line.tokens?.map((token) => token.text).join('')).toBe(line.text)
+		}
+		expect(block.lines.map((line) => line.text).join('')).toBe(code)
+	})
+
+	it('highlights multiline syntax and reacts to language and snippet changes', () => {
+		const code = ['/* first', 'second */', 'const x: number = 1'].join(String.fromCharCode(10))
+		const block = new TCodeBlock({ code, language: 'TypeScript' })
+
+		expect(block.lines[1].tokens?.[0].dataset['data-token']).toBe('comment')
+		expect(
+			block.lines[2].tokens?.some((token) => token.dataset['data-token'] === 'keyword'),
+		).toBe(true)
+
+		block.language = 'text'
+		expect(
+			block.lines
+				.flatMap((line) => line.tokens ?? [])
+				.every((token) => token.dataset['data-token'] === ''),
+		).toBe(true)
+
+		block.snippets = [
+			{
+				value: 'html',
+				label: 'HTML',
+				language: 'html',
+				code: '<img src=x onerror="alert(1)">',
+			},
+		]
+		expect(
+			block.panels[0].lines[0].tokens?.some((token) => token.dataset['data-token'] === 'tag'),
+		).toBe(true)
+	})
+})
+
+it.each(['npm', 'npx', 'yarn', 'pnpm', 'bun'])(
+	'highlights the %s package-manager command in shell snippets',
+	(command) => {
+		const block = new TCodeBlock({ code: command + ' install @soxa-ui/vue', language: 'bash' })
+		expect(block.lines[0].tokens?.[0]).toEqual({
+			text: command,
+			dataset: { 'data-token': 'builtin' },
+		})
+	},
+)

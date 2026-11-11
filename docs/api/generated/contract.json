@@ -7900,7 +7900,7 @@
           "type": "string | undefined",
           "declaredType": "string",
           "required": false,
-          "description": "Language metadata; unknown names render as plain text without requiring a highlighter.",
+          "description": "Syntax language, including aliases such as ts and sh; unknown names render as plain text.",
           "hasDefault": true,
           "default": "\"text\""
         },
@@ -7975,7 +7975,7 @@
           "type": "string | undefined",
           "declaredType": "string",
           "required": false,
-          "description": "The current Tabs activation, rather than a second stored selection.",
+          "description": "Selected tab: matches a snippet value. Omit to select the first snippet; unused without snippets.",
           "hasDefault": true,
           "default": "undefined"
         }
