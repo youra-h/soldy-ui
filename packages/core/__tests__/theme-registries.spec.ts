@@ -3,6 +3,7 @@ import * as core from '@soxa-ui/core'
 import { TComponentView } from '@soxa-ui/core'
 import type {
 	TAccordionView,
+	TAlertView,
 	TButtonView,
 	TBadgeView,
 	TCheckBoxView,
@@ -31,6 +32,7 @@ describe('реестры значений оформления', () => {
 	it('ядро не объявляет значений: тип значения — ровно имена фикстуры', () => {
 		const exact: Record<string, true> = {
 			variant: true satisfies TExact<TComponentVariant, 'brand' | 'danger'>,
+			alertView: true satisfies TExact<TAlertView, 'solid' | 'hollow'>,
 			badgeView: true satisfies TExact<TBadgeView, 'solid' | 'hollow'>,
 			buttonView: true satisfies TExact<TButtonView, 'solid' | 'ghost'>,
 			tabsView: true satisfies TExact<TTabsView, 'pills' | 'cards'>,

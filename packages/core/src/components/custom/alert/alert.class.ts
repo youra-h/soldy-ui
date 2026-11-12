@@ -1,19 +1,21 @@
 import { TAria, TChangeEvent } from '../../../common'
 import { TStylable } from '../../base/stylable'
 import type { TDefaultValues } from '../../base/component'
-import type { IAlert, IAlertProps, TAlertEvents } from './types'
+import type { IAlert, IAlertProps, TAlertEvents, TAlertView } from './types'
 
 /** Inline urgent message. Applications use the native role="status" for nonurgent content. */
 export default class TAlert extends TStylable<IAlertProps, TAlertEvents> implements IAlert {
 	static override baseClass = 'so-alert'
 
-	static defaultValues: typeof TStylable.defaultValues & TDefaultValues<IAlertProps, 'closable'> =
-		{
-			...TStylable.defaultValues,
-			tag: 'div',
-			closable: false,
-		}
+	static defaultValues: typeof TStylable.defaultValues &
+		TDefaultValues<IAlertProps, 'closable', 'view'> = {
+		...TStylable.defaultValues,
+		tag: 'div',
+		closable: false,
+		view: undefined,
+	}
 
+	protected _view: TAlertView | undefined
 	protected _closable: boolean
 	protected _closeAria: TAria
 
@@ -21,6 +23,9 @@ export default class TAlert extends TStylable<IAlertProps, TAlertEvents> impleme
 		super(props)
 
 		const defaults = (new.target as typeof TAlert).defaultValues
+
+		this._view = props.view ?? defaults.view
+		this._classes.swap({ prefix: '--view-', newValue: this._view })
 
 		this._closable = props.closable ?? defaults.closable
 		this._aria.add('role', 'alert')
@@ -33,6 +38,20 @@ export default class TAlert extends TStylable<IAlertProps, TAlertEvents> impleme
 				oldValue,
 			}),
 		)
+	}
+
+	get view(): TAlertView | undefined {
+		return this._view
+	}
+
+	set view(value: TAlertView | undefined) {
+		if (value === this._view) return
+
+		const oldValue = this._view
+
+		this._classes.swap({ prefix: '--view-', oldValue, newValue: value })
+		this._view = value
+		this.events.emit('change:view', { newValue: value, oldValue })
 	}
 
 	get closable(): boolean {
@@ -57,6 +76,6 @@ export default class TAlert extends TStylable<IAlertProps, TAlertEvents> impleme
 	}
 
 	override getProps(): IAlertProps {
-		return { ...super.getProps(), closable: this._closable }
+		return { ...super.getProps(), closable: this._closable, view: this._view }
 	}
 }

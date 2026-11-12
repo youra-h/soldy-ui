@@ -11,6 +11,11 @@
 export {}
 
 declare module '@soxa-ui/core' {
+	interface IAlertViews {
+		solid: true
+		hollow: true
+	}
+
 	interface IComponentVariants {
 		brand: true
 		danger: true

@@ -13,6 +13,11 @@
 export {}
 
 declare module '@soxa-ui/core' {
+	interface IAlertViews {
+		solid: true
+		hollow: true
+	}
+
 	interface IAvatarShapes {
 		rounded: true
 	}
