@@ -753,3 +753,36 @@ describe('фон под окном', () => {
 		expect(document.documentElement.style.overflow).toBe('')
 	})
 })
+
+describe('non-modal dialog', () => {
+	it('preserves focus, page access and natural keyboard navigation', async () => {
+		const { props } = await render({ modal: false, dismissible: false })
+		await open(props)
+
+		expect(document.activeElement).toBe(opener())
+		expect(panel().getAttribute('role')).toBe('dialog')
+		expect(panel().hasAttribute('aria-modal')).toBe(false)
+		expect(panel().getAttribute('aria-labelledby')).toBe(
+			panel().querySelector('.so-dialog__title')?.id,
+		)
+		expect(opener().closest('[aria-hidden="true"], [inert]')).toBeNull()
+		expect(document.documentElement.style.overflow).not.toBe('hidden')
+		expect(document.body.style.overflow).not.toBe('hidden')
+
+		expect(document.querySelector('.so-dialog__backdrop')).toBeNull()
+
+		const last = panel().querySelector('.so-dialog__close')
+		if (!(last instanceof HTMLElement)) throw new Error('Missing close button')
+		last.focus()
+		expect(press('Tab').defaultPrevented).toBe(false)
+		expect(press('Tab', { shiftKey: true }).defaultPrevented).toBe(false)
+		opener().focus()
+		pointerDown(opener())
+		expect(isOpen()).toBe(true)
+		expect(document.activeElement).toBe(opener())
+
+		props.visible = false
+		await settle()
+		expect(document.activeElement).toBe(opener())
+	})
+})

@@ -1,18 +1,11 @@
 /**
- * Дескриптор Dialog (TDialog) — модальное окно.
- *
- * Наследует ModalLayerDescriptor (видимость, слой, размер, кнопка и запрос
- * закрытия, `dismissible`, заголовок и плагины модального слоя) и добавляет
- * место, отступ от краёв экрана, разворот, режим предупреждения, выходы
- * кнопки разворота и тела и плагин раскладки окна.
- *
- * Слоты — все, что рисует шаблон окна, вместе с иконкой крестика: у базы своей
- * разметки нет, а слоты не наследуются.
+ * Dialog contract: modal by default, with a persistent non-modal keyboard strategy.
  */
 
 import { defineComponent, defineDescriptor } from '../../../protected/define'
 import { TDialog } from '@soxa-ui/core'
 import {
+	NonmodalDialogFocusPluginDescriptor,
 	DialogIdsPluginDescriptor,
 	DialogLayoutPluginDescriptor,
 	DialogNamesPluginDescriptor,
@@ -40,6 +33,7 @@ export const DialogDescriptor = defineDescriptor(() =>
 				'restore-icon': { description: 'Иконка кнопки разворота у развёрнутого окна' },
 			},
 			props: {
+				modal: { type: Boolean, triggers: ['change:modal'] },
 				placement: { type: String, triggers: ['change:placement'] },
 				/**
 				 * Отступ от краёв экрана, один на все стороны. Теме уходит
@@ -64,6 +58,7 @@ export const DialogDescriptor = defineDescriptor(() =>
 				maximizeAria: { type: Object, protected: true, triggers: ['change:maximizeAria'] },
 			},
 			events: [
+				'change:modal',
 				'change:placement',
 				'change:offset',
 				'change:maximized',
@@ -73,6 +68,7 @@ export const DialogDescriptor = defineDescriptor(() =>
 		},
 
 		plugins: [
+			NonmodalDialogFocusPluginDescriptor.with({ property: 'visible', modal: false }),
 			// `z-index` слоя у панели и подложки, размер и отступ — переменными окна
 			DialogLayoutPluginDescriptor,
 			// Имя от заголовка и описание предупреждения: `id` и ссылки на них

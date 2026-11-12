@@ -9,7 +9,7 @@
  */
 
 import { definePlugin } from '../../../protected/define'
-import { TModalFocusPlugin } from '@soxa-ui/plugins'
+import { TModalFocusPlugin, TNonmodalDialogFocusPlugin } from '@soxa-ui/plugins'
 
 export const ModalFocusPluginDescriptor = definePlugin({
 	ctor: TModalFocusPlugin,
@@ -19,5 +19,12 @@ export const ModalFocusPluginDescriptor = definePlugin({
 	 * Контрибуция нужна лишь для того, чтобы `create` попал в события, как у
 	 * любого плагина.
 	 */
+	contribution: {},
+})
+
+/** Escape remains local to a non-modal dialog without moving focus or trapping Tab. */
+export const NonmodalDialogFocusPluginDescriptor = definePlugin({
+	ctor: TNonmodalDialogFocusPlugin,
+	namespace: 'nonModalFocus',
 	contribution: {},
 })

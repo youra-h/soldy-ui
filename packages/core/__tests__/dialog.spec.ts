@@ -526,3 +526,33 @@ describe('запрос закрытия', () => {
 		expect(dialog.visible).toBe(true)
 	})
 })
+
+describe('modality', () => {
+	it('defaults to modal and preserves the requested non-modal state', () => {
+		expect(new TDialog().modal).toBe(true)
+		const dialog = new TDialog({ modal: false, alert: true })
+
+		expect(dialog.getProps().modal).toBe(false)
+		expect(dialog.aria.toObject()).toMatchObject({ role: 'dialog' })
+		expect(dialog.aria.toObject()).not.toHaveProperty('aria-modal')
+	})
+
+	it('updates semantics before announcing a changed modality', () => {
+		const dialog = new TDialog({ modal: false, alert: true })
+		const changes = vi.fn(() =>
+			expect(dialog.aria.toObject()).toMatchObject({
+				role: 'alertdialog',
+				'aria-modal': 'true',
+			}),
+		)
+		dialog.events.on('change:modal', changes)
+		dialog.modal = true
+		dialog.modal = true
+
+		expect(changes).toHaveBeenCalledExactlyOnceWith({ newValue: true, oldValue: false })
+		dialog.events.off('change:modal', changes)
+		dialog.modal = false
+		expect(dialog.aria.toObject()).not.toHaveProperty('aria-modal')
+		expect(dialog.aria.toObject().role).toBe('dialog')
+	})
+})

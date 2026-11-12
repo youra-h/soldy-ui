@@ -432,6 +432,7 @@ export class MenuItemsPreview extends TMenuPreviewInputs {}
 				[height]="height()"
 				[closable]="closable()"
 				[dismissible]="dismissible()"
+				[modal]="modal()"
 				[placement]="placement()"
 				[offset]="offset()"
 				[maximized]="maximized()"
@@ -466,6 +467,7 @@ export class DialogPreview implements TFixture {
 	readonly height = input<TDialogComponent['height']>()
 	readonly closable = input<TDialogComponent['closable']>()
 	readonly dismissible = input<TDialogComponent['dismissible']>()
+	readonly modal = input<TDialogComponent['modal']>()
 	readonly placement = input<TDialogComponent['placement']>()
 	readonly offset = input<TDialogComponent['offset']>()
 	readonly maximized = input<TDialogComponent['maximized']>()

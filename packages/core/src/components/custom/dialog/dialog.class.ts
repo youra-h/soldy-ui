@@ -4,23 +4,12 @@ import { TAria } from '../../../common'
 import type { IDialog, IDialogProps, TDialogEvents, TDialogPlacement } from './types'
 
 /**
- * Модальное окно.
+ * Dialog window with modal behavior by default. Non-modal windows preserve the
+ * page's focus, navigation and scrolling; plugins apply that policy to the DOM.
+ * The title supplies the accessible name. Alert semantics apply only in modal
+ * mode, where the dialog interrupts the current interaction.
  *
- * Паттерн APG — Dialog (Modal). Всё, что следует из модальности, — роль,
- * `aria-modal`, имя от заголовка, кнопка закрытия, запрос закрытия с
- * отменяемым `close:before`, `dismissible` и размер — у общей с выезжающей
- * панелью базы `TModalLayer`. Своего у окна три вещи: место на экране,
- * разворот и режим предупреждения.
- *
- * **Предупреждение** (`alert`) — вариант того же окна, а не отдельный
- * компонент: клавиатура и фокус у него те же. Меняется роль —
- * `alertdialog`, — и описанием окна становится тело: `id` тела и ссылку
- * `aria-describedby` на него пишет плагин `TDialogIdsPlugin`.
- *
- * **Место, размер и разворот — значения, раскладка — тема.** Место уходит
- * модификатором `--placement-<v>` (стоит всегда, и у центра), развёрнутость —
- * `data-maximized`, ширина, высота и отступ от краёв экрана — переменными
- * раскладки (`TDialogLayoutPlugin`). Координат и замеров у окна нет.
+ * Placement, size and maximizing are theme layout values, without DOM measures.
  */
 export default class TDialog extends TModalLayer<IDialogProps, TDialogEvents> implements IDialog {
 	static override baseClass = 'so-dialog'
@@ -28,10 +17,11 @@ export default class TDialog extends TModalLayer<IDialogProps, TDialogEvents> im
 	static defaultValues: typeof TModalLayer.defaultValues &
 		TDefaultValues<
 			IDialogProps,
-			'placement' | 'maximized' | 'maximizable' | 'alert',
+			'placement' | 'maximized' | 'maximizable' | 'alert' | 'modal',
 			'offset'
 		> = {
 		...TModalLayer.defaultValues,
+		modal: true,
 		placement: 'center',
 		// Не задан — отступ темы. Не `0`: ноль — это «вплотную к краям»
 		offset: undefined,
@@ -40,6 +30,7 @@ export default class TDialog extends TModalLayer<IDialogProps, TDialogEvents> im
 		alert: false,
 	}
 
+	protected _modal: boolean
 	protected _placement!: TDialogPlacement
 	protected _offset: number | string | undefined
 	protected _maximized!: boolean
@@ -65,6 +56,9 @@ export default class TDialog extends TModalLayer<IDialogProps, TDialogEvents> im
 				oldValue,
 			}),
 		)
+
+		this._modal = props.modal ?? ctor.defaultValues.modal
+		this._applyModal()
 
 		this._offset = props.offset ?? ctor.defaultValues.offset
 		this._maximizable = props.maximizable ?? ctor.defaultValues.maximizable
@@ -144,7 +138,7 @@ export default class TDialog extends TModalLayer<IDialogProps, TDialogEvents> im
 		this.events.emit('change:maximizable', { newValue: value, oldValue: oldMaximizable })
 	}
 
-	/** Окно — предупреждение: `role="alertdialog"`, описание — тело окна. */
+	/** Alert semantics apply while modal; the requested flag survives modality changes. */
 	get alert(): boolean {
 		return this._alert
 	}
@@ -178,10 +172,30 @@ export default class TDialog extends TModalLayer<IDialogProps, TDialogEvents> im
 		return this._maximizeAria
 	}
 
+	/** A non-modal dialog preserves page interaction and never takes focus. */
+	get modal(): boolean {
+		return this._modal
+	}
+
+	set modal(value: boolean) {
+		const oldValue = this._modal
+
+		if (oldValue === value) return
+
+		this._modal = value
+		this._applyModal()
+		this._applyAlert(this._alert)
+		this.events.emit('change:modal', { newValue: value, oldValue })
+	}
+
+	private _applyModal(): void {
+		this._aria.add('aria-modal', this._modal ? 'true' : null)
+	}
+
 	protected _applyAlert(value: boolean): void {
 		this._alert = value
 
-		this._aria.add('role', value ? 'alertdialog' : 'dialog')
+		this._aria.add('role', value && this._modal ? 'alertdialog' : 'dialog')
 	}
 
 	protected _applyPlacement(newValue: TDialogPlacement, oldValue?: TDialogPlacement): void {
@@ -205,6 +219,7 @@ export default class TDialog extends TModalLayer<IDialogProps, TDialogEvents> im
 	override getProps(): IDialogProps {
 		return {
 			...super.getProps(),
+			modal: this._modal,
 			placement: this._placement,
 			offset: this._offset,
 			maximized: this._maximized,

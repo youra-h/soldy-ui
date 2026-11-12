@@ -82,11 +82,11 @@ export const ModalLayerDescriptor = defineDescriptor(() =>
 			// оба берут у него панель
 			DismissPluginDescriptor.with({ property: 'visible' }),
 			// Фокус в панель и назад, Tab по кругу, Escape
-			ModalFocusPluginDescriptor.with({ property: 'visible' }),
+			ModalFocusPluginDescriptor.with({ property: 'visible', modal: true }),
 			// Фон под панелью немой для скринридера
-			HideOutsidePluginDescriptor.with({ property: 'visible' }),
+			HideOutsidePluginDescriptor.with({ property: 'visible', modal: true }),
 			// Страница под панелью не прокручивается
-			ScrollLockPluginDescriptor.with({ property: 'visible' }),
+			ScrollLockPluginDescriptor.with({ property: 'visible', modal: true }),
 		],
 	}),
 )

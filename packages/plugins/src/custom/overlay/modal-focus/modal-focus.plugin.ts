@@ -53,10 +53,14 @@ const PRESS_END = ['click', 'pointercancel'] as const
  * прокрутку не запирает — это `TScrollLockPlugin`.
  */
 export class TModalFocusPlugin extends TOverlayFocusPlugin {
-	/** Документ, где плагин ждёт `mousedown` нажатия мимо; `null` — не ждёт. */
+	/** Owner reference lets releasing modality preserve the current focus. */
+	private _owner: object | null = null
+
 	private _pressDocument: Document | null = null
 
 	override install(ctx: IPluginContext, options?: IOverlayOpenOptions): void {
+		this._owner = ctx.getInstance<object>()
+
 		super.install(ctx, options)
 
 		ctx.get(TDismissPlugin)?.events.on('dismiss', (event) => this._keepFocus(event))
@@ -64,6 +68,7 @@ export class TModalFocusPlugin extends TOverlayFocusPlugin {
 
 	override destroy(): void {
 		this._stopWaiting()
+		this._owner = null
 
 		super.destroy()
 	}
@@ -78,12 +83,14 @@ export class TModalFocusPlugin extends TOverlayFocusPlugin {
 		if (this._panel) trapTab(event, this._panel)
 	}
 
-	/**
-	 * Нажатие мимо: погасить `mousedown`, который унёс бы фокус (см. шапку).
-	 * Уход фокуса мимо (`focusin`) гасить нечем — фокус уже ушёл, а модальному
-	 * окну `focusOutside` и не ставят: фокус из него не уходит.
-	 */
+	/** Releasing modality leaves the current focus in place. */
+	protected override _returnsFocus(_root: Element): boolean {
+		return !this._owner || Reflect.get(this._owner, 'modal') !== false
+	}
+
 	private _keepFocus(event: MouseEvent | FocusEvent): void {
+		if (this._owner && Reflect.get(this._owner, 'modal') === false) return
+
 		if (event.type === 'mousedown') {
 			event.preventDefault()
 
@@ -113,7 +120,7 @@ export class TModalFocusPlugin extends TOverlayFocusPlugin {
 	}
 
 	private readonly _onMouseDown = (event: MouseEvent): void => {
-		event.preventDefault()
+		if (!this._owner || Reflect.get(this._owner, 'modal') !== false) event.preventDefault()
 		this._stopWaiting()
 	}
 

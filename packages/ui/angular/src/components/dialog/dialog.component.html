@@ -1,12 +1,14 @@
 <!-- Слой есть только в браузере: содержимое рисуется, пока окно в цели (`placed`). -->
 @if (placed()) {
 	<!-- Подложка — спутник корня (`#companion`): база ставит её перед окном и увозит с ним. -->
-	<div
-		#companion
-		class="so-dialog__backdrop"
-		[style]="state()['layout_backdropStyles']"
-		[so-attributes]="state()['backdropDataset']"
-	></div>
+	@if (state()['modal']) {
+		<div
+			#companion
+			class="so-dialog__backdrop"
+			[style]="state()['layout_backdropStyles']"
+			[so-attributes]="state()['backdropDataset']"
+		></div>
+	}
 	<!--
 		Порядок — заголовок, тело, подвал, кнопки: фокус при открытии — на первый контрол
 		содержимого, крестик — последняя остановка Tab. Заголовок есть всегда: на него

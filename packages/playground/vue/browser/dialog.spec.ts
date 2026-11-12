@@ -698,3 +698,60 @@ describe('фокус', () => {
 		expect(active()).toBe(find('.so-test-second'))
 	})
 })
+
+describe('non-modal page interaction', () => {
+	it('preserves opening focus, permits Tab in both directions and keeps a corner fixed while scrolling', async () => {
+		const shown = await show(
+			{
+				modal: false,
+				dismissible: false,
+				placement: 'bottom',
+				width: 320,
+				style: 'margin-inline-start: 0',
+			},
+			inside,
+			{ tall: true },
+		)
+		await userEvent.click(opener())
+		await settled(panel())
+		expect(active()).toBe(opener())
+		expect(document.querySelector('.so-dialog__backdrop')).toBeNull()
+		expect(panel().hasAttribute('aria-modal')).toBe(false)
+		expect(opener().closest('[aria-hidden="true"], [inert]')).toBeNull()
+		expect(getComputedStyle(document.documentElement).overflow).not.toBe('hidden')
+		expect(getComputedStyle(panel()).position).toBe('fixed')
+		expect(panel().getBoundingClientRect().left).toBeCloseTo(GAP, 0)
+
+		await userEvent.keyboard('{Tab}')
+		expect(active()).toBe(find('.so-test-first'))
+		await userEvent.keyboard('{Shift>}{Tab}{/Shift}')
+		expect(active()).toBe(opener())
+		await userEvent.click(find('.so-dialog__close'))
+		await nextTick()
+		expect(shown.value).toBe(false)
+
+		await userEvent.click(opener())
+		await settled(panel())
+		const before = panel().getBoundingClientRect()
+		window.scrollTo(0, 400)
+		await expect.poll(() => window.scrollY).toBeGreaterThan(100)
+		expect(panel().getBoundingClientRect().top).toBeCloseTo(before.top, 0)
+		expect(panel().getBoundingClientRect().left).toBeCloseTo(before.left, 0)
+
+		window.scrollTo(0, 0)
+		await userEvent.click(opener())
+		expect(shown.value).toBe(true)
+		await userEvent.keyboard('{Escape}')
+		expect(shown.value).toBe(true)
+	})
+
+	it('Tab leaves the last dialog control without closing the dialog', async () => {
+		const shown = await show({ modal: false, dismissible: false })
+		await userEvent.click(opener())
+		await settled(panel())
+		find('.so-dialog__close').focus()
+		await userEvent.keyboard('{Tab}')
+		expect(panel().contains(active())).toBe(false)
+		expect(shown.value).toBe(true)
+	})
+})
