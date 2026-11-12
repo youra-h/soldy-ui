@@ -26,6 +26,7 @@ export const DialogInputNames = [
 	'height',
 	'closable',
 	'dismissible',
+	'modal',
 	'placement',
 	'offset',
 	'maximized',
@@ -43,6 +44,7 @@ export const DialogOutputNames = [
 	'soChangeHeight',
 	'soChangeClosable',
 	'soChangeDismissible',
+	'soChangeModal',
 	'soChangePlacement',
 	'soChangeOffset',
 	'soChangeMaximized',
@@ -62,6 +64,7 @@ export const DialogOutputNames = [
 	'heightChange',
 	'closableChange',
 	'dismissibleChange',
+	'modalChange',
 	'placementChange',
 	'offsetChange',
 	'maximizedChange',
@@ -84,6 +87,7 @@ export const DialogOutputNames = [
 		'height',
 		{ name: 'closable', transform: booleanInput },
 		{ name: 'dismissible', transform: booleanInput },
+		{ name: 'modal', transform: booleanInput },
 		'placement',
 		'offset',
 		{ name: 'maximized', transform: booleanInput },
@@ -131,6 +135,7 @@ export abstract class TDialogSurface<TInstance extends IEntity> extends TViewSur
 	declare height: TInputValue<typeof descriptor, 'height'>
 	declare closable: TInputValue<typeof descriptor, 'closable'>
 	declare dismissible: TInputValue<typeof descriptor, 'dismissible'>
+	declare modal: TInputValue<typeof descriptor, 'modal'>
 	declare placement: TInputValue<typeof descriptor, 'placement'>
 	declare offset: TInputValue<typeof descriptor, 'offset'>
 	declare maximized: TInputValue<typeof descriptor, 'maximized'>
@@ -157,6 +162,7 @@ export abstract class TDialogSurface<TInstance extends IEntity> extends TViewSur
 	declare readonly soChangeHeight: TOutputEmitter<typeof descriptor, 'change:height'>
 	declare readonly soChangeClosable: TOutputEmitter<typeof descriptor, 'change:closable'>
 	declare readonly soChangeDismissible: TOutputEmitter<typeof descriptor, 'change:dismissible'>
+	declare readonly soChangeModal: TOutputEmitter<typeof descriptor, 'change:modal'>
 	declare readonly soChangePlacement: TOutputEmitter<typeof descriptor, 'change:placement'>
 	declare readonly soChangeOffset: TOutputEmitter<typeof descriptor, 'change:offset'>
 	declare readonly soChangeMaximized: TOutputEmitter<typeof descriptor, 'change:maximized'>
@@ -187,6 +193,7 @@ export abstract class TDialogSurface<TInstance extends IEntity> extends TViewSur
 	declare readonly heightChange: TModelEmitter<typeof descriptor, 'height'>
 	declare readonly closableChange: TModelEmitter<typeof descriptor, 'closable'>
 	declare readonly dismissibleChange: TModelEmitter<typeof descriptor, 'dismissible'>
+	declare readonly modalChange: TModelEmitter<typeof descriptor, 'modal'>
 	declare readonly placementChange: TModelEmitter<typeof descriptor, 'placement'>
 	declare readonly offsetChange: TModelEmitter<typeof descriptor, 'offset'>
 	declare readonly maximizedChange: TModelEmitter<typeof descriptor, 'maximized'>

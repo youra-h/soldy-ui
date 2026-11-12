@@ -128,6 +128,12 @@ export const dialogTemplate: ITemplate<IDialog, unknown, TDialogOutputs> = {
 	},
 
 	bindings: [
+		bind('modal', ({ root, state }) => {
+			const backdrop = parts.get(root)?.backdrop
+
+			if (backdrop) backdrop.hidden = state.modal === false
+		}),
+
 		// Без пометки плагины не нашли бы слой окна, и нажатие в список внутри закрыло бы его
 		bind('dismiss_ownerAttribute', ({ root, state }) => {
 			ownerAttributes(root, { tabindex: '-1', ...state.dismiss_ownerAttribute })

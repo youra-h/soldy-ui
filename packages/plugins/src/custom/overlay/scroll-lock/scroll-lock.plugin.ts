@@ -81,6 +81,12 @@ export class TScrollLockPlugin extends TBasePlugin<any, TScrollLockPluginEvents>
 
 		this._open = bindOverlayOpen(ctx, options, (open) => {
 			this.enabled = open
+
+			// Changing modality leaves the panel visible: there is no closing transition to await.
+			const owner = ctx.getInstance<object>()
+
+			if (!open && options?.modal === true && owner && Reflect.get(owner, 'modal') === false)
+				this._sync()
 		})
 
 		if (this._open) this.enabled = this._open.read()

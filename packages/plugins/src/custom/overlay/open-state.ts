@@ -25,7 +25,10 @@ export function bindOverlayOpen(
 	if (!instance || !property || !(property in instance)) return null
 
 	const read = (): boolean =>
-		!!Reflect.get(instance, property) && Reflect.get(instance, 'visible') !== false
+		!!Reflect.get(instance, property) &&
+		Reflect.get(instance, 'visible') !== false &&
+		(options?.modal === undefined ||
+			(Reflect.get(instance, 'modal') !== false) === options.modal)
 	const write = (value: boolean): void => {
 		Reflect.set(instance, property, value)
 	}
@@ -35,6 +38,7 @@ export function bindOverlayOpen(
 	const handler = (): void => onChange(read())
 
 	source?.on(event, handler)
+	if (options?.modal !== undefined) source?.on('change:modal', handler)
 	if (property !== 'visible') source?.on('change:visible', handler)
 
 	return {
@@ -49,6 +53,7 @@ export function bindOverlayOpen(
 		},
 		unbind(): void {
 			source?.off(event, handler)
+			if (options?.modal !== undefined) source?.off('change:modal', handler)
 			if (property !== 'visible') source?.off('change:visible', handler)
 		},
 	}

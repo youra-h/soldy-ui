@@ -289,7 +289,7 @@ release that includes the component in at least one adapter. `0.3.0` is the firs
 | DatePicker      | Date field and a calendar in a panel: a single date or a range                                 | *          | 0.3.0   |
 | Popover         | Panel at a trigger with any content: a non-modal dialog                                        | *          | 0.3.0   |
 | Tooltip         | Hint for an element, shown on hover and on keyboard focus                                      | *          | 0.3.0   |
-| Dialog          | Modal window: centered or at an edge of the screen, can be maximized to full screen            | *          | 0.3.0   |
+| Dialog          | [Modal or non-modal window](docs/components/dialog.md), centered or at an edge                 | *          | 0.3.0   |
 | Drawer          | Panel that slides in at an edge of the screen or a container, can be swiped away               | *          | 0.3.0   |
 | Toasts          | Pop-up notifications shown from code: a queue, auto-dismiss with a pause, swipe to close       | *          | 0.3.0   |
 | Scroller        | Single-row strip of any content, paged with two buttons                                        | *          | 0.3.0   |

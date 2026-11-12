@@ -758,3 +758,105 @@ describe('фон под окном', () => {
 		expect(document.documentElement.style.overflow).toBe('')
 	})
 })
+
+describe('non-modal dialog', () => {
+	it('preserves focus, page access and natural keyboard navigation', async () => {
+		const shown = await render({ props: { modal: false, dismissible: false } })
+		await open(shown)
+
+		expect(document.activeElement).toBe(opener())
+		expect(panel().getAttribute('role')).toBe('dialog')
+		expect(panel().hasAttribute('aria-modal')).toBe(false)
+		expect(panel().getAttribute('aria-labelledby')).toBe(
+			panel().querySelector('.so-dialog__title')?.id,
+		)
+		expect(opener().closest('[aria-hidden="true"], [inert]')).toBeNull()
+		expect(document.documentElement.style.overflow).not.toBe('hidden')
+		expect(document.body.style.overflow).not.toBe('hidden')
+
+		expect(document.querySelector('.so-dialog__backdrop')).toBeNull()
+
+		const last = panel().querySelector('.so-dialog__close')
+		if (!(last instanceof HTMLElement)) throw new Error('Missing close button')
+		last.focus()
+		expect(press('Tab').defaultPrevented).toBe(false)
+		expect(press('Tab', { shiftKey: true }).defaultPrevented).toBe(false)
+		opener().focus()
+		pointerDown(opener())
+		expect(isOpen()).toBe(true)
+		expect(document.activeElement).toBe(opener())
+
+		shown.value = false
+		await settle()
+		expect(document.activeElement).toBe(opener())
+	})
+
+	it('switches an open dialog without stealing focus when releasing modality', async () => {
+		const ctrl = new TDialog({ modal: false, dismissible: false })
+		const shown = await render({ props: { ctrl } })
+		await open(shown)
+		ctrl.modal = true
+		await settle()
+		expect(panel().contains(document.activeElement)).toBe(true)
+		expect(document.body.style.overflow).toBe('hidden')
+
+		find('.so-test-second').focus()
+		ctrl.modal = false
+		await settle()
+		expect(document.activeElement).toBe(find('.so-test-second'))
+		expect(document.body.style.overflow).not.toBe('hidden')
+		expect(opener().closest('[aria-hidden="true"]')).toBeNull()
+		expect(document.querySelector('.so-dialog__backdrop')).toBeNull()
+	})
+
+	it('handles Escape only inside the non-modal dialog', async () => {
+		const shown = await render({ props: { modal: false } })
+		await open(shown)
+		expect(press('Escape').defaultPrevented).toBe(false)
+		expect(shown.value).toBe(true)
+		find('.so-test-first').focus()
+		expect(press('Escape').defaultPrevented).toBe(true)
+		await settle()
+		expect(shown.value).toBe(false)
+	})
+})
+
+describe('mixed dialog layers', () => {
+	it('releases only its own modal effects and cleans up external controllers', async () => {
+		const lower = new TDialog({ visible: true, dismissible: false })
+		const upper = new TDialog({ visible: true, dismissible: false })
+		wrapper = mount(
+			defineComponent({
+				render: () =>
+					h('main', [
+						h('button', { class: 'so-test-opener' }, 'Page'),
+						h(Dialog, { ctrl: lower }, { title: () => 'Lower', default: inside }),
+						h(Dialog, { ctrl: upper }, { title: () => 'Upper', default: inside }),
+					]),
+			}),
+			{ attachTo: document.body },
+		)
+		await settle()
+
+		upper.modal = false
+		await settle()
+		expect(document.body.style.overflow).toBe('hidden')
+		expect(opener().closest('[aria-hidden="true"]')).not.toBeNull()
+		upper.hide()
+		await settle()
+		expect(document.body.style.overflow).toBe('hidden')
+
+		lower.modal = false
+		await settle()
+		expect(document.body.style.overflow).not.toBe('hidden')
+		expect(opener().closest('[aria-hidden="true"]')).toBeNull()
+		opener().focus()
+		wrapper.unmount()
+		wrapper = null
+		lower.modal = true
+		upper.modal = true
+		await nextFrame()
+		expect(document.body.style.overflow).not.toBe('hidden')
+		expect(document.querySelector('[inert], body > [aria-hidden="true"]')).toBeNull()
+	})
+})

@@ -884,3 +884,20 @@ Tab с `body` повёл бы на страницу под ним. Поэтом�
 `Frame`) и
 `ui/angular/__tests__/dialog.spec.ts` («поповер внутри»: закрытая панель
 поповера в окне спрятана, открытая — доступна).
+
+## Non-modal Dialog
+
+Dialog exposes `modal` (default `true`); Drawer retains its modal contract. With
+`modal=false`, the panel has `role="dialog"` and a title-derived name, omits
+`aria-modal`, and leaves focus, Tab navigation, page visibility and scrolling
+alone. `alertdialog` applies only to modal alerts. The modal backdrop is not
+shown. Web Components retain a hidden companion for the root teleport lifecycle.
+
+Modal effects bind through `IOverlayOpenOptions.modal`: owners without this
+property remain modal. `TNonmodalDialogFocusPlugin` keeps Escape local to the
+focused dialog without moving focus or trapping Tab. `dismissible` still
+controls outside and Escape requests independently; persistent cookie consent
+uses `dismissible=false`. Switching modality releases only this layer's modal
+effects; it preserves focus when becoming non-modal. Scroll lock releases
+immediately on that switch, while ordinary modal closing still waits for
+closing transitions. See [the consumer example](../components/dialog.md).

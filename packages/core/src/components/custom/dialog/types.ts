@@ -13,6 +13,7 @@ import type { TAria, TAriaAttributes } from '../../../common'
 export type TDialogPlacement = 'center' | 'start' | 'end' | 'top' | 'bottom'
 
 export type TDialogEvents = TModalLayerEvents & {
+	'change:modal': (payload: TValuePayload<boolean>) => void
 	/** change:placement */
 	'change:placement': (payload: TValuePayload<TDialogPlacement>) => void
 	/** change:offset */
@@ -30,6 +31,8 @@ export type TDialogEvents = TModalLayerEvents & {
 }
 
 export interface IDialogProps extends IModalLayerProps {
+	/** Modal by default; false preserves page interaction and does not move focus. */
+	modal?: boolean
 	/**
 	 * Ширина окна: число — px, строка — CSS-значение. Не задана — ширину даёт
 	 * тема. `auto` — по экрану с отступом, по содержимому — `fit-content`
@@ -54,14 +57,13 @@ export interface IDialogProps extends IModalLayerProps {
 	maximized?: boolean
 	/** Показывать ли кнопку разворота */
 	maximizable?: boolean
-	/**
-	 * Окно — предупреждение (`role="alertdialog"`): прерывает работу и ждёт
-	 * ответа. Описание — тело окна
-	 */
+	/** Requests alertdialog semantics while modal, with the body as its description. */
 	alert?: boolean
 }
 
 export interface IDialog extends IModalLayer<IDialogProps, TDialogEvents> {
+	/** Whether this dialog blocks interaction with the page. */
+	modal: boolean
 	/** Где окно стоит на экране */
 	placement: TDialogPlacement
 	/** Отступ окна от краёв экрана; `undefined` — отступ темы, `0` — вплотную */
@@ -70,7 +72,7 @@ export interface IDialog extends IModalLayer<IDialogProps, TDialogEvents> {
 	maximized: boolean
 	/** Показывать ли кнопку разворота */
 	maximizable: boolean
-	/** Окно — предупреждение (`role="alertdialog"`) */
+	/** Whether the modal dialog requests alert semantics. */
 	alert: boolean
 	/** Атрибуты тела: `id`, на который ссылается `aria-describedby` предупреждения, пишет плагин */
 	readonly bodyAria: TAria

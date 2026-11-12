@@ -14,21 +14,7 @@ export default { ...SetupDialog, inheritAttrs: false, components: { Button, Icon
 
 <template>
 	<teleport :to="target">
-		<!--
-			Окно телепортировано целиком: подложка и панель — соседи, а не
-			обёртка и содержимое. Подложка стоит в DOM раньше панели: слой у
-			них один (одно число `z-index` инлайном), и панель рисуется поверх
-			просто порядком.
-
-			Подложка обязательна и закрывает весь экран: фон под окном скрыт
-			от скринридера, но не от указателя, и к странице его не пускает
-			только она. Нажатие по ней для плагинов слоя — нажатие мимо корня.
-
-			Открытость — `visible`: закрытое окно спрятано, а не размонтировано,
-			и состояние содержимого переживает закрытие. Появление и
-			исчезание — переход темы: `data-open` у панели и подложки говорит
-			ей, проявляться или гаснуть.
-		-->
+		<!-- The modal backdrop precedes its panel; non-modal dialogs leave the page accessible. -->
 		<template v-if="rendered">
 			<!--
 				Номер слоя у подложки тот же, что у окна: для окна под этим
@@ -37,6 +23,7 @@ export default { ...SetupDialog, inheritAttrs: false, components: { Button, Icon
 				нет — для своего окна она мимо.
 			-->
 			<div
+				v-if="modal"
 				class="so-dialog__backdrop"
 				v-show="visible"
 				:style="layout_backdropStyles"

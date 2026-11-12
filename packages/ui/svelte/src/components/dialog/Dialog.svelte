@@ -33,11 +33,11 @@
 -->
 {#if state.rendered}
 	<Teleport to={state.target}>
-		<div
+		{#if state.modal}<div
 			class="so-dialog__backdrop"
 			style={toShownStyleText(state.layout_backdropStyles, state.visible === true)}
 			{...state.backdropDataset}
-		></div><Dynamic
+		></div>{/if}<Dynamic
 			rendered
 			tag={state.tag}
 			attributes={toRootProps(

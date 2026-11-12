@@ -12,7 +12,10 @@ export { MenuSubmenuKeyboardPluginDescriptor } from './menu-submenu-keyboard.plu
 export { MenuSubmenuFocusPluginDescriptor } from './menu-submenu-focus.plugin'
 export { MenuPopoverItemKeyboardPluginDescriptor } from './menu-popover-item-keyboard.plugin'
 export { MenuPopoverItemFocusPluginDescriptor } from './menu-popover-item-focus.plugin'
-export { ModalFocusPluginDescriptor } from './modal-focus.plugin'
+export {
+	ModalFocusPluginDescriptor,
+	NonmodalDialogFocusPluginDescriptor,
+} from './modal-focus.plugin'
 export { ScrollLockPluginDescriptor } from './scroll-lock.plugin'
 export { HideOutsidePluginDescriptor } from './hide-outside.plugin'
 export { SwipePluginDescriptor } from './swipe.plugin'

@@ -31,6 +31,7 @@ export function Dialog(props: DialogProps): ReactElement | null {
 		tag,
 		target,
 		visible,
+		modal,
 		attrs,
 		aria,
 		dataset,
@@ -52,13 +53,15 @@ export function Dialog(props: DialogProps): ReactElement | null {
 
 	return (
 		<Teleport to={target}>
-			<div
-				{...toAriaProps(backdropDataset)}
-				{...toRootLayout(
-					{ layout_styles: layout_backdropStyles, visible },
-					{ className: 'so-dialog__backdrop' },
-				)}
-			/>
+			{modal ? (
+				<div
+					{...toAriaProps(backdropDataset)}
+					{...toRootLayout(
+						{ layout_styles: layout_backdropStyles, visible },
+						{ className: 'so-dialog__backdrop' },
+					)}
+				/>
+			) : null}
 			<Tag
 				tabIndex={-1}
 				{...toRootProps(

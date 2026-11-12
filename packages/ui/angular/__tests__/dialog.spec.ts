@@ -55,6 +55,7 @@ import { find, nextFrame } from './mount'
 			so-dialog
 			[ctrl]="ctrl"
 			[visible]="shown()"
+			[modal]="modal()"
 			[alert]="alert()"
 			[placement]="placement()"
 			[width]="width()"
@@ -80,6 +81,7 @@ import { find, nextFrame } from './mount'
 class Page {
 	readonly ctrl = new TDialog()
 	readonly shown = signal(false)
+	readonly modal = signal(true)
 	readonly alert = signal<boolean | undefined>(undefined)
 	readonly placement = signal<TDialogPlacement | undefined>(undefined)
 	readonly width = signal<number | string | undefined>(undefined)
@@ -1226,5 +1228,40 @@ describe('подложка — спутник окна', () => {
 		expect(backdrop().nextElementSibling).toBe(root)
 		expect(document.querySelectorAll('.so-dialog__backdrop')).toHaveLength(1)
 		expect(anchors(node('.so-test-card'))).toHaveLength(1)
+	})
+})
+
+describe('non-modal dialog', () => {
+	it('preserves focus, page access and natural keyboard navigation', async () => {
+		const fixture = await render(Page, (page) => {
+			page.modal.set(false)
+			page.dismissible.set(false)
+		})
+		await open(fixture.componentInstance)
+
+		expect(document.activeElement).toBe(opener())
+		expect(panel().getAttribute('role')).toBe('dialog')
+		expect(panel().hasAttribute('aria-modal')).toBe(false)
+		expect(panel().getAttribute('aria-labelledby')).toBe(
+			panel().querySelector('.so-dialog__title')?.id,
+		)
+		expect(opener().closest('[aria-hidden="true"], [inert]')).toBeNull()
+		expect(document.documentElement.style.overflow).not.toBe('hidden')
+		expect(document.body.style.overflow).not.toBe('hidden')
+
+		expect(document.querySelector('.so-dialog__backdrop')).toBeNull()
+
+		const last = panel().querySelector('.so-dialog__close')
+		if (!(last instanceof HTMLElement)) throw new Error('Missing close button')
+		last.focus()
+		expect(press('Tab').defaultPrevented).toBe(false)
+		expect(press('Tab', { shiftKey: true }).defaultPrevented).toBe(false)
+		opener().focus()
+		pointerDown(opener())
+		expect(isOpen()).toBe(true)
+		expect(document.activeElement).toBe(opener())
+
+		await close(fixture.componentInstance)
+		expect(document.activeElement).toBe(opener())
 	})
 })

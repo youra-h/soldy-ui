@@ -65,7 +65,9 @@ export function Dialog(props: DialogProps): JSX.Element {
 	return (
 		<Show when={state.rendered}>
 			<Teleport to={state.target}>
-				<div {...backdrop()} />
+				<Show when={state.modal}>
+					<div {...backdrop()} />
+				</Show>
 				<Root
 					tag={state.tag}
 					attributes={() => ({ tabindex: '-1', ...panel() })}

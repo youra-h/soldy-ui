@@ -2,6 +2,9 @@ import type { TCloseReason } from '@soxa-ui/core'
 
 /** Опции привязки плагина оверлея к открытости владельца. */
 export interface IOverlayOpenOptions {
+	/** Run only in this modality; owners without modal retain modal behavior. */
+	modal?: boolean
+
 	/**
 	 * Свойство инстанса, которым выражена открытость.
 	 *
