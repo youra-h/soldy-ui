@@ -43,6 +43,8 @@ describe('AlertDialog plugins', () => {
 			':scope > .so-alert-dialog__footer > button.so-alert-dialog__cancel:not(:disabled)',
 		)
 		expect(document.activeElement).toBe(cancel ?? panel)
+		if (content.includes('Own cancel'))
+			expect(document.activeElement?.textContent).toBe('Own cancel')
 		owner.cancel()
 		expect(document.activeElement).toBe(opener)
 		bundle.destroy()
