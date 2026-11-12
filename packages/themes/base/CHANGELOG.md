@@ -1,5 +1,25 @@
 # @soxa-ui/theme-base
 
+## 0.3.1-beta.0
+
+### Patch Changes
+
+- 5f7f821: Add accessible AlertDialog confirmations with localized default actions and replaceable action slots.
+- f6c476e: Add Avatar with image loading and initials or custom fallbacks, plus overlapping avatar groups with an overflow count.
+- eec067c: Add an inline Alert component with themed variants, composable content, actions, and localized dismissal.
+- 03895c2: Center Alert status and close icons on the first text line across sizes and writing directions.
+- 8e68380: Redesign Alert surfaces with outlined, soft and filled views. Use Toast signal colors and matching button tones on filled alerts; retain soft as the default. Arrange actions in a wrapping row.
+- 274d746: Add horizontal and vertical Separator structure and Oren styling, including forced colors.
+- Updated dependencies [5f7f821]
+- Updated dependencies [8e68380]
+- Updated dependencies [5ea471b]
+- Updated dependencies [5ba63f4]
+- Updated dependencies [f6c476e]
+- Updated dependencies [eec067c]
+- Updated dependencies [274d746]
+  - @soxa-ui/core@0.4.0-beta.0
+  - @soxa-ui/plugins@0.4.0-beta.0
+
 ## 0.3.0
 
 ### Minor Changes

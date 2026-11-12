@@ -36,7 +36,9 @@ jobs:
 
       - name: Канал выпуска
         id: channel
-        run: echo "value=$(node tools/release-notes/cli.mjs channel)" >> "$GITHUB_OUTPUT"
+        run: |
+          channel=$(node tools/release-notes/cli.mjs channel)
+          echo "value=$channel" >> "$GITHUB_OUTPUT"
 
       # Every package is checked at its own version: the library shares one,
       # each theme and icon pack has its own. None missing from npm — a rerun

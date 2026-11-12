@@ -1,5 +1,25 @@
 # @soxa-ui/setup
 
+## 0.4.0-beta.0
+
+### Patch Changes
+
+- 5f7f821: Add accessible AlertDialog confirmations with localized default actions and replaceable action slots.
+- 8e68380: Add a theme-defined Alert view property with reactive classes and Angular bindings.
+- 5ba63f4: Add a non-modal Dialog mode that preserves page interaction, keyboard navigation and focus without changing the default modal behavior.
+- f6c476e: Add Avatar with image loading and initials or custom fallbacks, plus overlapping avatar groups with an overflow count.
+- eec067c: Add an inline Alert component with themed variants, composable content, actions, and localized dismissal.
+- 274d746: Add a horizontal and vertical Separator with semantic and decorative modes across all adapters.
+- Updated dependencies [5f7f821]
+- Updated dependencies [8e68380]
+- Updated dependencies [5ea471b]
+- Updated dependencies [5ba63f4]
+- Updated dependencies [f6c476e]
+- Updated dependencies [eec067c]
+- Updated dependencies [274d746]
+  - @soxa-ui/core@0.4.0-beta.0
+  - @soxa-ui/plugins@0.4.0-beta.0
+
 ## 0.3.0
 
 ### Minor Changes
