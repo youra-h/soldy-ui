@@ -133,7 +133,6 @@ export { AlertNamesPluginDescriptor } from './alert-names.plugin'
 export { AvatarImagePluginDescriptor } from './avatar-image.plugin'
 export {
 	AlertDialogFocusPluginDescriptor,
-	AlertDialogIdsPluginDescriptor,
 	AlertDialogLayoutPluginDescriptor,
 	AlertDialogNamesPluginDescriptor,
 } from './alert-dialog.plugin'

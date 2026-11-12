@@ -1,3 +1,4 @@
+import type { TPluginEvents } from '../../../base'
 import type { IModalLayer } from '@soxa-ui/core'
 import { TNamesPlugin } from '../../../locale/names.plugin'
 import type { TTranslations } from '../../../locale/types'
@@ -12,7 +13,8 @@ import type { TTranslations } from '../../../locale/types'
  */
 export class TModalNamesPlugin<
 	TOwner extends IModalLayer<any, any> = IModalLayer,
-> extends TNamesPlugin<TOwner> {
+	TEvents extends TPluginEvents = TPluginEvents,
+> extends TNamesPlugin<TOwner, TEvents> {
 	protected override _name(owner: TOwner, translations: TTranslations): void {
 		owner.closeAria.add('aria-label', translations.modal.close)
 	}

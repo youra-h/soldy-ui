@@ -2,13 +2,68 @@ import { describe, it, expect, vi } from 'vitest'
 import { TAlertDialog, TDialog } from '@soxa-ui/core'
 
 describe('AlertDialog choices', () => {
-	it('is a hidden modal alert with independent Dialog compatibility', () => {
+	it('inherits Dialog state while retaining modal alert semantics', () => {
 		const dialog = new TAlertDialog()
 
+		expect(dialog).toBeInstanceOf(TDialog)
 		expect(dialog.visible).toBe(false)
 		expect(dialog.aria.toObject()).toMatchObject({ role: 'alertdialog', 'aria-modal': 'true' })
 		expect(dialog.classes.toArray()).toContain('so-alert-dialog')
 		expect(new TDialog({ alert: true }).aria.get('role')).toBe('alertdialog')
+	})
+
+	it('keeps Dialog-only modes fixed for JavaScript input and controller updates', () => {
+		const unsupported = {
+			visible: true,
+			width: 420,
+			modal: false,
+			alert: false,
+			placement: 'end',
+			offset: 24,
+			maximized: true,
+			maximizable: true,
+		}
+		const dialog = new TAlertDialog(unsupported)
+		const fixed = {
+			modal: true,
+			alert: true,
+			placement: 'center',
+			offset: undefined,
+			maximized: false,
+			maximizable: false,
+		}
+
+		expect(dialog).toMatchObject(fixed)
+		expect(dialog.width).toBe(420)
+		expect(dialog.aria.toObject()).toMatchObject({ role: 'alertdialog', 'aria-modal': 'true' })
+
+		for (const [name, value] of Object.entries(unsupported)) {
+			if (name === 'visible' || name === 'width') continue
+
+			expect(Reflect.set(dialog, name, value)).toBe(false)
+			expect(dialog.getProps()).not.toHaveProperty(name)
+		}
+
+		dialog.assign({ ...unsupported, width: 520 })
+
+		expect(dialog).toMatchObject(fixed)
+		expect(dialog.width).toBe(520)
+		expect(() => {
+			// @ts-expect-error Dialog-only modes are readonly on the specialized controller.
+			dialog.modal = false
+		}).toThrow(TypeError)
+		expect(() => dialog.toggleMaximized()).toThrow(TypeError)
+	})
+
+	it('reuses the inherited body attributes and emits their changes once', () => {
+		const dialog = new TAlertDialog()
+		const changed = vi.fn()
+
+		dialog.events.on('change:bodyAria', changed)
+		dialog.bodyAria.add('id', 'confirmation-description')
+
+		expect(dialog.bodyAria.get('id')).toBe('confirmation-description')
+		expect(changed).toHaveBeenCalledTimes(1)
 	})
 
 	it.each(['confirm', 'cancel'] as const)(

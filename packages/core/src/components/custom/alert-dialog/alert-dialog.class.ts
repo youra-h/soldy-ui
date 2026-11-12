@@ -1,30 +1,75 @@
-import { TActionEvent, TAria } from '../../../common'
-import { TModalLayer } from '../../base/modal-layer'
+import { TActionEvent } from '../../../common'
+import { TDialog } from '../dialog'
+import type { IDialogProps, TDialogPlacement } from '../dialog'
 import type { TCloseReason } from '../../base/layer'
 import type { IAlertDialog, IAlertDialogProps, TAlertDialogEvents } from './types'
 
 /** A modal confirmation: the application performs the operation after hearing a choice. */
 export default class TAlertDialog
-	extends TModalLayer<IAlertDialogProps, TAlertDialogEvents>
+	extends TDialog<IAlertDialogProps, TAlertDialogEvents>
 	implements IAlertDialog
 {
 	static override baseClass = 'so-alert-dialog'
 
-	private readonly _bodyAria: TAria
+	static override defaultValues: typeof TDialog.defaultValues = {
+		...TDialog.defaultValues,
+		alert: true,
+	}
+
 	private _choosing = false
 
 	constructor(props: Partial<IAlertDialogProps> = {}) {
-		super(props)
+		// Ignore unsupported input even for JavaScript consumers; the controller keeps these modes fixed.
+		const dialogProps = {
+			...props,
+			modal: true,
+			alert: true,
+			placement: 'center',
+			offset: undefined,
+			maximized: false,
+			maximizable: false,
+		}
 
-		this._aria.add('role', 'alertdialog')
-		this._bodyAria = new TAria()
-		this._bodyAria.subscribe((_set, oldValue) =>
-			this.events.emit('change:bodyAria', { newValue: this._bodyAria.toObject(), oldValue }),
-		)
+		super(dialogProps)
 	}
 
-	get bodyAria(): TAria {
-		return this._bodyAria
+	// Getter-only overrides retain the inherited state and reject writes through a Dialog reference.
+	override get modal(): boolean {
+		return super.modal
+	}
+
+	override get alert(): boolean {
+		return super.alert
+	}
+
+	override get placement(): TDialogPlacement {
+		return super.placement
+	}
+
+	override get offset(): number | string | undefined {
+		return super.offset
+	}
+
+	override get maximized(): boolean {
+		return super.maximized
+	}
+
+	override get maximizable(): boolean {
+		return super.maximizable
+	}
+
+	/** Keep fixed Dialog modes out of assign() and serialized component props. */
+	override getProps(): IAlertDialogProps {
+		const props: IDialogProps = super.getProps()
+
+		delete props.modal
+		delete props.alert
+		delete props.placement
+		delete props.offset
+		delete props.maximized
+		delete props.maximizable
+
+		return props
 	}
 
 	// Bound commands can be passed directly through scoped slots.

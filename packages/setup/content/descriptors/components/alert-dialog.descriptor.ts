@@ -6,7 +6,7 @@ import { defineComponent, defineDescriptor, defineType } from '../../../protecte
 import { TAlertDialog } from '@soxa-ui/core'
 import {
 	AlertDialogFocusPluginDescriptor,
-	AlertDialogIdsPluginDescriptor,
+	DialogIdsPluginDescriptor,
 	AlertDialogLayoutPluginDescriptor,
 	AlertDialogNamesPluginDescriptor,
 } from '../plugins'
@@ -38,7 +38,7 @@ export const AlertDialogDescriptor = defineDescriptor(() =>
 			events: ['confirm', 'cancel'],
 		},
 		plugins: [
-			AlertDialogIdsPluginDescriptor,
+			DialogIdsPluginDescriptor,
 			AlertDialogLayoutPluginDescriptor,
 			AlertDialogNamesPluginDescriptor,
 		],

@@ -2,7 +2,9 @@
 
 AlertDialog asks the user to confirm an important action. It is always modal, uses
 `role="alertdialog"`, takes its accessible name from `title` and its description from the
-default slot. Dialog and its existing `alert` option remain available.
+default slot. The core model specializes Dialog and reuses its body attributes and description linking.
+Dialog and its existing `alert` option remain available. Dialog-only modes are fixed in the
+specialized controller and are omitted from AlertDialog props and serialized state.
 
 The default footer contains localized Cancel and Confirm buttons. Oren gives confirmation
 a destructive color by its part context. Its action fill, hover and active colors use

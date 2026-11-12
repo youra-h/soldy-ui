@@ -5,10 +5,11 @@ import {
 	DrawerDescriptor,
 	createAdapterContext,
 } from '@soxa-ui/setup'
-import { TModalFocusPlugin, TAlertDialogFocusPlugin } from '@soxa-ui/plugins'
+import { TDialogIdsPlugin, TModalFocusPlugin, TAlertDialogFocusPlugin } from '@soxa-ui/plugins'
 describe('AlertDialog descriptor', () => {
 	it('installs exactly one focus strategy per modal component', () => {
 		const alert = AlertDialogDescriptor()
+		expect(alert.plugins.filter((plugin) => plugin.ctor === TDialogIdsPlugin)).toHaveLength(1)
 		expect(
 			alert.plugins
 				.filter(
@@ -38,9 +39,12 @@ describe('AlertDialog descriptor', () => {
 		expect(context.instance.aria.get('aria-describedby')).toBe(
 			context.instance.bodyAria.get('id'),
 		)
-		expect(descriptor.props.map((prop) => prop.name.name)).not.toEqual(
-			expect.arrayContaining(['modal', 'alert', 'maximized']),
-		)
+		const hidden = ['modal', 'alert', 'placement', 'offset', 'maximized', 'maximizable']
+		for (const name of hidden) {
+			expect(descriptor.props.some((prop) => prop.name.name === name)).toBe(false)
+			expect(descriptor.events.some((event) => event.name === 'change:' + name)).toBe(false)
+		}
+
 		context.destroy()
 	})
 })

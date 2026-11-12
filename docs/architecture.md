@@ -40,6 +40,7 @@ TEntity (uid, getProps, assign, toJSON)
 │       │   ├── TFrame (x, y, width, height, strategy)
 │       │   └── TModalLayer (width, height, closable, dismissible, requestClose)
 │       │       ├── TDialog (placement, maximized, alert)
+│       │       │   └── TAlertDialog (confirm/cancel, fixed modal alert)
 │       │       └── TDrawer (placement у края, swipe, contained)
 │       ├── TIcon, TSkeleton, TTabsContent
 │       ├── TInteractive (disabled, focused)

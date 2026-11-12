@@ -13242,7 +13242,7 @@
         {
           "name": "ctrl",
           "canonicalName": "ctrl",
-          "type": "import(\"@soxa-ui/core\").TDialog | undefined",
+          "type": "import(\"@soxa-ui/core\").TDialog<import(\"@soxa-ui/core\").IDialogProps, import(\"@soxa-ui/core\").TDialogEvents> | undefined",
           "declaredType": "TInstance",
           "required": false,
           "description": "Готовый инстанс ядра вместо собранного по пропсам. Только сам объект:\nреактивная обёртка фреймворка ему не нужна — ядро шлёт события само.",
@@ -48418,20 +48418,6 @@
       }
     },
     "AlertDialogFocusPluginDescriptor": {
-      "source": "packages/setup/content/descriptors/plugins/alert-dialog.plugin.ts",
-      "props": [],
-      "events": [],
-      "slots": [],
-      "frameworks": {
-        "vue": { "props": {}, "events": {}, "models": {}, "slots": {} },
-        "react": { "props": {}, "events": {}, "models": {}, "slots": {} },
-        "angular": { "props": {}, "events": {}, "models": {}, "slots": {} },
-        "solid": { "props": {}, "events": {}, "models": {}, "slots": {} },
-        "svelte": { "props": {}, "events": {}, "models": {}, "slots": {} },
-        "webc": { "props": {}, "events": {}, "models": {}, "slots": {} }
-      }
-    },
-    "AlertDialogIdsPluginDescriptor": {
       "source": "packages/setup/content/descriptors/plugins/alert-dialog.plugin.ts",
       "props": [],
       "events": [],

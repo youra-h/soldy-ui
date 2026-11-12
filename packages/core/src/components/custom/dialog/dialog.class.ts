@@ -1,4 +1,5 @@
 import { TModalLayer } from '../../base/modal-layer'
+import type { TEventSink } from '../../../common'
 import type { TDefaultValues } from '../../base/component'
 import { TAria } from '../../../common'
 import type { IDialog, IDialogProps, TDialogEvents, TDialogPlacement } from './types'
@@ -11,7 +12,13 @@ import type { IDialog, IDialogProps, TDialogEvents, TDialogPlacement } from './t
  *
  * Placement, size and maximizing are theme layout values, without DOM measures.
  */
-export default class TDialog extends TModalLayer<IDialogProps, TDialogEvents> implements IDialog {
+export default class TDialog<
+	TProps extends IDialogProps = IDialogProps,
+	TEvents extends TDialogEvents = TDialogEvents,
+>
+	extends TModalLayer<TProps, TEvents>
+	implements IDialog<TProps, TEvents>
+{
 	static override baseClass = 'so-dialog'
 
 	static defaultValues: typeof TModalLayer.defaultValues &
@@ -39,19 +46,19 @@ export default class TDialog extends TModalLayer<IDialogProps, TDialogEvents> im
 	protected _bodyAria: TAria
 	protected _maximizeAria: TAria
 
-	constructor(props: Partial<IDialogProps> = {}) {
+	constructor(props: Partial<TProps> = {}) {
 		super(props)
 
 		const ctor = new.target as typeof TDialog
 
 		this._bodyAria = new TAria()
 		this._bodyAria.subscribe((_set, oldValue) =>
-			this.events.emit('change:bodyAria', { newValue: this._bodyAria.toObject(), oldValue }),
+			this._sink.emit('change:bodyAria', { newValue: this._bodyAria.toObject(), oldValue }),
 		)
 
 		this._maximizeAria = new TAria()
 		this._maximizeAria.subscribe((_set, oldValue) =>
-			this.events.emit('change:maximizeAria', {
+			this._sink.emit('change:maximizeAria', {
 				newValue: this._maximizeAria.toObject(),
 				oldValue,
 			}),
@@ -66,6 +73,11 @@ export default class TDialog extends TModalLayer<IDialogProps, TDialogEvents> im
 		this._applyAlert(props.alert ?? ctor.defaultValues.alert)
 		this._applyPlacement(props.placement ?? ctor.defaultValues.placement)
 		this._applyMaximized(props.maximized ?? ctor.defaultValues.maximized)
+	}
+
+	/** Emit the Dialog contract while descendants keep their complete event map. */
+	protected override get _sink(): TEventSink<TDialogEvents> {
+		return this.events
 	}
 
 	/** Развернуть окно или вернуть ему размер — действие кнопки разворота. */
@@ -84,7 +96,7 @@ export default class TDialog extends TModalLayer<IDialogProps, TDialogEvents> im
 		if (this._placement === value) return
 
 		this._applyPlacement(value, this._placement)
-		this.events.emit('change:placement', { newValue: value, oldValue: oldPlacement })
+		this._sink.emit('change:placement', { newValue: value, oldValue: oldPlacement })
 	}
 
 	/**
@@ -104,7 +116,7 @@ export default class TDialog extends TModalLayer<IDialogProps, TDialogEvents> im
 		if (this._offset === value) return
 
 		this._offset = value
-		this.events.emit('change:offset', { newValue: value, oldValue: oldOffset })
+		this._sink.emit('change:offset', { newValue: value, oldValue: oldOffset })
 	}
 
 	/**
@@ -121,7 +133,7 @@ export default class TDialog extends TModalLayer<IDialogProps, TDialogEvents> im
 		if (this._maximized === value) return
 
 		this._applyMaximized(value)
-		this.events.emit('change:maximized', { newValue: value, oldValue: oldMaximized })
+		this._sink.emit('change:maximized', { newValue: value, oldValue: oldMaximized })
 	}
 
 	/** Показывать ли кнопку разворота. Развернуть окно можно и без неё — `maximized`. */
@@ -135,7 +147,7 @@ export default class TDialog extends TModalLayer<IDialogProps, TDialogEvents> im
 		if (this._maximizable === value) return
 
 		this._maximizable = value
-		this.events.emit('change:maximizable', { newValue: value, oldValue: oldMaximizable })
+		this._sink.emit('change:maximizable', { newValue: value, oldValue: oldMaximizable })
 	}
 
 	/** Alert semantics apply while modal; the requested flag survives modality changes. */
@@ -149,7 +161,7 @@ export default class TDialog extends TModalLayer<IDialogProps, TDialogEvents> im
 		if (this._alert === value) return
 
 		this._applyAlert(value)
-		this.events.emit('change:alert', { newValue: value, oldValue: oldAlert })
+		this._sink.emit('change:alert', { newValue: value, oldValue: oldAlert })
 	}
 
 	/**
@@ -185,7 +197,7 @@ export default class TDialog extends TModalLayer<IDialogProps, TDialogEvents> im
 		this._modal = value
 		this._applyModal()
 		this._applyAlert(this._alert)
-		this.events.emit('change:modal', { newValue: value, oldValue })
+		this._sink.emit('change:modal', { newValue: value, oldValue })
 	}
 
 	private _applyModal(): void {
@@ -216,7 +228,7 @@ export default class TDialog extends TModalLayer<IDialogProps, TDialogEvents> im
 		this._maximizeAria.add('aria-pressed', value ? 'true' : 'false')
 	}
 
-	override getProps(): IDialogProps {
+	override getProps(): TProps {
 		return {
 			...super.getProps(),
 			modal: this._modal,

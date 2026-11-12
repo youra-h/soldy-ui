@@ -61,7 +61,10 @@ export interface IDialogProps extends IModalLayerProps {
 	alert?: boolean
 }
 
-export interface IDialog extends IModalLayer<IDialogProps, TDialogEvents> {
+export interface IDialog<
+	TProps extends IDialogProps = IDialogProps,
+	TEvents extends TDialogEvents = TDialogEvents,
+> extends IModalLayer<TProps, TEvents> {
 	/** Whether this dialog blocks interaction with the page. */
 	modal: boolean
 	/** Где окно стоит на экране */

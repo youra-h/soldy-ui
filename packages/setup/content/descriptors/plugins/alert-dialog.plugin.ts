@@ -5,7 +5,6 @@
 import { definePlugin } from '../../../protected/define'
 import {
 	TAlertDialogFocusPlugin,
-	TAlertDialogIdsPlugin,
 	TAlertDialogLayoutPlugin,
 	TAlertDialogNamesPlugin,
 } from '@soxa-ui/plugins'
@@ -14,10 +13,6 @@ export const AlertDialogFocusPluginDescriptor = definePlugin({
 	ctor: TAlertDialogFocusPlugin,
 	namespace: 'focus',
 	contribution: {},
-})
-export const AlertDialogIdsPluginDescriptor = definePlugin({
-	ctor: TAlertDialogIdsPlugin,
-	namespace: 'ids',
 })
 export const AlertDialogLayoutPluginDescriptor = definePlugin({
 	ctor: TAlertDialogLayoutPlugin,

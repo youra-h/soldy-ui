@@ -1,13 +1,13 @@
-import type { TActionEvent, TAria, TAriaAttributes, TValuePayload } from '../../../common'
-import type { IModalLayer, IModalLayerProps, TModalLayerEvents } from '../../base/modal-layer'
+import type { TActionEvent, TAria } from '../../../common'
+import type { IModalLayer, IModalLayerProps } from '../../base/modal-layer'
+import type { TDialogEvents } from '../dialog'
 
 export interface IAlertDialogProps extends IModalLayerProps {}
 
-export type TAlertDialogEvents = TModalLayerEvents & {
+export type TAlertDialogEvents = TDialogEvents & {
 	/** A choice may be prevented to keep the dialog open, for example during an async operation. */
 	confirm: (event: TActionEvent) => void
 	cancel: (event: TActionEvent) => void
-	'change:bodyAria': (payload: TValuePayload<TAriaAttributes>) => void
 }
 
 export interface IAlertDialog extends IModalLayer<IAlertDialogProps, TAlertDialogEvents> {
