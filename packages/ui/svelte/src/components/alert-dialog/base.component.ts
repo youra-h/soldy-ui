@@ -4,7 +4,7 @@ import type { EventProps, UseDomProps } from '../../types'
 
 export type AlertDialogEventProps = EventProps<typeof AlertDialogDescriptor>
 
-/** Атрибуты — панели: подложка — её сосед без экземпляра. */
+/** Consumer attributes belong to the panel; its sibling backdrop has no instance. */
 export type AlertDialogProps = UseDomProps<
 	typeof AlertDialogDescriptor,
 	IAlertDialog,
