@@ -191,3 +191,78 @@ it('consumes empty archived changesets and removes shared prerelease state on gr
 		JSON.parse(readFileSync(join(root, 'packages/icons/material/package.json'))).version,
 	).toBe('0.3.0')
 })
+
+describe('owner-requested beta releases', () => {
+	it('keeps independent versions and requires the complete dependency closure', () => {
+		const input = fixture()
+		input.changesets = [cs('train', ['core'], 'minor')]
+		expect(() => planRelease(input, 'components', { beta: true })).toThrow('outside components')
+
+		const release = planRelease(input, 'all', { beta: true })
+		expect(release.manifest.channel).toBe('beta')
+		expect(
+			release.manifest.packages
+				.filter((pkg) => pkg.scope === 'components')
+				.map((pkg) => pkg.version),
+		).toEqual(['0.4.0-beta.0', '0.4.0-beta.0'])
+		expect(
+			release.manifest.packages
+				.filter((pkg) => pkg.scope !== 'components')
+				.every((pkg) => pkg.version === '0.3.1-beta.0'),
+		).toBe(true)
+	})
+
+	it('archives beta notes without a global pre.json and can graduate them later', async () => {
+		const root = mkdtempSync(join(tmpdir(), 'soxa-release-test-'))
+		roots.push(root)
+		const input = fixture('0.3.0', root)
+		input.changesets = [cs('train', ['core'], 'minor')]
+		for (const pkg of input.packages.packages) {
+			mkdirSync(pkg.dir, { recursive: true })
+			writeFileSync(join(pkg.dir, 'package.json'), JSON.stringify(pkg.packageJson))
+		}
+		writeFileSync(
+			join(root, 'package.json'),
+			JSON.stringify(input.packages.rootPackage.packageJson),
+		)
+		mkdirSync(join(root, '.changeset'))
+		writeFileSync(
+			join(root, '.changeset/train.md'),
+			'---\n"@soxa-ui/core": minor\n---\n\nA compatible fix.\n',
+		)
+
+		const beta = { ...input, ...planRelease(input, 'all', { beta: true }) }
+		await prepareRelease(root, beta)
+		expect(existsSync(join(root, '.changeset/pre.json'))).toBe(false)
+		expect(existsSync(join(root, '.changeset/train.md'))).toBe(false)
+		expect(readFileSync(join(root, '.changeset/pre/train.md'), 'utf8')).toContain(
+			'A compatible fix.',
+		)
+
+		for (const pkg of input.packages.packages)
+			pkg.packageJson = JSON.parse(readFileSync(join(pkg.dir, 'package.json')))
+		input.changesets = [{ ...input.changesets[0], id: 'pre/train' }]
+		expect(planRelease(input, 'all', { beta: true }).manifest.packages).toEqual([])
+		const stable = planRelease(input, 'all')
+		expect(
+			stable.manifest.packages
+				.filter((pkg) => pkg.scope === 'components')
+				.every((pkg) => pkg.version === '0.4.0'),
+		).toBe(true)
+		expect(
+			stable.manifest.packages
+				.filter((pkg) => pkg.scope !== 'components')
+				.every((pkg) => pkg.version === '0.3.1'),
+		).toBe(true)
+		await prepareRelease(root, { ...input, ...stable })
+		expect(existsSync(join(root, '.changeset/pre/train.md'))).toBe(false)
+	})
+
+	it('advances beta counters only for new work', () => {
+		const input = fixture('0.4.0-beta.0')
+		input.changesets = [cs('pre/shipped', ['core']), cs('new', ['vue'])]
+		const release = planRelease(input, 'all', { beta: true })
+		expect(release.plan.changesets.map((entry) => entry.id)).toEqual(['new'])
+		expect(release.manifest.packages.every((pkg) => pkg.version === '0.4.0-beta.1')).toBe(true)
+	})
+})

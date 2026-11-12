@@ -32,3 +32,11 @@ separate GitHub Releases even if one coordinated PR graduates them together.
 The owner merges release PRs. The workflow verifies the exact planned packages,
 publishes to npm and verifies registry installation. Never run npm publish or
 changeset publish locally, and do not merge the release PR yourself.
+
+An explicitly requested beta uses `npm run release:plan -- all --beta` and
+`npm run release:prepare -- all --beta`. Review the dependency closure: themes and
+icons retain independent version numbers but may need beta builds whose peer
+ranges admit the component beta. The approved manifest records the beta channel;
+publication uses npm's beta tag and GitHub prereleases, leaving latest unchanged.
+Changesets archives the release notes for later stable graduation without adding
+a repository-wide pre.json. A later stable release still requires an owner request.

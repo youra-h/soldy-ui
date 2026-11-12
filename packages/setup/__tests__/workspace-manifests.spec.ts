@@ -747,6 +747,7 @@ function checkChangesets(
 function checkPrerelease(
 	preState: TPreState | undefined,
 	library: readonly TWorkspacePackage[],
+	approved: ReadonlyMap<string, string> = new Map(),
 ): string[] {
 	if (preState?.mode === 'exit') return []
 
@@ -757,7 +758,11 @@ function checkPrerelease(
 	return library.flatMap(({ dir, manifest }) => {
 		const { version } = manifest
 		if (typeof version !== 'string' || !version.includes('-')) return []
-		if (preState?.mode === 'pre' && /^\d+\.\d+\.\d+-beta\.\d+$/.test(version)) return []
+		if (
+			(preState?.mode === 'pre' || approved.get(String(manifest.name)) === version) &&
+			/^\d+\.\d+\.\d+-beta\.\d+$/.test(version)
+		)
+			return []
 
 		return [`${dir}: версия ${version} с суффиксом требует активного pre-канала beta`]
 	})
@@ -861,7 +866,11 @@ describe('манифесты пакетов воркспейса', () => {
 	})
 
 	it('суффиксы версий соответствуют разрешённому beta-каналу', () => {
-		const violations = checkPrerelease(readPreState(), library)
+		const plan: { packages: { name: string; version: string }[] } = JSON.parse(
+			readFileSync(join(ROOT, '.release/plan.json'), 'utf8'),
+		)
+		const approved = new Map(plan.packages.map((pkg) => [pkg.name, pkg.version]))
+		const violations = checkPrerelease(readPreState(), library, approved)
 
 		expect(
 			violations,
@@ -1480,6 +1489,19 @@ describe('сторож манифестов', () => {
 				`packages/example: версия ${version} с суффиксом требует активного pre-канала beta`,
 			])
 		}
+	})
+
+	it('accepts only exact beta versions from the approved package plan', () => {
+		const approved = new Map([['@soxa-ui/example', '0.4.0-beta.0']])
+		expect(
+			checkPrerelease(undefined, [library({ version: '0.4.0-beta.0' })], approved),
+		).toEqual([])
+		expect(
+			checkPrerelease(undefined, [library({ version: '0.4.0-beta.1' })], approved),
+		).toHaveLength(1)
+		expect(
+			checkPrerelease(undefined, [library({ version: '0.4.0-alpha.0' })], approved),
+		).toHaveLength(1)
 	})
 
 	it('суффикс без pre.json — нарушение', () => {

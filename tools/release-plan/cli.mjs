@@ -3,15 +3,20 @@ import { loadRelease, prepareRelease } from './plan.mjs'
 
 const [command, scope, ...extra] = process.argv.slice(2)
 try {
-	if (!['plan', 'prepare'].includes(command) || extra.length)
-		throw new Error('Usage: release:plan|release:prepare -- components|themes|icons|all')
+	if (
+		!['plan', 'prepare'].includes(command) ||
+		(extra.length && (extra.length !== 1 || extra[0] !== '--beta'))
+	)
+		throw new Error(
+			'Usage: release:plan|release:prepare -- components|themes|icons|all [--beta]',
+		)
 	const root = process.cwd()
 	if (
 		command === 'prepare' &&
 		execFileSync('git', ['status', '--porcelain'], { cwd: root, encoding: 'utf8' }).trim()
 	)
 		throw new Error('Prepare a release from a clean worktree')
-	const release = await loadRelease(root, scope)
+	const release = await loadRelease(root, scope, { beta: extra[0] === '--beta' })
 	console.log(JSON.stringify(release.manifest, null, 2))
 	if (command === 'prepare') {
 		await prepareRelease(root, release)

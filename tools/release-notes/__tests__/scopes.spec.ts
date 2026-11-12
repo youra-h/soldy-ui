@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import {
+	publicationTag,
 	releaseGroups,
 	packagesOfPlan,
 	assertPlannedUnpublished,
@@ -59,4 +60,25 @@ describe('release publication scope', () => {
 		}
 		expect(() => registryVersion('pkg', { status: 1, stdout: '' })).toThrow('Cannot verify')
 	})
+})
+
+it('keeps beta off latest and rejects mixed or unknown channels', () => {
+	expect(publicationTag(packages)).toBe('latest')
+	expect(publicationTag([{ version: '0.4.0-beta.0' }, { version: '0.3.1-beta.0' }])).toBe('beta')
+	expect(() => publicationTag([{ version: '0.4.0-beta.0' }, { version: '0.3.0' }])).toThrow(
+		'Mixed',
+	)
+	expect(() => publicationTag([{ version: '0.4.0-alpha.0' }])).toThrow('unsupported')
+	expect(() =>
+		packagesOfPlan(
+			{
+				schemaVersion: 1,
+				scope: 'all',
+				channel: 'beta',
+				packages: [{ ...packages[0], scope: 'components' }],
+			},
+			packages,
+			shared,
+		),
+	).toThrow('channel')
 })

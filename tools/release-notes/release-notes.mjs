@@ -274,6 +274,15 @@ export function releaseGroups(packages, shared) {
 	return [...groups.values()]
 }
 
+/** Derive npm's channel from every approved version; stable packages stay on latest. */
+export function publicationTag(packages) {
+	const beta = packages.filter((pkg) => /^\d+\.\d+\.\d+-beta\.\d+$/.test(pkg.version))
+	if (beta.length === packages.length && beta.length) return 'beta'
+	if (packages.some((pkg) => pkg.version.includes('-')))
+		throw new Error('Mixed or unsupported prerelease channels in the approved release')
+	return 'latest'
+}
+
 /** Validate the approved versions against the checkout before querying or publishing. */
 export function packagesOfPlan(plan, packages, shared) {
 	if (
@@ -283,6 +292,9 @@ export function packagesOfPlan(plan, packages, shared) {
 		!plan.packages.length
 	)
 		throw new Error('Invalid approved release plan')
+	const channel = publicationTag(plan.packages)
+	if (plan.channel !== undefined && plan.channel !== channel)
+		throw new Error('Approved release channel does not match its versions')
 	const known = new Map(packages.map((pkg) => [pkg.name, pkg]))
 	const seen = new Set()
 	return plan.packages.map((entry) => {

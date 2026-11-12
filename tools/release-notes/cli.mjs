@@ -13,6 +13,7 @@ import { readFileSync } from 'node:fs'
 import { spawnSync } from 'node:child_process'
 import { resolve } from 'node:path'
 import {
+	publicationTag,
 	notesOf,
 	npmPackages,
 	parseSpec,
@@ -31,6 +32,7 @@ const ROOT = resolve(import.meta.dirname, '../..')
 const USAGE = [
 	'node tools/release-notes/cli.mjs unpublished',
 	'node tools/release-notes/cli.mjs planned',
+	'node tools/release-notes/cli.mjs channel',
 	'node tools/release-notes/cli.mjs notes <links>',
 	'node tools/release-notes/cli.mjs release <links> <sha>',
 ].join('\n')
@@ -77,6 +79,10 @@ function planned() {
 }
 
 function run(command, args) {
+	if (command === 'channel' && args.length === 0) {
+		console.log(publicationTag(planned()))
+		return 0
+	}
 	if (command === 'planned' && args.length === 0) {
 		for (const pkg of planned()) console.log(pkg.name + '@' + pkg.version)
 		return 0
@@ -133,7 +139,7 @@ function run(command, args) {
 					'--notes-file',
 					'-',
 					...(prerelease ? ['--prerelease'] : []),
-					...(group.some((pkg) => shared.has(pkg.name))
+					...(!prerelease && group.some((pkg) => shared.has(pkg.name))
 						? ['--latest']
 						: ['--latest=false']),
 				],
