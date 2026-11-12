@@ -45,6 +45,7 @@ import {
 	CalendarCollectionDescriptor,
 	CalendarDescriptor,
 	DialogDescriptor,
+	AlertDialogDescriptor,
 	DrawerDescriptor,
 	FrameDescriptor,
 	ListBoxCollectionDescriptor,
@@ -545,11 +546,14 @@ describe('сторож: слой, открытый на сервере, — бе
 	const drawer = () =>
 		createAdapterContext(DrawerDescriptor(), { props: { visible: true, contained: true } })
 	const dialog = () => createAdapterContext(DialogDescriptor(), { props: { visible: true } })
+	const alertDialog = () =>
+		createAdapterContext(AlertDialogDescriptor(), { props: { visible: true } })
 
 	it.each([
 		['Frame с contained', frame],
 		['Drawer с contained', drawer],
 		['Dialog', dialog],
+		['AlertDialog', alertDialog],
 	] as const)('%s: zIndex 0, data-layer нет, z-index раскладки — 0', (_, assemble) => {
 		const layer = assemble()
 		const { exchange, unmount } = accept(layer)
@@ -567,6 +571,7 @@ describe('сторож: слой, открытый на сервере, — бе
 	it.each([
 		['Drawer с contained', drawer],
 		['Dialog', dialog],
+		['AlertDialog', alertDialog],
 	] as const)('%s: у подложки тоже — номера нет, z-index 0', (_, assemble) => {
 		const layer = assemble()
 		const { exchange, unmount } = accept(layer)

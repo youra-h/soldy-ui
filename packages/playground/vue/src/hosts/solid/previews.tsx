@@ -44,6 +44,7 @@ import {
 	DateInput,
 	DatePicker,
 	Dialog,
+	AlertDialog,
 	DragAndDrop,
 	Drawer,
 	Field,
@@ -264,6 +265,25 @@ function DialogPreview(props: { bind: Accessor<TPreviewProps> }): JSX.Element {
 				<p style={{ margin: '0 0 8px' }}>Произвольное содержимое: текст, поля, кнопки</p>
 				<Input placeholder="Имя" />
 			</Dialog>
+		</>
+	)
+}
+
+function AlertDialogPreview(props: { bind: Accessor<TPreviewProps> }): JSX.Element {
+	const { shown, setShown, onChangeVisible } = useShown(props.bind)
+
+	return (
+		<>
+			<Button text="Открыть окно" onClick={() => setShown(true)} />
+			<AlertDialog
+				{...props.bind()}
+				visible={shown()}
+				onChangeVisible={onChangeVisible}
+				title="Удалить запись?"
+				action="Удалить"
+			>
+				<p>Удалённую запись нельзя будет восстановить.</p>
+			</AlertDialog>
 		</>
 	)
 }
@@ -557,6 +577,7 @@ export const PREVIEWS: Record<string, TPreview> = {
 	),
 
 	// A button opens the dialog, which runs on its own state (see `DialogPreview`)
+	'alert-dialog': (bind) => <AlertDialogPreview bind={bind} />,
 	dialog: (bind) => <DialogPreview bind={bind} />,
 
 	// A button opens the drawer, which runs on its own state (see `DrawerPreview`)

@@ -82,6 +82,11 @@ const NAMED: Record<string, Record<string, (locale: TLocale) => string>> = {
 		overflowAria: ({ translations }) =>
 			translations.breadcrumbs?.overflow ?? 'Show hidden breadcrumbs',
 	},
+	AlertDialogDescriptor: {
+		closeAria: ({ translations }) => translations.modal.close,
+		names_confirm: ({ translations }) => translations.alertDialog?.confirm ?? 'Confirm',
+		names_cancel: ({ translations }) => translations.alertDialog?.cancel ?? 'Cancel',
+	},
 	DialogDescriptor: {
 		closeAria: ({ translations }) => translations.modal.close,
 		maximizeAria: ({ translations }) => translations.dialog.maximize,

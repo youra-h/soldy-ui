@@ -16,6 +16,7 @@ import {
 	TButtonComponent,
 	TCalendarComponent,
 	TDialogComponent,
+	TAlertDialogComponent,
 	TDragAndDropComponent,
 	TDrawerComponent,
 	TInputComponent,
@@ -483,6 +484,59 @@ export class DialogPreview implements TFixture {
 	readonly state = () => ({ shown: linkedSignal(() => this.visible() ?? false) })
 	readonly copy = viewChild.required(CopyDirective)
 	readonly subjects = viewChildren(TDialogComponent)
+}
+
+@Component({
+	selector: 'pg-alert-dialog-preview',
+	imports: [TAlertDialogComponent, TButtonComponent, TInputComponent, CopyDirective],
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	host: { style: 'display: contents' },
+	template: `
+		<ng-template pg-copy [pg-copy-state]="state" let-shown="shown">
+			<button so-button text="Открыть окно" (click)="shown.set(true)"></button>
+			<div
+				so-alert-dialog
+				[ctrl]="ctrl()"
+				[rendered]="rendered()"
+				[visible]="shown()"
+				[direction]="direction()"
+				[target]="target()"
+				[width]="width()"
+				[height]="height()"
+				[closable]="closable()"
+				[dismissible]="dismissible()"
+				[dismiss_enabled]="dismiss_enabled()"
+				[hideOutside_enabled]="hideOutside_enabled()"
+				[scrollLock_enabled]="scrollLock_enabled()"
+				(soChangeVisible)="shown.set($event.newValue)"
+			>
+				<span slot="title">Удалить запись?</span>
+				<p>Удалённую запись нельзя будет восстановить.</p>
+				<span slot="action">Удалить</span>
+			</div>
+		</ng-template>
+	`,
+})
+export class AlertDialogPreview implements TFixture {
+	readonly ctrl = input<TAlertDialogComponent['ctrl']>()
+	readonly rendered = input<TAlertDialogComponent['rendered']>()
+	readonly visible = input<TAlertDialogComponent['visible']>()
+	readonly direction = input<TAlertDialogComponent['direction']>()
+	readonly target = input<TAlertDialogComponent['target']>()
+	readonly width = input<TAlertDialogComponent['width']>()
+	readonly height = input<TAlertDialogComponent['height']>()
+	readonly closable = input<TAlertDialogComponent['closable']>()
+	readonly dismissible = input<TAlertDialogComponent['dismissible']>()
+	readonly dismiss_enabled = input<TAlertDialogComponent['dismiss_enabled']>()
+	readonly hideOutside_enabled = input<TAlertDialogComponent['hideOutside_enabled']>()
+	readonly scrollLock_enabled = input<TAlertDialogComponent['scrollLock_enabled']>()
+	/**
+	 * A copy's own state: whether its dialog is open; the `visible` input
+	 * overwrites it.
+	 */
+	readonly state = () => ({ shown: linkedSignal(() => this.visible() ?? false) })
+	readonly copy = viewChild.required(CopyDirective)
+	readonly subjects = viewChildren(TAlertDialogComponent)
 }
 
 /**

@@ -29,6 +29,7 @@ import {
 	Calendar,
 	DateInput,
 	Dialog,
+	AlertDialog,
 	Drawer,
 	Field,
 	Input,
@@ -274,6 +275,16 @@ describe('id при гидратации', () => {
 describe('номер слоя при гидратации', () => {
 	it.each([
 		['окно', () => h(Dialog, { visible: true }, () => 'Окно'), 'so-dialog'],
+		[
+			'AlertDialog',
+			() =>
+				h(
+					AlertDialog,
+					{ visible: true },
+					{ title: () => 'Delete?', default: () => 'Cannot undo' },
+				),
+			'so-alert-dialog',
+		],
 		[
 			'выезжающая панель с contained',
 			() => h('div', [h(Drawer, { visible: true, contained: true }, () => 'Панель')]),

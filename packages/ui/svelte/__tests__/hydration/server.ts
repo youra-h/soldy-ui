@@ -1,3 +1,4 @@
+import AlertDialogPage from './AlertDialogPage.test.svelte'
 import AlertPage from './AlertPage.test.svelte'
 import AvatarPage from './AvatarPage.test.svelte'
 import SeparatorPage from './SeparatorPage.test.svelte'
@@ -62,6 +63,7 @@ function onToday(draw: () => string): string {
 export function renderServerMarkup() {
 	return {
 		alert: render(AlertPage).body,
+		'alert-dialog': render(AlertDialogPage).body,
 		separator: render(SeparatorPage).body,
 		badge: render(BadgePage).body,
 		avatar: render(AvatarPage).body,

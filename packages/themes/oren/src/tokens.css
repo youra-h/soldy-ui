@@ -61,6 +61,11 @@
 	--so-negative-900: oklch(0.41 0.159 10.272);
 	--so-negative-950: oklch(0.271 0.105 12.094);
 
+	/* Destructive confirmation keeps white text readable in every interaction state. */
+	--so-alert-dialog-action-fill: var(--so-negative-600);
+	--so-alert-dialog-action-hover: var(--so-negative-700);
+	--so-alert-dialog-action-active: var(--so-negative-800);
+
 	/* ─── Caution (warning) ── orange ────────────────────────── */
 	--so-caution-50: oklch(0.987 0.022 95.277);
 	--so-caution-100: oklch(0.962 0.059 95.617);

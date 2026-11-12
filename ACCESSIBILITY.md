@@ -33,26 +33,27 @@ and how to report a barrier.
 
 ## Patterns
 
-| Component                 | APG pattern / role                                                  |
-| ------------------------- | ------------------------------------------------------------------- |
-| Tabs                      | Tabs: arrow keys, Home/End, automatic activation, a single Tab stop |
-| Accordion                 | Accordion                                                           |
-| Select                    | Combobox (select-only and editable), with a listbox popup           |
-| ListBox                   | Listbox                                                             |
-| Tags                      | `list` without selection, Listbox with it; roving tabindex          |
-| RadioGroup                | Radio Group, on native radio buttons                                |
-| CheckBox, Switch          | Native checkbox input; Switch uses the `switch` role                |
-| Slider                    | Slider and Multi-Thumb Slider                                       |
-| Popover                   | Non-modal dialog at a trigger                                       |
-| Tooltip                   | Tooltip, shown on hover and on keyboard focus                       |
-| Dialog                    | Modal Dialog; Alert Dialog as a mode                                |
-| Drawer                    | Modal Dialog at an edge of the screen or a container                |
-| Calendar                  | Date grid from the Date Picker Dialog pattern                       |
-| DateInput                 | Group of `spinbutton` segments                                      |
-| DatePicker                | Date Picker Dialog                                                  |
-| Table                     | Table, with sortable column headers and row selection               |
-| ProgressLinear / -Spinner | `progressbar`                                                       |
-| Skeleton                  | Decorative, hidden from assistive technology                        |
+| Component                 | APG pattern / role                                                   |
+| ------------------------- | -------------------------------------------------------------------- |
+| Tabs                      | Tabs: arrow keys, Home/End, automatic activation, a single Tab stop  |
+| Accordion                 | Accordion                                                            |
+| Select                    | Combobox (select-only and editable), with a listbox popup            |
+| ListBox                   | Listbox                                                              |
+| Tags                      | `list` without selection, Listbox with it; roving tabindex           |
+| RadioGroup                | Radio Group, on native radio buttons                                 |
+| CheckBox, Switch          | Native checkbox input; Switch uses the `switch` role                 |
+| Slider                    | Slider and Multi-Thumb Slider                                        |
+| Popover                   | Non-modal dialog at a trigger                                        |
+| Tooltip                   | Tooltip, shown on hover and on keyboard focus                        |
+| Dialog                    | Modal Dialog; Alert Dialog as a mode                                 |
+| AlertDialog               | Alert Dialog with localized default actions and a safe initial focus |
+| Drawer                    | Modal Dialog at an edge of the screen or a container                 |
+| Calendar                  | Date grid from the Date Picker Dialog pattern                        |
+| DateInput                 | Group of `spinbutton` segments                                       |
+| DatePicker                | Date Picker Dialog                                                   |
+| Table                     | Table, with sortable column headers and row selection                |
+| ProgressLinear / -Spinner | `progressbar`                                                        |
+| Skeleton                  | Decorative, hidden from assistive technology                         |
 
 ## How it is checked
 

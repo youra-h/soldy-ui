@@ -4,6 +4,7 @@ import { freezeLocale } from '../locale'
 export const zhCN = freezeLocale({
 	tag: 'zh-CN',
 	translations: {
+		alertDialog: { confirm: '确认', cancel: '取消' },
 		alert: { close: '关闭' },
 		codeBlock: { region: '代码', copy: '复制', copied: '已复制', error: '无法复制' },
 		breadcrumbs: { navigation: '面包屑导航', overflow: '显示隐藏的导航项' },

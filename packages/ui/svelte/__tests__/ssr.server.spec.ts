@@ -23,6 +23,7 @@ import {
 	DateInput,
 	DatePicker,
 	Dialog,
+	AlertDialog,
 	Drawer,
 	Frame,
 	Icon,
@@ -122,6 +123,10 @@ describe('оверлеи · серверный рендер', () => {
 		expect(body).toMatch(/^<span [^>]*class="so-tooltip"/)
 		expect(body).toMatch(/<button data-link="[^"]+">Открыть<\/button><\/span>$/)
 		expect(body).not.toContain('so-tooltip__panel')
+	})
+
+	it('AlertDialog omits the server portal', () => {
+		expect(markup(render(AlertDialog, { props: { visible: true } }).body)).toBe('')
 	})
 
 	it('Dialog — пусто: телепорта на сервере нет', () => {

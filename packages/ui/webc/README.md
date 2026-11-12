@@ -651,3 +651,10 @@ The application translates the accessible name. Placement above the anchor's log
 and follows RTL. Import `@soxa-ui/theme-oren/badge.css` for the standalone stylesheet.
 
 Assign numeric counts through the element property (element.value = 3); the value attribute is a string.
+
+## AlertDialog
+
+Use AlertDialog for a modal confirmation with localized Cancel and Confirm actions.
+The action/cancel content slots change labels; the footer slot replaces the entire row,
+including with zero actions. The application performs the operation after the confirm event.
+See the [AlertDialog contract and adapter examples](../../../docs/components/alert-dialog.md).

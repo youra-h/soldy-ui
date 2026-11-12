@@ -4,6 +4,7 @@ import { freezeLocale } from '../locale'
 export const frFR = freezeLocale({
 	tag: 'fr-FR',
 	translations: {
+		alertDialog: { confirm: 'Confirmer', cancel: 'Annuler' },
 		alert: { close: 'Fermer' },
 		codeBlock: {
 			region: 'Code',

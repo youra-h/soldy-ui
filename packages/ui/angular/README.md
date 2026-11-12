@@ -641,3 +641,10 @@ with that accessible name; an unnamed label is ordinary text, and an unnamed dot
 The anchor keeps its own accessible name, clicks and focus. Badge adds no live region.
 The application translates the accessible name. Placement above the anchor's logical end is CSS
 and follows RTL. Import `@soxa-ui/theme-oren/badge.css` for the standalone stylesheet.
+
+## AlertDialog
+
+Use AlertDialog for a modal confirmation with localized Cancel and Confirm actions.
+The action/cancel content slots change labels; the footer slot replaces the entire row,
+including with zero actions. The application performs the operation after the confirm event.
+See the [AlertDialog contract and adapter examples](../../../docs/components/alert-dialog.md).

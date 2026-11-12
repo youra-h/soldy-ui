@@ -37,6 +37,7 @@ import {
 	CodeBlock,
 	Accordion,
 	Dialog,
+	AlertDialog,
 	Field,
 	ListBox,
 	Input,
@@ -556,5 +557,13 @@ export function SeparatorPage(): JSX.Element {
 			<Separator orientation="vertical" />
 			<Separator decorative />
 		</>
+	)
+}
+
+export function AlertDialogPage(): JSX.Element {
+	return (
+		<AlertDialog visible title="Delete?">
+			Cannot undo
+		</AlertDialog>
 	)
 }

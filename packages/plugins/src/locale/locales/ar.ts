@@ -7,6 +7,7 @@ import { freezeLocale } from '../locale'
 export const arEG = freezeLocale({
 	tag: 'ar-EG',
 	translations: {
+		alertDialog: { confirm: 'تأكيد', cancel: 'إلغاء' },
 		alert: { close: 'إغلاق' },
 		codeBlock: {
 			region: 'الشيفرة',

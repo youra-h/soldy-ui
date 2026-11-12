@@ -55,6 +55,7 @@ export {
 	MenuRadioGroup,
 	MenuSeparator,
 	Dialog,
+	AlertDialog,
 	Drawer,
 	Toasts,
 } from './components'
@@ -200,7 +201,9 @@ export type {
 	MenuSeparatorEventProps,
 	MenuSeparatorProps,
 	DialogEventProps,
+	AlertDialogEventProps,
 	DialogProps,
+	AlertDialogProps,
 	DrawerEventProps,
 	DrawerProps,
 	ToastsEventProps,

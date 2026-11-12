@@ -1,0 +1,59 @@
+@if (placed()) {
+	<div
+		#companion
+		class="so-alert-dialog__backdrop"
+		[style]="state()['layout_backdropStyles']"
+		[so-attributes]="state()['backdropDataset']"
+	></div>
+	<h2 class="so-alert-dialog__title" [so-attributes]="state()['titleAria']">
+		<ng-content select="[slot=title]" />
+	</h2>
+	<div class="so-alert-dialog__body" [so-attributes]="state()['bodyAria']"><ng-content /></div>
+	<div class="so-alert-dialog__footer">
+		@if (slot('footer'); as footer) {
+			<ng-container
+				[ngTemplateOutlet]="footer"
+				[ngTemplateOutletContext]="{
+					confirm: instance()?.confirm,
+					cancel: instance()?.cancel,
+				}"
+			/>
+		} @else {
+			<button
+				so-button
+				embedded="alert-dialog.cancel"
+				type="button"
+				class="so-alert-dialog__cancel"
+				(click)="instance()?.cancel()"
+			>
+				<ng-content select="[slot=cancel]">{{ state()['names_cancel'] }}</ng-content>
+			</button>
+			<button
+				so-button
+				embedded="alert-dialog.action"
+				type="button"
+				class="so-alert-dialog__action"
+				(click)="instance()?.confirm()"
+			>
+				<ng-content select="[slot=action]">{{ state()['names_confirm'] }}</ng-content>
+			</button>
+		}
+	</div>
+	@if (state()['closable']) {
+		<button
+			so-button
+			embedded="alert-dialog.close"
+			type="button"
+			class="so-alert-dialog__close"
+			[so-attributes]="state()['closeAria']"
+			(click)="instance()?.requestClose('button')"
+		>
+			@if (slot('close-icon'); as icon) {
+				<ng-container [ngTemplateOutlet]="icon" />
+			} @else {
+				<svg so-icon embedded="alert-dialog.close-icon" so-role-icon="close"></svg>
+			}
+		</button>
+	}
+}
+<ng-content select="ng-template[slot]" />

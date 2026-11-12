@@ -28,6 +28,7 @@ export const A11Y_COMPONENTS = [
 	'menu',
 	'tooltip',
 	'dialog',
+	'alert-dialog',
 	'drawer',
 	'toasts',
 	'scroller',
@@ -436,6 +437,11 @@ export const A11Y_CASES: readonly TAuditCase[] = [
 	audit('menu', 'item-panel', '.so-menu', { open: true }, ['.so-menu-item__panel .so-calendar'], {
 		click: ['[role="menuitem"][aria-haspopup="dialog"]'],
 	}),
+	audit('alert-dialog', 'open', '.so-alert-dialog', { visible: true }, [
+		'.so-alert-dialog[role="alertdialog"]',
+		'.so-alert-dialog__cancel',
+		'.so-alert-dialog__action',
+	]),
 	...['dialog', 'drawer'].flatMap((id) => [
 		audit(id, 'closed', 'main button', { visible: false }, ['main button'], {
 			absent: ['.so-' + id],

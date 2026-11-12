@@ -118,6 +118,9 @@ const ACTIONS = {
 		...overlay('.so-date-picker__panel', (page) => first(page, '.so-date-picker__trigger')),
 		...locale,
 	],
+	'alert-dialog': overlay('.so-alert-dialog', (page) =>
+		page.locator('.bench-page .so-button', { hasText: 'Открыть окно' }).first(),
+	),
 	dialog: overlay('.so-dialog', (page) =>
 		page.locator('.bench-page .so-button', { hasText: 'Открыть окно' }).first(),
 	),

@@ -15,6 +15,7 @@ export {
 	DateInput,
 	DatePicker,
 	Dialog,
+	AlertDialog,
 	DragAndDrop,
 	Drawer,
 	Field,
@@ -217,3 +218,5 @@ export { Avatar, AvatarGroup } from './components/avatar'
 export type { AvatarProps, AvatarGroupProps } from './components/avatar'
 export { Separator } from './components/separator'
 export type { SeparatorProps } from './components/separator'
+
+export type { AlertDialogProps } from './components/alert-dialog/base.component'

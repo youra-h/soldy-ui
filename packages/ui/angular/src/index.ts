@@ -24,6 +24,7 @@ export {
 	TMenuSubmenuComponent,
 	TMenuPopoverItemComponent,
 	TDialogComponent,
+	TAlertDialogComponent,
 	TDrawerComponent,
 	TToastsComponent,
 	TInputComponent,

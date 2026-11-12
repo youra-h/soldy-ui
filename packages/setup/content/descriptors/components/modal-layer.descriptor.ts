@@ -20,7 +20,11 @@
  * объявляют сами — по своим шаблонам.
  */
 
-import { defineComponent, defineDescriptor } from '../../../protected/define'
+import {
+	defineComponent,
+	defineDescriptor,
+	type IPluginDefinition,
+} from '../../../protected/define'
 import { TModalLayer } from '@soxa-ui/core'
 import {
 	DismissPluginDescriptor,
@@ -30,8 +34,9 @@ import {
 } from '../plugins'
 import { LayerDescriptor } from './layer.descriptor'
 
-export const ModalLayerDescriptor = defineDescriptor(() =>
-	defineComponent({
+/** Internal builder: descendants choose one focus strategy without installing a second trap. */
+export function createModalLayerDescriptor(focus: IPluginDefinition) {
+	return defineComponent({
 		ctor: TModalLayer,
 
 		extends: LayerDescriptor(),
@@ -82,11 +87,17 @@ export const ModalLayerDescriptor = defineDescriptor(() =>
 			// оба берут у него панель
 			DismissPluginDescriptor.with({ property: 'visible' }),
 			// Фокус в панель и назад, Tab по кругу, Escape
-			ModalFocusPluginDescriptor.with({ property: 'visible', modal: true }),
+			focus,
 			// Фон под панелью немой для скринридера
 			HideOutsidePluginDescriptor.with({ property: 'visible', modal: true }),
 			// Страница под панелью не прокручивается
 			ScrollLockPluginDescriptor.with({ property: 'visible', modal: true }),
 		],
-	}),
+	})
+}
+
+export const ModalLayerDescriptor = defineDescriptor(() =>
+	createModalLayerDescriptor(
+		ModalFocusPluginDescriptor.with({ property: 'visible', modal: true }),
+	),
 )
