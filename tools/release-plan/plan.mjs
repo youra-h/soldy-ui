@@ -20,7 +20,11 @@ export function packageScope(pkg, root, shared) {
 }
 
 /** Keep unrelated changesets pending, including the other half of a mixed changeset. */
-export function planRelease({ packages, config, changesets, preState }, scope) {
+export function planRelease(
+	{ packages, config, changesets, preState },
+	scope,
+	{ beta = false } = {},
+) {
 	if (![...SCOPES, 'all'].includes(scope))
 		throw new Error('Choose components, themes, icons or all')
 	if (preState && scope !== 'all')
@@ -42,12 +46,24 @@ export function planRelease({ packages, config, changesets, preState }, scope) {
 	const selected = changesets
 		.map((cs) => ({ ...cs, releases: cs.releases.filter((r) => included.has(r.name)) }))
 		.filter((cs) => scope === 'all' || cs.releases.length)
-	const plan = assembleReleasePlan(
-		selected,
-		packages,
-		config,
-		preState ? { ...preState, mode: 'exit' } : undefined,
-	)
+	// Keep new beta state local to this plan; legacy global state still graduates together.
+	const channel = beta
+		? { mode: 'pre', tag: 'beta' }
+		: preState
+			? { ...preState, mode: 'exit' }
+			: undefined
+	if (!beta && !preState) {
+		const graduating = publishable.filter(
+			(pkg) => included.has(pkg.packageJson.name) && pkg.packageJson.version.includes('-'),
+		)
+		if (graduating.length)
+			selected.push({
+				id: 'graduate-beta',
+				summary: 'Graduate the approved beta packages to stable versions.',
+				releases: graduating.map((pkg) => ({ name: pkg.packageJson.name, type: 'patch' })),
+			})
+	}
+	const plan = assembleReleasePlan(selected, packages, config, channel)
 	const bumped = plan.releases.filter((r) => r.newVersion !== r.oldVersion)
 	const outside = bumped.filter((r) => !included.has(r.name))
 	if (outside.length)
@@ -58,7 +74,7 @@ export function planRelease({ packages, config, changesets, preState }, scope) {
 				outside.map((r) => r.name).join(', ') +
 				'. Review an all-scope plan instead.',
 		)
-	if (bumped.some((r) => r.newVersion.includes('-')))
+	if (!beta && bumped.some((r) => r.newVersion.includes('-')))
 		throw new Error(
 			'This command prepares stable releases; a new prerelease requires a separate owner decision',
 		)
@@ -70,6 +86,7 @@ export function planRelease({ packages, config, changesets, preState }, scope) {
 	const manifest = {
 		schemaVersion: 1,
 		scope,
+		...(beta ? { channel: 'beta' } : {}),
 		packages: bumped.map((r) => ({
 			name: r.name,
 			version: r.newVersion,
@@ -80,13 +97,17 @@ export function planRelease({ packages, config, changesets, preState }, scope) {
 	return { plan, remaining, manifest }
 }
 
-export async function loadRelease(root, scope) {
+export async function loadRelease(root, scope, options) {
 	const packages = await getPackages(root)
 	const { config, errors } = await readConfig(root, packages)
 	if (!config) throw new Error('Invalid Changesets configuration: ' + JSON.stringify(errors))
 	const changesets = await readChangesets(root)
 	const preState = await readPreState(root)
-	return { packages, config, ...planRelease({ packages, config, changesets, preState }, scope) }
+	return {
+		packages,
+		config,
+		...planRelease({ packages, config, changesets, preState }, scope, options),
+	}
 }
 
 export async function prepareRelease(root, release) {

@@ -16,6 +16,8 @@ concurrency:
 
 jobs:
   publish:
+    outputs:
+      channel: ${{ steps.channel.outputs.value }}
     name: Публикация в npm
     if: contains(github.event.head_commit.message, 'release/') || startsWith(github.event.head_commit.message, 'Выпуск ')
     runs-on: ubuntu-latest
@@ -31,6 +33,12 @@ jobs:
           node-version: 22
           cache: npm
           registry-url: https://registry.npmjs.org
+
+      - name: Канал выпуска
+        id: channel
+        run: |
+          channel=$(node tools/release-notes/cli.mjs channel)
+          echo "value=$channel" >> "$GITHUB_OUTPUT"
 
       # Every package is checked at its own version: the library shares one,
       # each theme and icon pack has its own. None missing from npm — a rerun
@@ -62,7 +70,7 @@ jobs:
       # The approved plan was validated against every unpublished package above.
       - if: steps.check.outputs.publish == 'true'
         name: Публикация
-        run: npx changeset publish --tag latest
+        run: npx changeset publish --tag "${{ steps.channel.outputs.value }}"
         env:
           NODE_AUTH_TOKEN: ${{ secrets.SOXA_NPM_TOKEN }}
           NPM_CONFIG_PROVENANCE: true
@@ -97,7 +105,7 @@ jobs:
       - name: Chromium для проверки страниц
         run: npx playwright install --with-deps chromium
 
-      # Registry mode installs the published latest packages without packing
+      # Registry mode installs the published release channel without packing
       # or resolving any library source from this checkout.
       - name: Установка из npm в чистые проекты
-        run: npm run check:install -- --registry latest
+        run: npm run check:install -- --registry "${{ needs.publish.outputs.channel }}"

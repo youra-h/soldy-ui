@@ -1,5 +1,17 @@
 # @soxa-ui/icons-material
 
+## 0.3.1-beta.0
+
+### Patch Changes
+
+- Updated dependencies [5f7f821]
+- Updated dependencies [8e68380]
+- Updated dependencies [5ba63f4]
+- Updated dependencies [f6c476e]
+- Updated dependencies [eec067c]
+- Updated dependencies [274d746]
+  - @soxa-ui/setup@0.4.0-beta.0
+
 ## 0.3.0
 
 ### Minor Changes

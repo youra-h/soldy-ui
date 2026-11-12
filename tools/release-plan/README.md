@@ -33,3 +33,11 @@ releases are stable. A new prerelease requires a separate owner decision.
 The owner merges release PRs. Publication verifies that every unpublished package
 is present at its exact version in the approved manifest. Components, themes and
 icons get separate GitHub Releases even when prepared in one coordinated PR.
+
+An explicitly requested beta uses `npm run release:plan -- all --beta` and
+`npm run release:prepare -- all --beta`. Review the dependency closure: themes and
+icons retain independent version numbers but may need beta builds whose peer
+ranges admit the component beta. The approved manifest records the beta channel;
+publication uses npm's beta tag and GitHub prereleases, leaving latest unchanged.
+Changesets archives the release notes for later stable graduation without adding
+a repository-wide pre.json. A later stable release still requires an owner request.
