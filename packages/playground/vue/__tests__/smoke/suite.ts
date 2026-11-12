@@ -80,6 +80,24 @@ export function describeSmoke(framework: string): void {
 	const drawing = (...components: string[]) =>
 		draws(framework, ...components) ? [framework] : []
 
+	it.each(drawing('dialog'))('%s: modal reaches both preview columns', async (framework) => {
+		const wrapper = await openPage(framework, 'dialog')
+		const row = rowOf(wrapper, 'modal')
+		await enter(row, false)
+
+		expect((await dialogPanels(row)).map((panel) => panel.hasAttribute('aria-modal'))).toEqual([
+			false,
+			false,
+		])
+
+		await enter(row, true)
+		expect((await dialogPanels(row)).map((panel) => panel.getAttribute('aria-modal'))).toEqual([
+			'true',
+			'true',
+		])
+		expect(firstLines()).toEqual([])
+	})
+
 	describe(`каталог хоста ${framework}`, () => {
 		/**
 		 * Ключи карты превью — те же идентификаторы, что в общем реестре. Опечатка
