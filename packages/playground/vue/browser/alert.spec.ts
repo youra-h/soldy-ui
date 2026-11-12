@@ -100,6 +100,43 @@ describe.each(FRAMEWORKS)('Alert · $id', ({ id }) => {
 		},
 	)
 
+	it.each(['ltr', 'rtl'])('centers icons on the first text line in %s', async (direction) => {
+		const host = await loadHost(id)
+		container = document.createElement('div')
+		container.style.cssText = 'width:320px;font-size:16px;line-height:1.5'
+		document.body.append(container)
+		handle = host.mount(container, {
+			component: 'alert',
+			props: { closable: true, direction },
+		})
+
+		for (const size of ['sm', 'normal', 'lg', 'xl', '2xl']) {
+			handle.update({ closable: true, direction, size })
+			await frame()
+			await frame()
+
+			const title = find('.so-alert__title')
+			const line = parseFloat(getComputedStyle(title).lineHeight)
+			const middle = title.getBoundingClientRect().top + line / 2
+			const icon = find('.so-alert__icon').getBoundingClientRect()
+			const close = find('.so-alert__close').getBoundingClientRect()
+			const glyphNode = find('.so-alert__close').querySelector('.so-icon')
+			if (!glyphNode) throw new Error('Close icon is missing')
+			const glyph = glyphNode.getBoundingClientRect()
+
+			expect(Math.abs(icon.top + icon.height / 2 - middle), size).toBeLessThan(1)
+			expect(Math.abs(close.top + close.height / 2 - middle), size).toBeLessThan(1)
+			expect(Math.abs(glyph.top + glyph.height / 2 - middle), size).toBeLessThan(1)
+			expect(
+				Math.abs(glyph.left + glyph.width / 2 - close.left - close.width / 2),
+				size,
+			).toBeLessThan(1)
+			expect(glyph.width, size).toBeGreaterThan(0)
+			expect(close.width, size).toBeGreaterThanOrEqual(24)
+			expect(close.height, size).toBeGreaterThanOrEqual(24)
+		}
+	})
+
 	it('switches theme views and preserves readable controls in both schemes', async () => {
 		const host = await loadHost(id)
 		container = document.createElement('div')

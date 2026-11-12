@@ -31,6 +31,10 @@
 	grid-column: 1;
 	grid-row: 1;
 	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	/* Match the first text line, including inherited and size-specific leading. */
+	margin-block: calc((1lh - var(--so-alert-icon-size)) / 2);
 	inline-size: var(--so-alert-icon-size);
 	block-size: var(--so-alert-icon-size);
 }
@@ -81,6 +85,17 @@
 	min-inline-size: var(--so-target-size);
 	min-block-size: var(--so-target-size);
 	padding: 0;
+	font-size: inherit;
+	line-height: inherit;
+	margin-block: calc((1lh - max(var(--so-alert-close-size), var(--so-target-size))) / 2);
+}
+
+/* The close slot has a wrapper, so Button's block auto margins cannot center its icon. */
+.so-alert__close > .so-button__text,
+.so-alert__close > .so-button__text > span {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .so-alert--size-sm {
