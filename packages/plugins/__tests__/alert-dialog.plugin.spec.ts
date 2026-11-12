@@ -18,9 +18,10 @@ afterEach(() => {
 })
 describe('AlertDialog plugins', () => {
 	it.each([
-		'<button class="so-alert-dialog__cancel">Cancel</button><button>Confirm</button>',
+		'<div class="so-alert-dialog__footer"><button class="so-alert-dialog__cancel">Cancel</button><button>Confirm</button></div>',
+		'<div class="so-alert-dialog__body"><div hidden><button class="so-alert-dialog__cancel">Nested cancel</button></div></div><div class="so-alert-dialog__footer"><button class="so-alert-dialog__cancel">Own cancel</button></div>',
 		'<button>Custom action</button>',
-		'<button class="so-alert-dialog__cancel" disabled>Cancel</button>',
+		'<div class="so-alert-dialog__footer"><button class="so-alert-dialog__cancel" disabled>Cancel</button></div>',
 	])('starts safely for %s and returns focus', async (content) => {
 		const opener = document.createElement('button')
 		const panel = document.createElement('div')
@@ -38,7 +39,9 @@ describe('AlertDialog plugins', () => {
 		await frame()
 		owner.visible = true
 		await frame()
-		const cancel = panel.querySelector('button.so-alert-dialog__cancel:not(:disabled)')
+		const cancel = panel.querySelector(
+			':scope > .so-alert-dialog__footer > button.so-alert-dialog__cancel:not(:disabled)',
+		)
 		expect(document.activeElement).toBe(cancel ?? panel)
 		owner.cancel()
 		expect(document.activeElement).toBe(opener)
