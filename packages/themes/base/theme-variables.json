@@ -341,7 +341,10 @@
     "--so-avatar-font-size-2xl": "Avatar fallback font size relative to its surrounding text, size 2xl.",
     "--so-avatar-group-overlap": "Inline overlap between sibling avatars and the overflow slot; default: 0.25rem.",
     "--so-avatar-group-count-padding": "Inline padding of the default avatar group overflow count; default: 0.375rem.",
-    "--so-separator-width": "Separator line thickness in either orientation; default: 1px."
+    "--so-separator-width": "Separator line thickness in either orientation; default: 1px.",
+    "--so-alert-dialog-width": "AlertDialog panel width; default: 32rem. Bounded by the viewport minus its offset.",
+    "--so-alert-dialog-height": "AlertDialog panel height; default: fit-content. Bounded by the viewport minus its offset.",
+    "--so-alert-dialog-offset": "AlertDialog distance from every viewport edge; default: 1rem."
   },
   "theme-reads": {
     "--so-dir-sign": "Writing direction sign from the nearest dir: 1 for left-to-right, -1 for right-to-left. Written by the base layer dir rules; themes multiply mirroring transforms (scale, gradient angle or offset) by it.",

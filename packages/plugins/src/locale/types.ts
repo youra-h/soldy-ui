@@ -16,6 +16,9 @@ import type { IListenable } from '../base/types'
  * языка свой, и склейка «слово + имя» навязала бы всем один (`formatName`).
  */
 export type TTranslations = {
+	/** Optional so complete custom locales created before AlertDialog remain compatible. */
+	readonly alertDialog?: { readonly confirm: string; readonly cancel: string }
+
 	/** Optional so complete custom locales created before Alert remain compatible. */
 	readonly alert?: { readonly close: string }
 

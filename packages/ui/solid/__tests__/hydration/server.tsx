@@ -31,6 +31,7 @@ import type { JSX } from 'solid-js'
 import { renderToStream, renderToString } from 'solid-js/web'
 import {
 	AlertPage,
+	AlertDialogPage,
 	SeparatorPage,
 	BadgePage,
 	AvatarPage,
@@ -92,6 +93,7 @@ export async function renderServerMarkup() {
 	return {
 		// Страница целиком (`renderToString`)
 		alert: renderToString(() => <AlertPage />),
+		'alert-dialog': renderToString(() => <AlertDialogPage />),
 		avatar: renderToString(() => <AvatarPage />),
 		separator: renderToString(() => <SeparatorPage />),
 		badge: renderToString(() => <BadgePage />),

@@ -26,6 +26,12 @@
       "scope": "Alert"
     },
     {
+      "name": "so-alert-dialog",
+      "sources": ["packages/core/src/components/custom/alert-dialog/alert-dialog.class.ts"],
+      "description": "AlertDialog so-alert-dialog emission.",
+      "scope": "AlertDialog"
+    },
+    {
       "name": "so-avatar",
       "sources": ["packages/core/src/components/custom/avatar/avatar.class.ts"],
       "description": "Noninteractive user image or initials/custom fallback.",
@@ -510,6 +516,94 @@
       ],
       "description": "Alert title part.",
       "scope": "Alert"
+    },
+    {
+      "name": "so-alert-dialog__action",
+      "sources": [
+        "packages/ui/angular/src/components/alert-dialog/alert-dialog.component.html",
+        "packages/ui/react/src/components/alert-dialog/AlertDialog.tsx",
+        "packages/ui/solid/src/components/alert-dialog/AlertDialog.tsx",
+        "packages/ui/svelte/src/components/alert-dialog/AlertDialog.svelte",
+        "packages/ui/vue/src/components/alert-dialog/AlertDialog.vue"
+      ],
+      "description": "AlertDialog action emission.",
+      "scope": "AlertDialog"
+    },
+    {
+      "name": "so-alert-dialog__backdrop",
+      "sources": [
+        "packages/ui/angular/src/components/alert-dialog/alert-dialog.component.html",
+        "packages/ui/react/src/components/alert-dialog/AlertDialog.tsx",
+        "packages/ui/solid/src/components/alert-dialog/AlertDialog.tsx",
+        "packages/ui/svelte/src/components/alert-dialog/AlertDialog.svelte",
+        "packages/ui/vue/src/components/alert-dialog/AlertDialog.vue",
+        "packages/ui/webc/src/components/alert-dialog/alert-dialog.template.ts"
+      ],
+      "description": "AlertDialog backdrop emission.",
+      "scope": "AlertDialog"
+    },
+    {
+      "name": "so-alert-dialog__body",
+      "sources": [
+        "packages/ui/angular/src/components/alert-dialog/alert-dialog.component.html",
+        "packages/ui/react/src/components/alert-dialog/AlertDialog.tsx",
+        "packages/ui/solid/src/components/alert-dialog/AlertDialog.tsx",
+        "packages/ui/svelte/src/components/alert-dialog/AlertDialog.svelte",
+        "packages/ui/vue/src/components/alert-dialog/AlertDialog.vue",
+        "packages/ui/webc/src/components/alert-dialog/alert-dialog.template.ts"
+      ],
+      "description": "AlertDialog body emission.",
+      "scope": "AlertDialog"
+    },
+    {
+      "name": "so-alert-dialog__cancel",
+      "sources": [
+        "packages/ui/angular/src/components/alert-dialog/alert-dialog.component.html",
+        "packages/ui/react/src/components/alert-dialog/AlertDialog.tsx",
+        "packages/ui/solid/src/components/alert-dialog/AlertDialog.tsx",
+        "packages/ui/svelte/src/components/alert-dialog/AlertDialog.svelte",
+        "packages/ui/vue/src/components/alert-dialog/AlertDialog.vue"
+      ],
+      "description": "AlertDialog cancel emission.",
+      "scope": "AlertDialog"
+    },
+    {
+      "name": "so-alert-dialog__close",
+      "sources": [
+        "packages/ui/angular/src/components/alert-dialog/alert-dialog.component.html",
+        "packages/ui/react/src/components/alert-dialog/AlertDialog.tsx",
+        "packages/ui/solid/src/components/alert-dialog/AlertDialog.tsx",
+        "packages/ui/svelte/src/components/alert-dialog/AlertDialog.svelte",
+        "packages/ui/vue/src/components/alert-dialog/AlertDialog.vue"
+      ],
+      "description": "AlertDialog close emission.",
+      "scope": "AlertDialog"
+    },
+    {
+      "name": "so-alert-dialog__footer",
+      "sources": [
+        "packages/ui/angular/src/components/alert-dialog/alert-dialog.component.html",
+        "packages/ui/react/src/components/alert-dialog/AlertDialog.tsx",
+        "packages/ui/solid/src/components/alert-dialog/AlertDialog.tsx",
+        "packages/ui/svelte/src/components/alert-dialog/AlertDialog.svelte",
+        "packages/ui/vue/src/components/alert-dialog/AlertDialog.vue",
+        "packages/ui/webc/src/components/alert-dialog/alert-dialog.template.ts"
+      ],
+      "description": "AlertDialog footer emission.",
+      "scope": "AlertDialog"
+    },
+    {
+      "name": "so-alert-dialog__title",
+      "sources": [
+        "packages/ui/angular/src/components/alert-dialog/alert-dialog.component.html",
+        "packages/ui/react/src/components/alert-dialog/AlertDialog.tsx",
+        "packages/ui/solid/src/components/alert-dialog/AlertDialog.tsx",
+        "packages/ui/svelte/src/components/alert-dialog/AlertDialog.svelte",
+        "packages/ui/vue/src/components/alert-dialog/AlertDialog.vue",
+        "packages/ui/webc/src/components/alert-dialog/alert-dialog.template.ts"
+      ],
+      "description": "AlertDialog title emission.",
+      "scope": "AlertDialog"
     },
     {
       "name": "so-avatar__fallback",

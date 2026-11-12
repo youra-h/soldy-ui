@@ -26,6 +26,7 @@ import {
 	DateInputDescriptor,
 	DatePickerDescriptor,
 	DialogDescriptor,
+	AlertDialogDescriptor,
 	DragAndDropDescriptor,
 	DrawerDescriptor,
 	FieldDescriptor,
@@ -361,6 +362,14 @@ export const COMPONENTS: readonly TComponentEntry[] = [
 		group: 'overlays',
 		span: 1,
 		description: 'Подсказка у элемента: при наведении и при фокусе с клавиатуры',
+	},
+	{
+		id: 'alert-dialog',
+		label: 'AlertDialog',
+		descriptor: AlertDialogDescriptor,
+		group: 'overlays',
+		span: 1,
+		description: 'Подтверждение действия: безопасная отмена и красная кнопка подтверждения',
 	},
 	{
 		id: 'dialog',

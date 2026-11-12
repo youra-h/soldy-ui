@@ -1,3 +1,4 @@
+import type { TPluginEvents } from '../../../base'
 import type { IDialog } from '@soxa-ui/core'
 import { TModalNamesPlugin } from '../../overlay/modal-names'
 import type { TTranslations } from '../../../locale/types'
@@ -9,7 +10,9 @@ import type { TTranslations } from '../../../locale/types'
  * Имя разворота одно на оба состояния: кнопка — переключатель, и состояние
  * она сообщает `aria-pressed`, который пишет само окно.
  */
-export class TDialogNamesPlugin extends TModalNamesPlugin<IDialog> {
+export class TDialogNamesPlugin<
+	TEvents extends TPluginEvents = TPluginEvents,
+> extends TModalNamesPlugin<IDialog, TEvents> {
 	protected override _name(owner: IDialog, translations: TTranslations): void {
 		super._name(owner, translations)
 

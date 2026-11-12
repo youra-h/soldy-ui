@@ -46,6 +46,7 @@ import {
 	TDateInput,
 	TDatePicker,
 	TDialog,
+	TAlertDialog,
 	TDragAndDrop,
 	TDrawer,
 	TEvented,
@@ -113,6 +114,7 @@ import {
 	DateInput,
 	DatePicker,
 	Dialog,
+	AlertDialog,
 	DragAndDrop,
 	Drawer,
 	Field,
@@ -604,6 +606,16 @@ const COMPONENTS: Readonly<Record<string, Readonly<Record<string, TCase>>>> = {
 	 * Видимое окно: у открытого подписаны все плагины модального слоя — фокус,
 	 * немой фон, замок прокрутки, нажатие мимо.
 	 */
+	AlertDialog: {
+		'visible ctrl': overCtrl(
+			() => new TAlertDialog({ visible: true }),
+			(ctrl) => (
+				<AlertDialog ctrl={ctrl} title="Delete?">
+					Cannot undo
+				</AlertDialog>
+			),
+		),
+	},
 	Dialog: {
 		'ctrl видим': overCtrl(
 			() => new TDialog({ visible: true }),

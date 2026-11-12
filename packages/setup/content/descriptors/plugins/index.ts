@@ -131,3 +131,8 @@ export { ScrollFocusPluginDescriptor } from './scroll-focus.plugin'
 
 export { AlertNamesPluginDescriptor } from './alert-names.plugin'
 export { AvatarImagePluginDescriptor } from './avatar-image.plugin'
+export {
+	AlertDialogFocusPluginDescriptor,
+	AlertDialogLayoutPluginDescriptor,
+	AlertDialogNamesPluginDescriptor,
+} from './alert-dialog.plugin'

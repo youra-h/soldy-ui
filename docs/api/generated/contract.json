@@ -79,6 +79,29 @@
       }
     },
     {
+      "id": "alert-dialog",
+      "name": "AlertDialog",
+      "contract": "alert-dialog",
+      "sources": [
+        {
+          "role": "descriptor",
+          "descriptor": "AlertDialogDescriptor",
+          "source": "packages/setup/content/descriptors/components/alert-dialog.descriptor.ts"
+        }
+      ],
+      "frameworks": {
+        "vue": { "exportName": "AlertDialog" },
+        "react": { "exportName": "AlertDialog" },
+        "angular": {
+          "exportName": "TAlertDialogComponent",
+          "selector": "div[so-alert-dialog], [so-alert-dialog]"
+        },
+        "solid": { "exportName": "AlertDialog" },
+        "svelte": { "exportName": "AlertDialog" },
+        "webc": { "exportName": "TAlertDialogElement", "selector": "div[is=\"so-alert-dialog\"]" }
+      }
+    },
+    {
       "id": "avatar-group",
       "name": "AvatarGroup",
       "contract": "avatar-group",
@@ -3890,6 +3913,643 @@
             "title": { "name": "title", "syntax": "slot=\"title\"" },
             "default": { "name": "default", "syntax": "(unnamed slot)" },
             "action": { "name": "action", "syntax": "slot=\"action\"" },
+            "close-icon": { "name": "close-icon", "syntax": "slot=\"close-icon\"" }
+          }
+        }
+      }
+    },
+    "alert-dialog": {
+      "source": "packages/setup/content/descriptors/components/alert-dialog.descriptor.ts",
+      "props": [
+        {
+          "name": "ctrl",
+          "canonicalName": "ctrl",
+          "type": "import(\"@soxa-ui/core\").TAlertDialog | undefined",
+          "declaredType": "TInstance",
+          "required": false,
+          "description": "Готовый инстанс ядра вместо собранного по пропсам. Только сам объект:\nреактивная обёртка фреймворка ему не нужна — ядро шлёт события само.",
+          "hasDefault": false
+        },
+        {
+          "name": "embedded",
+          "canonicalName": "embedded",
+          "type": "string | undefined",
+          "declaredType": "string",
+          "required": false,
+          "description": "Имя места, если компонент — деталь разметки другого компонента soxa\n(`tags.close`). Ставит разметка библиотеки, а не потребитель: по нему\n`usePlugins` со `scope: 'own'` пропускает вложенный компонент.",
+          "hasDefault": false
+        },
+        {
+          "name": "pluginProps",
+          "canonicalName": "pluginProps",
+          "type": "import(\"@soxa-ui/setup\").TExternalPluginProps | undefined",
+          "declaredType": "TExternalPluginProps",
+          "required": false,
+          "description": "Значения пропсов плагинов, поставленных снаружи (`usePlugins`,\n`bundle.use`), по имени пропа: `{ timer_ms: 500 }`. Типы ключей\nприложение дописывает в `IExternalPluginProps`.",
+          "hasDefault": false
+        },
+        {
+          "name": "rendered",
+          "canonicalName": "rendered",
+          "type": "boolean | undefined",
+          "declaredType": "boolean",
+          "required": false,
+          "description": "Отрисован ли компонент (аналог v-if)",
+          "hasDefault": true,
+          "default": "true"
+        },
+        {
+          "name": "visible",
+          "canonicalName": "visible",
+          "type": "boolean | undefined",
+          "declaredType": "boolean",
+          "required": false,
+          "description": "Виден ли компонент (логическая видимость)",
+          "hasDefault": true,
+          "default": "false"
+        },
+        {
+          "name": "tag",
+          "canonicalName": "tag",
+          "type": "string | object | undefined",
+          "declaredType": "string | object",
+          "required": false,
+          "hasDefault": true,
+          "default": "\"div\""
+        },
+        {
+          "name": "direction",
+          "canonicalName": "direction",
+          "type": "import(\"@soxa-ui/core\").TDirection | undefined",
+          "declaredType": "TDirection",
+          "values": ["ltr", "rtl", "inherit"],
+          "required": false,
+          "description": "Направление письма; по умолчанию `'inherit'` — наследуется от предка",
+          "hasDefault": true,
+          "default": "\"inherit\""
+        },
+        {
+          "name": "target",
+          "canonicalName": "target",
+          "type": "string | undefined",
+          "declaredType": "string",
+          "required": false,
+          "description": "CSS-селектор для Teleport (по умолчанию body)",
+          "hasDefault": true,
+          "default": "\"body\""
+        },
+        {
+          "name": "width",
+          "canonicalName": "width",
+          "type": "string | number | undefined",
+          "declaredType": "number | string",
+          "required": false,
+          "description": "Ширина окна: число — px, строка — CSS-значение. Не задана — ширину даёт\nтема. `auto` — по экрану с отступом, по содержимому — `fit-content`",
+          "hasDefault": true,
+          "default": "undefined"
+        },
+        {
+          "name": "height",
+          "canonicalName": "height",
+          "type": "string | number | undefined",
+          "declaredType": "number | string",
+          "required": false,
+          "description": "Высота окна: число — px, строка — CSS-значение. Не задана — по\nсодержимому. `auto` — по экрану с отступом",
+          "hasDefault": true,
+          "default": "undefined"
+        },
+        {
+          "name": "closable",
+          "canonicalName": "closable",
+          "type": "boolean | undefined",
+          "declaredType": "boolean",
+          "required": false,
+          "description": "Показывать ли кнопку закрытия",
+          "hasDefault": true,
+          "default": "true"
+        },
+        {
+          "name": "dismissible",
+          "canonicalName": "dismissible",
+          "type": "boolean | undefined",
+          "declaredType": "boolean",
+          "required": false,
+          "description": "Закрывают ли панель нажатие мимо и Escape. Выключено — только кнопка\nзакрытия, свой жест панели и код",
+          "hasDefault": true,
+          "default": "true"
+        },
+        {
+          "name": "dismiss_enabled",
+          "canonicalName": "dismiss:enabled",
+          "type": "boolean | undefined",
+          "required": false,
+          "hasDefault": true,
+          "default": "false"
+        },
+        {
+          "name": "hideOutside_enabled",
+          "canonicalName": "hideOutside:enabled",
+          "type": "boolean | undefined",
+          "required": false,
+          "hasDefault": true,
+          "default": "false"
+        },
+        {
+          "name": "scrollLock_enabled",
+          "canonicalName": "scrollLock:enabled",
+          "type": "boolean | undefined",
+          "required": false,
+          "hasDefault": true,
+          "default": "false"
+        }
+      ],
+      "events": [
+        {
+          "name": "bundle:create",
+          "type": "(bundle: unknown) => void",
+          "description": "Плагины компонента созданы при монтировании; аргумент — их bundle."
+        },
+        {
+          "name": "plugin:event",
+          "type": "(event: import(\"@soxa-ui/core\").TPluginEvent) => void",
+          "description": "Событие внешнего плагина: полное имя (`timer:tick`) и аргументы."
+        },
+        { "name": "show", "type": "() => void", "description": "show" },
+        { "name": "hide", "type": "() => void", "description": "hide" },
+        {
+          "name": "show:before",
+          "type": "(e: import(\"@soxa-ui/core\").TActionEvent) => void",
+          "description": "show:before — вызов e.preventDefault() отменяет показ"
+        },
+        {
+          "name": "hide:before",
+          "type": "(e: import(\"@soxa-ui/core\").TActionEvent) => void",
+          "description": "hide:before — вызов e.preventDefault() отменяет скрытие"
+        },
+        {
+          "name": "ready",
+          "type": "(value: boolean) => void",
+          "description": "Component availability changed: true when the instance has an announced\nroot DOM element, false when that root is removed or replaced.\nDoes not wait for other plugins' DOM handlers or asynchronous work."
+        },
+        {
+          "name": "change:rendered",
+          "type": "(payload: import(\"@soxa-ui/core\").TValuePayload<boolean>) => void",
+          "description": "change:rendered"
+        },
+        {
+          "name": "change:visible",
+          "type": "(payload: import(\"@soxa-ui/core\").TValuePayload<boolean>) => void",
+          "description": "change:visible"
+        },
+        {
+          "name": "change:tag",
+          "type": "(payload: import(\"@soxa-ui/core\").TValuePayload<string | object>) => void",
+          "description": "change:tag"
+        },
+        {
+          "name": "change:direction",
+          "type": "(payload: import(\"@soxa-ui/core\").TValuePayload<import(\"@soxa-ui/core\").TDirection>) => void",
+          "description": "change:direction"
+        },
+        {
+          "name": "change:zIndex",
+          "type": "(payload: import(\"@soxa-ui/core\").TValuePayload<number>) => void",
+          "description": "change:zIndex — номер слоя сменился: слой с узлом поднят над всеми, кого\nпоказали раньше, узел подключён (номер места открыт) или снят (`0`)"
+        },
+        {
+          "name": "change:target",
+          "type": "(payload: import(\"@soxa-ui/core\").TValuePayload<string>) => void",
+          "description": "change:target"
+        },
+        {
+          "name": "close:before",
+          "type": "(e: import(\"@soxa-ui/core\").TCloseEvent) => void",
+          "description": "close:before — пользователь закрывает панель: кнопкой закрытия, нажатием\nмимо, Escape или жестом (`e.reason`). `e.preventDefault()` оставляет её\nоткрытой. Запись `visible` из кода и `v-model` его не шлют."
+        },
+        {
+          "name": "change:width",
+          "type": "(payload: import(\"@soxa-ui/core\").TValuePayload<number | string | undefined>) => void",
+          "description": "change:width"
+        },
+        {
+          "name": "change:height",
+          "type": "(payload: import(\"@soxa-ui/core\").TValuePayload<number | string | undefined>) => void",
+          "description": "change:height"
+        },
+        {
+          "name": "change:closable",
+          "type": "(payload: import(\"@soxa-ui/core\").TValuePayload<boolean>) => void",
+          "description": "change:closable"
+        },
+        {
+          "name": "change:dismissible",
+          "type": "(payload: import(\"@soxa-ui/core\").TValuePayload<boolean>) => void",
+          "description": "change:dismissible"
+        },
+        {
+          "name": "confirm",
+          "type": "(event: import(\"@soxa-ui/core\").TActionEvent) => void",
+          "description": "A choice may be prevented to keep the dialog open, for example during an async operation."
+        },
+        { "name": "cancel", "type": "(event: import(\"@soxa-ui/core\").TActionEvent) => void" },
+        { "name": "element:ready", "type": "(element: Element) => void" },
+        { "name": "element:removed", "type": "() => void" },
+        { "name": "dismiss:dismiss", "type": "(event: MouseEvent | FocusEvent) => void" },
+        {
+          "name": "dismiss:change:enabled",
+          "type": "(payload: import(\"@soxa-ui/core\").TValuePayload<boolean>) => void"
+        },
+        {
+          "name": "hideOutside:change:enabled",
+          "type": "(payload: import(\"@soxa-ui/core\").TValuePayload<boolean>) => void"
+        },
+        {
+          "name": "scrollLock:change:enabled",
+          "type": "(payload: import(\"@soxa-ui/core\").TValuePayload<boolean>) => void"
+        }
+      ],
+      "slots": [
+        { "name": "title", "description": "Dialog title and accessible name", "scope": {} },
+        { "name": "default", "description": "Explanation and accessible description", "scope": {} },
+        {
+          "name": "action",
+          "description": "Content of the default confirmation button",
+          "scope": {}
+        },
+        {
+          "name": "cancel",
+          "description": "Content of the default cancellation button",
+          "scope": {}
+        },
+        {
+          "name": "footer",
+          "description": "Replace the entire action row, including with an explicitly empty slot",
+          "scope": {
+            "confirm": { "type": "() => void", "required": true },
+            "cancel": { "type": "() => void", "required": true }
+          }
+        },
+        { "name": "close-icon", "description": "Close button icon", "scope": {} }
+      ],
+      "frameworks": {
+        "vue": {
+          "props": {
+            "ctrl": ":ctrl",
+            "embedded": ":embedded",
+            "pluginProps": ":pluginProps",
+            "rendered": ":rendered",
+            "visible": ":visible",
+            "tag": ":tag",
+            "direction": ":direction",
+            "target": ":target",
+            "width": ":width",
+            "height": ":height",
+            "closable": ":closable",
+            "dismissible": ":dismissible",
+            "dismiss_enabled": ":dismiss_enabled",
+            "hideOutside_enabled": ":hideOutside_enabled",
+            "scrollLock_enabled": ":scrollLock_enabled"
+          },
+          "events": {
+            "bundle:create": "@bundle:create",
+            "plugin:event": "@plugin:event",
+            "show": "@show",
+            "hide": "@hide",
+            "show:before": "@show:before",
+            "hide:before": "@hide:before",
+            "ready": "@ready",
+            "change:rendered": "@change:rendered",
+            "change:visible": "@change:visible",
+            "change:tag": "@change:tag",
+            "change:direction": "@change:direction",
+            "change:zIndex": "@change:zIndex",
+            "change:target": "@change:target",
+            "close:before": "@close:before",
+            "change:width": "@change:width",
+            "change:height": "@change:height",
+            "change:closable": "@change:closable",
+            "change:dismissible": "@change:dismissible",
+            "confirm": "@confirm",
+            "cancel": "@cancel",
+            "element:ready": "@element:ready",
+            "element:removed": "@element:removed",
+            "dismiss:dismiss": "@dismiss:dismiss",
+            "dismiss:change:enabled": "@dismiss:change:enabled",
+            "hideOutside:change:enabled": "@hideOutside:change:enabled",
+            "scrollLock:change:enabled": "@scrollLock:change:enabled"
+          },
+          "models": {
+            "rendered": "@update:rendered",
+            "visible": "@update:visible",
+            "tag": "@update:tag",
+            "direction": "@update:direction",
+            "target": "@update:target",
+            "width": "@update:width",
+            "height": "@update:height",
+            "closable": "@update:closable",
+            "dismissible": "@update:dismissible",
+            "dismiss_enabled": "@update:dismiss_enabled",
+            "hideOutside_enabled": "@update:hideOutside_enabled",
+            "scrollLock_enabled": "@update:scrollLock_enabled"
+          },
+          "slots": {
+            "title": { "name": "title", "syntax": "<template #title>" },
+            "default": { "name": "default", "syntax": "<template #default>" },
+            "action": { "name": "action", "syntax": "<template #action>" },
+            "cancel": { "name": "cancel", "syntax": "<template #cancel>" },
+            "footer": { "name": "footer", "syntax": "<template #footer>" },
+            "close-icon": { "name": "close-icon", "syntax": "<template #close-icon>" }
+          }
+        },
+        "react": {
+          "props": {
+            "ctrl": "ctrl",
+            "embedded": "embedded",
+            "pluginProps": "pluginProps",
+            "rendered": "rendered",
+            "visible": "visible",
+            "tag": "tag",
+            "direction": "direction",
+            "target": "target",
+            "width": "width",
+            "height": "height",
+            "closable": "closable",
+            "dismissible": "dismissible",
+            "dismiss_enabled": "dismiss_enabled",
+            "hideOutside_enabled": "hideOutside_enabled",
+            "scrollLock_enabled": "scrollLock_enabled"
+          },
+          "events": {
+            "bundle:create": "onBundleCreate",
+            "plugin:event": "onPluginEvent",
+            "show": "onShow",
+            "hide": "onHide",
+            "show:before": "onShowBefore",
+            "hide:before": "onHideBefore",
+            "ready": "onReady",
+            "change:rendered": "onChangeRendered",
+            "change:visible": "onChangeVisible",
+            "change:tag": "onChangeTag",
+            "change:direction": "onChangeDirection",
+            "change:zIndex": "onChangeZIndex",
+            "change:target": "onChangeTarget",
+            "close:before": "onCloseBefore",
+            "change:width": "onChangeWidth",
+            "change:height": "onChangeHeight",
+            "change:closable": "onChangeClosable",
+            "change:dismissible": "onChangeDismissible",
+            "confirm": "onConfirm",
+            "cancel": "onCancel",
+            "element:ready": "onElementReady",
+            "element:removed": "onElementRemoved",
+            "dismiss:dismiss": "onDismissDismiss",
+            "dismiss:change:enabled": "onDismissChangeEnabled",
+            "hideOutside:change:enabled": "onHideOutsideChangeEnabled",
+            "scrollLock:change:enabled": "onScrollLockChangeEnabled"
+          },
+          "models": {},
+          "slots": {
+            "title": { "name": "title", "syntax": "title" },
+            "default": { "name": "children", "syntax": "children" },
+            "action": { "name": "action", "syntax": "action" },
+            "cancel": { "name": "cancel", "syntax": "cancel" },
+            "footer": { "name": "footer", "syntax": "footer" },
+            "close-icon": { "name": "close-icon", "syntax": "close-icon" }
+          }
+        },
+        "angular": {
+          "props": {
+            "ctrl": "[ctrl]",
+            "embedded": "[embedded]",
+            "pluginProps": "[pluginProps]",
+            "rendered": "[rendered]",
+            "visible": "[visible]",
+            "direction": "[direction]",
+            "target": "[target]",
+            "width": "[width]",
+            "height": "[height]",
+            "closable": "[closable]",
+            "dismissible": "[dismissible]",
+            "dismiss_enabled": "[dismiss_enabled]",
+            "hideOutside_enabled": "[hideOutside_enabled]",
+            "scrollLock_enabled": "[scrollLock_enabled]"
+          },
+          "events": {
+            "bundle:create": "(soBundleCreate)",
+            "plugin:event": "(soPluginEvent)",
+            "show": "(soShow)",
+            "hide": "(soHide)",
+            "show:before": "(soShowBefore)",
+            "hide:before": "(soHideBefore)",
+            "ready": "(soReady)",
+            "change:rendered": "(soChangeRendered)",
+            "change:visible": "(soChangeVisible)",
+            "change:tag": "(soChangeTag)",
+            "change:direction": "(soChangeDirection)",
+            "change:zIndex": "(soChangeZIndex)",
+            "change:target": "(soChangeTarget)",
+            "close:before": "(soCloseBefore)",
+            "change:width": "(soChangeWidth)",
+            "change:height": "(soChangeHeight)",
+            "change:closable": "(soChangeClosable)",
+            "change:dismissible": "(soChangeDismissible)",
+            "confirm": "(soConfirm)",
+            "cancel": "(soCancel)",
+            "element:ready": "(soElementReady)",
+            "element:removed": "(soElementRemoved)",
+            "dismiss:dismiss": "(soDismissDismiss)",
+            "dismiss:change:enabled": "(soDismissChangeEnabled)",
+            "hideOutside:change:enabled": "(soHideOutsideChangeEnabled)",
+            "scrollLock:change:enabled": "(soScrollLockChangeEnabled)"
+          },
+          "models": {
+            "rendered": "(renderedChange)",
+            "visible": "(visibleChange)",
+            "tag": "(tagChange)",
+            "direction": "(directionChange)",
+            "target": "(targetChange)",
+            "width": "(widthChange)",
+            "height": "(heightChange)",
+            "closable": "(closableChange)",
+            "dismissible": "(dismissibleChange)",
+            "dismiss_enabled": "(dismiss_enabledChange)",
+            "hideOutside_enabled": "(hideOutside_enabledChange)",
+            "scrollLock_enabled": "(scrollLock_enabledChange)"
+          },
+          "slots": {
+            "title": { "name": "title", "syntax": "slot=\"title\"" },
+            "default": { "name": "default", "syntax": "<ng-content>" },
+            "action": { "name": "action", "syntax": "slot=\"action\"" },
+            "cancel": { "name": "cancel", "syntax": "slot=\"cancel\"" },
+            "footer": { "name": "footer", "syntax": "<ng-template slot=\"footer\">" },
+            "close-icon": { "name": "close-icon", "syntax": "slot=\"close-icon\"" }
+          }
+        },
+        "solid": {
+          "props": {
+            "ctrl": "ctrl",
+            "embedded": "embedded",
+            "pluginProps": "pluginProps",
+            "rendered": "rendered",
+            "visible": "visible",
+            "tag": "tag",
+            "direction": "direction",
+            "target": "target",
+            "width": "width",
+            "height": "height",
+            "closable": "closable",
+            "dismissible": "dismissible",
+            "dismiss_enabled": "dismiss_enabled",
+            "hideOutside_enabled": "hideOutside_enabled",
+            "scrollLock_enabled": "scrollLock_enabled"
+          },
+          "events": {
+            "bundle:create": "onBundleCreate",
+            "plugin:event": "onPluginEvent",
+            "show": "onShow",
+            "hide": "onHide",
+            "show:before": "onShowBefore",
+            "hide:before": "onHideBefore",
+            "ready": "onReady",
+            "change:rendered": "onChangeRendered",
+            "change:visible": "onChangeVisible",
+            "change:tag": "onChangeTag",
+            "change:direction": "onChangeDirection",
+            "change:zIndex": "onChangeZIndex",
+            "change:target": "onChangeTarget",
+            "close:before": "onCloseBefore",
+            "change:width": "onChangeWidth",
+            "change:height": "onChangeHeight",
+            "change:closable": "onChangeClosable",
+            "change:dismissible": "onChangeDismissible",
+            "confirm": "onConfirm",
+            "cancel": "onCancel",
+            "element:ready": "onElementReady",
+            "element:removed": "onElementRemoved",
+            "dismiss:dismiss": "onDismissDismiss",
+            "dismiss:change:enabled": "onDismissChangeEnabled",
+            "hideOutside:change:enabled": "onHideOutsideChangeEnabled",
+            "scrollLock:change:enabled": "onScrollLockChangeEnabled"
+          },
+          "models": {},
+          "slots": {
+            "title": { "name": "title", "syntax": "title" },
+            "default": { "name": "children", "syntax": "children" },
+            "action": { "name": "action", "syntax": "action" },
+            "cancel": { "name": "cancel", "syntax": "cancel" },
+            "footer": { "name": "footer", "syntax": "footer" },
+            "close-icon": { "name": "close-icon", "syntax": "close-icon" }
+          }
+        },
+        "svelte": {
+          "props": {
+            "ctrl": "ctrl",
+            "embedded": "embedded",
+            "pluginProps": "pluginProps",
+            "rendered": "rendered",
+            "visible": "visible",
+            "tag": "tag",
+            "direction": "direction",
+            "target": "target",
+            "width": "width",
+            "height": "height",
+            "closable": "closable",
+            "dismissible": "dismissible",
+            "dismiss_enabled": "dismiss_enabled",
+            "hideOutside_enabled": "hideOutside_enabled",
+            "scrollLock_enabled": "scrollLock_enabled"
+          },
+          "events": {
+            "bundle:create": "onBundleCreate",
+            "plugin:event": "onPluginEvent",
+            "show": "onShow",
+            "hide": "onHide",
+            "show:before": "onShowBefore",
+            "hide:before": "onHideBefore",
+            "ready": "onReady",
+            "change:rendered": "onChangeRendered",
+            "change:visible": "onChangeVisible",
+            "change:tag": "onChangeTag",
+            "change:direction": "onChangeDirection",
+            "change:zIndex": "onChangeZIndex",
+            "change:target": "onChangeTarget",
+            "close:before": "onCloseBefore",
+            "change:width": "onChangeWidth",
+            "change:height": "onChangeHeight",
+            "change:closable": "onChangeClosable",
+            "change:dismissible": "onChangeDismissible",
+            "confirm": "onConfirm",
+            "cancel": "onCancel",
+            "element:ready": "onElementReady",
+            "element:removed": "onElementRemoved",
+            "dismiss:dismiss": "onDismissDismiss",
+            "dismiss:change:enabled": "onDismissChangeEnabled",
+            "hideOutside:change:enabled": "onHideOutsideChangeEnabled",
+            "scrollLock:change:enabled": "onScrollLockChangeEnabled"
+          },
+          "models": {},
+          "slots": {
+            "title": { "name": "title", "syntax": "{#snippet title()}" },
+            "default": { "name": "children", "syntax": "{#snippet children()}" },
+            "action": { "name": "action", "syntax": "{#snippet action()}" },
+            "cancel": { "name": "cancel", "syntax": "{#snippet cancel()}" },
+            "footer": { "name": "footer", "syntax": "{#snippet footer(scope)}" },
+            "close-icon": { "name": "close-icon", "syntax": "close-icon={content}" }
+          }
+        },
+        "webc": {
+          "props": {
+            "ctrl": "ctrl",
+            "embedded": "embedded",
+            "pluginProps": "pluginProps",
+            "rendered": "rendered",
+            "visible": "visible",
+            "tag": "tag",
+            "direction": "direction",
+            "target": "target",
+            "width": "width",
+            "height": "height",
+            "closable": "closable",
+            "dismissible": "dismissible",
+            "dismiss_enabled": "dismiss_enabled",
+            "hideOutside_enabled": "hideOutside_enabled",
+            "scrollLock_enabled": "scrollLock_enabled"
+          },
+          "events": {
+            "bundle:create": "addEventListener('so:bundle:create', handler)",
+            "plugin:event": "addEventListener('so:plugin:event', handler)",
+            "show": "addEventListener('so:show', handler)",
+            "hide": "addEventListener('so:hide', handler)",
+            "show:before": "addEventListener('so:show:before', handler)",
+            "hide:before": "addEventListener('so:hide:before', handler)",
+            "ready": "addEventListener('so:ready', handler)",
+            "change:rendered": "addEventListener('so:change:rendered', handler)",
+            "change:visible": "addEventListener('so:change:visible', handler)",
+            "change:tag": "addEventListener('so:change:tag', handler)",
+            "change:direction": "addEventListener('so:change:direction', handler)",
+            "change:zIndex": "addEventListener('so:change:zIndex', handler)",
+            "change:target": "addEventListener('so:change:target', handler)",
+            "close:before": "addEventListener('so:close:before', handler)",
+            "change:width": "addEventListener('so:change:width', handler)",
+            "change:height": "addEventListener('so:change:height', handler)",
+            "change:closable": "addEventListener('so:change:closable', handler)",
+            "change:dismissible": "addEventListener('so:change:dismissible', handler)",
+            "confirm": "addEventListener('so:confirm', handler)",
+            "cancel": "addEventListener('so:cancel', handler)",
+            "element:ready": "addEventListener('so:element:ready', handler)",
+            "element:removed": "addEventListener('so:element:removed', handler)",
+            "dismiss:dismiss": "addEventListener('so:dismiss:dismiss', handler)",
+            "dismiss:change:enabled": "addEventListener('so:dismiss:change:enabled', handler)",
+            "hideOutside:change:enabled": "addEventListener('so:hideOutside:change:enabled', handler)",
+            "scrollLock:change:enabled": "addEventListener('so:scrollLock:change:enabled', handler)"
+          },
+          "models": {},
+          "slots": {
+            "title": { "name": "title", "syntax": "slot=\"title\"" },
+            "default": { "name": "default", "syntax": "(unnamed slot)" },
+            "action": { "name": "action", "syntax": "slot=\"action\"" },
+            "cancel": { "name": "cancel", "syntax": "slot=\"cancel\"" },
+            "footer": { "name": "footer", "syntax": "slot=\"footer\"" },
             "close-icon": { "name": "close-icon", "syntax": "slot=\"close-icon\"" }
           }
         }
@@ -12582,7 +13242,7 @@
         {
           "name": "ctrl",
           "canonicalName": "ctrl",
-          "type": "import(\"@soxa-ui/core\").TDialog | undefined",
+          "type": "import(\"@soxa-ui/core\").TDialog<import(\"@soxa-ui/core\").IDialogProps, import(\"@soxa-ui/core\").TDialogEvents> | undefined",
           "declaredType": "TInstance",
           "required": false,
           "description": "Готовый инстанс ядра вместо собранного по пропсам. Только сам объект:\nреактивная обёртка фреймворка ему не нужна — ядро шлёт события само.",
@@ -47755,6 +48415,48 @@
           "models": {},
           "slots": {}
         }
+      }
+    },
+    "AlertDialogFocusPluginDescriptor": {
+      "source": "packages/setup/content/descriptors/plugins/alert-dialog.plugin.ts",
+      "props": [],
+      "events": [],
+      "slots": [],
+      "frameworks": {
+        "vue": { "props": {}, "events": {}, "models": {}, "slots": {} },
+        "react": { "props": {}, "events": {}, "models": {}, "slots": {} },
+        "angular": { "props": {}, "events": {}, "models": {}, "slots": {} },
+        "solid": { "props": {}, "events": {}, "models": {}, "slots": {} },
+        "svelte": { "props": {}, "events": {}, "models": {}, "slots": {} },
+        "webc": { "props": {}, "events": {}, "models": {}, "slots": {} }
+      }
+    },
+    "AlertDialogLayoutPluginDescriptor": {
+      "source": "packages/setup/content/descriptors/plugins/alert-dialog.plugin.ts",
+      "props": [],
+      "events": [],
+      "slots": [],
+      "frameworks": {
+        "vue": { "props": {}, "events": {}, "models": {}, "slots": {} },
+        "react": { "props": {}, "events": {}, "models": {}, "slots": {} },
+        "angular": { "props": {}, "events": {}, "models": {}, "slots": {} },
+        "solid": { "props": {}, "events": {}, "models": {}, "slots": {} },
+        "svelte": { "props": {}, "events": {}, "models": {}, "slots": {} },
+        "webc": { "props": {}, "events": {}, "models": {}, "slots": {} }
+      }
+    },
+    "AlertDialogNamesPluginDescriptor": {
+      "source": "packages/setup/content/descriptors/plugins/alert-dialog.plugin.ts",
+      "props": [],
+      "events": [],
+      "slots": [],
+      "frameworks": {
+        "vue": { "props": {}, "events": {}, "models": {}, "slots": {} },
+        "react": { "props": {}, "events": {}, "models": {}, "slots": {} },
+        "angular": { "props": {}, "events": {}, "models": {}, "slots": {} },
+        "solid": { "props": {}, "events": {}, "models": {}, "slots": {} },
+        "svelte": { "props": {}, "events": {}, "models": {}, "slots": {} },
+        "webc": { "props": {}, "events": {}, "models": {}, "slots": {} }
       }
     },
     "AlertNamesPluginDescriptor": {

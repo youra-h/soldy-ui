@@ -24,6 +24,7 @@
 .so-menu__panel,
 .so-menu-item__panel,
 .so-dialog,
+.so-alert-dialog,
 .so-drawer,
 .so-toasts-item__card {
 	--so-place-surface: var(--so-panel-surface);

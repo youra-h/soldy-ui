@@ -53,6 +53,10 @@
 	@include meta.load-css('components/date-input/date-input');
 }
 
+@layer components.so.alert-dialog {
+	@include meta.load-css('components/alert-dialog/alert-dialog');
+}
+
 @layer components.so.dialog {
 	@include meta.load-css('components/dialog/dialog');
 }

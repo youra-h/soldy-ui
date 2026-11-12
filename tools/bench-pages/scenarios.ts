@@ -412,6 +412,12 @@ export const SCENARIOS: Record<string, TScenario> = {
 
 		return done
 	},
+	'alert-dialog': async (scope, act) => {
+		let done = 0
+		for (const opener of labelled(scope, 'Открыть окно', act))
+			done += await overlay(opener, '.so-alert-dialog', async () => 0)
+		return done
+	},
 	dialog: async (scope, act) => {
 		let done = 0
 

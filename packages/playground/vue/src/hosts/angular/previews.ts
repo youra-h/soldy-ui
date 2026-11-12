@@ -43,6 +43,7 @@ import {
 } from './controls'
 import {
 	DialogPreview,
+	AlertDialogPreview,
 	DragAndDropPreview,
 	DrawerPreview,
 	MenuItemsPreview,
@@ -121,6 +122,7 @@ export const PREVIEWS: Record<string, TPreview> = {
 	popover: { template: PopoverPreview },
 	tooltip: { template: TooltipPreview },
 	menu: { templateFor: (bind) => (bind.items ? MenuItemsPreview : MenuPreview) },
+	'alert-dialog': { template: AlertDialogPreview },
 	dialog: { template: DialogPreview },
 	drawer: { template: DrawerPreview },
 	toasts: { template: ToastsPreview },

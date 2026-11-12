@@ -1,5 +1,8 @@
 import type { TLocale, TLocalePatch, TPartialTranslations, TTranslations } from './types'
 
+/** Defaults for complete custom locales created before AlertDialog. */
+export const ALERT_DIALOG_NAMES = Object.freeze({ confirm: 'Confirm', cancel: 'Cancel' })
+
 /** Defaults for custom locales created before CodeBlock. */
 export const CODE_BLOCK_NAMES = Object.freeze({
 	region: 'Code',
@@ -72,6 +75,11 @@ export function freezeLocale(locale: TLocale): TLocale {
  */
 function overlay(base: TTranslations, patch: TPartialTranslations): TTranslations {
 	return Object.freeze({
+		alertDialog: Object.freeze({
+			...ALERT_DIALOG_NAMES,
+			...base.alertDialog,
+			...defined(patch.alertDialog),
+		}),
 		alert: Object.freeze({ close: base.modal.close, ...base.alert, ...defined(patch.alert) }),
 		codeBlock: Object.freeze({
 			...CODE_BLOCK_NAMES,

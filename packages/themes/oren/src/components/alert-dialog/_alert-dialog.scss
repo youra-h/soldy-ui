@@ -1,0 +1,43 @@
+@use '../../mixins/modal';
+@use '../button/mixins' as button;
+
+.so-alert-dialog__backdrop {
+	@include modal.backdrop;
+}
+.so-alert-dialog {
+	@include modal.surface;
+	@apply rounded-lg;
+}
+
+@include modal.parts('so-alert-dialog', ('close'));
+
+// Color belongs to the theme context; adapters never name theme variants.
+:where(.so-alert-dialog__action) {
+	@include button.button-variant-tones('negative');
+	--so-tone-filled: var(--so-alert-dialog-action-fill);
+	--so-tone-filled-hover: var(--so-alert-dialog-action-hover);
+	--so-tone-filled-active: var(--so-alert-dialog-action-active);
+	--so-tone-filled-both: var(--so-alert-dialog-action-active);
+}
+
+.so-alert-dialog,
+.so-alert-dialog__backdrop {
+	transition-property: opacity, display;
+	transition-timing-function: linear;
+	transition-behavior: allow-discrete;
+
+	&:where([data-open='true']) {
+		transition-duration: 200ms;
+	}
+	&[data-open='false'] {
+		@apply opacity-0;
+		transition-duration: 150ms;
+	}
+}
+
+@starting-style {
+	.so-alert-dialog:where([data-open='true']),
+	.so-alert-dialog__backdrop:where([data-open='true']) {
+		@apply opacity-0;
+	}
+}

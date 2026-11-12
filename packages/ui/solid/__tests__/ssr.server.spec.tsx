@@ -28,6 +28,7 @@ import {
 	DateInput,
 	DatePicker,
 	Dialog,
+	AlertDialog,
 	Drawer,
 	Field,
 	Frame,
@@ -166,6 +167,10 @@ describe('Popover и Tooltip · серверный рендер', () => {
  * менеджер тостов рисует всегда: оно вне телепорта.
  */
 describe('Dialog, Drawer и Toasts · серверный рендер', () => {
+	it('AlertDialog omits the server portal', () => {
+		expect(markup(renderToString(() => <AlertDialog visible title="Delete?" />))).toBe('')
+	})
+
 	it('Dialog — пусто: телепорта на сервере нет', () => {
 		const body = markup(
 			renderToString(() => (

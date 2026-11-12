@@ -35,6 +35,7 @@ import {
 	DateInput,
 	DatePicker,
 	Dialog,
+	AlertDialog,
 	DragAndDrop,
 	Drawer,
 	Field,
@@ -240,6 +241,25 @@ function DialogPreview(bind: Readonly<Record<string, unknown>>): ReactNode {
 				<p style={{ margin: '0 0 8px' }}>Произвольное содержимое: текст, поля, кнопки</p>
 				<Input placeholder="Имя" />
 			</Dialog>
+		</>
+	)
+}
+
+function AlertDialogPreview(bind: Readonly<Record<string, unknown>>): ReactNode {
+	const { shown, setShown, onChangeVisible } = useShown(bind)
+
+	return (
+		<>
+			<Button text="Открыть окно" onClick={() => setShown(true)} />
+			<AlertDialog
+				{...bind}
+				visible={shown}
+				onChangeVisible={onChangeVisible}
+				title="Удалить запись?"
+				action="Удалить"
+			>
+				<p>Удалённую запись нельзя будет восстановить.</p>
+			</AlertDialog>
 		</>
 	)
 }
@@ -559,6 +579,7 @@ export const PREVIEWS: Record<string, TPreview> = {
 	),
 
 	// A button opens the dialog, which runs on its own state (see `DialogPreview`)
+	'alert-dialog': (bind) => <AlertDialogPreview {...bind} />,
 	dialog: (bind) => <DialogPreview {...bind} />,
 
 	// A button opens the drawer, which runs on its own state (see `DrawerPreview`)

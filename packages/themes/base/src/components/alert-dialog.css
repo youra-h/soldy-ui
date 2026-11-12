@@ -1,0 +1,19 @@
+/* A centered confirmation uses the shared modal anatomy and its own size contract. */
+:root {
+	--so-alert-dialog-width: 32rem;
+	--so-alert-dialog-height: fit-content;
+	--so-alert-dialog-offset: 1rem;
+}
+
+.so-alert-dialog {
+	position: fixed;
+	inset: var(--so-alert-dialog-offset);
+	margin: auto;
+	grid-template-columns: minmax(0, 1fr) auto;
+	grid-template-rows: auto minmax(0, 1fr) auto;
+	grid-template-areas: 'title close' 'body body' 'footer footer';
+	width: var(--so-alert-dialog-width);
+	height: var(--so-alert-dialog-height);
+	max-width: calc(100% - 2 * var(--so-alert-dialog-offset));
+	max-height: calc(100% - 2 * var(--so-alert-dialog-offset));
+}

@@ -9,6 +9,7 @@ import { freezeLocale } from '../locale'
 export const enUS = freezeLocale({
 	tag: 'en-US',
 	translations: {
+		alertDialog: { confirm: 'Confirm', cancel: 'Cancel' },
 		alert: { close: 'Close' },
 		codeBlock: {
 			region: 'Code',

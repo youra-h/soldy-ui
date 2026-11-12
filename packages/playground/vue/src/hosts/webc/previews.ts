@@ -734,6 +734,17 @@ export const PREVIEWS: Record<string, TPreview> = {
 	// the page with a backdrop. The button and the dialog sit right in the cell:
 	// the wrapper has no box. The dialog moves to `body`, leaving its anchor in
 	// the cell; the footer buttons close it
+	'alert-dialog': {
+		tag: 'div',
+		is: 'so-alert-dialog',
+		opener: 'Открыть окно',
+		slots: {
+			title: [caption('Удалить запись?')],
+			default: [paragraph('Удалённую запись нельзя будет восстановить.')],
+			action: [caption('Удалить')],
+		},
+		wrapper: { tag: 'div', style: () => 'display:contents' },
+	},
 	dialog: {
 		tag: 'div',
 		is: 'so-dialog',

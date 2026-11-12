@@ -73,6 +73,7 @@ export const COMPONENTS: Readonly<Record<string, readonly string[]>> = {
 	'date-input': ['icon', 'button', 'date-input'],
 	'date-picker': [...CALENDAR, 'date-input', 'date-picker'],
 	dialog: ['icon', 'button', 'modal', 'place', 'dialog'],
+	'alert-dialog': ['icon', 'button', 'modal', 'place', 'alert-dialog'],
 	'drag-and-drop': ['drag-and-drop'],
 	drawer: ['icon', 'button', 'modal', 'swipe', 'place', 'drawer'],
 	field: ['icon', 'field'],

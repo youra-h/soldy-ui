@@ -44,6 +44,7 @@ import {
 	DateInput,
 	DatePicker,
 	Dialog,
+	AlertDialog,
 	DragAndDrop,
 	Drawer,
 	Field,
@@ -261,6 +262,39 @@ const DialogPreview = defineComponent({
 						h(Button, { text: 'Отмена', onClick: () => setShown(false) }),
 						h(Button, { text: 'Сохранить', onClick: () => setShown(false) }),
 					],
+				},
+			),
+		]
+	},
+})
+
+const AlertDialogPreview = defineComponent({
+	name: 'AlertDialogPreview',
+	inheritAttrs: false,
+	props: { visible: { type: Boolean, default: false } },
+	setup(props, { attrs }) {
+		const shown = ref(props.visible)
+
+		watch(
+			() => props.visible,
+			(value) => {
+				shown.value = value
+			},
+		)
+
+		const setShown = (value: boolean) => {
+			shown.value = value
+		}
+
+		return () => [
+			h(Button, { text: 'Открыть окно', onClick: () => setShown(true) }),
+			h(
+				AlertDialog as Component,
+				mergeProps(attrs, { visible: shown.value, 'onUpdate:visible': setShown }),
+				{
+					title: () => 'Удалить запись?',
+					default: () => h('p', 'Удалённую запись нельзя будет восстановить.'),
+					action: () => 'Удалить',
 				},
 			),
 		]
@@ -547,6 +581,7 @@ export const PREVIEWS: Record<string, TPreview> = {
 		}),
 
 	// A button opens the dialog, which runs on local state (see `DialogPreview`)
+	'alert-dialog': (bind) => h(AlertDialogPreview, bind),
 	dialog: (bind) => h(DialogPreview, bind),
 
 	// A button opens the drawer, which runs on local state (see `DrawerPreview`)

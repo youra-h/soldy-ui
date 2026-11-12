@@ -61,20 +61,23 @@
 }
 
 .so-dialog__backdrop,
-.so-drawer__backdrop {
+.so-drawer__backdrop,
+.so-alert-dialog__backdrop {
 	position: fixed;
 	inset: 0;
 }
 
 .so-dialog,
-.so-drawer {
+.so-drawer,
+.so-alert-dialog {
 	display: grid;
 	overflow: hidden;
 }
 
 /* Заголовок рисуется всегда: на него панель ссылается `aria-labelledby`. */
 .so-dialog__title,
-.so-drawer__title {
+.so-drawer__title,
+.so-alert-dialog__title {
 	grid-area: title;
 	padding: var(--so-modal-padding) var(--so-modal-padding) 0;
 	line-height: var(--so-modal-title-line);
@@ -82,12 +85,14 @@
 }
 
 .so-dialog__title:empty,
-.so-drawer__title:empty {
+.so-drawer__title:empty,
+.so-alert-dialog__title:empty {
 	display: none;
 }
 
 .so-dialog__body,
-.so-drawer__body {
+.so-drawer__body,
+.so-alert-dialog__body {
 	grid-area: body;
 	min-height: 0;
 	padding: var(--so-modal-gap) var(--so-modal-padding);
@@ -96,13 +101,18 @@
 	overflow-wrap: break-word;
 }
 
-:where(.so-dialog__body > .so-table__viewport, .so-drawer__body > .so-table__viewport) {
+:where(
+	.so-dialog__body > .so-table__viewport,
+	.so-drawer__body > .so-table__viewport,
+	.so-alert-dialog__body > .so-table__viewport
+) {
 	--so-table-head-offset: calc(-1 * var(--so-modal-gap));
 }
 
 /* Подвал — ряд действий в конце строки, в RTL он сам встаёт слева. */
 .so-dialog__footer,
-.so-drawer__footer {
+.so-drawer__footer,
+.so-alert-dialog__footer {
 	grid-area: footer;
 	display: flex;
 	flex-wrap: wrap;
@@ -113,7 +123,8 @@
 }
 
 .so-dialog__footer:empty,
-.so-drawer__footer:empty {
+.so-drawer__footer:empty,
+.so-alert-dialog__footer:empty {
 	display: none;
 }
 
@@ -121,7 +132,9 @@
  * панели полным отступом, а не промежутком после шапки. */
 .so-dialog:not(:has(> .so-dialog__title:not(:empty), > .so-dialog__maximize, > .so-dialog__close))
 	> .so-dialog__body,
-.so-drawer:not(:has(> .so-drawer__title:not(:empty), > .so-drawer__close)) > .so-drawer__body {
+.so-drawer:not(:has(> .so-drawer__title:not(:empty), > .so-drawer__close)) > .so-drawer__body,
+.so-alert-dialog:not(:has(> .so-alert-dialog__title:not(:empty), > .so-alert-dialog__close))
+	> .so-alert-dialog__body {
 	padding-block-start: var(--so-modal-padding);
 }
 
@@ -133,6 +146,9 @@
 		> .so-table__viewport,
 	.so-drawer:not(:has(> .so-drawer__title:not(:empty), > .so-drawer__close))
 		> .so-drawer__body
+		> .so-table__viewport,
+	.so-alert-dialog:not(:has(> .so-alert-dialog__title:not(:empty), > .so-alert-dialog__close))
+		> .so-alert-dialog__body
 		> .so-table__viewport
 ) {
 	--so-table-head-offset: calc(-1 * var(--so-modal-padding));
@@ -140,13 +156,15 @@
 
 /* Подвала нет — тело кончается у нижнего края панели полным отступом. */
 .so-dialog:has(> .so-dialog__footer:empty) > .so-dialog__body,
-.so-drawer:has(> .so-drawer__footer:empty) > .so-drawer__body {
+.so-drawer:has(> .so-drawer__footer:empty) > .so-drawer__body,
+.so-alert-dialog:has(> .so-alert-dialog__footer:empty) > .so-alert-dialog__body {
 	padding-block-end: var(--so-modal-padding);
 }
 
 .so-dialog__maximize,
 .so-dialog__close,
-.so-drawer__close {
+.so-drawer__close,
+.so-alert-dialog__close {
 	flex-shrink: 0;
 	align-self: flex-start;
 	aspect-ratio: 1;
@@ -159,7 +177,8 @@
 
 .so-dialog__maximize:last-child,
 .so-dialog__close:last-child,
-.so-drawer__close:last-child {
+.so-drawer__close:last-child,
+.so-alert-dialog__close:last-child {
 	margin-inline-end: calc(var(--so-modal-padding) - var(--so-button-height-normal) / 4);
 }
 
@@ -168,7 +187,8 @@
  * потребителя, что бы в нём ни лежало. */
 .so-dialog__maximize > .so-button__text,
 .so-dialog__close > .so-button__text,
-.so-drawer__close > .so-button__text {
+.so-drawer__close > .so-button__text,
+.so-alert-dialog__close > .so-button__text {
 	display: flex;
 	justify-content: center;
 }
@@ -178,6 +198,7 @@
 }
 
 .so-dialog__close,
-.so-drawer__close {
+.so-drawer__close,
+.so-alert-dialog__close {
 	grid-area: close;
 }
