@@ -4004,7 +4004,7 @@
           "type": "string | number | undefined",
           "declaredType": "number | string",
           "required": false,
-          "description": "Ширина панели: число — px, строка — CSS-значение. Не задана — ширину\nдаёт тема",
+          "description": "Ширина окна: число — px, строка — CSS-значение. Не задана — ширину даёт\nтема. `auto` — по экрану с отступом, по содержимому — `fit-content`",
           "hasDefault": true,
           "default": "undefined"
         },
@@ -4014,7 +4014,7 @@
           "type": "string | number | undefined",
           "declaredType": "number | string",
           "required": false,
-          "description": "Высота панели: число — px, строка — CSS-значение. Не задана — высоту\nдаёт тема",
+          "description": "Высота окна: число — px, строка — CSS-значение. Не задана — по\nсодержимому. `auto` — по экрану с отступом",
           "hasDefault": true,
           "default": "undefined"
         },
