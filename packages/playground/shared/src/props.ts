@@ -4,6 +4,7 @@ import {
 	COMPONENT_SIZES,
 	BUTTON_VIEWS,
 	BADGE_VIEWS,
+	ALERT_VIEWS,
 	AVATAR_SHAPES,
 	CALENDAR_MODES,
 	CHECK_BOX_VIEWS,
@@ -189,6 +190,7 @@ const PLUGIN: Record<string, string> = {
 /** Собственные пропы компонента — то, ради чего он и заведён. */
 const OWN: Record<string, Record<string, string>> = {
 	alert: {
+		view: 'Контур, приглушённая или насыщенная заливка — значения темы oren',
 		closable:
 			'Кнопка закрытия: вызывает hide(), отмена — hide:before, повторный показ — show()',
 	},
@@ -540,6 +542,7 @@ const OPTIONS: Record<string, Record<string, readonly string[]>> = {
 		orientation: ['horizontal', 'vertical'],
 	},
 	'check-box': { view: CHECK_BOX_VIEWS },
+	alert: { view: ALERT_VIEWS },
 	badge: { view: BADGE_VIEWS },
 	avatar: { shape: AVATAR_SHAPES },
 	label: { position: LABEL_POSITIONS },

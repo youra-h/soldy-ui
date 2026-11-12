@@ -23,10 +23,11 @@ export const AlertDescriptor = defineDescriptor(() =>
 				'close-icon': { description: 'Dismissal icon' },
 			},
 			props: {
+				view: { type: String, triggers: ['change:view'] },
 				closable: { type: Boolean, triggers: ['change:closable'] },
 				closeAria: { type: Object, protected: true, triggers: ['change:closeAria'] },
 			},
-			events: ['change:closable'],
+			events: ['change:closable', 'change:view'],
 		},
 
 		plugins: [AriaPluginDescriptor, AlertNamesPluginDescriptor],

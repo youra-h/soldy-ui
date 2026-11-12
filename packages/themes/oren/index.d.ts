@@ -30,6 +30,13 @@ declare module '@soxa-ui/core' {
 		rect: true
 	}
 
+	/** Inline message surfaces. Without a view: a soft fill. */
+	interface IAlertViews {
+		outlined: true
+		soft: true
+		filled: true
+	}
+
 	interface IBadgeViews {
 		filled: true
 		outlined: true

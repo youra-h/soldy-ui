@@ -22,6 +22,7 @@ export const AlertInputNames = [
 	'direction',
 	'size',
 	'variant',
+	'view',
 	'closable',
 	'aria_label',
 	'aria_labelledBy',
@@ -31,6 +32,7 @@ export const AlertOutputNames = [
 	'soChangeSize',
 	'soChangeVariant',
 	'soChangeClosable',
+	'soChangeView',
 	'soAriaChangeLabel',
 	'soAriaChangeLabelledBy',
 	'soAriaChangeDescribedBy',
@@ -40,6 +42,7 @@ export const AlertOutputNames = [
 	'directionChange',
 	'sizeChange',
 	'variantChange',
+	'viewChange',
 	'closableChange',
 	'aria_labelChange',
 	'aria_labelledByChange',
@@ -55,6 +58,7 @@ export const AlertOutputNames = [
 		'direction',
 		'size',
 		'variant',
+		'view',
 		{ name: 'closable', transform: booleanInput },
 		'aria_label',
 		'aria_labelledBy',
@@ -88,6 +92,7 @@ export abstract class TAlertSurface<TInstance extends IEntity> extends TViewSurf
 	declare direction: TInputValue<typeof descriptor, 'direction'>
 	declare size: TInputValue<typeof descriptor, 'size'>
 	declare variant: TInputValue<typeof descriptor, 'variant'>
+	declare view: TInputValue<typeof descriptor, 'view'>
 	declare closable: TInputValue<typeof descriptor, 'closable'>
 	declare aria_label: TInputValue<typeof descriptor, 'aria_label'>
 	declare aria_labelledBy: TInputValue<typeof descriptor, 'aria_labelledBy'>
@@ -106,6 +111,7 @@ export abstract class TAlertSurface<TInstance extends IEntity> extends TViewSurf
 	declare readonly soChangeSize: TOutputEmitter<typeof descriptor, 'change:size'>
 	declare readonly soChangeVariant: TOutputEmitter<typeof descriptor, 'change:variant'>
 	declare readonly soChangeClosable: TOutputEmitter<typeof descriptor, 'change:closable'>
+	declare readonly soChangeView: TOutputEmitter<typeof descriptor, 'change:view'>
 	declare readonly soElementReady: TOutputEmitter<typeof descriptor, 'element:ready'>
 	declare readonly soElementRemoved: TOutputEmitter<typeof descriptor, 'element:removed'>
 	declare readonly soAriaChangeLabel: TOutputEmitter<typeof descriptor, 'aria:change:label'>
@@ -123,6 +129,7 @@ export abstract class TAlertSurface<TInstance extends IEntity> extends TViewSurf
 	declare readonly directionChange: TModelEmitter<typeof descriptor, 'direction'>
 	declare readonly sizeChange: TModelEmitter<typeof descriptor, 'size'>
 	declare readonly variantChange: TModelEmitter<typeof descriptor, 'variant'>
+	declare readonly viewChange: TModelEmitter<typeof descriptor, 'view'>
 	declare readonly closableChange: TModelEmitter<typeof descriptor, 'closable'>
 	declare readonly aria_labelChange: TModelEmitter<typeof descriptor, 'aria_label'>
 	declare readonly aria_labelledByChange: TModelEmitter<typeof descriptor, 'aria_labelledBy'>

@@ -3162,6 +3162,7 @@
       "name": "--view-",
       "sources": [
         "packages/core/src/components/custom/accordion/accordion.class.ts",
+        "packages/core/src/components/custom/alert/alert.class.ts",
         "packages/core/src/components/custom/badge/badge.class.ts",
         "packages/core/src/components/custom/button/button.class.ts",
         "packages/core/src/components/custom/check-box/check-box.class.ts",
@@ -3174,7 +3175,7 @@
       ],
       "pattern": "so-<block>--view-<value>",
       "description": "Theme-defined visual treatment; absent when unset.",
-      "scope": "Button, CheckBox, RadioGroup/items, Tabs, Accordion/items, Tags/items, ListBox/Select rows",
+      "scope": "Alert, Badge, Button, CheckBox, RadioGroup/items, Tabs, Accordion/items, Tags/items, ListBox/Select rows",
       "values": "<view>; values declared by the theme"
     }
   ],

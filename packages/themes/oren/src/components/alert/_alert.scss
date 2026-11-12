@@ -1,31 +1,74 @@
 @use '../button/mixins' as button;
+@use '../../mixins/on-signal';
 
-.so-alert {
-	background-color: var(--so-neutral-100);
-	color: var(--so-neutral-800);
-	border: 1px solid var(--so-neutral-300);
+// Keep the message text neutral in outlined and soft views; only the icon carries
+// the signal. Filled uses the same signal step and button tones as Toasts.
+:where(.so-alert) {
+	--so-alert-tone: var(--so-neutral-500);
+	--so-alert-soft: var(--so-neutral-100);
+	--so-alert-icon-color: var(--so-alert-tone);
+	--so-alert-description-color: var(--so-component-text);
+
+	background-color: var(--so-alert-soft);
+	color: var(--so-component-text);
+	border: 1px solid transparent;
 	border-radius: 0.5rem;
+}
 
-	@each $color in 'accent', 'positive', 'caution', 'negative' {
-		&--variant-#{$color} {
-			background-color: var(--so-#{$color}-100);
-			color: var(--so-#{$color}-800);
-			border-color: var(--so-#{$color}-300);
-		}
+@each $color in button.$variants {
+	.so-alert--variant-#{$color} {
+		--so-alert-tone: var(--so-#{$color}-500);
+		--so-alert-soft: var(--so-#{$color}-100);
 	}
 }
 
-.so-alert__title {
-	font-weight: 600;
+.so-alert--view-outlined {
+	background-color: var(--so-component-surface);
+	border-color: var(--so-neutral-300);
 }
 
-:where(.so-alert__close) {
+.so-alert--view-filled {
+	--so-alert-icon-color: currentColor;
+	--so-alert-description-color: color-mix(in srgb, currentColor 95%, transparent);
+
+	background-color: var(--so-alert-tone);
+	color: on-signal.$text;
+}
+
+.so-alert__icon {
+	color: var(--so-alert-icon-color);
+}
+
+.so-alert__title {
+	font-weight: 500;
+}
+
+.so-alert__content {
+	color: var(--so-alert-description-color);
+}
+
+:where(.so-alert__close, .so-alert__action > .so-button) {
 	@include button.button-view('plain');
 	color: inherit;
 }
 
+// Apply tones to the buttons themselves so a nested field keeps its own text.
+:where(
+	.so-alert--view-filled > .so-alert__close,
+	.so-alert--view-filled > .so-alert__action .so-button
+) {
+	@include button.button-text-colored-tones;
+	--so-component-text: currentColor;
+	--so-component-focus-ring: currentColor;
+}
+
 @media (forced-colors: active) {
 	.so-alert {
+		--so-alert-icon-color: CanvasText;
+		--so-alert-description-color: CanvasText;
+
+		background-color: Canvas;
+		color: CanvasText;
 		border-color: CanvasText;
 	}
 }

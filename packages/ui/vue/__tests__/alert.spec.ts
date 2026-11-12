@@ -11,6 +11,25 @@ afterEach(() => {
 })
 
 describe('Alert', () => {
+	it('updates theme view props and accepts controller changes', async () => {
+		const alert = new TAlert()
+		const wrapper = mount(Alert, { props: { ctrl: alert, view: 'solid' } })
+
+		expect(wrapper.classes()).toContain('so-alert--view-solid')
+
+		await wrapper.setProps({ view: 'hollow' })
+
+		expect(wrapper.classes()).toContain('so-alert--view-hollow')
+		expect(wrapper.classes()).not.toContain('so-alert--view-solid')
+
+		alert.view = undefined
+		await nextTick()
+
+		expect(wrapper.classes().some((name) => name.includes('--view-'))).toBe(false)
+
+		wrapper.unmount()
+	})
+
 	it('renders slots, lets native role override urgency and leaves focus alone', async () => {
 		const focused = document.createElement('button')
 		document.body.append(focused)

@@ -2,6 +2,29 @@ import { describe, expect, it, vi } from 'vitest'
 import { TAlert } from '../src'
 
 describe('Alert model', () => {
+	it('switches and clears a theme view without changing urgency or dismissal', () => {
+		const alert = new TAlert({ view: 'solid', closable: true })
+		const changed = vi.fn()
+		alert.events.on('change:view', changed)
+
+		expect(alert.classes.toArray()).toContain('so-alert--view-solid')
+		expect(alert.getProps().view).toBe('solid')
+
+		alert.view = 'hollow'
+		alert.view = 'hollow'
+
+		expect(alert.classes.toArray()).not.toContain('so-alert--view-solid')
+		expect(alert.classes.toArray()).toContain('so-alert--view-hollow')
+		expect(changed).toHaveBeenCalledExactlyOnceWith({ newValue: 'hollow', oldValue: 'solid' })
+
+		alert.view = undefined
+
+		expect(alert.classes.toArray().some((name) => name.includes('--view-'))).toBe(false)
+		expect(alert.getProps().view).toBeUndefined()
+		expect(alert.aria.get('role')).toBe('alert')
+		expect(alert.closable).toBe(true)
+	})
+
 	it('keeps urgency independent of theme and exposes dismissal state', () => {
 		const alert = new TAlert()
 		const changed = vi.fn()

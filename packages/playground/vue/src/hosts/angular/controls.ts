@@ -1320,7 +1320,7 @@ export class CodeBlockPreview implements TFixture {
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	host: { style: 'display: contents' },
 	template:
-		'<ng-template pg-copy><div so-alert [ctrl]="ctrl()" [rendered]="rendered()" [visible]="visible()" [direction]="direction()" [size]="size()" [variant]="variant()" [closable]="closable()" [aria_label]="aria_label()" [aria_labelledBy]="aria_labelledBy()" [aria_describedBy]="aria_describedBy()"><svg so-icon slot="icon" so-role-icon="warning"></svg><span slot="title">{{ sample.title }}</span>{{ sample.message }}<button so-button slot="action" type="button">{{ sample.action }}</button></div></ng-template>',
+		'<ng-template pg-copy><div so-alert [ctrl]="ctrl()" [rendered]="rendered()" [visible]="visible()" [direction]="direction()" [size]="size()" [variant]="variant()" [view]="view()" [closable]="closable()" [aria_label]="aria_label()" [aria_labelledBy]="aria_labelledBy()" [aria_describedBy]="aria_describedBy()"><svg so-icon slot="icon" so-role-icon="warning"></svg><span slot="title">{{ sample.title }}</span>{{ sample.message }}<button so-button slot="action" type="button">{{ sample.action }}</button></div></ng-template>',
 })
 export class AlertPreview implements TFixture {
 	readonly sample = ALERT_SAMPLE
@@ -1330,6 +1330,7 @@ export class AlertPreview implements TFixture {
 	readonly direction = input<TAlertComponent['direction']>()
 	readonly size = input<TAlertComponent['size']>()
 	readonly variant = input<TAlertComponent['variant']>()
+	readonly view = input<TAlertComponent['view']>()
 	readonly closable = input<TAlertComponent['closable']>()
 	readonly aria_label = input<TAlertComponent['aria_label']>()
 	readonly aria_labelledBy = input<TAlertComponent['aria_labelledBy']>()

@@ -55,6 +55,10 @@
 	grid-row: 1;
 }
 .so-alert__action {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: calc(var(--so-alert-gap) / 2);
 	grid-row: 2;
 	margin-block-start: var(--so-alert-gap);
 }
