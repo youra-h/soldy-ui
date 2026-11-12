@@ -1,7 +1,8 @@
 import { it, expect } from 'vitest'
 import { AlertDialogPage } from './pages'
 import { hydrateServed, markupOf, serve } from './serve'
-import { nextFrame } from '../mount'
+// Hydration teardown belongs to serve; mount also installs a document-clearing hook.
+const nextFrame = () => new Promise<void>((resolve) => requestAnimationFrame(() => resolve()))
 it('hydrates an open alert without a server portal or mismatch', async () => {
 	const html = markupOf('alert-dialog')
 	expect(html).not.toContain('so-alert-dialog')

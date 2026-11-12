@@ -34,6 +34,7 @@ export const MOBILE_COMPONENTS = [
 	'menu',
 	'tooltip',
 	'dialog',
+	'alert-dialog',
 	'drawer',
 	'toasts',
 	'scroller',
