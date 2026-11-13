@@ -2,26 +2,13 @@ import { TBasePlugin } from '../../base'
 import type { TElementServiceEvents } from './types'
 
 /**
- * TElementPlugin — DOM-узел компонента для остальных плагинов.
+ * Shares the adapter's root with DOM plugins. Public ready/removed events
+ * retain their deferred, alternating lifecycle. The internal bind event
+ * reports every root change synchronously so native controls can handle
+ * activation before the first animation frame.
  *
- * Адаптер передаёт узел как есть, при каждой смене. Контракт событий
- * (`TElementServiceEvents`) держит сам плагин, а не шесть адаптеров: одно
- * `ready` на подключение, `removed` только после `ready`, замена узла — пара
- * `removed` + `ready`.
- *
- * Объявление узла откладывается на кадр, и отложенное объявление всегда одно:
- * каждая смена узла отменяет предыдущее. По нему же видно, объявлен ли
- * текущий узел: узел есть, а объявление кадра не ждёт. Отдельного флага нет,
- * чтобы у одного факта не было двух источников.
- *
- * Объявление узла — только событие: промиса ожидания у плагина нет. Ждать
- * узел — подпиской на `ready`; готовность компоненту отдаёт `TReadyPlugin`
- * через `IComponentView.ready`.
- *
- * Узел объявлен как `Element`, а не `HTMLElement`: `tag` — свободный проп, и
- * корнем компонента бывает `svg`. Плагину, которому нужна HTML-специфика,
- * узел сужает тип-гард из `utils` (`isMeasurableElement`,
- * `isFocusableElement`), а не приведение.
+ * A pending frame is the announcement state: replacing or removing the root
+ * cancels it. Nodes remain Element because a component root may be SVG.
  */
 export class TElementPlugin extends TBasePlugin<any, TElementServiceEvents> {
 	private _element: Element | null = null
@@ -42,13 +29,19 @@ export class TElementPlugin extends TBasePlugin<any, TElementServiceEvents> {
 
 		if (announced) this.events.emit('removed')
 
+		this.events.emit('bind', el)
+
 		if (el) this._announce(el)
 	}
 
 	override destroy(): void {
-		// База подписчиков не снимает: без отмены кадр объявил бы узел уже
-		// после уничтожения
+		// Cancel the pending announcement before notifying internal bindings.
 		this._cancelAnnounce()
+
+		if (this._element) {
+			this._element = null
+			this.events.emit('bind', null)
+		}
 
 		super.destroy()
 	}
