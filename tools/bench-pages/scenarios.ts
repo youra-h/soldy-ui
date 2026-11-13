@@ -255,7 +255,175 @@ export async function overlay(
 	return done
 }
 
+/** Missing targets on audited pages are coverage failures, never zero-action success. */
+export const AUDITED_PAGES: readonly string[] = [
+	'alert',
+	'badge',
+	'breadcrumbs',
+	'separator',
+	'toggle-button',
+	'toggle-group',
+	'code-block',
+	'avatar',
+	'avatar-group',
+	'alert-dialog',
+]
+
+function required(scope: ParentNode, selector: string): HTMLElement {
+	const node = scope.querySelector(selector)
+
+	if (!(node instanceof HTMLElement)) throw new Error('Missing audited target: ' + selector)
+
+	return node
+}
+
+async function checkedPress(element: HTMLElement, check: () => boolean): Promise<number> {
+	const done = await press(element)
+
+	if (done && !check())
+		throw new Error('Audited action did not change state: ' + describe(element))
+
+	return done
+}
+
+async function avatarStatus(scope: ParentNode, status: string): Promise<void> {
+	const deadline = performance.now() + 4000
+
+	while (
+		![...scope.querySelectorAll<HTMLElement>('.so-avatar')].every(
+			(node) => node.dataset.status === status,
+		)
+	) {
+		if (performance.now() > deadline) throw new Error('Avatar did not reach ' + status)
+
+		await frame()
+	}
+}
+
+function auditedEach(selector: string, run: (copy: HTMLElement) => Promise<number>): TScenario {
+	return async (scope, act) => {
+		const copies = first(scope, selector, act)
+
+		if (copies.length !== act) throw new Error('Missing audited copies: ' + selector)
+
+		let done = 0
+
+		for (const copy of copies) done += await run(copy)
+
+		return done
+	}
+}
+
 export const SCENARIOS: Record<string, TScenario> = {
+	alert: auditedEach('.so-alert', async (copy) => {
+		return press(required(copy, '.so-alert__close'))
+	}),
+	badge: async (scope, _act, update) => {
+		required(scope, '.so-badge__indicator')
+		let done = await action('badge capped', () => update({ value: 120, max: 99 }))
+
+		done += await action('badge zero', () => update({ value: 0 }))
+		done += await action('badge text', () => update({ value: 'New' }))
+		done += await action('badge dot', () => update({ dot: true, aria_label: 'New updates' }))
+
+		return done
+	},
+	avatar: async (scope, _act, update) => {
+		required(scope, '.so-avatar')
+		let done = await action('avatar initials', () =>
+			update({ initials: 'GH', aria_label: 'Grace' }),
+		)
+
+		done += await action(
+			'avatar image',
+			() =>
+				update({
+					initials: 'GH',
+					aria_label: 'Grace',
+					src:
+						'data:image/svg+xml,' +
+						encodeURIComponent(
+							'<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8"><rect width="8" height="8" fill="teal"/></svg>',
+						),
+				}),
+			() => avatarStatus(scope, 'loaded'),
+		)
+		done += await action(
+			'avatar error',
+			() =>
+				update({
+					src: 'data:image/png;base64,broken',
+					initials: 'GH',
+					aria_label: 'Grace',
+				}),
+			() => avatarStatus(scope, 'error'),
+		)
+
+		done += await action('avatar fallback', () =>
+			update({ src: '', initials: 'GH', aria_label: 'Grace' }),
+		)
+
+		return done
+	},
+	'avatar-group': async (scope, _act, update) => {
+		required(scope, '.so-avatar-group')
+		return (
+			(await action('avatar group no overflow', () => update({ overflow: 0 }))) +
+			(await action('avatar group overflow', () => update({ overflow: 5 })))
+		)
+	},
+	breadcrumbs: auditedEach('.so-breadcrumbs', async (copy) => {
+		const trigger = required(copy, '.so-breadcrumbs__trigger')
+		let done = await checkedPress(
+			trigger,
+			() =>
+				required(copy, '.so-breadcrumbs__trigger').getAttribute('aria-expanded') === 'true',
+		)
+		const panel = open('.so-menu__panel')
+
+		if (panel) done += await key(panel.querySelector('[role="menuitem"]'), 'ArrowDown')
+		done += await escape(panel)
+
+		return done
+	}),
+	'toggle-button': auditedEach('.so-toggle-button', async (copy) => {
+		const before = copy.getAttribute('aria-pressed')
+		const done = await checkedPress(copy, () => copy.getAttribute('aria-pressed') !== before)
+
+		return done + (await press(copy))
+	}),
+	'toggle-group': auditedEach('.so-toggle-group', async (copy) => {
+		const items = copy.querySelectorAll<HTMLElement>('.so-toggle-group-item')
+
+		if (items.length < 3) throw new Error('Missing ToggleGroup items')
+
+		const before = items[0].getAttribute('aria-pressed')
+		let done = await checkedPress(
+			items[0],
+			() => items[0].getAttribute('aria-pressed') !== before,
+		)
+
+		done += await key(items[0], 'End')
+		done += await press(items[2])
+		done += await key(items[2], 'Home')
+
+		return done
+	}),
+	'code-block': auditedEach('.so-code-block', async (copy) => {
+		const tabs = copy.querySelectorAll<HTMLElement>('[role="tab"]')
+
+		if (tabs.length !== 2) throw new Error('Missing CodeBlock snippet tabs')
+
+		let done = await checkedPress(
+			tabs[1],
+			() => tabs[1].getAttribute('aria-selected') === 'true',
+		)
+
+		done += await press(required(copy, '.so-code-block__copy'))
+		done += await press(tabs[0])
+
+		return done
+	}),
 	separator: async (_scope, _act, update) => {
 		let done = await action('separator decorative', () => update({ decorative: true }))
 
@@ -413,9 +581,26 @@ export const SCENARIOS: Record<string, TScenario> = {
 		return done
 	},
 	'alert-dialog': async (scope, act) => {
+		const openers = labelled(scope, 'Открыть окно', act)
+
+		if (openers.length !== act) throw new Error('Missing AlertDialog openers')
+
 		let done = 0
-		for (const opener of labelled(scope, 'Открыть окно', act))
-			done += await overlay(opener, '.so-alert-dialog', async () => 0)
+
+		for (const opener of openers) {
+			done += await press(opener)
+
+			const panel = open('.so-alert-dialog')
+
+			if (panel) done += await press(required(panel, '.so-alert-dialog__cancel'))
+
+			done += await press(opener)
+
+			const reopened = open('.so-alert-dialog')
+
+			if (reopened) done += await press(required(reopened, '.so-alert-dialog__action'))
+		}
+
 		return done
 	},
 	dialog: async (scope, act) => {

@@ -112,6 +112,16 @@ async function confirmState(entry: TAuditCase) {
 			entry.id + ': months and years are different actual states',
 		).toBe(entry.state === 'years')
 	}
+	if (entry.id === 'code-block/second-active') {
+		expect(
+			document.querySelector('.so-code-block [role="tab"][aria-selected="true"]')
+				?.textContent,
+		).toContain('Two')
+		expect(document.querySelector('.so-code-block__pre')?.textContent).toContain(
+			'const two = 2;',
+		)
+	}
+	if (entry.id === 'avatar/error') expect(document.querySelector('.so-avatar img')).toBeNull()
 	if (entry.id === 'tabs/second-active')
 		expect(document.querySelector('[role="tab"][aria-selected="true"]')?.textContent).toContain(
 			'Второй',
@@ -224,7 +234,7 @@ export function auditSuite(adapter: string) {
 
 			expect(
 				document.querySelector(
-					'.so-select__panel, .so-dialog, .so-drawer, .so-toasts, .so-menu__panel, .so-menu-item__panel, .so-popover__panel, .so-tooltip__panel, .so-date-picker__panel',
+					'.so-select__panel, .so-alert-dialog, .so-dialog, .so-drawer, .so-toasts, .so-menu__panel, .so-menu-item__panel, .so-popover__panel, .so-tooltip__panel, .so-date-picker__panel',
 				),
 				'host removed teleported nodes',
 			).toBeNull()

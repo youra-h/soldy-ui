@@ -94,84 +94,101 @@ async function measureFramework(fw) {
 		tour: null,
 		errors,
 	}
-	const start = await measure()
+	try {
+		const start = await measure()
 
-	result.start = start
+		result.start = start
 
-	/** A page in cycles: weights, measurements after unmounting, settled ones after the warm-up and at the end. */
-	async function cyclesOf(id) {
-		const cycles = []
-		let before = await measure()
-		let base = before
+		/** A page in cycles: weights, measurements after unmounting, settled ones after the warm-up and at the end. */
+		async function cyclesOf(id) {
+			const cycles = []
+			let before = await measure()
+			let base = before
 
-		for (let cycle = 0; cycle < WARM + CYCLES; cycle++) {
-			const time = await evaluate(([p, n]) => bench.mount(p, n), [id, N])
-			const mounted = await measure()
-			const actions = await evaluate(([p, act]) => bench.scenario(p, act), [id, ACT])
-
-			await evaluate(() => bench.locale())
-			await evaluate(() => bench.unmount())
-
-			const after = await measure()
-
-			cycles.push({ time, actions, before, mounted, after })
-			before = after
-
-			if (cycle === WARM - 1) {
-				base = await settled(SETTLE)
-				before = base
-			}
-		}
-
-		result.pages[id] = { cycles, base, end: await settled(SETTLE), errors: errors.length }
-		console.log(fw, id, summary(result.pages[id]))
-	}
-
-	// Warm-up: every component page once, then the run's other pages, without
-	// measuring — whatever `--pages` lists, so every page starts its cycles
-	// from the same warm-up whichever pages share the run. Without it the first
-	// page of the run would carry the engine warming up — compiling the shared
-	// adapter and plugin code — in its growth, and the others would not.
-	// Warming only the run's own pages is not enough: `all` holds a single copy
-	// of each component per cycle and kept warming up through its own measured
-	// cycles (~33 KB/cycle with every counter in place)
-	const warmStart = performance.now()
-
-	await warmup(page, [...all, ...pages.filter((id) => !all.includes(id))], N, ACT)
-	console.log(fw, 'прогрев', `${Math.round((performance.now() - warmStart) / 1000)} с`)
-
-	for (const id of pages) await cyclesOf(id)
-
-	// The tour: every page in turn, in rounds — what builds up from changing components
-	if (!values.pages) {
-		const rounds = []
-
-		for (let round = 0; round < ROUNDS; round++) {
-			const visits = {}
-
-			for (const id of all) {
-				const before = await measure()
-
-				await evaluate(([p, n]) => bench.mount(p, n), [id, N])
-
+			for (let cycle = 0; cycle < WARM + CYCLES; cycle++) {
+				const time = await evaluate(([p, n]) => bench.mount(p, n), [id, N])
 				const mounted = await measure()
+				const updateTime = await evaluate((p) => bench.update(p), id)
+				const actionStart = performance.now()
+				const actions = await evaluate(([p, act]) => bench.scenario(p, act), [id, ACT])
+				const scenarioTime = performance.now() - actionStart
 
-				await evaluate(([p, act]) => bench.scenario(p, act), [id, ACT])
 				await evaluate(() => bench.locale())
-				await evaluate(() => bench.unmount())
-				visits[id] = { before, mounted, after: await measure() }
+				const unmountTime = await evaluate(() => bench.unmount())
+
+				const after = await measure()
+
+				cycles.push({
+					time,
+					updateTime,
+					scenarioTime,
+					unmountTime,
+					actions,
+					before,
+					mounted,
+					after,
+				})
+				before = after
+
+				if (cycle === WARM - 1) {
+					base = await settled(SETTLE)
+					before = base
+				}
 			}
 
-			rounds.push(visits)
-			console.log(fw, `обход ${round + 1}`, JSON.stringify(await measure()))
+			result.pages[id] = { cycles, base, end: await settled(SETTLE), errors: errors.length }
+			console.log(fw, id, summary(result.pages[id]))
 		}
 
-		result.tour = rounds
-		await cyclesOf('leak')
-	}
+		// Warm-up: every component page once, then the run's other pages, without
+		// measuring — whatever `--pages` lists, so every page starts its cycles
+		// from the same warm-up whichever pages share the run. Without it the first
+		// page of the run would carry the engine warming up — compiling the shared
+		// adapter and plugin code — in its growth, and the others would not.
+		// Warming only the run's own pages is not enough: `all` holds a single copy
+		// of each component per cycle and kept warming up through its own measured
+		// cycles (~33 KB/cycle with every counter in place)
+		const warmStart = performance.now()
 
-	result.end = await measure()
-	await browser.close()
+		await warmup(page, [...all, ...pages.filter((id) => !all.includes(id))], N, ACT)
+		console.log(fw, 'прогрев', `${Math.round((performance.now() - warmStart) / 1000)} с`)
+
+		for (const id of pages) await cyclesOf(id)
+
+		// The tour: every page in turn, in rounds — what builds up from changing components
+		if (!values.pages) {
+			const rounds = []
+
+			for (let round = 0; round < ROUNDS; round++) {
+				const visits = {}
+
+				for (const id of all) {
+					const before = await measure()
+
+					await evaluate(([p, n]) => bench.mount(p, n), [id, N])
+
+					const mounted = await measure()
+
+					await evaluate(([p, act]) => bench.scenario(p, act), [id, ACT])
+					await evaluate(() => bench.locale())
+					await evaluate(() => bench.unmount())
+					visits[id] = { before, mounted, after: await measure() }
+				}
+
+				rounds.push(visits)
+				console.log(fw, `обход ${round + 1}`, JSON.stringify(await measure()))
+			}
+
+			result.tour = rounds
+			await cyclesOf('leak')
+		}
+
+		result.end = await measure()
+	} catch (error) {
+		errors.push('run failed: ' + String(error?.stack ?? error))
+	} finally {
+		await browser.close()
+	}
 	fs.writeFileSync(path.join(out, `${fw}.json`), JSON.stringify(result, null, '\t'))
 
 	return result

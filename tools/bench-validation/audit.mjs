@@ -4,10 +4,29 @@ import crypto from 'node:crypto'
 import { fileURLToPath } from 'node:url'
 import { slope } from '../bench-pages/measure.mjs'
 import { judge } from '../bench-ssr/verdict.mjs'
+import { defaultStages, validatedStages } from './stages.mjs'
 
+export const auditedPages = [
+	'alert',
+	'badge',
+	'breadcrumbs',
+	'separator',
+	'toggle-button',
+	'toggle-group',
+	'code-block',
+	'avatar',
+	'avatar-group',
+	'alert-dialog',
+]
 export const frameworks = ['vue', 'react', 'angular', 'svelte', 'solid', 'webc']
 const counters = ['components', 'emitters', 'nodes', 'listeners']
 export const interactionActions = {
+	alert: ['dismiss'],
+	breadcrumbs: ['open', 'close'],
+	'toggle-button': ['press', 'release'],
+	'toggle-group': ['choose first', 'clear first'],
+	'code-block': ['snippet two', 'copy', 'snippet one'],
+	'alert-dialog': ['open', 'close', 'cancel', 'confirm'],
 	select: ['open', 'close', 'type'],
 	menu: ['open', 'close'],
 	'date-picker': ['open', 'close', 'locale ru', 'locale en'],
@@ -100,6 +119,12 @@ export function auditData(stage, result, { smoke = false, expectedPages, framewo
 				sample(cycle.mounted, `${id}/${index}/mounted`)
 				sample(cycle.after, `${id}/${index}/after`)
 				require(finite(cycle.time) && cycle.time >= 0, `${id}: invalid mount time`)
+				if (auditedPages.includes(id)) {
+					require(cycle.actions > 0, `${id}: audited scenario executed no actions`)
+					for (const phase of ['updateTime', 'unmountTime'])
+						require(finite(cycle[phase]) &&
+							cycle[phase] >= 0, `${id}: missing ${phase}`)
+				}
 				require(finite(cycle.actions) &&
 					cycle.actions >= 0, `${id}: invalid scenario action count`)
 			}
@@ -109,6 +134,8 @@ export function auditData(stage, result, { smoke = false, expectedPages, framewo
 			)
 			metrics[id] = {
 				mountMs: stats(measured.map((c) => c.time)),
+				updateMs: stats(measured.map((c) => c.updateTime).filter(finite)),
+				unmountMs: stats(measured.map((c) => c.unmountTime).filter(finite)),
 				scenarioActions: stats(measured.map((c) => c.actions)),
 				weightBytes: stats(measured.map((c) => c.mounted.heap - c.before.heap)),
 				heapBytesPerCycle: slope(measured.map((c) => c.after.heap)),
@@ -398,11 +425,9 @@ export function auditData(stage, result, { smoke = false, expectedPages, framewo
 	return { status: findings.length ? 'failed' : 'measured', findings, metrics }
 }
 
-export function auditRun(
-	directory,
-	stages = ['pages', 'soak', 'control', 'interaction', 'table', 'virtual', 'ssr'],
-) {
+export function auditRun(directory, stages) {
 	const manifest = JSON.parse(fs.readFileSync(path.join(directory, 'manifest.json'), 'utf8'))
+	stages = validatedStages(stages ?? manifest.stages ?? defaultStages)
 	const registryFile = path.join(directory, 'registry.json')
 	const expected = fs.existsSync(registryFile)
 		? JSON.parse(fs.readFileSync(registryFile, 'utf8')).pages
@@ -425,6 +450,12 @@ export function auditRun(
 					expectedPages: expected[fw],
 					framework: fw,
 				})
+				if (!manifest.smoke && ['pages', 'soak', 'control', 'interaction'].includes(stage))
+					for (const id of auditedPages)
+						if (!expected[fw]?.includes(id)) {
+							audited.findings.push('independent registry missing audited page ' + id)
+							audited.status = 'failed'
+						}
 				const command = manifest.commands.find((c) =>
 					c.outputs.some((o) => o.file === path.basename(file)),
 				)

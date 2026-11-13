@@ -1,4 +1,5 @@
 import {
+	TAlertDialogComponent,
 	RoleIconDirective,
 	SlotDirective,
 	TBadgeComponent,
@@ -339,7 +340,30 @@ class AvatarFallback implements TFixture {
 	readonly copy = viewChild.required(CopyDirective)
 	readonly subjects = viewChildren(TAvatarComponent)
 }
+@Component({
+	selector: 'pg-alert-dialog-footer',
+	imports: [TAlertDialogComponent, SlotDirective, CopyDirective],
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	host: { style: 'display: contents' },
+	template: `<ng-template pg-copy
+		><div so-alert-dialog [ctrl]="ctrl()" [visible]="visible()">
+			<span slot="title">Custom question</span>
+			Custom description
+			<ng-template slot="footer"
+				><button type="button" data-audit-footer>Custom footer</button></ng-template
+			>
+		</div></ng-template
+	>`,
+})
+class AlertDialogFooter implements TFixture {
+	readonly ctrl = input<TAlertDialogComponent['ctrl']>()
+	readonly visible = input<TAlertDialogComponent['visible']>()
+	readonly copy = viewChild.required(CopyDirective)
+	readonly subjects = viewChildren(TAlertDialogComponent)
+}
+
 export const FIXTURES: Record<string, Type<TFixture>> = {
+	'alert-dialog-footer': AlertDialogFooter,
 	'avatar-fallback': AvatarFallback,
 	'badge-anchor': BadgeAnchor,
 	'a11y-persistent-toasts': A11yPersistentToasts,

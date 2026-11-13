@@ -98,6 +98,82 @@ const locale = [
 ]
 
 const ACTIONS = {
+	alert: [
+		{
+			name: 'dismiss',
+			final: 'click',
+			before: async (page) => {
+				const count = await page.locator('.bench-page .so-alert').count()
+				await unmount(page)
+				await mount(page, 'alert', count)
+			},
+			run: (page) => first(page, '.so-alert__close').click(),
+			verify: (page) => first(page, '.so-alert').isHidden(),
+		},
+	],
+	breadcrumbs: overlay('.so-menu__panel', (page) => first(page, '.so-breadcrumbs__trigger')),
+	'toggle-button': [
+		{
+			name: 'press',
+			final: 'click',
+			run: (page) => first(page, '.so-toggle-button').click(),
+			verify: async (page) =>
+				(await first(page, '.so-toggle-button').getAttribute('aria-pressed')) === 'true',
+		},
+		{
+			name: 'release',
+			final: 'click',
+			run: (page) => first(page, '.so-toggle-button').click(),
+			verify: async (page) =>
+				(await first(page, '.so-toggle-button').getAttribute('aria-pressed')) === 'false',
+		},
+	],
+	'toggle-group': [
+		{
+			name: 'choose first',
+			final: 'click',
+			run: (page) =>
+				first(page, '.so-toggle-group').locator('.so-toggle-group-item').nth(0).click(),
+			verify: async (page) =>
+				(await first(page, '.so-toggle-group-item').getAttribute('aria-pressed')) ===
+				'true',
+		},
+		{
+			name: 'clear first',
+			final: 'click',
+			run: (page) => first(page, '.so-toggle-group-item').click(),
+			verify: async (page) =>
+				(await first(page, '.so-toggle-group-item').getAttribute('aria-pressed')) ===
+				'false',
+		},
+	],
+	'code-block': [
+		{
+			name: 'snippet two',
+			final: 'click',
+			run: (page) => first(page, '.so-code-block').locator('[role="tab"]').nth(1).click(),
+			verify: async (page) =>
+				(await first(page, '.so-code-block')
+					.locator('[role="tab"]')
+					.nth(1)
+					.getAttribute('aria-selected')) === 'true',
+		},
+		{
+			name: 'copy',
+			final: 'click',
+			run: (page) => first(page, '.so-code-block__copy').click(),
+		},
+		{
+			name: 'snippet one',
+			final: 'click',
+			run: (page) => first(page, '.so-code-block').locator('[role="tab"]').nth(0).click(),
+			verify: async (page) =>
+				(await first(page, '.so-code-block')
+					.locator('[role="tab"]')
+					.nth(0)
+					.getAttribute('aria-selected')) === 'true',
+		},
+	],
 	select: [
 		...overlay('.so-select__panel', (page) => first(page, '.so-select__arrow')),
 		{
@@ -118,9 +194,33 @@ const ACTIONS = {
 		...overlay('.so-date-picker__panel', (page) => first(page, '.so-date-picker__trigger')),
 		...locale,
 	],
-	'alert-dialog': overlay('.so-alert-dialog', (page) =>
-		page.locator('.bench-page .so-button', { hasText: 'Открыть окно' }).first(),
-	),
+	'alert-dialog': [
+		...overlay('.so-alert-dialog', (page) =>
+			page.locator('.bench-page .so-button', { hasText: 'Открыть окно' }).first(),
+		),
+		...['cancel', 'confirm'].map((choice) => ({
+			name: choice,
+			final: 'click',
+			before: async (page) => {
+				await closeAll(page, '.so-alert-dialog')
+				await page
+					.locator('.bench-page .so-button', { hasText: 'Открыть окно' })
+					.first()
+					.click()
+				await page.evaluate(() => bench.settle())
+			},
+			run: (page) =>
+				page
+					.locator(
+						'.so-alert-dialog[data-open="true"] ' +
+							(choice === 'cancel'
+								? '.so-alert-dialog__cancel'
+								: '.so-alert-dialog__action'),
+					)
+					.click(),
+			open: ['.so-alert-dialog', 0],
+		})),
+	],
 	dialog: overlay('.so-dialog', (page) =>
 		page.locator('.bench-page .so-button', { hasText: 'Открыть окно' }).first(),
 	),
@@ -168,6 +268,9 @@ async function act(page, action) {
 		if (open !== expected)
 			result.error = `открыто ${open} панелей ${selector}, ждали ${expected}`
 	}
+
+	if (action.verify && !(await action.verify(page)))
+		result.error = 'Action postcondition failed: ' + action.name
 
 	return result
 }
