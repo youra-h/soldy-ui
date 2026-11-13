@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, it } from 'vitest'
 import { userEvent } from 'vitest/browser'
-import { TAlertDialog } from '@soxa-ui/core'
+import { TAlertDialog, createEngineBreadcrumbs } from '@soxa-ui/core'
 import { enUS, ruRU } from '@soxa-ui/plugins'
 import { FRAMEWORKS, loadHost } from '../src/hosts'
 import type { IPreviewHandle, IPreviewHost } from '@soxa-ui/playground-shared'
@@ -283,34 +283,60 @@ describe.each(FRAMEWORKS)('new component audit / $id', ({ id }) => {
 
 	it('Breadcrumbs native links, disabled/current, overflow keyboard', async () => {
 		host = await loadHost(id)
-		const props = breadcrumbProps()
-		await mount('breadcrumbs', props)
+		const engine = createEngineBreadcrumbs()
+		const props = { ...breadcrumbProps(), engine }
+		const handle = await mount('breadcrumbs', props)
 
 		expect(find('.so-breadcrumbs__link[href="#home"]').tagName).toBe('A')
 		expect(find('[aria-current="page"]').textContent).toContain('Current')
 
-		const trigger = find('.so-breadcrumbs__trigger')
+		for (let composition = 0; composition < 2; composition++) {
+			await expect.poll(() => engine.extensions.breadcrumbs.menu.ready).toBe(true)
+			const trigger = find('.so-breadcrumbs__trigger')
+			expect(trigger.getAttribute('aria-expanded')).toBe('false')
 
-		trigger.focus()
-		await userEvent.keyboard('{Enter}')
-		await expect
-			.poll(() => find('.so-breadcrumbs__trigger').getAttribute('aria-expanded'))
-			.toBe('true')
-		await expect
-			.poll(() => document.activeElement)
-			.toBe(find('a[role="menuitem"][href="#catalog"]'))
-		await userEvent.keyboard('{End}')
-		await expect
-			.poll(() => document.activeElement)
-			.toBe(find('a[role="menuitem"][href="#phones"]'))
-		await userEvent.keyboard('{Home}')
-		await expect
-			.poll(() => document.activeElement)
-			.toBe(find('a[role="menuitem"][href="#catalog"]'))
-		await userEvent.keyboard('{Escape}')
-		await expect
-			.poll(() => find('.so-breadcrumbs__trigger').getAttribute('aria-expanded'))
-			.toBe('false')
-		expect(document.activeElement).toBe(find('.so-breadcrumbs__trigger'))
+			for (let cycle = 0; cycle < 2; cycle++) {
+				trigger.focus()
+				await userEvent.keyboard('{Enter}')
+				await expect
+					.poll(() => trigger.getAttribute('aria-expanded'), {
+						message: id + ' composition=' + composition + ' cycle=' + cycle,
+					})
+					.toBe('true')
+				expect(trigger.getAttribute('data-selected')).toBe('true')
+				expect(find('.so-breadcrumbs__trigger')).toBe(trigger)
+				expect(trigger.getAttribute('aria-controls')).toBe(find('.so-menu__panel').id)
+				await expect
+					.poll(() => document.activeElement)
+					.toBe(find('a[role="menuitem"][href="#catalog"]'))
+				await userEvent.keyboard('{End}')
+				await expect
+					.poll(() => document.activeElement)
+					.toBe(find('a[role="menuitem"][href="#phones"]'))
+				await userEvent.keyboard('{Home}')
+				await expect
+					.poll(() => document.activeElement)
+					.toBe(find('a[role="menuitem"][href="#catalog"]'))
+				await userEvent.keyboard('{Escape}')
+				await expect.poll(() => trigger.getAttribute('aria-expanded')).toBe('false')
+				expect(trigger.getAttribute('data-selected')).toBe('false')
+				expect(find('.so-breadcrumbs__trigger')).toBe(trigger)
+				await expect.poll(() => document.activeElement).toBe(trigger)
+			}
+
+			if (composition === 0) {
+				handle.update({ ...props, maxItems: 0 })
+				await expect
+					.poll(() => document.querySelector('.so-breadcrumbs__trigger'))
+					.toBeNull()
+				expect(
+					find('.so-breadcrumbs__link[aria-disabled="true"]').hasAttribute('href'),
+				).toBe(false)
+				handle.update(props)
+				await expect
+					.poll(() => document.querySelector('.so-breadcrumbs__trigger'))
+					.not.toBeNull()
+			}
+		}
 	})
 })

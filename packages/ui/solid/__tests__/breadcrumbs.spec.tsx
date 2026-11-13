@@ -13,6 +13,60 @@ const items = [
 ]
 
 describe('Breadcrumbs', () => {
+	it.each(['data', 'declarative'] as const)(
+		'preserves the %s overflow trigger and its live ARIA through repeated opening',
+		async (composition) => {
+			const app = mount(() =>
+				composition === 'data' ? (
+					<Breadcrumbs items={items} maxItems={3} />
+				) : (
+					<Breadcrumbs maxItems={3}>
+						<Breadcrumbs.Item text="Home" href="#home" />
+						<Breadcrumbs.Item text="Catalog" href="#catalog" />
+						<Breadcrumbs.Item text="Group" />
+						<Breadcrumbs.Item text="Phones" href="#phones" />
+						<Breadcrumbs.Item text="Current" active />
+					</Breadcrumbs>
+				),
+			)
+
+			await nextFrame()
+			const trigger = find(app.root(), '.so-breadcrumbs__trigger', HTMLButtonElement)
+			expect(trigger.getAttribute('aria-expanded')).toBe('false')
+			expect(trigger.getAttribute('data-selected')).toBe('false')
+
+			for (let cycle = 0; cycle < 2; cycle++) {
+				trigger.focus()
+				trigger.click()
+				await nextFrame()
+
+				expect(find(app.root(), '.so-breadcrumbs__trigger', HTMLButtonElement)).toBe(
+					trigger,
+				)
+				expect(trigger.getAttribute('aria-expanded')).toBe('true')
+				expect(trigger.getAttribute('data-selected')).toBe('true')
+				const panel = find(document, '.so-menu__panel', HTMLElement)
+				expect(trigger.getAttribute('aria-controls')).toBe(panel.id)
+
+				panel.dispatchEvent(
+					new KeyboardEvent('keydown', {
+						key: 'Escape',
+						bubbles: true,
+						cancelable: true,
+					}),
+				)
+				await nextFrame()
+
+				expect(find(app.root(), '.so-breadcrumbs__trigger', HTMLButtonElement)).toBe(
+					trigger,
+				)
+				expect(trigger.getAttribute('aria-expanded')).toBe('false')
+				expect(trigger.getAttribute('data-selected')).toBe('false')
+				expect(document.activeElement).toBe(trigger)
+			}
+		},
+	)
+
 	it('has one list position for overflow and retains native menu links', async () => {
 		const app = mount(() => <Breadcrumbs items={items} maxItems={3} />)
 

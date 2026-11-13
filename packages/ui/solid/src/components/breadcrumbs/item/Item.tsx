@@ -71,14 +71,14 @@ export function BreadcrumbsItem(props: BreadcrumbsItemProps): JSX.Element {
 								embedded="breadcrumbs.menu"
 								ctrl={menu}
 								class="so-breadcrumbs__overflow"
-								trigger={({ triggerAria, triggerDataset }) => (
+								trigger={(scope) => (
 									<Button
 										embedded="breadcrumbs.trigger"
 										type="button"
 										class="so-breadcrumbs__trigger"
 										size={state.size}
-										{...triggerAria}
-										{...triggerDataset}
+										{...scope.triggerAria}
+										{...scope.triggerDataset}
 										{...state.breadcrumbs_overflowAria}
 									>
 										&#8230;
