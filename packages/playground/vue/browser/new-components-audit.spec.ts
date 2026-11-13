@@ -296,9 +296,18 @@ describe.each(FRAMEWORKS)('new component audit / $id', ({ id }) => {
 		await expect
 			.poll(() => find('.so-breadcrumbs__trigger').getAttribute('aria-expanded'))
 			.toBe('true')
+		await expect
+			.poll(() => document.activeElement)
+			.toBe(find('a[role="menuitem"][href="#catalog"]'))
 		await userEvent.keyboard('{End}')
-		expect(document.activeElement?.getAttribute('role')).toBe('menuitem')
-		await userEvent.keyboard('{Home}{Escape}')
+		await expect
+			.poll(() => document.activeElement)
+			.toBe(find('a[role="menuitem"][href="#phones"]'))
+		await userEvent.keyboard('{Home}')
+		await expect
+			.poll(() => document.activeElement)
+			.toBe(find('a[role="menuitem"][href="#catalog"]'))
+		await userEvent.keyboard('{Escape}')
 		await expect
 			.poll(() => find('.so-breadcrumbs__trigger').getAttribute('aria-expanded'))
 			.toBe('false')
