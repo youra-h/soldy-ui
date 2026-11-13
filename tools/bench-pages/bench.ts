@@ -20,6 +20,7 @@ import {
 	decideSteps,
 	observeSteps,
 	SCENARIOS,
+	AUDITED_PAGES,
 	TScenarioStopped,
 	type TStepDecision,
 } from './scenarios'
@@ -77,6 +78,9 @@ const pages = COMPONENTS.filter(
 	(entry) => entry.group !== 'layers' && host.previews.includes(entry.id),
 ).map((entry) => entry.id)
 
+for (const id of AUDITED_PAGES)
+	if (!pages.includes(id)) throw new Error('Missing audited host preview: ' + id)
+
 /**
  * Props of a component on the page — its preview's (`PREVIEW_PROPS`). Select
  * gets its options as data (`items`), as the neighbors' pages get theirs
@@ -84,7 +88,23 @@ const pages = COMPONENTS.filter(
  * draw no markup options once `items` came.
  */
 function propsOf(id: string): Readonly<Record<string, unknown>> {
-	return id === 'select' ? { ...previewProps(id), items: COLLECTION_ITEMS } : previewProps(id)
+	const props = previewProps(id)
+
+	if (id === 'select') return { ...props, items: COLLECTION_ITEMS }
+	if (id === 'toggle-group') return { ...props, items: EDITOR_ALIGNMENT_ITEMS }
+	if (id === 'code-block') {
+		const { code: _code, ...snippetProps } = props
+
+		return {
+			...snippetProps,
+			snippets: [
+				{ value: 'one', label: 'One', code: 'const one = 1;\n' },
+				{ value: 'two', label: 'Two', code: 'const two = 2;\n' },
+			],
+		}
+	}
+
+	return props
 }
 
 /** What is mounted now: the page's roots. */
@@ -162,7 +182,9 @@ async function mount(page: string, count: number, only?: string[]): Promise<numb
 }
 
 /** Take the page down — the roots and their nodes — and wait the frames the layers leave in. */
-async function unmount(): Promise<void> {
+async function unmount(): Promise<number> {
+	const start = performance.now()
+
 	for (const handle of mounted) handle.unmount()
 
 	mounted = []
@@ -171,6 +193,8 @@ async function unmount(): Promise<void> {
 	for (const node of stage?.querySelectorAll('.bench-page') ?? []) node.remove()
 
 	await frames()
+
+	return performance.now() - start
 }
 
 /** The page's scenario: actions on its copies. `all` runs every component's scenario in turn. */
@@ -183,18 +207,38 @@ async function scenario(page: string, act: number, only?: string[]): Promise<num
 	for (const id of ids) {
 		const run = SCENARIOS[id]
 
-		if (!run) continue
+		if (!run) {
+			if (AUDITED_PAGES.includes(id)) throw new Error(`Missing audited scenario: ${id}`)
+			continue
+		}
 
 		const roots = [...(stage?.querySelectorAll<HTMLElement>('.bench-page') ?? [])]
 		const scope = page === 'all' ? roots[ids.indexOf(id)] : roots[0]
 
+		if (!scope && AUDITED_PAGES.includes(id)) throw new Error('Missing audited scope: ' + id)
+
 		if (scope) {
 			const handle = mounted[page === 'all' ? ids.indexOf(id) : 0]
-			done += await run(scope, page === 'all' ? 1 : act, (props) => handle?.update(props))
+			done += await run(scope, page === 'all' ? 1 : act, (props) =>
+				handle?.update({ ...propsOf(id), ...props }),
+			)
 		}
 	}
 
 	return done
+}
+
+/** Explicit prop update to the second frame, measured separately from user actions. */
+async function update(page: string): Promise<number> {
+	const start = performance.now()
+	const ids = page === 'all' ? pages : [page === 'leak' || page === 'empty' ? 'button' : page]
+
+	for (const [index, id] of ids.entries())
+		if (AUDITED_PAGES.includes(id)) mounted[index]?.update({ ...propsOf(id), direction: 'rtl' })
+
+	await frames()
+
+	return performance.now() - start
 }
 
 /** The page's language: there and back, like an app's language switch. */
@@ -708,6 +752,7 @@ const bench = {
 	measured,
 	pages,
 	mount,
+	update,
 	unmount,
 	scenario,
 	locale,

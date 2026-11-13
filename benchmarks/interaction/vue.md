@@ -164,3 +164,28 @@ Tags, Accordion, RadioGroup, Pagination, Toasts), отдаёт элементу 
 ## 2026-11-09 — проверяемый запуск 2026-11-09-full
 
 Новый собственный замер — [итоговый отчёт](../validation/report.md), [условия и команды](../validation/README.md), [manifest](../validation/runs/2026-11-09-full/manifest.json), [raw interaction](../validation/runs/2026-11-09-full/interaction-vue.json), [машинная сводка](../validation/runs/2026-11-09-full/summary.json). Статус данных: **measured**. Параметры и каждый повтор сохранены; исторические числа выше не переписаны.
+
+## 2026-11-13 — аудит девяти новых компонентов
+
+[Полный отчёт](../validation/new-components-2026-11-13.md). Source e0c94a76c; адаптеры измерены последовательно, n=50, rates=1/4/6, warm=2, reps=10; counting N=1/50, по 3 повтора. Медиана при чётном N — среднее двух центральных.
+
+| Действие                  | Paint ×1/×4/×6 ms | Settled ×6 ms | INP ×6 ms | Update N1/N50 | Tick N1/N50 | Neighbor DOM writes max |
+| ------------------------- | ----------------- | ------------- | --------- | ------------- | ----------- | ----------------------- |
+| alert/dismiss             | 16.00/19.00/22.50 | 64.00         | 24.00     | 3.00/3.00     | 0.00/0.00   | 0                       |
+| breadcrumbs/open          | 16.00/18.00/22.50 | 64.00         | 24.00     | 9.00/9.00     | 0.00/0.00   | 0                       |
+| breadcrumbs/close         | 15.00/17.00/18.00 | 63.50         | 32.00     | 9.00/9.00     | 0.00/0.00   | 0                       |
+| toggle-button/press       | 15.00/14.50/15.00 | 64.00         | 32.00     | 1.00/1.00     | 0.00/0.00   | 0                       |
+| toggle-button/release     | 15.00/15.50/15.00 | 64.00         | 32.00     | 1.00/1.00     | 0.00/0.00   | 0                       |
+| toggle-group/choose first | 16.00/16.00/17.50 | 63.00         | 32.00     | 1.00/1.00     | 0.00/0.00   | 0                       |
+| toggle-group/clear first  | 16.00/16.00/18.00 | 63.00         | 32.00     | 1.00/1.00     | 0.00/0.00   | 0                       |
+| code-block/snippet two    | 16.00/18.00/32.50 | 80.50         | 32.00     | 6.00/6.00     | 0.00/0.00   | 0                       |
+| code-block/copy           | 16.00/19.00/39.00 | 113.50        | 28.00     | 9.00/9.00     | 0.00/0.00   | 0                       |
+| code-block/snippet one    | 17.00/28.00/54.50 | 98.50         | 56.00     | 9.00/9.00     | 0.00/0.00   | 0                       |
+| alert-dialog/open         | 16.00/16.00/20.00 | 63.50         | 32.00     | 6.00/6.00     | 0.00/0.00   | 0                       |
+| alert-dialog/close        | 15.00/15.50/17.00 | 64.00         | 32.00     | 6.00/6.00     | 0.00/0.00   | 0                       |
+| alert-dialog/cancel       | 15.00/16.00/19.00 | 66.00         | 16.00     | 6.00/6.00     | 0.00/0.00   | 0                       |
+| alert-dialog/confirm      | 16.00/15.50/20.00 | 66.00         | 16.00     | 6.00/6.00     | 0.00/0.00   | 0                       |
+
+Copy — время активации кнопки; успешность clipboard отдельно проверена exact-copy/denial browser tests. Статические Badge/Separator/Avatar не получают искусственного INP. Event Timing и render accounting имеют ограничения, указанные в полном отчёте; между адаптерами это разные механизмы, не универсальный CPU счётчик.
+
+[Все исходные repetitions и имена рендеров](../validation/runs/audit-new-components-20261113/interaction-vue.json), [min/max/N](../validation/runs/audit-new-components-20261113/summary.json).

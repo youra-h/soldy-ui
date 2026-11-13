@@ -107,6 +107,76 @@ const breadcrumbItems = [
 
 /** Explicit consumer inventory; inheritance layers never mount decorative layer previews. */
 export const A11Y_CASES: readonly TAuditCase[] = [
+	audit(
+		'alert-dialog',
+		'custom-footer',
+		'.so-alert-dialog',
+		{ visible: true },
+		['[data-audit-footer]'],
+		{ fixture: 'alert-dialog-footer' },
+	),
+	audit(
+		'toggle-button',
+		'activated',
+		'.so-toggle-button',
+		{ text: 'Bold' },
+		['.so-toggle-button[aria-pressed="true"]'],
+		{ click: ['.so-toggle-button'] },
+	),
+	audit(
+		'toggle-group',
+		'activated',
+		'.so-toggle-group',
+		{
+			aria_label: 'Formatting',
+			items: [{ text: 'Bold' }, { text: 'Italic' }],
+		},
+		['.so-toggle-group-item[aria-pressed="true"]'],
+		{ click: ['.so-toggle-group-item'] },
+	),
+	audit(
+		'code-block',
+		'second-active',
+		'.so-code-block',
+		{
+			snippets: [
+				{ value: 'one', label: 'One', code: 'const one = 1;' },
+				{ value: 'two', label: 'Two', code: 'const two = 2;' },
+			],
+		},
+		['.so-code-block [role="tab"][aria-selected="true"]'],
+		{ click: ['tab:Two'] },
+	),
+	audit(
+		'avatar',
+		'loaded',
+		'.so-avatar',
+		{
+			src:
+				'data:image/svg+xml,' +
+				encodeURIComponent(
+					'<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8"><rect width="8" height="8" fill="teal"/></svg>',
+				),
+			initials: 'AL',
+			aria_label: 'Ada',
+		},
+		['.so-avatar[data-status="loaded"] img'],
+	),
+	audit(
+		'avatar',
+		'error',
+		'.so-avatar',
+		{ src: 'data:image/png;base64,broken', initials: 'AL', aria_label: 'Ada' },
+		['.so-avatar[data-status="error"] .so-avatar__fallback'],
+	),
+	audit(
+		'avatar',
+		'custom-fallback',
+		'.so-avatar',
+		{ initials: 'AL', aria_label: 'Ada' },
+		['.so-avatar__fallback .so-icon'],
+		{ fixture: 'avatar-fallback' },
+	),
 	audit('code-block', 'basic', '.so-code-block', { code: 'const x = 1;\n' }, [
 		'.so-code-block__pre',
 		'.so-code-block__copy',

@@ -1,0 +1,406 @@
+
+> test:parity
+> npm run build:css --workspace=@soxa-ui/theme-oren && node tools/bench-pages/parity.mjs && node tools/bench-pages/parity-report.mjs
+
+
+> @soxa-ui/theme-oren@0.3.1-beta.0 build:css
+> vite build
+
+vite v8.3.4 building client environment for production...
+transforming...
+✓ 2 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/components/icon.css                0.05 kB │ gzip:  0.05 kB
+dist/components/badge.css               0.05 kB │ gzip:  0.06 kB
+dist/components/label.css               0.05 kB │ gzip:  0.06 kB
+dist/components/avatar.css              0.05 kB │ gzip:  0.06 kB
+dist/components/button.css              0.05 kB │ gzip:  0.06 kB
+dist/components/slider.css              0.05 kB │ gzip:  0.06 kB
+dist/components/switch.css              0.05 kB │ gzip:  0.06 kB
+dist/components/toggle-button.css       0.05 kB │ gzip:  0.06 kB
+dist/components/tooltip.css             0.05 kB │ gzip:  0.06 kB
+dist/components/skeleton.css            0.05 kB │ gzip:  0.06 kB
+dist/components/textarea.css            0.05 kB │ gzip:  0.06 kB
+dist/components/separator.css           0.05 kB │ gzip:  0.06 kB
+dist/components/radio-group.css         0.06 kB │ gzip:  0.06 kB
+dist/components/drag-and-drop.css       0.06 kB │ gzip:  0.06 kB
+dist/components/progress-linear.css     0.06 kB │ gzip:  0.07 kB
+dist/components/progress-spinner.css    0.06 kB │ gzip:  0.07 kB
+dist/components/field.css               0.08 kB │ gzip:  0.06 kB
+dist/components/rating.css              0.08 kB │ gzip:  0.06 kB
+dist/components/check-box.css           0.08 kB │ gzip:  0.06 kB
+dist/components/avatar-group.css        0.09 kB │ gzip:  0.07 kB
+dist/components/toggle-group.css        0.09 kB │ gzip:  0.07 kB
+dist/components/tabs.css                0.11 kB │ gzip:  0.07 kB
+dist/components/tags.css                0.11 kB │ gzip:  0.07 kB
+dist/components/alert.css               0.11 kB │ gzip:  0.07 kB
+dist/components/input.css               0.11 kB │ gzip:  0.07 kB
+dist/components/scroller.css            0.11 kB │ gzip:  0.07 kB
+dist/components/accordion.css           0.11 kB │ gzip:  0.07 kB
+dist/components/date-input.css          0.12 kB │ gzip:  0.07 kB
+dist/components/pagination.css          0.12 kB │ gzip:  0.07 kB
+dist/components/number-input.css        0.12 kB │ gzip:  0.07 kB
+dist/components/list-box.css            0.14 kB │ gzip:  0.08 kB
+dist/components/code-block.css          0.14 kB │ gzip:  0.08 kB
+dist/components/table.css               0.14 kB │ gzip:  0.08 kB
+dist/components/dialog.css              0.17 kB │ gzip:  0.08 kB
+dist/components/alert-dialog.css        0.18 kB │ gzip:  0.09 kB
+dist/components/drawer.css              0.20 kB │ gzip:  0.09 kB
+dist/components/menu.css                0.20 kB │ gzip:  0.09 kB
+dist/components/popover.css             0.21 kB │ gzip:  0.09 kB
+dist/components/toasts.css              0.21 kB │ gzip:  0.10 kB
+dist/components/breadcrumbs.css         0.24 kB │ gzip:  0.10 kB
+dist/parts/place.css                    0.24 kB │ gzip:  0.15 kB
+dist/components/calendar.css            0.27 kB │ gzip:  0.11 kB
+dist/components/select.css              0.29 kB │ gzip:  0.10 kB
+dist/components/date-picker.css         0.34 kB │ gzip:  0.12 kB
+dist/parts/swipe.css                    0.51 kB │ gzip:  0.24 kB
+dist/parts/icon.css                     0.52 kB │ gzip:  0.18 kB
+dist/parts/tooltip.css                  0.57 kB │ gzip:  0.29 kB
+dist/parts/separator.css                0.61 kB │ gzip:  0.25 kB
+dist/parts/drag-and-drop.css            0.73 kB │ gzip:  0.34 kB
+dist/parts/anchored.css                 1.33 kB │ gzip:  0.34 kB
+dist/parts/avatar-group.css             1.58 kB │ gzip:  0.52 kB
+dist/parts/group.css                    2.19 kB │ gzip:  0.38 kB
+dist/parts/label.css                    2.63 kB │ gzip:  0.58 kB
+dist/parts/skeleton.css                 2.73 kB │ gzip:  0.63 kB
+dist/parts/avatar.css                   2.82 kB │ gzip:  0.67 kB
+dist/parts/badge.css                    2.98 kB │ gzip:  0.66 kB
+dist/parts/modal.css                    3.08 kB │ gzip:  0.73 kB
+dist/parts/accordion.css                3.64 kB │ gzip:  0.78 kB
+dist/parts/rating.css                   3.70 kB │ gzip:  1.00 kB
+dist/parts/alert-dialog.css             3.78 kB │ gzip:  0.96 kB
+dist/parts/list-box.css                 3.78 kB │ gzip:  0.91 kB
+dist/parts/toggle-group.css             3.79 kB │ gzip:  0.73 kB
+dist/parts/dialog.css                   4.29 kB │ gzip:  0.99 kB
+dist/parts/scroller.css                 4.64 kB │ gzip:  0.92 kB
+dist/parts/progress-spinner.css         4.83 kB │ gzip:  0.87 kB
+dist/parts/progress-linear.css          5.45 kB │ gzip:  0.98 kB
+dist/parts/input.css                    5.91 kB │ gzip:  1.21 kB
+dist/parts/textarea.css                 6.14 kB │ gzip:  1.19 kB
+dist/parts/alert.css                    6.30 kB │ gzip:  1.29 kB
+dist/parts/pagination.css               6.78 kB │ gzip:  1.07 kB
+dist/parts/breadcrumbs.css              7.04 kB │ gzip:  1.20 kB
+dist/parts/drawer.css                   7.16 kB │ gzip:  1.50 kB
+dist/parts/code-block.css               7.20 kB │ gzip:  1.39 kB
+dist/parts/popover.css                  7.31 kB │ gzip:  1.44 kB
+dist/parts/radio-group.css              7.88 kB │ gzip:  1.28 kB
+dist/parts/select.css                   8.67 kB │ gzip:  1.78 kB
+dist/parts/switch.css                   8.70 kB │ gzip:  1.33 kB
+dist/parts/date-input.css               9.00 kB │ gzip:  1.55 kB
+dist/parts/number-input.css             9.07 kB │ gzip:  1.40 kB
+dist/parts/field.css                    9.28 kB │ gzip:  1.38 kB
+dist/parts/menu.css                     9.39 kB │ gzip:  1.89 kB
+dist/parts/check-box.css               10.29 kB │ gzip:  1.29 kB
+dist/parts/button.css                  12.61 kB │ gzip:  1.62 kB
+dist/parts/date-picker.css             14.88 kB │ gzip:  2.08 kB
+dist/parts/slider.css                  18.08 kB │ gzip:  2.63 kB
+dist/parts/toasts.css                  21.98 kB │ gzip:  2.98 kB
+dist/common.css                        25.54 kB │ gzip:  5.65 kB
+dist/parts/tags.css                    26.10 kB │ gzip:  2.61 kB
+dist/parts/tabs.css                    27.07 kB │ gzip:  2.64 kB
+dist/parts/calendar.css                27.11 kB │ gzip:  3.51 kB
+dist/parts/table.css                   44.94 kB │ gzip:  4.38 kB
+dist/index.css                        403.93 kB │ gzip: 42.01 kB
+
+✓ built in 487ms
+[33m[PLUGIN_TIMINGS] [0mJavaScript callbacks ran for 5.1s of this 5.2s build (96%).
+The slowest callbacks, timed inside each callback (the wait before a callback starts is excluded, the time it awaits is included):
+  - plugin playground:angular transform (89%, 4.7s, 4211 calls)
+Additional callback time came from callbacks under 1s.
+See https://rolldown.rs/reference/InputOptions.checks#bundlertimings for more details.
+
+vue      alert            3 steps
+vue      avatar           6 steps
+vue      avatar-group     4 steps
+vue      code-block       5 steps
+vue      breadcrumbs      5 steps
+vue      badge            6 steps
+vue      toggle-button    4 steps
+vue      toggle-group     6 steps
+vue      button           3 steps
+vue      input            3 steps
+vue      number-input     5 steps
+vue      textarea         3 steps
+vue      check-box        3 steps
+vue      switch           3 steps
+vue      label            3 steps
+vue      field            3 steps
+vue      slider           3 steps
+vue      rating           3 steps
+vue      radio-group      4 steps
+vue      select           7 steps
+vue      calendar         6 steps
+vue      date-input       5 steps
+vue      date-picker      10 steps
+vue      popover          4 steps
+vue      menu             7 steps
+vue      tooltip          6 steps
+vue      alert-dialog     6 steps
+vue      dialog           5 steps
+vue      drawer           5 steps
+vue      toasts           5 steps
+vue      scroller         4 steps
+vue      list-box         4 steps
+vue      pagination       4 steps
+vue      table            5 steps
+vue      tabs             4 steps
+vue      tags             4 steps
+vue      accordion        4 steps
+vue      icon             2 steps
+vue      progress-linear  2 steps
+vue      progress-spinner 2 steps
+vue      separator        6 steps
+vue      skeleton         2 steps
+vue      drag-and-drop    3 steps
+vue      virtual          4 steps
+react    alert            3 steps
+react    avatar           6 steps
+react    avatar-group     4 steps
+react    code-block       5 steps
+react    breadcrumbs      5 steps
+react    badge            6 steps
+react    toggle-button    4 steps
+react    toggle-group     6 steps
+react    button           3 steps
+react    input            3 steps
+react    number-input     5 steps
+react    textarea         3 steps
+react    check-box        3 steps
+react    switch           3 steps
+react    label            3 steps
+react    field            3 steps
+react    slider           3 steps
+react    rating           3 steps
+react    radio-group      4 steps
+react    select           7 steps
+react    calendar         6 steps
+react    date-input       5 steps
+react    date-picker      10 steps
+react    popover          4 steps
+react    menu             7 steps
+react    tooltip          6 steps
+react    alert-dialog     6 steps
+react    dialog           5 steps
+react    drawer           5 steps
+react    toasts           5 steps
+react    scroller         4 steps
+react    list-box         4 steps
+react    pagination       4 steps
+react    table            5 steps
+react    tabs             4 steps
+react    tags             4 steps
+react    accordion        4 steps
+react    icon             2 steps
+react    progress-linear  2 steps
+react    progress-spinner 2 steps
+react    separator        6 steps
+react    skeleton         2 steps
+react    drag-and-drop    3 steps
+react    virtual          4 steps
+svelte   alert            3 steps
+svelte   avatar           6 steps
+svelte   avatar-group     4 steps
+svelte   code-block       5 steps
+svelte   breadcrumbs      5 steps
+svelte   badge            6 steps
+svelte   toggle-button    4 steps
+svelte   toggle-group     6 steps
+svelte   button           3 steps
+svelte   input            3 steps
+svelte   number-input     5 steps
+svelte   textarea         3 steps
+svelte   check-box        3 steps
+svelte   switch           3 steps
+svelte   label            3 steps
+svelte   field            3 steps
+svelte   slider           3 steps
+svelte   rating           3 steps
+svelte   radio-group      4 steps
+svelte   select           7 steps
+svelte   calendar         6 steps
+svelte   date-input       5 steps
+svelte   date-picker      10 steps
+svelte   popover          4 steps
+svelte   menu             7 steps
+svelte   tooltip          6 steps
+svelte   alert-dialog     6 steps
+svelte   dialog           5 steps
+svelte   drawer           5 steps
+svelte   toasts           5 steps
+svelte   scroller         4 steps
+svelte   list-box         4 steps
+svelte   pagination       4 steps
+svelte   table            5 steps
+svelte   tabs             4 steps
+svelte   tags             4 steps
+svelte   accordion        4 steps
+svelte   icon             2 steps
+svelte   progress-linear  2 steps
+svelte   progress-spinner 2 steps
+svelte   separator        6 steps
+svelte   skeleton         2 steps
+svelte   drag-and-drop    3 steps
+svelte   virtual          4 steps
+solid    alert            3 steps
+solid    avatar           6 steps
+solid    avatar-group     4 steps
+solid    code-block       5 steps
+solid    breadcrumbs      5 steps
+solid    badge            6 steps
+solid    toggle-button    4 steps
+solid    toggle-group     6 steps
+solid    button           3 steps
+solid    input            3 steps
+solid    number-input     5 steps
+solid    textarea         3 steps
+solid    check-box        3 steps
+solid    switch           3 steps
+solid    label            3 steps
+solid    field            3 steps
+solid    slider           3 steps
+solid    rating           3 steps
+solid    radio-group      4 steps
+solid    select           7 steps
+solid    calendar         6 steps
+solid    date-input       5 steps
+solid    date-picker      10 steps
+solid    popover          4 steps
+solid    menu             7 steps
+solid    tooltip          6 steps
+solid    alert-dialog     6 steps
+solid    dialog           5 steps
+solid    drawer           5 steps
+solid    toasts           5 steps
+solid    scroller         4 steps
+solid    list-box         4 steps
+solid    pagination       4 steps
+solid    table            5 steps
+solid    tabs             4 steps
+solid    tags             4 steps
+solid    accordion        4 steps
+solid    icon             2 steps
+solid    progress-linear  2 steps
+solid    progress-spinner 2 steps
+solid    separator        6 steps
+solid    skeleton         2 steps
+solid    drag-and-drop    3 steps
+solid    virtual          4 steps
+webc     alert            3 steps
+webc     avatar           6 steps
+webc     avatar-group     4 steps
+webc     code-block       5 steps
+webc     breadcrumbs      5 steps
+webc     badge            6 steps
+webc     toggle-button    4 steps
+webc     toggle-group     6 steps
+webc     button           3 steps
+webc     input            3 steps
+webc     number-input     5 steps
+webc     textarea         3 steps
+webc     check-box        3 steps
+webc     switch           3 steps
+webc     label            3 steps
+webc     field            3 steps
+webc     slider           3 steps
+webc     rating           3 steps
+webc     radio-group      4 steps
+webc     select           7 steps
+webc     calendar         6 steps
+webc     date-input       5 steps
+webc     date-picker      10 steps
+webc     popover          4 steps
+webc     menu             7 steps
+webc     tooltip          6 steps
+webc     alert-dialog     6 steps
+webc     dialog           5 steps
+webc     drawer           5 steps
+webc     toasts           5 steps
+webc     scroller         4 steps
+webc     list-box         4 steps
+webc     pagination       4 steps
+webc     table            5 steps
+webc     tabs             4 steps
+webc     tags             4 steps
+webc     accordion        4 steps
+webc     icon             2 steps
+webc     progress-linear  2 steps
+webc     progress-spinner 2 steps
+webc     separator        6 steps
+webc     skeleton         2 steps
+webc     drag-and-drop    3 steps
+webc     virtual          4 steps
+angular  alert            3 steps
+angular  avatar           6 steps
+angular  avatar-group     4 steps
+angular  code-block       5 steps
+angular  breadcrumbs      5 steps
+angular  badge            6 steps
+angular  toggle-button    4 steps
+angular  toggle-group     6 steps
+angular  button           3 steps
+angular  input            3 steps
+angular  number-input     5 steps
+angular  textarea         3 steps
+angular  check-box        3 steps
+angular  switch           3 steps
+angular  label            3 steps
+angular  field            3 steps
+angular  slider           3 steps
+angular  rating           3 steps
+angular  radio-group      4 steps
+angular  select           7 steps
+angular  calendar         6 steps
+angular  date-input       5 steps
+angular  date-picker      10 steps
+angular  popover          4 steps
+angular  menu             7 steps
+angular  tooltip          6 steps
+angular  alert-dialog     6 steps
+angular  dialog           5 steps
+angular  drawer           5 steps
+angular  toasts           5 steps
+angular  scroller         4 steps
+angular  list-box         4 steps
+angular  pagination       4 steps
+angular  table            5 steps
+angular  tabs             4 steps
+angular  tags             4 steps
+angular  accordion        4 steps
+angular  icon             2 steps
+angular  progress-linear  2 steps
+angular  progress-spinner 2 steps
+angular  separator        6 steps
+angular  skeleton         2 steps
+angular  drag-and-drop    3 steps
+angular  virtual          4 steps
+# Parity — 2026-11-13
+
+Compared with Vue: 44 pages, 191 steps, 922 events.
+
+| Framework | Steps differ | Pages |
+| --- | --- | --- |
+| react | 0 | 0 |
+| svelte | 0 | 0 |
+| solid | 1 | 1 |
+| webc | 0 | 0 |
+| angular | 0 | 0 |
+
+## react: 0 steps differ on 0 pages
+
+## svelte: 0 steps differ on 0 pages
+
+## solid: 1 steps differ on 1 pages
+
+### breadcrumbs · 3 key Escape so-button · focus
+
+```diff
+- {"tag":"button","aria":"- button \"Show hidden breadcrumbs\": …"}
++ null
+```
+
+## webc: 0 steps differ on 0 pages
+
+## angular: 0 steps differ on 0 pages
+

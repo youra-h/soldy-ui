@@ -178,3 +178,17 @@ Vue 210,1 → 211,5 МБ, React 158,3 → 159,6, Svelte 328,1 → 330,5, Solid 2
 - **Серверный рендер и гидратация** — за пределами этой сверки
   ([`ssr/`](../ssr/README.md) проверяет утечки на сервере, а не одинаковость событий).
 - **Другие браузеры.** Прогон — Chromium из Playwright.
+
+## 2026-11-13 — аудит девяти новых компонентов
+
+[Задача](https://app.clickup.com/t/1an4hvw5vua), [полный отчёт](../validation/new-components-2026-11-13.md), [неизменённый свежий normalized comparison](../validation/runs/audit-new-components-20261113/parity/parity-report.md). Проверено 44 страниц, 191 reference steps; все шесть raw journals сохранены. Сравниваются события/порядок, ARIA и focus после каждого шага. Новых blanket exceptions нет.
+
+| Framework | Steps differ | Pages |
+| --------- | ------------ | ----- |
+| react     | 0            | 0     |
+| svelte    | 0            | 0     |
+| solid     | 1            | 1     |
+| webc      | 0            | 0     |
+| angular   | 0            | 0     |
+
+Фактические различия и их классификация перечислены в полном отчёте; автоматическое parity не заменяет native keyboard focus checks и не делает известный Solid Breadcrumbs FAIL успешным.

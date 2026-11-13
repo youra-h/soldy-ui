@@ -1,3 +1,4 @@
+import { NEW_COMPONENT_SCENARIOS } from './new-components'
 import { ALERT_SCENARIOS } from './alert/display'
 import { AVATAR_SCENARIOS } from './avatar/display'
 import { SEPARATOR_SCENARIOS } from './separator/semantics'
@@ -39,6 +40,7 @@ function polled(id: string) {
  * не сломанная сборка. Стенд стерегут только тесты целостности реестра.
  */
 export const SCENARIOS: readonly TScenario[] = [
+	...NEW_COMPONENT_SCENARIOS,
 	...BREADCRUMBS_SCENARIOS,
 	...BUTTON_EVENTS,
 	...POLLED.flatMap((id) => eventsPoll(polled(id))),

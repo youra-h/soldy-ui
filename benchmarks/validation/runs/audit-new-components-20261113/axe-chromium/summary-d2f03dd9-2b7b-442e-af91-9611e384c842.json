@@ -1,0 +1,78 @@
+{
+  "runId": "d2f03dd9-2b7b-442e-af91-9611e384c842",
+  "browser": "chromium",
+  "startedAt": "2026-11-13T08:54:19.417Z",
+  "expectedReports": 828,
+  "reports": 822,
+  "coverageEntries": {
+    "direct": 44,
+    "consumer": 7,
+    "semantic-reference": 1
+  },
+  "violations": {
+    "region": {
+      "cases": 66,
+      "nodes": 168,
+      "impact": "moderate"
+    },
+    "color-contrast": {
+      "cases": 6,
+      "nodes": 12,
+      "impact": "serious"
+    }
+  },
+  "incomplete": {
+    "color-contrast": {
+      "cases": 42,
+      "nodes": 660,
+      "impact": "serious"
+    },
+    "aria-valid-attr-value": {
+      "cases": 162,
+      "nodes": 210,
+      "impact": "critical"
+    },
+    "label-content-name-mismatch": {
+      "cases": 12,
+      "nodes": 12,
+      "impact": "serious"
+    },
+    "aria-hidden-focus": {
+      "cases": 24,
+      "nodes": 24,
+      "impact": "serious"
+    },
+    "scrollable-region-focusable": {
+      "cases": 18,
+      "nodes": 18,
+      "impact": "serious"
+    }
+  },
+  "waivedNodes": 12,
+  "unresolvedNodes": 0,
+  "staleExceptions": 0,
+  "axeVersions": [
+    "4.14.0"
+  ],
+  "browserVersions": [
+    "156.0.8078.4"
+  ],
+  "sources": [
+    "fd157f3535d7a56624c5d6abfea4408b263fe825 (modified)"
+  ],
+  "contrast": "not passed",
+  "errors": [
+    "vue/code-block/second-active: setup/classification error report",
+    "vue/code-block/second-active: missing original axe report",
+    "react/code-block/second-active: setup/classification error report",
+    "react/code-block/second-active: missing original axe report",
+    "svelte/code-block/second-active: setup/classification error report",
+    "svelte/code-block/second-active: missing original axe report",
+    "solid/code-block/second-active: setup/classification error report",
+    "solid/code-block/second-active: missing original axe report",
+    "webc/code-block/second-active: setup/classification error report",
+    "webc/code-block/second-active: missing original axe report",
+    "angular/code-block/second-active: setup/classification error report",
+    "angular/code-block/second-active: missing original axe report"
+  ]
+}

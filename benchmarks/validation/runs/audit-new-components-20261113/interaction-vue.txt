@@ -1,0 +1,56 @@
+vue alert ×1 dismiss 16/65
+vue alert ×4 dismiss 19/64
+vue alert ×6 dismiss 23/64
+vue breadcrumbs ×1 open 16/65, close 15/64
+vue breadcrumbs ×4 open 18/64, close 17/64
+vue breadcrumbs ×6 open 23/64, close 18/64
+vue toggle-button ×1 press 15/65, release 15/65
+vue toggle-button ×4 press 15/64, release 16/65
+vue toggle-button ×6 press 15/64, release 15/64
+vue toggle-group ×1 choose first 16/66, clear first 16/66
+vue toggle-group ×4 choose first 16/64, clear first 16/64
+vue toggle-group ×6 choose first 18/63, clear first 18/63
+vue code-block ×1 snippet two 16/65, copy 16/65, snippet one 17/66
+vue code-block ×4 snippet two 18/64, copy 19/63, snippet one 28/67
+vue code-block ×6 snippet two 33/81, copy 41/123, snippet one 55/99
+vue select ×1 open 15/65, close 15/64, type 9/58
+vue select ×4 open 17/64, close 16/62, type 16/57
+vue select ×6 open 20/65, close 17/63, type 24/61
+vue menu ×1 open 16/65, close 16/65
+vue menu ×4 open 17/65, close 16/64
+vue menu ×6 open 21/64, close 21/64
+vue date-picker ×1 open 16/65, close 15/64, locale ru 19/66, locale en 19/66
+vue date-picker ×4 open 21/65, close 16/64, locale ru 80/113, locale en 87/115
+vue date-picker ×6 open 36/79, close 21/63, locale ru 128/160, locale en 128/154
+vue alert-dialog ×1 open 16/66, close 15/65, cancel 15/66, confirm 16/66
+vue alert-dialog ×4 open 16/64, close 16/65, cancel 16/66, confirm 16/66
+vue alert-dialog ×6 open 20/64, close 17/64, cancel 19/66, confirm 20/66
+vue dialog ×1 open 16/66, close 14/64
+vue dialog ×4 open 18/65, close 16/63
+vue dialog ×6 open 20/64, close 20/64
+vue input ×1 type 13/64
+vue input ×4 type 14/62
+vue input ×6 type 15/62
+vue tabs ×1 tab 2 16/65, tab 1 16/65
+vue tabs ×4 tab 2 17/66, tab 1 17/66
+vue tabs ×6 tab 2 33/81, tab 1 32/82
+vue calendar ×1 locale ru 128/154, locale en 122/149
+vue calendar ×4 locale ru 744/781, locale en 743/783
+vue calendar ×6 locale ru 1200/1240, locale en 1167/1301
+vue number-input ×1 locale ru 18/66, locale en 17/65
+vue number-input ×4 locale ru 31/67, locale en 32/81
+vue number-input ×6 locale ru 49/99, locale en 51/99
+vue alert перерисовки dismiss 3/3 чужим 0
+vue breadcrumbs перерисовки open 9/9 чужим 0, close 9/9 чужим 0
+vue toggle-button перерисовки press 1/1 чужим 0, release 1/1 чужим 0
+vue toggle-group перерисовки choose first 1/1 чужим 0, clear first 1/1 чужим 0
+vue code-block перерисовки snippet two 6/6 чужим 0, copy 9/9 чужим 0, snippet one 9/9 чужим 0
+vue select перерисовки open 3/3 чужим 0, close 3/3 чужим 0, type 6/6 чужим 0
+vue menu перерисовки open 17/17 чужим 0, close 17/17 чужим 0
+vue date-picker перерисовки open 10/10 чужим 0, close 10/10 чужим 0, locale ru 213/17 чужим 1078, locale en 213/17 чужим 1078
+vue alert-dialog перерисовки open 6/6 чужим 0, close 6/6 чужим 0, cancel 6/6 чужим 0, confirm 6/6 чужим 0
+vue dialog перерисовки open 6/6 чужим 0, close 6/6 чужим 0
+vue input перерисовки type 1/1 чужим 0
+vue tabs перерисовки tab 2 6/6 чужим 0, tab 1 6/6 чужим 0
+vue calendar перерисовки locale ru 552/13 чужим 9653, locale en 552/13 чужим 9653
+vue number-input перерисовки locale ru 152/5 чужим 294, locale en 152/5 чужим 294

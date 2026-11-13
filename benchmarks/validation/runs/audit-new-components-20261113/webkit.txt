@@ -1,0 +1,457 @@
+
+> test:layout:webkit
+> npm run build:css --workspace=@soxa-ui/theme-oren && npm run test:browser:webkit --workspace=@soxa-ui/playground-vue --
+
+
+> @soxa-ui/theme-oren@0.3.1-beta.0 build:css
+> vite build
+
+vite v8.3.4 building client environment for production...
+transforming...
+✓ 2 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/components/icon.css                0.05 kB │ gzip:  0.05 kB
+dist/components/badge.css               0.05 kB │ gzip:  0.06 kB
+dist/components/label.css               0.05 kB │ gzip:  0.06 kB
+dist/components/avatar.css              0.05 kB │ gzip:  0.06 kB
+dist/components/button.css              0.05 kB │ gzip:  0.06 kB
+dist/components/slider.css              0.05 kB │ gzip:  0.06 kB
+dist/components/switch.css              0.05 kB │ gzip:  0.06 kB
+dist/components/toggle-button.css       0.05 kB │ gzip:  0.06 kB
+dist/components/tooltip.css             0.05 kB │ gzip:  0.06 kB
+dist/components/skeleton.css            0.05 kB │ gzip:  0.06 kB
+dist/components/textarea.css            0.05 kB │ gzip:  0.06 kB
+dist/components/separator.css           0.05 kB │ gzip:  0.06 kB
+dist/components/radio-group.css         0.06 kB │ gzip:  0.06 kB
+dist/components/drag-and-drop.css       0.06 kB │ gzip:  0.06 kB
+dist/components/progress-linear.css     0.06 kB │ gzip:  0.07 kB
+dist/components/progress-spinner.css    0.06 kB │ gzip:  0.07 kB
+dist/components/field.css               0.08 kB │ gzip:  0.06 kB
+dist/components/rating.css              0.08 kB │ gzip:  0.06 kB
+dist/components/check-box.css           0.08 kB │ gzip:  0.06 kB
+dist/components/avatar-group.css        0.09 kB │ gzip:  0.07 kB
+dist/components/toggle-group.css        0.09 kB │ gzip:  0.07 kB
+dist/components/tabs.css                0.11 kB │ gzip:  0.07 kB
+dist/components/tags.css                0.11 kB │ gzip:  0.07 kB
+dist/components/alert.css               0.11 kB │ gzip:  0.07 kB
+dist/components/input.css               0.11 kB │ gzip:  0.07 kB
+dist/components/scroller.css            0.11 kB │ gzip:  0.07 kB
+dist/components/accordion.css           0.11 kB │ gzip:  0.07 kB
+dist/components/date-input.css          0.12 kB │ gzip:  0.07 kB
+dist/components/pagination.css          0.12 kB │ gzip:  0.07 kB
+dist/components/number-input.css        0.12 kB │ gzip:  0.07 kB
+dist/components/list-box.css            0.14 kB │ gzip:  0.08 kB
+dist/components/code-block.css          0.14 kB │ gzip:  0.08 kB
+dist/components/table.css               0.14 kB │ gzip:  0.08 kB
+dist/components/dialog.css              0.17 kB │ gzip:  0.08 kB
+dist/components/alert-dialog.css        0.18 kB │ gzip:  0.09 kB
+dist/components/drawer.css              0.20 kB │ gzip:  0.09 kB
+dist/components/menu.css                0.20 kB │ gzip:  0.09 kB
+dist/components/popover.css             0.21 kB │ gzip:  0.09 kB
+dist/components/toasts.css              0.21 kB │ gzip:  0.10 kB
+dist/components/breadcrumbs.css         0.24 kB │ gzip:  0.10 kB
+dist/parts/place.css                    0.24 kB │ gzip:  0.15 kB
+dist/components/calendar.css            0.27 kB │ gzip:  0.11 kB
+dist/components/select.css              0.29 kB │ gzip:  0.10 kB
+dist/components/date-picker.css         0.34 kB │ gzip:  0.12 kB
+dist/parts/swipe.css                    0.51 kB │ gzip:  0.24 kB
+dist/parts/icon.css                     0.52 kB │ gzip:  0.18 kB
+dist/parts/tooltip.css                  0.57 kB │ gzip:  0.29 kB
+dist/parts/separator.css                0.61 kB │ gzip:  0.25 kB
+dist/parts/drag-and-drop.css            0.73 kB │ gzip:  0.34 kB
+dist/parts/anchored.css                 1.33 kB │ gzip:  0.34 kB
+dist/parts/avatar-group.css             1.58 kB │ gzip:  0.52 kB
+dist/parts/group.css                    2.19 kB │ gzip:  0.38 kB
+dist/parts/label.css                    2.63 kB │ gzip:  0.58 kB
+dist/parts/skeleton.css                 2.73 kB │ gzip:  0.63 kB
+dist/parts/avatar.css                   2.82 kB │ gzip:  0.67 kB
+dist/parts/badge.css                    2.98 kB │ gzip:  0.66 kB
+dist/parts/modal.css                    3.08 kB │ gzip:  0.73 kB
+dist/parts/accordion.css                3.64 kB │ gzip:  0.78 kB
+dist/parts/rating.css                   3.70 kB │ gzip:  1.00 kB
+dist/parts/alert-dialog.css             3.78 kB │ gzip:  0.96 kB
+dist/parts/list-box.css                 3.78 kB │ gzip:  0.91 kB
+dist/parts/toggle-group.css             3.79 kB │ gzip:  0.73 kB
+dist/parts/dialog.css                   4.29 kB │ gzip:  0.99 kB
+dist/parts/scroller.css                 4.64 kB │ gzip:  0.92 kB
+dist/parts/progress-spinner.css         4.83 kB │ gzip:  0.87 kB
+dist/parts/progress-linear.css          5.45 kB │ gzip:  0.98 kB
+dist/parts/input.css                    5.91 kB │ gzip:  1.21 kB
+dist/parts/textarea.css                 6.14 kB │ gzip:  1.19 kB
+dist/parts/alert.css                    6.30 kB │ gzip:  1.29 kB
+dist/parts/pagination.css               6.78 kB │ gzip:  1.07 kB
+dist/parts/breadcrumbs.css              7.04 kB │ gzip:  1.20 kB
+dist/parts/drawer.css                   7.16 kB │ gzip:  1.50 kB
+dist/parts/code-block.css               7.20 kB │ gzip:  1.39 kB
+dist/parts/popover.css                  7.31 kB │ gzip:  1.44 kB
+dist/parts/radio-group.css              7.88 kB │ gzip:  1.28 kB
+dist/parts/select.css                   8.67 kB │ gzip:  1.78 kB
+dist/parts/switch.css                   8.70 kB │ gzip:  1.33 kB
+dist/parts/date-input.css               9.00 kB │ gzip:  1.55 kB
+dist/parts/number-input.css             9.07 kB │ gzip:  1.40 kB
+dist/parts/field.css                    9.28 kB │ gzip:  1.38 kB
+dist/parts/menu.css                     9.39 kB │ gzip:  1.89 kB
+dist/parts/check-box.css               10.29 kB │ gzip:  1.29 kB
+dist/parts/button.css                  12.61 kB │ gzip:  1.62 kB
+dist/parts/date-picker.css             14.88 kB │ gzip:  2.08 kB
+dist/parts/slider.css                  18.08 kB │ gzip:  2.63 kB
+dist/parts/toasts.css                  21.98 kB │ gzip:  2.98 kB
+dist/common.css                        25.54 kB │ gzip:  5.65 kB
+dist/parts/tags.css                    26.10 kB │ gzip:  2.61 kB
+dist/parts/tabs.css                    27.07 kB │ gzip:  2.64 kB
+dist/parts/calendar.css                27.11 kB │ gzip:  3.51 kB
+dist/parts/table.css                   44.94 kB │ gzip:  4.38 kB
+dist/index.css                        403.93 kB │ gzip: 42.01 kB
+
+✓ built in 583ms
+
+> @soxa-ui/playground-vue@0.0.0 test:browser:webkit
+> node browser-server/cli.ts
+
+13:54:21 [vite-plugin-svelte] no Svelte config found at D:/projects/soxa-a/packages/playground/vue - using default configuration.
+
+ RUN  v5.0.5 D:/projects/soxa-a/packages/playground/vue
+      API started at http://127.0.0.1:59825/
+
+ ❯ |layout (webkit)| browser/new-components-audit.spec.ts (72 tests | 1 failed) 26458ms
+   ❯ new component audit / solid (12)
+     × Breadcrumbs native links, disabled/current, overflow keyboard and update 387ms
+ ❯ |layout (webkit)| browser/axe-angular.spec.ts (139 tests | 1 failed) 84225ms
+   ❯ axe angular (139)
+     × code-block/second-active 4517ms
+ ❯ |layout (webkit)| browser/axe-svelte.spec.ts (139 tests | 1 failed) 84676ms
+   ❯ axe svelte (139)
+     × code-block/second-active 4478ms
+ ❯ |layout (webkit)| browser/axe-solid.spec.ts (139 tests | 1 failed) 86321ms
+   ❯ axe solid (139)
+     × code-block/second-active 4521ms
+ ❯ |layout (webkit)| browser/axe-react.spec.ts (139 tests | 1 failed) 85669ms
+   ❯ axe react (139)
+     × code-block/second-active 4708ms
+ ❯ |layout (webkit)| browser/axe-webc.spec.ts (139 tests | 1 failed) 83111ms
+   ❯ axe webc (139)
+     × code-block/second-active 4732ms
+ ❯ |layout (webkit)| browser/axe-vue.spec.ts (139 tests | 1 failed) 82672ms
+   ❯ axe vue (139)
+     × code-block/second-active 4742ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 7 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |layout (webkit)| browser/axe-angular.spec.ts > axe angular > code-block/second-active
+ FAIL  |layout (webkit)| browser/axe-react.spec.ts > axe react > code-block/second-active
+ FAIL  |layout (webkit)| browser/axe-solid.spec.ts > axe solid > code-block/second-active
+ FAIL  |layout (webkit)| browser/axe-svelte.spec.ts > axe svelte > code-block/second-active
+ FAIL  |layout (webkit)| browser/axe-vue.spec.ts > axe vue > code-block/second-active
+ FAIL  |layout (webkit)| browser/axe-webc.spec.ts > axe webc > code-block/second-active
+AssertionError: code-block/second-active: action target .so-code-block [role="tab"]:nth-child(2): expected null to be truthy
+
+Failure screenshots:
+  - .vitest/attachments/failure-screenshots/axe-angular.spec.ts/axe-angular---code-block-second-active.png
+  - .vitest/attachments/failure-screenshots/axe-react.spec.ts/axe-react---code-block-second-active.png
+  - .vitest/attachments/failure-screenshots/axe-solid.spec.ts/axe-solid---code-block-second-active.png
+  - .vitest/attachments/failure-screenshots/axe-svelte.spec.ts/axe-svelte---code-block-second-active.png
+  - .vitest/attachments/failure-screenshots/axe-vue.spec.ts/axe-vue---code-block-second-active.png
+  - .vitest/attachments/failure-screenshots/axe-webc.spec.ts/axe-webc---code-block-second-active.png
+
+[32m- Expected:[39m
+true
+
+[31m+ Received:[39m
+null
+
+ ❯ __VITEST_POLL_CHAIN__ node_modules/.vite/vitest/207b877e13437b35b3fbae5c20219eecd6c828f1/deps/index.aTZaPVhf-DHNdaHpf.js?v=8e595299:5800:56
+ ❯ browser/axe/suite.ts:356:11
+    354|           message: entry.id + ': action target ' + selector,
+    355|          })
+    356|          .toBeTruthy()
+       |           ^
+    357|         const node = document.querySelector(selector)
+    358|         if (!(node instanceof HTMLElement))
+
+Caused by: Error: Matcher did not succeed in time.
+ ❯ throwWithCause node_modules/.vite/vitest/207b877e13437b35b3fbae5c20219eecd6c828f1/deps/index.aTZaPVhf-DHNdaHpf.js?v=8e595299:5780:43
+ ❯ node_modules/.vite/vitest/207b877e13437b35b3fbae5c20219eecd6c828f1/deps/index.aTZaPVhf-DHNdaHpf.js?v=8e595299:5865:21
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/7]⎯
+
+ FAIL  |layout (webkit)| browser/new-components-audit.spec.ts > new component audit / solid > Breadcrumbs native links, disabled/current, overflow keyboard and update
+AssertionError: expected <body style>…(2)</body> to be <button …(9)>…(1)</button> // Object.is equality
+
+Failure screenshot:
+  - .vitest/attachments/failure-screenshots/new-components-audit.spec.ts/new-component-audit---solid---Breadcrumbs-native-links--disabled-current--overflow-keyboard-and-update.png
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[33m@@ -1,5 +1,47 @@[39m
+[31m+ <body[39m
+[31m+   style=""[39m
+[31m+ >[39m
+[31m+   [39m
+[31m+   [39m
+[31m+[39m
+[31m+[39m
+[31m+   <div>[39m
+[31m+     <nav[39m
+[31m+       aria-label="Навигационная цепочка"[39m
+[31m+       class="so-breadcrumbs so-breadcrumbs--size-normal"[39m
+[31m+       role="navigation"[39m
+[31m+       tabindex="-1"[39m
+[31m+     >[39m
+[31m+       <ol[39m
+[31m+         class="so-breadcrumbs__list"[39m
+[31m+       >[39m
+[31m+         <li[39m
+[31m+           class="so-breadcrumbs-item so-breadcrumbs-item--size-normal"[39m
+[31m+           data-disabled="false"[39m
+[31m+           data-selected="false"[39m
+[31m+           style="order: 0;"[39m
+[31m+         >[39m
+[31m+           <a[39m
+[31m+             class="so-button so-button--size-normal so-breadcrumbs__link"[39m
+[31m+             data-disabled="false"[39m
+[31m+             href="#home"[39m
+[31m+           >[39m
+[31m+             <span[39m
+[31m+               class="so-button__text"[39m
+[31m+             >[39m
+[31m+               Home[39m
+[31m+             </span>[39m
+[31m+           </a>[39m
+[31m+           <span[39m
+[31m+             aria-hidden="true"[39m
+[31m+             class="so-breadcrumbs__separator"[39m
+[31m+           />[39m
+[31m+           <span[39m
+[31m+             class="so-menu so-menu--size-normal so-breadcrumbs__overflow"[39m
+[31m+             data-open="false"[39m
+[31m+           >[39m
+[2m              <button[22m
+[2m                aria-controls="cl-49-panel"[22m
+[2m                aria-expanded="false"[22m
+[2m                aria-haspopup="menu"[22m
+[2m                aria-label="Показать скрытые звенья"[22m
+[33m@@ -13,5 +55,198 @@[39m
+[2m                  class="so-button__text"[22m
+[2m                >[22m
+[2m                  …[22m
+[2m                </span>[22m
+[2m              </button>[22m
+[31m+             [39m
+[31m+           </span>[39m
+[31m+         </li>[39m
+[31m+         <li[39m
+[31m+           class="so-breadcrumbs-item so-breadcrumbs-item--size-normal"[39m
+[31m+           data-disabled="false"[39m
+[31m+           data-selected="false"[39m
+[31m+           style="order: 1; display: none;"[39m
+[31m+         >[39m
+[31m+           <span[39m
+[31m+             aria-hidden="true"[39m
+[31m+             class="so-breadcrumbs__separator"[39m
+[31m+           />[39m
+[31m+           <a[39m
+[31m+             class="so-button so-button--size-normal so-breadcrumbs__link"[39m
+[31m+             data-disabled="false"[39m
+[31m+             href="#catalog"[39m
+[31m+           >[39m
+[31m+             <span[39m
+[31m+               class="so-button__text"[39m
+[31m+             >[39m
+[31m+               Catalog[39m
+[31m+             </span>[39m
+[31m+           </a>[39m
+[31m+         </li>[39m
+[31m+         <li[39m
+[31m+           class="so-breadcrumbs-item so-breadcrumbs-item--size-normal"[39m
+[31m+           data-disabled="true"[39m
+[31m+           data-selected="false"[39m
+[31m+           style="order: 2; display: none;"[39m
+[31m+         >[39m
+[31m+           <span[39m
+[31m+             aria-hidden="true"[39m
+[31m+             class="so-breadcrumbs__separator"[39m
+[31m+           />[39m
+[31m+           <a[39m
+[31m+             aria-disabled="true"[39m
+[31m+             class="so-button so-button--size-normal so-breadcrumbs__link"[39m
+[31m+             data-disabled="true"[39m
+[31m+           >[39m
+[31m+             <span[39m
+[31m+               class="so-button__text"[39m
+[31m+             >[39m
+[31m+               Disabled[39m
+[31m+             </span>[39m
+[31m+           </a>[39m
+[31m+         </li>[39m
+[31m+         <li[39m
+[31m+           class="so-breadcrumbs-item so-breadcrumbs-item--size-normal"[39m
+[31m+           data-disabled="false"[39m
+[31m+           data-selected="false"[39m
+[31m+           style="order: 3; display: none;"[39m
+[31m+         >[39m
+[31m+           <span[39m
+[31m+             aria-hidden="true"[39m
+[31m+             class="so-breadcrumbs__separator"[39m
+[31m+           />[39m
+[31m+           <a[39m
+[31m+             class="so-button so-button--size-normal so-breadcrumbs__link"[39m
+[31m+             data-disabled="false"[39m
+[31m+             href="#phones"[39m
+[31m+           >[39m
+[31m+             <span[39m
+[31m+               class="so-button__text"[39m
+[31m+             >[39m
+[31m+               Phones[39m
+[31m+             </span>[39m
+[31m+           </a>[39m
+[31m+         </li>[39m
+[31m+         <li[39m
+[31m+           class="so-breadcrumbs-item so-breadcrumbs-item--size-normal"[39m
+[31m+           data-disabled="false"[39m
+[31m+           data-selected="true"[39m
+[31m+           style="order: 4;"[39m
+[31m+         >[39m
+[31m+           <span[39m
+[31m+             aria-hidden="true"[39m
+[31m+             class="so-breadcrumbs__separator"[39m
+[31m+           />[39m
+[31m+           <a[39m
+[31m+             aria-current="page"[39m
+[31m+             class="so-button so-button--size-normal so-breadcrumbs__link"[39m
+[31m+             data-disabled="false"[39m
+[31m+           >[39m
+[31m+             <span[39m
+[31m+               class="so-button__text"[39m
+[31m+             >[39m
+[31m+               Current[39m
+[31m+             </span>[39m
+[31m+           </a>[39m
+[31m+         </li>[39m
+[31m+       </ol>[39m
+[31m+     </nav>[39m
+[31m+   </div>[39m
+[31m+   <div>[39m
+[31m+     <div[39m
+[31m+       aria-labelledby="cl-49-trigger"[39m
+[31m+       class="so-frame so-menu__panel so-menu__panel--size-normal"[39m
+[31m+       data-contained="false"[39m
+[31m+       data-layer="1020"[39m
+[31m+       data-open="false"[39m
+[31m+       data-owner="cl-49-owner"[39m
+[31m+       data-placement="bottom-start"[39m
+[31m+       id="cl-49-panel"[39m
+[31m+       role="menu"[39m
+[31m+       style="position: absolute; left: 62.6875px; top: 36px; width: auto; height: auto; z-index: 1020; display: none;"[39m
+[31m+       tabindex="-1"[39m
+[31m+     >[39m
+[31m+       <div[39m
+[31m+         class="so-menu__list"[39m
+[31m+       >[39m
+[31m+         <div[39m
+[31m+           class="so-menu-item so-menu-item--size-normal"[39m
+[31m+           data-disabled="false"[39m
+[31m+           data-highlighted="false"[39m
+[31m+           data-selected="false"[39m
+[31m+         >[39m
+[31m+           <a[39m
+[31m+             class="so-button so-button--size-normal"[39m
+[31m+             data-disabled="false"[39m
+[31m+             href="#catalog"[39m
+[31m+             role="menuitem"[39m
+[31m+             tabindex="-1"[39m
+[31m+           >[39m
+[31m+             <span[39m
+[31m+               class="so-menu-item__icon"[39m
+[31m+             />[39m
+[31m+             <span[39m
+[31m+               class="so-button__text"[39m
+[31m+             >[39m
+[31m+               Catalog[39m
+[31m+             </span>[39m
+[31m+             <span[39m
+[31m+               class="so-menu-item__shortcut"[39m
+[31m+             />[39m
+[31m+           </a>[39m
+[31m+         </div>[39m
+[31m+         <div[39m
+[31m+           class="so-menu-item so-menu-item--size-normal"[39m
+[31m+           data-disabled="true"[39m
+[31m+           data-highlighted="false"[39m
+[31m+           data-selected="false"[39m
+[31m+         >[39m
+[31m+           <a[39m
+[31m+             aria-disabled="true"[39m
+[31m+             class="so-button so-button--size-normal"[39m
+[31m+             data-disabled="true"[39m
+[31m+             role="menuitem"[39m
+[31m+             tabindex="-1"[39m
+[31m+           >[39m
+[31m+             <span[39m
+[31m+               class="so-menu-item__icon"[39m
+[31m+             />[39m
+[31m+             <span[39m
+[31m+               class="so-button__text"[39m
+[31m+             >[39m
+[31m+               Disabled[39m
+[31m+             </span>[39m
+[31m+             <span[39m
+[31m+               class="so-menu-item__shortcut"[39m
+[31m+             />[39m
+[31m+           </a>[39m
+[31m+         </div>[39m
+[31m+         <div[39m
+[31m+           class="so-menu-item so-menu-item--size-normal"[39m
+[31m+           data-disabled="false"[39m
+[31m+           data-highlighted="false"[39m
+[31m+           data-selected="false"[39m
+[31m+         >[39m
+[31m+           <a[39m
+[31m+             class="so-button so-button--size-normal"[39m
+[31m+             data-disabled="false"[39m
+[31m+             href="#phones"[39m
+[31m+             role="menuitem"[39m
+[31m+             tabindex="-1"[39m
+[31m+           >[39m
+[31m+             <span[39m
+[31m+               class="so-menu-item__icon"[39m
+[31m+             />[39m
+[31m+             <span[39m
+[31m+               class="so-button__text"[39m
+[31m+             >[39m
+[31m+               Phones[39m
+[31m+             </span>[39m
+[31m+             <span[39m
+[31m+               class="so-menu-item__shortcut"[39m
+[31m+             />[39m
+[31m+           </a>[39m
+[31m+         </div>[39m
+[31m+       </div>[39m
+[31m+     </div>[39m
+[31m+   </div>[39m
+[31m+ </body>[39m
+
+ ❯ browser/new-components-audit.spec.ts:208:34
+    206|    .poll(() => find('.so-breadcrumbs__trigger').getAttribute('aria-exp…
+    207|    .toBe('false')
+    208|   expect(document.activeElement).toBe(find('.so-breadcrumbs__trigger'))
+       |                                  ^
+    209|   handle.update({ ...props, maxItems: 0 })
+    210|   await expect.poll(() => document.querySelector('.so-breadcrumbs__tri…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/7]⎯
+
+
+ Test Files  7 failed | 118 passed | 1 skipped (126)
+      Tests  7 failed | 4281 passed | 97 skipped (4385)
+   Start at  13:54:21
+   Duration  231.56s (worker 81%, tests 15%, setup 4%, import 1%)
+
+npm error Lifecycle script `test:browser:webkit` failed with error:
+npm error code 1
+npm error path D:\projects\soxa-a\packages\playground\vue
+npm error workspace @soxa-ui/playground-vue@0.0.0
+npm error location D:\projects\soxa-a\packages\playground\vue
+npm error command failed
+npm error command C:\WINDOWS\system32\cmd.exe /d /s /c node browser-server/cli.ts

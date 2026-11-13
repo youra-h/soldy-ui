@@ -1,0 +1,51 @@
+{
+  "adapter": "vue",
+  "case": "gate/named",
+  "axe": "4.14.0",
+  "violations": [
+    {
+      "id": "page-has-heading-one",
+      "impact": "moderate",
+      "tags": [
+        "cat.semantics",
+        "best-practice"
+      ],
+      "description": "Ensure that the page, or at least one of its frames contains a level-one heading",
+      "help": "Page should contain a level-one heading",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/page-has-heading-one?application=axeAPI",
+      "nodes": [
+        {
+          "any": [],
+          "all": [
+            {
+              "id": "page-has-heading-one",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "moderate",
+              "message": "Page must have a level-one heading"
+            }
+          ],
+          "none": [],
+          "impact": "moderate",
+          "html": "<html lang=\"en\">",
+          "target": [
+            "html"
+          ],
+          "failureSummary": "Fix all of the following:\n  Page must have a level-one heading"
+        }
+      ]
+    }
+  ],
+  "incomplete": [],
+  "gate": {
+    "failures": [],
+    "waived": [],
+    "stale": []
+  },
+  "runId": "c6578558-b337-46e1-9503-332af00b093f",
+  "browser": "webkit",
+  "browserVersion": "27.2",
+  "commit": "fd157f3535d7a56624c5d6abfea4408b263fe825",
+  "workingTree": "modified",
+  "recordedAt": "2026-11-13T08:56:43.332Z"
+}

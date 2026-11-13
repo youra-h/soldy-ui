@@ -488,7 +488,7 @@ export class DialogPreview implements TFixture {
 
 @Component({
 	selector: 'pg-alert-dialog-preview',
-	imports: [TAlertDialogComponent, TButtonComponent, TInputComponent, CopyDirective],
+	imports: [TAlertDialogComponent, TButtonComponent, CopyDirective],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	host: { style: 'display: contents' },
 	template: `

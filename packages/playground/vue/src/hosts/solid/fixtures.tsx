@@ -1,4 +1,5 @@
 import {
+	AlertDialog,
 	Avatar,
 	Badge,
 	Button,
@@ -33,6 +34,19 @@ const CHECK = roleIcon('check')
 const ARROW_RIGHT = roleIcon('arrowRight')
 
 export const FIXTURES: Record<string, TPreview> = {
+	'alert-dialog-footer': (bind) => (
+		<AlertDialog
+			{...bind()}
+			title={<>Custom question</>}
+			footer={
+				<button type="button" data-audit-footer>
+					Custom footer
+				</button>
+			}
+		>
+			Custom description
+		</AlertDialog>
+	),
 	'avatar-fallback': (bind) => <Avatar {...bind()} fallback={<Icon tag={CHECK} />} />,
 	'badge-anchor': (bind) => (
 		<Badge

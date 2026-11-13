@@ -1,0 +1,51 @@
+svelte прогрев 44 с
+svelte alert {"weightKB":3730,"mountMs":34,"heapSlopeKB":0.7,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte avatar {"weightKB":928,"mountMs":10,"heapSlopeKB":0.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte avatar-group {"weightKB":3153,"mountMs":25,"heapSlopeKB":-0.7,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte code-block {"weightKB":10631,"mountMs":105,"heapSlopeKB":0.5,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte breadcrumbs {"weightKB":17261,"mountMs":134,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte badge {"weightKB":865,"mountMs":9,"heapSlopeKB":0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte toggle-button {"weightKB":1002,"mountMs":12,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte toggle-group {"weightKB":6590,"mountMs":58,"heapSlopeKB":-0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte button {"weightKB":976,"mountMs":13,"heapSlopeKB":0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte input {"weightKB":1117,"mountMs":16,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte number-input {"weightKB":4213,"mountMs":38,"heapSlopeKB":0.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte textarea {"weightKB":1147,"mountMs":13,"heapSlopeKB":-0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte check-box {"weightKB":1651,"mountMs":17,"heapSlopeKB":0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte switch {"weightKB":1652,"mountMs":29,"heapSlopeKB":-0.5,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte label {"weightKB":1657,"mountMs":24,"heapSlopeKB":-0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte field {"weightKB":2079,"mountMs":25,"heapSlopeKB":0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte slider {"weightKB":1842,"mountMs":23,"heapSlopeKB":-0.2,"nodes":1,"listeners":0,"components":0,"emitters":0}
+svelte rating {"weightKB":3097,"mountMs":54,"heapSlopeKB":-0.3,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte radio-group {"weightKB":6749,"mountMs":81,"heapSlopeKB":0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte select {"weightKB":5781,"mountMs":82,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte calendar {"weightKB":38880,"mountMs":364,"heapSlopeKB":1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte date-input {"weightKB":2079,"mountMs":34,"heapSlopeKB":-0.3,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte date-picker {"weightKB":6452,"mountMs":85,"heapSlopeKB":-0.3,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte popover {"weightKB":5378,"mountMs":72,"heapSlopeKB":-0.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte menu {"weightKB":4019,"mountMs":34,"heapSlopeKB":-1.5,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte tooltip {"weightKB":2965,"mountMs":39,"heapSlopeKB":-0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte alert-dialog {"weightKB":5497,"mountMs":61,"heapSlopeKB":-2.7,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte dialog {"weightKB":6215,"mountMs":77,"heapSlopeKB":0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte drawer {"weightKB":6147,"mountMs":94,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte toasts {"weightKB":6266,"mountMs":75,"heapSlopeKB":0.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte scroller {"weightKB":4045,"mountMs":48,"heapSlopeKB":-0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte list-box {"weightKB":13119,"mountMs":170,"heapSlopeKB":0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte pagination {"weightKB":13312,"mountMs":157,"heapSlopeKB":0.3,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte table {"weightKB":17372,"mountMs":187,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte tabs {"weightKB":15871,"mountMs":171,"heapSlopeKB":-0.2,"nodes":-1,"listeners":0,"components":0,"emitters":0}
+svelte tags {"weightKB":11552,"mountMs":114,"heapSlopeKB":-0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte accordion {"weightKB":16111,"mountMs":185,"heapSlopeKB":0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte icon {"weightKB":773,"mountMs":15,"heapSlopeKB":-0.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte progress-linear {"weightKB":802,"mountMs":18,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte progress-spinner {"weightKB":795,"mountMs":15,"heapSlopeKB":-0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte separator {"weightKB":716,"mountMs":10,"heapSlopeKB":0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte skeleton {"weightKB":836,"mountMs":16,"heapSlopeKB":-0.3,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte drag-and-drop {"weightKB":44485,"mountMs":500,"heapSlopeKB":0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte virtual {"weightKB":100413,"mountMs":2602,"heapSlopeKB":-0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte all {"weightKB":8838,"mountMs":171,"heapSlopeKB":-0.9,"nodes":1,"listeners":0,"components":0,"emitters":0}
+svelte empty {"weightKB":15,"mountMs":1,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+svelte обход 1 {"heap":12672712,"nodes":818,"listeners":13,"components":119,"emitters":0}
+svelte обход 2 {"heap":12673484,"nodes":818,"listeners":13,"components":119,"emitters":0}
+svelte обход 3 {"heap":12669048,"nodes":818,"listeners":13,"components":119,"emitters":0}
+svelte leak {"weightKB":972,"mountMs":12,"heapSlopeKB":41.4,"nodes":8000,"listeners":1000,"components":1000,"emitters":1000}

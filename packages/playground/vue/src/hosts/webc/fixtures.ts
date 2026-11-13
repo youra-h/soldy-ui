@@ -15,6 +15,35 @@ import type { TPreview } from './previews'
  * (`slotScope: false`).
  */
 export const FIXTURES: Record<string, TPreview> = {
+	'alert-dialog-footer': {
+		tag: 'div',
+		is: 'so-alert-dialog',
+		slots: {
+			title: [
+				() => {
+					const node = document.createElement('span')
+					node.textContent = 'Custom question'
+					return node
+				},
+			],
+			default: [
+				() => {
+					const node = document.createElement('p')
+					node.textContent = 'Custom description'
+					return node
+				},
+			],
+			footer: [
+				() => {
+					const node = document.createElement('button')
+					node.type = 'button'
+					node.dataset.auditFooter = ''
+					node.textContent = 'Custom footer'
+					return node
+				},
+			],
+		},
+	},
 	'avatar-fallback': {
 		tag: 'span',
 		is: 'so-avatar',

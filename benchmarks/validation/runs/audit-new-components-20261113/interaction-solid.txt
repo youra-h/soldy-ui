@@ -1,0 +1,56 @@
+solid alert ×1 dismiss 17/66
+solid alert ×4 dismiss 20/64
+solid alert ×6 dismiss 22/64
+solid breadcrumbs ×1 open 16/65, close 15/65
+solid breadcrumbs ×4 open 18/64, close 18/64
+solid breadcrumbs ×6 open 23/62, close 21/65
+solid toggle-button ×1 press 15/65, release 15/65
+solid toggle-button ×4 press 16/65, release 15/64
+solid toggle-button ×6 press 15/64, release 15/64
+solid toggle-group ×1 choose first 16/65, clear first 16/65
+solid toggle-group ×4 choose first 17/65, clear first 16/65
+solid toggle-group ×6 choose first 18/64, clear first 18/64
+solid code-block ×1 snippet two 16/66, copy 16/65, snippet one 17/67
+solid code-block ×4 snippet two 17/64, copy 17/65, snippet one 27/67
+solid code-block ×6 snippet two 31/81, copy 23/77, snippet one 47/95
+solid select ×1 open 16/65, close 15/65, type 9/59
+solid select ×4 open 18/64, close 17/64, type 15/61
+solid select ×6 open 20/65, close 17/63, type 20/58
+solid menu ×1 open 16/65, close 16/65
+solid menu ×4 open 17/64, close 17/65
+solid menu ×6 open 18/63, close 17/64
+solid date-picker ×1 open 16/65, close 16/65, locale ru 19/66, locale en 20/65
+solid date-picker ×4 open 19/65, close 17/65, locale ru 66/98, locale en 60/82
+solid date-picker ×6 open 29/65, close 20/64, locale ru 100/129, locale en 87/115
+solid alert-dialog ×1 open 15/65, close 15/65, cancel 16/66, confirm 15/66
+solid alert-dialog ×4 open 17/64, close 16/65, cancel 16/66, confirm 16/66
+solid alert-dialog ×6 open 17/63, close 17/64, cancel 19/66, confirm 19/66
+solid dialog ×1 open 16/65, close 15/64
+solid dialog ×4 open 19/65, close 16/62
+solid dialog ×6 open 20/63, close 17/64
+solid input ×1 type 14/64
+solid input ×4 type 14/63
+solid input ×6 type 14/62
+solid tabs ×1 tab 2 16/66, tab 1 15/66
+solid tabs ×4 tab 2 22/66, tab 1 20/68
+solid tabs ×6 tab 2 34/80, tab 1 33/81
+solid calendar ×1 locale ru 99/132, locale en 93/117
+solid calendar ×4 locale ru 550/582, locale en 516/600
+solid calendar ×6 locale ru 930/976, locale en 869/974
+solid number-input ×1 locale ru 17/66, locale en 17/65
+solid number-input ×4 locale ru 24/67, locale en 23/65
+solid number-input ×6 locale ru 30/67, locale en 28/66
+solid alert перерисовки dismiss 1/1 чужим 0
+solid breadcrumbs перерисовки open 4/4 чужим 0, close 4/4 чужим 0
+solid toggle-button перерисовки press 2/2 чужим 0, release 2/2 чужим 0
+solid toggle-group перерисовки choose first 2/2 чужим 0, clear first 2/2 чужим 0
+solid code-block перерисовки snippet two 8/8 чужим 0, copy 3/3 чужим 0, snippet one 9/9 чужим 0
+solid select перерисовки open 5/5 чужим 0, close 5/5 чужим 0, type 9/9 чужим 0
+solid menu перерисовки open 4/4 чужим 0, close 4/4 чужим 0
+solid date-picker перерисовки open 5/5 чужим 0, close 5/5 чужим 0, locale ru 1028/48 чужим 686, locale en 1028/48 чужим 686
+solid alert-dialog перерисовки open 4/4 чужим 0, close 5/5 чужим 0, cancel 5/5 чужим 0, confirm 5/5 чужим 0
+solid dialog перерисовки open 4/4 чужим 0, close 5/5 чужим 0
+solid input перерисовки type 0/0 чужим 0
+solid tabs перерисовки tab 2 8/8 чужим 0, tab 1 8/8 чужим 0
+solid calendar перерисовки locale ru 1351/28 чужим 3969, locale en 1351/28 чужим 3724
+solid number-input перерисовки locale ru 201/5 чужим 196, locale en 201/5 чужим 196

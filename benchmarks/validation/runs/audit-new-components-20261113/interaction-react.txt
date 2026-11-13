@@ -1,0 +1,56 @@
+react alert ×1 dismiss 16/65
+react alert ×4 dismiss 21/65
+react alert ×6 dismiss 24/63
+react breadcrumbs ×1 open 17/65, close 15/64
+react breadcrumbs ×4 open 19/64, close 17/63
+react breadcrumbs ×6 open 37/85, close 38/82
+react toggle-button ×1 press 15/65, release 15/65
+react toggle-button ×4 press 16/65, release 16/64
+react toggle-button ×6 press 15/64, release 16/64
+react toggle-group ×1 choose first 16/65, clear first 16/65
+react toggle-group ×4 choose first 17/65, clear first 17/65
+react toggle-group ×6 choose first 18/63, clear first 17/63
+react code-block ×1 snippet two 16/66, copy 16/65, snippet one 17/66
+react code-block ×4 snippet two 20/64, copy 19/63, snippet one 29/68
+react code-block ×6 snippet two 36/80, copy 39/94, snippet one 50/100
+react select ×1 open 15/65, close 15/65, type 8/58
+react select ×4 open 17/64, close 18/64, type 15/60
+react select ×6 open 21/64, close 17/63, type 22/64
+react menu ×1 open 16/65, close 15/65
+react menu ×4 open 18/64, close 17/64
+react menu ×6 open 20/64, close 18/64
+react date-picker ×1 open 16/66, close 15/64, locale ru 17/65, locale en 19/65
+react date-picker ×4 open 24/65, close 16/64, locale ru 83/113, locale en 70/99
+react date-picker ×6 open 41/82, close 20/64, locale ru 140/178, locale en 111/149
+react alert-dialog ×1 open 16/65, close 15/65, cancel 15/65, confirm 16/66
+react alert-dialog ×4 open 18/64, close 16/64, cancel 17/66, confirm 17/66
+react alert-dialog ×6 open 21/63, close 17/63, cancel 19/66, confirm 22/66
+react dialog ×1 open 16/65, close 15/65
+react dialog ×4 open 20/64, close 17/64
+react dialog ×6 open 20/64, close 18/64
+react input ×1 type 14/64
+react input ×4 type 14/62
+react input ×6 type 14/61
+react tabs ×1 tab 2 16/66, tab 1 16/66
+react tabs ×4 tab 2 17/66, tab 1 18/65
+react tabs ×6 tab 2 34/81, tab 1 33/81
+react calendar ×1 locale ru 97/116, locale en 101/132
+react calendar ×4 locale ru 530/574, locale en 532/568
+react calendar ×6 locale ru 873/922, locale en 862/902
+react number-input ×1 locale ru 17/66, locale en 17/66
+react number-input ×4 locale ru 30/66, locale en 30/66
+react number-input ×6 locale ru 46/83, locale en 46/83
+react alert перерисовки dismiss 6/6 чужим 0
+react breadcrumbs перерисовки open 14/14 чужим 0, close 9/9 чужим 0
+react toggle-button перерисовки press 1/1 чужим 0, release 1/1 чужим 0
+react toggle-group перерисовки choose first 6/6 чужим 0, clear first 6/6 чужим 0
+react code-block перерисовки snippet two 23/23 чужим 0, copy 28/28 чужим 0, snippet one 21/21 чужим 0
+react select перерисовки open 12/12 чужим 0, close 12/12 чужим 0, type 18/18 чужим 0
+react menu перерисовки open 8/8 чужим 0, close 7/7 чужим 0
+react date-picker перерисовки open 91/91 чужим 0, close 23/23 чужим 0, locale ru 951/69 чужим 980, locale en 930/48 чужим 980
+react alert-dialog перерисовки open 18/18 чужим 0, close 9/9 чужим 0, cancel 9/9 чужим 0, confirm 11/11 чужим 0
+react dialog перерисовки open 19/19 чужим 0, close 11/11 чужим 0
+react input перерисовки type 2/2 чужим 0
+react tabs перерисовки tab 2 18/18 чужим 0, tab 1 18/18 чужим 0
+react calendar перерисовки locale ru 1451/30 чужим 3724, locale en 1451/30 чужим 3724
+react number-input перерисовки locale ru 801/17 чужим 784, locale en 801/17 чужим 784

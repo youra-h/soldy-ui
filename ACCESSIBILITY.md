@@ -224,6 +224,53 @@ optional headers/actions, large sizing and clipboard failure feedback. These run
 extend the inventory; they do not replace the historical full-suite totals above.
 See the [CodeBlock guide](docs/api/code-block.md) for semantics and the first-version scope.
 
+### Nine-component audit — 2026-11-13
+
+The [audit report](benchmarks/validation/new-components-2026-11-13.md) covers Alert,
+Badge, Breadcrumbs, Separator, ToggleButton, ToggleGroup, CodeBlock, Avatar and
+AlertDialog across all six adapters, with Avatar.Group as an auxiliary surface.
+This extends the historical inventory above; it does not rewrite its totals.
+
+The current inventory has 52 entries: 44 direct, seven consumer and one semantic
+reference. Each engine executed 138 states per host, 828 reports in total. Of
+these, 204 cases cover the nine audited components and six cover Avatar.Group.
+The [row-level proof index](benchmarks/validation/runs/audit-new-components-20261113/coverage-index.json)
+retains actual test names, engine/source metadata, counts and original JSON
+pointers for all 54 component/host pairs and six auxiliary rows. The
+[target review](benchmarks/validation/runs/audit-new-components-20261113/a11y-target-review-final.json)
+preserves all 420 target case results and their dispositions.
+
+No target serious/critical violation is unresolved or waived. This is not an
+all-rules pass: the target set retains six moderate `region` cases per engine
+for the portaled Breadcrumbs menu outside the navigation landmark, and 42
+unique incomplete cases per engine (72 nodes). Per engine, incomplete rule
+counts are: `color-contrast` 24 cases/42 nodes, `aria-valid-attr-value` 12/12,
+`label-content-name-mismatch` 12/12, and `aria-hidden-focus` six/six. Cases
+overlap between rules. The full fixture set still retains the inherited Toasts
+contrast exception, six cases/12 serious nodes per engine, tracked separately
+as [869fpjgvg](https://app.clickup.com/t/869fpjgvg).
+
+Review evidence checks closed/open Breadcrumbs controls against the current
+panel in every host, descriptive naming of the ellipsis, and native modal
+focus containment and return. Incomplete results remain in the raw output;
+these checks do not erase them or assert screen-reader speech. Actual
+CodeBlock gutter contrast is 7.558072756271033 in oren and 5.044798946134714 in
+oren-dark, with root/gutter opacity one. Neutral Avatar fallback and group
+text have 180 composed-color observations across both schemes and all hosts,
+minimum ratio 9.727313825592176. The retained diagnostics include text, state,
+foreground/background layers and opacity; existing variant/forced-color
+browser cases supply separate evidence.
+
+Full native keyboard walkthroughs recorded 35/36 interactive passes and 18
+static semantic observations. Solid Breadcrumbs closes its overflow on Escape
+but loses focus to BODY instead of the current trigger; the ordinary automated
+test and parity comparison remain failed. The product fix is tracked in
+[1an4hvw5wur](https://app.clickup.com/t/1an4hvw5wur), outside this audit.
+The supplemental walkthrough used Electron/Chromium; the automated matrix
+uses the pinned Playwright Chromium and WebKit engines. NVDA, VoiceOver and
+live speech were unavailable. No assistive-technology or stable-release
+readiness claim follows from this audit.
+
 ## Supported environments
 
 | Area               | Status                                                                                                                                                                                                 |

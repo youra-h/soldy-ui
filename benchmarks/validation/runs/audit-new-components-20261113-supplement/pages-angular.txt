@@ -1,0 +1,51 @@
+angular прогрев 43 с
+angular alert {"weightKB":2404,"mountMs":34,"heapSlopeKB":0.4,"nodes":0,"listeners":0,"components":0,"emitters":0}
+angular avatar {"weightKB":657,"mountMs":16,"heapSlopeKB":-0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+angular avatar-group {"weightKB":2059,"mountMs":30,"heapSlopeKB":-0.7,"nodes":0,"listeners":0,"components":0,"emitters":0}
+angular code-block {"weightKB":8005,"mountMs":128,"heapSlopeKB":0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+angular breadcrumbs {"weightKB":15284,"mountMs":151,"heapSlopeKB":0.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+angular badge {"weightKB":579,"mountMs":10,"heapSlopeKB":-0.4,"nodes":0,"listeners":0,"components":0,"emitters":0}
+angular toggle-button {"weightKB":746,"mountMs":13,"heapSlopeKB":-0.6,"nodes":0,"listeners":0,"components":0,"emitters":0}
+angular toggle-group {"weightKB":5553,"mountMs":70,"heapSlopeKB":-1.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+angular button {"weightKB":655,"mountMs":10,"heapSlopeKB":-0.4,"nodes":0,"listeners":0,"components":0,"emitters":0}
+angular input {"weightKB":928,"mountMs":14,"heapSlopeKB":-0.4,"nodes":0,"listeners":0,"components":0,"emitters":0}
+angular number-input {"weightKB":2873,"mountMs":45,"heapSlopeKB":-0.3,"nodes":0,"listeners":0,"components":0,"emitters":0}
+angular textarea {"weightKB":1010,"mountMs":16,"heapSlopeKB":-0.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+angular check-box {"weightKB":1214,"mountMs":18,"heapSlopeKB":-0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+angular switch {"weightKB":1213,"mountMs":19,"heapSlopeKB":-0.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+angular label {"weightKB":1136,"mountMs":16,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+angular field {"weightKB":1417,"mountMs":22,"heapSlopeKB":0.5,"nodes":0,"listeners":0,"components":0,"emitters":0}
+angular slider {"weightKB":1299,"mountMs":25,"heapSlopeKB":0.3,"nodes":0,"listeners":0,"components":0,"emitters":0}
+angular rating {"weightKB":1990,"mountMs":34,"heapSlopeKB":-0.3,"nodes":0,"listeners":0,"components":0,"emitters":0}
+angular radio-group {"weightKB":5565,"mountMs":76,"heapSlopeKB":-0.6,"nodes":0,"listeners":0,"components":0,"emitters":0}
+angular select {"weightKB":4595,"mountMs":81,"heapSlopeKB":-0.5,"nodes":0,"listeners":0,"components":0,"emitters":0}
+angular calendar {"weightKB":24773,"mountMs":225,"heapSlopeKB":0.5,"nodes":0,"listeners":0,"components":0,"emitters":0}
+angular date-input {"weightKB":1387,"mountMs":27,"heapSlopeKB":-1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+angular date-picker {"weightKB":4368,"mountMs":79,"heapSlopeKB":-0.4,"nodes":0,"listeners":0,"components":0,"emitters":0}
+angular popover {"weightKB":3429,"mountMs":37,"heapSlopeKB":-0.8,"nodes":0,"listeners":0,"components":0,"emitters":0}
+angular menu {"weightKB":2807,"mountMs":34,"heapSlopeKB":-7.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+angular tooltip {"weightKB":1835,"mountMs":29,"heapSlopeKB":-0.9,"nodes":0,"listeners":0,"components":0,"emitters":0}
+angular alert-dialog {"weightKB":3464,"mountMs":43,"heapSlopeKB":0.7,"nodes":0,"listeners":0,"components":0,"emitters":0}
+angular dialog {"weightKB":4168,"mountMs":49,"heapSlopeKB":0.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+angular drawer {"weightKB":4095,"mountMs":46,"heapSlopeKB":0.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+angular toasts {"weightKB":4412,"mountMs":68,"heapSlopeKB":0.5,"nodes":0,"listeners":0,"components":0,"emitters":0}
+angular scroller {"weightKB":2587,"mountMs":36,"heapSlopeKB":-0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+angular list-box {"weightKB":8835,"mountMs":106,"heapSlopeKB":-0.4,"nodes":0,"listeners":0,"components":0,"emitters":0}
+angular pagination {"weightKB":8768,"mountMs":95,"heapSlopeKB":-0.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+angular table {"weightKB":11537,"mountMs":121,"heapSlopeKB":-0.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+angular tabs {"weightKB":11715,"mountMs":115,"heapSlopeKB":-0.5,"nodes":0,"listeners":0,"components":0,"emitters":0}
+angular tags {"weightKB":8428,"mountMs":69,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+angular accordion {"weightKB":10545,"mountMs":111,"heapSlopeKB":0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+angular icon {"weightKB":555,"mountMs":9,"heapSlopeKB":0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+angular progress-linear {"weightKB":557,"mountMs":15,"heapSlopeKB":0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+angular progress-spinner {"weightKB":549,"mountMs":18,"heapSlopeKB":-0.6,"nodes":0,"listeners":0,"components":0,"emitters":0}
+angular separator {"weightKB":464,"mountMs":16,"heapSlopeKB":-0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+angular skeleton {"weightKB":521,"mountMs":15,"heapSlopeKB":-0.5,"nodes":0,"listeners":0,"components":0,"emitters":0}
+angular drag-and-drop {"weightKB":30286,"mountMs":279,"heapSlopeKB":0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+angular virtual {"weightKB":92254,"mountMs":1264,"heapSlopeKB":-0.7,"nodes":0,"listeners":0,"components":0,"emitters":0}
+angular all {"weightKB":7465,"mountMs":115,"heapSlopeKB":-1.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+angular empty {"weightKB":28,"mountMs":9,"heapSlopeKB":-0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+angular обход 1 {"heap":18117008,"nodes":29,"listeners":13,"components":119,"emitters":0}
+angular обход 2 {"heap":18111448,"nodes":29,"listeners":13,"components":119,"emitters":0}
+angular обход 3 {"heap":18112544,"nodes":29,"listeners":13,"components":119,"emitters":0}
+angular leak {"weightKB":659,"mountMs":11,"heapSlopeKB":46.4,"nodes":5040,"listeners":1000,"components":1000,"emitters":1000}

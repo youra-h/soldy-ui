@@ -7,6 +7,7 @@ import { fileURLToPath } from 'node:url'
 import { createRequire } from 'node:module'
 import { chromium } from 'playwright'
 import { registry } from './registry.mjs'
+import { continuedStages, validatedStages } from './stages.mjs'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..')
 export const frameworks = ['vue', 'react', 'angular', 'svelte', 'solid', 'webc']
@@ -32,6 +33,7 @@ const tree = (directory) =>
 		: []
 
 export async function run({ id, stages, smoke = false }) {
+	stages = validatedStages(stages)
 	if (typeof id !== 'string' || !/^[a-z0-9-]+$/.test(id))
 		throw new Error('Run ID must contain lowercase letters, digits and hyphens')
 	const out = path.join(root, 'benchmarks/validation/runs', id)
@@ -44,6 +46,7 @@ export async function run({ id, stages, smoke = false }) {
 				id,
 				started: new Date().toISOString(),
 				smoke,
+				stages,
 				commit: exec(['git', 'rev-parse', 'HEAD']),
 				dirtyState: exec(['git', 'status', '--porcelain']),
 				node: process.version,
@@ -81,6 +84,7 @@ export async function run({ id, stages, smoke = false }) {
 				commands: [],
 				memory: 'Post-GC JS heap and object/DOM counters, not total process RSS; table MB uses the existing decimal rounding.',
 			}
+	manifest.stages = continuedStages(manifest, stages)
 	const tracked = exec([
 		'git',
 		'ls-files',
@@ -246,28 +250,30 @@ export async function run({ id, stages, smoke = false }) {
 	const pageSource = (fw, prefix = '') => `tools/bench-pages/results/${prefix}${fw}.json`
 	for (const stage of stages) {
 		if (stage === 'pages') {
-			for (const fw of frameworks) {
-				const args = [
-					'tools/bench-pages/run.mjs',
-					'--fw',
-					fw,
-					'--no-build',
-					'--n',
-					smoke ? '2' : '50',
-					'--act',
-					smoke ? '1' : '10',
-					'--warm',
-					smoke ? '1' : '2',
-					'--cycles',
-					smoke ? '2' : '20',
-					'--rounds',
-					smoke ? '1' : '3',
-					'--settle',
-					smoke ? '100' : '6000',
-				]
-				if (smoke) args.push('--pages', 'empty,button,leak')
-				await command(`pages-${fw}`, args, [[pageSource(fw), `pages-${fw}.json`]])
-			}
+			await Promise.all(
+				frameworks.map(async (fw) => {
+					const args = [
+						'tools/bench-pages/run.mjs',
+						'--fw',
+						fw,
+						'--no-build',
+						'--n',
+						smoke ? '2' : '50',
+						'--act',
+						smoke ? '1' : '10',
+						'--warm',
+						smoke ? '1' : '2',
+						'--cycles',
+						smoke ? '2' : '20',
+						'--rounds',
+						smoke ? '1' : '3',
+						'--settle',
+						smoke ? '100' : '6000',
+					]
+					if (smoke) args.push('--pages', 'empty,button,leak')
+					await command(`pages-${fw}`, args, [[pageSource(fw), `pages-${fw}.json`]])
+				}),
+			)
 		} else if (stage === 'soak' || stage === 'control') {
 			const prefix = stage === 'control' ? 'control-' : 'soak-'
 			const args = [

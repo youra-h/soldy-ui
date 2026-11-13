@@ -1,3 +1,4 @@
+import AlertDialogFooter from './AlertDialogFooter.svelte'
 import AvatarFallback from './AvatarFallback.svelte'
 import BadgeAnchor from './BadgeAnchor.svelte'
 import A11yPersistentToasts from './A11yPersistentToasts.svelte'
@@ -23,6 +24,7 @@ import type { TPreview } from './previews'
  * именами.
  */
 export const FIXTURES: Record<string, TPreview> = {
+	'alert-dialog-footer': AlertDialogFooter,
 	'badge-anchor': BadgeAnchor,
 	'avatar-fallback': AvatarFallback,
 	'a11y-persistent-toasts': A11yPersistentToasts,

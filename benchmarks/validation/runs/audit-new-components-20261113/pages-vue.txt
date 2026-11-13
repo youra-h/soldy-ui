@@ -1,0 +1,51 @@
+vue прогрев 43 с
+vue alert {"weightKB":2644,"mountMs":26,"heapSlopeKB":0.6,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue avatar {"weightKB":564,"mountMs":10,"heapSlopeKB":-0.6,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue avatar-group {"weightKB":1903,"mountMs":19,"heapSlopeKB":-0.4,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue code-block {"weightKB":7230,"mountMs":88,"heapSlopeKB":0.4,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue breadcrumbs {"weightKB":11644,"mountMs":99,"heapSlopeKB":-0.4,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue badge {"weightKB":538,"mountMs":14,"heapSlopeKB":-0.5,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue toggle-button {"weightKB":616,"mountMs":17,"heapSlopeKB":-0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue toggle-group {"weightKB":4439,"mountMs":52,"heapSlopeKB":-0.3,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue button {"weightKB":597,"mountMs":14,"heapSlopeKB":-0.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue input {"weightKB":779,"mountMs":14,"heapSlopeKB":-0.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue number-input {"weightKB":3006,"mountMs":38,"heapSlopeKB":-0.3,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue textarea {"weightKB":885,"mountMs":13,"heapSlopeKB":-0.3,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue check-box {"weightKB":1155,"mountMs":14,"heapSlopeKB":-0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue switch {"weightKB":1143,"mountMs":20,"heapSlopeKB":-0.4,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue label {"weightKB":1154,"mountMs":18,"heapSlopeKB":0.3,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue field {"weightKB":1438,"mountMs":21,"heapSlopeKB":-0.3,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue slider {"weightKB":1231,"mountMs":18,"heapSlopeKB":-0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue rating {"weightKB":2233,"mountMs":55,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue radio-group {"weightKB":5113,"mountMs":82,"heapSlopeKB":0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue select {"weightKB":4102,"mountMs":76,"heapSlopeKB":-0.4,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue calendar {"weightKB":23601,"mountMs":276,"heapSlopeKB":0.6,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue date-input {"weightKB":1189,"mountMs":26,"heapSlopeKB":-0.5,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue date-picker {"weightKB":4211,"mountMs":74,"heapSlopeKB":-0.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue popover {"weightKB":3467,"mountMs":54,"heapSlopeKB":-0.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue menu {"weightKB":2665,"mountMs":45,"heapSlopeKB":-0.8,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue tooltip {"weightKB":1806,"mountMs":22,"heapSlopeKB":-0.6,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue alert-dialog {"weightKB":3658,"mountMs":56,"heapSlopeKB":0.7,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue dialog {"weightKB":4348,"mountMs":60,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue drawer {"weightKB":4293,"mountMs":59,"heapSlopeKB":0.3,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue toasts {"weightKB":4342,"mountMs":68,"heapSlopeKB":0.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue scroller {"weightKB":2712,"mountMs":48,"heapSlopeKB":-0.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue list-box {"weightKB":8313,"mountMs":134,"heapSlopeKB":-0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue pagination {"weightKB":8690,"mountMs":121,"heapSlopeKB":-0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue table {"weightKB":11333,"mountMs":159,"heapSlopeKB":-0.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue tabs {"weightKB":10815,"mountMs":176,"heapSlopeKB":-0.3,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue tags {"weightKB":8030,"mountMs":97,"heapSlopeKB":-0.7,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue accordion {"weightKB":10446,"mountMs":161,"heapSlopeKB":-0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue icon {"weightKB":559,"mountMs":9,"heapSlopeKB":-0.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue progress-linear {"weightKB":536,"mountMs":10,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue progress-spinner {"weightKB":545,"mountMs":13,"heapSlopeKB":-0.3,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue separator {"weightKB":458,"mountMs":7,"heapSlopeKB":-0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue skeleton {"weightKB":480,"mountMs":10,"heapSlopeKB":-0.9,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue drag-and-drop {"weightKB":28985,"mountMs":405,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue virtual {"weightKB":92391,"mountMs":1789,"heapSlopeKB":-0.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue all {"weightKB":6894,"mountMs":158,"heapSlopeKB":-1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue empty {"weightKB":20,"mountMs":12,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+vue обход 1 {"heap":13290936,"nodes":31,"listeners":13,"components":119,"emitters":0}
+vue обход 2 {"heap":13293260,"nodes":31,"listeners":13,"components":119,"emitters":0}
+vue обход 3 {"heap":13291772,"nodes":31,"listeners":13,"components":119,"emitters":0}
+vue leak {"weightKB":607,"mountMs":9,"heapSlopeKB":38.2,"nodes":9000,"listeners":1000,"components":1000,"emitters":1000}

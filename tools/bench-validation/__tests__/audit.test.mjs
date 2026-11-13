@@ -1,9 +1,10 @@
+import { continuedStages, validatedStages, defaultStages } from '../stages.mjs'
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import fs from 'node:fs'
 import os from 'node:os'
 import path from 'node:path'
-import { auditData, auditRun, stats } from '../audit.mjs'
+import { auditData, auditRun, stats, auditedPages, interactionActions } from '../audit.mjs'
 
 function removeFixture(directory) {
 	const real = fs.realpathSync(directory)
@@ -299,4 +300,108 @@ test('process exit zero cannot hide a stderr error diagnostic', () => {
 	} finally {
 		removeFixture(directory)
 	}
+})
+
+function fullPages() {
+	const data = pages()
+
+	Object.assign(data, { n: 50, act: 10, warm: 2, cycles: 20, rounds: 3, settle: 6000 })
+	data.pages = Object.fromEntries(
+		[...auditedPages, 'all', 'empty', 'leak'].map((id) => {
+			const value = page(id === 'leak', 22)
+
+			for (const cycle of value.cycles)
+				Object.assign(cycle, { updateTime: 8, unmountTime: 7 })
+
+			return [id, value]
+		}),
+	)
+	data.tour = Array.from({ length: 3 }, () =>
+		Object.fromEntries(
+			auditedPages.map((id) => [
+				id,
+				{
+					before: sample(),
+					mounted: sample(10),
+					after: sample(),
+				},
+			]),
+		),
+	)
+
+	return data
+}
+
+test('audited pages require nonzero actions and separate lifecycle timing', () => {
+	const data = fullPages()
+
+	assert.equal(auditData('pages', data, { expectedPages: auditedPages }).status, 'measured')
+	data.pages.avatar.cycles[0].actions = 0
+	delete data.pages.alert.cycles[0].unmountTime
+	const findings = auditData('pages', data, { expectedPages: auditedPages }).findings
+
+	assert(findings.includes('avatar: audited scenario executed no actions'))
+	assert(findings.includes('alert: missing unmountTime'))
+})
+
+test('an audited page absent from both compiled registry and raw is still rejected', () => {
+	const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'soxa-validation-test-'))
+
+	try {
+		const data = fullPages()
+		const incomplete = auditedPages.filter((id) => id !== 'avatar')
+
+		delete data.pages.avatar
+		for (const tour of data.tour) delete tour.avatar
+		fs.writeFileSync(
+			path.join(directory, 'registry.json'),
+			JSON.stringify({ pages: { vue: incomplete } }),
+		)
+		fs.writeFileSync(
+			path.join(directory, 'manifest.json'),
+			JSON.stringify({
+				id: 'fixture',
+				smoke: false,
+				stages: ['pages'],
+				commands: [
+					{
+						name: 'pages-vue',
+						started: '2026-11-09T05:00:00Z',
+						exitCode: 0,
+						outputs: [{ file: 'pages-vue.json' }],
+					},
+				],
+			}),
+		)
+		fs.writeFileSync(path.join(directory, 'pages-vue.json'), JSON.stringify(data))
+
+		assert(
+			auditRun(directory).cells['pages/vue'].findings.includes(
+				'independent registry missing audited page avatar',
+			),
+		)
+	} finally {
+		removeFixture(directory)
+	}
+})
+
+test('every audited interactive action is an independent validation requirement', () => {
+	for (const [component, names] of Object.entries(interactionActions))
+		for (const name of names)
+			assert(
+				auditData('interaction', { errors: [] }, { smoke: true }).findings.includes(
+					component + '/1/' + name + ': missing timing repetitions',
+				),
+			)
+})
+
+test('stage selection rejects empty/unknown lists and preserves resumed stages', () => {
+	assert.throws(() => validatedStages([]), /nonempty/)
+	assert.throws(() => validatedStages(['pages', 'oops']), /known/)
+	assert.deepEqual(continuedStages({ stages: ['pages'], commands: [{}] }, ['soak', 'control']), [
+		'pages',
+		'soak',
+		'control',
+	])
+	assert.deepEqual(continuedStages({ commands: [{}] }, ['pages']), defaultStages)
 })

@@ -1,0 +1,36 @@
+{
+  "adapter": "vue",
+  "case": "gate/incomplete",
+  "axe": "4.14.0",
+  "violations": [],
+  "incomplete": [
+    {
+      "id": "color-contrast",
+      "impact": "serious",
+      "nodes": [
+        {
+          "target": [
+            "#review"
+          ],
+          "html": "<span id=\"review\">Review contrast</span>",
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "messageKey": "bgImage"
+              }
+            }
+          ],
+          "all": [],
+          "none": []
+        }
+      ]
+    }
+  ],
+  "runId": "2c6606dd-ba79-4bed-a307-8be7e1a0be58",
+  "browser": "webkit",
+  "browserVersion": "27.2",
+  "commit": "0f9009fa76a8c9af15340f1e4a87d54ed834fad1",
+  "workingTree": "modified",
+  "recordedAt": "2026-11-13T12:20:09.706Z"
+}

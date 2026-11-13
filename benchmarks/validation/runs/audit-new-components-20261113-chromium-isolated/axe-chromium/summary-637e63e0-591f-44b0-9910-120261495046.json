@@ -1,0 +1,65 @@
+{
+  "runId": "637e63e0-591f-44b0-9910-120261495046",
+  "browser": "chromium",
+  "startedAt": "2026-11-13T12:11:05.712Z",
+  "expectedReports": 828,
+  "reports": 828,
+  "coverageEntries": {
+    "direct": 44,
+    "consumer": 7,
+    "semantic-reference": 1
+  },
+  "violations": {
+    "region": {
+      "cases": 66,
+      "nodes": 168,
+      "impact": "moderate"
+    },
+    "color-contrast": {
+      "cases": 6,
+      "nodes": 12,
+      "impact": "serious"
+    }
+  },
+  "incomplete": {
+    "color-contrast": {
+      "cases": 42,
+      "nodes": 660,
+      "impact": "serious"
+    },
+    "aria-valid-attr-value": {
+      "cases": 162,
+      "nodes": 210,
+      "impact": "critical"
+    },
+    "label-content-name-mismatch": {
+      "cases": 12,
+      "nodes": 12,
+      "impact": "serious"
+    },
+    "aria-hidden-focus": {
+      "cases": 24,
+      "nodes": 24,
+      "impact": "serious"
+    },
+    "scrollable-region-focusable": {
+      "cases": 18,
+      "nodes": 18,
+      "impact": "serious"
+    }
+  },
+  "waivedNodes": 12,
+  "unresolvedNodes": 0,
+  "staleExceptions": 0,
+  "axeVersions": [
+    "4.14.0"
+  ],
+  "browserVersions": [
+    "156.0.8078.4"
+  ],
+  "sources": [
+    "0f9009fa76a8c9af15340f1e4a87d54ed834fad1 (modified)"
+  ],
+  "contrast": "not passed",
+  "errors": []
+}

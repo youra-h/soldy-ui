@@ -1,0 +1,881 @@
+{
+  "schema": 1,
+  "sourceCommit": "e0c94a76c402a8c425c197768397384fd5a4c5af",
+  "build": "Frozen production tools/bench-pages/dist; source and build unchanged during walkthrough",
+  "url": "http://127.0.0.1:62003/?fw=<framework>",
+  "method": "Primary-agent browser-assisted keyboard review using integrated browser native Playwright key input, observable DOM/focus/ARIA; supplemental to pinned Chromium/WebKit suites.",
+  "measuredBenchmark": false,
+  "screenReaders": {
+    "NVDA": "unavailable; not verified",
+    "VoiceOver": "unavailable; not verified",
+    "liveRegionSpeech": "not verified; DOM roles are not speech evidence"
+  },
+  "classification": {
+    "interactiveCases": 36,
+    "passed": 35,
+    "failed": 1,
+    "staticSemanticObservations": 18,
+    "knownFailure": "Solid Breadcrumbs Escape closes menu but focus is BODY; https://app.clickup.com/t/1an4hvw5wur"
+  },
+  "setupAttempts": [
+    {
+      "error": "Previous integrated-browser page ID expired",
+      "effect": "No page action; opened replacement page"
+    },
+    {
+      "error": "ReferenceError: URL is not defined",
+      "effect": "No component action; snippet framework discovery changed to page.evaluate"
+    },
+    {
+      "error": "Vue host cannot mount Badge (uppercase ID)",
+      "effect": "Interactive sequence ran but result was not returned; corrected static component IDs to lowercase and reran entire Vue walkthrough; only successful rerun counted"
+    }
+  ],
+  "fixtureWarnings": "Every host logs CodeBlock snippets takes precedence over code because propsOf combines preview code with snippets. Actual tab source observed correct. This is an audit fixture issue; measurements preserve e0c source unchanged.",
+  "cleanup": "Every successful walkthrough unmounted all components; page navigated to about:blank at end.",
+  "results": [
+    {
+      "framework": "vue",
+      "started": "2026-11-13T10:57:37.011Z",
+      "checks": [
+        {
+          "component": "ToggleButton",
+          "initialPressed": "false",
+          "afterEnter": "true",
+          "afterSpace": "false",
+          "type": "button"
+        },
+        {
+          "component": "ToggleGroup",
+          "itemCount": 4,
+          "endFocus": {
+            "tag": "BUTTON",
+            "class": "so-button so-button--size-normal so-toggle-group-item",
+            "text": "По ширине"
+          },
+          "endPressed": "true",
+          "homeFocus": {
+            "tag": "BUTTON",
+            "class": "so-button so-button--size-normal so-toggle-group-item",
+            "text": "Слева"
+          },
+          "tabStops": 1
+        },
+        {
+          "component": "CodeBlock",
+          "second": {
+            "selected": "true",
+            "focus": {
+              "tag": "BUTTON",
+              "class": "so-button so-button--size-normal",
+              "text": "Two"
+            },
+            "source": "const two = 2;\n"
+          },
+          "afterHome": "true",
+          "homeFocus": {
+            "tag": "BUTTON",
+            "class": "so-button so-button--size-normal",
+            "text": "One"
+          }
+        },
+        {
+          "component": "Breadcrumbs",
+          "closedControls": "preview10-5-panel",
+          "closedReference": {
+            "expanded": "false",
+            "controls": "preview10-5-panel",
+            "resolved": true
+          },
+          "openReference": {
+            "expanded": "true",
+            "controls": "preview10-5-panel",
+            "resolved": true,
+            "panelRole": "menu",
+            "panelOpen": "true"
+          },
+          "endMenu": {
+            "tag": "A",
+            "class": "so-button so-button--size-normal",
+            "text": "Телефоны"
+          },
+          "homeMenu": {
+            "tag": "A",
+            "class": "so-button so-button--size-normal",
+            "text": "Каталог"
+          },
+          "closedExpanded": "false",
+          "finalFocus": {
+            "tag": "BUTTON",
+            "class": "so-button so-button--size-normal so-breadcrumbs__trigger",
+            "text": "…"
+          },
+          "triggerFocused": true,
+          "openMenus": 0
+        },
+        {
+          "component": "AlertDialog",
+          "initialDialog": {
+            "role": "alertdialog",
+            "modal": "true",
+            "safeFocused": true,
+            "name": "Удалить запись?",
+            "description": "Удалённую запись нельзя будет восстановить."
+          },
+          "trap": [
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "openAfterEscape": 0,
+          "openerFocused": true
+        },
+        {
+          "component": "Alert",
+          "visibleAfterClose": false
+        },
+        {
+          "component": "Badge",
+          "keyboard": "N/A: component has no independent keyboard action",
+          "role": null,
+          "label": null,
+          "hidden": null,
+          "orientation": null,
+          "text": "8"
+        },
+        {
+          "component": "Avatar",
+          "keyboard": "N/A: component has no independent keyboard action",
+          "role": "img",
+          "label": "Ada Lovelace",
+          "hidden": null,
+          "orientation": null,
+          "text": "AL"
+        },
+        {
+          "component": "Separator",
+          "keyboard": "N/A: component has no independent keyboard action",
+          "role": "separator",
+          "label": null,
+          "hidden": null,
+          "orientation": "horizontal",
+          "text": ""
+        }
+      ],
+      "finished": "2026-11-13T10:57:40.793Z",
+      "environment": {
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.146.0 Chrome/150.0.7871.250 Electron/43.8.6 Safari/537.36",
+        "platform": "Win32"
+      }
+    },
+    {
+      "framework": "react",
+      "started": "2026-11-13T10:57:50.358Z",
+      "checks": [
+        {
+          "component": "ToggleButton",
+          "initialPressed": "false",
+          "afterEnter": "true",
+          "afterSpace": "false",
+          "type": "button"
+        },
+        {
+          "component": "ToggleGroup",
+          "itemCount": 4,
+          "endFocus": {
+            "tag": "BUTTON",
+            "class": "so-button so-button--size-normal so-toggle-group-item",
+            "text": "По ширине"
+          },
+          "endPressed": "true",
+          "homeFocus": {
+            "tag": "BUTTON",
+            "class": "so-button so-button--size-normal so-toggle-group-item",
+            "text": "Слева"
+          },
+          "tabStops": 1
+        },
+        {
+          "component": "CodeBlock",
+          "second": {
+            "selected": "true",
+            "focus": {
+              "tag": "BUTTON",
+              "class": "so-button so-button--size-normal",
+              "text": "Two"
+            },
+            "source": "const two = 2;\n"
+          },
+          "afterHome": "true",
+          "homeFocus": {
+            "tag": "BUTTON",
+            "class": "so-button so-button--size-normal",
+            "text": "One"
+          }
+        },
+        {
+          "component": "Breadcrumbs",
+          "closedControls": "_preview4-r_j_-panel",
+          "closedReference": {
+            "expanded": "false",
+            "controls": "_preview4-r_j_-panel",
+            "resolved": true
+          },
+          "openReference": {
+            "expanded": "true",
+            "controls": "_preview4-r_j_-panel",
+            "resolved": true,
+            "panelRole": "menu",
+            "panelOpen": "true"
+          },
+          "endMenu": {
+            "tag": "A",
+            "class": "so-button so-button--size-normal",
+            "text": "Телефоны"
+          },
+          "homeMenu": {
+            "tag": "A",
+            "class": "so-button so-button--size-normal",
+            "text": "Каталог"
+          },
+          "closedExpanded": "false",
+          "finalFocus": {
+            "tag": "BUTTON",
+            "class": "so-button so-button--size-normal so-breadcrumbs__trigger",
+            "text": "…"
+          },
+          "triggerFocused": true,
+          "openMenus": 0
+        },
+        {
+          "component": "AlertDialog",
+          "initialDialog": {
+            "role": "alertdialog",
+            "modal": "true",
+            "safeFocused": true,
+            "name": "Удалить запись?",
+            "description": "Удалённую запись нельзя будет восстановить."
+          },
+          "trap": [
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "openAfterEscape": 0,
+          "openerFocused": true
+        },
+        {
+          "component": "Alert",
+          "visibleAfterClose": false
+        },
+        {
+          "component": "Badge",
+          "keyboard": "N/A: component has no independent keyboard action",
+          "role": null,
+          "label": null,
+          "hidden": null,
+          "orientation": null,
+          "text": "8"
+        },
+        {
+          "component": "Avatar",
+          "keyboard": "N/A: component has no independent keyboard action",
+          "role": "img",
+          "label": "Ada Lovelace",
+          "hidden": null,
+          "orientation": null,
+          "text": "AL"
+        },
+        {
+          "component": "Separator",
+          "keyboard": "N/A: component has no independent keyboard action",
+          "role": "separator",
+          "label": null,
+          "hidden": null,
+          "orientation": "horizontal",
+          "text": ""
+        }
+      ],
+      "finished": "2026-11-13T10:57:54.196Z",
+      "environment": {
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.146.0 Chrome/150.0.7871.250 Electron/43.8.6 Safari/537.36",
+        "platform": "Win32"
+      }
+    },
+    {
+      "framework": "angular",
+      "started": "2026-11-13T10:58:01.267Z",
+      "checks": [
+        {
+          "component": "ToggleButton",
+          "initialPressed": "false",
+          "afterEnter": "true",
+          "afterSpace": "false",
+          "type": "button"
+        },
+        {
+          "component": "ToggleGroup",
+          "itemCount": 4,
+          "endFocus": {
+            "tag": "BUTTON",
+            "class": "so-button so-button--size-normal so-toggle-group-item",
+            "text": "По ширине"
+          },
+          "endPressed": "true",
+          "homeFocus": {
+            "tag": "BUTTON",
+            "class": "so-button so-button--size-normal so-toggle-group-item",
+            "text": "Слева"
+          },
+          "tabStops": 1
+        },
+        {
+          "component": "CodeBlock",
+          "second": {
+            "selected": "true",
+            "focus": {
+              "tag": "BUTTON",
+              "class": "so-button so-button--size-normal",
+              "text": "Two"
+            },
+            "source": "const two = 2;\n"
+          },
+          "afterHome": "true",
+          "homeFocus": {
+            "tag": "BUTTON",
+            "class": "so-button so-button--size-normal",
+            "text": "One"
+          }
+        },
+        {
+          "component": "Breadcrumbs",
+          "closedControls": "ng-20-panel",
+          "closedReference": {
+            "expanded": "false",
+            "controls": "ng-20-panel",
+            "resolved": true
+          },
+          "openReference": {
+            "expanded": "true",
+            "controls": "ng-20-panel",
+            "resolved": true,
+            "panelRole": "menu",
+            "panelOpen": "true"
+          },
+          "endMenu": {
+            "tag": "A",
+            "class": "so-button so-button--size-normal",
+            "text": "Телефоны"
+          },
+          "homeMenu": {
+            "tag": "A",
+            "class": "so-button so-button--size-normal",
+            "text": "Каталог"
+          },
+          "closedExpanded": "false",
+          "finalFocus": {
+            "tag": "BUTTON",
+            "class": "so-breadcrumbs__trigger so-button so-button--size-normal",
+            "text": "…"
+          },
+          "triggerFocused": true,
+          "openMenus": 0
+        },
+        {
+          "component": "AlertDialog",
+          "initialDialog": {
+            "role": "alertdialog",
+            "modal": "true",
+            "safeFocused": true,
+            "name": "Удалить запись?",
+            "description": "Удалённую запись нельзя будет восстановить."
+          },
+          "trap": [
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "openAfterEscape": 0,
+          "openerFocused": true
+        },
+        {
+          "component": "Alert",
+          "visibleAfterClose": false
+        },
+        {
+          "component": "Badge",
+          "keyboard": "N/A: component has no independent keyboard action",
+          "role": null,
+          "label": null,
+          "hidden": null,
+          "orientation": null,
+          "text": "8"
+        },
+        {
+          "component": "Avatar",
+          "keyboard": "N/A: component has no independent keyboard action",
+          "role": "img",
+          "label": "Ada Lovelace",
+          "hidden": null,
+          "orientation": null,
+          "text": "AL"
+        },
+        {
+          "component": "Separator",
+          "keyboard": "N/A: component has no independent keyboard action",
+          "role": "separator",
+          "label": null,
+          "hidden": null,
+          "orientation": "horizontal",
+          "text": ""
+        }
+      ],
+      "finished": "2026-11-13T10:58:05.071Z",
+      "environment": {
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.146.0 Chrome/150.0.7871.250 Electron/43.8.6 Safari/537.36",
+        "platform": "Win32"
+      }
+    },
+    {
+      "framework": "svelte",
+      "started": "2026-11-13T10:58:16.175Z",
+      "checks": [
+        {
+          "component": "ToggleButton",
+          "initialPressed": "false",
+          "afterEnter": "true",
+          "afterSpace": "false",
+          "type": "button"
+        },
+        {
+          "component": "ToggleGroup",
+          "itemCount": 4,
+          "endFocus": {
+            "tag": "BUTTON",
+            "class": "so-button so-button--size-normal so-toggle-group-item",
+            "text": "По ширине"
+          },
+          "endPressed": "true",
+          "homeFocus": {
+            "tag": "BUTTON",
+            "class": "so-button so-button--size-normal so-toggle-group-item",
+            "text": "Слева"
+          },
+          "tabStops": 1
+        },
+        {
+          "component": "CodeBlock",
+          "second": {
+            "selected": "true",
+            "focus": {
+              "tag": "BUTTON",
+              "class": "so-button so-button--size-normal",
+              "text": "Two"
+            },
+            "source": "const two = 2;\n"
+          },
+          "afterHome": "true",
+          "homeFocus": {
+            "tag": "BUTTON",
+            "class": "so-button so-button--size-normal",
+            "text": "One"
+          }
+        },
+        {
+          "component": "Breadcrumbs",
+          "closedControls": "c20-panel",
+          "closedReference": {
+            "expanded": "false",
+            "controls": "c20-panel",
+            "resolved": true
+          },
+          "openReference": {
+            "expanded": "true",
+            "controls": "c20-panel",
+            "resolved": true,
+            "panelRole": "menu",
+            "panelOpen": "true"
+          },
+          "endMenu": {
+            "tag": "A",
+            "class": "so-button so-button--size-normal",
+            "text": "Телефоны"
+          },
+          "homeMenu": {
+            "tag": "A",
+            "class": "so-button so-button--size-normal",
+            "text": "Каталог"
+          },
+          "closedExpanded": "false",
+          "finalFocus": {
+            "tag": "BUTTON",
+            "class": "so-button so-button--size-normal so-breadcrumbs__trigger",
+            "text": "…"
+          },
+          "triggerFocused": true,
+          "openMenus": 0
+        },
+        {
+          "component": "AlertDialog",
+          "initialDialog": {
+            "role": "alertdialog",
+            "modal": "true",
+            "safeFocused": true,
+            "name": "Удалить запись?",
+            "description": "Удалённую запись нельзя будет восстановить."
+          },
+          "trap": [
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "openAfterEscape": 0,
+          "openerFocused": true
+        },
+        {
+          "component": "Alert",
+          "visibleAfterClose": false
+        },
+        {
+          "component": "Badge",
+          "keyboard": "N/A: component has no independent keyboard action",
+          "role": null,
+          "label": null,
+          "hidden": null,
+          "orientation": null,
+          "text": "8"
+        },
+        {
+          "component": "Avatar",
+          "keyboard": "N/A: component has no independent keyboard action",
+          "role": "img",
+          "label": "Ada Lovelace",
+          "hidden": null,
+          "orientation": null,
+          "text": "AL"
+        },
+        {
+          "component": "Separator",
+          "keyboard": "N/A: component has no independent keyboard action",
+          "role": "separator",
+          "label": null,
+          "hidden": null,
+          "orientation": "horizontal",
+          "text": ""
+        }
+      ],
+      "finished": "2026-11-13T10:58:20.008Z",
+      "environment": {
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.146.0 Chrome/150.0.7871.250 Electron/43.8.6 Safari/537.36",
+        "platform": "Win32"
+      }
+    },
+    {
+      "framework": "solid",
+      "started": "2026-11-13T10:58:24.241Z",
+      "checks": [
+        {
+          "component": "ToggleButton",
+          "initialPressed": "false",
+          "afterEnter": "true",
+          "afterSpace": "false",
+          "type": "button"
+        },
+        {
+          "component": "ToggleGroup",
+          "itemCount": 4,
+          "endFocus": {
+            "tag": "BUTTON",
+            "class": "so-button so-button--size-normal so-toggle-group-item",
+            "text": "По ширине"
+          },
+          "endPressed": "true",
+          "homeFocus": {
+            "tag": "BUTTON",
+            "class": "so-button so-button--size-normal so-toggle-group-item",
+            "text": "Слева"
+          },
+          "tabStops": 1
+        },
+        {
+          "component": "CodeBlock",
+          "second": {
+            "selected": "true",
+            "focus": {
+              "tag": "BUTTON",
+              "class": "so-button so-button--size-normal",
+              "text": "Two"
+            },
+            "source": "const two = 2;\n"
+          },
+          "afterHome": "true",
+          "homeFocus": {
+            "tag": "BUTTON",
+            "class": "so-button so-button--size-normal",
+            "text": "One"
+          }
+        },
+        {
+          "component": "Breadcrumbs",
+          "closedControls": "cl-19-panel",
+          "closedReference": {
+            "expanded": "false",
+            "controls": "cl-19-panel",
+            "resolved": true
+          },
+          "openReference": {
+            "expanded": "true",
+            "controls": "cl-19-panel",
+            "resolved": true,
+            "panelRole": "menu",
+            "panelOpen": "true"
+          },
+          "endMenu": {
+            "tag": "A",
+            "class": "so-button so-button--size-normal",
+            "text": "Телефоны"
+          },
+          "homeMenu": {
+            "tag": "A",
+            "class": "so-button so-button--size-normal",
+            "text": "Каталог"
+          },
+          "closedExpanded": "false",
+          "finalFocus": {
+            "tag": "BODY",
+            "class": "",
+            "text": "Главная…КаталогЭлектроникаТелефоныСмартфоныТовар\n\t\n\nКаталогЭлектроникаТелефоны"
+          },
+          "triggerFocused": false,
+          "openMenus": 0
+        },
+        {
+          "component": "AlertDialog",
+          "initialDialog": {
+            "role": "alertdialog",
+            "modal": "true",
+            "safeFocused": true,
+            "name": "Удалить запись?",
+            "description": "Удалённую запись нельзя будет восстановить."
+          },
+          "trap": [
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "openAfterEscape": 0,
+          "openerFocused": true
+        },
+        {
+          "component": "Alert",
+          "visibleAfterClose": false
+        },
+        {
+          "component": "Badge",
+          "keyboard": "N/A: component has no independent keyboard action",
+          "role": null,
+          "label": null,
+          "hidden": null,
+          "orientation": null,
+          "text": "8"
+        },
+        {
+          "component": "Avatar",
+          "keyboard": "N/A: component has no independent keyboard action",
+          "role": "img",
+          "label": "Ada Lovelace",
+          "hidden": null,
+          "orientation": null,
+          "text": "AL"
+        },
+        {
+          "component": "Separator",
+          "keyboard": "N/A: component has no independent keyboard action",
+          "role": "separator",
+          "label": null,
+          "hidden": null,
+          "orientation": "horizontal",
+          "text": ""
+        }
+      ],
+      "finished": "2026-11-13T10:58:28.037Z",
+      "environment": {
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.146.0 Chrome/150.0.7871.250 Electron/43.8.6 Safari/537.36",
+        "platform": "Win32"
+      }
+    },
+    {
+      "framework": "webc",
+      "started": "2026-11-13T10:58:34.820Z",
+      "checks": [
+        {
+          "component": "ToggleButton",
+          "initialPressed": "false",
+          "afterEnter": "true",
+          "afterSpace": "false",
+          "type": "button"
+        },
+        {
+          "component": "ToggleGroup",
+          "itemCount": 4,
+          "endFocus": {
+            "tag": "BUTTON",
+            "class": "so-button so-button--size-normal so-toggle-group-item",
+            "text": "По ширине"
+          },
+          "endPressed": "true",
+          "homeFocus": {
+            "tag": "BUTTON",
+            "class": "so-button so-button--size-normal so-toggle-group-item",
+            "text": "Слева"
+          },
+          "tabStops": 1
+        },
+        {
+          "component": "CodeBlock",
+          "second": {
+            "selected": "true",
+            "focus": {
+              "tag": "BUTTON",
+              "class": "so-button so-button--size-normal",
+              "text": "Two"
+            },
+            "source": "const two = 2;\n"
+          },
+          "afterHome": "true",
+          "homeFocus": {
+            "tag": "BUTTON",
+            "class": "so-button so-button--size-normal",
+            "text": "One"
+          }
+        },
+        {
+          "component": "Breadcrumbs",
+          "closedControls": "so-25-panel",
+          "closedReference": {
+            "expanded": "false",
+            "controls": "so-25-panel",
+            "resolved": true
+          },
+          "openReference": {
+            "expanded": "true",
+            "controls": "so-25-panel",
+            "resolved": true,
+            "panelRole": "menu",
+            "panelOpen": "true"
+          },
+          "endMenu": {
+            "tag": "A",
+            "class": "so-button so-button--size-normal",
+            "text": "Телефоны"
+          },
+          "homeMenu": {
+            "tag": "A",
+            "class": "so-button so-button--size-normal",
+            "text": "Каталог"
+          },
+          "closedExpanded": "false",
+          "finalFocus": {
+            "tag": "BUTTON",
+            "class": "so-breadcrumbs__trigger so-button so-button--size-normal",
+            "text": "…"
+          },
+          "triggerFocused": true,
+          "openMenus": 0
+        },
+        {
+          "component": "AlertDialog",
+          "initialDialog": {
+            "role": "alertdialog",
+            "modal": "true",
+            "safeFocused": true,
+            "name": "Удалить запись?",
+            "description": "Удалённую запись нельзя будет восстановить."
+          },
+          "trap": [
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "openAfterEscape": 0,
+          "openerFocused": true
+        },
+        {
+          "component": "Alert",
+          "visibleAfterClose": false
+        },
+        {
+          "component": "Badge",
+          "keyboard": "N/A: component has no independent keyboard action",
+          "role": null,
+          "label": null,
+          "hidden": null,
+          "orientation": null,
+          "text": "8"
+        },
+        {
+          "component": "Avatar",
+          "keyboard": "N/A: component has no independent keyboard action",
+          "role": "img",
+          "label": "Ada Lovelace",
+          "hidden": null,
+          "orientation": null,
+          "text": "AL"
+        },
+        {
+          "component": "Separator",
+          "keyboard": "N/A: component has no independent keyboard action",
+          "role": "separator",
+          "label": null,
+          "hidden": null,
+          "orientation": "horizontal",
+          "text": ""
+        }
+      ],
+      "finished": "2026-11-13T10:58:38.606Z",
+      "environment": {
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.146.0 Chrome/150.0.7871.250 Electron/43.8.6 Safari/537.36",
+        "platform": "Win32"
+      }
+    }
+  ],
+  "snippet": "\nconst result = { framework: await page.evaluate(() => window.bench.framework), started: new Date().toISOString(), checks: [] };\nconst settle = () => page.evaluate(() => window.bench.settle());\nconst mount = (id) => page.evaluate(async (component) => { await window.bench.unmount(); await window.bench.mount(component, 1); }, id);\nconst focus = () => page.evaluate(() => ({ tag: document.activeElement?.tagName, class: document.activeElement?.className, text: document.activeElement?.textContent?.trim().slice(0, 80) }));\n\nawait mount('toggle-button');\nconst toggle = page.locator('.so-toggle-button');\nconst initialPressed = await toggle.getAttribute('aria-pressed');\nawait toggle.press('Enter'); await settle();\nconst afterEnter = await toggle.getAttribute('aria-pressed');\nawait toggle.press('Space'); await settle();\nresult.checks.push({ component: 'ToggleButton', initialPressed, afterEnter, afterSpace: await toggle.getAttribute('aria-pressed'), type: await toggle.getAttribute('type') });\n\nawait mount('toggle-group');\nconst items = page.locator('.so-toggle-group-item');\nawait items.first().press('End'); await settle();\nconst endFocus = await focus();\nawait page.keyboard.press('Space'); await settle();\nconst endPressed = await items.last().getAttribute('aria-pressed');\nawait page.keyboard.press('Home'); await settle();\nresult.checks.push({ component: 'ToggleGroup', itemCount: await items.count(), endFocus, endPressed, homeFocus: await focus(), tabStops: await page.evaluate(() => [...document.querySelectorAll('.so-toggle-group-item')].filter(x => x.tabIndex === 0).length) });\n\nawait mount('code-block');\nconst tabs = page.locator('.so-code-block [role=\"tab\"]');\nawait tabs.first().press('ArrowRight'); await settle();\nconst second = { selected: await tabs.nth(1).getAttribute('aria-selected'), focus: await focus(), source: await page.locator('.so-code-block [role=\"region\"]').textContent() };\nawait page.keyboard.press('Home'); await settle();\nresult.checks.push({ component: 'CodeBlock', second, afterHome: await tabs.first().getAttribute('aria-selected'), homeFocus: await focus() });\n\nawait mount('breadcrumbs');\nconst trigger = page.locator('.so-breadcrumbs__trigger');\nconst closedControls = await trigger.getAttribute('aria-controls');\nconst closedReference = await page.evaluate(() => { const t = document.querySelector('.so-breadcrumbs__trigger'); const id = t?.getAttribute('aria-controls'); return { expanded: t?.getAttribute('aria-expanded'), controls: id, resolved: Boolean(id && document.getElementById(id)) }; });\nawait trigger.press('Enter'); await settle();\nconst openReference = await page.evaluate(() => { const t = document.querySelector('.so-breadcrumbs__trigger'); const id = t?.getAttribute('aria-controls'); const panel = id ? document.getElementById(id) : null; return { expanded: t?.getAttribute('aria-expanded'), controls: id, resolved: Boolean(panel), panelRole: panel?.getAttribute('role'), panelOpen: panel?.getAttribute('data-open') }; });\nawait page.keyboard.press('End'); await settle();\nconst endMenu = await focus();\nawait page.keyboard.press('Home'); await settle();\nconst homeMenu = await focus();\nawait page.keyboard.press('Escape'); await settle();\nresult.checks.push({ component: 'Breadcrumbs', closedControls, closedReference, openReference, endMenu, homeMenu, closedExpanded: await trigger.getAttribute('aria-expanded'), finalFocus: await focus(), triggerFocused: await page.evaluate(() => document.activeElement === document.querySelector('.so-breadcrumbs__trigger')), openMenus: await page.locator('.so-menu__panel[data-open=\"true\"]').count() });\n\nawait mount('alert-dialog');\nconst opener = page.locator('.bench-page .so-button').first();\nawait opener.press('Enter'); await settle();\nconst initialDialog = await page.evaluate(() => { const p = document.querySelector('.so-alert-dialog[data-open=\"true\"]'); return { role: p?.getAttribute('role'), modal: p?.getAttribute('aria-modal'), safeFocused: document.activeElement?.classList.contains('so-alert-dialog__cancel'), name: document.getElementById(p?.getAttribute('aria-labelledby') ?? '')?.textContent?.trim(), description: document.getElementById(p?.getAttribute('aria-describedby') ?? '')?.textContent?.trim() }; });\nconst trap = [];\nfor (const key of ['Shift+Tab','Tab','Tab','Tab','Tab']) { await page.keyboard.press(key); await settle(); trap.push(await page.evaluate(() => Boolean(document.querySelector('.so-alert-dialog[data-open=\"true\"]')?.contains(document.activeElement)))); }\nawait page.keyboard.press('Escape'); await settle();\nresult.checks.push({ component: 'AlertDialog', initialDialog, trap, openAfterEscape: await page.locator('.so-alert-dialog[data-open=\"true\"]').count(), openerFocused: await page.evaluate(() => document.activeElement === document.querySelector('.bench-page .so-button')) });\n\nawait mount('alert');\nawait page.locator('.so-alert__close').press('Enter'); await settle();\nresult.checks.push({ component: 'Alert', visibleAfterClose: await page.locator('.so-alert').isVisible() });\n\nfor (const [component, selector] of [['Badge','.so-badge'],['Avatar','.so-avatar'],['Separator','.so-separator']]) {\n await mount(component.toLowerCase());\n result.checks.push(await page.locator(selector).first().evaluate((el, name) => ({ component: name, keyboard: 'N/A: component has no independent keyboard action', role: el.getAttribute('role'), label: el.getAttribute('aria-label'), hidden: el.getAttribute('aria-hidden'), orientation: el.getAttribute('aria-orientation'), text: el.textContent?.trim().slice(0,80) }), component));\n}\nawait page.evaluate(() => window.bench.unmount());\nresult.finished = new Date().toISOString();\nresult.environment = await page.evaluate(() => ({ userAgent: navigator.userAgent, platform: navigator.platform }));\nreturn result;\n",
+  "toolTranscripts": [
+    {
+      "framework": "vue",
+      "text": "Result: {\"framework\":\"vue\",\"started\":\"2026-11-13T10:57:37.011Z\",\"checks\":[{\"component\":\"ToggleButton\",\"initialPressed\":\"false\",\"afterEnter\":\"true\",\"afterSpace\":\"false\",\"type\":\"button\"},{\"component\":\"ToggleGroup\",\"itemCount\":4,\"endFocus\":{\"tag\":\"BUTTON\",\"class\":\"so-button so-button--size-normal so-toggle-group-item\",\"text\":\"По ширине\"},\"endPressed\":\"true\",\"homeFocus\":{\"tag\":\"BUTTON\",\"class\":\"so-button so-button--size-normal so-toggle-group-item\",\"text\":\"Слева\"},\"tabStops\":1},{\"component\":\"CodeBlock\",\"second\":{\"selected\":\"true\",\"focus\":{\"tag\":\"BUTTON\",\"class\":\"so-button so-button--size-normal\",\"text\":\"Two\"},\"source\":\"const two = 2;\\n\"},\"afterHome\":\"true\",\"homeFocus\":{\"tag\":\"BUTTON\",\"class\":\"so-button so-button--size-normal\",\"text\":\"One\"}},{\"component\":\"Breadcrumbs\",\"closedControls\":\"preview10-5-panel\",\"closedReference\":{\"expanded\":\"false\",\"controls\":\"preview10-5-panel\",\"resolved\":true},\"openReference\":{\"expanded\":\"true\",\"controls\":\"preview10-5-panel\",\"resolved\":true,\"panelRole\":\"menu\",\"panelOpen\":\"true\"},\"endMenu\":{\"tag\":\"A\",\"class\":\"so-button so-button--size-normal\",\"text\":\"Телефоны\"},\"homeMenu\":{\"tag\":\"A\",\"class\":\"so-button so-button--size-normal\",\"text\":\"Каталог\"},\"closedExpanded\":\"false\",\"finalFocus\":{\"tag\":\"BUTTON\",\"class\":\"so-button so-button--size-normal so-breadcrumbs__trigger\",\"text\":\"…\"},\"triggerFocused\":true,\"openMenus\":0},{\"component\":\"AlertDialog\",\"initialDialog\":{\"role\":\"alertdialog\",\"modal\":\"true\",\"safeFocused\":true,\"name\":\"Удалить запись?\",\"description\":\"Удалённую запись нельзя будет восстановить.\"},\"trap\":[true,true,true,true,true],\"openAfterEscape\":0,\"openerFocused\":true},{\"component\":\"Alert\",\"visibleAfterClose\":false},{\"component\":\"Badge\",\"keyboard\":\"N/A: component has no independent keyboard action\",\"role\":null,\"label\":null,\"hidden\":null,\"orientation\":null,\"text\":\"8\"},{\"component\":\"Avatar\",\"keyboard\":\"N/A: component has no independent keyboard action\",\"role\":\"img\",\"label\":\"Ada Lovelace\",\"hidden\":null,\"orientation\":null,\"text\":\"AL\"},{\"component\":\"Separator\",\"keyboard\":\"N/A: component has no independent keyboard action\",\"role\":\"separator\",\"label\":null,\"hidden\":null,\"orientation\":\"horizontal\",\"text\":\"\"}],\"finished\":\"2026-11-13T10:57:40.793Z\",\"environment\":{\"userAgent\":\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.146.0 Chrome/150.0.7871.250 Electron/43.8.6 Safari/537.36\",\"platform\":\"Win32\"}}\nPage Title: Страницы компонентов\nURL: http://127.0.0.1:62003/?fw=vue\nRecent events:\n- [2026-11-13T10:57:37.804Z] (console) [warning] [soxa] CodeBlock: snippets takes precedence over code; pass only one source.\nSnapshot: <unchanged>"
+    },
+    {
+      "framework": "react",
+      "text": "Result: {\"framework\":\"react\",\"started\":\"2026-11-13T10:57:50.358Z\",\"checks\":[{\"component\":\"ToggleButton\",\"initialPressed\":\"false\",\"afterEnter\":\"true\",\"afterSpace\":\"false\",\"type\":\"button\"},{\"component\":\"ToggleGroup\",\"itemCount\":4,\"endFocus\":{\"tag\":\"BUTTON\",\"class\":\"so-button so-button--size-normal so-toggle-group-item\",\"text\":\"По ширине\"},\"endPressed\":\"true\",\"homeFocus\":{\"tag\":\"BUTTON\",\"class\":\"so-button so-button--size-normal so-toggle-group-item\",\"text\":\"Слева\"},\"tabStops\":1},{\"component\":\"CodeBlock\",\"second\":{\"selected\":\"true\",\"focus\":{\"tag\":\"BUTTON\",\"class\":\"so-button so-button--size-normal\",\"text\":\"Two\"},\"source\":\"const two = 2;\\n\"},\"afterHome\":\"true\",\"homeFocus\":{\"tag\":\"BUTTON\",\"class\":\"so-button so-button--size-normal\",\"text\":\"One\"}},{\"component\":\"Breadcrumbs\",\"closedControls\":\"_preview4-r_j_-panel\",\"closedReference\":{\"expanded\":\"false\",\"controls\":\"_preview4-r_j_-panel\",\"resolved\":true},\"openReference\":{\"expanded\":\"true\",\"controls\":\"_preview4-r_j_-panel\",\"resolved\":true,\"panelRole\":\"menu\",\"panelOpen\":\"true\"},\"endMenu\":{\"tag\":\"A\",\"class\":\"so-button so-button--size-normal\",\"text\":\"Телефоны\"},\"homeMenu\":{\"tag\":\"A\",\"class\":\"so-button so-button--size-normal\",\"text\":\"Каталог\"},\"closedExpanded\":\"false\",\"finalFocus\":{\"tag\":\"BUTTON\",\"class\":\"so-button so-button--size-normal so-breadcrumbs__trigger\",\"text\":\"…\"},\"triggerFocused\":true,\"openMenus\":0},{\"component\":\"AlertDialog\",\"initialDialog\":{\"role\":\"alertdialog\",\"modal\":\"true\",\"safeFocused\":true,\"name\":\"Удалить запись?\",\"description\":\"Удалённую запись нельзя будет восстановить.\"},\"trap\":[true,true,true,true,true],\"openAfterEscape\":0,\"openerFocused\":true},{\"component\":\"Alert\",\"visibleAfterClose\":false},{\"component\":\"Badge\",\"keyboard\":\"N/A: component has no independent keyboard action\",\"role\":null,\"label\":null,\"hidden\":null,\"orientation\":null,\"text\":\"8\"},{\"component\":\"Avatar\",\"keyboard\":\"N/A: component has no independent keyboard action\",\"role\":\"img\",\"label\":\"Ada Lovelace\",\"hidden\":null,\"orientation\":null,\"text\":\"AL\"},{\"component\":\"Separator\",\"keyboard\":\"N/A: component has no independent keyboard action\",\"role\":\"separator\",\"label\":null,\"hidden\":null,\"orientation\":\"horizontal\",\"text\":\"\"}],\"finished\":\"2026-11-13T10:57:54.196Z\",\"environment\":{\"userAgent\":\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.146.0 Chrome/150.0.7871.250 Electron/43.8.6 Safari/537.36\",\"platform\":\"Win32\"}}\nPage Title: Страницы компонентов\nURL: http://127.0.0.1:62003/?fw=react\nRecent events:\n- [2026-11-13T10:57:51.197Z] (console) [warning] [soxa] CodeBlock: snippets takes precedence over code; pass only one source.\nSnapshot: <unchanged>"
+    },
+    {
+      "framework": "angular",
+      "text": "Result: {\"framework\":\"angular\",\"started\":\"2026-11-13T10:58:01.267Z\",\"checks\":[{\"component\":\"ToggleButton\",\"initialPressed\":\"false\",\"afterEnter\":\"true\",\"afterSpace\":\"false\",\"type\":\"button\"},{\"component\":\"ToggleGroup\",\"itemCount\":4,\"endFocus\":{\"tag\":\"BUTTON\",\"class\":\"so-button so-button--size-normal so-toggle-group-item\",\"text\":\"По ширине\"},\"endPressed\":\"true\",\"homeFocus\":{\"tag\":\"BUTTON\",\"class\":\"so-button so-button--size-normal so-toggle-group-item\",\"text\":\"Слева\"},\"tabStops\":1},{\"component\":\"CodeBlock\",\"second\":{\"selected\":\"true\",\"focus\":{\"tag\":\"BUTTON\",\"class\":\"so-button so-button--size-normal\",\"text\":\"Two\"},\"source\":\"const two = 2;\\n\"},\"afterHome\":\"true\",\"homeFocus\":{\"tag\":\"BUTTON\",\"class\":\"so-button so-button--size-normal\",\"text\":\"One\"}},{\"component\":\"Breadcrumbs\",\"closedControls\":\"ng-20-panel\",\"closedReference\":{\"expanded\":\"false\",\"controls\":\"ng-20-panel\",\"resolved\":true},\"openReference\":{\"expanded\":\"true\",\"controls\":\"ng-20-panel\",\"resolved\":true,\"panelRole\":\"menu\",\"panelOpen\":\"true\"},\"endMenu\":{\"tag\":\"A\",\"class\":\"so-button so-button--size-normal\",\"text\":\"Телефоны\"},\"homeMenu\":{\"tag\":\"A\",\"class\":\"so-button so-button--size-normal\",\"text\":\"Каталог\"},\"closedExpanded\":\"false\",\"finalFocus\":{\"tag\":\"BUTTON\",\"class\":\"so-breadcrumbs__trigger so-button so-button--size-normal\",\"text\":\"…\"},\"triggerFocused\":true,\"openMenus\":0},{\"component\":\"AlertDialog\",\"initialDialog\":{\"role\":\"alertdialog\",\"modal\":\"true\",\"safeFocused\":true,\"name\":\"Удалить запись?\",\"description\":\"Удалённую запись нельзя будет восстановить.\"},\"trap\":[true,true,true,true,true],\"openAfterEscape\":0,\"openerFocused\":true},{\"component\":\"Alert\",\"visibleAfterClose\":false},{\"component\":\"Badge\",\"keyboard\":\"N/A: component has no independent keyboard action\",\"role\":null,\"label\":null,\"hidden\":null,\"orientation\":null,\"text\":\"8\"},{\"component\":\"Avatar\",\"keyboard\":\"N/A: component has no independent keyboard action\",\"role\":\"img\",\"label\":\"Ada Lovelace\",\"hidden\":null,\"orientation\":null,\"text\":\"AL\"},{\"component\":\"Separator\",\"keyboard\":\"N/A: component has no independent keyboard action\",\"role\":\"separator\",\"label\":null,\"hidden\":null,\"orientation\":\"horizontal\",\"text\":\"\"}],\"finished\":\"2026-11-13T10:58:05.071Z\",\"environment\":{\"userAgent\":\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.146.0 Chrome/150.0.7871.250 Electron/43.8.6 Safari/537.36\",\"platform\":\"Win32\"}}\nPage Title: Страницы компонентов\nURL: http://127.0.0.1:62003/?fw=angular\nRecent events:\n- [2026-11-13T10:58:02.074Z] (console) [warning] [soxa] CodeBlock: snippets takes precedence over code; pass only one source.\nSnapshot: <unchanged>"
+    },
+    {
+      "framework": "svelte",
+      "text": "Result: {\"framework\":\"svelte\",\"started\":\"2026-11-13T10:58:16.175Z\",\"checks\":[{\"component\":\"ToggleButton\",\"initialPressed\":\"false\",\"afterEnter\":\"true\",\"afterSpace\":\"false\",\"type\":\"button\"},{\"component\":\"ToggleGroup\",\"itemCount\":4,\"endFocus\":{\"tag\":\"BUTTON\",\"class\":\"so-button so-button--size-normal so-toggle-group-item\",\"text\":\"По ширине\"},\"endPressed\":\"true\",\"homeFocus\":{\"tag\":\"BUTTON\",\"class\":\"so-button so-button--size-normal so-toggle-group-item\",\"text\":\"Слева\"},\"tabStops\":1},{\"component\":\"CodeBlock\",\"second\":{\"selected\":\"true\",\"focus\":{\"tag\":\"BUTTON\",\"class\":\"so-button so-button--size-normal\",\"text\":\"Two\"},\"source\":\"const two = 2;\\n\"},\"afterHome\":\"true\",\"homeFocus\":{\"tag\":\"BUTTON\",\"class\":\"so-button so-button--size-normal\",\"text\":\"One\"}},{\"component\":\"Breadcrumbs\",\"closedControls\":\"c20-panel\",\"closedReference\":{\"expanded\":\"false\",\"controls\":\"c20-panel\",\"resolved\":true},\"openReference\":{\"expanded\":\"true\",\"controls\":\"c20-panel\",\"resolved\":true,\"panelRole\":\"menu\",\"panelOpen\":\"true\"},\"endMenu\":{\"tag\":\"A\",\"class\":\"so-button so-button--size-normal\",\"text\":\"Телефоны\"},\"homeMenu\":{\"tag\":\"A\",\"class\":\"so-button so-button--size-normal\",\"text\":\"Каталог\"},\"closedExpanded\":\"false\",\"finalFocus\":{\"tag\":\"BUTTON\",\"class\":\"so-button so-button--size-normal so-breadcrumbs__trigger\",\"text\":\"…\"},\"triggerFocused\":true,\"openMenus\":0},{\"component\":\"AlertDialog\",\"initialDialog\":{\"role\":\"alertdialog\",\"modal\":\"true\",\"safeFocused\":true,\"name\":\"Удалить запись?\",\"description\":\"Удалённую запись нельзя будет восстановить.\"},\"trap\":[true,true,true,true,true],\"openAfterEscape\":0,\"openerFocused\":true},{\"component\":\"Alert\",\"visibleAfterClose\":false},{\"component\":\"Badge\",\"keyboard\":\"N/A: component has no independent keyboard action\",\"role\":null,\"label\":null,\"hidden\":null,\"orientation\":null,\"text\":\"8\"},{\"component\":\"Avatar\",\"keyboard\":\"N/A: component has no independent keyboard action\",\"role\":\"img\",\"label\":\"Ada Lovelace\",\"hidden\":null,\"orientation\":null,\"text\":\"AL\"},{\"component\":\"Separator\",\"keyboard\":\"N/A: component has no independent keyboard action\",\"role\":\"separator\",\"label\":null,\"hidden\":null,\"orientation\":\"horizontal\",\"text\":\"\"}],\"finished\":\"2026-11-13T10:58:20.008Z\",\"environment\":{\"userAgent\":\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.146.0 Chrome/150.0.7871.250 Electron/43.8.6 Safari/537.36\",\"platform\":\"Win32\"}}\nPage Title: Страницы компонентов\nURL: http://127.0.0.1:62003/?fw=svelte\nRecent events:\n- [2026-11-13T10:58:17.018Z] (console) [warning] [soxa] CodeBlock: snippets takes precedence over code; pass only one source.\nSnapshot: <unchanged>"
+    },
+    {
+      "framework": "solid",
+      "text": "Result: {\"framework\":\"solid\",\"started\":\"2026-11-13T10:58:24.241Z\",\"checks\":[{\"component\":\"ToggleButton\",\"initialPressed\":\"false\",\"afterEnter\":\"true\",\"afterSpace\":\"false\",\"type\":\"button\"},{\"component\":\"ToggleGroup\",\"itemCount\":4,\"endFocus\":{\"tag\":\"BUTTON\",\"class\":\"so-button so-button--size-normal so-toggle-group-item\",\"text\":\"По ширине\"},\"endPressed\":\"true\",\"homeFocus\":{\"tag\":\"BUTTON\",\"class\":\"so-button so-button--size-normal so-toggle-group-item\",\"text\":\"Слева\"},\"tabStops\":1},{\"component\":\"CodeBlock\",\"second\":{\"selected\":\"true\",\"focus\":{\"tag\":\"BUTTON\",\"class\":\"so-button so-button--size-normal\",\"text\":\"Two\"},\"source\":\"const two = 2;\\n\"},\"afterHome\":\"true\",\"homeFocus\":{\"tag\":\"BUTTON\",\"class\":\"so-button so-button--size-normal\",\"text\":\"One\"}},{\"component\":\"Breadcrumbs\",\"closedControls\":\"cl-19-panel\",\"closedReference\":{\"expanded\":\"false\",\"controls\":\"cl-19-panel\",\"resolved\":true},\"openReference\":{\"expanded\":\"true\",\"controls\":\"cl-19-panel\",\"resolved\":true,\"panelRole\":\"menu\",\"panelOpen\":\"true\"},\"endMenu\":{\"tag\":\"A\",\"class\":\"so-button so-button--size-normal\",\"text\":\"Телефоны\"},\"homeMenu\":{\"tag\":\"A\",\"class\":\"so-button so-button--size-normal\",\"text\":\"Каталог\"},\"closedExpanded\":\"false\",\"finalFocus\":{\"tag\":\"BODY\",\"class\":\"\",\"text\":\"Главная…КаталогЭлектроникаТелефоныСмартфоныТовар\\n\\t\\n\\nКаталогЭлектроникаТелефоны\"},\"triggerFocused\":false,\"openMenus\":0},{\"component\":\"AlertDialog\",\"initialDialog\":{\"role\":\"alertdialog\",\"modal\":\"true\",\"safeFocused\":true,\"name\":\"Удалить запись?\",\"description\":\"Удалённую запись нельзя будет восстановить.\"},\"trap\":[true,true,true,true,true],\"openAfterEscape\":0,\"openerFocused\":true},{\"component\":\"Alert\",\"visibleAfterClose\":false},{\"component\":\"Badge\",\"keyboard\":\"N/A: component has no independent keyboard action\",\"role\":null,\"label\":null,\"hidden\":null,\"orientation\":null,\"text\":\"8\"},{\"component\":\"Avatar\",\"keyboard\":\"N/A: component has no independent keyboard action\",\"role\":\"img\",\"label\":\"Ada Lovelace\",\"hidden\":null,\"orientation\":null,\"text\":\"AL\"},{\"component\":\"Separator\",\"keyboard\":\"N/A: component has no independent keyboard action\",\"role\":\"separator\",\"label\":null,\"hidden\":null,\"orientation\":\"horizontal\",\"text\":\"\"}],\"finished\":\"2026-11-13T10:58:28.037Z\",\"environment\":{\"userAgent\":\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.146.0 Chrome/150.0.7871.250 Electron/43.8.6 Safari/537.36\",\"platform\":\"Win32\"}}\nPage Title: Страницы компонентов\nURL: http://127.0.0.1:62003/?fw=solid\nRecent events:\n- [2026-11-13T10:58:25.059Z] (console) [warning] [soxa] CodeBlock: snippets takes precedence over code; pass only one source.\nSnapshot: <unchanged>"
+    },
+    {
+      "framework": "webc",
+      "text": "Result: {\"framework\":\"webc\",\"started\":\"2026-11-13T10:58:34.820Z\",\"checks\":[{\"component\":\"ToggleButton\",\"initialPressed\":\"false\",\"afterEnter\":\"true\",\"afterSpace\":\"false\",\"type\":\"button\"},{\"component\":\"ToggleGroup\",\"itemCount\":4,\"endFocus\":{\"tag\":\"BUTTON\",\"class\":\"so-button so-button--size-normal so-toggle-group-item\",\"text\":\"По ширине\"},\"endPressed\":\"true\",\"homeFocus\":{\"tag\":\"BUTTON\",\"class\":\"so-button so-button--size-normal so-toggle-group-item\",\"text\":\"Слева\"},\"tabStops\":1},{\"component\":\"CodeBlock\",\"second\":{\"selected\":\"true\",\"focus\":{\"tag\":\"BUTTON\",\"class\":\"so-button so-button--size-normal\",\"text\":\"Two\"},\"source\":\"const two = 2;\\n\"},\"afterHome\":\"true\",\"homeFocus\":{\"tag\":\"BUTTON\",\"class\":\"so-button so-button--size-normal\",\"text\":\"One\"}},{\"component\":\"Breadcrumbs\",\"closedControls\":\"so-25-panel\",\"closedReference\":{\"expanded\":\"false\",\"controls\":\"so-25-panel\",\"resolved\":true},\"openReference\":{\"expanded\":\"true\",\"controls\":\"so-25-panel\",\"resolved\":true,\"panelRole\":\"menu\",\"panelOpen\":\"true\"},\"endMenu\":{\"tag\":\"A\",\"class\":\"so-button so-button--size-normal\",\"text\":\"Телефоны\"},\"homeMenu\":{\"tag\":\"A\",\"class\":\"so-button so-button--size-normal\",\"text\":\"Каталог\"},\"closedExpanded\":\"false\",\"finalFocus\":{\"tag\":\"BUTTON\",\"class\":\"so-breadcrumbs__trigger so-button so-button--size-normal\",\"text\":\"…\"},\"triggerFocused\":true,\"openMenus\":0},{\"component\":\"AlertDialog\",\"initialDialog\":{\"role\":\"alertdialog\",\"modal\":\"true\",\"safeFocused\":true,\"name\":\"Удалить запись?\",\"description\":\"Удалённую запись нельзя будет восстановить.\"},\"trap\":[true,true,true,true,true],\"openAfterEscape\":0,\"openerFocused\":true},{\"component\":\"Alert\",\"visibleAfterClose\":false},{\"component\":\"Badge\",\"keyboard\":\"N/A: component has no independent keyboard action\",\"role\":null,\"label\":null,\"hidden\":null,\"orientation\":null,\"text\":\"8\"},{\"component\":\"Avatar\",\"keyboard\":\"N/A: component has no independent keyboard action\",\"role\":\"img\",\"label\":\"Ada Lovelace\",\"hidden\":null,\"orientation\":null,\"text\":\"AL\"},{\"component\":\"Separator\",\"keyboard\":\"N/A: component has no independent keyboard action\",\"role\":\"separator\",\"label\":null,\"hidden\":null,\"orientation\":\"horizontal\",\"text\":\"\"}],\"finished\":\"2026-11-13T10:58:38.606Z\",\"environment\":{\"userAgent\":\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.146.0 Chrome/150.0.7871.250 Electron/43.8.6 Safari/537.36\",\"platform\":\"Win32\"}}\nPage Title: Страницы компонентов\nURL: http://127.0.0.1:62003/?fw=webc\nRecent events:\n- [2026-11-13T10:58:35.627Z] (console) [warning] [soxa] CodeBlock: snippets takes precedence over code; pass only one source.\nSnapshot: <unchanged>"
+    }
+  ]
+}

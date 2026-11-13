@@ -1,4 +1,5 @@
 import {
+	AlertDialog,
 	Avatar,
 	Badge,
 	Button,
@@ -40,6 +41,12 @@ const ARROW_RIGHT = roleIcon('arrowRight')
  * `__tests__/scenarios.spec.ts`).
  */
 export const FIXTURES: Record<string, TPreview> = {
+	'alert-dialog-footer': (bind) =>
+		h(AlertDialog, bind, {
+			title: () => 'Custom question',
+			default: () => 'Custom description',
+			footer: () => h('button', { type: 'button', 'data-audit-footer': '' }, 'Custom footer'),
+		}),
 	'avatar-fallback': (bind) => h(Avatar, bind, { fallback: () => h(Icon, { tag: CHECK }) }),
 	'badge-anchor': (bind) =>
 		h(Badge, bind, {

@@ -1,0 +1,245 @@
+{
+	"framework": "webc",
+	"browser": "156.0.8078.4",
+	"date": "2026-11-13T11:26:57.591Z",
+	"seed": 7,
+	"pages": [
+		"alert",
+		"avatar",
+		"avatar-group",
+		"code-block",
+		"breadcrumbs",
+		"badge",
+		"toggle-button",
+		"toggle-group",
+		"button",
+		"input",
+		"number-input",
+		"textarea",
+		"check-box",
+		"switch",
+		"label",
+		"field",
+		"slider",
+		"rating",
+		"radio-group",
+		"select",
+		"calendar",
+		"date-input",
+		"date-picker",
+		"popover",
+		"menu",
+		"tooltip",
+		"alert-dialog",
+		"dialog",
+		"drawer",
+		"toasts",
+		"scroller",
+		"list-box",
+		"pagination",
+		"table",
+		"tabs",
+		"tags",
+		"accordion",
+		"icon",
+		"progress-linear",
+		"progress-spinner",
+		"separator",
+		"skeleton",
+		"drag-and-drop",
+		"virtual",
+		"all"
+	],
+	"n": 50,
+	"act": 10,
+	"from": 115,
+	"to": 115,
+	"warm": 2,
+	"cycles": 20,
+	"settle": 6000,
+	"transitions": [
+		{
+			"page": "avatar",
+			"copies": 15,
+			"act": 1,
+			"steps": [
+				"avatar initials",
+				"avatar image",
+				"avatar error",
+				"avatar fallback"
+			],
+			"stopped": null
+		}
+	],
+	"after": [
+		{
+			"heap": 13559016,
+			"nodes": 426,
+			"listeners": 13,
+			"components": 119,
+			"emitters": 0
+		},
+		{
+			"heap": 13561736,
+			"nodes": 516,
+			"listeners": 13,
+			"components": 119,
+			"emitters": 0
+		},
+		{
+			"heap": 13572296,
+			"nodes": 606,
+			"listeners": 13,
+			"components": 119,
+			"emitters": 0
+		},
+		{
+			"heap": 13572980,
+			"nodes": 696,
+			"listeners": 13,
+			"components": 119,
+			"emitters": 0
+		},
+		{
+			"heap": 13576016,
+			"nodes": 786,
+			"listeners": 13,
+			"components": 119,
+			"emitters": 0
+		},
+		{
+			"heap": 13579952,
+			"nodes": 876,
+			"listeners": 13,
+			"components": 119,
+			"emitters": 0
+		},
+		{
+			"heap": 13577256,
+			"nodes": 966,
+			"listeners": 13,
+			"components": 119,
+			"emitters": 0
+		},
+		{
+			"heap": 13579244,
+			"nodes": 1056,
+			"listeners": 13,
+			"components": 119,
+			"emitters": 0
+		},
+		{
+			"heap": 13579972,
+			"nodes": 1146,
+			"listeners": 13,
+			"components": 119,
+			"emitters": 0
+		},
+		{
+			"heap": 13580592,
+			"nodes": 1236,
+			"listeners": 13,
+			"components": 119,
+			"emitters": 0
+		},
+		{
+			"heap": 13580216,
+			"nodes": 1326,
+			"listeners": 13,
+			"components": 119,
+			"emitters": 0
+		},
+		{
+			"heap": 13584308,
+			"nodes": 1416,
+			"listeners": 13,
+			"components": 119,
+			"emitters": 0
+		},
+		{
+			"heap": 13581776,
+			"nodes": 1506,
+			"listeners": 13,
+			"components": 119,
+			"emitters": 0
+		},
+		{
+			"heap": 13583284,
+			"nodes": 1596,
+			"listeners": 13,
+			"components": 119,
+			"emitters": 0
+		},
+		{
+			"heap": 13583920,
+			"nodes": 1686,
+			"listeners": 13,
+			"components": 119,
+			"emitters": 0
+		},
+		{
+			"heap": 13583892,
+			"nodes": 1776,
+			"listeners": 13,
+			"components": 119,
+			"emitters": 0
+		},
+		{
+			"heap": 13582868,
+			"nodes": 1866,
+			"listeners": 13,
+			"components": 119,
+			"emitters": 0
+		},
+		{
+			"heap": 13585316,
+			"nodes": 1956,
+			"listeners": 13,
+			"components": 119,
+			"emitters": 0
+		},
+		{
+			"heap": 13582328,
+			"nodes": 2046,
+			"listeners": 13,
+			"components": 119,
+			"emitters": 0
+		},
+		{
+			"heap": 13583464,
+			"nodes": 2136,
+			"listeners": 13,
+			"components": 119,
+			"emitters": 0
+		},
+		{
+			"heap": 13584784,
+			"nodes": 2226,
+			"listeners": 13,
+			"components": 119,
+			"emitters": 0
+		},
+		{
+			"heap": 13584732,
+			"nodes": 2316,
+			"listeners": 13,
+			"components": 119,
+			"emitters": 0
+		}
+	],
+	"errors": [],
+	"before": {
+		"heap": 13544100,
+		"nodes": 516,
+		"listeners": 13,
+		"components": 119,
+		"emitters": 0
+	},
+	"end": {
+		"heap": 13566464,
+		"nodes": 2316,
+		"listeners": 13,
+		"components": 119,
+		"emitters": 0
+	}
+}

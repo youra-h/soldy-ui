@@ -1,0 +1,56 @@
+{
+    "schemaVersion":  1,
+    "capturedAt":  "2026-11-13T09:39:26.7845811Z",
+    "workflow":  {
+                     "conclusion":  "failure",
+                     "event":  "pull_request",
+                     "headBranch":  "task/1an4hvw5vua-new-components-audit",
+                     "headSha":  "e0c94a76c402a8c425c197768397384fd5a4c5af",
+                     "startedAt":  "2026-11-13T09:17:32Z",
+                     "status":  "completed",
+                     "updatedAt":  "2026-11-13T09:29:08Z",
+                     "url":  "https://github.com/youra-h/soxa-ui/actions/runs/43400080161",
+                     "workflowName":  "CI"
+                 },
+    "pullRequest":  861,
+    "sourceHead":  "e0c94a76c402a8c425c197768397384fd5a4c5af",
+    "checkoutCommit":  "c315ee8788ffc058fc027b481cad862fdd20d47e",
+    "checkoutNote":  "GitHub pull_request jobs test the synthetic merge ref; the head source is recorded separately.",
+    "checks":  {
+                   "passed":  30,
+                   "failed":  2
+               },
+    "jobs":  [
+                 {
+                     "browser":  "chromium",
+                     "jobId":  "131800465880",
+                     "url":  "https://github.com/youra-h/soxa-ui/actions/runs/43400080161/job/131800465880",
+                     "conclusion":  "failure",
+                     "testCounts":  {
+                                        "total":  4385,
+                                        "skipped":  0,
+                                        "failed":  1,
+                                        "passed":  4384
+                                    },
+                     "failure":  "new-components-audit.spec.ts / solid / Breadcrumbs focus after Escape: BODY instead of live trigger",
+                     "log":  "remote-ci-chromium.txt",
+                     "sha256":  "e528f55f364bad506514d8e90c64abf2013c8366d629a6f0d53fe83108ed2ba0"
+                 },
+                 {
+                     "browser":  "webkit",
+                     "jobId":  "131800465809",
+                     "url":  "https://github.com/youra-h/soxa-ui/actions/runs/43400080161/job/131800465809",
+                     "conclusion":  "failure",
+                     "testCounts":  {
+                                        "total":  4385,
+                                        "skipped":  97,
+                                        "failed":  1,
+                                        "passed":  4287
+                                    },
+                     "failure":  "new-components-audit.spec.ts / solid / Breadcrumbs focus after Escape: BODY instead of live trigger",
+                     "log":  "remote-ci-webkit.txt",
+                     "sha256":  "5eb318900cb5111e80eb63e9c0c3dae2e36d5c98c8e5e02fab6fd8778b662644"
+                 }
+             ],
+    "logRepresentation":  "UTF-8 without BOM; gh run view --job \u003cid\u003e --log stdout, saved as text with job/step/time prefixes."
+}
