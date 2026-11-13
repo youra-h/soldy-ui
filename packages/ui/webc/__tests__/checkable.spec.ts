@@ -1,21 +1,9 @@
 import { propertyDetail } from './property-detail'
 /**
- * `<span is="so-check-box">` и `<span is="so-switch">`: корень — элемент
- * потребителя, вложенный `<input type="checkbox">` — узел шаблона, рядом —
- * декор: коробка с отметкой или дорожка с ручкой.
- *
- * Сценарии — те же, что у React (`checkable.spec.tsx`), без сервера и `act`.
- * Наборы ядра стоят на разных элементах: `attrs` (`dir`) — на корне, `aria` —
- * на `<input>`; нативные `disabled` и `required` поля без ARIA-дублей,
- * `readonly` — только `aria-readonly`: HTML не знает его у чекбокса. Контрол
- * кладут в подпись `Label`, поэтому корень — `span`, а декор скрыт
- * `aria-hidden`: всё внутри `label` входит в имя поля.
- *
- * Своё у Web Components: статические атрибуты разметки корня база переносит на
- * поле, а `id` — проп поля, не вход корня. Слоты отметки и ручки выводит
- * привязка: неактивный слот — вне документа. Переключает значение
- * `TInputBoolPlugin` по `change` поля, его слушатели встают по `ready` —
- * кадром позже.
+ * CheckBox and Switch share a span root with a native checkbox and hidden
+ * decoration. Attributes and aria go to the field, dataset to the root.
+ * Native activation, including readonly, is wired synchronously on root bind;
+ * element readiness remains deferred until the next frame.
  */
 
 import { describe, it, expect, afterEach } from 'vitest'
@@ -670,5 +658,67 @@ describe('Switch · роль и ручка', () => {
 				.slots.map((slot) => slot.name)
 				.sort(),
 		)
+	})
+})
+
+describe.each(CHECKABLES)('%s · activation before the first frame (#860)', (_name, { is }) => {
+	it.each([false, true])('native activation respects readonly=%s', async (readonly) => {
+		const el = mountAs(
+			`<label><span is="${is}" ${readonly ? 'readonly' : ''}></span>Choice</label>`,
+			(node): node is HTMLLabelElement => node instanceof HTMLLabelElement,
+		).querySelector('[is]')
+
+		if (!isCheckable(el)) throw new Error('Missing checkable element')
+
+		const changes = collect(el, 'so:change:value')
+
+		expect(el.ctrl?.ready).toBe(false)
+		await flush()
+		field(el).click()
+		await flush()
+
+		expect(field(el).checked).toBe(!readonly)
+		expect(el.value).toBe(!readonly)
+		expect(changes).toEqual(readonly ? [] : [{ newValue: true, oldValue: false }])
+	})
+})
+
+describe('CheckBox · mixed activation before the first frame (#860)', () => {
+	it.each([false, true])('mixed state respects readonly=%s', async (readonly) => {
+		const el = mountAs('<span is="so-check-box"></span>', isCheckBox)
+
+		Object.assign(el, { value: false, indeterminate: true, readonly })
+		expect(el.ctrl?.ready).toBe(false)
+		await flush()
+		field(el).click()
+		await flush()
+
+		expect(el.value).toBe(!readonly)
+		expect(el.indeterminate).toBe(readonly)
+		expect(field(el).checked).toBe(!readonly)
+		expect(field(el).indeterminate).toBe(readonly)
+	})
+})
+
+describe.each(CHECKABLES)('%s · early binding lifetime (#860)', (_name, { mountCtrl }) => {
+	it('detaches before ready and reconnects without duplicate handlers', async () => {
+		const el = mountCtrl()
+		const ctrl = el.ctrl
+		const input = field(el)
+		const changes = collect(el, 'so:change:value')
+
+		el.remove()
+		input.click()
+		expect(ctrl?.value).toBe(false)
+
+		document.body.appendChild(el)
+		input.click()
+		expect(el.ctrl?.value).toBe(true)
+		expect(changes).toHaveLength(1)
+
+		await nextFrame()
+		input.click()
+		expect(el.ctrl?.value).toBe(false)
+		expect(changes).toHaveLength(2)
 	})
 })

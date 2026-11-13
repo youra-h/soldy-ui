@@ -2,6 +2,12 @@ import type { TPluginEvents } from '../../base/types'
 
 export type TElementServiceEvents = TPluginEvents & {
 	/**
+	 * Internal synchronous root binding, including removal before ready.
+	 * Native controls use it to guard activation before the first frame.
+	 * Not exported by ElementPluginDescriptor; ready/removed keep their timing.
+	 */
+	bind: (element: Element | null) => void
+	/**
 	 * The root DOM element is available. Emitted once per binding, in the next
 	 * requestAnimationFrame, only if the node is still bound. Changes before
 	 * that frame produce one ready for the final node. Plugins use the node to
