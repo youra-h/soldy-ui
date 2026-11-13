@@ -872,7 +872,7 @@ describe('подсказка', () => {
 				await userEvent.hover(document.body, { position: under(0.3) })
 
 				expect(ctrl.dragging).toBe(true)
-				expect(thumbs()[0].matches(':hover, :active')).toBe(false)
+				await expect.poll(() => thumbs()[0].matches(':hover, :active')).toBe(false)
 				expect(field(0).matches(':focus-visible')).toBe(false)
 				expect(await shown()).toBe(true)
 			} finally {
@@ -979,7 +979,8 @@ describe('ореол', () => {
 			await userEvent.hover(document.body, { position: under(0.3) })
 			await expect.poll(() => thumb.dataset.dragging).toBe('true')
 
-			expect(thumb.matches(':hover, :active')).toBe(false)
+			// WebKit can update the thumb's pseudo-classes after the drag state.
+			await expect.poll(() => thumb.matches(':hover, :active')).toBe(false)
 
 			await settled(thumb)
 
