@@ -1,0 +1,174 @@
+
+webc avatar, копий 50 → 100: 17.23 КБ на копию, JS-куча 7.51 КБ
+
+Группы
+КБ/коп  шт/коп  группа
+  1.54    16.0   (array)
+  0.90     0.6   (code) system / InstructionStream
+  0.48    15.0   (array) (object elements)
+  0.40    17.0   system / Context / scope
+  0.34     2.0   (array) (object properties)
+  0.28     1.5   (code) system / TrustedByteArray
+  0.28    18.0   Array
+  0.23     1.0   (native) <img class="so-avatar__image" alt="">
+  0.22     7.0   TEvented
+  0.19     1.0   (native) <span is="so-avatar" class="so-avatar so-avatar--size-normal" aria-label="Ada Lovelace" role="img" data-status="idle">
+  0.14     9.0   Map
+  0.13     0.6   (code) system / ProtectedFixedArray
+  0.12     1.0   (native) <span class="so-avatar__fallback" aria-hidden="true">
+  0.11     7.0   Set
+  0.10     5.5   (code) (object elements)
+  0.09     2.0   (native) system / PropertyArray
+  0.09     1.0   (native) Text
+  0.08     3.0   ƒ listener :1643
+  0.08     3.0   TEventEmitter
+  0.08     1.0   TAvatar
+  0.07     1.1   (native) system / WeakArrayList
+  0.07     3.0   ƒ native_bind
+  0.06     5.0   (native) system / AccessorPair
+  0.06     3.0   {set,inputs,__proto__}
+  0.05     2.0   {__proto__}
+  0.05     1.0   (native) DOMTokenList
+  0.05     1.0   (native) CSSStyleDeclaration
+  0.05     1.0   (native) NodeList
+  0.05     1.0   TAriaPlugin
+  0.04     1.0   TExchange
+  0.04     1.0   TAdapterContext
+  0.04     0.6   (code) system / Code
+  0.04     1.0   TAvatarImagePlugin
+  0.04     1.0   TPluginBundle
+  0.04     1.0   TExternalPlugins
+  0.04     1.0   TStateStore
+  0.03     1.0   TLight
+  0.03     1.0   TElementAttributes
+  0.03     1.0   TTap
+  0.03     1.0   TOwnBundle
+
+Внутренние узлы по первому владельцу
+КБ/коп  шт/коп  группа
+  2.20     2.6   @ Error → (code) system / BytecodeArray .<symbol>
+  2.09     1.7   @ (code) system / Code → (code) system / InstructionStream
+  1.49    15.0   @ Error → (object shape) system / DescriptorArray .<symbol>
+  1.05     9.0   @ Map → (array) .table
+  0.85     0.0   @ ƒ get :2314 → (code) (script line ends) .shared
+  0.80    20.6   @ Error → (code) system / ObjectBoilerplateDescription .<symbol>
+  0.57     2.4   @ Error → (code) (constant pool) .<symbol>
+  0.49     7.0   @ Set → (array) .table
+  0.48    15.0   @ Array → (array) (object elements) .elements
+  0.48     3.1   @ (code) system / CodeWrapper → (code) system / TrustedByteArray
+  0.46     0.0   @ ƒ (anon) :385 → (code) system / WeakFixedArray .shared
+  0.32     0.0   @ Generator → (code) (context local names) .context
+  0.31     0.0   @ (code) system / FeedbackVector → (code) (script line ends)
+  0.30     0.0   @ ƒ _flush :2277 → (code) system / InstructionStream .code
+  0.28     3.3   @ ƒ (anon) :1 → (code) system / FeedbackVector .feedback_cell
+  0.24     2.0   @ Error → (code) system / TrustedByteArray .<symbol>
+  0.23     7.5   @ Error → (native) system / ClassBoilerplate .<symbol>
+  0.22     1.0   @ {ctrl,get ctrl,facade,get facade,state,get state,sample} → (array) (object properties) .properties
+  0.20     0.9   @ (code) system / Code → (code) system / ProtectedFixedArray
+  0.18    15.7   @ Error → (native) system / AccessorPair .<symbol>
+  0.18     0.0   @ ƒ parseEvaluationResultValue :120 → (code) system / InstructionStream .code
+  0.16     3.6   @ Generator → (array) .context
+  0.16     0.0   @ ƒ hasPointerCursor :34 → (code) (context local names) .shared
+  0.16     0.0   @ ƒ buildAll :10879 → (code) (context local names) .context
+  0.14     4.7   @ Error → (code) (constant elements) .<symbol>
+  0.14     0.0   @ ƒ _flush :2277 → (code) system / InstructionStream .shared
+  0.13     0.0   @ ƒ __vite__mapDeps :1 → (code) (script line ends) .shared
+  0.13     0.0   @ Generator → (code) system / ScopeInfo .context
+  0.13     1.0   @ {stop,present,get present,__proto__} → (array) (object properties) .properties
+  0.12     1.7   @ (code) system / CodeWrapper → (code) system / Code
+  0.12     7.4   @ ƒ (anon) :1 → (code) system / FeedbackCell .feedback_cell
+  0.11     0.8   @ (code) system / Code → (code) system / BytecodeArray
+  0.11     0.2   @ Error → (code) system / InstructionStream .<symbol>
+  0.11     2.5   @ Error → (code) system / ScopeInfo .<symbol>
+  0.10     5.5   @ Array → (code) (object elements) .elements
+  0.10     0.2   @ ƒ arm :1641 → (array) .context
+  0.09     2.0   @ Error → (code) system / SharedFunctionInfo .<symbol>
+  0.09     8.1   @ Error → (code) system / ArrayBoilerplateDescription .<symbol>
+  0.09     0.1   @ ƒ _flush :2277 → (code) system / TrustedByteArray .code
+  0.09     2.9   @ ƒ buildAll :10879 → (native) system / SourceTextModuleInfoEntry .context
+
+JS-куча по ближайшему хозяину-доминатору (шт/коп — число хозяев)
+КБ/коп  шт/коп  группа
+ 15.59     0.0   # ~ (DOM-элемент)
+  1.99     0.0   # (DOM-элемент)
+  0.75     1.0   # TPropStore
+  0.63     3.0   # TEventEmitter
+  0.37     1.0   # TPaint
+  0.33     7.0   # TEvented
+  0.32     0.0   # ~ TBasePlugin
+  0.28     0.0   # ~ TSubscribable
+  0.23     1.0   # TLight
+  0.18     1.0   # TAvatarImagePlugin
+  0.16     0.0   # ~ TPropStore
+  0.16     1.0   # TElementAttributes
+  0.15     1.0   # TPluginBundle
+  0.13     0.0   # ~ TPropSpec
+  0.13     1.0   # TAvatar
+  0.13     1.0   # TTap
+  0.10     1.0   # TInputPort
+  0.09     1.0   # TSubtree
+  0.09     0.0   # TSubscribable
+  0.09     0.0   # ~ TTap
+  0.09     0.0   # ~ TSlotDeclaration
+  0.06     1.0   # TAriaPlugin
+  0.06     1.0   # TStateStore
+  0.06     1.0   # TAria
+  0.06     0.0   # ~ TAdapterContext
+  0.06     0.0   # ~ TName
+  0.05     1.0   # TClasses
+  0.05     1.0   # TDataset
+  0.05     1.0   # TCell
+  0.05     1.0   # TEventRelay
+  0.05     1.0   # TOwnBundle
+  0.05     0.0   # ~ TStateStore
+  0.04     1.0   # TElementPlugin
+  0.04     1.0   # TExchange
+  0.04     1.0   # TAdapterContext
+  0.04     0.0   # ~ TExchange
+  0.04     0.0   # ~ TComponent
+  0.04     0.0   # ~ TEventEmitter
+  0.04     1.0   # TExternalPlugins
+  0.04     1.0   # TReadyPlugin
+
+Состав хозяев (хозяин :: узел)
+КБ/коп  шт/коп  группа
+ 13.80     0.2   % ~ (DOM-элемент) :: (native) system / ExternalStringData
+  1.24     0.2   % (вне хозяев) :: (code) system / InstructionStream
+  0.85     0.0   % ~ (DOM-элемент) :: (code) (script line ends)
+  0.66     4.0   % TPropStore :: (array)
+  0.34     2.0   % (DOM-элемент) :: (array) (object properties)
+  0.33     5.3   % ~ (DOM-элемент) :: (native) system / FunctionTemplateInfo
+  0.32    13.0   % (DOM-элемент) :: system / Context / scope
+  0.31     0.9   % (вне хозяев) :: (code) system / TrustedByteArray
+  0.28     4.0   % TPaint :: (array)
+  0.27     3.0   % TEventEmitter :: (array)
+  0.22     7.0   % TEvented :: TEvented
+  0.19     3.0   % (DOM-элемент) :: (array) (object elements)
+  0.17     0.4   % ~ TBasePlugin :: (code) system / InstructionStream
+  0.15     0.3   % (вне хозяев) :: (code) system / BytecodeArray
+  0.15     0.3   % ~ TSubscribable :: (code) system / InstructionStream
+  0.15     1.3   % (вне хозяев) :: (array)
+  0.13     2.0   % TLight :: (array)
+  0.13     0.5   % (вне хозяев) :: (code) system / ProtectedFixedArray
+  0.11     3.0   % (вне хозяев) :: (object shape) system / DescriptorArray
+  0.09     0.3   % ~ (DOM-элемент) :: (code) system / InstructionStream
+  0.09     0.0   % ~ TPropStore :: (code) system / InstructionStream
+  0.09     1.1   % ~ TSlotDeclaration :: (string)
+  0.09     2.0   % (DOM-элемент) :: (native) system / PropertyArray
+  0.08     0.2   % ~ (DOM-элемент) :: (object shape) system / DescriptorArray
+  0.08     3.0   % (DOM-элемент) :: ƒ listener :1643
+  0.08     3.0   % TEventEmitter :: TEventEmitter
+  0.08     0.0   % ~ (DOM-элемент) :: (code) system / WeakFixedArray
+  0.08     2.3   % (вне хозяев) :: (code) system / ObjectBoilerplateDescription
+  0.08     1.0   % TAvatar :: TAvatar
+  0.08     0.6   % (вне хозяев) :: (code) system / FeedbackVector
+  0.07     1.0   % TPluginBundle :: (array)
+  0.07     1.0   % TAvatarImagePlugin :: (array) (object elements)
+  0.07     3.0   % TEventEmitter :: ƒ native_bind
+  0.07     2.6   % (вне хозяев) :: (code) (object elements)
+  0.06     0.8   % (вне хозяев) :: (code) system / ScopeInfo
+  0.06     4.0   % (вне хозяев) :: (code) system / FeedbackCell
+  0.06     4.0   % TEvented :: Array
+  0.06     5.0   % (DOM-элемент) :: (native) system / AccessorPair
+  0.06     3.0   % TElementAttributes :: {set,inputs,__proto__}
+  0.06     1.0   % (DOM-элемент) :: (array)

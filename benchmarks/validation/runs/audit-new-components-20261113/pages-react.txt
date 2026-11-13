@@ -1,0 +1,51 @@
+react прогрев 42 с
+react alert {"weightKB":1939,"mountMs":18,"heapSlopeKB":0.9,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react avatar {"weightKB":418,"mountMs":16,"heapSlopeKB":0.3,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react avatar-group {"weightKB":1445,"mountMs":14,"heapSlopeKB":-0.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react code-block {"weightKB":6252,"mountMs":73,"heapSlopeKB":0.5,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react breadcrumbs {"weightKB":9941,"mountMs":61,"heapSlopeKB":-0.4,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react badge {"weightKB":415,"mountMs":12,"heapSlopeKB":-0.4,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react toggle-button {"weightKB":461,"mountMs":6,"heapSlopeKB":-0.5,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react toggle-group {"weightKB":3675,"mountMs":27,"heapSlopeKB":-0.4,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react button {"weightKB":439,"mountMs":8,"heapSlopeKB":-1.3,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react input {"weightKB":593,"mountMs":9,"heapSlopeKB":-0.3,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react number-input {"weightKB":2215,"mountMs":22,"heapSlopeKB":0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react textarea {"weightKB":665,"mountMs":9,"heapSlopeKB":-0.7,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react check-box {"weightKB":881,"mountMs":11,"heapSlopeKB":-0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react switch {"weightKB":890,"mountMs":14,"heapSlopeKB":-0.3,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react label {"weightKB":886,"mountMs":15,"heapSlopeKB":-0.4,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react field {"weightKB":1064,"mountMs":23,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react slider {"weightKB":968,"mountMs":14,"heapSlopeKB":-0.6,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react rating {"weightKB":1350,"mountMs":27,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react radio-group {"weightKB":5487,"mountMs":60,"heapSlopeKB":0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react select {"weightKB":4102,"mountMs":61,"heapSlopeKB":-0.5,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react calendar {"weightKB":20995,"mountMs":236,"heapSlopeKB":1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react date-input {"weightKB":944,"mountMs":18,"heapSlopeKB":-0.9,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react date-picker {"weightKB":4217,"mountMs":68,"heapSlopeKB":-0.7,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react popover {"weightKB":3311,"mountMs":41,"heapSlopeKB":-9.8,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react menu {"weightKB":2871,"mountMs":32,"heapSlopeKB":-0.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react tooltip {"weightKB":1926,"mountMs":26,"heapSlopeKB":-0.6,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react alert-dialog {"weightKB":3033,"mountMs":32,"heapSlopeKB":0.6,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react dialog {"weightKB":3561,"mountMs":43,"heapSlopeKB":-0.4,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react drawer {"weightKB":3547,"mountMs":43,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react toasts {"weightKB":4023,"mountMs":62,"heapSlopeKB":0.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react scroller {"weightKB":2128,"mountMs":28,"heapSlopeKB":-0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react list-box {"weightKB":8324,"mountMs":119,"heapSlopeKB":-0.3,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react pagination {"weightKB":6999,"mountMs":76,"heapSlopeKB":-0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react table {"weightKB":10394,"mountMs":99,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react tabs {"weightKB":10689,"mountMs":123,"heapSlopeKB":-0.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react tags {"weightKB":6440,"mountMs":54,"heapSlopeKB":-0.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react accordion {"weightKB":10483,"mountMs":128,"heapSlopeKB":-0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react icon {"weightKB":397,"mountMs":6,"heapSlopeKB":-0.5,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react progress-linear {"weightKB":414,"mountMs":13,"heapSlopeKB":-0.6,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react progress-spinner {"weightKB":429,"mountMs":8,"heapSlopeKB":-0.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react separator {"weightKB":359,"mountMs":13,"heapSlopeKB":-0.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react skeleton {"weightKB":390,"mountMs":16,"heapSlopeKB":-0.5,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react drag-and-drop {"weightKB":27764,"mountMs":310,"heapSlopeKB":-0.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react virtual {"weightKB":92081,"mountMs":1739,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react all {"weightKB":6474,"mountMs":127,"heapSlopeKB":-0.9,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react empty {"weightKB":16,"mountMs":14,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+react обход 1 {"heap":12329236,"nodes":32,"listeners":15,"components":119,"emitters":0}
+react обход 2 {"heap":12322796,"nodes":32,"listeners":15,"components":119,"emitters":0}
+react обход 3 {"heap":12328452,"nodes":32,"listeners":15,"components":119,"emitters":0}
+react leak {"weightKB":458,"mountMs":18,"heapSlopeKB":43.1,"nodes":3000,"listeners":1000,"components":1000,"emitters":1000}

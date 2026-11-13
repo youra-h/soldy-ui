@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-13T09:13:10.174Z",
+  "kind": "supplemental independent integrated-browser observation",
+  "observer": "orchestrator",
+  "source": "Current task conversation; performed after production build and before measured workload",
+  "workloadCommit": "fd157f353",
+  "adapter": "solid",
+  "component": "breadcrumbs",
+  "environment": {
+    "host": "VSCode integrated browser Electron 43.8.6",
+    "userAgentChrome": "150.0.7871.250",
+    "pinnedPlaywright": false,
+    "assistiveTechnology": false
+  },
+  "setup": "bench.mount('breadcrumbs', 1)",
+  "steps": [
+    "Focus overflow trigger",
+    "Enter",
+    "End",
+    "Home",
+    "Escape"
+  ],
+  "observedFocus": [
+    "Catalog",
+    "Phones",
+    "Catalog",
+    "BODY"
+  ],
+  "result": {
+    "activeTag": "BODY",
+    "activeClass": "",
+    "expanded": "false",
+    "triggerFocused": false,
+    "openMenus": 0
+  },
+  "triggerReplaced": true,
+  "status": "failed",
+  "followUp": "https://app.clickup.com/t/1an4hvw5wur",
+  "cleanup": "bench.unmount(); navigate about:blank; supplemental server stopped before measured workload",
+  "limitation": "Supplemental manual keyboard evidence only; no screen reader, speech or pinned browser claim"
+}

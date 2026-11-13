@@ -140,3 +140,26 @@ Chromium 156.0.8078.4, час без перезагрузки после про�
 ## 2026-11-09 — проверяемый запуск 2026-11-09-full
 
 Новый собственный замер — [итоговый отчёт](../validation/report.md), [условия и команды](../validation/README.md), [manifest](../validation/runs/2026-11-09-full/manifest.json), [raw pages](../validation/runs/2026-11-09-full/pages-webc.json), [машинная сводка](../validation/runs/2026-11-09-full/summary.json). Статус данных: **measured**. Параметры и каждый повтор сохранены; исторические числа выше не переписаны.
+
+## 2026-11-13 — аудит девяти новых компонентов
+
+[Задача](https://app.clickup.com/t/1an4hvw5vua), [полный отчёт и матрица](../validation/new-components-2026-11-13.md). Исходные целевые циклы: e0c94a76c, Chromium 156.0.8078.4, n=50, act=10, warm=2, measured=20, settle=6000 ms. Mount/update/unmount включают второй RAF; это задержка до установившегося кадра, не чистое CPU. Сопоставимого исторического baseline этих девяти нет.
+
+Полный реестр из 44 страниц, all/empty/leak и три обхода завершены. Отрицательный empty и положительный planted leak контролируют метод.
+
+| Страница      | KiB/копию | Mount ms | Update ms | Unmount ms | Heap B/цикл | Δnodes/core/emitters/JS listeners | Actions/цикл |
+| ------------- | --------- | -------- | --------- | ---------- | ----------- | --------------------------------- | ------------ |
+| alert         | 35.76     | 25.80    | 12.70     | 32.10      | 165.69      | 0/0/0/0                           | 10           |
+| badge         | 7.71      | 9.55     | 13.05     | 32.45      | -113.88     | 0/0/0/0                           | 4            |
+| breadcrumbs   | 179.55    | 88.30    | 9.50      | 31.75      | 58.94       | 0/0/0/0                           | 30           |
+| separator     | 6.28      | 8.75     | 10.90     | 32.15      | 47.19       | 0/0/0/0                           | 4            |
+| toggle-button | 8.88      | 8.90     | 7.75      | 32.40      | 12.12       | 0/0/0/0                           | 20           |
+| toggle-group  | 66.22     | 31.90    | 13.75     | 32.25      | -148.17     | 0/0/0/0                           | 40           |
+| code-block    | 119.43    | 89.70    | 19.15     | 32.30      | 137.33      | 0/0/0/0                           | 30           |
+| avatar        | 8.17      | 8.65     | 8.95      | 32.15      | 979.59      | 6000/0/0/0                        | 4            |
+| avatar-group  | 27.20     | 19.25    | 13.10     | 32.60      | -1441.87    | 0/0/0/0                           | 2            |
+| alert-dialog  | 50.13     | 43.70    | 9.20      | 31.80      | -6.23       | 0/0/0/0                           | 40           |
+
+Avatar сохраняет SIGNAL +6000 DOM; тот же native img/UA alttext путь воспроизводится на чистом about:blank без библиотеки. Core/emitters/JS listeners освобождаются; это не общий memory PASS. Actual post-churn heaps, pure controls, strong chains, seed7 replay и N→2N heap связаны в полном отчёте.
+
+[Исходные cycles/base/end](../validation/runs/audit-new-components-20261113/pages-webc.json), [min/max/N и независимая валидация](../validation/runs/audit-new-components-20261113/summary.json), [per-cell proof index](../validation/runs/audit-new-components-20261113/coverage-index.json).

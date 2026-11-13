@@ -389,3 +389,26 @@ Chromium 156.0.8078.4, час без перезагрузки после про�
 ## 2026-11-09 — проверяемый запуск 2026-11-09-full
 
 Новый собственный замер — [итоговый отчёт](../validation/report.md), [условия и команды](../validation/README.md), [manifest](../validation/runs/2026-11-09-full/manifest.json), [raw pages](../validation/runs/2026-11-09-full/pages-angular.json), [машинная сводка](../validation/runs/2026-11-09-full/summary.json). Статус данных: **measured**. Параметры и каждый повтор сохранены; исторические числа выше не переписаны.
+
+## 2026-11-13 — аудит девяти новых компонентов
+
+[Задача](https://app.clickup.com/t/1an4hvw5vua), [полный отчёт и матрица](../validation/new-components-2026-11-13.md). Исходные целевые циклы: e0c94a76c, Chromium 156.0.8078.4, n=50, act=10, warm=2, measured=20, settle=6000 ms. Mount/update/unmount включают второй RAF; это задержка до установившегося кадра, не чистое CPU. Сопоставимого исторического baseline этих девяти нет.
+
+Исходный Angular raw завершил все целевые страницы, затем упал на нецелевом harness direction prop. Он сохранён как FAIL. Отдельный полный recovery на 62ee161f3 завершил весь реестр, all/empty/leak и три обхода; [raw и strict summary](../validation/runs/audit-new-components-20261113-supplement/pages-angular-summary.json). Recovery timings контекстные (один адаптер, часть времени параллельно memory diagnostics), здесь не подменяют исходные числа.
+
+| Страница      | KiB/копию | Mount ms | Update ms | Unmount ms | Heap B/цикл | Δnodes/core/emitters/JS listeners | Actions/цикл |
+| ------------- | --------- | -------- | --------- | ---------- | ----------- | --------------------------------- | ------------ |
+| alert         | 47.66     | 30.00    | 14.10     | 32.30      | 116.37      | 0/0/0/0                           | 10           |
+| badge         | 11.34     | 8.55     | 6.90      | 32.10      | -213.49     | 0/0/0/0                           | 4            |
+| breadcrumbs   | 304.71    | 130.70   | 12.35     | 31.95      | 256.74      | 0/0/0/0                           | 30           |
+| separator     | 8.94      | 8.80     | 10.00     | 32.45      | 59.11       | 0/0/0/0                           | 4            |
+| toggle-button | 14.61     | 13.30    | 9.15      | 32.35      | -106.92     | 0/0/0/0                           | 20           |
+| toggle-group  | 110.47    | 54.45    | 18.35     | 32.00      | -1335.56    | 0/0/0/0                           | 40           |
+| code-block    | 159.25    | 111.75   | 21.25     | 31.90      | 287.59      | 0/0/0/0                           | 30           |
+| avatar        | 12.80     | 10.70    | 7.90      | 32.20      | -5.89       | 0/0/0/0                           | 4            |
+| avatar-group  | 40.71     | 23.90    | 8.50      | 32.40      | -1150.73    | 0/0/0/0                           | 2            |
+| alert-dialog  | 68.80     | 54.70    | 11.50     | 32.30      | 1226.36     | 0/0/0/0                           | 40           |
+
+У целевых страниц не обнаружено роста счётчиков при записанных порогах; это не доказательство отсутствия меньшего удержания.
+
+[Исходные cycles/base/end](../validation/runs/audit-new-components-20261113/pages-angular.json), [min/max/N и независимая валидация](../validation/runs/audit-new-components-20261113/summary.json), [per-cell proof index](../validation/runs/audit-new-components-20261113/coverage-index.json).

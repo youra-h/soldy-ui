@@ -1,0 +1,286 @@
+{
+    "schemaVersion":  1,
+    "capturedAt":  "2026-11-13T11:46:23.8345123Z",
+    "workflow":  {
+                     "conclusion":  "failure",
+                     "event":  "pull_request",
+                     "headBranch":  "task/1an4hvw5vua-new-components-audit",
+                     "headSha":  "62ee161f34db66c79771bcea4c8edfd97ecdbbd4",
+                     "startedAt":  "2026-11-13T11:19:34Z",
+                     "status":  "completed",
+                     "updatedAt":  "2026-11-13T11:33:58Z",
+                     "url":  "https://github.com/youra-h/soxa-ui/actions/runs/43416144397",
+                     "workflowName":  "CI"
+                 },
+    "toolingWorkflow":  {
+                            "conclusion":  "success",
+                            "headSha":  "62ee161f34db66c79771bcea4c8edfd97ecdbbd4",
+                            "status":  "completed",
+                            "url":  "https://github.com/youra-h/soxa-ui/actions/runs/43416144435",
+                            "workflowName":  "Benchmark tools and research observations"
+                        },
+    "pullRequest":  861,
+    "sourceHead":  "62ee161f34db66c79771bcea4c8edfd97ecdbbd4",
+    "checkoutCommit":  "bbb2134fe0b86bbf23ad1b9f330458f5a72fe2f8",
+    "checkoutBase":  "e1ba2a88c99fc48224c7bc7cb4b8cc3cdf2015d0",
+    "checkoutNote":  "GitHub pull_request jobs tested this synthetic merge. The original long measurements used e0c94a76c402a8c425c197768397384fd5a4c5af; the full Angular recovery used sourceHead before the main update. Remote 4415 cases equal the previously executed 4385-case full inventory plus 24 new audit cases and six new main-branch webc-checkable cases. A full 4409-case pre-main local run was not executed; the later post-merge local run is recorded separately.",
+    "checks":  {
+                   "totalFailed":  2,
+                   "ciPassed":  29,
+                   "toolingPassed":  1,
+                   "totalPassed":  30,
+                   "ciFailed":  2
+               },
+    "allJobs":  [
+                    {
+                        "name":  "Тесты — стенд",
+                        "databaseId":  131854442147,
+                        "status":  "completed",
+                        "conclusion":  "success",
+                        "url":  "https://github.com/youra-h/soxa-ui/actions/runs/43416144397/job/131854442147"
+                    },
+                    {
+                        "name":  "Линт",
+                        "databaseId":  131854442349,
+                        "status":  "completed",
+                        "conclusion":  "success",
+                        "url":  "https://github.com/youra-h/soxa-ui/actions/runs/43416144397/job/131854442349"
+                    },
+                    {
+                        "name":  "Минимальные версии (angular)",
+                        "databaseId":  131854442371,
+                        "status":  "completed",
+                        "conclusion":  "success",
+                        "url":  "https://github.com/youra-h/soxa-ui/actions/runs/43416144397/job/131854442371"
+                    },
+                    {
+                        "name":  "Минимальные версии (solid)",
+                        "databaseId":  131854442408,
+                        "status":  "completed",
+                        "conclusion":  "success",
+                        "url":  "https://github.com/youra-h/soxa-ui/actions/runs/43416144397/job/131854442408"
+                    },
+                    {
+                        "name":  "Минимальные версии (svelte)",
+                        "databaseId":  131854442415,
+                        "status":  "completed",
+                        "conclusion":  "success",
+                        "url":  "https://github.com/youra-h/soxa-ui/actions/runs/43416144397/job/131854442415"
+                    },
+                    {
+                        "name":  "Тесты — vue",
+                        "databaseId":  131854442425,
+                        "status":  "completed",
+                        "conclusion":  "success",
+                        "url":  "https://github.com/youra-h/soxa-ui/actions/runs/43416144397/job/131854442425"
+                    },
+                    {
+                        "name":  "Тесты — ядро, setup, плагины, тема",
+                        "databaseId":  131854442448,
+                        "status":  "completed",
+                        "conclusion":  "success",
+                        "url":  "https://github.com/youra-h/soxa-ui/actions/runs/43416144397/job/131854442448"
+                    },
+                    {
+                        "name":  "Тесты — react",
+                        "databaseId":  131854442490,
+                        "status":  "completed",
+                        "conclusion":  "success",
+                        "url":  "https://github.com/youra-h/soxa-ui/actions/runs/43416144397/job/131854442490"
+                    },
+                    {
+                        "name":  "Установка — angular-ssr",
+                        "databaseId":  131854442499,
+                        "status":  "completed",
+                        "conclusion":  "success",
+                        "url":  "https://github.com/youra-h/soxa-ui/actions/runs/43416144397/job/131854442499"
+                    },
+                    {
+                        "name":  "Тесты — svelte",
+                        "databaseId":  131854442514,
+                        "status":  "completed",
+                        "conclusion":  "success",
+                        "url":  "https://github.com/youra-h/soxa-ui/actions/runs/43416144397/job/131854442514"
+                    },
+                    {
+                        "name":  "Английский",
+                        "databaseId":  131854442535,
+                        "status":  "completed",
+                        "conclusion":  "success",
+                        "url":  "https://github.com/youra-h/soxa-ui/actions/runs/43416144397/job/131854442535"
+                    },
+                    {
+                        "name":  "Changeset",
+                        "databaseId":  131854442548,
+                        "status":  "completed",
+                        "conclusion":  "success",
+                        "url":  "https://github.com/youra-h/soxa-ui/actions/runs/43416144397/job/131854442548"
+                    },
+                    {
+                        "name":  "Тесты — solid",
+                        "databaseId":  131854442549,
+                        "status":  "completed",
+                        "conclusion":  "success",
+                        "url":  "https://github.com/youra-h/soxa-ui/actions/runs/43416144397/job/131854442549"
+                    },
+                    {
+                        "name":  "Минимальные версии (vue)",
+                        "databaseId":  131854442550,
+                        "status":  "completed",
+                        "conclusion":  "success",
+                        "url":  "https://github.com/youra-h/soxa-ui/actions/runs/43416144397/job/131854442550"
+                    },
+                    {
+                        "name":  "Установка — react",
+                        "databaseId":  131854442578,
+                        "status":  "completed",
+                        "conclusion":  "success",
+                        "url":  "https://github.com/youra-h/soxa-ui/actions/runs/43416144397/job/131854442578"
+                    },
+                    {
+                        "name":  "Тесты — браузер (chromium)",
+                        "databaseId":  131854442601,
+                        "status":  "completed",
+                        "conclusion":  "failure",
+                        "url":  "https://github.com/youra-h/soxa-ui/actions/runs/43416144397/job/131854442601"
+                    },
+                    {
+                        "name":  "Сборка и типы",
+                        "databaseId":  131854442605,
+                        "status":  "completed",
+                        "conclusion":  "success",
+                        "url":  "https://github.com/youra-h/soxa-ui/actions/runs/43416144397/job/131854442605"
+                    },
+                    {
+                        "name":  "Установка — vue-tailwind",
+                        "databaseId":  131854442662,
+                        "status":  "completed",
+                        "conclusion":  "success",
+                        "url":  "https://github.com/youra-h/soxa-ui/actions/runs/43416144397/job/131854442662"
+                    },
+                    {
+                        "name":  "Тесты — браузер (webkit)",
+                        "databaseId":  131854442680,
+                        "status":  "completed",
+                        "conclusion":  "failure",
+                        "url":  "https://github.com/youra-h/soxa-ui/actions/runs/43416144397/job/131854442680"
+                    },
+                    {
+                        "name":  "Минимальные версии (react)",
+                        "databaseId":  131854442682,
+                        "status":  "completed",
+                        "conclusion":  "success",
+                        "url":  "https://github.com/youra-h/soxa-ui/actions/runs/43416144397/job/131854442682"
+                    },
+                    {
+                        "name":  "Тесты — webc",
+                        "databaseId":  131854442697,
+                        "status":  "completed",
+                        "conclusion":  "success",
+                        "url":  "https://github.com/youra-h/soxa-ui/actions/runs/43416144397/job/131854442697"
+                    },
+                    {
+                        "name":  "Установка — webc",
+                        "databaseId":  131854442717,
+                        "status":  "completed",
+                        "conclusion":  "success",
+                        "url":  "https://github.com/youra-h/soxa-ui/actions/runs/43416144397/job/131854442717"
+                    },
+                    {
+                        "name":  "Установка — svelte",
+                        "databaseId":  131854442725,
+                        "status":  "completed",
+                        "conclusion":  "success",
+                        "url":  "https://github.com/youra-h/soxa-ui/actions/runs/43416144397/job/131854442725"
+                    },
+                    {
+                        "name":  "Установка — solid-start",
+                        "databaseId":  131854442729,
+                        "status":  "completed",
+                        "conclusion":  "success",
+                        "url":  "https://github.com/youra-h/soxa-ui/actions/runs/43416144397/job/131854442729"
+                    },
+                    {
+                        "name":  "Установка — solid",
+                        "databaseId":  131854442734,
+                        "status":  "completed",
+                        "conclusion":  "success",
+                        "url":  "https://github.com/youra-h/soxa-ui/actions/runs/43416144397/job/131854442734"
+                    },
+                    {
+                        "name":  "Установка — nuxt",
+                        "databaseId":  131854442740,
+                        "status":  "completed",
+                        "conclusion":  "success",
+                        "url":  "https://github.com/youra-h/soxa-ui/actions/runs/43416144397/job/131854442740"
+                    },
+                    {
+                        "name":  "Тесты — angular",
+                        "databaseId":  131854442783,
+                        "status":  "completed",
+                        "conclusion":  "success",
+                        "url":  "https://github.com/youra-h/soxa-ui/actions/runs/43416144397/job/131854442783"
+                    },
+                    {
+                        "name":  "Установка — next",
+                        "databaseId":  131854442805,
+                        "status":  "completed",
+                        "conclusion":  "success",
+                        "url":  "https://github.com/youra-h/soxa-ui/actions/runs/43416144397/job/131854442805"
+                    },
+                    {
+                        "name":  "Установка — sveltekit",
+                        "databaseId":  131854442832,
+                        "status":  "completed",
+                        "conclusion":  "success",
+                        "url":  "https://github.com/youra-h/soxa-ui/actions/runs/43416144397/job/131854442832"
+                    },
+                    {
+                        "name":  "Установка — angular",
+                        "databaseId":  131854443011,
+                        "status":  "completed",
+                        "conclusion":  "success",
+                        "url":  "https://github.com/youra-h/soxa-ui/actions/runs/43416144397/job/131854443011"
+                    },
+                    {
+                        "name":  "Установка — vue",
+                        "databaseId":  131854445658,
+                        "status":  "completed",
+                        "conclusion":  "success",
+                        "url":  "https://github.com/youra-h/soxa-ui/actions/runs/43416144397/job/131854445658"
+                    }
+                ],
+    "browserJobs":  [
+                        {
+                            "browser":  "chromium",
+                            "jobId":  131854442601,
+                            "url":  "https://github.com/youra-h/soxa-ui/actions/runs/43416144397/job/131854442601",
+                            "conclusion":  "failure",
+                            "testCounts":  {
+                                               "failed":  1,
+                                               "skipped":  0,
+                                               "total":  4415,
+                                               "passed":  4414
+                                           },
+                            "failure":  "new-components-audit.spec.ts / solid / Breadcrumbs focus after Escape: BODY instead of live trigger",
+                            "log":  "remote-ci-chromium.txt",
+                            "sha256":  "c91f764f846fe0f9e5599de24709122126973d88ca87aff966d166eab8e67250"
+                        },
+                        {
+                            "browser":  "webkit",
+                            "jobId":  131854442680,
+                            "url":  "https://github.com/youra-h/soxa-ui/actions/runs/43416144397/job/131854442680",
+                            "conclusion":  "failure",
+                            "testCounts":  {
+                                               "failed":  1,
+                                               "skipped":  97,
+                                               "total":  4415,
+                                               "passed":  4317
+                                           },
+                            "failure":  "new-components-audit.spec.ts / solid / Breadcrumbs focus after Escape: BODY instead of live trigger",
+                            "log":  "remote-ci-webkit.txt",
+                            "sha256":  "36476f0d7c7d220a9de75589c588d2c231202811a2d9fdcf0ff99777b71fe370"
+                        }
+                    ],
+    "logRepresentation":  "UTF-8 without BOM; gh run view --job \u003cid\u003e --log stdout with job/step/time prefixes."
+}

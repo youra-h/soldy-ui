@@ -1,0 +1,825 @@
+{
+    "schemaVersion":  1,
+    "capturedAt":  "2026-11-13T12:31:14.1821514Z",
+    "runId":  43423050380,
+    "runAttempt":  2,
+    "status":  "completed",
+    "conclusion":  "failure",
+    "url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380",
+    "sourceHead":  "0f9009fa76a8c9af15340f1e4a87d54ed834fad1",
+    "checkoutCommit":  "c0476c3ec7ec667a540170a6ae4bdf0104db9e2b",
+    "checkoutBase":  "e1ba2a88c99fc48224c7bc7cb4b8cc3cdf2015d0",
+    "checkoutNote":  "Synthetic pull_request checkout parents were verified with git show. Full local browser results for this source have one Solid Breadcrumbs failure each; remote WebKit additionally exposed an Angular Breadcrumbs focus-readiness failure. Later test synchronization and reruns are separate evidence, not a replacement of this result.",
+    "toolingWorkflow":  {
+                            "conclusion":  "success",
+                            "headSha":  "0f9009fa76a8c9af15340f1e4a87d54ed834fad1",
+                            "status":  "completed",
+                            "url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423049762",
+                            "workflowName":  "Benchmark tools and research observations"
+                        },
+    "checks":  {
+                   "totalFailed":  2,
+                   "ciPassed":  29,
+                   "toolingPassed":  1,
+                   "totalPassed":  30,
+                   "ciFailed":  2
+               },
+    "allJobAttempts":  [
+                           {
+                               "name":  "Английский",
+                               "id":  131877521845,
+                               "run_attempt":  1,
+                               "status":  "completed",
+                               "conclusion":  "success",
+                               "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131877521845"
+                           },
+                           {
+                               "name":  "Тесты — vue",
+                               "id":  131877522083,
+                               "run_attempt":  1,
+                               "status":  "completed",
+                               "conclusion":  "success",
+                               "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131877522083"
+                           },
+                           {
+                               "name":  "Минимальные версии (solid)",
+                               "id":  131877522097,
+                               "run_attempt":  1,
+                               "status":  "completed",
+                               "conclusion":  "success",
+                               "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131877522097"
+                           },
+                           {
+                               "name":  "Тесты — webc",
+                               "id":  131877522113,
+                               "run_attempt":  1,
+                               "status":  "completed",
+                               "conclusion":  "success",
+                               "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131877522113"
+                           },
+                           {
+                               "name":  "Установка — angular",
+                               "id":  131877522118,
+                               "run_attempt":  1,
+                               "status":  "completed",
+                               "conclusion":  "success",
+                               "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131877522118"
+                           },
+                           {
+                               "name":  "Тесты — браузер (chromium)",
+                               "id":  131877522120,
+                               "run_attempt":  1,
+                               "status":  "completed",
+                               "conclusion":  "failure",
+                               "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131877522120"
+                           },
+                           {
+                               "name":  "Тесты — стенд",
+                               "id":  131877522132,
+                               "run_attempt":  1,
+                               "status":  "completed",
+                               "conclusion":  "success",
+                               "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131877522132"
+                           },
+                           {
+                               "name":  "Тесты — svelte",
+                               "id":  131877522153,
+                               "run_attempt":  1,
+                               "status":  "completed",
+                               "conclusion":  "success",
+                               "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131877522153"
+                           },
+                           {
+                               "name":  "Сборка и типы",
+                               "id":  131877522168,
+                               "run_attempt":  1,
+                               "status":  "completed",
+                               "conclusion":  "success",
+                               "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131877522168"
+                           },
+                           {
+                               "name":  "Тесты — ядро, setup, плагины, тема",
+                               "id":  131877522175,
+                               "run_attempt":  1,
+                               "status":  "completed",
+                               "conclusion":  "success",
+                               "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131877522175"
+                           },
+                           {
+                               "name":  "Минимальные версии (react)",
+                               "id":  131877522195,
+                               "run_attempt":  1,
+                               "status":  "completed",
+                               "conclusion":  "success",
+                               "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131877522195"
+                           },
+                           {
+                               "name":  "Минимальные версии (angular)",
+                               "id":  131877522207,
+                               "run_attempt":  1,
+                               "status":  "completed",
+                               "conclusion":  "success",
+                               "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131877522207"
+                           },
+                           {
+                               "name":  "Тесты — браузер (webkit)",
+                               "id":  131877522264,
+                               "run_attempt":  1,
+                               "status":  "completed",
+                               "conclusion":  "failure",
+                               "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131877522264"
+                           },
+                           {
+                               "name":  "Минимальные версии (svelte)",
+                               "id":  131877522284,
+                               "run_attempt":  1,
+                               "status":  "completed",
+                               "conclusion":  "success",
+                               "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131877522284"
+                           },
+                           {
+                               "name":  "Тесты — angular",
+                               "id":  131877522286,
+                               "run_attempt":  1,
+                               "status":  "completed",
+                               "conclusion":  "success",
+                               "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131877522286"
+                           },
+                           {
+                               "name":  "Установка — vue-tailwind",
+                               "id":  131877522287,
+                               "run_attempt":  1,
+                               "status":  "completed",
+                               "conclusion":  "success",
+                               "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131877522287"
+                           },
+                           {
+                               "name":  "Установка — sveltekit",
+                               "id":  131877522313,
+                               "run_attempt":  1,
+                               "status":  "completed",
+                               "conclusion":  "success",
+                               "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131877522313"
+                           },
+                           {
+                               "name":  "Линт",
+                               "id":  131877522321,
+                               "run_attempt":  1,
+                               "status":  "completed",
+                               "conclusion":  "success",
+                               "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131877522321"
+                           },
+                           {
+                               "name":  "Минимальные версии (vue)",
+                               "id":  131877522326,
+                               "run_attempt":  1,
+                               "status":  "completed",
+                               "conclusion":  "success",
+                               "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131877522326"
+                           },
+                           {
+                               "name":  "Changeset",
+                               "id":  131877522342,
+                               "run_attempt":  1,
+                               "status":  "completed",
+                               "conclusion":  "success",
+                               "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131877522342"
+                           },
+                           {
+                               "name":  "Установка — react",
+                               "id":  131877522346,
+                               "run_attempt":  1,
+                               "status":  "completed",
+                               "conclusion":  "success",
+                               "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131877522346"
+                           },
+                           {
+                               "name":  "Установка — webc",
+                               "id":  131877522400,
+                               "run_attempt":  1,
+                               "status":  "completed",
+                               "conclusion":  "success",
+                               "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131877522400"
+                           },
+                           {
+                               "name":  "Установка — vue",
+                               "id":  131877522434,
+                               "run_attempt":  1,
+                               "status":  "completed",
+                               "conclusion":  "success",
+                               "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131877522434"
+                           },
+                           {
+                               "name":  "Тесты — react",
+                               "id":  131877522460,
+                               "run_attempt":  1,
+                               "status":  "completed",
+                               "conclusion":  "success",
+                               "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131877522460"
+                           },
+                           {
+                               "name":  "Установка — solid",
+                               "id":  131877522468,
+                               "run_attempt":  1,
+                               "status":  "completed",
+                               "conclusion":  "success",
+                               "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131877522468"
+                           },
+                           {
+                               "name":  "Установка — nuxt",
+                               "id":  131877522469,
+                               "run_attempt":  1,
+                               "status":  "completed",
+                               "conclusion":  "success",
+                               "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131877522469"
+                           },
+                           {
+                               "name":  "Установка — angular-ssr",
+                               "id":  131877522516,
+                               "run_attempt":  1,
+                               "status":  "completed",
+                               "conclusion":  "failure",
+                               "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131877522516"
+                           },
+                           {
+                               "name":  "Установка — next",
+                               "id":  131877522523,
+                               "run_attempt":  1,
+                               "status":  "completed",
+                               "conclusion":  "success",
+                               "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131877522523"
+                           },
+                           {
+                               "name":  "Установка — solid-start",
+                               "id":  131877522528,
+                               "run_attempt":  1,
+                               "status":  "completed",
+                               "conclusion":  "success",
+                               "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131877522528"
+                           },
+                           {
+                               "name":  "Установка — svelte",
+                               "id":  131877522614,
+                               "run_attempt":  1,
+                               "status":  "completed",
+                               "conclusion":  "success",
+                               "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131877522614"
+                           },
+                           {
+                               "name":  "Тесты — solid",
+                               "id":  131877522831,
+                               "run_attempt":  1,
+                               "status":  "completed",
+                               "conclusion":  "success",
+                               "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131877522831"
+                           },
+                           {
+                               "name":  "Тесты — ядро, setup, плагины, тема",
+                               "id":  131884869027,
+                               "run_attempt":  2,
+                               "status":  "completed",
+                               "conclusion":  "success",
+                               "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131884869027"
+                           },
+                           {
+                               "name":  "Установка — angular-ssr",
+                               "id":  131884869428,
+                               "run_attempt":  2,
+                               "status":  "completed",
+                               "conclusion":  "success",
+                               "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131884869428"
+                           },
+                           {
+                               "name":  "Линт",
+                               "id":  131884869747,
+                               "run_attempt":  2,
+                               "status":  "completed",
+                               "conclusion":  "success",
+                               "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131884869747"
+                           },
+                           {
+                               "name":  "Минимальные версии (solid)",
+                               "id":  131884870010,
+                               "run_attempt":  2,
+                               "status":  "completed",
+                               "conclusion":  "success",
+                               "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131884870010"
+                           },
+                           {
+                               "name":  "Changeset",
+                               "id":  131884870142,
+                               "run_attempt":  2,
+                               "status":  "completed",
+                               "conclusion":  "success",
+                               "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131884870142"
+                           },
+                           {
+                               "name":  "Установка — vue-tailwind",
+                               "id":  131884870201,
+                               "run_attempt":  2,
+                               "status":  "completed",
+                               "conclusion":  "success",
+                               "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131884870201"
+                           },
+                           {
+                               "name":  "Минимальные версии (react)",
+                               "id":  131884870272,
+                               "run_attempt":  2,
+                               "status":  "completed",
+                               "conclusion":  "success",
+                               "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131884870272"
+                           },
+                           {
+                               "name":  "Тесты — svelte",
+                               "id":  131884870309,
+                               "run_attempt":  2,
+                               "status":  "completed",
+                               "conclusion":  "success",
+                               "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131884870309"
+                           },
+                           {
+                               "name":  "Тесты — solid",
+                               "id":  131884870321,
+                               "run_attempt":  2,
+                               "status":  "completed",
+                               "conclusion":  "success",
+                               "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131884870321"
+                           },
+                           {
+                               "name":  "Минимальные версии (angular)",
+                               "id":  131884870363,
+                               "run_attempt":  2,
+                               "status":  "completed",
+                               "conclusion":  "success",
+                               "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131884870363"
+                           },
+                           {
+                               "name":  "Тесты — браузер (webkit)",
+                               "id":  131884870389,
+                               "run_attempt":  2,
+                               "status":  "completed",
+                               "conclusion":  "failure",
+                               "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131884870389"
+                           },
+                           {
+                               "name":  "Установка — webc",
+                               "id":  131884870435,
+                               "run_attempt":  2,
+                               "status":  "completed",
+                               "conclusion":  "success",
+                               "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131884870435"
+                           },
+                           {
+                               "name":  "Минимальные версии (vue)",
+                               "id":  131884870484,
+                               "run_attempt":  2,
+                               "status":  "completed",
+                               "conclusion":  "success",
+                               "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131884870484"
+                           },
+                           {
+                               "name":  "Установка — nuxt",
+                               "id":  131884870659,
+                               "run_attempt":  2,
+                               "status":  "completed",
+                               "conclusion":  "success",
+                               "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131884870659"
+                           },
+                           {
+                               "name":  "Установка — next",
+                               "id":  131884870745,
+                               "run_attempt":  2,
+                               "status":  "completed",
+                               "conclusion":  "success",
+                               "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131884870745"
+                           },
+                           {
+                               "name":  "Установка — svelte",
+                               "id":  131884870761,
+                               "run_attempt":  2,
+                               "status":  "completed",
+                               "conclusion":  "success",
+                               "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131884870761"
+                           },
+                           {
+                               "name":  "Тесты — webc",
+                               "id":  131884871024,
+                               "run_attempt":  2,
+                               "status":  "completed",
+                               "conclusion":  "success",
+                               "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131884871024"
+                           },
+                           {
+                               "name":  "Установка — sveltekit",
+                               "id":  131884871379,
+                               "run_attempt":  2,
+                               "status":  "completed",
+                               "conclusion":  "success",
+                               "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131884871379"
+                           },
+                           {
+                               "name":  "Тесты — angular",
+                               "id":  131884871390,
+                               "run_attempt":  2,
+                               "status":  "completed",
+                               "conclusion":  "success",
+                               "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131884871390"
+                           },
+                           {
+                               "name":  "Установка — angular",
+                               "id":  131884871667,
+                               "run_attempt":  2,
+                               "status":  "completed",
+                               "conclusion":  "success",
+                               "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131884871667"
+                           },
+                           {
+                               "name":  "Установка — solid-start",
+                               "id":  131884871898,
+                               "run_attempt":  2,
+                               "status":  "completed",
+                               "conclusion":  "success",
+                               "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131884871898"
+                           },
+                           {
+                               "name":  "Тесты — браузер (chromium)",
+                               "id":  131884915391,
+                               "run_attempt":  2,
+                               "status":  "completed",
+                               "conclusion":  "failure",
+                               "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131884915391"
+                           },
+                           {
+                               "name":  "Тесты — react",
+                               "id":  131884920878,
+                               "run_attempt":  2,
+                               "status":  "completed",
+                               "conclusion":  "success",
+                               "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131884920878"
+                           },
+                           {
+                               "name":  "Установка — vue",
+                               "id":  131884927630,
+                               "run_attempt":  2,
+                               "status":  "completed",
+                               "conclusion":  "success",
+                               "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131884927630"
+                           },
+                           {
+                               "name":  "Английский",
+                               "id":  131884936994,
+                               "run_attempt":  2,
+                               "status":  "completed",
+                               "conclusion":  "success",
+                               "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131884936994"
+                           },
+                           {
+                               "name":  "Тесты — vue",
+                               "id":  131884937848,
+                               "run_attempt":  2,
+                               "status":  "completed",
+                               "conclusion":  "success",
+                               "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131884937848"
+                           },
+                           {
+                               "name":  "Тесты — стенд",
+                               "id":  131884939448,
+                               "run_attempt":  2,
+                               "status":  "completed",
+                               "conclusion":  "success",
+                               "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131884939448"
+                           },
+                           {
+                               "name":  "Сборка и типы",
+                               "id":  131884942041,
+                               "run_attempt":  2,
+                               "status":  "completed",
+                               "conclusion":  "success",
+                               "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131884942041"
+                           },
+                           {
+                               "name":  "Установка — solid",
+                               "id":  131884944717,
+                               "run_attempt":  2,
+                               "status":  "completed",
+                               "conclusion":  "success",
+                               "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131884944717"
+                           },
+                           {
+                               "name":  "Установка — react",
+                               "id":  131884947520,
+                               "run_attempt":  2,
+                               "status":  "completed",
+                               "conclusion":  "success",
+                               "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131884947520"
+                           },
+                           {
+                               "name":  "Минимальные версии (svelte)",
+                               "id":  131884948257,
+                               "run_attempt":  2,
+                               "status":  "completed",
+                               "conclusion":  "success",
+                               "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131884948257"
+                           }
+                       ],
+    "effectiveJobs":  [
+                          {
+                              "name":  "Английский",
+                              "id":  131884936994,
+                              "run_attempt":  2,
+                              "status":  "completed",
+                              "conclusion":  "success",
+                              "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131884936994"
+                          },
+                          {
+                              "name":  "Тесты — vue",
+                              "id":  131884937848,
+                              "run_attempt":  2,
+                              "status":  "completed",
+                              "conclusion":  "success",
+                              "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131884937848"
+                          },
+                          {
+                              "name":  "Минимальные версии (solid)",
+                              "id":  131884870010,
+                              "run_attempt":  2,
+                              "status":  "completed",
+                              "conclusion":  "success",
+                              "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131884870010"
+                          },
+                          {
+                              "name":  "Тесты — webc",
+                              "id":  131884871024,
+                              "run_attempt":  2,
+                              "status":  "completed",
+                              "conclusion":  "success",
+                              "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131884871024"
+                          },
+                          {
+                              "name":  "Установка — angular",
+                              "id":  131884871667,
+                              "run_attempt":  2,
+                              "status":  "completed",
+                              "conclusion":  "success",
+                              "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131884871667"
+                          },
+                          {
+                              "name":  "Тесты — браузер (chromium)",
+                              "id":  131884915391,
+                              "run_attempt":  2,
+                              "status":  "completed",
+                              "conclusion":  "failure",
+                              "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131884915391"
+                          },
+                          {
+                              "name":  "Тесты — стенд",
+                              "id":  131884939448,
+                              "run_attempt":  2,
+                              "status":  "completed",
+                              "conclusion":  "success",
+                              "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131884939448"
+                          },
+                          {
+                              "name":  "Тесты — svelte",
+                              "id":  131884870309,
+                              "run_attempt":  2,
+                              "status":  "completed",
+                              "conclusion":  "success",
+                              "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131884870309"
+                          },
+                          {
+                              "name":  "Сборка и типы",
+                              "id":  131884942041,
+                              "run_attempt":  2,
+                              "status":  "completed",
+                              "conclusion":  "success",
+                              "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131884942041"
+                          },
+                          {
+                              "name":  "Тесты — ядро, setup, плагины, тема",
+                              "id":  131884869027,
+                              "run_attempt":  2,
+                              "status":  "completed",
+                              "conclusion":  "success",
+                              "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131884869027"
+                          },
+                          {
+                              "name":  "Минимальные версии (react)",
+                              "id":  131884870272,
+                              "run_attempt":  2,
+                              "status":  "completed",
+                              "conclusion":  "success",
+                              "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131884870272"
+                          },
+                          {
+                              "name":  "Минимальные версии (angular)",
+                              "id":  131884870363,
+                              "run_attempt":  2,
+                              "status":  "completed",
+                              "conclusion":  "success",
+                              "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131884870363"
+                          },
+                          {
+                              "name":  "Тесты — браузер (webkit)",
+                              "id":  131884870389,
+                              "run_attempt":  2,
+                              "status":  "completed",
+                              "conclusion":  "failure",
+                              "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131884870389"
+                          },
+                          {
+                              "name":  "Минимальные версии (svelte)",
+                              "id":  131884948257,
+                              "run_attempt":  2,
+                              "status":  "completed",
+                              "conclusion":  "success",
+                              "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131884948257"
+                          },
+                          {
+                              "name":  "Тесты — angular",
+                              "id":  131884871390,
+                              "run_attempt":  2,
+                              "status":  "completed",
+                              "conclusion":  "success",
+                              "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131884871390"
+                          },
+                          {
+                              "name":  "Установка — vue-tailwind",
+                              "id":  131884870201,
+                              "run_attempt":  2,
+                              "status":  "completed",
+                              "conclusion":  "success",
+                              "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131884870201"
+                          },
+                          {
+                              "name":  "Установка — sveltekit",
+                              "id":  131884871379,
+                              "run_attempt":  2,
+                              "status":  "completed",
+                              "conclusion":  "success",
+                              "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131884871379"
+                          },
+                          {
+                              "name":  "Линт",
+                              "id":  131884869747,
+                              "run_attempt":  2,
+                              "status":  "completed",
+                              "conclusion":  "success",
+                              "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131884869747"
+                          },
+                          {
+                              "name":  "Минимальные версии (vue)",
+                              "id":  131884870484,
+                              "run_attempt":  2,
+                              "status":  "completed",
+                              "conclusion":  "success",
+                              "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131884870484"
+                          },
+                          {
+                              "name":  "Changeset",
+                              "id":  131884870142,
+                              "run_attempt":  2,
+                              "status":  "completed",
+                              "conclusion":  "success",
+                              "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131884870142"
+                          },
+                          {
+                              "name":  "Установка — react",
+                              "id":  131884947520,
+                              "run_attempt":  2,
+                              "status":  "completed",
+                              "conclusion":  "success",
+                              "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131884947520"
+                          },
+                          {
+                              "name":  "Установка — webc",
+                              "id":  131884870435,
+                              "run_attempt":  2,
+                              "status":  "completed",
+                              "conclusion":  "success",
+                              "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131884870435"
+                          },
+                          {
+                              "name":  "Установка — vue",
+                              "id":  131884927630,
+                              "run_attempt":  2,
+                              "status":  "completed",
+                              "conclusion":  "success",
+                              "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131884927630"
+                          },
+                          {
+                              "name":  "Тесты — react",
+                              "id":  131884920878,
+                              "run_attempt":  2,
+                              "status":  "completed",
+                              "conclusion":  "success",
+                              "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131884920878"
+                          },
+                          {
+                              "name":  "Установка — solid",
+                              "id":  131884944717,
+                              "run_attempt":  2,
+                              "status":  "completed",
+                              "conclusion":  "success",
+                              "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131884944717"
+                          },
+                          {
+                              "name":  "Установка — nuxt",
+                              "id":  131884870659,
+                              "run_attempt":  2,
+                              "status":  "completed",
+                              "conclusion":  "success",
+                              "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131884870659"
+                          },
+                          {
+                              "name":  "Установка — angular-ssr",
+                              "id":  131884869428,
+                              "run_attempt":  2,
+                              "status":  "completed",
+                              "conclusion":  "success",
+                              "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131884869428"
+                          },
+                          {
+                              "name":  "Установка — next",
+                              "id":  131884870745,
+                              "run_attempt":  2,
+                              "status":  "completed",
+                              "conclusion":  "success",
+                              "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131884870745"
+                          },
+                          {
+                              "name":  "Установка — solid-start",
+                              "id":  131884871898,
+                              "run_attempt":  2,
+                              "status":  "completed",
+                              "conclusion":  "success",
+                              "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131884871898"
+                          },
+                          {
+                              "name":  "Установка — svelte",
+                              "id":  131884870761,
+                              "run_attempt":  2,
+                              "status":  "completed",
+                              "conclusion":  "success",
+                              "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131884870761"
+                          },
+                          {
+                              "name":  "Тесты — solid",
+                              "id":  131884870321,
+                              "run_attempt":  2,
+                              "status":  "completed",
+                              "conclusion":  "success",
+                              "html_url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131884870321"
+                          }
+                      ],
+    "infrastructureRetry":  {
+                                "name":  "Установка — angular-ssr",
+                                "originalJobId":  131877522516,
+                                "retryJobId":  131884869428,
+                                "reason":  "Ubuntu fonts apt mirror IPv4 connection timeout and IPv6 network unreachable; original job stopped before product build/install smoke.",
+                                "command":  "gh run rerun 43423050380 --job 131877522516",
+                                "conclusion":  "success",
+                                "originalLog":  "angular-ssr-attempt1.txt",
+                                "originalSha256":  "2e8580ea55096008a75465a060212d68d86f76d89b63b3085d150916ba4e243d",
+                                "retryLog":  "angular-ssr-attempt2.txt",
+                                "retrySha256":  "259eba81001cf17eda3fc1823f32c67131058fd14a041d7d4cacffa77a9e49b3",
+                                "logRepresentation":  "GitHub job log REST endpoint stdout, UTF-8 without BOM."
+                            },
+    "browserJobs":  [
+                        {
+                            "browser":  "chromium",
+                            "jobId":  131877522120,
+                            "url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131877522120",
+                            "testCounts":  {
+                                               "failed":  1,
+                                               "skipped":  0,
+                                               "total":  4415,
+                                               "passed":  4414
+                                           },
+                            "failures":  [
+                                             "solid / Breadcrumbs Escape focus returns BODY instead of live trigger"
+                                         ],
+                            "log":  "remote-ci-chromium.txt",
+                            "sha256":  "155f51abeea1941599b5e5664bba5cb346b46780ec77079448e468a1e906a807",
+                            "logRepresentation":  "gh run view --job \u003cid\u003e --log stdout, UTF-8 without BOM with job/step/time prefixes."
+                        },
+                        {
+                            "browser":  "webkit",
+                            "jobId":  131877522264,
+                            "url":  "https://github.com/youra-h/soxa-ui/actions/runs/43423050380/job/131877522264",
+                            "testCounts":  {
+                                               "failed":  2,
+                                               "skipped":  97,
+                                               "total":  4415,
+                                               "passed":  4316
+                                           },
+                            "failures":  [
+                                             "solid / Breadcrumbs Escape focus returns BODY instead of live trigger",
+                                             "angular / Breadcrumbs End before observed initial menu focus: active element role null instead of menuitem"
+                                         ],
+                            "log":  "remote-ci-webkit.txt",
+                            "sha256":  "0e00d9ac08f7b95c24e97fa3289d340fdeae6016c5ecf602d93d4f1908c812c9",
+                            "logRepresentation":  "gh run view --job \u003cid\u003e --log stdout, UTF-8 without BOM with job/step/time prefixes."
+                        }
+                    ]
+}

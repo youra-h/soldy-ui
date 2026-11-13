@@ -1,0 +1,56 @@
+angular alert ×1 dismiss 16/65
+angular alert ×4 dismiss 24/64
+angular alert ×6 dismiss 28/64
+angular breadcrumbs ×1 open 17/65, close 16/65
+angular breadcrumbs ×4 open 22/63, close 19/66
+angular breadcrumbs ×6 open 27/64, close 21/66
+angular toggle-button ×1 press 15/66, release 15/65
+angular toggle-button ×4 press 16/64, release 17/65
+angular toggle-button ×6 press 17/64, release 17/64
+angular toggle-group ×1 choose first 16/65, clear first 16/65
+angular toggle-group ×4 choose first 18/64, clear first 18/64
+angular toggle-group ×6 choose first 20/64, clear first 20/63
+angular code-block ×1 snippet two 16/65, copy 16/64, snippet one 19/66
+angular code-block ×4 snippet two 20/64, copy 19/64, snippet one 31/82
+angular code-block ×6 snippet two 46/91, copy 33/92, snippet one 50/100
+angular select ×1 open 17/65, close 16/65, type 9/57
+angular select ×4 open 23/64, close 19/63, type 16/57
+angular select ×6 open 27/65, close 21/63, type 22/63
+angular menu ×1 open 17/65, close 16/65
+angular menu ×4 open 23/65, close 19/66
+angular menu ×6 open 34/79, close 23/63
+angular date-picker ×1 open 18/65, close 16/65, locale ru 19/65, locale en 19/65
+angular date-picker ×4 open 35/80, close 22/63, locale ru 78/111, locale en 67/96
+angular date-picker ×6 open 40/81, close 25/64, locale ru 118/160, locale en 107/146
+angular alert-dialog ×1 open 17/65, close 16/65, cancel 16/66, confirm 17/66
+angular alert-dialog ×4 open 21/64, close 19/64, cancel 21/66, confirm 20/66
+angular alert-dialog ×6 open 24/64, close 20/63, cancel 23/66, confirm 25/68
+angular dialog ×1 open 17/65, close 16/65
+angular dialog ×4 open 23/65, close 19/64
+angular dialog ×6 open 26/64, close 21/63
+angular input ×1 type 14/63
+angular input ×4 type 15/62
+angular input ×6 type 14/61
+angular tabs ×1 tab 2 16/65, tab 1 16/65
+angular tabs ×4 tab 2 23/66, tab 1 23/65
+angular tabs ×6 tab 2 38/81, tab 1 38/87
+angular calendar ×1 locale ru 108/134, locale en 109/133
+angular calendar ×4 locale ru 689/731, locale en 652/699
+angular calendar ×6 locale ru 1074/1115, locale en 1077/1114
+angular number-input ×1 locale ru 17/66, locale en 17/65
+angular number-input ×4 locale ru 24/66, locale en 25/66
+angular number-input ×6 locale ru 29/66, locale en 28/66
+angular alert перерисовки dismiss 4/4 чужим 0
+angular breadcrumbs перерисовки open 8/8 чужим 0, close 7/7 чужим 0
+angular toggle-button перерисовки press 1/1 чужим 0, release 1/1 чужим 0
+angular toggle-group перерисовки choose first 2/2 чужим 0, clear first 2/2 чужим 0
+angular code-block перерисовки snippet two 10/10 чужим 0, copy 9/9 чужим 0, snippet one 10/10 чужим 0
+angular select перерисовки open 3/3 чужим 0, close 3/3 чужим 0, type 5/5 чужим 0
+angular menu перерисовки open 4/4 чужим 0, close 3/3 чужим 0
+angular date-picker перерисовки open 8/8 чужим 0, close 6/6 чужим 0, locale ru 212/16 чужим 1078, locale en 210/14 чужим 1078
+angular alert-dialog перерисовки open 5/5 чужим 0, close 4/4 чужим 0, cancel 5/5 чужим 0, confirm 5/5 чужим 0
+angular dialog перерисовки open 6/6 чужим 0, close 5/5 чужим 0
+angular input перерисовки type 1/1 чужим 0
+angular tabs перерисовки tab 2 9/9 чужим 0, tab 1 9/9 чужим 0
+angular calendar перерисовки locale ru 451/10 чужим 30870, locale en 451/10 чужим 30968
+angular number-input перерисовки locale ru 151/4 чужим 196, locale en 151/4 чужим 196

@@ -60,6 +60,9 @@ function addedLines() {
 		'--no-renames',
 		'--diff-filter=AM',
 		`${base}...HEAD`,
+		'--',
+		// Keep large raw evidence out of the buffer without excluding any supported syntax.
+		...Object.keys(SYNTAX).map((extension) => `:(glob)**/*${extension}`),
 	)
 	const files = new Map()
 	let lines = null

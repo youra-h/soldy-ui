@@ -1,0 +1,56 @@
+webc alert ×1 dismiss 16/65
+webc alert ×4 dismiss 20/64
+webc alert ×6 dismiss 23/64
+webc breadcrumbs ×1 open 17/65, close 15/64
+webc breadcrumbs ×4 open 19/64, close 17/63
+webc breadcrumbs ×6 open 24/71, close 18/63
+webc toggle-button ×1 press 15/65, release 16/66
+webc toggle-button ×4 press 15/65, release 15/64
+webc toggle-button ×6 press 15/64, release 15/65
+webc toggle-group ×1 choose first 15/65, clear first 15/65
+webc toggle-group ×4 choose first 16/64, clear first 15/64
+webc toggle-group ×6 choose first 16/63, clear first 17/64
+webc code-block ×1 snippet two 16/66, copy 16/65, snippet one 17/66
+webc code-block ×4 snippet two 17/64, copy 17/62, snippet one 27/67
+webc code-block ×6 snippet two 31/80, copy 24/77, snippet one 45/84
+webc select ×1 open 16/66, close 14/64, type 9/58
+webc select ×4 open 18/64, close 17/64, type 15/60
+webc select ×6 open 19/64, close 17/63, type 17/55
+webc menu ×1 open 16/66, close 15/65
+webc menu ×4 open 17/64, close 17/65
+webc menu ×6 open 18/63, close 17/64
+webc date-picker ×1 open 16/65, close 15/65, locale ru 19/65, locale en 18/65
+webc date-picker ×4 open 19/65, close 16/64, locale ru 54/82, locale en 48/74
+webc date-picker ×6 open 32/76, close 18/64, locale ru 84/113, locale en 76/100
+webc alert-dialog ×1 open 15/65, close 15/65, cancel 15/66, confirm 15/66
+webc alert-dialog ×4 open 16/63, close 16/64, cancel 16/66, confirm 16/66
+webc alert-dialog ×6 open 21/62, close 16/64, cancel 18/66, confirm 18/67
+webc dialog ×1 open 16/66, close 15/64
+webc dialog ×4 open 17/64, close 16/64
+webc dialog ×6 open 19/63, close 17/63
+webc input ×1 type 14/64
+webc input ×4 type 14/63
+webc input ×6 type 14/61
+webc tabs ×1 tab 2 15/65, tab 1 15/65
+webc tabs ×4 tab 2 16/66, tab 1 17/66
+webc tabs ×6 tab 2 24/71, tab 1 26/67
+webc calendar ×1 locale ru 98/127, locale en 96/118
+webc calendar ×4 locale ru 557/594, locale en 542/615
+webc calendar ×6 locale ru 1017/1050, locale en 1115/1230
+webc number-input ×1 locale ru 17/66, locale en 18/66
+webc number-input ×4 locale ru 23/66, locale en 23/65
+webc number-input ×6 locale ru 26/66, locale en 26/65
+webc alert перерисовки dismiss 0/0 чужим 0
+webc breadcrumbs перерисовки open 0/0 чужим 0, close 0/0 чужим 0
+webc toggle-button перерисовки press 0/0 чужим 0, release 0/0 чужим 0
+webc toggle-group перерисовки choose first 0/0 чужим 0, clear first 0/0 чужим 0
+webc code-block перерисовки snippet two 0/0 чужим 0, copy 0/0 чужим 0, snippet one 0/0 чужим 0
+webc select перерисовки open 0/0 чужим 0, close 0/0 чужим 0, type 0/0 чужим 0
+webc menu перерисовки open 0/0 чужим 0, close 0/0 чужим 0
+webc date-picker перерисовки open 0/0 чужим 0, close 0/0 чужим 0, locale ru 0/0 чужим 686, locale en 0/0 чужим 686
+webc alert-dialog перерисовки open 0/0 чужим 0, close 0/0 чужим 0, cancel 0/0 чужим 0, confirm 0/0 чужим 0
+webc dialog перерисовки open 0/0 чужим 0, close 0/0 чужим 0
+webc input перерисовки type 0/0 чужим 0
+webc tabs перерисовки tab 2 0/0 чужим 0, tab 1 0/0 чужим 0
+webc calendar перерисовки locale ru 0/0 чужим 23373, locale en 0/0 чужим 23373
+webc number-input перерисовки locale ru 0/0 чужим 196, locale en 0/0 чужим 196

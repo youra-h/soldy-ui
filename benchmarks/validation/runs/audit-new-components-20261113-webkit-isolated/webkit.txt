@@ -1,0 +1,2715 @@
+
+> test:layout:webkit
+> npm run build:css --workspace=@soxa-ui/theme-oren && npm run test:browser:webkit --workspace=@soxa-ui/playground-vue -- --reporter=default --reporter=json --outputFile=D:\projects\soxa-a\packages\playground\vue\.vitest\audit-audit-new-components-20261113-webkit-isolated.json
+
+
+> @soxa-ui/theme-oren@0.3.1-beta.0 build:css
+> vite build
+
+vite v8.3.4 building client environment for production...
+transforming...
+✓ 2 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/components/icon.css                0.05 kB │ gzip:  0.05 kB
+dist/components/badge.css               0.05 kB │ gzip:  0.06 kB
+dist/components/label.css               0.05 kB │ gzip:  0.06 kB
+dist/components/avatar.css              0.05 kB │ gzip:  0.06 kB
+dist/components/button.css              0.05 kB │ gzip:  0.06 kB
+dist/components/slider.css              0.05 kB │ gzip:  0.06 kB
+dist/components/switch.css              0.05 kB │ gzip:  0.06 kB
+dist/components/toggle-button.css       0.05 kB │ gzip:  0.06 kB
+dist/components/tooltip.css             0.05 kB │ gzip:  0.06 kB
+dist/components/skeleton.css            0.05 kB │ gzip:  0.06 kB
+dist/components/textarea.css            0.05 kB │ gzip:  0.06 kB
+dist/components/separator.css           0.05 kB │ gzip:  0.06 kB
+dist/components/radio-group.css         0.06 kB │ gzip:  0.06 kB
+dist/components/drag-and-drop.css       0.06 kB │ gzip:  0.06 kB
+dist/components/progress-linear.css     0.06 kB │ gzip:  0.07 kB
+dist/components/progress-spinner.css    0.06 kB │ gzip:  0.07 kB
+dist/components/field.css               0.08 kB │ gzip:  0.06 kB
+dist/components/rating.css              0.08 kB │ gzip:  0.06 kB
+dist/components/check-box.css           0.08 kB │ gzip:  0.06 kB
+dist/components/avatar-group.css        0.09 kB │ gzip:  0.07 kB
+dist/components/toggle-group.css        0.09 kB │ gzip:  0.07 kB
+dist/components/tabs.css                0.11 kB │ gzip:  0.07 kB
+dist/components/tags.css                0.11 kB │ gzip:  0.07 kB
+dist/components/alert.css               0.11 kB │ gzip:  0.07 kB
+dist/components/input.css               0.11 kB │ gzip:  0.07 kB
+dist/components/scroller.css            0.11 kB │ gzip:  0.07 kB
+dist/components/accordion.css           0.11 kB │ gzip:  0.07 kB
+dist/components/date-input.css          0.12 kB │ gzip:  0.07 kB
+dist/components/pagination.css          0.12 kB │ gzip:  0.07 kB
+dist/components/number-input.css        0.12 kB │ gzip:  0.07 kB
+dist/components/list-box.css            0.14 kB │ gzip:  0.08 kB
+dist/components/code-block.css          0.14 kB │ gzip:  0.08 kB
+dist/components/table.css               0.14 kB │ gzip:  0.08 kB
+dist/components/dialog.css              0.17 kB │ gzip:  0.08 kB
+dist/components/alert-dialog.css        0.18 kB │ gzip:  0.09 kB
+dist/components/drawer.css              0.20 kB │ gzip:  0.09 kB
+dist/components/menu.css                0.20 kB │ gzip:  0.09 kB
+dist/components/popover.css             0.21 kB │ gzip:  0.09 kB
+dist/components/toasts.css              0.21 kB │ gzip:  0.10 kB
+dist/components/breadcrumbs.css         0.24 kB │ gzip:  0.10 kB
+dist/parts/place.css                    0.24 kB │ gzip:  0.15 kB
+dist/components/calendar.css            0.27 kB │ gzip:  0.11 kB
+dist/components/select.css              0.29 kB │ gzip:  0.10 kB
+dist/components/date-picker.css         0.34 kB │ gzip:  0.12 kB
+dist/parts/swipe.css                    0.51 kB │ gzip:  0.24 kB
+dist/parts/icon.css                     0.52 kB │ gzip:  0.18 kB
+dist/parts/tooltip.css                  0.57 kB │ gzip:  0.29 kB
+dist/parts/separator.css                0.61 kB │ gzip:  0.25 kB
+dist/parts/drag-and-drop.css            0.73 kB │ gzip:  0.34 kB
+dist/parts/anchored.css                 1.33 kB │ gzip:  0.34 kB
+dist/parts/avatar-group.css             1.58 kB │ gzip:  0.52 kB
+dist/parts/group.css                    2.19 kB │ gzip:  0.38 kB
+dist/parts/label.css                    2.63 kB │ gzip:  0.58 kB
+dist/parts/skeleton.css                 2.73 kB │ gzip:  0.63 kB
+dist/parts/avatar.css                   2.82 kB │ gzip:  0.67 kB
+dist/parts/badge.css                    2.98 kB │ gzip:  0.66 kB
+dist/parts/modal.css                    3.08 kB │ gzip:  0.73 kB
+dist/parts/accordion.css                3.64 kB │ gzip:  0.78 kB
+dist/parts/rating.css                   3.70 kB │ gzip:  1.00 kB
+dist/parts/alert-dialog.css             3.78 kB │ gzip:  0.96 kB
+dist/parts/list-box.css                 3.78 kB │ gzip:  0.91 kB
+dist/parts/toggle-group.css             3.79 kB │ gzip:  0.73 kB
+dist/parts/dialog.css                   4.29 kB │ gzip:  0.99 kB
+dist/parts/scroller.css                 4.64 kB │ gzip:  0.92 kB
+dist/parts/progress-spinner.css         4.83 kB │ gzip:  0.87 kB
+dist/parts/progress-linear.css          5.45 kB │ gzip:  0.98 kB
+dist/parts/input.css                    5.91 kB │ gzip:  1.21 kB
+dist/parts/textarea.css                 6.14 kB │ gzip:  1.19 kB
+dist/parts/alert.css                    6.30 kB │ gzip:  1.29 kB
+dist/parts/pagination.css               6.78 kB │ gzip:  1.07 kB
+dist/parts/breadcrumbs.css              7.04 kB │ gzip:  1.20 kB
+dist/parts/drawer.css                   7.16 kB │ gzip:  1.50 kB
+dist/parts/code-block.css               7.20 kB │ gzip:  1.39 kB
+dist/parts/popover.css                  7.31 kB │ gzip:  1.44 kB
+dist/parts/radio-group.css              7.88 kB │ gzip:  1.28 kB
+dist/parts/select.css                   8.67 kB │ gzip:  1.78 kB
+dist/parts/switch.css                   8.70 kB │ gzip:  1.33 kB
+dist/parts/date-input.css               9.00 kB │ gzip:  1.55 kB
+dist/parts/number-input.css             9.07 kB │ gzip:  1.40 kB
+dist/parts/field.css                    9.28 kB │ gzip:  1.38 kB
+dist/parts/menu.css                     9.39 kB │ gzip:  1.89 kB
+dist/parts/check-box.css               10.29 kB │ gzip:  1.29 kB
+dist/parts/button.css                  12.61 kB │ gzip:  1.62 kB
+dist/parts/date-picker.css             14.88 kB │ gzip:  2.08 kB
+dist/parts/slider.css                  18.08 kB │ gzip:  2.63 kB
+dist/parts/toasts.css                  21.98 kB │ gzip:  2.98 kB
+dist/common.css                        25.54 kB │ gzip:  5.65 kB
+dist/parts/tags.css                    26.10 kB │ gzip:  2.61 kB
+dist/parts/tabs.css                    27.07 kB │ gzip:  2.64 kB
+dist/parts/calendar.css                27.11 kB │ gzip:  3.51 kB
+dist/parts/table.css                   44.94 kB │ gzip:  4.38 kB
+dist/index.css                        403.93 kB │ gzip: 42.01 kB
+
+✓ built in 518ms
+
+> @soxa-ui/playground-vue@0.0.0 test:browser:webkit
+> node browser-server/cli.ts --reporter=default --reporter=json --outputFile=D:\projects\soxa-a\packages\playground\vue\.vitest\audit-audit-new-components-20261113-webkit-isolated.json
+
+17:17:09 [vite-plugin-svelte] no Svelte config found at D:/projects/soxa-a/packages/playground/vue - using default configuration.
+
+ RUN  v5.0.5 D:/projects/soxa-a/packages/playground/vue
+      API started at http://127.0.0.1:59418/
+
+ ↓ |layout mobile (webkit)| browser/mobile-gestures.spec.ts (9 tests | 9 skipped)
+ ✓ |layout mobile (webkit)| browser/mobile-alert-dialog.spec.ts (1 test) 1716ms
+   ✓ keeps long confirmation content and both actions inside a mobile viewport and confirms by touch 1715ms
+ ✓ |layout mobile (webkit)| browser/mobile-breadcrumbs.spec.ts (2 tests) 6018ms
+   ✓ Breadcrumbs on a touch device (2)
+     ✓ ltr keeps a long trail usable and honors cancelled link taps 3433ms
+     ✓ rtl keeps a long trail usable and honors cancelled link taps 2582ms
+ ✓ |layout mobile (webkit)| browser/mobile-layout.spec.ts (158 tests) 12184ms
+   ✓ 360px ltr light (52)
+     ✓ alert fits the phone and renders meaningful content 733ms
+ ✓ |layout mobile (webkit)| browser/mobile-controls.spec.ts (47 tests) 37045ms
+   ✓ native mobile touch commands (6)
+     ✓ uses iframe coordinates, emits touch pointer events and one click per tap 2473ms
+     ✓ input accepts text without keydown after tap 635ms
+     ✓ textarea accepts text without keydown after tap 581ms
+     ✓ label toggles a control exactly once; disabled does not change 1414ms
+     ✓ label toggles a control exactly once; disabled does not change 2216ms
+     ✓ date segment is editable before native focus and accepts text 853ms
+   ✓ dialog opens and its close action stays reachable 1693ms
+   ✓ drawer opens and its close action stays reachable 1707ms
+   ✓ popover opens from touch and closes on an outside tap 1338ms
+   ✓ menu opens from touch and closes on an outside tap 1360ms
+   ✓ readonly text and checkbox keep their values under touch 1522ms
+   ✓ tabs selects or expands content with a tap 643ms
+   ✓ list-box selects or expands content with a tap 611ms
+   ✓ radio-group selects or expands content with a tap 661ms
+   ✓ accordion selects or expands content with a tap 628ms
+   ✓ number stepper changes once per tap 632ms
+   ✓ rating selects without leaving a hover preview 644ms
+   ✓ Select opens, selects an option and closes 1206ms
+   ✓ DatePicker opens a calendar whose actions stay in the visual viewport 1243ms
+   ✓ Calendar changes its visible month by tap 636ms
+   ✓ Pagination changes the current page 574ms
+   ✓ Tooltip touch does not leave a stuck hover panel 630ms
+   ✓ Toasts can be created and closed by touch 1612ms
+   ✓ double tap selects a date segment and input replaces it 322ms
+   ✓ virtual keeps collection actions reachable by native tap 564ms
+   ✓ drag-and-drop keeps collection actions reachable by native tap 580ms
+   ✓ Scroller next action works by tap on both mobile engines 662ms
+   ✓ Tags close action removes exactly one item by native tap 515ms
+   ✓ Slider track responds to native tap on both mobile engines 617ms
+   ✓ Table sort action is reachable by native tap 660ms
+   ✓ ToggleButton changes pressed state exactly once per native tap 1312ms
+   ✓ ToggleGroup single selects and deselects with native taps 2262ms
+   ✓ ToggleGroup multiple selects and deselects with native taps 2455ms
+   ✓ long ToggleGroup stays inside the phone and its last action remains reachable 660ms
+ ❯ |layout (webkit)| browser/new-components-audit.spec.ts (96 tests | 1 failed) 49068ms
+   ✓ new component audit / vue (16)
+     ✓ ToggleButton native keyboard and disabled in ltr 4389ms
+     ✓ ToggleButton native keyboard and disabled in rtl 207ms
+     ✓ ToggleGroup horizontal/ltr/single 242ms
+     ✓ ToggleGroup horizontal/ltr/multiple 115ms
+     ✓ ToggleGroup horizontal/rtl/single 127ms
+     ✓ ToggleGroup horizontal/rtl/multiple 621ms
+     ✓ ToggleGroup vertical/ltr/single 146ms
+     ✓ ToggleGroup vertical/ltr/multiple 129ms
+     ✓ ToggleGroup vertical/rtl/single 112ms
+     ✓ ToggleGroup vertical/rtl/multiple 629ms
+     ✓ CodeBlock gutter contrast in oren 80ms
+     ✓ CodeBlock gutter contrast in oren-dark 64ms
+     ✓ AlertDialog updates default locale labels and preserves consumer action text 209ms
+     ✓ AlertDialog safe focus, trap, backdrop, choices, nested layer and locale 2927ms
+     ✓ Breadcrumbs restores a ready overflow menu after maxItems changes 969ms
+     ✓ Breadcrumbs native links, disabled/current, overflow keyboard 683ms
+   ✓ new component audit / react (16)
+     ✓ ToggleButton native keyboard and disabled in ltr 1578ms
+     ✓ ToggleButton native keyboard and disabled in rtl 178ms
+     ✓ ToggleGroup horizontal/ltr/single 644ms
+     ✓ ToggleGroup horizontal/ltr/multiple 113ms
+     ✓ ToggleGroup horizontal/rtl/single 516ms
+     ✓ ToggleGroup horizontal/rtl/multiple 193ms
+     ✓ ToggleGroup vertical/ltr/single 516ms
+     ✓ ToggleGroup vertical/ltr/multiple 145ms
+     ✓ ToggleGroup vertical/rtl/single 112ms
+     ✓ ToggleGroup vertical/rtl/multiple 565ms
+     ✓ CodeBlock gutter contrast in oren 64ms
+     ✓ CodeBlock gutter contrast in oren-dark 65ms
+     ✓ AlertDialog updates default locale labels and preserves consumer action text 113ms
+     ✓ AlertDialog safe focus, trap, backdrop, choices, nested layer and locale 1649ms
+     ✓ Breadcrumbs restores a ready overflow menu after maxItems changes 674ms
+     ✓ Breadcrumbs native links, disabled/current, overflow keyboard 355ms
+   ✓ new component audit / svelte (16)
+     ✓ ToggleButton native keyboard and disabled in ltr 1545ms
+     ✓ ToggleButton native keyboard and disabled in rtl 322ms
+     ✓ ToggleGroup horizontal/ltr/single 322ms
+     ✓ ToggleGroup horizontal/ltr/multiple 323ms
+     ✓ ToggleGroup horizontal/rtl/single 290ms
+     ✓ ToggleGroup horizontal/rtl/multiple 274ms
+     ✓ ToggleGroup vertical/ltr/single 290ms
+     ✓ ToggleGroup vertical/ltr/multiple 338ms
+     ✓ ToggleGroup vertical/rtl/single 290ms
+     ✓ ToggleGroup vertical/rtl/multiple 306ms
+     ✓ CodeBlock gutter contrast in oren 64ms
+     ✓ CodeBlock gutter contrast in oren-dark 65ms
+     ✓ AlertDialog updates default locale labels and preserves consumer action text 113ms
+     ✓ AlertDialog safe focus, trap, backdrop, choices, nested layer and locale 1901ms
+     ✓ Breadcrumbs restores a ready overflow menu after maxItems changes 661ms
+     ✓ Breadcrumbs native links, disabled/current, overflow keyboard 361ms
+   ❯ new component audit / solid (16)
+     ✓ ToggleButton native keyboard and disabled in ltr 1470ms
+     ✓ ToggleButton native keyboard and disabled in rtl 339ms
+     ✓ ToggleGroup horizontal/ltr/single 306ms
+     ✓ ToggleGroup horizontal/ltr/multiple 290ms
+     ✓ ToggleGroup horizontal/rtl/single 307ms
+     ✓ ToggleGroup horizontal/rtl/multiple 306ms
+     ✓ ToggleGroup vertical/ltr/single 290ms
+     ✓ ToggleGroup vertical/ltr/multiple 274ms
+     ✓ ToggleGroup vertical/rtl/single 307ms
+     ✓ ToggleGroup vertical/rtl/multiple 322ms
+     ✓ CodeBlock gutter contrast in oren 64ms
+     ✓ CodeBlock gutter contrast in oren-dark 65ms
+     ✓ AlertDialog updates default locale labels and preserves consumer action text 113ms
+     ✓ AlertDialog safe focus, trap, backdrop, choices, nested layer and locale 2081ms
+     ✓ Breadcrumbs restores a ready overflow menu after maxItems changes 275ms
+     × Breadcrumbs native links, disabled/current, overflow keyboard 644ms
+   ✓ new component audit / webc (16)
+     ✓ ToggleButton native keyboard and disabled in ltr 1562ms
+     ✓ ToggleButton native keyboard and disabled in rtl 129ms
+     ✓ ToggleGroup horizontal/ltr/single 531ms
+     ✓ ToggleGroup horizontal/ltr/multiple 114ms
+     ✓ ToggleGroup horizontal/rtl/single 499ms
+     ✓ ToggleGroup horizontal/rtl/multiple 113ms
+     ✓ ToggleGroup vertical/ltr/single 499ms
+     ✓ ToggleGroup vertical/ltr/multiple 113ms
+     ✓ ToggleGroup vertical/rtl/single 548ms
+     ✓ ToggleGroup vertical/rtl/multiple 96ms
+     ✓ CodeBlock gutter contrast in oren 65ms
+     ✓ CodeBlock gutter contrast in oren-dark 64ms
+     ✓ AlertDialog updates default locale labels and preserves consumer action text 97ms
+     ✓ AlertDialog safe focus, trap, backdrop, choices, nested layer and locale 2143ms
+     ✓ Breadcrumbs restores a ready overflow menu after maxItems changes 178ms
+     ✓ Breadcrumbs native links, disabled/current, overflow keyboard 472ms
+   ✓ new component audit / angular (16)
+     ✓ ToggleButton native keyboard and disabled in ltr 1364ms
+     ✓ ToggleButton native keyboard and disabled in rtl 612ms
+     ✓ ToggleGroup horizontal/ltr/single 113ms
+     ✓ ToggleGroup horizontal/ltr/multiple 596ms
+     ✓ ToggleGroup horizontal/rtl/single 97ms
+     ✓ ToggleGroup horizontal/rtl/multiple 113ms
+     ✓ ToggleGroup vertical/ltr/single 580ms
+     ✓ ToggleGroup vertical/ltr/multiple 113ms
+     ✓ ToggleGroup vertical/rtl/single 651ms
+     ✓ ToggleGroup vertical/rtl/multiple 113ms
+     ✓ CodeBlock gutter contrast in oren 64ms
+     ✓ CodeBlock gutter contrast in oren-dark 65ms
+     ✓ AlertDialog updates default locale labels and preserves consumer action text 145ms
+     ✓ AlertDialog safe focus, trap, backdrop, choices, nested layer and locale 2224ms
+     ✓ Breadcrumbs restores a ready overflow menu after maxItems changes 645ms
+     ✓ Breadcrumbs native links, disabled/current, overflow keyboard 290ms
+ ✓ |layout (webkit)| browser/svelte-host.spec.ts (40 tests) 57910ms
+   ✓ хост Svelte (40)
+     ✓ button стоит в ячейке так же, как у Vue 3467ms
+     ✓ icon стоит в ячейке так же, как у Vue 1070ms
+     ✓ skeleton стоит в ячейке так же, как у Vue 1033ms
+     ✓ input стоит в ячейке так же, как у Vue 1195ms
+     ✓ number-input стоит в ячейке так же, как у Vue 1618ms
+     ✓ check-box стоит в ячейке так же, как у Vue 1080ms
+     ✓ switch стоит в ячейке так же, как у Vue 1393ms
+     ✓ label стоит в ячейке так же, как у Vue 903ms
+     ✓ field стоит в ячейке так же, как у Vue 937ms
+     ✓ radio-group стоит в ячейке так же, как у Vue 1176ms
+     ✓ list-box стоит в ячейке так же, как у Vue 1420ms
+     ✓ tags стоит в ячейке так же, как у Vue 1144ms
+     ✓ select стоит в ячейке так же, как у Vue 2000ms
+     ✓ tabs стоит в ячейке так же, как у Vue 1441ms
+     ✓ accordion стоит в ячейке так же, как у Vue 1105ms
+     ✓ table стоит в ячейке так же, как у Vue 1848ms
+     ✓ progress-spinner стоит в ячейке так же, как у Vue 958ms
+     ✓ progress-linear стоит в ячейке так же, как у Vue 821ms
+     ✓ slider стоит в ячейке так же, как у Vue 1047ms
+     ✓ rating стоит в ячейке так же, как у Vue 1080ms
+     ✓ scroller стоит в ячейке так же, как у Vue 1177ms
+     ✓ pagination стоит в ячейке так же, как у Vue 1080ms
+     ✓ date-input стоит в ячейке так же, как у Vue 934ms
+     ✓ calendar стоит в ячейке так же, как у Vue 1870ms
+     ✓ date-picker стоит в ячейке так же, как у Vue 1289ms
+     ✓ popover стоит в ячейке так же, как у Vue 1014ms
+     ✓ tooltip стоит в ячейке так же, как у Vue 795ms
+     ✓ menu стоит в ячейке так же, как у Vue 897ms
+     ✓ dialog стоит в ячейке так же, как у Vue 951ms
+     ✓ drawer стоит в ячейке так же, как у Vue 1032ms
+     ✓ toasts стоит в ячейке так же, как у Vue 854ms
+     ✓ virtual: ряд окна стоит в ячейке так же, как у Vue 1146ms
+     ✓ popover: открытый стоит так же, как у Vue 1869ms
+     ✓ select: открытый стоит так же, как у Vue 2783ms
+     ✓ menu: открытый стоит так же, как у Vue 2038ms
+     ✓ dialog: открытый стоит так же, как у Vue 2196ms
+     ✓ drawer: открытый стоит так же, как у Vue 2338ms
+     ✓ toasts: открытый стоит так же, как у Vue 1945ms
+     ✓ calendar: открытый стоит так же, как у Vue 2620ms
+     ✓ date-picker: открытый стоит так же, как у Vue 2337ms
+ ✓ |layout (webkit)| browser/angular-host.spec.ts (42 tests) 67563ms
+   ✓ хост Angular (32)
+     ✓ button стоит в ячейке так же, как у Vue 4276ms
+     ✓ icon стоит в ячейке так же, как у Vue 1681ms
+     ✓ skeleton стоит в ячейке так же, как у Vue 1777ms
+     ✓ input стоит в ячейке так же, как у Vue 1906ms
+     ✓ number-input стоит в ячейке так же, как у Vue 2050ms
+     ✓ textarea стоит в ячейке так же, как у Vue 1773ms
+     ✓ check-box стоит в ячейке так же, как у Vue 1696ms
+     ✓ switch стоит в ячейке так же, как у Vue 1643ms
+     ✓ slider стоит в ячейке так же, как у Vue 1709ms
+     ✓ rating стоит в ячейке так же, как у Vue 1756ms
+     ✓ label стоит в ячейке так же, как у Vue 1627ms
+     ✓ field стоит в ячейке так же, как у Vue 1627ms
+     ✓ radio-group стоит в ячейке так же, как у Vue 1741ms
+     ✓ list-box стоит в ячейке так же, как у Vue 2207ms
+     ✓ tags стоит в ячейке так же, как у Vue 1788ms
+     ✓ select стоит в ячейке так же, как у Vue 2661ms
+     ✓ tabs стоит в ячейке так же, как у Vue 2031ms
+     ✓ accordion стоит в ячейке так же, как у Vue 1803ms
+     ✓ pagination стоит в ячейке так же, как у Vue 1836ms
+     ✓ scroller стоит в ячейке так же, как у Vue 1676ms
+     ✓ progress-linear стоит в ячейке так же, как у Vue 1595ms
+     ✓ table стоит в ячейке так же, как у Vue 3015ms
+     ✓ date-input стоит в ячейке так же, как у Vue 1675ms
+     ✓ calendar стоит в ячейке так же, как у Vue 2457ms
+     ✓ date-picker стоит в ячейке так же, как у Vue 2107ms
+     ✓ popover стоит в ячейке так же, как у Vue 1644ms
+     ✓ tooltip стоит в ячейке так же, как у Vue 1611ms
+     ✓ menu стоит в ячейке так же, как у Vue 1643ms
+     ✓ dialog стоит в ячейке так же, как у Vue 1874ms
+     ✓ drawer стоит в ячейке так же, как у Vue 1964ms
+     ✓ toasts стоит в ячейке так же, как у Vue 1742ms
+     ✓ virtual: ряд окна стоит в ячейке так же, как у Vue 1741ms
+   ✓ хост Angular · панель у триггера (2)
+     ✓ popover: открытая панель с частями стоит у триггера так же, как у Vue 352ms
+   ✓ хост Angular · список Select (1)
+     ✓ открытый список с опциями стоит у поля так же, как у Vue 436ms
+   ✓ хост Angular · панели дат (2)
+     ✓ calendar: открытая панель с частями стоит у якоря так же, как у Vue 564ms
+     ✓ date-picker: открытая панель с частями стоит у якоря так же, как у Vue 419ms
+   ✓ хост Angular · панели меню и подменю (2)
+     ✓ открытая панель меню и её части стоят у триггера так же, как у Vue 386ms
+     ✓ открытая панель подменю и её пункты стоят у его строки так же, как у Vue 904ms
+   ✓ хост Angular · окно и выезжающая панель (2)
+     ✓ dialog: открытый с подложкой и частями стоит так же, как у Vue 500ms
+     ✓ drawer: открытый с подложкой и частями стоит так же, как у Vue 870ms
+   ✓ хост Angular · регион тостов (1)
+     ✓ регион с тостом стоит у края окна так же, как у Vue 677ms
+ ✓ |layout (webkit)| browser/calendar.spec.ts (155 tests | 1 skipped) 75558ms
+   ✓ высота месяца (2)
+     ✓ месяцы в четыре и шесть недель одной высоты 2791ms
+   ✓ кольцо фокуса (1)
+     ✓ кольцо дня помещается в его ячейку 435ms
+   ✓ стрелки по ближайшему dir: LTR (1)
+     ✓ «назад» смотрит в начало строки, «вперёд» — в конец: у листания и в панели выбора 690ms
+   ✓ стрелки по ближайшему dir: RTL пропом direction (1)
+     ✓ «назад» смотрит в начало строки, «вперёд» — в конец: у листания и в панели выбора 623ms
+   ✓ шапка по ближайшему dir: LTR (1)
+     ✓ заголовок у начала, стрелки над двумя последними колонками; в панели — год у начала, стрелки у конца 693ms
+   ✓ шапка по ближайшему dir: RTL пропом direction (1)
+     ✓ заголовок у начала, стрелки над двумя последними колонками; в панели — год у начала, стрелки у конца 339ms
+   ✓ шапка по ближайшему dir: LTR пропом direction в RTL-предке (1)
+     ✓ заголовок у начала, стрелки над двумя последними колонками; в панели — год у начала, стрелки у конца 591ms
+   ✓ шапка по ближайшему dir: RTL-предок на LTR-странице (1)
+     ✓ заголовок у начала, стрелки над двумя последними колонками; в панели — год у начала, стрелки у конца 648ms
+   ✓ указатель (1)
+     ✓ предпросмотр диапазона идёт за указателем 1128ms
+   ✓ рамка «сегодня» (26)
+     ✓ oren, панель DatePicker: в покое — цвета рамки outlined 706ms
+     ✓ oren-dark, панель DatePicker: в покое — цвета рамки outlined 627ms
+     ✓ oren, страница: под наведением — цвета рамки outlined под наведением 987ms
+     ✓ oren, панель DatePicker: под наведением — цвета рамки outlined под наведением 1338ms
+     ✓ oren-dark, страница: под наведением — цвета рамки outlined под наведением 918ms
+     ✓ oren-dark, панель DatePicker: под наведением — цвета рамки outlined под наведением 694ms
+     ✓ на вуали: наведение (4)
+       ✓ oren, страница: рамка уходит от вуали к тексту дня 628ms
+       ✓ oren, панель DatePicker: рамка уходит от вуали к тексту дня 532ms
+       ✓ oren-dark, страница: рамка уходит от вуали к тексту дня 644ms
+       ✓ oren-dark, панель DatePicker: рамка уходит от вуали к тексту дня 613ms
+     ✓ на вуали: нажатие (4)
+       ✓ oren, страница: рамка уходит от вуали к тексту дня 741ms
+       ✓ oren, панель DatePicker: рамка уходит от вуали к тексту дня 693ms
+       ✓ oren-dark, страница: рамка уходит от вуали к тексту дня 854ms
+       ✓ oren-dark, панель DatePicker: рамка уходит от вуали к тексту дня 902ms
+     ✓ на вуали: лента (4)
+       ✓ oren, панель DatePicker: рамка уходит от вуали к тексту дня 306ms
+       ✓ oren-dark, страница: рамка уходит от вуали к тексту дня 322ms
+       ✓ oren-dark, панель DatePicker: рамка уходит от вуали к тексту дня 306ms
+     ✓ на вуали: предпросмотр (4)
+       ✓ oren, страница: рамка уходит от вуали к тексту дня 661ms
+       ✓ oren, панель DatePicker: рамка уходит от вуали к тексту дня 612ms
+       ✓ oren-dark, страница: рамка уходит от вуали к тексту дня 645ms
+       ✓ oren-dark, панель DatePicker: рамка уходит от вуали к тексту дня 822ms
+     ✓ принудительные цвета (2)
+       ✓ oren: рамка на ленте — текстом подсветки 419ms
+       ✓ oren-dark: рамка на ленте — текстом подсветки 354ms
+   ✓ выбор месяца и года (101)
+     ✓ карточка, size sm (2)
+       ✓ с полосой жеста: полоса у низа карточки, во всю её ширину, список не накрывает 580ms
+       ✓ без полосы: под списком — отступ карточки 306ms
+     ✓ карточка, size normal (2)
+       ✓ с полосой жеста: полоса у низа карточки, во всю её ширину, список не накрывает 468ms
+     ✓ карточка, size lg (2)
+       ✓ с полосой жеста: полоса у низа карточки, во всю её ширину, список не накрывает 317ms
+     ✓ карточка, size xl (2)
+       ✓ с полосой жеста: полоса у низа карточки, во всю её ширину, список не накрывает 386ms
+       ✓ без полосы: под списком — отступ карточки 306ms
+     ✓ карточка, size 2xl (2)
+       ✓ с полосой жеста: полоса у низа карточки, во всю её ширину, список не накрывает 338ms
+       ✓ без полосы: под списком — отступ карточки 477ms
+     ✓ три сетки — карточка во всю ширину календаря, у верхнего края 345ms
+     ✓ превью стенда vue: подложка во весь календарь, карточка у верхнего края 452ms
+     ✓ превью стенда react: подложка во весь календарь, карточка у верхнего края 1212ms
+     ✓ size sm: месяцы — 4×3 ровными ячейками с зазором, подпись по центру, шапка над списком 482ms
+     ✓ size normal: месяцы — 4×3 ровными ячейками с зазором, подпись по центру, шапка над списком 437ms
+     ✓ size xl: месяцы — 4×3 ровными ячейками с зазором, подпись по центру, шапка над списком 680ms
+     ✓ size sm: годы — так же ровной сеткой 4×3, подписи th-TH с эрой переносятся, а не режутся 564ms
+     ✓ size normal: годы — так же ровной сеткой 4×3, подписи th-TH с эрой переносятся, а не режутся 1173ms
+     ✓ size lg: годы — так же ровной сеткой 4×3, подписи th-TH с эрой переносятся, а не режутся 677ms
+     ✓ size xl: годы — так же ровной сеткой 4×3, подписи th-TH с эрой переносятся, а не режутся 774ms
+     ✓ size 2xl: годы — так же ровной сеткой 4×3, подписи th-TH с эрой переносятся, а не режутся 1096ms
+     ✓ size normal: месяцы vi-VN в несколько слов переносятся между словами, а не режутся 526ms
+     ✓ size lg: месяцы vi-VN в несколько слов переносятся между словами, а не режутся 626ms
+     ✓ size xl: месяцы vi-VN в несколько слов переносятся между словами, а не режутся 610ms
+     ✓ size 2xl: месяцы vi-VN в несколько слов переносятся между словами, а не режутся 683ms
+     ✓ месяцы ar-EG (5)
+       ✓ size sm: в своей плитке — целые по центру, шире плитки — многоточием 563ms
+       ✓ size normal: в своей плитке — целые по центру, шире плитки — многоточием 564ms
+       ✓ size xl: в своей плитке — целые по центру, шире плитки — многоточием 485ms
+     ✓ месяцы ta-IN (5)
+       ✓ size sm: в своей плитке — целые по центру, шире плитки — многоточием 645ms
+       ✓ size normal: в своей плитке — целые по центру, шире плитки — многоточием 576ms
+       ✓ size xl: в своей плитке — целые по центру, шире плитки — многоточием 693ms
+       ✓ size 2xl: в своей плитке — целые по центру, шире плитки — многоточием 628ms
+     ✓ месяцы ml-IN (5)
+       ✓ size sm: в своей плитке — целые по центру, шире плитки — многоточием 677ms
+       ✓ size lg: в своей плитке — целые по центру, шире плитки — многоточием 305ms
+       ✓ size xl: в своей плитке — целые по центру, шире плитки — многоточием 488ms
+       ✓ size 2xl: в своей плитке — целые по центру, шире плитки — многоточием 308ms
+     ✓ дни недели ru-RU (5)
+       ✓ size sm: неделя одной формы — в своих колонках, под открытой панелью — под карточкой 369ms
+       ✓ size lg: неделя одной формы — в своих колонках, под открытой панелью — под карточкой 507ms
+       ✓ size xl: неделя одной формы — в своих колонках, под открытой панелью — под карточкой 317ms
+       ✓ size 2xl: неделя одной формы — в своих колонках, под открытой панелью — под карточкой 449ms
+     ✓ дни недели fr-FR (5)
+       ✓ size normal: неделя одной формы — в своих колонках, под открытой панелью — под карточкой 600ms
+       ✓ size xl: неделя одной формы — в своих колонках, под открытой панелью — под карточкой 425ms
+     ✓ дни недели zh-CN (5)
+       ✓ size sm: неделя одной формы — в своих колонках, под открытой панелью — под карточкой 613ms
+       ✓ size normal: неделя одной формы — в своих колонках, под открытой панелью — под карточкой 643ms
+       ✓ size lg: неделя одной формы — в своих колонках, под открытой панелью — под карточкой 467ms
+       ✓ size 2xl: неделя одной формы — в своих колонках, под открытой панелью — под карточкой 323ms
+     ✓ дни недели hi-IN (5)
+       ✓ size sm: неделя одной формы — в своих колонках, под открытой панелью — под карточкой 454ms
+       ✓ size normal: неделя одной формы — в своих колонках, под открытой панелью — под карточкой 504ms
+       ✓ size xl: неделя одной формы — в своих колонках, под открытой панелью — под карточкой 423ms
+     ✓ дни недели ar-EG (5)
+       ✓ size normal: неделя одной формы — в своих колонках, под открытой панелью — под карточкой 506ms
+       ✓ size xl: неделя одной формы — в своих колонках, под открытой панелью — под карточкой 537ms
+       ✓ size 2xl: неделя одной формы — в своих колонках, под открытой панелью — под карточкой 600ms
+     ✓ дни недели ml-IN (5)
+       ✓ size normal: неделя одной формы — в своих колонках, под открытой панелью — под карточкой 589ms
+       ✓ size lg: неделя одной формы — в своих колонках, под открытой панелью — под карточкой 549ms
+       ✓ size 2xl: неделя одной формы — в своих колонках, под открытой панелью — под карточкой 586ms
+     ✓ дни недели ta-IN (5)
+       ✓ size normal: неделя одной формы — в своих колонках, под открытой панелью — под карточкой 468ms
+       ✓ size 2xl: неделя одной формы — в своих колонках, под открытой панелью — под карточкой 516ms
+     ✓ дни недели te-IN (5)
+       ✓ size sm: неделя одной формы — в своих колонках, под открытой панелью — под карточкой 586ms
+       ✓ size lg: неделя одной формы — в своих колонках, под открытой панелью — под карточкой 635ms
+       ✓ size 2xl: неделя одной формы — в своих колонках, под открытой панелью — под карточкой 354ms
+     ✓ дни недели th-TH (5)
+       ✓ size sm: неделя одной формы — в своих колонках, под открытой панелью — под карточкой 577ms
+       ✓ size normal: неделя одной формы — в своих колонках, под открытой панелью — под карточкой 450ms
+       ✓ size lg: неделя одной формы — в своих колонках, под открытой панелью — под карточкой 467ms
+       ✓ size 2xl: неделя одной формы — в своих колонках, под открытой панелью — под карточкой 406ms
+     ✓ дни недели: среди локалей таблицы — обе формы 316ms
+     ✓ мышью: год — снова месяцы этого года, панель открыта; месяц — закрывает и ставит месяц 999ms
+     ✓ указатель — рука на месяцах и годах, у выключенных вне границ — обычный 534ms
+     ✓ Escape закрывает панель, фокус — на заголовок, месяц прежний 603ms
+     ✓ нажатие по подложке закрывает панель, фокус — на заголовок, месяц прежний 627ms
+     ✓ протяжка из карточки на подложку панель не закрывает 935ms
+     ✓ протяжка за полосу вверх тянет карточку, подложка стоит; отпущенная — на место 887ms
+     ✓ закрытая карточка гаснет на месте вместе с подложкой 977ms
+     ✓ смахнутая карточка гаснет там, где её отпустили, вместе с подложкой 677ms
+     ✓ жест за полосу вверх закрывает панель, фокус — на заголовок; вниз — нет 919ms
+     ✓ стрелка погасла у границы лет под фокусом — фокус на список панели 712ms
+     ✓ принудительные цвета (2)
+       ✓ выбранная плитка — системной подсветкой, штрих полосы виден 527ms
+ ✓ |layout (webkit)| browser/toasts.spec.ts (61 tests | 2 skipped) 93234ms
+   ✓ место (8)
+     ✓ top-start: тост у своего края окна, с отступом 3124ms
+     ✓ top: тост у своего края окна, с отступом 385ms
+     ✓ top-end: тост у своего края окна, с отступом 371ms
+     ✓ bottom-start: тост у своего края окна, с отступом 709ms
+     ✓ bottom: тост у своего края окна, с отступом 403ms
+     ✓ bottom-end: тост у своего края окна, с отступом 628ms
+     ✓ RTL: start и end меняются местами 386ms
+     ✓ узкий экран: тост во всю ширину окна без отступов 809ms
+   ✓ стопка (4)
+     ✓ новый тост — у края окна, между тостами — зазор 436ms
+     ✓ у последнего тоста зазора нет: место — ровно плашка 903ms
+     ✓ указатель мимо тостов — странице, в зазоре — тосту 781ms
+     ✓ видно не больше max: остальные ждут и приходят, когда место освободилось 825ms
+   ✓ части тоста (3)
+     ✓ пустые описание и своё содержимое места не занимают; значок и крестик — по центру строки 757ms
+     ✓ у текста в несколько строк значок — по центру первой 842ms
+     ✓ описание — под текстом, тем же столбцом 758ms
+   ✓ вид (27)
+     ✓ oren: у каждого вида своя заливка, значок на ней цвета заголовка, а белая плашка читается 801ms
+     ✓ oren-dark: у каждого вида своя заливка, значок на ней цвета заголовка, а белая плашка читается 628ms
+     ✓ oren: кромка — только у белой плашки, тень — у каждой 709ms
+     ✓ oren-dark: кромка — только у белой плашки, тень — у каждой 467ms
+     ✓ значок каждого вида — контур, как у ошибки: фигура внутри пуста 419ms
+     ✓ oren, обычное: подписи кнопок и крестика в покое, под наведением и при нажатии — по плашке, а состояние видно 3820ms
+     ✓ oren, info: подписи кнопок и крестика в покое, под наведением и при нажатии — по плашке, а состояние видно 3997ms
+     ✓ oren, success: подписи кнопок и крестика в покое, под наведением и при нажатии — по плашке, а состояние видно 3740ms
+     ✓ oren, warning: подписи кнопок и крестика в покое, под наведением и при нажатии — по плашке, а состояние видно 3642ms
+     ✓ oren, error: подписи кнопок и крестика в покое, под наведением и при нажатии — по плашке, а состояние видно 4806ms
+     ✓ oren-dark, обычное: подписи кнопок и крестика в покое, под наведением и при нажатии — по плашке, а состояние видно 7150ms
+     ✓ oren-dark, info: подписи кнопок и крестика в покое, под наведением и при нажатии — по плашке, а состояние видно 4530ms
+     ✓ oren-dark, success: подписи кнопок и крестика в покое, под наведением и при нажатии — по плашке, а состояние видно 4881ms
+     ✓ oren-dark, warning: подписи кнопок и крестика в покое, под наведением и при нажатии — по плашке, а состояние видно 4997ms
+     ✓ oren-dark, error: подписи кнопок и крестика в покое, под наведением и при нажатии — по плашке, а состояние видно 4541ms
+     ✓ oren, info: кольцо фокуса кнопок с клавиатуры на заливке — цвета текста плашки 1680ms
+     ✓ oren, success: кольцо фокуса кнопок с клавиатуры на заливке — цвета текста плашки 2063ms
+     ✓ oren, warning: кольцо фокуса кнопок с клавиатуры на заливке — цвета текста плашки 1662ms
+     ✓ oren, error: кольцо фокуса кнопок с клавиатуры на заливке — цвета текста плашки 1708ms
+     ✓ oren-dark, info: кольцо фокуса кнопок с клавиатуры на заливке — цвета текста плашки 1869ms
+     ✓ oren-dark, success: кольцо фокуса кнопок с клавиатуры на заливке — цвета текста плашки 1951ms
+     ✓ oren-dark, warning: кольцо фокуса кнопок с клавиатуры на заливке — цвета текста плашки 1756ms
+     ✓ oren-dark, error: кольцо фокуса кнопок с клавиатуры на заливке — цвета текста плашки 2220ms
+     ✓ смена вида у открытого тоста — переход цвета и кромки плашки, а не корня 661ms
+     ✓ кольцо ожидания — по кругу значка, и текст не сдвигается, когда кольцо сменилось значком 644ms
+   ✓ появление и исчезание (3)
+     ✓ закрытый гаснет, уходит вбок и уходит из документа, когда доиграл переходы 1111ms
+     ✓ без движения тост проявляется и гаснет на месте 757ms
+   ✓ жест (2)
+     ✓ у бокового места тост смахивают к краю строки: закрыт и ушёл 1337ms
+     ✓ отпустили ближе четверти — тост возвращается на место 2101ms
+   ✓ стопка (14)
+     ✓ передний — у края окна, задние уже и выглядывают на ступень к дальней стороне 870ms
+     ✓ высота стопки — по переднему: задний выше переднего не торчит 660ms
+     ✓ у верхнего края задние выглядывают вниз 644ms
+     ✓ новый въезжает от края окна на свою высоту, прежний передний сразу за ним отходит тем же переходом 645ms
+     ✓ у верхнего края новый въезжает сверху 628ms
+     ✓ прежний передний не схлопывается: высота идёт от своей к высоте нового переднего 1225ms
+     ✓ RTL: стопка у своего края, задние — по середине переднего 499ms
+     ✓ содержимое заднего закрыто его плашкой, а нажатие по краю достаётся тосту 693ms
+     ✓ колесо над стопкой: передний уходит назад переходом, страница не едет 1097ms
+     ✓ столбцом колесо над тостом — странице 516ms
+     ✓ фокус выводит задний вперёд без перестановки, и Tab идёт по тостам и из стопки 1126ms
+     ✓ закрытый передний уходит поверх, а следующий сразу встаёт вперёд 904ms
+     ✓ без движения стопка листается на месте: переходит одна прозрачность 596ms
+ ✓ |layout (webkit)| browser/axe-vue.spec.ts (139 tests) 97263ms
+   ✓ axe vue (139)
+     ✓ alert-dialog/custom-footer 788ms
+     ✓ toggle-button/activated 917ms
+     ✓ toggle-group/activated 1054ms
+     ✓ code-block/second-active 1176ms
+     ✓ avatar/loaded 422ms
+     ✓ avatar/error 910ms
+     ✓ avatar/custom-fallback 794ms
+     ✓ code-block/basic 821ms
+     ✓ code-block/lines 772ms
+     ✓ code-block/tabs 827ms
+     ✓ breadcrumbs/full 774ms
+     ✓ breadcrumbs/collapsed 782ms
+     ✓ breadcrumbs/overflow 822ms
+     ✓ breadcrumbs/disabled-item 677ms
+     ✓ alert/closable 307ms
+     ✓ avatar/named 757ms
+     ✓ avatar-group/group 627ms
+     ✓ badge/text 612ms
+     ✓ badge/named-count 661ms
+     ✓ badge/zero 628ms
+     ✓ badge/capped 628ms
+     ✓ badge/named-dot 612ms
+     ✓ badge/decorative-dot 644ms
+     ✓ badge/anchor 612ms
+     ✓ input/invalid 580ms
+     ✓ number-input/invalid 628ms
+     ✓ textarea/invalid 596ms
+     ✓ date-input/invalid 628ms
+     ✓ date-picker/invalid 644ms
+     ✓ toggle-button/off 628ms
+     ✓ toggle-button/on 644ms
+     ✓ toggle-button/disabled 612ms
+     ✓ toggle-group/single 595ms
+     ✓ toggle-group/multiple 628ms
+     ✓ toggle-group/disabled 612ms
+     ✓ button/named 580ms
+     ✓ button/disabled 596ms
+     ✓ input/named 596ms
+     ✓ number-input/named 613ms
+     ✓ textarea/named 660ms
+     ✓ check-box/unchecked 629ms
+     ✓ check-box/checked 676ms
+     ✓ check-box/disabled 516ms
+     ✓ switch/unchecked 567ms
+     ✓ switch/checked 626ms
+     ✓ switch/disabled 563ms
+     ✓ label/native-control 601ms
+     ✓ field/helper 625ms
+     ✓ field/invalid 623ms
+     ✓ slider/single 607ms
+     ✓ slider/multiple 671ms
+     ✓ rating/unselected 600ms
+     ✓ rating/selected 669ms
+     ✓ radio-group/unselected 620ms
+     ✓ radio-group/selected 628ms
+     ✓ radio-group/disabled 612ms
+     ✓ select/closed 662ms
+     ✓ select/open 653ms
+     ✓ select/single-selected 680ms
+     ✓ select/multiple-selected 708ms
+     ✓ select/disabled 339ms
+     ✓ calendar/grid 1199ms
+     ✓ calendar/months 822ms
+     ✓ calendar/years 1465ms
+     ✓ date-input/segments 323ms
+     ✓ date-picker/closed 655ms
+     ✓ date-picker/open 741ms
+     ✓ popover/closed 705ms
+     ✓ popover/open 774ms
+     ✓ menu/closed 723ms
+     ✓ menu/open 910ms
+     ✓ tooltip/closed 666ms
+     ✓ tooltip/open 323ms
+     ✓ menu/submenu 1176ms
+     ✓ menu/item-panel 1434ms
+     ✓ alert-dialog/open 838ms
+     ✓ dialog/closed 694ms
+     ✓ dialog/open 713ms
+     ✓ drawer/closed 645ms
+     ✓ drawer/open 921ms
+     ✓ toasts/empty 644ms
+     ✓ toasts/ordinary 887ms
+     ✓ toasts/error 710ms
+     ✓ toasts/loading 942ms
+     ✓ scroller/content 575ms
+     ✓ list-box/unselected 373ms
+     ✓ list-box/single-selected 710ms
+     ✓ list-box/multiple-selected 405ms
+     ✓ list-box/disabled 615ms
+     ✓ tags/unselected 435ms
+     ✓ tags/single-selected 742ms
+     ✓ tags/multiple-selected 661ms
+     ✓ tags/disabled 692ms
+     ✓ pagination/current-page 628ms
+     ✓ table/rows 644ms
+     ✓ tabs/active-and-inactive 628ms
+     ✓ accordion/closed 612ms
+     ✓ accordion/open 999ms
+     ✓ icon/decorative 583ms
+     ✓ separator/horizontal 612ms
+     ✓ separator/horizontal-decorative 619ms
+     ✓ separator/vertical 584ms
+     ✓ separator/vertical-decorative 673ms
+     ✓ progress-linear/determinate 387ms
+     ✓ progress-linear/indeterminate 652ms
+     ✓ progress-spinner/determinate 582ms
+     ✓ progress-spinner/indeterminate 628ms
+     ✓ skeleton/decorative 646ms
+     ✓ drag-and-drop/collections 665ms
+     ✓ virtual/window 645ms
+     ✓ input/disabled 540ms
+     ✓ number-input/disabled 732ms
+     ✓ textarea/disabled 651ms
+     ✓ date-input/disabled 710ms
+     ✓ date-picker/disabled 646ms
+     ✓ slider/disabled 700ms
+     ✓ rating/disabled 387ms
+     ✓ calendar/selected 643ms
+     ✓ calendar/disabled 603ms
+     ✓ tabs/disabled 630ms
+     ✓ tabs/second-active 822ms
+     ✓ accordion/disabled 644ms
+     ✓ accordion/multiple 1676ms
+     ✓ table/disabled 753ms
+     ✓ table/selected 725ms
+     ✓ select/disabled-option 628ms
+     ✓ list-box/disabled-option 371ms
+     ✓ tags/disabled-option 516ms
+     ✓ virtual/select-window-open 1256ms
+     ✓ virtual/table-window 851ms
+     ✓ component-view/button-consumer 557ms
+     ✓ stylable/button-consumer 306ms
+     ✓ textable/button-consumer 617ms
+     ✓ control/button-consumer 322ms
+     ✓ interactive/semantic-reference 580ms
+     ✓ value-control/input-consumer 532ms
+     ✓ input-control/input-consumer 595ms
+     ✓ frame/select-panel-consumer 612ms
+ ✓ |layout (webkit)| browser/axe-svelte.spec.ts (139 tests) 99518ms
+   ✓ axe svelte (139)
+     ✓ alert-dialog/custom-footer 1128ms
+     ✓ toggle-button/activated 1056ms
+     ✓ toggle-group/activated 1172ms
+     ✓ code-block/second-active 1356ms
+     ✓ avatar/loaded 773ms
+     ✓ avatar/error 817ms
+     ✓ avatar/custom-fallback 774ms
+     ✓ code-block/basic 820ms
+     ✓ code-block/lines 780ms
+     ✓ code-block/tabs 786ms
+     ✓ breadcrumbs/full 626ms
+     ✓ breadcrumbs/collapsed 708ms
+     ✓ breadcrumbs/overflow 870ms
+     ✓ breadcrumbs/disabled-item 355ms
+     ✓ alert/closable 628ms
+     ✓ avatar/named 628ms
+     ✓ avatar-group/group 644ms
+     ✓ badge/text 644ms
+     ✓ badge/named-count 612ms
+     ✓ badge/zero 628ms
+     ✓ badge/capped 644ms
+     ✓ badge/named-dot 612ms
+     ✓ badge/decorative-dot 563ms
+     ✓ badge/anchor 629ms
+     ✓ input/invalid 612ms
+     ✓ number-input/invalid 612ms
+     ✓ textarea/invalid 644ms
+     ✓ date-input/invalid 628ms
+     ✓ date-picker/invalid 644ms
+     ✓ toggle-button/off 612ms
+     ✓ toggle-button/on 597ms
+     ✓ toggle-button/disabled 630ms
+     ✓ toggle-group/single 612ms
+     ✓ toggle-group/multiple 580ms
+     ✓ toggle-group/disabled 596ms
+     ✓ button/named 596ms
+     ✓ button/disabled 612ms
+     ✓ input/named 660ms
+     ✓ number-input/named 645ms
+     ✓ textarea/named 661ms
+     ✓ check-box/unchecked 418ms
+     ✓ check-box/checked 668ms
+     ✓ check-box/disabled 626ms
+     ✓ switch/unchecked 566ms
+     ✓ switch/checked 597ms
+     ✓ switch/disabled 624ms
+     ✓ label/native-control 624ms
+     ✓ field/helper 607ms
+     ✓ field/invalid 668ms
+     ✓ slider/single 604ms
+     ✓ slider/multiple 668ms
+     ✓ rating/unselected 619ms
+     ✓ rating/selected 629ms
+     ✓ radio-group/unselected 612ms
+     ✓ radio-group/selected 653ms
+     ✓ radio-group/disabled 652ms
+     ✓ select/closed 678ms
+     ✓ select/open 715ms
+     ✓ select/single-selected 765ms
+     ✓ select/multiple-selected 765ms
+     ✓ select/disabled 339ms
+     ✓ calendar/grid 1047ms
+     ✓ calendar/months 919ms
+     ✓ calendar/years 1306ms
+     ✓ date-input/segments 370ms
+     ✓ date-picker/closed 745ms
+     ✓ date-picker/open 797ms
+     ✓ popover/closed 691ms
+     ✓ popover/open 888ms
+     ✓ menu/closed 687ms
+     ✓ menu/open 750ms
+     ✓ tooltip/closed 557ms
+     ✓ tooltip/open 386ms
+     ✓ menu/submenu 1224ms
+     ✓ menu/item-panel 1634ms
+     ✓ alert-dialog/open 625ms
+     ✓ dialog/closed 652ms
+     ✓ dialog/open 915ms
+     ✓ drawer/closed 644ms
+     ✓ drawer/open 887ms
+     ✓ toasts/empty 547ms
+     ✓ toasts/ordinary 1117ms
+     ✓ toasts/error 741ms
+     ✓ toasts/loading 903ms
+     ✓ scroller/content 420ms
+     ✓ list-box/unselected 608ms
+     ✓ list-box/single-selected 452ms
+     ✓ list-box/multiple-selected 725ms
+     ✓ list-box/disabled 676ms
+     ✓ tags/unselected 676ms
+     ✓ tags/single-selected 628ms
+     ✓ tags/multiple-selected 645ms
+     ✓ tags/disabled 628ms
+     ✓ pagination/current-page 611ms
+     ✓ table/rows 999ms
+     ✓ tabs/active-and-inactive 610ms
+     ✓ accordion/closed 606ms
+     ✓ accordion/open 773ms
+     ✓ icon/decorative 547ms
+     ✓ separator/horizontal 543ms
+     ✓ separator/horizontal-decorative 387ms
+     ✓ separator/vertical 650ms
+     ✓ separator/vertical-decorative 579ms
+     ✓ progress-linear/determinate 629ms
+     ✓ progress-linear/indeterminate 649ms
+     ✓ progress-spinner/determinate 637ms
+     ✓ progress-spinner/indeterminate 629ms
+     ✓ skeleton/decorative 580ms
+     ✓ drag-and-drop/collections 758ms
+     ✓ virtual/window 644ms
+     ✓ input/disabled 689ms
+     ✓ number-input/disabled 649ms
+     ✓ textarea/disabled 699ms
+     ✓ date-input/disabled 386ms
+     ✓ date-picker/disabled 628ms
+     ✓ slider/disabled 591ms
+     ✓ rating/disabled 649ms
+     ✓ calendar/selected 693ms
+     ✓ calendar/disabled 611ms
+     ✓ tabs/disabled 641ms
+     ✓ tabs/second-active 742ms
+     ✓ accordion/disabled 648ms
+     ✓ accordion/multiple 1929ms
+     ✓ table/disabled 370ms
+     ✓ table/selected 1144ms
+     ✓ select/disabled-option 564ms
+     ✓ list-box/disabled-option 306ms
+     ✓ tags/disabled-option 551ms
+     ✓ virtual/select-window-open 1606ms
+     ✓ virtual/table-window 701ms
+     ✓ component-view/button-consumer 515ms
+     ✓ stylable/button-consumer 589ms
+     ✓ textable/button-consumer 371ms
+     ✓ control/button-consumer 388ms
+     ✓ interactive/semantic-reference 692ms
+     ✓ value-control/input-consumer 323ms
+     ✓ input-control/input-consumer 564ms
+     ✓ frame/select-panel-consumer 499ms
+ ✓ |layout (webkit)| browser/tags-close.spec.ts (130 tests) 99767ms
+   ✓ view="filled": пилюля покрывает крестик (3)
+     ✓ наведение на крестик проявляет пилюлю так же, как наведение на строку 2784ms
+   ✓ view="plain": пилюля покрывает крестик (3)
+     ✓ наведение на крестик проявляет пилюлю так же, как наведение на строку 1146ms
+   ✓ view="outlined": пилюля покрывает крестик (3)
+     ✓ наведение на крестик проявляет пилюлю так же, как наведение на строку 1732ms
+   ✓ рамка и кольцо фокуса — у пилюли (2)
+     ✓ outlined: фокус строки темнит рамку пилюли, как темнил рамку строки 324ms
+   ✓ цвет крестика — от пилюли (25)
+     ✓ oren (12)
+       ✓ view="filled": крестик в покое — цвета подписи пилюли 483ms
+       ✓ view="outlined": крестик в покое — цвета подписи пилюли 626ms
+       ✓ view="filled": под наведением и при нажатии крестик цвета подписи, а фон — не чужой пилюле 7724ms
+       ✓ view="plain": под наведением и при нажатии крестик цвета подписи, а фон — не чужой пилюле 6528ms
+       ✓ view="outlined": под наведением и при нажатии крестик цвета подписи, а фон — не чужой пилюле 6495ms
+       ✓ view="none": под наведением и при нажатии крестик цвета подписи, а фон — не чужой пилюле 10948ms
+       ✓ view="filled": кольцо фокуса крестика с клавиатуры — на насыщенной пилюле цвета подписи, иначе — темы 2290ms
+       ✓ view="plain": кольцо фокуса крестика с клавиатуры — на насыщенной пилюле цвета подписи, иначе — темы 2272ms
+       ✓ view="outlined": кольцо фокуса крестика с клавиатуры — на насыщенной пилюле цвета подписи, иначе — темы 2257ms
+       ✓ view="none": кольцо фокуса крестика с клавиатуры — на насыщенной пилюле цвета подписи, иначе — темы 2426ms
+     ✓ oren-dark (12)
+       ✓ view="plain": крестик в покое — цвета подписи пилюли 548ms
+       ✓ view="filled": под наведением и при нажатии крестик цвета подписи, а фон — не чужой пилюле 8743ms
+       ✓ view="plain": под наведением и при нажатии крестик цвета подписи, а фон — не чужой пилюле 7738ms
+       ✓ view="outlined": под наведением и при нажатии крестик цвета подписи, а фон — не чужой пилюле 11210ms
+       ✓ view="none": под наведением и при нажатии крестик цвета подписи, а фон — не чужой пилюле 10308ms
+       ✓ view="filled": кольцо фокуса крестика с клавиатуры — на насыщенной пилюле цвета подписи, иначе — темы 2111ms
+       ✓ view="plain": кольцо фокуса крестика с клавиатуры — на насыщенной пилюле цвета подписи, иначе — темы 2387ms
+       ✓ view="outlined": кольцо фокуса крестика с клавиатуры — на насыщенной пилюле цвета подписи, иначе — темы 2272ms
+       ✓ view="none": кольцо фокуса крестика с клавиатуры — на насыщенной пилюле цвета подписи, иначе — темы 2080ms
+ ✓ |layout (webkit)| browser/drag-and-drop.spec.ts (26 tests | 4 skipped) 29855ms
+   ✓ перестановка мышью (4)
+     ✓ Tabs: первый элемент, перетащенный на третий, встаёт третьим на экране 853ms
+     ✓ ListBox: первый элемент, перетащенный на третий, встаёт третьим на экране 401ms
+     ✓ Accordion: первый элемент, перетащенный на третий, встаёт третьим на экране 532ms
+     ✓ элемент переставляется в своей коллекции: соседние не тронуты 403ms
+   ✓ перестановка на странице стенда (18)
+     ✓ vue · Tabs: первый элемент первой колонки, перетащенный на третий, встаёт третьим на экране 1321ms
+     ✓ vue · ListBox: первый элемент первой колонки, перетащенный на третий, встаёт третьим на экране 1343ms
+     ✓ vue · Accordion: первый элемент первой колонки, перетащенный на третий, встаёт третьим на экране 1219ms
+     ✓ react · Tabs: первый элемент первой колонки, перетащенный на третий, встаёт третьим на экране 2038ms
+     ✓ react · ListBox: первый элемент первой колонки, перетащенный на третий, встаёт третьим на экране 1241ms
+     ✓ react · Accordion: первый элемент первой колонки, перетащенный на третий, встаёт третьим на экране 1677ms
+     ✓ svelte · Tabs: первый элемент первой колонки, перетащенный на третий, встаёт третьим на экране 2016ms
+     ✓ svelte · ListBox: первый элемент первой колонки, перетащенный на третий, встаёт третьим на экране 1434ms
+     ✓ svelte · Accordion: первый элемент первой колонки, перетащенный на третий, встаёт третьим на экране 1242ms
+     ✓ solid · Tabs: первый элемент первой колонки, перетащенный на третий, встаёт третьим на экране 1912ms
+     ✓ solid · ListBox: первый элемент первой колонки, перетащенный на третий, встаёт третьим на экране 1430ms
+     ✓ solid · Accordion: первый элемент первой колонки, перетащенный на третий, встаёт третьим на экране 1539ms
+     ✓ webc · Tabs: первый элемент первой колонки, перетащенный на третий, встаёт третьим на экране 1548ms
+     ✓ webc · ListBox: первый элемент первой колонки, перетащенный на третий, встаёт третьим на экране 1240ms
+     ✓ webc · Accordion: первый элемент первой колонки, перетащенный на третий, встаёт третьим на экране 1195ms
+     ✓ angular · Tabs: первый элемент первой колонки, перетащенный на третий, встаёт третьим на экране 2294ms
+     ✓ angular · ListBox: первый элемент первой колонки, перетащенный на третий, встаёт третьим на экране 1305ms
+     ✓ angular · Accordion: первый элемент первой колонки, перетащенный на третий, встаёт третьим на экране 1664ms
+ ✓ |layout (webkit)| browser/axe-angular.spec.ts (139 tests) 103037ms
+   ✓ axe angular (139)
+     ✓ alert-dialog/custom-footer 788ms
+     ✓ toggle-button/activated 1063ms
+     ✓ toggle-group/activated 1170ms
+     ✓ code-block/second-active 1375ms
+     ✓ avatar/loaded 768ms
+     ✓ avatar/error 807ms
+     ✓ avatar/custom-fallback 773ms
+     ✓ code-block/basic 819ms
+     ✓ code-block/lines 776ms
+     ✓ code-block/tabs 801ms
+     ✓ breadcrumbs/full 620ms
+     ✓ breadcrumbs/collapsed 705ms
+     ✓ breadcrumbs/overflow 878ms
+     ✓ breadcrumbs/disabled-item 647ms
+     ✓ alert/closable 644ms
+     ✓ avatar/named 612ms
+     ✓ avatar-group/group 661ms
+     ✓ badge/text 628ms
+     ✓ badge/named-count 628ms
+     ✓ badge/zero 644ms
+     ✓ badge/capped 596ms
+     ✓ badge/named-dot 612ms
+     ✓ badge/decorative-dot 564ms
+     ✓ badge/anchor 628ms
+     ✓ input/invalid 628ms
+     ✓ number-input/invalid 627ms
+     ✓ textarea/invalid 629ms
+     ✓ date-input/invalid 628ms
+     ✓ date-picker/invalid 645ms
+     ✓ toggle-button/off 612ms
+     ✓ toggle-button/on 612ms
+     ✓ toggle-button/disabled 628ms
+     ✓ toggle-group/single 582ms
+     ✓ toggle-group/multiple 596ms
+     ✓ toggle-group/disabled 612ms
+     ✓ button/named 580ms
+     ✓ button/disabled 612ms
+     ✓ input/named 677ms
+     ✓ number-input/named 693ms
+     ✓ textarea/named 708ms
+     ✓ check-box/unchecked 669ms
+     ✓ check-box/checked 627ms
+     ✓ check-box/disabled 565ms
+     ✓ switch/unchecked 596ms
+     ✓ switch/checked 626ms
+     ✓ switch/disabled 623ms
+     ✓ label/native-control 608ms
+     ✓ field/helper 670ms
+     ✓ field/invalid 599ms
+     ✓ slider/single 670ms
+     ✓ slider/multiple 620ms
+     ✓ rating/unselected 627ms
+     ✓ rating/selected 606ms
+     ✓ radio-group/unselected 670ms
+     ✓ radio-group/selected 647ms
+     ✓ radio-group/disabled 679ms
+     ✓ select/closed 703ms
+     ✓ select/open 768ms
+     ✓ select/single-selected 758ms
+     ✓ select/multiple-selected 824ms
+     ✓ select/disabled 560ms
+     ✓ calendar/grid 901ms
+     ✓ calendar/months 1102ms
+     ✓ calendar/years 1467ms
+     ✓ date-input/segments 651ms
+     ✓ date-picker/closed 733ms
+     ✓ date-picker/open 932ms
+     ✓ popover/closed 636ms
+     ✓ popover/open 732ms
+     ✓ menu/closed 570ms
+     ✓ menu/open 835ms
+     ✓ tooltip/closed 500ms
+     ✓ tooltip/open 676ms
+     ✓ menu/submenu 1187ms
+     ✓ menu/item-panel 1408ms
+     ✓ alert-dialog/open 834ms
+     ✓ dialog/closed 639ms
+     ✓ dialog/open 881ms
+     ✓ drawer/closed 548ms
+     ✓ drawer/open 1112ms
+     ✓ toasts/empty 582ms
+     ✓ toasts/ordinary 1084ms
+     ✓ toasts/error 1015ms
+     ✓ toasts/loading 917ms
+     ✓ scroller/content 661ms
+     ✓ list-box/unselected 700ms
+     ✓ list-box/single-selected 628ms
+     ✓ list-box/multiple-selected 644ms
+     ✓ list-box/disabled 628ms
+     ✓ tags/unselected 628ms
+     ✓ tags/single-selected 612ms
+     ✓ tags/multiple-selected 621ms
+     ✓ tags/disabled 612ms
+     ✓ pagination/current-page 601ms
+     ✓ table/rows 630ms
+     ✓ tabs/active-and-inactive 564ms
+     ✓ accordion/closed 687ms
+     ✓ accordion/open 1044ms
+     ✓ icon/decorative 558ms
+     ✓ separator/horizontal 629ms
+     ✓ separator/horizontal-decorative 649ms
+     ✓ separator/vertical 637ms
+     ✓ separator/vertical-decorative 628ms
+     ✓ progress-linear/determinate 585ms
+     ✓ progress-linear/indeterminate 726ms
+     ✓ progress-spinner/determinate 652ms
+     ✓ progress-spinner/indeterminate 706ms
+     ✓ skeleton/decorative 629ms
+     ✓ drag-and-drop/collections 770ms
+     ✓ virtual/window 763ms
+     ✓ input/disabled 790ms
+     ✓ number-input/disabled 659ms
+     ✓ textarea/disabled 655ms
+     ✓ date-input/disabled 638ms
+     ✓ date-picker/disabled 643ms
+     ✓ slider/disabled 557ms
+     ✓ rating/disabled 649ms
+     ✓ calendar/selected 801ms
+     ✓ calendar/disabled 689ms
+     ✓ tabs/disabled 626ms
+     ✓ tabs/second-active 886ms
+     ✓ accordion/disabled 630ms
+     ✓ accordion/multiple 1440ms
+     ✓ table/disabled 600ms
+     ✓ table/selected 945ms
+     ✓ select/disabled-option 699ms
+     ✓ list-box/disabled-option 563ms
+     ✓ tags/disabled-option 591ms
+     ✓ virtual/select-window-open 1293ms
+     ✓ virtual/table-window 919ms
+     ✓ component-view/button-consumer 618ms
+     ✓ stylable/button-consumer 484ms
+     ✓ textable/button-consumer 499ms
+     ✓ control/button-consumer 532ms
+     ✓ interactive/semantic-reference 467ms
+     ✓ value-control/input-consumer 516ms
+     ✓ input-control/input-consumer 515ms
+     ✓ frame/select-panel-consumer 695ms
+ ✓ |layout (webkit)| browser/axe-react.spec.ts (139 tests) 103019ms
+   ✓ axe react (139)
+     ✓ alert-dialog/custom-footer 913ms
+     ✓ toggle-button/activated 1049ms
+     ✓ toggle-group/activated 1173ms
+     ✓ code-block/second-active 1358ms
+     ✓ avatar/loaded 769ms
+     ✓ avatar/error 825ms
+     ✓ avatar/custom-fallback 767ms
+     ✓ code-block/basic 815ms
+     ✓ code-block/lines 783ms
+     ✓ code-block/tabs 798ms
+     ✓ breadcrumbs/full 621ms
+     ✓ breadcrumbs/collapsed 701ms
+     ✓ breadcrumbs/overflow 870ms
+     ✓ breadcrumbs/disabled-item 370ms
+     ✓ alert/closable 612ms
+     ✓ avatar/named 628ms
+     ✓ avatar-group/group 660ms
+     ✓ badge/text 628ms
+     ✓ badge/named-count 612ms
+     ✓ badge/zero 628ms
+     ✓ badge/capped 644ms
+     ✓ badge/named-dot 612ms
+     ✓ badge/decorative-dot 563ms
+     ✓ badge/anchor 629ms
+     ✓ input/invalid 596ms
+     ✓ number-input/invalid 628ms
+     ✓ textarea/invalid 644ms
+     ✓ date-input/invalid 628ms
+     ✓ date-picker/invalid 645ms
+     ✓ toggle-button/off 612ms
+     ✓ toggle-button/on 596ms
+     ✓ toggle-button/disabled 628ms
+     ✓ toggle-group/single 629ms
+     ✓ toggle-group/multiple 563ms
+     ✓ toggle-group/disabled 612ms
+     ✓ button/named 580ms
+     ✓ button/disabled 612ms
+     ✓ input/named 660ms
+     ✓ number-input/named 644ms
+     ✓ textarea/named 677ms
+     ✓ check-box/unchecked 596ms
+     ✓ check-box/checked 672ms
+     ✓ check-box/disabled 998ms
+     ✓ switch/unchecked 595ms
+     ✓ switch/checked 627ms
+     ✓ switch/disabled 620ms
+     ✓ label/native-control 610ms
+     ✓ field/helper 670ms
+     ✓ field/invalid 600ms
+     ✓ slider/single 670ms
+     ✓ slider/multiple 614ms
+     ✓ rating/unselected 632ms
+     ✓ rating/selected 613ms
+     ✓ radio-group/unselected 663ms
+     ✓ radio-group/selected 646ms
+     ✓ radio-group/disabled 682ms
+     ✓ select/closed 702ms
+     ✓ select/open 770ms
+     ✓ select/single-selected 760ms
+     ✓ select/multiple-selected 821ms
+     ✓ select/disabled 561ms
+     ✓ calendar/grid 874ms
+     ✓ calendar/months 1128ms
+     ✓ calendar/years 1450ms
+     ✓ date-input/segments 668ms
+     ✓ date-picker/closed 731ms
+     ✓ date-picker/open 934ms
+     ✓ popover/closed 633ms
+     ✓ popover/open 734ms
+     ✓ menu/closed 570ms
+     ✓ menu/open 837ms
+     ✓ tooltip/closed 499ms
+     ✓ tooltip/open 676ms
+     ✓ menu/submenu 1192ms
+     ✓ menu/item-panel 1395ms
+     ✓ alert-dialog/open 838ms
+     ✓ dialog/closed 641ms
+     ✓ dialog/open 873ms
+     ✓ drawer/closed 571ms
+     ✓ drawer/open 1098ms
+     ✓ toasts/empty 582ms
+     ✓ toasts/ordinary 1084ms
+     ✓ toasts/error 1014ms
+     ✓ toasts/loading 919ms
+     ✓ scroller/content 660ms
+     ✓ list-box/unselected 698ms
+     ✓ list-box/single-selected 628ms
+     ✓ list-box/multiple-selected 645ms
+     ✓ list-box/disabled 627ms
+     ✓ tags/unselected 629ms
+     ✓ tags/single-selected 612ms
+     ✓ tags/multiple-selected 618ms
+     ✓ tags/disabled 615ms
+     ✓ pagination/current-page 601ms
+     ✓ table/rows 629ms
+     ✓ tabs/active-and-inactive 563ms
+     ✓ accordion/closed 691ms
+     ✓ accordion/open 1038ms
+     ✓ icon/decorative 562ms
+     ✓ separator/horizontal 629ms
+     ✓ separator/horizontal-decorative 650ms
+     ✓ separator/vertical 636ms
+     ✓ separator/vertical-decorative 628ms
+     ✓ progress-linear/determinate 584ms
+     ✓ progress-linear/indeterminate 729ms
+     ✓ progress-spinner/determinate 648ms
+     ✓ progress-spinner/indeterminate 707ms
+     ✓ skeleton/decorative 629ms
+     ✓ drag-and-drop/collections 766ms
+     ✓ virtual/window 776ms
+     ✓ input/disabled 786ms
+     ✓ number-input/disabled 655ms
+     ✓ textarea/disabled 654ms
+     ✓ date-input/disabled 638ms
+     ✓ date-picker/disabled 642ms
+     ✓ slider/disabled 558ms
+     ✓ rating/disabled 651ms
+     ✓ calendar/selected 794ms
+     ✓ calendar/disabled 670ms
+     ✓ tabs/disabled 650ms
+     ✓ tabs/second-active 887ms
+     ✓ accordion/disabled 629ms
+     ✓ accordion/multiple 1438ms
+     ✓ table/disabled 605ms
+     ✓ table/selected 943ms
+     ✓ select/disabled-option 705ms
+     ✓ list-box/disabled-option 563ms
+     ✓ tags/disabled-option 580ms
+     ✓ virtual/select-window-open 1312ms
+     ✓ virtual/table-window 905ms
+     ✓ component-view/button-consumer 618ms
+     ✓ stylable/button-consumer 482ms
+     ✓ textable/button-consumer 500ms
+     ✓ control/button-consumer 515ms
+     ✓ interactive/semantic-reference 483ms
+     ✓ value-control/input-consumer 516ms
+     ✓ input-control/input-consumer 515ms
+     ✓ frame/select-panel-consumer 701ms
+ ✓ |layout (webkit)| browser/axe-solid.spec.ts (139 tests) 103030ms
+   ✓ axe solid (139)
+     ✓ alert-dialog/custom-footer 914ms
+     ✓ toggle-button/activated 1049ms
+     ✓ toggle-group/activated 1175ms
+     ✓ code-block/second-active 1357ms
+     ✓ avatar/loaded 768ms
+     ✓ avatar/error 821ms
+     ✓ avatar/custom-fallback 771ms
+     ✓ code-block/basic 825ms
+     ✓ code-block/lines 766ms
+     ✓ code-block/tabs 801ms
+     ✓ breadcrumbs/full 622ms
+     ✓ breadcrumbs/collapsed 704ms
+     ✓ breadcrumbs/overflow 877ms
+     ✓ breadcrumbs/disabled-item 661ms
+     ✓ alert/closable 628ms
+     ✓ avatar/named 612ms
+     ✓ avatar-group/group 676ms
+     ✓ badge/text 612ms
+     ✓ badge/named-count 645ms
+     ✓ badge/zero 627ms
+     ✓ badge/capped 596ms
+     ✓ badge/named-dot 612ms
+     ✓ badge/decorative-dot 580ms
+     ✓ badge/anchor 628ms
+     ✓ input/invalid 612ms
+     ✓ number-input/invalid 644ms
+     ✓ textarea/invalid 628ms
+     ✓ date-input/invalid 612ms
+     ✓ date-picker/invalid 644ms
+     ✓ toggle-button/off 628ms
+     ✓ toggle-button/on 596ms
+     ✓ toggle-button/disabled 628ms
+     ✓ toggle-group/single 596ms
+     ✓ toggle-group/multiple 596ms
+     ✓ toggle-group/disabled 596ms
+     ✓ button/named 596ms
+     ✓ button/disabled 595ms
+     ✓ input/named 693ms
+     ✓ number-input/named 715ms
+     ✓ textarea/named 674ms
+     ✓ check-box/unchecked 679ms
+     ✓ check-box/checked 626ms
+     ✓ check-box/disabled 561ms
+     ✓ switch/unchecked 596ms
+     ✓ switch/checked 629ms
+     ✓ switch/disabled 621ms
+     ✓ label/native-control 608ms
+     ✓ field/helper 673ms
+     ✓ field/invalid 599ms
+     ✓ slider/single 671ms
+     ✓ slider/multiple 621ms
+     ✓ rating/unselected 625ms
+     ✓ rating/selected 611ms
+     ✓ radio-group/unselected 667ms
+     ✓ radio-group/selected 647ms
+     ✓ radio-group/disabled 679ms
+     ✓ select/closed 700ms
+     ✓ select/open 773ms
+     ✓ select/single-selected 742ms
+     ✓ select/multiple-selected 830ms
+     ✓ select/disabled 565ms
+     ✓ calendar/grid 899ms
+     ✓ calendar/months 1107ms
+     ✓ calendar/years 1468ms
+     ✓ date-input/segments 646ms
+     ✓ date-picker/closed 737ms
+     ✓ date-picker/open 940ms
+     ✓ popover/closed 628ms
+     ✓ popover/open 732ms
+     ✓ menu/closed 570ms
+     ✓ menu/open 837ms
+     ✓ tooltip/closed 499ms
+     ✓ tooltip/open 677ms
+     ✓ menu/submenu 1197ms
+     ✓ menu/item-panel 1402ms
+     ✓ alert-dialog/open 829ms
+     ✓ dialog/closed 636ms
+     ✓ dialog/open 880ms
+     ✓ drawer/closed 567ms
+     ✓ drawer/open 1097ms
+     ✓ toasts/empty 580ms
+     ✓ toasts/ordinary 1086ms
+     ✓ toasts/error 1012ms
+     ✓ toasts/loading 922ms
+     ✓ scroller/content 660ms
+     ✓ list-box/unselected 696ms
+     ✓ list-box/single-selected 628ms
+     ✓ list-box/multiple-selected 644ms
+     ✓ list-box/disabled 628ms
+     ✓ tags/unselected 629ms
+     ✓ tags/single-selected 612ms
+     ✓ tags/multiple-selected 620ms
+     ✓ tags/disabled 608ms
+     ✓ pagination/current-page 603ms
+     ✓ table/rows 635ms
+     ✓ tabs/active-and-inactive 564ms
+     ✓ accordion/closed 686ms
+     ✓ accordion/open 1032ms
+     ✓ icon/decorative 571ms
+     ✓ separator/horizontal 625ms
+     ✓ separator/horizontal-decorative 653ms
+     ✓ separator/vertical 636ms
+     ✓ separator/vertical-decorative 628ms
+     ✓ progress-linear/determinate 586ms
+     ✓ progress-linear/indeterminate 735ms
+     ✓ progress-spinner/determinate 642ms
+     ✓ progress-spinner/indeterminate 708ms
+     ✓ skeleton/decorative 628ms
+     ✓ drag-and-drop/collections 769ms
+     ✓ virtual/window 772ms
+     ✓ input/disabled 782ms
+     ✓ number-input/disabled 656ms
+     ✓ textarea/disabled 656ms
+     ✓ date-input/disabled 639ms
+     ✓ date-picker/disabled 636ms
+     ✓ slider/disabled 564ms
+     ✓ rating/disabled 648ms
+     ✓ calendar/selected 795ms
+     ✓ calendar/disabled 690ms
+     ✓ tabs/disabled 629ms
+     ✓ tabs/second-active 888ms
+     ✓ accordion/disabled 624ms
+     ✓ accordion/multiple 1446ms
+     ✓ table/disabled 602ms
+     ✓ table/selected 940ms
+     ✓ select/disabled-option 704ms
+     ✓ list-box/disabled-option 564ms
+     ✓ tags/disabled-option 580ms
+     ✓ virtual/select-window-open 1291ms
+     ✓ virtual/table-window 906ms
+     ✓ component-view/button-consumer 641ms
+     ✓ stylable/button-consumer 483ms
+     ✓ textable/button-consumer 499ms
+     ✓ control/button-consumer 516ms
+     ✓ interactive/semantic-reference 483ms
+     ✓ value-control/input-consumer 516ms
+     ✓ input-control/input-consumer 515ms
+     ✓ frame/select-panel-consumer 707ms
+ ✓ |layout (webkit)| browser/axe-webc.spec.ts (139 tests) 103105ms
+   ✓ axe webc (139)
+     ✓ alert-dialog/custom-footer 921ms
+     ✓ toggle-button/activated 1051ms
+     ✓ toggle-group/activated 1171ms
+     ✓ code-block/second-active 1371ms
+     ✓ avatar/loaded 757ms
+     ✓ avatar/error 819ms
+     ✓ avatar/custom-fallback 774ms
+     ✓ code-block/basic 827ms
+     ✓ code-block/lines 776ms
+     ✓ code-block/tabs 792ms
+     ✓ breadcrumbs/full 620ms
+     ✓ breadcrumbs/collapsed 706ms
+     ✓ breadcrumbs/overflow 875ms
+     ✓ breadcrumbs/disabled-item 644ms
+     ✓ alert/closable 644ms
+     ✓ avatar/named 612ms
+     ✓ avatar-group/group 661ms
+     ✓ badge/text 644ms
+     ✓ badge/named-count 615ms
+     ✓ badge/zero 644ms
+     ✓ badge/capped 596ms
+     ✓ badge/named-dot 612ms
+     ✓ badge/decorative-dot 564ms
+     ✓ badge/anchor 629ms
+     ✓ input/invalid 628ms
+     ✓ number-input/invalid 628ms
+     ✓ textarea/invalid 628ms
+     ✓ date-input/invalid 628ms
+     ✓ date-picker/invalid 629ms
+     ✓ toggle-button/off 628ms
+     ✓ toggle-button/on 612ms
+     ✓ toggle-button/disabled 628ms
+     ✓ toggle-group/single 596ms
+     ✓ toggle-group/multiple 595ms
+     ✓ toggle-group/disabled 596ms
+     ✓ button/named 580ms
+     ✓ button/disabled 612ms
+     ✓ input/named 699ms
+     ✓ number-input/named 670ms
+     ✓ textarea/named 709ms
+     ✓ check-box/unchecked 674ms
+     ✓ check-box/checked 626ms
+     ✓ check-box/disabled 565ms
+     ✓ switch/unchecked 598ms
+     ✓ switch/checked 623ms
+     ✓ switch/disabled 624ms
+     ✓ label/native-control 606ms
+     ✓ field/helper 669ms
+     ✓ field/invalid 603ms
+     ✓ slider/single 668ms
+     ✓ slider/multiple 622ms
+     ✓ rating/unselected 628ms
+     ✓ rating/selected 609ms
+     ✓ radio-group/unselected 668ms
+     ✓ radio-group/selected 646ms
+     ✓ radio-group/disabled 675ms
+     ✓ select/closed 701ms
+     ✓ select/open 775ms
+     ✓ select/single-selected 761ms
+     ✓ select/multiple-selected 820ms
+     ✓ select/disabled 558ms
+     ✓ calendar/grid 883ms
+     ✓ calendar/months 1132ms
+     ✓ calendar/years 1446ms
+     ✓ date-input/segments 662ms
+     ✓ date-picker/closed 731ms
+     ✓ date-picker/open 941ms
+     ✓ popover/closed 628ms
+     ✓ popover/open 732ms
+     ✓ menu/closed 568ms
+     ✓ menu/open 838ms
+     ✓ tooltip/closed 499ms
+     ✓ tooltip/open 677ms
+     ✓ menu/submenu 1180ms
+     ✓ menu/item-panel 1402ms
+     ✓ alert-dialog/open 845ms
+     ✓ dialog/closed 640ms
+     ✓ dialog/open 890ms
+     ✓ drawer/closed 554ms
+     ✓ drawer/open 1096ms
+     ✓ toasts/empty 584ms
+     ✓ toasts/ordinary 1077ms
+     ✓ toasts/error 1020ms
+     ✓ toasts/loading 920ms
+     ✓ scroller/content 661ms
+     ✓ list-box/unselected 693ms
+     ✓ list-box/single-selected 628ms
+     ✓ list-box/multiple-selected 644ms
+     ✓ list-box/disabled 644ms
+     ✓ tags/unselected 612ms
+     ✓ tags/single-selected 612ms
+     ✓ tags/multiple-selected 620ms
+     ✓ tags/disabled 618ms
+     ✓ pagination/current-page 601ms
+     ✓ table/rows 631ms
+     ✓ tabs/active-and-inactive 563ms
+     ✓ accordion/closed 687ms
+     ✓ accordion/open 1039ms
+     ✓ icon/decorative 564ms
+     ✓ separator/horizontal 628ms
+     ✓ separator/horizontal-decorative 649ms
+     ✓ separator/vertical 635ms
+     ✓ separator/vertical-decorative 628ms
+     ✓ progress-linear/determinate 585ms
+     ✓ progress-linear/indeterminate 731ms
+     ✓ progress-spinner/determinate 650ms
+     ✓ progress-spinner/indeterminate 707ms
+     ✓ skeleton/decorative 629ms
+     ✓ drag-and-drop/collections 767ms
+     ✓ virtual/window 772ms
+     ✓ input/disabled 785ms
+     ✓ number-input/disabled 656ms
+     ✓ textarea/disabled 654ms
+     ✓ date-input/disabled 638ms
+     ✓ date-picker/disabled 641ms
+     ✓ slider/disabled 558ms
+     ✓ rating/disabled 650ms
+     ✓ calendar/selected 801ms
+     ✓ calendar/disabled 674ms
+     ✓ tabs/disabled 638ms
+     ✓ tabs/second-active 885ms
+     ✓ accordion/disabled 633ms
+     ✓ accordion/multiple 1442ms
+     ✓ table/disabled 601ms
+     ✓ table/selected 945ms
+     ✓ select/disabled-option 703ms
+     ✓ list-box/disabled-option 563ms
+     ✓ tags/disabled-option 580ms
+     ✓ virtual/select-window-open 1310ms
+     ✓ virtual/table-window 902ms
+     ✓ component-view/button-consumer 623ms
+     ✓ stylable/button-consumer 483ms
+     ✓ textable/button-consumer 499ms
+     ✓ control/button-consumer 516ms
+     ✓ interactive/semantic-reference 483ms
+     ✓ value-control/input-consumer 516ms
+     ✓ input-control/input-consumer 515ms
+     ✓ frame/select-panel-consumer 727ms
+ ✓ |layout (webkit)| browser/table.spec.ts (87 tests | 4 skipped) 51244ms
+   ✓ ширина колонок (4)
+     ✓ до замера ширины решает тема: колонка без ширины — в своём минимуме 419ms
+   ✓ раскладка колонок (6)
+     ✓ none — таблица шириной в сумму ширин по умолчанию, хоть место и шире 467ms
+     ✓ протяжка последней колонки за край — окно прокручивается 870ms
+   ✓ подпись шапки вровень с текстом ячеек (3)
+     ✓ сортируемая колонка по началу: подпись — над началом текста ячеек 403ms
+   ✓ заголовок колонки (11)
+     ✓ кольцо фокуса — вокруг кнопки, внутри заголовка 614ms
+     ✓ стрелка неотсортированной колонки: на покое невидима, вполсилы — при наведении на заголовок и фокусе кнопки 838ms
+     ✓ у выключенной таблицы стрелка неотсортированной колонки не проступает 547ms
+     ✓ сортируемый заголовок под указателем не подсвечен, и нажатие кнопки его не подсвечивает 1417ms
+     ✓ заголовок с ручкой ширины и тот, что можно перетащить, подсвечены одинаково 886ms
+     ✓ у выключенной таблицы подсветки нет 531ms
+   ✓ линии строк (11)
+     ✓ цвет (10)
+       ✓ oren-dark, страница: линия шапки — цвета рамки outlined 580ms
+       ✓ oren, страница: линия строки уходит от подложки к тексту и тише шапки 435ms
+   ✓ перестановка колонок (22)
+     ✓ тащат заголовок — сосед уступает место, строки на месте; отпустили — колонка на новом месте 1516ms
+     ✓ несут заголовок — курсор «тащу» и без выделения на всей таблице; встал — как было 934ms
+     ✓ отпустили — заголовок встал на место, потом перестановка; ничего не отъезжает (6)
+       ✓ head: взятая — на место соседа 1613ms
+       ✓ head: последняя — в начало 1642ms
+       ✓ head: первая — через две в конец 1240ms
+       ✓ column: взятая — на место соседа 1837ms
+       ✓ column: последняя — в начало 1868ms
+       ✓ column: первая — через две в конец 1611ms
+     ✓ none: соседи стоят, линия видна, колонка встаёт на отпускании 692ms
+     ✓ column: ячейки соседа идут с его заголовком, ячейки взятой спрятаны 1869ms
+     ✓ column на покое: у корня нет признака, у ячеек — ни перехода, ни сдвига 1305ms
+     ✓ RTL: сосед уступает место к началу строки — вправо 1994ms
+     ✓ Escape — соседи возвращаются, заголовок едет на своё место, колонка стоит 1466ms
+     ✓ без движения соседи стоят, место — линия; колонка встаёт после отпускания 950ms
+     ✓ линия места (3)
+       ✓ без движения: у каждого невзятого заголовка весь жест, метка только красит её 1205ms
+       ✓ none: у каждого невзятого заголовка весь жест, метка только красит её 838ms
+       ✓ с движением соседи расступаются — линии нет ни у одного заголовка 1007ms
+     ✓ протяжка, начатая с кнопки сортировки, не сортирует; нажатие без протяжки — сортирует 1241ms
+   ✓ сетка (3)
+     ✓ Tab — на ячейку, стрелки — по ячейкам, Tab — за таблицу мимо полей ячеек 531ms
+     ✓ строка под фокусом и под указателем подсвечена; нажатие по строке — её выбор 677ms
+   ✓ ручка ширины (26)
+     ✓ протяжка на Δ — колонка шире на Δ; отпускание — один commit 629ms
+     ✓ RTL: ручка у левого края заголовка — колонку расширяет протяжка влево 612ms
+     ✓ протяжка — в границах колонки 452ms
+     ✓ колонка без своей ширины: ручка — с раскладкой, протяжка — от ширины, которую видно 371ms
+     ✓ отложенная протяжка (deferred) (6)
+       ✓ призрак идёт за указателем, ширины стоят; отпускание — ширина и один commit 693ms
+       ✓ RTL: призрак уходит влево, когда колонка растёт 600ms
+       ✓ призрак — в границах колонки, и записано то же 776ms
+       ✓ у средней колонки призрак на нажатии — ровно на линии ручки 746ms
+       ✓ у последней колонки призрак на нажатии — ровно на линии ручки 629ms
+       ✓ Escape — призрак снят, ширина та же 676ms
+     ✓ auto, гибкие колонки: край идёт за указателем, левый край стоит 306ms
+     ✓ колонка без ширины с границами в широком месте (4)
+       ✓ первая стрелка к сужению — ровно шаг, без рывка 484ms
+       ✓ первая протяжка — ровно на Δ 419ms
+       ✓ протяжка за верхнюю границу — колонка стоит у неё и остаётся гибкой 758ms
+     ✓ ширина у всех колонок — таблица шириной в их сумму, соседи на месте 532ms
+     ✓ клавиши: стрелка — ровно один шаг ядра, Shift — крупный, Home и End — края 435ms
+     ✓ имя заголовка и ползунка ручки — ровно текст колонки, без значения поля 322ms
+     ✓ у границы колонок нажатие берёт ручка, а не кнопка; на кнопке — кнопка 435ms
+     ✓ линия — под наведением; в принудительных цветах — системным цветом фокуса 902ms
+ ✓ |layout (webkit)| browser/table-sticky-head.spec.ts (49 tests) 44203ms
+   ✓ место шапки (7)
+     ✓ без пропа шапка уезжает вместе со строками, и вид её прежний 660ms
+     ✓ на странице — под закреплённой полосой приложения в 48 px 403ms
+     ✓ в теле Dialog с заголовком — у края тела, без зазора 467ms
+     ✓ в теле Dialog без шапки окна — у края тела, без зазора 611ms
+     ✓ в содержимом Popover — у края, без зазора 420ms
+     ✓ во вложенной прокрутке в Popover — у края своего контейнера, не срезана 587ms
+   ✓ фон — поверхность места (8)
+     ✓ oren, Popover: фон шапки — фон места, непрозрачный 468ms
+     ✓ oren-dark, карточка своего цвета: фон шапки — фон места, непрозрачный 323ms
+     ✓ oren-dark, Dialog: фон шапки — фон места, непрозрачный 419ms
+   ✓ линия под шапкой (6)
+     ✓ oren, страница: линия — цвета рамки outlined 676ms
+     ✓ oren-dark, страница: линия — цвета рамки outlined 386ms
+     ✓ oren-dark, поверхность контрола: линия — цвета рамки outlined 564ms
+     ✓ oren-dark, принудительные цвета: фон и подложка — Canvas, линия — CanvasText 370ms
+   ✓ снимок шапки (16)
+     ✓ oren: проп с монтирования, указатель вдали 1947ms
+     ✓ oren-dark: проп с монтирования, указатель вдали 1820ms
+     ✓ oren: проп включили, пока у заголовка под указателем идёт переход 2276ms
+     ✓ oren-dark: проп включили, пока у заголовка под указателем идёт переход 3126ms
+     ✓ oren: протяжка ручки, когда строки уже под шапкой 3416ms
+     ✓ oren-dark: протяжка ручки, когда строки уже под шапкой 3657ms
+     ✓ oren: перестановка заголовка, когда строки уже под шапкой 2678ms
+     ✓ oren-dark: перестановка заголовка, когда строки уже под шапкой 2773ms
+     ✓ oren: несут первую колонку вправо на 90 px, когда строки уже под шапкой 1857ms
+     ✓ oren: несут последнюю колонку влево на 90 px, когда строки уже под шапкой 1661ms
+     ✓ oren: несут среднюю колонку за соседа, когда строки уже под шапкой 1643ms
+     ✓ oren-dark: несут первую колонку вправо на 90 px, когда строки уже под шапкой 2336ms
+     ✓ oren-dark: несут последнюю колонку влево на 90 px, когда строки уже под шапкой 1498ms
+     ✓ oren-dark: несут среднюю колонку за соседа, когда строки уже под шапкой 1515ms
+     ✓ oren: подложка — только под шапкой, строка ниже видна 307ms
+     ✓ oren-dark: подложка — только под шапкой, строка ниже видна 598ms
+   ✓ слои шапки (2)
+     ✓ полоса ручки — над соседом; протяжка на Δ — колонка шире на Δ 433ms
+     ✓ взятый заголовок — над соседом; отпустили — колонка на новом месте 711ms
+ ✓ |layout (webkit)| browser/drawer.spec.ts (64 tests | 7 skipped) 27658ms
+   ✓ край (6)
+     ✓ end в ltr — у края right, во всю другую ось 688ms
+     ✓ start в ltr — у края left, во всю другую ось 610ms
+     ✓ end в rtl — у края left, во всю другую ось 725ms
+     ✓ start в rtl — у края right, во всю другую ось 741ms
+     ✓ top в ltr — у края top, во всю другую ось 854ms
+     ✓ bottom в ltr — у края bottom, во всю другую ось 644ms
+   ✓ размер (4)
+     ✓ боковая: ширина не задана — ширина темы, задана — своя 1304ms
+     ✓ нижняя: высота по содержимому, задана — своя 1192ms
+     ✓ больше экрана — упирается в экран без полосы подложки 646ms
+     ✓ длинное содержимое прокручивается в теле, шапка на месте 774ms
+   ✓ подложка (1)
+     ✓ накрывает экран под панелью: мимо панели нажатие приходится в неё 693ms
+   ✓ внутри контейнера (1)
+     ✓ панель и подложка — в границах контейнера, страница за ним открыта 643ms
+   ✓ въезд и выезд (4)
+     ✓ открытие — панель въезжает переходом, закрытие — выезжает и только потом пропадает 886ms
+     ✓ подложка идёт вместе с панелью, выезд короче въезда 564ms
+   ✓ выезд по ближайшему dir: RTL у предка (4)
+     ✓ start, в контейнере — false: въезжает из-за своего края 495ms
+   ✓ выезд по ближайшему dir: RTL пропом direction (4)
+     ✓ start, в контейнере — false: въезжает из-за своего края 402ms
+   ✓ выезд по ближайшему dir: LTR пропом direction в RTL-предке (4)
+     ✓ start, в контейнере — true: въезжает из-за своего края 491ms
+   ✓ выезд по ближайшему dir: LTR-предок на RTL-странице (4)
+     ✓ start, в контейнере — true: въезжает из-за своего края 403ms
+   ✓ выезд по ближайшему dir: RTL-предок на LTR-странице (4)
+     ✓ start, в контейнере — true: въезжает из-за своего края 322ms
+   ✓ жест (17)
+     ✓ полосы нет без жеста; с жестом зона захвата — не меньше 24px поперёк края 1047ms
+     ✓ пока жест включён, касание вдоль оси — жесту: touch-action на панели 1257ms
+     ✓ нажатие на полосу фокус не уводит 1064ms
+     ✓ смахнули к краю за полосу — закрытие с причиной swipe, фокус возвращается 983ms
+     ✓ RTL: панель у левого края смахивают влево 999ms
+     ✓ нижнюю — вниз 1015ms
+     ✓ от края — не закрытие: панель возвращается на место 741ms
+     ✓ отменённое close:before — панель остаётся и возвращается на место 984ms
+     ✓ за всю панель (2)
+       ✓ тянут за заголовок — закрытие 940ms
+       ✓ из поля — нет: с контролом работают сами 600ms
+     ✓ внутри контейнера жест тот же 965ms
+   ✓ закрытие (2)
+     ✓ крестик закрывает и возвращает фокус 823ms
+     ✓ нажатие по подложке закрывает, фокус остаётся на кнопке, с которой открыли 873ms
+ ✓ |layout (webkit)| browser/shared-scenarios-audit.spec.ts (150 tests) 13460ms
+   ✓ registered audit scenarios / vue (25)
+     ✓ alert-dialog/slots/footer 481ms
+   ✓ registered audit scenarios / react (25)
+     ✓ alert-dialog/slots/footer 504ms
+   ✓ registered audit scenarios / svelte (25)
+     ✓ alert-dialog/slots/footer 455ms
+   ✓ registered audit scenarios / solid (25)
+     ✓ alert-dialog/slots/footer 355ms
+   ✓ registered audit scenarios / webc (25)
+     ✓ alert-dialog/slots/footer 338ms
+   ✓ registered audit scenarios / angular (25)
+     ✓ alert-dialog/slots/footer 728ms
+ ✓ |layout (webkit)| browser/disabled.spec.ts (108 tests) 14265ms
+   ✓ схема oren (53)
+     ✓ Input (5)
+       ✓ выключенный гаснет целиком, как эталон, включённый — нет 302ms
+ ✓ |layout (webkit)| browser/alert.spec.ts (32 tests) 13141ms
+   ✓ Alert · vue (5)
+     ✓ keeps narrow content in flow and supports dismissal in ltr 317ms
+     ✓ switches theme views and preserves readable controls in both schemes 1001ms
+   ✓ Alert · react (5)
+     ✓ keeps narrow content in flow and supports dismissal in ltr 595ms
+     ✓ switches theme views and preserves readable controls in both schemes 1002ms
+   ✓ Alert · svelte (5)
+     ✓ keeps narrow content in flow and supports dismissal in ltr 596ms
+     ✓ switches theme views and preserves readable controls in both schemes 1000ms
+   ✓ Alert · solid (5)
+     ✓ keeps narrow content in flow and supports dismissal in ltr 500ms
+     ✓ keeps narrow content in flow and supports dismissal in rtl 307ms
+     ✓ switches theme views and preserves readable controls in both schemes 986ms
+   ✓ Alert · webc (5)
+     ✓ keeps narrow content in flow and supports dismissal in ltr 516ms
+     ✓ switches theme views and preserves readable controls in both schemes 984ms
+   ✓ Alert · angular (5)
+     ✓ keeps narrow content in flow and supports dismissal in ltr 726ms
+     ✓ switches theme views and preserves readable controls in both schemes 1002ms
+ ✓ |layout (webkit)| browser/tabs-nested.spec.ts (75 tests) 18489ms
+   ✓ вид и ориентация внешних табов (36)
+     ✓ line горизонтальные → line горизонтальные: внутренние — как вне других 526ms
+     ✓ line горизонтальные → line вертикальные: внутренние — как вне других 482ms
+     ✓ line горизонтальные → contained горизонтальные: внутренние — как вне других 661ms
+     ✓ line горизонтальные → contained вертикальные: внутренние — как вне других 390ms
+     ✓ line вертикальные → contained горизонтальные: внутренние — как вне других 419ms
+     ✓ line вертикальные → contained вертикальные: внутренние — как вне других 324ms
+     ✓ contained горизонтальные → line горизонтальные: внутренние — как вне других 308ms
+     ✓ contained горизонтальные → contained горизонтальные: внутренние — как вне других 356ms
+     ✓ contained горизонтальные → contained вертикальные: внутренние — как вне других 388ms
+     ✓ contained горизонтальные → outline вертикальные: внутренние — как вне других 338ms
+     ✓ contained вертикальные → contained горизонтальные: внутренние — как вне других 306ms
+     ✓ contained вертикальные → contained вертикальные: внутренние — как вне других 323ms
+     ✓ outline горизонтальные → contained горизонтальные: внутренние — как вне других 307ms
+     ✓ outline горизонтальные → contained вертикальные: внутренние — как вне других 309ms
+     ✓ outline вертикальные → contained горизонтальные: внутренние — как вне других 307ms
+   ✓ вариант внутренних табов — свой (9)
+     ✓ line caution → contained accent: внутренние — как вне других 306ms
+     ✓ contained caution → contained accent: внутренние — как вне других 323ms
+     ✓ outline caution → contained accent: внутренние — как вне других 307ms
+   ✓ выравнивание внешних табов (12)
+     ✓ внешние start → contained: внутренние — как вне других 307ms
+   ✓ принудительные цвета (18)
+     ✓ contained горизонтальные → contained: внутренние — как вне других 307ms
+     ✓ outline вертикальные → contained: внутренние — как вне других 306ms
+ ✓ |layout (webkit)| browser/narrow-window.spec.ts (17 tests) 16732ms
+   ✓ стенд в узком окне не прокручивается вбок (8)
+     ✓ 360 px, страница свойств: имя над полем, у переключателя — рядом, подсказка — от начала строки 880ms
+     ✓ 375 px, страница свойств: имя над полем, у переключателя — рядом, подсказка — от начала строки 597ms
+     ✓ 414 px, страница свойств: имя над полем, у переключателя — рядом, подсказка — от начала строки 542ms
+     ✓ 900 px, страница свойств: шапки строк — как в узком окне 560ms
+     ✓ 320 px, страница свойств: длинное имя у переключателя — в одну строку 719ms
+     ✓ 375 px, витрина: широкая ячейка — в одну дорожку, превью не шире ячейки 957ms
+     ✓ 800 px, витрина: при меню колонкой дорожка одна, и широкая ячейка — в ней 758ms
+     ✓ 1280 px, витрина: широкая ячейка по-прежнему на две дорожки 714ms
+   ✓ шапка в узком окне (9)
+     ✓ 360 px: шапка — полоска в одну строку: меню, название, настройки 590ms
+     ✓ 375 px: шапка — полоска в одну строку: меню, название, настройки 580ms
+     ✓ 414 px: шапка — полоска в одну строку: меню, название, настройки 536ms
+     ✓ 375 px: «Настройки» — панель с контролами шапки, выбор фреймворка её не закрывает 2558ms
+     ✓ 375 px: «Меню» — панель со ссылкой на тесты над меню, переход по ссылке её закрывает 1510ms
+     ✓ «Меню»: открытая в узком окне, закрыта, когда окно побывало широким 1649ms
+     ✓ «Настройки»: открытая в узком окне, закрыта, когда окно побывало широким 1728ms
+     ✓ 375 px: плашка «движение выключено» в панели — над своим переключателем, текст переносится 1298ms
+     ✓ 900 px: кнопок с глифами нет, ссылка и контролы — в шапке, как прежде 550ms
+ ✓ |layout (webkit)| browser/tabs-view.spec.ts (44 tests) 17289ms
+   ✓ линия под списком отходит от своей поверхности (8)
+     ✓ oren, страница, вид outline: линия отличима от подложки 359ms
+   ✓ contained: подложка списка отходит от своей поверхности (24)
+     ✓ oren, страница, normal: в сторону текста, а не за поверхность 566ms
+     ✓ oren, страница, accent: в сторону текста, а не за поверхность 580ms
+     ✓ oren, страница, positive: в сторону текста, а не за поверхность 612ms
+     ✓ oren, страница, negative: в сторону текста, а не за поверхность 599ms
+     ✓ oren, страница, caution: в сторону текста, а не за поверхность 647ms
+     ✓ oren, поверхность контрола, normal: в сторону текста, а не за поверхность 629ms
+     ✓ oren, поверхность контрола, accent: в сторону текста, а не за поверхность 597ms
+     ✓ oren, поверхность контрола, positive: в сторону текста, а не за поверхность 515ms
+     ✓ oren, поверхность контрола, negative: в сторону текста, а не за поверхность 564ms
+     ✓ oren, поверхность контрола, caution: в сторону текста, а не за поверхность 565ms
+     ✓ oren-dark, страница, normal: в сторону текста, а не за поверхность 587ms
+     ✓ oren-dark, страница, accent: в сторону текста, а не за поверхность 495ms
+     ✓ oren-dark, страница, positive: в сторону текста, а не за поверхность 515ms
+     ✓ oren-dark, страница, negative: в сторону текста, а не за поверхность 565ms
+     ✓ oren-dark, страница, caution: в сторону текста, а не за поверхность 563ms
+     ✓ oren-dark, поверхность контрола, normal: в сторону текста, а не за поверхность 564ms
+     ✓ oren-dark, поверхность контрола, accent: в сторону текста, а не за поверхность 532ms
+     ✓ oren-dark, поверхность контрола, positive: в сторону текста, а не за поверхность 531ms
+     ✓ oren-dark, поверхность контрола, negative: в сторону текста, а не за поверхность 598ms
+     ✓ oren-dark, поверхность контрола, caution: в сторону текста, а не за поверхность 516ms
+     ✓ oren, страница: у нейтрали — цвета заливки нейтрального filled 532ms
+     ✓ oren, поверхность контрола: у нейтрали — цвета заливки нейтрального filled 532ms
+     ✓ oren-dark, страница: у нейтрали — цвета заливки нейтрального filled 548ms
+     ✓ oren-dark, поверхность контрола: у нейтрали — цвета заливки нейтрального filled 694ms
+ ✓ |layout (webkit)| browser/webc-host.spec.ts (6 tests) 12705ms
+   ✓ хост Web Components · слои (6)
+     ✓ dialog: кнопки стоят в ячейке так же, как у Vue 2626ms
+     ✓ drawer: кнопки стоят в ячейке так же, как у Vue 1687ms
+     ✓ toasts: кнопки стоят в ячейке так же, как у Vue 1608ms
+     ✓ dialog: открытый стоит так же, как у Vue 2148ms
+     ✓ drawer: открытый стоит так же, как у Vue 2460ms
+     ✓ toasts: открытый стоит так же, как у Vue 2173ms
+ ✓ |layout (webkit)| browser/list-groups.spec.ts (50 tests) 15031ms
+   ✓ Select (19)
+     ✓ sm: подпись — над опциями группы, текст по началу их текста, кегль мельче 386ms
+     ✓ normal: подпись — над опциями группы, текст по началу их текста, кегль мельче 389ms
+     ✓ lg: подпись — над опциями группы, текст по началу их текста, кегль мельче 405ms
+     ✓ xl: подпись — над опциями группы, текст по началу их текста, кегль мельче 451ms
+     ✓ 2xl: подпись — над опциями группы, текст по началу их текста, кегль мельче 420ms
+     ✓ подпись растёт с размером Select 1680ms
+     ✓ sm: подпись — заглавными, начертания подсказки Field, кегль и интерлиньяж её 323ms
+     ✓ normal: подпись — заглавными, начертания подсказки Field, кегль и интерлиньяж её 355ms
+     ✓ lg: подпись — заглавными, начертания подсказки Field, кегль и интерлиньяж её 339ms
+     ✓ xl: подпись — заглавными, начертания подсказки Field, кегль и интерлиньяж её 387ms
+     ✓ 2xl: подпись — заглавными, начертания подсказки Field, кегль и интерлиньяж её 355ms
+     ✓ oren: подпись — цвета подсказки Field 387ms
+     ✓ oren-dark: подпись — цвета подсказки Field 338ms
+     ✓ над текстом подписи и под ним свободно одинаково 359ms
+     ✓ разделитель — линия во всю ширину списка между секциями 371ms
+     ✓ без разделителя (по умолчанию) секции не слипаются 339ms
+     ✓ без разделителя секции стоят там же, где с ним: место линии пусто 693ms
+     ✓ maxRows (groupSeparators: false): в пределе — ровно первые опции вместе с подписями и местом между секциями 387ms
+     ✓ maxRows (groupSeparators: true): в пределе — ровно первые опции вместе с подписями и местом между секциями 403ms
+   ✓ Menu (11)
+     ✓ sm: подпись — заглавными, начертания подсказки Field, кегль и интерлиньяж её 370ms
+     ✓ normal: подпись — заглавными, начертания подсказки Field, кегль и интерлиньяж её 338ms
+     ✓ lg: подпись — заглавными, начертания подсказки Field, кегль и интерлиньяж её 355ms
+     ✓ xl: подпись — заглавными, начертания подсказки Field, кегль и интерлиньяж её 355ms
+     ✓ 2xl: подпись — заглавными, начертания подсказки Field, кегль и интерлиньяж её 322ms
+     ✓ oren: подпись — цвета подсказки Field 323ms
+     ✓ oren-dark: подпись — цвета подсказки Field 339ms
+     ✓ поля подписи над текстом и под ним — поровну 322ms
+     ✓ разделители между секциями — по умолчанию 355ms
+     ✓ groupSeparators=false: секции не слипаются 407ms
+     ✓ без разделителя секции стоят там же, где с ним: место линии с полями пусто 778ms
+ ✓ |layout (webkit)| browser/menu.spec.ts (47 tests | 1 skipped) 15289ms
+   ✓ фокус за подсветкой (4)
+     ✓ мышь подсвечивает пункт под собой: горит один, и стрелки идут от него 694ms
+     ✓ мышь над выключенным пунктом снимает подсветку — фокус панели 415ms
+   ✓ нажатие (4)
+     ✓ oren: нажатый пункт дальше от панели, чем подсвеченный; отпустили — флажок отмечен, меню открыто, снова подсветка 936ms
+     ✓ oren-dark: нажатый пункт дальше от панели, чем подсвеченный; отпустили — флажок отмечен, меню открыто, снова подсветка 954ms
+     ✓ oren, принудительные цвета: подсвеченный пункт под нажатием — системная подсветка 314ms
+     ✓ oren-dark, принудительные цвета: подсвеченный пункт под нажатием — системная подсветка 306ms
+   ✓ закрытие (5)
+     ✓ Escape закрывает и возвращает фокус на триггер 301ms
+     ✓ Shift+Tab закрывает и возвращает фокус на триггер 339ms
+   ✓ контекстное меню (4)
+     ✓ клик по области закрывает меню 339ms
+   ✓ подменю (8)
+     ✓ панель — у конца строки, верхом вровень с ней, без зазора; фокус остался на строке 355ms
+     ✓ у правого края окна панель встаёт у начала строки 306ms
+     ✓ в RTL панель — слева, у конца строки, а стрелка смотрит влево 307ms
+     ✓ путь наискосок к панели через соседний пункт подменю не закрывает 565ms
+     ✓ уход со строки прочь от панели закрывает подменю: подсветка — у пункта под указателем 761ms
+     ✓ вариант меню (2)
+       ✓ пункт подменю без своего варианта — цвета пункта меню, и на смену варианта меню 620ms
+       ✓ свой вариант подменю сильнее варианта меню: пункт подменю — цвета своего варианта 443ms
+   ✓ пункт с панелью (11)
+     ✓ наведение у конца строки открывает панель — фокус остался на строке, она горит 371ms
+     ✓ стрелка к концу строки ведёт фокус в панель, открытую наведением 341ms
+     ✓ наведение на другой пункт прочь от панели закрывает её: подсветка — у пункта под указателем 675ms
+     ✓ путь наискосок к панели через соседний пункт её не закрывает 469ms
+     ✓ уход со строки прочь от панели закрывает её: подсветка — у пункта под указателем 567ms
+     ✓ клик по дню календаря в панели меню не закрывает и выбирает день 588ms
+ ✓ |layout (webkit)| browser/slider.spec.ts (46 tests | 1 skipped) 23753ms
+   ✓ нажатие на дорожке (4)
+     ✓ вертикальный: ход растёт снизу вверх 354ms
+   ✓ протяжка (5)
+     ✓ взятая не за середину ручка доходит до края хода, когда указатель за ползунком 855ms
+     ✓ в подписи Label фокус остаётся на тянутой ручке 435ms
+     ✓ нажатие мышью после фокуса с клавиатуры — фокус у поля, кольца нет 383ms
+   ✓ щелчок к меткам (6)
+     ✓ magnet: в радиусе метки ручка встаёт на метку, за радиусом — нет 519ms
+     ✓ plateau: ручка стоит на метке, пока указатель на плато; край хода достижим 500ms
+     ✓ hold: отпустили сразу за меткой — ручка осталась на метке 415ms
+     ✓ hold: ручка стоит на пересечённой метке и догоняет стоящий указатель 504ms
+   ✓ подсказка (9)
+     ✓ auto (5)
+       ✓ курсор на ручке показывает, на самой подсказке — держит, ушёл — скрыта 613ms
+       ✓ поле в фокусе с клавиатуры — видна; фокус ушёл — скрыта 470ms
+       ✓ ручку тянут — видна 422ms
+   ✓ ореол (10)
+     ✓ oren (5)
+       ✓ variant="normal": под наведением — вуаль наведения кнопки, держат и тянут — вуаль нажатия 1453ms
+       ✓ variant="accent": под наведением — вуаль наведения кнопки, держат и тянут — вуаль нажатия 1487ms
+       ✓ variant="positive": под наведением — вуаль наведения кнопки, держат и тянут — вуаль нажатия 1388ms
+       ✓ variant="negative": под наведением — вуаль наведения кнопки, держат и тянут — вуаль нажатия 1357ms
+       ✓ variant="caution": под наведением — вуаль наведения кнопки, держат и тянут — вуаль нажатия 1370ms
+     ✓ oren-dark (5)
+       ✓ variant="normal": под наведением — вуаль наведения кнопки, держат и тянут — вуаль нажатия 1355ms
+       ✓ variant="accent": под наведением — вуаль наведения кнопки, держат и тянут — вуаль нажатия 1371ms
+       ✓ variant="positive": под наведением — вуаль наведения кнопки, держат и тянут — вуаль нажатия 1439ms
+       ✓ variant="negative": под наведением — вуаль наведения кнопки, держат и тянут — вуаль нажатия 1372ms
+       ✓ variant="caution": под наведением — вуаль наведения кнопки, держат и тянут — вуаль нажатия 1539ms
+   ✓ тень ручки (2)
+     ✓ oren (1)
+       ✓ у ручки Slider тень ручки Switch — в покое и под наведением, с ореолом 406ms
+     ✓ oren-dark (1)
+       ✓ у ручки Slider тень ручки Switch — в покое и под наведением, с ореолом 382ms
+ ✓ |layout (webkit)| browser/forced-colors.spec.ts (168 tests | 54 skipped) 12095ms
+   ✓ Select: строка под стрелками (4)
+     ✓ oren: в обычном режиме контура нет 323ms
+     ✓ oren-dark: в обычном режиме контура нет 307ms
+ ✓ |layout (webkit)| browser/webc-pages.spec.ts (44 tests) 20570ms
+   ✓ webc/alert: страница без ошибок и предупреждений, элементы ожили 715ms
+   ✓ webc/avatar: страница без ошибок и предупреждений, элементы ожили 354ms
+   ✓ webc/avatar-group: страница без ошибок и предупреждений, элементы ожили 381ms
+   ✓ webc/code-block: страница без ошибок и предупреждений, элементы ожили 574ms
+   ✓ webc/breadcrumbs: страница без ошибок и предупреждений, элементы ожили 371ms
+   ✓ webc/badge: страница без ошибок и предупреждений, элементы ожили 390ms
+   ✓ webc/toggle-button: страница без ошибок и предупреждений, элементы ожили 369ms
+   ✓ webc/toggle-group: страница без ошибок и предупреждений, элементы ожили 517ms
+   ✓ webc/input: страница без ошибок и предупреждений, элементы ожили 371ms
+   ✓ webc/number-input: страница без ошибок и предупреждений, элементы ожили 516ms
+   ✓ webc/textarea: страница без ошибок и предупреждений, элементы ожили 419ms
+   ✓ webc/check-box: страница без ошибок и предупреждений, элементы ожили 326ms
+   ✓ webc/switch: страница без ошибок и предупреждений, элементы ожили 403ms
+   ✓ webc/field: страница без ошибок и предупреждений, элементы ожили 403ms
+   ✓ webc/slider: страница без ошибок и предупреждений, элементы ожили 520ms
+   ✓ webc/rating: страница без ошибок и предупреждений, элементы ожили 532ms
+   ✓ webc/radio-group: страница без ошибок и предупреждений, элементы ожили 417ms
+   ✓ webc/select: страница без ошибок и предупреждений, элементы ожили 1097ms
+   ✓ webc/calendar: страница без ошибок и предупреждений, элементы ожили 967ms
+   ✓ webc/date-input: страница без ошибок и предупреждений, элементы ожили 426ms
+   ✓ webc/date-picker: страница без ошибок и предупреждений, элементы ожили 722ms
+   ✓ webc/popover: страница без ошибок и предупреждений, элементы ожили 304ms
+   ✓ webc/menu: страница без ошибок и предупреждений, элементы ожили 375ms
+   ✓ webc/dialog: страница без ошибок и предупреждений, элементы ожили 410ms
+   ✓ webc/drawer: страница без ошибок и предупреждений, элементы ожили 381ms
+   ✓ webc/toasts: страница без ошибок и предупреждений, элементы ожили 485ms
+   ✓ webc/scroller: страница без ошибок и предупреждений, элементы ожили 516ms
+   ✓ webc/list-box: страница без ошибок и предупреждений, элементы ожили 657ms
+   ✓ webc/pagination: страница без ошибок и предупреждений, элементы ожили 494ms
+   ✓ webc/table: страница без ошибок и предупреждений, элементы ожили 903ms
+   ✓ webc/tabs: страница без ошибок и предупреждений, элементы ожили 660ms
+   ✓ webc/tags: страница без ошибок и предупреждений, элементы ожили 581ms
+   ✓ webc/accordion: страница без ошибок и предупреждений, элементы ожили 615ms
+   ✓ webc/progress-linear: страница без ошибок и предупреждений, элементы ожили 323ms
+   ✓ webc/progress-spinner: страница без ошибок и предупреждений, элементы ожили 340ms
+   ✓ webc/skeleton: страница без ошибок и предупреждений, элементы ожили 306ms
+   ✓ webc/virtual: страница без ошибок и предупреждений, элементы ожили 576ms
+ ✓ |layout (webkit)| browser/dialog.spec.ts (37 tests | 2 skipped) 7516ms
+   ✓ появление и исчезание (4)
+     ✓ открытие — окно и подложка проявляются, закрытие — гаснут и только потом пропадают 440ms
+     ✓ система просит меньше движения — окно всё равно проявляется и гаснет 437ms
+   ✓ фокус (6)
+     ✓ Escape закрывает и возвращает фокус на кнопку, с которой открыли 325ms
+     ✓ крестик закрывает и возвращает фокус 403ms
+     ✓ нажатие по подложке закрывает, и фокус остаётся на кнопке, с которой открыли 387ms
+   ✓ non-modal page interaction (2)
+     ✓ preserves opening focus, permits Tab in both directions and keeps a corner fixed while scrolling 625ms
+     ✓ Tab leaves the last dialog control without closing the dialog 329ms
+ ✓ |layout (webkit)| browser/clear-zone.spec.ts (48 tests) 7461ms
+   ✓ очистка, ltr (18)
+     ✓ DatePicker, диапазон (3)
+       ✓ нажатие у края соседней кнопки достаётся ей, поле не очищается 313ms
+   ✓ кнопка панели, ltr (6)
+     ✓ DatePicker, одна дата (2)
+       ✓ зона — 24×24 по центру кнопки, углы ловят нажатие, на ввод заходит на свой выступ — и у открытой панели 346ms
+     ✓ DatePicker, диапазон (2)
+       ✓ зона — 24×24 по центру кнопки, углы ловят нажатие, на ввод заходит на свой выступ — и у открытой панели 318ms
+     ✓ Select, editable (2)
+       ✓ зона — 24×24 по центру кнопки, углы ловят нажатие, на ввод заходит на свой выступ — и у открытой панели 306ms
+   ✓ кнопка панели, rtl (6)
+     ✓ DatePicker, одна дата (2)
+       ✓ зона — 24×24 по центру кнопки, углы ловят нажатие, на ввод заходит на свой выступ — и у открытой панели 353ms
+     ✓ DatePicker, диапазон (2)
+       ✓ зона — 24×24 по центру кнопки, углы ловят нажатие, на ввод заходит на свой выступ — и у открытой панели 346ms
+     ✓ Select, editable (2)
+       ✓ зона — 24×24 по центру кнопки, углы ловят нажатие, на ввод заходит на свой выступ — и у открытой панели 330ms
+ ✓ |layout (webkit)| browser/date-picker.spec.ts (31 tests) 8792ms
+   ✓ открытие (4)
+     ✓ кнопка открывает панель под полем, фокус — на выбранном дне 521ms
+     ✓ Tab до кнопки и Enter — фокус на дне, стрелки ведут его, Enter выбирает и возвращает фокус в поле 435ms
+   ✓ закрытие (3)
+     ✓ Enter выбирает день и закрывает панель, фокус — туда, откуда открыли 354ms
+     ✓ нажатие в соседнее поле закрывает панель и фокусирует поле с первого раза 429ms
+   ✓ появление и исчезание (4)
+     ✓ открытие — панель проявляется, закрытие — гаснет на месте и до конца нажатий не ловит 344ms
+     ✓ второй день диапазона закрывает панель — концы встают сразу, без перехода заливки 517ms
+     ✓ одна дата закрывает панель — выбранный и прежний дни встают сразу, без перехода заливки 484ms
+     ✓ панель остаётся открытой (`closeOnSelect: false`) — концы заливаются переходом, как у Calendar 420ms
+   ✓ выбор с подтверждением (3)
+     ✓ Enter на дне — черновик; Tab доходит до «Отмена» и «OK», «OK» — значение и фокус назад 417ms
+     ✓ «Отмена» — значение прежнее, фокус туда, откуда открыли; снова открытая панель — на прежнем дне 471ms
+     ✓ Escape — тоже отмена: черновик сброшен 339ms
+   ✓ диапазон (3)
+     ✓ панель открыта до второго дня; первый Escape снимает якорь, второй закрывает 340ms
+     ✓ второй день пишет пару в поля и закрывает панель, фокус — на первой части поля начала 328ms
+     ✓ коробка не меняет ширину, пока даты набирают 371ms
+   ✓ кнопка очистки (11)
+     ✓ диапазон: нажатие очищает оба конца, и набранный не до конца; фокус на кнопке 323ms
+   ✓ ошибка (1)
+     ✓ конец раньше начала — коробка диапазона в рамке ошибки 774ms
+ ✓ |layout (webkit)| browser/popover-swipe.spec.ts (20 tests) 8334ms
+   ✓ полоса (6)
+     ✓ без жеста полосы нет и сдвига у панели нет: translate не делает её контейнером 364ms
+     ✓ нажатие на полосу фокус не уводит и панель не закрывает 355ms
+   ✓ жест (10)
+     ✓ под триггером смахнули вниз — закрыта, v-model видит, фокус — на триггер 564ms
+     ✓ над триггером — вверх 485ms
+     ✓ к триггеру — не закрытие: панель возвращается на место 371ms
+     ✓ внутри контейнера — к своему краю (6)
+       ✓ top (ltr): панель у края top, полоса — у противоположного, от края не смахнуть 582ms
+       ✓ bottom (ltr): панель у края bottom, полоса — у противоположного, от края не смахнуть 537ms
+       ✓ start (ltr): панель у края left, полоса — у противоположного, от края не смахнуть 549ms
+       ✓ end (ltr): панель у края right, полоса — у противоположного, от края не смахнуть 519ms
+       ✓ start (rtl): панель у края right, полоса — у противоположного, от края не смахнуть 533ms
+       ✓ end (rtl): панель у края left, полоса — у противоположного, от края не смахнуть 533ms
+     ✓ за всю панель — тянут за свободное место, с кнопки — нет 499ms
+   ✓ уход смахнутой панели (4)
+     ✓ у триггера — дальше от него, гаснет на ходу 373ms
+     ✓ в контейнере у края top — дальше к краю 336ms
+     ✓ в контейнере у края start — дальше к краю 363ms
+ ✓ |layout (webkit)| browser/select-tags.spec.ts (57 tests) 8330ms
+   ✓ поле с тегами (4)
+     ✓ ввод остаётся в строке тегов, а не уезжает под них 817ms
+     ✓ поле растёт по строкам тегов, стрелка — на первой строке 1274ms
+     ✓ ввод сжимается по мере роста числа тегов 699ms
+     ✓ ввод не сжимается ниже min-width 1361ms
+   ✓ tagsOverflow: scroll — подсказка у края вместо полосы (15)
+     ✓ крестик под фокусом не остаётся под подсказкой 758ms
+ ✓ |layout (webkit)| browser/avatar.spec.ts (60 tests) 8254ms
+   ✓ Avatar runtime · vue (10)
+     ✓ colors fallback variants and restores neutral in oren 381ms
+   ✓ Avatar runtime · react (10)
+     ✓ colors fallback variants and restores neutral in oren 544ms
+   ✓ Avatar runtime · svelte (10)
+     ✓ colors fallback variants and restores neutral in oren 507ms
+   ✓ Avatar runtime · solid (10)
+     ✓ colors fallback variants and restores neutral in oren 402ms
+   ✓ Avatar runtime · webc (10)
+     ✓ colors fallback variants and restores neutral in oren 440ms
+   ✓ Avatar runtime · angular (10)
+     ✓ colors fallback variants and restores neutral in oren 736ms
+ ✓ |layout (webkit)| browser/anchor.spec.ts (20 tests) 8950ms
+   ✓ flip (5)
+     ✓ открытая панель держит сторону, пока окно едет через границу «снизу влезает» 5750ms
+   ✓ слежение по открытости (1)
+     ✓ гаснущая панель идёт за полем до конца, закрытая место не считает 646ms
+ ✓ |layout (webkit)| browser/anchored-swipe.spec.ts (25 tests) 10497ms
+   ✓ Select (10)
+     ✓ полоса (5)
+       ✓ без жеста полосы нет и сдвига у панели нет: translate не делает её контейнером 412ms
+       ✓ над полем — у нижнего края панели 309ms
+       ✓ содержимое полоса не накрывает — ни под полем, ни над ним 532ms
+     ✓ жест (3)
+       ✓ под полем смахнули вниз — закрыта, v-model видит закрытие 511ms
+       ✓ над полем — вверх 494ms
+       ✓ к полю — не закрытие: панель возвращается на место 323ms
+     ✓ уход смахнутой панели — от места, где отпустили, дальше от поля, гаснет на ходу 355ms
+     ✓ без движения — гаснет на месте и пропадает, когда догасла 307ms
+   ✓ DatePicker (10)
+     ✓ полоса (5)
+       ✓ без жеста полосы нет и сдвига у панели нет: translate не делает её контейнером 420ms
+       ✓ под полем — у верхнего края панели, зона захвата не меньше 24px, во всю ширину 324ms
+       ✓ над полем — у нижнего края панели 323ms
+       ✓ содержимое полоса не накрывает — ни под полем, ни над ним 597ms
+       ✓ пока жест включён, касание по вертикали — жесту: touch-action на панели 306ms
+     ✓ жест (3)
+       ✓ под полем смахнули вниз — закрыта, v-model видит закрытие 597ms
+       ✓ над полем — вверх 646ms
+       ✓ к полю — не закрытие: панель возвращается на место 372ms
+     ✓ уход смахнутой панели — от места, где отпустили, дальше от поля, гаснет на ходу 409ms
+     ✓ без движения — гаснет на месте и пропадает, когда догасла 319ms
+   ✓ Select (2)
+     ✓ нажатие на полосу фокус с поля не уводит и панель не закрывает 403ms
+     ✓ смахнутая панель оставляет фокус на поле 361ms
+   ✓ DatePicker (3)
+     ✓ после закрытия жестом фокус возвращается в поле, как после Escape 640ms
+     ✓ за всю панель — тянут за место без контролов: шапку дней недели 602ms
+     ✓ прокручивается содержимое, а не панель, и из него жест не начинается 398ms
+ ✓ |layout (webkit)| browser/select-virtual.spec.ts (13 tests) 10897ms
+   ✓ окно списка панели (5)
+     ✓ открыта — в документе только окно, а список прокручивается во всю высоту опций 644ms
+     ✓ нарисованным — размер набора и место в нём 939ms
+     ✓ закрыта после прокрутки — окно стоит; открыта снова — опции на месте, без распорок 1357ms
+     ✓ `maxRows` — высота списка по числу строк, а прокручивается он во всю высоту опций 661ms
+   ✓ открытие кликом (1)
+     ✓ открыта кликом и открыта снова — выбранная опция видна 1624ms
+   ✓ клавиатура (4)
+     ✓ Enter открывает панель на выбранной опции в середине списка — она видна 630ms
+     ✓ End и буква уводят подсветку к ненарисованной опции — ссылка на её узел в документе 855ms
+     ✓ Enter выбирает подсвеченную опцию вне прежнего окна 937ms
+     ✓ колесо уводит прокрутку от подсвеченной опции — она остаётся в документе, ссылка жива 758ms
+   ✓ отбор в `editable` (1)
+     ✓ выборка сменилась — окно к подсвеченной, места в наборе — среди отобранных 986ms
+   ✓ выбор вне окна (2)
+     ✓ multiple — тег выбранной в поле, крестик тега снимает выбор 1101ms
+ ✓ |layout (webkit)| browser/motion-mode.spec.ts (124 tests) 12739ms
+   ✓ система не просит (31)
+     ✓ Drawer: закрытая панель исчезает, прокрутка страницы возвращается 792ms
+   ✓ система просит меньше движения (31)
+     ✓ Drawer: закрытая панель исчезает, прокрутка страницы возвращается 790ms
+   ✓ система просит, приложение — full (31)
+     ✓ Drawer: закрытая панель исчезает, прокрутка страницы возвращается 777ms
+   ✓ система не просит, приложение — reduce (31)
+     ✓ Drawer: закрытая панель исчезает, прокрутка страницы возвращается 774ms
+ ✓ |layout (webkit)| browser/manual-a11y.spec.ts (9 tests) 6784ms
+   ✓ manual accessibility worksheet (2)
+     ✓ keeps responses when switching real fixtures, resetting and restoring the page 1286ms
+     ✓ enters the fixture with Tab and returns to its trigger after Escape 550ms
+   ✓ screen-reader activation and live announcements (7)
+     ✓ focuses Select — выбор одного значения when activation has no pointerdown or keydown 403ms
+     ✓ focuses Select — поиск и несколько значений when activation has no pointerdown or keydown 403ms
+     ✓ enters the first menu item and submenu item on click-only activation 319ms
+     ✓ describes both selected values and updates the description after tag removal 601ms
+     ✓ exposes true/false menu states and offers independent HTML and ARIA reference controls 518ms
+     ✓ announces only message text while the cards remain available for navigation 2410ms
+ ✓ |layout (webkit)| browser/label.spec.ts (48 tests) 13804ms
+   ✓ CheckBox в подписи (10)
+     ✓ клик по тексту переключает контрол один раз 415ms
+     ✓ сбоку (start) контрол — по центру первой строки 516ms
+     ✓ сбоку (end) контрол — по центру первой строки 519ms
+   ✓ Switch в подписи (10)
+     ✓ сбоку (start) контрол — по центру первой строки 533ms
+     ✓ сбоку (end) контрол — по центру первой строки 549ms
+   ✓ RadioGroup.Item в подписи (10)
+     ✓ сбоку (start) контрол — по центру первой строки 485ms
+     ✓ сбоку (end) контрол — по центру первой строки 500ms
+   ✓ CheckBox в подписи: наведение (2)
+     ✓ на текст красит контрол так же, как на сам контрол 760ms
+   ✓ CheckBox filled в подписи: наведение (2)
+     ✓ на текст красит контрол так же, как на сам контрол 791ms
+   ✓ CheckBox filled отмеченный в подписи: наведение (2)
+     ✓ на текст красит контрол так же, как на сам контрол 759ms
+   ✓ Switch в подписи: наведение (2)
+     ✓ на текст красит контрол так же, как на сам контрол 939ms
+   ✓ RadioGroup.Item в подписи: наведение (2)
+     ✓ на текст красит контрол так же, как на сам контрол 725ms
+   ✓ CheckBox filled только для чтения (2)
+     ✓ наведение не красит его ни с контрола, ни с текста подписи 310ms
+   ✓ Switch только для чтения (2)
+     ✓ наведение не красит его ни с контрола, ни с текста подписи 419ms
+ ✓ |layout (webkit)| browser/tags-preview.spec.ts (4 tests) 6712ms
+   ✓ строка overflow на странице компонента (4)
+     ✓ окно 900 px (2)
+       ✓ scroll: ряд прокручивается внутри ячейки, а не выходит за неё 2034ms
+       ✓ wrap: ряд переносится строками и тоже остаётся в ячейке 1588ms
+     ✓ окно 375 px (2)
+       ✓ scroll: ряд прокручивается внутри ячейки, а не выходит за неё 1574ms
+       ✓ wrap: ряд переносится строками и тоже остаётся в ячейке 1511ms
+ ✓ |layout (webkit)| browser/select.spec.ts (37 tests | 4 skipped) 6132ms
+   ✓ появление и исчезание (1)
+     ✓ открытие — панель проявляется, закрытие — гаснет на месте и до конца нажатий не ловит 320ms
+   ✓ отбор: гаснущая панель держит отобранное (2)
+     ✓ выбор кликом — пока панель гаснет, в ней одна опция и высота прежняя, догасла — отбор снят 684ms
+     ✓ Tab с поля — пока панель гаснет, в ней одна опция и высота прежняя, догасла — отбор снят 613ms
+   ✓ нажатие по тегу (4)
+     ✓ select-only: фокус — в поле, и ↓ ходит по опциям, а страница стоит 338ms
+ ✓ |layout (webkit)| browser/code-block.spec.ts (42 tests) 7116ms
+   ✓ CodeBlock · vue (7)
+     ✓ keeps default and wide copy content outside long code at every scroll position 1036ms
+   ✓ CodeBlock · react (7)
+     ✓ keeps default and wide copy content outside long code at every scroll position 842ms
+   ✓ CodeBlock · svelte (7)
+     ✓ keeps default and wide copy content outside long code at every scroll position 545ms
+   ✓ CodeBlock · solid (7)
+     ✓ keeps default and wide copy content outside long code at every scroll position 370ms
+   ✓ CodeBlock · webc (7)
+     ✓ keeps default and wide copy content outside long code at every scroll position 419ms
+   ✓ CodeBlock · angular (7)
+     ✓ keeps default and wide copy content outside long code at every scroll position 769ms
+ ✓ |layout (webkit)| browser/date-input.spec.ts (45 tests | 6 skipped) 5792ms
+   ✓ ширина поля (10)
+     ✓ ru-RU: набор времени до секунды с пустого поля корень не меняет 307ms
+ ✓ |layout (webkit)| browser/button-view.spec.ts (29 tests) 6436ms
+   ✓ filled: нейтральная заливка отходит от своей поверхности (13)
+     ✓ oren, страница: наведение уводит дальше заливки 355ms
+     ✓ oren, поверхность контрола: наведение уводит дальше заливки 371ms
+     ✓ oren-dark, страница: наведение уводит дальше заливки 419ms
+     ✓ oren-dark, поверхность контрола: наведение уводит дальше заливки 355ms
+   ✓ outlined: рамка видна на своей поверхности (16)
+     ✓ oren, страница: наведение уводит рамку дальше 339ms
+     ✓ oren, поверхность контрола: наведение уводит рамку дальше 355ms
+     ✓ oren-dark, страница: наведение уводит рамку дальше 355ms
+     ✓ oren-dark, поверхность контрола: наведение уводит рамку дальше 388ms
+     ✓ oren, страница: наведение красит фон от подложки 388ms
+     ✓ oren, поверхность контрола: наведение красит фон от подложки 404ms
+     ✓ oren-dark, страница: наведение красит фон от подложки 339ms
+     ✓ oren-dark, поверхность контрола: наведение красит фон от подложки 389ms
+ ✓ |layout (webkit)| browser/badge.spec.ts (19 tests) 6490ms
+   ✓ Badge · vue (3)
+     ✓ places the overlay at logical end in ltr and preserves the accessible button 316ms
+   ✓ Badge · react (3)
+     ✓ places the overlay at logical end in ltr and preserves the accessible button 780ms
+   ✓ Badge · svelte (3)
+     ✓ places the overlay at logical end in ltr and preserves the accessible button 548ms
+   ✓ Badge · solid (3)
+     ✓ places the overlay at logical end in ltr and preserves the accessible button 532ms
+   ✓ Badge · webc (3)
+     ✓ places the overlay at logical end in ltr and preserves the accessible button 749ms
+   ✓ Badge · angular (3)
+     ✓ places the overlay at logical end in ltr and preserves the accessible button 1026ms
+   ✓ shows every size, view and semantic color in both schemes 358ms
+ ✓ |layout (webkit)| browser/webc-collections.spec.ts (46 tests) 6231ms
+   ✓ Menu · панели меню и подменю — как у Vue (2)
+     ✓ открытая панель меню и её части стоят у триггера так же, как у Vue 697ms
+     ✓ открытая панель подменю и её пункты стоят у его строки так же, как у Vue 1048ms
+   ✓ Select · открытая панель — как у Vue (1)
+     ✓ открытая панель и её опции стоят у поля так же, как у Vue 704ms
+ ✓ |layout (webkit)| browser/breadcrumbs.spec.ts (13 tests) 6371ms
+   ✓ Breadcrumbs native navigation (13)
+     ✓ oren: variants color links and the transparent overflow control 1321ms
+     ✓ oren-dark: variants color links and the transparent overflow control 1242ms
+     ✓ keeps native primary activation on visible and hidden links 705ms
+     ✓ keeps native middle activation on visible and hidden links 571ms
+     ✓ keeps native modified activation on visible and hidden links 760ms
+     ✓ keeps native enter activation on visible and hidden links 551ms
+     ✓ honors preventDefault from slot content and keeps the native link shell 565ms
+ ✓ |layout (webkit)| browser/switch-thumb.spec.ts (24 tests) 5224ms
+ ✓ |layout (webkit)| browser/field-preview.spec.ts (2 tests) 6307ms
+   ✓ строка position на странице компонента (2)
+     ✓ окно 900 px (1)
+       ✓ сторона подписи следует за выбором в обеих колонках 3386ms
+     ✓ окно 375 px (1)
+       ✓ сторона подписи следует за выбором в обеих колонках 2917ms
+ ✓ |layout (webkit)| browser/scroller.spec.ts (30 tests) 6067ms
+   ✓ узкая лента: содержимое не помещается (4)
+     ✓ кнопка «вперёд» двигает ленту на видимую ширину 355ms
+   ✓ кнопка, выключившаяся у края под фокусом (2)
+     ✓ ltr: Enter по «вперёд» до края — фокус на «назад», а не на странице 549ms
+     ✓ rtl: Enter по «вперёд» до края — фокус на «назад», а не на странице 532ms
+   ✓ элемент под фокусом не остаётся под подсказкой (5)
+     ✓ ltr: каждая кнопка под фокусом — в чистой части, Tab вперёд и обратно 878ms
+     ✓ rtl: каждая кнопка под фокусом — в чистой части, Tab вперёд и обратно 774ms
+     ✓ ltr: после «вперёд» элемент у начала ленты — в чистой части 307ms
+     ✓ rtl: после «вперёд» элемент у начала ленты — в чистой части 323ms
+ ✓ |layout (webkit)| browser/webc-button.spec.ts (10 tests) 6697ms
+   ✓ <button is="so-button"> в форме · type (2)
+     ✓ type="button" не отправляет, type="reset" сбрасывает 355ms
+   ✓ <button is="so-button"> в форме · submitter, name и value (3)
+     ✓ formnovalidate отправляет форму с пустым обязательным полем 5197ms
+ ✓ |layout (webkit)| browser/separator.spec.ts (18 tests) 4147ms
+   ✓ Separator · vue (3)
+     ✓ draws each axis in either semantic mode on a narrow RTL or LTR parent 398ms
+   ✓ Separator · react (3)
+     ✓ draws each axis in either semantic mode on a narrow RTL or LTR parent 676ms
+   ✓ Separator · svelte (3)
+     ✓ draws each axis in either semantic mode on a narrow RTL or LTR parent 569ms
+   ✓ Separator · solid (3)
+     ✓ draws each axis in either semantic mode on a narrow RTL or LTR parent 403ms
+   ✓ Separator · webc (3)
+     ✓ draws each axis in either semantic mode on a narrow RTL or LTR parent 418ms
+   ✓ Separator · angular (3)
+     ✓ draws each axis in either semantic mode on a narrow RTL or LTR parent 588ms
+ ✓ |layout (webkit)| browser/scroll-focus-react.spec.ts (14 tests) 4504ms
+   ✓ react tabs scroll focus (6)
+     ✓ ltr: Tab and arrows scroll disabled content; Shift+Tab returns 403ms
+     ✓ available arbitrary slot content replaces the fallback and tracks hidden/disabled 516ms
+   ✓ react table scroll focus (6)
+     ✓ ltr: Tab and arrows scroll disabled content; Shift+Tab returns 324ms
+     ✓ available arbitrary slot content replaces the fallback and tracks hidden/disabled 500ms
+ ✓ |layout (webkit)| browser/scroll-focus-angular.spec.ts (14 tests) 4659ms
+   ✓ angular tabs scroll focus (6)
+     ✓ ltr: Tab and arrows scroll disabled content; Shift+Tab returns 400ms
+     ✓ available arbitrary slot content replaces the fallback and tracks hidden/disabled 500ms
+   ✓ angular table scroll focus (6)
+     ✓ ltr: Tab and arrows scroll disabled content; Shift+Tab returns 305ms
+     ✓ rtl: Tab and arrows scroll disabled content; Shift+Tab returns 387ms
+     ✓ available arbitrary slot content replaces the fallback and tracks hidden/disabled 500ms
+ ✓ |layout (webkit)| browser/scroll-focus-vue.spec.ts (14 tests) 5236ms
+   ✓ vue tabs scroll focus (6)
+     ✓ ltr: Tab and arrows scroll disabled content; Shift+Tab returns 519ms
+     ✓ available arbitrary slot content replaces the fallback and tracks hidden/disabled 500ms
+   ✓ vue table scroll focus (6)
+     ✓ ltr: Tab and arrows scroll disabled content; Shift+Tab returns 322ms
+     ✓ available arbitrary slot content replaces the fallback and tracks hidden/disabled 484ms
+ ✓ |layout (webkit)| browser/rating.spec.ts (23 tests | 1 skipped) 4439ms
+   ✓ нажатие ставит оценку (6)
+     ✓ в любом месте звезды — её целиком 305ms
+   ✓ предпросмотр наведением (3)
+     ✓ звёзды показывают оценку под указателем, ушёл указатель — значение 347ms
+     ✓ звезда под указателем поднята; у оценки только для показа — нет 330ms
+ ✓ |layout (webkit)| browser/scroll-focus-svelte.spec.ts (14 tests) 5145ms
+   ✓ svelte tabs scroll focus (6)
+     ✓ ltr: Tab and arrows scroll disabled content; Shift+Tab returns 385ms
+     ✓ rtl: Tab and arrows scroll disabled content; Shift+Tab returns 356ms
+     ✓ available arbitrary slot content replaces the fallback and tracks hidden/disabled 472ms
+   ✓ svelte table scroll focus (6)
+     ✓ ltr: Tab and arrows scroll disabled content; Shift+Tab returns 326ms
+     ✓ rtl: Tab and arrows scroll disabled content; Shift+Tab returns 306ms
+     ✓ available arbitrary slot content replaces the fallback and tracks hidden/disabled 501ms
+ ✓ |layout (webkit)| browser/popover.spec.ts (13 tests) 3423ms
+   ✓ открытие (4)
+     ✓ клик по триггеру открывает панель и уводит фокус на её первую остановку 357ms
+     ✓ клик по открытому триггеру закрывает панель 398ms
+   ✓ Tab: панель стоит в порядке сразу за триггером (4)
+     ✓ Tab по панели и из неё — к тому, что за поповером, панель закрывается 418ms
+   ✓ закрытие и возврат фокуса (3)
+     ✓ крестик закрывает и возвращает фокус на триггер 355ms
+     ✓ клик мимо закрывает, фокус остаётся там, куда нажали 339ms
+ ✓ |layout (webkit)| browser/input.spec.ts (18 tests) 3936ms
+   ✓ нейтраль: рамка под курсором (2)
+     ✓ у включённого поля меняется 396ms
+   ✓ accent: рамка под курсором (2)
+     ✓ у включённого поля меняется 354ms
+   ✓ positive: рамка под курсором (2)
+     ✓ у включённого поля меняется 341ms
+   ✓ negative: рамка под курсором (2)
+     ✓ у включённого поля меняется 306ms
+   ✓ caution: рамка под курсором (2)
+     ✓ у включённого поля меняется 307ms
+ ✓ |layout (webkit)| browser/scroll-focus-webc.spec.ts (14 tests) 4830ms
+   ✓ webc tabs scroll focus (6)
+     ✓ ltr: Tab and arrows scroll disabled content; Shift+Tab returns 365ms
+     ✓ rtl: Tab and arrows scroll disabled content; Shift+Tab returns 338ms
+     ✓ available arbitrary slot content replaces the fallback and tracks hidden/disabled 500ms
+   ✓ webc table scroll focus (6)
+     ✓ available arbitrary slot content replaces the fallback and tracks hidden/disabled 500ms
+ ✓ |layout (webkit)| browser/signal.spec.ts (12 tests) 4713ms
+   ✓ oren: сигнал одного цвета (6)
+     ✓ эталоны вариантов разного цвета 1132ms
+     ✓ accent: цвета включённой дорожки Switch 342ms
+     ✓ positive: цвета включённой дорожки Switch 327ms
+     ✓ negative: цвета включённой дорожки Switch 326ms
+     ✓ caution: цвета включённой дорожки Switch 337ms
+   ✓ oren-dark: сигнал одного цвета (6)
+     ✓ эталоны вариантов разного цвета 511ms
+     ✓ accent: цвета включённой дорожки Switch 347ms
+     ✓ positive: цвета включённой дорожки Switch 333ms
+     ✓ negative: цвета включённой дорожки Switch 329ms
+     ✓ caution: цвета включённой дорожки Switch 328ms
+ ✓ |layout (webkit)| browser/list-box-virtual.spec.ts (9 tests) 4505ms
+   ✓ окно (3)
+     ✓ прокрутка: у верха окна — элемент своего места, и окно его не сдвигает 321ms
+   ✓ клавиатура (3)
+     ✓ ↓ за окно — подсвеченный элемент в документе, прокручен к глазу, на его строку ссылка 828ms
+   ✓ выбранный при монтировании (2)
+     ✓ без окна — виден в списке 1455ms
+   ✓ колесо уводит прокрутку от строки с фокусом и обратно — фокус на месте 647ms
+ ✓ |layout (webkit)| browser/theme-base-fields.spec.ts (69 tests) 4820ms
+ ✓ |layout (webkit)| browser/webc-dates.spec.ts (11 tests) 3162ms
+   ✓ Calendar — как у Vue (3)
+     ✓ открытая панель выбора месяца и года — карточка у верхнего края календаря 614ms
+   ✓ DatePicker — как у Vue (3)
+     ✓ одна дата: открытая панель с календарём встаёт у поля 518ms
+     ✓ подвал подтверждения — «Отмена» и «OK» под сетками 533ms
+ ✓ |layout (webkit)| browser/switch-view.spec.ts (21 tests) 4951ms
+   ✓ выключенная дорожка отходит от своей поверхности (13)
+     ✓ oren, страница: наведение уводит дорожку дальше 406ms
+     ✓ oren, поверхность контрола: наведение уводит дорожку дальше 469ms
+     ✓ oren-dark, страница: наведение уводит дорожку дальше 436ms
+     ✓ oren-dark, поверхность контрола: наведение уводит дорожку дальше 404ms
+     ✓ на обеих подложках и в обеих схемах отходит одинаково 516ms
+   ✓ цвет дорожки — из семейства переключателя (4)
+     ✓ oren, страница: дорожка варианта — не нейтраль 324ms
+ ✓ |layout (webkit)| browser/check-box-view.spec.ts (34 tests) 3515ms
+ ✓ |layout (webkit)| browser/webc-frame.spec.ts (11 tests) 3109ms
+   ✓ Popover и Tooltip · панель у триггера (2)
+     ✓ открытая панель поповера и её части стоят у триггера так же, как у Vue 420ms
+   ✓ Dialog, Drawer и Toasts · открытые стоят, как у Vue (3)
+     ✓ открытое окно с подложкой и частями стоит так же, как у Vue 613ms
+     ✓ открытая выезжающая панель с подложкой и частями стоит так же, как у Vue 952ms
+     ✓ регион с тостом стоит у края окна так же, как у Vue 677ms
+ ✓ |layout (webkit)| browser/number-input.spec.ts (21 tests) 3400ms
+   ✓ кнопки шага (2)
+     ✓ удержание повторяет шаг до границы: data-pressed, пока держат, фокус — во вводе 789ms
+     ✓ нажатие — один шаг, отпустили — повтора нет 713ms
+   ✓ в форме (1)
+     ✓ Enter отправляет форму с числом, а не с текстом поля 338ms
+ ✓ |layout (webkit)| browser/place-font.spec.ts (24 tests) 2677ms
+ ✓ |layout (webkit)| browser/progress-linear.spec.ts (29 tests) 3421ms
+   ✓ доля (4)
+     ✓ от бега к доле — заливка растёт от нуля 355ms
+ ✓ |layout (webkit)| browser/pagination.spec.ts (21 tests) 2595ms
+   ✓ отметка текущей без перехода (4)
+     ✓ Enter на соседней под фокусом: она сразу встаёт в среднюю клетку 323ms
+ ✓ |layout (webkit)| browser/keyboard-activation.spec.ts (30 tests) 2681ms
+ ✓ |layout (webkit)| browser/overlay-text.spec.ts (6 tests) 2008ms
+   ✓ DatePicker: текст панели (2)
+     ✓ oren: панель отходит текстом от фона, как Popover 508ms
+     ✓ oren-dark: панель отходит текстом от фона, как Popover 305ms
+   ✓ Select: текст в панели помимо опций (2)
+     ✓ oren: пустой список отходит от панели, как текст Popover 305ms
+   ✓ Menu.PopoverItem: текст панели пункта (2)
+     ✓ oren-dark: содержимое отходит от панели, как текст Popover 305ms
+ ✓ |layout (webkit)| browser/button-indicator.spec.ts (10 tests) 1993ms
+   ✓ oren: индикатор без варианта красится от кнопки (2)
+     ✓ ProgressSpinner: дуга видна не хуже текста, дорожка — тише дуги 313ms
+   ✓ заданный вариант индикатора — выбор потребителя (4)
+     ✓ ProgressSpinner: в кнопке тех же цветов, что вне её 355ms
+     ✓ ProgressLinear: в кнопке тех же цветов, что вне её 355ms
+ ✓ |layout (webkit)| browser/progress-spinner.spec.ts (21 tests) 2137ms
+   ✓ доля (5)
+     ✓ от бега к доле — дуга растёт от нуля 354ms
+ ✓ |layout (webkit)| browser/list-scroll.spec.ts (7 tests) 3108ms
+   ✓ значение — двигается только сам список (3)
+     ✓ ListBox: клик по срезанной строке — она целиком у края, а не в середине 475ms
+     ✓ Select: значение снаружи при открытой панели — список к нему, страница стоит 516ms
+   ✓ скрытый список — при показе на первом выбранном (3)
+     ✓ Select: открыт кликом — выбранная в середине, и после повторного открытия тоже 886ms
+     ✓ Select: Enter при maxRows 3 открывает на выбранной — она видна целиком 388ms
+   ✓ подсветка — ближайшим краем (1)
+     ✓ меню, открытое ↑, показывает последний пункт 452ms
+ ✓ |layout (webkit)| browser/field.spec.ts (26 tests) 2626ms
+ ✓ |layout (webkit)| browser/alert-dialog.spec.ts (7 tests) 2761ms
+   ✓ AlertDialog browser (7)
+     ✓ oren keeps destructive text readable at rest, on hover and while pressed 768ms
+     ✓ oren-dark keeps destructive text readable at rest, on hover and while pressed 712ms
+     ✓ a keyboard activation confirms exactly once and reopening restores safe focus 525ms
+ ✓ |layout (webkit)| browser/button-layout.spec.ts (24 tests) 1692ms
+ ✓ |layout (webkit)| browser/webc-fields.spec.ts (37 tests) 3096ms
+ ✓ |layout (webkit)| browser/list-height.spec.ts (4 tests) 801ms
+ ✓ |layout (webkit)| browser/axe-gate.spec.ts (6 tests) 493ms
+ ✓ |layout (webkit)| browser/button-tones.spec.ts (18 tests) 640ms
+ ✓ |layout (webkit)| browser/webc-controls.spec.ts (10 tests) 1454ms
+ ✓ |layout (webkit)| browser/icon-size.spec.ts (11 tests) 351ms
+ ✓ |layout (webkit)| browser/accordion.spec.ts (4 tests) 319ms
+ ✓ |layout (webkit)| browser/webc-checkable.spec.ts (6 tests) 211ms
+ ✓ |layout (webkit)| browser/check-box-mark.spec.ts (5 tests) 193ms
+ ✓ |layout (webkit)| browser/app-sidebar.spec.ts (2 tests) 431ms
+ ✓ |layout (webkit)| browser/icon-color.spec.ts (28 tests) 1512ms
+ ✓ |layout (webkit)| browser/scroll-focus-solid.spec.ts (14 tests) 4250ms
+   ✓ solid tabs scroll focus (6)
+     ✓ ltr: Tab and arrows scroll disabled content; Shift+Tab returns 441ms
+     ✓ available arbitrary slot content replaces the fallback and tracks hidden/disabled 500ms
+   ✓ solid table scroll focus (6)
+     ✓ ltr: Tab and arrows scroll disabled content; Shift+Tab returns 338ms
+     ✓ available arbitrary slot content replaces the fallback and tracks hidden/disabled 484ms
+ ✓ |layout (webkit)| browser/tabs-contained.spec.ts (14 tests) 4156ms
+   ✓ переезд к новому табу (6)
+     ✓ горизонтальные, LTR: карточка едет переходом и встаёт на новый таб, признак снят 489ms
+     ✓ горизонтальные, RTL: карточка едет переходом и встаёт на новый таб, признак снят 403ms
+     ✓ вертикальные: карточка едет переходом и встаёт на новый таб, признак снят 387ms
+     ✓ вертикальные в RTL: карточка едет переходом и встаёт на новый таб, признак снят 403ms
+     ✓ стрелка — карточка переезжает к табу, ставшему активным 325ms
+     ✓ закрыли активный — карточка встаёт на соседа, занявшего его место 371ms
+   ✓ без переезда — место сразу (5)
+     ✓ ресайз после переезда — без перехода 436ms
+ ✓ |layout (webkit)| browser/theme-base-dates.spec.ts (15 tests) 1659ms
+ ✓ |layout (webkit)| browser/theme-base-layers.spec.ts (15 tests) 1799ms
+ ✓ |layout (webkit)| browser/transitions.spec.ts (9 tests) 4306ms
+   ✓ whileLeaving (4)
+     ✓ ответ действия позже перехода: мгновения ухода застаны, узел в них закрыт и на экране 401ms
+     ✓ закрытие без перехода — ошибка после действия, а не таймаут 1037ms
+     ✓ ошибку проверки помощник бросает, а переходы узла доиграны 403ms
+   ✓ pausedPseudoTransition (2)
+     ✓ ответ действия позже перехода: переход псевдоэлемента пойман на паузе недоигранным 668ms
+   ✓ pausedTransitions (3)
+     ✓ ответ действия позже перехода: переходы узла пойманы на паузе с начала, узел на экране 338ms
+     ✓ следующий кадр позже конца перехода: переходы узла пойманы на паузе с начала 323ms
+     ✓ действие переходов узла не завело — ошибка после действия, а не таймаут 1036ms
+ ✓ |layout (webkit)| browser/theme-base-table.spec.ts (10 tests) 2397ms
+   ✓ закреплённая шапка (6)
+     ✓ строки под шапкой не просвечивают (2)
+       ✓ снимок шапки над ушедшими строками — тот же, что без прокрутки 613ms
+       ✓ скруглённые заголовки и линия темы под шапкой: у углов строки не проступают, линия видна 489ms
+     ✓ фокус ниже шапки (2)
+       ✓ подписи в строку: ↑ на ячейку под шапкой 352ms
+ ✓ |layout (webkit)| browser/theme-base-scales.spec.ts (19 tests) 2417ms
+   ✓ Rating — нажатие на звезду (2)
+     ✓ ltr: N-я звезда ставит N 388ms
+     ✓ rtl: N-я звезда ставит N 338ms
+ ✓ |layout (webkit)| browser/tabs-vertical-side.spec.ts (28 tests) 2433ms
+ ✓ |layout (webkit)| browser/table-virtual.spec.ts (9 tests) 2817ms
+   ✓ на странице (2)
+     ✓ прокрутка: у края — строка своего места, и окно её не сдвигает 307ms
+   ✓ сетка (3)
+     ✓ Ctrl+End — фокус в последней строке, которой не было в документе 323ms
+     ✓ PageDown за окно — фокус на строке через страницу 418ms
+     ✓ колесо уводит прокрутку от строки с фокусом и обратно — фокус на месте 323ms
+   ✓ выбор и сортировка видят все строки (2)
+     ✓ сортировка по убыванию — первой в окне идёт последняя строка 445ms
+ ✓ |layout (webkit)| browser/tooltip.spec.ts (7 tests) 3927ms
+   ✓ фокус (3)
+     ✓ Tab на триггер показывает подсказку сразу 379ms
+     ✓ клик мышью фокусирует триггер, но подсказку не показывает 531ms
+   ✓ курсор (3)
+     ✓ курсор через зазор на панель подсказку не закрывает 1850ms
+   ✓ открытая с первой отрисовки (1)
+     ✓ панель, вставшая на место из-под неподвижного курсора, подсказку не закрывает 582ms
+ ✓ |layout (webkit)| browser/tabs-line.spec.ts (10 tests) 3289ms
+   ✓ переезд к новому табу (5)
+     ✓ горизонтальные, LTR: место и длина едут переходом, полоса встаёт под новый таб, признак снят 462ms
+     ✓ горизонтальные, RTL: место и длина едут переходом, полоса встаёт под новый таб, признак снят 371ms
+     ✓ вертикальные: место и длина едут переходом, полоса встаёт под новый таб, признак снят 371ms
+     ✓ вертикальные в RTL: место и длина едут переходом, полоса встаёт под новый таб, признак снят 371ms
+     ✓ закрыли активный — полоса встаёт под соседа, занявшего его место 371ms
+   ✓ без переезда — место сразу (5)
+     ✓ закрыли соседа слева — полоса идёт за табом без перехода 388ms
+     ✓ ресайз после переезда — без перехода 452ms
+ ✓ |layout (webkit)| browser/tags-overflow.spec.ts (9 tests) 1527ms
+   ✓ режим scroll: элемент под фокусом у края ряда виден целиком (5)
+     ✓ с выбором: тег стрелками до последнего и обратно 303ms
+     ✓ нажатие мышью по тегу у края выбирает его, и ряд не сдвигается 340ms
+ ✓ |layout (webkit)| browser/theme-entries.spec.ts (44 tests) 4276ms
+ ✓ |layout (webkit)| browser/tags-aria.spec.ts (14 tests) 1916ms
+ ✓ |layout (webkit)| browser/tags-keyboard.spec.ts (9 tests) 1152ms
+ ✓ |layout (webkit)| browser/theme-base-controls.spec.ts (17 tests) 1399ms
+ ✓ |layout (webkit)| browser/toggle.spec.ts (23 tests) 1511ms
+ ✓ |layout (webkit)| browser/webc-icon.spec.ts (7 tests) 335ms
+ ✓ |layout (webkit)| browser/tabs-close.spec.ts (23 tests) 1238ms
+ ✓ |layout (webkit)| browser/required.spec.ts (5 tests) 348ms
+ ✓ |layout (webkit)| browser/textarea.spec.ts (13 tests) 1133ms
+ ✓ |layout (webkit)| browser/skeleton-view.spec.ts (24 tests) 822ms
+ ✓ |layout (webkit)| browser/radio-group.spec.ts (9 tests | 1 skipped) 721ms
+ ✓ |layout (webkit)| browser/tags-variant.spec.ts (6 tests) 756ms
+ ✓ |layout (webkit)| browser/tabs-layout.spec.ts (5 tests) 800ms
+   ✓ пересчёт без смены содержимого (2)
+     ✓ у активного таба вырос только горизонтальный паддинг — --so-tabs-active-size пересчитан 331ms
+ ✓ |layout (webkit)| browser/webc-table.spec.ts (4 tests) 607ms
+ ✓ |layout (webkit)| browser/slow-motion.spec.ts (1 test) 96ms
+ ✓ |layout (webkit)| browser/webc-locale-provider.spec.ts (2 tests) 69ms
+ ✓ |layout (webkit)| browser/tests-sidebar.spec.ts (1 test) 112ms
+ ✓ |layout (webkit)| browser/badge-base.spec.ts (1 test) 54ms
+ ✓ |layout (webkit)| browser/badge-entry.spec.ts (1 test) 38ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |layout (webkit)| browser/new-components-audit.spec.ts > new component audit / solid > Breadcrumbs native links, disabled/current, overflow keyboard
+AssertionError: expected <body style>…(2)</body> to be <button …(9)>…(1)</button> // Object.is equality
+
+Failure screenshot:
+  - .vitest/attachments/failure-screenshots/new-components-audit.spec.ts/new-component-audit---solid---Breadcrumbs-native-links--disabled-current--overflow-keyboard.png
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[33m@@ -1,5 +1,47 @@[39m
+[31m+ <body[39m
+[31m+   style=""[39m
+[31m+ >[39m
+[31m+   [39m
+[31m+   [39m
+[31m+[39m
+[31m+[39m
+[31m+   <div>[39m
+[31m+     <nav[39m
+[31m+       aria-label="Навигационная цепочка"[39m
+[31m+       class="so-breadcrumbs so-breadcrumbs--size-normal"[39m
+[31m+       role="navigation"[39m
+[31m+       tabindex="-1"[39m
+[31m+     >[39m
+[31m+       <ol[39m
+[31m+         class="so-breadcrumbs__list"[39m
+[31m+       >[39m
+[31m+         <li[39m
+[31m+           class="so-breadcrumbs-item so-breadcrumbs-item--size-normal"[39m
+[31m+           data-disabled="false"[39m
+[31m+           data-selected="false"[39m
+[31m+           style="order: 0;"[39m
+[31m+         >[39m
+[31m+           <a[39m
+[31m+             class="so-button so-button--size-normal so-breadcrumbs__link"[39m
+[31m+             data-disabled="false"[39m
+[31m+             href="#home"[39m
+[31m+           >[39m
+[31m+             <span[39m
+[31m+               class="so-button__text"[39m
+[31m+             >[39m
+[31m+               Home[39m
+[31m+             </span>[39m
+[31m+           </a>[39m
+[31m+           <span[39m
+[31m+             aria-hidden="true"[39m
+[31m+             class="so-breadcrumbs__separator"[39m
+[31m+           />[39m
+[31m+           <span[39m
+[31m+             class="so-menu so-menu--size-normal so-breadcrumbs__overflow"[39m
+[31m+             data-open="false"[39m
+[31m+           >[39m
+[2m              <button[22m
+[2m                aria-controls="cl-90-panel"[22m
+[2m                aria-expanded="false"[22m
+[2m                aria-haspopup="menu"[22m
+[2m                aria-label="Показать скрытые звенья"[22m
+[33m@@ -13,5 +55,198 @@[39m
+[2m                  class="so-button__text"[22m
+[2m                >[22m
+[2m                  …[22m
+[2m                </span>[22m
+[2m              </button>[22m
+[31m+             [39m
+[31m+           </span>[39m
+[31m+         </li>[39m
+[31m+         <li[39m
+[31m+           class="so-breadcrumbs-item so-breadcrumbs-item--size-normal"[39m
+[31m+           data-disabled="false"[39m
+[31m+           data-selected="false"[39m
+[31m+           style="order: 1; display: none;"[39m
+[31m+         >[39m
+[31m+           <span[39m
+[31m+             aria-hidden="true"[39m
+[31m+             class="so-breadcrumbs__separator"[39m
+[31m+           />[39m
+[31m+           <a[39m
+[31m+             class="so-button so-button--size-normal so-breadcrumbs__link"[39m
+[31m+             data-disabled="false"[39m
+[31m+             href="#catalog"[39m
+[31m+           >[39m
+[31m+             <span[39m
+[31m+               class="so-button__text"[39m
+[31m+             >[39m
+[31m+               Catalog[39m
+[31m+             </span>[39m
+[31m+           </a>[39m
+[31m+         </li>[39m
+[31m+         <li[39m
+[31m+           class="so-breadcrumbs-item so-breadcrumbs-item--size-normal"[39m
+[31m+           data-disabled="true"[39m
+[31m+           data-selected="false"[39m
+[31m+           style="order: 2; display: none;"[39m
+[31m+         >[39m
+[31m+           <span[39m
+[31m+             aria-hidden="true"[39m
+[31m+             class="so-breadcrumbs__separator"[39m
+[31m+           />[39m
+[31m+           <a[39m
+[31m+             aria-disabled="true"[39m
+[31m+             class="so-button so-button--size-normal so-breadcrumbs__link"[39m
+[31m+             data-disabled="true"[39m
+[31m+           >[39m
+[31m+             <span[39m
+[31m+               class="so-button__text"[39m
+[31m+             >[39m
+[31m+               Disabled[39m
+[31m+             </span>[39m
+[31m+           </a>[39m
+[31m+         </li>[39m
+[31m+         <li[39m
+[31m+           class="so-breadcrumbs-item so-breadcrumbs-item--size-normal"[39m
+[31m+           data-disabled="false"[39m
+[31m+           data-selected="false"[39m
+[31m+           style="order: 3; display: none;"[39m
+[31m+         >[39m
+[31m+           <span[39m
+[31m+             aria-hidden="true"[39m
+[31m+             class="so-breadcrumbs__separator"[39m
+[31m+           />[39m
+[31m+           <a[39m
+[31m+             class="so-button so-button--size-normal so-breadcrumbs__link"[39m
+[31m+             data-disabled="false"[39m
+[31m+             href="#phones"[39m
+[31m+           >[39m
+[31m+             <span[39m
+[31m+               class="so-button__text"[39m
+[31m+             >[39m
+[31m+               Phones[39m
+[31m+             </span>[39m
+[31m+           </a>[39m
+[31m+         </li>[39m
+[31m+         <li[39m
+[31m+           class="so-breadcrumbs-item so-breadcrumbs-item--size-normal"[39m
+[31m+           data-disabled="false"[39m
+[31m+           data-selected="true"[39m
+[31m+           style="order: 4;"[39m
+[31m+         >[39m
+[31m+           <span[39m
+[31m+             aria-hidden="true"[39m
+[31m+             class="so-breadcrumbs__separator"[39m
+[31m+           />[39m
+[31m+           <a[39m
+[31m+             aria-current="page"[39m
+[31m+             class="so-button so-button--size-normal so-breadcrumbs__link"[39m
+[31m+             data-disabled="false"[39m
+[31m+           >[39m
+[31m+             <span[39m
+[31m+               class="so-button__text"[39m
+[31m+             >[39m
+[31m+               Current[39m
+[31m+             </span>[39m
+[31m+           </a>[39m
+[31m+         </li>[39m
+[31m+       </ol>[39m
+[31m+     </nav>[39m
+[31m+   </div>[39m
+[31m+   <div>[39m
+[31m+     <div[39m
+[31m+       aria-labelledby="cl-90-trigger"[39m
+[31m+       class="so-frame so-menu__panel so-menu__panel--size-normal"[39m
+[31m+       data-contained="false"[39m
+[31m+       data-layer="1032"[39m
+[31m+       data-open="false"[39m
+[31m+       data-owner="cl-90-owner"[39m
+[31m+       data-placement="bottom-start"[39m
+[31m+       id="cl-90-panel"[39m
+[31m+       role="menu"[39m
+[31m+       style="position: absolute; left: 62.6875px; top: 36px; width: auto; height: auto; z-index: 1032; display: none;"[39m
+[31m+       tabindex="-1"[39m
+[31m+     >[39m
+[31m+       <div[39m
+[31m+         class="so-menu__list"[39m
+[31m+       >[39m
+[31m+         <div[39m
+[31m+           class="so-menu-item so-menu-item--size-normal"[39m
+[31m+           data-disabled="false"[39m
+[31m+           data-highlighted="false"[39m
+[31m+           data-selected="false"[39m
+[31m+         >[39m
+[31m+           <a[39m
+[31m+             class="so-button so-button--size-normal"[39m
+[31m+             data-disabled="false"[39m
+[31m+             href="#catalog"[39m
+[31m+             role="menuitem"[39m
+[31m+             tabindex="-1"[39m
+[31m+           >[39m
+[31m+             <span[39m
+[31m+               class="so-menu-item__icon"[39m
+[31m+             />[39m
+[31m+             <span[39m
+[31m+               class="so-button__text"[39m
+[31m+             >[39m
+[31m+               Catalog[39m
+[31m+             </span>[39m
+[31m+             <span[39m
+[31m+               class="so-menu-item__shortcut"[39m
+[31m+             />[39m
+[31m+           </a>[39m
+[31m+         </div>[39m
+[31m+         <div[39m
+[31m+           class="so-menu-item so-menu-item--size-normal"[39m
+[31m+           data-disabled="true"[39m
+[31m+           data-highlighted="false"[39m
+[31m+           data-selected="false"[39m
+[31m+         >[39m
+[31m+           <a[39m
+[31m+             aria-disabled="true"[39m
+[31m+             class="so-button so-button--size-normal"[39m
+[31m+             data-disabled="true"[39m
+[31m+             role="menuitem"[39m
+[31m+             tabindex="-1"[39m
+[31m+           >[39m
+[31m+             <span[39m
+[31m+               class="so-menu-item__icon"[39m
+[31m+             />[39m
+[31m+             <span[39m
+[31m+               class="so-button__text"[39m
+[31m+             >[39m
+[31m+               Disabled[39m
+[31m+             </span>[39m
+[31m+             <span[39m
+[31m+               class="so-menu-item__shortcut"[39m
+[31m+             />[39m
+[31m+           </a>[39m
+[31m+         </div>[39m
+[31m+         <div[39m
+[31m+           class="so-menu-item so-menu-item--size-normal"[39m
+[31m+           data-disabled="false"[39m
+[31m+           data-highlighted="false"[39m
+[31m+           data-selected="false"[39m
+[31m+         >[39m
+[31m+           <a[39m
+[31m+             class="so-button so-button--size-normal"[39m
+[31m+             data-disabled="false"[39m
+[31m+             href="#phones"[39m
+[31m+             role="menuitem"[39m
+[31m+             tabindex="-1"[39m
+[31m+           >[39m
+[31m+             <span[39m
+[31m+               class="so-menu-item__icon"[39m
+[31m+             />[39m
+[31m+             <span[39m
+[31m+               class="so-button__text"[39m
+[31m+             >[39m
+[31m+               Phones[39m
+[31m+             </span>[39m
+[31m+             <span[39m
+[31m+               class="so-menu-item__shortcut"[39m
+[31m+             />[39m
+[31m+           </a>[39m
+[31m+         </div>[39m
+[31m+       </div>[39m
+[31m+     </div>[39m
+[31m+   </div>[39m
+[31m+ </body>[39m
+
+ ❯ browser/new-components-audit.spec.ts:305:34
+    303|    .poll(() => find('.so-breadcrumbs__trigger').getAttribute('aria-exp…
+    304|    .toBe('false')
+    305|   expect(document.activeElement).toBe(find('.so-breadcrumbs__trigger'))
+       |                                  ^
+    306|  })
+    307| })
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 125 passed | 1 skipped (127)
+      Tests  1 failed | 4317 passed | 97 skipped (4415)
+   Start at  17:17:09
+   Duration  196.65s (worker 88%, tests 9%, setup 2%, import 1%)
+
+JSON report written to D:/projects/soxa-a/packages/playground/vue/.vitest/audit-audit-new-components-20261113-webkit-isolated.json
+npm error Lifecycle script `test:browser:webkit` failed with error:
+npm error code 1
+npm error path D:\projects\soxa-a\packages\playground\vue
+npm error workspace @soxa-ui/playground-vue@0.0.0
+npm error location D:\projects\soxa-a\packages\playground\vue
+npm error command failed
+npm error command C:\WINDOWS\system32\cmd.exe /d /s /c node browser-server/cli.ts --reporter=default --reporter=json --outputFile=D:\projects\soxa-a\packages\playground\vue\.vitest\audit-audit-new-components-20261113-webkit-isolated.json

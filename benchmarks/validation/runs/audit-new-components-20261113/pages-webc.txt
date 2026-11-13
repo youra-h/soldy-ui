@@ -1,0 +1,51 @@
+webc прогрев 43 с
+webc alert {"weightKB":1793,"mountMs":25,"heapSlopeKB":0.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc avatar {"weightKB":409,"mountMs":14,"heapSlopeKB":1,"nodes":6000,"listeners":0,"components":0,"emitters":0}
+webc avatar-group {"weightKB":1363,"mountMs":20,"heapSlopeKB":-1.4,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc code-block {"weightKB":6008,"mountMs":84,"heapSlopeKB":0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc breadcrumbs {"weightKB":9011,"mountMs":85,"heapSlopeKB":0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc badge {"weightKB":386,"mountMs":12,"heapSlopeKB":-0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc toggle-button {"weightKB":443,"mountMs":17,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc toggle-group {"weightKB":3332,"mountMs":40,"heapSlopeKB":-0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc button {"weightKB":425,"mountMs":14,"heapSlopeKB":-1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc input {"weightKB":560,"mountMs":9,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc number-input {"weightKB":2121,"mountMs":33,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc textarea {"weightKB":627,"mountMs":10,"heapSlopeKB":0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc check-box {"weightKB":812,"mountMs":11,"heapSlopeKB":-0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc switch {"weightKB":788,"mountMs":18,"heapSlopeKB":-0.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc label {"weightKB":811,"mountMs":14,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc field {"weightKB":1030,"mountMs":14,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc slider {"weightKB":925,"mountMs":18,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc rating {"weightKB":1058,"mountMs":42,"heapSlopeKB":0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc radio-group {"weightKB":3715,"mountMs":59,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc select {"weightKB":3275,"mountMs":58,"heapSlopeKB":-0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc calendar {"weightKB":18380,"mountMs":230,"heapSlopeKB":0.6,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc date-input {"weightKB":901,"mountMs":22,"heapSlopeKB":-0.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc date-picker {"weightKB":3408,"mountMs":63,"heapSlopeKB":-7.6,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc popover {"weightKB":2507,"mountMs":50,"heapSlopeKB":-0.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc menu {"weightKB":3819,"mountMs":56,"heapSlopeKB":-0.7,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc tooltip {"weightKB":1311,"mountMs":22,"heapSlopeKB":-0.4,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc alert-dialog {"weightKB":2525,"mountMs":43,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc dialog {"weightKB":3298,"mountMs":51,"heapSlopeKB":0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc drawer {"weightKB":3042,"mountMs":47,"heapSlopeKB":0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc toasts {"weightKB":3276,"mountMs":62,"heapSlopeKB":0.3,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc scroller {"weightKB":1949,"mountMs":40,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc list-box {"weightKB":6840,"mountMs":122,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc pagination {"weightKB":6384,"mountMs":105,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc table {"weightKB":8295,"mountMs":155,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc tabs {"weightKB":9416,"mountMs":145,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc tags {"weightKB":6961,"mountMs":89,"heapSlopeKB":-0.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc accordion {"weightKB":7537,"mountMs":141,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc icon {"weightKB":378,"mountMs":18,"heapSlopeKB":0.1,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc progress-linear {"weightKB":411,"mountMs":13,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc progress-spinner {"weightKB":393,"mountMs":16,"heapSlopeKB":-0.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc separator {"weightKB":321,"mountMs":14,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc skeleton {"weightKB":357,"mountMs":13,"heapSlopeKB":-0.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc drag-and-drop {"weightKB":23389,"mountMs":369,"heapSlopeKB":-0.3,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc virtual {"weightKB":87783,"mountMs":1982,"heapSlopeKB":-0.2,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc all {"weightKB":5480,"mountMs":129,"heapSlopeKB":-1.1,"nodes":120,"listeners":0,"components":0,"emitters":0}
+webc empty {"weightKB":2,"mountMs":4,"heapSlopeKB":0,"nodes":0,"listeners":0,"components":0,"emitters":0}
+webc обход 1 {"heap":13474704,"nodes":7368,"listeners":13,"components":119,"emitters":0}
+webc обход 2 {"heap":13472744,"nodes":7668,"listeners":13,"components":119,"emitters":0}
+webc обход 3 {"heap":13477892,"nodes":7968,"listeners":13,"components":119,"emitters":0}
+webc leak {"weightKB":421,"mountMs":8,"heapSlopeKB":193,"nodes":3100,"listeners":1000,"components":2000,"emitters":2000}
