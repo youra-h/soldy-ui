@@ -169,3 +169,35 @@ describe('объявление узла и destroy()', () => {
 		expect(log).toEqual([])
 	})
 })
+
+describe('synchronous internal binding', () => {
+	it('reports replacement and removal before ready without duplicates', async () => {
+		const { plugin, log } = track()
+		const bound: (Element | null)[] = []
+		const a = node()
+		const b = node()
+
+		plugin.events.on('bind', (el) => bound.push(el))
+		plugin.element = a
+		plugin.element = a
+		plugin.element = b
+		plugin.element = null
+		expect(bound).toEqual([a, b, null])
+		await nextFrame()
+		expect(log).toEqual([])
+	})
+
+	it('destroy releases an unannounced root', async () => {
+		const { plugin, log } = track()
+		const bound: (Element | null)[] = []
+		const a = node()
+
+		plugin.events.on('bind', (el) => bound.push(el))
+		plugin.element = a
+		plugin.destroy()
+		expect(bound).toEqual([a, null])
+		expect(plugin.element).toBeNull()
+		await nextFrame()
+		expect(log).toEqual([])
+	})
+})

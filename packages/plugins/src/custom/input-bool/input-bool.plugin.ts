@@ -8,39 +8,48 @@ import type { TInputBoolPluginEvents } from './types'
 export class TInputBoolPlugin extends TBasePlugin<any, TInputBoolPluginEvents> {
 	private _input: HTMLInputElement | null = null
 	private _instance: ICheckBox | null = null
+	private _unbindElement?: () => void
+	private _onBind = (el: Element | null) => this._bindInput(el)
 	private _onClick = this._handleClick.bind(this)
 	private _onChange = this._handleChange.bind(this)
 
 	override install(ctx: IPluginContext): void {
 		super.install(ctx)
 
+		this._instance = ctx.getInstance<ICheckBox>()
+
 		const elementPlugin = ctx.get(TElementPlugin)
 
-		elementPlugin?.events.on('ready', () => {
-			const el = elementPlugin.element
-			if (!el) return
-
-			const input = fieldOf(el)
-			if (!(input instanceof HTMLInputElement)) return
-
-			this._input = input
-			input.addEventListener('click', this._onClick)
-			input.addEventListener('change', this._onChange)
-		})
-
-		elementPlugin?.events.on('removed', () => {
-			this._removeInputListener()
-			this._input = null
-		})
-
-		this._instance = ctx.getInstance<ICheckBox>()
+		if (elementPlugin) {
+			// Native checkbox activation must be guarded as soon as the root exists.
+			elementPlugin.events.on('bind', this._onBind)
+			this._unbindElement = () => elementPlugin.events.off('bind', this._onBind)
+			this._bindInput(elementPlugin.element)
+		}
 	}
 
 	override destroy(): void {
+		this._unbindElement?.()
+		this._unbindElement = undefined
 		this._removeInputListener()
 		this._input = null
 		this._instance = null
 		super.destroy()
+	}
+
+	private _bindInput(el: Element | null): void {
+		this._removeInputListener()
+		this._input = null
+
+		if (!el) return
+
+		const input = fieldOf(el)
+
+		if (!(input instanceof HTMLInputElement)) return
+
+		this._input = input
+		input.addEventListener('click', this._onClick)
+		input.addEventListener('change', this._onChange)
 	}
 
 	/**
