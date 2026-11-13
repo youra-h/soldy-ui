@@ -5,6 +5,7 @@ import { enUS, ruRU } from '@soxa-ui/plugins'
 import { FRAMEWORKS, loadHost } from '../src/hosts'
 import type { IPreviewHandle, IPreviewHost } from '@soxa-ui/playground-shared'
 import '@soxa-ui/theme-oren'
+import { contrast, opacity } from './colors'
 
 let host: IPreviewHost | undefined
 const handles: IPreviewHandle[] = []
@@ -35,11 +36,25 @@ async function mount(component: string, props: Record<string, unknown> = {}) {
 	return handle
 }
 
+function breadcrumbProps() {
+	return {
+		maxItems: 3,
+		items: [
+			{ text: 'Home', href: '#home' },
+			{ text: 'Catalog', href: '#catalog' },
+			{ text: 'Disabled', href: '#disabled', disabled: true },
+			{ text: 'Phones', href: '#phones' },
+			{ text: 'Current', _: { active: true } },
+		],
+	}
+}
+
 afterEach(async () => {
 	for (const handle of handles.splice(0).reverse()) handle.unmount()
 	for (const scene of scenes.splice(0)) scene.remove()
 
 	host?.setLocale(ruRU)
+	document.documentElement.removeAttribute('data-so-theme')
 	await expect.poll(() => document.querySelector('.so-alert-dialog,.so-menu__panel')).toBeNull()
 })
 
@@ -117,6 +132,50 @@ describe.each(FRAMEWORKS)('new component audit / $id', ({ id }) => {
 						.toBe(true)
 				})
 
+	it.each(['oren', 'oren-dark'])('CodeBlock gutter contrast in %s', async (scheme) => {
+		document.documentElement.setAttribute('data-so-theme', scheme)
+		host = await loadHost(id)
+		await mount('code-block', { code: 'first line\nsecond line\n', lineNumbers: true })
+		const root = find('.so-code-block')
+		const gutter = find('.so-code-block__gutter')
+		const foreground = getComputedStyle(gutter).color
+		const background = getComputedStyle(root).backgroundColor
+		const ratio = contrast(foreground, [background])
+
+		console.info(
+			'audit-codeblock-contrast',
+			JSON.stringify({
+				adapter: id,
+				scheme,
+				foreground,
+				background,
+				ratio,
+				gutterOpacity: getComputedStyle(gutter).opacity,
+				rootOpacity: getComputedStyle(root).opacity,
+			}),
+		)
+		expect(opacity(background)).toBe(1)
+		expect(getComputedStyle(root).opacity).toBe('1')
+		expect(getComputedStyle(gutter).opacity).toBe('1')
+		expect(ratio).toBeGreaterThanOrEqual(4.5)
+	})
+
+	it('AlertDialog updates default locale labels and preserves consumer action text', async () => {
+		host = await loadHost(id)
+		host.setLocale(enUS)
+		await mount('alert-dialog', { visible: true })
+		await expect.poll(() => find('.so-alert-dialog__cancel').textContent).toContain('Cancel')
+		const consumerAction = find('.so-alert-dialog__action').textContent
+
+		expect(consumerAction?.trim()).toBeTruthy()
+		host.setLocale(ruRU)
+		await expect.poll(() => find('.so-alert-dialog__cancel').textContent).toContain('Отмена')
+		expect(find('.so-alert-dialog__action').textContent).toBe(consumerAction)
+		host.setLocale(enUS)
+		await expect.poll(() => find('.so-alert-dialog__cancel').textContent).toContain('Cancel')
+		expect(find('.so-alert-dialog__action').textContent).toBe(consumerAction)
+	})
+
 	it('AlertDialog safe focus, trap, backdrop, choices, nested layer and locale', async () => {
 		host = await loadHost(id)
 		host.setLocale(enUS)
@@ -176,22 +235,60 @@ describe.each(FRAMEWORKS)('new component audit / $id', ({ id }) => {
 		expect(cancels).toBe(2)
 	})
 
-	it('Breadcrumbs native links, disabled/current, overflow keyboard and update', async () => {
+	it('Breadcrumbs restores a ready overflow menu after maxItems changes', async () => {
 		host = await loadHost(id)
-		const props = {
-			maxItems: 3,
-			items: [
-				{ text: 'Home', href: '#home' },
-				{ text: 'Catalog', href: '#catalog' },
-				{ text: 'Disabled', href: '#disabled', disabled: true },
-				{ text: 'Phones', href: '#phones' },
-				{ text: 'Current', _: { active: true } },
-			],
-		}
+		const props = breadcrumbProps()
 		const handle = await mount('breadcrumbs', props)
+
+		handle.update({ ...props, maxItems: 0 })
+		await expect.poll(() => document.querySelector('.so-breadcrumbs__trigger')).toBeNull()
+		expect(find('.so-breadcrumbs__link[aria-disabled="true"]').hasAttribute('href')).toBe(false)
+		handle.update(props)
+		await frame()
+		await frame()
+		await expect
+			.poll(() => {
+				const trigger = document.querySelector('.so-breadcrumbs__trigger')
+				return Boolean(
+					document.getElementById(trigger?.getAttribute('aria-controls') ?? ''),
+				)
+			})
+			.toBe(true)
+
+		const state = () => ({
+			open: document.querySelectorAll('.so-menu__panel[data-open="true"]').length,
+			expanded: find('.so-breadcrumbs__trigger').getAttribute('aria-expanded'),
+			focused: document.activeElement?.tagName,
+		})
+		find('.so-breadcrumbs__trigger').focus()
+		await userEvent.keyboard('{Enter}')
+		await frame()
+		const keyboard = state()
+
+		await userEvent.keyboard('{Escape}')
+		await expect.poll(() => state().open).toBe(0)
+		await userEvent.click(find('.so-breadcrumbs__trigger'))
+		await frame()
+		const pointer = state()
+
+		console.info(
+			'audit-breadcrumb-restored',
+			JSON.stringify({ adapter: id, keyboard, pointer }),
+		)
+		expect(keyboard.open).toBe(1)
+		expect(keyboard.expanded).toBe('true')
+		expect(pointer.open).toBe(1)
+		expect(pointer.expanded).toBe('true')
+	})
+
+	it('Breadcrumbs native links, disabled/current, overflow keyboard', async () => {
+		host = await loadHost(id)
+		const props = breadcrumbProps()
+		await mount('breadcrumbs', props)
 
 		expect(find('.so-breadcrumbs__link[href="#home"]').tagName).toBe('A')
 		expect(find('[aria-current="page"]').textContent).toContain('Current')
+
 		const trigger = find('.so-breadcrumbs__trigger')
 
 		trigger.focus()
@@ -206,8 +303,5 @@ describe.each(FRAMEWORKS)('new component audit / $id', ({ id }) => {
 			.poll(() => find('.so-breadcrumbs__trigger').getAttribute('aria-expanded'))
 			.toBe('false')
 		expect(document.activeElement).toBe(find('.so-breadcrumbs__trigger'))
-		handle.update({ ...props, maxItems: 0 })
-		await expect.poll(() => document.querySelector('.so-breadcrumbs__trigger')).toBeNull()
-		expect(find('.so-breadcrumbs__link[aria-disabled="true"]').hasAttribute('href')).toBe(false)
 	})
 })

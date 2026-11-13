@@ -424,7 +424,8 @@ export const SCENARIOS: Record<string, TScenario> = {
 
 		return done
 	}),
-	separator: async (_scope, _act, update) => {
+	separator: async (scope, _act, update) => {
+		required(scope, '.so-separator')
 		let done = await action('separator decorative', () => update({ decorative: true }))
 
 		done += await action('separator vertical decorative', () =>

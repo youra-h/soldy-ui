@@ -24,6 +24,14 @@ const args = [
 	'run',
 	stage === 'parity' ? 'test:parity' : stage === 'webkit' ? 'test:layout:webkit' : 'test:layout',
 ]
+const testReport = path.join(root, 'packages/playground/vue/.vitest', 'audit-' + id + '.json')
+
+if (stage === 'chromium') {
+	fs.mkdirSync(path.dirname(testReport), { recursive: true })
+	fs.rmSync(testReport, { force: true })
+	args.push('--', '--', '--reporter=default', '--reporter=json', '--outputFile=' + testReport)
+}
+
 const metadata = {
 	stage,
 	executable: process.execPath,
@@ -34,6 +42,7 @@ const metadata = {
 	dirtyState: git('status', '--porcelain'),
 	lockHash: hash(path.join(root, 'package-lock.json')),
 	node: process.version,
+	collectorHash: hash(import.meta.filename),
 	outputs: [],
 	findings: [],
 }
@@ -130,6 +139,27 @@ if (stage === 'parity') {
 			}
 			metadata.runId = manifest.runId
 		}
+}
+
+if (stage === 'chromium') {
+	if (!fs.existsSync(testReport)) metadata.findings.push('Missing fresh Vitest test report')
+	else {
+		preserve(testReport, path.join(out, 'chromium-tests.json'))
+		const tests = JSON.parse(fs.readFileSync(testReport, 'utf8'))
+
+		metadata.tests = Object.fromEntries(
+			['numTotalTests', 'numPassedTests', 'numFailedTests', 'numPendingTests', 'success'].map(
+				(key) => [key, tests[key]],
+			),
+		)
+		if (
+			!(tests.numTotalTests > 0) ||
+			!tests.testResults?.length ||
+			!Number.isFinite(tests.startTime) ||
+			tests.startTime < Date.parse(metadata.started)
+		)
+			metadata.findings.push('Empty or stale Vitest test report')
+	}
 }
 
 if (stage !== 'parity' && !metadata.runId) metadata.findings.push('Missing fresh axe run manifest')

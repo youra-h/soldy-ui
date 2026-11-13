@@ -92,14 +92,17 @@ function propsOf(id: string): Readonly<Record<string, unknown>> {
 
 	if (id === 'select') return { ...props, items: COLLECTION_ITEMS }
 	if (id === 'toggle-group') return { ...props, items: EDITOR_ALIGNMENT_ITEMS }
-	if (id === 'code-block')
+	if (id === 'code-block') {
+		const { code: _code, ...snippetProps } = props
+
 		return {
-			...props,
+			...snippetProps,
 			snippets: [
 				{ value: 'one', label: 'One', code: 'const one = 1;\n' },
 				{ value: 'two', label: 'Two', code: 'const two = 2;\n' },
 			],
 		}
+	}
 
 	return props
 }
@@ -231,7 +234,7 @@ async function update(page: string): Promise<number> {
 	const ids = page === 'all' ? pages : [page === 'leak' || page === 'empty' ? 'button' : page]
 
 	for (const [index, id] of ids.entries())
-		mounted[index]?.update({ ...propsOf(id), direction: 'rtl' })
+		if (AUDITED_PAGES.includes(id)) mounted[index]?.update({ ...propsOf(id), direction: 'rtl' })
 
 	await frames()
 
