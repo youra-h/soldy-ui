@@ -145,7 +145,7 @@ export const A11Y_CASES: readonly TAuditCase[] = [
 			],
 		},
 		['.so-code-block [role="tab"][aria-selected="true"]'],
-		{ click: ['.so-code-block [role="tab"]:nth-child(2)'] },
+		{ click: ['tab:Two'] },
 	),
 	audit(
 		'avatar',

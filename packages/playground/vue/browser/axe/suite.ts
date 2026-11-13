@@ -340,7 +340,11 @@ export function auditSuite(adapter: string) {
 						}
 
 						for (const selector of entry.click ?? []) {
-							if (selector.startsWith('text:'))
+							if (selector.startsWith('tab:'))
+								await userEvent.click(
+									page.getByRole('tab', { name: selector.slice(4), exact: true }),
+								)
+							else if (selector.startsWith('text:'))
 								await userEvent.click(
 									page.getByRole('button', {
 										name: selector.slice(5),

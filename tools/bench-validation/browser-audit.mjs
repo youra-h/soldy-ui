@@ -35,7 +35,16 @@ const metadata = {
 	lockHash: hash(path.join(root, 'package-lock.json')),
 	node: process.version,
 	outputs: [],
+	findings: [],
 }
+
+const parityNames = ['vue', 'react', 'angular', 'svelte', 'solid', 'webc']
+	.map((fw) => 'parity-' + fw + '.json')
+	.concat('parity-report.md')
+
+if (stage === 'parity')
+	for (const name of parityNames)
+		fs.rmSync(path.join(root, 'tools/bench-pages/results', name), { force: true })
 
 write()
 const log = fs.openSync(path.join(out, stage + '.txt'), 'w')
@@ -76,10 +85,12 @@ function preserve(source, destination) {
 }
 
 if (stage === 'parity') {
-	for (const name of fs
-		.readdirSync(path.join(root, 'tools/bench-pages/results'))
-		.filter((name) => name.startsWith('parity-')))
-		preserve(path.join(root, 'tools/bench-pages/results', name), path.join(out, 'parity', name))
+	for (const name of parityNames) {
+		const source = path.join(root, 'tools/bench-pages/results', name)
+
+		if (!fs.existsSync(source)) metadata.findings.push('Missing fresh parity output: ' + name)
+		else preserve(source, path.join(out, 'parity', name))
+	}
 } else {
 	const axe = path.join(root, 'packages/playground/vue/.vitest/a11y', stage)
 
@@ -90,6 +101,7 @@ if (stage === 'parity') {
 			const manifest = JSON.parse(fs.readFileSync(path.join(axe, name), 'utf8'))
 
 			if (
+				!Number.isFinite(Date.parse(manifest.startedAt)) ||
 				new Date(manifest.startedAt) < new Date(metadata.started) ||
 				manifest.commit !== metadata.commit
 			)
@@ -120,6 +132,9 @@ if (stage === 'parity') {
 		}
 }
 
+if (stage !== 'parity' && !metadata.runId) metadata.findings.push('Missing fresh axe run manifest')
+if (metadata.summaryExitCode) metadata.findings.push('Axe inventory/summary validation failed')
+
 write()
 console.log(metadata.finished + ' END ' + stage + ' exit=' + metadata.exitCode)
-if (metadata.exitCode !== 0) process.exitCode = 1
+if (metadata.exitCode !== 0 || metadata.findings.length) process.exitCode = 1
