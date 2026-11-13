@@ -15,6 +15,7 @@ import {
 } from '@soxa-ui/playground-shared'
 import { FRAMEWORKS, loadHost } from '../../src/hosts'
 import { auditGate } from './gate'
+import { settled, waitForAuditState } from './ready'
 import '@soxa-ui/theme-oren'
 
 const frame = () => new Promise<void>((resolve) => requestAnimationFrame(() => resolve()))
@@ -23,24 +24,6 @@ const shown = (selector: string) =>
 		(node) =>
 			node.getClientRects().length > 0 && getComputedStyle(node).visibility !== 'hidden',
 	)
-
-/** Finite transitions must finish; loading loops intentionally keep running. */
-async function settled() {
-	let stable = 0
-	const start = performance.now()
-	while (stable < 2) {
-		if (performance.now() - start > 10000) throw new Error('Finite animations did not settle')
-		await frame()
-		const active = document
-			.getAnimations()
-			.some(
-				(animation) =>
-					(animation.pending || animation.playState === 'running') &&
-					Number.isFinite(animation.effect?.getComputedTiming().endTime),
-			)
-		stable = active ? 0 : stable + 1
-	}
-}
 
 async function confirmState(entry: TAuditCase) {
 	if (entry.component === 'badge') {
@@ -367,8 +350,7 @@ export function auditSuite(adapter: string) {
 							}
 							await settled()
 						}
-						await settled()
-						await confirmState(entry)
+						await waitForAuditState(() => confirmState(entry))
 						expect(
 							document.querySelector('.pg__header, #vitest-ui'),
 							'audit scope excludes the shell and runner UI',
