@@ -245,3 +245,29 @@ it.each(['code', 'copyable', 'value'])(
 		}
 	},
 )
+
+it('completes a copy started by a consumer source-change listener registered before mounting', async () => {
+	let finish: (() => void) | undefined
+	const writeText = vi.fn(
+		() =>
+			new Promise<void>((resolve) => {
+				finish = resolve
+			}),
+	)
+	vi.stubGlobal('navigator', { clipboard: { writeText } })
+	const ctrl = new TCodeBlock({ code: 'first' })
+	ctrl.events.on('change:code', () => ctrl.copy())
+	const adapter = createAdapterContext(CodeBlockDescriptor(), { ctrl })
+
+	try {
+		ctrl.code = 'next'
+		expect(writeText).toHaveBeenCalledExactlyOnceWith('next')
+		expect(ctrl.copyState).toBe('pending')
+		finish?.()
+		await Promise.resolve()
+		expect(ctrl.copyState).toBe('success')
+		expect(ctrl.copyButton.disabled).toBe(false)
+	} finally {
+		adapter.destroy()
+	}
+})
