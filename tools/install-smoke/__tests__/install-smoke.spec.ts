@@ -5,6 +5,7 @@ import {
 	libraryNamesOf,
 	lockProblems,
 	withRegistry,
+	withLibrarySpecs,
 	withTarballs,
 } from '../install-smoke.ts'
 import type { TManifest } from '../install-smoke.ts'
@@ -176,5 +177,58 @@ describe('строки вывода о библиотеке', () => {
 		expect(libraryLines(`${escape}[33mnpm warn${escape}[39m peer @soxa-ui/core@1.0.0`)).toEqual(
 			['npm warn peer @soxa-ui/core@1.0.0'],
 		)
+	})
+})
+
+describe('exact registry release', () => {
+	const versions = new Map([
+		['@soxa-ui/core', '0.4.0'],
+		['@soxa-ui/vue', '0.4.0'],
+		['@soxa-ui/theme-oren', '0.4.1'],
+		['@soxa-ui/icons-material', '0.3.1'],
+	])
+
+	it('pins the full closure to independent exact versions without changing framework ranges', () => {
+		expect(withLibrarySpecs(PROJECT, versions)).toEqual({
+			name: 'app',
+			dependencies: {
+				vue: '^3.5.44',
+				'@soxa-ui/vue': '0.4.0',
+				'@soxa-ui/core': '0.4.0',
+				'@soxa-ui/icons-material': '0.3.1',
+			},
+			devDependencies: { vite: '^8.3.5', '@soxa-ui/theme-oren': '0.4.1' },
+		})
+	})
+
+	it('rejects a coherent previous release even if every package comes from npm', () => {
+		const packages = Object.fromEntries(
+			[...versions].map(([name]) => [
+				'node_modules/' + name,
+				{ version: '0.3.0', resolved: 'https://registry.npmjs.org/old.tgz' },
+			]),
+		)
+		expect(lockProblems({ packages }, [...versions.keys()], () => true, versions)).toEqual([
+			'@soxa-ui/core: expected 0.4.0, installed 0.3.0',
+			'@soxa-ui/vue: expected 0.4.0, installed 0.3.0',
+			'@soxa-ui/theme-oren: expected 0.4.1, installed 0.3.0',
+			'@soxa-ui/icons-material: expected 0.3.1, installed 0.3.0',
+		])
+	})
+
+	it('accepts the exact release and rejects a missing version', () => {
+		const packages: Record<string, TManifest> = Object.fromEntries(
+			[...versions].map(([name, version]) => [
+				'node_modules/' + name,
+				{ version, resolved: 'https://registry.npmjs.org/exact.tgz' },
+			]),
+		)
+		expect(lockProblems({ packages }, [...versions.keys()], () => true, versions)).toEqual([])
+		packages['node_modules/@soxa-ui/core'] = {
+			resolved: 'https://registry.npmjs.org/exact.tgz',
+		}
+		expect(lockProblems({ packages }, [...versions.keys()], () => true, versions)).toEqual([
+			'@soxa-ui/core: expected 0.4.0, installed unknown',
+		])
 	})
 })

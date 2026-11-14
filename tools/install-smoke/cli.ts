@@ -15,6 +15,7 @@ import { tmpdir } from 'node:os'
 import { extname, join, relative, resolve, sep } from 'node:path'
 import { parseArgs } from 'node:util'
 import { pageProblems, tailwindPageProblems } from './browser.ts'
+import { waitForRegistry, workspaceVersions } from './registry.ts'
 import {
 	PROJECTS,
 	libraryClosure,
@@ -22,7 +23,7 @@ import {
 	libraryNamesOf,
 	lockProblems,
 	withRegistry,
-	withTarballs,
+	withLibrarySpecs,
 } from './install-smoke.ts'
 import type { TManifest, TProject } from './install-smoke.ts'
 
@@ -34,7 +35,8 @@ import type { TManifest, TProject } from './install-smoke.ts'
  * npm run build                                   # the run packs what the build left in dist
  * node tools/install-smoke/cli.ts                 # every project
  * node tools/install-smoke/cli.ts vue next        # these two
- * node tools/install-smoke/cli.ts --registry latest # the published packages instead of tarballs
+ * node tools/install-smoke/cli.ts --registry latest # the published channel instead of tarballs
+ * node tools/install-smoke/cli.ts --registry-workspace # exact versions from this release commit
  * ```
  *
  * A project is copied out of the repository into the run folder (`--dir`,
@@ -211,6 +213,7 @@ function pack(library: ReadonlyMap<string, TLibrary>, dir: string): Map<string, 
 type TSource =
 	| { readonly kind: 'tarballs'; readonly tarballs: ReadonlyMap<string, string> }
 	| { readonly kind: 'registry'; readonly spec: string }
+	| { readonly kind: 'release'; readonly versions: ReadonlyMap<string, string> }
 
 /** A spec of a tarball for a project's manifest: relative, with `/` on every system. */
 function tarballSpec(project: string, tarball: string): string {
@@ -235,23 +238,23 @@ function assemble(
 	const manifest = readJson(file)
 	const manifests = new Map([...library].map(([name, { manifest }]) => [name, manifest]))
 	const closure = libraryClosure(libraryNamesOf(manifest), manifests)
-	const assembled =
-		source.kind === 'registry'
-			? withRegistry(manifest, source.spec)
-			: withTarballs(
-					manifest,
-					new Map(
-						closure.map((name) => {
-							const tarball = source.tarballs.get(name)
+	let assembled: TManifest
+	if (source.kind === 'registry') {
+		assembled = withRegistry(manifest, source.spec)
+	} else {
+		const specs = new Map(
+			closure.map((name) => {
+				const spec =
+					source.kind === 'release'
+						? source.versions.get(name)
+						: source.tarballs.get(name)
+				if (spec === undefined) throw new Error(name + ': missing package spec')
 
-							if (tarball === undefined) {
-								throw new Error(`${name}: тарболла нет`)
-							}
-
-							return [name, tarballSpec(dir, tarball)]
-						}),
-					),
-				)
+				return [name, source.kind === 'tarballs' ? tarballSpec(dir, spec) : spec]
+			}),
+		)
+		assembled = withLibrarySpecs(manifest, specs)
+	}
 
 	writeFileSync(file, `${JSON.stringify(assembled, null, 2)}\n`)
 
@@ -286,7 +289,36 @@ async function script(name: string, cwd: string): Promise<void> {
 
 /** The install: npm resolves the tree, and the tree is checked. */
 async function install(cwd: string, closure: readonly string[], source: TSource): Promise<void> {
-	const { code, output } = await run('npm install --no-audit --no-fund', cwd)
+	const command =
+		source.kind === 'release'
+			? 'npm install --no-audit --no-fund --prefer-online'
+			: 'npm install --no-audit --no-fund'
+	const { code, output } = await run(command, cwd)
+
+	// Keep evidence even if npm failed after writing a partial lock.
+	const lockFile = join(cwd, 'package-lock.json')
+	if (existsSync(lockFile)) {
+		const lock = readJson(lockFile)
+		const packages = isObject(lock.packages) ? lock.packages : {}
+		const installed = Object.fromEntries(
+			Object.entries(packages).filter(([path]) =>
+				/(?:^|\/)node_modules\/@soxa-ui\//.test(path),
+			),
+		)
+		writeFileSync(
+			join(cwd, 'installed-library.json'),
+			JSON.stringify(installed, null, 2) + '\n',
+		)
+		console.log(
+			'Installed library:\n' +
+				Object.entries(installed)
+					.map(
+						([path, entry]) =>
+							path + '@' + (isObject(entry) ? entry.version : 'unknown'),
+					)
+					.join('\n'),
+		)
+	}
 
 	if (code !== 0) {
 		throw new Error(`npm install: код ${code}\n${tail(output)}`)
@@ -332,6 +364,7 @@ async function install(cwd: string, closure: readonly string[], source: TSource)
 			source.kind === 'tarballs'
 				? resolved === specs.get(name)
 				: resolved?.startsWith('https://') === true,
+		source.kind === 'release' ? source.versions : undefined,
 	)
 
 	if (tree.length > 0) {
@@ -509,13 +542,14 @@ async function check(
 }
 
 const USAGE =
-	'node tools/install-smoke/cli.ts [<проект>…] [--registry <версия или тег>] [--dir <папка>]'
+	'node tools/install-smoke/cli.ts [<проект>…] [--registry <версия или тег> | --registry-workspace] [--dir <папка>]'
 
 async function main(): Promise<number> {
 	const { values, positionals } = parseArgs({
 		allowPositionals: true,
 		options: {
 			registry: { type: 'string' },
+			'registry-workspace': { type: 'boolean' },
 			dir: { type: 'string', default: join(tmpdir(), 'soxa-install-smoke') },
 		},
 	})
@@ -530,12 +564,34 @@ async function main(): Promise<number> {
 		positionals.length === 0
 			? PROJECTS
 			: PROJECTS.filter((project) => positionals.includes(project.name))
+	if (values['registry-workspace'] && values.registry !== undefined) {
+		throw new Error('--registry and --registry-workspace are mutually exclusive')
+	}
 	const dir = resolve(values.dir)
 	const library = readLibrary()
-	const source: TSource =
-		values.registry === undefined
+	const source: TSource = values['registry-workspace']
+		? {
+				kind: 'release',
+				versions: workspaceVersions(
+					new Map([...library].map(([name, { manifest }]) => [name, manifest])),
+				),
+			}
+		: values.registry === undefined
 			? { kind: 'tarballs', tarballs: pack(library, join(dir, 'tarballs')) }
 			: { kind: 'registry', spec: values.registry }
+
+	if (source.kind === 'release') {
+		mkdirSync(dir, { recursive: true })
+		writeFileSync(
+			join(dir, 'expected-versions.json'),
+			JSON.stringify(Object.fromEntries(source.versions), null, 2) + '\n',
+		)
+		console.log(
+			'Expected release:\n' +
+				[...source.versions].map(([name, version]) => name + '@' + version).join('\n'),
+		)
+		await waitForRegistry(source.versions)
+	}
 	const failed: string[] = []
 
 	for (const project of projects) {
