@@ -16,6 +16,6 @@
     "@soxa-ui/setup": "0.4.0"
   },
   "devDependencies": {
-    "@soxa-ui/theme-oren": "0.3.1-beta.0"
+    "@soxa-ui/theme-oren": "0.4.0"
   }
 }

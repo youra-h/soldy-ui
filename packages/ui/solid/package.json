@@ -51,7 +51,7 @@
   },
   "devDependencies": {
     "@soxa-ui/icons-material": "0.3.1-beta.0",
-    "@soxa-ui/theme-oren": "0.3.1-beta.0",
+    "@soxa-ui/theme-oren": "0.4.0",
     "solid-js": "^1.9.17",
     "vite-plugin-solid": "^2.11.14"
   }

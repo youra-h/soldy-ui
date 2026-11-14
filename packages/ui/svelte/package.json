@@ -54,7 +54,7 @@
   "devDependencies": {
     "@sinonjs/fake-timers": "^15.4.0",
     "@soxa-ui/icons-material": "0.3.1-beta.0",
-    "@soxa-ui/theme-oren": "0.3.1-beta.0",
+    "@soxa-ui/theme-oren": "0.4.0",
     "@sveltejs/package": "^3.0.1",
     "@sveltejs/vite-plugin-svelte": "^7.3.0",
     "svelte": "^5.55.10",
