@@ -155,6 +155,14 @@ function replaceSpecs(field: unknown, specs: ReadonlyMap<string, string>): unkno
  * `specs` maps every package of the closure to its spec.
  */
 export function withTarballs(manifest: TManifest, specs: ReadonlyMap<string, string>): TManifest {
+	return withLibrarySpecs(manifest, specs)
+}
+
+/** Pin the complete library closure, whether its specs are tarballs or exact registry versions. */
+export function withLibrarySpecs(
+	manifest: TManifest,
+	specs: ReadonlyMap<string, string>,
+): TManifest {
 	const named = new Set(libraryNamesOf(manifest))
 	const missing = Object.fromEntries([...specs].filter(([name]) => !named.has(name)))
 	const dependencies = replaceSpecs(manifest.dependencies, specs)
@@ -199,11 +207,13 @@ function lockedName(key: string): string | undefined {
  *   recognize a type by `instanceof`, stop recognizing it;
  * - every copy comes from where the run took it: `source` says whether the
  *   `resolved` of the entry is right (the tarball's spec, or the registry).
+ * - release verification also checks each package's own expected version.
  */
 export function lockProblems(
 	lock: TManifest,
 	closure: readonly string[],
 	source: (name: string, resolved: string | undefined) => boolean,
+	versions?: ReadonlyMap<string, string>,
 ): string[] {
 	const problems: string[] = []
 	const packages = isObject(lock.packages) ? lock.packages : {}
@@ -225,6 +235,13 @@ export function lockProblems(
 
 		const resolved =
 			isObject(entry) && typeof entry.resolved === 'string' ? entry.resolved : undefined
+
+		const expected = versions?.get(name)
+		const version = isObject(entry) ? entry.version : undefined
+
+		if (expected !== undefined && version !== expected) {
+			problems.push(`${name}: expected ${expected}, installed ${version ?? 'unknown'}`)
+		}
 
 		if (!source(name, resolved)) {
 			problems.push(`${name}: поставлен не оттуда — ${resolved ?? 'без resolved'}`)

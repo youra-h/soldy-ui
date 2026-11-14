@@ -105,7 +105,20 @@ jobs:
       - name: Chromium для проверки страниц
         run: npx playwright install --with-deps chromium
 
-      # Registry mode installs the published release channel without packing
-      # or resolving any library source from this checkout.
+      # Pin every package to its version in this commit: cached dist-tags may
+      # still select the previous release immediately after publication.
       - name: Установка из npm в чистые проекты
-        run: npm run check:install -- --registry "${{ needs.publish.outputs.channel }}"
+        run: npm run check:install -- --registry-workspace --dir "$RUNNER_TEMP/soxa-release-install"
+
+      - name: Диагностика установленного выпуска
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-install-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/soxa-release-install/expected-versions.json
+            ${{ runner.temp }}/soxa-release-install/*/package.json
+            ${{ runner.temp }}/soxa-release-install/*/package-lock.json
+            ${{ runner.temp }}/soxa-release-install/*/installed-library.json
+          if-no-files-found: ignore
+          retention-days: 14
