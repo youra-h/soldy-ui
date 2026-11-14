@@ -1,5 +1,22 @@
 # @soxa-ui/core
 
+## 0.4.0
+
+### Minor Changes
+
+- 5ea471b: Start the owner-approved 0.4.0 beta release line for the new components. This version number does not introduce an additional breaking API change. Full cross-adapter accessibility, memory and performance auditing remains required before the stable release.
+
+### Patch Changes
+
+- 1bd5a03: CodeBlock: preserve keyboard focus while copying, prevent duplicate clipboard requests, and ignore stale clipboard feedback.
+- 5f7f821: Add accessible AlertDialog confirmations with localized default actions and replaceable action slots.
+- 8e68380: Add a theme-defined Alert view property with reactive classes and Angular bindings.
+- 5ba63f4: Add a non-modal Dialog mode that preserves page interaction, keyboard navigation and focus without changing the default modal behavior.
+- f6c476e: Add Avatar with image loading and initials or custom fallbacks, plus overlapping avatar groups with an overflow count.
+- eec067c: Add an inline Alert component with themed variants, composable content, actions, and localized dismissal.
+- 274d746: Add a horizontal and vertical Separator with semantic and decorative modes across all adapters.
+- Graduate the approved beta packages to stable versions.
+
 ## 0.4.0-beta.0
 
 ### Minor Changes

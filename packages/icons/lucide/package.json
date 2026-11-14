@@ -1,6 +1,6 @@
 {
   "name": "@soxa-ui/icons-lucide",
-  "version": "0.3.1-beta.0",
+  "version": "0.3.1",
   "description": "Иконки Lucide: реализация контракта ролей ICON_ROLES",
   "keywords": [
     "soxa",

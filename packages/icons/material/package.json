@@ -1,6 +1,6 @@
 {
   "name": "@soxa-ui/icons-material",
-  "version": "0.3.1-beta.0",
+  "version": "0.3.1",
   "description": "Иконки Material: реализация контракта ролей ICON_ROLES",
   "keywords": [
     "soxa",
