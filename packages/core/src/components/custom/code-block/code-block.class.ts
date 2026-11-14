@@ -3,6 +3,7 @@ import type { TDefaultValues } from '../../base/component'
 import { TDataset, TAria, TAttributes } from '../../../common'
 import { sameValue } from '../../../common/utility/same-value'
 import { codeLanguage } from './language'
+import { TCodeBlockCopyButton } from './copy-button.class'
 import { codeTokens } from './highlight'
 import { TTabs, createEngineTabs } from '../tabs'
 import type {
@@ -36,6 +37,7 @@ export class TCodeBlock extends TStylable<ICodeBlockProps, TCodeBlockEvents> imp
 		value: undefined,
 	}
 
+	readonly copyButton: TCodeBlockCopyButton
 	readonly tabs: TTabs
 	readonly engine: ReturnType<typeof createEngineTabs>
 	private readonly _contentAttrs = new TAttributes()
@@ -65,6 +67,7 @@ export class TCodeBlock extends TStylable<ICodeBlockProps, TCodeBlockEvents> imp
 		this._wrap = props.wrap ?? ctor.defaultValues.wrap
 		this._maxHeight = props.maxHeight ?? ctor.defaultValues.maxHeight
 		this._highlightLines = props.highlightLines ?? ctor.defaultValues.highlightLines
+		this.copyButton = new TCodeBlockCopyButton(this)
 		this.tabs = new TTabs({ size: this.size, variant: this.variant })
 		this.engine = createEngineTabs({ owner: this.tabs })
 		this.engine.extensions.batch.trackBy = (item) => item.value
@@ -101,6 +104,7 @@ export class TCodeBlock extends TStylable<ICodeBlockProps, TCodeBlockEvents> imp
 	}
 
 	private _syncDataset(): void {
+		this.copyButton.sync()
 		this._dataset.add('wrap', this.wrap)
 		this._dataset.add('line-numbers', this.lineNumbers)
 		this._dataset.add('copyable', this.copyable)
@@ -159,6 +163,7 @@ export class TCodeBlock extends TStylable<ICodeBlockProps, TCodeBlockEvents> imp
 
 		const oldValue = this._copyable
 		this._copyable = value
+		if (!value) this.copyState = 'idle'
 
 		this._syncDataset()
 		this.events.emit('change:copyable', { newValue: value, oldValue })
@@ -271,6 +276,7 @@ export class TCodeBlock extends TStylable<ICodeBlockProps, TCodeBlockEvents> imp
 
 		const oldValue = this._copyState
 		this._copyState = value
+		this.copyButton.sync()
 		this.events.emit('change:copyState', { newValue: value, oldValue })
 	}
 

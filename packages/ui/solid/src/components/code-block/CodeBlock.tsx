@@ -39,7 +39,7 @@ export function CodeBlock(props: CodeBlockProps): JSX.Element {
 				class="so-code-block__copy"
 				size={state.size}
 				aria-label={state.names_copy}
-				disabled={state.copyDisabled}
+				ctrl={binding.ctrl.copyButton}
 				ref={copy}
 			>
 				{copyContent() ?? (

@@ -7,7 +7,7 @@
 			class="so-code-block__copy"
 			[size]="state()['size']"
 			[attr.aria-label]="state()['names_copy']"
-			[disabled]="state()['copyDisabled']"
+			[ctrl]="instance()?.copyButton"
 			(click)="instance()?.copy()"
 		>
 			@if (slot('copy'); as content) {

@@ -25,7 +25,7 @@ export default { ...SetupCodeBlock, components: { Tabs, TabsContent, Button, Ico
 				class="so-code-block__copy"
 				:size="size"
 				:aria-label="names_copy"
-				:disabled="copyDisabled"
+				:ctrl="block.copyButton"
 				@click="block.copy()"
 			>
 				<slot name="copy"
@@ -50,7 +50,7 @@ export default { ...SetupCodeBlock, components: { Tabs, TabsContent, Button, Ico
 					class="so-code-block__copy"
 					:size="size"
 					:aria-label="names_copy"
-					:disabled="copyDisabled"
+					:ctrl="block.copyButton"
 					@click="block.copy()"
 				>
 					<slot name="copy"
@@ -89,7 +89,7 @@ export default { ...SetupCodeBlock, components: { Tabs, TabsContent, Button, Ico
 				class="so-code-block__copy"
 				:size="size"
 				:aria-label="names_copy"
-				:disabled="copyDisabled"
+				:ctrl="block.copyButton"
 				@click="block.copy()"
 			>
 				<slot name="copy"

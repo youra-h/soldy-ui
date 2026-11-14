@@ -185,6 +185,7 @@ export const codeBlockTemplate: ITemplate<ICodeBlock, unknown, TOutputs> = {
 				const p = parts.get(ctx.root)
 				if (!p) return
 
+				if (ctx.ctrl) p.copy.ctrl = ctx.ctrl.copyButton
 				p.title.textContent = ctx.state.displayTitle ?? ''
 				// Removing the absent header avoids an empty flex row overriding native hidden styling.
 				if (ctx.state.displayTitle && !ctx.state.tabbed) {
@@ -192,7 +193,6 @@ export const codeBlockTemplate: ITemplate<ICodeBlock, unknown, TOutputs> = {
 				} else p.header.remove()
 				patch(p.copy, {
 					size: ctx.state.size,
-					disabled: ctx.state.copyDisabled === true,
 					rendered: ctx.state.copyable === true,
 				})
 				ownerAttributes(p.copy, { 'aria-label': ctx.state.names_copy ?? null })

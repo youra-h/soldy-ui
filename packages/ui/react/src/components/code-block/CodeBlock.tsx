@@ -57,7 +57,8 @@ export function CodeBlock(props: CodeBlockProps): ReactElement | null {
 			className="so-code-block__copy"
 			size={state.size}
 			aria-label={state.names_copy}
-			disabled={state.copyDisabled}
+			ctrl={ctrl.copyButton}
+			key={ctrl.copyButton.uid}
 			ref={copy}
 		>
 			{renderSlot(props.copy) ?? (
