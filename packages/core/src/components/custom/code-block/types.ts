@@ -8,6 +8,7 @@ import type {
 	TAriaAttributes,
 } from '../../../common'
 import type { ITabs, TTabsCollection } from '../tabs'
+import type { IButton } from '../button'
 
 /** A source fragment; its value identifies the corresponding Tabs item. */
 export interface ICodeSnippet {
@@ -87,6 +88,8 @@ export interface ICodeBlock extends IStylable<ICodeBlockProps, TCodeBlockEvents>
 	maxHeight: number | string | undefined
 	highlightLines: readonly number[]
 	copyState: TCodeBlockCopyState
+	/** Owned internal action; pending uses aria-disabled to retain keyboard focus. */
+	readonly copyButton: IButton
 	readonly tabs: ITabs
 	readonly engine: TTabsCollection
 	readonly tabbed: boolean

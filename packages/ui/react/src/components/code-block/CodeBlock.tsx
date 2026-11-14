@@ -52,12 +52,14 @@ export function CodeBlock(props: CodeBlockProps): ReactElement | null {
 	)
 	const copyButton = state.copyable ? (
 		<Button
+			tag="button"
 			type="button"
 			embedded="code-block.copy"
 			className="so-code-block__copy"
 			size={state.size}
 			aria-label={state.names_copy}
-			disabled={state.copyDisabled}
+			ctrl={ctrl.copyButton}
+			key={ctrl.copyButton.uid}
 			ref={copy}
 		>
 			{renderSlot(props.copy) ?? (

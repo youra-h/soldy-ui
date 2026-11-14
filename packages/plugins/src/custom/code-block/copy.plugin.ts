@@ -7,6 +7,7 @@ export class TCodeBlockCopyPlugin extends TBasePlugin<ICodeBlock> {
 	private _owner: ICodeBlock | undefined
 	private _alive = false
 	private _request = 0
+	private _inFlight: number | undefined
 
 	override install(ctx: IPluginContext, options?: unknown): void {
 		super.install(ctx, options)
@@ -23,7 +24,11 @@ export class TCodeBlockCopyPlugin extends TBasePlugin<ICodeBlock> {
 	}
 
 	private async _copy(owner: ICodeBlock, payload: ICodeBlockCopy): Promise<void> {
+		// Feedback may reset when the source changes; the physical request is still outstanding.
+		if (this._inFlight !== undefined) return
+
 		const request = ++this._request
+		this._inFlight = request
 		owner.copyState = 'pending'
 
 		try {
@@ -33,10 +38,11 @@ export class TCodeBlockCopyPlugin extends TBasePlugin<ICodeBlock> {
 			}
 			await navigator.clipboard.writeText(payload.code)
 
-			if (!this._alive) return
+			if (!this._alive || request !== this._request) return
 
 			if (
-				request === this._request &&
+				owner.copyState === 'pending' &&
+				owner.copyable &&
 				owner.source === payload.code &&
 				owner.value === payload.value
 			) {
@@ -45,10 +51,11 @@ export class TCodeBlockCopyPlugin extends TBasePlugin<ICodeBlock> {
 
 			owner.events.emit('copy', payload)
 		} catch (error) {
-			if (!this._alive) return
+			if (!this._alive || request !== this._request) return
 
 			if (
-				request === this._request &&
+				owner.copyState === 'pending' &&
+				owner.copyable &&
 				owner.source === payload.code &&
 				owner.value === payload.value
 			) {
@@ -56,6 +63,8 @@ export class TCodeBlockCopyPlugin extends TBasePlugin<ICodeBlock> {
 			}
 
 			owner.events.emit('copy:error', { ...payload, error })
+		} finally {
+			if (this._inFlight === request) this._inFlight = undefined
 		}
 	}
 

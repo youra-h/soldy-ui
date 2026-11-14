@@ -32,12 +32,13 @@
 
 {#snippet action()}
 	{#if state.copyable}<Button
+		tag="button"
 		type="button"
 		embedded="code-block.copy"
 		class="so-code-block__copy"
 		size={state.size}
 		aria-label={state.names_copy}
-		disabled={state.copyDisabled}
+		ctrl={binding.ctrl.copyButton}
 		{@attach copy}
 	>{#if props.copy}{@render props.copy()}{:else}<Icon embedded="code-block.copy-icon" tag={COPY_ICON} size={state.size} />{/if}</Button>{/if}
 {/snippet}

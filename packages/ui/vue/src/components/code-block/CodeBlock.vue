@@ -20,12 +20,13 @@ export default { ...SetupCodeBlock, components: { Tabs, TabsContent, Button, Ico
 			<slot name="title-icon" /><span class="so-code-block__title">{{ displayTitle }}</span>
 			<Button
 				v-if="copyable"
+				tag="button"
 				type="button"
 				embedded="code-block.copy"
 				class="so-code-block__copy"
 				:size="size"
 				:aria-label="names_copy"
-				:disabled="copyDisabled"
+				:ctrl="block.copyButton"
 				@click="block.copy()"
 			>
 				<slot name="copy"
@@ -45,12 +46,13 @@ export default { ...SetupCodeBlock, components: { Tabs, TabsContent, Button, Ico
 				<span v-if="displayTitle" class="so-code-block__title">{{ displayTitle }}</span>
 				<Button
 					v-if="copyable"
+					tag="button"
 					type="button"
 					embedded="code-block.copy"
 					class="so-code-block__copy"
 					:size="size"
 					:aria-label="names_copy"
-					:disabled="copyDisabled"
+					:ctrl="block.copyButton"
 					@click="block.copy()"
 				>
 					<slot name="copy"
@@ -84,12 +86,13 @@ export default { ...SetupCodeBlock, components: { Tabs, TabsContent, Button, Ico
 			><code class="so-code-block__code" v-bind="codeDataset"><span v-for="line in lines" :key="line.number" class="so-code-block__line" v-bind="line.dataset"><span v-if="lineNumbers" class="so-code-block__gutter" aria-hidden="true">{{ line.number }}</span><span class="so-code-block__text"><template v-if="line.tokens"><span v-for="(token, index) in line.tokens" :key="index" v-bind="token.dataset">{{ token.text }}</span></template><template v-else>{{ line.text }}</template></span></span></code></pre>
 			<Button
 				v-if="copyable && !displayTitle"
+				tag="button"
 				type="button"
 				embedded="code-block.copy"
 				class="so-code-block__copy"
 				:size="size"
 				:aria-label="names_copy"
-				:disabled="copyDisabled"
+				:ctrl="block.copyButton"
 				@click="block.copy()"
 			>
 				<slot name="copy"

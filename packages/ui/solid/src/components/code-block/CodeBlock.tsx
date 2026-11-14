@@ -34,12 +34,13 @@ export function CodeBlock(props: CodeBlockProps): JSX.Element {
 	const copyButton = () => (
 		<Show when={state.copyable}>
 			<Button
+				tag="button"
 				type="button"
 				embedded="code-block.copy"
 				class="so-code-block__copy"
 				size={state.size}
 				aria-label={state.names_copy}
-				disabled={state.copyDisabled}
+				ctrl={binding.ctrl.copyButton}
 				ref={copy}
 			>
 				{copyContent() ?? (

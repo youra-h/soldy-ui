@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest'
-import { act } from 'react'
+import { act, StrictMode } from 'react'
 import { renderToString } from 'react-dom/server'
 import { CodeBlock } from '@soxa-ui/react'
 import { TCodeBlock } from '@soxa-ui/core'
@@ -58,4 +58,40 @@ it('renders syntax categories on the server', () => {
 	expect(html).toContain('data-token="keyword"')
 	expect(html).toContain('&lt;img src=x')
 	expect(html).not.toContain('<img')
+})
+
+it('uses the current owned Copy model after StrictMode rebuilds the component', async () => {
+	let finish: (() => void) | undefined
+	const writeText = vi.fn(
+		() =>
+			new Promise<void>((resolve) => {
+				finish = resolve
+			}),
+	)
+	const original = Object.getOwnPropertyDescriptor(navigator, 'clipboard')
+	Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText } })
+
+	try {
+		const app = mount(
+			<StrictMode>
+				<CodeBlock code="source" />
+			</StrictMode>,
+		)
+		const button = find(app.root(), '.so-code-block__copy', HTMLButtonElement)
+		act(() => {
+			button.click()
+		})
+		expect(writeText).toHaveBeenCalledOnce()
+		expect(button.disabled).toBe(false)
+		expect(button.getAttribute('data-disabled')).toBe('true')
+		expect(button.getAttribute('aria-disabled')).toBe('true')
+		await act(async () => {
+			finish?.()
+		})
+		expect(button.getAttribute('data-disabled')).toBe('false')
+		expect(find(app.root(), '[role=status]', HTMLElement).textContent).toBe('Copied')
+	} finally {
+		if (original) Object.defineProperty(navigator, 'clipboard', original)
+		else Reflect.deleteProperty(navigator, 'clipboard')
+	}
 })

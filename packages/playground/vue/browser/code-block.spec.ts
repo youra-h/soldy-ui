@@ -7,8 +7,11 @@ import { enUS } from '@soxa-ui/plugins'
 let handle: IPreviewHandle | undefined
 let container: HTMLElement | undefined
 let clipboard: PropertyDescriptor | undefined
+let outside: HTMLButtonElement | undefined
 const frame = () => new Promise<void>((resolve) => requestAnimationFrame(() => resolve()))
 afterEach(() => {
+	outside?.remove()
+	outside = undefined
 	handle?.unmount()
 	handle = undefined
 	container?.remove()
@@ -34,6 +37,123 @@ function find(selector: string): HTMLElement {
 	return el
 }
 describe.each(FRAMEWORKS)('CodeBlock · $id', ({ id }) => {
+	it.each(['Tab', 'mouse', 'source', 'snippet', 'copyable', 'unmount'])(
+		'never takes focus after the user leaves via %s during clipboard pending',
+		async (action) => {
+			let resolve: (() => void) | undefined
+			let reject: ((error: Error) => void) | undefined
+			clipboard = Object.getOwnPropertyDescriptor(navigator, 'clipboard')
+			const writeText = vi.fn(
+				() =>
+					new Promise<void>((done, fail) => {
+						resolve = done
+						reject = fail
+					}),
+			)
+			Object.defineProperty(navigator, 'clipboard', {
+				configurable: true,
+				value: { writeText },
+			})
+			const snippets = [
+				{ value: 'one', label: 'One', code: 'first' },
+				{ value: 'two', label: 'Two', code: 'second' },
+			]
+
+			for (const outcome of ['success', 'error']) {
+				await show(id, action === 'snippet' ? { snippets } : { code: 'source' })
+				const button = find('.so-code-block__copy')
+				outside = document.createElement('button')
+				outside.textContent = 'Continue'
+				document.body.append(outside)
+				button.focus()
+				await userEvent.keyboard('{Enter}')
+				await expect.poll(() => button.getAttribute('data-disabled')).toBe('true')
+
+				if (action === 'Tab') await userEvent.keyboard('{Tab}')
+				else if (action === 'mouse') await userEvent.click(outside)
+				else {
+					if (action === 'source') await handle?.update({ code: 'next' })
+					if (action === 'snippet') await handle?.update({ snippets, value: 'two' })
+					if (action === 'copyable')
+						await handle?.update({ code: 'source', copyable: false })
+					if (action === 'unmount') {
+						handle?.unmount()
+						handle = undefined
+					}
+					outside.focus()
+				}
+				expect(document.activeElement).toBe(outside)
+				if (action === 'source' || action === 'snippet') {
+					find('.so-code-block__copy').click()
+					expect(writeText).toHaveBeenCalledTimes(outcome === 'success' ? 1 : 2)
+				}
+
+				if (outcome === 'success') resolve?.()
+				else reject?.(new Error('denied'))
+				await frame()
+				await frame()
+				expect(document.activeElement).toBe(outside)
+				if (action === 'source' || action === 'snippet' || action === 'copyable') {
+					expect(find('.so-code-block__status').textContent).toBe('')
+				}
+
+				handle?.unmount()
+				handle = undefined
+				container?.remove()
+				container = undefined
+				outside.remove()
+				outside = undefined
+			}
+		},
+	)
+
+	it.each(['plain', 'title', 'tabs'])(
+		'preserves Copy focus across pending success and error in %s mode',
+		async (mode) => {
+			let resolve: (() => void) | undefined
+			let reject: ((error: Error) => void) | undefined
+			clipboard = Object.getOwnPropertyDescriptor(navigator, 'clipboard')
+			const writeText = vi.fn(
+				() =>
+					new Promise<void>((done, fail) => {
+						resolve = done
+						reject = fail
+					}),
+			)
+			Object.defineProperty(navigator, 'clipboard', {
+				configurable: true,
+				value: { writeText },
+			})
+			await show(
+				id,
+				mode === 'tabs'
+					? { snippets: [{ value: 'one', label: 'One', code: 'source' }] }
+					: { code: 'source', title: mode === 'title' ? 'main.ts' : '' },
+			)
+			const button = find('.so-code-block__copy')
+
+			for (const outcome of ['success', 'error']) {
+				button.focus()
+				await userEvent.keyboard('{Enter}')
+				await expect.poll(() => button.getAttribute('data-disabled')).toBe('true')
+				await frame()
+				expect(document.activeElement).toBe(button)
+				expect(button.hasAttribute('disabled')).toBe(false)
+				expect(button.getAttribute('aria-disabled')).toBe('true')
+				const calls = writeText.mock.calls.length
+				await userEvent.keyboard('{Enter} ')
+				button.click()
+				expect(writeText).toHaveBeenCalledTimes(calls)
+
+				if (outcome === 'success') resolve?.()
+				else reject?.(new Error('denied'))
+				await expect.poll(() => button.getAttribute('data-disabled')).toBe('false')
+				expect(document.activeElement).toBe(button)
+			}
+			expect(writeText).toHaveBeenCalledTimes(2)
+		},
+	)
+
 	it('keeps default and wide copy content outside long code at every scroll position', async () => {
 		const code = 'const longValue = "' + 'Soxa UI '.repeat(80) + '";\nsecond line'
 		await show(id, { code, language: 'ts' })

@@ -100,3 +100,174 @@ it('warns once for conflicting sources and ignores transient conflicts during mo
 		warn.mockRestore()
 	}
 })
+
+describe('CodeBlock outstanding clipboard requests', () => {
+	it.each(['success', 'error'])(
+		'guards the physical Promise across source changes and releases after %s',
+		async (outcome) => {
+			let resolve: (() => void) | undefined
+			let reject: ((error: Error) => void) | undefined
+			const writeText = vi
+				.fn()
+				.mockImplementationOnce(
+					() =>
+						new Promise<void>((done, fail) => {
+							resolve = done
+							reject = fail
+						}),
+				)
+				.mockResolvedValue(undefined)
+			vi.stubGlobal('navigator', { clipboard: { writeText } })
+			const ctrl = new TCodeBlock({ code: 'first' })
+			const adapter = createAdapterContext(CodeBlockDescriptor(), { ctrl })
+
+			try {
+				ctrl.copy()
+				ctrl.copy()
+				expect(ctrl.copyState).toBe('pending')
+				ctrl.code = 'second'
+				ctrl.copy()
+				ctrl.snippets = [{ value: 'tab', label: 'Tab', code: 'third' }]
+				ctrl.code = ''
+				ctrl.copy()
+				expect(writeText).toHaveBeenCalledTimes(1)
+
+				if (outcome === 'success') resolve?.()
+				else reject?.(new Error('denied'))
+				await Promise.resolve()
+				expect(ctrl.copyState).toBe('idle')
+				ctrl.copy()
+				expect(writeText).toHaveBeenCalledTimes(2)
+				expect(writeText).toHaveBeenLastCalledWith('third')
+				await Promise.resolve()
+				expect(ctrl.copyState).toBe('success')
+			} finally {
+				adapter.destroy()
+			}
+		},
+	)
+
+	it.each(['success', 'error'])(
+		'ignores late %s after destroy while a new mounting copies',
+		async (outcome) => {
+			let resolve: (() => void) | undefined
+			let reject: ((error: Error) => void) | undefined
+			const writeText = vi
+				.fn()
+				.mockImplementationOnce(
+					() =>
+						new Promise<void>((done, fail) => {
+							resolve = done
+							reject = fail
+						}),
+				)
+				.mockResolvedValue(undefined)
+			vi.stubGlobal('navigator', { clipboard: { writeText } })
+			const ctrl = new TCodeBlock({ code: 'source' })
+			const adapter = createAdapterContext(CodeBlockDescriptor(), { ctrl })
+			const copied = vi.fn()
+			const failed = vi.fn()
+			ctrl.events.on('copy', copied)
+			ctrl.events.on('copy:error', failed)
+			ctrl.copy()
+			adapter.destroy()
+			const next = createAdapterContext(CodeBlockDescriptor(), { ctrl })
+
+			try {
+				ctrl.copy()
+				await Promise.resolve()
+				expect(ctrl.copyState).toBe('success')
+				if (outcome === 'success') resolve?.()
+				else reject?.(new Error('denied'))
+				await Promise.resolve()
+				expect(copied).toHaveBeenCalledTimes(1)
+				expect(failed).not.toHaveBeenCalled()
+				expect(ctrl.copyState).toBe('success')
+			} finally {
+				next.destroy()
+			}
+		},
+	)
+})
+
+it.each(['code', 'copyable', 'value'])(
+	'does not revive stale feedback after %s changes back',
+	async (property) => {
+		let finish: (() => void) | undefined
+		const writeText = vi
+			.fn()
+			.mockImplementationOnce(
+				() =>
+					new Promise<void>((resolve) => {
+						finish = resolve
+					}),
+			)
+			.mockResolvedValue(undefined)
+		vi.stubGlobal('navigator', { clipboard: { writeText } })
+		const ctrl = new TCodeBlock(
+			property === 'value'
+				? {
+						snippets: [
+							{ value: 'a', label: 'A', code: 'first' },
+							{ value: 'b', label: 'B', code: 'second' },
+						],
+					}
+				: { code: 'first' },
+		)
+		const adapter = createAdapterContext(CodeBlockDescriptor(), { ctrl })
+
+		try {
+			ctrl.copy()
+			if (property === 'code') {
+				ctrl.code = 'second'
+				ctrl.code = 'first'
+			}
+			if (property === 'copyable') {
+				ctrl.copyable = false
+				ctrl.copyable = true
+			}
+			if (property === 'value') {
+				ctrl.value = 'b'
+				ctrl.value = 'a'
+			}
+			ctrl.copy()
+			expect(writeText).toHaveBeenCalledTimes(1)
+			finish?.()
+			await Promise.resolve()
+			expect(ctrl.copyState).toBe('idle')
+			expect(ctrl.copyButton.disabled).toBe(false)
+			ctrl.copy()
+			await Promise.resolve()
+			expect(writeText).toHaveBeenCalledTimes(2)
+			expect(ctrl.copyState).toBe('success')
+		} finally {
+			adapter.destroy()
+		}
+	},
+)
+
+it('completes a copy started by a consumer source-change listener registered before mounting', async () => {
+	let finish: (() => void) | undefined
+	const writeText = vi.fn(
+		() =>
+			new Promise<void>((resolve) => {
+				finish = resolve
+			}),
+	)
+	vi.stubGlobal('navigator', { clipboard: { writeText } })
+	const ctrl = new TCodeBlock({ code: 'first' })
+	ctrl.events.on('change:code', () => ctrl.copy())
+	const adapter = createAdapterContext(CodeBlockDescriptor(), { ctrl })
+
+	try {
+		ctrl.code = 'next'
+		expect(writeText).toHaveBeenCalledExactlyOnceWith('next')
+		expect(ctrl.copyState).toBe('pending')
+		finish?.()
+		await Promise.resolve()
+		expect(ctrl.copyState).toBe('success')
+		expect(ctrl.copyButton.disabled).toBe(false)
+	} finally {
+		adapter.destroy()
+	}
+})

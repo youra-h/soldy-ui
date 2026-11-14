@@ -132,3 +132,46 @@ it.each(['npm', 'npx', 'yarn', 'pnpm', 'bun'])(
 		})
 	},
 )
+
+describe('CodeBlock owned Copy button', () => {
+	it('keeps pending logically disabled and focusable, with native disabled for an empty source', () => {
+		const block = new TCodeBlock({ code: 'source' })
+		const button = block.copyButton
+		const request = vi.fn()
+		block.events.on('copy:request', request)
+		block.events.on('change:copyState', () => {
+			expect(button.disabled).toBe(block.copyDisabled)
+			expect(button.dataset.get('disabled')).toBe(String(block.copyDisabled))
+		})
+
+		block.copyState = 'pending'
+		expect(button.disabled).toBe(true)
+		expect(button.attrs.has('disabled')).toBe(false)
+		expect(button.aria.get('aria-disabled')).toBe('true')
+		block.copy()
+		expect(request).not.toHaveBeenCalled()
+
+		block.code = ''
+		expect(button.disabled).toBe(true)
+		expect(button.attrs.get('disabled')).toBe('disabled')
+		expect(button.aria.has('aria-disabled')).toBe(false)
+		block.code = 'next'
+		expect(button.disabled).toBe(false)
+		expect(button.attrs.has('disabled')).toBe(false)
+		expect(button.aria.has('aria-disabled')).toBe(false)
+	})
+
+	it('updates the owned action for active snippets even when copyState stays idle', () => {
+		const block = new TCodeBlock({
+			snippets: [
+				{ value: 'empty', label: 'Empty', code: '' },
+				{ value: 'full', label: 'Full', code: 'source' },
+			],
+		})
+		expect(block.copyButton.disabled).toBe(true)
+		block.value = 'full'
+		expect(block.copyButton.disabled).toBe(false)
+		block.value = 'empty'
+		expect(block.copyButton.attrs.has('disabled')).toBe(true)
+	})
+})
