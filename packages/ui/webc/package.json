@@ -232,7 +232,7 @@
     "@ungap/custom-elements": "^1.3.0"
   },
   "devDependencies": {
-    "@soxa-ui/icons-material": "0.3.1-beta.0",
+    "@soxa-ui/icons-material": "0.3.1",
     "@soxa-ui/theme-oren": "0.4.0"
   }
 }

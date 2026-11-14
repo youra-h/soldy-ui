@@ -96,8 +96,8 @@ dependency on that same version. A theme and an icon pack have versions of their
 the range of library versions they work with, which npm checks on install. Then plug in the theme
 and the icons at the application entry point, as shown below.
 
-Components and both supplied themes are available at `0.4.0`. Icon packs keep their
-independent versions; npm checks their declared library compatibility when installing them.
+Components and both supplied themes are available at `0.4.0`. Both icon packs are at `0.3.1`, with
+their existing icons and compatibility with the stable component release. npm checks each pack's declared library compatibility when installing it.
 
 ## Compatibility and support
 

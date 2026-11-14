@@ -67,6 +67,18 @@
       "version": "0.4.0",
       "previousVersion": "0.3.1-beta.0",
       "scope": "themes"
+    },
+    {
+      "name": "@soxa-ui/icons-lucide",
+      "version": "0.3.1",
+      "previousVersion": "0.3.1-beta.0",
+      "scope": "icons"
+    },
+    {
+      "name": "@soxa-ui/icons-material",
+      "version": "0.3.1",
+      "previousVersion": "0.3.1-beta.0",
+      "scope": "icons"
     }
   ]
 }

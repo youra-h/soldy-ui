@@ -1,5 +1,11 @@
 # @soxa-ui/icons-lucide
 
+## 0.3.1
+
+### Patch Changes
+
+- Graduate the approved beta packages to stable versions.
+
 ## 0.3.1-beta.0
 
 ### Patch Changes

@@ -49,7 +49,7 @@
     "vue": "^3.5.21"
   },
   "devDependencies": {
-    "@soxa-ui/icons-material": "0.3.1-beta.0",
+    "@soxa-ui/icons-material": "0.3.1",
     "@types/node": "^26.1.1",
     "vite-plugin-vue-devtools": "^8.2.1",
     "vue": "^3.5.32",
