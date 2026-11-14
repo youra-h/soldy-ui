@@ -32,6 +32,7 @@
 
 {#snippet action()}
 	{#if state.copyable}<Button
+		tag="button"
 		type="button"
 		embedded="code-block.copy"
 		class="so-code-block__copy"

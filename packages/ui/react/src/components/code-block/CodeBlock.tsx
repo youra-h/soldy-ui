@@ -52,6 +52,7 @@ export function CodeBlock(props: CodeBlockProps): ReactElement | null {
 	)
 	const copyButton = state.copyable ? (
 		<Button
+			tag="button"
 			type="button"
 			embedded="code-block.copy"
 			className="so-code-block__copy"

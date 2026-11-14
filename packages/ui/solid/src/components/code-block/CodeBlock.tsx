@@ -34,6 +34,7 @@ export function CodeBlock(props: CodeBlockProps): JSX.Element {
 	const copyButton = () => (
 		<Show when={state.copyable}>
 			<Button
+				tag="button"
 				type="button"
 				embedded="code-block.copy"
 				class="so-code-block__copy"
